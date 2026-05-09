@@ -51,6 +51,7 @@ using namespace std;
 #include<Resource_module.hxx>
 #include<TopoDS_module.hxx>
 #include<BRepTools_module.hxx>
+#include<TopTools_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopAbs_module.hxx>
@@ -78,6 +79,7 @@ using namespace std;
 %import Resource.i
 %import TopoDS.i
 %import BRepTools.i
+%import TopTools.i
 %import ShapeExtend.i
 %import GeomAbs.i
 %import TopAbs.i
@@ -671,7 +673,7 @@ Parameters
 S: TopoDS_Shape
 context: ShapeProcess_ShapeContext
 M: BRepTools_Modification
-map: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+map: TopTools_DataMapOfShapeShape
 msg: ShapeExtend_MsgRegistrator (optional, default to nullptr)
 theMutableInput: bool (optional, default to false)
 
@@ -683,7 +685,7 @@ Description
 -----------
 Applies BRepTools_Modification to a shape, taking into account sharing of components of compounds. if theMutableInput vat is set to true then input shape S can be modified during the modification process.
 ") ApplyModifier;
-		static TopoDS_Shape ApplyModifier(const TopoDS_Shape & S, const opencascade::handle<ShapeProcess_ShapeContext> & context, const opencascade::handle<BRepTools_Modification> & M, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & map, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr, bool theMutableInput = false);
+		static TopoDS_Shape ApplyModifier(const TopoDS_Shape & S, const opencascade::handle<ShapeProcess_ShapeContext> & context, const opencascade::handle<BRepTools_Modification> & M, TopTools_DataMapOfShapeShape & map, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr, bool theMutableInput = false);
 
 		/****** ShapeProcess_OperLibrary::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -893,13 +895,13 @@ Get NonManifold flag.
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeShape
 
 Description
 -----------
 Returns map of replacements shape -> shape This map is not recursive.
 ") Map;
-		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Map();
+		const TopTools_DataMapOfShapeShape & Map();
 
 		/****** ShapeProcess_ShapeContext::Messages ******/
 		/****** md5 signature: 4bcb959a43c79d763ed04d57cd2f32ff ******/
@@ -946,7 +948,7 @@ Prints statistics on Shape Processing onto the current Messenger.
 		%feature("autodoc", "
 Parameters
 ----------
-repl: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+repl: TopTools_DataMapOfShapeShape
 msg: ShapeExtend_MsgRegistrator (optional, default to nullptr)
 
 Return
@@ -957,7 +959,7 @@ Description
 -----------
 No available documentation.
 ") RecordModification;
-		void RecordModification(const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr);
+		void RecordModification(const TopTools_DataMapOfShapeShape & repl, const opencascade::handle<ShapeExtend_MsgRegistrator> & msg = nullptr);
 
 		/****** ShapeProcess_ShapeContext::RecordModification ******/
 		/****** md5 signature: 7003d8786e0ab31160304d31b2f0ffe5 ******/

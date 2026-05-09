@@ -46,7 +46,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomplate.html"
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
 #include<Geom_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColGeom2d_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
 #include<GeomLProp_module.hxx>
@@ -65,7 +68,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomplate.html"
 %import NCollection.i
 %import Adaptor3d.i
 %import gp.i
+%import TColgp.i
 %import Geom.i
+%import TColStd.i
+%import TColGeom2d.i
 %import Message.i
 %import Geom2d.i
 %import GeomLProp.i
@@ -104,6 +110,13 @@ Array1ExtendIter(TColStd_SequenceOfReal)
 %template(GeomPlate_SequenceOfAij) NCollection_Sequence<GeomPlate_Aij>;
 
 %extend NCollection_Sequence<GeomPlate_Aij> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -112,6 +125,13 @@ Array1ExtendIter(TColStd_SequenceOfReal)
 %template(GeomPlate_SequenceOfCurveConstraint) NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>;
 
 %extend NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -120,6 +140,13 @@ Array1ExtendIter(TColStd_SequenceOfReal)
 %template(GeomPlate_SequenceOfPointConstraint) NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>;
 
 %extend NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -197,7 +224,7 @@ class GeomPlate_BuildAveragePlane {
 		%feature("autodoc", "
 Parameters
 ----------
-Pts: NCollection_HArray1<gp_Pnt
+Pts: TColgp_HArray1OfPnt
 NbBoundPoints: int
 Tol: double
 POption: int
@@ -211,7 +238,7 @@ Description
 -----------
 Tol is a Tolerance to make the difference between the result plane and the result line. if POption = 1: automatic parametrisation if POption = 2: parametrisation by eigen vectors if NOption = 1: the average plane is the inertial plane. if NOption = 2: the average plane is the plane of max. flux.
 ") GeomPlate_BuildAveragePlane;
-		 GeomPlate_BuildAveragePlane(const opencascade::handle<NCollection_HArray1<gp_Pnt> > & Pts, const int NbBoundPoints, const double Tol, const int POption, const int NOption);
+		 GeomPlate_BuildAveragePlane(const opencascade::handle<TColgp_HArray1OfPnt> & Pts, const int NbBoundPoints, const double Tol, const int POption, const int NOption);
 
 		/****** GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane ******/
 		/****** md5 signature: 33b88277166df41462ffc194389f2f50 ******/
@@ -219,8 +246,8 @@ Tol is a Tolerance to make the difference between the result plane and the resul
 		%feature("autodoc", "
 Parameters
 ----------
-Normals: NCollection_Sequence<gp_Vec>
-Pts: NCollection_HArray1<gp_Pnt
+Normals: TColgp_SequenceOfVec
+Pts: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -230,7 +257,7 @@ Description
 -----------
 Creates the plane from the 'best vector'.
 ") GeomPlate_BuildAveragePlane;
-		 GeomPlate_BuildAveragePlane(const NCollection_Sequence<gp_Vec> & Normals, const opencascade::handle<NCollection_HArray1<gp_Pnt> > & Pts);
+		 GeomPlate_BuildAveragePlane(const TColgp_SequenceOfVec & Normals, const opencascade::handle<TColgp_HArray1OfPnt> & Pts);
 
 		/****** GeomPlate_BuildAveragePlane::HalfSpace ******/
 		/****** md5 signature: 22ac68b79b90417a670754da15e98531 ******/
@@ -238,8 +265,8 @@ Creates the plane from the 'best vector'.
 		%feature("autodoc", "
 Parameters
 ----------
-NewNormals: NCollection_Sequence<gp_Vec>
-Normals: NCollection_Sequence<gp_Vec>
+NewNormals: TColgp_SequenceOfVec
+Normals: TColgp_SequenceOfVec
 Bset: NCollection_Sequence<GeomPlate_Aij>
 LinTol: double
 AngTol: double
@@ -252,7 +279,7 @@ Description
 -----------
 No available documentation.
 ") HalfSpace;
-		static bool HalfSpace(const NCollection_Sequence<gp_Vec> & NewNormals, NCollection_Sequence<gp_Vec> & Normals, NCollection_Sequence<GeomPlate_Aij> & Bset, const double LinTol, const double AngTol);
+		static bool HalfSpace(const TColgp_SequenceOfVec & NewNormals, TColgp_SequenceOfVec & Normals, NCollection_Sequence<GeomPlate_Aij> & Bset, const double LinTol, const double AngTol);
 
 		/****** GeomPlate_BuildAveragePlane::IsLine ******/
 		/****** md5 signature: 772db688f2c7a31abda4c65348c839f4 ******/
@@ -346,9 +373,9 @@ class GeomPlate_BuildPlateSurface {
 		%feature("autodoc", "
 Parameters
 ----------
-NPoints: NCollection_HArray1<int
+NPoints: TColStd_HArray1OfInteger
 TabCurve: NCollection_HArray1<
-Tang: NCollection_HArray1<int
+Tang: TColStd_HArray1OfInteger
 Degree: int
 NbIter: int (optional, default to 3)
 Tol2d: double (optional, default to 0.00001)
@@ -365,7 +392,7 @@ Description
 -----------
 Constructor compatible with the old version with this constructor the constraint are given in a Array of Curve on Surface The array NbPoints contains the number of points for each constraint. The Array Tang contains the order of constraint for each Constraint: The possible values for this order has to be -1 , 0 , 1 , 2 . Order i means constraint Gi. NbIter is the maximum number of iteration to optimise the number of points for resolution Degree is the degree of resolution for Plate Tol2d is the tolerance used to test if two points of different constraint are identical in the parametric space of the initial surface Tol3d is used to test if two identical points in the 2d space are identical in 3d space TolAng is used to compare the angle between normal of two identical points in the 2d space Raises ConstructionError;.
 ") GeomPlate_BuildPlateSurface;
-		 GeomPlate_BuildPlateSurface(const opencascade::handle<NCollection_HArray1<int> > & NPoints, const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve> > > & TabCurve, const opencascade::handle<NCollection_HArray1<int> > & Tang, const int Degree, const int NbIter = 3, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const bool Anisotropie = false);
+		 GeomPlate_BuildPlateSurface(const opencascade::handle<TColStd_HArray1OfInteger> & NPoints, const opencascade::handle<NCollection_HArray1<opencascade::handle<Adaptor3d_Curve>> > & TabCurve, const opencascade::handle<TColStd_HArray1OfInteger> & Tang, const int Degree, const int NbIter = 3, const double Tol2d = 0.00001, const double Tol3d = 0.0001, const double TolAng = 0.01, const double TolCurv = 0.1, const bool Anisotropie = false);
 
 		/****** GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface ******/
 		/****** md5 signature: a42b39910535327857714573ee4cd4a5 ******/
@@ -477,13 +504,13 @@ returns the CurveConstraints of order order.
 		%feature("compactdefaultargs") Curves2d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>
+opencascade::handle<TColGeom2d_HArray1OfCurve>
 
 Description
 -----------
 Extracts the array of curves on the plate surface which correspond to the curve constraints set in Add.
 ") Curves2d;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>> Curves2d();
+		opencascade::handle<TColGeom2d_HArray1OfCurve> Curves2d();
 
 		/****** GeomPlate_BuildPlateSurface::Disc2dContour ******/
 		/****** md5 signature: a4f9a4f1fe33f6c2d8482073def73f52 ******/
@@ -492,7 +519,7 @@ Extracts the array of curves on the plate surface which correspond to the curve 
 Parameters
 ----------
 nbp: int
-Seq2d: NCollection_Sequence<gp_XY>
+Seq2d: TColgp_SequenceOfXY
 
 Return
 -------
@@ -502,7 +529,7 @@ Description
 -----------
 No available documentation.
 ") Disc2dContour;
-		void Disc2dContour(const int nbp, NCollection_Sequence<gp_XY> & Seq2d);
+		void Disc2dContour(const int nbp, TColgp_SequenceOfXY & Seq2d);
 
 		/****** GeomPlate_BuildPlateSurface::Disc3dContour ******/
 		/****** md5 signature: 9c6933b1a0b021b6c83c17807fcc5e85 ******/
@@ -512,7 +539,7 @@ Parameters
 ----------
 nbp: int
 iordre: int
-Seq3d: NCollection_Sequence<gp_XYZ>
+Seq3d: TColgp_SequenceOfXYZ
 
 Return
 -------
@@ -522,7 +549,7 @@ Description
 -----------
 No available documentation.
 ") Disc3dContour;
-		void Disc3dContour(const int nbp, const int iordre, NCollection_Sequence<gp_XYZ> & Seq3d);
+		void Disc3dContour(const int nbp, const int iordre, TColgp_SequenceOfXYZ & Seq3d);
 
 		/****** GeomPlate_BuildPlateSurface::G0Error ******/
 		/****** md5 signature: 26eb7ac7e7e086c9d50aef459fbfc494 ******/
@@ -666,13 +693,13 @@ Loads the initial Surface.
 		%feature("compactdefaultargs") Order;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Returns the order of the curves in the array returned by Curves2d. Computation changes this order. Consequently, this method returns the order of the curves prior to computation.
 ") Order;
-		opencascade::handle<NCollection_HArray1<int>> Order();
+		opencascade::handle<TColStd_HArray1OfInteger> Order();
 
 		/****** GeomPlate_BuildPlateSurface::Perform ******/
 		/****** md5 signature: d7fed22833997c4a8f7923f6a29bd664 ******/
@@ -715,13 +742,13 @@ returns the PointConstraint of order order.
 		%feature("compactdefaultargs") Sense;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Allows you to ensure that the array of curves returned by Curves2d has the correct orientation. Returns the orientation of the curves in the array returned by Curves2d. Computation changes the orientation of these curves. Consequently, this method returns the orientation prior to computation.
 ") Sense;
-		opencascade::handle<NCollection_HArray1<int>> Sense();
+		opencascade::handle<TColStd_HArray1OfInteger> Sense();
 
 		/****** GeomPlate_BuildPlateSurface::SetNbBounds ******/
 		/****** md5 signature: e6d68a85ff99a90451c41799714f2f64 ******/
@@ -1309,8 +1336,8 @@ class GeomPlate_PlateG0Criterion : public AdvApp2Var_Criterion {
 		%feature("autodoc", "
 Parameters
 ----------
-Data: NCollection_Sequence<gp_XY>
-G0Data: NCollection_Sequence<gp_XYZ>
+Data: TColgp_SequenceOfXY
+G0Data: TColgp_SequenceOfXYZ
 Maximum: double
 Type: AdvApp2Var_CriterionType (optional, default to AdvApp2Var_Absolute)
 Repart: AdvApp2Var_CriterionRepartition (optional, default to AdvApp2Var_Regular)
@@ -1323,7 +1350,7 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_PlateG0Criterion;
-		 GeomPlate_PlateG0Criterion(const NCollection_Sequence<gp_XY> & Data, const NCollection_Sequence<gp_XYZ> & G0Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
+		 GeomPlate_PlateG0Criterion(const TColgp_SequenceOfXY & Data, const TColgp_SequenceOfXYZ & G0Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
 
 		/****** GeomPlate_PlateG0Criterion::IsSatisfied ******/
 		/****** md5 signature: 9007958412c11c7e5919879e24b5b219 ******/
@@ -1382,8 +1409,8 @@ class GeomPlate_PlateG1Criterion : public AdvApp2Var_Criterion {
 		%feature("autodoc", "
 Parameters
 ----------
-Data: NCollection_Sequence<gp_XY>
-G1Data: NCollection_Sequence<gp_XYZ>
+Data: TColgp_SequenceOfXY
+G1Data: TColgp_SequenceOfXYZ
 Maximum: double
 Type: AdvApp2Var_CriterionType (optional, default to AdvApp2Var_Absolute)
 Repart: AdvApp2Var_CriterionRepartition (optional, default to AdvApp2Var_Regular)
@@ -1396,7 +1423,7 @@ Description
 -----------
 No available documentation.
 ") GeomPlate_PlateG1Criterion;
-		 GeomPlate_PlateG1Criterion(const NCollection_Sequence<gp_XY> & Data, const NCollection_Sequence<gp_XYZ> & G1Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
+		 GeomPlate_PlateG1Criterion(const TColgp_SequenceOfXY & Data, const TColgp_SequenceOfXYZ & G1Data, const double Maximum, const AdvApp2Var_CriterionType Type = AdvApp2Var_Absolute, const AdvApp2Var_CriterionRepartition Repart = AdvApp2Var_Regular);
 
 		/****** GeomPlate_PlateG1Criterion::IsSatisfied ******/
 		/****** md5 signature: 9007958412c11c7e5919879e24b5b219 ******/
@@ -1809,7 +1836,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Seq: NCollection_Sequence<gp_XY>
+Seq: TColgp_SequenceOfXY
 
 Return
 -------
@@ -1819,7 +1846,7 @@ Description
 -----------
 No available documentation.
 ") Constraints;
-		void Constraints(NCollection_Sequence<gp_XY> & Seq);
+		void Constraints(TColgp_SequenceOfXY & Seq);
 
 		/****** GeomPlate_Surface::Continuity ******/
 		/****** md5 signature: 8a904df22c5de40ac55e533d992dce2a ******/

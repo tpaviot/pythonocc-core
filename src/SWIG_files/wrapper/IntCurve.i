@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurve.html"
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
 #include<IntRes2d_module.hxx>
+#include<TColStd_module.hxx>
 #include<math_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurve.html"
 %import NCollection.i
 %import gp.i
 %import IntRes2d.i
+%import TColStd.i
 %import math.i
 %import GeomAbs.i
 
@@ -1100,10 +1102,10 @@ TheImpTool: IntCurve_IConicTool
 TheParCurve: IntCurve_PConic
 TheImpCurveDomain: IntRes2d_Domain
 TheParCurveDomain: IntRes2d_Domain
-Inter2_And_Domain2: NCollection_Array1<double>
-Inter1: NCollection_Array1<double>
-Resultat1: NCollection_Array1<double>
-Resultat2: NCollection_Array1<double>
+Inter2_And_Domain2: TColStd_Array1OfReal
+Inter1: TColStd_Array1OfReal
+Resultat1: TColStd_Array1OfReal
+Resultat2: TColStd_Array1OfReal
 EpsNul: double
 
 Return
@@ -1114,7 +1116,7 @@ Description
 -----------
 No available documentation.
 ") And_Domaine_Objet1_Intersections;
-		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const IntCurve_PConic & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, NCollection_Array1<double> & Inter2_And_Domain2, NCollection_Array1<double> & Inter1, NCollection_Array1<double> & Resultat1, NCollection_Array1<double> & Resultat2, const double EpsNul);
+		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const IntCurve_PConic & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, TColStd_Array1OfReal & Inter2_And_Domain2, TColStd_Array1OfReal & Inter1, TColStd_Array1OfReal & Resultat1, TColStd_Array1OfReal & Resultat2, const double EpsNul);
 
 		/****** IntCurve_IntImpConicParConic::FindU ******/
 		/****** md5 signature: 8cd30139bfd736d6ce37e175ef38ede4 ******/

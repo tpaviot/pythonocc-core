@@ -50,7 +50,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepds.html
 #include<TopOpeBRepTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -79,7 +81,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrepds.html
 %import TopOpeBRepTool.i
 %import TopoDS.i
 %import Geom2d.i
+%import TopTools.i
 %import gp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -178,9 +182,33 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 %ignore NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfCheckStatus) NCollection_DataMap<int,TopOpeBRepDS_CheckStatus>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_CheckStatus> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_DataMapOfCheckStatus::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_DataMapOfIntegerListOfInterference::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::Items;
 %ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfInterferenceListOfInterference) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>;
@@ -208,20 +236,68 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 %template(TopOpeBRepDS_ListOfInterference) NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>;
 
 %extend NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRepDS_ListIteratorOfListOfInterference(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %ignore NCollection_DataMap<int,TopOpeBRepDS_CurveData>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_CurveData>::KeyValues;
 %template(TopOpeBRepDS_MapOfCurve) NCollection_DataMap<int,TopOpeBRepDS_CurveData>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_CurveData> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfCurve::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TopOpeBRepDS_ShapeData>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_ShapeData>::KeyValues;
 %template(TopOpeBRepDS_MapOfIntegerShapeData) NCollection_DataMap<int,TopOpeBRepDS_ShapeData>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_ShapeData> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfIntegerShapeData::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TopOpeBRepDS_PointData>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_PointData>::KeyValues;
 %template(TopOpeBRepDS_MapOfPoint) NCollection_DataMap<int,TopOpeBRepDS_PointData>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_PointData> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfPoint::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::KeyValues;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepDS_ShapeData,TopTools_ShapeMapHasher>::IndexedItems;
@@ -230,6 +306,18 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 %ignore NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>::Items;
 %ignore NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>::KeyValues;
 %template(TopOpeBRepDS_MapOfSurface) NCollection_DataMap<int,TopOpeBRepDS_SurfaceData>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_SurfaceData> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_MapOfSurface::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepDS_ShapeSurface) NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>;
@@ -653,7 +741,7 @@ Description
 -----------
 No available documentation.
 ") Associate;
-		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_Association::Associated ******/
 		/****** md5 signature: 55026c3b148b0eccddd3d57c0a65730e ******/
@@ -1629,7 +1717,7 @@ Verifie que le ieme element de la DS existe, et pour un K de type topologique, v
 		%feature("autodoc", "
 Parameters
 ----------
-LS: NCollection_List<TopoDS_Shape>
+LS: TopTools_ListOfShape
 
 Return
 -------
@@ -1639,7 +1727,7 @@ Description
 -----------
 Verifie que les Shapes existent bien dans la DS Utile pour les Shapes SameDomain si la liste est vide, renvoie vrai.
 ") CheckShapes;
-		bool CheckShapes(const NCollection_List<TopoDS_Shape> & LS);
+		bool CheckShapes(const TopTools_ListOfShape & LS);
 
 		/****** TopOpeBRepDS_Check::ChkIntg ******/
 		/****** md5 signature: 3990b4b9db667c54e616c270eec7ca18 ******/
@@ -1670,7 +1758,7 @@ Description
 -----------
 Check integrition of interferences (les supports et les geometries de LI).
 ") ChkIntgInterf;
-		bool ChkIntgInterf(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		bool ChkIntgInterf(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_Check::ChkIntgSamDom ******/
 		/****** md5 signature: 0274cce6a1732517a76db3bc1f1d6ea6 ******/
@@ -2951,26 +3039,26 @@ No available documentation.
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesObj;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfRejectedShapesObj;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMapOfRejectedShapesObj();
+		TopTools_IndexedMapOfShape & ChangeMapOfRejectedShapesObj();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfRejectedShapesTool ******/
 		/****** md5 signature: 02b8b591bfa01669279e263b523cffbb ******/
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesTool;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeMapOfRejectedShapesTool;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMapOfRejectedShapesTool();
+		TopTools_IndexedMapOfShape & ChangeMapOfRejectedShapesTool();
 
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfShapeWithState ******/
 		/****** md5 signature: 712182c2135607bb770f6b9506866bb4 ******/
@@ -3116,13 +3204,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeSameDomain;
-		NCollection_List<TopoDS_Shape> ChangeShapeSameDomain(const TopoDS_Shape & S);
+		TopTools_ListOfShape & ChangeShapeSameDomain(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeSameDomain ******/
 		/****** md5 signature: 8a03c50cfcc6e2cb52e5193cdcc98422 ******/
@@ -3134,13 +3222,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeShapeSameDomain;
-		NCollection_List<TopoDS_Shape> ChangeShapeSameDomain(const int I);
+		TopTools_ListOfShape & ChangeShapeSameDomain(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::ChangeShapes ******/
 		/****** md5 signature: 5783c34d07d79ef4b3731d966b76b6fc ******/
@@ -4140,13 +4228,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ShapeSameDomain;
-		const NCollection_List<TopoDS_Shape> ShapeSameDomain(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & ShapeSameDomain(const TopoDS_Shape & S);
 
 		/****** TopOpeBRepDS_DataStructure::ShapeSameDomain ******/
 		/****** md5 signature: f993452380df6d550c045bce6c02f3c4 ******/
@@ -4158,13 +4246,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ShapeSameDomain;
-		const NCollection_List<TopoDS_Shape> ShapeSameDomain(const int I);
+		const TopTools_ListOfShape & ShapeSameDomain(const int I);
 
 		/****** TopOpeBRepDS_DataStructure::Surface ******/
 		/****** md5 signature: 5439188fcb1b33bc27f0b1b898e5d6da ******/
@@ -4351,7 +4439,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 B: str (optional, default to "")
 
 Return
@@ -4362,7 +4450,7 @@ Description
 -----------
 No available documentation.
 ") SPrintShapeRefOri;
-		TCollection_AsciiString SPrintShapeRefOri(const NCollection_List<TopoDS_Shape> & L, TCollection_AsciiString B = "");
+		TCollection_AsciiString SPrintShapeRefOri(const TopTools_ListOfShape & L, TCollection_AsciiString B = "");
 
 };
 
@@ -5238,7 +5326,7 @@ Description
 -----------
 Methodes pour reduire la liste des Points qui peuvent correspondre a une Point donne.
 ") AddPointsOnConnexShape;
-		void AddPointsOnConnexShape(const TopoDS_Shape & F, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void AddPointsOnConnexShape(const TopoDS_Shape & F, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::AddPointsOnShape ******/
 		/****** md5 signature: fc71db17942f501c021a1604c6309d03 ******/
@@ -5257,7 +5345,7 @@ Description
 -----------
 No available documentation.
 ") AddPointsOnShape;
-		void AddPointsOnShape(const TopoDS_Shape & S, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void AddPointsOnShape(const TopoDS_Shape & S, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::BuildNewGeometries ******/
 		/****** md5 signature: 2bcc3a668d4ba8f8140566f3c713941d ******/
@@ -5288,7 +5376,7 @@ Description
 -----------
 Enchaine les sections via les points d'Interferences deja associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
 ") CheckConnexity;
-		bool CheckConnexity(NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		bool CheckConnexity(NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByEdge ******/
 		/****** md5 signature: 02110384f336a96f998b504bc6371609 ******/
@@ -5307,7 +5395,7 @@ Description
 -----------
 No available documentation.
 ") FilterByEdge;
-		void FilterByEdge(const TopoDS_Edge & E, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void FilterByEdge(const TopoDS_Edge & E, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByFace ******/
 		/****** md5 signature: c9d55e69653dc7aab67ddf56d3b01bee ******/
@@ -5326,7 +5414,7 @@ Description
 -----------
 No available documentation.
 ") FilterByFace;
-		void FilterByFace(const TopoDS_Face & F, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void FilterByFace(const TopoDS_Face & F, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FilterByIncidentDistance ******/
 		/****** md5 signature: 2f16df34faa705e6aef1ac78beba8895 ******/
@@ -5346,7 +5434,7 @@ Description
 -----------
 No available documentation.
 ") FilterByIncidentDistance;
-		void FilterByIncidentDistance(const TopoDS_Face & F, const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void FilterByIncidentDistance(const TopoDS_Face & F, const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::FindAssociatedPoints ******/
 		/****** md5 signature: 6955d4e4f3421a25f28099268ef12408 ******/
@@ -5365,7 +5453,7 @@ Description
 -----------
 Recherche parmi l'ensemble des points d'Interference la Liste <LI> des points qui correspondent au point d'indice <Index>.
 ") FindAssociatedPoints;
-		void FindAssociatedPoints(const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & LI);
+		void FindAssociatedPoints(const opencascade::handle<TopOpeBRepDS_Interference> & I, NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
 		/****** TopOpeBRepDS_GapFiller::IsOnEdge ******/
 		/****** md5 signature: b1569a9a37dbc4b523f6b3835f8ef72b ******/
@@ -5425,7 +5513,7 @@ No available documentation.
 Parameters
 ----------
 I1: TopOpeBRepDS_Interference
-Done: NCollection_Map<int>
+Done: TColStd_MapOfInteger
 
 Return
 -------
@@ -5435,7 +5523,7 @@ Description
 -----------
 No available documentation.
 ") ReBuildGeom;
-		void ReBuildGeom(const opencascade::handle<TopOpeBRepDS_Interference> & I1, NCollection_Map<int> & Done);
+		void ReBuildGeom(const opencascade::handle<TopOpeBRepDS_Interference> & I1, TColStd_MapOfInteger & Done);
 
 };
 
@@ -6136,7 +6224,7 @@ Description
 -----------
 Creates an iterator on the Interference of list <L>.
 ") TopOpeBRepDS_InterferenceIterator;
-		 TopOpeBRepDS_InterferenceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		 TopOpeBRepDS_InterferenceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_InterferenceIterator::ChangeIterator ******/
 		/****** md5 signature: 4a5d38d3105b0250e1a523cf855144dd ******/
@@ -6203,7 +6291,7 @@ Description
 -----------
 re-initialize interference iteration process on the list of interference <L>. Conditions are not modified.
 ") Init;
-		void Init(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		void Init(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_InterferenceIterator::Match ******/
 		/****** md5 signature: 3b22ed9ef0be8edf337a58574cb50ef5 ******/
@@ -6544,13 +6632,13 @@ No available documentation.
 		%feature("compactdefaultargs") ChangeListOnState;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeListOnState;
-		NCollection_List<TopoDS_Shape> ChangeListOnState();
+		TopTools_ListOfShape & ChangeListOnState();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -6583,13 +6671,13 @@ No available documentation.
 		%feature("compactdefaultargs") ListOnState;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ListOnState;
-		const NCollection_List<TopoDS_Shape> ListOnState();
+		const TopTools_ListOfShape & ListOnState();
 
 		/****** TopOpeBRepDS_ListOfShapeOn1State::Split ******/
 		/****** md5 signature: a70d1e309550b349f80e954a73798755 ******/
@@ -7279,7 +7367,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aListOfShape: NCollection_List<TopoDS_Shape>
+aListOfShape: TopTools_ListOfShape
 aState: TopAbs_State
 
 Return
@@ -7290,7 +7378,7 @@ Description
 -----------
 No available documentation.
 ") AddParts;
-		void AddParts(const NCollection_List<TopoDS_Shape> & aListOfShape, const TopAbs_State aState);
+		void AddParts(const TopTools_ListOfShape & aListOfShape, const TopAbs_State aState);
 
 		/****** TopOpeBRepDS_ShapeWithState::IsSplitted ******/
 		/****** md5 signature: 35e659acda3cacff7c107eb14f898a56 ******/
@@ -7315,13 +7403,13 @@ aState: TopAbs_State
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Part;
-		const NCollection_List<TopoDS_Shape> Part(const TopAbs_State aState);
+		const TopTools_ListOfShape & Part(const TopAbs_State aState);
 
 		/****** TopOpeBRepDS_ShapeWithState::SetIsSplitted ******/
 		/****** md5 signature: dfce7ce978b094ab1b6343b467528103 ******/
@@ -7864,7 +7952,7 @@ Description
 -----------
 No available documentation.
 ") FillOnGeometry;
-		void FillOnGeometry(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		void FillOnGeometry(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_TKI::FillOnSupport ******/
 		/****** md5 signature: 17d24901c3ad883688db907a78ff14fa ******/
@@ -7882,7 +7970,7 @@ Description
 -----------
 No available documentation.
 ") FillOnSupport;
-		void FillOnSupport(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		void FillOnSupport(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_TKI::HasInterferences ******/
 		/****** md5 signature: 0014880d6afe0e5da603c26be7366993 ******/
@@ -8020,7 +8108,7 @@ Parameters
 ----------
 HDS: TopOpeBRepDS_HDataStructure
 E: TopoDS_Edge
-lEsd: NCollection_List<TopoDS_Shape>
+lEsd: TopTools_ListOfShape
 
 Return
 -------
@@ -8030,7 +8118,7 @@ Description
 -----------
 No available documentation.
 ") EShareG;
-		static int EShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Edge & E, NCollection_List<TopoDS_Shape> & lEsd);
+		static int EShareG(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Edge & E, TopTools_ListOfShape & lEsd);
 
 		/****** TopOpeBRepDS_TOOL::GetConfig ******/
 		/****** md5 signature: 2256aaa5f1b74494907402ff94eea52a ******/
@@ -8621,7 +8709,7 @@ Description
 -----------
 Creates an iterator on the curves on surface described by the interferences in <L>.
 ") TopOpeBRepDS_CurveIterator;
-		 TopOpeBRepDS_CurveIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		 TopOpeBRepDS_CurveIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_CurveIterator::Current ******/
 		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/
@@ -8887,7 +8975,7 @@ Description
 -----------
 Creates an iterator on the points on curves described by the interferences in <L>.
 ") TopOpeBRepDS_PointIterator;
-		 TopOpeBRepDS_PointIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		 TopOpeBRepDS_PointIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_PointIterator::Current ******/
 		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/
@@ -9314,7 +9402,7 @@ Description
 -----------
 Creates an iterator on the Surfaces on solid described by the interferences in <L>.
 ") TopOpeBRepDS_SurfaceIterator;
-		 TopOpeBRepDS_SurfaceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> > & L);
+		 TopOpeBRepDS_SurfaceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
 		/****** TopOpeBRepDS_SurfaceIterator::Current ******/
 		/****** md5 signature: 73ef1fe36b6963fbfe98d7bfba19998d ******/

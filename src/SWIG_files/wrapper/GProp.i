@@ -47,12 +47,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gprop.html"
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import TColgp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -112,8 +116,6 @@ GProp_Unknown = GProp_ValueType.GProp_Unknown
 /* end templates declaration */
 
 /* typedefs */
-typedef PointSetLib_Equation GProp_PEquation;
-typedef PointSetLib_Props GProp_PGProps;
 /* end typedefs declaration */
 
 /**************
@@ -166,7 +168,7 @@ None
 
 Description
 -----------
-The origin (0, 0, 0) of the absolute cartesian coordinate system is used to compute the global properties.
+The origin (0, 0, 0) of the absolute Cartesian coordinate system is used to compute the global properties.
 ") GProp_GProps;
 		 GProp_GProps();
 
@@ -184,7 +186,8 @@ None
 
 Description
 -----------
-The point SystemLocation is used to compute the global properties of the system. For more accuracy it is better to define this point closed to the location of the system. For example it could be a point around the centre of mass of the system. This point is referred to as the reference point for this framework. For greater accuracy it is better for the reference point to be close to the location of the system. It can, for example, be a point near the center of mass of the system. At initialization, the framework is empty; i.e. it retains no dimensional information such as mass, or inertia. However, it is now able to bring together global properties of various other systems, whose global properties have already been computed using another framework. To do this, use the function Add to define the components of the system. Use it once per component of the system, and then use the interrogation functions available to access the computed values.
+The point SystemLocation is used to compute the global properties of the system. For greater accuracy, define this point close to the location of the system; for example a point near the centre of mass of the system. //! At initialization the framework is empty: it retains no dimensional information such as mass or inertia. It is, however, ready to bring together global properties of various other systems whose global properties have already been computed using another framework. To do this, use Add() to define the components of the system, once per component, and then use the interrogation functions to access the computed values. //! 
+Input parameter: SystemLocation reference point of the system used for  inertia accumulation.
 ") GProp_GProps;
 		 GProp_GProps(const gp_Pnt & SystemLocation);
 
@@ -203,7 +206,9 @@ None
 
 Description
 -----------
-Either - initializes the global properties retained by this framework from those retained by the framework Item, or - brings together the global properties still retained by this framework with those retained by the framework Item. The value Density, which is 1.0 by default, is used as the density of the system analysed by Item. Sometimes the density will have already been given at the time of construction of the framework Item. This may be the case for example, if Item is a GProp_PGProps framework built to compute the global properties of a set of points ; or another GProp_GProps object which already retains composite global properties. In these cases the real density was perhaps already taken into account at the time of construction of Item. Note that this is not checked: if the density of parts of the system is taken into account two or more times, results of the computation will be false. Notes: - The point relative to which the inertia of Item is computed (i.e. the reference point of Item) may be different from the reference point in this framework. Huygens' theorem is applied automatically to transfer inertia values to the reference point in this framework. - The function Add is used once per component of the system. After that, you use the interrogation functions available to access values computed for the system. - The system whose global properties are already brought together by this framework is referred to as the current system. However, the current system is not retained by this framework, which maintains only its global properties. Exceptions Standard_DomainError if Density is less than or equal to gp::Resolution().
+Either: - initializes the global properties retained by this framework from those retained by the framework Item, or - brings together the global properties retained by this framework with those retained by the framework Item. //! The value Density (1.0 by default) is used as the density of the system analysed by Item. Sometimes the density has already been accounted for at construction time of Item - for example when Item is a GProp_PGProps framework built to compute the global properties of a set of weighted points, or another GProp_GProps object that already retains composite global properties. In these cases the real density was already taken into account at construction of Item. Note that this is not checked: if the density of parts of the system is taken into account two or more times, the result of the computation will be wrong. //! Notes: - The reference point of Item may differ from the reference point of this framework. Huygens' theorem is applied automatically to transfer inertia values to the reference point of this framework. - Add() is used once per component of the system. After all components are composed, the interrogation functions return values for the system as a whole. - The system whose global properties have been brought together by this framework is referred to as the 'current system'. The current system itself is not retained: only its global properties are. //! 
+Input parameter: Item framework holding the global properties of the  component to compose 
+Input parameter: Density density of the component (default 1.0) @throws Standard_DomainError if Density is less than or equal to gp::Resolution().
 ") Add;
 		void Add(const GProp_GProps & Item, const double Density = 1.0);
 
@@ -216,7 +221,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the center of mass of the current system. If the gravitational field is uniform, it is the center of gravity. The coordinates returned for the center of mass are expressed in the absolute Cartesian coordinate system.
+Returns the centre of mass of the current system. With a uniform gravitational field this is also the centre of gravity. The coordinates returned for the centre of mass are expressed in the absolute Cartesian coordinate system.
 ") CentreOfMass;
 		gp_Pnt CentreOfMass();
 
@@ -229,7 +234,7 @@ double
 
 Description
 -----------
-Returns the mass of the current system. If no density is attached to the components of the current system the returned value corresponds to: - the total length of the edges of the current system if this framework retains only linear properties, as is the case for example, when using only the LinearProperties function to combine properties of lines from shapes, or - the total area of the faces of the current system if this framework retains only surface properties, as is the case for example, when using only the SurfaceProperties function to combine properties of surfaces from shapes, or - the total volume of the solids of the current system if this framework retains only volume properties, as is the case for example, when using only the VolumeProperties function to combine properties of volumes from solids. Warning A length, an area, or a volume is computed in the current data unit system. The mass of a single object is obtained by multiplying its length, its area or its volume by the given density. You must be consistent with respect to the units used.
+Returns the mass of the current system. //! If no density has been attached to the components of the current system, the returned value corresponds to: - the total length of the edges of the current system if this framework retains only linear properties (for example, when using only LinearProperties() to combine properties of lines from shapes), or - the total area of the faces of the current system if this framework retains only surface properties (for example, when using only SurfaceProperties() to combine properties of surfaces from shapes), or - the total volume of the solids of the current system if this framework retains only volume properties (for example, when using only VolumeProperties() to combine properties of volumes from solids). //! @warning A length, an area or a volume is computed in the current unit system. The mass of a single object is its length, area or volume multiplied by its density. Be consistent with respect to the units used.
 ") Mass;
 		double Mass();
 
@@ -242,7 +247,7 @@ gp_Mat
 
 Description
 -----------
-returns the matrix of inertia. It is a symmetrical matrix. The coefficients of the matrix are the quadratic moments of inertia. //! | Ixx Ixy Ixz | matrix = | Ixy Iyy Iyz | | Ixz Iyz Izz | //! The moments of inertia are denoted by Ixx, Iyy, Izz. The products of inertia are denoted by Ixy, Ixz, Iyz. The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz) where G is the centre of mass of the system and Gx, Gy, Gz the directions parallel to the X(1,0,0) Y(0,1,0) Z(0,0,1) directions of the absolute cartesian coordinate system. It is possible to compute the matrix of inertia at another location point using the Huyghens theorem (you can use the method of package GProp: HOperator).
+Returns the matrix of inertia. It is a symmetric matrix whose coefficients are the quadratic moments of inertia: @verbatim  | Ixx Ixy Ixz | matrix = | Ixy Iyy Iyz |  | Ixz Iyz Izz | @endverbatim Ixx, Iyy, Izz are the moments of inertia; Ixy, Ixz, Iyz are the products of inertia. //! The matrix of inertia is returned in the central coordinate system (G, Gx, Gy, Gz), where G is the centre of mass of the system and Gx, Gy, Gz are parallel to the X(1, 0, 0), Y(0, 1, 0) and Z(0, 0, 1) directions of the absolute Cartesian coordinate system. To compute the matrix of inertia at another location use GProp::HOperator() (Huygens' theorem).
 ") MatrixOfInertia;
 		gp_Mat MatrixOfInertia();
 
@@ -260,7 +265,8 @@ double
 
 Description
 -----------
-computes the moment of inertia of the material system about the axis A.
+Computes the moment of inertia of the system about the axis A. 
+Input parameter: A axis about which the moment of inertia is computed.
 ") MomentOfInertia;
 		double MomentOfInertia(const gp_Ax1 & A);
 
@@ -273,7 +279,7 @@ GProp_PrincipalProps
 
 Description
 -----------
-Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0; i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia. Their origin is coincident with the center of mass of the system. The associated moments are called the principal moments of inertia. This function computes the eigen values and the eigen vectors of the matrix of inertia of the system. Results are stored by using a presentation framework of principal properties of inertia (GProp_PrincipalProps object) which may be queried to access the value sought.
+Computes the principal properties of inertia of the current system. There is always a set of axes for which the products of inertia of a geometric system are equal to 0 - i.e. the matrix of inertia of the system is diagonal. These axes are the principal axes of inertia; their origin coincides with the centre of mass of the system. The associated moments are called the principal moments of inertia. //! This function computes the eigen values and eigen vectors of the matrix of inertia of the system. Results are stored in a GProp_PrincipalProps framework which can be queried to access the value sought.
 ") PrincipalProperties;
 		GProp_PrincipalProps PrincipalProperties();
 
@@ -291,7 +297,8 @@ double
 
 Description
 -----------
-Returns the radius of gyration of the current system about the axis A.
+Returns the radius of gyration of the current system about the axis A. 
+Input parameter: A axis about which the radius of gyration is computed.
 ") RadiusOfGyration;
 		double RadiusOfGyration(const gp_Ax1 & A);
 
@@ -310,7 +317,7 @@ Iz: double
 
 Description
 -----------
-Returns Ix, Iy, Iz, the static moments of inertia of the current system; i.e. the moments of inertia about the three axes of the Cartesian coordinate system.
+Returns the static moments of inertia of the current system - i.e. the moments of inertia about the three axes of the absolute Cartesian coordinate system. //! @param[out] Ix static moment of inertia about X @param[out] Iy static moment of inertia about Y @param[out] Iz static moment of inertia about Z.
 ") StaticMoments;
 		void StaticMoments(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -318,6 +325,243 @@ Returns Ix, Iy, Iz, the static moments of inertia of the current system; i.e. th
 
 
 %extend GProp_GProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************
+* class GProp_PEquation *
+************************/
+class GProp_PEquation {
+	public:
+/* public enums */
+enum class Type {
+	None = 0,
+	Point = 1,
+	Line = 2,
+	Plane = 3,
+	Space = 4,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class Type(IntEnum):
+	None_ = 0
+	Point = 1
+	Line = 2
+	Plane = 3
+	Space = 4
+None_ = Type.None_
+Point = Type.Point
+Line = Type.Line
+Plane = Type.Plane
+Space = Type.Space
+};
+/* end python proxy for enums */
+
+		/****** GProp_PEquation::GProp_PEquation ******/
+		/****** md5 signature: 7979bb24427006969fb54a8fc0e63e88 ******/
+		%feature("compactdefaultargs") GProp_PEquation;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array1OfPnt
+theTol: double
+
+Return
+-------
+None
+
+Description
+-----------
+Constructs the analysis from a set of points and a tolerance. 
+Input parameter: thePnts array of points to analyze 
+Input parameter: theTol tolerance for dimensional collapse detection.
+") GProp_PEquation;
+		 GProp_PEquation(const TColgp_Array1OfPnt & thePnts, double theTol);
+
+		/****** GProp_PEquation::Barycentre ******/
+		/****** md5 signature: 2ba49f69b10cb9b11715997e97764240 ******/
+		%feature("compactdefaultargs") Barycentre;
+		%feature("autodoc", "Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the centre of mass of the cloud (always valid after construction).
+") Barycentre;
+		const gp_Pnt Barycentre();
+
+		/****** GProp_PEquation::Box ******/
+		/****** md5 signature: e1c81a80f9e365452f626099b2f83c69 ******/
+		%feature("compactdefaultargs") Box;
+		%feature("autodoc", "
+Parameters
+----------
+theP: gp_Pnt
+theV1: gp_Vec
+theV2: gp_Vec
+theV3: gp_Vec
+
+Return
+-------
+None
+
+Description
+-----------
+Returns a bounding box aligned with the principal axes. @param[out] theP corner of the box (minimum projection on principal axes) @param[out] theV1 first box edge vector (along first principal axis) @param[out] theV2 second box edge vector (along second principal axis) @param[out] theV3 third box edge vector (along third principal axis) @throws Standard_NoSuchObject if !IsSpace().
+") Box;
+		void Box(gp_Pnt & theP, gp_Vec & theV1, gp_Vec & theV2, gp_Vec & theV3);
+
+		/****** GProp_PEquation::Extent ******/
+		/****** md5 signature: a6392d996884cbc93c40b0b28810eda2 ******/
+		%feature("compactdefaultargs") Extent;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+double
+
+Description
+-----------
+Returns the extent (max - min projection) along principal axis @p theIndex (1, 2 or 3).
+") Extent;
+		double Extent(int theIndex);
+
+		/****** GProp_PEquation::GetType ******/
+		/****** md5 signature: 7b162c3246df9a86c3dfdae041099d44 ******/
+		%feature("compactdefaultargs") GetType;
+		%feature("autodoc", "Return
+-------
+GProp_PEquation::Type
+
+Description
+-----------
+Returns the type of the fitted entity.
+") GetType;
+		GProp_PEquation::Type GetType();
+
+		/****** GProp_PEquation::IsLinear ******/
+		/****** md5 signature: 9b70f67d4c8eea4cbdfd5eb230c86993 ******/
+		%feature("compactdefaultargs") IsLinear;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if points are collinear within tolerance.
+") IsLinear;
+		bool IsLinear();
+
+		/****** GProp_PEquation::IsPlanar ******/
+		/****** md5 signature: 21812541de26861da5a85e1a313d8bbf ******/
+		%feature("compactdefaultargs") IsPlanar;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if points are coplanar within tolerance.
+") IsPlanar;
+		bool IsPlanar();
+
+		/****** GProp_PEquation::IsPoint ******/
+		/****** md5 signature: 5cd2a9426d7520d2276fb03975354eaa ******/
+		%feature("compactdefaultargs") IsPoint;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if points are coincident within tolerance.
+") IsPoint;
+		bool IsPoint();
+
+		/****** GProp_PEquation::IsSpace ******/
+		/****** md5 signature: e055ff639aeb6d670d601cab0cf4e60d ******/
+		%feature("compactdefaultargs") IsSpace;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if points span 3D space.
+") IsSpace;
+		bool IsSpace();
+
+		/****** GProp_PEquation::Line ******/
+		/****** md5 signature: 63e1fa189ca3bcfdb401241217a93bfb ******/
+		%feature("compactdefaultargs") Line;
+		%feature("autodoc", "Return
+-------
+gp_Lin
+
+Description
+-----------
+Returns the mean line. @throws Standard_NoSuchObject if !IsLinear().
+") Line;
+		gp_Lin Line();
+
+		/****** GProp_PEquation::Plane ******/
+		/****** md5 signature: 722ec8a1cda087d25cc539584e9de6e6 ******/
+		%feature("compactdefaultargs") Plane;
+		%feature("autodoc", "Return
+-------
+gp_Pln
+
+Description
+-----------
+Returns the mean plane. @throws Standard_NoSuchObject if !IsPlanar().
+") Plane;
+		gp_Pln Plane();
+
+		/****** GProp_PEquation::Point ******/
+		/****** md5 signature: aacd847206090cc43a493e5072f97000 ******/
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns the mean point. @throws Standard_NoSuchObject if !IsPoint().
+") Point;
+		gp_Pnt Point();
+
+		/****** GProp_PEquation::PrincipalAxis ******/
+		/****** md5 signature: 0567eed8a44aa405b5a20e8f95bfd05f ******/
+		%feature("compactdefaultargs") PrincipalAxis;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+gp_Vec
+
+Description
+-----------
+Returns the unit principal axis at @p theIndex (1, 2 or 3), ordered by eigenvalue.
+") PrincipalAxis;
+		const gp_Vec PrincipalAxis(int theIndex);
+
+};
+
+
+%extend GProp_PEquation {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -630,6 +874,226 @@ No available documentation.
 
 
 %extend GProp_CelGProps {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**********************
+* class GProp_PGProps *
+**********************/
+class GProp_PGProps : public GProp_GProps {
+	public:
+		/****** GProp_PGProps::GProp_PGProps ******/
+		/****** md5 signature: 5afb633b4bba5ef112587d854c43a182 ******/
+		%feature("compactdefaultargs") GProp_PGProps;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an empty point set, located at the origin, with zero mass.
+") GProp_PGProps;
+		 GProp_PGProps();
+
+		/****** GProp_PGProps::GProp_PGProps ******/
+		/****** md5 signature: dfbad8c22ad70b29eeab1c9a3ad88c39 ******/
+		%feature("compactdefaultargs") GProp_PGProps;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array1OfPnt
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a point set from an array of points (unit mass each).
+") GProp_PGProps;
+		 GProp_PGProps(const TColgp_Array1OfPnt & thePnts);
+
+		/****** GProp_PGProps::GProp_PGProps ******/
+		/****** md5 signature: 42263d4b0e6edc06c5a8541d2b71616a ******/
+		%feature("compactdefaultargs") GProp_PGProps;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array2OfPnt
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a point set from a 2D array of points (unit mass each).
+") GProp_PGProps;
+		 GProp_PGProps(const TColgp_Array2OfPnt & thePnts);
+
+		/****** GProp_PGProps::GProp_PGProps ******/
+		/****** md5 signature: c77da662b918067ac1bef13b5aef061b ******/
+		%feature("compactdefaultargs") GProp_PGProps;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array1OfPnt
+theDensity: TColStd_Array1OfReal
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a point set from points and corresponding densities. 
+Input parameter: thePnts point array 
+Input parameter: theDensity per-point mass array (same length as thePnts) @throws Standard_DomainError if a density <= gp::Resolution() or if the arrays have different lengths.
+") GProp_PGProps;
+		 GProp_PGProps(const TColgp_Array1OfPnt & thePnts, const TColStd_Array1OfReal & theDensity);
+
+		/****** GProp_PGProps::GProp_PGProps ******/
+		/****** md5 signature: b473cab02cdbe519cd04907d2c4dd0d5 ******/
+		%feature("compactdefaultargs") GProp_PGProps;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array2OfPnt
+theDensity: TColStd_Array2OfReal
+
+Return
+-------
+None
+
+Description
+-----------
+Creates a point set from 2D arrays of points and corresponding densities. 
+Input parameter: thePnts point array 
+Input parameter: theDensity per-point mass array (same dimensions as thePnts) @throws Standard_DomainError on dimension mismatch or non-positive density.
+") GProp_PGProps;
+		 GProp_PGProps(const TColgp_Array2OfPnt & thePnts, const TColStd_Array2OfReal & theDensity);
+
+		/****** GProp_PGProps::AddPoint ******/
+		/****** md5 signature: 6ed34d767ae674a2f121e86af56dbab3 ******/
+		%feature("compactdefaultargs") AddPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePnt: gp_Pnt
+
+Return
+-------
+None
+
+Description
+-----------
+Adds a point with unit mass.
+") AddPoint;
+		void AddPoint(const gp_Pnt & thePnt);
+
+		/****** GProp_PGProps::AddPoint ******/
+		/****** md5 signature: 1c3814a48ae6df99875540c37e9d21ec ******/
+		%feature("compactdefaultargs") AddPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePnt: gp_Pnt
+theDensity: double
+
+Return
+-------
+None
+
+Description
+-----------
+Adds a point with a given mass. @throws Standard_DomainError if theDensity <= gp::Resolution().
+") AddPoint;
+		void AddPoint(const gp_Pnt & thePnt, double theDensity);
+
+		/****** GProp_PGProps::Barycentre ******/
+		/****** md5 signature: fe4ba47b818fd7ae6a740fc06f4fd5bd ******/
+		%feature("compactdefaultargs") Barycentre;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array1OfPnt
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the barycentre of a set of points (unit mass).
+") Barycentre;
+		static gp_Pnt Barycentre(const TColgp_Array1OfPnt & thePnts);
+
+		/****** GProp_PGProps::Barycentre ******/
+		/****** md5 signature: ad8abbc9c32bc46b87e209258378ed7b ******/
+		%feature("compactdefaultargs") Barycentre;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array2OfPnt
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Computes the barycentre of a 2D array of points (unit mass).
+") Barycentre;
+		static gp_Pnt Barycentre(const TColgp_Array2OfPnt & thePnts);
+
+		/****** GProp_PGProps::Barycentre ******/
+		/****** md5 signature: 83a477436cea6b2b61d7535035dcfc24 ******/
+		%feature("compactdefaultargs") Barycentre;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array1OfPnt
+theDensity: TColStd_Array1OfReal
+theG: gp_Pnt
+
+Return
+-------
+theMass: double
+
+Description
+-----------
+Computes the weighted barycentre and total mass of a set of points. 
+Input parameter: thePnts point array 
+Input parameter: theDensity per-point mass array @param[out] theMass total mass (sum of densities) @param[out] theG weighted barycentre @throws Standard_DimensionError on length mismatch.
+") Barycentre;
+		static void Barycentre(const TColgp_Array1OfPnt & thePnts, const TColStd_Array1OfReal & theDensity, Standard_Real &OutValue, gp_Pnt & theG);
+
+		/****** GProp_PGProps::Barycentre ******/
+		/****** md5 signature: d2a4719c786bf59a8a47f2a2d90dfcaf ******/
+		%feature("compactdefaultargs") Barycentre;
+		%feature("autodoc", "
+Parameters
+----------
+thePnts: TColgp_Array2OfPnt
+theDensity: TColStd_Array2OfReal
+theG: gp_Pnt
+
+Return
+-------
+theMass: double
+
+Description
+-----------
+Computes the weighted barycentre and total mass for a 2D point array. @throws Standard_DimensionError on dimension mismatch.
+") Barycentre;
+		static void Barycentre(const TColgp_Array2OfPnt & thePnts, const TColStd_Array2OfReal & theDensity, Standard_Real &OutValue, gp_Pnt & theG);
+
+};
+
+
+%extend GProp_PGProps {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1096,5 +1560,21 @@ No available documentation.
 @deprecated
 def gprop_HOperator(*args):
 	return gprop.HOperator(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
+
+@deprecated
+def GProp_PGProps_Barycentre(*args):
+	return GProp_PGProps.Barycentre(*args)
 
 }

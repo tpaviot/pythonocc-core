@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepelement.html"
 #include<TCollection_module.hxx>
 #include<StepRepr_module.hxx>
 #include<StepData_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<StepBasic_module.hxx>
@@ -65,6 +66,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepelement.html"
 %import TCollection.i
 %import StepRepr.i
 %import StepData.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -231,12 +233,18 @@ StepElement_Pyramid = StepElement_Volume3dElementShape.StepElement_Pyramid
 /* handles */
 %wrap_handle(StepElement_AnalysisItemWithinRepresentation)
 %wrap_handle(StepElement_CurveElementEndReleasePacket)
+%wrap_handle(StepElement_CurveElementFreedomMember)
+%wrap_handle(StepElement_CurveElementPurposeMember)
 %wrap_handle(StepElement_CurveElementSectionDefinition)
+%wrap_handle(StepElement_ElementAspectMember)
 %wrap_handle(StepElement_ElementDescriptor)
 %wrap_handle(StepElement_ElementMaterial)
+%wrap_handle(StepElement_MeasureOrUnspecifiedValueMember)
 %wrap_handle(StepElement_SurfaceElementProperty)
+%wrap_handle(StepElement_SurfaceElementPurposeMember)
 %wrap_handle(StepElement_SurfaceSection)
 %wrap_handle(StepElement_SurfaceSectionField)
+%wrap_handle(StepElement_VolumeElementPurposeMember)
 %wrap_handle(StepElement_Curve3dElementDescriptor)
 %wrap_handle(StepElement_CurveElementSectionDerivedDefinitions)
 %wrap_handle(StepElement_Surface3dElementDescriptor)
@@ -268,6 +276,13 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
 %template(StepElement_SequenceOfCurveElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -276,6 +291,13 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
 %template(StepElement_SequenceOfCurveElementSectionDefinition) NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -284,6 +306,13 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
 %template(StepElement_SequenceOfElementMaterial) NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -292,6 +321,13 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
 %template(StepElement_SequenceOfSurfaceElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -837,6 +873,8 @@ Set name.
 };
 
 
+%make_alias(StepElement_CurveElementFreedomMember)
+
 %extend StepElement_CurveElementFreedomMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1063,6 +1101,8 @@ Set name.
 
 };
 
+
+%make_alias(StepElement_CurveElementPurposeMember)
 
 %extend StepElement_CurveElementPurposeMember {
 	%pythoncode {
@@ -1649,6 +1689,8 @@ Set name.
 };
 
 
+%make_alias(StepElement_ElementAspectMember)
+
 %extend StepElement_ElementAspectMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1814,7 +1856,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aMaterialId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation> > > & aProperties);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aMaterialId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> > & aProperties);
 
 		/****** StepElement_ElementMaterial::MaterialId ******/
 		/****** md5 signature: 984e9b7b658fb9d72c61c2aacacd0e4a ******/
@@ -1894,7 +1936,7 @@ Description
 -----------
 Set field Properties.
 ") SetProperties;
-		void SetProperties(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation> > > & Properties);
+		void SetProperties(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> > & Properties);
 
 };
 
@@ -2127,6 +2169,8 @@ Set name.
 
 };
 
+
+%make_alias(StepElement_MeasureOrUnspecifiedValueMember)
 
 %extend StepElement_MeasureOrUnspecifiedValueMember {
 	%pythoncode {
@@ -2496,6 +2540,8 @@ Set name.
 
 };
 
+
+%make_alias(StepElement_SurfaceElementPurposeMember)
 
 %extend StepElement_SurfaceElementPurposeMember {
 	%pythoncode {
@@ -2895,6 +2941,8 @@ Set name.
 };
 
 
+%make_alias(StepElement_VolumeElementPurposeMember)
+
 %extend StepElement_VolumeElementPurposeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2937,7 +2985,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember> > > > > & aPurpose);
+		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember>> >> > & aPurpose);
 
 		/****** StepElement_Curve3dElementDescriptor::Purpose ******/
 		/****** md5 signature: 3e4d4ce8876562ecb3ee67a63f485829 ******/
@@ -2968,7 +3016,7 @@ Description
 -----------
 Set field Purpose.
 ") SetPurpose;
-		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember> > > > > & Purpose);
+		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_CurveElementPurposeMember>> >> > & Purpose);
 
 };
 
@@ -3022,7 +3070,7 @@ aCurveElementSectionDefinition_Description: TCollection_HAsciiString
 aCurveElementSectionDefinition_SectionAngle: double
 aCrossSectionalArea: double
 aShearArea: NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue
-aSecondMomentOfArea: NCollection_HArray1<double
+aSecondMomentOfArea: TColStd_HArray1OfReal
 aTorsionalConstant: double
 aWarpingConstant: StepElement_MeasureOrUnspecifiedValue
 aLocationOfCentroid: NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue
@@ -3039,7 +3087,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aCurveElementSectionDefinition_Description, const double aCurveElementSectionDefinition_SectionAngle, const double aCrossSectionalArea, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & aShearArea, const opencascade::handle<NCollection_HArray1<double> > & aSecondMomentOfArea, const double aTorsionalConstant, const StepElement_MeasureOrUnspecifiedValue & aWarpingConstant, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & aLocationOfCentroid, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & aLocationOfShearCentre, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & aLocationOfNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aPolarMoment);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aCurveElementSectionDefinition_Description, const double aCurveElementSectionDefinition_SectionAngle, const double aCrossSectionalArea, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & aShearArea, const opencascade::handle<TColStd_HArray1OfReal> & aSecondMomentOfArea, const double aTorsionalConstant, const StepElement_MeasureOrUnspecifiedValue & aWarpingConstant, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & aLocationOfCentroid, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & aLocationOfShearCentre, const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & aLocationOfNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aNonStructuralMass, const StepElement_MeasureOrUnspecifiedValue & aPolarMoment);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::LocationOfCentroid ******/
 		/****** md5 signature: c0be4b35f185d8c76479f701184f9d37 ******/
@@ -3111,13 +3159,13 @@ Returns field PolarMoment.
 		%feature("compactdefaultargs") SecondMomentOfArea;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns field SecondMomentOfArea.
 ") SecondMomentOfArea;
-		opencascade::handle<NCollection_HArray1<double>> SecondMomentOfArea();
+		opencascade::handle<TColStd_HArray1OfReal> SecondMomentOfArea();
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetCrossSectionalArea ******/
 		/****** md5 signature: b129bd2287273886308f4874c1a4b8ba ******/
@@ -3153,7 +3201,7 @@ Description
 -----------
 Set field LocationOfCentroid.
 ") SetLocationOfCentroid;
-		void SetLocationOfCentroid(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & LocationOfCentroid);
+		void SetLocationOfCentroid(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & LocationOfCentroid);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfNonStructuralMass ******/
 		/****** md5 signature: a1ad3b7139d3cbe077ca912e03858527 ******/
@@ -3171,7 +3219,7 @@ Description
 -----------
 Set field LocationOfNonStructuralMass.
 ") SetLocationOfNonStructuralMass;
-		void SetLocationOfNonStructuralMass(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & LocationOfNonStructuralMass);
+		void SetLocationOfNonStructuralMass(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & LocationOfNonStructuralMass);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetLocationOfShearCentre ******/
 		/****** md5 signature: a4edd58ca40df1c4ea0168c7d7b649c2 ******/
@@ -3189,7 +3237,7 @@ Description
 -----------
 Set field LocationOfShearCentre.
 ") SetLocationOfShearCentre;
-		void SetLocationOfShearCentre(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & LocationOfShearCentre);
+		void SetLocationOfShearCentre(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & LocationOfShearCentre);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetNonStructuralMass ******/
 		/****** md5 signature: 2f170bd9d8f328de42de37ef7e35b20b ******/
@@ -3233,7 +3281,7 @@ Set field PolarMoment.
 		%feature("autodoc", "
 Parameters
 ----------
-SecondMomentOfArea: NCollection_HArray1<double
+SecondMomentOfArea: TColStd_HArray1OfReal
 
 Return
 -------
@@ -3243,7 +3291,7 @@ Description
 -----------
 Set field SecondMomentOfArea.
 ") SetSecondMomentOfArea;
-		void SetSecondMomentOfArea(const opencascade::handle<NCollection_HArray1<double> > & SecondMomentOfArea);
+		void SetSecondMomentOfArea(const opencascade::handle<TColStd_HArray1OfReal> & SecondMomentOfArea);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetShearArea ******/
 		/****** md5 signature: a546f40e875bec2d57bcf8d002170edd ******/
@@ -3261,7 +3309,7 @@ Description
 -----------
 Set field ShearArea.
 ") SetShearArea;
-		void SetShearArea(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue> > & ShearArea);
+		void SetShearArea(const opencascade::handle<NCollection_HArray1<StepElement_MeasureOrUnspecifiedValue>> & ShearArea);
 
 		/****** StepElement_CurveElementSectionDerivedDefinitions::SetTorsionalConstant ******/
 		/****** md5 signature: 2fe004cb13acc8c1ee5cb6f14db25b2c ******/
@@ -3386,7 +3434,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember> > > > > & aPurpose, const StepElement_Element2dShape aShape);
+		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>> >> > & aPurpose, const StepElement_Element2dShape aShape);
 
 		/****** StepElement_Surface3dElementDescriptor::Purpose ******/
 		/****** md5 signature: c6bb00037200a57396de5565e91cbed0 ******/
@@ -3417,7 +3465,7 @@ Description
 -----------
 Set field Purpose.
 ") SetPurpose;
-		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember> > > > > & Purpose);
+		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<NCollection_HSequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>> >> > & Purpose);
 
 		/****** StepElement_Surface3dElementDescriptor::SetShape ******/
 		/****** md5 signature: db12ec83382603e29422b58584b1e14d ******/
@@ -3600,7 +3648,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection> > > & aDefinitions, const bool aAdditionalNodeValues);
+		void Init(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>> > & aDefinitions, const bool aAdditionalNodeValues);
 
 		/****** StepElement_SurfaceSectionFieldVarying::SetAdditionalNodeValues ******/
 		/****** md5 signature: d8582582e643f986fe4b9679e61231a6 ******/
@@ -3636,7 +3684,7 @@ Description
 -----------
 Set field Definitions.
 ") SetDefinitions;
-		void SetDefinitions(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection> > > & Definitions);
+		void SetDefinitions(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_SurfaceSection>> > & Definitions);
 
 };
 
@@ -3831,7 +3879,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember> > > & aPurpose, const StepElement_Volume3dElementShape aShape);
+		void Init(const StepElement_ElementOrder aElementDescriptor_TopologyOrder, const opencascade::handle<TCollection_HAsciiString> & aElementDescriptor_Description, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>> > & aPurpose, const StepElement_Volume3dElementShape aShape);
 
 		/****** StepElement_Volume3dElementDescriptor::Purpose ******/
 		/****** md5 signature: eb994837b8e71b0083b202efc820952c ******/
@@ -3862,7 +3910,7 @@ Description
 -----------
 Set field Purpose.
 ") SetPurpose;
-		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember> > > & Purpose);
+		void SetPurpose(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepElement_VolumeElementPurposeMember>> > & Purpose);
 
 		/****** StepElement_Volume3dElementDescriptor::SetShape ******/
 		/****** md5 signature: 26dc4c77406a82a4a6edd356c81140a2 ******/

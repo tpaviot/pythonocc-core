@@ -107,6 +107,18 @@ from OCC.Core.Exception import *
 %ignore NCollection_DataMap<int,opencascade::handle<Adaptor2d_Curve2d>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<Adaptor2d_Curve2d>>::KeyValues;
 %template(ChFiKPart_RstMap) NCollection_DataMap<int,opencascade::handle<Adaptor2d_Curve2d>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<Adaptor2d_Curve2d>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (ChFiKPart_RstMap::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

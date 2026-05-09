@@ -48,6 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom.html"
 #include<GeomAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
@@ -79,6 +81,8 @@ end of numpy support section
 %import NCollection.i
 %import gp.i
 %import GeomAbs.i
+%import TColgp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -137,6 +141,13 @@ from OCC.Core.Exception import *
 %template(Geom_SequenceOfBSplineSurface) NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -6167,9 +6178,9 @@ class Geom_BSplineCurve : public Geom_BoundedCurve {
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 
@@ -6181,7 +6192,7 @@ Description
 -----------
 Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Geom_BSplineCurve;
-		 Geom_BSplineCurve(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
+		 Geom_BSplineCurve(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Geom_BSplineCurve::Geom_BSplineCurve ******/
 		/****** md5 signature: a3a8a36e0d7561e0221d409fba6a44df ******/
@@ -6189,10 +6200,10 @@ Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of de
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 CheckRational: bool (optional, default to true)
@@ -6205,7 +6216,7 @@ Description
 -----------
 Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. Raises ConstructionError subject to the following conditions 0 < Degree <= MaxDegree. //! Weights.Length() == Poles.Length() //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last.
 ") Geom_BSplineCurve;
-		 Geom_BSplineCurve(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false, const bool CheckRational = true);
+		 Geom_BSplineCurve(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false, const bool CheckRational = true);
 
 		/****** Geom_BSplineCurve::Geom_BSplineCurve ******/
 		/****** md5 signature: de4fd34abc5f7bd37627b460d7844164 ******/
@@ -6559,8 +6570,8 @@ Inserts a knot value in the sequence of knots. If <U> is an existing knot the mu
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 ParametricTolerance: double (optional, default to 0.0)
 Add: bool (optional, default to false)
 
@@ -6572,7 +6583,7 @@ Description
 -----------
 Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnots;
-		void InsertKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
+		void InsertKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
 
 		/****** Geom_BSplineCurve::IsCN ******/
 		/****** md5 signature: 42a5bf57a05eb6426c49586172f0db7e ******/
@@ -6707,7 +6718,7 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -6717,20 +6728,20 @@ Description
 -----------
 No available documentation.
 ") KnotSequence;
-		void KnotSequence(NCollection_Array1<double> & K);
+		void KnotSequence(TColStd_Array1OfReal & K);
 
 		/****** Geom_BSplineCurve::KnotSequence ******/
 		/****** md5 signature: 13e41dae8bd546a82617e7927f39c7c2 ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the knots of the B-spline curve. Knots with multiplicit greater than 1 are repeated.
 ") KnotSequence;
-		const NCollection_Array1<double> & KnotSequence();
+		const TColStd_Array1OfReal & KnotSequence();
 
 		/****** Geom_BSplineCurve::Knots ******/
 		/****** md5 signature: 28e846af74f6d8e9d9bca42676b511f9 ******/
@@ -6738,7 +6749,7 @@ returns the knots of the B-spline curve. Knots with multiplicit greater than 1 a
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -6748,20 +6759,20 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & K);
+		void Knots(TColStd_Array1OfReal & K);
 
 		/****** Geom_BSplineCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the knot values of the B-spline curve; Warning A knot with a multiplicity greater than 1 is not repeated in the knot table. The Multiplicity function can be used to obtain the multiplicity of each knot.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Geom_BSplineCurve::LastParameter ******/
 		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
@@ -7005,7 +7016,7 @@ Move a point with parameter U to P. and makes it tangent at U be Tangent. Starti
 		%feature("autodoc", "
 Parameters
 ----------
-M: NCollection_Array1<int>
+M: TColStd_Array1OfInteger
 
 Return
 -------
@@ -7015,20 +7026,20 @@ Description
 -----------
 No available documentation.
 ") Multiplicities;
-		void Multiplicities(NCollection_Array1<int> & M);
+		void Multiplicities(TColStd_Array1OfInteger & M);
 
 		/****** Geom_BSplineCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 returns the multiplicity of the knots of the curve.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Geom_BSplineCurve::Multiplicity ******/
 		/****** md5 signature: 6deea6eef255db56cfdeb88488a383cc ******/
@@ -7115,7 +7126,7 @@ Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt>
+P: TColgp_Array1OfPnt
 
 Return
 -------
@@ -7125,20 +7136,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array1<gp_Pnt> & P);
+		void Poles(TColgp_Array1OfPnt & P);
 
 		/****** Geom_BSplineCurve::Poles ******/
 		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt>
+TColgp_Array1OfPnt
 
 Description
 -----------
 Returns the poles of the B-spline curve;.
 ") Poles;
-		const NCollection_Array1<gp_Pnt> Poles();
+		const TColgp_Array1OfPnt & Poles();
 
 		/****** Geom_BSplineCurve::RemoveKnot ******/
 		/****** md5 signature: 54905b41bbca7519e1f70b87cdd71db9 ******/
@@ -7292,7 +7303,7 @@ Changes the knot of range Index with its multiplicity. You can increase the mult
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -7302,7 +7313,7 @@ Description
 -----------
 Modifies this BSpline curve by assigning the array K to its knots table. The multiplicity of the knots is not modified. Exceptions Standard_ConstructionError if the values in the array K are not in ascending order. Standard_OutOfRange if the bounds of the array K are not respectively 1 and the number of knots of this BSpline curve.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & K);
+		void SetKnots(const TColStd_Array1OfReal & K);
 
 		/****** Geom_BSplineCurve::SetNotPeriodic ******/
 		/****** md5 signature: ccfbd171d2b38df3531b77ecbc51dcae ******/
@@ -7480,7 +7491,7 @@ Returns the weight of the pole of range Index . Raised if Index < 1 or Index > N
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array1<double>
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -7490,33 +7501,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array1<double> & W);
+		void Weights(TColStd_Array1OfReal & W);
 
 		/****** Geom_BSplineCurve::Weights ******/
 		/****** md5 signature: b577b4e8ac6293b0a90c61644b9e289c ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Returns the weights of the B-spline curve;.
 ") Weights;
-		const NCollection_Array1<double> * Weights();
+		const TColStd_Array1OfReal * Weights();
 
 		/****** Geom_BSplineCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array1<double> & WeightsArray();
+		const TColStd_Array1OfReal & WeightsArray();
 
 };
 
@@ -7540,11 +7551,11 @@ class Geom_BSplineSurface : public Geom_BoundedSurface {
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array2<gp_Pnt>
-UKnots: NCollection_Array1<double>
-VKnots: NCollection_Array1<double>
-UMults: NCollection_Array1<int>
-VMults: NCollection_Array1<int>
+Poles: TColgp_Array2OfPnt
+UKnots: TColStd_Array1OfReal
+VKnots: TColStd_Array1OfReal
+UMults: TColStd_Array1OfInteger
+VMults: TColStd_Array1OfInteger
 UDegree: int
 VDegree: int
 UPeriodic: bool (optional, default to false)
@@ -7558,7 +7569,7 @@ Description
 -----------
 Creates a non-rational b-spline surface (weights default value is 1.). The following conditions must be verified. 0 < UDegree <= MaxDegree. UKnots.Length() == UMults.Length() >= 2 UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree On a non uperiodic surface the first and last umultiplicities may be UDegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). On a uperiodic surface the first and the last umultiplicities must be the same. on non-uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 on uperiodic surfaces Poles.ColLength() == Sum(UMults(i)) except the first or last The previous conditions for U holds also for V, with the RowLength of the poles.
 ") Geom_BSplineSurface;
-		 Geom_BSplineSurface(const NCollection_Array2<gp_Pnt> & Poles, const NCollection_Array1<double> & UKnots, const NCollection_Array1<double> & VKnots, const NCollection_Array1<int> & UMults, const NCollection_Array1<int> & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
+		 Geom_BSplineSurface(const TColgp_Array2OfPnt & Poles, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const TColStd_Array1OfInteger & UMults, const TColStd_Array1OfInteger & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
 
 		/****** Geom_BSplineSurface::Geom_BSplineSurface ******/
 		/****** md5 signature: 65ccbce53efda1efc43bfa0c80904d8c ******/
@@ -7566,12 +7577,12 @@ Creates a non-rational b-spline surface (weights default value is 1.). The follo
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array2<gp_Pnt>
-Weights: NCollection_Array2<double>
-UKnots: NCollection_Array1<double>
-VKnots: NCollection_Array1<double>
-UMults: NCollection_Array1<int>
-VMults: NCollection_Array1<int>
+Poles: TColgp_Array2OfPnt
+Weights: TColStd_Array2OfReal
+UKnots: TColStd_Array1OfReal
+VKnots: TColStd_Array1OfReal
+UMults: TColStd_Array1OfInteger
+VMults: TColStd_Array1OfInteger
 UDegree: int
 VDegree: int
 UPeriodic: bool (optional, default to false)
@@ -7585,7 +7596,7 @@ Description
 -----------
 Creates a non-rational b-spline surface (weights default value is 1.). //! The following conditions must be verified. 0 < UDegree <= MaxDegree. //! UKnots.Length() == UMults.Length() >= 2 //! UKnots(i) < UKnots(i+1) (Knots are increasing) 1 <= UMults(i) <= UDegree //! On a non uperiodic surface the first and last umultiplicities may be UDegree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a uperiodic surface the first and the last umultiplicities must be the same. //! on non-uperiodic surfaces //! Poles.ColLength() == Sum(UMults(i)) - UDegree - 1 >= 2 //! on uperiodic surfaces //! Poles.ColLength() == Sum(UMults(i)) except the first or last //! The previous conditions for U holds also for V, with the RowLength of the poles.
 ") Geom_BSplineSurface;
-		 Geom_BSplineSurface(const NCollection_Array2<gp_Pnt> & Poles, const NCollection_Array2<double> & Weights, const NCollection_Array1<double> & UKnots, const NCollection_Array1<double> & VKnots, const NCollection_Array1<int> & UMults, const NCollection_Array1<int> & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
+		 Geom_BSplineSurface(const TColgp_Array2OfPnt & Poles, const TColStd_Array2OfReal & Weights, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const TColStd_Array1OfInteger & UMults, const TColStd_Array1OfInteger & VMults, const int UDegree, const int VDegree, const bool UPeriodic = false, const bool VPeriodic = false);
 
 		/****** Geom_BSplineSurface::Geom_BSplineSurface ******/
 		/****** md5 signature: 6a955fc30ba1f2bdb22c7519e8bec7ac ******/
@@ -8035,8 +8046,8 @@ Inserts a knot value in the sequence of UKnots. If U is a knot value this method
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 ParametricTolerance: double (optional, default to 0.0)
 Add: bool (optional, default to true)
 
@@ -8048,7 +8059,7 @@ Description
 -----------
 Inserts into the knots table for the U parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and double::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 ") InsertUKnots;
-		void InsertUKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
+		void InsertUKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
 
 		/****** Geom_BSplineSurface::InsertVKnot ******/
 		/****** md5 signature: 47cd2a83c9c6996b68113907e6468a11 ******/
@@ -8077,8 +8088,8 @@ Inserts a knot value in the sequence of VKnots. If V is a knot value this method
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 ParametricTolerance: double (optional, default to 0.0)
 Add: bool (optional, default to true)
 
@@ -8090,7 +8101,7 @@ Description
 -----------
 Inserts into the knots table for the V parametric direction of this BSpline surface: - the values of the array Knots, with their respective multiplicities, Mults. If the knot value to insert already exists in the table, its multiplicity is: - increased by M, if Add is true (the default), or - increased to M, if Add is false. The tolerance criterion used to check the equality of the knots is the larger of the values ParametricTolerance and double::Epsilon(val), where val is the knot value to be inserted. Warning - If a given multiplicity coefficient is null, or negative, nothing is done. - The new multiplicity of a knot is limited to the degree of this BSpline surface in the corresponding parametric direction. Exceptions Standard_ConstructionError if a knot value to insert is outside the bounds of this BSpline surface in the specified parametric direction. The comparison uses the precision criterion ParametricTolerance.
 ") InsertVKnots;
-		void InsertVKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
+		void InsertVKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double ParametricTolerance = 0.0, const bool Add = true);
 
 		/****** Geom_BSplineSurface::IsCNu ******/
 		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
@@ -8569,7 +8580,7 @@ Returns the pole of range (UIndex, VIndex). //! Raised if UIndex < 1 or UIndex >
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array2<gp_Pnt>
+P: TColgp_Array2OfPnt
 
 Return
 -------
@@ -8579,20 +8590,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array2<gp_Pnt> & P);
+		void Poles(TColgp_Array2OfPnt & P);
 
 		/****** Geom_BSplineSurface::Poles ******/
 		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 Returns the poles of the B-spline surface.
 ") Poles;
-		const NCollection_Array2<gp_Pnt> Poles();
+		const TColgp_Array2OfPnt & Poles();
 
 		/****** Geom_BSplineSurface::RemoveUKnot ******/
 		/****** md5 signature: 40cac51d814e89c553cf87b7011fad77 ******/
@@ -8742,7 +8753,7 @@ Substitutes the pole and the weight of range (UIndex, VIndex) with P and W. //! 
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8752,7 +8763,7 @@ Description
 -----------
 Changes a column of poles or a part of this column. Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
 ") SetPoleCol;
-		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void SetPoleCol(const int VIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BSplineSurface::SetPoleCol ******/
 		/****** md5 signature: 7409f3e15568c35eba14189ef766adcc ******/
@@ -8761,8 +8772,8 @@ Changes a column of poles or a part of this column. Raised if Vindex < 1 or VInd
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -8772,7 +8783,7 @@ Description
 -----------
 Changes a column of poles or a part of this column with the corresponding weights. If the surface was rational it can become non rational. If the surface was non rational it can become rational. Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles Raised if the bounds of CPoleWeights are not the same as the bounds of CPoles. Raised if one of the weight value of CPoleWeights is lower or equal to Resolution from package gp.
 ") SetPoleCol;
-		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void SetPoleCol(const int VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetPoleRow ******/
 		/****** md5 signature: dcdcb6401c84bd00ed279b555ee31518 ******/
@@ -8781,8 +8792,8 @@ Changes a column of poles or a part of this column with the corresponding weight
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -8792,7 +8803,7 @@ Description
 -----------
 Changes a row of poles or a part of this row with the corresponding weights. If the surface was rational it can become non rational. If the surface was non rational it can become rational. Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles raises if the bounds of CPoleWeights are not the same as the bounds of CPoles. Raised if one of the weight value of CPoleWeights is lower or equal to Resolution from package gp.
 ") SetPoleRow;
-		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void SetPoleRow(const int UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetPoleRow ******/
 		/****** md5 signature: f29485f5284e12c3a0b1f445f1848439 ******/
@@ -8801,7 +8812,7 @@ Changes a row of poles or a part of this row with the corresponding weights. If 
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8811,7 +8822,7 @@ Description
 -----------
 Changes a row of poles or a part of this row. Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
 ") SetPoleRow;
-		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void SetPoleRow(const int UIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BSplineSurface::SetUKnot ******/
 		/****** md5 signature: 540babfe7eaa6000d81162bebe726d20 ******/
@@ -8858,7 +8869,7 @@ Changes the value of the UKnots of range UIndex and increases its multiplicity. 
 		%feature("autodoc", "
 Parameters
 ----------
-UK: NCollection_Array1<double>
+UK: TColStd_Array1OfReal
 
 Return
 -------
@@ -8868,7 +8879,7 @@ Description
 -----------
 Changes all the U-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that UK (Index+1) <= UK (Index). //! Raised if UK.Lower() < 1 or UK.Upper() > NbUKnots.
 ") SetUKnots;
-		void SetUKnots(const NCollection_Array1<double> & UK);
+		void SetUKnots(const TColStd_Array1OfReal & UK);
 
 		/****** Geom_BSplineSurface::SetUNotPeriodic ******/
 		/****** md5 signature: 0c7c503e46c4002268ee61603e4110c5 ******/
@@ -8959,7 +8970,7 @@ Changes the value of the VKnots of range VIndex and increases its multiplicity. 
 		%feature("autodoc", "
 Parameters
 ----------
-VK: NCollection_Array1<double>
+VK: TColStd_Array1OfReal
 
 Return
 -------
@@ -8969,7 +8980,7 @@ Description
 -----------
 Changes all the V-knots of the surface. The multiplicity of the knots are not modified. //! Raised if there is an index such that VK (Index+1) <= VK (Index). //! Raised if VK.Lower() < 1 or VK.Upper() > NbVKnots.
 ") SetVKnots;
-		void SetVKnots(const NCollection_Array1<double> & VK);
+		void SetVKnots(const TColStd_Array1OfReal & VK);
 
 		/****** Geom_BSplineSurface::SetVNotPeriodic ******/
 		/****** md5 signature: da42223bbcd25fdcedfef03c261300b5 ******/
@@ -9042,7 +9053,7 @@ Changes the weight of the pole of range UIndex, VIndex. If the surface was non r
 Parameters
 ----------
 VIndex: int
-CPoleWeights: NCollection_Array1<double>
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -9052,7 +9063,7 @@ Description
 -----------
 Changes a column of weights of a part of this column. //! Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbUPoles. Raised if a weight value is lower or equal to Resolution from package gp.
 ") SetWeightCol;
-		void SetWeightCol(const int VIndex, const NCollection_Array1<double> & CPoleWeights);
+		void SetWeightCol(const int VIndex, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BSplineSurface::SetWeightRow ******/
 		/****** md5 signature: a51a8366b979002586886defc95e0539 ******/
@@ -9061,7 +9072,7 @@ Changes a column of weights of a part of this column. //! Raised if VIndex < 1 o
 Parameters
 ----------
 UIndex: int
-CPoleWeights: NCollection_Array1<double>
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -9071,7 +9082,7 @@ Description
 -----------
 Changes a row of weights or a part of this row. //! Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbVPoles. Raised if a weight value is lower or equal to Resolution from package gp.
 ") SetWeightRow;
-		void SetWeightRow(const int UIndex, const NCollection_Array1<double> & CPoleWeights);
+		void SetWeightRow(const int UIndex, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BSplineSurface::Transform ******/
 		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
@@ -9178,7 +9189,7 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		%feature("autodoc", "
 Parameters
 ----------
-Ku: NCollection_Array1<double>
+Ku: TColStd_Array1OfReal
 
 Return
 -------
@@ -9188,20 +9199,20 @@ Description
 -----------
 No available documentation.
 ") UKnotSequence;
-		void UKnotSequence(NCollection_Array1<double> & Ku);
+		void UKnotSequence(TColStd_Array1OfReal & Ku);
 
 		/****** Geom_BSplineSurface::UKnotSequence ******/
 		/****** md5 signature: c70f9f860680de4062cf6c4db5527f02 ******/
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the uknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}.
 ") UKnotSequence;
-		const NCollection_Array1<double> & UKnotSequence();
+		const TColStd_Array1OfReal & UKnotSequence();
 
 		/****** Geom_BSplineSurface::UKnots ******/
 		/****** md5 signature: 1378264acef76f8707b7640daa96fe6e ******/
@@ -9209,7 +9220,7 @@ Returns the uknots sequence. In this sequence the knots with a multiplicity grea
 		%feature("autodoc", "
 Parameters
 ----------
-Ku: NCollection_Array1<double>
+Ku: TColStd_Array1OfReal
 
 Return
 -------
@@ -9219,20 +9230,20 @@ Description
 -----------
 No available documentation.
 ") UKnots;
-		void UKnots(NCollection_Array1<double> & Ku);
+		void UKnots(TColStd_Array1OfReal & Ku);
 
 		/****** Geom_BSplineSurface::UKnots ******/
 		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots in the U direction.
 ") UKnots;
-		const NCollection_Array1<double> & UKnots();
+		const TColStd_Array1OfReal & UKnots();
 
 		/****** Geom_BSplineSurface::UMultiplicities ******/
 		/****** md5 signature: fa7961ef7f03eb2b596d741e54730ffa ******/
@@ -9240,7 +9251,7 @@ Returns the knots in the U direction.
 		%feature("autodoc", "
 Parameters
 ----------
-Mu: NCollection_Array1<int>
+Mu: TColStd_Array1OfInteger
 
 Return
 -------
@@ -9250,20 +9261,20 @@ Description
 -----------
 No available documentation.
 ") UMultiplicities;
-		void UMultiplicities(NCollection_Array1<int> & Mu);
+		void UMultiplicities(TColStd_Array1OfInteger & Mu);
 
 		/****** Geom_BSplineSurface::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the knots in the U direction.
 ") UMultiplicities;
-		const NCollection_Array1<int> & UMultiplicities();
+		const TColStd_Array1OfInteger & UMultiplicities();
 
 		/****** Geom_BSplineSurface::UMultiplicity ******/
 		/****** md5 signature: 1fecbf807fed760eda3f998c7edb022f ******/
@@ -9401,7 +9412,7 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		%feature("autodoc", "
 Parameters
 ----------
-Kv: NCollection_Array1<double>
+Kv: TColStd_Array1OfReal
 
 Return
 -------
@@ -9411,20 +9422,20 @@ Description
 -----------
 No available documentation.
 ") VKnotSequence;
-		void VKnotSequence(NCollection_Array1<double> & Kv);
+		void VKnotSequence(TColStd_Array1OfReal & Kv);
 
 		/****** Geom_BSplineSurface::VKnotSequence ******/
 		/****** md5 signature: 8e70c5e3318ec19a065584c30e956cfa ******/
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the vknots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: Ku = {k1, k1, k1, k2, k3, k3, k4, k4, k4}.
 ") VKnotSequence;
-		const NCollection_Array1<double> & VKnotSequence();
+		const TColStd_Array1OfReal & VKnotSequence();
 
 		/****** Geom_BSplineSurface::VKnots ******/
 		/****** md5 signature: c831589eb77a9bd10bbd73a7de246003 ******/
@@ -9432,7 +9443,7 @@ Returns the vknots sequence. In this sequence the knots with a multiplicity grea
 		%feature("autodoc", "
 Parameters
 ----------
-Kv: NCollection_Array1<double>
+Kv: TColStd_Array1OfReal
 
 Return
 -------
@@ -9442,20 +9453,20 @@ Description
 -----------
 No available documentation.
 ") VKnots;
-		void VKnots(NCollection_Array1<double> & Kv);
+		void VKnots(TColStd_Array1OfReal & Kv);
 
 		/****** Geom_BSplineSurface::VKnots ******/
 		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots in the V direction.
 ") VKnots;
-		const NCollection_Array1<double> & VKnots();
+		const TColStd_Array1OfReal & VKnots();
 
 		/****** Geom_BSplineSurface::VMultiplicities ******/
 		/****** md5 signature: 31ea5bd1155e0480c8b41e229bebf68e ******/
@@ -9463,7 +9474,7 @@ Returns the knots in the V direction.
 		%feature("autodoc", "
 Parameters
 ----------
-Mv: NCollection_Array1<int>
+Mv: TColStd_Array1OfInteger
 
 Return
 -------
@@ -9473,20 +9484,20 @@ Description
 -----------
 No available documentation.
 ") VMultiplicities;
-		void VMultiplicities(NCollection_Array1<int> & Mv);
+		void VMultiplicities(TColStd_Array1OfInteger & Mv);
 
 		/****** Geom_BSplineSurface::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the knots in the V direction.
 ") VMultiplicities;
-		const NCollection_Array1<int> & VMultiplicities();
+		const TColStd_Array1OfInteger & VMultiplicities();
 
 		/****** Geom_BSplineSurface::VMultiplicity ******/
 		/****** md5 signature: ff1ff8db7d362092f1741bc8fc99fee6 ******/
@@ -9562,7 +9573,7 @@ Returns the weight value of range UIndex, VIndex. //! Raised if UIndex < 1 or UI
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array2<double>
+W: TColStd_Array2OfReal
 
 Return
 -------
@@ -9572,33 +9583,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array2<double> & W);
+		void Weights(TColStd_Array2OfReal & W);
 
 		/****** Geom_BSplineSurface::Weights ******/
 		/****** md5 signature: fb4051a8bd8195e88a7eb79ea1397954 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double> *
+TColStd_Array2OfReal *
 
 Description
 -----------
 Returns the weights of the B-spline surface. value and derivatives computation.
 ") Weights;
-		const NCollection_Array2<double> * Weights();
+		const TColStd_Array2OfReal * Weights();
 
 		/****** Geom_BSplineSurface::WeightsArray ******/
 		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational surfaces: the internal owning weights array. For non-rational surfaces: a non-owning view of unit weights from BSplSLib. The array is always sized to match NbUPoles() x NbVPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array2<double> & WeightsArray();
+		const TColStd_Array2OfReal & WeightsArray();
 
 };
 
@@ -9622,7 +9633,7 @@ class Geom_BezierCurve : public Geom_BoundedCurve {
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: NCollection_Array1<gp_Pnt>
+CurvePoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -9632,7 +9643,7 @@ Description
 -----------
 Creates a non rational Bezier curve with a set of poles CurvePoles. The weights are defaulted to all being 1. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2.
 ") Geom_BezierCurve;
-		 Geom_BezierCurve(const NCollection_Array1<gp_Pnt> & CurvePoles);
+		 Geom_BezierCurve(const TColgp_Array1OfPnt & CurvePoles);
 
 		/****** Geom_BezierCurve::Geom_BezierCurve ******/
 		/****** md5 signature: 62121b3e4c9f8c7ff516d512019a27e7 ******/
@@ -9640,8 +9651,8 @@ Creates a non rational Bezier curve with a set of poles CurvePoles. The weights 
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: NCollection_Array1<gp_Pnt>
-PoleWeights: NCollection_Array1<double>
+CurvePoles: TColgp_Array1OfPnt
+PoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -9651,7 +9662,7 @@ Description
 -----------
 Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights PoleWeights. If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp.
 ") Geom_BezierCurve;
-		 Geom_BezierCurve(const NCollection_Array1<gp_Pnt> & CurvePoles, const NCollection_Array1<double> & PoleWeights);
+		 Geom_BezierCurve(const TColgp_Array1OfPnt & CurvePoles, const TColStd_Array1OfReal & PoleWeights);
 
 		/****** Geom_BezierCurve::Geom_BezierCurve ******/
 		/****** md5 signature: 15df871961995cb485509867720c20a8 ******/
@@ -10046,26 +10057,26 @@ Returns false if all the weights are identical. The tolerance criterion is Resol
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier flat knots for the current degree.
 ") KnotSequence;
-		const NCollection_Array1<double> & KnotSequence();
+		const TColStd_Array1OfReal & KnotSequence();
 
 		/****** Geom_BezierCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier knots {0.0, 1.0} as a static array.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Geom_BezierCurve::LastParameter ******/
 		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
@@ -10098,13 +10109,13 @@ Returns the value of the maximum polynomial degree of any Geom_BezierCurve curve
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns Bezier multiplicities for the current degree.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Geom_BezierCurve::NbPoles ******/
 		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
@@ -10143,7 +10154,7 @@ Returns the pole of range Index. Raised if Index is not in the range [1, NbPoles
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt>
+P: TColgp_Array1OfPnt
 
 Return
 -------
@@ -10153,20 +10164,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array1<gp_Pnt> & P);
+		void Poles(TColgp_Array1OfPnt & P);
 
 		/****** Geom_BezierCurve::Poles ******/
 		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt>
+TColgp_Array1OfPnt
 
 Description
 -----------
 Returns all the poles of the curve.
 ") Poles;
-		const NCollection_Array1<gp_Pnt> Poles();
+		const TColgp_Array1OfPnt & Poles();
 
 		/****** Geom_BezierCurve::RemovePole ******/
 		/****** md5 signature: e5a8000c59dc6fb4e1e49bcebf40135a ******/
@@ -10385,7 +10396,7 @@ Returns the weight of range Index. Raised if Index is not in the range [1, NbPol
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array1<double>
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -10395,33 +10406,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array1<double> & W);
+		void Weights(TColStd_Array1OfReal & W);
 
 		/****** Geom_BezierCurve::Weights ******/
 		/****** md5 signature: d58e535c0e2f6d48057cd9bdc03d1788 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Returns all the weights of the curve.
 ") Weights;
-		const NCollection_Array1<double> * Weights();
+		const TColStd_Array1OfReal * Weights();
 
 		/****** Geom_BezierCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array1<double> & WeightsArray();
+		const TColStd_Array1OfReal & WeightsArray();
 
 };
 
@@ -10445,7 +10456,7 @@ class Geom_BezierSurface : public Geom_BoundedSurface {
 		%feature("autodoc", "
 Parameters
 ----------
-SurfacePoles: NCollection_Array2<gp_Pnt>
+SurfacePoles: TColgp_Array2OfPnt
 
 Return
 -------
@@ -10455,7 +10466,7 @@ Description
 -----------
 Creates a non-rational Bezier surface with a set of poles. Control points representation: SPoles(Uorigin,Vorigin) ...................SPoles(Uorigin,Vend) .  . .  . SPoles(Uend, Vorigin) .....................SPoles(Uend, Vend) For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. The weights are defaulted to all being 1. //! Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V.
 ") Geom_BezierSurface;
-		 Geom_BezierSurface(const NCollection_Array2<gp_Pnt> & SurfacePoles);
+		 Geom_BezierSurface(const TColgp_Array2OfPnt & SurfacePoles);
 
 		/****** Geom_BezierSurface::Geom_BezierSurface ******/
 		/****** md5 signature: f9ab1b71a817c80aa92fadb038c489bc ******/
@@ -10482,8 +10493,8 @@ Input parameter: theOther the Bezier surface to copy from.
 		%feature("autodoc", "
 Parameters
 ----------
-SurfacePoles: NCollection_Array2<gp_Pnt>
-PoleWeights: NCollection_Array2<double>
+SurfacePoles: TColgp_Array2OfPnt
+PoleWeights: TColStd_Array2OfReal
 
 Return
 -------
@@ -10493,7 +10504,7 @@ Description
 -----------
 ---Purpose Creates a rational Bezier surface with a set of poles and a set of weights. For the double array the row indice corresponds to the parametric U direction and the columns indice corresponds to the parametric V direction. If all the weights are identical the surface is considered as non-rational (the tolerance criterion is Resolution from package gp). //! Raised if SurfacePoles and PoleWeights have not the same Rowlength or have not the same ColLength. Raised if PoleWeights (i, j) <= Resolution from gp; Raised if the number of poles of the surface is lower than 2 or greater than MaxDegree + 1 in one of the two directions U or V.
 ") Geom_BezierSurface;
-		 Geom_BezierSurface(const NCollection_Array2<gp_Pnt> & SurfacePoles, const NCollection_Array2<double> & PoleWeights);
+		 Geom_BezierSurface(const TColgp_Array2OfPnt & SurfacePoles, const TColStd_Array2OfReal & PoleWeights);
 
 		/****** Geom_BezierSurface::Bounds ******/
 		/****** md5 signature: 00d684b8aaf3d1078ecb2fe950638d77 ******/
@@ -10737,7 +10748,7 @@ Increases the degree of this Bezier surface in the two parametric directions. //
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -10747,7 +10758,7 @@ Description
 -----------
 Inserts a column of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Vindex < 1 or VIndex > NbVPoles. //! raises if VDegree is greater than MaxDegree. raises if the Length of CPoles is not equal to NbUPoles.
 ") InsertPoleColAfter;
-		void InsertPoleColAfter(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void InsertPoleColAfter(const int VIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleColAfter ******/
 		/****** md5 signature: f506af4c9f7e2f00ef885a02844c0183 ******/
@@ -10756,8 +10767,8 @@ Inserts a column of poles. If the surface is rational the weights values associa
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -10767,7 +10778,7 @@ Description
 -----------
 Inserts a column of poles and weights. If the surface was non-rational it can become rational. //! Raised if Vindex < 1 or VIndex > NbVPoles. Raised if . VDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbUPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleColAfter;
-		void InsertPoleColAfter(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void InsertPoleColAfter(const int VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleColBefore ******/
 		/****** md5 signature: ece86ec67d1e9b7ef993f769460011c8 ******/
@@ -10776,7 +10787,7 @@ Inserts a column of poles and weights. If the surface was non-rational it can be
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -10786,7 +10797,7 @@ Description
 -----------
 Inserts a column of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Vindex < 1 or VIndex > NbVPoles. //! Raised if VDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbUPoles.
 ") InsertPoleColBefore;
-		void InsertPoleColBefore(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void InsertPoleColBefore(const int VIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleColBefore ******/
 		/****** md5 signature: 725883b4a2e818682a21254f3bd2122b ******/
@@ -10795,8 +10806,8 @@ Inserts a column of poles. If the surface is rational the weights values associa
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -10806,7 +10817,7 @@ Description
 -----------
 Inserts a column of poles and weights. If the surface was non-rational it can become rational. //! Raised if Vindex < 1 or VIndex > NbVPoles. Raised if: . VDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbUPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleColBefore;
-		void InsertPoleColBefore(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void InsertPoleColBefore(const int VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleRowAfter ******/
 		/****** md5 signature: 7d47f413ea1437495b364f9704c019d6 ******/
@@ -10815,7 +10826,7 @@ Inserts a column of poles and weights. If the surface was non-rational it can be
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -10825,7 +10836,7 @@ Description
 -----------
 Inserts a row of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if UDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbVPoles.
 ") InsertPoleRowAfter;
-		void InsertPoleRowAfter(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void InsertPoleRowAfter(const int UIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleRowAfter ******/
 		/****** md5 signature: 5d4273dbbaa51baf8b1a7c1f6c130d7d ******/
@@ -10834,8 +10845,8 @@ Inserts a row of poles. If the surface is rational the weights values associated
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -10845,7 +10856,7 @@ Description
 -----------
 Inserts a row of poles and weights. If the surface was non-rational it can become rational. //! Raised if Uindex < 1 or UIndex > NbUPoles. Raised if: . UDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbVPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleRowAfter;
-		void InsertPoleRowAfter(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void InsertPoleRowAfter(const int UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::InsertPoleRowBefore ******/
 		/****** md5 signature: 665ba388d53bd2188cb8ba7949ce1cb1 ******/
@@ -10854,7 +10865,7 @@ Inserts a row of poles and weights. If the surface was non-rational it can becom
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -10864,7 +10875,7 @@ Description
 -----------
 Inserts a row of poles. If the surface is rational the weights values associated with CPoles are equal defaulted to 1. //! Raised if Uindex < 1 or UIndex > NbUPoles. //! Raised if UDegree is greater than MaxDegree. Raised if the Length of CPoles is not equal to NbVPoles.
 ") InsertPoleRowBefore;
-		void InsertPoleRowBefore(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void InsertPoleRowBefore(const int UIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::InsertPoleRowBefore ******/
 		/****** md5 signature: 9fa32d81f94f23102486d1f2287b8e9c ******/
@@ -10873,8 +10884,8 @@ Inserts a row of poles. If the surface is rational the weights values associated
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -10884,7 +10895,7 @@ Description
 -----------
 Inserts a row of poles and weights. If the surface was non-rational it can become rational. //! Raised if Uindex < 1 or UIndex > NbUPoles. Raised if: . UDegree is greater than MaxDegree. . the Length of CPoles is not equal to NbVPoles . a weight value is lower or equal to Resolution from package gp.
 ") InsertPoleRowBefore;
-		void InsertPoleRowBefore(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void InsertPoleRowBefore(const int UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::IsCNu ******/
 		/****** md5 signature: 9a6f533916836c9b7c4f0ff0a609fae2 ******/
@@ -11064,7 +11075,7 @@ Returns the pole of range UIndex, VIndex Raised if UIndex < 1 or UIndex > NbUPol
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array2<gp_Pnt>
+P: TColgp_Array2OfPnt
 
 Return
 -------
@@ -11074,20 +11085,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array2<gp_Pnt> & P);
+		void Poles(TColgp_Array2OfPnt & P);
 
 		/****** Geom_BezierSurface::Poles ******/
 		/****** md5 signature: aee900d78f57d9391091e96dd2df2c64 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 Returns the poles of the Bezier surface.
 ") Poles;
-		const NCollection_Array2<gp_Pnt> Poles();
+		const TColgp_Array2OfPnt & Poles();
 
 		/****** Geom_BezierSurface::RemovePoleCol ******/
 		/****** md5 signature: 3430a634d2bff0b8c3bb1c55b4bafabc ******/
@@ -11231,7 +11242,7 @@ Substitutes the pole and the weight of range UIndex, VIndex. If the surface <sel
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -11241,7 +11252,7 @@ Description
 -----------
 Modifies a column of poles. The length of CPoles can be lower but not greater than NbUPoles so you can modify just a part of the column. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles.
 ") SetPoleCol;
-		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void SetPoleCol(const int VIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::SetPoleCol ******/
 		/****** md5 signature: 7409f3e15568c35eba14189ef766adcc ******/
@@ -11250,8 +11261,8 @@ Modifies a column of poles. The length of CPoles can be lower but not greater th
 Parameters
 ----------
 VIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -11261,7 +11272,7 @@ Description
 -----------
 Modifies a column of poles. If the surface was rational it can become non-rational If the surface was non-rational it can become rational. The length of CPoles can be lower but not greater than NbUPoles so you can modify just a part of the column. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbUPoles Raised if CPoleWeights and CPoles have not the same bounds. Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetPoleCol;
-		void SetPoleCol(const int VIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void SetPoleCol(const int VIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetPoleRow ******/
 		/****** md5 signature: f29485f5284e12c3a0b1f445f1848439 ******/
@@ -11270,7 +11281,7 @@ Modifies a column of poles. If the surface was rational it can become non-ration
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
+CPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -11280,7 +11291,7 @@ Description
 -----------
 Modifies a row of poles. The length of CPoles can be lower but not greater than NbVPoles so you can modify just a part of the row. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles.
 ") SetPoleRow;
-		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles);
+		void SetPoleRow(const int UIndex, const TColgp_Array1OfPnt & CPoles);
 
 		/****** Geom_BezierSurface::SetPoleRow ******/
 		/****** md5 signature: dcdcb6401c84bd00ed279b555ee31518 ******/
@@ -11289,8 +11300,8 @@ Modifies a row of poles. The length of CPoles can be lower but not greater than 
 Parameters
 ----------
 UIndex: int
-CPoles: NCollection_Array1<gp_Pnt>
-CPoleWeights: NCollection_Array1<double>
+CPoles: TColgp_Array1OfPnt
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -11300,7 +11311,7 @@ Description
 -----------
 Modifies a row of poles and weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoles can be lower but not greater than NbVPoles so you can modify just a part of the row. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoles.Lower() < 1 or CPoles.Upper() > NbVPoles Raised if CPoleWeights and CPoles have not the same bounds. Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from gp.
 ") SetPoleRow;
-		void SetPoleRow(const int UIndex, const NCollection_Array1<gp_Pnt> & CPoles, const NCollection_Array1<double> & CPoleWeights);
+		void SetPoleRow(const int UIndex, const TColgp_Array1OfPnt & CPoles, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetWeight ******/
 		/****** md5 signature: b2f5d40eb9ee4727e1f26bec15206a62 ******/
@@ -11329,7 +11340,7 @@ Modifies the weight of the pole of range UIndex, VIndex. If the surface was non-
 Parameters
 ----------
 VIndex: int
-CPoleWeights: NCollection_Array1<double>
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -11339,7 +11350,7 @@ Description
 -----------
 Modifies a column of weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoleWeights can be lower but not greater than NbUPoles. Raised if VIndex < 1 or VIndex > NbVPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbUPoles Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetWeightCol;
-		void SetWeightCol(const int VIndex, const NCollection_Array1<double> & CPoleWeights);
+		void SetWeightCol(const int VIndex, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::SetWeightRow ******/
 		/****** md5 signature: a51a8366b979002586886defc95e0539 ******/
@@ -11348,7 +11359,7 @@ Modifies a column of weights. If the surface was rational it can become non-rati
 Parameters
 ----------
 UIndex: int
-CPoleWeights: NCollection_Array1<double>
+CPoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -11358,7 +11369,7 @@ Description
 -----------
 Modifies a row of weights. If the surface was rational it can become non-rational. If the surface was non-rational it can become rational. The length of CPoleWeights can be lower but not greater than NbVPoles. Raised if UIndex < 1 or UIndex > NbUPoles //! Raised if CPoleWeights.Lower() < 1 or CPoleWeights.Upper() > NbVPoles Raised if one of the weight value CPoleWeights (i) is lower or equal to Resolution from package gp.
 ") SetWeightRow;
-		void SetWeightRow(const int UIndex, const NCollection_Array1<double> & CPoleWeights);
+		void SetWeightRow(const int UIndex, const TColStd_Array1OfReal & CPoleWeights);
 
 		/****** Geom_BezierSurface::Transform ******/
 		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
@@ -11414,39 +11425,39 @@ Computes the U isoparametric curve. For a Bezier surface the UIso curve is a Bez
 		%feature("compactdefaultargs") UKnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier flat knots for the U degree.
 ") UKnotSequence;
-		const NCollection_Array1<double> & UKnotSequence();
+		const TColStd_Array1OfReal & UKnotSequence();
 
 		/****** Geom_BezierSurface::UKnots ******/
 		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier knots {0.0, 1.0} as a static array.
 ") UKnots;
-		const NCollection_Array1<double> & UKnots();
+		const TColStd_Array1OfReal & UKnots();
 
 		/****** Geom_BezierSurface::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns Bezier multiplicities for the U degree.
 ") UMultiplicities;
-		const NCollection_Array1<int> & UMultiplicities();
+		const TColStd_Array1OfInteger & UMultiplicities();
 
 		/****** Geom_BezierSurface::UReverse ******/
 		/****** md5 signature: cebfb9b57b88817ec473af5443be776d ******/
@@ -11515,39 +11526,39 @@ Computes the V isoparametric curve. For a Bezier surface the VIso curve is a Bez
 		%feature("compactdefaultargs") VKnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier flat knots for the V degree.
 ") VKnotSequence;
-		const NCollection_Array1<double> & VKnotSequence();
+		const TColStd_Array1OfReal & VKnotSequence();
 
 		/****** Geom_BezierSurface::VKnots ******/
 		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier knots {0.0, 1.0} as a static array.
 ") VKnots;
-		const NCollection_Array1<double> & VKnots();
+		const TColStd_Array1OfReal & VKnots();
 
 		/****** Geom_BezierSurface::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns Bezier multiplicities for the V degree.
 ") VMultiplicities;
-		const NCollection_Array1<int> & VMultiplicities();
+		const TColStd_Array1OfInteger & VMultiplicities();
 
 		/****** Geom_BezierSurface::VReverse ******/
 		/****** md5 signature: 9382c4825a17f3761861e610c481ab26 ******/
@@ -11605,7 +11616,7 @@ Returns the weight of range UIndex, VIndex //! Raised if UIndex < 1 or UIndex > 
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array2<double>
+W: TColStd_Array2OfReal
 
 Return
 -------
@@ -11615,33 +11626,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array2<double> & W);
+		void Weights(TColStd_Array2OfReal & W);
 
 		/****** Geom_BezierSurface::Weights ******/
 		/****** md5 signature: 3b906afa8e8b853863ff75ad21eb40e2 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double> *
+TColStd_Array2OfReal *
 
 Description
 -----------
 Returns the weights of the Bezier surface.
 ") Weights;
-		const NCollection_Array2<double> * Weights();
+		const TColStd_Array2OfReal * Weights();
 
 		/****** Geom_BezierSurface::WeightsArray ******/
 		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational surfaces: the internal owning weights array. For non-rational surfaces: a non-owning view of unit weights from BSplSLib. The array is always sized to match NbUPoles() x NbVPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array2<double> & WeightsArray();
+		const TColStd_Array2OfReal & WeightsArray();
 
 };
 
@@ -17104,7 +17115,7 @@ Returns the parametric bounds U1, U2, V1 and V2 of this torus. For a torus: U1 =
 		%feature("autodoc", "
 Parameters
 ----------
-Coef: NCollection_Array1<double>
+Coef: TColStd_Array1OfReal
 
 Return
 -------
@@ -17114,7 +17125,7 @@ Description
 -----------
 Returns the coefficients of the implicit equation of the surface in the absolute cartesian coordinate system: Coef(1) * X**4 + Coef(2) * Y**4 + Coef(3) * Z**4 + Coef(4) * X**3 * Y + Coef(5) * X**3 * Z + Coef(6) * Y**3 * X + Coef(7) * Y**3 * Z + Coef(8) * Z**3 * X + Coef(9) * Z**3 * Y + Coef(10) * X**2 * Y**2 + Coef(11) * X**2 * Z**2 + Coef(12) * Y**2 * Z**2 + Coef(13) * X**3 + Coef(14) * Y**3 + Coef(15) * Z**3 + Coef(16) * X**2 * Y + Coef(17) * X**2 * Z + Coef(18) * Y**2 * X + Coef(19) * Y**2 * Z + Coef(20) * Z**2 * X + Coef(21) * Z**2 * Y + Coef(22) * X**2 + Coef(23) * Y**2 + Coef(24) * Z**2 + Coef(25) * X * Y + Coef(26) * X * Z + Coef(27) * Y * Z + Coef(28) * X + Coef(29) * Y + Coef(30) * Z + Coef(31) = 0.0 Raised if the length of Coef is lower than 31.
 ") Coefficients;
-		void Coefficients(NCollection_Array1<double> & Coef);
+		void Coefficients(TColStd_Array1OfReal & Coef);
 
 		/****** Geom_ToroidalSurface::Copy ******/
 		/****** md5 signature: dc6e70a88406e0550a58922812e47ece ******/

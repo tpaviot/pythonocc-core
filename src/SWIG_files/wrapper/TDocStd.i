@@ -44,13 +44,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdocstd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TDF_module.hxx>
 #include<CDF_module.hxx>
 #include<TCollection_module.hxx>
 #include<PCDM_module.hxx>
 #include<CDM_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
-#include<TDF_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -58,13 +59,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdocstd.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TDF.i
 %import CDF.i
 %import TCollection.i
 %import PCDM.i
 %import CDM.i
 %import Message.i
+%import TColStd.i
 %import Resource.i
-%import TDF.i
 
 %pythoncode {
 from enum import IntEnum
@@ -126,6 +128,7 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TDocStd_Application)
 %wrap_handle(TDocStd_ApplicationDelta)
 %wrap_handle(TDocStd_CompoundDelta)
 %wrap_handle(TDocStd_Document)
@@ -143,6 +146,13 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 %template(TDocStd_SequenceOfApplicationDelta) NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>;
 
 %extend NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -151,6 +161,13 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 %template(TDocStd_SequenceOfDocument) NCollection_Sequence<opencascade::handle<TDocStd_Document>>;
 
 %extend NCollection_Sequence<opencascade::handle<TDocStd_Document>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -177,7 +194,7 @@ class TDocStd {
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -187,7 +204,7 @@ Description
 -----------
 specific GUID of this package ============================= Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(NCollection_List<Standard_GUID> & anIDList);
+		static void IDList(TDF_IDList & anIDList);
 
 };
 
@@ -575,7 +592,7 @@ Return: reading status.
 		%feature("autodoc", "
 Parameters
 ----------
-theFormats: NCollection_Sequence<TCollection_AsciiString>
+theFormats: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -586,7 +603,7 @@ Description
 Returns the sequence of reading formats supported by the application. //! 
 Parameter theFormats - sequence of reading formats. Output parameter.
 ") ReadingFormats;
-		void ReadingFormats(NCollection_Sequence<TCollection_AsciiString> & theFormats);
+		void ReadingFormats(TColStd_SequenceOfAsciiString & theFormats);
 
 		/****** TDocStd_Application::Resources ******/
 		/****** md5 signature: 7dc445d1d690abf3f5b8ce090a2aae7d ******/
@@ -739,7 +756,7 @@ Save theDoc TO standard SEEKABLE stream theOStream. the stream should support SE
 		%feature("autodoc", "
 Parameters
 ----------
-theFormats: NCollection_Sequence<TCollection_AsciiString>
+theFormats: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -750,10 +767,12 @@ Description
 Returns the sequence of writing formats supported by the application. //! 
 Parameter theFormats - sequence of writing formats. Output parameter.
 ") WritingFormats;
-		void WritingFormats(NCollection_Sequence<TCollection_AsciiString> & theFormats);
+		void WritingFormats(TColStd_SequenceOfAsciiString & theFormats);
 
 };
 
+
+%make_alias(TDocStd_Application)
 
 %extend TDocStd_Application {
 	%pythoncode {
@@ -1171,13 +1190,13 @@ No available documentation.
 		%feature("compactdefaultargs") GetModified;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 Returns the labels which have been modified in this document.
 ") GetModified;
-		const NCollection_Map<TDF_Label> & GetModified();
+		const TDF_LabelMap & GetModified();
 
 		/****** TDocStd_Document::GetName ******/
 		/****** md5 signature: fccd7cb624ceb6d77e85524978a24f14 ******/
@@ -1210,13 +1229,13 @@ returns the OS path of the file, in which one <self> is saved. Raise an exceptio
 		%feature("compactdefaultargs") GetRedos;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<TDF_Delta>>
+TDF_DeltaList
 
 Description
 -----------
 No available documentation.
 ") GetRedos;
-		const NCollection_List<opencascade::handle<TDF_Delta>> & GetRedos();
+		const TDF_DeltaList & GetRedos();
 
 		/****** TDocStd_Document::GetSavedTime ******/
 		/****** md5 signature: 5a334d860bcab730d09889ff87eab9d5 ******/
@@ -1249,13 +1268,13 @@ The current limit on the number of undos.
 		%feature("compactdefaultargs") GetUndos;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<TDF_Delta>>
+TDF_DeltaList
 
 Description
 -----------
 No available documentation.
 ") GetUndos;
-		const NCollection_List<opencascade::handle<TDF_Delta>> & GetUndos();
+		const TDF_DeltaList & GetUndos();
 
 		/****** TDocStd_Document::HasOpenCommand ******/
 		/****** md5 signature: 5601cfe5457870d35a28da8037b39545 ******/
@@ -1822,26 +1841,26 @@ access: TDF_Label
 
 Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 if <IsEmpty> raise an exception.
 ") Get;
-		static const NCollection_Map<TDF_Label> & Get(const TDF_Label & access);
+		static const TDF_LabelMap & Get(const TDF_Label & access);
 
 		/****** TDocStd_Modified::Get ******/
 		/****** md5 signature: b8344649f4faf15165151e88dfdc67ca ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 returns modified label map.
 ") Get;
-		const NCollection_Map<TDF_Label> & Get();
+		const TDF_LabelMap & Get();
 
 		/****** TDocStd_Modified::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/

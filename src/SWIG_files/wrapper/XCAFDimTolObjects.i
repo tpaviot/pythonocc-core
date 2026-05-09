@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafdimtolobjects
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
 #include<CDF_module.hxx>
@@ -66,6 +67,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafdimtolobjects
 %import TopoDS.i
 %import gp.i
 %import TCollection.i
+%import TColStd.i
 %import TDocStd.i
 
 %pythoncode {
@@ -742,6 +744,13 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
 %template(XCAFDimTolObjects_DatumModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif>;
 
 %extend NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -750,6 +759,13 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
 %template(XCAFDimTolObjects_DimensionModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DimensionModif>;
 
 %extend NCollection_Sequence<XCAFDimTolObjects_DimensionModif> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -758,6 +774,13 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
 %template(XCAFDimTolObjects_GeomToleranceModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif>;
 
 %extend NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1889,13 +1912,13 @@ Returns the main dimension value. It will be the middle value in case of range d
 		%feature("compactdefaultargs") GetValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns raw array of dimension values.
 ") GetValues;
-		opencascade::handle<NCollection_HArray1<double>> GetValues();
+		opencascade::handle<TColStd_HArray1OfReal> GetValues();
 
 		/****** XCAFDimTolObjects_DimensionObject::HasAngularQualifier ******/
 		/****** md5 signature: ff944a449c7c0fbace105505739cf4d9 ******/
@@ -2544,7 +2567,7 @@ Sets the main dimension value. Overwrites previous values.
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: NCollection_HArray1<double
+theValue: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2554,7 +2577,7 @@ Description
 -----------
 Replaces current raw array of dimension values with theValues array.
 ") SetValues;
-		void SetValues(const opencascade::handle<NCollection_HArray1<double> > & theValue);
+		void SetValues(const opencascade::handle<TColStd_HArray1OfReal> & theValue);
 
 };
 
@@ -3286,7 +3309,7 @@ Description
 -----------
 Returns a sequence of Dimensions currently stored in the GD&T table.
 ") GetDimensions;
-		void GetDimensions(NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject> > & theDimensionObjectSequence);
+		void GetDimensions(NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject>> & theDimensionObjectSequence);
 
 		/****** XCAFDimTolObjects_Tool::GetGeomTolerances ******/
 		/****** md5 signature: 607077213a639c5de199c75df174cf57 ******/
@@ -3306,7 +3329,7 @@ Description
 -----------
 Returns a sequence of Tolerances currently stored in the GD&T table.
 ") GetGeomTolerances;
-		void GetGeomTolerances(NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> > & theGeomToleranceObjectSequence, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject> > & theDatumObjectSequence, NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject> > & theMap);
+		void GetGeomTolerances(NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>> & theGeomToleranceObjectSequence, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject>> & theDatumObjectSequence, NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>> & theMap);
 
 		/****** XCAFDimTolObjects_Tool::GetRefDatum ******/
 		/****** md5 signature: 017610ccdd8e9279a024e1fcc45de784 ******/
@@ -3344,7 +3367,7 @@ Description
 -----------
 Returns all Dimensions defined for Shape.
 ") GetRefDimensions;
-		bool GetRefDimensions(const TopoDS_Shape & theShape, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject> > & theDimensions);
+		bool GetRefDimensions(const TopoDS_Shape & theShape, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject>> & theDimensions);
 
 		/****** XCAFDimTolObjects_Tool::GetRefGeomTolerances ******/
 		/****** md5 signature: b4504d8d5d6a0cf3c8a10abc089fccb0 ******/
@@ -3365,7 +3388,7 @@ Description
 -----------
 Returns all GeomTolerances defined for Shape.
 ") GetRefGeomTolerances;
-		bool GetRefGeomTolerances(const TopoDS_Shape & theShape, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject> > & theGeomToleranceObjectSequence, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject> > & theDatumObjectSequence, NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject> > & theMap);
+		bool GetRefGeomTolerances(const TopoDS_Shape & theShape, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>> & theGeomToleranceObjectSequence, NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject>> & theDatumObjectSequence, NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>> & theMap);
 
 };
 

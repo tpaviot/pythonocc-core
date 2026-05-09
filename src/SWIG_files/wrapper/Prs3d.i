@@ -53,6 +53,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prs3d.html"
 #include<GeomAbs_module.hxx>
 #include<Aspect_module.hxx>
 #include<Quantity_module.hxx>
+#include<TColStd_module.hxx>
 #include<TShort_module.hxx>
 #include<TColQuantity_module.hxx>
 #include<Message_module.hxx>
@@ -89,6 +90,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prs3d.html"
 %import GeomAbs.i
 %import Aspect.i
 %import Quantity.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -424,9 +426,21 @@ Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
 %template(Prs3d_NListOfSequenceOfPnt) NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>>;
 
 %extend NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Prs3d_NListIteratorOfListOfSequenceOfPnt(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -449,7 +463,7 @@ class Prs3d {
 		%feature("autodoc", "
 Parameters
 ----------
-theSegments: NCollection_Sequence<gp_Pnt>
+theSegments: TColgp_SequenceOfPnt
 thePolyTri: Poly_Triangulation
 theLocation: gp_Trsf
 
@@ -463,7 +477,7 @@ Add triangulation free edges into sequence of line segments. @param[out] theSegm
 Input parameter: thePolyTri triangulation to process 
 Input parameter: theLocation transformation to apply.
 ") AddFreeEdges;
-		static void AddFreeEdges(NCollection_Sequence<gp_Pnt> & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
+		static void AddFreeEdges(TColgp_SequenceOfPnt & theSegments, const opencascade::handle<Poly_Triangulation> & thePolyTri, const gp_Trsf & theLocation);
 
 		/****** Prs3d::AddPrimitivesGroup ******/
 		/****** md5 signature: 244aa1df73c730dabab155c321e05e0a ******/
@@ -473,7 +487,7 @@ Parameters
 ----------
 thePrs: Prs3d_Presentation
 theAspect: Prs3d_LineAspect
-thePolylines: NCollection_HSequence<gp_Pnt
+thePolylines: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -483,7 +497,7 @@ Description
 -----------
 Add primitives into new group in presentation and clear the list of polylines.
 ") AddPrimitivesGroup;
-		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & thePolylines);
+		static void AddPrimitivesGroup(const opencascade::handle<Prs3d_Presentation> & thePrs, const opencascade::handle<Prs3d_LineAspect> & theAspect, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & thePolylines);
 
 		/****** Prs3d::GetDeflection ******/
 		/****** md5 signature: fbe88177fbc15ec867a54420e78ae6ad ******/
@@ -562,7 +576,7 @@ draws an arrow at a given location, with respect to a given direction.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HSequence<gp_Pnt
+thePoints: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -574,7 +588,7 @@ Assembles array of primitives for sequence of polylines.
 Input parameter: thePoints the polylines sequence 
 Return: array of primitives.
 ") PrimitivesFromPolylines;
-		static opencascade::handle<Graphic3d_ArrayOfPrimitives> PrimitivesFromPolylines(const NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & thePoints);
+		static opencascade::handle<Graphic3d_ArrayOfPrimitives> PrimitivesFromPolylines(const NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & thePoints);
 
 };
 
@@ -5483,7 +5497,7 @@ Parameters
 theColor: Quantity_Color
 theWidth: int
 theHeight: int
-theTexture: NCollection_HArray1<uint8_t
+theTexture: TColStd_HArray1OfByte
 
 Return
 -------
@@ -5493,7 +5507,7 @@ Description
 -----------
 Defines the user defined marker point.
 ") Prs3d_PointAspect;
-		 Prs3d_PointAspect(const Quantity_Color & theColor, const int theWidth, const int theHeight, const opencascade::handle<NCollection_HArray1<uint8_t> > & theTexture);
+		 Prs3d_PointAspect(const Quantity_Color & theColor, const int theWidth, const int theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
 
 		/****** Prs3d_PointAspect::Prs3d_PointAspect ******/
 		/****** md5 signature: 5e221962e2590f7f3a9470ca4c69750a ******/

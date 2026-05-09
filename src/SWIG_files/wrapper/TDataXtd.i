@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdataxtd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TDataStd_module.hxx>
 #include<TDF_module.hxx>
+#include<TDataStd_module.hxx>
 #include<gp_module.hxx>
 #include<TNaming_module.hxx>
 #include<Quantity_module.hxx>
@@ -64,8 +64,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdataxtd.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TDataStd.i
 %import TDF.i
+%import TDataStd.i
 %import gp.i
 %import TNaming.i
 %import Quantity.i
@@ -198,6 +198,18 @@ TDataXtd_CYLINDER = TDataXtd_GeometryEnum.TDataXtd_CYLINDER
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TDataXtd_Axis)
+%wrap_handle(TDataXtd_Constraint)
+%wrap_handle(TDataXtd_Geometry)
+%wrap_handle(TDataXtd_Pattern)
+%wrap_handle(TDataXtd_Placement)
+%wrap_handle(TDataXtd_Plane)
+%wrap_handle(TDataXtd_Point)
+%wrap_handle(TDataXtd_Position)
+%wrap_handle(TDataXtd_Presentation)
+%wrap_handle(TDataXtd_Shape)
+%wrap_handle(TDataXtd_Triangulation)
+%wrap_handle(TDataXtd_PatternStd)
 /* end handles declaration */
 
 /* templates */
@@ -223,7 +235,7 @@ class TDataXtd {
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -233,7 +245,7 @@ Description
 -----------
 Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use. Print of TDataExt enumeration =============================.
 ") IDList;
-		static void IDList(NCollection_List<Standard_GUID> & anIDList);
+		static void IDList(TDF_IDList & anIDList);
 
 		/****** TDataXtd::Print ******/
 		/****** md5 signature: b887e0f1c5d77aad7c10be1a19a24553 ******/
@@ -381,6 +393,8 @@ Axis methods ============.
 };
 
 
+%make_alias(TDataXtd_Axis)
+
 %extend TDataXtd_Axis {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -425,7 +439,7 @@ Removes the geometries involved in the constraint or dimension from the array of
 Parameters
 ----------
 aLabel: TDF_Label
-TheList: NCollection_List<TDF_Label>
+TheList: TDF_LabelList
 
 Return
 -------
@@ -435,7 +449,7 @@ Description
 -----------
 collects constraints on Childs for label <aLabel>.
 ") CollectChildConstraints;
-		static void CollectChildConstraints(const TDF_Label & aLabel, NCollection_List<TDF_Label> & TheList);
+		static void CollectChildConstraints(const TDF_Label & aLabel, TDF_LabelList & TheList);
 
 		/****** TDataXtd_Constraint::Dump ******/
 		/****** md5 signature: c3832f0735de2bdac14af95fe6ce7de3 ******/
@@ -913,6 +927,8 @@ Returns true if this constraint attribute defined by status is valid. By default
 };
 
 
+%make_alias(TDataXtd_Constraint)
+
 %extend TDataXtd_Constraint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1384,6 +1400,8 @@ Returns the topological attribute S used to define the type of geometric constru
 };
 
 
+%make_alias(TDataXtd_Geometry)
+
 %extend TDataXtd_Geometry {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1468,6 +1486,8 @@ Returns the ID of the attribute.
 
 };
 
+
+%make_alias(TDataXtd_Pattern)
 
 %extend TDataXtd_Pattern {
 	%pythoncode {
@@ -1556,6 +1576,8 @@ Find, or create, a Placement attribute. Placement attribute is returned. Placeme
 
 };
 
+
+%make_alias(TDataXtd_Placement)
 
 %extend TDataXtd_Placement {
 	%pythoncode {
@@ -1664,6 +1686,8 @@ Finds, or creates, a Plane attribute and sets <P> as generated the associated Na
 };
 
 
+%make_alias(TDataXtd_Plane)
+
 %extend TDataXtd_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1770,6 +1794,8 @@ Sets the label Label as a point attribute containing the point P. If no object i
 
 };
 
+
+%make_alias(TDataXtd_Point)
 
 %extend TDataXtd_Point {
 	%pythoncode {
@@ -1960,6 +1986,8 @@ No available documentation.
 
 };
 
+
+%make_alias(TDataXtd_Position)
 
 %extend TDataXtd_Position {
 	%pythoncode {
@@ -2592,6 +2620,8 @@ Convert Quantity_NameOfColor to old enumeration value for writing documents in c
 };
 
 
+%make_alias(TDataXtd_Presentation)
+
 %extend TDataXtd_Presentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2753,6 +2783,8 @@ Create or update associated NamedShape attribute. the Shape attribute is returne
 
 };
 
+
+%make_alias(TDataXtd_Shape)
 
 %extend TDataXtd_Shape {
 	%pythoncode {
@@ -3185,6 +3217,8 @@ Return: UVNode at the given index. Raises Standard_OutOfRange exception if theIn
 
 };
 
+
+%make_alias(TDataXtd_Triangulation)
 
 %extend TDataXtd_Triangulation {
 	%pythoncode {
@@ -3682,6 +3716,8 @@ No available documentation.
 
 };
 
+
+%make_alias(TDataXtd_PatternStd)
 
 %extend TDataXtd_PatternStd {
 	%pythoncode {

@@ -3,8 +3,8 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.TDataStd import *
 from OCC.Core.TDF import *
+from OCC.Core.TDataStd import *
 from OCC.Core.gp import *
 from OCC.Core.TNaming import *
 from OCC.Core.Quantity import *
@@ -113,6 +113,8 @@ TDataXtd_PLANE = TDataXtd_GeometryEnum.TDataXtd_PLANE
 TDataXtd_CYLINDER = TDataXtd_GeometryEnum.TDataXtd_CYLINDER
 
 class tdataxtd:
+    @staticmethod
+    def IDList(anIDList: TDF_IDList) -> None: ...
     @overload
     @staticmethod
     def Print(GEO: TDataXtd_GeometryEnum) -> Tuple[Standard_OStream, str]: ...
@@ -136,6 +138,8 @@ class TDataXtd_Axis(TDataStd_GenericEmpty):
 class TDataXtd_Constraint(TDF_Attribute):
     def __init__(self) -> None: ...
     def ClearGeometries(self) -> None: ...
+    @staticmethod
+    def CollectChildConstraints(aLabel: TDF_Label, TheList: TDF_LabelList) -> None: ...
     def Dump(self) -> Tuple[Standard_OStream, str]: ...
     def GetGeometry(self, Index: int) -> TNaming_NamedShape: ...
     @staticmethod

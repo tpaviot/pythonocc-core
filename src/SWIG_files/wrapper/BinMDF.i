@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmdf.html"
 #include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<BinObjMgt_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Resource_module.hxx>
 #include<TDF_module.hxx>
@@ -60,6 +61,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmdf.html"
 %import Message.i
 %import TDF.i
 %import BinObjMgt.i
+%import TColStd.i
 %import TCollection.i
 
 %pythoncode {
@@ -195,7 +197,7 @@ Parameters
 ----------
 aSource: TDF_Attribute
 aTarget: BinObjMgt_Persistent
-aRelocTable: Standard_Transient
+aRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -205,7 +207,7 @@ Description
 -----------
 Translate the contents of <aSource> and put it into <aTarget>, using the relocation table <aRelocTable> to keep the sharings.
 ") Paste;
-		virtual void Paste(const opencascade::handle<TDF_Attribute> & aSource, BinObjMgt_Persistent & aTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & aRelocTable);
+		virtual void Paste(const opencascade::handle<TDF_Attribute> & aSource, BinObjMgt_Persistent & aTarget, TColStd_IndexedMapOfTransient & aRelocTable);
 
 		/****** BinMDF_ADriver::SourceType ******/
 		/****** md5 signature: b701df1c50a5570aedd2a6108c7e2344 ******/
@@ -324,7 +326,7 @@ Adds a translation driver <theDriver>.
 		%feature("autodoc", "
 Parameters
 ----------
-theTypes: Standard_Transient
+theTypes: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -334,7 +336,7 @@ Description
 -----------
 Assigns the IDs to the drivers of the given Types. It uses indices in the map as IDs. Useful in storage procedure.
 ") AssignIds;
-		void AssignIds(const NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theTypes);
+		void AssignIds(const TColStd_IndexedMapOfTransient & theTypes);
 
 		/****** BinMDF_ADriverTable::AssignIds ******/
 		/****** md5 signature: 64aad9b1cb5880336f7be044133245ab ******/
@@ -342,7 +344,7 @@ Assigns the IDs to the drivers of the given Types. It uses indices in the map as
 		%feature("autodoc", "
 Parameters
 ----------
-theTypeNames: NCollection_Sequence<TCollection_AsciiString>
+theTypeNames: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -352,7 +354,7 @@ Description
 -----------
 Assigns the IDs to the drivers of the given Type Names; It uses indices in the sequence as IDs. Useful in retrieval procedure.
 ") AssignIds;
-		void AssignIds(const NCollection_Sequence<TCollection_AsciiString> & theTypeNames);
+		void AssignIds(const TColStd_SequenceOfAsciiString & theTypeNames);
 
 		/****** BinMDF_ADriverTable::GetDriver ******/
 		/****** md5 signature: 4e4dbe91b9b851121893298cd99ea5a2 ******/
@@ -469,7 +471,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -479,7 +481,7 @@ Description
 -----------
 Reuses the base driver to store the base fields.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
@@ -556,7 +558,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -566,7 +568,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 
@@ -643,7 +645,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -653,7 +655,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 

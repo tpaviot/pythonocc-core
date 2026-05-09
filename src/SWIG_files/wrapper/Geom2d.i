@@ -48,6 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2d.html"
 #include<GeomAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
@@ -79,6 +81,8 @@ end of numpy support section
 %import NCollection.i
 %import gp.i
 %import GeomAbs.i
+%import TColgp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -4104,9 +4108,9 @@ class Geom2d_BSplineCurve : public Geom2d_BoundedCurve {
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt2d
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 
@@ -4118,7 +4122,7 @@ Description
 -----------
 Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last.
 ") Geom2d_BSplineCurve;
-		 Geom2d_BSplineCurve(const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
+		 Geom2d_BSplineCurve(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Geom2d_BSplineCurve::Geom2d_BSplineCurve ******/
 		/****** md5 signature: 727ea289c6b0455d54f824f7a753b522 ******/
@@ -4126,10 +4130,10 @@ Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of de
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 
@@ -4141,7 +4145,7 @@ Description
 -----------
 Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>. The following conditions must be verified. 0 < Degree <= MaxDegree. //! Knots.Length() == Mults.Length() >= 2 //! Knots(i) < Knots(i+1) (Knots are increasing) //! 1 <= Mults(i) <= Degree //! On a non periodic curve the first and last multiplicities may be Degree+1 (this is even recommended if you want the curve to start and finish on the first and last pole). //! On a periodic curve the first and the last multicities must be the same. //! on non-periodic curves //! Poles.Length() == Sum(Mults(i)) - Degree - 1 >= 2 //! on periodic curves //! Poles.Length() == Sum(Mults(i)) except the first or last.
 ") Geom2d_BSplineCurve;
-		 Geom2d_BSplineCurve(const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
+		 Geom2d_BSplineCurve(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Geom2d_BSplineCurve::Geom2d_BSplineCurve ******/
 		/****** md5 signature: 3218317f2a4b0c2191e0f14616eb6aab ******/
@@ -4493,8 +4497,8 @@ Inserts a knot value in the sequence of knots. If <U> is an existing knot the mu
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 ParametricTolerance: double (optional, default to 0.0)
 Add: bool (optional, default to false)
 
@@ -4506,7 +4510,7 @@ Description
 -----------
 Inserts the values of the array Knots, with the respective multiplicities given by the array Mults, into the knots table of this BSpline curve. If a value of the array Knots is an existing knot, its multiplicity is: - increased by M, if Add is true, or - increased to M, if Add is false (default value). The tolerance criterion used for knot equality is the larger of the values ParametricTolerance (defaulted to 0.) and double::Epsilon(U), where U is the current knot value. Warning - For a value of the array Knots which is less than the first parameter or greater than the last parameter of this BSpline curve, nothing is done. - For a value of the array Mults which is negative or null, nothing is done. - The multiplicity of a knot is limited to the degree of this BSpline curve.
 ") InsertKnots;
-		void InsertKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
+		void InsertKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
 
 		/****** Geom2d_BSplineCurve::InsertPoleAfter ******/
 		/****** md5 signature: c65748e8f1d88a46c227251500fc9252 ******/
@@ -4662,7 +4666,7 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -4672,20 +4676,20 @@ Description
 -----------
 No available documentation.
 ") KnotSequence;
-		void KnotSequence(NCollection_Array1<double> & K);
+		void KnotSequence(TColStd_Array1OfReal & K);
 
 		/****** Geom2d_BSplineCurve::KnotSequence ******/
 		/****** md5 signature: 13e41dae8bd546a82617e7927f39c7c2 ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: K = {k1, k1, k1, k2, k3, k3, k4, k4, k4}.
 ") KnotSequence;
-		const NCollection_Array1<double> & KnotSequence();
+		const TColStd_Array1OfReal & KnotSequence();
 
 		/****** Geom2d_BSplineCurve::Knots ******/
 		/****** md5 signature: 28e846af74f6d8e9d9bca42676b511f9 ******/
@@ -4693,7 +4697,7 @@ Returns the knots sequence. In this sequence the knots with a multiplicity great
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -4703,20 +4707,20 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & K);
+		void Knots(TColStd_Array1OfReal & K);
 
 		/****** Geom2d_BSplineCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the knot values of the B-spline curve;.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Geom2d_BSplineCurve::LastParameter ******/
 		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
@@ -4960,7 +4964,7 @@ Move a point with parameter U to P. and makes it tangent at U be Tangent. Starti
 		%feature("autodoc", "
 Parameters
 ----------
-M: NCollection_Array1<int>
+M: TColStd_Array1OfInteger
 
 Return
 -------
@@ -4970,20 +4974,20 @@ Description
 -----------
 No available documentation.
 ") Multiplicities;
-		void Multiplicities(NCollection_Array1<int> & M);
+		void Multiplicities(TColStd_Array1OfInteger & M);
 
 		/****** Geom2d_BSplineCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 returns the multiplicity of the knots of the curve.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Geom2d_BSplineCurve::Multiplicity ******/
 		/****** md5 signature: 6deea6eef255db56cfdeb88488a383cc ******/
@@ -5070,7 +5074,7 @@ Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt2d>
+P: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5080,20 +5084,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array1<gp_Pnt2d> & P);
+		void Poles(TColgp_Array1OfPnt2d & P);
 
 		/****** Geom2d_BSplineCurve::Poles ******/
 		/****** md5 signature: 8afae95fa5301d98d2ab229e2b82ae7d ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 Returns the poles of the B-spline curve;.
 ") Poles;
-		const NCollection_Array1<gp_Pnt2d> Poles();
+		const TColgp_Array1OfPnt2d & Poles();
 
 		/****** Geom2d_BSplineCurve::RemoveKnot ******/
 		/****** md5 signature: 54905b41bbca7519e1f70b87cdd71db9 ******/
@@ -5265,7 +5269,7 @@ Modifies this BSpline curve by assigning the value K to the knot of index Index 
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -5275,7 +5279,7 @@ Description
 -----------
 Modifies this BSpline curve by assigning the array K to its knots table. The multiplicity of the knots is not modified. Exceptions Standard_ConstructionError if the values in the array K are not in ascending order. Standard_OutOfRange if the bounds of the array K are not respectively 1 and the number of knots of this BSpline curve.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & K);
+		void SetKnots(const TColStd_Array1OfReal & K);
 
 		/****** Geom2d_BSplineCurve::SetNotPeriodic ******/
 		/****** md5 signature: ccfbd171d2b38df3531b77ecbc51dcae ******/
@@ -5434,7 +5438,7 @@ Returns the weight of the pole of range Index . Raised if Index < 1 or Index > N
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array1<double>
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -5444,33 +5448,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array1<double> & W);
+		void Weights(TColStd_Array1OfReal & W);
 
 		/****** Geom2d_BSplineCurve::Weights ******/
 		/****** md5 signature: b577b4e8ac6293b0a90c61644b9e289c ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Returns the weights of the B-spline curve;.
 ") Weights;
-		const NCollection_Array1<double> * Weights();
+		const TColStd_Array1OfReal * Weights();
 
 		/****** Geom2d_BSplineCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array1<double> & WeightsArray();
+		const TColStd_Array1OfReal & WeightsArray();
 
 };
 
@@ -5494,7 +5498,7 @@ class Geom2d_BezierCurve : public Geom2d_BoundedCurve {
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: NCollection_Array1<gp_Pnt2d>
+CurvePoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5504,7 +5508,7 @@ Description
 -----------
 Creates a non rational Bezier curve with a set of poles: CurvePoles. The weights are defaulted to all being 1. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2.
 ") Geom2d_BezierCurve;
-		 Geom2d_BezierCurve(const NCollection_Array1<gp_Pnt2d> & CurvePoles);
+		 Geom2d_BezierCurve(const TColgp_Array1OfPnt2d & CurvePoles);
 
 		/****** Geom2d_BezierCurve::Geom2d_BezierCurve ******/
 		/****** md5 signature: c17bd89b64a0584c968f10a39e8ef84b ******/
@@ -5512,8 +5516,8 @@ Creates a non rational Bezier curve with a set of poles: CurvePoles. The weights
 		%feature("autodoc", "
 Parameters
 ----------
-CurvePoles: NCollection_Array1<gp_Pnt2d>
-PoleWeights: NCollection_Array1<double>
+CurvePoles: TColgp_Array1OfPnt2d
+PoleWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -5523,7 +5527,7 @@ Description
 -----------
 Creates a rational Bezier curve with the set of poles CurvePoles and the set of weights PoleWeights. If all the weights are identical the curve is considered as non rational. Raises ConstructionError if the number of poles is greater than MaxDegree + 1 or lower than 2 or CurvePoles and CurveWeights have not the same length or one weight value is lower or equal to Resolution from package gp.
 ") Geom2d_BezierCurve;
-		 Geom2d_BezierCurve(const NCollection_Array1<gp_Pnt2d> & CurvePoles, const NCollection_Array1<double> & PoleWeights);
+		 Geom2d_BezierCurve(const TColgp_Array1OfPnt2d & CurvePoles, const TColStd_Array1OfReal & PoleWeights);
 
 		/****** Geom2d_BezierCurve::Geom2d_BezierCurve ******/
 		/****** md5 signature: f04ed35050ae3ffb2c3a6524fe7b0256 ******/
@@ -5879,26 +5883,26 @@ Returns false if all the weights are identical. The tolerance criterion is Resol
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier flat knots for the current degree.
 ") KnotSequence;
-		const NCollection_Array1<double> & KnotSequence();
+		const TColStd_Array1OfReal & KnotSequence();
 
 		/****** Geom2d_BezierCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns Bezier knots {0.0, 1.0} as a static array.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Geom2d_BezierCurve::LastParameter ******/
 		/****** md5 signature: e183aab1f162396963682ac01a945da8 ******/
@@ -5931,13 +5935,13 @@ Returns the value of the maximum polynomial degree of a BezierCurve. This value 
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns Bezier multiplicities for the current degree.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Geom2d_BezierCurve::NbPoles ******/
 		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
@@ -5976,7 +5980,7 @@ Returns the pole of range Index. Raised if Index is not in the range [1, NbPoles
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt2d>
+P: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5986,20 +5990,20 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array1<gp_Pnt2d> & P);
+		void Poles(TColgp_Array1OfPnt2d & P);
 
 		/****** Geom2d_BezierCurve::Poles ******/
 		/****** md5 signature: 2daa8afc5cd5ac7baf6da5f8d481a385 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 Returns all the poles of the curve.
 ") Poles;
-		const NCollection_Array1<gp_Pnt2d> Poles();
+		const TColgp_Array1OfPnt2d & Poles();
 
 		/****** Geom2d_BezierCurve::RemovePole ******/
 		/****** md5 signature: e5a8000c59dc6fb4e1e49bcebf40135a ******/
@@ -6218,7 +6222,7 @@ Returns the weight of range Index. Raised if Index is not in the range [1, NbPol
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array1<double>
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -6228,33 +6232,33 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array1<double> & W);
+		void Weights(TColStd_Array1OfReal & W);
 
 		/****** Geom2d_BezierCurve::Weights ******/
 		/****** md5 signature: d58e535c0e2f6d48057cd9bdc03d1788 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Returns all the weights of the curve.
 ") Weights;
-		const NCollection_Array1<double> * Weights();
+		const TColStd_Array1OfReal * Weights();
 
 		/****** Geom2d_BezierCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns a const reference to the weights array. For rational curves: the internal owning weights array. For non-rational curves: a non-owning view of unit weights from BSplCLib. The array is always sized to match NbPoles(). @warning Do NOT modify elements through the returned reference.
 ") WeightsArray;
-		const NCollection_Array1<double> & WeightsArray();
+		const TColStd_Array1OfReal & WeightsArray();
 
 };
 

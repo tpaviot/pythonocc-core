@@ -99,6 +99,10 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TopTools_HArray1OfShape)
+%wrap_handle(TopTools_HArray1OfListOfShape)
+%wrap_handle(TopTools_HArray2OfShape)
+%wrap_handle(TopTools_HSequenceOfShape)
 /* end handles declaration */
 
 /* templates */
@@ -109,9 +113,33 @@ Array1ExtendIter(TopoDS_Shape)
 %ignore NCollection_DataMap<int,TopTools_ListOfShape>::Items;
 %ignore NCollection_DataMap<int,TopTools_ListOfShape>::KeyValues;
 %template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap<int,TopTools_ListOfShape>;
+
+%extend NCollection_DataMap<int,TopTools_ListOfShape> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopTools_DataMapOfIntegerListOfShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TopoDS_Shape>::Items;
 %ignore NCollection_DataMap<int,TopoDS_Shape>::KeyValues;
 %template(TopTools_DataMapOfIntegerShape) NCollection_DataMap<int,TopoDS_Shape>;
+
+%extend NCollection_DataMap<int,TopoDS_Shape> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopTools_DataMapOfIntegerShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<TopoDS_Shape,int>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,int>::KeyValues;
 %template(TopTools_DataMapOfOrientedShapeInteger) NCollection_DataMap<TopoDS_Shape,int>;
@@ -174,17 +202,41 @@ Array1ExtendIter(TopoDS_Shape)
 %template(TopTools_ListOfListOfShape) NCollection_List<TopTools_ListOfShape>;
 
 %extend NCollection_List<TopTools_ListOfShape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopTools_ListIteratorOfListOfListOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
 
 %extend NCollection_List<TopoDS_Shape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopTools_ListIteratorOfListOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape>;
@@ -192,6 +244,13 @@ Array1ExtendIter(TopoDS_Shape)
 %template(TopTools_SequenceOfShape) NCollection_Sequence<TopoDS_Shape>;
 
 %extend NCollection_Sequence<TopoDS_Shape> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -935,17 +994,6 @@ Writes the geometry of <S> on the stream <OS> in a format that can be read back 
 
 /* harray1 classes */
 
-class TopTools_HArray1OfListOfShape : public NCollection_Array1<TopTools_ListOfShape>, public Standard_Transient {
-  public:
-    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopTools_ListOfShape>::value_type& theValue);
-    TopTools_HArray1OfListOfShape(const NCollection_Array1<TopTools_ListOfShape>& theOther);
-    const NCollection_Array1<TopTools_ListOfShape>& Array1();
-    NCollection_Array1<TopTools_ListOfShape>& ChangeArray1();
-};
-%make_alias(TopTools_HArray1OfListOfShape)
-
-
 class TopTools_HArray1OfShape : public NCollection_Array1<TopoDS_Shape>, public Standard_Transient {
   public:
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -955,6 +1003,17 @@ class TopTools_HArray1OfShape : public NCollection_Array1<TopoDS_Shape>, public 
     NCollection_Array1<TopoDS_Shape>& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfShape)
+
+
+class TopTools_HArray1OfListOfShape : public NCollection_Array1<TopTools_ListOfShape>, public Standard_Transient {
+  public:
+    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopTools_ListOfShape>::value_type& theValue);
+    TopTools_HArray1OfListOfShape(const NCollection_Array1<TopTools_ListOfShape>& theOther);
+    const NCollection_Array1<TopTools_ListOfShape>& Array1();
+    NCollection_Array1<TopTools_ListOfShape>& ChangeArray1();
+};
+%make_alias(TopTools_HArray1OfListOfShape)
 
 /* harray2 classes */
 class TopTools_HArray2OfShape : public NCollection_Array2<TopoDS_Shape>, public Standard_Transient {

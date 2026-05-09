@@ -22,6 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntPatch_ALine.hxx>
 #include<IntPatch_ALineToWLine.hxx>
 #include<IntPatch_ArcFunction.hxx>
+#include<IntPatch_BVHTraversal.hxx>
 #include<IntPatch_CSFunction.hxx>
 #include<IntPatch_CurvIntSurf.hxx>
 #include<IntPatch_GLine.hxx>
@@ -40,6 +41,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntPatch_PolyLine.hxx>
 #include<IntPatch_Polygo.hxx>
 #include<IntPatch_Polyhedron.hxx>
+#include<IntPatch_PolyhedronBVH.hxx>
 #include<IntPatch_PolyhedronTool.hxx>
 #include<IntPatch_PrmPrmIntersection.hxx>
 #include<IntPatch_PrmPrmIntersection_T3Bits.hxx>

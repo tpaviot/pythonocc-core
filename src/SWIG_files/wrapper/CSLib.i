@@ -44,8 +44,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cslib.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<math_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -54,8 +56,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cslib.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColgp.i
 %import gp.i
 %import math.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -151,7 +155,7 @@ Parameters
 ----------
 theNu: int
 theNv: int
-theDerSurf: NCollection_Array2<gp_Vec>
+theDerSurf: TColgp_Array2OfVec
 
 Return
 -------
@@ -165,7 +169,7 @@ Input parameter: theNv Derivative order in V direction
 Input parameter: theDerSurf Surface derivatives array where theDerSurf(i,j) = d^(i+j)S/(du^i * dv^j)  for i = 0..theNu+1, j = 0..theNv+1 
 Return: The derivative vector d^(Nu+Nv)N / (du^Nu * dv^Nv).
 ") DNNUV;
-		static gp_Vec DNNUV(int theNu, int theNv, const NCollection_Array2<gp_Vec> & theDerSurf);
+		static gp_Vec DNNUV(int theNu, int theNv, const TColgp_Array2OfVec & theDerSurf);
 
 		/****** CSLib::DNNUV ******/
 		/****** md5 signature: ff29703c046f8d709f008f9df70c2882 ******/
@@ -175,8 +179,8 @@ Parameters
 ----------
 theNu: int
 theNv: int
-theDerSurf1: NCollection_Array2<gp_Vec>
-theDerSurf2: NCollection_Array2<gp_Vec>
+theDerSurf1: TColgp_Array2OfVec
+theDerSurf2: TColgp_Array2OfVec
 
 Return
 -------
@@ -191,7 +195,7 @@ Input parameter: theDerSurf1 Derivatives of the first surface S1
 Input parameter: theDerSurf2 Derivatives of the second surface S2 
 Return: The derivative vector.
 ") DNNUV;
-		static gp_Vec DNNUV(int theNu, int theNv, const NCollection_Array2<gp_Vec> & theDerSurf1, const NCollection_Array2<gp_Vec> & theDerSurf2);
+		static gp_Vec DNNUV(int theNu, int theNv, const TColgp_Array2OfVec & theDerSurf1, const TColgp_Array2OfVec & theDerSurf2);
 
 		/****** CSLib::DNNormal ******/
 		/****** md5 signature: 706ff335bdfa8797055675f2b13c7751 ******/
@@ -201,7 +205,7 @@ Parameters
 ----------
 theNu: int
 theNv: int
-theDerNUV: NCollection_Array2<gp_Vec>
+theDerNUV: TColgp_Array2OfVec
 theIduref: int (optional, default to 0)
 theIdvref: int (optional, default to 0)
 
@@ -219,7 +223,7 @@ Input parameter: theIduref Reference index offset in U (default 0 for regular ca
 Input parameter: theIdvref Reference index offset in V (default 0 for regular cases) 
 Return: The derivative of the normalized normal vector.
 ") DNNormal;
-		static gp_Vec DNNormal(int theNu, int theNv, const NCollection_Array2<gp_Vec> & theDerNUV, int theIduref = 0, int theIdvref = 0);
+		static gp_Vec DNNormal(int theNu, int theNv, const TColgp_Array2OfVec & theDerNUV, int theIduref = 0, int theIdvref = 0);
 
 		/****** CSLib::Normal ******/
 		/****** md5 signature: b8b357e3301f598d80fd10f9e63dd4fe ******/
@@ -307,7 +311,7 @@ Input parameter: theMagTol Magnitude tolerance for singularity detection @param[
 Parameters
 ----------
 theMaxOrder: int
-theDerNUV: NCollection_Array2<gp_Vec>
+theDerNUV: TColgp_Array2OfVec
 theMagTol: double
 theU: double
 theV: double
@@ -332,7 +336,7 @@ Input parameter: theMagTol Magnitude tolerance
 Input parameter: theU, theV Current parameter values 
 Input parameter: theUmin, theUmax, theVmin, theVmax Parameter bounds @param[out] theStatus Result status @param[out] theNormal Computed normal direction @param[out] theOrderU, theOrderV Orders of the first non-null derivative used.
 ") Normal;
-		static void Normal(int theMaxOrder, const NCollection_Array2<gp_Vec> & theDerNUV, double theMagTol, double theU, double theV, double theUmin, double theUmax, double theVmin, double theVmax, CSLib_NormalStatus &OutValue, gp_Dir & theNormal, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void Normal(int theMaxOrder, const TColgp_Array2OfVec & theDerNUV, double theMagTol, double theU, double theV, double theUmin, double theUmax, double theVmin, double theVmax, CSLib_NormalStatus &OutValue, gp_Dir & theNormal, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -358,7 +362,7 @@ class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 Parameters
 ----------
 theK0: int
-theLi: NCollection_Array1<double>
+theLi: TColStd_Array1OfReal
 
 Return
 -------
@@ -370,7 +374,7 @@ Constructs a polynomial definition for normal computation. //!
 Input parameter: theK0 Polynomial degree (must be >= 0) 
 Input parameter: theLi Array of coefficients with indices 0 to theK0.
 ") CSLib_NormalPolyDef;
-		 CSLib_NormalPolyDef(int theK0, const NCollection_Array1<double> & theLi);
+		 CSLib_NormalPolyDef(int theK0, const TColStd_Array1OfReal & theLi);
 
 		/****** CSLib_NormalPolyDef::Derivative ******/
 		/****** md5 signature: 13782f68cfbdc3f0d4811bf36276435a ******/

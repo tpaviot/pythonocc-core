@@ -7,6 +7,7 @@ from OCC.Core.BinMDF import *
 from OCC.Core.Message import *
 from OCC.Core.TDF import *
 from OCC.Core.BinObjMgt import *
+from OCC.Core.TColStd import *
 
 
 class binmdocstd:
@@ -18,6 +19,8 @@ class BinMDocStd_XLinkDriver(BinMDF_ADriver):
     def NewEmpty(self) -> TDF_Attribute: ...
     @overload
     def Paste(self, Source: BinObjMgt_Persistent, Target: TDF_Attribute, RelocTable: BinObjMgt_RRelocationTable) -> bool: ...
+    @overload
+    def Paste(self, Source: TDF_Attribute, Target: BinObjMgt_Persistent, RelocTable: TColStd_IndexedMapOfTransient) -> None: ...
 
 # harray1 classes
 # harray2 classes

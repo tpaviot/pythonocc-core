@@ -150,7 +150,7 @@ double
 
 Description
 -----------
-Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','millimeter') returns 1. ;.
+Converts the local unit value to another local unit value. Example: AnyToAny(0.0254,'in.','mm') returns 1. ;.
 ") AnyToAny;
 		static double AnyToAny(const double aData, const char * const aUnit1, const char * const aUnit2);
 
@@ -625,7 +625,7 @@ None
 
 Description
 -----------
-Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','millimeter').
+Sets the current unit dimension <aUnit> to the unit quantity <aQuantity>. Example: SetCurrentUnit('LENGTH','mm').
 ") SetCurrentUnit;
 		static void SetCurrentUnit(const char * const aQuantity, const char * const aUnit);
 

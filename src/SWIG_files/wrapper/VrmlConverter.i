@@ -45,11 +45,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.htm
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<TColStd_module.hxx>
 #include<Aspect_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Vrml_module.hxx>
+#include<TopTools_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<Poly_module.hxx>
+#include<TColgp_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
@@ -88,11 +91,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlconverter.htm
 %import Standard.i
 %import NCollection.i
 %import Adaptor3d.i
+%import TColStd.i
 %import Aspect.i
 %import TopoDS.i
 %import Vrml.i
+%import TopTools.i
 %import HLRAlgo.i
 %import Poly.i
+%import TColgp.i
 %import BRepAdaptor.i
 
 %pythoncode {
@@ -342,7 +348,7 @@ adds to the OStream the drawing of the curve aCurve with respect to the maximal 
 Parameters
 ----------
 aCurve: Adaptor3d_Curve
-aParams: NCollection_HArray1<double
+aParams: TColStd_HArray1OfReal
 aNbNodes: int
 aDrawer: VrmlConverter_Drawer
 
@@ -354,7 +360,7 @@ Description
 -----------
 adds to the OStream the drawing of the curve aCurve with the array of parameters to retrieve points on curve.
 ") Add;
-		static void Add(std::ostream &OutValue, const Adaptor3d_Curve & aCurve, const opencascade::handle<NCollection_HArray1<double> > & aParams, const int aNbNodes, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
+		static void Add(std::ostream &OutValue, const Adaptor3d_Curve & aCurve, const opencascade::handle<TColStd_HArray1OfReal> & aParams, const int aNbNodes, const opencascade::handle<VrmlConverter_Drawer> & aDrawer);
 
 };
 
@@ -1287,7 +1293,7 @@ class VrmlConverter_Projector : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-Shapes: NCollection_Array1<TopoDS_Shape>
+Shapes: TopTools_Array1OfShape
 Focus: double
 DX: double
 DY: double
@@ -1306,7 +1312,7 @@ Description
 -----------
 No available documentation.
 ") VrmlConverter_Projector;
-		 VrmlConverter_Projector(const NCollection_Array1<TopoDS_Shape> & Shapes, const double Focus, const double DX, const double DY, const double DZ, const double XUp, const double YUp, const double ZUp, const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera, const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
+		 VrmlConverter_Projector(const TopTools_Array1OfShape & Shapes, const double Focus, const double DX, const double DY, const double DZ, const double XUp, const double YUp, const double ZUp, const VrmlConverter_TypeOfCamera Camera = VrmlConverter_NoCamera, const VrmlConverter_TypeOfLight Light = VrmlConverter_NoLight);
 
 		/****** VrmlConverter_Projector::Add ******/
 		/****** md5 signature: fe7a6c17a63ece511d1868bb0e2144ae ******/
@@ -1443,7 +1449,7 @@ Parameters
 ----------
 aFace: TopoDS_Face
 pc: Poly_Connect
-Nor: NCollection_Array1<gp_Dir>
+Nor: TColgp_Array1OfDir
 
 Return
 -------
@@ -1453,7 +1459,7 @@ Description
 -----------
 No available documentation.
 ") ComputeNormal;
-		static void ComputeNormal(const TopoDS_Face & aFace, Poly_Connect & pc, NCollection_Array1<gp_Dir> & Nor);
+		static void ComputeNormal(const TopoDS_Face & aFace, Poly_Connect & pc, TColgp_Array1OfDir & Nor);
 
 };
 

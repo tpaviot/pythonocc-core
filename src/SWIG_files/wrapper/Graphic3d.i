@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_graphic3d.html"
 #include<TCollection_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Bnd_module.hxx>
+#include<TColStd_module.hxx>
 #include<Image_module.hxx>
 #include<OSD_module.hxx>
 #include<Media_module.hxx>
@@ -76,6 +77,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_graphic3d.html"
 %import TCollection.i
 %import TopLoc.i
 %import Bnd.i
+%import TColStd.i
 %import Image.i
 %import OSD.i
 %import Media.i
@@ -1623,11 +1625,13 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %wrap_handle(Graphic3d_ArrayOfPrimitives)
 %wrap_handle(Graphic3d_Aspects)
 %wrap_handle(Graphic3d_BoundBuffer)
+%wrap_handle(Graphic3d_BvhCStructureSet)
 %wrap_handle(Graphic3d_CLight)
 %wrap_handle(Graphic3d_CStructure)
 %wrap_handle(Graphic3d_Camera)
 %wrap_handle(Graphic3d_ClipPlane)
 %wrap_handle(Graphic3d_DataStructureManager)
+%wrap_handle(Graphic3d_Flipper)
 %wrap_handle(Graphic3d_FrameStats)
 %wrap_handle(Graphic3d_GraphicDriver)
 %wrap_handle(Graphic3d_GraphicDriverFactory)
@@ -1687,6 +1691,13 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %template(Graphic3d_SequenceOfGroup) NCollection_Sequence<opencascade::handle<Graphic3d_Group>>;
 
 %extend NCollection_Sequence<opencascade::handle<Graphic3d_Group>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1695,6 +1706,13 @@ Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFI
 %template(Graphic3d_SequenceOfStructure) NCollection_Sequence<opencascade::handle<Graphic3d_Structure>>;
 
 %extend NCollection_Sequence<opencascade::handle<Graphic3d_Structure>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -5450,6 +5468,8 @@ Swaps structures with the given indices.
 };
 
 
+%make_alias(Graphic3d_BvhCStructureSet)
+
 %extend Graphic3d_BvhCStructureSet {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6427,6 +6447,19 @@ Return: graphic groups.
 ") Groups;
 		const NCollection_Sequence<opencascade::handle<Graphic3d_Group>> & Groups();
 
+		/****** Graphic3d_CStructure::HasGroupFlipping ******/
+		/****** md5 signature: 27e87363532a7fbeed8f7375ce707334 ******/
+		%feature("compactdefaultargs") HasGroupFlipping;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if some groups might have flipping options; False by default.
+") HasGroupFlipping;
+		bool HasGroupFlipping();
+
 		/****** Graphic3d_CStructure::HasGroupTransformPersistence ******/
 		/****** md5 signature: 5d4952bc8c8bf1e884760e5b9bb8f355 ******/
 		%feature("compactdefaultargs") HasGroupTransformPersistence;
@@ -6664,6 +6697,24 @@ Description
 Marks structure as culled/not culled - note that IsAlwaysRendered() is ignored here!.
 ") SetCulled;
 		void SetCulled(bool theIsCulled);
+
+		/****** Graphic3d_CStructure::SetGroupFlipping ******/
+		/****** md5 signature: 2842dc2c0dd1141fb242302963bba6ce ******/
+		%feature("compactdefaultargs") SetGroupFlipping;
+		%feature("autodoc", "
+Parameters
+----------
+theValue: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set if some groups might have flipping options.
+") SetGroupFlipping;
+		void SetGroupFlipping(bool theValue);
 
 		/****** Graphic3d_CStructure::SetGroupTransformPersistence ******/
 		/****** md5 signature: bac91b6506cf81c7d593e9f62c6eaf8b ******/
@@ -7283,7 +7334,7 @@ Calculate WCS frustum planes for the camera projection volume. Frustum is a conv
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_Array1<NCollection_Vec3<double> >
+thePoints: NCollection_Array1<NCollection_Vec3<double>>
 theModelWorld: NCollection_Mat4<double> (optional, default to NCollection_Mat4<double>())
 
 Return
@@ -7294,7 +7345,7 @@ Description
 -----------
 Fill array of current view frustum corners. The size of this array is equal to FrustumVerticesNB. The order of vertices is as defined in FrustumVert_* enumeration.
 ") FrustumPoints;
-		void FrustumPoints(NCollection_Array1<NCollection_Vec3<double> > & thePoints, const NCollection_Mat4<double> & theModelWorld = NCollection_Mat4<double>());
+		void FrustumPoints(NCollection_Array1<NCollection_Vec3<double>> & thePoints, const NCollection_Mat4<double> & theModelWorld = NCollection_Mat4<double>());
 
 		/****** Graphic3d_Camera::GetIODType ******/
 		/****** md5 signature: 930a27532abcc8fe5dc7b294192f1acf ******/
@@ -9728,6 +9779,92 @@ class Graphic3d_DataStructureManager : public Standard_Transient {
 	}
 };
 
+/**************************
+* class Graphic3d_Flipper *
+**************************/
+class Graphic3d_Flipper : public Standard_Transient {
+	public:
+		/****** Graphic3d_Flipper::Graphic3d_Flipper ******/
+		/****** md5 signature: bf4dada889edfcf11d0a878dfaa6e490 ******/
+		%feature("compactdefaultargs") Graphic3d_Flipper;
+		%feature("autodoc", "
+Parameters
+----------
+theRefPlane: gp_Ax2
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") Graphic3d_Flipper;
+		 Graphic3d_Flipper(const gp_Ax2 & theRefPlane);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
+        %extend{
+            std::string DumpJson(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
+		/****** Graphic3d_Flipper::RefPlane ******/
+		/****** md5 signature: a18ac6bd460cf84914871288d7af3d4e ******/
+		%feature("compactdefaultargs") RefPlane;
+		%feature("autodoc", "Return
+-------
+gp_Ax2
+
+Description
+-----------
+Return reference plane used for flipping.
+") RefPlane;
+		gp_Ax2 RefPlane();
+
+		/****** Graphic3d_Flipper::SetRefPlane ******/
+		/****** md5 signature: bf9a543bd2f56c32757e05b52f09bf8f ******/
+		%feature("compactdefaultargs") SetRefPlane;
+		%feature("autodoc", "
+Parameters
+----------
+theValue: gp_Ax2
+
+Return
+-------
+None
+
+Description
+-----------
+Set reference plane used for flipping.
+") SetRefPlane;
+		void SetRefPlane(const gp_Ax2 & theValue);
+
+};
+
+
+%make_alias(Graphic3d_Flipper)
+
+%extend Graphic3d_Flipper {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************************
 * class Graphic3d_FrameStats *
 *****************************/
@@ -9851,7 +9988,7 @@ Returns formatted string.
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theDict: TColStd_IndexedDataMapOfStringString
 theFlags: Graphic3d_RenderingParams::PerfCounters
 
 Return
@@ -9862,7 +9999,7 @@ Description
 -----------
 Fill in the dictionary with formatted statistic info.
 ") FormatStats;
-		virtual void FormatStats(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict, Graphic3d_RenderingParams::PerfCounters theFlags);
+		virtual void FormatStats(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_RenderingParams::PerfCounters theFlags);
 
 		/****** Graphic3d_FrameStats::FrameDuration ******/
 		/****** md5 signature: 611a12e33b07bfdecb6b92963afc48d8 ******/
@@ -11363,7 +11500,7 @@ Returns the settings of a single Z layer.
 		%feature("autodoc", "
 Parameters
 ----------
-theLayerSeq: NCollection_Sequence<int>
+theLayerSeq: TColStd_SequenceOfInteger
 
 Return
 -------
@@ -11373,7 +11510,7 @@ Description
 -----------
 Returns list of Z layers defined for the graphical driver.
 ") ZLayers;
-		virtual void ZLayers(NCollection_Sequence<int> & theLayerSeq);
+		virtual void ZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
 };
 
@@ -11647,6 +11784,19 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****** Graphic3d_Group::Flipper ******/
+		/****** md5 signature: cc7f93b393944230c181072fc5c99743 ******/
+		%feature("compactdefaultargs") Flipper;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Graphic3d_Flipper>
+
+Description
+-----------
+Return flipper metadata describing the runtime flip of this group, or null if not flipped.
+") Flipper;
+		const opencascade::handle<Graphic3d_Flipper> & Flipper();
+
 		/****** Graphic3d_Group::IsClosed ******/
 		/****** md5 signature: 87cef9bebf52c7a89467bdbada7b297e ******/
 		%feature("compactdefaultargs") IsClosed;
@@ -11756,7 +11906,7 @@ Description
 -----------
 Replace aspects specified in the replacement map.
 ") ReplaceAspects;
-		virtual void ReplaceAspects(const NCollection_DataMap<opencascade::handle<Graphic3d_Aspects>, opencascade::handle<Graphic3d_Aspects> > & theMap);
+		virtual void ReplaceAspects(const NCollection_DataMap<opencascade::handle<Graphic3d_Aspects>, opencascade::handle<Graphic3d_Aspects>> & theMap);
 
 		/****** Graphic3d_Group::SetClosed ******/
 		/****** md5 signature: 1b75d364558b57c72138f423e78d6873 ******/
@@ -12945,7 +13095,7 @@ Input parameter: theImageAlpha colorless image.
 		%feature("autodoc", "
 Parameters
 ----------
-theBitMap: NCollection_HArray1<uint8_t
+theBitMap: TColStd_HArray1OfByte
 theWidth: int
 theHeight: int
 
@@ -12960,7 +13110,7 @@ Input parameter: theBitMap source bitmap stored as array of bytes
 Input parameter: theWidth number of bits in a row 
 Input parameter: theHeight number of bits in a column.
 ") Graphic3d_MarkerImage;
-		 Graphic3d_MarkerImage(const opencascade::handle<NCollection_HArray1<uint8_t> > & theBitMap, const int theWidth, const int theHeight);
+		 Graphic3d_MarkerImage(const opencascade::handle<TColStd_HArray1OfByte> & theBitMap, const int theWidth, const int theHeight);
 
 		/****** Graphic3d_MarkerImage::GetBitMapArray ******/
 		/****** md5 signature: bf4888154232db149e4f6982434c2b23 ******/
@@ -12973,7 +13123,7 @@ theIsTopDown: bool (optional, default to false)
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<uint8_t>>
+opencascade::handle<TColStd_HArray1OfByte>
 
 Description
 -----------
@@ -12981,7 +13131,7 @@ Return marker image as array of bytes. If an instance of the class has been init
 Parameter theAlphaValue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' 
 Input parameter: theIsTopDown flag indicating expected rows order in returned bitmap, which is bottom-up by default.
 ") GetBitMapArray;
-		opencascade::handle<NCollection_HArray1<uint8_t>> GetBitMapArray(const double theAlphaValue = 0.5, const bool theIsTopDown = false);
+		opencascade::handle<TColStd_HArray1OfByte> GetBitMapArray(const double theAlphaValue = 0.5, const bool theIsTopDown = false);
 
 		/****** Graphic3d_MarkerImage::GetImage ******/
 		/****** md5 signature: 7c5ebfa0efa07e00e52abb3fc0528025 ******/
@@ -16022,7 +16172,7 @@ Description
 -----------
 Assign the list of custom vertex attributes. Should be done before GLSL program initialization.
 ") SetVertexAttributes;
-		void SetVertexAttributes(const NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute> > & theAttributes);
+		void SetVertexAttributes(const NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>> & theAttributes);
 
 		/****** Graphic3d_ShaderProgram::ShaderObjects ******/
 		/****** md5 signature: 8de5f9ac4609f61e61349d5bd257e012 ******/
@@ -16228,7 +16378,7 @@ Description
 -----------
 Returns the group of structures to which <self> is connected.
 ") Ancestors;
-		void Ancestors(NCollection_Map<opencascade::handle<Graphic3d_Structure> > & SG);
+		void Ancestors(NCollection_Map<opencascade::handle<Graphic3d_Structure>> & SG);
 
 		/****** Graphic3d_Structure::CStructure ******/
 		/****** md5 signature: 8536306818e6758deef120ea5bed2397 ******/
@@ -16381,7 +16531,7 @@ Description
 -----------
 Returns the group of structures connected to <self>.
 ") Descendants;
-		void Descendants(NCollection_Map<opencascade::handle<Graphic3d_Structure> > & SG);
+		void Descendants(NCollection_Map<opencascade::handle<Graphic3d_Structure>> & SG);
 
 		/****** Graphic3d_Structure::Disconnect ******/
 		/****** md5 signature: f16e2a64d5f4c2c9802fe7e384632817 ******/
@@ -17482,7 +17632,7 @@ Description
 -----------
 Returns the set of structures displayed in visualiser <self>.
 ") DisplayedStructures;
-		void DisplayedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure> > & SG);
+		void DisplayedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure>> & SG);
 
 
         /****************** DumpJson ******************/
@@ -17583,7 +17733,7 @@ Description
 -----------
 Returns the set of highlighted structures in a visualiser <self>.
 ") HighlightedStructures;
-		void HighlightedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure> > & SG);
+		void HighlightedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure>> & SG);
 
 		/****** Graphic3d_StructureManager::Identification ******/
 		/****** md5 signature: a71ee90a2350ca573e30915dc907f847 ******/
@@ -21368,7 +21518,7 @@ Parameters
 theColor: Quantity_Color
 theWidth: int
 theHeight: int
-theTextureBitmap: NCollection_HArray1<uint8_t
+theTextureBitmap: TColStd_HArray1OfByte
 
 Return
 -------
@@ -21378,7 +21528,7 @@ Description
 -----------
 Creates a context table for marker primitives defined with the specified values.
 ") Graphic3d_AspectMarker3d;
-		 Graphic3d_AspectMarker3d(const Quantity_Color & theColor, const int theWidth, const int theHeight, const opencascade::handle<NCollection_HArray1<uint8_t> > & theTextureBitmap);
+		 Graphic3d_AspectMarker3d(const Quantity_Color & theColor, const int theWidth, const int theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTextureBitmap);
 
 		/****** Graphic3d_AspectMarker3d::Graphic3d_AspectMarker3d ******/
 		/****** md5 signature: 19dbb9e9a8dcd21db65647860865917a ******/
@@ -21450,7 +21600,7 @@ Parameters
 ----------
 theWidth: int
 theHeight: int
-theTexture: NCollection_HArray1<uint8_t
+theTexture: TColStd_HArray1OfByte
 
 Return
 -------
@@ -21460,7 +21610,7 @@ Description
 -----------
 No available documentation.
 ") SetBitMap;
-		void SetBitMap(const int theWidth, const int theHeight, const opencascade::handle<NCollection_HArray1<uint8_t> > & theTexture);
+		void SetBitMap(const int theWidth, const int theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
 
 		/****** Graphic3d_AspectMarker3d::SetScale ******/
 		/****** md5 signature: f831fa6b2c906aec634a6d406678f132 ******/
@@ -22411,7 +22561,7 @@ Deactivates the view. Unmaps presentations defined within structure manager. The
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theDict: TColStd_IndexedDataMapOfStringString
 theFlags: Graphic3d_DiagnosticInfo
 
 Return
@@ -22422,7 +22572,7 @@ Description
 -----------
 Fill in the dictionary with diagnostic info. Should be called within rendering thread. //! This API should be used only for user output or for creating automated reports. The format of returned information (e.g. key-value layout) is NOT part of this API and can be changed at any time. Thus application should not parse returned information to weed out specific parameters.
 ") DiagnosticInformation;
-		virtual void DiagnosticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict, Graphic3d_DiagnosticInfo theFlags);
+		virtual void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
 
 		/****** Graphic3d_CView::DisplayedStructures ******/
 		/****** md5 signature: 05749c241f41df0d2b57ea6dd1fd724b ******/
@@ -22440,7 +22590,7 @@ Description
 -----------
 Returns the set of structures displayed in this view.
 ") DisplayedStructures;
-		void DisplayedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure> > & theStructures);
+		void DisplayedStructures(NCollection_Map<opencascade::handle<Graphic3d_Structure>> & theStructures);
 
 
         /****************** DumpJson ******************/
@@ -22631,6 +22781,40 @@ Input parameter: theMin the minimum point of scene.
 Input parameter: theMax the maximum point of scene.
 ") GraduatedTrihedronMinMaxValues;
 		virtual void GraduatedTrihedronMinMaxValues(const NCollection_Vec3<float > theMin, const NCollection_Vec3<float > theMax);
+
+		/****** Graphic3d_CView::GridDisplay ******/
+		/****** md5 signature: a683bc32dcaf349cb85981b89e4d3184 ******/
+		%feature("compactdefaultargs") GridDisplay;
+		%feature("autodoc", "
+Parameters
+----------
+theParams: Aspect_GridParams
+thePlane: gp_Ax3
+
+Return
+-------
+None
+
+Description
+-----------
+Display a shader-rendered grid on the given plane. The default implementation is a no-op; drivers with shader support override it. 
+Input parameter: theParams appearance parameters 
+Input parameter: thePlane grid plane in world coordinates (origin + X/Y directions).
+") GridDisplay;
+		virtual void GridDisplay(const Aspect_GridParams & theParams, const gp_Ax3 & thePlane);
+
+		/****** Graphic3d_CView::GridErase ******/
+		/****** md5 signature: dd6c41dd3291b04035b55b1578aefa76 ******/
+		%feature("compactdefaultargs") GridErase;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Erase the shader-rendered grid. The default implementation is a no-op; drivers with shader support override it.
+") GridErase;
+		virtual void GridErase();
 
 		/****** Graphic3d_CView::IBLCubeMap ******/
 		/****** md5 signature: ffcaee8919807a8917521c40504678ca ******/
@@ -22970,7 +23154,7 @@ Description
 -----------
 Returns the coordinates of the boundary box of all structures in the set <theSet>. If <theToIgnoreInfiniteFlag> is True, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
 ") MinMaxValues;
-		Bnd_Box MinMaxValues(const NCollection_Map<opencascade::handle<Graphic3d_Structure> > & theSet, const bool theToIncludeAuxiliary = false);
+		Bnd_Box MinMaxValues(const NCollection_Map<opencascade::handle<Graphic3d_Structure>> & theSet, const bool theToIncludeAuxiliary = false);
 
 		/****** Graphic3d_CView::NumberOfDisplayedStructures ******/
 		/****** md5 signature: 4be9d7bdca667fac9e73e90ff6e1fdf1 ******/
@@ -23812,7 +23996,7 @@ Returns string with statistic performance info.
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theDict: TColStd_IndexedDataMapOfStringString
 
 Return
 -------
@@ -23822,7 +24006,7 @@ Description
 -----------
 Fills in the dictionary with statistic performance info.
 ") StatisticInformation;
-		virtual void StatisticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict);
+		virtual void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
 
 		/****** Graphic3d_CView::StructureManager ******/
 		/****** md5 signature: 5843678469524fb10153c08d2adb183d ******/
@@ -24311,6 +24495,22 @@ Reset data.
 ") Reset;
 		void Reset();
 
+		%extend{
+			double GetChangeFrameRate() { return self->ChangeFrameRate(); }
+			void SetChangeFrameRate(double value) { self->ChangeFrameRate() = value; }
+		};
+		%extend{
+			double GetChangeFrameRateCpu() { return self->ChangeFrameRateCpu(); }
+			void SetChangeFrameRateCpu(double value) { self->ChangeFrameRateCpu() = value; }
+		};
+		%extend{
+			double GetChangeImmediateFrameRate() { return self->ChangeImmediateFrameRate(); }
+			void SetChangeImmediateFrameRate(double value) { self->ChangeImmediateFrameRate() = value; }
+		};
+		%extend{
+			double GetChangeImmediateFrameRateCpu() { return self->ChangeImmediateFrameRateCpu(); }
+			void SetChangeImmediateFrameRateCpu(double value) { self->ChangeImmediateFrameRateCpu() = value; }
+		};
 };
 
 
@@ -25375,7 +25575,7 @@ Creates a texture from the pixmap.
 		%feature("autodoc", "
 Parameters
 ----------
-theFiles: NCollection_Array1<TCollection_AsciiString>
+theFiles: TColStd_Array1OfAsciiString
 
 Return
 -------
@@ -25385,7 +25585,7 @@ Description
 -----------
 Creates a texture from a file.
 ") Graphic3d_Texture3D;
-		 Graphic3d_Texture3D(const NCollection_Array1<TCollection_AsciiString> & theFiles);
+		 Graphic3d_Texture3D(const TColStd_Array1OfAsciiString & theFiles);
 
 		/****** Graphic3d_Texture3D::GetImage ******/
 		/****** md5 signature: f3110abc861a9f81a571119022fa772d ******/
@@ -25448,7 +25648,7 @@ class Graphic3d_CubeMapSeparate : public Graphic3d_CubeMap {
 		%feature("autodoc", "
 Parameters
 ----------
-thePaths: NCollection_Array1<TCollection_AsciiString>
+thePaths: TColStd_Array1OfAsciiString
 
 Return
 -------
@@ -25458,7 +25658,7 @@ Description
 -----------
 Initializes cubemap to be loaded from file. @thePaths - array of paths to separate image files (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
-		 Graphic3d_CubeMapSeparate(const NCollection_Array1<TCollection_AsciiString> & thePaths);
+		 Graphic3d_CubeMapSeparate(const TColStd_Array1OfAsciiString & thePaths);
 
 		/****** Graphic3d_CubeMapSeparate::Graphic3d_CubeMapSeparate ******/
 		/****** md5 signature: 56d466dfd473af1aaaef0bb290e3c427 ******/
@@ -25476,7 +25676,7 @@ Description
 -----------
 Initializes cubemap to be set directly from PixMaps. @theImages - array if PixMaps (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
-		 Graphic3d_CubeMapSeparate(const NCollection_Array1<opencascade::handle<Image_PixMap> > & theImages);
+		 Graphic3d_CubeMapSeparate(const NCollection_Array1<opencascade::handle<Image_PixMap>> & theImages);
 
 		/****** Graphic3d_CubeMapSeparate::CompressedValue ******/
 		/****** md5 signature: 0ba0af76303e68254190d70e7961a83e ******/

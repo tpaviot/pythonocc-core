@@ -82,6 +82,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XmlDrivers_DocumentRetrievalDriver)
+%wrap_handle(XmlDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -236,6 +238,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlDrivers_DocumentRetrievalDriver)
+
 %extend XmlDrivers_DocumentRetrievalDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -305,6 +309,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlDrivers_DocumentStorageDriver)
 
 %extend XmlDrivers_DocumentStorageDriver {
 	%pythoncode {

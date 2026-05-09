@@ -47,10 +47,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapp2var.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<AdvApprox_module.hxx>
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
 #include<PLib_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -60,10 +62,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapp2var.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import GeomAbs.i
 %import AdvApprox.i
 %import Geom.i
 %import gp.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -109,6 +113,13 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 %template(AdvApp2Var_SequenceOfNode) NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>>;
 
 %extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -117,6 +128,13 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 %template(AdvApp2Var_SequenceOfPatch) NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>>;
 
 %extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -125,6 +143,13 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 %template(AdvApp2Var_SequenceOfStrip) NCollection_Sequence<AdvApp2Var_Strip>;
 
 %extend NCollection_Sequence<AdvApp2Var_Strip> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -133,6 +158,13 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 %template(AdvApp2Var_Strip) NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>>;
 
 %extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -161,12 +193,12 @@ Parameters
 Num1DSS: int
 Num2DSS: int
 Num3DSS: int
-OneDTol: NCollection_HArray1<double
-TwoDTol: NCollection_HArray1<double
-ThreeDTol: NCollection_HArray1<double
-OneDTolFr: NCollection_HArray2<double
-TwoDTolFr: NCollection_HArray2<double
-ThreeDTolFr: NCollection_HArray2<double
+OneDTol: TColStd_HArray1OfReal
+TwoDTol: TColStd_HArray1OfReal
+ThreeDTol: TColStd_HArray1OfReal
+OneDTolFr: TColStd_HArray2OfReal
+TwoDTolFr: TColStd_HArray2OfReal
+ThreeDTolFr: TColStd_HArray2OfReal
 FirstInU: double
 LastInU: double
 FirstInV: double
@@ -190,7 +222,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<NCollection_HArray1<double> > & OneDTol, const opencascade::handle<NCollection_HArray1<double> > & TwoDTol, const opencascade::handle<NCollection_HArray1<double> > & ThreeDTol, const opencascade::handle<NCollection_HArray2<double> > & OneDTolFr, const opencascade::handle<NCollection_HArray2<double> > & TwoDTolFr, const opencascade::handle<NCollection_HArray2<double> > & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
+		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AdvApp2Var_ApproxAFunc2Var ******/
 		/****** md5 signature: 8fefd392f9b73f8c4f49c482f0ec0197 ******/
@@ -201,12 +233,12 @@ Parameters
 Num1DSS: int
 Num2DSS: int
 Num3DSS: int
-OneDTol: NCollection_HArray1<double
-TwoDTol: NCollection_HArray1<double
-ThreeDTol: NCollection_HArray1<double
-OneDTolFr: NCollection_HArray2<double
-TwoDTolFr: NCollection_HArray2<double
-ThreeDTolFr: NCollection_HArray2<double
+OneDTol: TColStd_HArray1OfReal
+TwoDTol: TColStd_HArray1OfReal
+ThreeDTol: TColStd_HArray1OfReal
+OneDTolFr: TColStd_HArray2OfReal
+TwoDTolFr: TColStd_HArray2OfReal
+ThreeDTolFr: TColStd_HArray2OfReal
 FirstInU: double
 LastInU: double
 FirstInV: double
@@ -231,7 +263,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
-		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<NCollection_HArray1<double> > & OneDTol, const opencascade::handle<NCollection_HArray1<double> > & TwoDTol, const opencascade::handle<NCollection_HArray1<double> > & ThreeDTol, const opencascade::handle<NCollection_HArray2<double> > & OneDTolFr, const opencascade::handle<NCollection_HArray2<double> > & TwoDTolFr, const opencascade::handle<NCollection_HArray2<double> > & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, const AdvApp2Var_Criterion & Crit, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
+		 AdvApp2Var_ApproxAFunc2Var(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const double FirstInU, const double LastInU, const double FirstInV, const double LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const int PrecisCode, const int MaxDegInU, const int MaxDegInV, const int MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, const AdvApp2Var_Criterion & Crit, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AverageError ******/
 		/****** md5 signature: 2f6bf7ea0e0cfb3b392f43df654829e3 ******/
@@ -243,13 +275,13 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the average errors.
 ") AverageError;
-		opencascade::handle<NCollection_HArray1<double>> AverageError(const int Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> AverageError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::AverageError ******/
 		/****** md5 signature: ed4d67908b569de9e3571c9f53547394 ******/
@@ -342,13 +374,13 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the errors max.
 ") MaxError;
-		opencascade::handle<NCollection_HArray1<double>> MaxError(const int Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> MaxError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::MaxError ******/
 		/****** md5 signature: 61a4677e31f18ea56a128d2bb9e750a6 ******/
@@ -428,13 +460,13 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the errors max on UFrontiers Warning: Dimension must be equal to 3.
 ") UFrontError;
-		opencascade::handle<NCollection_HArray1<double>> UFrontError(const int Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> UFrontError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::UFrontError ******/
 		/****** md5 signature: eb984df2156b3aeaae5f8902482d7a19 ******/
@@ -478,13 +510,13 @@ Dimension: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the errors max on VFrontiers Warning: Dimension must be equal to 3.
 ") VFrontError;
-		opencascade::handle<NCollection_HArray1<double>> VFrontError(const int Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> VFrontError(const int Dimension);
 
 		/****** AdvApp2Var_ApproxAFunc2Var::VFrontError ******/
 		/****** md5 signature: db589fa08c8c83bc03290cfe5b063ac7 ******/
@@ -949,12 +981,12 @@ iprecis: int
 nb1Dss: int
 nb2Dss: int
 nb3Dss: int
-tol1D: NCollection_HArray1<double
-tol2D: NCollection_HArray1<double
-tol3D: NCollection_HArray1<double
-tof1D: NCollection_HArray2<double
-tof2D: NCollection_HArray2<double
-tof3D: NCollection_HArray2<double
+tol1D: TColStd_HArray1OfReal
+tol2D: TColStd_HArray1OfReal
+tol3D: TColStd_HArray1OfReal
+tof1D: TColStd_HArray2OfReal
+tof2D: TColStd_HArray2OfReal
+tof3D: TColStd_HArray2OfReal
 
 Return
 -------
@@ -964,33 +996,33 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Context;
-		 AdvApp2Var_Context(const int ifav, const int iu, const int iv, const int nlimu, const int nlimv, const int iprecis, const int nb1Dss, const int nb2Dss, const int nb3Dss, const opencascade::handle<NCollection_HArray1<double> > & tol1D, const opencascade::handle<NCollection_HArray1<double> > & tol2D, const opencascade::handle<NCollection_HArray1<double> > & tol3D, const opencascade::handle<NCollection_HArray2<double> > & tof1D, const opencascade::handle<NCollection_HArray2<double> > & tof2D, const opencascade::handle<NCollection_HArray2<double> > & tof3D);
+		 AdvApp2Var_Context(const int ifav, const int iu, const int iv, const int nlimu, const int nlimv, const int iprecis, const int nb1Dss, const int nb2Dss, const int nb3Dss, const opencascade::handle<TColStd_HArray1OfReal> & tol1D, const opencascade::handle<TColStd_HArray1OfReal> & tol2D, const opencascade::handle<TColStd_HArray1OfReal> & tol3D, const opencascade::handle<TColStd_HArray2OfReal> & tof1D, const opencascade::handle<TColStd_HArray2OfReal> & tof2D, const opencascade::handle<TColStd_HArray2OfReal> & tof3D);
 
 		/****** AdvApp2Var_Context::CToler ******/
 		/****** md5 signature: a9b49fb1378a576ee0797c5fb0aaacd6 ******/
 		%feature("compactdefaultargs") CToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") CToler;
-		opencascade::handle<NCollection_HArray2<double>> CToler();
+		opencascade::handle<TColStd_HArray2OfReal> CToler();
 
 		/****** AdvApp2Var_Context::FToler ******/
 		/****** md5 signature: 14bb0bfb9e22c140b38385c2b6f0d4cd ******/
 		%feature("compactdefaultargs") FToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") FToler;
-		opencascade::handle<NCollection_HArray2<double>> FToler();
+		opencascade::handle<TColStd_HArray2OfReal> FToler();
 
 		/****** AdvApp2Var_Context::FavorIso ******/
 		/****** md5 signature: bca98e62e2526dfd7c3b8e7410a2efbb ******/
@@ -1010,13 +1042,13 @@ No available documentation.
 		%feature("compactdefaultargs") IToler;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") IToler;
-		opencascade::handle<NCollection_HArray1<double>> IToler();
+		opencascade::handle<TColStd_HArray1OfReal> IToler();
 
 		/****** AdvApp2Var_Context::TotalDimension ******/
 		/****** md5 signature: eb2eb2144359ee7f54e4a9a55b30922a ******/
@@ -1049,13 +1081,13 @@ No available documentation.
 		%feature("compactdefaultargs") UGauss;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") UGauss;
-		opencascade::handle<NCollection_HArray1<double>> UGauss();
+		opencascade::handle<TColStd_HArray1OfReal> UGauss();
 
 		/****** AdvApp2Var_Context::UJacDeg ******/
 		/****** md5 signature: 59cd530bb340f1d7331ad22ca073f97d ******/
@@ -1075,13 +1107,13 @@ No available documentation.
 		%feature("compactdefaultargs") UJacMax;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") UJacMax;
-		opencascade::handle<NCollection_HArray1<double>> UJacMax();
+		opencascade::handle<TColStd_HArray1OfReal> UJacMax();
 
 		/****** AdvApp2Var_Context::ULimit ******/
 		/****** md5 signature: 96ae4670ff57713efae1e12d608c0b97 ******/
@@ -1114,26 +1146,26 @@ No available documentation.
 		%feature("compactdefaultargs") URoots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") URoots;
-		opencascade::handle<NCollection_HArray1<double>> URoots();
+		opencascade::handle<TColStd_HArray1OfReal> URoots();
 
 		/****** AdvApp2Var_Context::VGauss ******/
 		/****** md5 signature: f1095f4fb01185055b07b72ce2122bbb ******/
 		%feature("compactdefaultargs") VGauss;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VGauss;
-		opencascade::handle<NCollection_HArray1<double>> VGauss();
+		opencascade::handle<TColStd_HArray1OfReal> VGauss();
 
 		/****** AdvApp2Var_Context::VJacDeg ******/
 		/****** md5 signature: 441e0ad1c4126a0ee6dc44641a6e7987 ******/
@@ -1153,13 +1185,13 @@ No available documentation.
 		%feature("compactdefaultargs") VJacMax;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VJacMax;
-		opencascade::handle<NCollection_HArray1<double>> VJacMax();
+		opencascade::handle<TColStd_HArray1OfReal> VJacMax();
 
 		/****** AdvApp2Var_Context::VLimit ******/
 		/****** md5 signature: b3731c3ae1bb79dc44ec506f14aa2aaa ******/
@@ -1192,13 +1224,13 @@ No available documentation.
 		%feature("compactdefaultargs") VRoots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VRoots;
-		opencascade::handle<NCollection_HArray1<double>> VRoots();
+		opencascade::handle<TColStd_HArray1OfReal> VRoots();
 
 };
 
@@ -1339,7 +1371,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Framework;
-		 AdvApp2Var_Framework(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Node> > & Frame, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso> > > & UFrontier, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso> > > & VFrontier);
+		 AdvApp2Var_Framework(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> & Frame, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> > & UFrontier, const NCollection_Sequence<NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> > & VFrontier);
 
 		/****** AdvApp2Var_Framework::ChangeIso ******/
 		/****** md5 signature: cb76fd10907ee4b73bbcf9054de94d45 ******/
@@ -1507,13 +1539,13 @@ IndexStrip: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") UEquation;
-		const opencascade::handle<NCollection_HArray1<double>> & UEquation(const int IndexIso, const int IndexStrip);
+		const opencascade::handle<TColStd_HArray1OfReal> & UEquation(const int IndexIso, const int IndexStrip);
 
 		/****** AdvApp2Var_Framework::UpdateInU ******/
 		/****** md5 signature: ea19319ce9faa7d1deb1064607f98a7e ******/
@@ -1562,13 +1594,13 @@ IndexStrip: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VEquation;
-		const opencascade::handle<NCollection_HArray1<double>> & VEquation(const int IndexIso, const int IndexStrip);
+		const opencascade::handle<TColStd_HArray1OfReal> & VEquation(const int IndexIso, const int IndexStrip);
 
 };
 
@@ -2508,8 +2540,8 @@ No available documentation.
 Parameters
 ----------
 Net: AdvApp2Var_Patch
-TheU: NCollection_Sequence<double>
-TheV: NCollection_Sequence<double>
+TheU: TColStd_SequenceOfReal
+TheV: TColStd_SequenceOfReal
 
 Return
 -------
@@ -2519,7 +2551,7 @@ Description
 -----------
 No available documentation.
 ") AdvApp2Var_Network;
-		 AdvApp2Var_Network(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch> > & Net, const NCollection_Sequence<double> & TheU, const NCollection_Sequence<double> & TheV);
+		 AdvApp2Var_Network(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> & Net, const TColStd_SequenceOfReal & TheU, const TColStd_SequenceOfReal & TheV);
 
 		/****** AdvApp2Var_Network::ChangePatch ******/
 		/****** md5 signature: 8777869a74e6cc79cfda0879af40109a ******/
@@ -3002,13 +3034,13 @@ No available documentation.
 		%feature("compactdefaultargs") AverageErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") AverageErrors;
-		opencascade::handle<NCollection_HArray1<double>> AverageErrors();
+		opencascade::handle<TColStd_HArray1OfReal> AverageErrors();
 
 		/****** AdvApp2Var_Patch::ChangeDomain ******/
 		/****** md5 signature: 8874ec13e8c460de18ff2430b274bc80 ******/
@@ -3061,13 +3093,13 @@ Conditions: AdvApp2Var_Context
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Coefficients;
-		opencascade::handle<NCollection_HArray1<double>> Coefficients(const int SSPIndex, const AdvApp2Var_Context & Conditions);
+		opencascade::handle<TColStd_HArray1OfReal> Coefficients(const int SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****** AdvApp2Var_Patch::CritValue ******/
 		/****** md5 signature: 26c513c2f190f5ec950cc46ebea9bd3d ******/
@@ -3178,13 +3210,13 @@ No available documentation.
 		%feature("compactdefaultargs") IsoErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") IsoErrors;
-		opencascade::handle<NCollection_HArray2<double>> IsoErrors();
+		opencascade::handle<TColStd_HArray2OfReal> IsoErrors();
 
 		/****** AdvApp2Var_Patch::MakeApprox ******/
 		/****** md5 signature: a16912f8e3be775de02093e3fbfffea1 ******/
@@ -3211,13 +3243,13 @@ No available documentation.
 		%feature("compactdefaultargs") MaxErrors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") MaxErrors;
-		opencascade::handle<NCollection_HArray1<double>> MaxErrors();
+		opencascade::handle<TColStd_HArray1OfReal> MaxErrors();
 
 		/****** AdvApp2Var_Patch::NbCoeffInU ******/
 		/****** md5 signature: 185957825194353a06a658d8c1042fec ******/
@@ -3269,13 +3301,13 @@ Conditions: AdvApp2Var_Context
 
 Return
 -------
-opencascade::handle<NCollection_HArray2<gp_Pnt>>
+opencascade::handle<TColgp_HArray2OfPnt>
 
 Description
 -----------
 No available documentation.
 ") Poles;
-		opencascade::handle<NCollection_HArray2<gp_Pnt>> Poles(const int SSPIndex, const AdvApp2Var_Context & Conditions);
+		opencascade::handle<TColgp_HArray2OfPnt> Poles(const int SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****** AdvApp2Var_Patch::ResetApprox ******/
 		/****** md5 signature: 95158c4db01998815f8d16a93f8762e3 ******/

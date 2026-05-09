@@ -87,6 +87,9 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(BRep_CurveRepresentation)
 %wrap_handle(BRep_PointRepresentation)
+%wrap_handle(BRep_TEdge)
+%wrap_handle(BRep_TFace)
+%wrap_handle(BRep_TVertex)
 %wrap_handle(BRep_CurveOn2Surfaces)
 %wrap_handle(BRep_GCurve)
 %wrap_handle(BRep_PointOnCurve)
@@ -109,17 +112,41 @@ from OCC.Core.Exception import *
 %template(BRep_ListOfCurveRepresentation) NCollection_List<opencascade::handle<BRep_CurveRepresentation>>;
 
 %extend NCollection_List<opencascade::handle<BRep_CurveRepresentation>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRep_ListIteratorOfListOfCurveRepresentation(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BRep_ListOfPointRepresentation) NCollection_List<opencascade::handle<BRep_PointRepresentation>>;
 
 %extend NCollection_List<opencascade::handle<BRep_PointRepresentation>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRep_ListIteratorOfListOfPointRepresentation(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -403,7 +430,7 @@ Makes a theFace with a single triangulation. The triangulation is in the same re
 Parameters
 ----------
 theFace: TopoDS_Face
-theTriangulations: Poly_Triangulation
+theTriangulations: Poly_ListOfTriangulation
 theActiveTriangulation: Poly_Triangulation (optional, default to opencascade::handle<Poly_Triangulation>())
 
 Return
@@ -414,7 +441,7 @@ Description
 -----------
 Makes a Face with a list of triangulations and active one. Use NULL active triangulation to set the first triangulation in list as active. The triangulations is in the same reference system than the TFace.
 ") MakeFace;
-		void MakeFace(TopoDS_Face & theFace, const NCollection_List<opencascade::handle<Poly_Triangulation> > & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation = opencascade::handle<Poly_Triangulation>());
+		void MakeFace(TopoDS_Face & theFace, const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation = opencascade::handle<Poly_Triangulation>());
 
 		/****** BRep_Builder::MakeVertex ******/
 		/****** md5 signature: 31d0795e1ce56b9f1ec86c08a180b99b ******/
@@ -2367,6 +2394,8 @@ Sets the tolerance to the max of <T> and the current tolerance.
 };
 
 
+%make_alias(BRep_TEdge)
+
 %extend BRep_TEdge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2621,13 +2650,13 @@ Input parameter: theToReset flag to reset triangulations list to new list with o
 		%feature("compactdefaultargs") Triangulations;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<Poly_Triangulation>>
+Poly_ListOfTriangulation
 
 Description
 -----------
 Returns the list of available face triangulations.
 ") Triangulations;
-		const NCollection_List<opencascade::handle<Poly_Triangulation>> & Triangulations();
+		const Poly_ListOfTriangulation & Triangulations();
 
 		/****** BRep_TFace::Triangulations ******/
 		/****** md5 signature: a10b4aba0181a7bd3fa7f8b7f6856212 ******/
@@ -2635,7 +2664,7 @@ Returns the list of available face triangulations.
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangulations: Poly_Triangulation
+theTriangulations: Poly_ListOfTriangulation
 theActiveTriangulation: Poly_Triangulation
 
 Return
@@ -2646,10 +2675,12 @@ Description
 -----------
 Sets input list of triangulations and currently active triangulation for this face. If list is empty internal list of triangulations will be cleared and active triangulation will be nullified. Else this list will be saved and the input active triangulation be saved as active. Use NULL active triangulation to set the first triangulation in list as active. Note: the method throws exception if there is any NULL triangulation in input list or if this list doesn't contain input active triangulation.
 ") Triangulations;
-		void Triangulations(const NCollection_List<opencascade::handle<Poly_Triangulation> > & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation);
+		void Triangulations(const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation);
 
 };
 
+
+%make_alias(BRep_TFace)
 
 %extend BRep_TFace {
 	%pythoncode {
@@ -2817,6 +2848,8 @@ Sets the tolerance to the max of <T> and the current tolerance.
 
 };
 
+
+%make_alias(BRep_TVertex)
 
 %extend BRep_TVertex {
 	%pythoncode {
@@ -3812,7 +3845,7 @@ theLocation: TopLoc_Location
 
 Return
 -------
-NCollection_List<opencascade::handle<Poly_Triangulation>>
+Poly_ListOfTriangulation
 
 Description
 -----------
@@ -3820,7 +3853,7 @@ Returns all triangulations of the face.
 Input parameter: theFace the input face. @param[out] theLocation the face location. 
 Return: list of all available face triangulations.
 ") Triangulations;
-		static const NCollection_List<opencascade::handle<Poly_Triangulation>> & Triangulations(const TopoDS_Face & theFace, TopLoc_Location & theLocation);
+		static const Poly_ListOfTriangulation & Triangulations(const TopoDS_Face & theFace, TopLoc_Location & theLocation);
 
 		/****** BRep_Tool::UVPoints ******/
 		/****** md5 signature: 739ea64a3ca04f61d1659b66cfc128ff ******/

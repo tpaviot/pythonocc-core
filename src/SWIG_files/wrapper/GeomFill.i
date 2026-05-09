@@ -46,6 +46,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomfill.html"
 #include<NCollection_module.hxx>
 #include<Convert_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Geom_module.hxx>
 #include<AppBlend_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -53,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomfill.html"
 #include<Adaptor3d_module.hxx>
 #include<Law_module.hxx>
 #include<math_module.hxx>
+#include<TColGeom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<FEmTool_module.hxx>
@@ -68,6 +71,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomfill.html"
 %import NCollection.i
 %import Convert.i
 %import gp.i
+%import TColgp.i
+%import TColStd.i
 %import Geom.i
 %import AppBlend.i
 %import GeomAbs.i
@@ -75,6 +80,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomfill.html"
 %import Adaptor3d.i
 %import Law.i
 %import math.i
+%import TColGeom.i
 %import Geom2d.i
 
 %pythoncode {
@@ -210,6 +216,13 @@ Array1ExtendIter(opencascade::handle<GeomFill_SectionLaw>)
 %template(GeomFill_SequenceOfAx2) NCollection_Sequence<gp_Ax2>;
 
 %extend NCollection_Sequence<gp_Ax2> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -218,6 +231,13 @@ Array1ExtendIter(opencascade::handle<GeomFill_SectionLaw>)
 %template(GeomFill_SequenceOfTrsf) NCollection_Sequence<gp_Trsf>;
 
 %extend NCollection_Sequence<gp_Trsf> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -255,8 +275,8 @@ pt1: gp_Pnt
 pt2: gp_Pnt
 Rayon: double
 Center: gp_Pnt
-Poles: NCollection_Array1<gp_Pnt>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -266,7 +286,7 @@ Description
 -----------
 No available documentation.
 ") GetCircle;
-		static void GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & nplan, const gp_Pnt & pt1, const gp_Pnt & pt2, const double Rayon, const gp_Pnt & Center, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weigths);
+		static void GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & nplan, const gp_Pnt & pt1, const gp_Pnt & pt2, const double Rayon, const gp_Pnt & Center, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill::GetCircle ******/
 		/****** md5 signature: 0689b7e9635cad99f6d3faaae6a7687e ******/
@@ -289,10 +309,10 @@ Rayon: double
 DRayon: double
 Center: gp_Pnt
 DCenter: gp_Vec
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -302,7 +322,7 @@ Description
 -----------
 No available documentation.
 ") GetCircle;
-		static bool GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const double Rayon, const double DRayon, const gp_Pnt & Center, const gp_Vec & DCenter, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		static bool GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const double Rayon, const double DRayon, const gp_Pnt & Center, const gp_Vec & DCenter, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill::GetCircle ******/
 		/****** md5 signature: 0540b67d9930dbf59cfde9ca908be6af ******/
@@ -332,12 +352,12 @@ D2Rayon: double
 Center: gp_Pnt
 DCenter: gp_Vec
 D2Center: gp_Vec
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -347,7 +367,7 @@ Description
 -----------
 No available documentation.
 ") GetCircle;
-		static bool GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & d2n1w, const gp_Vec & d2n2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Vec & d2nplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const gp_Vec & Dtang1, const gp_Vec & Dtang2, const double Rayon, const double DRayon, const double D2Rayon, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		static bool GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & d2n1w, const gp_Vec & d2n2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Vec & d2nplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const gp_Vec & Dtang1, const gp_Vec & Dtang2, const double Rayon, const double DRayon, const double D2Rayon, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill::GetMinimalWeights ******/
 		/****** md5 signature: ce6aaa709998c5a07424857158bae924 ******/
@@ -358,7 +378,7 @@ Parameters
 TConv: Convert_ParameterisationType
 AngleMin: double
 AngleMax: double
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -368,7 +388,7 @@ Description
 -----------
 No available documentation.
 ") GetMinimalWeights;
-		static void GetMinimalWeights(const Convert_ParameterisationType TConv, const double AngleMin, const double AngleMax, NCollection_Array1<double> & Weigths);
+		static void GetMinimalWeights(const Convert_ParameterisationType TConv, const double AngleMin, const double AngleMax, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill::GetShape ******/
 		/****** md5 signature: e2edb88fed5134b59a26e36fca2c92e8 ******/
@@ -420,7 +440,7 @@ Used by the generical classes to determine Tolerance for approximation.
 Parameters
 ----------
 TypeConv: Convert_ParameterisationType
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -430,7 +450,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		static void Knots(const Convert_ParameterisationType TypeConv, NCollection_Array1<double> & TKnots);
+		static void Knots(const Convert_ParameterisationType TypeConv, TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill::Mults ******/
 		/****** md5 signature: 6fd35aa56cca0a410c35e6db4109f5f2 ******/
@@ -439,7 +459,7 @@ No available documentation.
 Parameters
 ----------
 TypeConv: Convert_ParameterisationType
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -449,7 +469,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		static void Mults(const Convert_ParameterisationType TypeConv, NCollection_Array1<int> & TMults);
+		static void Mults(const Convert_ParameterisationType TypeConv, TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill::Surface ******/
 		/****** md5 signature: 9ce66d74545adeac22c48a48241309ed ******/
@@ -559,9 +579,9 @@ returns the Weights (as percent) associed to the criterium used in the optimizat
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -571,7 +591,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_AppSurf::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
@@ -583,13 +603,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** GeomFill_AppSurf::Curves2dDegree ******/
 		/****** md5 signature: fb4d118788312f8319247632ed2e7a3d ******/
@@ -609,26 +629,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		const NCollection_Array1<double> & Curves2dKnots();
+		const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** GeomFill_AppSurf::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		const NCollection_Array1<int> & Curves2dMults();
+		const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** GeomFill_AppSurf::Curves2dShape ******/
 		/****** md5 signature: c39c09b90dd3a7aec0bf05cddeea7de4 ******/
@@ -831,13 +851,13 @@ Define the type of parametrization used in the approximation.
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		const NCollection_Array2<gp_Pnt> SurfPoles();
+		const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** GeomFill_AppSurf::SurfShape ******/
 		/****** md5 signature: 969593833778f731db9ba7fd1c5ab62d ******/
@@ -866,65 +886,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		const NCollection_Array1<double> & SurfUKnots();
+		const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** GeomFill_AppSurf::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		const NCollection_Array1<int> & SurfUMults();
+		const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** GeomFill_AppSurf::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		const NCollection_Array1<double> & SurfVKnots();
+		const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** GeomFill_AppSurf::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		const NCollection_Array1<int> & SurfVMults();
+		const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** GeomFill_AppSurf::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		const NCollection_Array2<double> & SurfWeights();
+		const TColStd_Array2OfReal & SurfWeights();
 
 		/****** GeomFill_AppSurf::Surface ******/
 		/****** md5 signature: 671f369dee50862b8a0b7f6a973c380f ******/
@@ -932,12 +952,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -947,7 +967,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** GeomFill_AppSurf::TolCurveOnSurf ******/
 		/****** md5 signature: d6477b4bc85f93165a4bf73b1614f603 ******/
@@ -1100,9 +1120,9 @@ returns the Weights (as percent) associed to the criterium used in the optimizat
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1112,7 +1132,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_AppSweep::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
@@ -1124,13 +1144,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** GeomFill_AppSweep::Curves2dDegree ******/
 		/****** md5 signature: fb4d118788312f8319247632ed2e7a3d ******/
@@ -1150,26 +1170,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		const NCollection_Array1<double> & Curves2dKnots();
+		const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** GeomFill_AppSweep::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		const NCollection_Array1<int> & Curves2dMults();
+		const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** GeomFill_AppSweep::Curves2dShape ******/
 		/****** md5 signature: c39c09b90dd3a7aec0bf05cddeea7de4 ******/
@@ -1372,13 +1392,13 @@ Define the type of parametrization used in the approximation.
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		const NCollection_Array2<gp_Pnt> SurfPoles();
+		const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** GeomFill_AppSweep::SurfShape ******/
 		/****** md5 signature: 969593833778f731db9ba7fd1c5ab62d ******/
@@ -1407,65 +1427,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		const NCollection_Array1<double> & SurfUKnots();
+		const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** GeomFill_AppSweep::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		const NCollection_Array1<int> & SurfUMults();
+		const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** GeomFill_AppSweep::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		const NCollection_Array1<double> & SurfVKnots();
+		const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** GeomFill_AppSweep::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		const NCollection_Array1<int> & SurfVMults();
+		const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** GeomFill_AppSweep::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		const NCollection_Array2<double> & SurfWeights();
+		const TColStd_Array2OfReal & SurfWeights();
 
 		/****** GeomFill_AppSweep::Surface ******/
 		/****** md5 signature: 671f369dee50862b8a0b7f6a973c380f ******/
@@ -1473,12 +1493,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1488,7 +1508,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** GeomFill_AppSweep::TolCurveOnSurf ******/
 		/****** md5 signature: d6477b4bc85f93165a4bf73b1614f603 ******/
@@ -2184,9 +2204,9 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2196,7 +2216,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_CircularBlendFunc::D1 ******/
 		/****** md5 signature: f122a00989a158b63aadd60916d6c393 ******/
@@ -2207,12 +2227,12 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2222,7 +2242,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param.
 ") D1;
-		bool D1(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_CircularBlendFunc::D2 ******/
 		/****** md5 signature: 7a1a70dd7a73b71015b51dcc133cc9d9 ******/
@@ -2233,15 +2253,15 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2251,7 +2271,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param.
 ") D2;
-		bool D2(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_CircularBlendFunc::GetMinimalWeight ******/
 		/****** md5 signature: 6484606f629c915e24cdd616ac007d67 ******/
@@ -2259,7 +2279,7 @@ compute the second derivative in v direction of the section for v = param.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2269,7 +2289,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_CircularBlendFunc::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -2280,7 +2300,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -2290,7 +2310,7 @@ Description
 -----------
 Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_CircularBlendFunc::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -2298,7 +2318,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2309,7 +2329,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_CircularBlendFunc::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -2330,7 +2350,7 @@ Returns if the section is rational or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -2340,7 +2360,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_CircularBlendFunc::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -2361,7 +2381,7 @@ Returns the length of the maximum section. This information is useful to perform
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2371,7 +2391,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_CircularBlendFunc::Nb2dCurves ******/
 		/****** md5 signature: 4e7cc537ccba8267281b74444e5ffb1a ******/
@@ -3138,7 +3158,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array2<gp_Pnt>
+Poles: TColgp_Array2OfPnt
 
 Return
 -------
@@ -3148,7 +3168,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array2<gp_Pnt> & Poles);
+		void Poles(TColgp_Array2OfPnt & Poles);
 
 		/****** GeomFill_Filling::Weights ******/
 		/****** md5 signature: 27ec23369f3bccd78c536c33ade5b424 ******/
@@ -3156,7 +3176,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Weights: NCollection_Array2<double>
+Weights: TColStd_Array2OfReal
 
 Return
 -------
@@ -3166,7 +3186,7 @@ Description
 -----------
 No available documentation.
 ") Weights;
-		void Weights(NCollection_Array2<double> & Weights);
+		void Weights(TColStd_Array2OfReal & Weights);
 
 		/****** GeomFill_Filling::isRational ******/
 		/****** md5 signature: 2d134f58b1ac19806ba32cb72ce44772 ******/
@@ -3580,8 +3600,8 @@ Creates an empty Gordon surface algorithm.
 		%feature("autodoc", "
 Parameters
 ----------
-theProfiles: Geom_Curve
-theGuides: Geom_Curve
+theProfiles: TColGeom_Array1OfCurve
+theGuides: TColGeom_Array1OfCurve
 theTolerance: double
 
 Return
@@ -3595,7 +3615,7 @@ Input parameter: theProfiles array of profile curves (V-direction sections, must
 Input parameter: theGuides array of guide curves (U-direction sections, must be >= 2) 
 Input parameter: theTolerance geometric tolerance for intersection detection.
 ") Init;
-		void Init(const NCollection_Array1<opencascade::handle<Geom_Curve> > & theProfiles, const NCollection_Array1<opencascade::handle<Geom_Curve> > & theGuides, double theTolerance);
+		void Init(const TColGeom_Array1OfCurve & theProfiles, const TColGeom_Array1OfCurve & theGuides, double theTolerance);
 
 		/****** GeomFill_Gordon::IsDone ******/
 		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
@@ -3713,10 +3733,10 @@ Returns the intermediate surface skinned through guides.
 		%feature("autodoc", "
 Parameters
 ----------
-theProfiles: Geom_BSplineCurve
-theGuides: Geom_BSplineCurve
-theProfileParams: NCollection_Array1<double>
-theGuideParams: NCollection_Array1<double>
+theProfiles: TColGeom_Array1OfBSplineCurve
+theGuides: TColGeom_Array1OfBSplineCurve
+theProfileParams: TColStd_Array1OfReal
+theGuideParams: TColStd_Array1OfReal
 theTolerance: double
 theIsUClosed: bool (optional, default to false)
 theIsVClosed: bool (optional, default to false)
@@ -3736,7 +3756,7 @@ Input parameter: theTolerance geometric tolerance for validation
 Input parameter: theIsUClosed if true, the U-direction (guides) forms a closed loop 
 Input parameter: theIsVClosed if true, the V-direction (profiles) forms a closed loop.
 ") Init;
-		void Init(const NCollection_Array1<opencascade::handle<Geom_BSplineCurve> > & theProfiles, const NCollection_Array1<opencascade::handle<Geom_BSplineCurve> > & theGuides, const NCollection_Array1<double> & theProfileParams, const NCollection_Array1<double> & theGuideParams, double theTolerance, bool theIsUClosed = false, bool theIsVClosed = false);
+		void Init(const TColGeom_Array1OfBSplineCurve & theProfiles, const TColGeom_Array1OfBSplineCurve & theGuides, const TColStd_Array1OfReal & theProfileParams, const TColStd_Array1OfReal & theGuideParams, double theTolerance, bool theIsUClosed = false, bool theIsVClosed = false);
 
 		/****** GeomFill_GordonBuilder::IsDone ******/
 		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
@@ -4084,7 +4104,7 @@ Parameters
 Param: double
 M: gp_Mat
 V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
+Poles2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -4094,7 +4114,7 @@ Description
 -----------
 compute Location and 2d points.
 ") D0;
-		virtual bool D0(const double Param, gp_Mat & M, gp_Vec & V, NCollection_Array1<gp_Pnt2d> & Poles2d);
+		virtual bool D0(const double Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
 		/****** GeomFill_LocationLaw::D1 ******/
 		/****** md5 signature: 768503e1aeb836e12ad95d0933949784 ******/
@@ -4107,8 +4127,8 @@ M: gp_Mat
 V: gp_Vec
 DM: gp_Mat
 DV: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -4118,7 +4138,7 @@ Description
 -----------
 compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
-		virtual bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d);
+		virtual bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
 		/****** GeomFill_LocationLaw::D2 ******/
 		/****** md5 signature: b341d649458bb8ba70232090d5113327 ******/
@@ -4133,9 +4153,9 @@ DM: gp_Mat
 DV: gp_Vec
 D2M: gp_Mat
 D2V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -4145,7 +4165,7 @@ Description
 -----------
 compute location 2d points and associated first and second derivatives. Warning: It used only for C2 approximation.
 ") D2;
-		virtual bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d);
+		virtual bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
 		/****** GeomFill_LocationLaw::ErrorStatus ******/
 		/****** md5 signature: 6ba28977b4572c57396a526bbdd7889b ******/
@@ -4273,7 +4293,7 @@ Say if the last restriction is defined in this class. If it is true the last ele
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -4284,7 +4304,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_LocationLaw::IsRotation ******/
 		/****** md5 signature: 39e56cacf013c8b586c1ecee85d9aa9d ******/
@@ -4611,7 +4631,7 @@ Create a pipe with an evolving section The section evaluate from First to Last S
 Parameters
 ----------
 Path: Geom_Curve
-NSections: Geom_Curve
+NSections: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -4621,7 +4641,7 @@ Description
 -----------
 Create a pipe with N sections The section evaluate from First to Last Section.
 ") GeomFill_Pipe;
-		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NSections);
+		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
 		/****** GeomFill_Pipe::GeomFill_Pipe ******/
 		/****** md5 signature: f4b41b0a44c316b3116a286c2ba9bc47 ******/
@@ -4863,7 +4883,7 @@ No available documentation.
 Parameters
 ----------
 Path: Geom_Curve
-NSections: Geom_Curve
+NSections: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -4873,7 +4893,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & Path, const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NSections);
+		void Init(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
 		/****** GeomFill_Pipe::Init ******/
 		/****** md5 signature: e18a5d6ca4462e16c5aeafc2fcce0086 ******/
@@ -5201,7 +5221,7 @@ FirstPnt: gp_Pnt
 Center: gp_Pnt
 Dir: gp_Vec
 Angle: double
-Poles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -5211,7 +5231,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const double Angle, NCollection_Array1<gp_Pnt> & Poles);
+		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const double Angle, TColgp_Array1OfPnt & Poles);
 
 		/****** GeomFill_PolynomialConvertor::Section ******/
 		/****** md5 signature: fed091a03a3e61a939c9b31fd91f9738 ******/
@@ -5227,8 +5247,8 @@ Dir: gp_Vec
 DDir: gp_Vec
 Angle: double
 DAngle: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
 
 Return
 -------
@@ -5238,7 +5258,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const double Angle, const double DAngle, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles);
+		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const double Angle, const double DAngle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles);
 
 		/****** GeomFill_PolynomialConvertor::Section ******/
 		/****** md5 signature: df44660c0a2c95c3271bf2cc160f6efd ******/
@@ -5258,9 +5278,9 @@ D2Dir: gp_Vec
 Angle: double
 DAngle: double
 D2Angle: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
 
 Return
 -------
@@ -5270,7 +5290,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Vec & D2FirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, const gp_Vec & Dir, const gp_Vec & DDir, const gp_Vec & D2Dir, const double Angle, const double DAngle, const double D2Angle, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles);
+		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Vec & D2FirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, const gp_Vec & Dir, const gp_Vec & DDir, const gp_Vec & D2Dir, const double Angle, const double DAngle, const double D2Angle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles);
 
 };
 
@@ -5367,8 +5387,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -5378,7 +5398,7 @@ Description
 -----------
 Raises if not yet perform Raises if the lengths of <Knots> and <Mults> are not equal to NbKnots().
 ") KnotsAndMults;
-		void KnotsAndMults(NCollection_Array1<double> & Knots, NCollection_Array1<int> & Mults);
+		void KnotsAndMults(TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults);
 
 		/****** GeomFill_Profiler::NbKnots ******/
 		/****** md5 signature: 1d7f6bb61170b57fc8534832d22fab99 ******/
@@ -5431,7 +5451,7 @@ Converts all curves to BSplineCurves. Set them to the common profile. <PTol> is 
 Parameters
 ----------
 Index: int
-Poles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -5441,7 +5461,7 @@ Description
 -----------
 returns in <Poles> the poles of the BSplineCurve from index <Index> adjusting to the current profile. Raises if not yet perform Raises if <Index> not in the range [1,NbCurves] if the length of <Poles> is not equal to NbPoles().
 ") Poles;
-		void Poles(const int Index, NCollection_Array1<gp_Pnt> & Poles);
+		void Poles(const int Index, TColgp_Array1OfPnt & Poles);
 
 		/****** GeomFill_Profiler::Weights ******/
 		/****** md5 signature: 54d36bd3370076761924d4b2eee33867 ******/
@@ -5450,7 +5470,7 @@ returns in <Poles> the poles of the BSplineCurve from index <Index> adjusting to
 Parameters
 ----------
 Index: int
-Weights: NCollection_Array1<double>
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -5460,7 +5480,7 @@ Description
 -----------
 returns in <Weights> the weights of the BSplineCurve from index <Index> adjusting to the current profile. Raises if not yet perform Raises if <Index> not in the range [1,NbCurves] or if the length of <Weights> is not equal to NbPoles().
 ") Weights;
-		void Weights(const int Index, NCollection_Array1<double> & Weights);
+		void Weights(const int Index, TColStd_Array1OfReal & Weights);
 
 };
 
@@ -5525,8 +5545,8 @@ FirstPnt: gp_Pnt
 Center: gp_Pnt
 Dir: gp_Vec
 Angle: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -5536,7 +5556,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const double Angle, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weights);
+		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const double Angle, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
 		/****** GeomFill_QuasiAngularConvertor::Section ******/
 		/****** md5 signature: d05c785e2e3d8a5bc0affa6ef98c65bc ******/
@@ -5552,10 +5572,10 @@ Dir: gp_Vec
 DDir: gp_Vec
 Angle: double
 DAngle: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weights: NCollection_Array1<double>
-DWeights: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weights: TColStd_Array1OfReal
+DWeights: TColStd_Array1OfReal
 
 Return
 -------
@@ -5565,7 +5585,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const double Angle, const double DAngle, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weights, NCollection_Array1<double> & DWeights);
+		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const double Angle, const double DAngle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & DWeights);
 
 		/****** GeomFill_QuasiAngularConvertor::Section ******/
 		/****** md5 signature: 27e9c58daa4857d1aabac3833904703a ******/
@@ -5585,12 +5605,12 @@ D2Dir: gp_Vec
 Angle: double
 DAngle: double
 D2Angle: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weights: NCollection_Array1<double>
-DWeights: NCollection_Array1<double>
-D2Weights: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weights: TColStd_Array1OfReal
+DWeights: TColStd_Array1OfReal
+D2Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -5600,7 +5620,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Vec & D2FirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, const gp_Vec & Dir, const gp_Vec & DDir, const gp_Vec & D2Dir, const double Angle, const double DAngle, const double D2Angle, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weights, NCollection_Array1<double> & DWeights, NCollection_Array1<double> & D2Weights);
+		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Vec & D2FirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, const gp_Vec & Dir, const gp_Vec & DDir, const gp_Vec & D2Dir, const double Angle, const double DAngle, const double D2Angle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & DWeights, TColStd_Array1OfReal & D2Weights);
 
 };
 
@@ -5681,8 +5701,8 @@ Return a copy of the constant Section, if <self> IsConstant.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5692,7 +5712,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		virtual bool D0(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weigths);
+		virtual bool D0(const double Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_SectionLaw::D1 ******/
 		/****** md5 signature: fc4af643338984221d243afa74838c0a ******/
@@ -5701,10 +5721,10 @@ compute the section for v = param.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5714,7 +5734,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
-		virtual bool D1(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		virtual bool D1(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_SectionLaw::D2 ******/
 		/****** md5 signature: 843cfb40d8b4253c3f94c61cebbebf16 ******/
@@ -5723,12 +5743,12 @@ compute the first derivative in v direction of the section for v = param Warning
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5738,7 +5758,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
-		virtual bool D2(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		virtual bool D2(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_SectionLaw::GetDomain ******/
 		/****** md5 signature: b591590d3bc2b0e7570065100d4075f9 ******/
@@ -5782,7 +5802,7 @@ Gets the bounds of the parametric interval on the function.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5792,7 +5812,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		virtual void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_SectionLaw::GetTolerance ******/
 		/****** md5 signature: 445238f8780bb5bcf2c4e87841c8b27e ******/
@@ -5803,7 +5823,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -5813,7 +5833,7 @@ Description
 -----------
 Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		virtual void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		virtual void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_SectionLaw::Intervals ******/
 		/****** md5 signature: 3d6a840a7f0f4eea65b38aa9a495c6b6 ******/
@@ -5821,7 +5841,7 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -5832,7 +5852,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_SectionLaw::IsConicalLaw ******/
 		/****** md5 signature: 60010f14fa397f62c83071350544b67d ******/
@@ -5913,7 +5933,7 @@ Returns if law is periodic or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -5923,7 +5943,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		virtual void Knots(NCollection_Array1<double> & TKnots);
+		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_SectionLaw::MaximalSection ******/
 		/****** md5 signature: 622251938ac59f2f80ec141e01dd43c7 ******/
@@ -5944,7 +5964,7 @@ Returns the length of the greater section. This information is useful to G1's co
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -5954,7 +5974,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		virtual void Mults(NCollection_Array1<int> & TMults);
+		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_SectionLaw::NbIntervals ******/
 		/****** md5 signature: 9ac7bc3c23f26b850f256bf654af74c8 ******/
@@ -6415,7 +6435,7 @@ Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hy
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -6426,7 +6446,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_SnglrFunc::IsPeriodic ******/
 		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
@@ -6874,9 +6894,9 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6886,7 +6906,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_SweepFunction::D1 ******/
 		/****** md5 signature: f122a00989a158b63aadd60916d6c393 ******/
@@ -6897,12 +6917,12 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6912,7 +6932,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param.
 ") D1;
-		bool D1(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_SweepFunction::D2 ******/
 		/****** md5 signature: 7a1a70dd7a73b71015b51dcc133cc9d9 ******/
@@ -6923,15 +6943,15 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6941,7 +6961,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param.
 ") D2;
-		bool D2(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_SweepFunction::GetMinimalWeight ******/
 		/****** md5 signature: 6484606f629c915e24cdd616ac007d67 ******/
@@ -6949,7 +6969,7 @@ compute the second derivative in v direction of the section for v = param.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6959,7 +6979,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_SweepFunction::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -6970,7 +6990,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -6980,7 +7000,7 @@ Description
 -----------
 Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_SweepFunction::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -6988,7 +7008,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -6999,7 +7019,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_SweepFunction::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -7020,7 +7040,7 @@ Returns if the section is rational or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -7030,7 +7050,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_SweepFunction::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -7051,7 +7071,7 @@ Returns the length of the maximum section. This information is useful to perform
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -7061,7 +7081,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_SweepFunction::Nb2dCurves ******/
 		/****** md5 signature: 4e7cc537ccba8267281b74444e5ffb1a ******/
@@ -7548,7 +7568,7 @@ Gets the bounds of the parametric interval on the function.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -7559,7 +7579,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_TrihedronLaw::IsConstant ******/
 		/****** md5 signature: 92e5844c876cfab9c0354aa736133763 ******/
@@ -7968,7 +7988,7 @@ Gets average value of Tangent(t) and Normal(t) it is useful to make fast approxi
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -7979,7 +7999,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_ConstantBiNormal::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -8079,10 +8099,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8092,7 +8112,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Coons;
-		 GeomFill_Coons(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		 GeomFill_Coons(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Coons::GeomFill_Coons ******/
 		/****** md5 signature: 5181936bd64980201e9a5fe1d1199c47 ******/
@@ -8100,14 +8120,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -8117,7 +8137,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Coons;
-		 GeomFill_Coons(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		 GeomFill_Coons(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 		/****** GeomFill_Coons::Init ******/
 		/****** md5 signature: bad17724c105204630777579ecc2c0cc ******/
@@ -8125,10 +8145,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8138,7 +8158,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Coons::Init ******/
 		/****** md5 signature: 79203b6c8adc2ad0350759ee3d194c9e ******/
@@ -8146,14 +8166,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -8163,7 +8183,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 };
 
@@ -8334,7 +8354,7 @@ Get average value of Tangent(t) and Normal(t) it is useful to make fast approxim
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -8345,7 +8365,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_CorrectedFrenet::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -8505,7 +8525,7 @@ Parameters
 Param: double
 M: gp_Mat
 V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
+Poles2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -8515,7 +8535,7 @@ Description
 -----------
 compute Location and 2d points.
 ") D0;
-		bool D0(const double Param, gp_Mat & M, gp_Vec & V, NCollection_Array1<gp_Pnt2d> & Poles2d);
+		bool D0(const double Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
 		/****** GeomFill_CurveAndTrihedron::D1 ******/
 		/****** md5 signature: 6290e69091174c1c479d3585b2e66f57 ******/
@@ -8528,8 +8548,8 @@ M: gp_Mat
 V: gp_Vec
 DM: gp_Mat
 DV: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -8539,7 +8559,7 @@ Description
 -----------
 compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d);
+		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
 		/****** GeomFill_CurveAndTrihedron::D2 ******/
 		/****** md5 signature: 5eef2b2ca9a6e2fa099666450057d256 ******/
@@ -8554,9 +8574,9 @@ DM: gp_Mat
 DV: gp_Vec
 D2M: gp_Mat
 D2V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -8566,7 +8586,7 @@ Description
 -----------
 compute location 2d points and associated first and second derivatives. Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d);
+		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
 		/****** GeomFill_CurveAndTrihedron::GetAverageLaw ******/
 		/****** md5 signature: 74cd3db64f284d74faf8e6f650fc7739 ******/
@@ -8655,7 +8675,7 @@ Get the maximum Norm of the matrix-location part. It is usful to find a good Tol
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -8666,7 +8686,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_CurveAndTrihedron::IsRotation ******/
 		/****** md5 signature: 0e95be8276d034f3444e4856c5d5b978 ******/
@@ -8829,10 +8849,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8842,7 +8862,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Curved;
-		 GeomFill_Curved(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Curved::GeomFill_Curved ******/
 		/****** md5 signature: 3355630240eb5b1d073f4034d3df00df ******/
@@ -8850,14 +8870,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -8867,7 +8887,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Curved;
-		 GeomFill_Curved(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 		/****** GeomFill_Curved::GeomFill_Curved ******/
 		/****** md5 signature: 044ba35fc24e480b31a0c7157ce2fb65 ******/
@@ -8875,8 +8895,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8886,7 +8906,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Curved;
-		 GeomFill_Curved(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2);
+		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2);
 
 		/****** GeomFill_Curved::GeomFill_Curved ******/
 		/****** md5 signature: 27a1727d6f9e7426fd694e311d1036c9 ******/
@@ -8894,10 +8914,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
 
 Return
 -------
@@ -8907,7 +8927,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Curved;
-		 GeomFill_Curved(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2);
+		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2);
 
 		/****** GeomFill_Curved::Init ******/
 		/****** md5 signature: bad17724c105204630777579ecc2c0cc ******/
@@ -8915,10 +8935,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8928,7 +8948,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Curved::Init ******/
 		/****** md5 signature: 79203b6c8adc2ad0350759ee3d194c9e ******/
@@ -8936,14 +8956,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -8953,7 +8973,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 		/****** GeomFill_Curved::Init ******/
 		/****** md5 signature: 129dee43b71b81feb95726c8f9b9bf1f ******/
@@ -8961,8 +8981,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8972,7 +8992,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2);
 
 		/****** GeomFill_Curved::Init ******/
 		/****** md5 signature: 139c0ddfd4c3b6a9eb4e30c5e2eb5047 ******/
@@ -8980,10 +9000,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
 
 Return
 -------
@@ -8993,7 +9013,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2);
 
 };
 
@@ -9133,7 +9153,7 @@ Get average value of Tangent(t) and Normal(t) it is useful to make fast approxim
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -9144,7 +9164,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_Darboux::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -9474,7 +9494,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -9485,7 +9505,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_DiscreteTrihedron::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -9696,7 +9716,7 @@ Get average value of Tangent(t) and Normal(t) it is useful to make fast approxim
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -9707,7 +9727,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_DraftTrihedron::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -9852,8 +9872,8 @@ Return the constant Section if <self> IsConstant.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -9863,7 +9883,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_EvolvedSection::D1 ******/
 		/****** md5 signature: 8b4c1258777be50399d42a2a43e78f30 ******/
@@ -9872,10 +9892,10 @@ compute the section for v = param.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -9885,7 +9905,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_EvolvedSection::D2 ******/
 		/****** md5 signature: 60c74a1a2be1793f26f242c7eab4c72b ******/
@@ -9894,12 +9914,12 @@ compute the first derivative in v direction of the section for v = param Warning
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -9909,7 +9929,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_EvolvedSection::GetDomain ******/
 		/****** md5 signature: bfa86e0764434924d787bb3e27f141fc ******/
@@ -9953,7 +9973,7 @@ Gets the bounds of the parametric interval on the function.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -9963,7 +9983,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_EvolvedSection::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -9974,7 +9994,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -9984,7 +10004,7 @@ Description
 -----------
 Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_EvolvedSection::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -9992,7 +10012,7 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -10003,7 +10023,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_EvolvedSection::IsConstant ******/
 		/****** md5 signature: c82837d7304e800e44d99ab714692b7e ******/
@@ -10067,7 +10087,7 @@ Returns if the law isperiodic or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -10077,7 +10097,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_EvolvedSection::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -10098,7 +10118,7 @@ Returns the length of the greater section. This information is useful to G1's co
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -10108,7 +10128,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_EvolvedSection::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -10312,7 +10332,7 @@ Get average value of Tangent(t) and Normal(t) it is useful to make fast approxim
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -10323,7 +10343,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_Fixed::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -10509,7 +10529,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -10520,7 +10540,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_Frenet::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -10720,7 +10740,7 @@ Parameters
 Param: double
 M: gp_Mat
 V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
+Poles2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -10730,7 +10750,7 @@ Description
 -----------
 compute Location and 2d points.
 ") D0;
-		bool D0(const double Param, gp_Mat & M, gp_Vec & V, NCollection_Array1<gp_Pnt2d> & Poles2d);
+		bool D0(const double Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
 		/****** GeomFill_LocationDraft::D1 ******/
 		/****** md5 signature: 6290e69091174c1c479d3585b2e66f57 ******/
@@ -10743,8 +10763,8 @@ M: gp_Mat
 V: gp_Vec
 DM: gp_Mat
 DV: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -10754,7 +10774,7 @@ Description
 -----------
 compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d);
+		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
 		/****** GeomFill_LocationDraft::D2 ******/
 		/****** md5 signature: 5eef2b2ca9a6e2fa099666450057d256 ******/
@@ -10769,9 +10789,9 @@ DM: gp_Mat
 DV: gp_Vec
 D2M: gp_Mat
 D2V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -10781,7 +10801,7 @@ Description
 -----------
 compute location 2d points and associated first and second derivatives. Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d);
+		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
 		/****** GeomFill_LocationDraft::Direction ******/
 		/****** md5 signature: 7db1622a0b370b4453af0886bb5f840c ******/
@@ -10909,7 +10929,7 @@ Say if the last restriction is defined in this class. If it is true the last ele
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -10920,7 +10940,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_LocationDraft::IsIntersec ******/
 		/****** md5 signature: e5fc4733ac4db10d86ac695c113b27a8 ******/
@@ -11170,7 +11190,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-ParAndRad: NCollection_HArray1<gp_Pnt2d
+ParAndRad: TColgp_HArray1OfPnt2d
 
 Return
 -------
@@ -11180,7 +11200,7 @@ Description
 -----------
 No available documentation.
 ") ComputeAutomaticLaw;
-		GeomFill_PipeError ComputeAutomaticLaw(opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & ParAndRad);
+		GeomFill_PipeError ComputeAutomaticLaw(opencascade::handle<TColgp_HArray1OfPnt2d> & ParAndRad);
 
 		/****** GeomFill_LocationGuide::Copy ******/
 		/****** md5 signature: 9afcda456c2238a16277f4973c632120 ******/
@@ -11224,7 +11244,7 @@ Parameters
 Param: double
 M: gp_Mat
 V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
+Poles2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -11234,7 +11254,7 @@ Description
 -----------
 compute Location and 2d points.
 ") D0;
-		bool D0(const double Param, gp_Mat & M, gp_Vec & V, NCollection_Array1<gp_Pnt2d> & Poles2d);
+		bool D0(const double Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
 		/****** GeomFill_LocationGuide::D1 ******/
 		/****** md5 signature: 6290e69091174c1c479d3585b2e66f57 ******/
@@ -11247,8 +11267,8 @@ M: gp_Mat
 V: gp_Vec
 DM: gp_Mat
 DV: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -11258,7 +11278,7 @@ Description
 -----------
 compute location 2d points and associated first derivatives. Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d);
+		bool D1(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
 		/****** GeomFill_LocationGuide::D2 ******/
 		/****** md5 signature: 5eef2b2ca9a6e2fa099666450057d256 ******/
@@ -11273,9 +11293,9 @@ DM: gp_Mat
 DV: gp_Vec
 D2M: gp_Mat
 D2V: gp_Vec
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -11285,7 +11305,7 @@ Description
 -----------
 compute location 2d points and associated first and second derivatives. Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d);
+		bool D2(const double Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
 		/****** GeomFill_LocationGuide::EraseRotation ******/
 		/****** md5 signature: 2a36e5d874195d280379b1872ee5893a ******/
@@ -11439,7 +11459,7 @@ Say if the last restriction is defined in this class. If it is true the last ele
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -11450,7 +11470,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_LocationGuide::IsRotation ******/
 		/****** md5 signature: 0e95be8276d034f3444e4856c5d5b978 ******/
@@ -11706,7 +11726,7 @@ class GeomFill_NSections : public GeomFill_SectionLaw {
 		%feature("autodoc", "
 Parameters
 ----------
-NC: Geom_Curve
+NC: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -11716,7 +11736,7 @@ Description
 -----------
 Make a SectionLaw with N Curves.
 ") GeomFill_NSections;
-		 GeomFill_NSections(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NC);
+		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC);
 
 		/****** GeomFill_NSections::GeomFill_NSections ******/
 		/****** md5 signature: 0e48b5d6f3d32414194bed5b82b81a89 ******/
@@ -11724,8 +11744,8 @@ Make a SectionLaw with N Curves.
 		%feature("autodoc", "
 Parameters
 ----------
-NC: Geom_Curve
-NP: NCollection_Sequence<double>
+NC: TColGeom_SequenceOfCurve
+NP: TColStd_SequenceOfReal
 
 Return
 -------
@@ -11735,7 +11755,7 @@ Description
 -----------
 Make a SectionLaw with N Curves and N associated parameters.
 ") GeomFill_NSections;
-		 GeomFill_NSections(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NC, const NCollection_Sequence<double> & NP);
+		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP);
 
 		/****** GeomFill_NSections::GeomFill_NSections ******/
 		/****** md5 signature: 154865ec84a95ffa39ef7c7c92b543c2 ******/
@@ -11743,8 +11763,8 @@ Make a SectionLaw with N Curves and N associated parameters.
 		%feature("autodoc", "
 Parameters
 ----------
-NC: Geom_Curve
-NP: NCollection_Sequence<double>
+NC: TColGeom_SequenceOfCurve
+NP: TColStd_SequenceOfReal
 UF: double
 UL: double
 
@@ -11756,7 +11776,7 @@ Description
 -----------
 Make a SectionLaw with N Curves and N associated parameters. UF and UL are the parametric bounds of the NSections.
 ") GeomFill_NSections;
-		 GeomFill_NSections(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NC, const NCollection_Sequence<double> & NP, const double UF, const double UL);
+		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP, const double UF, const double UL);
 
 		/****** GeomFill_NSections::GeomFill_NSections ******/
 		/****** md5 signature: 82bd347d1c0ba0df485822a4248afdc5 ******/
@@ -11764,8 +11784,8 @@ Make a SectionLaw with N Curves and N associated parameters. UF and UL are the p
 		%feature("autodoc", "
 Parameters
 ----------
-NC: Geom_Curve
-NP: NCollection_Sequence<double>
+NC: TColGeom_SequenceOfCurve
+NP: TColStd_SequenceOfReal
 UF: double
 UL: double
 VF: double
@@ -11779,7 +11799,7 @@ Description
 -----------
 Make a SectionLaw with N Curves and N associated parameters. UF and UL are the parametric bounds of the NSections VF and VL are the parametric bounds of the path.
 ") GeomFill_NSections;
-		 GeomFill_NSections(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NC, const NCollection_Sequence<double> & NP, const double UF, const double UL, const double VF, const double VL);
+		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP, const double UF, const double UL, const double VF, const double VL);
 
 		/****** GeomFill_NSections::GeomFill_NSections ******/
 		/****** md5 signature: 4e8d8aa0a73d40dedc1ccede45163705 ******/
@@ -11787,9 +11807,9 @@ Make a SectionLaw with N Curves and N associated parameters. UF and UL are the p
 		%feature("autodoc", "
 Parameters
 ----------
-NC: Geom_Curve
+NC: TColGeom_SequenceOfCurve
 Trsfs: NCollection_Sequence<gp_Trsf>
-NP: NCollection_Sequence<double>
+NP: TColStd_SequenceOfReal
 UF: double
 UL: double
 VF: double
@@ -11804,7 +11824,7 @@ Description
 -----------
 Make a SectionLaw with N Curves and N associated parameters. UF and UL are the parametric bounds of the NSections VF and VL are the parametric bounds of the path UF and UL are the parametric bounds of the NSections Surf is a reference surface used by BRepFill_NSections.
 ") GeomFill_NSections;
-		 GeomFill_NSections(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & NC, const NCollection_Sequence<gp_Trsf> & Trsfs, const NCollection_Sequence<double> & NP, const double UF, const double UL, const double VF, const double VL, const opencascade::handle<Geom_BSplineSurface> & Surf);
+		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const NCollection_Sequence<gp_Trsf> & Trsfs, const TColStd_SequenceOfReal & NP, const double UF, const double UL, const double VF, const double VL, const opencascade::handle<Geom_BSplineSurface> & Surf);
 
 		/****** GeomFill_NSections::BSplineSurface ******/
 		/****** md5 signature: 85e540db90b0592d3353f7488876979d ******/
@@ -11883,8 +11903,8 @@ Return the constant Section if <self> IsConstant.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -11894,7 +11914,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_NSections::D1 ******/
 		/****** md5 signature: 8b4c1258777be50399d42a2a43e78f30 ******/
@@ -11903,10 +11923,10 @@ compute the section for v = param.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -11916,7 +11936,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_NSections::D2 ******/
 		/****** md5 signature: 60c74a1a2be1793f26f242c7eab4c72b ******/
@@ -11925,12 +11945,12 @@ compute the first derivative in v direction of the section for v = param Warning
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -11940,7 +11960,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_NSections::GetDomain ******/
 		/****** md5 signature: bfa86e0764434924d787bb3e27f141fc ******/
@@ -11984,7 +12004,7 @@ Gets the bounds of the parametric interval on the function.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -11994,7 +12014,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_NSections::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -12005,7 +12025,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -12015,7 +12035,7 @@ Description
 -----------
 Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_NSections::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -12023,7 +12043,7 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -12034,7 +12054,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_NSections::IsConicalLaw ******/
 		/****** md5 signature: 7c6ffcfff6fc31053b18731c93fb9fd6 ******/
@@ -12115,7 +12135,7 @@ Returns if the law isperiodic or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -12125,7 +12145,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_NSections::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -12146,7 +12166,7 @@ Returns the length of the greater section. This information is useful to G1's co
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -12156,7 +12176,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_NSections::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -12287,7 +12307,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -12297,7 +12317,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_SectionGenerator::Mults ******/
 		/****** md5 signature: 1409aa7d3c6d4a60d7296e5e33b0a897 ******/
@@ -12305,7 +12325,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -12315,7 +12335,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_SectionGenerator::Parameter ******/
 		/****** md5 signature: c97ecd3448979bfdcc4ae03690c0dd00 ******/
@@ -12342,12 +12362,12 @@ Returns the parameter of Section<P>, to impose it for the approximation.
 Parameters
 ----------
 P: int
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12357,7 +12377,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const int P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const int P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_SectionGenerator::Section ******/
 		/****** md5 signature: c05986f07c8e6cc7729eaed10bcb3f5b ******/
@@ -12366,9 +12386,9 @@ Used for the first and last section The method returns true if the derivatives a
 Parameters
 ----------
 P: int
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12378,7 +12398,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const int P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const int P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_SectionGenerator::SetParam ******/
 		/****** md5 signature: 4818a41f5b89c515200259b69e9d4d39 ******/
@@ -12386,7 +12406,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Params: NCollection_HArray1<double
+Params: TColStd_HArray1OfReal
 
 Return
 -------
@@ -12396,7 +12416,7 @@ Description
 -----------
 No available documentation.
 ") SetParam;
-		void SetParam(const opencascade::handle<NCollection_HArray1<double> > & Params);
+		void SetParam(const opencascade::handle<TColStd_HArray1OfReal> & Params);
 
 };
 
@@ -12560,10 +12580,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -12573,7 +12593,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Stretch;
-		 GeomFill_Stretch(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		 GeomFill_Stretch(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Stretch::GeomFill_Stretch ******/
 		/****** md5 signature: 2383b7cf64838c2903175dbe20d33736 ******/
@@ -12581,14 +12601,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -12598,7 +12618,7 @@ Description
 -----------
 No available documentation.
 ") GeomFill_Stretch;
-		 GeomFill_Stretch(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		 GeomFill_Stretch(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 		/****** GeomFill_Stretch::Init ******/
 		/****** md5 signature: bad17724c105204630777579ecc2c0cc ******/
@@ -12606,10 +12626,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
 
 Return
 -------
@@ -12619,7 +12639,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
 		/****** GeomFill_Stretch::Init ******/
 		/****** md5 signature: 79203b6c8adc2ad0350759ee3d194c9e ******/
@@ -12627,14 +12647,14 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P1: NCollection_Array1<gp_Pnt>
-P2: NCollection_Array1<gp_Pnt>
-P3: NCollection_Array1<gp_Pnt>
-P4: NCollection_Array1<gp_Pnt>
-W1: NCollection_Array1<double>
-W2: NCollection_Array1<double>
-W3: NCollection_Array1<double>
-W4: NCollection_Array1<double>
+P1: TColgp_Array1OfPnt
+P2: TColgp_Array1OfPnt
+P3: TColgp_Array1OfPnt
+P4: TColgp_Array1OfPnt
+W1: TColStd_Array1OfReal
+W2: TColStd_Array1OfReal
+W3: TColStd_Array1OfReal
+W4: TColStd_Array1OfReal
 
 Return
 -------
@@ -12644,7 +12664,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt> & P1, const NCollection_Array1<gp_Pnt> & P2, const NCollection_Array1<gp_Pnt> & P3, const NCollection_Array1<gp_Pnt> & P4, const NCollection_Array1<double> & W1, const NCollection_Array1<double> & W2, const NCollection_Array1<double> & W3, const NCollection_Array1<double> & W4);
+		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
 };
 
@@ -12879,8 +12899,8 @@ Return the constant Section if <self> IsConstant.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12890,7 +12910,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_UniformSection::D1 ******/
 		/****** md5 signature: 8b4c1258777be50399d42a2a43e78f30 ******/
@@ -12899,10 +12919,10 @@ compute the section for v = param.
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12912,7 +12932,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
-		bool D1(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** GeomFill_UniformSection::D2 ******/
 		/****** md5 signature: 60c74a1a2be1793f26f242c7eab4c72b ******/
@@ -12921,12 +12941,12 @@ compute the first derivative in v direction of the section for v = param Warning
 Parameters
 ----------
 Param: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12936,7 +12956,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
-		bool D2(const double Param, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** GeomFill_UniformSection::GetDomain ******/
 		/****** md5 signature: bfa86e0764434924d787bb3e27f141fc ******/
@@ -12980,7 +13000,7 @@ Gets the bounds of the parametric interval on the function.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -12990,7 +13010,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** GeomFill_UniformSection::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -13001,7 +13021,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -13011,7 +13031,7 @@ Description
 -----------
 Returns the tolerances associated at each poles to reach in approximation, to satisfy: BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** GeomFill_UniformSection::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -13019,7 +13039,7 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -13030,7 +13050,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_UniformSection::IsConstant ******/
 		/****** md5 signature: c82837d7304e800e44d99ab714692b7e ******/
@@ -13094,7 +13114,7 @@ Returns if the law isperiodic or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -13104,7 +13124,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomFill_UniformSection::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -13125,7 +13145,7 @@ Returns the length of the greater section. This information is useful to G1's co
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -13135,7 +13155,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** GeomFill_UniformSection::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -13351,7 +13371,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -13362,7 +13382,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_GuideTrihedronAC::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/
@@ -13636,7 +13656,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -13647,7 +13667,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** GeomFill_GuideTrihedronPlan::IsConstant ******/
 		/****** md5 signature: f5b53cd348be55874964083dd4dc65d3 ******/

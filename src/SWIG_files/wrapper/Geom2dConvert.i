@@ -45,6 +45,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dconvert.htm
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<TColStd_module.hxx>
 #include<Convert_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -58,6 +60,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dconvert.htm
 %import Standard.i
 %import NCollection.i
 %import Geom2d.i
+%import TColGeom2d.i
+%import TColStd.i
 %import Convert.i
 %import Adaptor2d.i
 %import GeomAbs.i
@@ -98,7 +102,7 @@ class Geom2dConvert {
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-tabBS: NCollection_HArray1<
+tabBS: TColGeom2d_HArray1OfBSplineCurve
 Tolerance: double
 
 Return
@@ -109,7 +113,7 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. Tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & tabBS, const double Tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve > & tabBS, const double Tolerance);
 
 		/****** Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve ******/
 		/****** md5 signature: 100d0c7c18c9e0c2d75d80a28a8bca90 ******/
@@ -118,7 +122,7 @@ This Method reduces as far as it is possible the multiplicities of the knots of 
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-tabBS: NCollection_HArray1<
+tabBS: TColGeom2d_HArray1OfBSplineCurve
 AngularTolerance: double
 Tolerance: double
 
@@ -130,7 +134,7 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & tabBS, const double AngularTolerance, const double Tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve > & tabBS, const double AngularTolerance, const double Tolerance);
 
 		/****** Geom2dConvert::C0BSplineToC1BSplineCurve ******/
 		/****** md5 signature: 2952d1f61314338daedceedc133e42eb ******/
@@ -157,10 +161,10 @@ This Method reduces as far as it is possible the multiplicities of the knots of 
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom2d_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfIndices: NCollection_HArray1<int
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfIndices: TColStd_HArray1OfInteger
+ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
 ClosedTolerance: double
 
 Return
@@ -171,7 +175,7 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
+		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** Geom2dConvert::ConcatC1 ******/
 		/****** md5 signature: 17e56e215492d0c5354740f16edbf4a5 ******/
@@ -179,10 +183,10 @@ This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfC
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom2d_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfIndices: NCollection_HArray1<int
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfIndices: TColStd_HArray1OfInteger
+ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
 ClosedTolerance: double
 AngularTolerance: double
 
@@ -194,7 +198,7 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance, const double AngularTolerance);
+		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance, const double AngularTolerance);
 
 		/****** Geom2dConvert::ConcatG1 ******/
 		/****** md5 signature: 2bc189a116493fb64f76810ed3cd9848 ******/
@@ -202,9 +206,9 @@ This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfC
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom2d_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom2d_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfConcatenated: TColGeom2d_HArray1OfBSplineCurve
 ClosedTolerance: double
 
 Return
@@ -215,7 +219,7 @@ Description
 -----------
 This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatG1;
-		static void ConcatG1(NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
+		static void ConcatG1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** Geom2dConvert::CurveToBSplineCurve ******/
 		/****** md5 signature: 2605e8125c6f357bc9c5d1ed97296078 ******/
@@ -340,13 +344,13 @@ Constructor.
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<opencascade::handle<Geom2d_Curve>>
+TColGeom2d_SequenceOfCurve
 
 Description
 -----------
 Get the result curve after approximation.
 ") GetResult;
-		const NCollection_Sequence<opencascade::handle<Geom2d_Curve>> & GetResult();
+		TColGeom2d_SequenceOfCurve GetResult();
 
 };
 
@@ -545,7 +549,7 @@ Returns the split knot of index Index to the split knots table computed in this 
 		%feature("autodoc", "
 Parameters
 ----------
-SplitValues: NCollection_Array1<int>
+SplitValues: TColStd_Array1OfInteger
 
 Return
 -------
@@ -555,7 +559,7 @@ Description
 -----------
 Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analysed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package Geom2dConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).
 ") Splitting;
-		void Splitting(NCollection_Array1<int> & SplitValues);
+		void Splitting(TColStd_Array1OfInteger & SplitValues);
 
 };
 
@@ -634,7 +638,7 @@ Constructs and returns the Bezier curve of index Index to the table of adjacent 
 		%feature("autodoc", "
 Parameters
 ----------
-Curves: Geom2d_BezierCurve
+Curves: TColGeom2d_Array1OfBezierCurve
 
 Return
 -------
@@ -644,7 +648,7 @@ Description
 -----------
 Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 ") Arcs;
-		void Arcs(NCollection_Array1<opencascade::handle<Geom2d_BezierCurve> > & Curves);
+		void Arcs(TColGeom2d_Array1OfBezierCurve & Curves);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::Knots ******/
 		/****** md5 signature: 0c997620b63f032cdc3c9768bd4c0468 ******/
@@ -652,7 +656,7 @@ Constructs all the Bezier curves whose data is computed by this algorithm and lo
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -662,7 +666,7 @@ Description
 -----------
 This methode returns the bspline's knots associated to the converted arcs Raises DimensionError if the length of Curves is not equal to NbArcs + 1.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** Geom2dConvert_BSplineCurveToBezierCurve::NbArcs ******/
 		/****** md5 signature: c1c862e41d849390df4d036d37a1ae92 ******/

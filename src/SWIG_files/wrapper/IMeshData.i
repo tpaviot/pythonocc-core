@@ -168,17 +168,17 @@ typedef std::deque<double, NCollection_OccAllocator<double>> IMeshData::Model::S
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<Bnd_B2d>> IMeshData::SequenceOfBndB2d;
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<int>> IMeshData::SequenceOfInteger;
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<double>> IMeshData::SequenceOfReal;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<bool>> IMeshData::VectorOfBoolean;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<BRepMesh_Circle>> IMeshData::VectorOfCircle;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<BRepMesh_Triangle>> IMeshData::VectorOfElements;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<IEdgeHandle>> IMeshData::VectorOfIEdgeHandles;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<IEdgePtr>> IMeshData::VectorOfIEdgePtrs;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<IFaceHandle>> IMeshData::VectorOfIFaceHandles;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<IPCurveHandle>> IMeshData::VectorOfIPCurveHandles;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<IWireHandle>> IMeshData::VectorOfIWireHandles;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<int>> IMeshData::VectorOfInteger;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<TopAbs_Orientation>> IMeshData::VectorOfOrientation;
-typedef IMeshData::NCollection_Shared<NCollection_Vector<BRepMesh_Vertex>> IMeshData::VectorOfVertex;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<bool>> IMeshData::VectorOfBoolean;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<BRepMesh_Circle>> IMeshData::VectorOfCircle;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<BRepMesh_Triangle>> IMeshData::VectorOfElements;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<IEdgeHandle>> IMeshData::VectorOfIEdgeHandles;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<IEdgePtr>> IMeshData::VectorOfIEdgePtrs;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<IFaceHandle>> IMeshData::VectorOfIFaceHandles;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<IPCurveHandle>> IMeshData::VectorOfIPCurveHandles;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<IWireHandle>> IMeshData::VectorOfIWireHandles;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<int>> IMeshData::VectorOfInteger;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<TopAbs_Orientation>> IMeshData::VectorOfOrientation;
+typedef IMeshData::NCollection_Shared<NCollection_DynamicArray<BRepMesh_Vertex>> IMeshData::VectorOfVertex;
 typedef IMeshData::NCollection_CellFilter<BRepMesh_VertexInspector> IMeshData::VertexCellFilter;
 /* end typedefs declaration */
 

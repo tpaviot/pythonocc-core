@@ -1656,6 +1656,7 @@ Quantity_TOC_CIELch = Quantity_TypeOfColor.Quantity_TOC_CIELch
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(Quantity_HArray1OfColor)
 /* end handles declaration */
 
 /* templates */

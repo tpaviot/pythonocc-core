@@ -49,6 +49,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeextend.html"
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<gp_module.hxx>
+#include<TColGeom_module.hxx>
+#include<TColStd_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TColgp_module.hxx>
 #include<TopLoc_module.hxx>
@@ -68,6 +71,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeextend.html"
 %import Geom.i
 %import GeomAbs.i
 %import gp.i
+%import TColGeom.i
+%import TColStd.i
+%import TopTools.i
 %import TopAbs.i
 
 %pythoncode {
@@ -691,7 +697,7 @@ Empty constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: NCollection_HArray2<
+GridSurf: TColGeom_HArray2OfSurface
 param: ShapeExtend_Parametrisation (optional, default to ShapeExtend_Natural)
 
 Return
@@ -702,7 +708,7 @@ Description
 -----------
 Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
-		 ShapeExtend_CompositeSurface(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
+		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
 		/****** ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface ******/
 		/****** md5 signature: d8080ee2c250171ea0a74354bc5c480f ******/
@@ -710,9 +716,9 @@ Initializes by a grid of surfaces (calls Init()).
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: NCollection_HArray2<
-UJoints: NCollection_Array1<double>
-VJoints: NCollection_Array1<double>
+GridSurf: TColGeom_HArray2OfSurface
+UJoints: TColStd_Array1OfReal
+VJoints: TColStd_Array1OfReal
 
 Return
 -------
@@ -722,7 +728,7 @@ Description
 -----------
 Initializes by a grid of surfaces (calls Init()).
 ") ShapeExtend_CompositeSurface;
-		 ShapeExtend_CompositeSurface(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const NCollection_Array1<double> & UJoints, const NCollection_Array1<double> & VJoints);
+		 ShapeExtend_CompositeSurface(const opencascade::handle<TColGeom_HArray2OfSurface > & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::Bounds ******/
 		/****** md5 signature: 7f1a4954e4b71238771f442fdca29c3c ******/
@@ -949,7 +955,7 @@ Computes transformation operator and uFactor descrinbing affine transformation r
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: NCollection_HArray2<
+GridSurf: TColGeom_HArray2OfSurface
 param: ShapeExtend_Parametrisation (optional, default to ShapeExtend_Natural)
 
 Return
@@ -960,7 +966,7 @@ Description
 -----------
 Initializes by a grid of surfaces. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case. //! Last parameter defines how global parametrisation (joint values) will be computed: ShapeExtend_Natural: U1 = u11min, Ui+1 = Ui + (ui1max-ui1min), etc. ShapeExtend_Uniform: Ui = i-1, Vj = j-1 ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv.
 ") Init;
-		bool Init(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
+		bool Init(const opencascade::handle<TColGeom_HArray2OfSurface > & GridSurf, const ShapeExtend_Parametrisation param = ShapeExtend_Natural);
 
 		/****** ShapeExtend_CompositeSurface::Init ******/
 		/****** md5 signature: 5fe393900a1833b20c7080664f276212 ******/
@@ -968,9 +974,9 @@ Initializes by a grid of surfaces. All the Surfaces of the grid must have geomet
 		%feature("autodoc", "
 Parameters
 ----------
-GridSurf: NCollection_HArray2<
-UJoints: NCollection_Array1<double>
-VJoints: NCollection_Array1<double>
+GridSurf: TColGeom_HArray2OfSurface
+UJoints: TColStd_Array1OfReal
+VJoints: TColStd_Array1OfReal
 
 Return
 -------
@@ -980,7 +986,7 @@ Description
 -----------
 Initializes by a grid of surfaces with given global parametrisation defined by UJoints and VJoints arrays, each having length equal to number of patches in corresponding direction + 1. Global joint values should be sorted in increasing order. All the Surfaces of the grid must have geometrical connectivity as stated above. If geometrical connectivity is not satisfied, method returns False. However, class is initialized even in that case.
 ") Init;
-		bool Init(const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface> > > & GridSurf, const NCollection_Array1<double> & UJoints, const NCollection_Array1<double> & VJoints);
+		bool Init(const opencascade::handle<TColGeom_HArray2OfSurface > & GridSurf, const TColStd_Array1OfReal & UJoints, const TColStd_Array1OfReal & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::IsCNu ******/
 		/****** md5 signature: 2f1fcdee848f1e9a21e718a5b5c41401 ******/
@@ -1232,13 +1238,13 @@ Returns one surface patch that contains given point.
 		%feature("compactdefaultargs") Patches;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface>>>
+opencascade::handle<TColGeom_HArray2OfSurface>
 
 Description
 -----------
 Returns grid of surfaces.
 ") Patches;
-		const opencascade::handle<NCollection_HArray2<opencascade::handle<Geom_Surface>>> & Patches();
+		const opencascade::handle<TColGeom_HArray2OfSurface> & Patches();
 
 		/****** ShapeExtend_CompositeSurface::SetUFirstValue ******/
 		/****** md5 signature: 522f4549b8a3e03f18102cec4540debe ******/
@@ -1264,7 +1270,7 @@ Changes starting value for global U parametrisation (all other joint values are 
 		%feature("autodoc", "
 Parameters
 ----------
-UJoints: NCollection_Array1<double>
+UJoints: TColStd_Array1OfReal
 
 Return
 -------
@@ -1274,7 +1280,7 @@ Description
 -----------
 Sets the array of U values corresponding to joint points, which define global parametrisation of the surface. Number of values in array should be equal to NbUPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetUJointValues;
-		bool SetUJointValues(const NCollection_Array1<double> & UJoints);
+		bool SetUJointValues(const TColStd_Array1OfReal & UJoints);
 
 		/****** ShapeExtend_CompositeSurface::SetVFirstValue ******/
 		/****** md5 signature: 8e52e7654ebabe5b752c5aead6871a81 ******/
@@ -1300,7 +1306,7 @@ Changes starting value for global V parametrisation (all other joint values are 
 		%feature("autodoc", "
 Parameters
 ----------
-VJoints: NCollection_Array1<double>
+VJoints: TColStd_Array1OfReal
 
 Return
 -------
@@ -1310,7 +1316,7 @@ Description
 -----------
 Sets the array of V values corresponding to joint points, which define global parametrisation of the surface Number of values in array should be equal to NbVPatches()+1. All the values should be sorted in increasing order. If this is not satisfied, does nothing and returns False.
 ") SetVJointValues;
-		bool SetVJointValues(const NCollection_Array1<double> & VJoints);
+		bool SetVJointValues(const TColStd_Array1OfReal & VJoints);
 
 		/****** ShapeExtend_CompositeSurface::Transform ******/
 		/****** md5 signature: 439ee2b24a3348dae5069270ca07eb56 ******/
@@ -1391,13 +1397,13 @@ Returns i-th joint value in U direction (1-st is global Umin, (NbUPatches()+1)-t
 		%feature("compactdefaultargs") UJointValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the array of U values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") UJointValues;
-		opencascade::handle<NCollection_HArray1<double>> UJointValues();
+		opencascade::handle<TColStd_HArray1OfReal> UJointValues();
 
 		/****** ShapeExtend_CompositeSurface::ULocalToGlobal ******/
 		/****** md5 signature: 572b4ae20d1d5eda56ad76410e2ffc55 ******/
@@ -1511,13 +1517,13 @@ Returns j-th joint value in V direction (1-st is global Vmin, (NbVPatches()+1)-t
 		%feature("compactdefaultargs") VJointValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the array of V values corresponding to joint points between patches as well as to start and end points, which define global parametrisation of the surface.
 ") VJointValues;
-		opencascade::handle<NCollection_HArray1<double>> VJointValues();
+		opencascade::handle<TColStd_HArray1OfReal> VJointValues();
 
 		/****** ShapeExtend_CompositeSurface::VLocalToGlobal ******/
 		/****** md5 signature: 664be8f707c0c526bd402efb49c46757 ******/
@@ -1623,7 +1629,7 @@ Creates an object Explorer.
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<TopoDS_Shape
+seqval: TopTools_HSequenceOfShape
 
 Return
 -------
@@ -1633,7 +1639,7 @@ Description
 -----------
 Converts a sequence of Shapes to a Compound.
 ") CompoundFromSeq;
-		TopoDS_Shape CompoundFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval);
+		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
 		/****** ShapeExtend_Explorer::DispatchList ******/
 		/****** md5 signature: c4657ae48c42ba30c7b31defa2dfb5dc ******/
@@ -1641,15 +1647,15 @@ Converts a sequence of Shapes to a Compound.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<TopoDS_Shape
-vertices: NCollection_HSequence<TopoDS_Shape
-edges: NCollection_HSequence<TopoDS_Shape
-wires: NCollection_HSequence<TopoDS_Shape
-faces: NCollection_HSequence<TopoDS_Shape
-shells: NCollection_HSequence<TopoDS_Shape
-solids: NCollection_HSequence<TopoDS_Shape
-compsols: NCollection_HSequence<TopoDS_Shape
-compounds: NCollection_HSequence<TopoDS_Shape
+list: TopTools_HSequenceOfShape
+vertices: TopTools_HSequenceOfShape
+edges: TopTools_HSequenceOfShape
+wires: TopTools_HSequenceOfShape
+faces: TopTools_HSequenceOfShape
+shells: TopTools_HSequenceOfShape
+solids: TopTools_HSequenceOfShape
+compsols: TopTools_HSequenceOfShape
+compounds: TopTools_HSequenceOfShape
 
 Return
 -------
@@ -1659,7 +1665,7 @@ Description
 -----------
 Dispatches starting list of shapes according to their type, to the appropriate resulting lists For each of these lists, if it is null, it is firstly created else, new items are appended to the already existing ones.
 ") DispatchList;
-		void DispatchList(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & vertices, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & edges, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & wires, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & faces, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & shells, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & solids, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & compsols, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & compounds);
+		void DispatchList(const opencascade::handle<TopTools_HSequenceOfShape> & list, opencascade::handle<TopTools_HSequenceOfShape> & vertices, opencascade::handle<TopTools_HSequenceOfShape> & edges, opencascade::handle<TopTools_HSequenceOfShape> & wires, opencascade::handle<TopTools_HSequenceOfShape> & faces, opencascade::handle<TopTools_HSequenceOfShape> & shells, opencascade::handle<TopTools_HSequenceOfShape> & solids, opencascade::handle<TopTools_HSequenceOfShape> & compsols, opencascade::handle<TopTools_HSequenceOfShape> & compounds);
 
 		/****** ShapeExtend_Explorer::ListFromSeq ******/
 		/****** md5 signature: a757258b68896377eb3515b65eeef68a ******/
@@ -1667,8 +1673,8 @@ Dispatches starting list of shapes according to their type, to the appropriate r
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<TopoDS_Shape
-lisval: NCollection_List<TopoDS_Shape>
+seqval: TopTools_HSequenceOfShape
+lisval: TopTools_ListOfShape
 clear: bool (optional, default to true)
 
 Return
@@ -1679,7 +1685,7 @@ Description
 -----------
 Converts a Sequence of Shapes to a List of Shapes <clear> if True (D), commands the list to start from scratch else, the list is cumulated.
 ") ListFromSeq;
-		void ListFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval, NCollection_List<TopoDS_Shape> & lisval, const bool clear = true);
+		void ListFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval, TopTools_ListOfShape & lisval, const bool clear = true);
 
 		/****** ShapeExtend_Explorer::SeqFromCompound ******/
 		/****** md5 signature: d9612d42e9f053876f56e66a70bf528a ******/
@@ -1692,13 +1698,13 @@ expcomp: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Converts a Compound to a list of Shapes if <comp> is not a compound, the list contains only <comp> if <comp> is Null, the list is empty if <comp> is a Compound, its sub-shapes are put into the list then if <expcomp> is True, if a sub-shape is a Compound, it is not put to the list but its sub-shapes are (recursive).
 ") SeqFromCompound;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> SeqFromCompound(const TopoDS_Shape & comp, const bool expcomp);
+		opencascade::handle<TopTools_HSequenceOfShape> SeqFromCompound(const TopoDS_Shape & comp, const bool expcomp);
 
 		/****** ShapeExtend_Explorer::SeqFromList ******/
 		/****** md5 signature: 2bad836dc7e00bdf51d9b9b3cdccc627 ******/
@@ -1706,17 +1712,17 @@ Converts a Compound to a list of Shapes if <comp> is not a compound, the list co
 		%feature("autodoc", "
 Parameters
 ----------
-lisval: NCollection_List<TopoDS_Shape>
+lisval: TopTools_ListOfShape
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Converts a List of Shapes to a Sequence of Shapes.
 ") SeqFromList;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> SeqFromList(const NCollection_List<TopoDS_Shape> & lisval);
+		opencascade::handle<TopTools_HSequenceOfShape> SeqFromList(const TopTools_ListOfShape & lisval);
 
 		/****** ShapeExtend_Explorer::ShapeType ******/
 		/****** md5 signature: b5a1f3ccc175f4568637685b40d0ed30 ******/
@@ -2123,13 +2129,13 @@ Returns <num>th nonmanifold Edge.
 		%feature("compactdefaultargs") NonmanifoldEdges;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Returns sequence of non-manifold edges This sequence can be not empty if wire data set in manifold mode but initial wire has INTERNAL orientation or contains INTERNAL edges.
 ") NonmanifoldEdges;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> NonmanifoldEdges();
+		opencascade::handle<TopTools_HSequenceOfShape> NonmanifoldEdges();
 
 		/****** ShapeExtend_WireData::Remove ******/
 		/****** md5 signature: d828786471a07b9ccd2a3c10e346fa07 ******/
@@ -2256,6 +2262,10 @@ Makes TopoDS_Wire using BRepAPI_MakeWire. Class BRepAPI_MakeWire merges geometri
 ") WireAPIMake;
 		TopoDS_Wire WireAPIMake();
 
+		%extend{
+			bool GetManifoldMode() { return self->ManifoldMode(); }
+			void SetManifoldMode(bool value) { self->ManifoldMode() = value; }
+		};
 };
 
 

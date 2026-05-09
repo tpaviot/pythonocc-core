@@ -48,6 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dapi.html"
 #include<Extrema_module.hxx>
 #include<gp_module.hxx>
 #include<Geom2dInt_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Approx_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -69,6 +71,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dapi.html"
 %import Extrema.i
 %import gp.i
 %import Geom2dInt.i
+%import TColgp.i
+%import TColStd.i
 %import GeomAbs.i
 %import Approx.i
 
@@ -457,7 +461,7 @@ class Geom2dAPI_Interpolate {
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_HArray1<gp_Pnt2d
+Points: TColgp_HArray1OfPnt2d
 PeriodicFlag: bool
 Tolerance: double
 
@@ -469,7 +473,7 @@ Description
 -----------
 Tolerance is to check if the points are not too close to one an other It is also used to check if the tangent vector is not too small. There should be at least 2 points if PeriodicFlag is True then the curve will be periodic.
 ") Geom2dAPI_Interpolate;
-		 Geom2dAPI_Interpolate(const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Points, const bool PeriodicFlag, const double Tolerance);
+		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Geom2dAPI_Interpolate::Geom2dAPI_Interpolate ******/
 		/****** md5 signature: a8409fd68105cc757e52a521785dbfc0 ******/
@@ -477,8 +481,8 @@ Tolerance is to check if the points are not too close to one an other It is also
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_HArray1<gp_Pnt2d
-Parameters: NCollection_HArray1<double
+Points: TColgp_HArray1OfPnt2d
+Parameters: TColStd_HArray1OfReal
 PeriodicFlag: bool
 Tolerance: double
 
@@ -490,7 +494,7 @@ Description
 -----------
 if PeriodicFlag is True then the curve will be periodic Warning: There should be as many parameters as there are points except if PeriodicFlag is True: then there should be one more parameter to close the curve.
 ") Geom2dAPI_Interpolate;
-		 Geom2dAPI_Interpolate(const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Points, const opencascade::handle<NCollection_HArray1<double> > & Parameters, const bool PeriodicFlag, const double Tolerance);
+		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Geom2dAPI_Interpolate::Curve ******/
 		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
@@ -544,8 +548,8 @@ Assigns this constrained BSpline curve to be tangential to vectors InitialTangen
 		%feature("autodoc", "
 Parameters
 ----------
-Tangents: NCollection_Array1<gp_Vec2d>
-TangentFlags: NCollection_HArray1<bool
+Tangents: TColgp_Array1OfVec2d
+TangentFlags: TColStd_HArray1OfBoolean
 Scale: bool (optional, default to true)
 
 Return
@@ -556,7 +560,7 @@ Description
 -----------
 Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints. <Scale> - boolean flag defining whether tangent vectors are to be scaled according to derivatives of lagrange interpolation.
 ") Load;
-		void Load(const NCollection_Array1<gp_Vec2d> & Tangents, const opencascade::handle<NCollection_HArray1<bool> > & TangentFlags, const bool Scale = true);
+		void Load(const TColgp_Array1OfVec2d & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags, const bool Scale = true);
 
 		/****** Geom2dAPI_Interpolate::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -608,7 +612,7 @@ Constructs an empty approximation algorithm. Use an Init function to define and 
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
@@ -622,7 +626,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
+		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
 		/****** md5 signature: f8aef268849dbbca8f4afda11ae3897d ******/
@@ -630,7 +634,7 @@ Approximate a BSpline Curve passing through an array of Point. The resulting BSp
 		%feature("autodoc", "
 Parameters
 ----------
-YValues: NCollection_Array1<double>
+YValues: TColStd_Array1OfReal
 X0: double
 DX: double
 DegMin: int (optional, default to 3)
@@ -646,7 +650,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. Of coordinates: //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<double> & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
+		 Geom2dAPI_PointsToBSpline(const TColStd_Array1OfReal & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
 		/****** md5 signature: 208525b64287ae0fa02495ad01158abb ******/
@@ -654,7 +658,7 @@ Approximate a BSpline Curve passing through an array of Point. Of coordinates: /
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 ParType: Approx_ParametrizationType
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
@@ -669,7 +673,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
 		/****** md5 signature: 5870ff88f848ac9852b02ea362b7718b ******/
@@ -677,8 +681,8 @@ Approximate a BSpline Curve passing through an array of Point. The resulting BSp
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
-Parameters: NCollection_Array1<double>
+Points: TColgp_Array1OfPnt2d
+Parameters: TColStd_Array1OfReal
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
@@ -692,7 +696,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const NCollection_Array1<double> & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
 		/****** md5 signature: 6a0cb0098d7b9ac5d2fa09e0b1b58020 ******/
@@ -700,7 +704,7 @@ Approximate a BSpline Curve passing through an array of Point, which parameters 
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 Weight1: double
 Weight2: double
 Weight3: double
@@ -716,7 +720,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") Geom2dAPI_PointsToBSpline;
-		 Geom2dAPI_PointsToBSpline(const NCollection_Array1<gp_Pnt2d> & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol3D = 1.0e-3);
+		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol3D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Curve ******/
 		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
@@ -737,7 +741,7 @@ Returns the approximate BSpline Curve.
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
@@ -751,7 +755,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
+		void Init(const TColgp_Array1OfPnt2d & Points, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
 		/****** md5 signature: 3cd75176178c0c5dbe64939058eb3f45 ******/
@@ -759,7 +763,7 @@ Approximate a BSpline Curve passing through an array of Point. The resulting BSp
 		%feature("autodoc", "
 Parameters
 ----------
-YValues: NCollection_Array1<double>
+YValues: TColStd_Array1OfReal
 X0: double
 DX: double
 DegMin: int (optional, default to 3)
@@ -775,7 +779,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. Of coordinates: //! X = X0 + DX * (i-YValues.Lower()) Y = YValues(i) //! With i in the range YValues.Lower(), YValues.Upper() //! The BSpline will be parametrized from t = X0 to X0 + DX * (YValues.Upper() - YValues.Lower()) //! And will satisfy X(t) = t //! The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const NCollection_Array1<double> & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
+		void Init(const TColStd_Array1OfReal & YValues, const double X0, const double DX, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-6);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
 		/****** md5 signature: 64039c0a97f28229db0f8aca9d395191 ******/
@@ -783,7 +787,7 @@ Approximate a BSpline Curve passing through an array of Point. Of coordinates: /
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 ParType: Approx_ParametrizationType
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
@@ -798,7 +802,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
+		void Init(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
 		/****** md5 signature: 0b035bf1a8afa446a8f97a7aae55e19d ******/
@@ -806,8 +810,8 @@ Approximate a BSpline Curve passing through an array of Point. The resulting BSp
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
-Parameters: NCollection_Array1<double>
+Points: TColgp_Array1OfPnt2d
+Parameters: TColStd_Array1OfReal
 DegMin: int (optional, default to 3)
 DegMax: int (optional, default to 8)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
@@ -821,7 +825,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol2D.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const NCollection_Array1<double> & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
+		void Init(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const int DegMin = 3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::Init ******/
 		/****** md5 signature: 2909d6a3f917f037336e8abad46db4b6 ******/
@@ -829,7 +833,7 @@ Approximate a BSpline Curve passing through an array of Point, which parameters 
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt2d>
+Points: TColgp_Array1OfPnt2d
 Weight1: double
 Weight2: double
 Weight3: double
@@ -845,7 +849,7 @@ Description
 -----------
 Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") Init;
-		void Init(const NCollection_Array1<gp_Pnt2d> & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
+		void Init(const TColgp_Array1OfPnt2d & Points, const double Weight1, const double Weight2, const double Weight3, const int DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const double Tol2D = 1.0e-3);
 
 		/****** Geom2dAPI_PointsToBSpline::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/

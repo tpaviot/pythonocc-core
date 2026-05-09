@@ -50,6 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_select3d.html"
 #include<SelectMgr_module.hxx>
 #include<Bnd_module.hxx>
 #include<SelectBasics_module.hxx>
+#include<TColgp_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColStd_module.hxx>
 #include<Geom_module.hxx>
@@ -89,6 +90,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_select3d.html"
 %import SelectMgr.i
 %import Bnd.i
 %import SelectBasics.i
+%import TColgp.i
 %import TopLoc.i
 %import TColStd.i
 %import Geom.i
@@ -793,7 +795,7 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 theType: Select3D_TypeOfSensitivity
 
 Return
@@ -804,7 +806,7 @@ Description
 -----------
 Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
-		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const NCollection_Array1<gp_Pnt> & thePoints, const Select3D_TypeOfSensitivity theType);
+		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const Select3D_TypeOfSensitivity theType);
 
 		/****** Select3D_SensitiveFace::Select3D_SensitiveFace ******/
 		/****** md5 signature: 2cfaa0d74b99dbe9d8d3ac1882bb5037 ******/
@@ -813,7 +815,7 @@ Constructs a sensitive face object defined by the owner theOwnerId, the array of
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_HArray1<gp_Pnt
+thePoints: TColgp_HArray1OfPnt
 theType: Select3D_TypeOfSensitivity
 
 Return
@@ -824,7 +826,7 @@ Description
 -----------
 Constructs a sensitive face object defined by the owner theOwnerId, the array of points thePoints, and the sensitivity type theType. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
-		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<NCollection_HArray1<gp_Pnt> > & thePoints, const Select3D_TypeOfSensitivity theType);
+		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Select3D_TypeOfSensitivity theType);
 
 		/****** Select3D_SensitiveFace::BVH ******/
 		/****** md5 signature: ea19f810848cc4896f3127faf0cdc872 ******/
@@ -904,14 +906,14 @@ No available documentation.
 		%feature("compactdefaultargs") GetPoints;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt>>
+opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
 Returns 3d coordinates of vertices of the face. 
 Return: handle to array of 3D vertex coordinates.
 ") GetPoints;
-		opencascade::handle<NCollection_HArray1<gp_Pnt>> GetPoints();
+		opencascade::handle<TColgp_HArray1OfPnt> GetPoints();
 
 		/****** Select3D_SensitiveFace::GetPoints ******/
 		/****** md5 signature: 590fd96946410cecec040265ea225877 ******/
@@ -919,7 +921,7 @@ Return: handle to array of 3D vertex coordinates.
 		%feature("autodoc", "
 Parameters
 ----------
-theHArrayOfPnt: NCollection_HArray1<gp_Pnt
+theHArrayOfPnt: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -929,7 +931,7 @@ Description
 -----------
 No available documentation.
 ") GetPoints;
-		void GetPoints(opencascade::handle<NCollection_HArray1<gp_Pnt> > & theHArrayOfPnt);
+		void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****** Select3D_SensitiveFace::Matches ******/
 		/****** md5 signature: 9eee725668f2c37b2df03ecf1889ee0f ******/
@@ -1729,7 +1731,7 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1739,7 +1741,7 @@ Description
 -----------
 Splits the given point set thePoints onto planar convex polygons.
 ") Select3D_InteriorSensitivePointSet;
-		 Select3D_InteriorSensitivePointSet(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const NCollection_Array1<gp_Pnt> & thePoints);
+		 Select3D_InteriorSensitivePointSet(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 
 		/****** Select3D_InteriorSensitivePointSet::BoundingBox ******/
 		/****** md5 signature: 633863f7086aa730ff696b4814fc0aea ******/
@@ -1830,14 +1832,14 @@ Dump the object to JSON string.
 		%feature("compactdefaultargs") GetPoints;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt>>
+opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
 Returns 3d coordinates of vertices of the whole point set. 
 Return: handle to array of 3D vertex coordinates.
 ") GetPoints;
-		opencascade::handle<NCollection_HArray1<gp_Pnt>> GetPoints();
+		opencascade::handle<TColgp_HArray1OfPnt> GetPoints();
 
 		/****** Select3D_InteriorSensitivePointSet::GetPoints ******/
 		/****** md5 signature: 5402286b57fc4298a04f1897b19f972f ******/
@@ -1845,7 +1847,7 @@ Return: handle to array of 3D vertex coordinates.
 		%feature("autodoc", "
 Parameters
 ----------
-theHArrayOfPnt: NCollection_HArray1<gp_Pnt
+theHArrayOfPnt: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -1855,7 +1857,7 @@ Description
 -----------
 No available documentation.
 ") GetPoints;
-		virtual void GetPoints(opencascade::handle<NCollection_HArray1<gp_Pnt> > & theHArrayOfPnt);
+		virtual void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****** Select3D_InteriorSensitivePointSet::NbSubElements ******/
 		/****** md5 signature: 0cbf60f70214c5391f27cbd18a04e594 ******/
@@ -1955,7 +1957,7 @@ Description
 -----------
 Constructs a sensitive group object defined by the list TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
 ") Select3D_SensitiveGroup;
-		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity> > & theEntities, const bool theIsMustMatchAll = true);
+		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> & theEntities, const bool theIsMustMatchAll = true);
 
 		/****** Select3D_SensitiveGroup::Add ******/
 		/****** md5 signature: eb2e482c3a19585889e486c22645fcee ******/
@@ -1973,7 +1975,7 @@ Description
 -----------
 Adds the list of sensitive entities LL to the empty sensitive group object created at construction time.
 ") Add;
-		void Add(NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity> > & theEntities);
+		void Add(NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> & theEntities);
 
 		/****** Select3D_SensitiveGroup::Add ******/
 		/****** md5 signature: 71a26d66d0f562b3cb53c9a86dd02409 ******/
@@ -2363,7 +2365,7 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 theIsBVHEnabled: bool
 
 Return
@@ -2374,7 +2376,7 @@ Description
 -----------
 Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
-		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const NCollection_Array1<gp_Pnt> & thePoints, const bool theIsBVHEnabled);
+		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const bool theIsBVHEnabled);
 
 		/****** Select3D_SensitivePoly::Select3D_SensitivePoly ******/
 		/****** md5 signature: 9833ef951be090cac48a15202fd178c9 ******/
@@ -2383,7 +2385,7 @@ Constructs a sensitive face object defined by the owner OwnerId, the array of po
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_HArray1<gp_Pnt
+thePoints: TColgp_HArray1OfPnt
 theIsBVHEnabled: bool
 
 Return
@@ -2394,7 +2396,7 @@ Description
 -----------
 Constructs a sensitive face object defined by the owner OwnerId, the array of points ThePoints, and the sensitivity type Sensitivity. The array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
-		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<NCollection_HArray1<gp_Pnt> > & thePoints, const bool theIsBVHEnabled);
+		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const bool theIsBVHEnabled);
 
 		/****** Select3D_SensitivePoly::Select3D_SensitivePoly ******/
 		/****** md5 signature: bfd288502412fc4ee217e281530b751a ******/
@@ -2596,14 +2598,14 @@ Returns the amount of segments in poly.
 		%feature("compactdefaultargs") Points3D;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt>>
+opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
 Returns the 3D points of the array used at construction time. 
 Return: handle to array of 3D points.
 ") Points3D;
-		opencascade::handle<NCollection_HArray1<gp_Pnt>> Points3D();
+		opencascade::handle<TColgp_HArray1OfPnt> Points3D();
 
 		/****** Select3D_SensitivePoly::Points3D ******/
 		/****** md5 signature: 2105347048e83e4af7178d1b8af2a5e6 ******/
@@ -2611,7 +2613,7 @@ Return: handle to array of 3D points.
 		%feature("autodoc", "
 Parameters
 ----------
-aHArrayOfPnt: NCollection_HArray1<gp_Pnt
+aHArrayOfPnt: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -2621,7 +2623,7 @@ Description
 -----------
 No available documentation.
 ") Points3D;
-		void Points3D(opencascade::handle<NCollection_HArray1<gp_Pnt> > & aHArrayOfPnt);
+		void Points3D(opencascade::handle<TColgp_HArray1OfPnt> & aHArrayOfPnt);
 
 		/****** Select3D_SensitivePoly::Size ******/
 		/****** md5 signature: 1813690848b6a5332bd4875ba3d8d381 ******/
@@ -2798,6 +2800,25 @@ Description
 No available documentation.
 ") GetConnected;
 		opencascade::handle<Select3D_SensitiveEntity> GetConnected();
+
+		/****** Select3D_SensitivePrimitiveArray::GetVertex ******/
+		/****** md5 signature: 2b1f2496f07da301368eac2d7a7a2c16 ******/
+		%feature("compactdefaultargs") GetVertex;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+std::array<NCollection_Vec3<float>, 3 >
+
+Description
+-----------
+Return the three vertex positions of the triangle at the given triangulation index. Only meaningful for triangulation-based primitive arrays. 
+Input parameter: theIndex zero-based triangle index within [0, triangle count).
+") GetVertex;
+		std::array<NCollection_Vec3<float>, 3 > GetVertex(const int theIndex);
 
 		/****** Select3D_SensitivePrimitiveArray::HasInitLocation ******/
 		/****** md5 signature: d710c20a306bd32531879ce6f032aa35 ******/
@@ -3519,17 +3540,17 @@ No available documentation.
 		opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****** Select3D_SensitiveWire::GetEdges ******/
-		/****** md5 signature: b2dcae186f6b9da5ddd472727b335434 ******/
+		/****** md5 signature: 2ca7f36f885fcca948e7c0b7f4fcbdb0 ******/
 		%feature("compactdefaultargs") GetEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>
+NCollection_DynamicArray<opencascade::handle<Select3D_SensitiveEntity>>
 
 Description
 -----------
 returns the sensitive edges stored in this wire.
 ") GetEdges;
-		const NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> & GetEdges();
+		const NCollection_DynamicArray<opencascade::handle<Select3D_SensitiveEntity>> & GetEdges();
 
 		/****** Select3D_SensitiveWire::GetLastDetected ******/
 		/****** md5 signature: 618560e22f06fc3b5edfe11a01332b7b ******/
@@ -3650,7 +3671,7 @@ Constructs a sensitive curve object defined by the owner theOwnerId, the curve t
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_HArray1<gp_Pnt
+thePoints: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -3660,7 +3681,7 @@ Description
 -----------
 Constructs a sensitive curve object defined by the owner theOwnerId and the set of points ThePoints.
 ") Select3D_SensitiveCurve;
-		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<NCollection_HArray1<gp_Pnt> > & thePoints);
+		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints);
 
 		/****** Select3D_SensitiveCurve::Select3D_SensitiveCurve ******/
 		/****** md5 signature: aee4cfc070ae65c2e529f9fa44789dee ******/
@@ -3669,7 +3690,7 @@ Constructs a sensitive curve object defined by the owner theOwnerId and the set 
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 
 Return
 -------
@@ -3679,7 +3700,7 @@ Description
 -----------
 Creation of Sensitive Curve from Points. Warning: This Method should disappear in the next version...
 ") Select3D_SensitiveCurve;
-		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const NCollection_Array1<gp_Pnt> & thePoints);
+		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 
 		/****** Select3D_SensitiveCurve::GetConnected ******/
 		/****** md5 signature: a3c8e77274f838c789102a492a808dca ******/

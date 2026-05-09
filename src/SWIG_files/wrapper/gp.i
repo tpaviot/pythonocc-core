@@ -44,6 +44,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gp.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -51,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_gp.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -19324,7 +19326,7 @@ returns the symmetry axis of the torus.
 		%feature("autodoc", "
 Parameters
 ----------
-theCoef: NCollection_Array1<double>
+theCoef: TColStd_Array1OfReal
 
 Return
 -------
@@ -19334,7 +19336,7 @@ Description
 -----------
 Computes the coefficients of the implicit equation of the surface in the absolute Cartesian coordinate system: @code Coef(1) * X^4 + Coef(2) * Y^4 + Coef(3) * Z^4 + Coef(4) * X^3 * Y + Coef(5) * X^3 * Z + Coef(6) * Y^3 * X + Coef(7) * Y^3 * Z + Coef(8) * Z^3 * X + Coef(9) * Z^3 * Y + Coef(10) * X^2 * Y^2 + Coef(11) * X^2 * Z^2 + Coef(12) * Y^2 * Z^2 + Coef(13) * X^2 * Y * Z + Coef(14) * X * Y^2 * Z + Coef(15) * X * Y * Z^2 + Coef(16) * X^3 + Coef(17) * Y^3 + Coef(18) * Z^3 + Coef(19) * X^2 * Y + Coef(20) * X^2 * Z + Coef(21) * Y^2 * X + Coef(22) * Y^2 * Z + Coef(23) * Z^2 * X + Coef(24) * Z^2 * Y + Coef(25) * X * Y * Z + Coef(26) * X^2 + Coef(27) * Y^2 + Coef(28) * Z^2 + Coef(29) * X * Y + Coef(30) * X * Z + Coef(31) * Y * Z + Coef(32) * X + Coef(33) * Y + Coef(34) * Z + Coef(35) = 0.0 @endcode Raises DimensionError if the length of theCoef is lower than 35.
 ") Coefficients;
-		void Coefficients(NCollection_Array1<double> & theCoef);
+		void Coefficients(TColStd_Array1OfReal & theCoef);
 
 		/****** gp_Torus::Direct ******/
 		/****** md5 signature: 666afd9b1feb9c16371f38b8235304e9 ******/

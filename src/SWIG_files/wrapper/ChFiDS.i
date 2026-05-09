@@ -50,7 +50,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfids.html"
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<Law_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -72,7 +74,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfids.html"
 %import Adaptor3d.i
 %import Geom.i
 %import GeomAbs.i
+%import TColStd.i
 %import Geom2d.i
+%import TopTools.i
 %import Law.i
 
 %pythoncode {
@@ -206,25 +210,61 @@ ChFiDS_Mixed = ChFiDS_TypeOfConcavity.ChFiDS_Mixed
 %template(ChFiDS_ListOfHElSpine) NCollection_List<opencascade::handle<ChFiDS_ElSpine>>;
 
 %extend NCollection_List<opencascade::handle<ChFiDS_ElSpine>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_ListIteratorOfListOfHElSpine(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(ChFiDS_ListOfStripe) NCollection_List<opencascade::handle<ChFiDS_Stripe>>;
 
 %extend NCollection_List<opencascade::handle<ChFiDS_Stripe>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_ListIteratorOfListOfStripe(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(ChFiDS_Regularities) NCollection_List<ChFiDS_Regul>;
 
 %extend NCollection_List<ChFiDS_Regul> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = ChFiDS_Regularities(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(ChFiDS_SecArray1) NCollection_Array1<ChFiDS_CircSection>;
@@ -233,6 +273,13 @@ Array1ExtendIter(ChFiDS_CircSection)
 %template(ChFiDS_SequenceOfSpine) NCollection_Sequence<opencascade::handle<ChFiDS_Spine>>;
 
 %extend NCollection_Sequence<opencascade::handle<ChFiDS_Spine>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -241,6 +288,13 @@ Array1ExtendIter(ChFiDS_CircSection)
 %template(ChFiDS_SequenceOfSurfData) NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>;
 
 %extend NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -973,7 +1027,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -984,7 +1038,7 @@ Description
 -----------
 No available documentation.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** ChFiDS_ElSpine::IsPeriodic ******/
 		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/
@@ -1670,13 +1724,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") FindFromIndex;
-		const NCollection_List<TopoDS_Shape> FindFromIndex(const int I);
+		const TopTools_ListOfShape & FindFromIndex(const int I);
 
 		/****** ChFiDS_Map::FindFromKey ******/
 		/****** md5 signature: 4ed5dc4ed7b3f32ad3e73446a96f35ad ******/
@@ -1688,13 +1742,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") FindFromKey;
-		const NCollection_List<TopoDS_Shape> FindFromKey(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & FindFromKey(const TopoDS_Shape & S);
 
 };
 

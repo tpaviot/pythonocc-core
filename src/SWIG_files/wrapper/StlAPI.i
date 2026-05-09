@@ -260,6 +260,13 @@ Converts a given shape to STL format and writes it to the specified stream. etur
 ") Write;
 		bool Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		%extend{
+			bool GetASCIIMode() { return self->ASCIIMode(); }
+			void SetASCIIMode(bool value) { self->ASCIIMode() = value; }
+		};
+		%extend{
+			void SetASCIIMode(bool theMode) { self->ASCIIMode() = theMode; }
+		};
 };
 
 

@@ -45,8 +45,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appdef.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<math_module.hxx>
+#include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<Approx_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<FEmTool_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -64,8 +66,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appdef.html"
 %import Standard.i
 %import NCollection.i
 %import math.i
+%import TColStd.i
 %import AppParCurves.i
 %import Approx.i
+%import TColgp.i
 %import gp.i
 %import FEmTool.i
 %import GeomAbs.i
@@ -170,8 +174,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 NbPol: int
 
 Return
@@ -182,7 +186,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has <NbPol> control points.
 ") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int NbPol);
+		 AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int NbPol);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::CurveValue ******/
 		/****** md5 signature: c83ed6c1c3091309bccd8d719a30ec54 ******/
@@ -246,7 +250,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -310,7 +314,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -505,8 +509,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -522,7 +526,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute ******/
 		/****** md5 signature: fc5a9a692adf1b92d3cab926eac83e1d ******/
@@ -531,8 +535,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -547,7 +551,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
-		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -1036,13 +1040,13 @@ returns False if the status NoPointsAdded has been sent.
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the MultiBSpCurve.
 ") Parameters;
-		const NCollection_Array1<double> & Parameters();
+		const TColStd_Array1OfReal & Parameters();
 
 		/****** AppDef_BSplineCompute::Perform ******/
 		/****** md5 signature: ba94f8a8967068aa8bee6df81ea2be62 ******/
@@ -1124,7 +1128,7 @@ changes the degrees of the approximation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1134,7 +1138,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & Knots);
+		void SetKnots(const TColStd_Array1OfReal & Knots);
 
 		/****** AppDef_BSplineCompute::SetKnotsAndMultiplicities ******/
 		/****** md5 signature: 2bee60c8ad635ef591f756f28601492a ******/
@@ -1142,8 +1146,8 @@ The approximation will be done with the set of knots <Knots>. The multiplicities
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1153,7 +1157,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 ") SetKnotsAndMultiplicities;
-		void SetKnotsAndMultiplicities(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
+		void SetKnotsAndMultiplicities(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
 		/****** AppDef_BSplineCompute::SetParameters ******/
 		/****** md5 signature: b1eab3f1f1c8f0892e7a87810e5892e3 ******/
@@ -1450,13 +1454,13 @@ Index: int (optional, default to 1)
 
 Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the multicurve <Index>.
 ") Parameters;
-		const NCollection_Array1<double> & Parameters(const int Index = 1);
+		const TColStd_Array1OfReal & Parameters(const int Index = 1);
 
 		/****** AppDef_Compute::Parametrization ******/
 		/****** md5 signature: 28de4bdef662891658a0d7c12417a76f ******/
@@ -1811,7 +1815,7 @@ Constructs a MultiLine with an array of MultiPointConstraints.
 		%feature("autodoc", "
 Parameters
 ----------
-tabP3d: NCollection_Array1<gp_Pnt>
+tabP3d: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1821,7 +1825,7 @@ Description
 -----------
 The MultiLine constructed will have one line of 3d points without their tangencies.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const NCollection_Array1<gp_Pnt> & tabP3d);
+		 AppDef_MultiLine(const TColgp_Array1OfPnt & tabP3d);
 
 		/****** AppDef_MultiLine::AppDef_MultiLine ******/
 		/****** md5 signature: 37911cb82a6188fc1c098dca26ce4e1b ******/
@@ -1829,7 +1833,7 @@ The MultiLine constructed will have one line of 3d points without their tangenci
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: NCollection_Array1<gp_Pnt2d>
+tabP2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -1839,7 +1843,7 @@ Description
 -----------
 The MultiLine constructed will have one line of 2d points without their tangencies.
 ") AppDef_MultiLine;
-		 AppDef_MultiLine(const NCollection_Array1<gp_Pnt2d> & tabP2d);
+		 AppDef_MultiLine(const TColgp_Array1OfPnt2d & tabP2d);
 
 		/****** AppDef_MultiLine::Dump ******/
 		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
@@ -1977,7 +1981,7 @@ constructs a set of Points used to approximate a Multiline. These Points can be 
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
+tabP: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1987,7 +1991,7 @@ Description
 -----------
 creates a MultiPoint only composed of 3D points.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 85b9c0777fba92b2336463606627950c ******/
@@ -1995,7 +1999,7 @@ creates a MultiPoint only composed of 3D points.
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt2d>
+tabP: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2005,7 +2009,7 @@ Description
 -----------
 creates a MultiPoint only composed of 2D points.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 93ede81ccd009aaf812ab03e48d4d128 ******/
@@ -2013,8 +2017,8 @@ creates a MultiPoint only composed of 2D points.
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabP2d: NCollection_Array1<gp_Pnt2d>
+tabP: TColgp_Array1OfPnt
+tabP2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2024,7 +2028,7 @@ Description
 -----------
 constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 13263e78d28f8b1e6cf04a44994bd955 ******/
@@ -2032,12 +2036,12 @@ constructs a set of Points used to approximate a Multiline. These Points can be 
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabP2d: NCollection_Array1<gp_Pnt2d>
-tabVec: NCollection_Array1<gp_Vec>
-tabVec2d: NCollection_Array1<gp_Vec2d>
-tabCur: NCollection_Array1<gp_Vec>
-tabCur2d: NCollection_Array1<gp_Vec2d>
+tabP: TColgp_Array1OfPnt
+tabP2d: TColgp_Array1OfPnt2d
+tabVec: TColgp_Array1OfVec
+tabVec2d: TColgp_Array1OfVec2d
+tabCur: TColgp_Array1OfVec
+tabCur2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2047,7 +2051,7 @@ Description
 -----------
 creates a MultiPointConstraint with a constraint of Curvature. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ) or from (length of <tabCur> + length of <tabCur2d> ).
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec2d> & tabVec2d, const NCollection_Array1<gp_Vec> & tabCur, const NCollection_Array1<gp_Vec2d> & tabCur2d);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec & tabCur, const TColgp_Array1OfVec2d & tabCur2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 43de111c37d1be508a23cf0fcf5f2848 ******/
@@ -2055,10 +2059,10 @@ creates a MultiPointConstraint with a constraint of Curvature. An exception is r
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabP2d: NCollection_Array1<gp_Pnt2d>
-tabVec: NCollection_Array1<gp_Vec>
-tabVec2d: NCollection_Array1<gp_Vec2d>
+tabP: TColgp_Array1OfPnt
+tabP2d: TColgp_Array1OfPnt2d
+tabVec: TColgp_Array1OfVec
+tabVec2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2068,7 +2072,7 @@ Description
 -----------
 creates a MultiPointConstraint with a constraint of Tangency. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ).
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec2d> & tabVec2d);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 2d437e4d54a742b673cfa8f3fe63225e ******/
@@ -2076,9 +2080,9 @@ creates a MultiPointConstraint with a constraint of Tangency. An exception is ra
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabVec: NCollection_Array1<gp_Vec>
-tabCur: NCollection_Array1<gp_Vec>
+tabP: TColgp_Array1OfPnt
+tabVec: TColgp_Array1OfVec
+tabCur: TColgp_Array1OfVec
 
 Return
 -------
@@ -2088,7 +2092,7 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 3d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec or from tabCur.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Vec> & tabVec, const NCollection_Array1<gp_Vec> & tabCur);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec & tabCur);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: e79a8970b885dd146e88e1cee67d70f1 ******/
@@ -2096,8 +2100,8 @@ creates a MultiPointConstraint only composed of 3d points with constraints of cu
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabVec: NCollection_Array1<gp_Vec>
+tabP: TColgp_Array1OfPnt
+tabVec: TColgp_Array1OfVec
 
 Return
 -------
@@ -2107,7 +2111,7 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 3d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Vec> & tabVec);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: 1e8f17c77166f0acb12c7fe5da14cf6c ******/
@@ -2115,8 +2119,8 @@ creates a MultiPointConstraint only composed of 3d points with constraints of ta
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: NCollection_Array1<gp_Pnt2d>
-tabVec2d: NCollection_Array1<gp_Vec2d>
+tabP2d: TColgp_Array1OfPnt2d
+tabVec2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2126,7 +2130,7 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 2d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec2d> & tabVec2d);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d);
 
 		/****** AppDef_MultiPointConstraint::AppDef_MultiPointConstraint ******/
 		/****** md5 signature: f4666f238c85f5a748502dbed468d937 ******/
@@ -2134,9 +2138,9 @@ creates a MultiPointConstraint only composed of 2d points with constraints of ta
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: NCollection_Array1<gp_Pnt2d>
-tabVec2d: NCollection_Array1<gp_Vec2d>
-tabCur2d: NCollection_Array1<gp_Vec2d>
+tabP2d: TColgp_Array1OfPnt2d
+tabVec2d: TColgp_Array1OfVec2d
+tabCur2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2146,7 +2150,7 @@ Description
 -----------
 creates a MultiPointConstraint only composed of 2d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec2d or from tabCur2d.
 ") AppDef_MultiPointConstraint;
-		 AppDef_MultiPointConstraint(const NCollection_Array1<gp_Pnt2d> & tabP2d, const NCollection_Array1<gp_Vec2d> & tabVec2d, const NCollection_Array1<gp_Vec2d> & tabCur2d);
+		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec2d & tabCur2d);
 
 		/****** AppDef_MultiPointConstraint::Curv ******/
 		/****** md5 signature: 98c2aea23ce76323bc95a990ab1e2430 ******/
@@ -2364,8 +2368,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Deg: int
 Tol3d: double
 Tol2d: double
@@ -2379,7 +2383,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
-		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
+		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::AppDef_MyBSplGradientOfBSplineCompute ******/
 		/****** md5 signature: 12544a653fea7f3473e8e8cc600226a0 ******/
@@ -2392,8 +2396,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Deg: int
 Tol3d: double
 Tol2d: double
@@ -2409,7 +2413,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
-		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
+		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
 
 		/****** AppDef_MyBSplGradientOfBSplineCompute::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -2532,7 +2536,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientOfCompute;
-		 AppDef_MyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
+		 AppDef_MyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_MyGradientOfCompute::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -2655,7 +2659,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientbisOfBSplineCompute;
-		 AppDef_MyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
+		 AppDef_MyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_MyGradientbisOfBSplineCompute::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -2762,7 +2766,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -2772,7 +2776,7 @@ Description
 -----------
 returns the 3d curvatures of the multipoint <MPointIndex> when only 3d points exist.
 ") Curvature;
-		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec & tabV);
 
 		/****** AppDef_MyLineTool::Curvature ******/
 		/****** md5 signature: 71a3a79a422bd48c20744b4ca9d56457 ******/
@@ -2782,7 +2786,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2792,7 +2796,7 @@ Description
 -----------
 returns the 2d curvatures of the multipoint <MPointIndex> only when 2d points exist.
 ") Curvature;
-		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** AppDef_MyLineTool::Curvature ******/
 		/****** md5 signature: b39cb6de9ec43ea36e5a9b4e2f7913a1 ******/
@@ -2802,8 +2806,8 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV: TColgp_Array1OfVec
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2813,7 +2817,7 @@ Description
 -----------
 returns the 3d and 2d curvatures of the multipoint <MPointIndex>.
 ") Curvature;
-		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Curvature(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** AppDef_MyLineTool::FirstPoint ******/
 		/****** md5 signature: 8ea1ea611cdf9433a5fd11f910208664 ******/
@@ -2938,7 +2942,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -2948,7 +2952,7 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Tangency;
-		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec & tabV);
 
 		/****** AppDef_MyLineTool::Tangency ******/
 		/****** md5 signature: 382e44873cafba4a5cae55f90ccb3dc7 ******/
@@ -2958,7 +2962,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2968,7 +2972,7 @@ Description
 -----------
 returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** AppDef_MyLineTool::Tangency ******/
 		/****** md5 signature: 84a6fc57170a008105c1a3448f52ae62 ******/
@@ -2978,8 +2982,8 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV: TColgp_Array1OfVec
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -2989,7 +2993,7 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Tangency(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** AppDef_MyLineTool::Value ******/
 		/****** md5 signature: 8382ef53bd7bde8830094b722740fc82 ******/
@@ -2999,7 +3003,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
+tabPt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -3009,7 +3013,7 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfPnt & tabPt);
 
 		/****** AppDef_MyLineTool::Value ******/
 		/****** md5 signature: bd967a6b2fe20dd967a05a8f15b3805d ******/
@@ -3019,7 +3023,7 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -3029,7 +3033,7 @@ Description
 -----------
 returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** AppDef_MyLineTool::Value ******/
 		/****** md5 signature: ca4ed29237799e7fcbcf0185f363c01d ******/
@@ -3039,8 +3043,8 @@ Parameters
 ----------
 ML: AppDef_MultiLine
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt: TColgp_Array1OfPnt
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -3050,7 +3054,7 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		static void Value(const AppDef_MultiLine & ML, const int MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** AppDef_MyLineTool::WhatStatus ******/
 		/****** md5 signature: 325e3979ee95cd6d1ca790d9d041c543 ******/
@@ -3107,7 +3111,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientOfCompute;
-		 AppDef_ParFunctionOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 AppDef_ParFunctionOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3158,7 +3162,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -3196,7 +3200,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -3322,7 +3326,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParFunctionOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 AppDef_ParFunctionOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3373,7 +3377,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -3411,7 +3415,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -3537,7 +3541,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfTheGradient;
-		 AppDef_ParFunctionOfTheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 AppDef_ParFunctionOfTheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_ParFunctionOfTheGradient::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -3588,7 +3592,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_ParFunctionOfTheGradient::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -3626,7 +3630,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** AppDef_ParFunctionOfTheGradient::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -3785,8 +3789,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3802,7 +3806,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::AppDef_ParLeastSquareOfMyGradientOfCompute ******/
 		/****** md5 signature: 253674f411670f342105bab049b61905 ******/
@@ -3811,8 +3815,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3827,7 +3831,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
-		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -4163,8 +4167,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4180,7 +4184,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute ******/
 		/****** md5 signature: b8f231499996bd7ab735ed78dcc02bee ******/
@@ -4189,8 +4193,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4205,7 +4209,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
-		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -4541,8 +4545,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4558,7 +4562,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::AppDef_ParLeastSquareOfTheGradient ******/
 		/****** md5 signature: 1c0941d1ef4d4569327676fa9dfe9ddc ******/
@@ -4567,8 +4571,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -4583,7 +4587,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_ParLeastSquareOfTheGradient;
-		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_ParLeastSquareOfTheGradient::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -4888,7 +4892,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientOfCompute;
-		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
@@ -5004,7 +5008,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
-		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
@@ -5120,7 +5124,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfTheGradient;
-		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_ResConstraintOfTheGradient::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
@@ -5219,13 +5223,13 @@ class AppDef_SmoothCriterion : public Standard_Transient {
 		%feature("compactdefaultargs") AssemblyTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>>
+opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger>>>
 
 Description
 -----------
 No available documentation.
 ") AssemblyTable;
-		virtual opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>> AssemblyTable();
+		virtual opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger>>> AssemblyTable();
 
 		/****** AppDef_SmoothCriterion::Curve ******/
 		/****** md5 signature: 34260c3f4bcd122867c9d1dc1941b3d3 ******/
@@ -5246,13 +5250,13 @@ Return: handle to the FEmTool curve.
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<int>>
+opencascade::handle<TColStd_HArray2OfInteger>
 
 Description
 -----------
 No available documentation.
 ") DependenceTable;
-		virtual opencascade::handle<NCollection_HArray2<int>> DependenceTable();
+		virtual opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****** AppDef_SmoothCriterion::ErrorValues ******/
 		/****** md5 signature: 15f25c8052e25ca6900e43860d8e531d ******/
@@ -5399,7 +5403,7 @@ Description
 -----------
 Convert the assembly Vector in an Curve;.
 ") InputVector;
-		virtual void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int> > > > & AssTable);
+		virtual void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger> >> & AssTable);
 
 		/****** AppDef_SmoothCriterion::QualityValues ******/
 		/****** md5 signature: fd589255f90b841bb0d700162f492aa1 ******/
@@ -5467,7 +5471,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Parameters: NCollection_HArray1<double
+Parameters: TColStd_HArray1OfReal
 
 Return
 -------
@@ -5477,7 +5481,7 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		virtual void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & Parameters);
+		virtual void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
 
 		/****** AppDef_SmoothCriterion::SetWeight ******/
 		/****** md5 signature: 2aa3be64663887e2dbf83a45968c5163 ******/
@@ -5507,7 +5511,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Weight: NCollection_Array1<double>
+Weight: TColStd_Array1OfReal
 
 Return
 -------
@@ -5517,8 +5521,12 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		virtual void SetWeight(const NCollection_Array1<double> & Weight);
+		virtual void SetWeight(const TColStd_Array1OfReal & Weight);
 
+		%extend{
+			double GetEstLength() { return self->EstLength(); }
+			void SetEstLength(double value) { self->EstLength() = value; }
+		};
 };
 
 
@@ -5556,7 +5564,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_TheFunction;
-		 AppDef_TheFunction(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 AppDef_TheFunction(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** AppDef_TheFunction::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -5607,7 +5615,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** AppDef_TheFunction::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -5645,7 +5653,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** AppDef_TheFunction::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -5774,7 +5782,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_TheGradient;
-		 AppDef_TheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
+		 AppDef_TheGradient(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** AppDef_TheGradient::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -5927,8 +5935,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -5944,7 +5952,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::AppDef_TheLeastSquares ******/
 		/****** md5 signature: 77aa6ff3345f4a32d57c0a29fddd808e ******/
@@ -5953,8 +5961,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: AppDef_MultiLine
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -5969,7 +5977,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") AppDef_TheLeastSquares;
-		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** AppDef_TheLeastSquares::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -6274,7 +6282,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_TheResol;
-		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** AppDef_TheResol::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
@@ -6393,7 +6401,7 @@ Description
 -----------
 Constructor. Initialization of the fields. Warning: Nc0: number of PassagePoint consraints Nc2: number of TangencyPoint constraints Nc3: number of CurvaturePoint constraints if ((MaxDegree-Continuity)*MaxSegment -Nc0 - 2*Nc1 -3*Nc2) is negative The problem is over-constrained. //! Limitation: The MultiLine from AppDef has to be composed by only one Line ( Dimension 2 or 3).
 ") AppDef_Variational;
-		 AppDef_Variational(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int MaxDegree = 14, const int MaxSegment = 100, const GeomAbs_Shape Continuity = GeomAbs_C2, const bool WithMinMax = false, const bool WithCutting = true, const double Tolerance = 1.0, const int NbIterations = 2);
+		 AppDef_Variational(const AppDef_MultiLine & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int MaxDegree = 14, const int MaxSegment = 100, const GeomAbs_Shape Continuity = GeomAbs_C2, const bool WithMinMax = false, const bool WithCutting = true, const double Tolerance = 1.0, const int NbIterations = 2);
 
 		/****** AppDef_Variational::Approximate ******/
 		/****** md5 signature: c99f59de561bcc5fc0bce8bf73c657b1 ******/
@@ -6551,13 +6559,13 @@ returns True if the problem is overconstrained in this case, approximation canno
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the knots uses to the approximations.
 ") Knots;
-		const opencascade::handle<NCollection_HArray1<double>> & Knots();
+		const opencascade::handle<TColStd_HArray1OfReal> & Knots();
 
 		/****** AppDef_Variational::MaxDegree ******/
 		/****** md5 signature: 0d1cb72b1379ad321ead28abe36212aa ******/
@@ -6629,13 +6637,13 @@ returns the number of iterations used in the approximation.
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 returns the parameters uses to the approximations.
 ") Parameters;
-		const opencascade::handle<NCollection_HArray1<double>> & Parameters();
+		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
 
 		/****** AppDef_Variational::QuadraticError ******/
 		/****** md5 signature: 18c4dd3de727943534d24ba84ed7cdd5 ******/
@@ -6666,7 +6674,7 @@ Description
 -----------
 Define the constraints to approximate If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetConstraints;
-		bool SetConstraints(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & aConstrainst);
+		bool SetConstraints(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & aConstrainst);
 
 		/****** AppDef_Variational::SetContinuity ******/
 		/****** md5 signature: 2f68d6ea40cf201b04b4380b9b620a1e ******/
@@ -6731,7 +6739,7 @@ define the Weight (as percent) associed to the criterium Order used in the optim
 		%feature("autodoc", "
 Parameters
 ----------
-knots: NCollection_HArray1<double
+knots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -6741,7 +6749,7 @@ Description
 -----------
 Defines the knots used by the approximations If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetKnots;
-		bool SetKnots(const opencascade::handle<NCollection_HArray1<double> > & knots);
+		bool SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & knots);
 
 		/****** AppDef_Variational::SetMaxDegree ******/
 		/****** md5 signature: 6f66d774e74903b4b5af2b8dfc5a299e ******/
@@ -6803,7 +6811,7 @@ define the number of iterations used in the approximation. if Iter < 1.
 		%feature("autodoc", "
 Parameters
 ----------
-param: NCollection_HArray1<double
+param: TColStd_HArray1OfReal
 
 Return
 -------
@@ -6813,7 +6821,7 @@ Description
 -----------
 Defines the parameters used by the approximations.
 ") SetParameters;
-		void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & param);
+		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & param);
 
 		/****** AppDef_Variational::SetTolerance ******/
 		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
@@ -6960,26 +6968,26 @@ No available documentation.
 		%feature("compactdefaultargs") AssemblyTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>>
+opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger>>>
 
 Description
 -----------
 No available documentation.
 ") AssemblyTable;
-		opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int>>>> AssemblyTable();
+		opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger>>> AssemblyTable();
 
 		/****** AppDef_LinearCriteria::DependenceTable ******/
 		/****** md5 signature: 3c6dd946c24496ab93cc5cb266bb098a ******/
 		%feature("compactdefaultargs") DependenceTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<int>>
+opencascade::handle<TColStd_HArray2OfInteger>
 
 Description
 -----------
 No available documentation.
 ") DependenceTable;
-		opencascade::handle<NCollection_HArray2<int>> DependenceTable();
+		opencascade::handle<TColStd_HArray2OfInteger> DependenceTable();
 
 		/****** AppDef_LinearCriteria::ErrorValues ******/
 		/****** md5 signature: da64e4eedaa767e2b61dc721899ddb72 ******/
@@ -7126,7 +7134,7 @@ Description
 -----------
 Convert the assembly Vector in an Curve;.
 ") InputVector;
-		void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<NCollection_HArray1<int> > > > & AssTable);
+		void InputVector(const math_Vector & X, const opencascade::handle<NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger> >> & AssTable);
 
 		/****** AppDef_LinearCriteria::QualityValues ******/
 		/****** md5 signature: dda6320c4b729449cfd9ab2379a97ea3 ******/
@@ -7194,7 +7202,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Parameters: NCollection_HArray1<double
+Parameters: TColStd_HArray1OfReal
 
 Return
 -------
@@ -7204,7 +7212,7 @@ Description
 -----------
 No available documentation.
 ") SetParameters;
-		void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & Parameters);
+		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & Parameters);
 
 		/****** AppDef_LinearCriteria::SetWeight ******/
 		/****** md5 signature: 6c2433fc5a233111aac0872874066487 ******/
@@ -7234,7 +7242,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Weight: NCollection_Array1<double>
+Weight: TColStd_Array1OfReal
 
 Return
 -------
@@ -7244,8 +7252,12 @@ Description
 -----------
 No available documentation.
 ") SetWeight;
-		void SetWeight(const NCollection_Array1<double> & Weight);
+		void SetWeight(const TColStd_Array1OfReal & Weight);
 
+		%extend{
+			double GetEstLength() { return self->EstLength(); }
+			void SetEstLength(double value) { self->EstLength() = value; }
+		};
 };
 
 

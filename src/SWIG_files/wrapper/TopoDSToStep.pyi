@@ -10,6 +10,7 @@ from OCC.Core.StepData import *
 from OCC.Core.StepShape import *
 from OCC.Core.Message import *
 from OCC.Core.StepVisual import *
+from OCC.Core.TColStd import *
 
 
 class TopoDSToStep_BuilderError(IntEnum):
@@ -223,7 +224,7 @@ class TopoDSToStep_WireframeBuilder(TopoDSToStep_Root):
     def __init__(self, S: TopoDS_Shape, T: TopoDSToStep_Tool, theLocalFactors: Optional[StepData_Factors] = StepData_Factors()) -> None: ...
     def Error(self) -> TopoDSToStep_BuilderError: ...
     def Init(self, S: TopoDS_Shape, T: TopoDSToStep_Tool, theLocalFactors: Optional[StepData_Factors] = StepData_Factors()) -> None: ...
-    def Value(self) -> False: ...
+    def Value(self) -> TColStd_HSequenceOfTransient: ...
 
 # harray1 classes
 # harray2 classes

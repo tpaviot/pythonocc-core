@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgoapi.html"
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
+#include<TopTools_module.hxx>
 #include<BRepTools_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
@@ -83,6 +84,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgoapi.html"
 %import TopoDS.i
 %import Message.i
 %import BRepBuilderAPI.i
+%import TopTools.i
 %import BRepTools.i
 %import gp.i
 %import Geom.i
@@ -361,7 +363,7 @@ Input parameter: theFace The shape to extract the faces for removal.
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_List<TopoDS_Shape>
+theFaces: TopTools_ListOfShape
 
 Return
 -------
@@ -372,7 +374,7 @@ Description
 Adds the faces to remove from the input shape. 
 Input parameter: theFaces The list of shapes to extract the faces for removal.
 ") AddFacesToRemove;
-		void AddFacesToRemove(const NCollection_List<TopoDS_Shape> & theFaces);
+		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
 		/****** BRepAlgoAPI_Defeaturing::Build ******/
 		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
@@ -397,13 +399,13 @@ Performs the operation.
 		%feature("compactdefaultargs") FacesToRemove;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of faces which have been requested for removal from the input shape.
 ") FacesToRemove;
-		const NCollection_List<TopoDS_Shape> FacesToRemove();
+		const TopTools_ListOfShape & FacesToRemove();
 
 		/****** BRepAlgoAPI_Defeaturing::Generated ******/
 		/****** md5 signature: 9b9a05fc05596bf1aae965197e0fcaf8 ******/
@@ -415,13 +417,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <theS> during the operation.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
 		/****** BRepAlgoAPI_Defeaturing::HasDeleted ******/
 		/****** md5 signature: 9af855f0e7dfa60c7b3bcd573b520120 ******/
@@ -529,13 +531,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <theS> during the operation.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
 		/****** BRepAlgoAPI_Defeaturing::SetShape ******/
 		/****** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ******/
@@ -674,7 +676,7 @@ Sets the type of Boolean operation.
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -684,7 +686,7 @@ Description
 -----------
 Sets the Tool arguments.
 ") SetTools;
-		void SetTools(const NCollection_List<TopoDS_Shape> & theLS);
+		void SetTools(const TopTools_ListOfShape & theLS);
 
 		/****** BRepAlgoAPI_BooleanOperation::Shape1 ******/
 		/****** md5 signature: 8981b86985f46147f6d78d0ef2565c6e ******/
@@ -717,13 +719,13 @@ Returns the second argument involved in this Boolean operation. Obsolete.
 		%feature("compactdefaultargs") Tools;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the Tools arguments.
 ") Tools;
-		const NCollection_List<TopoDS_Shape> Tools();
+		const TopTools_ListOfShape & Tools();
 
 };
 
@@ -794,7 +796,7 @@ Performs the Split operation. Performs the intersection of the argument shapes (
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -804,20 +806,20 @@ Description
 -----------
 Sets the Tool arguments.
 ") SetTools;
-		void SetTools(const NCollection_List<TopoDS_Shape> & theLS);
+		void SetTools(const TopTools_ListOfShape & theLS);
 
 		/****** BRepAlgoAPI_Splitter::Tools ******/
 		/****** md5 signature: f354d26768926e996d17ca393c56586f ******/
 		%feature("compactdefaultargs") Tools;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the Tool arguments.
 ") Tools;
-		const NCollection_List<TopoDS_Shape> Tools();
+		const TopTools_ListOfShape & Tools();
 
 };
 

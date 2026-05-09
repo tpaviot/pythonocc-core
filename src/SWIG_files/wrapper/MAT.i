@@ -94,18 +94,73 @@ MAT_Right = MAT_Side.MAT_Right
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Arc>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Arc>>::KeyValues;
 %template(MAT_DataMapOfIntegerArc) NCollection_DataMap<int,opencascade::handle<MAT_Arc>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MAT_Arc>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT_DataMapOfIntegerArc::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>::KeyValues;
 %template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MAT_BasicElt>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT_DataMapOfIntegerBasicElt::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>::KeyValues;
 %template(MAT_DataMapOfIntegerBisector) NCollection_DataMap<int,opencascade::handle<MAT_Bisector>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MAT_Bisector>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT_DataMapOfIntegerBisector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Node>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MAT_Node>>::KeyValues;
 %template(MAT_DataMapOfIntegerNode) NCollection_DataMap<int,opencascade::handle<MAT_Node>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MAT_Node>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT_DataMapOfIntegerNode::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT_SequenceOfArc) NCollection_Sequence<opencascade::handle<MAT_Arc>>;
 
 %extend NCollection_Sequence<opencascade::handle<MAT_Arc>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -114,6 +169,13 @@ MAT_Right = MAT_Side.MAT_Right
 %template(MAT_SequenceOfBasicElt) NCollection_Sequence<opencascade::handle<MAT_BasicElt>>;
 
 %extend NCollection_Sequence<opencascade::handle<MAT_BasicElt>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1397,7 +1459,7 @@ Description
 -----------
 No available documentation.
 ") ChangeBasicElts;
-		void ChangeBasicElts(const NCollection_DataMap<int, opencascade::handle<MAT_BasicElt> > & NewMap);
+		void ChangeBasicElts(const NCollection_DataMap<int, opencascade::handle<MAT_BasicElt>> & NewMap);
 
 		/****** MAT_Graph::CompactArcs ******/
 		/****** md5 signature: 72a7920557248784ad886ab9fa212648 ******/
@@ -2408,7 +2470,7 @@ Description
 -----------
 Returns in <S> the Arcs linked to <self>.
 ") LinkedArcs;
-		void LinkedArcs(NCollection_Sequence<opencascade::handle<MAT_Arc> > & S);
+		void LinkedArcs(NCollection_Sequence<opencascade::handle<MAT_Arc>> & S);
 
 		/****** MAT_Node::NearElts ******/
 		/****** md5 signature: 341670ce7bf8f485465404febe50c7d8 ******/
@@ -2426,7 +2488,7 @@ Description
 -----------
 Returns in <S> the BasicElts equidistant to <self>.
 ") NearElts;
-		void NearElts(NCollection_Sequence<opencascade::handle<MAT_BasicElt> > & S);
+		void NearElts(NCollection_Sequence<opencascade::handle<MAT_BasicElt>> & S);
 
 		/****** MAT_Node::OnBasicElt ******/
 		/****** md5 signature: 9a370752e722fe359a087a269e02eb1e ******/

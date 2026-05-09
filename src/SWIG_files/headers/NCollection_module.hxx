@@ -54,6 +54,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_Iterator.hxx>
 #include<NCollection_KDTree.hxx>
 #include<NCollection_Lerp.hxx>
+#include<NCollection_LinearVector.hxx>
 #include<NCollection_List.hxx>
 #include<NCollection_ListNode.hxx>
 #include<NCollection_LocalArray.hxx>

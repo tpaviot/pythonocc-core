@@ -494,7 +494,7 @@ Description
 -----------
 Init all fields own and inherited.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition, const opencascade::handle<StepRepr_Representation> & theUsedRepresentation, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theIdentifiedItem);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const StepAP242_ItemIdentifiedRepresentationUsageDefinition & theDefinition, const opencascade::handle<StepRepr_Representation> & theUsedRepresentation, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theIdentifiedItem);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::Name ******/
 		/****** md5 signature: a48270f13ec87e0b7c4b0136a8804c98 ******/
@@ -574,7 +574,7 @@ Description
 -----------
 Set field IdentifiedItem.
 ") SetIdentifiedItem;
-		void SetIdentifiedItem(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theIdentifiedItem);
+		void SetIdentifiedItem(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theIdentifiedItem);
 
 		/****** StepAP242_ItemIdentifiedRepresentationUsage::SetIdentifiedItemValue ******/
 		/****** md5 signature: c6c9f1e40869b1c28eae7270d7c74cf1 ******/

@@ -91,16 +91,28 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TShort_HArray1OfShortReal)
+%wrap_handle(TShort_HArray2OfShortReal)
+%wrap_handle(TShort_HSequenceOfShortReal)
 /* end handles declaration */
 
 /* templates */
-%template(TShort_Array1OfShortReal) NCollection_Array1<float>;
-Array1ExtendIter(float)
-
-%template(TShort_Array2OfShortReal) NCollection_Array2<float>;
+%apply (float* IN_ARRAY1, int DIM1) { (float* numpyArray1, int nRows1) };
+%apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray1Argout, int nRows1Argout) };
+Array1NumpyTemplate(TShort_Array1OfShortReal, float, float)
+%apply (float* IN_ARRAY2, int DIM1, int DIM2) { (float* numpyArray2, int nRows2, int nCols2) };
+%apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray2Argout, int aSizeArgout) };
+Array2NumpyTemplate(TShort_Array2OfShortReal, float, float)
 %template(TShort_SequenceOfShortReal) NCollection_Sequence<float>;
 
 %extend NCollection_Sequence<float> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

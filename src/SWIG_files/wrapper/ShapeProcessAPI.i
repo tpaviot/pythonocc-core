@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocessapi.h
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<ShapeProcess_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Message_module.hxx>
@@ -71,6 +72,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeprocessapi.h
 %import Standard.i
 %import NCollection.i
 %import ShapeProcess.i
+%import TopTools.i
 %import TopoDS.i
 %import TopAbs.i
 %import Message.i
@@ -152,13 +154,13 @@ Returns object for managing resource file and sequence of operators.
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeShape
 
 Description
 -----------
 Returns myMap with accumulated history.
 ") Map;
-		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Map();
+		const TopTools_DataMapOfShapeShape & Map();
 
 		/****** ShapeProcessAPI_ApplySequence::PrepareShape ******/
 		/****** md5 signature: 5fd8ba606488c145562825eb96e77e8c ******/

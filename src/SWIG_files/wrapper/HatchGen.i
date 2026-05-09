@@ -113,6 +113,13 @@ HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 %template(HatchGen_Domains) NCollection_Sequence<HatchGen_Domain>;
 
 %extend NCollection_Sequence<HatchGen_Domain> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -121,6 +128,13 @@ HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 %template(HatchGen_PointsOnElement) NCollection_Sequence<HatchGen_PointOnElement>;
 
 %extend NCollection_Sequence<HatchGen_PointOnElement> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -129,6 +143,13 @@ HatchGen_UNDETERMINED = HatchGen_IntersectionType.HatchGen_UNDETERMINED
 %template(HatchGen_PointsOnHatching) NCollection_Sequence<HatchGen_PointOnHatching>;
 
 %extend NCollection_Sequence<HatchGen_PointOnHatching> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

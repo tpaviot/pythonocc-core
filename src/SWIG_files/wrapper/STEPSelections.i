@@ -100,12 +100,25 @@ from OCC.Core.Exception import *
 /* handles */
 %wrap_handle(STEPSelections_AssemblyComponent)
 %wrap_handle(STEPSelections_AssemblyLink)
+%wrap_handle(STEPSelections_SelectAssembly)
+%wrap_handle(STEPSelections_SelectDerived)
+%wrap_handle(STEPSelections_SelectFaces)
+%wrap_handle(STEPSelections_SelectForTransfer)
+%wrap_handle(STEPSelections_SelectGSCurves)
+%wrap_handle(STEPSelections_SelectInstances)
 /* end handles declaration */
 
 /* templates */
 %template(STEPSelections_SequenceOfAssemblyComponent) NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>>;
 
 %extend NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyComponent>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -114,6 +127,13 @@ from OCC.Core.Exception import *
 %template(STEPSelections_SequenceOfAssemblyLink) NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>;
 
 %extend NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -162,7 +182,7 @@ Description
 -----------
 No available documentation.
 ") STEPSelections_AssemblyComponent;
-		 STEPSelections_AssemblyComponent(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr, const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink> > > & list);
+		 STEPSelections_AssemblyComponent(const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & sdr, const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> > & list);
 
 		/****** STEPSelections_AssemblyComponent::GetList ******/
 		/****** md5 signature: 7568c7d8a66d904c86ee4f57a256b3bb ******/
@@ -206,7 +226,7 @@ Description
 -----------
 No available documentation.
 ") SetList;
-		void SetList(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink> > > & list);
+		void SetList(const opencascade::handle<NCollection_HSequence<opencascade::handle<STEPSelections_AssemblyLink>> > & list);
 
 		/****** STEPSelections_AssemblyComponent::SetSDR ******/
 		/****** md5 signature: 6e7bfe74d0634693e540292c51836b91 ******/
@@ -783,6 +803,8 @@ Returns a text defining the criterium: 'Assembly structures'.
 };
 
 
+%make_alias(STEPSelections_SelectAssembly)
+
 %extend STEPSelections_SelectAssembly {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -830,6 +852,8 @@ No available documentation.
 
 };
 
+
+%make_alias(STEPSelections_SelectDerived)
 
 %extend STEPSelections_SelectDerived {
 	%pythoncode {
@@ -891,6 +915,8 @@ Returns a text defining the criterium: 'Faces'.
 
 };
 
+
+%make_alias(STEPSelections_SelectFaces)
 
 %extend STEPSelections_SelectFaces {
 	%pythoncode {
@@ -955,6 +981,8 @@ No available documentation.
 };
 
 
+%make_alias(STEPSelections_SelectForTransfer)
+
 %extend STEPSelections_SelectForTransfer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1015,6 +1043,8 @@ Returns a text defining the criterium: 'Curves'.
 
 };
 
+
+%make_alias(STEPSelections_SelectGSCurves)
 
 %extend STEPSelections_SelectGSCurves {
 	%pythoncode {
@@ -1094,6 +1124,8 @@ No available documentation.
 
 };
 
+
+%make_alias(STEPSelections_SelectInstances)
 
 %extend STEPSelections_SelectInstances {
 	%pythoncode {

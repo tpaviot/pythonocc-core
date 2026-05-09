@@ -1664,6 +1664,10 @@ No available documentation.
 ") TypeNum;
 		int & TypeNum();
 
+		%extend{
+			int GetTypeNum() { return self->TypeNum(); }
+			void SetTypeNum(int value) { self->TypeNum() = value; }
+		};
 };
 
 

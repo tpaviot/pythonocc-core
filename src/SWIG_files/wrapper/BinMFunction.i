@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmfunction.html
 #include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<BinObjMgt_module.hxx>
+#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<TDF_module.hxx>
 #include<TColgp_module.hxx>
@@ -61,6 +62,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmfunction.html
 %import Message.i
 %import TDF.i
 %import BinObjMgt.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -185,7 +187,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -195,7 +197,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 
@@ -272,7 +274,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -282,7 +284,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 
@@ -359,7 +361,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -369,7 +371,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 

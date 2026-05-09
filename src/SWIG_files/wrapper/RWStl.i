@@ -260,7 +260,7 @@ Input parameter: theFile file path to read
 Input parameter: theMergeAngle maximum angle in radians between triangles to merge equal nodes; M_PI/2 means ignore angle @param[out] theTriangList triangulation list for multi-domain case 
 Input parameter: theProgress progress indicator.
 ") ReadFile;
-		static void ReadFile(const char * const theFile, const double theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation> > & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		static void ReadFile(const char * const theFile, const double theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation>> & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** RWStl::ReadStream ******/
 		/****** md5 signature: 59fc68980f5876e52974817c37ad1076 ******/

@@ -4,11 +4,14 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Adaptor3d import *
+from OCC.Core.TColStd import *
 from OCC.Core.Aspect import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Vrml import *
+from OCC.Core.TopTools import *
 from OCC.Core.HLRAlgo import *
 from OCC.Core.Poly import *
+from OCC.Core.TColgp import *
 from OCC.Core.BRepAdaptor import *
 
 
@@ -59,6 +62,9 @@ class VrmlConverter_DeflectionCurve:
     @overload
     @staticmethod
     def Add(aCurve: Adaptor3d_Curve, U1: float, U2: float, aDeflection: float) -> str: ...
+    @overload
+    @staticmethod
+    def Add(aCurve: Adaptor3d_Curve, aParams: TColStd_HArray1OfReal, aNbNodes: int, aDrawer: VrmlConverter_Drawer) -> str: ...
 
 class VrmlConverter_Drawer(Standard_Transient):
     def __init__(self) -> None: ...
@@ -129,6 +135,7 @@ class VrmlConverter_PointAspect(Standard_Transient):
     def SetMaterial(self, aMaterial: Vrml_Material) -> None: ...
 
 class VrmlConverter_Projector(Standard_Transient):
+    def __init__(self, Shapes: TopTools_Array1OfShape, Focus: float, DX: float, DY: float, DZ: float, XUp: float, YUp: float, ZUp: float, Camera: Optional[VrmlConverter_TypeOfCamera] = VrmlConverter_NoCamera, Light: Optional[VrmlConverter_TypeOfLight] = VrmlConverter_NoLight) -> None: ...
     def Add(self) -> str: ...
     def Camera(self) -> VrmlConverter_TypeOfCamera: ...
     def Light(self) -> VrmlConverter_TypeOfLight: ...
@@ -139,6 +146,8 @@ class VrmlConverter_Projector(Standard_Transient):
 class VrmlConverter_ShadedShape:
     @staticmethod
     def Add(aShape: TopoDS_Shape, aDrawer: VrmlConverter_Drawer) -> str: ...
+    @staticmethod
+    def ComputeNormal(aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir) -> None: ...
 
 class VrmlConverter_ShadingAspect(Standard_Transient):
     def __init__(self) -> None: ...

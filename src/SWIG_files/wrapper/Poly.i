@@ -45,8 +45,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_poly.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<Bnd_module.hxx>
 #include<OSD_module.hxx>
+#include<TShort_module.hxx>
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -80,8 +83,11 @@ end of numpy support section
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import TColStd.i
+%import TColgp.i
 %import Bnd.i
 %import OSD.i
+%import TShort.i
 
 %pythoncode {
 from enum import IntEnum
@@ -114,6 +120,7 @@ enum  {
 %wrap_handle(Poly_PolygonOnTriangulation)
 %wrap_handle(Poly_Triangulation)
 %wrap_handle(Poly_TriangulationParameters)
+%wrap_handle(Poly_HArray1OfTriangle)
 /* end handles declaration */
 
 /* templates */
@@ -124,9 +131,21 @@ Array1OfTriaNumpyTemplate(Poly_Array1OfTriangle, Poly_Triangle)
 %template(Poly_ListOfTriangulation) NCollection_List<opencascade::handle<Poly_Triangulation>>;
 
 %extend NCollection_List<opencascade::handle<Poly_Triangulation>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Poly_ListIteratorOfListOfTriangulation(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -150,7 +169,7 @@ class Poly {
 		%feature("autodoc", "
 Parameters
 ----------
-lstTri: Poly_Triangulation
+lstTri: Poly_ListOfTriangulation
 
 Return
 -------
@@ -160,7 +179,7 @@ Description
 -----------
 Computes and stores the link from nodes to triangles and from triangles to neighbouring triangles. This tool is obsolete, replaced by Poly_CoherentTriangulation Algorithm to make minimal loops in a graph Join several triangulations to one new triangulation object. The new triangulation is just a mechanical sum of input triangulations, without node sharing. UV coordinates are dropped in the result.
 ") Catenate;
-		static opencascade::handle<Poly_Triangulation> Catenate(const NCollection_List<opencascade::handle<Poly_Triangulation> > & lstTri);
+		static opencascade::handle<Poly_Triangulation> Catenate(const Poly_ListOfTriangulation & lstTri);
 
 		/****** Poly::ComputeNormals ******/
 		/****** md5 signature: 4015a8f6c870ca14e91d70eaa454df12 ******/
@@ -1768,7 +1787,7 @@ Return: * True if at least one triangle is found and output as pTri. */.
 		%feature("autodoc", "
 Parameters
 ----------
-lstNodes: NCollection_List<int>
+lstNodes: TColStd_ListOfInteger
 
 Return
 -------
@@ -1779,7 +1798,7 @@ Description
 /** * Create a list of free nodes. These nodes may appear as a result of any * custom mesh decimation or RemoveDegenerated() call. This analysis is * necessary if you support additional data structures based on the * triangulation (e.g., edges on the surface boundary). * 
 Parameter lstNodes * <tt>[out]</tt> List that receives the indices of free nodes. */.
 ") GetFreeNodes;
-		bool GetFreeNodes(NCollection_List<int> & lstNodes);
+		bool GetFreeNodes(TColStd_ListOfInteger & lstNodes);
 
 		/****** Poly_CoherentTriangulation::GetTriangulation ******/
 		/****** md5 signature: 43bd327b5645ba0da5653a0bd81a9f5b ******/
@@ -2747,7 +2766,7 @@ Constructs a 2D polygon with specified number of nodes.
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<gp_Pnt2d>
+Nodes: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2757,20 +2776,20 @@ Description
 -----------
 Constructs a 2D polygon defined by the table of points, <Nodes>.
 ") Poly_Polygon2D;
-		 Poly_Polygon2D(const NCollection_Array1<gp_Pnt2d> & Nodes);
+		 Poly_Polygon2D(const TColgp_Array1OfPnt2d & Nodes);
 
 		/****** Poly_Polygon2D::ChangeNodes ******/
 		/****** md5 signature: cf4e71e657cc130190ff7a58f24430a5 ******/
 		%feature("compactdefaultargs") ChangeNodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 Returns the table of nodes for this polygon.
 ") ChangeNodes;
-		NCollection_Array1<gp_Pnt2d> ChangeNodes();
+		TColgp_Array1OfPnt2d & ChangeNodes();
 
 		/****** Poly_Polygon2D::Deflection ******/
 		/****** md5 signature: e7bafce0869e6419d801f7a7f285ba00 ******/
@@ -2842,13 +2861,13 @@ Returns the number of nodes in this polygon. Note: If the polygon is closed, the
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 Returns the table of nodes for this polygon.
 ") Nodes;
-		const NCollection_Array1<gp_Pnt2d> Nodes();
+		const TColgp_Array1OfPnt2d & Nodes();
 
 };
 
@@ -2891,7 +2910,7 @@ Constructs a 3D polygon with specific number of nodes.
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<gp_Pnt>
+Nodes: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2901,7 +2920,7 @@ Description
 -----------
 Constructs a 3D polygon defined by the table of points, Nodes.
 ") Poly_Polygon3D;
-		 Poly_Polygon3D(const NCollection_Array1<gp_Pnt> & Nodes);
+		 Poly_Polygon3D(const TColgp_Array1OfPnt & Nodes);
 
 		/****** Poly_Polygon3D::Poly_Polygon3D ******/
 		/****** md5 signature: 651426d92dc803a323e01c206bc9c69b ******/
@@ -2909,8 +2928,8 @@ Constructs a 3D polygon defined by the table of points, Nodes.
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<gp_Pnt>
-Parameters: NCollection_Array1<double>
+Nodes: TColgp_Array1OfPnt
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -2920,33 +2939,33 @@ Description
 -----------
 Constructs a 3D polygon defined by the table of points, Nodes, and the parallel table of parameters, Parameters, where each value of the table Parameters is the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning Both the Nodes and Parameters tables must have the same bounds. This property is not checked at construction time.
 ") Poly_Polygon3D;
-		 Poly_Polygon3D(const NCollection_Array1<gp_Pnt> & Nodes, const NCollection_Array1<double> & Parameters);
+		 Poly_Polygon3D(const TColgp_Array1OfPnt & Nodes, const TColStd_Array1OfReal & Parameters);
 
 		/****** Poly_Polygon3D::ChangeNodes ******/
 		/****** md5 signature: 82eb403458650aed5504bb75ce1ae847 ******/
 		%feature("compactdefaultargs") ChangeNodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt>
+TColgp_Array1OfPnt
 
 Description
 -----------
 Returns the table of nodes for this polygon.
 ") ChangeNodes;
-		NCollection_Array1<gp_Pnt> ChangeNodes();
+		TColgp_Array1OfPnt & ChangeNodes();
 
 		/****** Poly_Polygon3D::ChangeParameters ******/
 		/****** md5 signature: 04cca62058e5ad073771bd6b0b8e76fc ******/
 		%feature("compactdefaultargs") ChangeParameters;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the table of the parameters associated with each node in this polygon. ChangeParameters function returns the array as shared. Therefore if the table is selected by reference you can, by simply modifying it, directly modify the data structure of this polygon.
 ") ChangeParameters;
-		NCollection_Array1<double> & ChangeParameters();
+		TColStd_Array1OfReal & ChangeParameters();
 
 		/****** Poly_Polygon3D::Copy ******/
 		/****** md5 signature: 532fa451e830dd05948eb705384072ad ******/
@@ -3044,26 +3063,26 @@ Returns the number of nodes in this polygon. Note: If the polygon is closed, the
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt>
+TColgp_Array1OfPnt
 
 Description
 -----------
 Returns the table of nodes for this polygon.
 ") Nodes;
-		const NCollection_Array1<gp_Pnt> Nodes();
+		const TColgp_Array1OfPnt & Nodes();
 
 		/****** Poly_Polygon3D::Parameters ******/
 		/****** md5 signature: ba47d047693cd65b2f17a6992fba866d ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns true if parameters are associated with the nodes in this polygon.
 ") Parameters;
-		const NCollection_Array1<double> & Parameters();
+		const TColStd_Array1OfReal & Parameters();
 
 };
 
@@ -3106,7 +3125,7 @@ Constructs a 3D polygon on the triangulation of a shape with specified size of n
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<int>
+Nodes: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3116,7 +3135,7 @@ Description
 -----------
 Constructs a 3D polygon on the triangulation of a shape, defined by the table of nodes, <Nodes>.
 ") Poly_PolygonOnTriangulation;
-		 Poly_PolygonOnTriangulation(const NCollection_Array1<int> & Nodes);
+		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes);
 
 		/****** Poly_PolygonOnTriangulation::Poly_PolygonOnTriangulation ******/
 		/****** md5 signature: 76318d5d7f8195061b6afc4fe1c5c752 ******/
@@ -3124,8 +3143,8 @@ Constructs a 3D polygon on the triangulation of a shape, defined by the table of
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<int>
-Parameters: NCollection_Array1<double>
+Nodes: TColStd_Array1OfInteger
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -3135,33 +3154,33 @@ Description
 -----------
 Constructs a 3D polygon on the triangulation of a shape, defined by: - the table of nodes, Nodes, and the table of parameters, <Parameters>. where: - a node value is an index in the table of nodes specific to an existing triangulation of a shape - and a parameter value is the value of the parameter of the corresponding point on the curve approximated by the constructed polygon. Warning The tables Nodes and Parameters must be the same size. This property is not checked at construction time.
 ") Poly_PolygonOnTriangulation;
-		 Poly_PolygonOnTriangulation(const NCollection_Array1<int> & Nodes, const NCollection_Array1<double> & Parameters);
+		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes, const TColStd_Array1OfReal & Parameters);
 
 		/****** Poly_PolygonOnTriangulation::ChangeNodes ******/
 		/****** md5 signature: 46f5466dd3cf38fa96c2aeb99fab937e ******/
 		%feature("compactdefaultargs") ChangeNodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") ChangeNodes;
-		NCollection_Array1<int> & ChangeNodes();
+		TColStd_Array1OfInteger & ChangeNodes();
 
 		/****** Poly_PolygonOnTriangulation::ChangeParameters ******/
 		/****** md5 signature: ff00f0571a955a8781d9d3b3207a3826 ******/
 		%feature("compactdefaultargs") ChangeParameters;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") ChangeParameters;
-		NCollection_Array1<double> & ChangeParameters();
+		TColStd_Array1OfReal & ChangeParameters();
 
 		/****** Poly_PolygonOnTriangulation::Copy ******/
 		/****** md5 signature: 249421ad14c91ad15ac15a6b20c906cc ******/
@@ -3277,13 +3296,13 @@ Returns node at the given index.
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the table of nodes for this polygon. A node value is an index in the table of nodes specific to an existing triangulation of a shape.
 ") Nodes;
-		const NCollection_Array1<int> & Nodes();
+		const TColStd_Array1OfInteger & Nodes();
 
 		/****** Poly_PolygonOnTriangulation::Parameter ******/
 		/****** md5 signature: 2ebd2e390f4c9bcf1e06c8fe1d286800 ******/
@@ -3308,13 +3327,13 @@ Returns parameter at the given index.
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the table of the parameters associated with each node in this polygon. Warning! Use the function HasParameters to check if parameters are associated with the nodes in this polygon.
 ") Parameters;
-		const opencascade::handle<NCollection_HArray1<double>> & Parameters();
+		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
 
 		/****** Poly_PolygonOnTriangulation::SetNode ******/
 		/****** md5 signature: 47b336ccacd346479261b32ea8b3d1b4 ******/
@@ -3360,7 +3379,7 @@ Sets parameter at the given index.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: NCollection_HArray1<double
+theParameters: TColStd_HArray1OfReal
 
 Return
 -------
@@ -3370,7 +3389,7 @@ Description
 -----------
 Sets the table of the parameters associated with each node in this polygon. Raises exception if array size doesn't much number of polygon nodes.
 ") SetParameters;
-		void SetParameters(const opencascade::handle<NCollection_HArray1<double> > & theParameters);
+		void SetParameters(const opencascade::handle<TColStd_HArray1OfReal> & theParameters);
 
 };
 
@@ -3573,8 +3592,8 @@ Input parameter: theHasNormals indicates whether normals will be given and assoc
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<gp_Pnt>
-Triangles: NCollection_Array1<Poly_Triangle>
+Nodes: TColgp_Array1OfPnt
+Triangles: Poly_Array1OfTriangle
 
 Return
 -------
@@ -3584,7 +3603,7 @@ Description
 -----------
 Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes and triangles from Triangles.
 ") Poly_Triangulation;
-		 Poly_Triangulation(const NCollection_Array1<gp_Pnt> & Nodes, const NCollection_Array1<Poly_Triangle> & Triangles);
+		 Poly_Triangulation(const TColgp_Array1OfPnt & Nodes, const Poly_Array1OfTriangle & Triangles);
 
 		/****** Poly_Triangulation::Poly_Triangulation ******/
 		/****** md5 signature: 7809b23d02546932b7deba66de6ab17e ******/
@@ -3592,9 +3611,9 @@ Constructs a triangulation from a set of triangles. The triangulation is initial
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<gp_Pnt>
-UVNodes: NCollection_Array1<gp_Pnt2d>
-Triangles: NCollection_Array1<Poly_Triangle>
+Nodes: TColgp_Array1OfPnt
+UVNodes: TColgp_Array1OfPnt2d
+Triangles: Poly_Array1OfTriangle
 
 Return
 -------
@@ -3604,7 +3623,7 @@ Description
 -----------
 Constructs a triangulation from a set of triangles. The triangulation is initialized with 3D points from Nodes, 2D points from UVNodes and triangles from Triangles, where coordinates of a 2D point from UVNodes are the (u, v) parameters of the corresponding 3D point from Nodes on the surface approximated by the constructed triangulation.
 ") Poly_Triangulation;
-		 Poly_Triangulation(const NCollection_Array1<gp_Pnt> & Nodes, const NCollection_Array1<gp_Pnt2d> & UVNodes, const NCollection_Array1<Poly_Triangle> & Triangles);
+		 Poly_Triangulation(const TColgp_Array1OfPnt & Nodes, const TColgp_Array1OfPnt2d & UVNodes, const Poly_Array1OfTriangle & Triangles);
 
 		/****** Poly_Triangulation::Poly_Triangulation ******/
 		/****** md5 signature: 4d757cd3935962606f0dd1da74e67a8b ******/
@@ -3686,13 +3705,13 @@ No available documentation.
 		%feature("compactdefaultargs") ChangeTriangles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<Poly_Triangle>
+Poly_Array1OfTriangle
 
 Description
 -----------
 No available documentation.
 ") ChangeTriangles;
-		NCollection_Array1<Poly_Triangle> & ChangeTriangles();
+		Poly_Array1OfTriangle & ChangeTriangles();
 
 		/****** Poly_Triangulation::Clear ******/
 		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
@@ -3886,26 +3905,26 @@ Returns an internal array of nodes. Node()/SetNode() should be used instead in p
 		%feature("compactdefaultargs") InternalNormals;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<NCollection_Vec3<float> >
+NCollection_Array1<NCollection_Vec3<float>>
 
 Description
 -----------
 Return an internal array of normals. Normal()/SetNormal() should be used instead in portable code.
 ") InternalNormals;
-		NCollection_Array1<NCollection_Vec3<float> > & InternalNormals();
+		NCollection_Array1<NCollection_Vec3<float>> & InternalNormals();
 
 		/****** Poly_Triangulation::InternalTriangles ******/
 		/****** md5 signature: 879ee42d1b41a8ce2fbe155a540df3cf ******/
 		%feature("compactdefaultargs") InternalTriangles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<Poly_Triangle>
+Poly_Array1OfTriangle
 
 Description
 -----------
 Returns an internal array of triangles. Triangle()/SetTriangle() should be used instead in portable code.
 ") InternalTriangles;
-		NCollection_Array1<Poly_Triangle> & InternalTriangles();
+		Poly_Array1OfTriangle & InternalTriangles();
 
 		/****** Poly_Triangulation::InternalUVNodes ******/
 		/****** md5 signature: 59cea86b8917085f807b814917ebbb4e ******/
@@ -3956,52 +3975,52 @@ Loads triangulation data into itself from some deferred storage using specified 
 		%feature("compactdefaultargs") MapNodeArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt>>
+opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
 Returns the table of 3D points for read-only access or NULL if nodes array is undefined. Poly_Triangulation::Node() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapNodeArray;
-		opencascade::handle<NCollection_HArray1<gp_Pnt>> MapNodeArray();
+		opencascade::handle<TColgp_HArray1OfPnt> MapNodeArray();
 
 		/****** Poly_Triangulation::MapNormalArray ******/
 		/****** md5 signature: 7ac1556e9678af3bc85d9ad5450376a5 ******/
 		%feature("compactdefaultargs") MapNormalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<float>>
+opencascade::handle<TShort_HArray1OfShortReal>
 
 Description
 -----------
 Returns the table of per-vertex normals for read-only access or NULL if normals array is undefined. Poly_Triangulation::Normal() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapNormalArray;
-		opencascade::handle<NCollection_HArray1<float>> MapNormalArray();
+		opencascade::handle<TShort_HArray1OfShortReal> MapNormalArray();
 
 		/****** Poly_Triangulation::MapTriangleArray ******/
 		/****** md5 signature: c8cfbff4aabfbce4893473804c254937 ******/
 		%feature("compactdefaultargs") MapTriangleArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<Poly_Triangle>>
+opencascade::handle<Poly_HArray1OfTriangle>
 
 Description
 -----------
 Returns the triangle array for read-only access or NULL if triangle array is undefined. Poly_Triangulation::Triangle() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapTriangleArray;
-		opencascade::handle<NCollection_HArray1<Poly_Triangle>> MapTriangleArray();
+		opencascade::handle<Poly_HArray1OfTriangle> MapTriangleArray();
 
 		/****** Poly_Triangulation::MapUVNodeArray ******/
 		/****** md5 signature: bb08f43ce279d9c7c4a26fad8c7c7680 ******/
 		%feature("compactdefaultargs") MapUVNodeArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt2d>>
+opencascade::handle<TColgp_HArray1OfPnt2d>
 
 Description
 -----------
 Returns the table of 2D nodes for read-only access or NULL if UV nodes array is undefined. Poly_Triangulation::UVNode() should be used instead when possible. Returned object should not be used after Poly_Triangulation destruction.
 ") MapUVNodeArray;
-		opencascade::handle<NCollection_HArray1<gp_Pnt2d>> MapUVNodeArray();
+		opencascade::handle<TColgp_HArray1OfPnt2d> MapUVNodeArray();
 
 		/****** Poly_Triangulation::MeshPurpose ******/
 		/****** md5 signature: ba1e18e20d36cd45158708664262234a ******/
@@ -4374,7 +4393,7 @@ Input parameter: theNormal normalized 3D vector defining a surface normal.
 		%feature("autodoc", "
 Parameters
 ----------
-theNormals: NCollection_HArray1<float
+theNormals: TShort_HArray1OfShortReal
 
 Return
 -------
@@ -4384,7 +4403,7 @@ Description
 -----------
 No available documentation.
 ") SetNormals;
-		void SetNormals(const opencascade::handle<NCollection_HArray1<float> > & theNormals);
+		void SetNormals(const opencascade::handle<TShort_HArray1OfShortReal> & theNormals);
 
 		/****** Poly_Triangulation::SetTriangle ******/
 		/****** md5 signature: b75e94b094ea2a63888ba9c34042c078 ******/
@@ -4453,13 +4472,13 @@ Return: triangle node indices, with each node defined within [1, NbNodes()] rang
 		%feature("compactdefaultargs") Triangles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<Poly_Triangle>
+Poly_Array1OfTriangle
 
 Description
 -----------
 No available documentation.
 ") Triangles;
-		const NCollection_Array1<Poly_Triangle> & Triangles();
+		const Poly_Array1OfTriangle & Triangles();
 
 		/****** Poly_Triangulation::UVNode ******/
 		/****** md5 signature: 2d17bee1aca206a4d7678c5078b5968d ******/

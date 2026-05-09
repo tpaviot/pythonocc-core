@@ -45,9 +45,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomconvert.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
+#include<TColGeom_module.hxx>
+#include<TColStd_module.hxx>
 #include<Convert_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<math_module.hxx>
 #include<Geom2d_module.hxx>
@@ -63,9 +66,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomconvert.html"
 %import Standard.i
 %import NCollection.i
 %import Geom.i
+%import TColGeom.i
+%import TColStd.i
 %import Convert.i
 %import GeomAbs.i
 %import Adaptor3d.i
+%import TColgp.i
 %import gp.i
 %import math.i
 %import Geom2d.i
@@ -119,7 +125,7 @@ class GeomConvert {
 Parameters
 ----------
 BS: Geom_BSplineCurve
-tabBS: NCollection_HArray1<
+tabBS: TColGeom_HArray1OfBSplineCurve
 tolerance: double
 
 Return
@@ -130,7 +136,7 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve> > > & tabBS, const double tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve > & tabBS, const double tolerance);
 
 		/****** GeomConvert::C0BSplineToArrayOfC1BSplineCurve ******/
 		/****** md5 signature: ebcff7370fda04e75adb6b320adbec7c ******/
@@ -139,7 +145,7 @@ This Method reduces as far as it is possible the multiplicities of the knots of 
 Parameters
 ----------
 BS: Geom_BSplineCurve
-tabBS: NCollection_HArray1<
+tabBS: TColGeom_HArray1OfBSplineCurve
 AngularTolerance: double
 tolerance: double
 
@@ -151,7 +157,7 @@ Description
 -----------
 This Method reduces as far as it is possible the multiplicities of the knots of the BSpline BS.(keeping the geometry). It returns an array of BSpline C1. tolerance is a geometrical tolerance: it allows for the maximum deformation The Angular tolerance is in radians and measures the angle of the tangents on the left and on the right to decide if the curve is C1 or not at a given point.
 ") C0BSplineToArrayOfC1BSplineCurve;
-		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve> > > & tabBS, const double AngularTolerance, const double tolerance);
+		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve > & tabBS, const double AngularTolerance, const double tolerance);
 
 		/****** GeomConvert::C0BSplineToC1BSplineCurve ******/
 		/****** md5 signature: 9bfc8d48e3a5b8eb22714e909d6cb215 ******/
@@ -179,10 +185,10 @@ This Method reduces as far as it is possible the multiplicities of the knots of 
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfIndices: NCollection_HArray1<int
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfIndices: TColStd_HArray1OfInteger
+ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 ClosedTolerance: double
 
 Return
@@ -193,7 +199,7 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
+		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** GeomConvert::ConcatC1 ******/
 		/****** md5 signature: de1e4b382316ce1b282cbe0d3b33bb96 ******/
@@ -201,10 +207,10 @@ This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfC
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfIndices: NCollection_HArray1<int
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfIndices: TColStd_HArray1OfInteger
+ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 ClosedTolerance: double
 AngularTolerance: double
 
@@ -216,7 +222,7 @@ Description
 -----------
 This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatC1;
-		static void ConcatC1(NCollection_Array1<opencascade::handle<Geom_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<int> > & ArrayOfIndices, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance, const double AngularTolerance);
+		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance, const double AngularTolerance);
 
 		/****** GeomConvert::ConcatG1 ******/
 		/****** md5 signature: a92fee44aa28a6c583b4afd70562f03b ******/
@@ -224,9 +230,9 @@ This Method concatenates C1 the ArrayOfCurves as far as it is possible. ArrayOfC
 		%feature("autodoc", "
 Parameters
 ----------
-ArrayOfCurves: Geom_BSplineCurve
-ArrayOfToler: NCollection_Array1<double>
-ArrayOfConcatenated: NCollection_HArray1<
+ArrayOfCurves: TColGeom_Array1OfBSplineCurve
+ArrayOfToler: TColStd_Array1OfReal
+ArrayOfConcatenated: TColGeom_HArray1OfBSplineCurve
 ClosedTolerance: double
 
 Return
@@ -237,7 +243,7 @@ Description
 -----------
 This Method concatenates G1 the ArrayOfCurves as far as it is possible. ArrayOfCurves[0..N-1] ArrayOfToler contains the biggest tolerance of the two points shared by two consecutives curves. Its dimension: [0..N-2] ClosedFlag indicates if the ArrayOfCurves is closed. In this case ClosedTolerance contains the biggest tolerance of the two points which are at the closure. Otherwise its value is 0.0 ClosedFlag becomes False on the output if it is impossible to build closed curve.
 ") ConcatG1;
-		static void ConcatG1(NCollection_Array1<opencascade::handle<Geom_BSplineCurve> > & ArrayOfCurves, const NCollection_Array1<double> & ArrayOfToler, opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_BSplineCurve> > > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
+		static void ConcatG1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom_HArray1OfBSplineCurve > & ArrayOfConcatenated, Standard_Boolean &OutValue, const double ClosedTolerance);
 
 		/****** GeomConvert::CurveToBSplineCurve ******/
 		/****** md5 signature: 3e5139193c14a02aa43c1594a7f95e33 ******/
@@ -743,7 +749,7 @@ Returns the split knot of index Index to the split knots table computed in this 
 		%feature("autodoc", "
 Parameters
 ----------
-SplitValues: NCollection_Array1<int>
+SplitValues: TColStd_Array1OfInteger
 
 Return
 -------
@@ -753,7 +759,7 @@ Description
 -----------
 Loads the SplitValues table with the split knots values computed in this framework. Each value in the table is an index in the knots table of the BSpline curve analyzed by this algorithm. The values in SplitValues are given in ascending order and comprise the indices of the knots which give the first and last points of the curve. Use two consecutive values from the table as arguments of the global function SplitBSplineCurve (provided by the package GeomConvert) to split the curve. Exceptions Standard_DimensionError if the array SplitValues was not created with the following bounds: - 1, and - the number of split points computed in this framework (as given by the function NbSplits).
 ") Splitting;
-		void Splitting(NCollection_Array1<int> & SplitValues);
+		void Splitting(TColStd_Array1OfInteger & SplitValues);
 
 };
 
@@ -832,7 +838,7 @@ Constructs and returns the Bezier curve of index Index to the table of adjacent 
 		%feature("autodoc", "
 Parameters
 ----------
-Curves: Geom_BezierCurve
+Curves: TColGeom_Array1OfBezierCurve
 
 Return
 -------
@@ -842,7 +848,7 @@ Description
 -----------
 Constructs all the Bezier curves whose data is computed by this algorithm and loads these curves into the Curves table. The Bezier curves have the same orientation as the BSpline curve analyzed in this framework. Exceptions Standard_DimensionError if the Curves array was not created with the following bounds: - 1 , and - the number of adjacent Bezier arcs computed by this algorithm (as given by the function NbArcs).
 ") Arcs;
-		void Arcs(NCollection_Array1<opencascade::handle<Geom_BezierCurve> > & Curves);
+		void Arcs(TColGeom_Array1OfBezierCurve & Curves);
 
 		/****** GeomConvert_BSplineCurveToBezierCurve::Knots ******/
 		/****** md5 signature: 0c997620b63f032cdc3c9768bd4c0468 ******/
@@ -850,7 +856,7 @@ Constructs all the Bezier curves whose data is computed by this algorithm and lo
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -860,7 +866,7 @@ Description
 -----------
 This methode returns the bspline's knots associated to the converted arcs Raised if the length of Curves is not equal to NbArcs + 1.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomConvert_BSplineCurveToBezierCurve::NbArcs ******/
 		/****** md5 signature: c1c862e41d849390df4d036d37a1ae92 ******/
@@ -941,8 +947,8 @@ Returns the number of v-isoparametric curves along which the analysed BSpline su
 		%feature("autodoc", "
 Parameters
 ----------
-USplit: NCollection_Array1<int>
-VSplit: NCollection_Array1<int>
+USplit: TColStd_Array1OfInteger
+VSplit: TColStd_Array1OfInteger
 
 Return
 -------
@@ -952,7 +958,7 @@ Description
 -----------
 Loads the USplit and VSplit tables with the split knots values computed in this framework. Each value in these tables is an index in the knots table corresponding to the u or v parametric direction of the BSpline surface analysed by this algorithm. The USplit and VSplit values are given in ascending order and comprise the indices of the knots which give the first and last isoparametric curves of the surface in the corresponding parametric direction. Use two consecutive values from the USplit table and two consecutive values from the VSplit table as arguments of the global function SplitBSplineSurface (provided by the package GeomConvert) to split the surface. Exceptions Standard_DimensionError if: - the array USplit was not created with the following bounds: - 1 , and - the number of split knots in the u parametric direction computed in this framework (as given by the function NbUSplits); or - the array VSplit was not created with the following bounds: - 1 , and - the number of split knots in the v parametric direction computed in this framework (as given by the function NbVSplits).
 ") Splitting;
-		void Splitting(NCollection_Array1<int> & USplit, NCollection_Array1<int> & VSplit);
+		void Splitting(TColStd_Array1OfInteger & USplit, TColStd_Array1OfInteger & VSplit);
 
 		/****** GeomConvert_BSplineSurfaceKnotSplitting::USplitValue ******/
 		/****** md5 signature: e1292a99d8b932ecd30274cf0bcd2ecb ******/
@@ -1096,7 +1102,7 @@ Constructs and returns the Bezier surface of indices (UIndex, VIndex) to the pat
 		%feature("autodoc", "
 Parameters
 ----------
-Surfaces: Geom_BezierSurface
+Surfaces: TColGeom_Array2OfBezierSurface
 
 Return
 -------
@@ -1106,7 +1112,7 @@ Description
 -----------
 Constructs all the Bezier surfaces whose data is computed by this algorithm, and loads them into the Surfaces table. These Bezier surfaces have the same orientation as the BSpline surface analyzed in this framework. The Surfaces array is organised in the same way as the patch grid computed on the BSpline surface analyzed by this algorithm. A row in the array corresponds to a series of adjacent patches, all limited by the same two u-isoparametric curves of the surface. A column in the array corresponds to a series of adjacent patches, all limited by the same two v-isoparametric curves of the surface. Exceptions Standard_DimensionError if the Surfaces array was not created with the following bounds: - 1, and the number of adjacent patch series in the u parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbUPatches) as row bounds, - 1, and the number of adjacent patch series in the v parametric direction of the patch grid computed on the BSpline surface, analyzed by this algorithm (as given by the function NbVPatches) as column bounds.
 ") Patches;
-		void Patches(NCollection_Array2<opencascade::handle<Geom_BezierSurface> > & Surfaces);
+		void Patches(TColGeom_Array2OfBezierSurface & Surfaces);
 
 		/****** GeomConvert_BSplineSurfaceToBezierSurface::UKnots ******/
 		/****** md5 signature: f11b8a749df49798b1c2fac1f2170cc0 ******/
@@ -1114,7 +1120,7 @@ Constructs all the Bezier surfaces whose data is computed by this algorithm, and
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1124,7 +1130,7 @@ Description
 -----------
 This methode returns the bspline's u-knots associated to the converted Patches Raised if the length of Curves is not equal to NbUPatches + 1.
 ") UKnots;
-		void UKnots(NCollection_Array1<double> & TKnots);
+		void UKnots(TColStd_Array1OfReal & TKnots);
 
 		/****** GeomConvert_BSplineSurfaceToBezierSurface::VKnots ******/
 		/****** md5 signature: 8cba5e68907e7d7ab0cc251f78f4786e ******/
@@ -1132,7 +1138,7 @@ This methode returns the bspline's u-knots associated to the converted Patches R
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1142,7 +1148,7 @@ Description
 -----------
 This methode returns the bspline's v-knots associated to the converted Patches Raised if the length of Curves is not equal to NbVPatches + 1.
 ") VKnots;
-		void VKnots(NCollection_Array1<double> & TKnots);
+		void VKnots(TColStd_Array1OfReal & TKnots);
 
 };
 
@@ -1164,7 +1170,7 @@ class GeomConvert_CompBezierSurfacesToBSplineSurface {
 		%feature("autodoc", "
 Parameters
 ----------
-Beziers: Geom_BezierSurface
+Beziers: TColGeom_Array2OfBezierSurface
 
 Return
 -------
@@ -1174,7 +1180,7 @@ Description
 -----------
 Computes all the data needed to build a 'C0' continuous BSpline surface equivalent to the grid of adjacent non-rational Bezier surfaces Beziers. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - It is a 'Piecewise Bezier' in both u and v parametric directions, i.e.: - the knots are regularly spaced in each parametric direction (i.e. the difference between two consecutive knots is a constant), and - all the multiplicities of the surface knots in a given parametric direction are equal to Degree, which is the degree of the BSpline surface in this parametric direction, except for the first and last knots for which the multiplicity is equal to Degree + 1. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves, corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_NotImplemented if one of the Bezier surfaces of the Beziers grid is rational.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
-		 GeomConvert_CompBezierSurfacesToBSplineSurface(const NCollection_Array2<opencascade::handle<Geom_BezierSurface> > & Beziers);
+		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers);
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface ******/
 		/****** md5 signature: d6d2e54f94800d27ce3193a50a6cee59 ******/
@@ -1182,7 +1188,7 @@ Computes all the data needed to build a 'C0' continuous BSpline surface equivale
 		%feature("autodoc", "
 Parameters
 ----------
-Beziers: Geom_BezierSurface
+Beziers: TColGeom_Array2OfBezierSurface
 Tolerance: double
 RemoveKnots: bool (optional, default to true)
 
@@ -1194,7 +1200,7 @@ Description
 -----------
 Build an Ci uniform (Rational) BSpline surface The highest Continuity Ci is imposed, like the maximal deformation is lower than <Tolerance>. Warning: The Continuity C0 is imposed without any check.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
-		 GeomConvert_CompBezierSurfacesToBSplineSurface(const NCollection_Array2<opencascade::handle<Geom_BezierSurface> > & Beziers, const double Tolerance, const bool RemoveKnots = true);
+		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const double Tolerance, const bool RemoveKnots = true);
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface ******/
 		/****** md5 signature: 7ecc3293379c22a52b1caa80156ee863 ******/
@@ -1202,9 +1208,9 @@ Build an Ci uniform (Rational) BSpline surface The highest Continuity Ci is impo
 		%feature("autodoc", "
 Parameters
 ----------
-Beziers: Geom_BezierSurface
-UKnots: NCollection_Array1<double>
-VKnots: NCollection_Array1<double>
+Beziers: TColGeom_Array2OfBezierSurface
+UKnots: TColStd_Array1OfReal
+VKnots: TColStd_Array1OfReal
 UContinuity: GeomAbs_Shape (optional, default to GeomAbs_C0)
 VContinuity: GeomAbs_Shape (optional, default to GeomAbs_C0)
 Tolerance: double (optional, default to 1.0e-4)
@@ -1217,7 +1223,7 @@ Description
 -----------
 Computes all the data needed to construct a BSpline surface equivalent to the adjacent non-rational Bezier surfaces Beziers grid. Each surface in the Beziers grid becomes a natural patch, limited by knots values, on the BSpline surface whose data is computed. Surfaces in the grid must satisfy the following conditions: - Coincident bounding curves between two consecutive surfaces in a row of the Beziers grid must be u-isoparametric bounding curves of these two surfaces. - Coincident bounding curves between two consecutive surfaces in a column of the Beziers grid must be v-isoparametric bounding curves of these two surfaces. The BSpline surface whose data is computed has the following characteristics: - Its degree in the u (respectively v) parametric direction is equal to that of the Bezier surface which has the highest degree in the u (respectively v) parametric direction in the Beziers grid. - Coincident bounding curves between two consecutive columns of Bezier surfaces in the Beziers grid become u-isoparametric curves corresponding to knots values of the BSpline surface. - Coincident bounding curves between two consecutive rows of Bezier surfaces in the Beziers grid become v-isoparametric curves corresponding to knots values of the BSpline surface. Knots values of the BSpline surface are given in the two tables: - UKnots for the u parametric direction (which corresponds to the order of Bezier surface columns in the Beziers grid), and - VKnots for the v parametric direction (which corresponds to the order of Bezier surface rows in the Beziers grid). The dimensions of UKnots (respectively VKnots) must be equal to the number of columns (respectively, rows) of the Beziers grid, plus 1 . UContinuity and VContinuity, which are both defaulted to GeomAbs_C0, specify the required continuity on the BSpline surface. If the required degree of continuity is greater than 0 in a given parametric direction, a deformation is applied locally on the initial surface (as defined by the Beziers grid) to satisfy this condition. This local deformation is not applied however, if it is greater than Tolerance (defaulted to 1.0 e-7). In such cases, the continuity condition is not satisfied, and the function IsDone will return false. A small tolerance value prevents any modification of the surface and a large tolerance value 'smoothes' the surface. Use the available consultation functions to access the computed data. This data may be used to construct the BSpline surface. Warning The surfaces in the Beziers grid must be adjacent, i.e. two consecutive Bezier surfaces in the grid (in a row or column) must have a coincident bounding curve. In addition, the location of the parameterization on each of these surfaces (i.e. the relative location of u and v isoparametric curves on the surface) is of importance with regard to the positioning of the surfaces in the Beziers grid. Care must be taken with respect to the above, as these properties are not checked and an error may occur if they are not satisfied. Exceptions Standard_DimensionMismatch: - if the number of knots in the UKnots table (i.e. the length of the UKnots array) is not equal to the number of columns of Bezier surfaces in the Beziers grid plus 1, or - if the number of knots in the VKnots table (i.e. the length of the VKnots array) is not equal to the number of rows of Bezier surfaces in the Beziers grid, plus 1. Standard_ConstructionError: - if UContinuity and VContinuity are not equal to one of the following values: GeomAbs_C0, GeomAbs_C1, GeomAbs_C2 and GeomAbs_C3; or - if the number of columns in the Beziers grid is greater than 1, and the required degree of continuity in the u parametric direction is greater than that of the Bezier surface with the highest degree in the u parametric direction (in the Beziers grid), minus 1; or - if the number of rows in the Beziers grid is greater than 1, and the required degree of continuity in the v parametric direction is greater than that of the Bezier surface with the highest degree in the v parametric direction (in the Beziers grid), minus 1 . Standard_NotImplemented if one of the Bezier surfaces in the Beziers grid is rational.
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
-		 GeomConvert_CompBezierSurfacesToBSplineSurface(const NCollection_Array2<opencascade::handle<Geom_BezierSurface> > & Beziers, const NCollection_Array1<double> & UKnots, const NCollection_Array1<double> & VKnots, const GeomAbs_Shape UContinuity = GeomAbs_C0, const GeomAbs_Shape VContinuity = GeomAbs_C0, const double Tolerance = 1.0e-4);
+		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const GeomAbs_Shape UContinuity = GeomAbs_C0, const GeomAbs_Shape VContinuity = GeomAbs_C0, const double Tolerance = 1.0e-4);
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -1289,13 +1295,13 @@ Returns the number of poles in the V direction of the BSpline surface whose data
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<gp_Pnt>>
+opencascade::handle<TColgp_HArray2OfPnt>
 
 Description
 -----------
 Returns the table of poles of the BSpline surface whose data is computed in this framework.
 ") Poles;
-		const opencascade::handle<NCollection_HArray2<gp_Pnt>> Poles();
+		const opencascade::handle<TColgp_HArray2OfPnt> & Poles();
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::UDegree ******/
 		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
@@ -1315,26 +1321,26 @@ Returns the degree for the u parametric direction of the BSpline surface whose d
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the knots table for the u parametric direction of the BSpline surface whose data is computed in this framework.
 ") UKnots;
-		const opencascade::handle<NCollection_HArray1<double>> & UKnots();
+		const opencascade::handle<TColStd_HArray1OfReal> & UKnots();
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::UMultiplicities ******/
 		/****** md5 signature: e29b833f2aefc8528565e4b41d0fa608 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Returns the multiplicities table for the u parametric direction of the knots of the BSpline surface whose data is computed in this framework.
 ") UMultiplicities;
-		const opencascade::handle<NCollection_HArray1<int>> & UMultiplicities();
+		const opencascade::handle<TColStd_HArray1OfInteger> & UMultiplicities();
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::VDegree ******/
 		/****** md5 signature: 10a01c94db483e5b8afe43596e767a03 ******/
@@ -1354,26 +1360,26 @@ Returns the degree for the v parametric direction of the BSpline surface whose d
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the knots table for the v parametric direction of the BSpline surface whose data is computed in this framework.
 ") VKnots;
-		const opencascade::handle<NCollection_HArray1<double>> & VKnots();
+		const opencascade::handle<TColStd_HArray1OfReal> & VKnots();
 
 		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::VMultiplicities ******/
 		/****** md5 signature: a5360dec1c11893871c1c42f8f64b8ec ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 -- Returns the multiplicities table for the v parametric direction of the knots of the BSpline surface whose data is computed in this framework.
 ") VMultiplicities;
-		const opencascade::handle<NCollection_HArray1<int>> & VMultiplicities();
+		const opencascade::handle<TColStd_HArray1OfInteger> & VMultiplicities();
 
 };
 
@@ -1730,7 +1736,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aPoints: NCollection_Array1<gp_Pnt>
+aPoints: TColgp_Array1OfPnt
 tolerance: double
 
 Return
@@ -1741,7 +1747,7 @@ Description
 -----------
 Returns true if the set of points is linear with given tolerance.
 ") IsLinear;
-		static bool IsLinear(const NCollection_Array1<gp_Pnt> & aPoints, const double tolerance, Standard_Real &OutValue);
+		static bool IsLinear(const TColgp_Array1OfPnt & aPoints, const double tolerance, Standard_Real &OutValue);
 
 		/****** GeomConvert_CurveToAnaCurve::SetConvType ******/
 		/****** md5 signature: dc5b7fda06c157912253fd5c8fdcffe7 ******/
@@ -1812,7 +1818,7 @@ Constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 theDir: gp_Dir
 
 Return
@@ -1823,7 +1829,7 @@ Description
 -----------
 No available documentation.
 ") GeomConvert_FuncConeLSDist;
-		 GeomConvert_FuncConeLSDist(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints, const gp_Dir & theDir);
+		 GeomConvert_FuncConeLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
 
 		/****** GeomConvert_FuncConeLSDist::NbVariables ******/
 		/****** md5 signature: ac9e90c594b52fb2529a5f6212b74800 ******/
@@ -1862,7 +1868,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 
 Return
 -------
@@ -1872,7 +1878,7 @@ Description
 -----------
 No available documentation.
 ") SetPoints;
-		void SetPoints(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints);
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
 		/****** GeomConvert_FuncConeLSDist::Value ******/
 		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
@@ -1925,7 +1931,7 @@ Constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 theDir: gp_Dir
 
 Return
@@ -1936,7 +1942,7 @@ Description
 -----------
 No available documentation.
 ") GeomConvert_FuncCylinderLSDist;
-		 GeomConvert_FuncCylinderLSDist(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints, const gp_Dir & theDir);
+		 GeomConvert_FuncCylinderLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
 
 		/****** GeomConvert_FuncCylinderLSDist::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -1994,7 +2000,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 
 Return
 -------
@@ -2004,7 +2010,7 @@ Description
 -----------
 No available documentation.
 ") SetPoints;
-		void SetPoints(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints);
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
 		/****** GeomConvert_FuncCylinderLSDist::Value ******/
 		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/
@@ -2076,7 +2082,7 @@ Constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 
 Return
 -------
@@ -2086,7 +2092,7 @@ Description
 -----------
 No available documentation.
 ") GeomConvert_FuncSphereLSDist;
-		 GeomConvert_FuncSphereLSDist(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints);
+		 GeomConvert_FuncSphereLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
 		/****** GeomConvert_FuncSphereLSDist::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -2126,7 +2132,7 @@ Number of variables.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_HArray1<gp_XYZ
+thePoints: TColgp_HArray1OfXYZ
 
 Return
 -------
@@ -2136,7 +2142,7 @@ Description
 -----------
 No available documentation.
 ") SetPoints;
-		void SetPoints(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & thePoints);
+		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
 		/****** GeomConvert_FuncSphereLSDist::Value ******/
 		/****** md5 signature: 8471cfc7cef312ad7d98cf2875f96773 ******/

@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_steptogeom.html"
 #include<gp_module.hxx>
 #include<StepKinematics_module.hxx>
 #include<StepRepr_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepShape_module.hxx>
 #include<StepBasic_module.hxx>
@@ -76,6 +77,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_steptogeom.html"
 %import gp.i
 %import StepKinematics.i
 %import StepRepr.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -1007,13 +1009,13 @@ theCntxt: StepRepr_GlobalUnitAssignedContext
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") MakeYprRotation;
-		static opencascade::handle<NCollection_HArray1<double>> MakeYprRotation(const StepKinematics_SpatialRotation & SR, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & theCntxt);
+		static opencascade::handle<TColStd_HArray1OfReal> MakeYprRotation(const StepKinematics_SpatialRotation & SR, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & theCntxt);
 
 };
 

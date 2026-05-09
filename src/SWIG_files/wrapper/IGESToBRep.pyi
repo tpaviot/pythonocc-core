@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.IGESData import *
+from OCC.Core.TColStd import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Transfer import *
 from OCC.Core.Interface import *
@@ -18,6 +19,8 @@ from OCC.Core.Geom2d import *
 class igestobrep:
     @staticmethod
     def AlgoContainer() -> IGESToBRep_AlgoContainer: ...
+    @staticmethod
+    def IGESCurveToSequenceOfIGESCurve(curve: IGESData_IGESEntity, sequence: TColStd_HSequenceOfTransient) -> int: ...
     @staticmethod
     def Init() -> None: ...
     @staticmethod

@@ -73,14 +73,33 @@ from OCC.Core.Exception import *
 %template(FEmTool_ListOfVectors) NCollection_List<opencascade::handle<TColStd_HArray1OfReal>>;
 
 %extend NCollection_List<opencascade::handle<TColStd_HArray1OfReal>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = FEmTool_ListIteratorOfListOfVectors(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(FEmTool_SeqOfLinConstr) NCollection_Sequence<FEmTool_ListOfVectors>;
 
 %extend NCollection_Sequence<FEmTool_ListOfVectors> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

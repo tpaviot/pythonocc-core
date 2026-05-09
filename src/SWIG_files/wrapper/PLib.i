@@ -44,6 +44,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plib.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<math_module.hxx>
 #include<Message_module.hxx>
@@ -54,6 +56,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plib.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColgp.i
+%import TColStd.i
 %import GeomAbs.i
 %import math.i
 
@@ -110,10 +114,10 @@ Returns the Binomial Cnp. N should be <= BSplCLib::MaxDegree().
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: NCollection_Array1<gp_Pnt>
-WCoefs: NCollection_Array1<double> *
-Poles: NCollection_Array1<gp_Pnt>
-WPoles: NCollection_Array1<double> *
+Coefs: TColgp_Array1OfPnt
+WCoefs: TColStd_Array1OfReal *
+Poles: TColgp_Array1OfPnt
+WPoles: TColStd_Array1OfReal *
 
 Return
 -------
@@ -123,7 +127,7 @@ Description
 -----------
 No available documentation.
 ") CoefficientsPoles;
-		static void CoefficientsPoles(const NCollection_Array1<gp_Pnt> & Coefs, const NCollection_Array1<double> * WCoefs, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> * WPoles);
+		static void CoefficientsPoles(const TColgp_Array1OfPnt & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal * WPoles);
 
 		/****** PLib::CoefficientsPoles ******/
 		/****** md5 signature: f382289df3f3ce7431443f27bb052c51 ******/
@@ -131,10 +135,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: NCollection_Array1<gp_Pnt2d>
-WCoefs: NCollection_Array1<double> *
-Poles: NCollection_Array1<gp_Pnt2d>
-WPoles: NCollection_Array1<double> *
+Coefs: TColgp_Array1OfPnt2d
+WCoefs: TColStd_Array1OfReal *
+Poles: TColgp_Array1OfPnt2d
+WPoles: TColStd_Array1OfReal *
 
 Return
 -------
@@ -144,7 +148,7 @@ Description
 -----------
 No available documentation.
 ") CoefficientsPoles;
-		static void CoefficientsPoles(const NCollection_Array1<gp_Pnt2d> & Coefs, const NCollection_Array1<double> * WCoefs, NCollection_Array1<gp_Pnt2d> & Poles, NCollection_Array1<double> * WPoles);
+		static void CoefficientsPoles(const TColgp_Array1OfPnt2d & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal * WPoles);
 
 		/****** PLib::CoefficientsPoles ******/
 		/****** md5 signature: acabd0c3a475323f6106fc38c4817001 ******/
@@ -152,10 +156,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: NCollection_Array1<double>
-WCoefs: NCollection_Array1<double> *
-Poles: NCollection_Array1<double>
-WPoles: NCollection_Array1<double> *
+Coefs: TColStd_Array1OfReal
+WCoefs: TColStd_Array1OfReal *
+Poles: TColStd_Array1OfReal
+WPoles: TColStd_Array1OfReal *
 
 Return
 -------
@@ -165,7 +169,7 @@ Description
 -----------
 No available documentation.
 ") CoefficientsPoles;
-		static void CoefficientsPoles(const NCollection_Array1<double> & Coefs, const NCollection_Array1<double> * WCoefs, NCollection_Array1<double> & Poles, NCollection_Array1<double> * WPoles);
+		static void CoefficientsPoles(const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
 		/****** PLib::CoefficientsPoles ******/
 		/****** md5 signature: 7c57b21989b7a6983fed41304fbe98ec ******/
@@ -174,10 +178,10 @@ No available documentation.
 Parameters
 ----------
 dim: int
-Coefs: NCollection_Array1<double>
-WCoefs: NCollection_Array1<double> *
-Poles: NCollection_Array1<double>
-WPoles: NCollection_Array1<double> *
+Coefs: TColStd_Array1OfReal
+WCoefs: TColStd_Array1OfReal *
+Poles: TColStd_Array1OfReal
+WPoles: TColStd_Array1OfReal *
 
 Return
 -------
@@ -187,7 +191,7 @@ Description
 -----------
 No available documentation.
 ") CoefficientsPoles;
-		static void CoefficientsPoles(const int dim, const NCollection_Array1<double> & Coefs, const NCollection_Array1<double> * WCoefs, NCollection_Array1<double> & Poles, NCollection_Array1<double> * WPoles);
+		static void CoefficientsPoles(const int dim, const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
 		/****** PLib::CoefficientsPoles ******/
 		/****** md5 signature: b51817673f79597d3972d469c9699ea1 ******/
@@ -195,10 +199,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: NCollection_Array2<gp_Pnt>
-WCoefs: NCollection_Array2<double> *
-Poles: NCollection_Array2<gp_Pnt>
-WPoles: NCollection_Array2<double> *
+Coefs: TColgp_Array2OfPnt
+WCoefs: TColStd_Array2OfReal *
+Poles: TColgp_Array2OfPnt
+WPoles: TColStd_Array2OfReal *
 
 Return
 -------
@@ -208,7 +212,7 @@ Description
 -----------
 No available documentation.
 ") CoefficientsPoles;
-		static void CoefficientsPoles(const NCollection_Array2<gp_Pnt> & Coefs, const NCollection_Array2<double> * WCoefs, NCollection_Array2<gp_Pnt> & Poles, NCollection_Array2<double> * WPoles);
+		static void CoefficientsPoles(const TColgp_Array2OfPnt & Coefs, const TColStd_Array2OfReal * WCoefs, TColgp_Array2OfPnt & Poles, TColStd_Array2OfReal * WPoles);
 
 		/****** PLib::ConstraintOrder ******/
 		/****** md5 signature: 53256c7e66cc7da06be49e3f4b582e9f ******/
@@ -373,8 +377,8 @@ Performs Horner method with synthetic division for derivatives parameter <U>, wi
 		%feature("autodoc", "
 Parameters
 ----------
-FP: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
+FP: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -384,7 +388,7 @@ Description
 -----------
 Get from FP the coordinates of the poles.
 ") GetPoles;
-		static void GetPoles(const NCollection_Array1<double> & FP, NCollection_Array1<gp_Pnt> & Poles);
+		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles);
 
 		/****** PLib::GetPoles ******/
 		/****** md5 signature: 15bf4add2b580bbd9b51cb3a13faa760 ******/
@@ -392,9 +396,9 @@ Get from FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-FP: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
+FP: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -404,7 +408,7 @@ Description
 -----------
 Get from FP the coordinates of the poles.
 ") GetPoles;
-		static void GetPoles(const NCollection_Array1<double> & FP, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weights);
+		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
 		/****** PLib::GetPoles ******/
 		/****** md5 signature: c615c0b90e7b56042e62cac30fa6a1de ******/
@@ -412,8 +416,8 @@ Get from FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-FP: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
+FP: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -423,7 +427,7 @@ Description
 -----------
 Get from FP the coordinates of the poles.
 ") GetPoles;
-		static void GetPoles(const NCollection_Array1<double> & FP, NCollection_Array1<gp_Pnt2d> & Poles);
+		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles);
 
 		/****** PLib::GetPoles ******/
 		/****** md5 signature: 0f9aee84e43ca03ab9594a05decabcd1 ******/
@@ -431,9 +435,9 @@ Get from FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-FP: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
+FP: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -443,7 +447,7 @@ Description
 -----------
 Get from FP the coordinates of the poles.
 ") GetPoles;
-		static void GetPoles(const NCollection_Array1<double> & FP, NCollection_Array1<gp_Pnt2d> & Poles, NCollection_Array1<double> & Weights);
+		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights);
 
 		/****** PLib::HermiteCoefficients ******/
 		/****** md5 signature: 301c094fc8303f9cf9a4e5a55d3097ed ******/
@@ -478,9 +482,9 @@ FirstParameter: double
 LastParameter: double
 FirstOrder: int
 LastOrder: int
-FirstConstr: NCollection_Array2<double>
-LastConstr: NCollection_Array2<double>
-Coefficients: NCollection_Array1<double>
+FirstConstr: TColStd_Array2OfReal
+LastConstr: TColStd_Array2OfReal
+Coefficients: TColStd_Array1OfReal
 
 Return
 -------
@@ -490,7 +494,7 @@ Description
 -----------
 Compute the coefficients in the canonical base of the polynomial satisfying the given constraints at the given parameters The array FirstContr(i,j) i=1,Dimension j=0,FirstOrder contains the values of the constraint at parameter FirstParameter idem for LastConstr.
 ") HermiteInterpolate;
-		static bool HermiteInterpolate(const int Dimension, const double FirstParameter, const double LastParameter, const int FirstOrder, const int LastOrder, const NCollection_Array2<double> & FirstConstr, const NCollection_Array2<double> & LastConstr, NCollection_Array1<double> & Coefficients);
+		static bool HermiteInterpolate(const int Dimension, const double FirstParameter, const double LastParameter, const int FirstOrder, const int LastOrder, const TColStd_Array2OfReal & FirstConstr, const TColStd_Array2OfReal & LastConstr, TColStd_Array1OfReal & Coefficients);
 
 		/****** PLib::JacobiParameters ******/
 		/****** md5 signature: 86f02c298b2fd226b1d1f5f4c33484e7 ******/
@@ -558,26 +562,26 @@ Same as above with DerivativeOrder = 0;.
 		%feature("compactdefaultargs") NoWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Used as argument for a non rational functions.
 ") NoWeights;
-		static NCollection_Array1<double> * NoWeights();
+		static TColStd_Array1OfReal * NoWeights();
 
 		/****** PLib::NoWeights2 ******/
 		/****** md5 signature: feddbe29885696d729c6c2f04a8e16c3 ******/
 		%feature("compactdefaultargs") NoWeights2;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double> *
+TColStd_Array2OfReal *
 
 Description
 -----------
 Used as argument for a non rational functions.
 ") NoWeights2;
-		static NCollection_Array2<double> * NoWeights2();
+		static TColStd_Array2OfReal * NoWeights2();
 
 		/****** PLib::RationalDerivative ******/
 		/****** md5 signature: 3a625ab6c5cdc57337cbc1a47cc09d0b ******/
@@ -628,8 +632,8 @@ Computes DerivativesRequest derivatives of a ratio at of a BSpline function of d
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-FP: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+FP: TColStd_Array1OfReal
 
 Return
 -------
@@ -639,7 +643,7 @@ Description
 -----------
 Copy in FP the coordinates of the poles.
 ") SetPoles;
-		static void SetPoles(const NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & FP);
+		static void SetPoles(const TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & FP);
 
 		/****** PLib::SetPoles ******/
 		/****** md5 signature: 1488fd9550b2538ed825bcf9e8081410 ******/
@@ -647,9 +651,9 @@ Copy in FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
-FP: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
+FP: TColStd_Array1OfReal
 
 Return
 -------
@@ -659,7 +663,7 @@ Description
 -----------
 Copy in FP the coordinates of the poles.
 ") SetPoles;
-		static void SetPoles(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Weights, NCollection_Array1<double> & FP);
+		static void SetPoles(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
 		/****** PLib::SetPoles ******/
 		/****** md5 signature: 318f9bdc3fec77d2c36fcf7268e62de3 ******/
@@ -667,8 +671,8 @@ Copy in FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-FP: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt2d
+FP: TColStd_Array1OfReal
 
 Return
 -------
@@ -678,7 +682,7 @@ Description
 -----------
 Copy in FP the coordinates of the poles.
 ") SetPoles;
-		static void SetPoles(const NCollection_Array1<gp_Pnt2d> & Poles, NCollection_Array1<double> & FP);
+		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & FP);
 
 		/****** PLib::SetPoles ******/
 		/****** md5 signature: aeafe2165453f3ca7de9a5bfcd56c1bc ******/
@@ -686,9 +690,9 @@ Copy in FP the coordinates of the poles.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
-FP: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
+FP: TColStd_Array1OfReal
 
 Return
 -------
@@ -698,7 +702,7 @@ Description
 -----------
 Copy in FP the coordinates of the poles.
 ") SetPoles;
-		static void SetPoles(const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & Weights, NCollection_Array1<double> & FP);
+		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
 		/****** PLib::Trimming ******/
 		/****** md5 signature: 9496e203d3df4c29653ee1b84fc6891c ******/
@@ -708,8 +712,8 @@ Parameters
 ----------
 U1: double
 U2: double
-Coeffs: NCollection_Array1<gp_Pnt>
-WCoeffs: NCollection_Array1<double> *
+Coeffs: TColgp_Array1OfPnt
+WCoeffs: TColStd_Array1OfReal *
 
 Return
 -------
@@ -719,7 +723,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const double U1, const double U2, NCollection_Array1<gp_Pnt> & Coeffs, NCollection_Array1<double> * WCoeffs);
+		static void Trimming(const double U1, const double U2, TColgp_Array1OfPnt & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
 		/****** PLib::Trimming ******/
 		/****** md5 signature: 477962736294656736a2e32c28e5aca4 ******/
@@ -729,8 +733,8 @@ Parameters
 ----------
 U1: double
 U2: double
-Coeffs: NCollection_Array1<gp_Pnt2d>
-WCoeffs: NCollection_Array1<double> *
+Coeffs: TColgp_Array1OfPnt2d
+WCoeffs: TColStd_Array1OfReal *
 
 Return
 -------
@@ -740,7 +744,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const double U1, const double U2, NCollection_Array1<gp_Pnt2d> & Coeffs, NCollection_Array1<double> * WCoeffs);
+		static void Trimming(const double U1, const double U2, TColgp_Array1OfPnt2d & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
 		/****** PLib::Trimming ******/
 		/****** md5 signature: 0f22fcf5a054ee4eba42fbfc52954a67 ******/
@@ -750,8 +754,8 @@ Parameters
 ----------
 U1: double
 U2: double
-Coeffs: NCollection_Array1<double>
-WCoeffs: NCollection_Array1<double> *
+Coeffs: TColStd_Array1OfReal
+WCoeffs: TColStd_Array1OfReal *
 
 Return
 -------
@@ -761,7 +765,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const double U1, const double U2, NCollection_Array1<double> & Coeffs, NCollection_Array1<double> * WCoeffs);
+		static void Trimming(const double U1, const double U2, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
 		/****** PLib::Trimming ******/
 		/****** md5 signature: 7fa2288f7532005cc3584953fb96d8e4 ******/
@@ -772,8 +776,8 @@ Parameters
 U1: double
 U2: double
 dim: int
-Coeffs: NCollection_Array1<double>
-WCoeffs: NCollection_Array1<double> *
+Coeffs: TColStd_Array1OfReal
+WCoeffs: TColStd_Array1OfReal *
 
 Return
 -------
@@ -783,7 +787,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const double U1, const double U2, const int dim, NCollection_Array1<double> & Coeffs, NCollection_Array1<double> * WCoeffs);
+		static void Trimming(const double U1, const double U2, const int dim, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
 		/****** PLib::UTrimming ******/
 		/****** md5 signature: 61bab091cc3b40371fa7a2d1acf4b6a8 ******/
@@ -793,8 +797,8 @@ Parameters
 ----------
 U1: double
 U2: double
-Coeffs: NCollection_Array2<gp_Pnt>
-WCoeffs: NCollection_Array2<double> *
+Coeffs: TColgp_Array2OfPnt
+WCoeffs: TColStd_Array2OfReal *
 
 Return
 -------
@@ -804,7 +808,7 @@ Description
 -----------
 No available documentation.
 ") UTrimming;
-		static void UTrimming(const double U1, const double U2, NCollection_Array2<gp_Pnt> & Coeffs, NCollection_Array2<double> * WCoeffs);
+		static void UTrimming(const double U1, const double U2, TColgp_Array2OfPnt & Coeffs, TColStd_Array2OfReal * WCoeffs);
 
 		/****** PLib::VTrimming ******/
 		/****** md5 signature: a02aaf1bed57cfb85379dfd6d72b156c ******/
@@ -814,8 +818,8 @@ Parameters
 ----------
 V1: double
 V2: double
-Coeffs: NCollection_Array2<gp_Pnt>
-WCoeffs: NCollection_Array2<double> *
+Coeffs: TColgp_Array2OfPnt
+WCoeffs: TColStd_Array2OfReal *
 
 Return
 -------
@@ -825,7 +829,7 @@ Description
 -----------
 No available documentation.
 ") VTrimming;
-		static void VTrimming(const double V1, const double V2, NCollection_Array2<gp_Pnt> & Coeffs, NCollection_Array2<double> * WCoeffs);
+		static void VTrimming(const double V1, const double V2, TColgp_Array2OfPnt & Coeffs, TColStd_Array2OfReal * WCoeffs);
 
 };
 
@@ -886,7 +890,7 @@ No available documentation.
 Parameters
 ----------
 U: double
-BasisValue: NCollection_Array1<double>
+BasisValue: TColStd_Array1OfReal
 
 Return
 -------
@@ -896,7 +900,7 @@ Description
 -----------
 Compute the values of the basis functions in u.
 ") D0;
-		void D0(const double U, NCollection_Array1<double> & BasisValue);
+		void D0(const double U, TColStd_Array1OfReal & BasisValue);
 
 		/****** PLib_HermitJacobi::D1 ******/
 		/****** md5 signature: f090c5982a7a6615fe68d02cb2bb712e ******/
@@ -905,8 +909,8 @@ Compute the values of the basis functions in u.
 Parameters
 ----------
 U: double
-BasisValue: NCollection_Array1<double>
-BasisD1: NCollection_Array1<double>
+BasisValue: TColStd_Array1OfReal
+BasisD1: TColStd_Array1OfReal
 
 Return
 -------
@@ -916,7 +920,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D1;
-		void D1(const double U, NCollection_Array1<double> & BasisValue, NCollection_Array1<double> & BasisD1);
+		void D1(const double U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1);
 
 		/****** PLib_HermitJacobi::D2 ******/
 		/****** md5 signature: 1b6d1a29b1a90e7f44fcbae2c437530d ******/
@@ -925,9 +929,9 @@ Compute the values and the derivatives values of the basis functions in u.
 Parameters
 ----------
 U: double
-BasisValue: NCollection_Array1<double>
-BasisD1: NCollection_Array1<double>
-BasisD2: NCollection_Array1<double>
+BasisValue: TColStd_Array1OfReal
+BasisD1: TColStd_Array1OfReal
+BasisD2: TColStd_Array1OfReal
 
 Return
 -------
@@ -937,7 +941,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D2;
-		void D2(const double U, NCollection_Array1<double> & BasisValue, NCollection_Array1<double> & BasisD1, NCollection_Array1<double> & BasisD2);
+		void D2(const double U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2);
 
 		/****** PLib_HermitJacobi::D3 ******/
 		/****** md5 signature: 16711236530cfe9c4d9437ece3203179 ******/
@@ -946,10 +950,10 @@ Compute the values and the derivatives values of the basis functions in u.
 Parameters
 ----------
 U: double
-BasisValue: NCollection_Array1<double>
-BasisD1: NCollection_Array1<double>
-BasisD2: NCollection_Array1<double>
-BasisD3: NCollection_Array1<double>
+BasisValue: TColStd_Array1OfReal
+BasisD1: TColStd_Array1OfReal
+BasisD2: TColStd_Array1OfReal
+BasisD3: TColStd_Array1OfReal
 
 Return
 -------
@@ -959,7 +963,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D3;
-		void D3(const double U, NCollection_Array1<double> & BasisValue, NCollection_Array1<double> & BasisD1, NCollection_Array1<double> & BasisD2, NCollection_Array1<double> & BasisD3);
+		void D3(const double U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2, TColStd_Array1OfReal & BasisD3);
 
 		/****** PLib_HermitJacobi::MaxError ******/
 		/****** md5 signature: 80c009615ef33c4ca8b8b35e4666f2bc ******/
@@ -1023,8 +1027,8 @@ Parameters
 ----------
 Dimension: int
 Degree: int
-HermJacCoeff: NCollection_Array1<double>
-Coefficients: NCollection_Array1<double>
+HermJacCoeff: TColStd_Array1OfReal
+Coefficients: TColStd_Array1OfReal
 
 Return
 -------
@@ -1034,7 +1038,7 @@ Description
 -----------
 Convert the polynomial P(t) = H(t) + W(t) Q(t) in the canonical base.
 ") ToCoefficients;
-		void ToCoefficients(const int Dimension, const int Degree, const NCollection_Array1<double> & HermJacCoeff, NCollection_Array1<double> & Coefficients);
+		void ToCoefficients(const int Dimension, const int Degree, const TColStd_Array1OfReal & HermJacCoeff, TColStd_Array1OfReal & Coefficients);
 
 		/****** PLib_HermitJacobi::WorkDegree ******/
 		/****** md5 signature: 8e747418952629034df0e450b81de8ba ******/
@@ -1108,7 +1112,7 @@ No available documentation.
 Parameters
 ----------
 theU: double
-theBasisValue: NCollection_Array1<double>
+theBasisValue: TColStd_Array1OfReal
 
 Return
 -------
@@ -1118,7 +1122,7 @@ Description
 -----------
 Compute the values of the basis functions in u.
 ") D0;
-		void D0(const double theU, NCollection_Array1<double> & theBasisValue);
+		void D0(const double theU, TColStd_Array1OfReal & theBasisValue);
 
 		/****** PLib_JacobiPolynomial::D1 ******/
 		/****** md5 signature: f7ff663a7314949d77f69a37f74f495c ******/
@@ -1127,8 +1131,8 @@ Compute the values of the basis functions in u.
 Parameters
 ----------
 theU: double
-theBasisValue: NCollection_Array1<double>
-theBasisD1: NCollection_Array1<double>
+theBasisValue: TColStd_Array1OfReal
+theBasisD1: TColStd_Array1OfReal
 
 Return
 -------
@@ -1138,7 +1142,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D1;
-		void D1(const double theU, NCollection_Array1<double> & theBasisValue, NCollection_Array1<double> & theBasisD1);
+		void D1(const double theU, TColStd_Array1OfReal & theBasisValue, TColStd_Array1OfReal & theBasisD1);
 
 		/****** PLib_JacobiPolynomial::D2 ******/
 		/****** md5 signature: 2b4754fcbd2caab02544cffee70a90c5 ******/
@@ -1147,9 +1151,9 @@ Compute the values and the derivatives values of the basis functions in u.
 Parameters
 ----------
 theU: double
-theBasisValue: NCollection_Array1<double>
-theBasisD1: NCollection_Array1<double>
-theBasisD2: NCollection_Array1<double>
+theBasisValue: TColStd_Array1OfReal
+theBasisD1: TColStd_Array1OfReal
+theBasisD2: TColStd_Array1OfReal
 
 Return
 -------
@@ -1159,7 +1163,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D2;
-		void D2(const double theU, NCollection_Array1<double> & theBasisValue, NCollection_Array1<double> & theBasisD1, NCollection_Array1<double> & theBasisD2);
+		void D2(const double theU, TColStd_Array1OfReal & theBasisValue, TColStd_Array1OfReal & theBasisD1, TColStd_Array1OfReal & theBasisD2);
 
 		/****** PLib_JacobiPolynomial::D3 ******/
 		/****** md5 signature: 39b5d1a2b9f0a731c4248a61562aebb6 ******/
@@ -1168,10 +1172,10 @@ Compute the values and the derivatives values of the basis functions in u.
 Parameters
 ----------
 theU: double
-theBasisValue: NCollection_Array1<double>
-theBasisD1: NCollection_Array1<double>
-theBasisD2: NCollection_Array1<double>
-theBasisD3: NCollection_Array1<double>
+theBasisValue: TColStd_Array1OfReal
+theBasisD1: TColStd_Array1OfReal
+theBasisD2: TColStd_Array1OfReal
+theBasisD3: TColStd_Array1OfReal
 
 Return
 -------
@@ -1181,7 +1185,7 @@ Description
 -----------
 Compute the values and the derivatives values of the basis functions in u.
 ") D3;
-		void D3(const double theU, NCollection_Array1<double> & theBasisValue, NCollection_Array1<double> & theBasisD1, NCollection_Array1<double> & theBasisD2, NCollection_Array1<double> & theBasisD3);
+		void D3(const double theU, TColStd_Array1OfReal & theBasisValue, TColStd_Array1OfReal & theBasisD1, TColStd_Array1OfReal & theBasisD2, TColStd_Array1OfReal & theBasisD3);
 
 		/****** PLib_JacobiPolynomial::MaxError ******/
 		/****** md5 signature: 7ae7426b62ac1c3511e98efa6bb7e1a4 ******/
@@ -1208,7 +1212,7 @@ This method computes the maximum error on the polynomial W(t) Q(t) obtained by m
 		%feature("autodoc", "
 Parameters
 ----------
-theTabMax: NCollection_Array1<double>
+theTabMax: TColStd_Array1OfReal
 
 Return
 -------
@@ -1218,7 +1222,7 @@ Description
 -----------
 this method loads for k=0,q the maximum value of abs ( W(t)*Jk(t) ) for t bellonging to [-1,1] This values are loaded is the array TabMax(0,myWorkDegree-2*(myNivConst+1)) MaxValue ( me ; TabMaxPointer: in out Real );.
 ") MaxValue;
-		void MaxValue(NCollection_Array1<double> & theTabMax);
+		void MaxValue(TColStd_Array1OfReal & theTabMax);
 
 		/****** PLib_JacobiPolynomial::NivConstr ******/
 		/****** md5 signature: 793a61e158f469ee31fec0a872a16048 ******/
@@ -1240,7 +1244,7 @@ returns NivConstr.
 Parameters
 ----------
 theNbGaussPoints: int
-theTabPoints: NCollection_Array1<double>
+theTabPoints: TColStd_Array1OfReal
 
 Return
 -------
@@ -1250,7 +1254,7 @@ Description
 -----------
 returns the Jacobi Points for Gauss integration ie the positive values of the Legendre roots by increasing values NbGaussPoints is the number of points chosen for the integral computation. TabPoints (0,NbGaussPoints/2) TabPoints (0) is loaded only for the odd values of NbGaussPoints The possible values for NbGaussPoints are: 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 NbGaussPoints must be greater than Degree.
 ") Points;
-		void Points(const int theNbGaussPoints, NCollection_Array1<double> & theTabPoints);
+		void Points(const int theNbGaussPoints, TColStd_Array1OfReal & theTabPoints);
 
 		/****** PLib_JacobiPolynomial::ReduceDegree ******/
 		/****** md5 signature: acfc511668abe7e8dda3d65ad67474a5 ******/
@@ -1282,8 +1286,8 @@ Parameters
 ----------
 theDimension: int
 theDegree: int
-theJacCoeff: NCollection_Array1<double>
-theCoefficients: NCollection_Array1<double>
+theJacCoeff: TColStd_Array1OfReal
+theCoefficients: TColStd_Array1OfReal
 
 Return
 -------
@@ -1293,7 +1297,7 @@ Description
 -----------
 Convert the polynomial P(t) = R(t) + W(t) Q(t) in the canonical base.
 ") ToCoefficients;
-		void ToCoefficients(const int theDimension, const int theDegree, const NCollection_Array1<double> & theJacCoeff, NCollection_Array1<double> & theCoefficients);
+		void ToCoefficients(const int theDimension, const int theDegree, const TColStd_Array1OfReal & theJacCoeff, TColStd_Array1OfReal & theCoefficients);
 
 		/****** PLib_JacobiPolynomial::Weights ******/
 		/****** md5 signature: f29c29e807dcdd2e4d79acba6d0b7935 ******/
@@ -1302,7 +1306,7 @@ Convert the polynomial P(t) = R(t) + W(t) Q(t) in the canonical base.
 Parameters
 ----------
 theNbGaussPoints: int
-theTabWeights: NCollection_Array2<double>
+theTabWeights: TColStd_Array2OfReal
 
 Return
 -------
@@ -1312,7 +1316,7 @@ Description
 -----------
 returns the Jacobi weights for Gauss integration only for the positive values of the Legendre roots in the order they are given by the method Points NbGaussPoints is the number of points chosen for the integral computation. TabWeights (0,NbGaussPoints/2,0,Degree) TabWeights (0,.) are only loaded for the odd values of NbGaussPoints The possible values for NbGaussPoints are: 8, 10, 15, 20, 25, 30, 35, 40, 50, 61 NbGaussPoints must be greater than Degree.
 ") Weights;
-		void Weights(const int theNbGaussPoints, NCollection_Array2<double> & theTabWeights);
+		void Weights(const int theNbGaussPoints, TColStd_Array2OfReal & theTabWeights);
 
 		/****** PLib_JacobiPolynomial::WorkDegree ******/
 		/****** md5 signature: 8e747418952629034df0e450b81de8ba ******/

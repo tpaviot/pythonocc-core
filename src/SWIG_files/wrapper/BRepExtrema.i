@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepextrema.html"
 #include<Bnd_module.hxx>
 #include<BVH_module.hxx>
 #include<Poly_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -73,6 +74,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepextrema.html"
 %import Bnd.i
 %import BVH.i
 %import Poly.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -102,15 +104,35 @@ BRepExtrema_IsInFace = BRepExtrema_SupportType.BRepExtrema_IsInFace
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BRepExtrema_TriangleSet)
 /* end handles declaration */
 
 /* templates */
 %ignore NCollection_DataMap<int,TColStd_PackedMapOfInteger>::Items;
 %ignore NCollection_DataMap<int,TColStd_PackedMapOfInteger>::KeyValues;
 %template(BRepExtrema_MapOfIntegerPackedMapOfInteger) NCollection_DataMap<int,TColStd_PackedMapOfInteger>;
+
+%extend NCollection_DataMap<int,TColStd_PackedMapOfInteger> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (BRepExtrema_MapOfIntegerPackedMapOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(BRepExtrema_SeqOfSolution) NCollection_Sequence<BRepExtrema_SolutionElem>;
 
 %extend NCollection_Sequence<BRepExtrema_SolutionElem> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1898,7 +1920,7 @@ Creates new uninitialized tool.
 		 BRepExtrema_ProximityDistTool();
 
 		/****** BRepExtrema_ProximityDistTool::BRepExtrema_ProximityDistTool ******/
-		/****** md5 signature: c89f9046b183baca0eab63d131766faa ******/
+		/****** md5 signature: f58ca06ab8d0f4273a5cc4e36556594f ******/
 		%feature("compactdefaultargs") BRepExtrema_ProximityDistTool;
 		%feature("autodoc", "
 Parameters
@@ -1906,10 +1928,10 @@ Parameters
 theSet1: BRepExtrema_TriangleSet
 theNbSamples1: int
 theAddVertices1: BVH_Array3d
-theAddStatus1: NCollection_Vector<ProxPnt_Status>
+theAddStatus1: NCollection_DynamicArray<ProxPnt_Status>
 theSet2: BRepExtrema_TriangleSet
-theShapeList1: NCollection_Vector<TopoDS_Shape>
-theShapeList2: NCollection_Vector<TopoDS_Shape>
+theShapeList1: NCollection_DynamicArray<TopoDS_Shape>
+theShapeList2: NCollection_DynamicArray<TopoDS_Shape>
 
 Return
 -------
@@ -1919,7 +1941,7 @@ Description
 -----------
 Creates new tool for the given element sets.
 ") BRepExtrema_ProximityDistTool;
-		 BRepExtrema_ProximityDistTool(const opencascade::handle<BRepExtrema_TriangleSet> & theSet1, const int theNbSamples1, const BVH_Array3d & theAddVertices1, const NCollection_Vector<ProxPnt_Status> & theAddStatus1, const opencascade::handle<BRepExtrema_TriangleSet> & theSet2, const NCollection_Vector<TopoDS_Shape> & theShapeList1, const NCollection_Vector<TopoDS_Shape> & theShapeList2);
+		 BRepExtrema_ProximityDistTool(const opencascade::handle<BRepExtrema_TriangleSet> & theSet1, const int theNbSamples1, const BVH_Array3d & theAddVertices1, const NCollection_DynamicArray<ProxPnt_Status> & theAddStatus1, const opencascade::handle<BRepExtrema_TriangleSet> & theSet2, const NCollection_DynamicArray<TopoDS_Shape> & theShapeList1, const NCollection_DynamicArray<TopoDS_Shape> & theShapeList2);
 
 		/****** BRepExtrema_ProximityDistTool::Accept ******/
 		/****** md5 signature: feff45cb8bb6d83ad5082c08f8992019 ******/
@@ -1981,13 +2003,13 @@ Returns true if the node is on the boarder.
 		static bool IsNodeOnBorder(const int theNodeIdx, const opencascade::handle<Poly_Triangulation> & theTr);
 
 		/****** BRepExtrema_ProximityDistTool::LoadShapeLists ******/
-		/****** md5 signature: 5f7557d6004fe4ea9325e149d72e1635 ******/
+		/****** md5 signature: 5ac867dd73c90ed82c0be2161b0a1af4 ******/
 		%feature("compactdefaultargs") LoadShapeLists;
 		%feature("autodoc", "
 Parameters
 ----------
-theShapeList1: NCollection_Vector<TopoDS_Shape>
-theShapeList2: NCollection_Vector<TopoDS_Shape>
+theShapeList1: NCollection_DynamicArray<TopoDS_Shape>
+theShapeList2: NCollection_DynamicArray<TopoDS_Shape>
 
 Return
 -------
@@ -1997,7 +2019,7 @@ Description
 -----------
 Loads the given list of subshapes into the tool.
 ") LoadShapeLists;
-		void LoadShapeLists(const NCollection_Vector<TopoDS_Shape> & theShapeList1, const NCollection_Vector<TopoDS_Shape> & theShapeList2);
+		void LoadShapeLists(const NCollection_DynamicArray<TopoDS_Shape> & theShapeList1, const NCollection_DynamicArray<TopoDS_Shape> & theShapeList2);
 
 		/****** BRepExtrema_ProximityDistTool::LoadTriangleSets ******/
 		/****** md5 signature: dfd78a7a416eff23ee78d969d7e3cf4f ******/
@@ -2688,12 +2710,12 @@ Creates empty triangle set.
 		 BRepExtrema_TriangleSet();
 
 		/****** BRepExtrema_TriangleSet::BRepExtrema_TriangleSet ******/
-		/****** md5 signature: 3ea59da2fe6839ff473cfa7a261e4607 ******/
+		/****** md5 signature: f03b54e2ad99b1afef975e241b96aeb6 ******/
 		%feature("compactdefaultargs") BRepExtrema_TriangleSet;
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_Vector<TopoDS_Shape>
+theFaces: NCollection_DynamicArray<TopoDS_Shape>
 
 Return
 -------
@@ -2703,7 +2725,7 @@ Description
 -----------
 Creates triangle set from the given face.
 ") BRepExtrema_TriangleSet;
-		 BRepExtrema_TriangleSet(const NCollection_Vector<TopoDS_Shape> & theFaces);
+		 BRepExtrema_TriangleSet(const NCollection_DynamicArray<TopoDS_Shape> & theFaces);
 
 		/****** BRepExtrema_TriangleSet::Box ******/
 		/****** md5 signature: c4a58a7b23b1d2f9be7f06a31f83343b ******/
@@ -2868,7 +2890,7 @@ Returns vertex index in tringulation of the shape, which vertex belongs, with th
 Parameters
 ----------
 theIndex: int
-theVtxIndices: NCollection_Array1<int>
+theVtxIndices: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2878,15 +2900,15 @@ Description
 -----------
 Returns vertex indices of the given triangle.
 ") GetVtxIndices;
-		void GetVtxIndices(const int theIndex, NCollection_Array1<int> & theVtxIndices);
+		void GetVtxIndices(const int theIndex, TColStd_Array1OfInteger & theVtxIndices);
 
 		/****** BRepExtrema_TriangleSet::Init ******/
-		/****** md5 signature: d295179a64f2e35af8d82699a9db8c5a ******/
+		/****** md5 signature: 65684ddd634da51819aa678ddea0100b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_Vector<TopoDS_Shape>
+theShapes: NCollection_DynamicArray<TopoDS_Shape>
 
 Return
 -------
@@ -2896,7 +2918,7 @@ Description
 -----------
 Initializes triangle set.
 ") Init;
-		bool Init(const NCollection_Vector<TopoDS_Shape> & theShapes);
+		bool Init(const NCollection_DynamicArray<TopoDS_Shape> & theShapes);
 
 		/****** BRepExtrema_TriangleSet::Size ******/
 		/****** md5 signature: 1813690848b6a5332bd4875ba3d8d381 ******/
@@ -2932,6 +2954,8 @@ Swaps indices of two specified triangles.
 
 };
 
+
+%make_alias(BRepExtrema_TriangleSet)
 
 %extend BRepExtrema_TriangleSet {
 	%pythoncode {

@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topexp.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topexp.html"
 %import NCollection.i
 %import TopoDS.i
 %import TopAbs.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -152,7 +154,7 @@ Parameters
 ----------
 S: TopoDS_Shape
 T: TopAbs_ShapeEnum
-M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+M: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -162,7 +164,7 @@ Description
 -----------
 Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. //! Warning: The map is not cleared at first.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M);
+		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
 
 		/****** TopExp::MapShapes ******/
 		/****** md5 signature: e87fceb10f122442ce7f316a2f651ed6 ******/
@@ -171,7 +173,7 @@ Tool to explore a topological data structure. Stores in the map <M> all the sub-
 Parameters
 ----------
 S: TopoDS_Shape
-M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+M: TopTools_IndexedMapOfShape
 cumOri: bool (optional, default to true)
 cumLoc: bool (optional, default to true)
 
@@ -183,7 +185,7 @@ Description
 -----------
 Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M, const bool cumOri = true, const bool cumLoc = true);
+		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopExp::MapShapes ******/
 		/****** md5 signature: 54461abff8970b5369a66b4b10cead24 ******/
@@ -192,7 +194,7 @@ Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the functi
 Parameters
 ----------
 S: TopoDS_Shape
-M: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+M: TopTools_MapOfShape
 cumOri: bool (optional, default to true)
 cumLoc: bool (optional, default to true)
 
@@ -204,7 +206,7 @@ Description
 -----------
 Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
-		static void MapShapes(const TopoDS_Shape & S, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & M, const bool cumOri = true, const bool cumLoc = true);
+		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M, const bool cumOri = true, const bool cumLoc = true);
 
 		/****** TopExp::MapShapesAndAncestors ******/
 		/****** md5 signature: 04775f83ab3c092d3ef5a22177f3a2d7 ******/
@@ -215,7 +217,7 @@ Parameters
 S: TopoDS_Shape
 TS: TopAbs_ShapeEnum
 TA: TopAbs_ShapeEnum
-M: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+M: TopTools_IndexedDataMapOfShapeListOfShape
 
 Return
 -------
@@ -225,7 +227,7 @@ Description
 -----------
 Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all the ancestors of type <TA>. For example map all the edges and bind the list of faces. Warning: The map is not cleared at first.
 ") MapShapesAndAncestors;
-		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & M);
+		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
 		/****** TopExp::MapShapesAndUniqueAncestors ******/
 		/****** md5 signature: 5ad650b8dce752bf3f852cf0244504f1 ******/
@@ -236,7 +238,7 @@ Parameters
 S: TopoDS_Shape
 TS: TopAbs_ShapeEnum
 TA: TopAbs_ShapeEnum
-M: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+M: TopTools_IndexedDataMapOfShapeListOfShape
 useOrientation: bool (optional, default to false)
 
 Return
@@ -247,7 +249,7 @@ Description
 -----------
 Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all unique ancestors of type <TA>. For example map all the edges and bind the list of faces. useOrientation = True: taking account the ancestor orientation Warning: The map is not cleared at first.
 ") MapShapesAndUniqueAncestors;
-		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & M, const bool useOrientation = false);
+		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M, const bool useOrientation = false);
 
 		/****** TopExp::Vertices ******/
 		/****** md5 signature: 687235d5961956945ebea91caec3f037 ******/

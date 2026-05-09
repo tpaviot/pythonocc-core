@@ -8,6 +8,7 @@ from OCC.Core.StepData import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.StepGeom import *
+from OCC.Core.TColgp import *
 
 
 class GeomToStep_Root:
@@ -180,6 +181,10 @@ class GeomToStep_MakePlane(GeomToStep_Root):
     def Value(self) -> StepGeom_Plane: ...
 
 class GeomToStep_MakePolyline(GeomToStep_Root):
+    @overload
+    def __init__(self, P: TColgp_Array1OfPnt, theLocalFactors: Optional[StepData_Factors] = StepData_Factors()) -> None: ...
+    @overload
+    def __init__(self, P: TColgp_Array1OfPnt2d, theLocalFactors: Optional[StepData_Factors] = StepData_Factors()) -> None: ...
     def Value(self) -> StepGeom_Polyline: ...
 
 class GeomToStep_MakeRectangularTrimmedSurface(GeomToStep_Root):

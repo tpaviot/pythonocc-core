@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmxcafdoc.html"
 #include<Message_module.hxx>
 #include<TDF_module.hxx>
 #include<BinObjMgt_module.hxx>
+#include<TColStd_module.hxx>
 #include<BinMNaming_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Resource_module.hxx>
@@ -68,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmxcafdoc.html"
 %import Message.i
 %import TDF.i
 %import BinObjMgt.i
+%import TColStd.i
 %import BinMNaming.i
 %import TopLoc.i
 
@@ -85,6 +87,20 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BinMXCAFDoc_AssemblyItemRefDriver)
+%wrap_handle(BinMXCAFDoc_CentroidDriver)
+%wrap_handle(BinMXCAFDoc_ColorDriver)
+%wrap_handle(BinMXCAFDoc_DatumDriver)
+%wrap_handle(BinMXCAFDoc_DimTolDriver)
+%wrap_handle(BinMXCAFDoc_GraphNodeDriver)
+%wrap_handle(BinMXCAFDoc_LengthUnitDriver)
+%wrap_handle(BinMXCAFDoc_LocationDriver)
+%wrap_handle(BinMXCAFDoc_MaterialDriver)
+%wrap_handle(BinMXCAFDoc_NoteDriver)
+%wrap_handle(BinMXCAFDoc_VisMaterialDriver)
+%wrap_handle(BinMXCAFDoc_VisMaterialToolDriver)
+%wrap_handle(BinMXCAFDoc_NoteBinDataDriver)
+%wrap_handle(BinMXCAFDoc_NoteCommentDriver)
 /* end handles declaration */
 
 /* templates */
@@ -191,7 +207,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -201,10 +217,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_AssemblyItemRefDriver)
 
 %extend BinMXCAFDoc_AssemblyItemRefDriver {
 	%pythoncode {
@@ -276,7 +294,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -286,10 +304,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_CentroidDriver)
 
 %extend BinMXCAFDoc_CentroidDriver {
 	%pythoncode {
@@ -361,7 +381,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -371,10 +391,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_ColorDriver)
 
 %extend BinMXCAFDoc_ColorDriver {
 	%pythoncode {
@@ -446,7 +468,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -456,10 +478,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_DatumDriver)
 
 %extend BinMXCAFDoc_DatumDriver {
 	%pythoncode {
@@ -531,7 +555,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -541,10 +565,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_DimTolDriver)
 
 %extend BinMXCAFDoc_DimTolDriver {
 	%pythoncode {
@@ -616,7 +642,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -626,10 +652,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_GraphNodeDriver)
 
 %extend BinMXCAFDoc_GraphNodeDriver {
 	%pythoncode {
@@ -701,7 +729,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -711,10 +739,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_LengthUnitDriver)
 
 %extend BinMXCAFDoc_LengthUnitDriver {
 	%pythoncode {
@@ -786,7 +816,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -796,7 +826,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 		/****** BinMXCAFDoc_LocationDriver::SetNSDriver ******/
 		/****** md5 signature: f3cb65b5e43b312739ef39e2d6ebc688 ******/
@@ -844,7 +874,7 @@ Parameters
 ----------
 theLoc: TopLoc_Location
 theTarget: BinObjMgt_Persistent
-theMap: Standard_Transient
+theMap: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -854,10 +884,12 @@ Description
 -----------
 Translate transient location to storable.
 ") Translate;
-		void Translate(const TopLoc_Location & theLoc, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theMap);
+		void Translate(const TopLoc_Location & theLoc, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theMap);
 
 };
 
+
+%make_alias(BinMXCAFDoc_LocationDriver)
 
 %extend BinMXCAFDoc_LocationDriver {
 	%pythoncode {
@@ -929,7 +961,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -939,10 +971,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_MaterialDriver)
 
 %extend BinMXCAFDoc_MaterialDriver {
 	%pythoncode {
@@ -984,7 +1018,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -994,10 +1028,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_NoteDriver)
 
 %extend BinMXCAFDoc_NoteDriver {
 	%pythoncode {
@@ -1069,7 +1105,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -1079,10 +1115,12 @@ Description
 -----------
 Paste attribute from document into persistence.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_VisMaterialDriver)
 
 %extend BinMXCAFDoc_VisMaterialDriver {
 	%pythoncode {
@@ -1154,7 +1192,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -1164,10 +1202,12 @@ Description
 -----------
 Paste attribute from document into persistence.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_VisMaterialToolDriver)
 
 %extend BinMXCAFDoc_VisMaterialToolDriver {
 	%pythoncode {
@@ -1239,7 +1279,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -1249,10 +1289,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_NoteBinDataDriver)
 
 %extend BinMXCAFDoc_NoteBinDataDriver {
 	%pythoncode {
@@ -1324,7 +1366,7 @@ Parameters
 ----------
 theSource: TDF_Attribute
 theTarget: BinObjMgt_Persistent
-theRelocTable: Standard_Transient
+theRelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -1334,10 +1376,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & theRelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & theSource, BinObjMgt_Persistent & theTarget, TColStd_IndexedMapOfTransient & theRelocTable);
 
 };
 
+
+%make_alias(BinMXCAFDoc_NoteCommentDriver)
 
 %extend BinMXCAFDoc_NoteCommentDriver {
 	%pythoncode {

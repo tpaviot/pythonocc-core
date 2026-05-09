@@ -6,6 +6,7 @@ from OCC.Core.NCollection import *
 from OCC.Core.Adaptor2d import *
 from OCC.Core.IntRes2d import *
 from OCC.Core.gp import *
+from OCC.Core.TColStd import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.math import *
 from OCC.Core.IntCurve import *
@@ -80,6 +81,8 @@ class Geom2dInt_Geom2dCurveTool:
     def GetType(C: Adaptor2d_Curve2d) -> GeomAbs_CurveType: ...
     @staticmethod
     def Hyperbola(C: Adaptor2d_Curve2d) -> gp_Hypr2d: ...
+    @staticmethod
+    def Intervals(C: Adaptor2d_Curve2d, Tab: TColStd_Array1OfReal) -> None: ...
     @staticmethod
     def LastParameter(C: Adaptor2d_Curve2d) -> False: ...
     @staticmethod

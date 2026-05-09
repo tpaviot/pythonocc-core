@@ -76,6 +76,12 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XmlMDataXtd_ConstraintDriver)
+%wrap_handle(XmlMDataXtd_GeometryDriver)
+%wrap_handle(XmlMDataXtd_PatternStdDriver)
+%wrap_handle(XmlMDataXtd_PositionDriver)
+%wrap_handle(XmlMDataXtd_PresentationDriver)
+%wrap_handle(XmlMDataXtd_TriangulationDriver)
 /* end handles declaration */
 
 /* templates */
@@ -228,6 +234,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMDataXtd_ConstraintDriver)
+
 %extend XmlMDataXtd_ConstraintDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -312,6 +320,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMDataXtd_GeometryDriver)
 
 %extend XmlMDataXtd_GeometryDriver {
 	%pythoncode {
@@ -398,6 +408,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMDataXtd_PatternStdDriver)
+
 %extend XmlMDataXtd_PatternStdDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -482,6 +494,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMDataXtd_PositionDriver)
 
 %extend XmlMDataXtd_PositionDriver {
 	%pythoncode {
@@ -568,6 +582,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMDataXtd_PresentationDriver)
+
 %extend XmlMDataXtd_PresentationDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -652,6 +668,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMDataXtd_TriangulationDriver)
 
 %extend XmlMDataXtd_TriangulationDriver {
 	%pythoncode {

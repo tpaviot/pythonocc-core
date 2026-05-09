@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TopAbs import *
+from OCC.Core.TopTools import *
 
 
 class topexp:
@@ -14,6 +15,19 @@ class topexp:
     def FirstVertex(E: TopoDS_Edge, CumOri: Optional[bool] = false) -> TopoDS_Vertex: ...
     @staticmethod
     def LastVertex(E: TopoDS_Edge, CumOri: Optional[bool] = false) -> TopoDS_Vertex: ...
+    @overload
+    @staticmethod
+    def MapShapes(S: TopoDS_Shape, T: TopAbs_ShapeEnum, M: TopTools_IndexedMapOfShape) -> None: ...
+    @overload
+    @staticmethod
+    def MapShapes(S: TopoDS_Shape, M: TopTools_IndexedMapOfShape, cumOri: Optional[bool] = true, cumLoc: Optional[bool] = true) -> None: ...
+    @overload
+    @staticmethod
+    def MapShapes(S: TopoDS_Shape, M: TopTools_MapOfShape, cumOri: Optional[bool] = true, cumLoc: Optional[bool] = true) -> None: ...
+    @staticmethod
+    def MapShapesAndAncestors(S: TopoDS_Shape, TS: TopAbs_ShapeEnum, TA: TopAbs_ShapeEnum, M: TopTools_IndexedDataMapOfShapeListOfShape) -> None: ...
+    @staticmethod
+    def MapShapesAndUniqueAncestors(S: TopoDS_Shape, TS: TopAbs_ShapeEnum, TA: TopAbs_ShapeEnum, M: TopTools_IndexedDataMapOfShapeListOfShape, useOrientation: Optional[bool] = false) -> None: ...
     @overload
     @staticmethod
     def Vertices(E: TopoDS_Edge, Vfirst: TopoDS_Vertex, Vlast: TopoDS_Vertex, CumOri: Optional[bool] = false) -> None: ...

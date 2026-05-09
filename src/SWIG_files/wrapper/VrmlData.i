@@ -44,6 +44,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmldata.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
@@ -62,6 +63,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmldata.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import TCollection.i
 %import gp.i
 %import TopoDS.i
@@ -170,9 +172,21 @@ VrmlData_NotImplemented = VrmlData_ErrorStatus.VrmlData_NotImplemented
 %template(VrmlData_ListOfNode) NCollection_List<opencascade::handle<VrmlData_Node>>;
 
 %extend NCollection_List<opencascade::handle<VrmlData_Node>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = VrmlData_ListIteratorOfListOfNode(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(VrmlData_MapOfNode) NCollection_Map<opencascade::handle<VrmlData_Node>>;
@@ -351,7 +365,7 @@ Description
 Parameters
 ----------
 theBuffer: VrmlData_InBuffer
-theRes: NCollection_List<TCollection_AsciiString>
+theRes: TColStd_ListOfAsciiString
 
 Return
 -------
@@ -361,7 +375,7 @@ Description
 -----------
 /** * Read one quoted string, the quotes are removed. */.
 ") ReadMultiString;
-		static VrmlData_ErrorStatus ReadMultiString(VrmlData_InBuffer & theBuffer, NCollection_List<TCollection_AsciiString> & theRes);
+		static VrmlData_ErrorStatus ReadMultiString(VrmlData_InBuffer & theBuffer, TColStd_ListOfAsciiString & theRes);
 
 		/****** VrmlData_Node::ReadNode ******/
 		/****** md5 signature: 8af0d51f8e642c7c39250df4946148e8 ******/
@@ -619,7 +633,7 @@ Description
 Parameter M * Data Map that binds an Appearance instance to each created TFace or * TEdge if the Appearance node is defined in VRML scene for that geometry. * 
 Return: * TopoDS_Shape (Compound) holding all the scene, similar to the result of * explicit TopoDS_Shape conversion operator. */.
 ") GetShape;
-		TopoDS_Shape GetShape(NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance> > & M);
+		TopoDS_Shape GetShape(NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance>> & M);
 
 		/****** VrmlData_Scene::IsDummyWrite ******/
 		/****** md5 signature: 22673dec8bfadec31a2793f01125c460 ******/
@@ -1551,7 +1565,7 @@ Description
 -----------
 /** * Get the shape representing the group geometry. */.
 ") Shape;
-		void Shape(TopoDS_Shape & theShape, NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance> > * pMapApp);
+		void Shape(TopoDS_Shape & theShape, NCollection_DataMap<opencascade::handle<TopoDS_TShape>, opencascade::handle<VrmlData_Appearance>> * pMapApp);
 
 		/****** VrmlData_Group::Write ******/
 		/****** md5 signature: e011673aaafe9624bcf427ae568b6b1d ******/
@@ -3483,13 +3497,13 @@ Description
 		%feature("compactdefaultargs") URL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TCollection_AsciiString>
+TColStd_ListOfAsciiString
 
 Description
 -----------
 /** * Query the associated URL. */.
 ") URL;
-		const NCollection_List<TCollection_AsciiString> & URL();
+		const TColStd_ListOfAsciiString & URL();
 
 		/****** VrmlData_ImageTexture::Write ******/
 		/****** md5 signature: e011673aaafe9624bcf427ae568b6b1d ******/

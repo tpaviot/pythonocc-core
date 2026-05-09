@@ -45,12 +45,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeupgrade.html
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
+#include<TColGeom_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TColGeom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopAbs_module.hxx>
 #include<ShapeBuild_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<BRepTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<ShapeAnalysis_module.hxx>
@@ -78,12 +82,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeupgrade.html
 %import Standard.i
 %import NCollection.i
 %import Geom.i
+%import TColGeom.i
 %import Geom2d.i
+%import TColGeom2d.i
+%import TopTools.i
 %import TopoDS.i
 %import TopAbs.i
 %import ShapeBuild.i
 %import ShapeExtend.i
 %import Message.i
+%import TColStd.i
 %import BRepTools.i
 %import GeomAbs.i
 %import ShapeAnalysis.i
@@ -148,7 +156,7 @@ class ShapeUpgrade {
 Parameters
 ----------
 BS: Geom_BSplineCurve
-seqBS: NCollection_HSequence<
+seqBS: TColGeom_HSequenceOfBoundedCurve
 
 Return
 -------
@@ -158,7 +166,7 @@ Description
 -----------
 Unifies same domain faces and edges of specified shape.
 ") C0BSplineToSequenceOfC1BSplineCurve;
-		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<NCollection_HSequence<opencascade::handle<Geom_BoundedCurve> > > & seqBS);
+		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HSequenceOfBoundedCurve > & seqBS);
 
 		/****** ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve ******/
 		/****** md5 signature: 6bfb9b9d3a89361e0687d37304f13e14 ******/
@@ -167,7 +175,7 @@ Unifies same domain faces and edges of specified shape.
 Parameters
 ----------
 BS: Geom2d_BSplineCurve
-seqBS: NCollection_HSequence<
+seqBS: TColGeom2d_HSequenceOfBoundedCurve
 
 Return
 -------
@@ -177,7 +185,7 @@ Description
 -----------
 Converts C0 B-Spline curve into sequence of C1 B-Spline curves. This method splits B-Spline at the knots with multiplicities equal to degree, i.e. unlike method GeomConvert::C0BSplineToArrayOfC1BSplineCurve this one does not use any tolerance and therefore does not change the geometry of B-Spline. Returns True if C0 B-Spline was successfully split, else returns False (if BS is C1 B-Spline).
 ") C0BSplineToSequenceOfC1BSplineCurve;
-		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<NCollection_HSequence<opencascade::handle<Geom2d_BoundedCurve> > > & seqBS);
+		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve > & seqBS);
 
 };
 
@@ -211,13 +219,13 @@ Empty constructor.
 		%feature("compactdefaultargs") GetModifiedShapesMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeShape
 
 Description
 -----------
 Returns map of modified shapes.
 ") GetModifiedShapesMap;
-		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> GetModifiedShapesMap();
+		const TopTools_DataMapOfShapeShape & GetModifiedShapesMap();
 
 		/****** ShapeUpgrade_RemoveLocations::GetResult ******/
 		/****** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ******/
@@ -750,7 +758,7 @@ Performs correction/splitting of the curve. First defines splitting values by me
 		%feature("autodoc", "
 Parameters
 ----------
-SplitValues: NCollection_HSequence<double
+SplitValues: TColStd_HSequenceOfReal
 
 Return
 -------
@@ -760,20 +768,20 @@ Description
 -----------
 Sets the parameters where splitting has to be done.
 ") SetSplitValues;
-		void SetSplitValues(const opencascade::handle<NCollection_HSequence<double> > & SplitValues);
+		void SetSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & SplitValues);
 
 		/****** ShapeUpgrade_SplitCurve::SplitValues ******/
 		/****** md5 signature: 4f80ad4ab1c3944f47be6b2230b596a4 ******/
 		%feature("compactdefaultargs") SplitValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 returns all the splitting values including the First and Last parameters of the input curve Merges input split values and new ones into myGlobalKnots.
 ") SplitValues;
-		const opencascade::handle<NCollection_HSequence<double>> & SplitValues();
+		const opencascade::handle<TColStd_HSequenceOfReal> & SplitValues();
 
 		/****** ShapeUpgrade_SplitCurve::Status ******/
 		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
@@ -936,7 +944,7 @@ Returns obtained surfaces after splitting as CompositeSurface.
 		%feature("autodoc", "
 Parameters
 ----------
-UValues: NCollection_HSequence<double
+UValues: TColStd_HSequenceOfReal
 
 Return
 -------
@@ -946,7 +954,7 @@ Description
 -----------
 Sets U parameters where splitting has to be done.
 ") SetUSplitValues;
-		void SetUSplitValues(const opencascade::handle<NCollection_HSequence<double> > & UValues);
+		void SetUSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & UValues);
 
 		/****** ShapeUpgrade_SplitSurface::SetVSplitValues ******/
 		/****** md5 signature: 4ae528987506f72f2e98d3b2667b4139 ******/
@@ -954,7 +962,7 @@ Sets U parameters where splitting has to be done.
 		%feature("autodoc", "
 Parameters
 ----------
-VValues: NCollection_HSequence<double
+VValues: TColStd_HSequenceOfReal
 
 Return
 -------
@@ -964,7 +972,7 @@ Description
 -----------
 Sets V parameters where splitting has to be done.
 ") SetVSplitValues;
-		void SetVSplitValues(const opencascade::handle<NCollection_HSequence<double> > & VValues);
+		void SetVSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & VValues);
 
 		/****** ShapeUpgrade_SplitSurface::Status ******/
 		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
@@ -989,26 +997,26 @@ Returns the status OK - no splitting is needed DONE1 - splitting required and gi
 		%feature("compactdefaultargs") USplitValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 returns all the U splitting values including the First and Last parameters of the input surface.
 ") USplitValues;
-		const opencascade::handle<NCollection_HSequence<double>> & USplitValues();
+		const opencascade::handle<TColStd_HSequenceOfReal> & USplitValues();
 
 		/****** ShapeUpgrade_SplitSurface::VSplitValues ******/
 		/****** md5 signature: 19a6193e3cd6bc63a83e5d642a864a72 ******/
 		%feature("compactdefaultargs") VSplitValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 returns all the splitting V values including the First and Last parameters of the input surface.
 ") VSplitValues;
-		const opencascade::handle<NCollection_HSequence<double>> & VSplitValues();
+		const opencascade::handle<TColStd_HSequenceOfReal> & VSplitValues();
 
 };
 
@@ -1353,7 +1361,7 @@ Sets the shape for avoid merging of the faces/edges. This shape can be vertex or
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theShapes: TopTools_MapOfShape
 
 Return
 -------
@@ -1363,7 +1371,7 @@ Description
 -----------
 Sets the map of shapes for avoid merging of the faces/edges. It allows passing a ready to use map instead of calling many times the method KeepShape.
 ") KeepShapes;
-		void KeepShapes(const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theShapes);
+		void KeepShapes(const TopTools_MapOfShape & theShapes);
 
 		/****** ShapeUpgrade_UnifySameDomain::SetAngularTolerance ******/
 		/****** md5 signature: b948a93ae53a8dea244687f51587d407 ******/
@@ -1751,26 +1759,26 @@ No available documentation.
 		%feature("compactdefaultargs") Knots2d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 No available documentation.
 ") Knots2d;
-		opencascade::handle<NCollection_HSequence<double>> Knots2d();
+		opencascade::handle<TColStd_HSequenceOfReal> Knots2d();
 
 		/****** ShapeUpgrade_EdgeDivide::Knots3d ******/
 		/****** md5 signature: 906a3f46092f5bb3c53f6db47626e0b4 ******/
 		%feature("compactdefaultargs") Knots3d;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 No available documentation.
 ") Knots3d;
-		opencascade::handle<NCollection_HSequence<double>> Knots3d();
+		opencascade::handle<TColStd_HSequenceOfReal> Knots3d();
 
 		/****** ShapeUpgrade_EdgeDivide::SetFace ******/
 		/****** md5 signature: 9e665fdaf60532a860d6b82abd61fc4e ******/
@@ -2284,7 +2292,7 @@ Removes all internal wires having area less than area specified as minimal allow
 		%feature("autodoc", "
 Parameters
 ----------
-theSeqShapes: NCollection_Sequence<TopoDS_Shape>
+theSeqShapes: TopTools_SequenceOfShape
 
 Return
 -------
@@ -2294,7 +2302,7 @@ Description
 -----------
 If specified sequence of shape contains - 1.wires then these wires will be removed if they have area less than allowed min area. 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
 ") Perform;
-		bool Perform(const NCollection_Sequence<TopoDS_Shape> & theSeqShapes);
+		bool Perform(const TopTools_SequenceOfShape & theSeqShapes);
 
 		/****** ShapeUpgrade_RemoveInternalWires::RemoveFaceMode ******/
 		/****** md5 signature: 25ae853bd11a468340feb0db72b8bd18 ******/
@@ -2314,26 +2322,26 @@ Set mode which manage removing faces which have outer wires consisting only from
 		%feature("compactdefaultargs") RemovedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 Returns sequence of removed faces.
 ") RemovedFaces;
-		const NCollection_Sequence<TopoDS_Shape> RemovedFaces();
+		const TopTools_SequenceOfShape & RemovedFaces();
 
 		/****** ShapeUpgrade_RemoveInternalWires::RemovedWires ******/
 		/****** md5 signature: d9aaef20d2cfc684289bb98006c82520 ******/
 		%feature("compactdefaultargs") RemovedWires;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 Returns sequence of removed faces.
 ") RemovedWires;
-		const NCollection_Sequence<TopoDS_Shape> RemovedWires();
+		const TopTools_SequenceOfShape & RemovedWires();
 
 		/****** ShapeUpgrade_RemoveInternalWires::Status ******/
 		/****** md5 signature: d63ad8907bf1b94ad0798cc51997fd9f ******/
@@ -2353,6 +2361,14 @@ Queries status of last call to Perform(): OK - nothing was done :DONE1 - interna
 ") Status;
 		bool Status(const ShapeExtend_Status theStatus);
 
+		%extend{
+			double GetMinArea() { return self->MinArea(); }
+			void SetMinArea(double value) { self->MinArea() = value; }
+		};
+		%extend{
+			bool GetRemoveFaceMode() { return self->RemoveFaceMode(); }
+			void SetRemoveFaceMode(bool value) { self->RemoveFaceMode() = value; }
+		};
 };
 
 
@@ -2936,6 +2952,14 @@ Set splitting mode If the mode is 'splitting by number', the face is splitted ap
 ") SetSplittingByNumber;
 		void SetSplittingByNumber(const bool theIsSplittingByNumber);
 
+		%extend{
+			double GetMaxArea() { return self->MaxArea(); }
+			void SetMaxArea(double value) { self->MaxArea() = value; }
+		};
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 
@@ -3221,13 +3245,13 @@ If Segment is True, the result is composed with segments of the curve bounded by
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>>
+opencascade::handle<TColGeom2d_HArray1OfCurve>
 
 Description
 -----------
 No available documentation.
 ") GetCurves;
-		const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom2d_Curve>>> & GetCurves();
+		const opencascade::handle<TColGeom2d_HArray1OfCurve> & GetCurves();
 
 		/****** ShapeUpgrade_SplitCurve2d::Init ******/
 		/****** md5 signature: 9265e5f0d4ffc1952c67390e1e4fa21c ******/
@@ -3319,13 +3343,13 @@ If Segment is True, the result is composed with segments of the curve bounded by
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>>
+opencascade::handle<TColGeom_HArray1OfCurve>
 
 Description
 -----------
 No available documentation.
 ") GetCurves;
-		const opencascade::handle<NCollection_HArray1<opencascade::handle<Geom_Curve>>> & GetCurves();
+		const opencascade::handle<TColGeom_HArray1OfCurve> & GetCurves();
 
 		/****** ShapeUpgrade_SplitCurve3d::Init ******/
 		/****** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ******/
@@ -3545,6 +3569,10 @@ Set splitting mode If the mode is 'splitting into squares', the face is splitted
 ") SetSplittingIntoSquares;
 		void SetSplittingIntoSquares(const bool theIsSplittingIntoSquares);
 
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 
@@ -4185,13 +4213,13 @@ Converts curve into a list of beziers, and stores the splitting parameters on or
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 Returns the list of split parameters in original curve parametrisation.
 ") SplitParams;
-		opencascade::handle<NCollection_HSequence<double>> SplitParams();
+		opencascade::handle<TColStd_HSequenceOfReal> SplitParams();
 
 };
 
@@ -4351,13 +4379,13 @@ Sets mode for conversion Geom_Line to bezier.
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 Returns the list of split parameters in original curve parametrisation.
 ") SplitParams;
-		opencascade::handle<NCollection_HSequence<double>> SplitParams();
+		opencascade::handle<TColStd_HSequenceOfReal> SplitParams();
 
 };
 
@@ -4487,6 +4515,14 @@ Set splitting mode If the mode is 'splitting by number', the face is splitted ap
 ") SetSplittingByNumber;
 		void SetSplittingByNumber(const bool theIsSplittingByNumber);
 
+		%extend{
+			double GetMaxArea() { return self->MaxArea(); }
+			void SetMaxArea(double value) { self->MaxArea() = value; }
+		};
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 

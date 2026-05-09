@@ -50,8 +50,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpatch.html"
 #include<Adaptor2d_module.hxx>
 #include<gp_module.hxx>
 #include<IntSurf_module.hxx>
+#include<BVH_module.hxx>
 #include<Geom2d_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntAna_module.hxx>
 #include<Geom_module.hxx>
@@ -70,8 +72,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpatch.html"
 %import Adaptor2d.i
 %import gp.i
 %import IntSurf.i
+%import BVH.i
 %import Geom2d.i
 %import GeomAbs.i
+%import TColStd.i
 %import Bnd.i
 %import IntAna.i
 
@@ -154,6 +158,13 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 %template(IntPatch_SequenceOfIWLineOfTheIWalking) NCollection_Sequence<opencascade::handle<IntPatch_TheIWLineOfTheIWalking>>;
 
 %extend NCollection_Sequence<opencascade::handle<IntPatch_TheIWLineOfTheIWalking>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -162,6 +173,13 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 %template(IntPatch_SequenceOfLine) NCollection_Sequence<opencascade::handle<IntPatch_Line>>;
 
 %extend NCollection_Sequence<opencascade::handle<IntPatch_Line>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -170,6 +188,13 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 %template(IntPatch_SequenceOfPathPointOfTheSOnBounds) NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds>;
 
 %extend NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -178,6 +203,13 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 %template(IntPatch_SequenceOfPoint) NCollection_Sequence<IntPatch_Point>;
 
 %extend NCollection_Sequence<IntPatch_Point> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -186,6 +218,13 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
 %template(IntPatch_SequenceOfSegmentOfTheSOnBounds) NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds>;
 
 %extend NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -244,7 +283,7 @@ Description
 -----------
 Converts aline to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
-		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theLines);
+		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theLines);
 
 		/****** IntPatch_ALineToWLine::MakeWLine ******/
 		/****** md5 signature: fd3a2c5687d1a93fe0e3f5253151ab1a ******/
@@ -265,7 +304,7 @@ Description
 -----------
 Converts aline (limited by paraminf and paramsup) to the set of Walking-lines and adds them in theLines.
 ") MakeWLine;
-		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, const double paraminf, const double paramsup, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theLines);
+		void MakeWLine(const opencascade::handle<IntPatch_ALine> & aline, const double paraminf, const double paramsup, NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theLines);
 
 		/****** IntPatch_ALineToWLine::SetTol3D ******/
 		/****** md5 signature: 5d857c1ad9fdbc857081f6a5ac8f9f1a ******/
@@ -596,6 +635,132 @@ No available documentation.
 
 
 %extend IntPatch_ArcFunction {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************
+* class IntPatch_BVHTraversal *
+******************************/
+class IntPatch_BVHTraversal : public BVH_PairTraverse<double,3> {
+	public:
+		class TrianglePair {};
+		/****** IntPatch_BVHTraversal::IntPatch_BVHTraversal ******/
+		/****** md5 signature: 8fcdc1d556078dc876d3b7c34954b448 ******/
+		%feature("compactdefaultargs") IntPatch_BVHTraversal;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an empty traversal object.
+") IntPatch_BVHTraversal;
+		 IntPatch_BVHTraversal();
+
+		/****** IntPatch_BVHTraversal::Accept ******/
+		/****** md5 signature: 4eb443563ab2aeadcca7dcc66efe9424 ******/
+		%feature("compactdefaultargs") Accept;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex1: int
+theIndex2: int
+
+Return
+-------
+bool
+
+Description
+-----------
+Accepts a pair of leaf elements and stores their original indices. 
+Input parameter: theIndex1 0-based index in the first BVH set 
+Input parameter: theIndex2 0-based index in the second BVH set 
+Return: true (always accepts the pair).
+") Accept;
+		virtual bool Accept(const int theIndex1, const int theIndex2);
+
+		/****** IntPatch_BVHTraversal::Clear ******/
+		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Clears the collected pairs.
+") Clear;
+		void Clear();
+
+		/****** IntPatch_BVHTraversal::Pairs ******/
+		/****** md5 signature: 75dbd8310ba74eb76bf5f6b741a3985a ******/
+		%feature("compactdefaultargs") Pairs;
+		%feature("autodoc", "Return
+-------
+NCollection_DynamicArray<TrianglePair>
+
+Description
+-----------
+Returns the collected triangle pairs.
+") Pairs;
+		const NCollection_DynamicArray<TrianglePair> & Pairs();
+
+		/****** IntPatch_BVHTraversal::Perform ******/
+		/****** md5 signature: 5dcc08fc8b28b02793d4ba0a4093dd66 ******/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+theSet1: IntPatch_PolyhedronBVH
+theSet2: IntPatch_PolyhedronBVH
+theSelfInterference: bool (optional, default to false)
+
+Return
+-------
+int
+
+Description
+-----------
+Performs BVH traversal and collects candidate triangle pairs. 
+Input parameter: theSet1 BVH set for the first polyhedron 
+Input parameter: theSet2 BVH set for the second polyhedron 
+Input parameter: theSelfInterference if true, skip pairs where first index >= second index (used for self-intersection where we don't want to test same pair twice) 
+Return: number of collected pairs.
+") Perform;
+		int Perform(IntPatch_PolyhedronBVH & theSet1, IntPatch_PolyhedronBVH & theSet2, bool theSelfInterference = false);
+
+		/****** IntPatch_BVHTraversal::RejectNode ******/
+		/****** md5 signature: 2fe89c633e9600dde9e0e67c0b83d31b ******/
+		%feature("compactdefaultargs") RejectNode;
+		%feature("autodoc", "
+Parameters
+----------
+theCMin1: BVH_Vec3d
+theCMax1: BVH_Vec3d
+theCMin2: BVH_Vec3d
+theCMax2: BVH_Vec3d
+
+Return
+-------
+theMetric: double
+
+Description
+-----------
+Rejects pair of nodes if their bounding boxes don't overlap. 
+Input parameter: theCMin1 minimum corner of the first node's bounding box 
+Input parameter: theCMax1 maximum corner of the first node's bounding box 
+Input parameter: theCMin2 minimum corner of the second node's bounding box 
+Input parameter: theCMax2 maximum corner of the second node's bounding box @param[out] theMetric unused metric parameter 
+Return: true if the pair should be rejected (no overlap), false otherwise.
+") RejectNode;
+		virtual bool RejectNode(const BVH_Vec3d & theCMin1, const BVH_Vec3d & theCMax1, const BVH_Vec3d & theCMin2, const BVH_Vec3d & theCMax2, Standard_Real &OutValue);
+
+};
+
+
+%extend IntPatch_BVHTraversal {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1199,7 +1364,7 @@ No available documentation.
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1210,7 +1375,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** IntPatch_HCurve2dTool::IsClosed ******/
 		/****** md5 signature: 2e919d2de6d38bdb8500e5fc59dfa301 ******/
@@ -2676,7 +2841,7 @@ Returns the point of range Index. An exception is raised if Index<=0 or Index>Nb
 		const IntPatch_Point & Point(const int Index);
 
 		/****** IntPatch_Intersection::PrepareSurfaces ******/
-		/****** md5 signature: ff36cb03cab9da40b391cee713ff1853 ******/
+		/****** md5 signature: d20bda50f442c5bd7d7b4d040cf3e763 ******/
 		%feature("compactdefaultargs") PrepareSurfaces;
 		%feature("autodoc", "
 Parameters
@@ -2697,7 +2862,7 @@ Description
 -----------
 Prepares surfaces for intersection.
 ") PrepareSurfaces;
-		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const double Tol, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS1, NCollection_Vector<opencascade::handle<Adaptor3d_Surface> > & theSeqHS2);
+		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const double Tol, NCollection_DynamicArray<opencascade::handle<Adaptor3d_Surface>> & theSeqHS1, NCollection_DynamicArray<opencascade::handle<Adaptor3d_Surface>> & theSeqHS2);
 
 		/****** IntPatch_Intersection::SequenceOfLine ******/
 		/****** md5 signature: 61088f9b1aab32b1f92e7fdcd44022ac ******/
@@ -2999,7 +3164,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const NCollection_Sequence<opencascade::handle<IntPatch_Line> > & SL, const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double Tol);
+		void Perform(const NCollection_Sequence<opencascade::handle<IntPatch_Line>> & SL, const opencascade::handle<IntPatch_Line> & L, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double Tol);
 
 };
 
@@ -3672,6 +3837,191 @@ Returns the points of the segment <Index> in the Polygon.
 /****************************
 * class IntPatch_Polyhedron *
 ****************************/
+/*******************************
+* class IntPatch_PolyhedronBVH *
+*******************************/
+class IntPatch_PolyhedronBVH : public BVH_PrimitiveSet<double,3> {
+	public:
+		/****** IntPatch_PolyhedronBVH::IntPatch_PolyhedronBVH ******/
+		/****** md5 signature: 7f165687d473209da2c1c1b125bde845 ******/
+		%feature("compactdefaultargs") IntPatch_PolyhedronBVH;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an empty BVH set.
+") IntPatch_PolyhedronBVH;
+		 IntPatch_PolyhedronBVH();
+
+		/****** IntPatch_PolyhedronBVH::IntPatch_PolyhedronBVH ******/
+		/****** md5 signature: 20fab44ac6dbcf538eb80d330280f35e ******/
+		%feature("compactdefaultargs") IntPatch_PolyhedronBVH;
+		%feature("autodoc", "
+Parameters
+----------
+thePoly: IntPatch_Polyhedron
+
+Return
+-------
+None
+
+Description
+-----------
+Creates BVH set from the given polyhedron. 
+Input parameter: thePoly the polyhedron to wrap (must remain valid during BVH lifetime).
+") IntPatch_PolyhedronBVH;
+		 IntPatch_PolyhedronBVH(const IntPatch_Polyhedron & thePoly);
+
+		/****** IntPatch_PolyhedronBVH::Box ******/
+		/****** md5 signature: 284e3d436fb4862631d59572bdc6bec1 ******/
+		%feature("compactdefaultargs") Box;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+BVH_Box<double, 3 >
+
+Description
+-----------
+Returns AABB of the triangle with the given index. 
+Input parameter: theIndex 0-based triangle index (after BVH reordering).
+") Box;
+		virtual BVH_Box<double, 3 > Box(const int theIndex);
+
+		/****** IntPatch_PolyhedronBVH::Center ******/
+		/****** md5 signature: cfe3a13354d0ba503f0b67f14ef60986 ******/
+		%feature("compactdefaultargs") Center;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+theAxis: int
+
+Return
+-------
+double
+
+Description
+-----------
+Returns centroid coordinate of the triangle along the given axis. 
+Input parameter: theIndex 0-based triangle index (after BVH reordering) 
+Input parameter: theAxis axis index (0=X, 1=Y, 2=Z).
+") Center;
+		virtual double Center(const int theIndex, const int theAxis);
+
+		/****** IntPatch_PolyhedronBVH::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
+		%feature("compactdefaultargs") Clear;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Clears the BVH set.
+") Clear;
+		void Clear();
+
+		/****** IntPatch_PolyhedronBVH::Init ******/
+		/****** md5 signature: 93818e650b6a0d9e7a97f94059600b81 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+thePoly: IntPatch_Polyhedron
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes BVH set from the given polyhedron. 
+Input parameter: thePoly the polyhedron to wrap (must remain valid during BVH lifetime).
+") Init;
+		void Init(const IntPatch_Polyhedron & thePoly);
+
+		/****** IntPatch_PolyhedronBVH::IsInitialized ******/
+		/****** md5 signature: 01666b35dc0d7af2bf9583d3f531f49b ******/
+		%feature("compactdefaultargs") IsInitialized;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the BVH set is initialized.
+") IsInitialized;
+		bool IsInitialized();
+
+		/****** IntPatch_PolyhedronBVH::OriginalIndex ******/
+		/****** md5 signature: 42dd1a6bbf2880a702fb8abd14363036 ******/
+		%feature("compactdefaultargs") OriginalIndex;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: int
+
+Return
+-------
+int
+
+Description
+-----------
+Returns the original (1-based) triangle index in the polyhedron for the given 0-based index after BVH reordering. 
+Input parameter: theIndex 0-based triangle index (after BVH reordering) 
+Return: 1-based original triangle index in the polyhedron.
+") OriginalIndex;
+		int OriginalIndex(const int theIndex);
+
+		/****** IntPatch_PolyhedronBVH::Size ******/
+		/****** md5 signature: b92e7c596e42fc217637d66c252c8935 ******/
+		%feature("compactdefaultargs") Size;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns the total number of triangles.
+") Size;
+		virtual int Size();
+
+		/****** IntPatch_PolyhedronBVH::Swap ******/
+		/****** md5 signature: 694c713436855bb9949f4ebbddbbde66 ******/
+		%feature("compactdefaultargs") Swap;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex1: int
+theIndex2: int
+
+Return
+-------
+None
+
+Description
+-----------
+Swaps two triangles in the set (used during BVH construction). 
+Input parameter: theIndex1 first triangle index 
+Input parameter: theIndex2 second triangle index.
+") Swap;
+		virtual void Swap(const int theIndex1, const int theIndex2);
+
+};
+
+
+%extend IntPatch_PolyhedronBVH {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************
 * class IntPatch_PolyhedronTool *
 ********************************/
@@ -6199,7 +6549,7 @@ Description
 -----------
 Extends every line from theSlin (if it is possible) to be started/finished in strictly determined point (in the place of joint of two lines). As result, some gaps between two lines will vanish. The Walking lines are supposed (algorithm will do nothing for not-Walking line) to be computed as a result of intersection. Both theS1 and theS2 must be quadrics. Other cases are not supported. theArrPeriods must be filled as follows (every value must not be negative; if the surface is not periodic the period must be equal to 0.0 strictly): {<U-period of 1st surface>, <V-period of 1st surface>, <U-period of 2nd surface>, <V-period of 2nd surface>}. theListOfCriticalPoints must contain 3D-points where joining is disabled.
 ") ExtendTwoWLines;
-		static void ExtendTwoWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theToler3D, const double * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
+		static void ExtendTwoWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theSlin, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theToler3D, const double * const theArrPeriods, const Bnd_Box2d & theBoxS1, const Bnd_Box2d & theBoxS2, const NCollection_List<gp_Pnt> & theListOfCriticalPoints);
 
 		/****** IntPatch_WLineTool::JoinWLines ******/
 		/****** md5 signature: c0c600fe82fa2608108cead09d37f455 ******/
@@ -6221,7 +6571,7 @@ Description
 -----------
 Joins all WLines from theSlin to one if it is possible and records the result into theSlin again. Lines will be kept to be split if: a) they are separated (has no common points); b) resulted line (after joining) go through seam-edges or surface boundaries. //! In addition, if points in theSPnt lies at least in one of the line in theSlin, this point will be deleted.
 ") JoinWLines;
-		static void JoinWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theSlin, NCollection_Sequence<IntPatch_Point> & theSPnt, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theTol3D);
+		static void JoinWLines(NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theSlin, NCollection_Sequence<IntPatch_Point> & theSPnt, const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_Surface> & theS2, const double theTol3D);
 
 };
 
@@ -6392,7 +6742,7 @@ Returns true when the derivative at parameter U is defined on the analytic inter
 Parameters
 ----------
 P: gp_Pnt
-theParams: NCollection_List<double>
+theParams: TColStd_ListOfReal
 
 Return
 -------
@@ -6402,7 +6752,7 @@ Description
 -----------
 Tries to find the parameters of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
-		void FindParameter(const gp_Pnt & P, NCollection_List<double> & theParams);
+		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
 
 		/****** IntPatch_ALine::FirstParameter ******/
 		/****** md5 signature: 1c4003fb27d70ae40ab9684429360d97 ******/

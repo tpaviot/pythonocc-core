@@ -47,11 +47,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeanalysis.htm
 #include<TopoDS_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<gp_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Bnd_module.hxx>
+#include<TColgp_module.hxx>
 #include<Geom_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TopLoc_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<TColGeom_module.hxx>
@@ -69,11 +72,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeanalysis.htm
 %import TopoDS.i
 %import ShapeExtend.i
 %import gp.i
+%import TopTools.i
 %import Geom2d.i
 %import Bnd.i
+%import TColgp.i
 %import Geom.i
 %import Adaptor3d.i
 %import TopLoc.i
+%import TColStd.i
 %import TopAbs.i
 %import GeomAdaptor.i
 
@@ -105,6 +111,13 @@ from OCC.Core.Exception import *
 %template(ShapeAnalysis_SequenceOfFreeBounds) NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>;
 
 %extend NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -605,7 +618,7 @@ No available documentation.
 Parameters
 ----------
 F: TopoDS_Face
-mapEdges: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+mapEdges: TopTools_DataMapOfShapeShape
 toler: double (optional, default to -1.0)
 
 Return
@@ -616,7 +629,7 @@ Description
 -----------
 No available documentation.
 ") CheckPinFace;
-		bool CheckPinFace(const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapEdges, const double toler = -1.0);
+		bool CheckPinFace(const TopoDS_Face & F, TopTools_DataMapOfShapeShape & mapEdges, const double toler = -1.0);
 
 		/****** ShapeAnalysis_CheckSmallFace::CheckSingleStrip ******/
 		/****** md5 signature: e56df29343f39cd02bd460e62b02d6f9 ******/
@@ -646,8 +659,8 @@ Checks if a Face is a single strip, i.e. brings two great edges which are confus
 Parameters
 ----------
 F: TopoDS_Face
-MapEdges: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-MapParam: NCollection_DataMap<TopoDS_Shape, NCollection_List<double>, TopTools_ShapeMapHasher>
+MapEdges: TopTools_DataMapOfShapeListOfShape
+MapParam: NCollection_DataMap<TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher>
 theAllVert: TopoDS_Compound
 
 Return
@@ -658,7 +671,7 @@ Description
 -----------
 Checks if a Face brings vertices which split it, either confused with non adjacent vertices, or confused with their projection on non adjacent edges Returns the count of found splitting vertices Each vertex then brings a diagnostic 'SplittingVertex', with data: 'Face' for the face, 'Edge' for the split edge.
 ") CheckSplittingVertices;
-		int CheckSplittingVertices(const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MapEdges, NCollection_DataMap<TopoDS_Shape, NCollection_List<double>, TopTools_ShapeMapHasher> & MapParam, TopoDS_Compound & theAllVert);
+		int CheckSplittingVertices(const TopoDS_Face & F, TopTools_DataMapOfShapeListOfShape & MapEdges, NCollection_DataMap<TopoDS_Shape, TColStd_ListOfReal, TopTools_ShapeMapHasher> & MapParam, TopoDS_Compound & theAllVert);
 
 		/****** ShapeAnalysis_CheckSmallFace::CheckSpotFace ******/
 		/****** md5 signature: 6bb1a549f18de04d7816e2cc89e0fe83 ******/
@@ -1020,7 +1033,7 @@ Parameters
 curve: Geom2d_Curve
 first: double
 last: double
-seq: NCollection_Sequence<gp_Pnt2d>
+seq: TColgp_SequenceOfPnt2d
 
 Return
 -------
@@ -1030,7 +1043,7 @@ Description
 -----------
 Returns sample points which will serve as linearisation of the2d curve in range (first, last) The distribution of sample points is consystent with what is used by BRepTopAdaptor_FClass2d.
 ") GetSamplePoints;
-		static bool GetSamplePoints(const opencascade::handle<Geom2d_Curve> & curve, const double first, const double last, NCollection_Sequence<gp_Pnt2d> & seq);
+		static bool GetSamplePoints(const opencascade::handle<Geom2d_Curve> & curve, const double first, const double last, TColgp_SequenceOfPnt2d & seq);
 
 		/****** ShapeAnalysis_Curve::GetSamplePoints ******/
 		/****** md5 signature: 36e165301ff4328ad00899447f2be4e5 ******/
@@ -1041,7 +1054,7 @@ Parameters
 curve: Geom_Curve
 first: double
 last: double
-seq: NCollection_Sequence<gp_Pnt>
+seq: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -1051,7 +1064,7 @@ Description
 -----------
 Returns sample points which will serve as linearisation of the curve in range (first, last).
 ") GetSamplePoints;
-		static bool GetSamplePoints(const opencascade::handle<Geom_Curve> & curve, const double first, const double last, NCollection_Sequence<gp_Pnt> & seq);
+		static bool GetSamplePoints(const opencascade::handle<Geom_Curve> & curve, const double first, const double last, TColgp_SequenceOfPnt & seq);
 
 		/****** ShapeAnalysis_Curve::IsClosed ******/
 		/****** md5 signature: fa93031c0fbc363deb726584cee227fc ******/
@@ -1114,7 +1127,7 @@ The same as for Curve3d.
 		%feature("autodoc", "
 Parameters
 ----------
-pnts: NCollection_Array1<gp_Pnt>
+pnts: TColgp_Array1OfPnt
 Normal: gp_XYZ
 preci: double (optional, default to 0)
 
@@ -1126,7 +1139,7 @@ Description
 -----------
 Checks if points are planar with given preci. If Normal has not zero modulus, checks with given normal.
 ") IsPlanar;
-		static bool IsPlanar(const NCollection_Array1<gp_Pnt> & pnts, gp_XYZ & Normal, const double preci = 0);
+		static bool IsPlanar(const TColgp_Array1OfPnt & pnts, gp_XYZ & Normal, const double preci = 0);
 
 		/****** ShapeAnalysis_Curve::IsPlanar ******/
 		/****** md5 signature: ee92727855774f763e33435fd7ad7366 ******/
@@ -2069,13 +2082,13 @@ Returns maximum width of notch specified as TopoDS_Wire on the contour.
 		%feature("compactdefaultargs") Notches;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Returns sequence of notches on the contour.
 ") Notches;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Notches();
+		opencascade::handle<TopTools_HSequenceOfShape> Notches();
 
 		/****** ShapeAnalysis_FreeBoundData::Perimeter ******/
 		/****** md5 signature: ee1b3ad56336a8f29e194fade4831521 ******/
@@ -2283,7 +2296,7 @@ Builds actual free bounds of the <shape>. <shape> should be a compound of shells
 		%feature("autodoc", "
 Parameters
 ----------
-wires: NCollection_HSequence<TopoDS_Shape
+wires: TopTools_HSequenceOfShape
 closed: TopoDS_Compound
 open: TopoDS_Compound
 
@@ -2295,7 +2308,7 @@ Description
 -----------
 Dispatches sequence of <wires> into two compounds <closed> for closed wires and <open> for open wires. If a compound is not empty wires are added into it.
 ") DispatchWires;
-		static void DispatchWires(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & wires, TopoDS_Compound & closed, TopoDS_Compound & open);
+		static void DispatchWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, TopoDS_Compound & closed, TopoDS_Compound & open);
 
 		/****** ShapeAnalysis_FreeBounds::GetClosedWires ******/
 		/****** md5 signature: 90f975347145fad77d9189e1b9eb60f3 ******/
@@ -2329,11 +2342,11 @@ Returns compound of open wires out of free edges.
 		%feature("autodoc", "
 Parameters
 ----------
-wires: NCollection_HSequence<TopoDS_Shape
+wires: TopTools_HSequenceOfShape
 toler: double
 shared: bool
-closed: NCollection_HSequence<TopoDS_Shape
-open: NCollection_HSequence<TopoDS_Shape
+closed: TopTools_HSequenceOfShape
+open: TopTools_HSequenceOfShape
 
 Return
 -------
@@ -2343,7 +2356,7 @@ Description
 -----------
 Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires remained after extraction are put into <open>. If <shared> is True extraction is performed only when edges share the same vertex. If <shared> is False connection is performed only when ends of the edges are at distance less than <toler>.
 ") SplitWires;
-		static void SplitWires(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & wires, const double toler, const bool shared, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & closed, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & open);
+		static void SplitWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, const double toler, const bool shared, opencascade::handle<TopTools_HSequenceOfShape> & closed, opencascade::handle<TopTools_HSequenceOfShape> & open);
 
 };
 
@@ -2757,7 +2770,7 @@ class ShapeAnalysis_Geom {
 		%feature("autodoc", "
 Parameters
 ----------
-Pnts: NCollection_Array1<gp_Pnt>
+Pnts: TColgp_Array1OfPnt
 aPln: gp_Pln
 
 Return
@@ -2768,7 +2781,7 @@ Description
 -----------
 Builds a plane out of a set of points in array Returns in <dmax> the maximal distance between the produced plane and given points.
 ") NearestPlane;
-		static bool NearestPlane(const NCollection_Array1<gp_Pnt> & Pnts, gp_Pln & aPln, Standard_Real &OutValue);
+		static bool NearestPlane(const TColgp_Array1OfPnt & Pnts, gp_Pln & aPln, Standard_Real &OutValue);
 
 		/****** ShapeAnalysis_Geom::PositionTrsf ******/
 		/****** md5 signature: abccdb811ee784b602b5f513079e5fc5 ******/
@@ -2776,7 +2789,7 @@ Builds a plane out of a set of points in array Returns in <dmax> the maximal dis
 		%feature("autodoc", "
 Parameters
 ----------
-coefs: NCollection_HArray2<double
+coefs: TColStd_HArray2OfReal
 trsf: gp_Trsf
 unit: double
 prec: double
@@ -2789,7 +2802,7 @@ Description
 -----------
 Builds transformation object out of matrix. Matrix must be 3 x 4. Unit is used as multiplier.
 ") PositionTrsf;
-		static bool PositionTrsf(const opencascade::handle<NCollection_HArray2<double> > & coefs, gp_Trsf & trsf, const double unit, const double prec);
+		static bool PositionTrsf(const opencascade::handle<TColStd_HArray2OfReal> & coefs, gp_Trsf & trsf, const double unit, const double prec);
 
 };
 
@@ -2823,13 +2836,13 @@ Initialize fields and call ClearFlags().
 		%feature("compactdefaultargs") BigSplineSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") BigSplineSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> BigSplineSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & BigSplineSec();
 
 		/****** ShapeAnalysis_ShapeContents::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2862,13 +2875,13 @@ Clears all flags.
 		%feature("compactdefaultargs") IndirectSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") IndirectSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> IndirectSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & IndirectSec();
 
 		/****** ShapeAnalysis_ShapeContents::ModifyBigSplineMode ******/
 		/****** md5 signature: 66ead8cdb7d2fd8ac04c28569fdc4a8a ******/
@@ -3395,26 +3408,26 @@ No available documentation.
 		%feature("compactdefaultargs") OffsetCurveSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") OffsetCurveSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> OffsetCurveSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & OffsetCurveSec();
 
 		/****** ShapeAnalysis_ShapeContents::OffsetSurfaceSec ******/
 		/****** md5 signature: 126875f716cee4fbd577ee1dec97703e ******/
 		%feature("compactdefaultargs") OffsetSurfaceSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") OffsetSurfaceSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> OffsetSurfaceSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & OffsetSurfaceSec();
 
 		/****** ShapeAnalysis_ShapeContents::Perform ******/
 		/****** md5 signature: 16888c81df64e609e09767552e6bb5d4 ******/
@@ -3439,27 +3452,55 @@ Counts quantities of sun-shapes in shape and stores sub-shapes according to flag
 		%feature("compactdefaultargs") Trimmed2dSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") Trimmed2dSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Trimmed2dSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & Trimmed2dSec();
 
 		/****** ShapeAnalysis_ShapeContents::Trimmed3dSec ******/
 		/****** md5 signature: 63e5f462429def2e28721648c5f7c5eb ******/
 		%feature("compactdefaultargs") Trimmed3dSec;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") Trimmed3dSec;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Trimmed3dSec();
+		const opencascade::handle<TopTools_HSequenceOfShape> & Trimmed3dSec();
 
+		%extend{
+			bool GetModifyBigSplineMode() { return self->ModifyBigSplineMode(); }
+			void SetModifyBigSplineMode(bool value) { self->ModifyBigSplineMode() = value; }
+		};
+		%extend{
+			bool GetModifyIndirectMode() { return self->ModifyIndirectMode(); }
+			void SetModifyIndirectMode(bool value) { self->ModifyIndirectMode() = value; }
+		};
+		%extend{
+			bool GetModifyOffsetSurfaceMode() { return self->ModifyOffsetSurfaceMode(); }
+			void SetModifyOffsetSurfaceMode(bool value) { self->ModifyOffsetSurfaceMode() = value; }
+		};
+		%extend{
+			bool GetModifyTrimmed3dMode() { return self->ModifyTrimmed3dMode(); }
+			void SetModifyTrimmed3dMode(bool value) { self->ModifyTrimmed3dMode() = value; }
+		};
+		%extend{
+			bool GetModifyOffsetCurveMode() { return self->ModifyOffsetCurveMode(); }
+			void SetModifyOffsetCurveMode(bool value) { self->ModifyOffsetCurveMode() = value; }
+		};
+		%extend{
+			bool GetModifyTrimmed2dMode() { return self->ModifyTrimmed2dMode(); }
+			void SetModifyTrimmed2dMode(bool value) { self->ModifyTrimmed2dMode() = value; }
+		};
+		%extend{
+			bool GetModifyOffestSurfaceMode() { return self->ModifyOffestSurfaceMode(); }
+			void SetModifyOffestSurfaceMode(bool value) { self->ModifyOffestSurfaceMode() = value; }
+		};
 };
 
 
@@ -3537,13 +3578,13 @@ type: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Determines which shapes have a tolerance within a given interval <type> is interpreted as in the method Tolerance.
 ") InTolerance;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> InTolerance(const TopoDS_Shape & shape, const double valmin, const double valmax, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
+		opencascade::handle<TopTools_HSequenceOfShape> InTolerance(const TopoDS_Shape & shape, const double valmin, const double valmax, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
 		/****** ShapeAnalysis_ShapeTolerance::InitTolerance ******/
 		/****** md5 signature: b0b32e3190ada2249e730ea00f6d78db ******/
@@ -3570,13 +3611,13 @@ type: TopAbs_ShapeEnum (optional, default to TopAbs_SHAPE)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Determines which shapes have a tolerance over the given value <type> is interpreted as in the method Tolerance.
 ") OverTolerance;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> OverTolerance(const TopoDS_Shape & shape, const double value, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
+		opencascade::handle<TopTools_HSequenceOfShape> OverTolerance(const TopoDS_Shape & shape, const double value, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
 		/****** ShapeAnalysis_ShapeTolerance::Tolerance ******/
 		/****** md5 signature: da5807f6b9cda350fe3d57aeacb10ca5 ******/
@@ -4153,8 +4194,8 @@ Projects a point <P3d> on a singularity by computing one of the coordinates of p
 Parameters
 ----------
 nbrPnt: int
-points: NCollection_Sequence<gp_Pnt>
-pnt2d: NCollection_Sequence<gp_Pnt2d>
+points: TColgp_SequenceOfPnt
+pnt2d: TColgp_SequenceOfPnt2d
 preci: double
 direct: bool
 
@@ -4166,7 +4207,7 @@ Description
 -----------
 Checks points at the beginning (direct is True) or end (direct is False) of array <points> to lie in singularity of surface, and if yes, adjusts the indeterminate 2d coordinate of these points by nearest point which is not in singularity. Returns True if some points were adjusted.
 ") ProjectDegenerated;
-		bool ProjectDegenerated(const int nbrPnt, const NCollection_Sequence<gp_Pnt> & points, NCollection_Sequence<gp_Pnt2d> & pnt2d, const double preci, const bool direct);
+		bool ProjectDegenerated(const int nbrPnt, const TColgp_SequenceOfPnt & points, TColgp_SequenceOfPnt2d & pnt2d, const double preci, const bool direct);
 
 		/****** ShapeAnalysis_Surface::SetDomain ******/
 		/****** md5 signature: a5686de16aed57be95a29075060ece4e ******/
@@ -4463,18 +4504,18 @@ Returns True if 3d curve of edge and pcurve are SameRange (in default implementa
 		%feature("autodoc", "
 Parameters
 ----------
-Params: NCollection_HSequence<double
+Params: TColStd_HSequenceOfReal
 To2d: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
-		virtual opencascade::handle<NCollection_HSequence<double>> Perform(const opencascade::handle<NCollection_HSequence<double> > & Params, const bool To2d);
+		virtual opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Params, const bool To2d);
 
 		/****** ShapeAnalysis_TransferParameters::Perform ******/
 		/****** md5 signature: 493b31afe82967aaa5e1d6e0e19bd29d ******/
@@ -4823,8 +4864,8 @@ Parameters
 ----------
 num: int
 points2d: NCollection_Sequence<IntRes2d_IntersectionPoint>
-points3d: NCollection_Sequence<gp_Pnt>
-errors: NCollection_Sequence<double>
+points3d: TColgp_SequenceOfPnt
+errors: TColStd_SequenceOfReal
 
 Return
 -------
@@ -4834,7 +4875,7 @@ Description
 -----------
 Checks two adjacent edges for intersecting. Intersection is reported only if intersection point is not enclosed by the common end vertex of the edges. Returns: True if intersection is found. If returns True it also fills the sequences of intersection points, corresponding 3d points, and errors for them (half-distances between intersection points in 3d calculated from one and from another edge) Status: FAIL1: No pcurve FAIL2: No vertices DONE1: Self-intersection found.
 ") CheckIntersectingEdges;
-		bool CheckIntersectingEdges(const int num, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, NCollection_Sequence<gp_Pnt> & points3d, NCollection_Sequence<double> & errors);
+		bool CheckIntersectingEdges(const int num, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
 		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
 		/****** md5 signature: 27f68c61d50c41a9fbbf27b6aed6a9da ******/
@@ -4863,8 +4904,8 @@ Parameters
 num1: int
 num2: int
 points2d: NCollection_Sequence<IntRes2d_IntersectionPoint>
-points3d: NCollection_Sequence<gp_Pnt>
-errors: NCollection_Sequence<double>
+points3d: TColgp_SequenceOfPnt
+errors: TColStd_SequenceOfReal
 
 Return
 -------
@@ -4874,7 +4915,7 @@ Description
 -----------
 Checks i-th and j-th edges for intersecting. Remark: See the previous method for details.
 ") CheckIntersectingEdges;
-		bool CheckIntersectingEdges(const int num1, const int num2, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, NCollection_Sequence<gp_Pnt> & points3d, NCollection_Sequence<double> & errors);
+		bool CheckIntersectingEdges(const int num1, const int num2, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
 		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
 		/****** md5 signature: 2df27f896a8a027384ea0df86d27de3c ******/
@@ -4954,10 +4995,10 @@ Checks if there is a gap in 2D between edges and not comprised by vertex toleran
 		%feature("autodoc", "
 Parameters
 ----------
-aMapLoopVertices: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
-aMapVertexEdges: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-aMapSmallEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
-aMapSeemEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+aMapLoopVertices: TopTools_IndexedMapOfShape
+aMapVertexEdges: TopTools_DataMapOfShapeListOfShape
+aMapSmallEdges: TopTools_MapOfShape
+aMapSeemEdges: TopTools_MapOfShape
 
 Return
 -------
@@ -4967,7 +5008,7 @@ Description
 -----------
 Checks existence of loop on wire and return vertices which are loop vertices (vertices belonging to a few pairs of edges).
 ") CheckLoop;
-		bool CheckLoop(NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapLoopVertices, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & aMapVertexEdges, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapSmallEdges, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & aMapSeemEdges);
+		bool CheckLoop(TopTools_IndexedMapOfShape & aMapLoopVertices, TopTools_DataMapOfShapeListOfShape & aMapVertexEdges, TopTools_MapOfShape & aMapSmallEdges, TopTools_MapOfShape & aMapSeemEdges);
 
 		/****** ShapeAnalysis_Wire::CheckNotchedEdges ******/
 		/****** md5 signature: ea2eea5f659c933e14ab476979aece94 ******/
@@ -5094,7 +5135,7 @@ Parameters
 ----------
 num: int
 points2d: NCollection_Sequence<IntRes2d_IntersectionPoint>
-points3d: NCollection_Sequence<gp_Pnt>
+points3d: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -5104,7 +5145,7 @@ Description
 -----------
 Checks if num-th edge is self-intersecting. Self-intersection is reported only if intersection point lies outside of both end vertices of the edge. Returns: True if edge is self-intersecting. If returns True it also fills the sequences of intersection points and corresponding 3d points (only that are not enclosed by a vertices) Status: FAIL1: No pcurve FAIL2: No vertices DONE1: Self-intersection found.
 ") CheckSelfIntersectingEdge;
-		bool CheckSelfIntersectingEdge(const int num, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, NCollection_Sequence<gp_Pnt> & points3d);
+		bool CheckSelfIntersectingEdge(const int num, NCollection_Sequence<IntRes2d_IntersectionPoint> & points2d, TColgp_SequenceOfPnt & points3d);
 
 		/****** ShapeAnalysis_Wire::CheckSelfIntersectingEdge ******/
 		/****** md5 signature: e2a4345c2dba78792676d560a65a0c13 ******/
@@ -6248,6 +6289,10 @@ Returns the values of the couple <num>, as 3D values.
 ") XYZ;
 		void XYZ(const int theIdx, gp_XYZ & theStart3D, gp_XYZ & theEnd3D);
 
+		%extend{
+			bool GetKeepLoopsMode() { return self->KeepLoopsMode(); }
+			void SetKeepLoopsMode(bool value) { self->KeepLoopsMode() = value; }
+		};
 };
 
 
@@ -6832,18 +6877,18 @@ Returns False;.
 		%feature("autodoc", "
 Parameters
 ----------
-Papams: NCollection_HSequence<double
+Papams: TColStd_HSequenceOfReal
 To2d: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<double>>
+opencascade::handle<TColStd_HSequenceOfReal>
 
 Description
 -----------
 Transfers parameters given by sequence Params from 3d curve to pcurve (if To2d is True) or back (if To2d is False).
 ") Perform;
-		opencascade::handle<NCollection_HSequence<double>> Perform(const opencascade::handle<NCollection_HSequence<double> > & Papams, const bool To2d);
+		opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Papams, const bool To2d);
 
 		/****** ShapeAnalysis_TransferParametersProj::Perform ******/
 		/****** md5 signature: 2048dd4e0f73a51a118b98ac2e6cf411 ******/
@@ -6885,6 +6930,10 @@ Recomputes range of curves from NewEdge. If Is2d equals True parameters are reco
 ") TransferRange;
 		void TransferRange(TopoDS_Edge & newEdge, const double prevPar, const double currPar, const bool Is2d);
 
+		%extend{
+			bool GetForceProjection() { return self->ForceProjection(); }
+			void SetForceProjection(bool value) { self->ForceProjection() = value; }
+		};
 };
 
 

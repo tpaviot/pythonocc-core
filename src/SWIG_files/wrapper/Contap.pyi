@@ -10,6 +10,7 @@ from OCC.Core.Adaptor3d import *
 from OCC.Core.Adaptor2d import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.Geom2d import *
+from OCC.Core.TColStd import *
 
 # the following typedef cannot be wrapped as is
 Contap_TheHSequenceOfPoint = NewType("Contap_TheHSequenceOfPoint", Any)
@@ -246,6 +247,8 @@ class Contap_HCurve2dTool:
     def GetType(C: Adaptor2d_Curve2d) -> GeomAbs_CurveType: ...
     @staticmethod
     def Hyperbola(C: Adaptor2d_Curve2d) -> gp_Hypr2d: ...
+    @staticmethod
+    def Intervals(C: Adaptor2d_Curve2d, T: TColStd_Array1OfReal, S: GeomAbs_Shape) -> None: ...
     @staticmethod
     def IsClosed(C: Adaptor2d_Curve2d) -> bool: ...
     @staticmethod

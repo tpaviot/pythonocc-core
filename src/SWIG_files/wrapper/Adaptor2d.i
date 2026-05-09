@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor2d.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -57,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor2d.html"
 %import Geom2d.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -403,7 +405,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -414,7 +416,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor2d_Curve2d::IsClosed ******/
 		/****** md5 signature: 49d9d49cc3fa9662ba5676889922566f ******/
@@ -907,7 +909,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -918,7 +920,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor2d_Line2d::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -1486,7 +1488,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1497,7 +1499,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor2d_OffsetCurve::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/

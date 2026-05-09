@@ -4,6 +4,8 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.math import *
+from OCC.Core.TColStd import *
+from OCC.Core.TColgp import *
 from OCC.Core.IntPatch import *
 from OCC.Core.Approx import *
 from OCC.Core.gp import *

@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transfer.html"
 #include<NCollection_module.hxx>
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
+#include<TColStd_module.hxx>
 #include<DE_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -68,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transfer.html"
 %import NCollection.i
 %import Message.i
 %import Interface.i
+%import TColStd.i
 %import DE.i
 
 %pythoncode {
@@ -161,6 +163,13 @@ Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
 %template(Transfer_SequenceOfBinder) NCollection_Sequence<opencascade::handle<Transfer_Binder>>;
 
 %extend NCollection_Sequence<opencascade::handle<Transfer_Binder>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -169,6 +178,13 @@ Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
 %template(Transfer_SequenceOfFinder) NCollection_Sequence<opencascade::handle<Transfer_Finder>>;
 
 %extend NCollection_Sequence<opencascade::handle<Transfer_Finder>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1337,13 +1353,13 @@ No available documentation.
 		%feature("compactdefaultargs") GetMapObjects;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
+TColStd_DataMapOfTransientTransient
 
 Description
 -----------
 Get map already translated geometry objects.
 ") GetMapObjects;
-		NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>> & GetMapObjects();
+		TColStd_DataMapOfTransientTransient & GetMapObjects();
 
 		/****** Transfer_MapContainer::SetMapObjects ******/
 		/****** md5 signature: 7c52d817e73009dddf99a4cbee195f06 ******/
@@ -1351,7 +1367,7 @@ Get map already translated geometry objects.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapObjects: Standard_Transient
+theMapObjects: TColStd_DataMapOfTransientTransient
 
 Return
 -------
@@ -1361,7 +1377,7 @@ Description
 -----------
 Set map already translated geometry objects.
 ") SetMapObjects;
-		void SetMapObjects(NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & theMapObjects);
+		void SetMapObjects(TColStd_DataMapOfTransientTransient & theMapObjects);
 
 };
 
@@ -2567,13 +2583,13 @@ result: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of starting entities to which a check status is attached. <check> = -2 all entities whatever the check (see result) <check> = -1 entities with no fail (warning allowed) <check> = 0 entities with no check at all <check> = 1 entities with warning but no fail <check> = 2 entities with fail <result>: if True, only entities with an attached result Remark: result True and check=0 will give an empty list.
 ") CheckedList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> CheckedList(const Interface_CheckStatus check, const bool result);
+		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const Interface_CheckStatus check, const bool result);
 
 		/****** Transfer_ResultFromModel::ComputeCheckStatus ******/
 		/****** md5 signature: c702c7b921be32aa04218f4aade12089 ******/
@@ -2736,13 +2752,13 @@ level: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Internal method which returns the list of ResultFromTransient, according level (2:complete; 1:sub-level 1; 0:main only).
 ") Results;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Results(const int level);
+		opencascade::handle<TColStd_HSequenceOfTransient> Results(const int level);
 
 		/****** Transfer_ResultFromModel::SetFileName ******/
 		/****** md5 signature: 3082f0fa9cb29f4500abd96576ac4b21 ******/
@@ -2826,13 +2842,13 @@ level: int (optional, default to 2)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of recorded starting entities, ending by the root. Entities with check but no transfer result are ignored <level> = 2 (D), considers the complete list <level> = 1 considers the main result plus immediate subs <level> = 0 just the main result.
 ") TransferredList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> TransferredList(const int level = 2);
+		opencascade::handle<TColStd_HSequenceOfTransient> TransferredList(const int level = 2);
 
 };
 
@@ -2975,7 +2991,7 @@ Fills back a TransientProcess with definition of a ResultFromTransient, respectf
 		%feature("autodoc", "
 Parameters
 ----------
-map: Standard_Transient
+map: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -2985,7 +3001,7 @@ Description
 -----------
 This method is used by ResultFromModel to collate the list of ResultFromTransient, avoiding duplications with a map Remark: <self> is already in the map and has not to be bound.
 ") FillMap;
-		void FillMap(NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & map);
+		void FillMap(TColStd_IndexedMapOfTransient & map);
 
 		/****** Transfer_ResultFromTransient::HasResult ******/
 		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
@@ -4042,6 +4058,10 @@ No available documentation.
 ") Transferring;
 		opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		%extend{
+			int GetModeTrans() { return self->ModeTrans(); }
+			void SetModeTrans(int value) { self->ModeTrans() = value; }
+		};
 };
 
 
@@ -4463,7 +4483,7 @@ Description
 -----------
 After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D): keeps. <keep> = False: rejects Does nothing if <withstarts> was False.
 ") Filter;
-		void Filter(const opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder> > > & list, const bool keep = true);
+		void Filter(const opencascade::handle<NCollection_HSequence<opencascade::handle<Transfer_Finder>> > & list, const bool keep = true);
 
 		/****** Transfer_IteratorOfProcessForFinder::HasStarting ******/
 		/****** md5 signature: 1deb23ddedfe68ebbb753f260f370f5f ******/
@@ -4566,7 +4586,7 @@ Adds a Binder to the iteration list, associated with its corresponding Starting 
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 keep: bool (optional, default to true)
 
 Return
@@ -4577,7 +4597,7 @@ Description
 -----------
 After having added all items, keeps or rejects items which are attached to starting data given by <only> <keep> = True (D): keeps. <keep> = False: rejects Does nothing if <withstarts> was False.
 ") Filter;
-		void Filter(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const bool keep = true);
+		void Filter(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const bool keep = true);
 
 		/****** Transfer_IteratorOfProcessForTransient::HasStarting ******/
 		/****** md5 signature: 1deb23ddedfe68ebbb753f260f370f5f ******/
@@ -4668,13 +4688,13 @@ Returns True if a starting object is bound with SEVERAL results: Here, returns a
 		%feature("compactdefaultargs") MultipleResult;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the Multiple Result, if it is defined (at least one Item). Else, returns a Null Handle.
 ") MultipleResult;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> MultipleResult();
+		opencascade::handle<TColStd_HSequenceOfTransient> MultipleResult();
 
 		/****** Transfer_MultipleBinder::NbResults ******/
 		/****** md5 signature: 65c4f4daebee539eb95b12866afc1a75 ******/
@@ -4739,7 +4759,7 @@ Returns the value of the recorded result n0 <num>.
 		%feature("autodoc", "
 Parameters
 ----------
-mulres: NCollection_HSequence<
+mulres: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -4749,7 +4769,7 @@ Description
 -----------
 Defines a Binding with a Multiple Result, given as a Sequence Error if a Unique Result has yet been defined.
 ") SetMultipleResult;
-		void SetMultipleResult(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & mulres);
+		void SetMultipleResult(const opencascade::handle<TColStd_HSequenceOfTransient > & mulres);
 
 };
 
@@ -4892,7 +4912,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -4902,7 +4922,7 @@ Description
 -----------
 No available documentation.
 ") Transfer_TransientListBinder;
-		 Transfer_TransientListBinder(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		 Transfer_TransientListBinder(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** Transfer_TransientListBinder::AddResult ******/
 		/****** md5 signature: 26a5caa60fcbd70186b2bf4eb98b9e52 ******/
@@ -4953,13 +4973,13 @@ No available documentation.
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 No available documentation.
 ") Result;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Result();
+		opencascade::handle<TColStd_HSequenceOfTransient> Result();
 
 		/****** Transfer_TransientListBinder::ResultType ******/
 		/****** md5 signature: 4e004b8040dfd0ab644b911d7c8c2437 ******/
@@ -5329,13 +5349,13 @@ Specific printing to trace an entity: prints label and type (if model is set).
 		%feature("compactdefaultargs") RootsForTransfer;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 No available documentation.
 ") RootsForTransfer;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> RootsForTransfer();
+		opencascade::handle<TColStd_HSequenceOfTransient> RootsForTransfer();
 
 		/****** Transfer_TransientProcess::SetContext ******/
 		/****** md5 signature: 977c5e273bd883dc9ebcc8d1a58e2c34 ******/

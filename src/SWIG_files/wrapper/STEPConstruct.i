@@ -55,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepconstruct.htm
 #include<StepGeom_module.hxx>
 #include<StepData_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<StepVisual_module.hxx>
 #include<Quantity_module.hxx>
 #include<XCAFDoc_module.hxx>
@@ -98,6 +99,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepconstruct.htm
 %import StepGeom.i
 %import StepData.i
 %import TCollection.i
+%import TColStd.i
 %import StepVisual.i
 %import Quantity.i
 %import XCAFDoc.i
@@ -1045,13 +1047,13 @@ assembly: STEPConstruct_Assembly
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Produces and returns a full list of root entities required for assembly link identified by assembly (including NAUO and CDSR).
 ") GetRootsForAssemblyLink;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetRootsForAssemblyLink(const STEPConstruct_Assembly & assembly);
+		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForAssemblyLink(const STEPConstruct_Assembly & assembly);
 
 		/****** STEPConstruct_ContextTool::GetRootsForPart ******/
 		/****** md5 signature: 523531dd6068046f8f0a1a7698d9f8af ******/
@@ -1063,13 +1065,13 @@ SDRTool: STEPConstruct_Part
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Produces and returns a full list of root entities required for part identified by SDRTool (including SDR itself).
 ") GetRootsForPart;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetRootsForPart(const STEPConstruct_Part & SDRTool);
+		opencascade::handle<TColStd_HSequenceOfTransient> GetRootsForPart(const STEPConstruct_Part & SDRTool);
 
 		/****** STEPConstruct_ContextTool::Index ******/
 		/****** md5 signature: 5f8486b8f8a28d56e63445ad924b19d8 ******/
@@ -3529,7 +3531,7 @@ Description
 -----------
 Create STEP color entity by given Quantity_Color The analysis is performed for whether the color corresponds to one of standard colors predefined in STEP. In that case, PredefinedColour entity is created instead of RGBColour.
 ") EncodeColor;
-		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col, NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & DPDCs, NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient> > & ColRGBs);
+		static opencascade::handle<StepVisual_Colour> EncodeColor(const Quantity_Color & Col, NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & DPDCs, NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>> & ColRGBs);
 
 		/****** STEPConstruct_Styles::FindContext ******/
 		/****** md5 signature: 686534002fbf51b23e0002361011ca16 ******/
@@ -3614,7 +3616,7 @@ Initializes tool; returns True if succeeded.
 		%feature("autodoc", "
 Parameters
 ----------
-InvSyles: NCollection_HSequence<
+InvSyles: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -3624,7 +3626,7 @@ Description
 -----------
 Searches the STEP model for the INISIBILITY entities (which bring styles) and fills out sequence of styles.
 ") LoadInvisStyles;
-		bool LoadInvisStyles(opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & InvSyles);
+		bool LoadInvisStyles(opencascade::handle<TColStd_HSequenceOfTransient > & InvSyles);
 
 		/****** STEPConstruct_Styles::LoadStyles ******/
 		/****** md5 signature: a80e408a6ed4d27089755a928642594d ******/
@@ -4026,7 +4028,7 @@ Load worksession; returns True if succeeded.
 		%feature("autodoc", "
 Parameters
 ----------
-seq: Standard_Transient
+seq: TColStd_SequenceOfTransient
 
 Return
 -------
@@ -4036,7 +4038,7 @@ Description
 -----------
 Searches for entities of the type PropertyDefinitionRepresentation in the model and fills the sequence by them.
 ") LoadProps;
-		bool LoadProps(NCollection_Sequence<opencascade::handle<Standard_Transient> > & seq);
+		bool LoadProps(TColStd_SequenceOfTransient & seq);
 
 		/****** STEPConstruct_ValidationProps::SetAssemblyShape ******/
 		/****** md5 signature: 2bea02eb53d21b8bd84a59fa21801c31 ******/

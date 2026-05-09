@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmnaming.html"
 #include<BinTools_module.hxx>
 #include<TDF_module.hxx>
 #include<BinObjMgt_module.hxx>
+#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<Geom_module.hxx>
 #include<TopoDS_module.hxx>
@@ -68,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binmnaming.html"
 %import BinTools.i
 %import TDF.i
 %import BinObjMgt.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -83,6 +85,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BinMNaming_NamedShapeDriver)
+%wrap_handle(BinMNaming_NamingDriver)
 /* end handles declaration */
 
 /* templates */
@@ -272,7 +276,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -282,7 +286,7 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 		/****** BinMNaming_NamedShapeDriver::ReadShapeSection ******/
 		/****** md5 signature: 66ff232ed5a17a346bcdcc9d0bc2b9ce ******/
@@ -379,6 +383,8 @@ Output the shapes into Bin Document file.
 };
 
 
+%make_alias(BinMNaming_NamedShapeDriver)
+
 %extend BinMNaming_NamedShapeDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -449,7 +455,7 @@ Parameters
 ----------
 Source: TDF_Attribute
 Target: BinObjMgt_Persistent
-RelocTable: Standard_Transient
+RelocTable: TColStd_IndexedMapOfTransient
 
 Return
 -------
@@ -459,10 +465,12 @@ Description
 -----------
 No available documentation.
 ") Paste;
-		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, NCollection_IndexedMap<opencascade::handle<Standard_Transient> > & RelocTable);
+		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, TColStd_IndexedMapOfTransient & RelocTable);
 
 };
 
+
+%make_alias(BinMNaming_NamingDriver)
 
 %extend BinMNaming_NamingDriver {
 	%pythoncode {

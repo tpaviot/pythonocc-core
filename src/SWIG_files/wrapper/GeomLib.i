@@ -46,8 +46,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomlib.html"
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<math_module.hxx>
@@ -66,8 +68,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomlib.html"
 %import NCollection.i
 %import Geom.i
 %import gp.i
+%import TColgp.i
 %import Adaptor3d.i
 %import GeomAbs.i
+%import TColStd.i
 %import Geom2d.i
 %import Adaptor2d.i
 %import math.i
@@ -152,7 +156,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt>
+Points: TColgp_Array1OfPnt
 Axe: gp_Ax2
 Tol: double (optional, default to 1.0e-7)
 
@@ -164,7 +168,7 @@ Description
 -----------
 Compute axes of inertia, of some points <Axe>.Location() is the BaryCentre <Axe>.XDirection is the axe of upper inertia <Axe>.Direction is the Normal to the average plane IsSingular is True if points are on line Tol is used to determine singular cases.
 ") AxeOfInertia;
-		static void AxeOfInertia(const NCollection_Array1<gp_Pnt> & Points, gp_Ax2 & Axe, Standard_Boolean &OutValue, const double Tol = 1.0e-7);
+		static void AxeOfInertia(const TColgp_Array1OfPnt & Points, gp_Ax2 & Axe, Standard_Boolean &OutValue, const double Tol = 1.0e-7);
 
 		/****** GeomLib::BuildCurve3d ******/
 		/****** md5 signature: 4b59251c965685bfe3031cc183f828b6 ******/
@@ -219,8 +223,8 @@ Cancel,on the boundaries,the denominator first derivative in the directions wish
 Parameters
 ----------
 MinNumPoints: int
-InParameters: NCollection_Array1<double>
-OutParameters: NCollection_HArray1<double
+InParameters: TColStd_Array1OfReal
+OutParameters: TColStd_HArray1OfReal
 
 Return
 -------
@@ -230,7 +234,7 @@ Description
 -----------
 this makes sure that there is at least MinNumPoints in OutParameters taking into account the parameters in the InParameters array provided those are in order, that is the sequence of real in the InParameter is strictly non decreasing.
 ") DensifyArray1OfReal;
-		static void DensifyArray1OfReal(const int MinNumPoints, const NCollection_Array1<double> & InParameters, opencascade::handle<NCollection_HArray1<double> > & OutParameters);
+		static void DensifyArray1OfReal(const int MinNumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
 		/****** GeomLib::EvalMaxDistanceAlongParameter ******/
 		/****** md5 signature: bde436fd772795869d3e23cfef5799e3 ******/
@@ -241,7 +245,7 @@ Parameters
 Curve: Adaptor3d_Curve
 AReferenceCurve: Adaptor3d_Curve
 Tolerance: double
-Parameters: NCollection_Array1<double>
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -251,7 +255,7 @@ Description
 -----------
 this will compute the maximum distance at the parameters given in the Parameters array by projecting from the Curve to the reference curve and taking the minimum distance Than the maximum will be taken on those minimas.
 ") EvalMaxDistanceAlongParameter;
-		static void EvalMaxDistanceAlongParameter(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const double Tolerance, const NCollection_Array1<double> & Parameters, Standard_Real &OutValue);
+		static void EvalMaxDistanceAlongParameter(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const double Tolerance, const TColStd_Array1OfReal & Parameters, Standard_Real &OutValue);
 
 		/****** GeomLib::EvalMaxParametricDistance ******/
 		/****** md5 signature: 5af8f94185282602a25cee11a24a076d ******/
@@ -262,7 +266,7 @@ Parameters
 Curve: Adaptor3d_Curve
 AReferenceCurve: Adaptor3d_Curve
 Tolerance: double
-Parameters: NCollection_Array1<double>
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -272,7 +276,7 @@ Description
 -----------
 this will compute the maximum distance at the parameters given in the Parameters array by evaluating each parameter the two curves and taking the maximum of the evaluated distance.
 ") EvalMaxParametricDistance;
-		static void EvalMaxParametricDistance(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const double Tolerance, const NCollection_Array1<double> & Parameters, Standard_Real &OutValue);
+		static void EvalMaxParametricDistance(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const double Tolerance, const TColStd_Array1OfReal & Parameters, Standard_Real &OutValue);
 
 		/****** GeomLib::ExtendCurveToPoint ******/
 		/****** md5 signature: 7e19a56bb5a96f5f1058b7b5fe1edbed ******/
@@ -323,9 +327,9 @@ Extends the bounded surface Surf along one of its boundaries. The chord length o
 		%feature("autodoc", "
 Parameters
 ----------
-Interval1: NCollection_Array1<double>
-Interval2: NCollection_Array1<double>
-Fusion: NCollection_Sequence<double>
+Interval1: TColStd_Array1OfReal
+Interval2: TColStd_Array1OfReal
+Fusion: TColStd_SequenceOfReal
 Confusion: double (optional, default to 1.0e-9)
 IsAdjustToFirstInterval: bool (optional, default to false)
 
@@ -341,7 +345,7 @@ Input parameter: Interval2 second interval to fuse
 Input parameter: Confision tolerance to compare intervals 
 Input parameter: IsAdjustToFirstInterval flag to set method of fusion, if intervals are close  if false, intervals are fusing by half-division method  if true, intervals are fusing by selecting value from Interval1 @param[out] Fusion output interval.
 ") FuseIntervals;
-		static void FuseIntervals(const NCollection_Array1<double> & Interval1, const NCollection_Array1<double> & Interval2, NCollection_Sequence<double> & Fusion, const double Confusion = 1.0e-9, const bool IsAdjustToFirstInterval = false);
+		static void FuseIntervals(const TColStd_Array1OfReal & Interval1, const TColStd_Array1OfReal & Interval2, TColStd_SequenceOfReal & Fusion, const double Confusion = 1.0e-9, const bool IsAdjustToFirstInterval = false);
 
 		/****** GeomLib::GTransform ******/
 		/****** md5 signature: 8e793303845ac7edd4a76bb5abc12d5f ******/
@@ -368,7 +372,7 @@ Computes the curve 3d from package Geom corresponding to the curve 3d from packa
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt>
+Points: TColgp_Array1OfPnt
 Bary: gp_Pnt
 XDir: gp_Dir
 YDir: gp_Dir
@@ -383,7 +387,7 @@ Description
 -----------
 Compute principale axes of inertia, and dispersion value of some points.
 ") Inertia;
-		static void Inertia(const NCollection_Array1<gp_Pnt> & Points, gp_Pnt & Bary, gp_Dir & XDir, gp_Dir & YDir, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Inertia(const TColgp_Array1OfPnt & Points, gp_Pnt & Bary, gp_Dir & XDir, gp_Dir & YDir, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** GeomLib::IsBSplUClosed ******/
 		/****** md5 signature: c17be61e25d616d5eaf0a6e43f9f9af3 ******/
@@ -521,8 +525,8 @@ Return: 0 if normal estimated from D1, 1 if estimated from D2 (quasysingular), >
 Parameters
 ----------
 NumPoints: int
-InParameters: NCollection_Array1<double>
-OutParameters: NCollection_HArray1<double
+InParameters: TColStd_Array1OfReal
+OutParameters: TColStd_HArray1OfReal
 
 Return
 -------
@@ -532,7 +536,7 @@ Description
 -----------
 Warning! This assume that the InParameter is an increasing sequence of real number and it will not check for that: Unpredictable result can happen if this is not satisfied. It is the caller responsibility to check for that property. //! This method makes uniform NumPoints segments S1,...SNumPoints out of the segment defined by the first parameter and the last parameter of the InParameter ; keeps only one point of the InParameters set of parameter in each of the uniform segments taking care of the first and the last parameters. For the ith segment the element of the InParameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment There will be at the end at most NumPoints + 1 if NumPoints > 2 in the OutParameters Array.
 ") RemovePointsFromArray;
-		static void RemovePointsFromArray(const int NumPoints, const NCollection_Array1<double> & InParameters, opencascade::handle<NCollection_HArray1<double> > & OutParameters);
+		static void RemovePointsFromArray(const int NumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
 		/****** GeomLib::SameRange ******/
 		/****** md5 signature: 4e0795fefde8c0dd0e660054d814b13e ******/
@@ -1038,7 +1042,7 @@ class GeomLib_DenominatorMultiplier {
 Parameters
 ----------
 Surface: Geom_BSplineSurface
-KnotVector: NCollection_Array1<double>
+KnotVector: TColStd_Array1OfReal
 
 Return
 -------
@@ -1048,7 +1052,7 @@ Description
 -----------
 if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by: a(u,v) * N(u,v) NewF(u,v) = ---------------- a(u,v) * D(u,v).
 ") GeomLib_DenominatorMultiplier;
-		 GeomLib_DenominatorMultiplier(const opencascade::handle<Geom_BSplineSurface> & Surface, const NCollection_Array1<double> & KnotVector);
+		 GeomLib_DenominatorMultiplier(const opencascade::handle<Geom_BSplineSurface> & Surface, const TColStd_Array1OfReal & KnotVector);
 
 		/****** GeomLib_DenominatorMultiplier::Value ******/
 		/****** md5 signature: 4b9c8272e43a536cbf5b89c3101964d1 ******/
@@ -1091,8 +1095,8 @@ Parameters
 ----------
 Degree: int
 NumPoints: int
-Points: NCollection_Array1<gp_Pnt>
-Parameters: NCollection_Array1<double>
+Points: TColgp_Array1OfPnt
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -1102,7 +1106,7 @@ Description
 -----------
 No available documentation.
 ") GeomLib_Interpolate;
-		 GeomLib_Interpolate(const int Degree, const int NumPoints, const NCollection_Array1<gp_Pnt> & Points, const NCollection_Array1<double> & Parameters);
+		 GeomLib_Interpolate(const int Degree, const int NumPoints, const TColgp_Array1OfPnt & Points, const TColStd_Array1OfReal & Parameters);
 
 		/****** GeomLib_Interpolate::Curve ******/
 		/****** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ******/

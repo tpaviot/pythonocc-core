@@ -46,13 +46,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<OSD_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRep_module.hxx>
 #include<Message_module.hxx>
-#include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<gp_module.hxx>
@@ -68,13 +68,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 %import NCollection.i
 %import TopoDS.i
 %import Bnd.i
+%import TopTools.i
 %import Geom.i
 %import Geom2d.i
 %import OSD.i
 %import TopAbs.i
 %import BRep.i
 %import Message.i
-%import TopTools.i
 %import GeomAbs.i
 %import TopLoc.i
 %import gp.i
@@ -210,7 +210,7 @@ Adds to the box <B> the bounding values of the edge in the parametric space of F
 Parameters
 ----------
 theS: TopoDS_Shape
-theProblemShapes: NCollection_List<TopoDS_Shape>
+theProblemShapes: TopTools_ListOfShape
 
 Return
 -------
@@ -220,7 +220,7 @@ Description
 -----------
 Check all locations of shape according criterium: aTrsf.IsNegative() || (std::abs(std::abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes.
 ") CheckLocations;
-		static void CheckLocations(const TopoDS_Shape & theS, NCollection_List<TopoDS_Shape> & theProblemShapes);
+		static void CheckLocations(const TopoDS_Shape & theS, TopTools_ListOfShape & theProblemShapes);
 
 		/****** BRepTools::Clean ******/
 		/****** md5 signature: 82aa4b9b09f11f85f161cc7c4d8c50a1 ******/
@@ -433,7 +433,7 @@ Return: True if at least one triangulation is loaded.
 Parameters
 ----------
 S: TopoDS_Shape
-M: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+M: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -443,7 +443,7 @@ Description
 -----------
 Stores in the map <M> all the 3D topology edges of <S>.
 ") Map3DEdges;
-		static void Map3DEdges(const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & M);
+		static void Map3DEdges(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
 
 		/****** BRepTools::OriEdgeInFace ******/
 		/****** md5 signature: 87c7eb8c9c51ee951fa03577413800d5 ******/
@@ -1132,13 +1132,13 @@ theInitial: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Methods to read the history. Returns all shapes generated from the shape.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & theInitial);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theInitial);
 
 		/****** BRepTools_History::HasGenerated ******/
 		/****** md5 signature: 7fd3677661381d111f522bfe87258b83 ******/
@@ -1261,13 +1261,13 @@ theInitial: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns all shapes modified from the shape.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & theInitial);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theInitial);
 
 		/****** BRepTools_History::Remove ******/
 		/****** md5 signature: a8343648976f365b1287e3131759ecb4 ******/
@@ -2141,6 +2141,29 @@ Returns the new value for an individual shape If not recorded, returns the origi
 ") Value;
 		virtual TopoDS_Shape Value(const TopoDS_Shape & shape);
 
+		/****** BRepTools_ReShape::ValueLeaf ******/
+		/****** md5 signature: 6bcc1d667f1909f47f10d7661da362f7 ******/
+		%feature("compactdefaultargs") ValueLeaf;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Return
+-------
+TopoDS_Shape
+
+Description
+-----------
+Follows the replacement chain for @p theShape to its leaf without descending into sub-shapes. Iterates Value() until a fixpoint is reached. Unlike Apply(), this does not rebuild the shape from its children, so it is safe to call on edges/wires whose sub-shapes have their own pending replacements (avoids cascading sub-shape re-expansion). 
+Return: the final replacement, or the original shape if not recorded, or a Null shape if the chain terminates in a Remove.
+") ValueLeaf;
+		TopoDS_Shape ValueLeaf(const TopoDS_Shape & theShape);
+
+		%extend{
+			bool GetModeConsiderLocation() { return self->ModeConsiderLocation(); }
+			void SetModeConsiderLocation(bool value) { self->ModeConsiderLocation() = value; }
+		};
 };
 
 
@@ -2703,13 +2726,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the set of shapes substituted to <S>.
 ") Copy;
-		const NCollection_List<TopoDS_Shape> Copy(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Copy(const TopoDS_Shape & S);
 
 		/****** BRepTools_Substitution::IsCopied ******/
 		/****** md5 signature: 7b83775f142dc88c0533e36d8562aa9e ******/
@@ -2736,7 +2759,7 @@ Returns True if <S> has been replaced.
 Parameters
 ----------
 OldShape: TopoDS_Shape
-NewShapes: NCollection_List<TopoDS_Shape>
+NewShapes: TopTools_ListOfShape
 
 Return
 -------
@@ -2746,7 +2769,7 @@ Description
 -----------
 <Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty, in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
 ") Substitute;
-		void Substitute(const TopoDS_Shape & OldShape, const NCollection_List<TopoDS_Shape> & NewShapes);
+		void Substitute(const TopoDS_Shape & OldShape, const TopTools_ListOfShape & NewShapes);
 
 };
 
@@ -3642,6 +3665,10 @@ Provides access to the gp_Trsf associated with this modification. The transforma
 ") Trsf;
 		gp_Trsf Trsf();
 
+		%extend{
+			bool GetIsCopyMesh() { return self->IsCopyMesh(); }
+			void SetIsCopyMesh(bool value) { self->IsCopyMesh() = value; }
+		};
 };
 
 
@@ -3699,13 +3726,13 @@ Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the 
 		%feature("compactdefaultargs") GetUpdatedEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") GetUpdatedEdges;
-		const NCollection_List<TopoDS_Shape> GetUpdatedEdges();
+		const TopTools_ListOfShape & GetUpdatedEdges();
 
 		/****** BRepTools_NurbsConvertModification::NewCurve ******/
 		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/

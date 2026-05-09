@@ -51,8 +51,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<IntRes2d_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TopTools_module.hxx>
 #include<IntCurveSurface_module.hxx>
 #include<Bnd_module.hxx>
 #include<HLRTopoBRep_module.hxx>
@@ -82,8 +85,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
+%import TColgp.i
 %import IntRes2d.i
 %import Geom2d.i
+%import TopTools.i
 %import IntCurveSurface.i
 %import Bnd.i
 %import HLRTopoBRep.i
@@ -149,22 +155,53 @@ Array1ExtendIter(HLRBRep_FaceData)
 %template(HLRBRep_ListOfBPnt2D) NCollection_List<HLRBRep_BiPnt2D>;
 
 %extend NCollection_List<HLRBRep_BiPnt2D> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRBRep_ListIteratorOfListOfBPnt2D(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(HLRBRep_ListOfBPoint) NCollection_List<HLRBRep_BiPoint>;
 
 %extend NCollection_List<HLRBRep_BiPoint> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRBRep_ListIteratorOfListOfBPoint(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
 
 %extend NCollection_Sequence<HLRBRep_ShapeBounds> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -814,7 +851,7 @@ No available documentation.
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -825,7 +862,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const BRepAdaptor_Curve & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** HLRBRep_BCurveTool::IsClosed ******/
 		/****** md5 signature: c9743e180e75185eec7f6e077fa80626 ******/
@@ -1035,7 +1072,7 @@ No available documentation.
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: NCollection_Array1<gp_Pnt>
+T: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1045,7 +1082,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		static void Poles(const BRepAdaptor_Curve & C, NCollection_Array1<gp_Pnt> & T);
+		static void Poles(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T);
 
 		/****** HLRBRep_BCurveTool::PolesAndWeights ******/
 		/****** md5 signature: 4642a2df77806b299a089c1d9708425b ******/
@@ -1054,8 +1091,8 @@ No available documentation.
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: NCollection_Array1<gp_Pnt>
-W: NCollection_Array1<double>
+T: TColgp_Array1OfPnt
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -1065,7 +1102,7 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		static void PolesAndWeights(const BRepAdaptor_Curve & C, NCollection_Array1<gp_Pnt> & T, NCollection_Array1<double> & W);
+		static void PolesAndWeights(const BRepAdaptor_Curve & C, TColgp_Array1OfPnt & T, TColStd_Array1OfReal & W);
 
 		/****** HLRBRep_BCurveTool::Resolution ******/
 		/****** md5 signature: 8d1ff32cfbd3fd022cd36944eb214f13 ******/
@@ -2399,7 +2436,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2410,7 +2447,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** HLRBRep_Curve::IsClosed ******/
 		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
@@ -2457,7 +2494,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-kn: NCollection_Array1<double>
+kn: TColStd_Array1OfReal
 
 Return
 -------
@@ -2467,7 +2504,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & kn);
+		void Knots(TColStd_Array1OfReal & kn);
 
 		/****** HLRBRep_Curve::LastParameter ******/
 		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
@@ -2501,7 +2538,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-mu: NCollection_Array1<int>
+mu: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2511,7 +2548,7 @@ Description
 -----------
 No available documentation.
 ") Multiplicities;
-		void Multiplicities(NCollection_Array1<int> & mu);
+		void Multiplicities(TColStd_Array1OfInteger & mu);
 
 		/****** HLRBRep_Curve::NbIntervals ******/
 		/****** md5 signature: a8ba1446e056c10b55516babe8124726 ******/
@@ -2625,7 +2662,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TP: NCollection_Array1<gp_Pnt2d>
+TP: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2635,7 +2672,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(NCollection_Array1<gp_Pnt2d> & TP);
+		void Poles(TColgp_Array1OfPnt2d & TP);
 
 		/****** HLRBRep_Curve::Poles ******/
 		/****** md5 signature: e2584a859a1af0e2a9b1dbeb83ee9676 ******/
@@ -2644,7 +2681,7 @@ No available documentation.
 Parameters
 ----------
 aCurve: Geom_BSplineCurve
-TP: NCollection_Array1<gp_Pnt2d>
+TP: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2654,7 +2691,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(const opencascade::handle<Geom_BSplineCurve> & aCurve, NCollection_Array1<gp_Pnt2d> & TP);
+		void Poles(const opencascade::handle<Geom_BSplineCurve> & aCurve, TColgp_Array1OfPnt2d & TP);
 
 		/****** HLRBRep_Curve::PolesAndWeights ******/
 		/****** md5 signature: 5353d3c5bd5899a90e860821f1a7a585 ******/
@@ -2662,8 +2699,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TP: NCollection_Array1<gp_Pnt2d>
-TW: NCollection_Array1<double>
+TP: TColgp_Array1OfPnt2d
+TW: TColStd_Array1OfReal
 
 Return
 -------
@@ -2673,7 +2710,7 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		void PolesAndWeights(NCollection_Array1<gp_Pnt2d> & TP, NCollection_Array1<double> & TW);
+		void PolesAndWeights(TColgp_Array1OfPnt2d & TP, TColStd_Array1OfReal & TW);
 
 		/****** HLRBRep_Curve::PolesAndWeights ******/
 		/****** md5 signature: c48b32a091e146e6b2e8848d1248c442 ******/
@@ -2682,8 +2719,8 @@ No available documentation.
 Parameters
 ----------
 aCurve: Geom_BSplineCurve
-TP: NCollection_Array1<gp_Pnt2d>
-TW: NCollection_Array1<double>
+TP: TColgp_Array1OfPnt2d
+TW: TColStd_Array1OfReal
 
 Return
 -------
@@ -2693,7 +2730,7 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		void PolesAndWeights(const opencascade::handle<Geom_BSplineCurve> & aCurve, NCollection_Array1<gp_Pnt2d> & TP, NCollection_Array1<double> & TW);
+		void PolesAndWeights(const opencascade::handle<Geom_BSplineCurve> & aCurve, TColgp_Array1OfPnt2d & TP, TColStd_Array1OfReal & TW);
 
 		/****** HLRBRep_Curve::Projector ******/
 		/****** md5 signature: 410e9a0b959e6b25e2fe54ccebda5aa1 ******/
@@ -3115,7 +3152,7 @@ Parameters
 ----------
 C: HLRBRep_CurvePtr
 Index: int
-Tab: NCollection_Array1<double>
+Tab: TColStd_Array1OfReal
 
 Return
 -------
@@ -3126,7 +3163,7 @@ Description
 -----------
 output the bounds of interval of index <Index> used if Type == Composite.
 ") GetInterval;
-		static void GetInterval(const HLRBRep_CurvePtr C, const int Index, const NCollection_Array1<double> & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void GetInterval(const HLRBRep_CurvePtr C, const int Index, const TColStd_Array1OfReal & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** HLRBRep_CurveTool::GetType ******/
 		/****** md5 signature: d524700e42afa8f5bfb332726b6d6c9b ******/
@@ -3171,7 +3208,7 @@ No available documentation.
 Parameters
 ----------
 C: HLRBRep_CurvePtr
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 
 Return
 -------
@@ -3181,7 +3218,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const HLRBRep_CurvePtr C, NCollection_Array1<double> & T);
+		static void Intervals(const HLRBRep_CurvePtr C, TColStd_Array1OfReal & T);
 
 		/****** HLRBRep_CurveTool::IsClosed ******/
 		/****** md5 signature: b50992c5abf2dfdbe4c1043f558515c1 ******/
@@ -3534,13 +3571,13 @@ Returns the current Edge.
 		%feature("compactdefaultargs") EdgeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 No available documentation.
 ") EdgeMap;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> EdgeMap();
+		TopTools_IndexedMapOfShape & EdgeMap();
 
 		/****** HLRBRep_Data::EdgeOfTheHidingFace ******/
 		/****** md5 signature: 08213348ed94cfe4b060fbc09877a01d ******/
@@ -3599,13 +3636,13 @@ No available documentation.
 		%feature("compactdefaultargs") FaceMap;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 No available documentation.
 ") FaceMap;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> FaceMap();
+		TopTools_IndexedMapOfShape & FaceMap();
 
 		/****** HLRBRep_Data::HidingStartLevel ******/
 		/****** md5 signature: d7f1d2f08157d55975689e62e2cf5967 ******/
@@ -8095,7 +8132,7 @@ Returns the last parameter of the current interval.
 Parameters
 ----------
 C: gp_Lin
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 Sh: GeomAbs_Shape
 
 Return
@@ -8106,7 +8143,7 @@ Description
 -----------
 Sets the current working interval.
 ") Intervals;
-		static void Intervals(const gp_Lin & C, NCollection_Array1<double> & T, const GeomAbs_Shape Sh);
+		static void Intervals(const gp_Lin & C, TColStd_Array1OfReal & T, const GeomAbs_Shape Sh);
 
 		/****** HLRBRep_LineTool::IsClosed ******/
 		/****** md5 signature: dc05e9a8721aa554c027de22f2090e06 ******/
@@ -8169,8 +8206,8 @@ No available documentation.
 Parameters
 ----------
 C: gp_Lin
-TK: NCollection_Array1<double>
-TM: NCollection_Array1<int>
+TK: TColStd_Array1OfReal
+TM: TColStd_Array1OfInteger
 
 Return
 -------
@@ -8180,7 +8217,7 @@ Description
 -----------
 No available documentation.
 ") KnotsAndMultiplicities;
-		static void KnotsAndMultiplicities(const gp_Lin & C, NCollection_Array1<double> & TK, NCollection_Array1<int> & TM);
+		static void KnotsAndMultiplicities(const gp_Lin & C, TColStd_Array1OfReal & TK, TColStd_Array1OfInteger & TM);
 
 		/****** HLRBRep_LineTool::LastParameter ******/
 		/****** md5 signature: 3aeb4991df69a85f4785a7b6c71308c3 ******/
@@ -8336,7 +8373,7 @@ No available documentation.
 Parameters
 ----------
 C: gp_Lin
-TP: NCollection_Array1<gp_Pnt>
+TP: TColgp_Array1OfPnt
 
 Return
 -------
@@ -8346,7 +8383,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		static void Poles(const gp_Lin & C, NCollection_Array1<gp_Pnt> & TP);
+		static void Poles(const gp_Lin & C, TColgp_Array1OfPnt & TP);
 
 		/****** HLRBRep_LineTool::PolesAndWeights ******/
 		/****** md5 signature: cec86be74047591bec6a87b12efef6ef ******/
@@ -8355,8 +8392,8 @@ No available documentation.
 Parameters
 ----------
 C: gp_Lin
-TP: NCollection_Array1<gp_Pnt>
-TW: NCollection_Array1<double>
+TP: TColgp_Array1OfPnt
+TW: TColStd_Array1OfReal
 
 Return
 -------
@@ -8366,7 +8403,7 @@ Description
 -----------
 No available documentation.
 ") PolesAndWeights;
-		static void PolesAndWeights(const gp_Lin & C, NCollection_Array1<gp_Pnt> & TP, NCollection_Array1<double> & TW);
+		static void PolesAndWeights(const gp_Lin & C, TColgp_Array1OfPnt & TP, TColStd_Array1OfReal & TW);
 
 		/****** HLRBRep_LineTool::Resolution ******/
 		/****** md5 signature: 7a10621c011cdc17a0084c1e3e8ca9f0 ******/
@@ -8401,7 +8438,7 @@ NbMin: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
@@ -8413,7 +8450,7 @@ Input parameter: Defl deflection tolerance (unused for lines)
 Input parameter: NbMin minimum number of sample points (unused for lines) 
 Return: array of 3 sample parameter values.
 ") SamplePars;
-		static opencascade::handle<NCollection_HArray1<double>> SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin);
+		static opencascade::handle<TColStd_HArray1OfReal> SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin);
 
 		/****** HLRBRep_LineTool::SamplePars ******/
 		/****** md5 signature: c52ef762d8145e48526371c8052826ef ******/
@@ -8426,7 +8463,7 @@ U0: double
 U1: double
 Defl: double
 NbMin: int
-Pars: NCollection_HArray1<double
+Pars: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8436,7 +8473,7 @@ Description
 -----------
 No available documentation.
 ") SamplePars;
-		static void SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<NCollection_HArray1<double> > & Pars);
+		static void SamplePars(const gp_Lin & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
 		/****** HLRBRep_LineTool::Value ******/
 		/****** md5 signature: ed7ab0156a63a943cda6a002feed4445 ******/
@@ -10384,7 +10421,7 @@ No available documentation.
 Parameters
 ----------
 theSurf: HLRBRep_Surface *
-theT: NCollection_Array1<double>
+theT: TColStd_Array1OfReal
 theSh: GeomAbs_Shape
 
 Return
@@ -10395,7 +10432,7 @@ Description
 -----------
 No available documentation.
 ") UIntervals;
-		static void UIntervals(const HLRBRep_Surface * theSurf, NCollection_Array1<double> & theT, const GeomAbs_Shape theSh);
+		static void UIntervals(const HLRBRep_Surface * theSurf, TColStd_Array1OfReal & theT, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::UPeriod ******/
 		/****** md5 signature: a7f468fc7b1c2a3a869640684ea3bc1b ******/
@@ -10462,7 +10499,7 @@ If <theFirst> >= <theLast>.
 Parameters
 ----------
 theSurf: HLRBRep_Surface *
-theT: NCollection_Array1<double>
+theT: TColStd_Array1OfReal
 theSh: GeomAbs_Shape
 
 Return
@@ -10473,7 +10510,7 @@ Description
 -----------
 No available documentation.
 ") VIntervals;
-		static void VIntervals(const HLRBRep_Surface * theSurf, NCollection_Array1<double> & theT, const GeomAbs_Shape theSh);
+		static void VIntervals(const HLRBRep_Surface * theSurf, TColStd_Array1OfReal & theT, const GeomAbs_Shape theSh);
 
 		/****** HLRBRep_SurfaceTool::VPeriod ******/
 		/****** md5 signature: 31816d481b7868e6b63ed59171a0c538 ******/
@@ -11724,10 +11761,10 @@ TheImpTool: IntCurve_IConicTool
 TheParCurve: HLRBRep_CurvePtr
 TheImpCurveDomain: IntRes2d_Domain
 TheParCurveDomain: IntRes2d_Domain
-Inter2_And_Domain2: NCollection_Array1<double>
-Inter1: NCollection_Array1<double>
-Resultat1: NCollection_Array1<double>
-Resultat2: NCollection_Array1<double>
+Inter2_And_Domain2: TColStd_Array1OfReal
+Inter1: TColStd_Array1OfReal
+Resultat1: TColStd_Array1OfReal
+Resultat2: TColStd_Array1OfReal
 EpsNul: double
 
 Return
@@ -11738,7 +11775,7 @@ Description
 -----------
 No available documentation.
 ") And_Domaine_Objet1_Intersections;
-		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const HLRBRep_CurvePtr & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, NCollection_Array1<double> & Inter2_And_Domain2, NCollection_Array1<double> & Inter1, NCollection_Array1<double> & Resultat1, NCollection_Array1<double> & Resultat2, const double EpsNul);
+		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const HLRBRep_CurvePtr & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, TColStd_Array1OfReal & Inter2_And_Domain2, TColStd_Array1OfReal & Inter1, TColStd_Array1OfReal & Resultat1, TColStd_Array1OfReal & Resultat2, const double EpsNul);
 
 		/****** HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter::FindU ******/
 		/****** md5 signature: eced76384d336c72043a92a8df1babc7 ******/
@@ -12113,7 +12150,7 @@ No available documentation.
 Parameters
 ----------
 Curve: gp_Lin
-Upars: NCollection_Array1<double>
+Upars: TColStd_Array1OfReal
 
 Return
 -------
@@ -12123,7 +12160,7 @@ Description
 -----------
 No available documentation.
 ") HLRBRep_ThePolygonOfInterCSurf;
-		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const NCollection_Array1<double> & Upars);
+		 HLRBRep_ThePolygonOfInterCSurf(const gp_Lin & Curve, const TColStd_Array1OfReal & Upars);
 
 		/****** HLRBRep_ThePolygonOfInterCSurf::ApproxParamOnCurve ******/
 		/****** md5 signature: 520ca19aee00f08506bff5bce4928594 ******/

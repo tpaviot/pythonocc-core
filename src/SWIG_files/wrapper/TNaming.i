@@ -45,9 +45,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tnaming.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TDF_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
@@ -59,9 +61,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tnaming.html"
 %import Standard.i
 %import NCollection.i
 %import TDF.i
+%import TopTools.i
 %import TopLoc.i
 %import TopoDS.i
 %import gp.i
+%import TColStd.i
 %import TopAbs.i
 
 %pythoncode {
@@ -142,7 +146,12 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TNaming_DeltaOnModification)
+%wrap_handle(TNaming_DeltaOnRemoval)
+%wrap_handle(TNaming_NamedShape)
+%wrap_handle(TNaming_Naming)
 %wrap_handle(TNaming_TranslateTool)
+%wrap_handle(TNaming_UsedShapes)
 /* end handles declaration */
 
 /* templates */
@@ -161,25 +170,61 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 %template(TNaming_ListOfIndexedDataMapOfShapeListOfShape) NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape>;
 
 %extend NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfIndexedDataMapOfShapeListOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TNaming_ListOfMapOfShape) NCollection_List<TopTools_MapOfShape>;
 
 %extend NCollection_List<TopTools_MapOfShape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfMapOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TNaming_ListOfNamedShape) NCollection_List<opencascade::handle<TNaming_NamedShape>>;
 
 %extend NCollection_List<opencascade::handle<TNaming_NamedShape>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TNaming_ListIteratorOfListOfNamedShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>>;
@@ -218,7 +263,7 @@ class TNaming {
 Parameters
 ----------
 label: TDF_Label
-M: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+M: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -228,7 +273,7 @@ Description
 -----------
 Remplace les shapes du label et des sous-labels par des copies.
 ") ChangeShapes;
-		static void ChangeShapes(const TDF_Label & label, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & M);
+		static void ChangeShapes(const TDF_Label & label, TopTools_DataMapOfShapeShape & M);
 
 		/****** TNaming::Displace ******/
 		/****** md5 signature: aecd2b23d9d552d21457d7dc131a07b4 ******/
@@ -277,7 +322,7 @@ Parameters
 ----------
 S: TopoDS_Shape
 Context: TopoDS_Shape
-Arr: NCollection_HArray1<TopoDS_Shape
+Arr: TopTools_HArray1OfShape
 
 Return
 -------
@@ -287,7 +332,7 @@ Description
 -----------
 Find unique context of shape <S>,which is pure concatenation of atomic shapes (Compound). The result is concatenation of single contexts.
 ") FindUniqueContextSet;
-		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<NCollection_HArray1<TopoDS_Shape> > & Arr);
+		static TopoDS_Shape FindUniqueContextSet(const TopoDS_Shape & S, const TopoDS_Shape & Context, opencascade::handle<TopTools_HArray1OfShape> & Arr);
 
 		/****** TNaming::IDList ******/
 		/****** md5 signature: 13c09c8b61f14a9cf4c6ae6a05704f7d ******/
@@ -295,7 +340,7 @@ Find unique context of shape <S>,which is pure concatenation of atomic shapes (C
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -305,7 +350,7 @@ Description
 -----------
 Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(NCollection_List<Standard_GUID> & anIDList);
+		static void IDList(TDF_IDList & anIDList);
 
 		/****** TNaming::MakeShape ******/
 		/****** md5 signature: 18076748dd1ca649c5dd6aab55dd522c ******/
@@ -313,7 +358,7 @@ Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <
 		%feature("autodoc", "
 Parameters
 ----------
-MS: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+MS: TopTools_MapOfShape
 
 Return
 -------
@@ -323,7 +368,7 @@ Description
 -----------
 Builds shape from map content.
 ") MakeShape;
-		static TopoDS_Shape MakeShape(const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
+		static TopoDS_Shape MakeShape(const TopTools_MapOfShape & MS);
 
 		/****** TNaming::OuterShell ******/
 		/****** md5 signature: b72516852d083d56df6158318ea9d4fb ******/
@@ -465,7 +510,7 @@ Parameters
 ----------
 labelsource: TDF_Label
 labelcible: TDF_Label
-mapOldNew: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+mapOldNew: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -475,7 +520,7 @@ Description
 -----------
 Subtituter les shapes sur les structures de source vers cible.
 ") Substitute;
-		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapOldNew);
+		static void Substitute(const TDF_Label & labelsource, const TDF_Label & labelcible, TopTools_DataMapOfShapeShape & mapOldNew);
 
 		/****** TNaming::SubstituteSShape ******/
 		/****** md5 signature: 32de2f3558ece443b8dff7b989cbc5c2 ******/
@@ -523,7 +568,7 @@ Application de la transformation sur les shapes du label et de ses sous labels. 
 Parameters
 ----------
 label: TDF_Label
-mapOldNew: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+mapOldNew: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -533,7 +578,7 @@ Description
 -----------
 Mise a jour des shapes du label et de ses fils en tenant compte des substitutions decrite par mapOldNew. //! Warning: le remplacement du shape est fait dans tous les attributs qui le contiennent meme si ceux ci ne sont pas associees a des sous-labels de <Label>.
 ") Update;
-		static void Update(const TDF_Label & label, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & mapOldNew);
+		static void Update(const TDF_Label & label, TopTools_DataMapOfShapeShape & mapOldNew);
 
 };
 
@@ -694,7 +739,7 @@ class TNaming_CopyShape {
 Parameters
 ----------
 aShape: TopoDS_Shape
-aMap: Standard_Transient
+aMap: TColStd_IndexedDataMapOfTransientTransient
 aResult: TopoDS_Shape
 
 Return
@@ -705,7 +750,7 @@ Description
 -----------
 Makes copy a set of shape(s), using the aMap.
 ") CopyTool;
-		static void CopyTool(const TopoDS_Shape & aShape, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap, TopoDS_Shape & aResult);
+		static void CopyTool(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult);
 
 		/****** TNaming_CopyShape::Translate ******/
 		/****** md5 signature: 927c4d5d23cb182f386014e64a279a65 ******/
@@ -714,7 +759,7 @@ Makes copy a set of shape(s), using the aMap.
 Parameters
 ----------
 aShape: TopoDS_Shape
-aMap: Standard_Transient
+aMap: TColStd_IndexedDataMapOfTransientTransient
 aResult: TopoDS_Shape
 TrTool: TNaming_TranslateTool
 
@@ -726,7 +771,7 @@ Description
 -----------
 Translates a Transient shape(s) to Transient.
 ") Translate;
-		static void Translate(const TopoDS_Shape & aShape, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
+		static void Translate(const TopoDS_Shape & aShape, TColStd_IndexedDataMapOfTransientTransient & aMap, TopoDS_Shape & aResult, const opencascade::handle<TNaming_TranslateTool> & TrTool);
 
 		/****** TNaming_CopyShape::Translate ******/
 		/****** md5 signature: aef2df3118af83391521faed8e365846 ******/
@@ -735,7 +780,7 @@ Translates a Transient shape(s) to Transient.
 Parameters
 ----------
 L: TopLoc_Location
-aMap: Standard_Transient
+aMap: TColStd_IndexedDataMapOfTransientTransient
 
 Return
 -------
@@ -745,7 +790,7 @@ Description
 -----------
 Translates a Topological Location to an other Top. Location.
 ") Translate;
-		static TopLoc_Location Translate(const TopLoc_Location & L, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & aMap);
+		static TopLoc_Location Translate(const TopLoc_Location & L, TColStd_IndexedDataMapOfTransientTransient & aMap);
 
 };
 
@@ -795,6 +840,8 @@ Applies the delta to the attribute.
 };
 
 
+%make_alias(TNaming_DeltaOnModification)
+
 %extend TNaming_DeltaOnModification {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -839,6 +886,8 @@ Applies the delta to the attribute.
 
 };
 
+
+%make_alias(TNaming_DeltaOnRemoval)
 
 %extend TNaming_DeltaOnRemoval {
 	%pythoncode {
@@ -1412,13 +1461,13 @@ Type: TopAbs_ShapeEnum
 
 Return
 -------
-NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_IndexedDataMapOfShapeListOfShape
 
 Description
 -----------
 No available documentation.
 ") Ancestors;
-		const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Ancestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
+		const TopTools_IndexedDataMapOfShapeListOfShape & Ancestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 		/****** TNaming_Localizer::Backward ******/
 		/****** md5 signature: 6bc8c3760d5a1a299349779b161313d9 ******/
@@ -1429,7 +1478,7 @@ Parameters
 NS: TNaming_NamedShape
 S: TopoDS_Shape
 Primitives: TNaming_NamedShape
-ValidShapes: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+ValidShapes: TopTools_MapOfShape
 
 Return
 -------
@@ -1439,7 +1488,7 @@ Description
 -----------
 No available documentation.
 ") Backward;
-		void Backward(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, NCollection_Map<opencascade::handle<TNaming_NamedShape> > & Primitives, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & ValidShapes);
+		void Backward(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, NCollection_Map<opencascade::handle<TNaming_NamedShape>> & Primitives, TopTools_MapOfShape & ValidShapes);
 
 		/****** TNaming_Localizer::FindFeaturesInAncestors ******/
 		/****** md5 signature: 960f1456a993cb4457958fac5a85f224 ******/
@@ -1449,7 +1498,7 @@ Parameters
 ----------
 S: TopoDS_Shape
 In: TopoDS_Shape
-AncInFeatures: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+AncInFeatures: TopTools_MapOfShape
 
 Return
 -------
@@ -1459,7 +1508,7 @@ Description
 -----------
 No available documentation.
 ") FindFeaturesInAncestors;
-		void FindFeaturesInAncestors(const TopoDS_Shape & S, const TopoDS_Shape & In, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & AncInFeatures);
+		void FindFeaturesInAncestors(const TopoDS_Shape & S, const TopoDS_Shape & In, TopTools_MapOfShape & AncInFeatures);
 
 		/****** TNaming_Localizer::FindGenerator ******/
 		/****** md5 signature: b8e99e54a8ad2f5f6897d14ce1f2bdfe ******/
@@ -1469,7 +1518,7 @@ Parameters
 ----------
 NS: TNaming_NamedShape
 S: TopoDS_Shape
-theListOfGenerators: NCollection_List<TopoDS_Shape>
+theListOfGenerators: TopTools_ListOfShape
 
 Return
 -------
@@ -1479,7 +1528,7 @@ Description
 -----------
 No available documentation.
 ") FindGenerator;
-		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & theListOfGenerators);
+		static void FindGenerator(const opencascade::handle<TNaming_NamedShape> & NS, const TopoDS_Shape & S, TopTools_ListOfShape & theListOfGenerators);
 
 		/****** TNaming_Localizer::FindNeighbourg ******/
 		/****** md5 signature: 4c24466b2cdf36fc975276d90bba96b4 ******/
@@ -1489,7 +1538,7 @@ Parameters
 ----------
 Cont: TopoDS_Shape
 S: TopoDS_Shape
-Neighbourg: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+Neighbourg: TopTools_MapOfShape
 
 Return
 -------
@@ -1499,7 +1548,7 @@ Description
 -----------
 No available documentation.
 ") FindNeighbourg;
-		void FindNeighbourg(const TopoDS_Shape & Cont, const TopoDS_Shape & S, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & Neighbourg);
+		void FindNeighbourg(const TopoDS_Shape & Cont, const TopoDS_Shape & S, TopTools_MapOfShape & Neighbourg);
 
 		/****** TNaming_Localizer::FindShapeContext ******/
 		/****** md5 signature: 3080ebceae5e84f4b49f367cb2d966e0 ******/
@@ -1530,7 +1579,7 @@ Parameters
 S: TopoDS_Shape
 Lab: TDF_Label
 Evol: TNaming_Evolution
-OldS: NCollection_List<TopoDS_Shape>
+OldS: TopTools_ListOfShape
 OldLab: TNaming_NamedShape
 
 Return
@@ -1541,7 +1590,7 @@ Description
 -----------
 No available documentation.
 ") GoBack;
-		void GoBack(const TopoDS_Shape & S, const TDF_Label & Lab, const TNaming_Evolution Evol, NCollection_List<TopoDS_Shape> & OldS, NCollection_List<opencascade::handle<TNaming_NamedShape> > & OldLab);
+		void GoBack(const TopoDS_Shape & S, const TDF_Label & Lab, const TNaming_Evolution Evol, TopTools_ListOfShape & OldS, NCollection_List<opencascade::handle<TNaming_NamedShape>> & OldLab);
 
 		/****** TNaming_Localizer::Init ******/
 		/****** md5 signature: 0ecc4e5ef99cf620414f0bab13a088a8 ******/
@@ -1592,13 +1641,13 @@ Type: TopAbs_ShapeEnum
 
 Return
 -------
-NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_MapOfShape
 
 Description
 -----------
 No available documentation.
 ") SubShapes;
-		const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> SubShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
+		const TopTools_MapOfShape & SubShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum Type);
 
 };
 
@@ -1860,7 +1909,7 @@ No available documentation.
 Parameters
 ----------
 aLab: TDF_Label
-Valid: NCollection_Map<TDF_Label>
+Valid: TDF_LabelMap
 
 Return
 -------
@@ -1870,7 +1919,7 @@ Description
 -----------
 No available documentation.
 ") Solve;
-		bool Solve(const TDF_Label & aLab, const NCollection_Map<TDF_Label> & Valid);
+		bool Solve(const TDF_Label & aLab, const TDF_LabelMap & Valid);
 
 		/****** TNaming_Name::StopNamedShape ******/
 		/****** md5 signature: 940a347c419778b1d92400dd9ecc55ce ******/
@@ -2292,6 +2341,8 @@ Returns the Version of the attribute.
 };
 
 
+%make_alias(TNaming_NamedShape)
+
 %extend TNaming_NamedShape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2384,7 +2435,7 @@ Description
 -----------
 No available documentation.
 ") ExtendedDump;
-		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute> > & aMap);
+		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute>> & aMap);
 
 		/****** TNaming_Naming::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -2535,7 +2586,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-scope: NCollection_Map<TDF_Label>
+scope: TDF_LabelMap
 
 Return
 -------
@@ -2545,7 +2596,7 @@ Description
 -----------
 regenerate only the Name associated to me.
 ") Regenerate;
-		bool Regenerate(NCollection_Map<TDF_Label> & scope);
+		bool Regenerate(TDF_LabelMap & scope);
 
 		/****** TNaming_Naming::Restore ******/
 		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
@@ -2571,7 +2622,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-scope: NCollection_Map<TDF_Label>
+scope: TDF_LabelMap
 
 Return
 -------
@@ -2581,10 +2632,12 @@ Description
 -----------
 Regenerate recursively the whole name with scope. If scope is empty it means that all the labels of the framework are valid.
 ") Solve;
-		bool Solve(NCollection_Map<TDF_Label> & scope);
+		bool Solve(TDF_LabelMap & scope);
 
 };
 
+
+%make_alias(TNaming_Naming)
 
 %extend TNaming_Naming {
 	%pythoncode {
@@ -2604,7 +2657,7 @@ class TNaming_NamingTool {
 Parameters
 ----------
 NS: TNaming_NamedShape
-Labels: NCollection_Map<TDF_Label>
+Labels: TDF_LabelMap
 
 Return
 -------
@@ -2614,7 +2667,7 @@ Description
 -----------
 No available documentation.
 ") BuildDescendants;
-		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, NCollection_Map<TDF_Label> & Labels);
+		static void BuildDescendants(const opencascade::handle<TNaming_NamedShape> & NS, TDF_LabelMap & Labels);
 
 		/****** TNaming_NamingTool::CurrentShape ******/
 		/****** md5 signature: 1709875dbb3d53f5c04abb871efd4b70 ******/
@@ -2622,10 +2675,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: NCollection_Map<TDF_Label>
-Forbiden: NCollection_Map<TDF_Label>
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
 NS: TNaming_NamedShape
-MS: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+MS: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -2635,7 +2688,7 @@ Description
 -----------
 No available documentation.
 ") CurrentShape;
-		static void CurrentShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
+		static void CurrentShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & NS, TopTools_IndexedMapOfShape & MS);
 
 		/****** TNaming_NamingTool::CurrentShapeFromShape ******/
 		/****** md5 signature: 3bbfe24fd1f7c888d6862a2c954df153 ******/
@@ -2643,11 +2696,11 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: NCollection_Map<TDF_Label>
-Forbiden: NCollection_Map<TDF_Label>
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
 Acces: TDF_Label
 S: TopoDS_Shape
-MS: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+MS: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -2657,7 +2710,7 @@ Description
 -----------
 No available documentation.
 ") CurrentShapeFromShape;
-		static void CurrentShapeFromShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & MS);
+		static void CurrentShapeFromShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const TDF_Label & Acces, const TopoDS_Shape & S, TopTools_IndexedMapOfShape & MS);
 
 };
 
@@ -3270,7 +3323,7 @@ if <WithValid> the scope is defined by the map. If not on the whole framework.
 		%feature("autodoc", "
 Parameters
 ----------
-valid: NCollection_Map<TDF_Label>
+valid: TDF_LabelMap
 
 Return
 -------
@@ -3280,20 +3333,20 @@ Description
 -----------
 create a scope with a map. WithValid = True.
 ") TNaming_Scope;
-		 TNaming_Scope(NCollection_Map<TDF_Label> & valid);
+		 TNaming_Scope(TDF_LabelMap & valid);
 
 		/****** TNaming_Scope::ChangeValid ******/
 		/****** md5 signature: 63cd0badcf9e22af17402287a49925aa ******/
 		%feature("compactdefaultargs") ChangeValid;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 No available documentation.
 ") ChangeValid;
-		NCollection_Map<TDF_Label> & ChangeValid();
+		TDF_LabelMap & ChangeValid();
 
 		/****** TNaming_Scope::ClearValid ******/
 		/****** md5 signature: f75cb19c38c702d6e3a82709605286ee ******/
@@ -3331,13 +3384,13 @@ Returns the current value of <NS> according to the Valid Scope.
 		%feature("compactdefaultargs") GetValid;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 No available documentation.
 ") GetValid;
-		const NCollection_Map<TDF_Label> & GetValid();
+		const TDF_LabelMap & GetValid();
 
 		/****** TNaming_Scope::IsValid ******/
 		/****** md5 signature: 0a48b190669196f2ebfbe3efa57246ba ******/
@@ -3500,7 +3553,7 @@ Create a selector on this label to select a shape. ==================.
 		%feature("autodoc", "
 Parameters
 ----------
-args: TDF_Attribute
+args: TDF_AttributeMap
 
 Return
 -------
@@ -3510,7 +3563,7 @@ Description
 -----------
 Returns the attribute list args. This list contains the named shape on which the topological naming was built.
 ") Arguments;
-		void Arguments(NCollection_Map<opencascade::handle<TDF_Attribute> > & args);
+		void Arguments(TDF_AttributeMap & args);
 
 		/****** TNaming_Selector::IsIdentified ******/
 		/****** md5 signature: f947692265f747cf84b4aea6c8045a53 ******/
@@ -3593,7 +3646,7 @@ Creates a topological naming on the label aLabel given as an argument at constru
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: NCollection_Map<TDF_Label>
+Valid: TDF_LabelMap
 
 Return
 -------
@@ -3603,7 +3656,7 @@ Description
 -----------
 Updates the topological naming on the label aLabel given as an argument at construction time. The underlying shape returned in the method NamedShape is updated. To read this shape, use the method TNaming_Tool::GetShape.
 ") Solve;
-		bool Solve(NCollection_Map<TDF_Label> & Valid);
+		bool Solve(TDF_LabelMap & Valid);
 
 };
 
@@ -3692,13 +3745,13 @@ Adds the shapes contained in <Shapes>.
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_MapOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> ChangeMap();
+		TopTools_MapOfShape & ChangeMap();
 
 		/****** TNaming_ShapesSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -3767,13 +3820,13 @@ No available documentation.
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_MapOfShape
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> Map();
+		const TopTools_MapOfShape & Map();
 
 		/****** TNaming_ShapesSet::NbShapes ******/
 		/****** md5 signature: 5033c6acdebfec4ad702502e01d3601a ******/
@@ -3856,7 +3909,7 @@ Description
 -----------
 No available documentation.
 ") Collect;
-		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, NCollection_Map<opencascade::handle<TNaming_NamedShape> > & Labels, const bool OnlyModif = true);
+		static void Collect(const opencascade::handle<TNaming_NamedShape> & NS, NCollection_Map<opencascade::handle<TNaming_NamedShape>> & Labels, const bool OnlyModif = true);
 
 		/****** TNaming_Tool::CurrentNamedShape ******/
 		/****** md5 signature: 93b8c130c279f3d9bacfe1c57da56aec ******/
@@ -3865,7 +3918,7 @@ No available documentation.
 Parameters
 ----------
 NS: TNaming_NamedShape
-Updated: NCollection_Map<TDF_Label>
+Updated: TDF_LabelMap
 
 Return
 -------
@@ -3875,7 +3928,7 @@ Description
 -----------
 Returns the NamedShape of the last Modification of <NS>. This shape is identified by a label.
 ") CurrentNamedShape;
-		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const NCollection_Map<TDF_Label> & Updated);
+		static opencascade::handle<TNaming_NamedShape> CurrentNamedShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
 		/****** TNaming_Tool::CurrentNamedShape ******/
 		/****** md5 signature: 30b845dfc2bf9683aac7c44f233fb27d ******/
@@ -3920,7 +3973,7 @@ Returns the last Modification of <NS>. Returns the shape CurrentShape contained 
 Parameters
 ----------
 NS: TNaming_NamedShape
-Updated: NCollection_Map<TDF_Label>
+Updated: TDF_LabelMap
 
 Return
 -------
@@ -3930,7 +3983,7 @@ Description
 -----------
 Returns the shape CurrentShape contained in the named shape attribute NS, and present in the updated attribute map Updated. CurrentShape is the current state of the entities if they have been modified in other attributes of the same data structure. Each call to this function creates a new compound. Warning Only the contents of Updated are searched.R.
 ") CurrentShape;
-		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const NCollection_Map<TDF_Label> & Updated);
+		static TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS, const TDF_LabelMap & Updated);
 
 		/****** TNaming_Tool::FindShape ******/
 		/****** md5 signature: 0b1991daf74e2422905dd66c97c720cc ******/
@@ -3938,8 +3991,8 @@ Returns the shape CurrentShape contained in the named shape attribute NS, and pr
 		%feature("autodoc", "
 Parameters
 ----------
-Valid: NCollection_Map<TDF_Label>
-Forbiden: NCollection_Map<TDF_Label>
+Valid: TDF_LabelMap
+Forbiden: TDF_LabelMap
 Arg: TNaming_NamedShape
 S: TopoDS_Shape
 
@@ -3951,7 +4004,7 @@ Description
 -----------
 Returns the current shape (a Wire or a Shell) built (in the data framework) from the shapes of the argument named shape. It is used for IDENTITY name type computation.
 ") FindShape;
-		static void FindShape(const NCollection_Map<TDF_Label> & Valid, const NCollection_Map<TDF_Label> & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
+		static void FindShape(const TDF_LabelMap & Valid, const TDF_LabelMap & Forbiden, const opencascade::handle<TNaming_NamedShape> & Arg, TopoDS_Shape & S);
 
 		/****** TNaming_Tool::GeneratedShape ******/
 		/****** md5 signature: f0cadb1e38b87f8969e887a7314d2d10 ******/
@@ -4017,7 +4070,7 @@ Parameters
 ----------
 aShape: TopoDS_Shape
 anAcces: TDF_Label
-Labels: NCollection_List<TDF_Label>
+Labels: TDF_LabelList
 
 Return
 -------
@@ -4027,7 +4080,7 @@ Description
 -----------
 Returns the shape created from the shape aShape contained in the attribute anAcces.
 ") InitialShape;
-		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, NCollection_List<TDF_Label> & Labels);
+		static TopoDS_Shape InitialShape(const TopoDS_Shape & aShape, const TDF_Label & anAcces, TDF_LabelList & Labels);
 
 		/****** TNaming_Tool::Label ******/
 		/****** md5 signature: ac8f6349eb9a54004aa1aa86b483f993 ******/
@@ -4289,7 +4342,7 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: Standard_Transient
+M: TColStd_IndexedDataMapOfTransientTransient
 
 Return
 -------
@@ -4299,7 +4352,7 @@ Description
 -----------
 No available documentation.
 ") UpdateEdge;
-		void UpdateEdge(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
+		void UpdateEdge(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 		/****** TNaming_TranslateTool::UpdateFace ******/
 		/****** md5 signature: e5b0526a1f5a85aa600863cb9bf8239d ******/
@@ -4309,7 +4362,7 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: Standard_Transient
+M: TColStd_IndexedDataMapOfTransientTransient
 
 Return
 -------
@@ -4319,7 +4372,7 @@ Description
 -----------
 No available documentation.
 ") UpdateFace;
-		void UpdateFace(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
+		void UpdateFace(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 		/****** TNaming_TranslateTool::UpdateShape ******/
 		/****** md5 signature: 8bf8def5c83f533e58852e9d10059929 ******/
@@ -4348,7 +4401,7 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-M: Standard_Transient
+M: TColStd_IndexedDataMapOfTransientTransient
 
 Return
 -------
@@ -4358,7 +4411,7 @@ Description
 -----------
 No available documentation.
 ") UpdateVertex;
-		void UpdateVertex(const TopoDS_Shape & S1, TopoDS_Shape & S2, NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient> > & M);
+		void UpdateVertex(const TopoDS_Shape & S1, TopoDS_Shape & S2, TColStd_IndexedDataMapOfTransientTransient & M);
 
 };
 
@@ -4430,13 +4483,13 @@ returns copied shape.
 		%feature("compactdefaultargs") Copied;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeShape
 
 Description
 -----------
 returns DataMap of results; (shape <-> copied shape).
 ") Copied;
-		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> Copied();
+		const TopTools_DataMapOfShapeShape & Copied();
 
 		/****** TNaming_Translator::DumpMap ******/
 		/****** md5 signature: 79d3f94b2eb3c0b7272ebc11464668d6 ******/
@@ -4728,6 +4781,8 @@ Restores the contents from <anAttribute> into this one. It is used when aborting
 
 };
 
+
+%make_alias(TNaming_UsedShapes)
 
 %extend TNaming_UsedShapes {
 	%pythoncode {

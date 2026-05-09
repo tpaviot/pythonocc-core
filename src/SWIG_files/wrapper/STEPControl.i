@@ -53,8 +53,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<StepShape_module.hxx>
+#include<TopTools_module.hxx>
 #include<XSControl_module.hxx>
 #include<IFSelect_module.hxx>
+#include<TColStd_module.hxx>
 #include<DE_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -85,8 +87,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 %import Message.i
 %import TopoDS.i
 %import StepShape.i
+%import TopTools.i
 %import XSControl.i
 %import IFSelect.i
+%import TColStd.i
 %import DE.i
 
 %pythoncode {
@@ -132,6 +136,9 @@ STEPControl_Hybrid = STEPControl_StepModelType.STEPControl_Hybrid
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(STEPControl_ActorRead)
+%wrap_handle(STEPControl_ActorWrite)
+%wrap_handle(STEPControl_Controller)
 /* end handles declaration */
 
 /* templates */
@@ -329,6 +336,8 @@ theUseTrsf - special flag for using Axis2Placement from ShapeRepresentation for 
 };
 
 
+%make_alias(STEPControl_ActorRead)
+
 %extend STEPControl_ActorRead {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -522,7 +531,7 @@ start: Transfer_Finder
 SDR: StepShape_ShapeDefinitionRepresentation
 FP: Transfer_FinderProcess
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
-shapeGroup: NCollection_HSequence<TopoDS_Shape (optional, default to nullptr)
+shapeGroup: TopTools_HSequenceOfShape (optional, default to nullptr)
 isManifold: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -534,7 +543,7 @@ Description
 -----------
 No available documentation.
 ") TransferShape;
-		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & shapeGroup = nullptr, const bool isManifold = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = nullptr, const bool isManifold = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPControl_ActorWrite::TransferSubShape ******/
 		/****** md5 signature: 7dd39fca15b69bb6057e02e69a1b1155 ******/
@@ -547,7 +556,7 @@ SDR: StepShape_ShapeDefinitionRepresentation
 AX1: StepGeom_GeometricRepresentationItem
 FP: Transfer_FinderProcess
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
-shapeGroup: NCollection_HSequence<TopoDS_Shape (optional, default to nullptr)
+shapeGroup: TopTools_HSequenceOfShape (optional, default to nullptr)
 isManifold: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -559,10 +568,12 @@ Description
 -----------
 No available documentation.
 ") TransferSubShape;
-		opencascade::handle<Transfer_Binder> TransferSubShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, opencascade::handle<StepGeom_GeometricRepresentationItem> & AX1, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & shapeGroup = nullptr, const bool isManifold = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferSubShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, opencascade::handle<StepGeom_GeometricRepresentationItem> & AX1, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = nullptr, const bool isManifold = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
+
+%make_alias(STEPControl_ActorWrite)
 
 %extend STEPControl_ActorWrite {
 	%pythoncode {
@@ -675,6 +686,8 @@ Takes one Shape and transfers it to the InterfaceModel (already created by NewMo
 };
 
 
+%make_alias(STEPControl_Controller)
+
 %extend STEPControl_Controller {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -724,9 +737,9 @@ Creates a Reader for STEP from an already existing Session Clears the session if
 		%feature("autodoc", "
 Parameters
 ----------
-theUnitLengthNames: NCollection_Sequence<TCollection_AsciiString>
-theUnitAngleNames: NCollection_Sequence<TCollection_AsciiString>
-theUnitSolidAngleNames: NCollection_Sequence<TCollection_AsciiString>
+theUnitLengthNames: TColStd_SequenceOfAsciiString
+theUnitAngleNames: TColStd_SequenceOfAsciiString
+theUnitSolidAngleNames: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -736,7 +749,7 @@ Description
 -----------
 Returns sequence of all unit names for shape representations found in file.
 ") FileUnits;
-		void FileUnits(NCollection_Sequence<TCollection_AsciiString> & theUnitLengthNames, NCollection_Sequence<TCollection_AsciiString> & theUnitAngleNames, NCollection_Sequence<TCollection_AsciiString> & theUnitSolidAngleNames);
+		void FileUnits(TColStd_SequenceOfAsciiString & theUnitLengthNames, TColStd_SequenceOfAsciiString & theUnitAngleNames, TColStd_SequenceOfAsciiString & theUnitSolidAngleNames);
 
 		/****** STEPControl_Reader::NbRootsForTransfer ******/
 		/****** md5 signature: 1360662bdc49432e02d6b08717502cde ******/
@@ -806,26 +819,6 @@ Description
 Loads a file from stream and returns the read status.
 ") ReadStream;
 		IFSelect_ReturnStatus ReadStream(const char * const theName, std::istream & theIStream);
-
-		/****** STEPControl_Reader::ReadStream ******/
-		/****** md5 signature: 375c18315782813f2bf585453ffed5c3 ******/
-		%feature("compactdefaultargs") ReadStream;
-		%feature("autodoc", "
-Parameters
-----------
-theName: char *
-theParams: DESTEP_Parameters
-theIStream: str
-
-Return
--------
-IFSelect_ReturnStatus
-
-Description
------------
-Loads a file from stream and returns the read status.
-") ReadStream;
-		IFSelect_ReturnStatus ReadStream(const char * const theName, const DESTEP_Parameters & theParams, std::istream & theIStream);
 
 		/****** STEPControl_Reader::SetSystemLengthUnit ******/
 		/****** md5 signature: caf008f02d0f725fe4f0c731e76a6e62 ******/
@@ -1053,13 +1046,32 @@ Parameter theParameters the parameters for shape processing.
 		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
 
 		/****** STEPControl_Writer::SetShapeFixParameters ******/
-		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		/****** md5 signature: 4f412e1c837504f5b41e81b72871258d ******/
 		%feature("compactdefaultargs") SetShapeFixParameters;
 		%feature("autodoc", "
 Parameters
 ----------
 theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are converted and stored in the internal map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters);
+
+		/****** STEPControl_Writer::SetShapeFixParameters ******/
+		/****** md5 signature: e9b84ed235dbf7e0c6995a9f56c0af31 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap
 
 Return
 -------
@@ -1071,7 +1083,7 @@ Sets parameters for shape processing. Parameters from @p theParameters are copie
 Parameter theParameters the parameters for shape processing. 
 Parameter theAdditionalParameters the additional parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters);
 
 		/****** STEPControl_Writer::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/

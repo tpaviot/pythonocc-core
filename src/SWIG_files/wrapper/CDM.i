@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdm.html"
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<Resource_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -57,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_cdm.html"
 %import TCollection.i
 %import Message.i
 %import Resource.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -104,17 +106,41 @@ CDM_CCS_ReferenceRejection = CDM_CanCloseStatus.CDM_CCS_ReferenceRejection
 %template(CDM_ListOfDocument) NCollection_List<opencascade::handle<CDM_Document>>;
 
 %extend NCollection_List<opencascade::handle<CDM_Document>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = CDM_ListIteratorOfListOfDocument(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(CDM_ListOfReferences) NCollection_List<opencascade::handle<CDM_Reference>>;
 
 %extend NCollection_List<opencascade::handle<CDM_Reference>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = CDM_ListIteratorOfListOfReferences(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(CDM_MapOfDocument) NCollection_Map<opencascade::handle<CDM_Document>>;
@@ -413,7 +439,7 @@ Returns the first of associated comments. By default the comment is an empty str
 		%feature("autodoc", "
 Parameters
 ----------
-aComments: NCollection_Sequence<TCollection_ExtendedString>
+aComments: TColStd_SequenceOfExtendedString
 
 Return
 -------
@@ -423,7 +449,7 @@ Description
 -----------
 returns the associated comments through <aComments>. Returns empty sequence if no comments are associated.
 ") Comments;
-		void Comments(NCollection_Sequence<TCollection_ExtendedString> & aComments);
+		void Comments(TColStd_SequenceOfExtendedString & aComments);
 
 		/****** CDM_Document::CopyReference ******/
 		/****** md5 signature: d28575d391d3d7291b475f242ff6db84 ******/
@@ -581,7 +607,7 @@ Dump the object to JSON string.
 		%feature("autodoc", "
 Parameters
 ----------
-Extensions: NCollection_Sequence<TCollection_ExtendedString>
+Extensions: TColStd_SequenceOfExtendedString
 
 Return
 -------
@@ -591,7 +617,7 @@ Description
 -----------
 by default empties the extensions.
 ") Extensions;
-		virtual void Extensions(NCollection_Sequence<TCollection_ExtendedString> & Extensions);
+		virtual void Extensions(TColStd_SequenceOfExtendedString & Extensions);
 
 		/****** CDM_Document::FileExtension ******/
 		/****** md5 signature: dc32da120ea382590e37e02d5e00fb9e ******/
@@ -1088,7 +1114,7 @@ associates a comment with this document.
 		%feature("autodoc", "
 Parameters
 ----------
-aComments: NCollection_Sequence<TCollection_ExtendedString>
+aComments: TColStd_SequenceOfExtendedString
 
 Return
 -------
@@ -1098,7 +1124,7 @@ Description
 -----------
 associates a comments with this document.
 ") SetComments;
-		void SetComments(const NCollection_Sequence<TCollection_ExtendedString> & aComments);
+		void SetComments(const TColStd_SequenceOfExtendedString & aComments);
 
 		/****** CDM_Document::SetIsReadOnly ******/
 		/****** md5 signature: 9f4f8649234a1411f6086a147fb0f5ad ******/
@@ -1572,7 +1598,7 @@ Description
 -----------
 No available documentation.
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aFileName, const bool ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>> & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aFileName, const bool ReadOnly);
 
 		/****** CDM_MetaData::LookUp ******/
 		/****** md5 signature: 1fcbf639e1d8fc98e1fb42d2c7956d8f ******/
@@ -1596,7 +1622,7 @@ Description
 -----------
 No available documentation.
 ") LookUp;
-		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aVersion, TCollection_ExtendedString aFileName, const bool ReadOnly);
+		static opencascade::handle<CDM_MetaData> LookUp(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>> & theLookUpTable, TCollection_ExtendedString aFolder, TCollection_ExtendedString aName, TCollection_ExtendedString aPath, TCollection_ExtendedString aVersion, TCollection_ExtendedString aFileName, const bool ReadOnly);
 
 		/****** CDM_MetaData::Name ******/
 		/****** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ******/

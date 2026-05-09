@@ -92,6 +92,33 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(StepAP214_AppliedApprovalAssignment)
+%wrap_handle(StepAP214_AppliedDateAndTimeAssignment)
+%wrap_handle(StepAP214_AppliedDateAssignment)
+%wrap_handle(StepAP214_AppliedDocumentReference)
+%wrap_handle(StepAP214_AppliedExternalIdentificationAssignment)
+%wrap_handle(StepAP214_AppliedGroupAssignment)
+%wrap_handle(StepAP214_AppliedOrganizationAssignment)
+%wrap_handle(StepAP214_AppliedPersonAndOrganizationAssignment)
+%wrap_handle(StepAP214_AppliedPresentedItem)
+%wrap_handle(StepAP214_AppliedSecurityClassificationAssignment)
+%wrap_handle(StepAP214_AutoDesignActualDateAndTimeAssignment)
+%wrap_handle(StepAP214_AutoDesignActualDateAssignment)
+%wrap_handle(StepAP214_AutoDesignApprovalAssignment)
+%wrap_handle(StepAP214_AutoDesignDateAndPersonAssignment)
+%wrap_handle(StepAP214_AutoDesignDocumentReference)
+%wrap_handle(StepAP214_AutoDesignGroupAssignment)
+%wrap_handle(StepAP214_AutoDesignNominalDateAndTimeAssignment)
+%wrap_handle(StepAP214_AutoDesignNominalDateAssignment)
+%wrap_handle(StepAP214_AutoDesignOrganizationAssignment)
+%wrap_handle(StepAP214_AutoDesignPersonAndOrganizationAssignment)
+%wrap_handle(StepAP214_AutoDesignPresentedItem)
+%wrap_handle(StepAP214_AutoDesignSecurityClassificationAssignment)
+%wrap_handle(StepAP214_Class)
+%wrap_handle(StepAP214_ExternallyDefinedGeneralProperty)
+%wrap_handle(StepAP214_Protocol)
+%wrap_handle(StepAP214_RepItemGroup)
+%wrap_handle(StepAP214_ExternallyDefinedClass)
 /* end handles declaration */
 
 /* templates */
@@ -248,7 +275,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Approval> & aAssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP214_ApprovalItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Approval> & aAssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP214_ApprovalItem>> & aItems);
 
 		/****** StepAP214_AppliedApprovalAssignment::Items ******/
 		/****** md5 signature: 8c78759f7b1da6d4705502770fc944c6 ******/
@@ -310,10 +337,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_ApprovalItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_ApprovalItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedApprovalAssignment)
 
 %extend StepAP214_AppliedApprovalAssignment {
 	%pythoncode {
@@ -357,7 +386,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_DateAndTimeItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_DateAndTimeItem>> & aItems);
 
 		/****** StepAP214_AppliedDateAndTimeAssignment::Items ******/
 		/****** md5 signature: f6d25b981de3bdb9f08ff961663dc21a ******/
@@ -419,10 +448,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DateAndTimeItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DateAndTimeItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedDateAndTimeAssignment)
 
 %extend StepAP214_AppliedDateAndTimeAssignment {
 	%pythoncode {
@@ -466,7 +497,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_DateItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_DateItem>> & aItems);
 
 		/****** StepAP214_AppliedDateAssignment::Items ******/
 		/****** md5 signature: dd33a64735265b822dc19119e358129e ******/
@@ -528,10 +559,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DateItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DateItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedDateAssignment)
 
 %extend StepAP214_AppliedDateAssignment {
 	%pythoncode {
@@ -575,7 +608,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Document> & aAssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aSource, const opencascade::handle<NCollection_HArray1<StepAP214_DocumentReferenceItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Document> & aAssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aSource, const opencascade::handle<NCollection_HArray1<StepAP214_DocumentReferenceItem>> & aItems);
 
 		/****** StepAP214_AppliedDocumentReference::Items ******/
 		/****** md5 signature: 95562eb50278d366a8df9ee5ae96710f ******/
@@ -637,10 +670,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DocumentReferenceItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_DocumentReferenceItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedDocumentReference)
 
 %extend StepAP214_AppliedDocumentReference {
 	%pythoncode {
@@ -685,7 +720,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aIdentificationAssignment_AssignedId, const opencascade::handle<StepBasic_IdentificationRole> & aIdentificationAssignment_Role, const opencascade::handle<StepBasic_ExternalSource> & aExternalIdentificationAssignment_Source, const opencascade::handle<NCollection_HArray1<StepAP214_ExternalIdentificationItem> > & aItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aIdentificationAssignment_AssignedId, const opencascade::handle<StepBasic_IdentificationRole> & aIdentificationAssignment_Role, const opencascade::handle<StepBasic_ExternalSource> & aExternalIdentificationAssignment_Source, const opencascade::handle<NCollection_HArray1<StepAP214_ExternalIdentificationItem>> & aItems);
 
 		/****** StepAP214_AppliedExternalIdentificationAssignment::Items ******/
 		/****** md5 signature: f608c370837ae7b2a6a951a7dd71e5b7 ******/
@@ -716,10 +751,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_ExternalIdentificationItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_ExternalIdentificationItem>> & Items);
 
 };
 
+
+%make_alias(StepAP214_AppliedExternalIdentificationAssignment)
 
 %extend StepAP214_AppliedExternalIdentificationAssignment {
 	%pythoncode {
@@ -762,7 +799,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Group> & aGroupAssignment_AssignedGroup, const opencascade::handle<NCollection_HArray1<StepAP214_GroupItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Group> & aGroupAssignment_AssignedGroup, const opencascade::handle<NCollection_HArray1<StepAP214_GroupItem>> & aItems);
 
 		/****** StepAP214_AppliedGroupAssignment::Items ******/
 		/****** md5 signature: 44cc91f1aa41c135da0b45c8dc94f8da ******/
@@ -793,10 +830,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_GroupItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_GroupItem>> & Items);
 
 };
 
+
+%make_alias(StepAP214_AppliedGroupAssignment)
 
 %extend StepAP214_AppliedGroupAssignment {
 	%pythoncode {
@@ -840,7 +879,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Organization> & aAssignedOrganization, const opencascade::handle<StepBasic_OrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_OrganizationItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Organization> & aAssignedOrganization, const opencascade::handle<StepBasic_OrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_OrganizationItem>> & aItems);
 
 		/****** StepAP214_AppliedOrganizationAssignment::Items ******/
 		/****** md5 signature: d551f2dcb0b6740b786c720335c9d8ca ******/
@@ -902,10 +941,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_OrganizationItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_OrganizationItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedOrganizationAssignment)
 
 %extend StepAP214_AppliedOrganizationAssignment {
 	%pythoncode {
@@ -949,7 +990,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_PersonAndOrganizationItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_PersonAndOrganizationItem>> & aItems);
 
 		/****** StepAP214_AppliedPersonAndOrganizationAssignment::Items ******/
 		/****** md5 signature: e9045ae5604ec816540b6e959b064ae3 ******/
@@ -1011,10 +1052,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_PersonAndOrganizationItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_PersonAndOrganizationItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedPersonAndOrganizationAssignment)
 
 %extend StepAP214_AppliedPersonAndOrganizationAssignment {
 	%pythoncode {
@@ -1056,7 +1099,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<NCollection_HArray1<StepAP214_PresentedItemSelect> > & aItems);
+		void Init(const opencascade::handle<NCollection_HArray1<StepAP214_PresentedItemSelect>> & aItems);
 
 		/****** StepAP214_AppliedPresentedItem::Items ******/
 		/****** md5 signature: 1c214980aee476aa684daf252f952f21 ******/
@@ -1118,10 +1161,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_PresentedItemSelect> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_PresentedItemSelect>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedPresentedItem)
 
 %extend StepAP214_AppliedPresentedItem {
 	%pythoncode {
@@ -1164,7 +1209,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aAssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<StepAP214_SecurityClassificationItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aAssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<StepAP214_SecurityClassificationItem>> & aItems);
 
 		/****** StepAP214_AppliedSecurityClassificationAssignment::Items ******/
 		/****** md5 signature: ea09725d8942a694d1407e989aef9567 ******/
@@ -1226,10 +1271,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_SecurityClassificationItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_SecurityClassificationItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AppliedSecurityClassificationAssignment)
 
 %extend StepAP214_AppliedSecurityClassificationAssignment {
 	%pythoncode {
@@ -1591,7 +1638,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem>> & aItems);
 
 		/****** StepAP214_AutoDesignActualDateAndTimeAssignment::Items ******/
 		/****** md5 signature: 7743d4ce96ea147d5892a8ee67c90375 ******/
@@ -1653,10 +1700,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignActualDateAndTimeAssignment)
 
 %extend StepAP214_AutoDesignActualDateAndTimeAssignment {
 	%pythoncode {
@@ -1700,7 +1749,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem>> & aItems);
 
 		/****** StepAP214_AutoDesignActualDateAssignment::Items ******/
 		/****** md5 signature: f6f919a9dad8245c053b96d0d1b46790 ******/
@@ -1762,10 +1811,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignActualDateAssignment)
 
 %extend StepAP214_AutoDesignActualDateAssignment {
 	%pythoncode {
@@ -1808,7 +1859,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Approval> & aAssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Approval> & aAssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 		/****** StepAP214_AutoDesignApprovalAssignment::Items ******/
 		/****** md5 signature: 93ea833e1c506d3b2578e6656ccd719f ******/
@@ -1870,10 +1921,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignApprovalAssignment)
 
 %extend StepAP214_AutoDesignApprovalAssignment {
 	%pythoncode {
@@ -1917,7 +1970,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndPersonItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndPersonItem>> & aItems);
 
 		/****** StepAP214_AutoDesignDateAndPersonAssignment::Items ******/
 		/****** md5 signature: ffd2c29dc600b6ec76d02735b0b6c8f2 ******/
@@ -1979,10 +2032,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndPersonItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndPersonItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignDateAndPersonAssignment)
 
 %extend StepAP214_AutoDesignDateAndPersonAssignment {
 	%pythoncode {
@@ -2356,7 +2411,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Document> & aAssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aSource, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignReferencingItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Document> & aAssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aSource, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignReferencingItem>> & aItems);
 
 		/****** StepAP214_AutoDesignDocumentReference::Items ******/
 		/****** md5 signature: 21a08bc20b97820586d95d77073d3b94 ******/
@@ -2418,10 +2473,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignReferencingItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignReferencingItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignDocumentReference)
 
 %extend StepAP214_AutoDesignDocumentReference {
 	%pythoncode {
@@ -2613,7 +2670,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Group> & aAssignedGroup, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGroupedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Group> & aAssignedGroup, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGroupedItem>> & aItems);
 
 		/****** StepAP214_AutoDesignGroupAssignment::Items ******/
 		/****** md5 signature: 0062c194106be9560af4b65f3d09a72e ******/
@@ -2675,10 +2732,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGroupedItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGroupedItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignGroupAssignment)
 
 %extend StepAP214_AutoDesignGroupAssignment {
 	%pythoncode {
@@ -2910,7 +2969,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_DateAndTime> & aAssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem>> & aItems);
 
 		/****** StepAP214_AutoDesignNominalDateAndTimeAssignment::Items ******/
 		/****** md5 signature: 7743d4ce96ea147d5892a8ee67c90375 ******/
@@ -2972,10 +3031,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDateAndTimeItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignNominalDateAndTimeAssignment)
 
 %extend StepAP214_AutoDesignNominalDateAndTimeAssignment {
 	%pythoncode {
@@ -3019,7 +3080,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Date> & aAssignedDate, const opencascade::handle<StepBasic_DateRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem>> & aItems);
 
 		/****** StepAP214_AutoDesignNominalDateAssignment::Items ******/
 		/****** md5 signature: f6f919a9dad8245c053b96d0d1b46790 ******/
@@ -3081,10 +3142,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignDatedItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignNominalDateAssignment)
 
 %extend StepAP214_AutoDesignNominalDateAssignment {
 	%pythoncode {
@@ -3128,7 +3191,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Organization> & aAssignedOrganization, const opencascade::handle<StepBasic_OrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Organization> & aAssignedOrganization, const opencascade::handle<StepBasic_OrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 		/****** StepAP214_AutoDesignOrganizationAssignment::Items ******/
 		/****** md5 signature: 93ea833e1c506d3b2578e6656ccd719f ******/
@@ -3190,10 +3253,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignOrganizationAssignment)
 
 %extend StepAP214_AutoDesignOrganizationAssignment {
 	%pythoncode {
@@ -3237,7 +3302,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aAssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aRole, const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 		/****** StepAP214_AutoDesignPersonAndOrganizationAssignment::Items ******/
 		/****** md5 signature: 93ea833e1c506d3b2578e6656ccd719f ******/
@@ -3299,10 +3364,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignGeneralOrgItem>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignPersonAndOrganizationAssignment)
 
 %extend StepAP214_AutoDesignPersonAndOrganizationAssignment {
 	%pythoncode {
@@ -3344,7 +3411,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignPresentedItemSelect> > & aItems);
+		void Init(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignPresentedItemSelect>> & aItems);
 
 		/****** StepAP214_AutoDesignPresentedItem::Items ******/
 		/****** md5 signature: af7f9932e709eba62b51eb4891861468 ******/
@@ -3406,10 +3473,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignPresentedItemSelect> > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP214_AutoDesignPresentedItemSelect>> & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignPresentedItem)
 
 %extend StepAP214_AutoDesignPresentedItem {
 	%pythoncode {
@@ -3802,7 +3871,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aAssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval> > > & aItems);
+		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aAssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>> > & aItems);
 
 		/****** StepAP214_AutoDesignSecurityClassificationAssignment::Items ******/
 		/****** md5 signature: 8c6fdb2735c0914e1c3f277a06002835 ******/
@@ -3864,10 +3933,12 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval> > > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Approval>> > & aItems);
 
 };
 
+
+%make_alias(StepAP214_AutoDesignSecurityClassificationAssignment)
 
 %extend StepAP214_AutoDesignSecurityClassificationAssignment {
 	%pythoncode {
@@ -3895,6 +3966,8 @@ Empty constructor.
 
 };
 
+
+%make_alias(StepAP214_Class)
 
 %extend StepAP214_Class {
 	%pythoncode {
@@ -4522,6 +4595,8 @@ Set data for supertype ExternallyDefinedItem.
 };
 
 
+%make_alias(StepAP214_ExternallyDefinedGeneralProperty)
+
 %extend StepAP214_ExternallyDefinedGeneralProperty {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4914,6 +4989,8 @@ Returns a Case Number for each of the StepAP214 Entities.
 };
 
 
+%make_alias(StepAP214_Protocol)
+
 %extend StepAP214_Protocol {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4992,6 +5069,8 @@ Set data for supertype RepresentationItem.
 
 };
 
+
+%make_alias(StepAP214_RepItemGroup)
 
 %extend StepAP214_RepItemGroup {
 	%pythoncode {
@@ -5324,6 +5403,8 @@ Set data for supertype ExternallyDefinedItem.
 
 };
 
+
+%make_alias(StepAP214_ExternallyDefinedClass)
 
 %extend StepAP214_ExternallyDefinedClass {
 	%pythoncode {

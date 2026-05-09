@@ -45,7 +45,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_locope.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TColgp_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TColGeom_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
 #include<TColStd_module.hxx>
@@ -71,7 +74,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_locope.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TColgp.i
+%import TopTools.i
 %import TopAbs.i
+%import TColGeom.i
 %import gp.i
 %import Geom.i
 
@@ -115,6 +121,13 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 %template(LocOpe_SequenceOfCirc) NCollection_Sequence<gp_Circ>;
 
 %extend NCollection_Sequence<gp_Circ> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -123,6 +136,13 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 %template(LocOpe_SequenceOfLin) NCollection_Sequence<gp_Lin>;
 
 %extend NCollection_Sequence<gp_Lin> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -131,6 +151,13 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
 %template(LocOpe_SequenceOfPntFace) NCollection_Sequence<LocOpe_PntFace>;
 
 %extend NCollection_Sequence<LocOpe_PntFace> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -197,7 +224,7 @@ Returns true when the edge <E> is closed on the face <OnF>.
 Parameters
 ----------
 S: TopoDS_Shape
-Pt: NCollection_Sequence<gp_Pnt>
+Pt: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -207,7 +234,7 @@ Description
 -----------
 No available documentation.
 ") SampleEdges;
-		static void SampleEdges(const TopoDS_Shape & S, NCollection_Sequence<gp_Pnt> & Pt);
+		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
 
 		/****** LocOpe::TgtFaces ******/
 		/****** md5 signature: 0a93567d8dbaff47a02b4a8ef41a0fe0 ******/
@@ -262,7 +289,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -272,7 +299,7 @@ Description
 -----------
 Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") LocOpe_BuildShape;
-		 LocOpe_BuildShape(const NCollection_List<TopoDS_Shape> & L);
+		 LocOpe_BuildShape(const TopTools_ListOfShape & L);
 
 		/****** LocOpe_BuildShape::Perform ******/
 		/****** md5 signature: b270647b13c6414b2c9a30cdcf09419a ******/
@@ -280,7 +307,7 @@ Builds shape(s) from the list <L>. Uses only the faces of <L>.
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -290,7 +317,7 @@ Description
 -----------
 Builds shape(s) from the list <L>. Uses only the faces of <L>.
 ") Perform;
-		void Perform(const NCollection_List<TopoDS_Shape> & L);
+		void Perform(const TopTools_ListOfShape & L);
 
 		/****** LocOpe_BuildShape::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -338,7 +365,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Ledges: NCollection_List<TopoDS_Shape>
+Ledges: TopTools_ListOfShape
 PW: LocOpe_WiresOnShape
 
 Return
@@ -349,7 +376,7 @@ Description
 -----------
 No available documentation.
 ") LocOpe_BuildWires;
-		 LocOpe_BuildWires(const NCollection_List<TopoDS_Shape> & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
+		 LocOpe_BuildWires(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
 		/****** LocOpe_BuildWires::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -370,7 +397,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Ledges: NCollection_List<TopoDS_Shape>
+Ledges: TopTools_ListOfShape
 PW: LocOpe_WiresOnShape
 
 Return
@@ -381,20 +408,20 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const NCollection_List<TopoDS_Shape> & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
+		void Perform(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
 		/****** LocOpe_BuildWires::Result ******/
 		/****** md5 signature: 83e504274481e6f00be7aae49621d422 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Result;
-		const NCollection_List<TopoDS_Shape> Result();
+		const TopTools_ListOfShape & Result();
 
 };
 
@@ -633,7 +660,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Scur: Geom_Curve
+Scur: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -643,7 +670,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(const NCollection_Sequence<opencascade::handle<Geom_Curve> > & Scur);
+		void Perform(const TColGeom_SequenceOfCurve & Scur);
 
 		/****** LocOpe_CSIntersector::Point ******/
 		/****** md5 signature: 0c3c4b16e4f7e34feeb2fba0e382aa8c ******/
@@ -965,7 +992,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-SCurves: Geom_Curve
+SCurves: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -975,7 +1002,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & SCurves);
+		void Curves(TColGeom_SequenceOfCurve & SCurves);
 
 		/****** LocOpe_DPrism::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -1052,13 +1079,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_DPrism::Spine ******/
 		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
@@ -1376,26 +1403,26 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") GeneratingEdges;
-		virtual const NCollection_List<TopoDS_Shape> GeneratingEdges();
+		virtual const TopTools_ListOfShape & GeneratingEdges();
 
 		/****** LocOpe_GeneratedShape::OrientedFaces ******/
 		/****** md5 signature: 2f0ad793faf07fd02ee98c37edc09272 ******/
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of correctly oriented generated faces.
 ") OrientedFaces;
-		virtual const NCollection_List<TopoDS_Shape> OrientedFaces();
+		virtual const TopTools_ListOfShape & OrientedFaces();
 
 };
 
@@ -1454,13 +1481,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the descendant face of <F>. <F> may belong to the original shape or to the 'generated' shape. The returned face may be a null shape (when <F> disappears).
 ") DescendantFace;
-		const NCollection_List<TopoDS_Shape> DescendantFace(const TopoDS_Face & F);
+		const TopTools_ListOfShape & DescendantFace(const TopoDS_Face & F);
 
 		/****** LocOpe_Generator::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -1644,26 +1671,26 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") DescendantFaces;
-		const NCollection_List<TopoDS_Shape> DescendantFaces(const TopoDS_Face & F);
+		const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
 
 		/****** LocOpe_Gluer::Edges ******/
 		/****** md5 signature: 037aaf7464b521eb3427cc0fdaf891f0 ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Edges;
-		const NCollection_List<TopoDS_Shape> Edges();
+		const TopTools_ListOfShape & Edges();
 
 		/****** LocOpe_Gluer::GluedShape ******/
 		/****** md5 signature: cc05062c19ffec36edea50e2f74757fb ******/
@@ -1754,13 +1781,13 @@ No available documentation.
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") TgtEdges;
-		const NCollection_List<TopoDS_Shape> TgtEdges();
+		const TopTools_ListOfShape & TgtEdges();
 
 };
 
@@ -1924,13 +1951,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
 };
 
@@ -1984,17 +2011,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Spt: NCollection_Sequence<gp_Pnt>
+Spt: TColgp_SequenceOfPnt
 
 Return
 -------
-NCollection_Sequence<opencascade::handle<Geom_Curve>>
+TColGeom_SequenceOfCurve
 
 Description
 -----------
 No available documentation.
 ") Curves;
-		const NCollection_Sequence<opencascade::handle<Geom_Curve>> & Curves(const NCollection_Sequence<gp_Pnt> & Spt);
+		TColGeom_SequenceOfCurve Curves(const TColgp_SequenceOfPnt & Spt);
 
 		/****** LocOpe_Pipe::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -2058,13 +2085,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_Pipe::Spine ******/
 		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
@@ -2305,7 +2332,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-SCurves: Geom_Curve
+SCurves: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -2315,7 +2342,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & SCurves);
+		void Curves(TColGeom_SequenceOfCurve & SCurves);
 
 		/****** LocOpe_Prism::FirstShape ******/
 		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
@@ -2405,13 +2432,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
 };
 
@@ -2580,13 +2607,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Manages the descendant shapes.
 ") ShapesFromShape;
-		const NCollection_List<TopoDS_Shape> ShapesFromShape(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & ShapesFromShape(const TopoDS_Shape & S);
 
 };
 
@@ -2678,7 +2705,7 @@ Adds the wire <W> on the face <F>.
 		%feature("autodoc", "
 Parameters
 ----------
-Lwires: NCollection_List<TopoDS_Shape>
+Lwires: TopTools_ListOfShape
 F: TopoDS_Face
 
 Return
@@ -2689,7 +2716,7 @@ Description
 -----------
 Adds the list of wires <Lwires> on the face <F>.
 ") Add;
-		bool Add(const NCollection_List<TopoDS_Shape> & Lwires, const TopoDS_Face & F);
+		bool Add(const TopTools_ListOfShape & Lwires, const TopoDS_Face & F);
 
 		/****** LocOpe_SplitShape::CanSplit ******/
 		/****** md5 signature: ab5acad19be48f50aed4b725f13c8f98 ******/
@@ -2719,13 +2746,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
-		const NCollection_List<TopoDS_Shape> DescendantShapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_SplitShape::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2756,13 +2783,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the 'left' part defined by the wire <W> on the face <F>. The returned list of shape is in fact a list of faces. The face <F> is considered with its topological orientation in the original shape. <W> is considered with its orientation.
 ") LeftOf;
-		const NCollection_List<TopoDS_Shape> LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
+		const TopTools_ListOfShape & LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
 
 		/****** LocOpe_SplitShape::Shape ******/
 		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
@@ -2832,26 +2859,26 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
-		const NCollection_List<TopoDS_Shape> DescendantShapes(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
 		/****** LocOpe_Spliter::DirectLeft ******/
 		/****** md5 signature: 0dcdbf098f12ae717ee8e5124bb48c8d ******/
 		%feature("compactdefaultargs") DirectLeft;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the faces which are the left of the projected wires and which are.
 ") DirectLeft;
-		const NCollection_List<TopoDS_Shape> DirectLeft();
+		const TopTools_ListOfShape & DirectLeft();
 
 		/****** LocOpe_Spliter::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2889,13 +2916,13 @@ No available documentation.
 		%feature("compactdefaultargs") Left;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...).
 ") Left;
-		const NCollection_List<TopoDS_Shape> Left();
+		const TopTools_ListOfShape & Left();
 
 		/****** LocOpe_Spliter::Perform ******/
 		/****** md5 signature: 81f184fa3b695b3f713141fe6156b7b1 ******/
@@ -2979,7 +3006,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theEdges: NCollection_Sequence<TopoDS_Shape>
+theEdges: TopTools_SequenceOfShape
 
 Return
 -------
@@ -2989,7 +3016,7 @@ Description
 -----------
 Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
-		bool Add(const NCollection_Sequence<TopoDS_Shape> & theEdges);
+		bool Add(const TopTools_SequenceOfShape & theEdges);
 
 		/****** LocOpe_WiresOnShape::Bind ******/
 		/****** md5 signature: 4b8d37767a759e53f1ff5474f2d75938 ******/
@@ -3376,13 +3403,13 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") GeneratingEdges;
-		const NCollection_List<TopoDS_Shape> GeneratingEdges();
+		const TopTools_ListOfShape & GeneratingEdges();
 
 		/****** LocOpe_GluedShape::GlueOnFace ******/
 		/****** md5 signature: a4642afc420a44d60619fbf28fad5c55 ******/
@@ -3425,13 +3452,13 @@ No available documentation.
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of correctly oriented generated faces.
 ") OrientedFaces;
-		const NCollection_List<TopoDS_Shape> OrientedFaces();
+		const TopTools_ListOfShape & OrientedFaces();
 
 };
 

@@ -178,6 +178,13 @@ Array1ExtendIter(opencascade::handle<StepRepr_ShapeAspect>)
 %template(StepRepr_SequenceOfMaterialPropertyRepresentation) NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -186,6 +193,13 @@ Array1ExtendIter(opencascade::handle<StepRepr_ShapeAspect>)
 %template(StepRepr_SequenceOfRepresentationItem) NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1075,7 +1089,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation> > > & aElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> > & aElements);
 
 		/****** StepRepr_DataEnvironment::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -1124,7 +1138,7 @@ Description
 -----------
 Set field Elements.
 ") SetElements;
-		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation> > > & Elements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>> > & Elements);
 
 		/****** StepRepr_DataEnvironment::SetName ******/
 		/****** md5 signature: 1a85c1f4dd446039f14efe98df7aeb03 ******/
@@ -2268,7 +2282,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aItems, const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & aItems, const opencascade::handle<StepRepr_RepresentationContext> & aContextOfItems);
 
 		/****** StepRepr_Representation::Items ******/
 		/****** md5 signature: 1969a52379a55d2325be4da943eb6bdb ******/
@@ -2361,7 +2375,7 @@ Description
 -----------
 No available documentation.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & aItems);
+		void SetItems(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & aItems);
 
 		/****** StepRepr_Representation::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -4044,7 +4058,7 @@ Description
 -----------
 Returns a CharacterizedRepresentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepRepr_CharacterizedRepresentation::SetDescription ******/
 		/****** md5 signature: b467a4923a6eae88022d3ef88d50bd20 ******/
@@ -4168,7 +4182,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & item_element);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & item_element);
 
 		/****** StepRepr_CompoundRepresentationItem::ItemElement ******/
 		/****** md5 signature: 696db934db45709c5d287630e43be1f3 ******/
@@ -4230,7 +4244,7 @@ Description
 -----------
 No available documentation.
 ") SetItemElement;
-		void SetItemElement(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & item_element);
+		void SetItemElement(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & item_element);
 
 		/****** StepRepr_CompoundRepresentationItem::SetItemElementValue ******/
 		/****** md5 signature: e95f47d6967433704c792dee421efd2e ******/
@@ -4551,7 +4565,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & aUncertainty);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> > & aUncertainty);
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::NbUncertainty ******/
 		/****** md5 signature: 5a5209f9e06fb26886d8dfd427ce51aa ******/
@@ -4582,7 +4596,7 @@ Description
 -----------
 No available documentation.
 ") SetUncertainty;
-		void SetUncertainty(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & aUncertainty);
+		void SetUncertainty(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> > & aUncertainty);
 
 		/****** StepRepr_GlobalUncertaintyAssignedContext::Uncertainty ******/
 		/****** md5 signature: c45420811079a2cb4224a341ce15554e ******/
@@ -4662,7 +4676,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits);
 
 		/****** StepRepr_GlobalUnitAssignedContext::NbUnits ******/
 		/****** md5 signature: 0869a1823c5478da0f6e93ff331d6fda ******/
@@ -4693,7 +4707,7 @@ Description
 -----------
 No available documentation.
 ") SetUnits;
-		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
+		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits);
 
 		/****** StepRepr_GlobalUnitAssignedContext::Units ******/
 		/****** md5 signature: 15510344bbc0dccc14d821a7401432b6 ******/

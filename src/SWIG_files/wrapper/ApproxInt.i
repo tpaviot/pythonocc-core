@@ -45,6 +45,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approxint.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<math_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<IntPatch_module.hxx>
 #include<Approx_module.hxx>
 #include<gp_module.hxx>
@@ -64,6 +66,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approxint.html"
 %import Standard.i
 %import NCollection.i
 %import math.i
+%import TColStd.i
+%import TColgp.i
 %import IntPatch.i
 %import Approx.i
 %import gp.i
@@ -105,7 +109,7 @@ Parameters
 theCoords: NCollection_LocalArray<double>
 theDim: int
 thePars: math_Vector
-theCurv: NCollection_Array1<double>
+theCurv: TColStd_Array1OfReal
 
 Return
 -------
@@ -115,23 +119,23 @@ Description
 -----------
 Builds discrete curvature.
 ") BuildCurvature;
-		static void BuildCurvature(const NCollection_LocalArray<double> & theCoords, const int theDim, const math_Vector & thePars, NCollection_Array1<double> & theCurv, Standard_Real &OutValue);
+		static void BuildCurvature(const NCollection_LocalArray<double> & theCoords, const int theDim, const math_Vector & thePars, TColStd_Array1OfReal & theCurv, Standard_Real &OutValue);
 
 		/****** ApproxInt_KnotTools::BuildKnots ******/
-		/****** md5 signature: ddd603d88556fac134862e1f128fa9be ******/
+		/****** md5 signature: 6fe93cfd23aaa1c104da24c416f43ae6 ******/
 		%feature("compactdefaultargs") BuildKnots;
 		%feature("autodoc", "
 Parameters
 ----------
-thePntsXYZ: NCollection_Array1<gp_Pnt>
-thePntsU1V1: NCollection_Array1<gp_Pnt2d>
-thePntsU2V2: NCollection_Array1<gp_Pnt2d>
+thePntsXYZ: TColgp_Array1OfPnt
+thePntsU1V1: TColgp_Array1OfPnt2d
+thePntsU2V2: TColgp_Array1OfPnt2d
 thePars: math_Vector
 theApproxXYZ: bool
 theApproxU1V1: bool
 theApproxU2V2: bool
 theMinNbPnts: int
-theKnots: NCollection_Vector<int>
+theKnots: NCollection_DynamicArray<int>
 
 Return
 -------
@@ -150,7 +154,7 @@ Parameter theApproxU2V2 - Flag existence of second 2d set.
 Parameter theMinNbPnts - Minimal number of points per knot interval. 
 Parameter theKnots - output knots sequence.
 ") BuildKnots;
-		static void BuildKnots(const NCollection_Array1<gp_Pnt> & thePntsXYZ, const NCollection_Array1<gp_Pnt2d> & thePntsU1V1, const NCollection_Array1<gp_Pnt2d> & thePntsU2V2, const math_Vector & thePars, const bool theApproxXYZ, const bool theApproxU1V1, const bool theApproxU2V2, const int theMinNbPnts, NCollection_Vector<int> & theKnots);
+		static void BuildKnots(const TColgp_Array1OfPnt & thePntsXYZ, const TColgp_Array1OfPnt2d & thePntsU1V1, const TColgp_Array1OfPnt2d & thePntsU2V2, const math_Vector & thePars, const bool theApproxXYZ, const bool theApproxU1V1, const bool theApproxU2V2, const int theMinNbPnts, NCollection_DynamicArray<int> & theKnots);
 
 		/****** ApproxInt_KnotTools::DefineParType ******/
 		/****** md5 signature: 84a1f9fd732595cddc9bf44e00a619f4 ******/

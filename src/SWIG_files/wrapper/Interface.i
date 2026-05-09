@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_interface.html"
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_interface.html"
 %import NCollection.i
 %import TCollection.i
 %import Message.i
+%import TColStd.i
 %import MoniTool.i
 
 %pythoncode {
@@ -178,8 +180,14 @@ Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
 %wrap_handle(Interface_Protocol)
 %wrap_handle(Interface_ReaderModule)
 %wrap_handle(Interface_ReportEntity)
+%wrap_handle(Interface_SignLabel)
+%wrap_handle(Interface_SignType)
+%wrap_handle(Interface_TypedValue)
 %wrap_handle(Interface_UndefinedContent)
 %wrap_handle(Interface_CopyMap)
+%wrap_handle(Interface_Static)
+%wrap_handle(Interface_HArray1OfHAsciiString)
+%wrap_handle(Interface_HSequenceOfCheck)
 /* end handles declaration */
 
 /* templates */
@@ -200,12 +208,19 @@ Array1ExtendIter(opencascade::handle<TCollection_HAsciiString>)
 %template(Interface_SequenceOfCheck) NCollection_Sequence<opencascade::handle<Interface_Check>>;
 
 %extend NCollection_Sequence<opencascade::handle<Interface_Check>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
     }
 };
-%template(Interface_VectorOfFileParameter) NCollection_Vector<Interface_FileParameter>;
+%template(Interface_VectorOfFileParameter) NCollection_DynamicArray<Interface_FileParameter>;
 /* end templates declaration */
 
 /* typedefs */
@@ -217,7 +232,7 @@ typedef NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>> Inter
 typedef NCollection_HSequence<opencascade::handle<Interface_Check>> Interface_HSequenceOfCheck;
 typedef NCollection_IndexedMap<TCollection_AsciiString> Interface_IndexedMapOfAsciiString;
 typedef NCollection_Sequence<opencascade::handle<Interface_Check>> Interface_SequenceOfCheck;
-typedef NCollection_Vector<Interface_FileParameter> Interface_VectorOfFileParameter;
+typedef NCollection_DynamicArray<Interface_FileParameter> Interface_VectorOfFileParameter;
 /* end typedefs declaration */
 
 /*************************
@@ -1244,13 +1259,13 @@ final: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of Fails, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") Fails;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> Fails(const bool final = true);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> Fails(const bool final = true);
 
 		/****** Interface_Check::GetAsWarning ******/
 		/****** md5 signature: 5f7df20896d063afedf0382f1097baef ******/
@@ -1375,13 +1390,13 @@ final: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of Info Msg, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") InfoMsgs;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> InfoMsgs(const bool final = true);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> InfoMsgs(const bool final = true);
 
 		/****** Interface_Check::Mend ******/
 		/****** md5 signature: 0d8951d8d665740509c551a4b16b7def ******/
@@ -1613,13 +1628,13 @@ final: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of Warnings, for a frontal-engine logic Final forms by default, Original forms if <final> is False Can be empty.
 ") Warnings;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> Warnings(const bool final = true);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> Warnings(const bool final = true);
 
 };
 
@@ -1770,13 +1785,13 @@ global: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities concerned by a Check Only fails if <failsonly> is True, else all non-empty checks If <global> is true, adds the model for a global check Else, global check is ignored.
 ") Checkeds;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Checkeds(const bool failsonly, const bool global);
+		opencascade::handle<TColStd_HSequenceOfTransient> Checkeds(const bool failsonly, const bool global);
 
 		/****** Interface_CheckIterator::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2981,7 +2996,7 @@ Defines an empty iterator (see AddList & AddItem).
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -2991,7 +3006,7 @@ Description
 -----------
 Defines an iterator on a list, directly i.e. without copying it.
 ") Interface_EntityIterator;
-		 Interface_EntityIterator(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		 Interface_EntityIterator(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** Interface_EntityIterator::AddItem ******/
 		/****** md5 signature: 3f10cb57683e1144e46e0f94e8de6fea ******/
@@ -3017,7 +3032,7 @@ Adds to the iteration list a defined entity.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -3027,20 +3042,20 @@ Description
 -----------
 Gets a list of entities and adds its to the iteration list.
 ") AddList;
-		void AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** Interface_EntityIterator::Content ******/
 		/****** md5 signature: b7090464690bf22740d697309aae3742 ******/
 		%feature("compactdefaultargs") Content;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the content of the Iterator, accessed through a Handle to be used by a frontal-engine logic Returns an empty Sequence if the Iterator is empty Calls Start if not yet done.
 ") Content;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Content();
+		opencascade::handle<TColStd_HSequenceOfTransient> Content();
 
 		/****** Interface_EntityIterator::Destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
@@ -5826,13 +5841,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the sequence of Entities Shared by an Entity.
 ") GetShareds;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetShareds(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GetShareds(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** Interface_Graph::GetSharings ******/
 		/****** md5 signature: a09b78c596601bccddf898bad8143724 ******/
@@ -5844,13 +5859,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the sequence of Entities Sharings by an Entity.
 ") GetSharings;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GetSharings(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GetSharings(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** Interface_Graph::HasShareErrors ******/
 		/****** md5 signature: 55ac010f5cf5b6a02dbb0ebe45970708 ******/
@@ -6080,13 +6095,13 @@ Returns the list of Entities Shared by an Entity, as recorded by the Graph. That
 		%feature("compactdefaultargs") SharingTable;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<NCollection_List<int>>>
+opencascade::handle<TColStd_HArray1OfListOfInteger>
 
 Description
 -----------
 Returns the Table of Sharing lists. Used to Create another Graph from <self>.
 ") SharingTable;
-		const opencascade::handle<NCollection_HArray1<NCollection_List<int>>> & SharingTable();
+		const opencascade::handle<TColStd_HArray1OfListOfInteger> & SharingTable();
 
 		/****** Interface_Graph::Sharings ******/
 		/****** md5 signature: 561a9bb8187bfa6649f3c1fcaacdaeed ******/
@@ -6413,14 +6428,14 @@ Clears all data, hence each entity number has an empty list.
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Returns entity headers used to describe the lists. 
 Return: handle to the array of entity headers.
 ") Entities;
-		const opencascade::handle<NCollection_HArray1<int>> & Entities();
+		const opencascade::handle<TColStd_HArray1OfInteger> & Entities();
 
 		/****** Interface_IntList::Initialize ******/
 		/****** md5 signature: 36c9ba6792286ef33bddd0cc3c0f4718 ******/
@@ -6446,8 +6461,8 @@ Initialize IntList by number of entities.
 		%feature("autodoc", "
 Parameters
 ----------
-ents: NCollection_HArray1<int
-refs: NCollection_HArray1<int
+ents: TColStd_HArray1OfInteger
+refs: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -6457,7 +6472,7 @@ Description
 -----------
 No available documentation.
 ") Internals;
-		void Internals(Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<int> > & ents, opencascade::handle<NCollection_HArray1<int> > & refs);
+		void Internals(Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfInteger> & ents, opencascade::handle<TColStd_HArray1OfInteger> & refs);
 
 		/****** Interface_IntList::IsRedefined ******/
 		/****** md5 signature: 5cb64df1312402b796b8657b02b3e02d ******/
@@ -6554,14 +6569,14 @@ Returns the current entity number.
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Returns the packed references storage. 
 Return: handle to the array of packed references.
 ") References;
-		const opencascade::handle<NCollection_HArray1<int>> & References();
+		const opencascade::handle<TColStd_HArray1OfInteger> & References();
 
 		/****** Interface_IntList::Remove ******/
 		/****** md5 signature: e431019970c473f965e0ff4e65d0a65b ******/
@@ -6724,6 +6739,10 @@ No available documentation.
 ") Value;
 		int Value();
 
+		%extend{
+			int GetCValue() { return self->CValue(); }
+			void SetCValue(int value) { self->CValue() = value; }
+		};
 };
 
 
@@ -7291,13 +7310,13 @@ Returns True if <num> identifies an Unknown Entity: in this case, a ReportEntity
 		%feature("compactdefaultargs") ListTemplates;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the complete list of names attached to template models.
 ") ListTemplates;
-		static opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ListTemplates();
+		static opencascade::handle<TColStd_HSequenceOfHAsciiString> ListTemplates();
 
 		/****** Interface_InterfaceModel::NbEntities ******/
 		/****** md5 signature: 684cc77731940fa1427c4073b379ced5 ******/
@@ -7775,6 +7794,10 @@ Minimum Semantic Global Check on data in model (header) Can only check basic Dat
 ") VerifyCheck;
 		virtual void VerifyCheck(opencascade::handle<Interface_Check> & ach);
 
+		%extend{
+			bool GetDispatchStatus() { return self->DispatchStatus(); }
+			void SetDispatchStatus(bool value) { self->DispatchStatus() = value; }
+		};
 };
 
 
@@ -9856,11 +9879,11 @@ Commands to declare the process ended (hence, advancement is forced to 100 %).
 		%feature("autodoc", "
 Parameters
 ----------
-phn: NCollection_HSequence<TCollection_AsciiString
-phw: NCollection_HSequence<double
-phdeb: NCollection_HSequence<int
-phfin: NCollection_HSequence<int
-stw: NCollection_HSequence<double
+phn: TColStd_HSequenceOfAsciiString
+phw: TColStd_HSequenceOfReal
+phdeb: TColStd_HSequenceOfInteger
+phfin: TColStd_HSequenceOfInteger
+stw: TColStd_HSequenceOfReal
 
 Return
 -------
@@ -9871,7 +9894,7 @@ Description
 -----------
 Returns fields in once, without copying them, used for copy when starting.
 ") Internals;
-		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<NCollection_HSequence<TCollection_AsciiString> > & phn, opencascade::handle<NCollection_HSequence<double> > & phw, opencascade::handle<NCollection_HSequence<int> > & phdeb, opencascade::handle<NCollection_HSequence<int> > & phfin, opencascade::handle<NCollection_HSequence<double> > & stw);
+		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
 		/****** Interface_STAT::NextCycle ******/
 		/****** md5 signature: 7ecd409073e0796407e5cad262aa860d ******/
@@ -10610,6 +10633,8 @@ Considers context as an InterfaceModel and returns the Label computed by it.
 };
 
 
+%make_alias(Interface_SignLabel)
+
 %extend Interface_SignLabel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10680,6 +10705,8 @@ Returns the Signature for a Transient object. It is specific of each sub-class o
 
 };
 
+
+%make_alias(Interface_SignType)
 
 %extend Interface_SignType {
 	%pythoncode {
@@ -10763,6 +10790,8 @@ Correspondence ParamType from Interface to ValueType from MoniTool.
 
 };
 
+
+%make_alias(Interface_TypedValue)
 
 %extend Interface_TypedValue {
 	%pythoncode {
@@ -11599,13 +11628,13 @@ criter: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns a list of names of statics: <mode> = 0 (D): criter is for family <mode> = 1: criter is regexp on names, takes final items (ignore wild cards) <mode> = 2: idem but take only wilded, not final items <mode> = 3: idem, take all items matching criter idem + 100: takes only non-updated items idem + 200: takes only updated items criter empty (D): returns all names else returns names which match the given criter Remark: families beginning by '$' are not listed by criter '' they are listed only by criter '$' //! This allows for instance to set new values after having loaded or reloaded a resource, then to update them as required.
 ") Items;
-		static opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> Items(const int mode = 0, const char * const criter = "");
+		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const int mode = 0, const char * const criter = "");
 
 		/****** Interface_Static::PrintStatic ******/
 		/****** md5 signature: 7f17a7202d6963fb7283a5d0144d0ad0 ******/
@@ -11807,6 +11836,8 @@ Returns the wildcard static, which can be (is most often) null.
 
 };
 
+
+%make_alias(Interface_Static)
 
 %extend Interface_Static {
 	%pythoncode {

@@ -63,6 +63,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_DataStructureManager.hxx>
 #include<Graphic3d_DiagnosticInfo.hxx>
 #include<Graphic3d_DisplayPriority.hxx>
+#include<Graphic3d_Flipper.hxx>
 #include<Graphic3d_FrameStats.hxx>
 #include<Graphic3d_FrameStatsCounter.hxx>
 #include<Graphic3d_FrameStatsData.hxx>

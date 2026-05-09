@@ -44,6 +44,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_math.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Precision_module.hxx>
@@ -54,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_math.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import Message.i
 
 %pythoncode {
@@ -1920,8 +1922,8 @@ class math_EigenValuesSearcher {
 		%feature("autodoc", "
 Parameters
 ----------
-theDiagonal: NCollection_Array1<double>
-theSubdiagonal: NCollection_Array1<double>
+theDiagonal: TColStd_Array1OfReal
+theSubdiagonal: TColStd_Array1OfReal
 
 Return
 -------
@@ -1931,7 +1933,7 @@ Description
 -----------
 No available documentation.
 ") math_EigenValuesSearcher;
-		 math_EigenValuesSearcher(const NCollection_Array1<double> & theDiagonal, const NCollection_Array1<double> & theSubdiagonal);
+		 math_EigenValuesSearcher(const TColStd_Array1OfReal & theDiagonal, const TColStd_Array1OfReal & theSubdiagonal);
 
 		/****** math_EigenValuesSearcher::Dimension ******/
 		/****** md5 signature: 5cba93441ea03389c5573c35c9c9e913 ******/
@@ -5409,6 +5411,10 @@ def __itruediv__(self, right):
     self.__itruediv_wrapper__(right)
     return self
 }
+		%extend{
+			double GetValue(int row, int col) const { return self->Value(row, col); }
+			void SetValue(int row, int col, double v) { self->Value(row, col) = v; }
+		};
 };
 
 

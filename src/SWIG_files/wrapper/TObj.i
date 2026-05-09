@@ -94,6 +94,7 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TObj_Application)
 %wrap_handle(TObj_CheckModel)
 %wrap_handle(TObj_Model)
 %wrap_handle(TObj_Object)
@@ -117,6 +118,13 @@ TObj_Forced = TObj_DeletingMode.TObj_Forced
 %template(TObj_SequenceOfIterator) NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>>;
 
 %extend NCollection_Sequence<opencascade::handle<TObj_ObjectIterator>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -358,6 +366,8 @@ Sets the verbose flag, meaning that load/save models should show CPU and elapsed
 
 };
 
+
+%make_alias(TObj_Application)
 
 %extend TObj_Application {
 	%pythoncode {
@@ -3921,7 +3931,7 @@ Description
 -----------
 Creates an iterator an initialize it by sequence of objects.
 ") TObj_SequenceIterator;
-		 TObj_SequenceIterator(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object> > > & theObjects, const opencascade::handle<Standard_Type> & theType = nullptr);
+		 TObj_SequenceIterator(const opencascade::handle<NCollection_HSequence<opencascade::handle<TObj_Object>> > & theObjects, const opencascade::handle<Standard_Type> & theType = nullptr);
 
 		/****** TObj_SequenceIterator::More ******/
 		/****** md5 signature: 099215d9df143914190eb16587b27e27 ******/

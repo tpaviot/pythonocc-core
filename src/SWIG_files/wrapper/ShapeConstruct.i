@@ -48,9 +48,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeconstruct.ht
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
+#include<TColgp_module.hxx>
 #include<Message_module.hxx>
 #include<ShapeAnalysis_module.hxx>
 #include<ShapeExtend_module.hxx>
@@ -82,9 +85,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeconstruct.ht
 %import GeomAbs.i
 %import Geom2d.i
 %import TopAbs.i
+%import TopTools.i
 %import TopoDS.i
 %import gp.i
+%import TColStd.i
 %import BRepBuilderAPI.i
+%import TColgp.i
 %import Message.i
 %import ShapeAnalysis.i
 %import ShapeExtend.i
@@ -253,7 +259,7 @@ Method for joininig curves 3D. Parameters: c3d1,ac3d2 - initial curves Orient1, 
 		%feature("autodoc", "
 Parameters
 ----------
-theEdges: NCollection_HSequence<TopoDS_Shape
+theEdges: TopTools_HSequenceOfShape
 theFace: TopoDS_Face
 theEdge: TopoDS_Edge
 
@@ -265,7 +271,7 @@ Description
 -----------
 join pcurves of the <theEdge> on the <theFace> try to use pcurves from originas edges <theEdges> Returns false if cannot join pcurves.
 ") JoinPCurves;
-		static bool JoinPCurves(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & theEdges, const TopoDS_Face & theFace, TopoDS_Edge & theEdge);
+		static bool JoinPCurves(const opencascade::handle<TopTools_HSequenceOfShape> & theEdges, const TopoDS_Face & theFace, TopoDS_Edge & theEdge);
 
 };
 
@@ -395,7 +401,7 @@ Converts a curve of any type (only part from first to last) to bspline. The meth
 		%feature("autodoc", "
 Parameters
 ----------
-knots: NCollection_HArray1<double
+knots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -405,7 +411,7 @@ Description
 -----------
 No available documentation.
 ") FixKnots;
-		static bool FixKnots(opencascade::handle<NCollection_HArray1<double> > & knots);
+		static bool FixKnots(opencascade::handle<TColStd_HArray1OfReal> & knots);
 
 		/****** ShapeConstruct_Curve::FixKnots ******/
 		/****** md5 signature: dfe69e85e0d4e6505ec9de59f0bdcf22 ******/
@@ -413,7 +419,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-knots: NCollection_Array1<double>
+knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -423,7 +429,7 @@ Description
 -----------
 Fix bspline knots to ensure that there is enough gap between neighbouring values Returns True if something fixed (by shifting knot).
 ") FixKnots;
-		static bool FixKnots(NCollection_Array1<double> & knots);
+		static bool FixKnots(TColStd_Array1OfReal & knots);
 
 };
 
@@ -445,7 +451,7 @@ class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 		%feature("autodoc", "
 Parameters
 ----------
-pnts: NCollection_Array1<gp_Pnt>
+pnts: TColgp_Array1OfPnt
 prec: double (optional, default to 0.0)
 
 Return
@@ -456,7 +462,7 @@ Description
 -----------
 No available documentation.
 ") ShapeConstruct_MakeTriangulation;
-		 ShapeConstruct_MakeTriangulation(const NCollection_Array1<gp_Pnt> & pnts, const double prec = 0.0);
+		 ShapeConstruct_MakeTriangulation(const TColgp_Array1OfPnt & pnts, const double prec = 0.0);
 
 		/****** ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation ******/
 		/****** md5 signature: e4be25e634dd3ca94a4ebc78ccecb6a3 ******/
@@ -697,6 +703,10 @@ Return: true if the specified status is set.
 ") Status;
 		bool Status(const ShapeExtend_Status theStatus);
 
+		%extend{
+			int GetAdjustOverDegenMode() { return self->AdjustOverDegenMode(); }
+			void SetAdjustOverDegenMode(int value) { self->AdjustOverDegenMode() = value; }
+		};
 };
 
 

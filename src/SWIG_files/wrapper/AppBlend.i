@@ -46,11 +46,15 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appblend.html"
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
+%import TColgp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -87,9 +91,9 @@ class AppBlend_Approx {
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -99,7 +103,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		virtual void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		virtual void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** AppBlend_Approx::Curve2dPoles ******/
 		/****** md5 signature: ee57003ff0c5712eaa866dc33525e5bd ******/
@@ -111,13 +115,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		virtual const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		virtual const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** AppBlend_Approx::Curves2dDegree ******/
 		/****** md5 signature: 5eddd2ba90f3ee64261188998e00e95d ******/
@@ -137,26 +141,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		virtual const NCollection_Array1<double> & Curves2dKnots();
+		virtual const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** AppBlend_Approx::Curves2dMults ******/
 		/****** md5 signature: 3a4ca2b3e696c9c5f6ffff1e1fe5597d ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		virtual const NCollection_Array1<int> & Curves2dMults();
+		virtual const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** AppBlend_Approx::Curves2dShape ******/
 		/****** md5 signature: b12bca79ee5ba064b06354b1bb11ffaa ******/
@@ -208,13 +212,13 @@ No available documentation.
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		virtual const NCollection_Array2<gp_Pnt> SurfPoles();
+		virtual const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** AppBlend_Approx::SurfShape ******/
 		/****** md5 signature: 652871a3a1a72d6225cfd174c21a5b93 ******/
@@ -243,65 +247,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		virtual const NCollection_Array1<double> & SurfUKnots();
+		virtual const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** AppBlend_Approx::SurfUMults ******/
 		/****** md5 signature: b8253c0fc96341f6d905ef1c8ec8fef8 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		virtual const NCollection_Array1<int> & SurfUMults();
+		virtual const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** AppBlend_Approx::SurfVKnots ******/
 		/****** md5 signature: 36f4a91bde1263a302488b17387c702b ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		virtual const NCollection_Array1<double> & SurfVKnots();
+		virtual const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** AppBlend_Approx::SurfVMults ******/
 		/****** md5 signature: 905fac2cd44d34b91213e1fad3e5065c ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		virtual const NCollection_Array1<int> & SurfVMults();
+		virtual const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** AppBlend_Approx::SurfWeights ******/
 		/****** md5 signature: eb7c4872394cba0783fa64de049bcff7 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		virtual const NCollection_Array2<double> & SurfWeights();
+		virtual const TColStd_Array2OfReal & SurfWeights();
 
 		/****** AppBlend_Approx::Surface ******/
 		/****** md5 signature: ead0fd55e847bed4839abad72f787c6e ******/
@@ -309,12 +313,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -324,7 +328,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		virtual void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		virtual void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** AppBlend_Approx::TolCurveOnSurf ******/
 		/****** md5 signature: 487f55a5bdd09cc55994cebb8e104c05 ******/

@@ -45,7 +45,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ifselect.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
+#include<Storage_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
@@ -57,7 +59,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ifselect.html"
 %import Standard.i
 %import NCollection.i
 %import Interface.i
+%import TColStd.i
 %import TCollection.i
+%import Storage.i
 %import MoniTool.i
 
 %pythoncode {
@@ -190,6 +194,7 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_Selection)
 %wrap_handle(IFSelect_SessionDumper)
 %wrap_handle(IFSelect_ShareOut)
+%wrap_handle(IFSelect_Signature)
 %wrap_handle(IFSelect_SignatureList)
 %wrap_handle(IFSelect_Transformer)
 %wrap_handle(IFSelect_WorkLibrary)
@@ -209,7 +214,11 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_SelectControl)
 %wrap_handle(IFSelect_SelectDeduct)
 %wrap_handle(IFSelect_SessionPilot)
+%wrap_handle(IFSelect_SignCategory)
 %wrap_handle(IFSelect_SignCounter)
+%wrap_handle(IFSelect_SignMultiple)
+%wrap_handle(IFSelect_SignType)
+%wrap_handle(IFSelect_SignValidity)
 %wrap_handle(IFSelect_TransformStandard)
 %wrap_handle(IFSelect_GraphCounter)
 %wrap_handle(IFSelect_ModifEditForm)
@@ -227,6 +236,7 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %wrap_handle(IFSelect_SelectSharing)
 %wrap_handle(IFSelect_SelectSuite)
 %wrap_handle(IFSelect_SelectUnion)
+%wrap_handle(IFSelect_SignAncestor)
 %wrap_handle(IFSelect_SelectAnyType)
 %wrap_handle(IFSelect_SelectErrorEntities)
 %wrap_handle(IFSelect_SelectFlag)
@@ -247,6 +257,13 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %template(IFSelect_SequenceOfAppliedModifiers) NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>>;
 
 %extend NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -255,6 +272,13 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %template(IFSelect_SequenceOfGeneralModifier) NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>>;
 
 %extend NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -263,6 +287,13 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %template(IFSelect_SequenceOfInterfaceModel) NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>>;
 
 %extend NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -271,6 +302,13 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %template(IFSelect_TSeqOfDispatch) NCollection_Sequence<opencascade::handle<IFSelect_Dispatch>>;
 
 %extend NCollection_Sequence<opencascade::handle<IFSelect_Dispatch>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -279,6 +317,13 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 %template(IFSelect_TSeqOfSelection) NCollection_Sequence<opencascade::handle<IFSelect_Selection>>;
 
 %extend NCollection_Sequence<opencascade::handle<IFSelect_Selection>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -424,13 +469,13 @@ command: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
+opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
 Returns, for a root of command title, the list of possible commands. <mode>: -1 (D) for all commands if <commands> is empty -1 + command: about a Group , >= 0 see Adding By default, it returns the whole list of known commands.
 ") Commands;
-		static opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> Commands(const int mode = -1, const char * const command = "");
+		static opencascade::handle<TColStd_HSequenceOfAsciiString> Commands(const int mode = -1, const char * const command = "");
 
 		/****** IFSelect_Activator::Do ******/
 		/****** md5 signature: f9411f51fdf7e649cbceeefa09cebd4c ******/
@@ -690,13 +735,13 @@ Returns the description for applied modifier n0 <num>: the modifier itself, and 
 		%feature("compactdefaultargs") ItemList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Returns the list of entities to be applied on (see Item) as a HSequence (IsForAll produces the complete list of all the entity numbers of the file.
 ") ItemList;
-		opencascade::handle<NCollection_HSequence<int>> ItemList();
+		opencascade::handle<TColStd_HSequenceOfInteger> ItemList();
 
 		/****** IFSelect_AppliedModifiers::ItemNum ******/
 		/****** md5 signature: a18260865c715f809b6792bef00bcc4b ******/
@@ -1825,7 +1870,7 @@ Creates a complete EditForm from an Editor A specific Label can be given.
 Parameters
 ----------
 editor: IFSelect_Editor
-nums: NCollection_Sequence<int>
+nums: TColStd_SequenceOfInteger
 readonly: bool
 undoable: bool
 label: char * (optional, default to "")
@@ -1838,7 +1883,7 @@ Description
 -----------
 Creates an extracted EditForm from an Editor, limited to the values identified in <nums> A specific Label can be given.
 ") IFSelect_EditForm;
-		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const NCollection_Sequence<int> & nums, const bool readonly, const bool undoable, const char * const label = "");
+		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const TColStd_SequenceOfInteger & nums, const bool readonly, const bool undoable, const char * const label = "");
 
 		/****** IFSelect_EditForm::Apply ******/
 		/****** md5 signature: 40e8fb3d822f3e06a076f66571dcd033 ******/
@@ -1926,13 +1971,13 @@ num: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the Edited Value as a list If IsModified is False, returns OriginalValue Null with IsModified True: means that this value is not defined or has been removed For a single parameter, gives a Null Handle.
 ") EditedList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> EditedList(const int num);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> EditedList(const int num);
 
 		/****** IFSelect_EditForm::EditedValue ******/
 		/****** md5 signature: 62f0bf32aae9685216d754353932adaa ******/
@@ -2141,7 +2186,7 @@ Shortcut for LoadData when <model> is not used.
 Parameters
 ----------
 num: int
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfHAsciiString
 
 Return
 -------
@@ -2151,7 +2196,7 @@ Description
 -----------
 Loads an original value as a list. Called by the Editor only.
 ") LoadList;
-		void LoadList(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list);
+		void LoadList(const int num, const opencascade::handle<TColStd_HSequenceOfHAsciiString > & list);
 
 		/****** IFSelect_EditForm::LoadModel ******/
 		/****** md5 signature: 5d5a1db7ce2253babdb63d36b4551838 ******/
@@ -2250,7 +2295,7 @@ Changes the value of an item of the EditForm, if it is a List (else, just return
 Parameters
 ----------
 num: int
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfHAsciiString
 enforce: bool (optional, default to false)
 
 Return
@@ -2261,7 +2306,7 @@ Description
 -----------
 As ModifyList but the new value is given as such Creates a ListEditor, Loads it, then calls ModifyList.
 ") ModifyListValue;
-		bool ModifyListValue(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const bool enforce = false);
+		bool ModifyListValue(const int num, const opencascade::handle<TColStd_HSequenceOfHAsciiString > & list, const bool enforce = false);
 
 		/****** IFSelect_EditForm::NameNumber ******/
 		/****** md5 signature: 17f5e3d46239ec6d78e1e818ae9d4335 ******/
@@ -2345,13 +2390,13 @@ num: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns an original value, as a list <num> is for the EditForm, not the Editor For a single parameter, gives a Null Handle.
 ") OriginalList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> OriginalList(const int num);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> OriginalList(const int num);
 
 		/****** IFSelect_EditForm::OriginalValue ******/
 		/****** md5 signature: f678e0bc9af9f9bcc6935d88c970c4aa ******/
@@ -2520,7 +2565,7 @@ Gives a new value computed by the Editor, if another parameter commands the valu
 Parameters
 ----------
 num: int
-newlist: NCollection_HSequence<
+newlist: TColStd_HSequenceOfHAsciiString
 
 Return
 -------
@@ -2530,7 +2575,7 @@ Description
 -----------
 Acts as Touch but for a list Does not work (returns False) if <num> is for a single param.
 ") TouchList;
-		bool TouchList(const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & newlist);
+		bool TouchList(const int num, const opencascade::handle<TColStd_HSequenceOfHAsciiString > & newlist);
 
 		/****** IFSelect_EditForm::Undo ******/
 		/****** md5 signature: 5950c1df5908636857507b1be28f24a7 ******/
@@ -2545,6 +2590,10 @@ For an undoable EditForm, Applies ... origibal values ! and clears modified ones
 ") Undo;
 		bool Undo();
 
+		%extend{
+			bool GetEditKeepStatus() { return self->EditKeepStatus(); }
+			void SetEditKeepStatus(bool value) { self->EditKeepStatus() = value; }
+		};
 };
 
 
@@ -2683,13 +2732,13 @@ num: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the value of an EditForm as a List, for a given item If not a list, a Null Handle should be returned Default returns a Null Handle, because many Editors have no list to edit. To be redefined as required.
 ") ListValue;
-		virtual opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ListValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
+		virtual opencascade::handle<TColStd_HSequenceOfHAsciiString> ListValue(const opencascade::handle<IFSelect_EditForm> & form, const int num);
 
 		/****** IFSelect_Editor::Load ******/
 		/****** md5 signature: 21bc5804b7d077b4e35b34ea774620a6 ******/
@@ -2956,7 +3005,7 @@ Parameters
 ----------
 form: IFSelect_EditForm
 num: int
-newlist: NCollection_HSequence<
+newlist: TColStd_HSequenceOfHAsciiString
 enforce: bool
 
 Return
@@ -2967,7 +3016,7 @@ Description
 -----------
 Acts as Update, but when the value is a list.
 ") UpdateList;
-		virtual bool UpdateList(const opencascade::handle<IFSelect_EditForm> & form, const int num, const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & newlist, const bool enforce);
+		virtual bool UpdateList(const opencascade::handle<IFSelect_EditForm> & form, const int num, const opencascade::handle<TColStd_HSequenceOfHAsciiString > & newlist, const bool enforce);
 
 };
 
@@ -3055,13 +3104,13 @@ second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Computes a List of entities from a WorkSession and two idents, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection if <first> is for a Selection and <second> is defined, the standard result of this selection from the list computed with <second> (an entity or a selection) If <second> is erroneous, it is ignored.
 ") GiveList;
-		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const first = "", const char * const second = "");
+		static opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, const char * const first = "", const char * const second = "");
 
 		/****** IFSelect_Functions::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -3390,13 +3439,13 @@ Clears all editions already recorded.
 		%feature("compactdefaultargs") EditedValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the result of the edition.
 ") EditedValues;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> EditedValues();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> EditedValues();
 
 		/****** IFSelect_ListEditor::IsAdded ******/
 		/****** md5 signature: 7304786f799fb5cb859d372fb081ffff ******/
@@ -3471,7 +3520,7 @@ Tells if at least one edition (SetValue-AddValue-Remove) has been recorded.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfHAsciiString
 
 Return
 -------
@@ -3481,7 +3530,7 @@ Description
 -----------
 Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified //! If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
 ") LoadEdited;
-		virtual bool LoadEdited(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list);
+		virtual bool LoadEdited(const opencascade::handle<TColStd_HSequenceOfHAsciiString > & list);
 
 		/****** IFSelect_ListEditor::LoadModel ******/
 		/****** md5 signature: df41283b47ba4b5105d39eb762c1d35d ******/
@@ -3507,7 +3556,7 @@ Loads a Model. It is used to check items of type Entity(Ident).
 		%feature("autodoc", "
 Parameters
 ----------
-vals: NCollection_HSequence<
+vals: TColStd_HSequenceOfHAsciiString
 
 Return
 -------
@@ -3517,7 +3566,7 @@ Description
 -----------
 Loads the original values for the list. Remark: If its length is more then MaxLength, editions remain allowed, except Add.
 ") LoadValues;
-		void LoadValues(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & vals);
+		void LoadValues(const opencascade::handle<TColStd_HSequenceOfHAsciiString > & vals);
 
 		/****** IFSelect_ListEditor::NbValues ******/
 		/****** md5 signature: 2a8159fde4764e44fc3c4c5890fbf8d9 ******/
@@ -3542,13 +3591,13 @@ Returns count of values, edited (D) or original.
 		%feature("compactdefaultargs") OriginalValues;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the value from which the edition started.
 ") OriginalValues;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> OriginalValues();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> OriginalValues();
 
 		/****** IFSelect_ListEditor::Remove ******/
 		/****** md5 signature: 5f39e760dab171bf3cf4d717bcd33b80 ******/
@@ -3991,13 +4040,13 @@ Sends a part of a model into one file. Model is gotten from <G>, the part is def
 		%feature("compactdefaultargs") SentFiles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of recorded names of sent files. Can be empty (if no file has been sent). Returns a Null Handle if BeginSentFiles has stopped recording.
 ") SentFiles;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SentFiles();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
 
 		/****** IFSelect_ModelCopier::SetAppliedModifiers ******/
 		/****** md5 signature: 73cae3ecb96e58ff2bde97c6b18d073e ******/
@@ -4112,7 +4161,7 @@ Adds an entity from the Model into the current packet for Add.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -4122,7 +4171,7 @@ Description
 -----------
 Adds an list of entities into the current packet for Add.
 ") AddList;
-		void AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_PacketList::AddPacket ******/
 		/****** md5 signature: 5819d675cf76b470dc3bbd88cd0bda92 ******/
@@ -4482,7 +4531,7 @@ Description
 -----------
 Adds a list of Selections to an iterator (this list comes from the description of a Selection or a Dispatch, etc...).
 ") AddList;
-		void AddList(const NCollection_Sequence<opencascade::handle<IFSelect_Selection> > & list);
+		void AddList(const NCollection_Sequence<opencascade::handle<IFSelect_Selection>> & list);
 
 		/****** IFSelect_SelectionIterator::More ******/
 		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
@@ -6126,13 +6175,13 @@ Adds a possible case To be called when creating, IF the list of possible cases f
 		%feature("compactdefaultargs") CaseList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
+opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
 Returns the predefined list of possible cases, filled by AddCase Null Handle if no predefined list (hence, to be counted) Useful to filter on really possible vase, for instance, or for a help.
 ") CaseList;
-		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> CaseList();
+		opencascade::handle<TColStd_HSequenceOfAsciiString> CaseList();
 
 		/****** IFSelect_Signature::IntValue ******/
 		/****** md5 signature: 52b63b9caa860e8a8d7efad9c1108028 ******/
@@ -6263,6 +6312,8 @@ Sets the information data to tell 'integer cases' with possible min and max valu
 };
 
 
+%make_alias(IFSelect_Signature)
+
 %extend IFSelect_Signature {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6334,13 +6385,13 @@ sign: char *
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities attached to a signature It is empty if <sign> has not been recorded It is a Null Handle if the list of entities is not known.
 ") Entities;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Entities(const char * const sign);
+		opencascade::handle<TColStd_HSequenceOfTransient> Entities(const char * const sign);
 
 		/****** IFSelect_SignatureList::HasEntities ******/
 		/****** md5 signature: c7404181dc0d24dec7520a3d34972e30 ******/
@@ -6362,7 +6413,7 @@ Returns True if the list of Entities is acknowledged, else the method Entities w
 Parameters
 ----------
 name: char *
-count: NCollection_IndexedDataMap<TCollection_AsciiString, int>
+count: Storage_PType
 list: Standard_Transient
 nbnuls: int
 
@@ -6374,7 +6425,7 @@ Description
 -----------
 Acknowledges the list in once. Name identifies the Signature.
 ") Init;
-		void Init(const char * const name, const NCollection_IndexedDataMap<TCollection_AsciiString, int> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const int nbnuls);
+		void Init(const char * const name, const Storage_PType & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & list, const int nbnuls);
 
 		/****** IFSelect_SignatureList::LastValue ******/
 		/****** md5 signature: c509b394df18cc878081d0c782a187da ******/
@@ -6399,13 +6450,13 @@ root: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of signatures, as a sequence of strings (but without their respective counts). It is ordered. By default, for all the signatures. If <root> is given non empty, for the signatures which begin by <root>.
 ") List;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> List(const char * const root = "");
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> List(const char * const root = "");
 
 		/****** IFSelect_SignatureList::ModeSignOnly ******/
 		/****** md5 signature: e9824297de1a0aa53c52eee10a850065 ******/
@@ -6553,6 +6604,10 @@ Defines a name for a SignatureList (used to print it).
 ") SetName;
 		void SetName(const char * const name);
 
+		%extend{
+			bool GetModeSignOnly() { return self->ModeSignOnly(); }
+			void SetModeSignOnly(bool value) { self->ModeSignOnly() = value; }
+		};
 };
 
 
@@ -6927,13 +6982,13 @@ Adds an Item with an attached Name. If the Name is already known in the WorkSess
 		%feature("compactdefaultargs") AppliedDispatches;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Returns the ordered list of dispatches stored by the ShareOut.
 ") AppliedDispatches;
-		opencascade::handle<NCollection_HSequence<int>> AppliedDispatches();
+		opencascade::handle<TColStd_HSequenceOfInteger> AppliedDispatches();
 
 		/****** IFSelect_WorkSession::BeginSentFiles ******/
 		/****** md5 signature: 65467586708818f782036c2790768098 ******/
@@ -7186,7 +7241,7 @@ Computes the content of a SignCounter when it is defined with a Selection, then 
 Parameters
 ----------
 counter: IFSelect_SignCounter
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 clear: bool (optional, default to true)
 
 Return
@@ -7197,7 +7252,7 @@ Description
 -----------
 Computes the content of a SignCounter from an input list If <list> is Null, uses internal definition of the Counter: a Selection, else the whole Model (recomputation forced) If <clear> is True (D), starts from scratch Else, cumulates computations.
 ") ComputeCounterFromList;
-		bool ComputeCounterFromList(const opencascade::handle<IFSelect_SignCounter> & counter, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const bool clear = true);
+		bool ComputeCounterFromList(const opencascade::handle<IFSelect_SignCounter> & counter, const opencascade::handle<TColStd_HSequenceOfTransient > & list, const bool clear = true);
 
 		/****** IFSelect_WorkSession::ComputeGraph ******/
 		/****** md5 signature: f8cef51029c94d25e732cb4452ea990e ******/
@@ -7572,13 +7627,13 @@ formodel: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Fills a Sequence with a list of Idents, those attached to the Modifiers applied to final sending. Model Modifiers if <formodel> is True, File Modifiers else This list is given in the order in which they will be applied (which takes into account the Changes to Modifier Ranks).
 ") FinalModifierIdents;
-		opencascade::handle<NCollection_HSequence<int>> FinalModifierIdents(const bool formodel);
+		opencascade::handle<TColStd_HSequenceOfInteger> FinalModifierIdents(const bool formodel);
 
 		/****** IFSelect_WorkSession::GeneralModifier ******/
 		/****** md5 signature: e1752b1a6ee507db4346cf6ee268aa74 ******/
@@ -7657,13 +7712,13 @@ obj: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Determines a list of entities from an object: <obj> already HSequenceOfTransient: returned itself <obj> Selection: its Result of Evaluation is returned <obj> an entity of the Model: a HSequence which contains it else, an empty HSequence <obj> the Model it self: ALL its content (not only the roots).
 ") GiveList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const opencascade::handle<Standard_Transient> & obj);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<Standard_Transient> & obj);
 
 		/****** IFSelect_WorkSession::GiveList ******/
 		/****** md5 signature: 6c98dba3e7eebc858dc17fbb92833916 ******/
@@ -7676,13 +7731,13 @@ second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Computes a List of entities from two alphanums, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is a list of Numbers/Labels: the list of entities if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection else, let's consider 'first second': this whole phrase is split by blanks, as follows (RECURSIVE CALL): - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
 ") GiveList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first, const char * const second = "");
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * const first, const char * const second = "");
 
 		/****** IFSelect_WorkSession::GiveListCombined ******/
 		/****** md5 signature: fc1eef8460518cf28ef600dedbfb35cd ******/
@@ -7690,19 +7745,19 @@ Computes a List of entities from two alphanums, first and second, as follows: if
 		%feature("autodoc", "
 Parameters
 ----------
-l1: NCollection_HSequence<
-l2: NCollection_HSequence<
+l1: TColStd_HSequenceOfTransient
+l2: TColStd_HSequenceOfTransient
 mode: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Combines two lists and returns the result, according to mode: <mode> < 0: entities in <l1> AND NOT in <l2> <mode> = 0: entities in <l1> AND in <l2> <mode> > 0: entities in <l1> OR in <l2>.
 ") GiveListCombined;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveListCombined(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & l1, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & l2, const int mode);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveListCombined(const opencascade::handle<TColStd_HSequenceOfTransient > & l1, const opencascade::handle<TColStd_HSequenceOfTransient > & l2, const int mode);
 
 		/****** IFSelect_WorkSession::GiveListFromList ******/
 		/****** md5 signature: a7f91850f94ba5aeb15ae473850ace39 ******/
@@ -7715,13 +7770,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Computes a List of entities from the model as follows <first> being a Selection or a combination of Selections, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <ent> is Null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! REMARK: selname is processed as <first second> of preceding GiveList.
 ") GiveListFromList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveListFromList(const char * const selname, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList(const char * const selname, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::GiveSelection ******/
 		/****** md5 signature: 9811506c637b8c753c938c92d30adfc1 ******/
@@ -7911,13 +7966,13 @@ type: Standard_Type
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Fills a Sequence with the List of Idents attached to the Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Idents which are suitable in the WorkSession.
 ") ItemIdents;
-		opencascade::handle<NCollection_HSequence<int>> ItemIdents(const opencascade::handle<Standard_Type> & type);
+		opencascade::handle<TColStd_HSequenceOfInteger> ItemIdents(const opencascade::handle<Standard_Type> & type);
 
 		/****** IFSelect_WorkSession::ItemLabel ******/
 		/****** md5 signature: 84010bde2c382e5575a07f11545b1890 ******/
@@ -7947,13 +8002,13 @@ type: Standard_Type
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Fills a Sequence with the list of the Names attached to Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Names.
 ") ItemNames;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ItemNames(const opencascade::handle<Standard_Type> & type);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNames(const opencascade::handle<Standard_Type> & type);
 
 		/****** IFSelect_WorkSession::ItemNamesForLabel ******/
 		/****** md5 signature: 67dc6381ff2986b7161884470fb043dc ******/
@@ -7965,13 +8020,13 @@ label: char *
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Fills a Sequence with the NAMES of the control items, of which the label matches <label> (contain it): see NextIdentForLabel Search mode is fixed to 'contained' If <label> is empty, returns all Names.
 ") ItemNamesForLabel;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> ItemNamesForLabel(const char * const label);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNamesForLabel(const char * const label);
 
 		/****** IFSelect_WorkSession::ItemSelection ******/
 		/****** md5 signature: 956eda2c30cfefc248c7413783399d39 ******/
@@ -8355,7 +8410,7 @@ Creates a parameter as being bound to a Static If the Static is Integer, this cr
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 name: char *
 
 Return
@@ -8366,7 +8421,7 @@ Description
 -----------
 Creates a new Selection, of type SelectPointed, its content starts with <list>. A name must be given (can be empty).
 ") NewSelectPointed;
-		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const char * const name);
+		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const char * const name);
 
 		/****** IFSelect_WorkSession::NewTextParam ******/
 		/****** md5 signature: 7c1bef5f839a72bf419b29ff07d04f68 ******/
@@ -8781,13 +8836,13 @@ sel: IFSelect_Selection
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the result of a Selection, computed by EvalSelection (see above) under the form of a HSequence (hence, it can be used by a frontal-engine logic). It can be empty Returns a Null Handle if <sel> is not in the WorkSession.
 ") SelectionResult;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> SelectionResult(const opencascade::handle<IFSelect_Selection> & sel);
+		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResult(const opencascade::handle<IFSelect_Selection> & sel);
 
 		/****** IFSelect_WorkSession::SelectionResultFromList ******/
 		/****** md5 signature: fb34c81138202894ad42f09dc2202824 ******/
@@ -8796,17 +8851,17 @@ Returns the result of a Selection, computed by EvalSelection (see above) under t
 Parameters
 ----------
 sel: IFSelect_Selection
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null). RULES: <list> applies only for a SelectDeduct kind Selection: its Input is considered: if it is a SelectDeduct kind Selection, its Input is considered, etc... until an Input is not a Deduct/Extract: its result is replaced by <list> and all the chain of deductions is applied.
 ") SelectionResultFromList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> SelectionResultFromList(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResultFromList(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_WorkSession::SendAll ******/
 		/****** md5 signature: 1f339be40efb947e5299ebcee1214f3a ******/
@@ -8865,13 +8920,13 @@ Performs creation of derived files from the input Model Takes its data (sub-mode
 		%feature("compactdefaultargs") SentFiles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of recorded sent files, or a Null Handle is recording has not been enabled.
 ") SentFiles;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SentFiles();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
 
 		/****** IFSelect_WorkSession::SentList ******/
 		/****** md5 signature: cbdf268780eba0f0ddf1c260e11b3325 ******/
@@ -9208,13 +9263,13 @@ Sets a new ModelCopier. Fills Items which its content.
 		void SetModelCopier(const opencascade::handle<IFSelect_ModelCopier> & copier);
 
 		/****** IFSelect_WorkSession::SetParams ******/
-		/****** md5 signature: d86bfe336ffa3a026765502688a34391 ******/
+		/****** md5 signature: 39540c0aebcdc4a9a988cfa95cba9356 ******/
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "
 Parameters
 ----------
 params: Standard_Transient
-uselist: NCollection_Vector<int>
+uselist: NCollection_DynamicArray<int>
 
 Return
 -------
@@ -9224,7 +9279,7 @@ Description
 -----------
 Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit //! A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing.
 ") SetParams;
-		void SetParams(const NCollection_Vector<opencascade::handle<Standard_Transient> > & params, const NCollection_Vector<int> & uselist);
+		void SetParams(const NCollection_DynamicArray<opencascade::handle<Standard_Transient>> & params, const NCollection_DynamicArray<int> & uselist);
 
 		/****** IFSelect_WorkSession::SetProtocol ******/
 		/****** md5 signature: 032ba93c3a9bfe80213c23be9d305675 ******/
@@ -9269,7 +9324,7 @@ Processes Remaining data (after having sent files), mode: Forget: forget remaini
 Parameters
 ----------
 sel: IFSelect_Selection
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 mode: int
 
 Return
@@ -9280,7 +9335,7 @@ Description
 -----------
 Changes the content of a Selection of type SelectPointed According <mode>: 0 set <list> as new content (clear former) 1: adds <list> to actual content -1: removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed.
 ") SetSelectPointed;
-		bool SetSelectPointed(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const int mode);
+		bool SetSelectPointed(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient > & list, const int mode);
 
 		/****** IFSelect_WorkSession::SetShareOut ******/
 		/****** md5 signature: c50a730405495501dc6609ec99f5cfc0 ******/
@@ -9360,13 +9415,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities shared by <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Shareds;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Shareds(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> Shareds(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::Sharings ******/
 		/****** md5 signature: 08ce214dc1c2536ea0e6d480cd84d518 ******/
@@ -9378,13 +9433,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities sharing <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Sharings;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Sharings(const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> Sharings(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** IFSelect_WorkSession::SignCounter ******/
 		/****** md5 signature: fdaa057d3730a1272b463eb01c87db67 ******/
@@ -10554,7 +10609,7 @@ char *
 
 Description
 -----------
-Returns the name of the SignCounter, which caracterises the sorting criterium for this Dispatch.
+Returns the name of the SignCounter, which characterises the sorting criterium for this Dispatch.
 ") SignName;
 		const char * SignName();
 
@@ -10747,7 +10802,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfHAsciiString
 label: char * (optional, default to "")
 
 Return
@@ -10758,7 +10813,7 @@ Description
 -----------
 Returns a ParamEditor to work on the Static Parameters of which names are listed in <list> Null Handle if <list> is null or empty.
 ") StaticEditor;
-		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const char * const label = "");
+		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<TColStd_HSequenceOfHAsciiString > & list, const char * const label = "");
 
 		/****** IFSelect_ParamEditor::StringValue ******/
 		/****** md5 signature: 8111b8adf2f25bfd021d0c036189e878 ******/
@@ -11697,6 +11752,8 @@ Returns the Signature for a Transient object, as its Category recorded in the mo
 };
 
 
+%make_alias(IFSelect_SignCategory)
+
 %extend IFSelect_SignCategory {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11791,7 +11848,7 @@ Adds the result determined by a Selection from a Graph Remark: does not impact a
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 model: Interface_InterfaceModel
 
 Return
@@ -11802,7 +11859,7 @@ Description
 -----------
 Adds a list of entities by adding each of the items.
 ") AddList;
-		void AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const opencascade::handle<Interface_InterfaceModel> & model);
+		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const opencascade::handle<Interface_InterfaceModel> & model);
 
 		/****** IFSelect_SignCounter::AddModel ******/
 		/****** md5 signature: 382e0e340780b5b95ec820d1c6e5d0e3 ******/
@@ -11847,7 +11904,7 @@ Adds an entity (already filtered by Map) with its signature. This signature can 
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 graph: Interface_Graph
 
 Return
@@ -11858,7 +11915,7 @@ Description
 -----------
 Adds a list of entities in the context given by the graph Default just call basic AddList Can be redefined to get a signature computed with the graph.
 ") AddWithGraph;
-		virtual void AddWithGraph(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Interface_Graph & graph);
+		virtual void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const Interface_Graph & graph);
 
 		/****** IFSelect_SignCounter::ComputeSelected ******/
 		/****** md5 signature: 004a287ce3d26b1a7e09f624b78a347b ******/
@@ -12107,6 +12164,8 @@ Concatenates the values of sub-signatures, with their tabulations.
 };
 
 
+%make_alias(IFSelect_SignMultiple)
+
 %extend IFSelect_SignMultiple {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12157,6 +12216,8 @@ Returns the Signature for a Transient object, as its Dynamic Type, with or witho
 
 };
 
+
+%make_alias(IFSelect_SignType)
 
 %extend IFSelect_SignType {
 	%pythoncode {
@@ -12222,6 +12283,8 @@ Returns the Signature for a Transient object, as a validity deducted from data (
 
 };
 
+
+%make_alias(IFSelect_SignValidity)
 
 %extend IFSelect_SignValidity {
 	%pythoncode {
@@ -12652,7 +12715,7 @@ Creates a GraphCounter, without applied selection.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 graph: Interface_Graph
 
 Return
@@ -12663,7 +12726,7 @@ Description
 -----------
 Adds a list of entities in the context given by the graph Default takes the count of entities selected by the applied selection, when it is given each entity of the list Can be redefined.
 ") AddWithGraph;
-		void AddWithGraph(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Interface_Graph & graph);
+		void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const Interface_Graph & graph);
 
 		/****** IFSelect_GraphCounter::Applied ******/
 		/****** md5 signature: ec455be5b56bf4b787932b51f6c2ad00 ******/
@@ -13743,7 +13806,7 @@ Adds an item. Returns True if Done, False if <item> is already in the selected l
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -13753,7 +13816,7 @@ Description
 -----------
 Adds all the items defined in a list. Returns True if at least one item has been added, False else.
 ") AddList;
-		bool AddList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		bool AddList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_SelectPointed::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -13867,7 +13930,7 @@ Removes an item. Returns True if Done, False if <item> was not in the selected l
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -13877,7 +13940,7 @@ Description
 -----------
 Removes all the items defined in a list. Returns True if at least one item has been removed, False else.
 ") RemoveList;
-		bool RemoveList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		bool RemoveList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_SelectPointed::RootResult ******/
 		/****** md5 signature: 55a80dd4f7f605106ebf74d756838fc0 ******/
@@ -13921,7 +13984,7 @@ As SetList but with only one entity If <ent> is Null, the list is said as being 
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -13931,7 +13994,7 @@ Description
 -----------
 Sets a given list to define the list of selected items <list> can be empty or null: in this case, the list is said as being set, but it is empty //! To use it as an alternate input, one shot: - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it.
 ") SetList;
-		void SetList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		void SetList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_SelectPointed::Toggle ******/
 		/****** md5 signature: eaa8664d2cb16ae2cea01bfe4d12ea40 ******/
@@ -13957,7 +14020,7 @@ Toggles status of an item: adds it if not pointed or removes it if already point
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -13967,7 +14030,7 @@ Description
 -----------
 Toggles status of all the items defined in a list: adds it if not pointed or removes it if already pointed.
 ") ToggleList;
-		bool ToggleList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		bool ToggleList(const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** IFSelect_SelectPointed::Update ******/
 		/****** md5 signature: e0a85344e057ec35d54f5c9d3a503443 ******/
@@ -14405,6 +14468,8 @@ No available documentation.
 
 };
 
+
+%make_alias(IFSelect_SignAncestor)
 
 %extend IFSelect_SignAncestor {
 	%pythoncode {

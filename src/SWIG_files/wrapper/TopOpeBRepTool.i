@@ -45,10 +45,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebreptool.ht
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<TopExp_module.hxx>
 #include<BRepAdaptor_module.hxx>
@@ -75,10 +77,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebreptool.ht
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import TopAbs.i
 %import Bnd.i
 %import Geom2d.i
 %import Geom.i
+%import TColgp.i
 %import gp.i
 %import TopExp.i
 %import BRepAdaptor.i
@@ -143,9 +147,21 @@ TopOpeBRepTool_INTERPOL = TopOpeBRepTool_OutCurveType.TopOpeBRepTool_INTERPOL
 %template(TopOpeBRepTool_ListOfC2DF) NCollection_List<TopOpeBRepTool_C2DF>;
 
 %extend NCollection_List<TopOpeBRepTool_C2DF> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRepTool_ListIteratorOfListOfC2DF(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -199,9 +215,9 @@ No available documentation.
 Parameters
 ----------
 F: TopoDS_Face
-LOF: NCollection_List<TopoDS_Shape>
-MshNOK: NCollection_IndexedMap<TopoDS_Shape>
-LOFF: NCollection_List<TopoDS_Shape>
+LOF: TopTools_ListOfShape
+MshNOK: TopTools_IndexedMapOfOrientedShape
+LOFF: TopTools_ListOfShape
 
 Return
 -------
@@ -211,7 +227,7 @@ Description
 -----------
 Builds up the correct list of faces <LOFF> from <LOF>, using faulty shapes from map <MshNOK>. <LOF> is the list of <F>'s descendant faces. returns false if building fails.
 ") MakeFaces;
-		static bool MakeFaces(const TopoDS_Face & F, const NCollection_List<TopoDS_Shape> & LOF, const NCollection_IndexedMap<TopoDS_Shape> & MshNOK, NCollection_List<TopoDS_Shape> & LOFF);
+		static bool MakeFaces(const TopoDS_Face & F, const TopTools_ListOfShape & LOF, const TopTools_IndexedMapOfOrientedShape & MshNOK, TopTools_ListOfShape & LOFF);
 
 		/****** TopOpeBRepTool::Print ******/
 		/****** md5 signature: f7153ca19881868c1f5cfcc1057b3413 ******/
@@ -239,8 +255,8 @@ Parameters
 ----------
 F: TopoDS_Face
 FF: TopoDS_Face
-MWisOld: NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher>
-MshNOK: NCollection_IndexedMap<TopoDS_Shape>
+MWisOld: TopTools_DataMapOfShapeInteger
+MshNOK: TopTools_IndexedMapOfOrientedShape
 
 Return
 -------
@@ -250,7 +266,7 @@ Description
 -----------
 Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F> 0 wire results from <F>'s wire split. returns false if purge fails.
 ") PurgeClosingEdges;
-		static bool PurgeClosingEdges(const TopoDS_Face & F, const TopoDS_Face & FF, const NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher> & MWisOld, NCollection_IndexedMap<TopoDS_Shape> & MshNOK);
+		static bool PurgeClosingEdges(const TopoDS_Face & F, const TopoDS_Face & FF, const TopTools_DataMapOfShapeInteger & MWisOld, TopTools_IndexedMapOfOrientedShape & MshNOK);
 
 		/****** TopOpeBRepTool::PurgeClosingEdges ******/
 		/****** md5 signature: 08e7b36b0d7e79610f3b32b343f3e530 ******/
@@ -259,9 +275,9 @@ Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF
 Parameters
 ----------
 F: TopoDS_Face
-LOF: NCollection_List<TopoDS_Shape>
-MWisOld: NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher>
-MshNOK: NCollection_IndexedMap<TopoDS_Shape>
+LOF: TopTools_ListOfShape
+MWisOld: TopTools_DataMapOfShapeInteger
+MshNOK: TopTools_IndexedMapOfOrientedShape
 
 Return
 -------
@@ -271,7 +287,7 @@ Description
 -----------
 No available documentation.
 ") PurgeClosingEdges;
-		static bool PurgeClosingEdges(const TopoDS_Face & F, const NCollection_List<TopoDS_Shape> & LOF, const NCollection_DataMap<TopoDS_Shape, int, TopTools_ShapeMapHasher> & MWisOld, NCollection_IndexedMap<TopoDS_Shape> & MshNOK);
+		static bool PurgeClosingEdges(const TopoDS_Face & F, const TopTools_ListOfShape & LOF, const TopTools_DataMapOfShapeInteger & MWisOld, TopTools_IndexedMapOfOrientedShape & MshNOK);
 
 		/****** TopOpeBRepTool::Regularize ******/
 		/****** md5 signature: 747fb413cac4c573bc242f149e1cc0f6 ******/
@@ -280,8 +296,8 @@ No available documentation.
 Parameters
 ----------
 aFace: TopoDS_Face
-aListOfFaces: NCollection_List<TopoDS_Shape>
-ESplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+aListOfFaces: TopTools_ListOfShape
+ESplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -291,7 +307,7 @@ Description
 -----------
 Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits <aFace> in order to return a list of valid faces.
 ") Regularize;
-		static bool Regularize(const TopoDS_Face & aFace, NCollection_List<TopoDS_Shape> & aListOfFaces, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & ESplits);
+		static bool Regularize(const TopoDS_Face & aFace, TopTools_ListOfShape & aListOfFaces, TopTools_DataMapOfShapeListOfShape & ESplits);
 
 		/****** TopOpeBRepTool::RegularizeFace ******/
 		/****** md5 signature: d769b105a0d5ad0b69c4299ba8d9c164 ******/
@@ -300,8 +316,8 @@ Returns <False> if the face is valid (the UV representation of the face is a set
 Parameters
 ----------
 aFace: TopoDS_Face
-OldWiresnewWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-aListOfFaces: NCollection_List<TopoDS_Shape>
+OldWiresnewWires: TopTools_DataMapOfShapeListOfShape
+aListOfFaces: TopTools_ListOfShape
 
 Return
 -------
@@ -311,7 +327,7 @@ Description
 -----------
 Classify wire's splits of map <OldWiresnewWires> in order to compute <aListOfFaces>, the splits of <aFace>.
 ") RegularizeFace;
-		static bool RegularizeFace(const TopoDS_Face & aFace, const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OldWiresnewWires, NCollection_List<TopoDS_Shape> & aListOfFaces);
+		static bool RegularizeFace(const TopoDS_Face & aFace, const TopTools_DataMapOfShapeListOfShape & OldWiresnewWires, TopTools_ListOfShape & aListOfFaces);
 
 		/****** TopOpeBRepTool::RegularizeShells ******/
 		/****** md5 signature: 1f4f9caf57a36be54d24678b7d1a879c ******/
@@ -320,8 +336,8 @@ Classify wire's splits of map <OldWiresnewWires> in order to compute <aListOfFac
 Parameters
 ----------
 aSolid: TopoDS_Solid
-OldSheNewShe: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-FSplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OldSheNewShe: TopTools_DataMapOfShapeListOfShape
+FSplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -331,7 +347,7 @@ Description
 -----------
 Returns <False> if the shell is valid (the solid is a set of faces connexed by edges with connexity 2). Else, splits faces of the shell; <OldFacesnewFaces> describes (face, splits of face).
 ") RegularizeShells;
-		static bool RegularizeShells(const TopoDS_Solid & aSolid, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OldSheNewShe, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & FSplits);
+		static bool RegularizeShells(const TopoDS_Solid & aSolid, TopTools_DataMapOfShapeListOfShape & OldSheNewShe, TopTools_DataMapOfShapeListOfShape & FSplits);
 
 		/****** TopOpeBRepTool::RegularizeWires ******/
 		/****** md5 signature: e5b37e87402715bd78df9d022fc09aff ******/
@@ -340,8 +356,8 @@ Returns <False> if the shell is valid (the solid is a set of faces connexed by e
 Parameters
 ----------
 aFace: TopoDS_Face
-OldWiresNewWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-ESplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OldWiresNewWires: TopTools_DataMapOfShapeListOfShape
+ESplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -351,7 +367,7 @@ Description
 -----------
 Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits wires of the face, these are boundaries of the new faces to build up; <OldWiresNewWires> describes (wire, splits of wire); <ESplits> describes (edge, edge's splits).
 ") RegularizeWires;
-		static bool RegularizeWires(const TopoDS_Face & aFace, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OldWiresNewWires, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & ESplits);
+		static bool RegularizeWires(const TopoDS_Face & aFace, TopTools_DataMapOfShapeListOfShape & OldWiresNewWires, TopTools_DataMapOfShapeListOfShape & ESplits);
 
 };
 
@@ -376,7 +392,7 @@ Parameters
 S: TopoDS_Shape
 TS: TopAbs_ShapeEnum
 TA: TopAbs_ShapeEnum
-M: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+M: TopTools_IndexedDataMapOfShapeListOfShape
 
 Return
 -------
@@ -386,7 +402,7 @@ Description
 -----------
 same as package method TopExp::MapShapeListOfShapes().
 ") MakeAncestors;
-		static void MakeAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & M);
+		static void MakeAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
 };
 
@@ -623,7 +639,7 @@ Description
 -----------
 No available documentation.
 ") MakeHABCOB;
-		static void MakeHABCOB(const opencascade::handle<NCollection_HArray1<Bnd_Box> > & HAB, Bnd_Box & COB);
+		static void MakeHABCOB(const opencascade::handle<NCollection_HArray1<Bnd_Box>> & HAB, Bnd_Box & COB);
 
 		/****** TopOpeBRepTool_BoxSort::SetHBoxTool ******/
 		/****** md5 signature: 521c0737b950ca27bae0cffc56a3fb1f ******/
@@ -889,8 +905,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-lS: NCollection_List<TopoDS_Shape>
-mapgreasma: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+lS: TopTools_ListOfShape
+mapgreasma: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -900,7 +916,7 @@ Description
 -----------
 No available documentation.
 ") Classilist;
-		bool Classilist(const NCollection_List<TopoDS_Shape> & lS, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & mapgreasma);
+		bool Classilist(const TopTools_ListOfShape & lS, TopTools_DataMapOfShapeListOfShape & mapgreasma);
 
 		/****** TopOpeBRepTool_CLASSI::Classip2d ******/
 		/****** md5 signature: 78441e21b98aa708279397a9065cf864 ******/
@@ -1062,7 +1078,7 @@ No available documentation.
 Parameters
 ----------
 V: TopoDS_Vertex
-Eds: NCollection_List<TopoDS_Shape>
+Eds: TopTools_ListOfShape
 
 Return
 -------
@@ -1072,7 +1088,7 @@ Description
 -----------
 No available documentation.
 ") Connexity;
-		bool Connexity(const TopoDS_Vertex & V, NCollection_List<TopoDS_Shape> & Eds);
+		bool Connexity(const TopoDS_Vertex & V, TopTools_ListOfShape & Eds);
 
 		/****** TopOpeBRepTool_CORRISO::EdgeOUTofBoundsUV ******/
 		/****** md5 signature: e5b63ee34b4252a880a2f08e5853b411 ******/
@@ -1118,7 +1134,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-EdsToCheck: NCollection_List<TopoDS_Shape>
+EdsToCheck: TopTools_ListOfShape
 nfybounds: int
 fyE: TopoDS_Shape
 
@@ -1130,7 +1146,7 @@ Description
 -----------
 No available documentation.
 ") EdgeWithFaultyUV;
-		bool EdgeWithFaultyUV(const NCollection_List<TopoDS_Shape> & EdsToCheck, const int nfybounds, TopoDS_Shape & fyE, Standard_Integer &OutValue);
+		bool EdgeWithFaultyUV(const TopTools_ListOfShape & EdsToCheck, const int nfybounds, TopoDS_Shape & fyE, Standard_Integer &OutValue);
 
 		/****** TopOpeBRepTool_CORRISO::EdgesOUTofBoundsUV ******/
 		/****** md5 signature: bb3657780a183dcc1e5380ee289d994a ******/
@@ -1138,10 +1154,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-EdsToCheck: NCollection_List<TopoDS_Shape>
+EdsToCheck: TopTools_ListOfShape
 onU: bool
 tolx: double
-FyEds: NCollection_DataMap<TopoDS_Shape, int>
+FyEds: TopTools_DataMapOfOrientedShapeInteger
 
 Return
 -------
@@ -1151,7 +1167,7 @@ Description
 -----------
 No available documentation.
 ") EdgesOUTofBoundsUV;
-		bool EdgesOUTofBoundsUV(const NCollection_List<TopoDS_Shape> & EdsToCheck, const bool onU, const double tolx, NCollection_DataMap<TopoDS_Shape, int> & FyEds);
+		bool EdgesOUTofBoundsUV(const TopTools_ListOfShape & EdsToCheck, const bool onU, const double tolx, TopTools_DataMapOfOrientedShapeInteger & FyEds);
 
 		/****** TopOpeBRepTool_CORRISO::EdgesWithFaultyUV ******/
 		/****** md5 signature: 450596c86bf60ae96520614fb31e51da ******/
@@ -1159,9 +1175,9 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-EdsToCheck: NCollection_List<TopoDS_Shape>
+EdsToCheck: TopTools_ListOfShape
 nfybounds: int
-FyEds: NCollection_DataMap<TopoDS_Shape, int>
+FyEds: TopTools_DataMapOfOrientedShapeInteger
 stopatfirst: bool (optional, default to false)
 
 Return
@@ -1172,20 +1188,20 @@ Description
 -----------
 No available documentation.
 ") EdgesWithFaultyUV;
-		bool EdgesWithFaultyUV(const NCollection_List<TopoDS_Shape> & EdsToCheck, const int nfybounds, NCollection_DataMap<TopoDS_Shape, int> & FyEds, const bool stopatfirst = false);
+		bool EdgesWithFaultyUV(const TopTools_ListOfShape & EdsToCheck, const int nfybounds, TopTools_DataMapOfOrientedShapeInteger & FyEds, const bool stopatfirst = false);
 
 		/****** TopOpeBRepTool_CORRISO::Eds ******/
 		/****** md5 signature: ec7306d78c8c1dd8206f2997acdd821f ******/
 		%feature("compactdefaultargs") Eds;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Eds;
-		const NCollection_List<TopoDS_Shape> Eds();
+		const TopTools_ListOfShape & Eds();
 
 		/****** TopOpeBRepTool_CORRISO::Fref ******/
 		/****** md5 signature: 733abf9bb1c22efd3a5f2a93983dadc2 ******/
@@ -1255,8 +1271,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-ClEds: NCollection_List<TopoDS_Shape>
-fyClEds: NCollection_List<TopoDS_Shape>
+ClEds: TopTools_ListOfShape
+fyClEds: TopTools_ListOfShape
 
 Return
 -------
@@ -1266,7 +1282,7 @@ Description
 -----------
 No available documentation.
 ") PurgeFyClosingE;
-		bool PurgeFyClosingE(const NCollection_List<TopoDS_Shape> & ClEds, NCollection_List<TopoDS_Shape> & fyClEds);
+		bool PurgeFyClosingE(const TopTools_ListOfShape & ClEds, TopTools_ListOfShape & fyClEds);
 
 		/****** TopOpeBRepTool_CORRISO::Refclosed ******/
 		/****** md5 signature: 9e3ff4fef003b3b834f78d726beeed15 ******/
@@ -1325,7 +1341,7 @@ No available documentation.
 Parameters
 ----------
 V: TopoDS_Vertex
-Eds: NCollection_List<TopoDS_Shape>
+Eds: TopTools_ListOfShape
 
 Return
 -------
@@ -1335,7 +1351,7 @@ Description
 -----------
 No available documentation.
 ") SetConnexity;
-		bool SetConnexity(const TopoDS_Vertex & V, const NCollection_List<TopoDS_Shape> & Eds);
+		bool SetConnexity(const TopoDS_Vertex & V, const TopTools_ListOfShape & Eds);
 
 		/****** TopOpeBRepTool_CORRISO::SetUVRep ******/
 		/****** md5 signature: 551cd305b4065133f9d9147f976d75cb ******/
@@ -1382,7 +1398,7 @@ No available documentation.
 Parameters
 ----------
 onU: bool
-FyEds: NCollection_DataMap<TopoDS_Shape, int>
+FyEds: TopTools_DataMapOfOrientedShapeInteger
 
 Return
 -------
@@ -1392,7 +1408,7 @@ Description
 -----------
 No available documentation.
 ") TrslUV;
-		bool TrslUV(const bool onU, const NCollection_DataMap<TopoDS_Shape, int> & FyEds);
+		bool TrslUV(const bool onU, const TopTools_DataMapOfOrientedShapeInteger & FyEds);
 
 		/****** TopOpeBRepTool_CORRISO::UVClosed ******/
 		/****** md5 signature: ba2b24802cc7754fd91d2ce4c1004dcc ******/
@@ -1540,7 +1556,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt>
+P: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1550,7 +1566,7 @@ Description
 -----------
 No available documentation.
 ") MakeBSpline1fromPnt;
-		static opencascade::handle<Geom_Curve> MakeBSpline1fromPnt(const NCollection_Array1<gp_Pnt> & P);
+		static opencascade::handle<Geom_Curve> MakeBSpline1fromPnt(const TColgp_Array1OfPnt & P);
 
 		/****** TopOpeBRepTool_CurveTool::MakeBSpline1fromPnt2d ******/
 		/****** md5 signature: fb0bcfe018f7cb8b7393456b25ee6b94 ******/
@@ -1558,7 +1574,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt2d>
+P: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -1568,7 +1584,7 @@ Description
 -----------
 No available documentation.
 ") MakeBSpline1fromPnt2d;
-		static opencascade::handle<Geom2d_Curve> MakeBSpline1fromPnt2d(const NCollection_Array1<gp_Pnt2d> & P);
+		static opencascade::handle<Geom2d_Curve> MakeBSpline1fromPnt2d(const TColgp_Array1OfPnt2d & P);
 
 		/****** TopOpeBRepTool_CurveTool::MakeCurves ******/
 		/****** md5 signature: 0c6e9908bfdbaaf05ef0f6e4f40822d5 ******/
@@ -1676,7 +1692,7 @@ Initialise members and build construction of map of ancestors.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapEdg: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -1686,7 +1702,7 @@ Description
 -----------
 set edges to avoid being fused.
 ") AvoidEdges;
-		void AvoidEdges(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapEdg);
+		void AvoidEdges(const TopTools_IndexedMapOfShape & theMapEdg);
 
 		/****** TopOpeBRepTool_FuseEdges::Edges ******/
 		/****** md5 signature: 5379174e9d14e3e3ea311fe7df3bef29 ******/
@@ -1694,7 +1710,7 @@ set edges to avoid being fused.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapLstEdg: NCollection_DataMap<int, NCollection_List<TopoDS_Shape> >
+theMapLstEdg: TopTools_DataMapOfIntegerListOfShape
 
 Return
 -------
@@ -1704,7 +1720,7 @@ Description
 -----------
 returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 ") Edges;
-		void Edges(NCollection_DataMap<int, NCollection_List<TopoDS_Shape> > & theMapLstEdg);
+		void Edges(TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
 		/****** TopOpeBRepTool_FuseEdges::Faces ******/
 		/****** md5 signature: e6edd7a821bbcfb3e5ad657809fa2a22 ******/
@@ -1712,7 +1728,7 @@ returns all the list of edges to be fused each list of the map represent a set o
 		%feature("autodoc", "
 Parameters
 ----------
-theMapFac: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapFac: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -1722,7 +1738,7 @@ Description
 -----------
 returns the map of modified faces.
 ") Faces;
-		void Faces(NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & theMapFac);
+		void Faces(TopTools_DataMapOfShapeShape & theMapFac);
 
 		/****** TopOpeBRepTool_FuseEdges::NbVertices ******/
 		/****** md5 signature: 45ce1fb31ba11f2d666ff6e9e2192133 ******/
@@ -1756,7 +1772,7 @@ Using map of list of connex edges, fuse each list to one edge and then update my
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: NCollection_DataMap<int, TopoDS_Shape>
+theMapEdg: TopTools_DataMapOfIntegerShape
 
 Return
 -------
@@ -1766,7 +1782,7 @@ Description
 -----------
 returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i).
 ") ResultEdges;
-		void ResultEdges(NCollection_DataMap<int, TopoDS_Shape> & theMapEdg);
+		void ResultEdges(TopTools_DataMapOfIntegerShape & theMapEdg);
 
 		/****** TopOpeBRepTool_FuseEdges::Shape ******/
 		/****** md5 signature: 4968b0e4669317ad9b7893680ac9a219 ******/
@@ -2351,7 +2367,7 @@ Initialize members and begin exploration of shape depending of the value of Perf
 		%feature("autodoc", "
 Parameters
 ----------
-theMapFacLstEdg: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theMapFacLstEdg: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2361,7 +2377,7 @@ Description
 -----------
 returns the list internal edges associated with the faces of the myShape. If PerformNow was False when created, then call the private Perform method that do the main job.
 ") Faces;
-		void Faces(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theMapFacLstEdg);
+		void Faces(TopTools_DataMapOfShapeListOfShape & theMapFacLstEdg);
 
 		/****** TopOpeBRepTool_PurgeInternalEdges::IsDone ******/
 		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
@@ -2448,7 +2464,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Fsplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+Fsplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2458,7 +2474,7 @@ Description
 -----------
 No available documentation.
 ") GetFsplits;
-		void GetFsplits(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & Fsplits);
+		void GetFsplits(TopTools_DataMapOfShapeListOfShape & Fsplits);
 
 		/****** TopOpeBRepTool_REGUS::GetOshNsh ******/
 		/****** md5 signature: ec06b96eac8e1ea6c6a3fd5917f6925f ******/
@@ -2466,7 +2482,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-OshNsh: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OshNsh: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2476,7 +2492,7 @@ Description
 -----------
 No available documentation.
 ") GetOshNsh;
-		void GetOshNsh(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OshNsh);
+		void GetOshNsh(TopTools_DataMapOfShapeListOfShape & OshNsh);
 
 		/****** TopOpeBRepTool_REGUS::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2529,7 +2545,7 @@ No available documentation.
 Parameters
 ----------
 e: TopoDS_Edge
-lof: NCollection_List<TopoDS_Shape>
+lof: TopTools_ListOfShape
 ffound: TopoDS_Face
 
 Return
@@ -2540,7 +2556,7 @@ Description
 -----------
 No available documentation.
 ") NearestF;
-		bool NearestF(const TopoDS_Edge & e, const NCollection_List<TopoDS_Shape> & lof, TopoDS_Face & ffound);
+		bool NearestF(const TopoDS_Edge & e, const TopTools_ListOfShape & lof, TopoDS_Face & ffound);
 
 		/****** TopOpeBRepTool_REGUS::NextinBlock ******/
 		/****** md5 signature: c3561274269a7a7271fdf1db881e0fb6 ******/
@@ -2587,7 +2603,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Fsplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+Fsplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2597,7 +2613,7 @@ Description
 -----------
 No available documentation.
 ") SetFsplits;
-		void SetFsplits(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & Fsplits);
+		void SetFsplits(TopTools_DataMapOfShapeListOfShape & Fsplits);
 
 		/****** TopOpeBRepTool_REGUS::SetOshNsh ******/
 		/****** md5 signature: 207c6ebfe7030aad4b1689e808049ead ******/
@@ -2605,7 +2621,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-OshNsh: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OshNsh: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2615,7 +2631,7 @@ Description
 -----------
 No available documentation.
 ") SetOshNsh;
-		void SetOshNsh(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OshNsh);
+		void SetOshNsh(TopTools_DataMapOfShapeListOfShape & OshNsh);
 
 		/****** TopOpeBRepTool_REGUS::SplitF ******/
 		/****** md5 signature: 02ea9be6a3b141bb6b629e5cbb1dc2b9 ******/
@@ -2624,7 +2640,7 @@ No available documentation.
 Parameters
 ----------
 Fanc: TopoDS_Face
-FSplits: NCollection_List<TopoDS_Shape>
+FSplits: TopTools_ListOfShape
 
 Return
 -------
@@ -2634,7 +2650,7 @@ Description
 -----------
 No available documentation.
 ") SplitF;
-		static bool SplitF(const TopoDS_Face & Fanc, NCollection_List<TopoDS_Shape> & FSplits);
+		static bool SplitF(const TopoDS_Face & Fanc, TopTools_ListOfShape & FSplits);
 
 		/****** TopOpeBRepTool_REGUS::SplitFaces ******/
 		/****** md5 signature: 50a561cb56af912258dc36e71d082583 ******/
@@ -2656,8 +2672,8 @@ No available documentation.
 Parameters
 ----------
 Fanc: TopoDS_Face
-nWs: NCollection_List<TopoDS_Shape>
-nFs: NCollection_List<TopoDS_Shape>
+nWs: TopTools_ListOfShape
+nFs: TopTools_ListOfShape
 
 Return
 -------
@@ -2667,7 +2683,7 @@ Description
 -----------
 No available documentation.
 ") WireToFace;
-		static bool WireToFace(const TopoDS_Face & Fanc, const NCollection_List<TopoDS_Shape> & nWs, NCollection_List<TopoDS_Shape> & nFs);
+		static bool WireToFace(const TopoDS_Face & Fanc, const TopTools_ListOfShape & nWs, TopTools_ListOfShape & nFs);
 
 };
 
@@ -2759,7 +2775,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Esplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+Esplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2769,7 +2785,7 @@ Description
 -----------
 No available documentation.
 ") GetEsplits;
-		void GetEsplits(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & Esplits);
+		void GetEsplits(TopTools_DataMapOfShapeListOfShape & Esplits);
 
 		/****** TopOpeBRepTool_REGUW::GetOwNw ******/
 		/****** md5 signature: 164436ffa793c269786b43e7df1a92ee ******/
@@ -2777,7 +2793,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-OwNw: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OwNw: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2787,7 +2803,7 @@ Description
 -----------
 No available documentation.
 ") GetOwNw;
-		void GetOwNw(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OwNw);
+		void GetOwNw(TopTools_DataMapOfShapeListOfShape & OwNw);
 
 		/****** TopOpeBRepTool_REGUW::GetSplits ******/
 		/****** md5 signature: 56eeca404d9c7426a258435b17b9982e ******/
@@ -2795,7 +2811,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Splits: NCollection_List<TopoDS_Shape>
+Splits: TopTools_ListOfShape
 
 Return
 -------
@@ -2805,7 +2821,7 @@ Description
 -----------
 No available documentation.
 ") GetSplits;
-		bool GetSplits(NCollection_List<TopoDS_Shape> & Splits);
+		bool GetSplits(TopTools_ListOfShape & Splits);
 
 		/****** TopOpeBRepTool_REGUW::HasInit ******/
 		/****** md5 signature: e09846764de6d31b90cca6e1c2404569 ******/
@@ -2870,7 +2886,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-loe: NCollection_List<TopoDS_Shape>
+loe: TopTools_ListOfShape
 efound: TopoDS_Edge
 
 Return
@@ -2881,7 +2897,7 @@ Description
 -----------
 No available documentation.
 ") NearestE;
-		bool NearestE(const NCollection_List<TopoDS_Shape> & loe, TopoDS_Edge & efound);
+		bool NearestE(const TopTools_ListOfShape & loe, TopoDS_Edge & efound);
 
 		/****** TopOpeBRepTool_REGUW::NextinBlock ******/
 		/****** md5 signature: c3561274269a7a7271fdf1db881e0fb6 ******/
@@ -2904,7 +2920,7 @@ Parameters
 ----------
 istep: int
 Scur: TopoDS_Shape
-Splits: NCollection_List<TopoDS_Shape>
+Splits: TopTools_ListOfShape
 
 Return
 -------
@@ -2914,7 +2930,7 @@ Description
 -----------
 No available documentation.
 ") REGU;
-		bool REGU(const int istep, const TopoDS_Shape & Scur, NCollection_List<TopoDS_Shape> & Splits);
+		bool REGU(const int istep, const TopoDS_Shape & Scur, TopTools_ListOfShape & Splits);
 
 		/****** TopOpeBRepTool_REGUW::REGU ******/
 		/****** md5 signature: 1e4f2ebeffad9a08284437031e8950e2 ******/
@@ -2968,7 +2984,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Esplits: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+Esplits: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2978,7 +2994,7 @@ Description
 -----------
 No available documentation.
 ") SetEsplits;
-		void SetEsplits(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & Esplits);
+		void SetEsplits(TopTools_DataMapOfShapeListOfShape & Esplits);
 
 		/****** TopOpeBRepTool_REGUW::SetOwNw ******/
 		/****** md5 signature: 06a6b493e333a3518a7f319556a023ff ******/
@@ -2986,7 +3002,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-OwNw: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+OwNw: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2996,7 +3012,7 @@ Description
 -----------
 No available documentation.
 ") SetOwNw;
-		void SetOwNw(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & OwNw);
+		void SetOwNw(TopTools_DataMapOfShapeListOfShape & OwNw);
 
 		/****** TopOpeBRepTool_REGUW::SplitEds ******/
 		/****** md5 signature: 8c391102cc00ab394b14efd652f78184 ******/
@@ -3266,7 +3282,7 @@ classify shape S compared with reference shape. AvoidS is not used in classifica
 Parameters
 ----------
 S: TopoDS_Shape
-LAvoidS: NCollection_List<TopoDS_Shape>
+LAvoidS: TopTools_ListOfShape
 
 Return
 -------
@@ -3276,7 +3292,7 @@ Description
 -----------
 classify shape S compared with reference shape. LAvoidS is list of S subshapes to avoid in classification (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeReference;
-		TopAbs_State StateShapeReference(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LAvoidS);
+		TopAbs_State StateShapeReference(const TopoDS_Shape & S, const TopTools_ListOfShape & LAvoidS);
 
 		/****** TopOpeBRepTool_ShapeClassifier::StateShapeShape ******/
 		/****** md5 signature: d40d1179bee32f88a779167a0ef13fb9 ******/
@@ -3325,7 +3341,7 @@ classify shape S compared with shape SRef. AvoidS is not used in classification;
 Parameters
 ----------
 S: TopoDS_Shape
-LAvoidS: NCollection_List<TopoDS_Shape>
+LAvoidS: TopTools_ListOfShape
 SRef: TopoDS_Shape
 
 Return
@@ -3336,7 +3352,7 @@ Description
 -----------
 classify shape S compared with shape SRef. LAvoidS is list of S subshapes to avoid in classification AvoidS is not used in classification; AvoidS may be IsNull(). (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeShape;
-		TopAbs_State StateShapeShape(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LAvoidS, const TopoDS_Shape & SRef);
+		TopAbs_State StateShapeShape(const TopoDS_Shape & S, const TopTools_ListOfShape & LAvoidS, const TopoDS_Shape & SRef);
 
 };
 
@@ -4399,7 +4415,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-lF: NCollection_List<TopoDS_Shape>
+lF: TopTools_ListOfShape
 She: TopoDS_Shape
 
 Return
@@ -4410,7 +4426,7 @@ Description
 -----------
 No available documentation.
 ") MkShell;
-		static void MkShell(const NCollection_List<TopoDS_Shape> & lF, TopoDS_Shape & She);
+		static void MkShell(const TopTools_ListOfShape & lF, TopoDS_Shape & She);
 
 		/****** TopOpeBRepTool_TOOL::NgApp ******/
 		/****** md5 signature: de567cea1aa04f99f01379950df430b0 ******/
@@ -4598,7 +4614,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-loS: NCollection_List<TopoDS_Shape>
+loS: TopTools_ListOfShape
 toremove: TopoDS_Shape
 
 Return
@@ -4609,7 +4625,7 @@ Description
 -----------
 No available documentation.
 ") Remove;
-		static bool Remove(NCollection_List<TopoDS_Shape> & loS, const TopoDS_Shape & toremove);
+		static bool Remove(TopTools_ListOfShape & loS, const TopoDS_Shape & toremove);
 
 		/****** TopOpeBRepTool_TOOL::SplitE ******/
 		/****** md5 signature: 9bed0ba9c869d22e9eace5c38221b633 ******/
@@ -4618,7 +4634,7 @@ No available documentation.
 Parameters
 ----------
 Eanc: TopoDS_Edge
-Splits: NCollection_List<TopoDS_Shape>
+Splits: TopTools_ListOfShape
 
 Return
 -------
@@ -4628,7 +4644,7 @@ Description
 -----------
 No available documentation.
 ") SplitE;
-		static bool SplitE(const TopoDS_Edge & Eanc, NCollection_List<TopoDS_Shape> & Splits);
+		static bool SplitE(const TopoDS_Edge & Eanc, TopTools_ListOfShape & Splits);
 
 		/****** TopOpeBRepTool_TOOL::Tg2d ******/
 		/****** md5 signature: 98f5ada9c2617f0a1566983fb3693cc2 ******/
@@ -4917,7 +4933,7 @@ No available documentation.
 Parameters
 ----------
 E: TopoDS_Edge
-Vces: NCollection_Array1<TopoDS_Shape>
+Vces: TopTools_Array1OfShape
 
 Return
 -------
@@ -4927,7 +4943,7 @@ Description
 -----------
 No available documentation.
 ") Vertices;
-		static void Vertices(const TopoDS_Edge & E, NCollection_Array1<TopoDS_Shape> & Vces);
+		static void Vertices(const TopoDS_Edge & E, TopTools_Array1OfShape & Vces);
 
 		/****** TopOpeBRepTool_TOOL::WireToFace ******/
 		/****** md5 signature: 55fe6c24639394df49cf4fd06b400ee5 ******/
@@ -4936,8 +4952,8 @@ No available documentation.
 Parameters
 ----------
 Fref: TopoDS_Face
-mapWlow: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-lFs: NCollection_List<TopoDS_Shape>
+mapWlow: TopTools_DataMapOfShapeListOfShape
+lFs: TopTools_ListOfShape
 
 Return
 -------
@@ -4947,7 +4963,7 @@ Description
 -----------
 No available documentation.
 ") WireToFace;
-		static bool WireToFace(const TopoDS_Face & Fref, const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & mapWlow, NCollection_List<TopoDS_Shape> & lFs);
+		static bool WireToFace(const TopoDS_Face & Fref, const TopTools_DataMapOfShapeListOfShape & mapWlow, TopTools_ListOfShape & lFs);
 
 		/****** TopOpeBRepTool_TOOL::XX ******/
 		/****** md5 signature: b8a944a9e5ddd1024abe4a72bce34a8a ******/
@@ -5165,7 +5181,7 @@ No available documentation.
 Parameters
 ----------
 OriKey: int
-Item: NCollection_List<TopoDS_Shape>
+Item: TopTools_ListOfShape
 
 Return
 -------
@@ -5175,7 +5191,7 @@ Description
 -----------
 No available documentation.
 ") AddItem;
-		void AddItem(const int OriKey, const NCollection_List<TopoDS_Shape> & Item);
+		void AddItem(const int OriKey, const TopTools_ListOfShape & Item);
 
 		/****** TopOpeBRepTool_connexity::AddItem ******/
 		/****** md5 signature: 615c862dd435e13d0ce9540faf467f5c ******/
@@ -5202,7 +5218,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Item: NCollection_List<TopoDS_Shape>
+Item: TopTools_ListOfShape
 
 Return
 -------
@@ -5212,7 +5228,7 @@ Description
 -----------
 No available documentation.
 ") AllItems;
-		int AllItems(NCollection_List<TopoDS_Shape> & Item);
+		int AllItems(TopTools_ListOfShape & Item);
 
 		/****** TopOpeBRepTool_connexity::ChangeItem ******/
 		/****** md5 signature: ed1f147f206c674efed247e82c97c0ce ******/
@@ -5224,13 +5240,13 @@ OriKey: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeItem;
-		NCollection_List<TopoDS_Shape> ChangeItem(const int OriKey);
+		TopTools_ListOfShape & ChangeItem(const int OriKey);
 
 		/****** TopOpeBRepTool_connexity::IsFaulty ******/
 		/****** md5 signature: b5f45c057392bc4947d7dd9fac1ef73b ******/
@@ -5251,7 +5267,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Item: NCollection_List<TopoDS_Shape>
+Item: TopTools_ListOfShape
 
 Return
 -------
@@ -5261,7 +5277,7 @@ Description
 -----------
 No available documentation.
 ") IsInternal;
-		int IsInternal(NCollection_List<TopoDS_Shape> & Item);
+		int IsInternal(TopTools_ListOfShape & Item);
 
 		/****** TopOpeBRepTool_connexity::IsMultiple ******/
 		/****** md5 signature: e6f05b42d0997d2397aa555711ac4e5c ******/
@@ -5283,7 +5299,7 @@ No available documentation.
 Parameters
 ----------
 OriKey: int
-Item: NCollection_List<TopoDS_Shape>
+Item: TopTools_ListOfShape
 
 Return
 -------
@@ -5293,7 +5309,7 @@ Description
 -----------
 No available documentation.
 ") Item;
-		int Item(const int OriKey, NCollection_List<TopoDS_Shape> & Item);
+		int Item(const int OriKey, TopTools_ListOfShape & Item);
 
 		/****** TopOpeBRepTool_connexity::Key ******/
 		/****** md5 signature: c7bbdf014250e7fdf336ffffdd980713 ******/

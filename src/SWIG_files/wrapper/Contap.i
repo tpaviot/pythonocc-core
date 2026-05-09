@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_contap.html"
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<Geom_module.hxx>
 #include<NCollection_module.hxx>
@@ -70,6 +71,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_contap.html"
 %import Adaptor2d.i
 %import GeomAbs.i
 %import Geom2d.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -126,6 +128,13 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 %template(Contap_SequenceOfIWLineOfTheIWalking) NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>>;
 
 %extend NCollection_Sequence<opencascade::handle<Contap_TheIWLineOfTheIWalking>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -134,6 +143,13 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 %template(Contap_SequenceOfPathPointOfTheSearch) NCollection_Sequence<Contap_ThePathPointOfTheSearch>;
 
 %extend NCollection_Sequence<Contap_ThePathPointOfTheSearch> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -142,6 +158,13 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 %template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence<Contap_TheSegmentOfTheSearch>;
 
 %extend NCollection_Sequence<Contap_TheSegmentOfTheSearch> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -150,6 +173,13 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 %template(Contap_TheSequenceOfLine) NCollection_Sequence<Contap_Line>;
 
 %extend NCollection_Sequence<Contap_Line> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -158,6 +188,13 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
 %template(Contap_TheSequenceOfPoint) NCollection_Sequence<Contap_Point>;
 
 %extend NCollection_Sequence<Contap_Point> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1687,7 +1724,7 @@ No available documentation.
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1698,7 +1735,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Contap_HCurve2dTool::IsClosed ******/
 		/****** md5 signature: 2e919d2de6d38bdb8500e5fc59dfa301 ******/

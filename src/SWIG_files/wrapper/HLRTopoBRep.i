@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Contap_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -70,6 +71,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrtopobrep.html"
 %import NCollection.i
 %import TopoDS.i
 %import Contap.i
+%import TopTools.i
 %import Geom2d.i
 %import gp.i
 %import HLRAlgo.i
@@ -99,9 +101,21 @@ from OCC.Core.Exception import *
 %template(HLRTopoBRep_ListOfVData) NCollection_List<HLRTopoBRep_VData>;
 
 %extend NCollection_List<HLRTopoBRep_VData> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRTopoBRep_ListIteratorOfListOfVData(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %ignore NCollection_DataMap<TopoDS_Shape,HLRTopoBRep_ListOfVData,TopTools_ShapeMapHasher>::Items;
@@ -182,13 +196,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddIntL;
-		NCollection_List<TopoDS_Shape> AddIntL(const TopoDS_Face & F);
+		TopTools_ListOfShape & AddIntL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddIntV ******/
 		/****** md5 signature: 5e98927600b04f5897dcb0892a001128 ******/
@@ -218,13 +232,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddIsoL;
-		NCollection_List<TopoDS_Shape> AddIsoL(const TopoDS_Face & F);
+		TopTools_ListOfShape & AddIsoL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddOldS ******/
 		/****** md5 signature: 879d3ca3686db00613d78566c0341220 ******/
@@ -255,13 +269,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddOutL;
-		NCollection_List<TopoDS_Shape> AddOutL(const TopoDS_Face & F);
+		TopTools_ListOfShape & AddOutL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::AddOutV ******/
 		/****** md5 signature: 290502373d4127c32e710710e5cb8afd ******/
@@ -291,13 +305,13 @@ E: TopoDS_Edge
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddSplE;
-		NCollection_List<TopoDS_Shape> AddSplE(const TopoDS_Edge & E);
+		TopTools_ListOfShape & AddSplE(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::Append ******/
 		/****** md5 signature: 6ca99ff105599a5775060bfc4892ff2b ******/
@@ -385,13 +399,13 @@ E: TopoDS_Edge
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of the edges.
 ") EdgeSplE;
-		const NCollection_List<TopoDS_Shape> EdgeSplE(const TopoDS_Edge & E);
+		const TopTools_ListOfShape & EdgeSplE(const TopoDS_Edge & E);
 
 		/****** HLRTopoBRep_Data::FaceHasIntL ******/
 		/****** md5 signature: 2d0b80a7d2835c96c3af947cd3d235af ******/
@@ -457,13 +471,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of the internal OutLines.
 ") FaceIntL;
-		const NCollection_List<TopoDS_Shape> FaceIntL(const TopoDS_Face & F);
+		const TopTools_ListOfShape & FaceIntL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceIsoL ******/
 		/****** md5 signature: 1e21e035c66d29438c1c72cca2804285 ******/
@@ -475,13 +489,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of the IsoLines.
 ") FaceIsoL;
-		const NCollection_List<TopoDS_Shape> FaceIsoL(const TopoDS_Face & F);
+		const TopTools_ListOfShape & FaceIsoL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::FaceOutL ******/
 		/****** md5 signature: 44fa904040e95a2cc6a2c84cfa883869 ******/
@@ -493,13 +507,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of the OutLines on restriction.
 ") FaceOutL;
-		const NCollection_List<TopoDS_Shape> FaceOutL(const TopoDS_Face & F);
+		const TopTools_ListOfShape & FaceOutL(const TopoDS_Face & F);
 
 		/****** HLRTopoBRep_Data::InitEdge ******/
 		/****** md5 signature: 13e3d303d78cdf9134a0106c465fdb17 ******/
@@ -791,78 +805,78 @@ No available documentation.
 		%feature("compactdefaultargs") AddIntL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddIntL;
-		NCollection_List<TopoDS_Shape> AddIntL();
+		TopTools_ListOfShape & AddIntL();
 
 		/****** HLRTopoBRep_FaceData::AddIsoL ******/
 		/****** md5 signature: ce5e7b86b3df29bdb876a740cdf989e5 ******/
 		%feature("compactdefaultargs") AddIsoL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddIsoL;
-		NCollection_List<TopoDS_Shape> AddIsoL();
+		TopTools_ListOfShape & AddIsoL();
 
 		/****** HLRTopoBRep_FaceData::AddOutL ******/
 		/****** md5 signature: 4149b6951ab812961ff5fd8a3b7e3023 ******/
 		%feature("compactdefaultargs") AddOutL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") AddOutL;
-		NCollection_List<TopoDS_Shape> AddOutL();
+		TopTools_ListOfShape & AddOutL();
 
 		/****** HLRTopoBRep_FaceData::FaceIntL ******/
 		/****** md5 signature: 76e3332fb465028cdb9c0bb01e717eb6 ******/
 		%feature("compactdefaultargs") FaceIntL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") FaceIntL;
-		const NCollection_List<TopoDS_Shape> FaceIntL();
+		const TopTools_ListOfShape & FaceIntL();
 
 		/****** HLRTopoBRep_FaceData::FaceIsoL ******/
 		/****** md5 signature: 3e948e1d73dfd44abb5b12dcdf7ec82d ******/
 		%feature("compactdefaultargs") FaceIsoL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") FaceIsoL;
-		const NCollection_List<TopoDS_Shape> FaceIsoL();
+		const TopTools_ListOfShape & FaceIsoL();
 
 		/****** HLRTopoBRep_FaceData::FaceOutL ******/
 		/****** md5 signature: 207b5955a63dd20f0f9c99fe89293504 ******/
 		%feature("compactdefaultargs") FaceOutL;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") FaceOutL;
-		const NCollection_List<TopoDS_Shape> FaceOutL();
+		const TopTools_ListOfShape & FaceOutL();
 
 };
 

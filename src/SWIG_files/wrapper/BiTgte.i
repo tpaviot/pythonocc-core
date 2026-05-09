@@ -45,11 +45,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bitgte.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -61,11 +63,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bitgte.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import Geom.i
 %import Geom2d.i
 %import Adaptor3d.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -159,7 +163,7 @@ Description
 		%feature("autodoc", "
 Parameters
 ----------
-LC: NCollection_List<TopoDS_Shape>
+LC: TopTools_ListOfShape
 
 Return
 -------
@@ -169,7 +173,7 @@ Description
 -----------
 set in <LC> all the center lines.
 ") CenterLines;
-		void CenterLines(NCollection_List<TopoDS_Shape> & LC);
+		void CenterLines(TopTools_ListOfShape & LC);
 
 		/****** BiTgte_Blend::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -875,7 +879,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -886,7 +890,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BiTgte_CurveOnEdge::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -1355,7 +1359,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1366,7 +1370,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BiTgte_CurveOnVertex::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/

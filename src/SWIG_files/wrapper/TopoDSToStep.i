@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topodstostep.html
 #include<StepShape_module.hxx>
 #include<Message_module.hxx>
 #include<StepVisual_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
 #include<StepGeom_module.hxx>
@@ -86,6 +87,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topodstostep.html
 %import StepShape.i
 %import Message.i
 %import StepVisual.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -404,6 +406,10 @@ Returns (modifiable) the tolerance to be used for writing If not set, starts at 
 ") Tolerance;
 		double & Tolerance();
 
+		%extend{
+			double GetTolerance() { return self->Tolerance(); }
+			void SetTolerance(double value) { self->Tolerance() = value; }
+		};
 };
 
 
@@ -1896,7 +1902,7 @@ Parameters
 E: TopoDS_Edge
 F: TopoDS_Face
 M: Standard_Transient
-L: NCollection_HSequence<
+L: TColStd_HSequenceOfTransient
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
@@ -1907,7 +1913,7 @@ Description
 -----------
 Extraction of Trimmed Curves from TopoDS_Edge for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromEdge;
-		bool GetTrimmedCurveFromEdge(const TopoDS_Edge & E, const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
+		bool GetTrimmedCurveFromEdge(const TopoDS_Edge & E, const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<TColStd_HSequenceOfTransient > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace ******/
 		/****** md5 signature: 598ff721043c98854d41b16bdc0b4d97 ******/
@@ -1917,7 +1923,7 @@ Parameters
 ----------
 F: TopoDS_Face
 M: Standard_Transient
-L: NCollection_HSequence<
+L: TColStd_HSequenceOfTransient
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
@@ -1928,7 +1934,7 @@ Description
 -----------
 Extraction of Trimmed Curves from TopoDS_Face for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromFace;
-		bool GetTrimmedCurveFromFace(const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
+		bool GetTrimmedCurveFromFace(const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<TColStd_HSequenceOfTransient > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape ******/
 		/****** md5 signature: 4f39307908df046cd32d7df8e4c17dc2 ******/
@@ -1938,7 +1944,7 @@ Parameters
 ----------
 S: TopoDS_Shape
 M: Standard_Transient
-L: NCollection_HSequence<
+L: TColStd_HSequenceOfTransient
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
@@ -1949,7 +1955,7 @@ Description
 -----------
 Extraction of Trimmed Curves from any TopoDS_Shape for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromShape;
-		bool GetTrimmedCurveFromShape(const TopoDS_Shape & S, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
+		bool GetTrimmedCurveFromShape(const TopoDS_Shape & S, NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> & M, opencascade::handle<TColStd_HSequenceOfTransient > & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::Init ******/
 		/****** md5 signature: f86f9d8f84df9d0070571c7e6a1d34f8 ******/
@@ -1976,13 +1982,13 @@ No available documentation.
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 No available documentation.
 ") Value;
-		const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> & Value();
+		const opencascade::handle<TColStd_HSequenceOfTransient> & Value();
 
 };
 

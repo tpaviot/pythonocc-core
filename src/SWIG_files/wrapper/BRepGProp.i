@@ -48,7 +48,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepgprop.html"
 #include<GProp_module.hxx>
 #include<gp_module.hxx>
 #include<BRepAdaptor_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColgp_module.hxx>
 #include<math_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TopLoc_module.hxx>
@@ -71,7 +73,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepgprop.html"
 %import GProp.i
 %import gp.i
 %import BRepAdaptor.i
+%import TColStd.i
 %import GeomAbs.i
+%import TColgp.i
 %import math.i
 
 %pythoncode {
@@ -535,7 +539,7 @@ Returns the number of Gauss points required to do the integration with a good ac
 Parameters
 ----------
 C: BRepAdaptor_Curve
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -546,7 +550,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const BRepAdaptor_Curve & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepGProp_EdgeTool::LastParameter ******/
 		/****** md5 signature: 4de56dd4974681edb53fc4384c2df197 ******/
@@ -732,7 +736,7 @@ theTMax: double
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
@@ -741,7 +745,7 @@ Input parameter: theTMin lower T bound
 Input parameter: theTMax upper T bound 
 Return: array of T knot values.
 ") GetTKnots;
-		opencascade::handle<NCollection_HArray1<double>> GetTKnots(const double theTMin, const double theTMax);
+		opencascade::handle<TColStd_HArray1OfReal> GetTKnots(const double theTMin, const double theTMax);
 
 		/****** BRepGProp_Face::GetTKnots ******/
 		/****** md5 signature: a47ac861a03270b741c66c07a6f37e46 ******/
@@ -751,7 +755,7 @@ Parameters
 ----------
 theTMin: double
 theTMax: double
-theTKnots: NCollection_HArray1<double
+theTKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -761,7 +765,7 @@ Description
 -----------
 No available documentation.
 ") GetTKnots;
-		void GetTKnots(const double theTMin, const double theTMax, opencascade::handle<NCollection_HArray1<double> > & theTKnots);
+		void GetTKnots(const double theTMin, const double theTMax, opencascade::handle<TColStd_HArray1OfReal> & theTKnots);
 
 		/****** BRepGProp_Face::GetUKnots ******/
 		/****** md5 signature: fad58197327be0959c4514211f7769ab ******/
@@ -774,7 +778,7 @@ theUMax: double
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
@@ -783,7 +787,7 @@ Input parameter: theUMin lower U bound
 Input parameter: theUMax upper U bound 
 Return: array of U knot values.
 ") GetUKnots;
-		opencascade::handle<NCollection_HArray1<double>> GetUKnots(const double theUMin, const double theUMax);
+		opencascade::handle<TColStd_HArray1OfReal> GetUKnots(const double theUMin, const double theUMax);
 
 		/****** BRepGProp_Face::GetUKnots ******/
 		/****** md5 signature: 135ac5206a1472efd19a067bc5f91ba3 ******/
@@ -793,7 +797,7 @@ Parameters
 ----------
 theUMin: double
 theUMax: double
-theUKnots: NCollection_HArray1<double
+theUKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -803,7 +807,7 @@ Description
 -----------
 No available documentation.
 ") GetUKnots;
-		void GetUKnots(const double theUMin, const double theUMax, opencascade::handle<NCollection_HArray1<double> > & theUKnots);
+		void GetUKnots(const double theUMin, const double theUMax, opencascade::handle<TColStd_HArray1OfReal> & theUKnots);
 
 		/****** BRepGProp_Face::IntegrationOrder ******/
 		/****** md5 signature: a6836523124554472222c7634c0c6c5e ******/
@@ -855,7 +859,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -865,7 +869,7 @@ Description
 -----------
 No available documentation.
 ") LKnots;
-		void LKnots(NCollection_Array1<double> & Knots);
+		void LKnots(TColStd_Array1OfReal & Knots);
 
 		/****** BRepGProp_Face::LastParameter ******/
 		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
@@ -1032,7 +1036,7 @@ Returns the number of points required to do the integration in the U parametric 
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1042,7 +1046,7 @@ Description
 -----------
 No available documentation.
 ") UKnots;
-		void UKnots(NCollection_Array1<double> & Knots);
+		void UKnots(TColStd_Array1OfReal & Knots);
 
 		/****** BRepGProp_Face::VIntegrationOrder ******/
 		/****** md5 signature: 593a935b09fad2740701c336dada63b0 ******/
@@ -1063,7 +1067,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1073,7 +1077,7 @@ Description
 -----------
 No available documentation.
 ") VKnots;
-		void VKnots(NCollection_Array1<double> & Knots);
+		void VKnots(TColStd_Array1OfReal & Knots);
 
 		/****** BRepGProp_Face::Value2d ******/
 		/****** md5 signature: 48e3682b72ae14ff23810988dd519b52 ******/
@@ -1182,7 +1186,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theNodes: NCollection_Array1<gp_Pnt>
+theNodes: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1192,7 +1196,7 @@ Description
 -----------
 Computes the global properties of of polylines represented by set of points.
 ") Perform;
-		void Perform(const NCollection_Array1<gp_Pnt> & theNodes);
+		void Perform(const TColgp_Array1OfPnt & theNodes);
 
 		/****** BRepGProp_MeshCinert::PreparePolygon ******/
 		/****** md5 signature: 8236af6037d4d9aec39121c076549f19 ******/
@@ -1204,7 +1208,7 @@ theE: TopoDS_Edge
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt>>
+opencascade::handle<TColgp_HArray1OfPnt>
 
 Description
 -----------
@@ -1212,7 +1216,7 @@ Prepares set of 3d points on base of any available edge polygons: 3D polygon, po
 Input parameter: theE the edge to extract polygon from 
 Return: array of 3D points, or null handle if edge has no polygons.
 ") PreparePolygon;
-		static opencascade::handle<NCollection_HArray1<gp_Pnt>> PreparePolygon(const TopoDS_Edge & theE);
+		static opencascade::handle<TColgp_HArray1OfPnt> PreparePolygon(const TopoDS_Edge & theE);
 
 		/****** BRepGProp_MeshCinert::PreparePolygon ******/
 		/****** md5 signature: 6793866e2f818033ad069f7bb8d73c04 ******/
@@ -1221,7 +1225,7 @@ Return: array of 3D points, or null handle if edge has no polygons.
 Parameters
 ----------
 theE: TopoDS_Edge
-thePolyg: NCollection_HArray1<gp_Pnt
+thePolyg: TColgp_HArray1OfPnt
 
 Return
 -------
@@ -1231,7 +1235,7 @@ Description
 -----------
 No available documentation.
 ") PreparePolygon;
-		static void PreparePolygon(const TopoDS_Edge & theE, opencascade::handle<NCollection_HArray1<gp_Pnt> > & thePolyg);
+		static void PreparePolygon(const TopoDS_Edge & theE, opencascade::handle<TColgp_HArray1OfPnt> & thePolyg);
 
 		/****** BRepGProp_MeshCinert::SetLocation ******/
 		/****** md5 signature: 5ed92b27e15802cdea187cf4e43b346a ******/

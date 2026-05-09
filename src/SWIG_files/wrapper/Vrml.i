@@ -44,6 +44,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrml.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<Quantity_module.hxx>
 #include<gp_module.hxx>
 #include<TCollection_module.hxx>
@@ -64,6 +66,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrml.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
+%import TColgp.i
 %import Quantity.i
 %import gp.i
 %import TCollection.i
@@ -367,7 +371,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aString: NCollection_HArray1<TCollection_AsciiString
+aString: TColStd_HArray1OfAsciiString
 aSpacing: double
 aJustification: Vrml_AsciiTextJustification
 aWidth: double
@@ -380,7 +384,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_AsciiText;
-		 Vrml_AsciiText(const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & aString, const double aSpacing, const Vrml_AsciiTextJustification aJustification, const double aWidth);
+		 Vrml_AsciiText(const opencascade::handle<TColStd_HArray1OfAsciiString> & aString, const double aSpacing, const Vrml_AsciiTextJustification aJustification, const double aWidth);
 
 		/****** Vrml_AsciiText::Justification ******/
 		/****** md5 signature: f7b5f3dd5d19ad2211adcdc674352bea ******/
@@ -454,7 +458,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aString: NCollection_HArray1<TCollection_AsciiString
+aString: TColStd_HArray1OfAsciiString
 
 Return
 -------
@@ -464,7 +468,7 @@ Description
 -----------
 No available documentation.
 ") SetString;
-		void SetString(const opencascade::handle<NCollection_HArray1<TCollection_AsciiString> > & aString);
+		void SetString(const opencascade::handle<TColStd_HArray1OfAsciiString> & aString);
 
 		/****** Vrml_AsciiText::SetWidth ******/
 		/****** md5 signature: ee0607ebb5cc5d325397bde68a8580c0 ******/
@@ -502,13 +506,13 @@ No available documentation.
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<TCollection_AsciiString>>
+opencascade::handle<TColStd_HArray1OfAsciiString>
 
 Description
 -----------
 No available documentation.
 ") String;
-		opencascade::handle<NCollection_HArray1<TCollection_AsciiString>> String();
+		opencascade::handle<TColStd_HArray1OfAsciiString> String();
 
 		/****** Vrml_AsciiText::Width ******/
 		/****** md5 signature: 1fd4c6d3d33fbd8b282f769785a59bae ******/
@@ -689,7 +693,7 @@ class Vrml_Coordinate3 : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: NCollection_HArray1<gp_Vec
+aPoint: TColgp_HArray1OfVec
 
 Return
 -------
@@ -699,7 +703,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Coordinate3;
-		 Vrml_Coordinate3(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aPoint);
+		 Vrml_Coordinate3(const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
 
 		/****** Vrml_Coordinate3::Vrml_Coordinate3 ******/
 		/****** md5 signature: caa651195ec5275c95e9738226765ecf ******/
@@ -719,13 +723,13 @@ No available documentation.
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Vec>>
+opencascade::handle<TColgp_HArray1OfVec>
 
 Description
 -----------
 No available documentation.
 ") Point;
-		opencascade::handle<NCollection_HArray1<gp_Vec>> Point();
+		opencascade::handle<TColgp_HArray1OfVec> Point();
 
 		/****** Vrml_Coordinate3::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -750,7 +754,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: NCollection_HArray1<gp_Vec
+aPoint: TColgp_HArray1OfVec
 
 Return
 -------
@@ -760,7 +764,7 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		void SetPoint(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aPoint);
+		void SetPoint(const opencascade::handle<TColgp_HArray1OfVec> & aPoint);
 
 };
 
@@ -1449,10 +1453,10 @@ class Vrml_IndexedFaceSet : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: NCollection_HArray1<int
-aMaterialIndex: NCollection_HArray1<int
-aNormalIndex: NCollection_HArray1<int
-aTextureCoordIndex: NCollection_HArray1<int
+aCoordIndex: TColStd_HArray1OfInteger
+aMaterialIndex: TColStd_HArray1OfInteger
+aNormalIndex: TColStd_HArray1OfInteger
+aTextureCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1462,7 +1466,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_IndexedFaceSet;
-		 Vrml_IndexedFaceSet(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex, const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex, const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex, const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
+		 Vrml_IndexedFaceSet(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::Vrml_IndexedFaceSet ******/
 		/****** md5 signature: 50ef4121137fded12bf9eaedab6bc411 ******/
@@ -1482,39 +1486,39 @@ No available documentation.
 		%feature("compactdefaultargs") CoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") CoordIndex;
-		opencascade::handle<NCollection_HArray1<int>> CoordIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex();
 
 		/****** Vrml_IndexedFaceSet::MaterialIndex ******/
 		/****** md5 signature: f1eb03fb4692c215dd2eac71926e91a4 ******/
 		%feature("compactdefaultargs") MaterialIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") MaterialIndex;
-		opencascade::handle<NCollection_HArray1<int>> MaterialIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex();
 
 		/****** Vrml_IndexedFaceSet::NormalIndex ******/
 		/****** md5 signature: ae1a0bdfc1bc7d4c093a1547a7cfd79e ******/
 		%feature("compactdefaultargs") NormalIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") NormalIndex;
-		opencascade::handle<NCollection_HArray1<int>> NormalIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
 
 		/****** Vrml_IndexedFaceSet::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -1539,7 +1543,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: NCollection_HArray1<int
+aCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1549,7 +1553,7 @@ Description
 -----------
 No available documentation.
 ") SetCoordIndex;
-		void SetCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex);
+		void SetCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::SetMaterialIndex ******/
 		/****** md5 signature: 98d0deb03bc31d666885092c78bfd060 ******/
@@ -1557,7 +1561,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aMaterialIndex: NCollection_HArray1<int
+aMaterialIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1567,7 +1571,7 @@ Description
 -----------
 No available documentation.
 ") SetMaterialIndex;
-		void SetMaterialIndex(const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex);
+		void SetMaterialIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
 
 		/****** Vrml_IndexedFaceSet::SetNormalIndex ******/
 		/****** md5 signature: 3d03b4ce2881c9f2ec84f23207971379 ******/
@@ -1575,7 +1579,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aNormalIndex: NCollection_HArray1<int
+aNormalIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1585,7 +1589,7 @@ Description
 -----------
 No available documentation.
 ") SetNormalIndex;
-		void SetNormalIndex(const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex);
+		void SetNormalIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
 
 		/****** Vrml_IndexedFaceSet::SetTextureCoordIndex ******/
 		/****** md5 signature: fae2a579c835a8fbce7f594c4b0a3464 ******/
@@ -1593,7 +1597,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aTextureCoordIndex: NCollection_HArray1<int
+aTextureCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1603,20 +1607,20 @@ Description
 -----------
 No available documentation.
 ") SetTextureCoordIndex;
-		void SetTextureCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
+		void SetTextureCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
 		/****** Vrml_IndexedFaceSet::TextureCoordIndex ******/
 		/****** md5 signature: 53a857022e49bb187fdfa58782aa2400 ******/
 		%feature("compactdefaultargs") TextureCoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") TextureCoordIndex;
-		opencascade::handle<NCollection_HArray1<int>> TextureCoordIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex();
 
 };
 
@@ -1640,10 +1644,10 @@ class Vrml_IndexedLineSet : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: NCollection_HArray1<int
-aMaterialIndex: NCollection_HArray1<int
-aNormalIndex: NCollection_HArray1<int
-aTextureCoordIndex: NCollection_HArray1<int
+aCoordIndex: TColStd_HArray1OfInteger
+aMaterialIndex: TColStd_HArray1OfInteger
+aNormalIndex: TColStd_HArray1OfInteger
+aTextureCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1653,7 +1657,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_IndexedLineSet;
-		 Vrml_IndexedLineSet(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex, const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex, const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex, const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
+		 Vrml_IndexedLineSet(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex, const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
 		/****** Vrml_IndexedLineSet::Vrml_IndexedLineSet ******/
 		/****** md5 signature: d1db7e38579850dce4baefc6cd4bee81 ******/
@@ -1673,39 +1677,39 @@ No available documentation.
 		%feature("compactdefaultargs") CoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") CoordIndex;
-		opencascade::handle<NCollection_HArray1<int>> CoordIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> CoordIndex();
 
 		/****** Vrml_IndexedLineSet::MaterialIndex ******/
 		/****** md5 signature: f1eb03fb4692c215dd2eac71926e91a4 ******/
 		%feature("compactdefaultargs") MaterialIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") MaterialIndex;
-		opencascade::handle<NCollection_HArray1<int>> MaterialIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> MaterialIndex();
 
 		/****** Vrml_IndexedLineSet::NormalIndex ******/
 		/****** md5 signature: ae1a0bdfc1bc7d4c093a1547a7cfd79e ******/
 		%feature("compactdefaultargs") NormalIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") NormalIndex;
-		opencascade::handle<NCollection_HArray1<int>> NormalIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
 
 		/****** Vrml_IndexedLineSet::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -1730,7 +1734,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aCoordIndex: NCollection_HArray1<int
+aCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1740,7 +1744,7 @@ Description
 -----------
 No available documentation.
 ") SetCoordIndex;
-		void SetCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aCoordIndex);
+		void SetCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aCoordIndex);
 
 		/****** Vrml_IndexedLineSet::SetMaterialIndex ******/
 		/****** md5 signature: 98d0deb03bc31d666885092c78bfd060 ******/
@@ -1748,7 +1752,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aMaterialIndex: NCollection_HArray1<int
+aMaterialIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1758,7 +1762,7 @@ Description
 -----------
 No available documentation.
 ") SetMaterialIndex;
-		void SetMaterialIndex(const opencascade::handle<NCollection_HArray1<int> > & aMaterialIndex);
+		void SetMaterialIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aMaterialIndex);
 
 		/****** Vrml_IndexedLineSet::SetNormalIndex ******/
 		/****** md5 signature: 3d03b4ce2881c9f2ec84f23207971379 ******/
@@ -1766,7 +1770,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aNormalIndex: NCollection_HArray1<int
+aNormalIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1776,7 +1780,7 @@ Description
 -----------
 No available documentation.
 ") SetNormalIndex;
-		void SetNormalIndex(const opencascade::handle<NCollection_HArray1<int> > & aNormalIndex);
+		void SetNormalIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aNormalIndex);
 
 		/****** Vrml_IndexedLineSet::SetTextureCoordIndex ******/
 		/****** md5 signature: fae2a579c835a8fbce7f594c4b0a3464 ******/
@@ -1784,7 +1788,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aTextureCoordIndex: NCollection_HArray1<int
+aTextureCoordIndex: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -1794,20 +1798,20 @@ Description
 -----------
 No available documentation.
 ") SetTextureCoordIndex;
-		void SetTextureCoordIndex(const opencascade::handle<NCollection_HArray1<int> > & aTextureCoordIndex);
+		void SetTextureCoordIndex(const opencascade::handle<TColStd_HArray1OfInteger> & aTextureCoordIndex);
 
 		/****** Vrml_IndexedLineSet::TextureCoordIndex ******/
 		/****** md5 signature: 53a857022e49bb187fdfa58782aa2400 ******/
 		%feature("compactdefaultargs") TextureCoordIndex;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") TextureCoordIndex;
-		opencascade::handle<NCollection_HArray1<int>> TextureCoordIndex();
+		opencascade::handle<TColStd_HArray1OfInteger> TextureCoordIndex();
 
 };
 
@@ -1990,7 +1994,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aRange: NCollection_HArray1<double
+aRange: TColStd_HArray1OfReal
 aCenter: gp_Vec
 
 Return
@@ -2001,7 +2005,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_LOD;
-		 Vrml_LOD(const opencascade::handle<NCollection_HArray1<double> > & aRange, const gp_Vec & aCenter);
+		 Vrml_LOD(const opencascade::handle<TColStd_HArray1OfReal> & aRange, const gp_Vec & aCenter);
 
 		/****** Vrml_LOD::Center ******/
 		/****** md5 signature: 61ea9e63ca1b0195aa3037fd3c59632f ******/
@@ -2038,13 +2042,13 @@ No available documentation.
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Range;
-		opencascade::handle<NCollection_HArray1<double>> Range();
+		opencascade::handle<TColStd_HArray1OfReal> Range();
 
 		/****** Vrml_LOD::SetCenter ******/
 		/****** md5 signature: a703ddf7cd16de3b4903371c8cb8e217 ******/
@@ -2070,7 +2074,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aRange: NCollection_HArray1<double
+aRange: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2080,7 +2084,7 @@ Description
 -----------
 No available documentation.
 ") SetRange;
-		void SetRange(const opencascade::handle<NCollection_HArray1<double> > & aRange);
+		void SetRange(const opencascade::handle<TColStd_HArray1OfReal> & aRange);
 
 };
 
@@ -2104,12 +2108,12 @@ class Vrml_Material : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-aAmbientColor: NCollection_HArray1<Quantity_Color
-aDiffuseColor: NCollection_HArray1<Quantity_Color
-aSpecularColor: NCollection_HArray1<Quantity_Color
-aEmissiveColor: NCollection_HArray1<Quantity_Color
-aShininess: NCollection_HArray1<double
-aTransparency: NCollection_HArray1<double
+aAmbientColor: Quantity_HArray1OfColor
+aDiffuseColor: Quantity_HArray1OfColor
+aSpecularColor: Quantity_HArray1OfColor
+aEmissiveColor: Quantity_HArray1OfColor
+aShininess: TColStd_HArray1OfReal
+aTransparency: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2119,7 +2123,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Material;
-		 Vrml_Material(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aAmbientColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aDiffuseColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aSpecularColor, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aEmissiveColor, const opencascade::handle<NCollection_HArray1<double> > & aShininess, const opencascade::handle<NCollection_HArray1<double> > & aTransparency);
+		 Vrml_Material(const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor, const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor, const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor, const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor, const opencascade::handle<TColStd_HArray1OfReal> & aShininess, const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
 
 		/****** Vrml_Material::Vrml_Material ******/
 		/****** md5 signature: d9815f4a50eda7816ab5f7d8bebf8226 ******/
@@ -2139,39 +2143,39 @@ No available documentation.
 		%feature("compactdefaultargs") AmbientColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<Quantity_Color>>
+opencascade::handle<Quantity_HArray1OfColor>
 
 Description
 -----------
 No available documentation.
 ") AmbientColor;
-		opencascade::handle<NCollection_HArray1<Quantity_Color>> AmbientColor();
+		opencascade::handle<Quantity_HArray1OfColor> AmbientColor();
 
 		/****** Vrml_Material::DiffuseColor ******/
 		/****** md5 signature: 9a0f336a829e617b18f3c31503dfb8ea ******/
 		%feature("compactdefaultargs") DiffuseColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<Quantity_Color>>
+opencascade::handle<Quantity_HArray1OfColor>
 
 Description
 -----------
 No available documentation.
 ") DiffuseColor;
-		opencascade::handle<NCollection_HArray1<Quantity_Color>> DiffuseColor();
+		opencascade::handle<Quantity_HArray1OfColor> DiffuseColor();
 
 		/****** Vrml_Material::EmissiveColor ******/
 		/****** md5 signature: 9e394b9ab494f6388995f915fe8a986c ******/
 		%feature("compactdefaultargs") EmissiveColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<Quantity_Color>>
+opencascade::handle<Quantity_HArray1OfColor>
 
 Description
 -----------
 No available documentation.
 ") EmissiveColor;
-		opencascade::handle<NCollection_HArray1<Quantity_Color>> EmissiveColor();
+		opencascade::handle<Quantity_HArray1OfColor> EmissiveColor();
 
 		/****** Vrml_Material::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -2196,7 +2200,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aAmbientColor: NCollection_HArray1<Quantity_Color
+aAmbientColor: Quantity_HArray1OfColor
 
 Return
 -------
@@ -2206,7 +2210,7 @@ Description
 -----------
 No available documentation.
 ") SetAmbientColor;
-		void SetAmbientColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aAmbientColor);
+		void SetAmbientColor(const opencascade::handle<Quantity_HArray1OfColor> & aAmbientColor);
 
 		/****** Vrml_Material::SetDiffuseColor ******/
 		/****** md5 signature: b58b0417da580c3093e1a4c5eb55f047 ******/
@@ -2214,7 +2218,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aDiffuseColor: NCollection_HArray1<Quantity_Color
+aDiffuseColor: Quantity_HArray1OfColor
 
 Return
 -------
@@ -2224,7 +2228,7 @@ Description
 -----------
 No available documentation.
 ") SetDiffuseColor;
-		void SetDiffuseColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aDiffuseColor);
+		void SetDiffuseColor(const opencascade::handle<Quantity_HArray1OfColor> & aDiffuseColor);
 
 		/****** Vrml_Material::SetEmissiveColor ******/
 		/****** md5 signature: 1049295b3e8828295acc427807f9aebb ******/
@@ -2232,7 +2236,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aEmissiveColor: NCollection_HArray1<Quantity_Color
+aEmissiveColor: Quantity_HArray1OfColor
 
 Return
 -------
@@ -2242,7 +2246,7 @@ Description
 -----------
 No available documentation.
 ") SetEmissiveColor;
-		void SetEmissiveColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aEmissiveColor);
+		void SetEmissiveColor(const opencascade::handle<Quantity_HArray1OfColor> & aEmissiveColor);
 
 		/****** Vrml_Material::SetShininess ******/
 		/****** md5 signature: a9cc362cff912b35e471a44f5f9e4e38 ******/
@@ -2250,7 +2254,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aShininess: NCollection_HArray1<double
+aShininess: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2260,7 +2264,7 @@ Description
 -----------
 No available documentation.
 ") SetShininess;
-		void SetShininess(const opencascade::handle<NCollection_HArray1<double> > & aShininess);
+		void SetShininess(const opencascade::handle<TColStd_HArray1OfReal> & aShininess);
 
 		/****** Vrml_Material::SetSpecularColor ******/
 		/****** md5 signature: 9e09eab21a59d8060413c7a4b4e52b40 ******/
@@ -2268,7 +2272,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aSpecularColor: NCollection_HArray1<Quantity_Color
+aSpecularColor: Quantity_HArray1OfColor
 
 Return
 -------
@@ -2278,7 +2282,7 @@ Description
 -----------
 No available documentation.
 ") SetSpecularColor;
-		void SetSpecularColor(const opencascade::handle<NCollection_HArray1<Quantity_Color> > & aSpecularColor);
+		void SetSpecularColor(const opencascade::handle<Quantity_HArray1OfColor> & aSpecularColor);
 
 		/****** Vrml_Material::SetTransparency ******/
 		/****** md5 signature: 8b7b5431feefe88864e08b782c2ad5be ******/
@@ -2286,7 +2290,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aTransparency: NCollection_HArray1<double
+aTransparency: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2296,46 +2300,46 @@ Description
 -----------
 No available documentation.
 ") SetTransparency;
-		void SetTransparency(const opencascade::handle<NCollection_HArray1<double> > & aTransparency);
+		void SetTransparency(const opencascade::handle<TColStd_HArray1OfReal> & aTransparency);
 
 		/****** Vrml_Material::Shininess ******/
 		/****** md5 signature: b68e59091e55cd881aeee09d0ffd30bc ******/
 		%feature("compactdefaultargs") Shininess;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Shininess;
-		opencascade::handle<NCollection_HArray1<double>> Shininess();
+		opencascade::handle<TColStd_HArray1OfReal> Shininess();
 
 		/****** Vrml_Material::SpecularColor ******/
 		/****** md5 signature: 4c15257f24587a43add7e29be02f8e2b ******/
 		%feature("compactdefaultargs") SpecularColor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<Quantity_Color>>
+opencascade::handle<Quantity_HArray1OfColor>
 
 Description
 -----------
 No available documentation.
 ") SpecularColor;
-		opencascade::handle<NCollection_HArray1<Quantity_Color>> SpecularColor();
+		opencascade::handle<Quantity_HArray1OfColor> SpecularColor();
 
 		/****** Vrml_Material::Transparency ******/
 		/****** md5 signature: 36c921cd19c88a2da51fadf174ca34e7 ******/
 		%feature("compactdefaultargs") Transparency;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Transparency;
-		opencascade::handle<NCollection_HArray1<double>> Transparency();
+		opencascade::handle<TColStd_HArray1OfReal> Transparency();
 
 };
 
@@ -2545,7 +2549,7 @@ class Vrml_Normal : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-aVector: NCollection_HArray1<gp_Vec
+aVector: TColgp_HArray1OfVec
 
 Return
 -------
@@ -2555,7 +2559,7 @@ Description
 -----------
 No available documentation.
 ") Vrml_Normal;
-		 Vrml_Normal(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aVector);
+		 Vrml_Normal(const opencascade::handle<TColgp_HArray1OfVec> & aVector);
 
 		/****** Vrml_Normal::Vrml_Normal ******/
 		/****** md5 signature: aa55807a51549a727bc12f4475aa0b0d ******/
@@ -2593,7 +2597,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aVector: NCollection_HArray1<gp_Vec
+aVector: TColgp_HArray1OfVec
 
 Return
 -------
@@ -2603,20 +2607,20 @@ Description
 -----------
 No available documentation.
 ") SetVector;
-		void SetVector(const opencascade::handle<NCollection_HArray1<gp_Vec> > & aVector);
+		void SetVector(const opencascade::handle<TColgp_HArray1OfVec> & aVector);
 
 		/****** Vrml_Normal::Vector ******/
 		/****** md5 signature: 65ead4acdd3eb2dbdf731b16908c0648 ******/
 		%feature("compactdefaultargs") Vector;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Vec>>
+opencascade::handle<TColgp_HArray1OfVec>
 
 Description
 -----------
 No available documentation.
 ") Vector;
-		opencascade::handle<NCollection_HArray1<gp_Vec>> Vector();
+		opencascade::handle<TColgp_HArray1OfVec> Vector();
 
 };
 
@@ -3521,7 +3525,7 @@ Parameters
 aWidth: int
 aHeight: int
 aNumber: Vrml_SFImageNumber
-anArray: NCollection_HArray1<int
+anArray: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -3531,20 +3535,20 @@ Description
 -----------
 No available documentation.
 ") Vrml_SFImage;
-		 Vrml_SFImage(const int aWidth, const int aHeight, const Vrml_SFImageNumber aNumber, const opencascade::handle<NCollection_HArray1<int> > & anArray);
+		 Vrml_SFImage(const int aWidth, const int aHeight, const Vrml_SFImageNumber aNumber, const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
 
 		/****** Vrml_SFImage::Array ******/
 		/****** md5 signature: a4ab82958dee4fbf9f0f438d586b2273 ******/
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") Array;
-		opencascade::handle<NCollection_HArray1<int>> Array();
+		opencascade::handle<TColStd_HArray1OfInteger> Array();
 
 		/****** Vrml_SFImage::ArrayFlag ******/
 		/****** md5 signature: 10e90dcab40cbe8de94091f89c446b91 ******/
@@ -3591,7 +3595,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-anArray: NCollection_HArray1<int
+anArray: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -3601,7 +3605,7 @@ Description
 -----------
 No available documentation.
 ") SetArray;
-		void SetArray(const opencascade::handle<NCollection_HArray1<int> > & anArray);
+		void SetArray(const opencascade::handle<TColStd_HArray1OfInteger> & anArray);
 
 		/****** Vrml_SFImage::SetHeight ******/
 		/****** md5 signature: 9518bb434f9db6c09008f2ef84317b6e ******/
@@ -5062,7 +5066,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: NCollection_HArray1<gp_Vec2d
+aPoint: TColgp_HArray1OfVec2d
 
 Return
 -------
@@ -5072,20 +5076,20 @@ Description
 -----------
 No available documentation.
 ") Vrml_TextureCoordinate2;
-		 Vrml_TextureCoordinate2(const opencascade::handle<NCollection_HArray1<gp_Vec2d> > & aPoint);
+		 Vrml_TextureCoordinate2(const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
 
 		/****** Vrml_TextureCoordinate2::Point ******/
 		/****** md5 signature: 2b602943fa63d8973525f80ec05f22b7 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Vec2d>>
+opencascade::handle<TColgp_HArray1OfVec2d>
 
 Description
 -----------
 No available documentation.
 ") Point;
-		opencascade::handle<NCollection_HArray1<gp_Vec2d>> Point();
+		opencascade::handle<TColgp_HArray1OfVec2d> Point();
 
 		/****** Vrml_TextureCoordinate2::Print ******/
 		/****** md5 signature: fb65164879bb8268c90b67d68359a682 ******/
@@ -5110,7 +5114,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aPoint: NCollection_HArray1<gp_Vec2d
+aPoint: TColgp_HArray1OfVec2d
 
 Return
 -------
@@ -5120,7 +5124,7 @@ Description
 -----------
 No available documentation.
 ") SetPoint;
-		void SetPoint(const opencascade::handle<NCollection_HArray1<gp_Vec2d> > & aPoint);
+		void SetPoint(const opencascade::handle<TColgp_HArray1OfVec2d> & aPoint);
 
 };
 

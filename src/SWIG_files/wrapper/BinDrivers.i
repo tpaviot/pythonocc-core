@@ -92,6 +92,8 @@ BinDrivers_ENDLABEL = BinDrivers_Marker.BinDrivers_ENDLABEL
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BinDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -280,6 +282,8 @@ No available documentation.
 };
 
 
+%make_alias(BinDrivers_DocumentRetrievalDriver)
+
 %extend BinDrivers_DocumentRetrievalDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -440,6 +444,8 @@ implements the procedure of writing a shape section to file.
 
 };
 
+
+%make_alias(BinDrivers_DocumentStorageDriver)
 
 %extend BinDrivers_DocumentStorageDriver {
 	%pythoncode {

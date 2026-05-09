@@ -45,6 +45,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plate.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -54,6 +56,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_plate.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import TColgp.i
+%import TColStd.i
 %import Message.i
 
 %pythoncode {
@@ -79,6 +83,13 @@ Array1ExtendIter(Plate_PinpointConstraint)
 %template(Plate_SequenceOfLinearScalarConstraint) NCollection_Sequence<Plate_LinearScalarConstraint>;
 
 %extend NCollection_Sequence<Plate_LinearScalarConstraint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -87,6 +98,13 @@ Array1ExtendIter(Plate_PinpointConstraint)
 %template(Plate_SequenceOfLinearXYZConstraint) NCollection_Sequence<Plate_LinearXYZConstraint>;
 
 %extend NCollection_Sequence<Plate_LinearXYZConstraint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -95,6 +113,13 @@ Array1ExtendIter(Plate_PinpointConstraint)
 %template(Plate_SequenceOfPinpointConstraint) NCollection_Sequence<Plate_PinpointConstraint>;
 
 %extend NCollection_Sequence<Plate_PinpointConstraint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -451,7 +476,7 @@ class Plate_GlobalTranslationConstraint {
 		%feature("autodoc", "
 Parameters
 ----------
-SOfXY: NCollection_Sequence<gp_XY>
+SOfXY: TColgp_SequenceOfXY
 
 Return
 -------
@@ -461,7 +486,7 @@ Description
 -----------
 No available documentation.
 ") Plate_GlobalTranslationConstraint;
-		 Plate_GlobalTranslationConstraint(const NCollection_Sequence<gp_XY> & SOfXY);
+		 Plate_GlobalTranslationConstraint(const TColgp_SequenceOfXY & SOfXY);
 
 		/****** Plate_GlobalTranslationConstraint::LXYZC ******/
 		/****** md5 signature: 422f3ddc3fa5aee73e09010319f27198 ******/
@@ -788,7 +813,7 @@ No available documentation.
 Parameters
 ----------
 thePPC: NCollection_Array1<Plate_PinpointConstraint>
-theCoeff: NCollection_Array1<gp_XYZ>
+theCoeff: TColgp_Array1OfXYZ
 
 Return
 -------
@@ -798,7 +823,7 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearScalarConstraint;
-		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array1<gp_XYZ> & theCoeff);
+		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const TColgp_Array1OfXYZ & theCoeff);
 
 		/****** Plate_LinearScalarConstraint::Plate_LinearScalarConstraint ******/
 		/****** md5 signature: 2943320112c12cb92d2bccd1b886185f ******/
@@ -807,7 +832,7 @@ No available documentation.
 Parameters
 ----------
 thePPC: NCollection_Array1<Plate_PinpointConstraint>
-theCoeff: NCollection_Array2<gp_XYZ>
+theCoeff: TColgp_Array2OfXYZ
 
 Return
 -------
@@ -817,7 +842,7 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearScalarConstraint;
-		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array2<gp_XYZ> & theCoeff);
+		 Plate_LinearScalarConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const TColgp_Array2OfXYZ & theCoeff);
 
 		/****** Plate_LinearScalarConstraint::Plate_LinearScalarConstraint ******/
 		/****** md5 signature: 627ac88d101c4867c29ac930dd2848e6 ******/
@@ -843,13 +868,13 @@ No available documentation.
 		%feature("compactdefaultargs") Coeff;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_XYZ>
+TColgp_Array2OfXYZ
 
 Description
 -----------
 No available documentation.
 ") Coeff;
-		const NCollection_Array2<gp_XYZ> Coeff();
+		const TColgp_Array2OfXYZ & Coeff();
 
 		/****** Plate_LinearScalarConstraint::GetPPC ******/
 		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
@@ -937,7 +962,7 @@ No available documentation.
 Parameters
 ----------
 thePPC: NCollection_Array1<Plate_PinpointConstraint>
-theCoeff: NCollection_Array1<double>
+theCoeff: TColStd_Array1OfReal
 
 Return
 -------
@@ -947,7 +972,7 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearXYZConstraint;
-		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array1<double> & theCoeff);
+		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const TColStd_Array1OfReal & theCoeff);
 
 		/****** Plate_LinearXYZConstraint::Plate_LinearXYZConstraint ******/
 		/****** md5 signature: 168c3cd49c63044d6cfc554ffd5227bb ******/
@@ -956,7 +981,7 @@ No available documentation.
 Parameters
 ----------
 thePPC: NCollection_Array1<Plate_PinpointConstraint>
-theCoeff: NCollection_Array2<double>
+theCoeff: TColStd_Array2OfReal
 
 Return
 -------
@@ -966,7 +991,7 @@ Description
 -----------
 No available documentation.
 ") Plate_LinearXYZConstraint;
-		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const NCollection_Array2<double> & theCoeff);
+		 Plate_LinearXYZConstraint(const NCollection_Array1<Plate_PinpointConstraint> & thePPC, const TColStd_Array2OfReal & theCoeff);
 
 		/****** Plate_LinearXYZConstraint::Plate_LinearXYZConstraint ******/
 		/****** md5 signature: ddeb74926023ddde863dc310dd6f7c9a ******/
@@ -992,13 +1017,13 @@ No available documentation.
 		%feature("compactdefaultargs") Coeff;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") Coeff;
-		const NCollection_Array2<double> & Coeff();
+		const TColStd_Array2OfReal & Coeff();
 
 		/****** Plate_LinearXYZConstraint::GetPPC ******/
 		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
@@ -1250,14 +1275,14 @@ No available documentation.
 		%feature("compactdefaultargs") CoefPol;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<gp_XYZ>>
+opencascade::handle<TColgp_HArray2OfXYZ>
 
 Description
 -----------
 Returns the coefficients of the polynomial part of the Plate function. 
 Return: 2D array of polynomial coefficients as XYZ values.
 ") CoefPol;
-		opencascade::handle<NCollection_HArray2<gp_XYZ>> CoefPol();
+		opencascade::handle<TColgp_HArray2OfXYZ> CoefPol();
 
 		/****** Plate_Plate::CoefPol ******/
 		/****** md5 signature: 28f00a479c92d395990b104018123014 ******/
@@ -1265,7 +1290,7 @@ Return: 2D array of polynomial coefficients as XYZ values.
 		%feature("autodoc", "
 Parameters
 ----------
-Coefs: NCollection_HArray2<gp_XYZ
+Coefs: TColgp_HArray2OfXYZ
 
 Return
 -------
@@ -1275,7 +1300,7 @@ Description
 -----------
 No available documentation.
 ") CoefPol;
-		void CoefPol(opencascade::handle<NCollection_HArray2<gp_XYZ> > & Coefs);
+		void CoefPol(opencascade::handle<TColgp_HArray2OfXYZ> & Coefs);
 
 		/****** Plate_Plate::Continuity ******/
 		/****** md5 signature: 0adef6f18eec5ea0742df74b4e0726ff ******/
@@ -1598,7 +1623,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Seq: NCollection_Sequence<gp_XY>
+Seq: TColgp_SequenceOfXY
 
 Return
 -------
@@ -1608,7 +1633,7 @@ Description
 -----------
 No available documentation.
 ") UVConstraints;
-		void UVConstraints(NCollection_Sequence<gp_XY> & Seq);
+		void UVConstraints(TColgp_SequenceOfXY & Seq);
 
 		/****** Plate_Plate::destroy ******/
 		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/

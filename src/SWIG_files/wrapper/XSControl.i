@@ -48,9 +48,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 #include<TopoDS_module.hxx>
 #include<Transfer_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
+#include<TopTools_module.hxx>
 #include<DE_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -76,9 +78,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 %import TopoDS.i
 %import Transfer.i
 %import TopAbs.i
+%import TColStd.i
 %import Interface.i
 %import TCollection.i
 %import Message.i
+%import TopTools.i
 %import DE.i
 %import Geom.i
 %import Geom2d.i
@@ -101,6 +105,7 @@ from OCC.Core.Exception import *
 %wrap_handle(XSControl_ConnectedShapes)
 %wrap_handle(XSControl_Controller)
 %wrap_handle(XSControl_SelectForTransfer)
+%wrap_handle(XSControl_SignTransferStatus)
 %wrap_handle(XSControl_TransferReader)
 %wrap_handle(XSControl_TransferWriter)
 %wrap_handle(XSControl_Vars)
@@ -212,13 +217,13 @@ type: TopAbs_ShapeEnum
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 This functions considers a shape from a transfer and performs the search function explained above.
 ") AdjacentEntities;
-		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> AdjacentEntities(const TopoDS_Shape & ashape, const opencascade::handle<Transfer_TransientProcess> & TP, const TopAbs_ShapeEnum type);
+		static opencascade::handle<TColStd_HSequenceOfTransient> AdjacentEntities(const TopoDS_Shape & ashape, const opencascade::handle<Transfer_TransientProcess> & TP, const TopAbs_ShapeEnum type);
 
 		/****** XSControl_ConnectedShapes::Explore ******/
 		/****** md5 signature: 590d958269489f274841fe52dacb7cd7 ******/
@@ -752,7 +757,7 @@ Defines and loads all functions which work on shapes for XSControl (as ActFunc).
 Parameters
 ----------
 session: XSControl_WorkSession
-list: NCollection_HSequence<TopoDS_Shape
+list: TopTools_HSequenceOfShape
 name: char *
 
 Return
@@ -763,7 +768,7 @@ Description
 -----------
 Analyses a name as designating Shapes from a Vars or from XSTEP transfer (last Transfer on Reading). <name> can be: '*': all the root shapes produced by last Transfer (Read) i.e. considers roots of the TransientProcess a name: a name of a variable DRAW //! Returns the count of designated Shapes. Their list is put in <list>. If <list> is null, it is firstly created. Then it is completed (Append without Clear) by the Shapes found Returns 0 if no Shape could be found.
 ") MoreShapes;
-		static int MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list, const char * const name);
+		static int MoreShapes(const opencascade::handle<XSControl_WorkSession> & session, opencascade::handle<TopTools_HSequenceOfShape> & list, const char * const name);
 
 };
 
@@ -903,7 +908,7 @@ Return: Pair of values defining operations to be performed on shapes and a boole
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -915,7 +920,7 @@ Description
 -----------
 Gives statistics about Transfer.
 ") GetStatsTransfer;
-		void GetStatsTransfer(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		void GetStatsTransfer(const opencascade::handle<TColStd_HSequenceOfTransient > & list, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** XSControl_Reader::GiveList ******/
 		/****** md5 signature: 65dccbe924d10e2b99b809035c1c9a20 ******/
@@ -928,13 +933,13 @@ second: char * (optional, default to "")
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns a list of entities from the IGES or STEP file according to the following rules: - if first and second are empty strings, the whole file is selected. - if first is an entity number or label, the entity referred to is selected. - if first is a list of entity numbers/labels separated by commas, the entities referred to are selected, - if first is the name of a selection in the worksession and second is not defined, the list contains the standard output for that selection. - if first is the name of a selection and second is defined, the criterion defined by second is applied to the result of the first selection. A selection is an operator which computes a list of entities from a list given in input according to its type. If no list is specified, the selection computes its list of entities from the whole model. A selection can be: - A predefined selection (xst-transferrable-mode) - A filter based on a signature A Signature is an operator which returns a string from an entity according to its type. For example: - 'xst-type' (CDL) - 'iges-level' - 'step-type'. For example, if you wanted to select only the advanced_faces in a STEP file you would use the following code: Example Reader.GiveList('xst-transferrable-roots','step-type(ADVANCED_FACE)'); Warning If the value given to second is incorrect, it will simply be ignored.
 ") GiveList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first = "", const char * const second = "");
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * const first = "", const char * const second = "");
 
 		/****** XSControl_Reader::GiveList ******/
 		/****** md5 signature: 4381879cc08347b7fd7c984394b88046 ******/
@@ -947,13 +952,13 @@ ent: Standard_Transient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Computes a List of entities from the model as follows <first> being a Selection, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <first> is erroneous, a null handle is returned.
 ") GiveList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> GiveList(const char * const first, const opencascade::handle<Standard_Transient> & ent);
+		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const char * const first, const opencascade::handle<Standard_Transient> & ent);
 
 		/****** XSControl_Reader::Model ******/
 		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
@@ -1334,7 +1339,7 @@ Translates an IGES or STEP entity in the model. true is returned if a shape is p
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1345,7 +1350,7 @@ Description
 -----------
 Translates a list of entities. Returns the number of IGES or STEP entities that were successfully translated. The list can be produced with GiveList. Warning - This function does not clear the existing output shapes.
 ") TransferList;
-		int TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferList(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_Reader::TransferOne ******/
 		/****** md5 signature: f6cb41a6696fd96fa766bc23d939e4fd ******/
@@ -1687,6 +1692,8 @@ Returns the Signature for a Transient object, as its transfer status.
 };
 
 
+%make_alias(XSControl_SignTransferStatus)
+
 %extend XSControl_SignTransferStatus {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1768,13 +1775,13 @@ theResult: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of starting entities to which a given check status is attached, IN FINAL RESULTS <ent> can be an entity, or the model to query all entities Below, 'entities' are, either <ent> plus its sub-transferred, or all the entities of the model //! <check> = -2 , all entities whatever the check (see result) <check> = -1 , entities with no fail (warning allowed) <check> = 0 , entities with no check at all <check> = 1 , entities with warning but no fail <check> = 2 , entities with fail <result>: if True, only entities with an attached result Remark: result True and check=0 will give an empty list.
 ") CheckedList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> CheckedList(const opencascade::handle<Standard_Transient> & theEnt, const Interface_CheckStatus WithCheck = Interface_CheckAny, const bool theResult = true);
+		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const opencascade::handle<Standard_Transient> & theEnt, const Interface_CheckStatus WithCheck = Interface_CheckAny, const bool theResult = true);
 
 		/****** XSControl_TransferReader::Clear ******/
 		/****** md5 signature: 9680b1ccf859415093c2d22a770bbee9 ******/
@@ -1832,18 +1839,18 @@ Returns (modifiable) the whole definition of Context Rather for internal use (ex
 		%feature("autodoc", "
 Parameters
 ----------
-theRes: NCollection_HSequence<TopoDS_Shape
+theRes: TopTools_HSequenceOfShape
 theMode: int (optional, default to 0)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities from which some shapes were produced: it corresponds to a loop on EntityFromShapeResult, but is optimised.
 ") EntitiesFromShapeList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> EntitiesFromShapeList(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & theRes, const int theMode = 0);
+		opencascade::handle<TColStd_HSequenceOfTransient> EntitiesFromShapeList(const opencascade::handle<TopTools_HSequenceOfShape> & theRes, const int theMode = 0);
 
 		/****** XSControl_TransferReader::EntityFromResult ******/
 		/****** md5 signature: 78725ba6a6c061be96149acca8145aeb ******/
@@ -2084,13 +2091,13 @@ theRoots: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities recorded as lastly transferred i.e. from TransientProcess itself, recorded from last Clear If <roots> is True , considers only roots of transfer If <roots> is False, considers all entities bound with result.
 ") LastTransferList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> LastTransferList(const bool theRoots);
+		opencascade::handle<TColStd_HSequenceOfTransient> LastTransferList(const bool theRoots);
 
 		/****** XSControl_TransferReader::Model ******/
 		/****** md5 signature: e485d2c2a2cfa9af3cc655f00e076be4 ******/
@@ -2131,7 +2138,7 @@ Prints statistics on current Trace File, according <what> and <mode>. See PrintS
 Parameters
 ----------
 theTP: Transfer_TransientProcess
-theList: NCollection_HSequence<
+theList: TColStd_HSequenceOfTransient
 theWhat: int
 theMode: int (optional, default to 0)
 
@@ -2143,7 +2150,7 @@ Description
 -----------
 Works as PrintStatsProcess, but displays data only on the entities which are in <list> (filter).
 ") PrintStatsOnList;
-		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & theList, const int theWhat, const int theMode = 0);
+		static void PrintStatsOnList(const opencascade::handle<Transfer_TransientProcess> & theTP, const opencascade::handle<TColStd_HSequenceOfTransient > & theList, const int theWhat, const int theMode = 0);
 
 		/****** XSControl_TransferReader::PrintStatsProcess ******/
 		/****** md5 signature: 3fd24702d34ffd7ca9ce8dcadb6396d0 ******/
@@ -2206,13 +2213,13 @@ Records a final result of transferring an entity This result is recorded as a Re
 		%feature("compactdefaultargs") RecordedList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of entities to which a final result is attached (i.e. processed by RecordResult).
 ") RecordedList;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> RecordedList();
+		opencascade::handle<TColStd_HSequenceOfTransient> RecordedList();
 
 		/****** XSControl_TransferReader::ResultFromNumber ******/
 		/****** md5 signature: 7f61a067169bdd9789dcaa92c2ef6ced ******/
@@ -2387,13 +2394,13 @@ theRec: bool
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Returns a list of result Shapes If <rec> is True , sees RecordedList If <rec> is False, sees LastTransferList (last ROOT transfers) For each one, if it is a Shape, it is cumulated to the list If no Shape is found, returns an empty Sequence.
 ") ShapeResultList;
-		const opencascade::handle<NCollection_HSequence<TopoDS_Shape>> ShapeResultList(const bool theRec);
+		const opencascade::handle<TopTools_HSequenceOfShape> & ShapeResultList(const bool theRec);
 
 		/****** XSControl_TransferReader::Skip ******/
 		/****** md5 signature: 0928fe9f404ffb6ce20ee4d090318f60 ******/
@@ -2438,7 +2445,7 @@ Clears the results attached to an entity if <ents> equates the starting model, c
 		%feature("autodoc", "
 Parameters
 ----------
-theList: NCollection_HSequence<
+theList: TColStd_HSequenceOfTransient
 theRec: bool (optional, default to true)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
@@ -2450,7 +2457,7 @@ Description
 -----------
 Commands the transfer on reading for a list of entities to data for Imagine, using the selected Actor for Read Returns count of transferred entities, ok or with fails (0/1) If <rec> is True (D), the results are recorded by RecordResult.
 ") TransferList;
-		int TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & theList, const bool theRec = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		int TransferList(const opencascade::handle<TColStd_HSequenceOfTransient > & theList, const bool theRec = true, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** XSControl_TransferReader::TransferOne ******/
 		/****** md5 signature: 568e1ca164071e0a6e8f78f5250d8636 ******/
@@ -2823,7 +2830,7 @@ the only use of this, is to allow a frontal to get one distinct 'Utils' set per 
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<
+seqval: TColStd_HSequenceOfHAsciiString
 strval: char *
 
 Return
@@ -2834,7 +2841,7 @@ Description
 -----------
 No available documentation.
 ") AppendCStr;
-		void AppendCStr(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & seqval, const char * const strval);
+		void AppendCStr(const opencascade::handle<TColStd_HSequenceOfHAsciiString > & seqval, const char * const strval);
 
 		/****** XSControl_Utils::AppendEStr ******/
 		/****** md5 signature: d1a3d7d9cc7b6a3906c7e403763d1fcb ******/
@@ -2842,7 +2849,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<
+seqval: TColStd_HSequenceOfHExtendedString
 strval: char16_t *
 
 Return
@@ -2853,7 +2860,7 @@ Description
 -----------
 No available documentation.
 ") AppendEStr;
-		void AppendEStr(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString> > > & seqval, const char16_t * const strval);
+		void AppendEStr(const opencascade::handle<TColStd_HSequenceOfHExtendedString > & seqval, const char16_t * const strval);
 
 		/****** XSControl_Utils::AppendShape ******/
 		/****** md5 signature: 70cd5b9ac55186efb1f693f90023289b ******/
@@ -2861,7 +2868,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-seqv: NCollection_HSequence<TopoDS_Shape
+seqv: TopTools_HSequenceOfShape
 shape: TopoDS_Shape
 
 Return
@@ -2872,7 +2879,7 @@ Description
 -----------
 No available documentation.
 ") AppendShape;
-		void AppendShape(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqv, const TopoDS_Shape & shape);
+		void AppendShape(const opencascade::handle<TopTools_HSequenceOfShape> & seqv, const TopoDS_Shape & shape);
 
 		/****** XSControl_Utils::AppendTra ******/
 		/****** md5 signature: 271f823d2b0adf6d3af778c1771c4159 ******/
@@ -2880,7 +2887,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<
+seqval: TColStd_HSequenceOfTransient
 traval: Standard_Transient
 
 Return
@@ -2891,7 +2898,7 @@ Description
 -----------
 No available documentation.
 ") AppendTra;
-		void AppendTra(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & seqval, const opencascade::handle<Standard_Transient> & traval);
+		void AppendTra(const opencascade::handle<TColStd_HSequenceOfTransient > & seqval, const opencascade::handle<Standard_Transient> & traval);
 
 		/****** XSControl_Utils::ArrToSeq ******/
 		/****** md5 signature: 4a24694daf778caba1ea7d2fd0a2bc1c ******/
@@ -2972,7 +2979,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-seqval: NCollection_HSequence<TopoDS_Shape
+seqval: TopTools_HSequenceOfShape
 
 Return
 -------
@@ -2982,7 +2989,7 @@ Description
 -----------
 Converts a list of Shapes to a Compound (a kind of Shape).
 ") CompoundFromSeq;
-		TopoDS_Shape CompoundFromSeq(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqval);
+		TopoDS_Shape CompoundFromSeq(const opencascade::handle<TopTools_HSequenceOfShape> & seqval);
 
 		/****** XSControl_Utils::DateString ******/
 		/****** md5 signature: 4a9dabeefaca620bd560bd0af5c9e824 ******/
@@ -3109,52 +3116,52 @@ No available documentation.
 		%feature("compactdefaultargs") NewSeqCStr;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") NewSeqCStr;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> NewSeqCStr();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> NewSeqCStr();
 
 		/****** XSControl_Utils::NewSeqEStr ******/
 		/****** md5 signature: 70ebe62842245e0d644d29efd26702a2 ******/
 		%feature("compactdefaultargs") NewSeqEStr;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>
+opencascade::handle<TColStd_HSequenceOfHExtendedString>
 
 Description
 -----------
 No available documentation.
 ") NewSeqEStr;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>> NewSeqEStr();
+		opencascade::handle<TColStd_HSequenceOfHExtendedString> NewSeqEStr();
 
 		/****** XSControl_Utils::NewSeqShape ******/
 		/****** md5 signature: bc970b5f46b6446d2de8397bec7dfb27 ******/
 		%feature("compactdefaultargs") NewSeqShape;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") NewSeqShape;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> NewSeqShape();
+		opencascade::handle<TopTools_HSequenceOfShape> NewSeqShape();
 
 		/****** XSControl_Utils::NewSeqTra ******/
 		/****** md5 signature: b82e1b259b04c41980d3cdce5ca886ec ******/
 		%feature("compactdefaultargs") NewSeqTra;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 No available documentation.
 ") NewSeqTra;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> NewSeqTra();
+		opencascade::handle<TColStd_HSequenceOfTransient> NewSeqTra();
 
 		/****** XSControl_Utils::SeqIntValue ******/
 		/****** md5 signature: 56de1c7281345497d601e46f1696c76a ******/
@@ -3162,7 +3169,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<int
+list: TColStd_HSequenceOfInteger
 num: int
 
 Return
@@ -3173,7 +3180,7 @@ Description
 -----------
 No available documentation.
 ") SeqIntValue;
-		int SeqIntValue(const opencascade::handle<NCollection_HSequence<int> > & list, const int num);
+		int SeqIntValue(const opencascade::handle<TColStd_HSequenceOfInteger> & list, const int num);
 
 		/****** XSControl_Utils::SeqLength ******/
 		/****** md5 signature: 6dc87a7a705d0ab5d4a84d5bcf67fe40 ******/
@@ -3256,7 +3263,7 @@ Returns the type of a Shape: true type if <compound> is False If <compound> is T
 		%feature("autodoc", "
 Parameters
 ----------
-seqv: NCollection_HSequence<TopoDS_Shape
+seqv: TopTools_HSequenceOfShape
 num: int
 
 Return
@@ -3267,7 +3274,7 @@ Description
 -----------
 No available documentation.
 ") ShapeValue;
-		TopoDS_Shape ShapeValue(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & seqv, const int num);
+		TopoDS_Shape ShapeValue(const opencascade::handle<TopTools_HSequenceOfShape> & seqv, const int num);
 
 		/****** XSControl_Utils::SortedCompound ******/
 		/****** md5 signature: 47ef4a3fddd5fa7c9493ab75d99d42c2 ******/
@@ -3977,7 +3984,7 @@ Description
 -----------
 Sets the current Context List, as a whole Sets it to the TransferReader.
 ") SetAllContext;
-		void SetAllContext(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > theContext);
+		void SetAllContext(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> theContext);
 
 		/****** XSControl_WorkSession::SetController ******/
 		/****** md5 signature: d7eabfce93065329564b5f68591b841a ******/

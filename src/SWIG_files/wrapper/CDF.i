@@ -138,6 +138,7 @@ CDF_TOA_Unchanged = CDF_TypeOfActivation.CDF_TOA_Unchanged
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(CDF_Application)
 %wrap_handle(CDF_Directory)
 %wrap_handle(CDF_MetaDataDriver)
 %wrap_handle(CDF_MetaDataDriverFactory)
@@ -487,6 +488,8 @@ Returns instance of storage driver for specified format. //! Default implementat
 
 };
 
+
+%make_alias(CDF_Application)
 
 %extend CDF_Application {
 	%pythoncode {
@@ -1496,7 +1499,7 @@ Description
 -----------
 Initializes the MetaDatadriver connected to specified look-up table. Note that the created driver will keep reference to the table, thus it must have life time longer than this object.
 ") CDF_FWOSDriver;
-		 CDF_FWOSDriver(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData> > & theLookUpTable);
+		 CDF_FWOSDriver(NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<CDM_MetaData>> & theLookUpTable);
 
 		/****** CDF_FWOSDriver::BuildFileName ******/
 		/****** md5 signature: 74f50a405de45edf3c6d38fb1392faa7 ******/

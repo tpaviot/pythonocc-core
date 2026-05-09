@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepdata.html"
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepdata.html"
 %import NCollection.i
 %import Interface.i
 %import TCollection.i
+%import TColStd.i
 %import Resource.i
 
 %pythoncode {
@@ -2833,7 +2835,7 @@ Returns a unique positive CaseNumber for types described by an EDescr (late bind
 		%feature("autodoc", "
 Parameters
 ----------
-names: NCollection_Sequence<TCollection_AsciiString>
+names: TColStd_SequenceOfAsciiString
 anylevel: bool (optional, default to true)
 
 Return
@@ -2844,7 +2846,7 @@ Description
 -----------
 Returns a complex description according to list of names <anylevel> True (D): for <self> and its resources <anylevel> False: for <self> only.
 ") ECDescr;
-		opencascade::handle<StepData_ECDescr> ECDescr(const NCollection_Sequence<TCollection_AsciiString> & names, const bool anylevel = true);
+		opencascade::handle<StepData_ECDescr> ECDescr(const TColStd_SequenceOfAsciiString & names, const bool anylevel = true);
 
 		/****** StepData_Protocol::ESDescr ******/
 		/****** md5 signature: 5e58a071c1665f4214b66b057cb71b20 ******/
@@ -3086,7 +3088,7 @@ Defines Case Numbers corresponding to the recognized Types Called by CaseNum (da
 		%feature("autodoc", "
 Parameters
 ----------
-types: NCollection_Sequence<TCollection_AsciiString>
+types: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -3096,7 +3098,7 @@ Description
 -----------
 Same a above but for a Complex Type Entity ('Plex') The provided Default recognizes nothing.
 ") CaseStep;
-		virtual int CaseStep(const NCollection_Sequence<TCollection_AsciiString> & types);
+		virtual int CaseStep(const TColStd_SequenceOfAsciiString & types);
 
 		/****** StepData_ReadWriteModule::ComplexType ******/
 		/****** md5 signature: 78e3b47462e8a0e9e3e0a061c11eae06 ******/
@@ -3105,7 +3107,7 @@ Same a above but for a Complex Type Entity ('Plex') The provided Default recogni
 Parameters
 ----------
 CN: int
-types: NCollection_Sequence<TCollection_AsciiString>
+types: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -3115,7 +3117,7 @@ Description
 -----------
 Function specific to STEP, which delivers the list of types which corresponds to a complex type. If <CN> is not for a complex type, this method returns False. Else it returns True and fills the list in alphabetic order. The default returns False. To be redefined as required.
 ") ComplexType;
-		virtual bool ComplexType(const int CN, NCollection_Sequence<TCollection_AsciiString> & types);
+		virtual bool ComplexType(const int CN, TColStd_SequenceOfAsciiString & types);
 
 		/****** StepData_ReadWriteModule::IsComplex ******/
 		/****** md5 signature: 85c6b2fef15897806cf8d77632c47346 ******/
@@ -4593,7 +4595,7 @@ Checks Count of Parameters of record <num> to equate <nbreq> If this Check is su
 Parameters
 ----------
 num: int
-types: NCollection_Sequence<TCollection_AsciiString>
+types: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -4603,7 +4605,7 @@ Description
 -----------
 Returns the List of Types which correspond to a Complex Type Entity. If not Complex, there is just one Type in it For a SubList or a Scope mark, <types> remains empty.
 ") ComplexType;
-		void ComplexType(const int num, NCollection_Sequence<TCollection_AsciiString> & types);
+		void ComplexType(const int num, TColStd_SequenceOfAsciiString & types);
 
 		/****** StepData_StepReaderData::FailEnumValue ******/
 		/****** md5 signature: 91a43b3b900d87f95767662ae337e8c1 ******/
@@ -5794,7 +5796,7 @@ sends a reference to an entity (its identifier with '#') REMARK 1: a Null <val> 
 		%feature("autodoc", "
 Parameters
 ----------
-anArr: NCollection_HArray1<double
+anArr: TColStd_HArray1OfReal
 
 Return
 -------
@@ -5804,7 +5806,7 @@ Description
 -----------
 sends an array of real.
 ") SendArrReal;
-		void SendArrReal(const opencascade::handle<NCollection_HArray1<double> > & anArr);
+		void SendArrReal(const opencascade::handle<TColStd_HArray1OfReal> & anArr);
 
 		/****** StepData_StepWriter::SendBoolean ******/
 		/****** md5 signature: a9ab78867e7a9275dfd7011d6487664a ******/
@@ -6204,6 +6206,14 @@ TypeMode controls the type form to use: 0 (D) for normal long form 1 for short f
 ") TypeMode;
 		int & TypeMode();
 
+		%extend{
+			int GetLabelMode() { return self->LabelMode(); }
+			void SetLabelMode(int value) { self->LabelMode() = value; }
+		};
+		%extend{
+			int GetTypeMode() { return self->TypeMode(); }
+			void SetTypeMode(int value) { self->TypeMode() = value; }
+		};
 };
 
 
@@ -6634,13 +6644,13 @@ Creates a described entity (i.e. a complex one, made of one simple entity per me
 		%feature("compactdefaultargs") TypeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
+opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
 Returns the ordered list of types.
 ") TypeList;
-		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> TypeList();
+		opencascade::handle<TColStd_HSequenceOfAsciiString> TypeList();
 
 };
 
@@ -7578,13 +7588,13 @@ Fills an EntityIterator with entities shared by <self>.
 		%feature("compactdefaultargs") TypeList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
+opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
 Returns the actual list of members types.
 ") TypeList;
-		opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> TypeList();
+		opencascade::handle<TColStd_HSequenceOfAsciiString> TypeList();
 
 };
 
@@ -8281,13 +8291,13 @@ No available documentation.
 		%feature("compactdefaultargs") ArrReal;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") ArrReal;
-		opencascade::handle<NCollection_HArray1<double>> ArrReal();
+		opencascade::handle<TColStd_HArray1OfReal> ArrReal();
 
 		/****** StepData_SelectArrReal::Kind ******/
 		/****** md5 signature: 3498b2f7ea64caceb6e4729945892060 ******/
@@ -8308,7 +8318,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-arr: NCollection_HArray1<double
+arr: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8318,7 +8328,7 @@ Description
 -----------
 No available documentation.
 ") SetArrReal;
-		void SetArrReal(const opencascade::handle<NCollection_HArray1<double> > & arr);
+		void SetArrReal(const opencascade::handle<TColStd_HArray1OfReal> & arr);
 
 };
 

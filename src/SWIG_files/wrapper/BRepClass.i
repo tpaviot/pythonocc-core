@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<IntRes2d_module.hxx>
@@ -66,6 +67,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import TopAbs.i
 %import gp.i
 %import IntRes2d.i
@@ -232,7 +234,7 @@ Sets the maximum tolerance at which to start checking in the intersector.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapVE: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theMapVE: TopTools_IndexedDataMapOfShapeListOfShape
 
 Return
 -------
@@ -242,7 +244,7 @@ Description
 -----------
 Finds and sets the next Edge for the current.
 ") SetNextEdge;
-		void SetNextEdge(const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theMapVE);
+		void SetNextEdge(const TopTools_IndexedDataMapOfShapeListOfShape & theMapVE);
 
 		/****** BRepClass_Edge::SetUseBndBox ******/
 		/****** md5 signature: 251294af62b6eb7f33121f1722782657 ******/

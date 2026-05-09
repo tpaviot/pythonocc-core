@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepgeom.html"
 #include<StepRepr_module.hxx>
 #include<TCollection_module.hxx>
 #include<StepBasic_module.hxx>
+#include<TColStd_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TCollection_module.hxx>
 #include<Interface_module.hxx>
@@ -67,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepgeom.html"
 %import StepRepr.i
 %import TCollection.i
 %import StepBasic.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -206,8 +208,90 @@ StepGeom_tpUnspecified = StepGeom_TrimmingPreference.StepGeom_tpUnspecified
 
 /* handles */
 %wrap_handle(StepGeom_CompositeCurveSegment)
+%wrap_handle(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx)
+%wrap_handle(StepGeom_GeometricRepresentationContext)
+%wrap_handle(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext)
+%wrap_handle(StepGeom_GeometricRepresentationContextAndParametricRepresentationContext)
+%wrap_handle(StepGeom_GeometricRepresentationItem)
 %wrap_handle(StepGeom_SurfacePatch)
+%wrap_handle(StepGeom_TrimmingMember)
+%wrap_handle(StepGeom_CartesianTransformationOperator)
+%wrap_handle(StepGeom_Curve)
+%wrap_handle(StepGeom_Direction)
+%wrap_handle(StepGeom_Placement)
+%wrap_handle(StepGeom_Point)
 %wrap_handle(StepGeom_ReparametrisedCompositeCurveSegment)
+%wrap_handle(StepGeom_SuParameters)
+%wrap_handle(StepGeom_Surface)
+%wrap_handle(StepGeom_Vector)
+%wrap_handle(StepGeom_Axis1Placement)
+%wrap_handle(StepGeom_Axis2Placement2d)
+%wrap_handle(StepGeom_Axis2Placement3d)
+%wrap_handle(StepGeom_BoundedCurve)
+%wrap_handle(StepGeom_BoundedSurface)
+%wrap_handle(StepGeom_CartesianPoint)
+%wrap_handle(StepGeom_CartesianTransformationOperator2d)
+%wrap_handle(StepGeom_CartesianTransformationOperator3d)
+%wrap_handle(StepGeom_Conic)
+%wrap_handle(StepGeom_CurveReplica)
+%wrap_handle(StepGeom_DegeneratePcurve)
+%wrap_handle(StepGeom_ElementarySurface)
+%wrap_handle(StepGeom_Line)
+%wrap_handle(StepGeom_OffsetCurve3d)
+%wrap_handle(StepGeom_OffsetSurface)
+%wrap_handle(StepGeom_OrientedSurface)
+%wrap_handle(StepGeom_Pcurve)
+%wrap_handle(StepGeom_PointOnCurve)
+%wrap_handle(StepGeom_PointOnSurface)
+%wrap_handle(StepGeom_PointReplica)
+%wrap_handle(StepGeom_SurfaceCurve)
+%wrap_handle(StepGeom_SurfaceReplica)
+%wrap_handle(StepGeom_SweptSurface)
+%wrap_handle(StepGeom_BSplineCurve)
+%wrap_handle(StepGeom_BSplineSurface)
+%wrap_handle(StepGeom_Circle)
+%wrap_handle(StepGeom_CompositeCurve)
+%wrap_handle(StepGeom_ConicalSurface)
+%wrap_handle(StepGeom_CurveBoundedSurface)
+%wrap_handle(StepGeom_CylindricalSurface)
+%wrap_handle(StepGeom_Ellipse)
+%wrap_handle(StepGeom_EvaluatedDegeneratePcurve)
+%wrap_handle(StepGeom_Hyperbola)
+%wrap_handle(StepGeom_IntersectionCurve)
+%wrap_handle(StepGeom_Parabola)
+%wrap_handle(StepGeom_Plane)
+%wrap_handle(StepGeom_Polyline)
+%wrap_handle(StepGeom_RectangularCompositeSurface)
+%wrap_handle(StepGeom_RectangularTrimmedSurface)
+%wrap_handle(StepGeom_SeamCurve)
+%wrap_handle(StepGeom_SphericalSurface)
+%wrap_handle(StepGeom_SurfaceCurveAndBoundedCurve)
+%wrap_handle(StepGeom_SurfaceOfLinearExtrusion)
+%wrap_handle(StepGeom_SurfaceOfRevolution)
+%wrap_handle(StepGeom_ToroidalSurface)
+%wrap_handle(StepGeom_TrimmedCurve)
+%wrap_handle(StepGeom_BSplineCurveWithKnots)
+%wrap_handle(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)
+%wrap_handle(StepGeom_BSplineSurfaceWithKnots)
+%wrap_handle(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)
+%wrap_handle(StepGeom_BezierCurve)
+%wrap_handle(StepGeom_BezierCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_BezierSurface)
+%wrap_handle(StepGeom_BezierSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_CompositeCurveOnSurface)
+%wrap_handle(StepGeom_DegenerateToroidalSurface)
+%wrap_handle(StepGeom_QuasiUniformCurve)
+%wrap_handle(StepGeom_QuasiUniformCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_QuasiUniformSurface)
+%wrap_handle(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_RationalBSplineCurve)
+%wrap_handle(StepGeom_RationalBSplineSurface)
+%wrap_handle(StepGeom_UniformCurve)
+%wrap_handle(StepGeom_UniformCurveAndRationalBSplineCurve)
+%wrap_handle(StepGeom_UniformSurface)
+%wrap_handle(StepGeom_UniformSurfaceAndRationalBSplineSurface)
+%wrap_handle(StepGeom_BoundaryCurve)
+%wrap_handle(StepGeom_OuterBoundaryCurve)
 /* end handles declaration */
 
 /* templates */
@@ -664,7 +748,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const int aCoordinateSpaceDimension, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & anUncertainty);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const int aCoordinateSpaceDimension, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> > & anUncertainty);
 
 		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::NbUncertainty ******/
 		/****** md5 signature: 5a5209f9e06fb26886d8dfd427ce51aa ******/
@@ -780,7 +864,7 @@ Description
 -----------
 No available documentation.
 ") SetUncertainty;
-		void SetUncertainty(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> > > & aUncertainty);
+		void SetUncertainty(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> > & aUncertainty);
 
 		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUnits ******/
 		/****** md5 signature: 337581e69f7bdcfcb983fc6ea95bb132 ******/
@@ -798,7 +882,7 @@ Description
 -----------
 No available documentation.
 ") SetUnits;
-		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
+		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits);
 
 		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Uncertainty ******/
 		/****** md5 signature: c45420811079a2cb4224a341ce15554e ******/
@@ -864,6 +948,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx)
 
 %extend StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 	%pythoncode {
@@ -942,6 +1028,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_GeometricRepresentationContext)
 
 %extend StepGeom_GeometricRepresentationContext {
 	%pythoncode {
@@ -1046,7 +1134,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const int aCoordinateSpaceDimension, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const int aCoordinateSpaceDimension, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits);
 
 		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::NbUnits ******/
 		/****** md5 signature: 0869a1823c5478da0f6e93ff331d6fda ******/
@@ -1131,7 +1219,7 @@ Description
 -----------
 No available documentation.
 ") SetUnits;
-		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit> > > & aUnits);
+		void SetUnits(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> > & aUnits);
 
 		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Units ******/
 		/****** md5 signature: 15510344bbc0dccc14d821a7401432b6 ******/
@@ -1166,6 +1254,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext)
 
 %extend StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext {
 	%pythoncode {
@@ -1328,6 +1418,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_GeometricRepresentationContextAndParametricRepresentationContext)
+
 %extend StepGeom_GeometricRepresentationContextAndParametricRepresentationContext {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1354,6 +1446,8 @@ Returns a GeometricRepresentationItem.
 
 };
 
+
+%make_alias(StepGeom_GeometricRepresentationItem)
 
 %extend StepGeom_GeometricRepresentationItem {
 	%pythoncode {
@@ -1773,6 +1867,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_TrimmingMember)
 
 %extend StepGeom_TrimmingMember {
 	%pythoncode {
@@ -2219,6 +2315,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_CartesianTransformationOperator)
+
 %extend StepGeom_CartesianTransformationOperator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2245,6 +2343,8 @@ Returns a Curve.
 
 };
 
+
+%make_alias(StepGeom_Curve)
 
 %extend StepGeom_Curve {
 	%pythoncode {
@@ -2308,7 +2408,7 @@ No available documentation.
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theDirectionRatios: NCollection_HArray1<double
+theDirectionRatios: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2318,7 +2418,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<double> > & theDirectionRatios);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TColStd_HArray1OfReal> & theDirectionRatios);
 
 		/****** StepGeom_Direction::Init2D ******/
 		/****** md5 signature: 4f89885f6aeb095491c8f78f947e0ef5 ******/
@@ -2380,7 +2480,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theDirectionRatios: NCollection_HArray1<double
+theDirectionRatios: TColStd_HArray1OfReal
 
 Return
 -------
@@ -2390,7 +2490,7 @@ Description
 -----------
 No available documentation.
 ") SetDirectionRatios;
-		void SetDirectionRatios(const opencascade::handle<NCollection_HArray1<double> > & theDirectionRatios);
+		void SetDirectionRatios(const opencascade::handle<TColStd_HArray1OfReal> & theDirectionRatios);
 
 		/****** StepGeom_Direction::SetDirectionRatios ******/
 		/****** md5 signature: 7a5b9de9a1f6267e74493524fe32aaab ******/
@@ -2430,6 +2530,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_Direction)
 
 %extend StepGeom_Direction {
 	%pythoncode {
@@ -2508,6 +2610,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Placement)
+
 %extend StepGeom_Placement {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2534,6 +2638,8 @@ Returns a Point.
 
 };
 
+
+%make_alias(StepGeom_Point)
 
 %extend StepGeom_Point {
 	%pythoncode {
@@ -2853,6 +2959,8 @@ Sets field Gamma.
 };
 
 
+%make_alias(StepGeom_SuParameters)
+
 %extend StepGeom_SuParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2879,6 +2987,8 @@ Returns a Surface.
 
 };
 
+
+%make_alias(StepGeom_Surface)
 
 %extend StepGeom_Surface {
 	%pythoncode {
@@ -2989,6 +3099,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Vector)
+
 %extend StepGeom_Vector {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3094,6 +3206,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Axis1Placement)
+
 %extend StepGeom_Axis1Placement {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3198,6 +3312,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_Axis2Placement2d)
 
 %extend StepGeom_Axis2Placement2d {
 	%pythoncode {
@@ -3363,6 +3479,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Axis2Placement3d)
+
 %extend StepGeom_Axis2Placement3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3390,6 +3508,8 @@ Returns a BoundedCurve.
 };
 
 
+%make_alias(StepGeom_BoundedCurve)
+
 %extend StepGeom_BoundedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3416,6 +3536,8 @@ Returns a BoundedSurface.
 
 };
 
+
+%make_alias(StepGeom_BoundedSurface)
 
 %extend StepGeom_BoundedSurface {
 	%pythoncode {
@@ -3479,7 +3601,7 @@ No available documentation.
 Parameters
 ----------
 theName: TCollection_HAsciiString
-theCoordinates: NCollection_HArray1<double
+theCoordinates: TColStd_HArray1OfReal
 
 Return
 -------
@@ -3489,7 +3611,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<double> > & theCoordinates);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TColStd_HArray1OfReal> & theCoordinates);
 
 		/****** StepGeom_CartesianPoint::Init2D ******/
 		/****** md5 signature: 663b84b2b4abef169a6f3185e2c063ef ******/
@@ -3551,7 +3673,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theCoordinates: NCollection_HArray1<double
+theCoordinates: TColStd_HArray1OfReal
 
 Return
 -------
@@ -3561,7 +3683,7 @@ Description
 -----------
 No available documentation.
 ") SetCoordinates;
-		void SetCoordinates(const opencascade::handle<NCollection_HArray1<double> > & theCoordinates);
+		void SetCoordinates(const opencascade::handle<TColStd_HArray1OfReal> & theCoordinates);
 
 		/****** StepGeom_CartesianPoint::SetCoordinates ******/
 		/****** md5 signature: fb90c194cc56bddeade0d732d7928336 ******/
@@ -3602,6 +3724,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_CartesianPoint)
+
 %extend StepGeom_CartesianPoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3628,6 +3752,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_CartesianTransformationOperator2d)
 
 %extend StepGeom_CartesianTransformationOperator2d {
 	%pythoncode {
@@ -3740,6 +3866,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_CartesianTransformationOperator3d)
+
 %extend StepGeom_CartesianTransformationOperator3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3816,6 +3944,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_Conic)
 
 %extend StepGeom_Conic {
 	%pythoncode {
@@ -3926,6 +4056,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_CurveReplica)
+
 %extend StepGeom_CurveReplica {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4035,6 +4167,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_DegeneratePcurve)
+
 %extend StepGeom_DegeneratePcurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4111,6 +4245,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_ElementarySurface)
 
 %extend StepGeom_ElementarySurface {
 	%pythoncode {
@@ -4220,6 +4356,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_Line)
 
 %extend StepGeom_Line {
 	%pythoncode {
@@ -4394,6 +4532,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_OffsetCurve3d)
+
 %extend StepGeom_OffsetCurve3d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4535,6 +4675,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_OffsetSurface)
+
 %extend StepGeom_OffsetSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4611,6 +4753,8 @@ Set field Orientation.
 
 };
 
+
+%make_alias(StepGeom_OrientedSurface)
 
 %extend StepGeom_OrientedSurface {
 	%pythoncode {
@@ -4721,6 +4865,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Pcurve)
+
 %extend StepGeom_Pcurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4829,6 +4975,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_PointOnCurve)
 
 %extend StepGeom_PointOnCurve {
 	%pythoncode {
@@ -4971,6 +5119,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_PointOnSurface)
+
 %extend StepGeom_PointOnSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5080,6 +5230,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_PointReplica)
+
 %extend StepGeom_PointReplica {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5167,7 +5319,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aCurve3d, const opencascade::handle<NCollection_HArray1<StepGeom_PcurveOrSurface> > & aAssociatedGeometry, const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aCurve3d, const opencascade::handle<NCollection_HArray1<StepGeom_PcurveOrSurface>> & aAssociatedGeometry, const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
 
 		/****** StepGeom_SurfaceCurve::MasterRepresentation ******/
 		/****** md5 signature: 5cf67b3c4f8ba5db5f6b1f5604cbff86 ******/
@@ -5211,7 +5363,7 @@ Description
 -----------
 No available documentation.
 ") SetAssociatedGeometry;
-		void SetAssociatedGeometry(const opencascade::handle<NCollection_HArray1<StepGeom_PcurveOrSurface> > & aAssociatedGeometry);
+		void SetAssociatedGeometry(const opencascade::handle<NCollection_HArray1<StepGeom_PcurveOrSurface>> & aAssociatedGeometry);
 
 		/****** StepGeom_SurfaceCurve::SetCurve3d ******/
 		/****** md5 signature: 2cbfc24e206b09964d3b73796bd40770 ******/
@@ -5251,6 +5403,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_SurfaceCurve)
 
 %extend StepGeom_SurfaceCurve {
 	%pythoncode {
@@ -5361,6 +5515,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_SurfaceReplica)
+
 %extend StepGeom_SurfaceReplica {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5437,6 +5593,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_SweptSurface)
 
 %extend StepGeom_SweptSurface {
 	%pythoncode {
@@ -5553,7 +5711,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect);
 
 		/****** StepGeom_BSplineCurve::NbControlPointsList ******/
 		/****** md5 signature: 7f4d8685049360c65603f6681ff33b81 ******/
@@ -5615,7 +5773,7 @@ Description
 -----------
 No available documentation.
 ") SetControlPointsList;
-		void SetControlPointsList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList);
+		void SetControlPointsList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList);
 
 		/****** StepGeom_BSplineCurve::SetCurveForm ******/
 		/****** md5 signature: 88dd47042daf39f14f698879e5f61b3d ******/
@@ -5673,6 +5831,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BSplineCurve)
 
 %extend StepGeom_BSplineCurve {
 	%pythoncode {
@@ -5753,7 +5913,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect);
 
 		/****** StepGeom_BSplineSurface::NbControlPointsListI ******/
 		/****** md5 signature: 2c500ccbed08eddb5494eb11ac313592 ******/
@@ -5810,7 +5970,7 @@ Description
 -----------
 No available documentation.
 ") SetControlPointsList;
-		void SetControlPointsList(const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList);
+		void SetControlPointsList(const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList);
 
 		/****** StepGeom_BSplineSurface::SetSelfIntersect ******/
 		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
@@ -5988,6 +6148,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_BSplineSurface)
+
 %extend StepGeom_BSplineSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6066,6 +6228,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Circle)
+
 %extend StepGeom_Circle {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6108,7 +6272,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment> > > & aSegments, const StepData_Logical aSelfIntersect);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>> > & aSegments, const StepData_Logical aSelfIntersect);
 
 		/****** StepGeom_CompositeCurve::NbSegments ******/
 		/****** md5 signature: 9aee6c2253f8ba296b560fdee30e17ad ******/
@@ -6183,7 +6347,7 @@ Description
 -----------
 No available documentation.
 ") SetSegments;
-		void SetSegments(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment> > > & aSegments);
+		void SetSegments(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CompositeCurveSegment>> > & aSegments);
 
 		/****** StepGeom_CompositeCurve::SetSelfIntersect ******/
 		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
@@ -6205,6 +6369,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_CompositeCurve)
 
 %extend StepGeom_CompositeCurve {
 	%pythoncode {
@@ -6316,6 +6482,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_ConicalSurface)
+
 %extend StepGeom_ConicalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6398,7 +6566,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<NCollection_HArray1<StepGeom_SurfaceBoundary> > & aBoundaries, const bool aImplicitOuter);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<NCollection_HArray1<StepGeom_SurfaceBoundary>> & aBoundaries, const bool aImplicitOuter);
 
 		/****** StepGeom_CurveBoundedSurface::SetBasisSurface ******/
 		/****** md5 signature: 358648de36142756d5347fdc5c2c8d85 ******/
@@ -6434,7 +6602,7 @@ Description
 -----------
 Set field Boundaries.
 ") SetBoundaries;
-		void SetBoundaries(const opencascade::handle<NCollection_HArray1<StepGeom_SurfaceBoundary> > & Boundaries);
+		void SetBoundaries(const opencascade::handle<NCollection_HArray1<StepGeom_SurfaceBoundary>> & Boundaries);
 
 		/****** StepGeom_CurveBoundedSurface::SetImplicitOuter ******/
 		/****** md5 signature: 050b890aba9eafbdc1679fd3245e353e ******/
@@ -6456,6 +6624,8 @@ Set field ImplicitOuter.
 
 };
 
+
+%make_alias(StepGeom_CurveBoundedSurface)
 
 %extend StepGeom_CurveBoundedSurface {
 	%pythoncode {
@@ -6534,6 +6704,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_CylindricalSurface)
 
 %extend StepGeom_CylindricalSurface {
 	%pythoncode {
@@ -6645,6 +6817,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Ellipse)
+
 %extend StepGeom_Ellipse {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6723,6 +6897,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_EvaluatedDegeneratePcurve)
 
 %extend StepGeom_EvaluatedDegeneratePcurve {
 	%pythoncode {
@@ -6834,6 +7010,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Hyperbola)
+
 %extend StepGeom_Hyperbola {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6860,6 +7038,8 @@ Returns a IntersectionCurve.
 
 };
 
+
+%make_alias(StepGeom_IntersectionCurve)
 
 %extend StepGeom_IntersectionCurve {
 	%pythoncode {
@@ -6939,6 +7119,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_Parabola)
+
 %extend StepGeom_Parabola {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6965,6 +7147,8 @@ Returns a Plane.
 
 };
 
+
+%make_alias(StepGeom_Plane)
 
 %extend StepGeom_Plane {
 	%pythoncode {
@@ -7007,7 +7191,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPoints);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aPoints);
 
 		/****** StepGeom_Polyline::NbPoints ******/
 		/****** md5 signature: 0243a6484ef0942dcad871f7c247b5de ******/
@@ -7069,10 +7253,12 @@ Description
 -----------
 No available documentation.
 ") SetPoints;
-		void SetPoints(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPoints);
+		void SetPoints(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aPoints);
 
 };
 
+
+%make_alias(StepGeom_Polyline)
 
 %extend StepGeom_Polyline {
 	%pythoncode {
@@ -7115,7 +7301,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch> > > & aSegments);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch>> > & aSegments);
 
 		/****** StepGeom_RectangularCompositeSurface::NbSegmentsI ******/
 		/****** md5 signature: 02839ec02fa5277e0d76617b576f136e ******/
@@ -7191,10 +7377,12 @@ Description
 -----------
 No available documentation.
 ") SetSegments;
-		void SetSegments(const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch> > > & aSegments);
+		void SetSegments(const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_SurfacePatch>> > & aSegments);
 
 };
 
+
+%make_alias(StepGeom_RectangularCompositeSurface)
 
 %extend StepGeom_RectangularCompositeSurface {
 	%pythoncode {
@@ -7465,6 +7653,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_RectangularTrimmedSurface)
+
 %extend StepGeom_RectangularTrimmedSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7491,6 +7681,8 @@ Returns a SeamCurve.
 
 };
 
+
+%make_alias(StepGeom_SeamCurve)
 
 %extend StepGeom_SeamCurve {
 	%pythoncode {
@@ -7570,6 +7762,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_SphericalSurface)
+
 %extend StepGeom_SphericalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7609,6 +7803,8 @@ returns field BoundedCurve.
 
 };
 
+
+%make_alias(StepGeom_SurfaceCurveAndBoundedCurve)
 
 %extend StepGeom_SurfaceCurveAndBoundedCurve {
 	%pythoncode {
@@ -7688,6 +7884,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_SurfaceOfLinearExtrusion)
+
 %extend StepGeom_SurfaceOfLinearExtrusion {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7765,6 +7963,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_SurfaceOfRevolution)
 
 %extend StepGeom_SurfaceOfRevolution {
 	%pythoncode {
@@ -7876,6 +8076,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_ToroidalSurface)
+
 %extend StepGeom_ToroidalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7934,7 +8136,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aBasisCurve, const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect> > & aTrim1, const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect> > & aTrim2, const bool aSenseAgreement, const StepGeom_TrimmingPreference aMasterRepresentation);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aBasisCurve, const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect>> & aTrim1, const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect>> & aTrim2, const bool aSenseAgreement, const StepGeom_TrimmingPreference aMasterRepresentation);
 
 		/****** StepGeom_TrimmedCurve::MasterRepresentation ******/
 		/****** md5 signature: 8b49366d1ad10b27765ce5eeb6cfad30 ******/
@@ -8058,7 +8260,7 @@ Description
 -----------
 No available documentation.
 ") SetTrim1;
-		void SetTrim1(const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect> > & aTrim1);
+		void SetTrim1(const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect>> & aTrim1);
 
 		/****** StepGeom_TrimmedCurve::SetTrim2 ******/
 		/****** md5 signature: 81716a5ff6679c0e4b34dbee3eaf474f ******/
@@ -8076,7 +8278,7 @@ Description
 -----------
 No available documentation.
 ") SetTrim2;
-		void SetTrim2(const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect> > & aTrim2);
+		void SetTrim2(const opencascade::handle<NCollection_HArray1<StepGeom_TrimmingSelect>> & aTrim2);
 
 		/****** StepGeom_TrimmedCurve::Trim1 ******/
 		/****** md5 signature: 086d19bf77602e1427a876bcafbf8617 ******/
@@ -8143,6 +8345,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_TrimmedCurve)
+
 %extend StepGeom_TrimmedCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8179,8 +8383,8 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aKnotMultiplicities: NCollection_HArray1<int
-aKnots: NCollection_HArray1<double
+aKnotMultiplicities: TColStd_HArray1OfInteger
+aKnots: TColStd_HArray1OfReal
 aKnotSpec: StepGeom_KnotType
 
 Return
@@ -8191,20 +8395,20 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<int> > & aKnotMultiplicities, const opencascade::handle<NCollection_HArray1<double> > & aKnots, const StepGeom_KnotType aKnotSpec);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aKnots, const StepGeom_KnotType aKnotSpec);
 
 		/****** StepGeom_BSplineCurveWithKnots::KnotMultiplicities ******/
 		/****** md5 signature: 2369fe75659b79ff2a784e4b2d161281 ******/
 		%feature("compactdefaultargs") KnotMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") KnotMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> KnotMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities();
 
 		/****** StepGeom_BSplineCurveWithKnots::KnotMultiplicitiesValue ******/
 		/****** md5 signature: 02de28121dfc5c11b770923e3393c17b ******/
@@ -8242,13 +8446,13 @@ No available documentation.
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Knots;
-		opencascade::handle<NCollection_HArray1<double>> Knots();
+		opencascade::handle<TColStd_HArray1OfReal> Knots();
 
 		/****** StepGeom_BSplineCurveWithKnots::KnotsValue ******/
 		/****** md5 signature: 604273ed5195ddb14a8d9f670738407b ******/
@@ -8300,7 +8504,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aKnotMultiplicities: NCollection_HArray1<int
+aKnotMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -8310,7 +8514,7 @@ Description
 -----------
 No available documentation.
 ") SetKnotMultiplicities;
-		void SetKnotMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aKnotMultiplicities);
+		void SetKnotMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 
 		/****** StepGeom_BSplineCurveWithKnots::SetKnotSpec ******/
 		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
@@ -8336,7 +8540,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aKnots: NCollection_HArray1<double
+aKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8346,10 +8550,12 @@ Description
 -----------
 No available documentation.
 ") SetKnots;
-		void SetKnots(const opencascade::handle<NCollection_HArray1<double> > & aKnots);
+		void SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & aKnots);
 
 };
 
+
+%make_alias(StepGeom_BSplineCurveWithKnots)
 
 %extend StepGeom_BSplineCurveWithKnots {
 	%pythoncode {
@@ -8411,7 +8617,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init ******/
 		/****** md5 signature: 4479bf44629ca4dedd21fe8574c9c677 ******/
@@ -8425,10 +8631,10 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aKnotMultiplicities: NCollection_HArray1<int
-aKnots: NCollection_HArray1<double
+aKnotMultiplicities: TColStd_HArray1OfInteger
+aKnots: TColStd_HArray1OfReal
 aKnotSpec: StepGeom_KnotType
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8438,20 +8644,20 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<int> > & aKnotMultiplicities, const opencascade::handle<NCollection_HArray1<double> > & aKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotMultiplicities ******/
 		/****** md5 signature: 2369fe75659b79ff2a784e4b2d161281 ******/
 		%feature("compactdefaultargs") KnotMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") KnotMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> KnotMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities();
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotMultiplicitiesValue ******/
 		/****** md5 signature: 02de28121dfc5c11b770923e3393c17b ******/
@@ -8489,13 +8695,13 @@ No available documentation.
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") Knots;
-		opencascade::handle<NCollection_HArray1<double>> Knots();
+		opencascade::handle<TColStd_HArray1OfReal> Knots();
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotsValue ******/
 		/****** md5 signature: 604273ed5195ddb14a8d9f670738407b ******/
@@ -8591,7 +8797,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aKnotMultiplicities: NCollection_HArray1<int
+aKnotMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -8601,7 +8807,7 @@ Description
 -----------
 No available documentation.
 ") SetKnotMultiplicities;
-		void SetKnotMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aKnotMultiplicities);
+		void SetKnotMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetKnotSpec ******/
 		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
@@ -8627,7 +8833,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aKnots: NCollection_HArray1<double
+aKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8637,7 +8843,7 @@ Description
 -----------
 No available documentation.
 ") SetKnots;
-		void SetKnots(const opencascade::handle<NCollection_HArray1<double> > & aKnots);
+		void SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & aKnots);
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetRationalBSplineCurve ******/
 		/****** md5 signature: 7386d58f0cbe5865f642e210d2870602 ******/
@@ -8663,7 +8869,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8673,20 +8879,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::WeightsData ******/
 		/****** md5 signature: ac334770ddd52a2342d57e30892d70f0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray1<double>> WeightsData();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
 		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::WeightsDataValue ******/
 		/****** md5 signature: 018d7b77d1ee9020d347033b40e93860 ******/
@@ -8708,6 +8914,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve)
 
 %extend StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve {
 	%pythoncode {
@@ -8747,10 +8955,10 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aUMultiplicities: NCollection_HArray1<int
-aVMultiplicities: NCollection_HArray1<int
-aUKnots: NCollection_HArray1<double
-aVKnots: NCollection_HArray1<double
+aUMultiplicities: TColStd_HArray1OfInteger
+aVMultiplicities: TColStd_HArray1OfInteger
+aUKnots: TColStd_HArray1OfReal
+aVKnots: TColStd_HArray1OfReal
 aKnotSpec: StepGeom_KnotType
 
 Return
@@ -8761,7 +8969,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<int> > & aUMultiplicities, const opencascade::handle<NCollection_HArray1<int> > & aVMultiplicities, const opencascade::handle<NCollection_HArray1<double> > & aUKnots, const opencascade::handle<NCollection_HArray1<double> > & aVKnots, const StepGeom_KnotType aKnotSpec);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities, const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aUKnots, const opencascade::handle<TColStd_HArray1OfReal> & aVKnots, const StepGeom_KnotType aKnotSpec);
 
 		/****** StepGeom_BSplineSurfaceWithKnots::KnotSpec ******/
 		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
@@ -8852,7 +9060,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aUKnots: NCollection_HArray1<double
+aUKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8862,7 +9070,7 @@ Description
 -----------
 No available documentation.
 ") SetUKnots;
-		void SetUKnots(const opencascade::handle<NCollection_HArray1<double> > & aUKnots);
+		void SetUKnots(const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
 
 		/****** StepGeom_BSplineSurfaceWithKnots::SetUMultiplicities ******/
 		/****** md5 signature: d21a98a14a2eabe1b0c50ff4504d796a ******/
@@ -8870,7 +9078,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aUMultiplicities: NCollection_HArray1<int
+aUMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -8880,7 +9088,7 @@ Description
 -----------
 No available documentation.
 ") SetUMultiplicities;
-		void SetUMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aUMultiplicities);
+		void SetUMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
 
 		/****** StepGeom_BSplineSurfaceWithKnots::SetVKnots ******/
 		/****** md5 signature: 524b5d377609c4caf9a8b888c420c50d ******/
@@ -8888,7 +9096,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aVKnots: NCollection_HArray1<double
+aVKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -8898,7 +9106,7 @@ Description
 -----------
 No available documentation.
 ") SetVKnots;
-		void SetVKnots(const opencascade::handle<NCollection_HArray1<double> > & aVKnots);
+		void SetVKnots(const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
 
 		/****** StepGeom_BSplineSurfaceWithKnots::SetVMultiplicities ******/
 		/****** md5 signature: f8ecc6b04a00deeef1f429ca620efe6b ******/
@@ -8906,7 +9114,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aVMultiplicities: NCollection_HArray1<int
+aVMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -8916,20 +9124,20 @@ Description
 -----------
 No available documentation.
 ") SetVMultiplicities;
-		void SetVMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aVMultiplicities);
+		void SetVMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
 
 		/****** StepGeom_BSplineSurfaceWithKnots::UKnots ******/
 		/****** md5 signature: 8fab35914c760f36f98d20b5b5c7b193 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") UKnots;
-		opencascade::handle<NCollection_HArray1<double>> UKnots();
+		opencascade::handle<TColStd_HArray1OfReal> UKnots();
 
 		/****** StepGeom_BSplineSurfaceWithKnots::UKnotsValue ******/
 		/****** md5 signature: 96376d748eb55cb349c4af03e961cfd3 ******/
@@ -8954,13 +9162,13 @@ No available documentation.
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") UMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> UMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities();
 
 		/****** StepGeom_BSplineSurfaceWithKnots::UMultiplicitiesValue ******/
 		/****** md5 signature: 335927dd2cc1f747b3585f941a826409 ******/
@@ -8985,13 +9193,13 @@ No available documentation.
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VKnots;
-		opencascade::handle<NCollection_HArray1<double>> VKnots();
+		opencascade::handle<TColStd_HArray1OfReal> VKnots();
 
 		/****** StepGeom_BSplineSurfaceWithKnots::VKnotsValue ******/
 		/****** md5 signature: e48b435b2763aaf35edab96ff84265ad ******/
@@ -9016,13 +9224,13 @@ No available documentation.
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") VMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> VMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities();
 
 		/****** StepGeom_BSplineSurfaceWithKnots::VMultiplicitiesValue ******/
 		/****** md5 signature: bba68017bf411f28f58d3d135d22b428 ******/
@@ -9044,6 +9252,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BSplineSurfaceWithKnots)
 
 %extend StepGeom_BSplineSurfaceWithKnots {
 	%pythoncode {
@@ -9107,7 +9317,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init ******/
 		/****** md5 signature: 19d740559bfeae4d99b1b7cf56c421c5 ******/
@@ -9123,12 +9333,12 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aUMultiplicities: NCollection_HArray1<int
-aVMultiplicities: NCollection_HArray1<int
-aUKnots: NCollection_HArray1<double
-aVKnots: NCollection_HArray1<double
+aUMultiplicities: TColStd_HArray1OfInteger
+aVMultiplicities: TColStd_HArray1OfInteger
+aUKnots: TColStd_HArray1OfReal
+aVKnots: TColStd_HArray1OfReal
 aKnotSpec: StepGeom_KnotType
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -9138,7 +9348,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<int> > & aUMultiplicities, const opencascade::handle<NCollection_HArray1<int> > & aVMultiplicities, const opencascade::handle<NCollection_HArray1<double> > & aUKnots, const opencascade::handle<NCollection_HArray1<double> > & aVKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities, const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aUKnots, const opencascade::handle<TColStd_HArray1OfReal> & aVKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::KnotSpec ******/
 		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
@@ -9304,7 +9514,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aUKnots: NCollection_HArray1<double
+aUKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -9314,7 +9524,7 @@ Description
 -----------
 No available documentation.
 ") SetUKnots;
-		void SetUKnots(const opencascade::handle<NCollection_HArray1<double> > & aUKnots);
+		void SetUKnots(const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetUMultiplicities ******/
 		/****** md5 signature: d21a98a14a2eabe1b0c50ff4504d796a ******/
@@ -9322,7 +9532,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aUMultiplicities: NCollection_HArray1<int
+aUMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -9332,7 +9542,7 @@ Description
 -----------
 No available documentation.
 ") SetUMultiplicities;
-		void SetUMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aUMultiplicities);
+		void SetUMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetVKnots ******/
 		/****** md5 signature: 524b5d377609c4caf9a8b888c420c50d ******/
@@ -9340,7 +9550,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aVKnots: NCollection_HArray1<double
+aVKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -9350,7 +9560,7 @@ Description
 -----------
 No available documentation.
 ") SetVKnots;
-		void SetVKnots(const opencascade::handle<NCollection_HArray1<double> > & aVKnots);
+		void SetVKnots(const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetVMultiplicities ******/
 		/****** md5 signature: f8ecc6b04a00deeef1f429ca620efe6b ******/
@@ -9358,7 +9568,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aVMultiplicities: NCollection_HArray1<int
+aVMultiplicities: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -9368,7 +9578,7 @@ Description
 -----------
 No available documentation.
 ") SetVMultiplicities;
-		void SetVMultiplicities(const opencascade::handle<NCollection_HArray1<int> > & aVMultiplicities);
+		void SetVMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetWeightsData ******/
 		/****** md5 signature: 48a363f5587534b09a9b3a001845d330 ******/
@@ -9376,7 +9586,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -9386,20 +9596,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UKnots ******/
 		/****** md5 signature: 8fab35914c760f36f98d20b5b5c7b193 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") UKnots;
-		opencascade::handle<NCollection_HArray1<double>> UKnots();
+		opencascade::handle<TColStd_HArray1OfReal> UKnots();
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UKnotsValue ******/
 		/****** md5 signature: 96376d748eb55cb349c4af03e961cfd3 ******/
@@ -9424,13 +9634,13 @@ No available documentation.
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") UMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> UMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities();
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UMultiplicitiesValue ******/
 		/****** md5 signature: 335927dd2cc1f747b3585f941a826409 ******/
@@ -9455,13 +9665,13 @@ No available documentation.
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") VKnots;
-		opencascade::handle<NCollection_HArray1<double>> VKnots();
+		opencascade::handle<TColStd_HArray1OfReal> VKnots();
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VKnotsValue ******/
 		/****** md5 signature: e48b435b2763aaf35edab96ff84265ad ******/
@@ -9486,13 +9696,13 @@ No available documentation.
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 No available documentation.
 ") VMultiplicities;
-		opencascade::handle<NCollection_HArray1<int>> VMultiplicities();
+		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities();
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VMultiplicitiesValue ******/
 		/****** md5 signature: bba68017bf411f28f58d3d135d22b428 ******/
@@ -9517,13 +9727,13 @@ No available documentation.
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray2<double>> WeightsData();
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
 		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::WeightsDataValue ******/
 		/****** md5 signature: b89813f34613a00a3c9c58a7c1cae732 ******/
@@ -9546,6 +9756,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface)
 
 %extend StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	%pythoncode {
@@ -9573,6 +9785,8 @@ Returns a BezierCurve.
 
 };
 
+
+%make_alias(StepGeom_BezierCurve)
 
 %extend StepGeom_BezierCurve {
 	%pythoncode {
@@ -9634,7 +9848,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
 		/****** StepGeom_BezierCurveAndRationalBSplineCurve::Init ******/
 		/****** md5 signature: 9f2dcd51f1d7624f707eac9d005fe286 ******/
@@ -9648,7 +9862,7 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -9658,7 +9872,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_BezierCurveAndRationalBSplineCurve::NbWeightsData ******/
 		/****** md5 signature: 0d77b571bd3515a277e1b37ee78bbf01 ******/
@@ -9728,7 +9942,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -9738,20 +9952,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_BezierCurveAndRationalBSplineCurve::WeightsData ******/
 		/****** md5 signature: ac334770ddd52a2342d57e30892d70f0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray1<double>> WeightsData();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
 		/****** StepGeom_BezierCurveAndRationalBSplineCurve::WeightsDataValue ******/
 		/****** md5 signature: 018d7b77d1ee9020d347033b40e93860 ******/
@@ -9773,6 +9987,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BezierCurveAndRationalBSplineCurve)
 
 %extend StepGeom_BezierCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -9800,6 +10016,8 @@ Returns a BezierSurface.
 
 };
 
+
+%make_alias(StepGeom_BezierSurface)
 
 %extend StepGeom_BezierSurface {
 	%pythoncode {
@@ -9863,7 +10081,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
 		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::Init ******/
 		/****** md5 signature: 7ea858d4839ad65657f7604fc10886e4 ******/
@@ -9879,7 +10097,7 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -9889,7 +10107,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
 		/****** md5 signature: ef14d461b59c30b9ee7417ed8f467ff4 ******/
@@ -9972,7 +10190,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -9982,20 +10200,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::WeightsData ******/
 		/****** md5 signature: 2034ddfba31be998cf18a6d925f3c4a0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray2<double>> WeightsData();
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
 		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
 		/****** md5 signature: b89813f34613a00a3c9c58a7c1cae732 ******/
@@ -10018,6 +10236,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_BezierSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_BezierSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -10045,6 +10265,8 @@ Returns a CompositeCurveOnSurface.
 
 };
 
+
+%make_alias(StepGeom_CompositeCurveOnSurface)
 
 %extend StepGeom_CompositeCurveOnSurface {
 	%pythoncode {
@@ -10126,6 +10348,8 @@ No available documentation.
 };
 
 
+%make_alias(StepGeom_DegenerateToroidalSurface)
+
 %extend StepGeom_DegenerateToroidalSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10152,6 +10376,8 @@ Returns a QuasiUniformCurve.
 
 };
 
+
+%make_alias(StepGeom_QuasiUniformCurve)
 
 %extend StepGeom_QuasiUniformCurve {
 	%pythoncode {
@@ -10200,7 +10426,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
 		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init ******/
 		/****** md5 signature: 9f2dcd51f1d7624f707eac9d005fe286 ******/
@@ -10214,7 +10440,7 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -10224,7 +10450,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::NbWeightsData ******/
 		/****** md5 signature: 0d77b571bd3515a277e1b37ee78bbf01 ******/
@@ -10307,7 +10533,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -10317,20 +10543,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::WeightsData ******/
 		/****** md5 signature: ac334770ddd52a2342d57e30892d70f0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray1<double>> WeightsData();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
 		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::WeightsDataValue ******/
 		/****** md5 signature: 018d7b77d1ee9020d347033b40e93860 ******/
@@ -10352,6 +10578,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_QuasiUniformCurveAndRationalBSplineCurve)
 
 %extend StepGeom_QuasiUniformCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -10379,6 +10607,8 @@ Returns a QuasiUniformSurface.
 
 };
 
+
+%make_alias(StepGeom_QuasiUniformSurface)
 
 %extend StepGeom_QuasiUniformSurface {
 	%pythoncode {
@@ -10429,7 +10659,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
 		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init ******/
 		/****** md5 signature: 7ea858d4839ad65657f7604fc10886e4 ******/
@@ -10445,7 +10675,7 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -10455,7 +10685,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
 		/****** md5 signature: ef14d461b59c30b9ee7417ed8f467ff4 ******/
@@ -10551,7 +10781,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -10561,20 +10791,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::WeightsData ******/
 		/****** md5 signature: 2034ddfba31be998cf18a6d925f3c4a0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray2<double>> WeightsData();
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
 		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
 		/****** md5 signature: b89813f34613a00a3c9c58a7c1cae732 ******/
@@ -10597,6 +10827,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -10634,7 +10866,7 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -10644,7 +10876,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_RationalBSplineCurve::NbWeightsData ******/
 		/****** md5 signature: 0d77b571bd3515a277e1b37ee78bbf01 ******/
@@ -10665,7 +10897,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -10675,20 +10907,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_RationalBSplineCurve::WeightsData ******/
 		/****** md5 signature: ac334770ddd52a2342d57e30892d70f0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray1<double>> WeightsData();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
 		/****** StepGeom_RationalBSplineCurve::WeightsDataValue ******/
 		/****** md5 signature: 018d7b77d1ee9020d347033b40e93860 ******/
@@ -10710,6 +10942,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_RationalBSplineCurve)
 
 %extend StepGeom_RationalBSplineCurve {
 	%pythoncode {
@@ -10749,7 +10983,7 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -10759,7 +10993,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_RationalBSplineSurface::NbWeightsDataI ******/
 		/****** md5 signature: ef14d461b59c30b9ee7417ed8f467ff4 ******/
@@ -10793,7 +11027,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -10803,20 +11037,20 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_RationalBSplineSurface::WeightsData ******/
 		/****** md5 signature: 2034ddfba31be998cf18a6d925f3c4a0 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray2<double>> WeightsData();
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
 		/****** StepGeom_RationalBSplineSurface::WeightsDataValue ******/
 		/****** md5 signature: b89813f34613a00a3c9c58a7c1cae732 ******/
@@ -10839,6 +11073,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_RationalBSplineSurface)
 
 %extend StepGeom_RationalBSplineSurface {
 	%pythoncode {
@@ -10866,6 +11102,8 @@ Returns a UniformCurve.
 
 };
 
+
+%make_alias(StepGeom_UniformCurve)
 
 %extend StepGeom_UniformCurve {
 	%pythoncode {
@@ -10914,7 +11152,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
 		/****** StepGeom_UniformCurveAndRationalBSplineCurve::Init ******/
 		/****** md5 signature: 9f2dcd51f1d7624f707eac9d005fe286 ******/
@@ -10928,7 +11166,7 @@ aControlPointsList: NCollection_HArray1<
 aCurveForm: StepGeom_BSplineCurveForm
 aClosedCurve: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -10938,7 +11176,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aDegree, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_UniformCurveAndRationalBSplineCurve::NbWeightsData ******/
 		/****** md5 signature: 0d77b571bd3515a277e1b37ee78bbf01 ******/
@@ -11008,7 +11246,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray1<double
+aWeightsData: TColStd_HArray1OfReal
 
 Return
 -------
@@ -11018,7 +11256,7 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray1<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
 		/****** StepGeom_UniformCurveAndRationalBSplineCurve::UniformCurve ******/
 		/****** md5 signature: 120a4690f6bfa64251ecd22f777964c5 ******/
@@ -11038,13 +11276,13 @@ No available documentation.
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray1<double>> WeightsData();
+		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
 		/****** StepGeom_UniformCurveAndRationalBSplineCurve::WeightsDataValue ******/
 		/****** md5 signature: 018d7b77d1ee9020d347033b40e93860 ******/
@@ -11066,6 +11304,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_UniformCurveAndRationalBSplineCurve)
 
 %extend StepGeom_UniformCurveAndRationalBSplineCurve {
 	%pythoncode {
@@ -11093,6 +11333,8 @@ Returns a UniformSurface.
 
 };
 
+
+%make_alias(StepGeom_UniformSurface)
 
 %extend StepGeom_UniformSurface {
 	%pythoncode {
@@ -11143,7 +11385,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
 		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::Init ******/
 		/****** md5 signature: 7ea858d4839ad65657f7604fc10886e4 ******/
@@ -11159,7 +11401,7 @@ aSurfaceForm: StepGeom_BSplineSurfaceForm
 aUClosed: StepData_Logical
 aVClosed: StepData_Logical
 aSelfIntersect: StepData_Logical
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -11169,7 +11411,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint> > > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const int aUDegree, const int aVDegree, const opencascade::handle<NCollection_HArray2<opencascade::handle<StepGeom_CartesianPoint>> > & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
 		/****** md5 signature: ef14d461b59c30b9ee7417ed8f467ff4 ******/
@@ -11252,7 +11494,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aWeightsData: NCollection_HArray2<double
+aWeightsData: TColStd_HArray2OfReal
 
 Return
 -------
@@ -11262,7 +11504,7 @@ Description
 -----------
 No available documentation.
 ") SetWeightsData;
-		void SetWeightsData(const opencascade::handle<NCollection_HArray2<double> > & aWeightsData);
+		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
 		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::UniformSurface ******/
 		/****** md5 signature: 42ce278e5be0190060e4e0ad9f5057bb ******/
@@ -11282,13 +11524,13 @@ No available documentation.
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<double>>
+opencascade::handle<TColStd_HArray2OfReal>
 
 Description
 -----------
 No available documentation.
 ") WeightsData;
-		opencascade::handle<NCollection_HArray2<double>> WeightsData();
+		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
 		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
 		/****** md5 signature: b89813f34613a00a3c9c58a7c1cae732 ******/
@@ -11311,6 +11553,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepGeom_UniformSurfaceAndRationalBSplineSurface)
 
 %extend StepGeom_UniformSurfaceAndRationalBSplineSurface {
 	%pythoncode {
@@ -11339,6 +11583,8 @@ Returns a BoundaryCurve.
 };
 
 
+%make_alias(StepGeom_BoundaryCurve)
+
 %extend StepGeom_BoundaryCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11365,6 +11611,8 @@ Returns a OuterBoundaryCurve.
 
 };
 
+
+%make_alias(StepGeom_OuterBoundaryCurve)
 
 %extend StepGeom_OuterBoundaryCurve {
 	%pythoncode {

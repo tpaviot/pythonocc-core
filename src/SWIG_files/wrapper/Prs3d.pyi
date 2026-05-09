@@ -12,6 +12,7 @@ from OCC.Core.TCollection import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.Aspect import *
 from OCC.Core.Quantity import *
+from OCC.Core.TColStd import *
 
 Prs3d_Presentation = NewType("Prs3d_Presentation", Graphic3d_Structure)
 
@@ -223,6 +224,8 @@ Prs3d_VDM_All = Prs3d_VertexDrawMode.Prs3d_VDM_All
 Prs3d_VDM_Inherited = Prs3d_VertexDrawMode.Prs3d_VDM_Inherited
 
 class prs3d:
+    @staticmethod
+    def AddFreeEdges(theSegments: TColgp_SequenceOfPnt, thePolyTri: Poly_Triangulation, theLocation: gp_Trsf) -> None: ...
     @overload
     @staticmethod
     def GetDeflection(theBndBox: Bnd_Box, theDeviationCoefficient: float, theMaximalChordialDeviation: float) -> False: ...
@@ -604,6 +607,8 @@ class Prs3d_PlaneAspect(Prs3d_BasicAspect):
 class Prs3d_PointAspect(Prs3d_BasicAspect):
     @overload
     def __init__(self, theType: Aspect_TypeOfMarker, theColor: Quantity_Color, theScale: float) -> None: ...
+    @overload
+    def __init__(self, theColor: Quantity_Color, theWidth: int, theHeight: int, theTexture: TColStd_HArray1OfByte) -> None: ...
     @overload
     def __init__(self, theAspect: Graphic3d_AspectMarker3d) -> None: ...
     def Aspect(self) -> Graphic3d_AspectMarker3d: ...

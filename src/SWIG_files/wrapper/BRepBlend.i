@@ -47,6 +47,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepblend.html"
 #include<BlendFunc_module.hxx>
 #include<Approx_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Blend_module.hxx>
 #include<math_module.hxx>
@@ -85,6 +87,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepblend.html"
 %import BlendFunc.i
 %import Approx.i
 %import gp.i
+%import TColgp.i
+%import TColStd.i
 %import GeomAbs.i
 %import Blend.i
 %import math.i
@@ -123,6 +127,13 @@ from OCC.Core.Exception import *
 %template(BRepBlend_SequenceOfLine) NCollection_Sequence<opencascade::handle<BRepBlend_Line>>;
 
 %extend NCollection_Sequence<opencascade::handle<BRepBlend_Line>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -131,6 +142,13 @@ from OCC.Core.Exception import *
 %template(BRepBlend_SequenceOfPointOnRst) NCollection_Sequence<BRepBlend_PointOnRst>;
 
 %extend NCollection_Sequence<BRepBlend_PointOnRst> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -187,9 +205,9 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -199,7 +217,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		bool D0(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		bool D0(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_AppFuncRoot::D1 ******/
 		/****** md5 signature: f122a00989a158b63aadd60916d6c393 ******/
@@ -210,12 +228,12 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -225,7 +243,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param.
 ") D1;
-		bool D1(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool D1(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BRepBlend_AppFuncRoot::D2 ******/
 		/****** md5 signature: 7a1a70dd7a73b71015b51dcc133cc9d9 ******/
@@ -236,15 +254,15 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -254,7 +272,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param.
 ") D2;
-		bool D2(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool D2(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BRepBlend_AppFuncRoot::GetMinimalWeight ******/
 		/****** md5 signature: 6484606f629c915e24cdd616ac007d67 ******/
@@ -262,7 +280,7 @@ compute the second derivative in v direction of the section for v = param.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -272,7 +290,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections. This information is useful to perform well conditioned rational approximation.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_AppFuncRoot::GetTolerance ******/
 		/****** md5 signature: 217050fdab79b8e071e91271c92a3488 ******/
@@ -283,7 +301,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -293,7 +311,7 @@ Description
 -----------
 Returns the tolerance to reach in approximation to respect BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** BRepBlend_AppFuncRoot::Intervals ******/
 		/****** md5 signature: c706a9ee65ae76457235d7e55942295b ******/
@@ -301,7 +319,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -312,7 +330,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_AppFuncRoot::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -333,7 +351,7 @@ Returns if the section is rational or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -343,7 +361,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BRepBlend_AppFuncRoot::MaximalSection ******/
 		/****** md5 signature: 1811db5e3dd550ab78611f3959bb8ecf ******/
@@ -364,7 +382,7 @@ Returns the length of the maximum section. This information is useful to perform
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -374,7 +392,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_AppFuncRoot::Nb2dCurves ******/
 		/****** md5 signature: 4e7cc537ccba8267281b74444e5ffb1a ******/
@@ -615,9 +633,9 @@ returns the Weights (as percent) associed to the criterium used in the optimizat
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -627,7 +645,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_AppSurf::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
@@ -639,13 +657,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** BRepBlend_AppSurf::Curves2dDegree ******/
 		/****** md5 signature: fb4d118788312f8319247632ed2e7a3d ******/
@@ -665,26 +683,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		const NCollection_Array1<double> & Curves2dKnots();
+		const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** BRepBlend_AppSurf::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		const NCollection_Array1<int> & Curves2dMults();
+		const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** BRepBlend_AppSurf::Curves2dShape ******/
 		/****** md5 signature: c39c09b90dd3a7aec0bf05cddeea7de4 ******/
@@ -887,13 +905,13 @@ Define the type of parametrization used in the approximation.
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		const NCollection_Array2<gp_Pnt> SurfPoles();
+		const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** BRepBlend_AppSurf::SurfShape ******/
 		/****** md5 signature: 969593833778f731db9ba7fd1c5ab62d ******/
@@ -922,65 +940,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		const NCollection_Array1<double> & SurfUKnots();
+		const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** BRepBlend_AppSurf::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		const NCollection_Array1<int> & SurfUMults();
+		const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** BRepBlend_AppSurf::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		const NCollection_Array1<double> & SurfVKnots();
+		const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** BRepBlend_AppSurf::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		const NCollection_Array1<int> & SurfVMults();
+		const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** BRepBlend_AppSurf::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		const NCollection_Array2<double> & SurfWeights();
+		const TColStd_Array2OfReal & SurfWeights();
 
 		/****** BRepBlend_AppSurf::Surface ******/
 		/****** md5 signature: 671f369dee50862b8a0b7f6a973c380f ******/
@@ -988,12 +1006,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1003,7 +1021,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** BRepBlend_AppSurf::TolCurveOnSurf ******/
 		/****** md5 signature: d6477b4bc85f93165a4bf73b1614f603 ******/
@@ -1114,9 +1132,9 @@ Approximation of the new Surface (and eventually the 2d Curves on the support su
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1126,7 +1144,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_AppSurface::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
@@ -1138,13 +1156,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** BRepBlend_AppSurface::Curves2dDegree ******/
 		/****** md5 signature: fb4d118788312f8319247632ed2e7a3d ******/
@@ -1164,26 +1182,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		const NCollection_Array1<double> & Curves2dKnots();
+		const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** BRepBlend_AppSurface::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		const NCollection_Array1<int> & Curves2dMults();
+		const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** BRepBlend_AppSurface::Curves2dShape ******/
 		/****** md5 signature: c39c09b90dd3a7aec0bf05cddeea7de4 ******/
@@ -1283,13 +1301,13 @@ No available documentation.
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		const NCollection_Array2<gp_Pnt> SurfPoles();
+		const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** BRepBlend_AppSurface::SurfShape ******/
 		/****** md5 signature: 969593833778f731db9ba7fd1c5ab62d ******/
@@ -1318,65 +1336,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		const NCollection_Array1<double> & SurfUKnots();
+		const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** BRepBlend_AppSurface::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		const NCollection_Array1<int> & SurfUMults();
+		const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** BRepBlend_AppSurface::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		const NCollection_Array1<double> & SurfVKnots();
+		const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** BRepBlend_AppSurface::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		const NCollection_Array1<int> & SurfVMults();
+		const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** BRepBlend_AppSurface::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		const NCollection_Array2<double> & SurfWeights();
+		const TColStd_Array2OfReal & SurfWeights();
 
 		/****** BRepBlend_AppSurface::Surface ******/
 		/****** md5 signature: 671f369dee50862b8a0b7f6a973c380f ******/
@@ -1384,12 +1402,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1399,7 +1417,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** BRepBlend_AppSurface::TolCurveOnSurf ******/
 		/****** md5 signature: d6477b4bc85f93165a4bf73b1614f603 ******/
@@ -2534,7 +2552,7 @@ No available documentation.
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2545,7 +2563,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor2d_Curve2d> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_HCurve2dTool::IsClosed ******/
 		/****** md5 signature: 2e919d2de6d38bdb8500e5fc59dfa301 ******/
@@ -3003,7 +3021,7 @@ No available documentation.
 Parameters
 ----------
 C: Adaptor3d_Curve
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -3014,7 +3032,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_HCurveTool::IsClosed ******/
 		/****** md5 signature: 1623dea000941a4874cb03350d5e536d ******/
@@ -3772,7 +3790,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -3782,7 +3800,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_RstRstConstRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -3864,7 +3882,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -3875,7 +3893,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_RstRstConstRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -3928,7 +3946,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -3938,7 +3956,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BRepBlend_RstRstConstRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -3946,7 +3964,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3956,7 +3974,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_RstRstConstRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -4129,12 +4147,12 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4144,7 +4162,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BRepBlend_RstRstConstRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -4153,9 +4171,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4165,7 +4183,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_RstRstConstRad::Section ******/
 		/****** md5 signature: 6f6f4c888ddceca92f3fa6c8fdae3e34 ******/
@@ -4174,15 +4192,15 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4192,7 +4210,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BRepBlend_RstRstConstRad::Set ******/
 		/****** md5 signature: 1d39a94f99a01338cb8afa4a49c68510 ******/
@@ -4518,7 +4536,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4528,7 +4546,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_RstRstEvolRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -4610,7 +4628,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -4621,7 +4639,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_RstRstEvolRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -4674,7 +4692,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -4684,7 +4702,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BRepBlend_RstRstEvolRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -4692,7 +4710,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -4702,7 +4720,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_RstRstEvolRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -4875,12 +4893,12 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4890,7 +4908,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BRepBlend_RstRstEvolRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -4899,9 +4917,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4911,7 +4929,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_RstRstEvolRad::Section ******/
 		/****** md5 signature: 6f6f4c888ddceca92f3fa6c8fdae3e34 ******/
@@ -4920,15 +4938,15 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4938,7 +4956,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BRepBlend_RstRstEvolRad::Set ******/
 		/****** md5 signature: 1d39a94f99a01338cb8afa4a49c68510 ******/
@@ -6231,7 +6249,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6241,7 +6259,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_SurfRstConstRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -6323,7 +6341,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -6334,7 +6352,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_SurfRstConstRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -6387,7 +6405,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -6397,7 +6415,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BRepBlend_SurfRstConstRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -6405,7 +6423,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -6415,7 +6433,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_SurfRstConstRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -6576,12 +6594,12 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6591,7 +6609,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BRepBlend_SurfRstConstRad::Section ******/
 		/****** md5 signature: 6f6f4c888ddceca92f3fa6c8fdae3e34 ******/
@@ -6600,15 +6618,15 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6618,7 +6636,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BRepBlend_SurfRstConstRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -6627,9 +6645,9 @@ Used for the first and last section The method returns true if the derivatives a
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6639,7 +6657,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_SurfRstConstRad::Set ******/
 		/****** md5 signature: 51edc1a46f9014e3188bd66241af17c6 ******/
@@ -6938,7 +6956,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -6948,7 +6966,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_SurfRstEvolRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -7030,7 +7048,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -7041,7 +7059,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepBlend_SurfRstEvolRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -7094,7 +7112,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -7104,7 +7122,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BRepBlend_SurfRstEvolRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -7112,7 +7130,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -7122,7 +7140,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BRepBlend_SurfRstEvolRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -7283,12 +7301,12 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -7298,7 +7316,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BRepBlend_SurfRstEvolRad::Section ******/
 		/****** md5 signature: 6f6f4c888ddceca92f3fa6c8fdae3e34 ******/
@@ -7307,15 +7325,15 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -7325,7 +7343,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BRepBlend_SurfRstEvolRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -7334,9 +7352,9 @@ Used for the first and last section The method returns true if the derivatives a
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -7346,7 +7364,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BRepBlend_SurfRstEvolRad::Set ******/
 		/****** md5 signature: 51edc1a46f9014e3188bd66241af17c6 ******/

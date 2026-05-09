@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igesdata.html"
 #include<Interface_module.hxx>
 #include<TCollection_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
@@ -70,6 +71,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igesdata.html"
 %import Interface.i
 %import TCollection.i
 %import gp.i
+%import TColStd.i
 %import Message.i
 
 %pythoncode {
@@ -167,15 +169,22 @@ IGESData_TypeError = IGESData_Status.IGESData_TypeError
 
 /* handles */
 %wrap_handle(IGESData_FileRecognizer)
+%wrap_handle(IGESData_GeneralModule)
 %wrap_handle(IGESData_GlobalNodeOfSpecificLib)
 %wrap_handle(IGESData_GlobalNodeOfWriterLib)
 %wrap_handle(IGESData_IGESEntity)
+%wrap_handle(IGESData_IGESModel)
+%wrap_handle(IGESData_IGESReaderData)
 %wrap_handle(IGESData_NodeOfSpecificLib)
 %wrap_handle(IGESData_NodeOfWriterLib)
+%wrap_handle(IGESData_Protocol)
+%wrap_handle(IGESData_ReadWriteModule)
 %wrap_handle(IGESData_SpecificModule)
 %wrap_handle(IGESData_ToolLocation)
 %wrap_handle(IGESData_ColorEntity)
+%wrap_handle(IGESData_DefaultGeneral)
 %wrap_handle(IGESData_DefaultSpecific)
+%wrap_handle(IGESData_FileProtocol)
 %wrap_handle(IGESData_LabelDisplayEntity)
 %wrap_handle(IGESData_LevelListEntity)
 %wrap_handle(IGESData_LineFontEntity)
@@ -1596,6 +1605,8 @@ Prepares an IGES Entity for delete: works on directory part then calls OwnDelete
 
 };
 
+
+%make_alias(IGESData_GeneralModule)
 
 %extend IGESData_GeneralModule {
 	%pythoncode {
@@ -4246,7 +4257,7 @@ Sets LineWeights of contained Entities according header data (MaxLineWeight and 
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfHAsciiString
 copy: bool (optional, default to true)
 
 Return
@@ -4257,7 +4268,7 @@ Description
 -----------
 Sets a new Start section from a list of strings. If copy is false, the Start section will be shared. Any modifications made to the strings later on, will have an effect on the Start section. If copy is true (default value), an independent copy of the strings is created and used as the Start section. Any modifications made to the strings later on, will have no effect on the Start section.
 ") SetStartSection;
-		void SetStartSection(const opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString> > > & list, const bool copy = true);
+		void SetStartSection(const opencascade::handle<TColStd_HSequenceOfHAsciiString > & list, const bool copy = true);
 
 		/****** IGESData_IGESModel::StartLine ******/
 		/****** md5 signature: eb51d28c711734d223175b0959b26d46 ******/
@@ -4282,13 +4293,13 @@ Returns a line from the IGES file Start section by specifying its number. An emp
 		%feature("compactdefaultargs") StartSection;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns Model's Start Section (list of comment lines).
 ") StartSection;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> StartSection();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
 
 		/****** IGESData_IGESModel::StringLabel ******/
 		/****** md5 signature: 8c1d103d0db383cc063c7d455e356ae6 ******/
@@ -4328,6 +4339,8 @@ Checks that the IGES file Global section contains valid data that conforms to th
 
 };
 
+
+%make_alias(IGESData_IGESModel)
 
 %extend IGESData_IGESModel {
 	%pythoncode {
@@ -4628,16 +4641,18 @@ reads header (as GlobalSection) content from the ParamSet after it has been fill
 		%feature("compactdefaultargs") StartSection;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the Start Section in once.
 ") StartSection;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> StartSection();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> StartSection();
 
 };
 
+
+%make_alias(IGESData_IGESReaderData)
 
 %extend IGESData_IGESReaderData {
 	%pythoncode {
@@ -5180,13 +5195,13 @@ numsec: int
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the list of strings for a section given its rank 1: Start (if not empty) 2: Global 3 or 4: Parameters RQ: no string list for Directory section An empty section gives a null handle.
 ") SectionStrings;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SectionStrings(const int numsec);
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> SectionStrings(const int numsec);
 
 		/****** IGESData_IGESWriter::SectionT ******/
 		/****** md5 signature: 71f6640137d3036b727d79b6bab712cb ******/
@@ -5312,6 +5327,10 @@ Returns the write mode, in order to be read and/or changed Write Mode controls t
 ") WriteMode;
 		int & WriteMode();
 
+		%extend{
+			int GetWriteMode() { return self->WriteMode(); }
+			void SetWriteMode(int value) { self->WriteMode() = value; }
+		};
 };
 
 
@@ -6240,7 +6259,7 @@ Description
 -----------
 No available documentation.
 ") ReadEnts;
-		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & val, const int index = 1);
+		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadEnts ******/
 		/****** md5 signature: 40a43386e4724de502cb4ae94c6cd9c4 ******/
@@ -6262,7 +6281,7 @@ Description
 -----------
 Reads a list of Entities defined by PC Same conditions as for ReadInts, for PC and index The list is given as a HArray1, numered from 'index' If all params cannot be read as Entities, Check is filled (using mess) and return value is False Remark: Null references are accepted, they are ignored (negative pointers too: they provoke a Warning message) If the caller wants to check them, a loop on ReadEntity should be used.
 ") ReadEnts;
-		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & val, const int index = 1);
+		bool ReadEnts(const opencascade::handle<IGESData_IGESReaderData> & IR, const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadInteger ******/
 		/****** md5 signature: 396bd6b0656cc25840454b61f0c6b05c ******/
@@ -6309,7 +6328,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: NCollection_HArray1<int
+val: TColStd_HArray1OfInteger
 index: int (optional, default to 1)
 
 Return
@@ -6320,7 +6339,7 @@ Description
 -----------
 No available documentation.
 ") ReadInts;
-		bool ReadInts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<int> > & val, const int index = 1);
+		bool ReadInts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<TColStd_HArray1OfInteger> & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadInts ******/
 		/****** md5 signature: 6fcb8643b24b53ab1771cf7944ec102c ******/
@@ -6330,7 +6349,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 mess: char *
-val: NCollection_HArray1<int
+val: TColStd_HArray1OfInteger
 index: int (optional, default to 1)
 
 Return
@@ -6341,7 +6360,7 @@ Description
 -----------
 Reads a list of Integer values, defined by PC (with a count of parameters). PC can start from Current Number and command it to advance after reading (use method CurrentList to do this) The list is given as a HArray1, numered from 'index' If all params are not Integer, Check is filled (using mess) and return value is False.
 ") ReadInts;
-		bool ReadInts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<int> > & val, const int index = 1);
+		bool ReadInts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<TColStd_HArray1OfInteger> & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadReal ******/
 		/****** md5 signature: bc37f22926d8c7721cd9b809b4dab78a ******/
@@ -6388,7 +6407,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: NCollection_HArray1<double
+val: TColStd_HArray1OfReal
 index: int (optional, default to 1)
 
 Return
@@ -6399,7 +6418,7 @@ Description
 -----------
 No available documentation.
 ") ReadReals;
-		bool ReadReals(const IGESData_ParamCursor & PC, Message_Msg & amsg, opencascade::handle<NCollection_HArray1<double> > & val, const int index = 1);
+		bool ReadReals(const IGESData_ParamCursor & PC, Message_Msg & amsg, opencascade::handle<TColStd_HArray1OfReal> & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadReals ******/
 		/****** md5 signature: 9e2a62a226da70b5e9dce9934a5f64d9 ******/
@@ -6409,7 +6428,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 mess: char *
-val: NCollection_HArray1<double
+val: TColStd_HArray1OfReal
 index: int (optional, default to 1)
 
 Return
@@ -6420,7 +6439,7 @@ Description
 -----------
 Reads a list of Real values defined by PC Same conditions as for ReadInts, for PC and index An Integer parameter is accepted, if at least one parameter is Integer, Check is filled with a 'Warning' message If all params are neither Real nor Integer, Check is filled (using mess) and return value is False.
 ") ReadReals;
-		bool ReadReals(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<double> > & val, const int index = 1);
+		bool ReadReals(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<TColStd_HArray1OfReal> & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadText ******/
 		/****** md5 signature: 80c7d621c609493d0c38860f26140322 ******/
@@ -6468,7 +6487,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 amsg: Message_Msg
-val: NCollection_HArray1<
+val: Interface_HArray1OfHAsciiString
 index: int (optional, default to 1)
 
 Return
@@ -6479,7 +6498,7 @@ Description
 -----------
 No available documentation.
 ") ReadTexts;
-		bool ReadTexts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & val, const int index = 1);
+		bool ReadTexts(const IGESData_ParamCursor & PC, const Message_Msg & amsg, opencascade::handle<Interface_HArray1OfHAsciiString > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadTexts ******/
 		/****** md5 signature: c707b1437e30f5fea5bc96986a0057a9 ******/
@@ -6489,7 +6508,7 @@ Parameters
 ----------
 PC: IGESData_ParamCursor
 mess: char *
-val: NCollection_HArray1<
+val: Interface_HArray1OfHAsciiString
 index: int (optional, default to 1)
 
 Return
@@ -6500,7 +6519,7 @@ Description
 -----------
 Reads a list of Hollerith Texts, defined by PC Texts are read as Hollerith texts without leading 'nnnH' Same conditions as for ReadInts, for PC and index If all params are not Text, Check is filled (using mess) and return value is False.
 ") ReadTexts;
-		bool ReadTexts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & val, const int index = 1);
+		bool ReadTexts(const IGESData_ParamCursor & PC, const char * const mess, opencascade::handle<Interface_HArray1OfHAsciiString > & val, const int index = 1);
 
 		/****** IGESData_ParamReader::ReadXY ******/
 		/****** md5 signature: 4763773f69f64b43c371ed82c0b9720e ******/
@@ -6868,6 +6887,8 @@ Creates a new Unknown Entity for IGES (UndefinedEntity).
 };
 
 
+%make_alias(IGESData_Protocol)
+
 %extend IGESData_Protocol {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6983,6 +7004,8 @@ Writes own parameters to IGESWriter; defined for each class (to be redefined for
 
 };
 
+
+%make_alias(IGESData_ReadWriteModule)
 
 %extend IGESData_ReadWriteModule {
 	%pythoncode {
@@ -7928,6 +7951,8 @@ Lists the Entities shared by an IGESEntity, which must be an UndefinedEntity.
 };
 
 
+%make_alias(IGESData_DefaultGeneral)
+
 %extend IGESData_DefaultGeneral {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8053,6 +8078,8 @@ Returns a Resource, given a rank (rank of call to Add).
 
 };
 
+
+%make_alias(IGESData_FileProtocol)
 
 %extend IGESData_FileProtocol {
 	%pythoncode {
@@ -8608,7 +8635,7 @@ Description
 -----------
 Adds a set of Entities, given as a HArray1OfIGESEntity Causes creation of: an Integer Parameter which gives count of Entities, then the list of Entities of the Array Error if an Entity is not an IGESEntity All these Entities will be interpreted as 'Positive Pointers' by IGESWriter.
 ") AddEntities;
-		void AddEntities(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & ents);
+		void AddEntities(const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> > & ents);
 
 		/****** IGESData_FreeFormatEntity::AddEntity ******/
 		/****** md5 signature: 3a502aec2cb97399764f67d087329483 ******/
@@ -8674,7 +8701,7 @@ Adds a literal Parameter to the list (builds an HAsciiString).
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<int
+list: TColStd_HSequenceOfInteger
 
 Return
 -------
@@ -8684,7 +8711,7 @@ Description
 -----------
 Adds a list of Ranks of Parameters to be noted as Negative Pointers (this will be taken into account for Parameters which are Entities).
 ") AddNegativePointers;
-		void AddNegativePointers(const opencascade::handle<NCollection_HSequence<int> > & list);
+		void AddNegativePointers(const opencascade::handle<TColStd_HSequenceOfInteger> & list);
 
 		/****** IGESData_FreeFormatEntity::ClearNegativePointers ******/
 		/****** md5 signature: dd3ad83abfc38f29bcf0cbb8425c8532 ******/
@@ -8753,13 +8780,13 @@ Gives count of recorded parameters.
 		%feature("compactdefaultargs") NegativePointers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Returns the complete list of Ramks of Parameters which have been noted as Negative Pointers Warning: It is returned as a Null Handle if none was noted.
 ") NegativePointers;
-		opencascade::handle<NCollection_HSequence<int>> NegativePointers();
+		opencascade::handle<TColStd_HSequenceOfInteger> NegativePointers();
 
 		/****** IGESData_FreeFormatEntity::ParamData ******/
 		/****** md5 signature: d91e3cd4ff0ad38e16bdeed3b26a9c4b ******/

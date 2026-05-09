@@ -50,6 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<Image_module.hxx>
 #include<TShort_module.hxx>
@@ -77,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 %import Aspect.i
 %import Prs3d.i
 %import TCollection.i
+%import TColStd.i
 %import Bnd.i
 %import Image.i
 
@@ -295,9 +297,21 @@ V3d_ZBUFFER = V3d_TypeOfVisualization.V3d_ZBUFFER
 %template(V3d_ListOfLight) NCollection_List<opencascade::handle<Graphic3d_CLight>>;
 
 %extend NCollection_List<opencascade::handle<Graphic3d_CLight>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = V3d_ListIteratorOfListOfLight(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -527,7 +541,10 @@ None
 
 Description
 -----------
-No available documentation.
+Constructor. Builds a CPU-rendered circular grid bound to @p aViewer. Default radius is 0.5 * Viewer->DefaultViewSize(); ZOffset defaults to step / 50. @deprecated Prefer V3d_View::GridDisplay with Aspect_GridParams for shader-based grids. 
+Input parameter: aViewer viewer that owns the grid (and provides DefaultViewSize) 
+Input parameter: aColor color of the regular rings / spokes 
+Input parameter: aTenthColor color of every 10-th ring (and the diameter spokes).
 ") V3d_CircularGrid;
 		 V3d_CircularGrid(const V3d_ViewerPointer & aViewer, const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
@@ -540,7 +557,7 @@ None
 
 Description
 -----------
-No available documentation.
+Display the CPU grid in the owning viewer's structure manager.
 ") Display;
 		void Display();
 
@@ -574,7 +591,7 @@ None
 
 Description
 -----------
-No available documentation.
+Erase the CPU grid (the underlying Graphic3d_Structure is hidden, not destroyed).
 ") Erase;
 		void Erase();
 
@@ -592,7 +609,7 @@ OffSet: double
 
 Description
 -----------
-No available documentation.
+Returns the grid extent and Z offset (alias for Radius/ZOffset). @param[out] Radius outermost ring radius @param[out] OffSet plane-normal displacement of the rendered grid.
 ") GraphicValues;
 		void GraphicValues(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -605,7 +622,7 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns true if the grid structure is currently displayed.
 ") IsDisplayed;
 		bool IsDisplayed();
 
@@ -624,7 +641,9 @@ None
 
 Description
 -----------
-No available documentation.
+Updates the grid colors and triggers a re-display when they actually change. 
+Input parameter: aColor color of the regular rings / spokes 
+Input parameter: aTenthColor color of every 10-th ring.
 ") SetColors;
 		void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
@@ -643,7 +662,9 @@ None
 
 Description
 -----------
-No available documentation.
+Sets the grid extent and Z offset (alias for SetRadius/SetZOffset). 
+Input parameter: Radius outermost ring radius 
+Input parameter: OffSet plane-normal displacement.
 ") SetGraphicValues;
 		void SetGraphicValues(const double Radius, const double OffSet);
 
@@ -836,7 +857,10 @@ None
 
 Description
 -----------
-No available documentation.
+Constructor. Builds a CPU-rendered rectangular grid bound to @p aViewer. Default size is 0.5 * Viewer->DefaultViewSize() on each axis (bounded); ZOffset defaults to step / 50. @deprecated Prefer V3d_View::GridDisplay with Aspect_GridParams for shader-based grids. 
+Input parameter: aViewer viewer that owns the grid (and provides DefaultViewSize) 
+Input parameter: aColor color of the regular grid lines / points 
+Input parameter: aTenthColor color of every 10-th line (axis emphasis).
 ") V3d_RectangularGrid;
 		 V3d_RectangularGrid(const V3d_ViewerPointer & aViewer, const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
@@ -849,7 +873,7 @@ None
 
 Description
 -----------
-No available documentation.
+Display the CPU grid in the owning viewer's structure manager.
 ") Display;
 		void Display();
 
@@ -883,7 +907,7 @@ None
 
 Description
 -----------
-No available documentation.
+Erase the CPU grid (the underlying Graphic3d_Structure is hidden, not destroyed).
 ") Erase;
 		void Erase();
 
@@ -902,7 +926,7 @@ OffSet: double
 
 Description
 -----------
-No available documentation.
+Returns the grid bounds and Z offset (alias for SizeX/SizeY/ZOffset). @param[out] XSize width along grid X @param[out] YSize height along grid Y @param[out] OffSet plane-normal displacement of the rendered grid.
 ") GraphicValues;
 		void GraphicValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -915,7 +939,7 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns true if the grid structure is currently displayed.
 ") IsDisplayed;
 		bool IsDisplayed();
 
@@ -934,7 +958,9 @@ None
 
 Description
 -----------
-No available documentation.
+Updates the grid colors and triggers a re-display when they actually change. 
+Input parameter: aColor color of the regular lines / points 
+Input parameter: aTenthColor color of every 10-th line.
 ") SetColors;
 		void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
@@ -954,7 +980,10 @@ None
 
 Description
 -----------
-No available documentation.
+Sets the grid bounds and Z offset (alias for SetSizeX/SetSizeY/SetZOffset). 
+Input parameter: XSize width along grid X 
+Input parameter: YSize height along grid Y 
+Input parameter: OffSet plane-normal displacement.
 ") SetGraphicValues;
 		void SetGraphicValues(const double XSize, const double YSize, const double OffSet);
 
@@ -1988,7 +2017,7 @@ Adjusts the viewing volume so as not to clip the displayed objects by front and 
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theDict: TColStd_IndexedDataMapOfStringString
 theFlags: Graphic3d_DiagnosticInfo
 
 Return
@@ -2001,7 +2030,7 @@ Fill in the dictionary with diagnostic info. Should be called within rendering t
 Parameter theDict destination map for information 
 Parameter theFlags defines the information to be retrieved.
 ") DiagnosticInformation;
-		void DiagnosticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict, Graphic3d_DiagnosticInfo theFlags);
+		void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
 
 		/****** V3d_View::DoMapping ******/
 		/****** md5 signature: 5cc5996ccdd8fab65b150d9b8e0bea7c ******/
@@ -2309,6 +2338,58 @@ Description
 Returns the Objects number and the gravity center of ALL viewable points in the view.
 ") GravityPoint;
 		gp_Pnt GravityPoint();
+
+		/****** V3d_View::GridDisplay ******/
+		/****** md5 signature: 921ea8e266c62df991880db9978a6e5f ******/
+		%feature("compactdefaultargs") GridDisplay;
+		%feature("autodoc", "
+Parameters
+----------
+theParams: Aspect_GridParams
+
+Return
+-------
+None
+
+Description
+-----------
+Per-view immediate-mode shader; supports unbounded extents, AA, background, arc range. GridDisplay erases the viewer-wide CPU grid rendering on entry (snap geometry on Aspect_*Grid is preserved). GridErase only tears down the shader grid on this view; restoring the CPU rendering needs V3d_Viewer::ActivateGrid.
+") GridDisplay;
+		void GridDisplay(const Aspect_GridParams & theParams);
+
+		/****** V3d_View::GridDisplay ******/
+		/****** md5 signature: f18123ae515942e27b1c5d006ffc8bd0 ******/
+		%feature("compactdefaultargs") GridDisplay;
+		%feature("autodoc", "
+Parameters
+----------
+theParams: Aspect_GridParams
+thePlane: gp_Ax3
+
+Return
+-------
+None
+
+Description
+-----------
+Display a shader-rendered grid on an explicit plane (overrides the viewer's privileged plane for this view only). 
+Input parameter: theParams appearance parameters; see the single-argument overload 
+Input parameter: thePlane world-space grid plane (origin + axes).
+") GridDisplay;
+		void GridDisplay(const Aspect_GridParams & theParams, const gp_Ax3 & thePlane);
+
+		/****** V3d_View::GridErase ******/
+		/****** md5 signature: ee9e739e77f0d9cf42bc6f455790a069 ******/
+		%feature("compactdefaultargs") GridErase;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Erase the shader-rendered grid from this view.
+") GridErase;
+		void GridErase();
 
 		/****** V3d_View::IfMoreLights ******/
 		/****** md5 signature: 8553a226a5b58ac6c406947c45590492 ******/
@@ -3516,7 +3597,7 @@ None
 
 Description
 -----------
-Defines or Updates the definition of the grid in <self>.
+Snap + CPU rendering. The CPU grid lives on the viewer's structure manager and is visible in every active view; SetGrid on a view that has the shader grid enabled erases the shader grid on this view, the CPU grid is left intact (or re-displayed by V3d_Viewer::ActivateGrid).
 ") SetGrid;
 		void SetGrid(const gp_Ax3 & aPlane, const opencascade::handle<Aspect_Grid> & aGrid);
 
@@ -3534,7 +3615,8 @@ None
 
 Description
 -----------
-Defines or Updates the activity of the grid in <self>.
+Activates / deactivates snap on this view. 
+Input parameter: aFlag true to enable snap, false to disable.
 ") SetGridActivity;
 		void SetGridActivity(const bool aFlag);
 
@@ -4049,7 +4131,7 @@ Returns string with statistic performance info.
 		%feature("autodoc", "
 Parameters
 ----------
-theDict: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theDict: TColStd_IndexedDataMapOfStringString
 
 Return
 -------
@@ -4059,7 +4141,7 @@ Description
 -----------
 Fills in the dictionary with statistic performance info.
 ") StatisticInformation;
-		void StatisticInformation(NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theDict);
+		void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
 
 		/****** V3d_View::Subviews ******/
 		/****** md5 signature: d3114f4bfa64a1d5149acdd6e8abd3a2 ******/
@@ -4632,7 +4714,7 @@ None
 
 Description
 -----------
-Activates the grid in all views of <self>.
+GPU shader grid lives on V3d_View::GridDisplay (mutually exclusive with this path). Arc range on circular grids is unsupported here: warning + ignored.
 ") ActivateGrid;
 		void ActivateGrid(const Aspect_GridType aGridType, const Aspect_GridDrawMode aGridDrawMode);
 
@@ -4767,7 +4849,7 @@ theOffSet: double
 
 Description
 -----------
-Returns the location and the size of the grid.
+Returns the circular grid extent. @param[out] theRadius outermost ring radius @param[out] theOffSet plane-normal displacement of the rendered grid.
 ") CircularGridGraphicValues;
 		void CircularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4788,7 +4870,7 @@ theRotationAngle: double
 
 Description
 -----------
-Returns the definition of the circular grid.
+Returns the circular grid definition. @param[out] theXOrigin grid origin X (snap reference) @param[out] theYOrigin grid origin Y @param[out] theRadiusStep radial interval between two concentric circles @param[out] theDivisionNumber number of sectors per half-circle @param[out] theRotationAngle in-plane rotation angle, radians.
 ") CircularGridValues;
 		void CircularGridValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -5122,7 +5204,7 @@ Erase all Objects in All the views.
 		%feature("autodoc", "
 Parameters
 ----------
-theLayerSeq: NCollection_Sequence<int>
+theLayerSeq: TColStd_SequenceOfInteger
 
 Return
 -------
@@ -5132,7 +5214,7 @@ Description
 -----------
 Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest ( foreground ). The first layer ID in sequence is the default layer that can't be removed.
 ") GetAllZLayers;
-		void GetAllZLayers(NCollection_Sequence<int> & theLayerSeq);
+		void GetAllZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
 		/****** V3d_Viewer::GetGradientBackground ******/
 		/****** md5 signature: 0f4e8e838a0ee15372af6735b7472134 ******/
@@ -5161,7 +5243,8 @@ opencascade::handle<Aspect_Grid>
 
 Description
 -----------
-Returns the defined grid in <self>.
+Returns the currently selected grid (rectangular / circular per GridType()). 
+Input parameter: theToCreate when false, returns null instead of allocating.
 ") Grid;
 		opencascade::handle<Aspect_Grid> Grid(bool theToCreate = true);
 
@@ -5180,7 +5263,9 @@ opencascade::handle<Aspect_Grid>
 
 Description
 -----------
-Returns the defined grid in <self>.
+Returns the grid of the requested type. 
+Input parameter: theGridType rectangular or circular 
+Input parameter: theToCreate when false, returns null instead of allocating.
 ") Grid;
 		opencascade::handle<Aspect_Grid> Grid(Aspect_GridType theGridType, bool theToCreate = true);
 
@@ -5193,7 +5278,7 @@ Aspect_GridDrawMode
 
 Description
 -----------
-Returns the current grid draw mode defined in <self>.
+Returns the draw mode (lines / points / none) of the active grid.
 ") GridDrawMode;
 		Aspect_GridDrawMode GridDrawMode();
 
@@ -5206,7 +5291,7 @@ bool
 
 Description
 -----------
-Returns True when grid echo must be displayed at hit point.
+Returns True when the snap-hit echo marker is enabled.
 ") GridEcho;
 		bool GridEcho();
 
@@ -5219,7 +5304,7 @@ Aspect_GridType
 
 Description
 -----------
-Returns the current grid type defined in <self>.
+Returns the currently selected grid type (rectangular / circular).
 ") GridType;
 		Aspect_GridType GridType();
 
@@ -5237,7 +5322,8 @@ None
 
 Description
 -----------
-Temporarily hide grid echo.
+Temporarily hides the echo marker in a single view (e.g. while not snapping). 
+Input parameter: theView view in which to hide the echo.
 ") HideGridEcho;
 		void HideGridEcho(const opencascade::handle<V3d_View> & theView);
 
@@ -5405,7 +5491,7 @@ bool
 
 Description
 -----------
-Returns true if a grid is activated in <self>.
+Returns true if a grid is currently active in <self>.
 ") IsGridActive;
 		bool IsGridActive();
 
@@ -5554,7 +5640,7 @@ theOffSet: double
 
 Description
 -----------
-Returns the location and the size of the grid.
+Returns the rectangular grid extent. @param[out] theXSize width along grid X @param[out] theYSize height along grid Y @param[out] theOffSet plane-normal displacement of the rendered grid.
 ") RectangularGridGraphicValues;
 		void RectangularGridGraphicValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5575,7 +5661,7 @@ theRotationAngle: double
 
 Description
 -----------
-Returns the definition of the rectangular grid.
+Returns the rectangular grid definition. @param[out] theXOrigin grid origin X (snap reference) @param[out] theYOrigin grid origin Y @param[out] theXStep interval between two vertical lines @param[out] theYStep interval between two horizontal lines @param[out] theRotationAngle in-plane rotation angle, radians.
 ") RectangularGridValues;
 		void RectangularGridValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5651,7 +5737,9 @@ None
 
 Description
 -----------
-Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
+Sets the circular grid extent. 
+Input parameter: Radius outermost ring radius 
+Input parameter: OffSet plane-normal displacement.
 ") SetCircularGridGraphicValues;
 		void SetCircularGridGraphicValues(const double Radius, const double OffSet);
 
@@ -5673,7 +5761,12 @@ None
 
 Description
 -----------
-Sets the definition of the circular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <RadiusStep> defines the interval between 2 circles. <DivisionNumber> defines the section number of one half circle. <RotationAngle> defines the rotation angle of the grid.
+Sets the circular grid definition. 
+Input parameter: XOrigin grid origin X 
+Input parameter: YOrigin grid origin Y 
+Input parameter: RadiusStep radial interval between two concentric circles 
+Input parameter: DivisionNumber number of sectors per half-circle (>= 1) 
+Input parameter: RotationAngle in-plane rotation angle, radians.
 ") SetCircularGridValues;
 		void SetCircularGridValues(const double XOrigin, const double YOrigin, const double RadiusStep, const int DivisionNumber, const double RotationAngle);
 
@@ -5886,7 +5979,8 @@ None
 
 Description
 -----------
-Show/Don't show grid echo to the hit point. If True,the grid echo will be shown at ConvertToGrid() time.
+Toggle the snap-hit echo marker drawn by ConvertToGrid() at the snapped point. 
+Input parameter: showGrid when True, the marker is shown on every snap hit.
 ") SetGridEcho;
 		void SetGridEcho(const bool showGrid = true);
 
@@ -5904,7 +5998,8 @@ None
 
 Description
 -----------
-Show grid echo <aMarker> to the hit point. Warning: When the grid echo marker is not set, a default marker is build with the attributes: marker type: Aspect_TOM_STAR marker color: Quantity_NOC_GRAY90 marker size: 3.0.
+Replaces the default echo marker. Default attributes when this overload is not called: Aspect_TOM_STAR, Quantity_NOC_GRAY90, size 3.0. 
+Input parameter: aMarker custom marker aspect to use for echo display.
 ") SetGridEcho;
 		void SetGridEcho(const opencascade::handle<Graphic3d_AspectMarker3d> & aMarker);
 
@@ -6004,7 +6099,10 @@ None
 
 Description
 -----------
-Sets the location and the size of the grid. <XSize> defines the width of the grid. <YSize> defines the height of the grid. <OffSet> defines the displacement along the plane normal.
+Sets the rectangular grid extent. 
+Input parameter: XSize width along grid X 
+Input parameter: YSize height along grid Y 
+Input parameter: OffSet plane-normal displacement.
 ") SetRectangularGridGraphicValues;
 		void SetRectangularGridGraphicValues(const double XSize, const double YSize, const double OffSet);
 
@@ -6026,7 +6124,12 @@ None
 
 Description
 -----------
-Sets the definition of the rectangular grid. <XOrigin>, <YOrigin> defines the origin of the grid. <XStep> defines the interval between 2 vertical lines. <YStep> defines the interval between 2 horizontal lines. <RotationAngle> defines the rotation angle of the grid.
+Sets the rectangular grid definition. 
+Input parameter: XOrigin grid origin X 
+Input parameter: YOrigin grid origin Y 
+Input parameter: XStep interval between two vertical lines 
+Input parameter: YStep interval between two horizontal lines 
+Input parameter: RotationAngle in-plane rotation angle, radians.
 ") SetRectangularGridValues;
 		void SetRectangularGridValues(const double XOrigin, const double YOrigin, const double XStep, const double YStep, const double RotationAngle);
 
@@ -6126,7 +6229,9 @@ None
 
 Description
 -----------
-Display grid echo at requested point in the view.
+Displays the echo marker in a single view. 
+Input parameter: theView view in which to draw the echo 
+Input parameter: thePoint world-space snapped point.
 ") ShowGridEcho;
 		void ShowGridEcho(const opencascade::handle<V3d_View> & theView, const Graphic3d_Vertex & thePoint);
 

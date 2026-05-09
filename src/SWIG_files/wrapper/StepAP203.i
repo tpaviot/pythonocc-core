@@ -82,6 +82,17 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(StepAP203_CcDesignApproval)
+%wrap_handle(StepAP203_CcDesignCertification)
+%wrap_handle(StepAP203_CcDesignContract)
+%wrap_handle(StepAP203_CcDesignDateAndTimeAssignment)
+%wrap_handle(StepAP203_CcDesignPersonAndOrganizationAssignment)
+%wrap_handle(StepAP203_CcDesignSecurityClassification)
+%wrap_handle(StepAP203_CcDesignSpecificationReference)
+%wrap_handle(StepAP203_Change)
+%wrap_handle(StepAP203_ChangeRequest)
+%wrap_handle(StepAP203_StartRequest)
+%wrap_handle(StepAP203_StartWork)
 /* end handles declaration */
 
 /* templates */
@@ -363,7 +374,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Approval> & aApprovalAssignment_AssignedApproval, const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem>> & aItems);
 
 		/****** StepAP203_CcDesignApproval::Items ******/
 		/****** md5 signature: d9ad87797e1ee24dfb00bcefb360443b ******/
@@ -394,10 +405,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ApprovedItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignApproval)
 
 %extend StepAP203_CcDesignApproval {
 	%pythoncode {
@@ -440,7 +453,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification, const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Certification> & aCertificationAssignment_AssignedCertification, const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem>> & aItems);
 
 		/****** StepAP203_CcDesignCertification::Items ******/
 		/****** md5 signature: 9dcfdbbaff08303ab70420f56ce7be76 ******/
@@ -471,10 +484,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_CertifiedItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignCertification)
 
 %extend StepAP203_CcDesignCertification {
 	%pythoncode {
@@ -517,7 +532,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract, const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Contract> & aContractAssignment_AssignedContract, const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem>> & aItems);
 
 		/****** StepAP203_CcDesignContract::Items ******/
 		/****** md5 signature: 7edd88cd99bfc01cba1e209d3d8c38df ******/
@@ -548,10 +563,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ContractedItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignContract)
 
 %extend StepAP203_CcDesignContract {
 	%pythoncode {
@@ -595,7 +612,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_DateAndTime> & aDateAndTimeAssignment_AssignedDateAndTime, const opencascade::handle<StepBasic_DateTimeRole> & aDateAndTimeAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem>> & aItems);
 
 		/****** StepAP203_CcDesignDateAndTimeAssignment::Items ******/
 		/****** md5 signature: b3607aff882dfc103164c5bad1fc74a5 ******/
@@ -626,10 +643,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_DateTimeItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignDateAndTimeAssignment)
 
 %extend StepAP203_CcDesignDateAndTimeAssignment {
 	%pythoncode {
@@ -673,7 +692,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_PersonAndOrganization> & aPersonAndOrganizationAssignment_AssignedPersonAndOrganization, const opencascade::handle<StepBasic_PersonAndOrganizationRole> & aPersonAndOrganizationAssignment_Role, const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem>> & aItems);
 
 		/****** StepAP203_CcDesignPersonAndOrganizationAssignment::Items ******/
 		/****** md5 signature: 5d2c118882748e2dcb40a9260ff69d26 ******/
@@ -704,10 +723,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_PersonOrganizationItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignPersonAndOrganizationAssignment)
 
 %extend StepAP203_CcDesignPersonAndOrganizationAssignment {
 	%pythoncode {
@@ -750,7 +771,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_SecurityClassification> & aSecurityClassificationAssignment_AssignedSecurityClassification, const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem>> & aItems);
 
 		/****** StepAP203_CcDesignSecurityClassification::Items ******/
 		/****** md5 signature: 9554b0594ee207a1384d236ae4ba8f53 ******/
@@ -781,10 +802,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ClassifiedItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignSecurityClassification)
 
 %extend StepAP203_CcDesignSecurityClassification {
 	%pythoncode {
@@ -828,7 +851,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source, const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Document> & aDocumentReference_AssignedDocument, const opencascade::handle<TCollection_HAsciiString> & aDocumentReference_Source, const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem>> & aItems);
 
 		/****** StepAP203_CcDesignSpecificationReference::Items ******/
 		/****** md5 signature: 8bbbaa8e1fe24771b83618f93e2f3874 ******/
@@ -859,10 +882,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_SpecifiedItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_CcDesignSpecificationReference)
 
 %extend StepAP203_CcDesignSpecificationReference {
 	%pythoncode {
@@ -963,7 +988,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> & aItems);
 
 		/****** StepAP203_Change::Items ******/
 		/****** md5 signature: a8950b8502c6ec845b6a4d99f8d7fb0e ******/
@@ -994,10 +1019,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_Change)
 
 %extend StepAP203_Change {
 	%pythoncode {
@@ -1040,7 +1067,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem>> & aItems);
 
 		/****** StepAP203_ChangeRequest::Items ******/
 		/****** md5 signature: 732faa4b68d12078666db6632e6c86bd ******/
@@ -1071,10 +1098,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_ChangeRequestItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_ChangeRequest)
 
 %extend StepAP203_ChangeRequest {
 	%pythoncode {
@@ -1712,7 +1741,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_VersionedActionRequest> & aActionRequestAssignment_AssignedActionRequest, const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem>> & aItems);
 
 		/****** StepAP203_StartRequest::Items ******/
 		/****** md5 signature: cb9a074c74dde7b9efdae177467b8a24 ******/
@@ -1743,10 +1772,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_StartRequestItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_StartRequest)
 
 %extend StepAP203_StartRequest {
 	%pythoncode {
@@ -1847,7 +1878,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & aItems);
+		void Init(const opencascade::handle<StepBasic_Action> & aActionAssignment_AssignedAction, const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> & aItems);
 
 		/****** StepAP203_StartWork::Items ******/
 		/****** md5 signature: a8950b8502c6ec845b6a4d99f8d7fb0e ******/
@@ -1878,10 +1909,12 @@ Description
 -----------
 Set field Items.
 ") SetItems;
-		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem> > & Items);
+		void SetItems(const opencascade::handle<NCollection_HArray1<StepAP203_WorkItem>> & Items);
 
 };
 
+
+%make_alias(StepAP203_StartWork)
 
 %extend StepAP203_StartWork {
 	%pythoncode {

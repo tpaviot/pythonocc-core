@@ -54,6 +54,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 #include<ShapeConstruct_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColGeom_module.hxx>
 #include<BRep_module.hxx>
 #include<TShort_module.hxx>
@@ -84,6 +85,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 %import ShapeConstruct.i
 %import Geom2d.i
 %import TopAbs.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -121,6 +123,13 @@ from OCC.Core.Exception import *
 %template(ShapeFix_SequenceOfWireSegment) NCollection_Sequence<ShapeFix_WireSegment>;
 
 %extend NCollection_Sequence<ShapeFix_WireSegment> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1675,7 +1684,7 @@ V1: TopoDS_Vertex
 lp: double
 V2: TopoDS_Vertex
 face: TopoDS_Face
-SeqE: NCollection_Sequence<TopoDS_Shape>
+SeqE: TopTools_SequenceOfShape
 context: ShapeBuild_ReShape
 tol3d: double
 tol2d: double
@@ -1688,7 +1697,7 @@ Description
 -----------
 Split edge on two new edges using two new vertex V1 and V2 and two parameters for splitting - fp and lp correspondingly The 'face' is necessary for pcurves and using TransferParameterProj aNum - number of edge in SeqE which corresponding to [fp,lp].
 ") SplitEdge;
-		bool SplitEdge(const TopoDS_Edge & edge, const double fp, const TopoDS_Vertex & V1, const double lp, const TopoDS_Vertex & V2, const TopoDS_Face & face, NCollection_Sequence<TopoDS_Shape> & SeqE, Standard_Integer &OutValue, const opencascade::handle<ShapeBuild_ReShape> & context, const double tol3d, const double tol2d);
+		bool SplitEdge(const TopoDS_Edge & edge, const double fp, const TopoDS_Vertex & V1, const double lp, const TopoDS_Vertex & V2, const TopoDS_Face & face, TopTools_SequenceOfShape & SeqE, Standard_Integer &OutValue, const opencascade::handle<ShapeBuild_ReShape> & context, const double tol3d, const double tol2d);
 
 };
 
@@ -1887,7 +1896,7 @@ Returns (modifiable) flag for special 'closed' mode which forces ComposeShell to
 		%feature("autodoc", "
 Parameters
 ----------
-faces: NCollection_Sequence<TopoDS_Shape>
+faces: TopTools_SequenceOfShape
 wires: NCollection_Sequence<ShapeFix_WireSegment>
 
 Return
@@ -1898,7 +1907,7 @@ Description
 -----------
 Creates new faces from the set of (closed) wires. Each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. If several wires are one inside another, single face is created.
 ") DispatchWires;
-		void DispatchWires(NCollection_Sequence<TopoDS_Shape> & faces, NCollection_Sequence<ShapeFix_WireSegment> & wires);
+		void DispatchWires(TopTools_SequenceOfShape & faces, NCollection_Sequence<ShapeFix_WireSegment> & wires);
 
 		/****** ShapeFix_ComposeShell::GetTransferParamTool ******/
 		/****** md5 signature: b9e239d6f4c9de02af2a5cc4956eff51 ******/
@@ -2009,6 +2018,10 @@ Queries status of last call to Perform() OK: nothing done (some kind of error) D
 ") Status;
 		bool Status(const ShapeExtend_Status status);
 
+		%extend{
+			bool GetClosedMode() { return self->ClosedMode(); }
+			void SetClosedMode(bool value) { self->ClosedMode() = value; }
+		};
 };
 
 
@@ -2171,7 +2184,7 @@ Returns (modifiable) the fix intersecting wires mode by default True.
 		%feature("autodoc", "
 Parameters
 ----------
-aResWires: NCollection_Sequence<TopoDS_Shape>
+aResWires: TopTools_SequenceOfShape
 
 Return
 -------
@@ -2181,7 +2194,7 @@ Description
 -----------
 Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was split Status was set to value ShapeExtend_DONE6.
 ") FixLoopWire;
-		bool FixLoopWire(NCollection_Sequence<TopoDS_Shape> & aResWires);
+		bool FixLoopWire(TopTools_SequenceOfShape & aResWires);
 
 		/****** ShapeFix_Face::FixLoopWiresMode ******/
 		/****** md5 signature: d11be41f7c99a6b35ab54206da2acb52 ******/
@@ -2241,7 +2254,7 @@ Fixes orientation of wires on the face It tries to make all wires lie outside al
 		%feature("autodoc", "
 Parameters
 ----------
-MapWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+MapWires: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2251,7 +2264,7 @@ Description
 -----------
 Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed OutWires return information about out wires + list of internal wires for each (for performing split face).
 ") FixOrientation;
-		bool FixOrientation(NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MapWires);
+		bool FixOrientation(TopTools_DataMapOfShapeListOfShape & MapWires);
 
 		/****** ShapeFix_Face::FixOrientationMode ******/
 		/****** md5 signature: 86bf9e63ce82b69990ae12b2931e2d9a ******/
@@ -2329,7 +2342,7 @@ Returns (modifiable) the fix small area wire mode, by default False. If True, dr
 		%feature("autodoc", "
 Parameters
 ----------
-MapWires: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+MapWires: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2339,7 +2352,7 @@ Description
 -----------
 Split face if there are more than one out wire using inrormation after FixOrientation().
 ") FixSplitFace;
-		bool FixSplitFace(const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MapWires);
+		bool FixSplitFace(const TopTools_DataMapOfShapeListOfShape & MapWires);
 
 		/****** ShapeFix_Face::FixSplitFaceMode ******/
 		/****** md5 signature: b9d2c8d15e9707d9c5a843480ba14360 ******/
@@ -2452,9 +2465,14 @@ Starts the creation of the face By default it will be FORWARD, or REVERSED if <f
 		void Init(const opencascade::handle<ShapeAnalysis_Surface> & surf, const double preci, const bool fwd = true);
 
 		/****** ShapeFix_Face::Perform ******/
-		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
+		/****** md5 signature: c6a6bb9da370c0c5e2ed1ca653c517d8 ******/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
 -------
 bool
 
@@ -2462,7 +2480,7 @@ Description
 -----------
 Performs all the fixes, depending on modes Function Status returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Perform;
-		bool Perform();
+		bool Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeFix_Face::RemoveSmallAreaFaceMode ******/
 		/****** md5 signature: 276f316c7981191452b80a9559f41692 ******/
@@ -2580,6 +2598,50 @@ Returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothin
 ") Status;
 		bool Status(const ShapeExtend_Status status);
 
+		%extend{
+			int GetFixWireMode() { return self->FixWireMode(); }
+			void SetFixWireMode(int value) { self->FixWireMode() = value; }
+		};
+		%extend{
+			int GetFixOrientationMode() { return self->FixOrientationMode(); }
+			void SetFixOrientationMode(int value) { self->FixOrientationMode() = value; }
+		};
+		%extend{
+			int GetFixAddNaturalBoundMode() { return self->FixAddNaturalBoundMode(); }
+			void SetFixAddNaturalBoundMode(int value) { self->FixAddNaturalBoundMode() = value; }
+		};
+		%extend{
+			int GetFixMissingSeamMode() { return self->FixMissingSeamMode(); }
+			void SetFixMissingSeamMode(int value) { self->FixMissingSeamMode() = value; }
+		};
+		%extend{
+			int GetFixSmallAreaWireMode() { return self->FixSmallAreaWireMode(); }
+			void SetFixSmallAreaWireMode(int value) { self->FixSmallAreaWireMode() = value; }
+		};
+		%extend{
+			int GetRemoveSmallAreaFaceMode() { return self->RemoveSmallAreaFaceMode(); }
+			void SetRemoveSmallAreaFaceMode(int value) { self->RemoveSmallAreaFaceMode() = value; }
+		};
+		%extend{
+			int GetFixIntersectingWiresMode() { return self->FixIntersectingWiresMode(); }
+			void SetFixIntersectingWiresMode(int value) { self->FixIntersectingWiresMode() = value; }
+		};
+		%extend{
+			int GetFixLoopWiresMode() { return self->FixLoopWiresMode(); }
+			void SetFixLoopWiresMode(int value) { self->FixLoopWiresMode() = value; }
+		};
+		%extend{
+			int GetFixSplitFaceMode() { return self->FixSplitFaceMode(); }
+			void SetFixSplitFaceMode(int value) { self->FixSplitFaceMode() = value; }
+		};
+		%extend{
+			int GetAutoCorrectPrecisionMode() { return self->AutoCorrectPrecisionMode(); }
+			void SetAutoCorrectPrecisionMode(int value) { self->AutoCorrectPrecisionMode() = value; }
+		};
+		%extend{
+			int GetFixPeriodicDegeneratedMode() { return self->FixPeriodicDegeneratedMode(); }
+			void SetFixPeriodicDegeneratedMode(int value) { self->FixPeriodicDegeneratedMode() = value; }
+		};
 };
 
 
@@ -3331,6 +3393,34 @@ Returns the status of the last Fix. This can be a combination of the following f
 ") Status;
 		bool Status(const ShapeExtend_Status status);
 
+		%extend{
+			int GetFixSolidMode() { return self->FixSolidMode(); }
+			void SetFixSolidMode(int value) { self->FixSolidMode() = value; }
+		};
+		%extend{
+			int GetFixFreeShellMode() { return self->FixFreeShellMode(); }
+			void SetFixFreeShellMode(int value) { self->FixFreeShellMode() = value; }
+		};
+		%extend{
+			int GetFixFreeFaceMode() { return self->FixFreeFaceMode(); }
+			void SetFixFreeFaceMode(int value) { self->FixFreeFaceMode() = value; }
+		};
+		%extend{
+			int GetFixFreeWireMode() { return self->FixFreeWireMode(); }
+			void SetFixFreeWireMode(int value) { self->FixFreeWireMode() = value; }
+		};
+		%extend{
+			int GetFixSameParameterMode() { return self->FixSameParameterMode(); }
+			void SetFixSameParameterMode(int value) { self->FixSameParameterMode() = value; }
+		};
+		%extend{
+			int GetFixVertexPositionMode() { return self->FixVertexPositionMode(); }
+			void SetFixVertexPositionMode(int value) { self->FixVertexPositionMode() = value; }
+		};
+		%extend{
+			int GetFixVertexTolMode() { return self->FixVertexTolMode(); }
+			void SetFixVertexTolMode(int value) { self->FixVertexTolMode() = value; }
+		};
 };
 
 
@@ -3633,6 +3723,14 @@ Returns the status of the last Fix.
 ") Status;
 		bool Status(const ShapeExtend_Status status);
 
+		%extend{
+			int GetFixFaceMode() { return self->FixFaceMode(); }
+			void SetFixFaceMode(int value) { self->FixFaceMode() = value; }
+		};
+		%extend{
+			int GetFixOrientationMode() { return self->FixOrientationMode(); }
+			void SetFixOrientationMode(int value) { self->FixOrientationMode() = value; }
+		};
 };
 
 
@@ -3902,6 +4000,18 @@ Returns the status of the last Fix.
 ") Status;
 		bool Status(const ShapeExtend_Status status);
 
+		%extend{
+			int GetFixShellMode() { return self->FixShellMode(); }
+			void SetFixShellMode(int value) { self->FixShellMode() = value; }
+		};
+		%extend{
+			int GetFixShellOrientationMode() { return self->FixShellOrientationMode(); }
+			void SetFixShellOrientationMode(int value) { self->FixShellOrientationMode() = value; }
+		};
+		%extend{
+			bool GetCreateOpenSolidMode() { return self->CreateOpenSolidMode(); }
+			void SetCreateOpenSolidMode(bool value) { self->CreateOpenSolidMode() = value; }
+		};
 };
 
 
@@ -4152,13 +4262,14 @@ Applies FixConnected(num) to all edges in the wire Connection between first and 
 		bool FixConnected(const double prec = -1.0);
 
 		/****** ShapeFix_Wire::FixConnected ******/
-		/****** md5 signature: 8e4f2beeb89834da3f3d645e2f499ef3 ******/
+		/****** md5 signature: e2211e97c3c3ef37b68d7d74d934e8eb ******/
 		%feature("compactdefaultargs") FixConnected;
 		%feature("autodoc", "
 Parameters
 ----------
 num: int
 prec: double
+theUpdateWire: bool (optional, default to true)
 
 Return
 -------
@@ -4166,9 +4277,9 @@ bool
 
 Description
 -----------
-Fixes connected edges (preceding and current) Forces Vertices (end of preceding-begin of current) to be the same one Tests with starting preci or, if given greater, <prec> If <prec> is -1 then MaxTolerance() is taken.
+Fixes connected edges (preceding and current) Forces Vertices (end of preceding-begin of current) to be the same one Tests with starting preci or, if given greater, <prec> If <prec> is -1 then MaxTolerance() is taken. If <theUpdateWire> is true, synchronizes wire data with context replacements.
 ") FixConnected;
-		bool FixConnected(const int num, const double prec);
+		bool FixConnected(const int num, const double prec, const bool theUpdateWire = true);
 
 		/****** ShapeFix_Wire::FixConnectedMode ******/
 		/****** md5 signature: 7d1b4f0193b21560e61c0d71cff62dcf ******/
@@ -4930,9 +5041,14 @@ returns number of edges in the working wire.
 		int NbEdges();
 
 		/****** ShapeFix_Wire::Perform ******/
-		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
+		/****** md5 signature: c6a6bb9da370c0c5e2ed1ca653c517d8 ******/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
 -------
 bool
 
@@ -4940,7 +5056,7 @@ Description
 -----------
 This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes //! The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered).
 ") Perform;
-		bool Perform();
+		bool Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** ShapeFix_Wire::PreferencePCurveMode ******/
 		/****** md5 signature: 93057f8f14ac1ed03582c0a22b1a70c9 ******/
@@ -5369,6 +5485,122 @@ returns working wire.
 ") WireData;
 		const opencascade::handle<ShapeExtend_WireData> & WireData();
 
+		%extend{
+			bool GetModifyTopologyMode() { return self->ModifyTopologyMode(); }
+			void SetModifyTopologyMode(bool value) { self->ModifyTopologyMode() = value; }
+		};
+		%extend{
+			bool GetModifyGeometryMode() { return self->ModifyGeometryMode(); }
+			void SetModifyGeometryMode(bool value) { self->ModifyGeometryMode() = value; }
+		};
+		%extend{
+			int GetModifyRemoveLoopMode() { return self->ModifyRemoveLoopMode(); }
+			void SetModifyRemoveLoopMode(int value) { self->ModifyRemoveLoopMode() = value; }
+		};
+		%extend{
+			bool GetClosedWireMode() { return self->ClosedWireMode(); }
+			void SetClosedWireMode(bool value) { self->ClosedWireMode() = value; }
+		};
+		%extend{
+			bool GetPreferencePCurveMode() { return self->PreferencePCurveMode(); }
+			void SetPreferencePCurveMode(bool value) { self->PreferencePCurveMode() = value; }
+		};
+		%extend{
+			bool GetFixGapsByRangesMode() { return self->FixGapsByRangesMode(); }
+			void SetFixGapsByRangesMode(bool value) { self->FixGapsByRangesMode() = value; }
+		};
+		%extend{
+			int GetFixReorderMode() { return self->FixReorderMode(); }
+			void SetFixReorderMode(int value) { self->FixReorderMode() = value; }
+		};
+		%extend{
+			int GetFixSmallMode() { return self->FixSmallMode(); }
+			void SetFixSmallMode(int value) { self->FixSmallMode() = value; }
+		};
+		%extend{
+			int GetFixConnectedMode() { return self->FixConnectedMode(); }
+			void SetFixConnectedMode(int value) { self->FixConnectedMode() = value; }
+		};
+		%extend{
+			int GetFixEdgeCurvesMode() { return self->FixEdgeCurvesMode(); }
+			void SetFixEdgeCurvesMode(int value) { self->FixEdgeCurvesMode() = value; }
+		};
+		%extend{
+			int GetFixDegeneratedMode() { return self->FixDegeneratedMode(); }
+			void SetFixDegeneratedMode(int value) { self->FixDegeneratedMode() = value; }
+		};
+		%extend{
+			int GetFixSelfIntersectionMode() { return self->FixSelfIntersectionMode(); }
+			void SetFixSelfIntersectionMode(int value) { self->FixSelfIntersectionMode() = value; }
+		};
+		%extend{
+			int GetFixLackingMode() { return self->FixLackingMode(); }
+			void SetFixLackingMode(int value) { self->FixLackingMode() = value; }
+		};
+		%extend{
+			int GetFixGaps3dMode() { return self->FixGaps3dMode(); }
+			void SetFixGaps3dMode(int value) { self->FixGaps3dMode() = value; }
+		};
+		%extend{
+			int GetFixGaps2dMode() { return self->FixGaps2dMode(); }
+			void SetFixGaps2dMode(int value) { self->FixGaps2dMode() = value; }
+		};
+		%extend{
+			int GetFixReversed2dMode() { return self->FixReversed2dMode(); }
+			void SetFixReversed2dMode(int value) { self->FixReversed2dMode() = value; }
+		};
+		%extend{
+			int GetFixRemovePCurveMode() { return self->FixRemovePCurveMode(); }
+			void SetFixRemovePCurveMode(int value) { self->FixRemovePCurveMode() = value; }
+		};
+		%extend{
+			int GetFixAddPCurveMode() { return self->FixAddPCurveMode(); }
+			void SetFixAddPCurveMode(int value) { self->FixAddPCurveMode() = value; }
+		};
+		%extend{
+			int GetFixRemoveCurve3dMode() { return self->FixRemoveCurve3dMode(); }
+			void SetFixRemoveCurve3dMode(int value) { self->FixRemoveCurve3dMode() = value; }
+		};
+		%extend{
+			int GetFixAddCurve3dMode() { return self->FixAddCurve3dMode(); }
+			void SetFixAddCurve3dMode(int value) { self->FixAddCurve3dMode() = value; }
+		};
+		%extend{
+			int GetFixSeamMode() { return self->FixSeamMode(); }
+			void SetFixSeamMode(int value) { self->FixSeamMode() = value; }
+		};
+		%extend{
+			int GetFixShiftedMode() { return self->FixShiftedMode(); }
+			void SetFixShiftedMode(int value) { self->FixShiftedMode() = value; }
+		};
+		%extend{
+			int GetFixSameParameterMode() { return self->FixSameParameterMode(); }
+			void SetFixSameParameterMode(int value) { self->FixSameParameterMode() = value; }
+		};
+		%extend{
+			int GetFixVertexToleranceMode() { return self->FixVertexToleranceMode(); }
+			void SetFixVertexToleranceMode(int value) { self->FixVertexToleranceMode() = value; }
+		};
+		%extend{
+			int GetFixNotchedEdgesMode() { return self->FixNotchedEdgesMode(); }
+			void SetFixNotchedEdgesMode(int value) { self->FixNotchedEdgesMode() = value; }
+		};
+		%extend{
+			int GetFixSelfIntersectingEdgeMode() { return self->FixSelfIntersectingEdgeMode(); }
+			void SetFixSelfIntersectingEdgeMode(int value) { self->FixSelfIntersectingEdgeMode() = value; }
+		};
+		%extend{
+			int GetFixIntersectingEdgesMode() { return self->FixIntersectingEdgesMode(); }
+			void SetFixIntersectingEdgesMode(int value) { self->FixIntersectingEdgesMode() = value; }
+		};
+		%extend{
+			int GetFixNonAdjacentIntersectingEdgesMode() { return self->FixNonAdjacentIntersectingEdgesMode(); }
+			void SetFixNonAdjacentIntersectingEdgesMode(int value) { self->FixNonAdjacentIntersectingEdgesMode() = value; }
+		};
+		%extend{
+			int GetFixTailMode() { return self->FixTailMode(); }
+			void SetFixTailMode(int value) { self->FixTailMode() = value; }
+		};
 };
 
 
@@ -5422,10 +5654,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theSmallEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
-theEdgeToFaces: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theFaceWithSmall: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theMultyEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theSmallEdges: TopTools_MapOfShape
+theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
+theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
+theMultyEdges: TopTools_MapOfShape
 
 Return
 -------
@@ -5435,7 +5667,7 @@ Description
 -----------
 Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. Returns True if at least one small edge has been found.
 ") CheckSmallEdges;
-		bool CheckSmallEdges(NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theSmallEdges, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeToFaces, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theFaceWithSmall, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMultyEdges);
+		bool CheckSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges);
 
 		/****** ShapeFix_Wireframe::ClearStatuses ******/
 		/****** md5 signature: 8279d01a949362ea8fada8f9fd40957d ******/
@@ -5513,10 +5745,10 @@ Loads a shape, resets statuses.
 		%feature("autodoc", "
 Parameters
 ----------
-theSmallEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
-theEdgeToFaces: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theFaceWithSmall: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theMultyEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theSmallEdges: TopTools_MapOfShape
+theEdgeToFaces: TopTools_DataMapOfShapeListOfShape
+theFaceWithSmall: TopTools_DataMapOfShapeListOfShape
+theMultyEdges: TopTools_MapOfShape
 theModeDrop: bool (optional, default to false)
 theLimitAngle: double (optional, default to -1)
 
@@ -5528,7 +5760,7 @@ Description
 -----------
 Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to true then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
 ") MergeSmallEdges;
-		bool MergeSmallEdges(NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theSmallEdges, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeToFaces, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theFaceWithSmall, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMultyEdges, const bool theModeDrop = false, const double theLimitAngle = -1);
+		bool MergeSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges, const bool theModeDrop = false, const double theLimitAngle = -1);
 
 		/****** ShapeFix_Wireframe::ModeDropSmallEdges ******/
 		/****** md5 signature: 702387d14e9b5d0c815fcce2e6ddbf73 ******/
@@ -5610,6 +5842,10 @@ Decodes the status of the last FixWireGaps. OK - No gaps were found DONE1 - Some
 ") StatusWireGaps;
 		bool StatusWireGaps(const ShapeExtend_Status status);
 
+		%extend{
+			bool GetModeDropSmallEdges() { return self->ModeDropSmallEdges(); }
+			void SetModeDropSmallEdges(bool value) { self->ModeDropSmallEdges() = value; }
+		};
 };
 
 
