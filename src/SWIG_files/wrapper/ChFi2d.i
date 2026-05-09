@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi2d.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi2d.html"
 %import NCollection.i
 %import TopoDS.i
 %import gp.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -442,13 +444,13 @@ Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge
 		%feature("compactdefaultargs") ChamferEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 returns the list of new edges.
 ") ChamferEdges;
-		const NCollection_Sequence<TopoDS_Shape> ChamferEdges();
+		const TopTools_SequenceOfShape & ChamferEdges();
 
 		/****** ChFi2d_Builder::DescendantEdge ******/
 		/****** md5 signature: aeb8944df5eff8bc10450ec6f2cf0e76 ******/
@@ -473,13 +475,13 @@ returns the modified edge if <E> has descendant or <E> in the other case.
 		%feature("compactdefaultargs") FilletEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 returns the list of new edges.
 ") FilletEdges;
-		const NCollection_Sequence<TopoDS_Shape> FilletEdges();
+		const TopTools_SequenceOfShape & FilletEdges();
 
 		/****** ChFi2d_Builder::HasDescendant ******/
 		/****** md5 signature: 365b4df1a18354984e8758587033cb70 ******/

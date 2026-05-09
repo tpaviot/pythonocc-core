@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approx.html"
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<Geom_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -65,6 +66,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approx.html"
 %import NCollection.i
 %import Adaptor3d.i
 %import TColStd.i
+%import TColgp.i
 %import Geom.i
 %import Adaptor2d.i
 %import GeomAbs.i
@@ -129,6 +131,13 @@ Array1ExtendIter(gp_GTrsf2d)
 %template(Approx_SequenceOfHArray1OfReal) NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -155,7 +164,7 @@ class Approx_BSplineApproxInterp {
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 theNbControlPts: int
 theDegree: int (optional, default to 3)
 theContinuousIfClosed: bool (optional, default to false)
@@ -172,7 +181,7 @@ Input parameter: theNbControlPts desired number of control points for the B-spli
 Input parameter: theDegree degree of the B-spline (default 3) 
 Input parameter: theContinuousIfClosed if true, enforces C2 continuity for closed curves.
 ") Approx_BSplineApproxInterp;
-		 Approx_BSplineApproxInterp(const NCollection_Array1<gp_Pnt> & thePoints, int theNbControlPts, int theDegree = 3, bool theContinuousIfClosed = false);
+		 Approx_BSplineApproxInterp(const TColgp_Array1OfPnt & thePoints, int theNbControlPts, int theDegree = 3, bool theContinuousIfClosed = false);
 
 		/****** Approx_BSplineApproxInterp::Curve ******/
 		/****** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ******/
@@ -253,7 +262,7 @@ Performs the fit using automatically computed parameters. Parameters are compute
 		%feature("autodoc", "
 Parameters
 ----------
-theParams: NCollection_Array1<double>
+theParams: TColStd_Array1OfReal
 
 Return
 -------
@@ -264,7 +273,7 @@ Description
 Performs the fit with given parameters. 
 Input parameter: theParams parameter values for each point (size must match point count).
 ") Perform;
-		void Perform(const NCollection_Array1<double> & theParams);
+		void Perform(const TColStd_Array1OfReal & theParams);
 
 		/****** Approx_BSplineApproxInterp::PerformOptimal ******/
 		/****** md5 signature: 9208ad1faca7f61290cf24b3e701c16d ******/
@@ -291,7 +300,7 @@ Input parameter: theMaxIter maximum number of optimization iterations.
 		%feature("autodoc", "
 Parameters
 ----------
-theParams: NCollection_Array1<double>
+theParams: TColStd_Array1OfReal
 theMaxIter: int
 
 Return
@@ -304,7 +313,7 @@ Performs the fit with iterative parameter optimization. Parameters of approximat
 Input parameter: theParams initial parameter values 
 Input parameter: theMaxIter maximum number of optimization iterations.
 ") PerformOptimal;
-		void PerformOptimal(const NCollection_Array1<double> & theParams, int theMaxIter);
+		void PerformOptimal(const TColStd_Array1OfReal & theParams, int theMaxIter);
 
 		/****** Approx_BSplineApproxInterp::SetClosedTolerance ******/
 		/****** md5 signature: c8a4c45fa8db6f2cf7a3064333529aef ******/
@@ -1103,7 +1112,7 @@ Parameters
 ----------
 S: double
 Order: int
-Result: NCollection_Array1<double>
+Result: TColStd_Array1OfReal
 
 Return
 -------
@@ -1113,7 +1122,7 @@ Description
 -----------
 if myCase != 1.
 ") EvalCase1;
-		bool EvalCase1(const double S, const int Order, NCollection_Array1<double> & Result);
+		bool EvalCase1(const double S, const int Order, TColStd_Array1OfReal & Result);
 
 		/****** Approx_CurvlinFunc::EvalCase2 ******/
 		/****** md5 signature: c2d108213c9f5d33c6ef5501f3bb4092 ******/
@@ -1123,7 +1132,7 @@ Parameters
 ----------
 S: double
 Order: int
-Result: NCollection_Array1<double>
+Result: TColStd_Array1OfReal
 
 Return
 -------
@@ -1133,7 +1142,7 @@ Description
 -----------
 if myCase != 2.
 ") EvalCase2;
-		bool EvalCase2(const double S, const int Order, NCollection_Array1<double> & Result);
+		bool EvalCase2(const double S, const int Order, TColStd_Array1OfReal & Result);
 
 		/****** Approx_CurvlinFunc::EvalCase3 ******/
 		/****** md5 signature: ea9ecf8403211d53fd4b496855fedb45 ******/
@@ -1143,7 +1152,7 @@ Parameters
 ----------
 S: double
 Order: int
-Result: NCollection_Array1<double>
+Result: TColStd_Array1OfReal
 
 Return
 -------
@@ -1153,7 +1162,7 @@ Description
 -----------
 if myCase != 3.
 ") EvalCase3;
-		bool EvalCase3(const double S, const int Order, NCollection_Array1<double> & Result);
+		bool EvalCase3(const double S, const int Order, TColStd_Array1OfReal & Result);
 
 		/****** Approx_CurvlinFunc::FirstParameter ******/
 		/****** md5 signature: 663a02fdcfecea2f8437f306e48dfc6b ******/
@@ -1225,7 +1234,7 @@ returns original parameter corresponding S. if Case == 1 computation is performe
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1236,7 +1245,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Approx_CurvlinFunc::LastParameter ******/
 		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
@@ -2257,9 +2266,9 @@ returns the average error in the surface approximation.
 Parameters
 ----------
 Index: int
-TPoles: NCollection_Array1<gp_Pnt2d>
-TKnots: NCollection_Array1<double>
-TMults: NCollection_Array1<int>
+TPoles: TColgp_Array1OfPnt2d
+TKnots: TColStd_Array1OfReal
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2269,7 +2278,7 @@ Description
 -----------
 No available documentation.
 ") Curve2d;
-		void Curve2d(const int Index, NCollection_Array1<gp_Pnt2d> & TPoles, NCollection_Array1<double> & TKnots, NCollection_Array1<int> & TMults);
+		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
 		/****** Approx_SweepApproximation::Curve2dPoles ******/
 		/****** md5 signature: a94b7da160d08553423b9884961ce57f ******/
@@ -2281,13 +2290,13 @@ Index: int
 
 Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 No available documentation.
 ") Curve2dPoles;
-		const NCollection_Array1<gp_Pnt2d> Curve2dPoles(const int Index);
+		const TColgp_Array1OfPnt2d & Curve2dPoles(const int Index);
 
 		/****** Approx_SweepApproximation::Curves2dDegree ******/
 		/****** md5 signature: 741e492947964135d3b5538ab9a61c20 ******/
@@ -2307,26 +2316,26 @@ No available documentation.
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") Curves2dKnots;
-		const NCollection_Array1<double> & Curves2dKnots();
+		const TColStd_Array1OfReal & Curves2dKnots();
 
 		/****** Approx_SweepApproximation::Curves2dMults ******/
 		/****** md5 signature: 741234b571aed45d97ebf38ae8a2aae0 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") Curves2dMults;
-		const NCollection_Array1<int> & Curves2dMults();
+		const TColStd_Array1OfInteger & Curves2dMults();
 
 		/****** Approx_SweepApproximation::Curves2dShape ******/
 		/****** md5 signature: 10d5751926250c321b8a42eeb20ea4d9 ******/
@@ -2473,13 +2482,13 @@ Perform the Approximation [First, Last]: Approx_SweepApproximation.cdl Tol3d: To
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 No available documentation.
 ") SurfPoles;
-		const NCollection_Array2<gp_Pnt> SurfPoles();
+		const TColgp_Array2OfPnt & SurfPoles();
 
 		/****** Approx_SweepApproximation::SurfShape ******/
 		/****** md5 signature: 77a85efd3e7049fa349b785c707ab77e ******/
@@ -2508,65 +2517,65 @@ No available documentation.
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfUKnots;
-		const NCollection_Array1<double> & SurfUKnots();
+		const TColStd_Array1OfReal & SurfUKnots();
 
 		/****** Approx_SweepApproximation::SurfUMults ******/
 		/****** md5 signature: b97af4fe33c7407a8824ab6ffcd000f4 ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfUMults;
-		const NCollection_Array1<int> & SurfUMults();
+		const TColStd_Array1OfInteger & SurfUMults();
 
 		/****** Approx_SweepApproximation::SurfVKnots ******/
 		/****** md5 signature: 44e1d2dd44feea0b504b7d583d36f2b4 ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfVKnots;
-		const NCollection_Array1<double> & SurfVKnots();
+		const TColStd_Array1OfReal & SurfVKnots();
 
 		/****** Approx_SweepApproximation::SurfVMults ******/
 		/****** md5 signature: 29d551b5820d4a88f391a2e1f6b715d0 ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 No available documentation.
 ") SurfVMults;
-		const NCollection_Array1<int> & SurfVMults();
+		const TColStd_Array1OfInteger & SurfVMults();
 
 		/****** Approx_SweepApproximation::SurfWeights ******/
 		/****** md5 signature: eb6194e3a7c74d6cf9b4d2592e87c67a ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 No available documentation.
 ") SurfWeights;
-		const NCollection_Array2<double> & SurfWeights();
+		const TColStd_Array2OfReal & SurfWeights();
 
 		/****** Approx_SweepApproximation::Surface ******/
 		/****** md5 signature: d0c169cb929e549a376edcb2baa2684e ******/
@@ -2574,12 +2583,12 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TPoles: NCollection_Array2<gp_Pnt>
-TWeights: NCollection_Array2<double>
-TUKnots: NCollection_Array1<double>
-TVKnots: NCollection_Array1<double>
-TUMults: NCollection_Array1<int>
-TVMults: NCollection_Array1<int>
+TPoles: TColgp_Array2OfPnt
+TWeights: TColStd_Array2OfReal
+TUKnots: TColStd_Array1OfReal
+TVKnots: TColStd_Array1OfReal
+TUMults: TColStd_Array1OfInteger
+TVMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2589,7 +2598,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		void Surface(NCollection_Array2<gp_Pnt> & TPoles, NCollection_Array2<double> & TWeights, NCollection_Array1<double> & TUKnots, NCollection_Array1<double> & TVKnots, NCollection_Array1<int> & TUMults, NCollection_Array1<int> & TVMults);
+		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
 		/****** Approx_SweepApproximation::TolCurveOnSurf ******/
 		/****** md5 signature: b5567ef25273afb07eb16d77a94935ec ******/
@@ -2672,9 +2681,9 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2684,7 +2693,7 @@ Description
 -----------
 compute the section for v = param.
 ") D0;
-		virtual bool D0(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		virtual bool D0(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** Approx_SweepFunction::D1 ******/
 		/****** md5 signature: 96b8426a937cc7c9d5c454d6c0f5b125 ******/
@@ -2695,12 +2704,12 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2710,7 +2719,7 @@ Description
 -----------
 compute the first derivative in v direction of the section for v = param Warning: It used only for C1 or C2 approximation.
 ") D1;
-		virtual bool D1(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		virtual bool D1(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** Approx_SweepFunction::D2 ******/
 		/****** md5 signature: 7ce74cf3fc67773f29426766bd94a96c ******/
@@ -2721,15 +2730,15 @@ Parameters
 Param: double
 First: double
 Last: double
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2739,7 +2748,7 @@ Description
 -----------
 compute the second derivative in v direction of the section for v = param Warning: It used only for C2 approximation.
 ") D2;
-		virtual bool D2(const double Param, const double First, const double Last, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		virtual bool D2(const double Param, const double First, const double Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** Approx_SweepFunction::GetMinimalWeight ******/
 		/****** md5 signature: 5fafe98ac27c4733d46e0d69feb7782c ******/
@@ -2747,7 +2756,7 @@ compute the second derivative in v direction of the section for v = param Warnin
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2757,7 +2766,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles in all sections. This information is useful to control error in rational approximation. Warning: Used only if <self> IsRational.
 ") GetMinimalWeight;
-		virtual void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** Approx_SweepFunction::GetTolerance ******/
 		/****** md5 signature: 445238f8780bb5bcf2c4e87841c8b27e ******/
@@ -2768,7 +2777,7 @@ Parameters
 BoundTol: double
 SurfTol: double
 AngleTol: double
-Tol3d: NCollection_Array1<double>
+Tol3d: TColStd_Array1OfReal
 
 Return
 -------
@@ -2778,7 +2787,7 @@ Description
 -----------
 Returns the tolerance to reach in approximation to satisfy. BoundTol error at the Boundary AngleTol tangent error at the Boundary (in radian) SurfTol error inside the surface.
 ") GetTolerance;
-		virtual void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, NCollection_Array1<double> & Tol3d);
+		virtual void GetTolerance(const double BoundTol, const double SurfTol, const double AngleTol, TColStd_Array1OfReal & Tol3d);
 
 		/****** Approx_SweepFunction::Intervals ******/
 		/****** md5 signature: 3d6a840a7f0f4eea65b38aa9a495c6b6 ******/
@@ -2786,7 +2795,7 @@ Returns the tolerance to reach in approximation to satisfy. BoundTol error at th
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2797,7 +2806,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Approx_SweepFunction::IsRational ******/
 		/****** md5 signature: de83bb68c1e76368c633eba18c70426f ******/
@@ -2818,7 +2827,7 @@ Returns if the sections are rational or not.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -2828,7 +2837,7 @@ Description
 -----------
 get the Knots of the section.
 ") Knots;
-		virtual void Knots(NCollection_Array1<double> & TKnots);
+		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** Approx_SweepFunction::MaximalSection ******/
 		/****** md5 signature: f27749b971d9772713d6afbaa10a7741 ******/
@@ -2849,7 +2858,7 @@ Returns the length of the greater section. This information is useful to G1's co
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2859,7 +2868,7 @@ Description
 -----------
 get the Multplicities of the section.
 ") Mults;
-		virtual void Mults(NCollection_Array1<int> & TMults);
+		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** Approx_SweepFunction::Nb2dCurves ******/
 		/****** md5 signature: 33b12d283b95a653c2a21a8d8f8578af ******/

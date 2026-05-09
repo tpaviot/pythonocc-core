@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 #include<gp_module.hxx>
 #include<Select3D_module.hxx>
 #include<SelectBasics_module.hxx>
+#include<TColgp_module.hxx>
 #include<PrsMgr_module.hxx>
 #include<Aspect_module.hxx>
 #include<Prs3d_module.hxx>
@@ -56,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<BVH_module.hxx>
+#include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<TopTools_module.hxx>
 #include<Message_module.hxx>
@@ -94,6 +96,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 %import gp.i
 %import Select3D.i
 %import SelectBasics.i
+%import TColgp.i
 %import PrsMgr.i
 %import Aspect.i
 %import Prs3d.i
@@ -102,6 +105,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 %import TopAbs.i
 %import Bnd.i
 %import BVH.i
+%import TColStd.i
 %import TCollection.i
 
 %pythoncode {
@@ -232,6 +236,7 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 %wrap_handle(SelectMgr_SelectionImageFiller)
 %wrap_handle(SelectMgr_SelectionManager)
 %wrap_handle(SelectMgr_SensitiveEntity)
+%wrap_handle(SelectMgr_SensitiveEntitySet)
 %wrap_handle(SelectMgr_ViewerSelector)
 %wrap_handle(SelectMgr_AxisIntersector)
 %wrap_handle(SelectMgr_CompositionFilter)
@@ -250,15 +255,34 @@ SelectMgr_TOU_None = SelectMgr_TypeOfUpdate.SelectMgr_TOU_None
 %template(SelectMgr_ListOfFilter) NCollection_List<opencascade::handle<SelectMgr_Filter>>;
 
 %extend NCollection_List<opencascade::handle<SelectMgr_Filter>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = SelectMgr_ListIteratorOfListOfFilter(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(SelectMgr_Mat4) NCollection_Mat4<double>;
 %template(SelectMgr_SequenceOfSelection) NCollection_Sequence<opencascade::handle<SelectMgr_Selection>>;
 
 %extend NCollection_Sequence<opencascade::handle<SelectMgr_Selection>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -555,12 +579,12 @@ Returns near point of intersector. This method returns zero point for the base c
 		virtual const gp_Pnt GetNearPnt();
 
 		/****** SelectMgr_BaseIntersector::GetPlanes ******/
-		/****** md5 signature: ac45d3b6c7cb7d28e5117b46f7734ea2 ******/
+		/****** md5 signature: e0756643357b2a138b0fb8c1752db254 ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
 ----------
-thePlaneEquations: NCollection_Vector<NCollection_Vec4<double> >
+thePlaneEquations: NCollection_DynamicArray<NCollection_Vec4<double>>
 
 Return
 -------
@@ -570,7 +594,7 @@ Description
 -----------
 Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector. This method only clears input vector for the base class.
 ") GetPlanes;
-		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<double> > & thePlaneEquations);
+		virtual void GetPlanes(NCollection_DynamicArray<NCollection_Vec4<double>> & thePlaneEquations);
 
 		/****** SelectMgr_BaseIntersector::GetSelectionType ******/
 		/****** md5 signature: 8a2f723381b539ff3ca96048a6b87ecc ******/
@@ -786,7 +810,7 @@ Intersection test between defined volume and given point Does not perform depth 
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPnts: NCollection_Array1<gp_Pnt>
+theArrayOfPnts: TColgp_Array1OfPnt
 theSensType: Select3D_TypeOfSensitivity
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
@@ -799,7 +823,7 @@ Description
 -----------
 SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		virtual bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_BaseIntersector::OverlapsSegment ******/
 		/****** md5 signature: 633be89ae83b1f9cb2c666022fc26a58 ******/
@@ -1902,7 +1926,7 @@ Description
 -----------
 Returns a bounding box of sensitive entities with the owners given if they are a part of activated selection.
 ") BndBoxOfSelected;
-		Bnd_Box BndBoxOfSelected(const opencascade::handle<NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner> > > > & theOwners);
+		Bnd_Box BndBoxOfSelected(const opencascade::handle<NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner>> >> & theOwners);
 
 		/****** SelectMgr_SelectableObject::ClearDynamicHighlight ******/
 		/****** md5 signature: d0352ce4e2dd5f23d593337c0a535955 ******/
@@ -2147,7 +2171,7 @@ Description
 -----------
 Method which draws selected owners ( for fast presentation draw ).
 ") HilightSelected;
-		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theSeq);
+		virtual void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theSeq);
 
 		/****** SelectMgr_SelectableObject::IsAutoHilight ******/
 		/****** md5 signature: 0b4c5bacd9f4abc895dcd1d8d96b2cf0 ******/
@@ -2711,7 +2735,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_Array1<gp_Pnt2d>
+thePoints: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2721,7 +2745,7 @@ Description
 -----------
 No available documentation.
 ") BuildSelectingVolume;
-		void BuildSelectingVolume(const NCollection_Array1<gp_Pnt2d> & thePoints);
+		void BuildSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
 
 		/****** SelectMgr_SelectingVolumeManager::Camera ******/
 		/****** md5 signature: e0e8d00ee700afb9ca88da977e8b5747 ******/
@@ -2865,12 +2889,12 @@ Valid only for point and rectangular selection. Returns projection of 2d mouse p
 		gp_Pnt GetNearPickedPnt();
 
 		/****** SelectMgr_SelectingVolumeManager::GetPlanes ******/
-		/****** md5 signature: a57d88686bceb86bb58f4a8edb58b4d2 ******/
+		/****** md5 signature: 5bfb83f99a2fa8a01ac50593ddf77697 ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
 ----------
-thePlaneEquations: NCollection_Vector<NCollection_Vec4<double> >
+thePlaneEquations: NCollection_DynamicArray<NCollection_Vec4<double>>
 
 Return
 -------
@@ -2880,7 +2904,7 @@ Description
 -----------
 Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector.
 ") GetPlanes;
-		void GetPlanes(NCollection_Vector<NCollection_Vec4<double> > & thePlaneEquations);
+		void GetPlanes(NCollection_DynamicArray<NCollection_Vec4<double>> & thePlaneEquations);
 
 		/****** SelectMgr_SelectingVolumeManager::GetVertices ******/
 		/****** md5 signature: 97f9768e715df9214ec06c43990766fc ******/
@@ -2969,7 +2993,7 @@ Creates, initializes and activates rectangular selecting frustum for point selec
 		%feature("autodoc", "
 Parameters
 ----------
-thePoints: NCollection_Array1<gp_Pnt2d>
+thePoints: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2979,7 +3003,7 @@ Description
 -----------
 Creates, initializes and activates set of triangular selecting frustums for polyline selection.
 ") InitPolylineSelectingVolume;
-		void InitPolylineSelectingVolume(const NCollection_Array1<gp_Pnt2d> & thePoints);
+		void InitPolylineSelectingVolume(const TColgp_Array1OfPnt2d & thePoints);
 
 		/****** SelectMgr_SelectingVolumeManager::InitSelectingVolume ******/
 		/****** md5 signature: a70f6f4650e5b257e6e7420cd2ae830d ******/
@@ -3209,7 +3233,7 @@ Intersection test between defined volume and given point.
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPts: NCollection_Array1<gp_Pnt>
+theArrayOfPts: TColgp_Array1OfPnt
 theSensType: int
 thePickResult: SelectBasics_PickResult
 
@@ -3221,7 +3245,7 @@ Description
 -----------
 SAT intersection test between defined volume and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_SelectingVolumeManager::OverlapsSegment ******/
 		/****** md5 signature: b88508ccd7f14a7b4d1fd53099018d3f ******/
@@ -3568,17 +3592,17 @@ No available documentation.
 		SelectMgr_TypeOfBVHUpdate BVHUpdateStatus();
 
 		/****** SelectMgr_Selection::ChangeEntities ******/
-		/****** md5 signature: adcd43d4b51e901d1edf4ce65316d338 ******/
+		/****** md5 signature: 3efdb0b04ad44e3cd93b876ba03906f5 ******/
 		%feature("compactdefaultargs") ChangeEntities;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>
+NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>>
 
 Description
 -----------
 Return entities.
 ") ChangeEntities;
-		NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> & ChangeEntities();
+		NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>> & ChangeEntities();
 
 		/****** SelectMgr_Selection::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -3628,17 +3652,17 @@ Dump the object to JSON string.
             return "{" + s.str() + "}" ;}
         };
 		/****** SelectMgr_Selection::Entities ******/
-		/****** md5 signature: 09e4230714e880893271b506a744f5d3 ******/
+		/****** md5 signature: 7449fce2abe99b6f771a1a875aa42c3c ******/
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>
+NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>>
 
 Description
 -----------
 Return entities.
 ") Entities;
-		const NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>> & Entities();
+		const NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>> & Entities();
 
 		/****** SelectMgr_Selection::GetSelectionState ******/
 		/****** md5 signature: a623ca145bbd40bbc568a61186b88449 ******/
@@ -4389,6 +4413,19 @@ Returns the entity with index theIndex in the set.
 ") GetSensitiveById;
 		const opencascade::handle<SelectMgr_SensitiveEntity> & GetSensitiveById(const int theIndex);
 
+		/****** SelectMgr_SensitiveEntitySet::HasEntityWithFlipping ******/
+		/****** md5 signature: c9962472cb2dcc714e664d49150f971e ******/
+		%feature("compactdefaultargs") HasEntityWithFlipping;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if this set contains sensitive entities with flipping options.
+") HasEntityWithFlipping;
+		bool HasEntityWithFlipping();
+
 		/****** SelectMgr_SensitiveEntitySet::HasEntityWithPersistence ******/
 		/****** md5 signature: a6f2b916a10376f78a1771159a598d29 ******/
 		%feature("compactdefaultargs") HasEntityWithPersistence;
@@ -4480,6 +4517,8 @@ Swaps items with indexes theIdx1 and theIdx2.
 
 };
 
+
+%make_alias(SelectMgr_SensitiveEntitySet)
 
 %extend SelectMgr_SensitiveEntitySet {
 	%pythoncode {
@@ -4864,7 +4903,7 @@ Description
 -----------
 Returns the list of active entity owners.
 ") ActiveOwners;
-		void ActiveOwners(NCollection_List<opencascade::handle<SelectMgr_EntityOwner> > & theOwners);
+		void ActiveOwners(NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> & theOwners);
 
 		/****** SelectMgr_ViewerSelector::AddSelectableObject ******/
 		/****** md5 signature: f218951d73442065913cd4c14a6fa242 ******/
@@ -5153,7 +5192,7 @@ Returns true if the selectable object aSelectableObject having the selection mod
 Parameters
 ----------
 theSelectableObject: SelectMgr_SelectableObject
-theModeList: NCollection_List<int>
+theModeList: TColStd_ListOfInteger
 theWantedState: SelectMgr_StateOfSelection (optional, default to SelectMgr_SOS_Any)
 
 Return
@@ -5164,7 +5203,7 @@ Description
 -----------
 Returns the list of selection modes ModeList found in this selector for the selectable object aSelectableObject. Returns true if aSelectableObject is referenced inside this selector; returns false if the object is not present in this selector.
 ") Modes;
-		bool Modes(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, NCollection_List<int> & theModeList, const SelectMgr_StateOfSelection theWantedState = SelectMgr_SOS_Any);
+		bool Modes(const opencascade::handle<SelectMgr_SelectableObject> & theSelectableObject, TColStd_ListOfInteger & theModeList, const SelectMgr_StateOfSelection theWantedState = SelectMgr_SOS_Any);
 
 		/****** SelectMgr_ViewerSelector::MoveSelectableObject ******/
 		/****** md5 signature: 5bdd1df0fce978279ec116396cbc6a68 ******/
@@ -5258,7 +5297,7 @@ Picks the sensitive entity according to the minimum and maximum pixel values <th
 		%feature("autodoc", "
 Parameters
 ----------
-thePolyline: NCollection_Array1<gp_Pnt2d>
+thePolyline: TColgp_Array1OfPnt2d
 theView: V3d_View
 
 Return
@@ -5269,7 +5308,7 @@ Description
 -----------
 pick action - input pixel values for polyline selection for selection.
 ") Pick;
-		void Pick(const NCollection_Array1<gp_Pnt2d> & thePolyline, const opencascade::handle<V3d_View> & theView);
+		void Pick(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView);
 
 		/****** SelectMgr_ViewerSelector::Pick ******/
 		/****** md5 signature: 534c41acdf40cdc7534b926e77873ace ******/
@@ -6076,7 +6115,7 @@ Intersection test between defined axis and given point.
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPnts: NCollection_Array1<gp_Pnt>
+theArrayOfPnts: TColgp_Array1OfPnt
 theSensType: Select3D_TypeOfSensitivity
 theClipRange: SelectMgr_ViewClipRange
 thePickResult: SelectBasics_PickResult
@@ -6089,7 +6128,7 @@ Description
 -----------
 Intersection test between defined axis and given ordered set of points, representing line segments. The test may be considered of interior part or boundary line defined by segments depending on given sensitivity type.
 ") OverlapsPolygon;
-		bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
+		bool OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPnts, Select3D_TypeOfSensitivity theSensType, const SelectMgr_ViewClipRange & theClipRange, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectMgr_AxisIntersector::OverlapsSegment ******/
 		/****** md5 signature: ad35693cd8297629b1a178a0f167ba75 ******/
@@ -6480,7 +6519,7 @@ Description
 -----------
 Disable selection of specified objects.
 ") SetDisabledObjects;
-		void SetDisabledObjects(const opencascade::handle<NCollection_Shared<NCollection_Map<const Standard_Transient *> > > & theObjects);
+		void SetDisabledObjects(const opencascade::handle<NCollection_Shared<NCollection_Map<const Standard_Transient *>> > & theObjects);
 
 		/****** SelectMgr_AndOrFilter::SetFilterType ******/
 		/****** md5 signature: c4f32b4815b398cc3dcfa30b4c00ebdc ******/

@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapecustom.html"
 #include<GeomAbs_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TColgp_module.hxx>
 #include<BRepTools_module.hxx>
 #include<ShapeExtend_module.hxx>
 #include<Message_module.hxx>
@@ -72,6 +73,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapecustom.html"
 %import GeomAbs.i
 %import Geom.i
 %import Geom2d.i
+%import TColgp.i
 %import BRepTools.i
 %import ShapeExtend.i
 %import Message.i
@@ -362,7 +364,7 @@ Try to convert BSpline2d or Bezier2d to line 2d only if it is linear. Recalculat
 		%feature("autodoc", "
 Parameters
 ----------
-thePoles: NCollection_Array1<gp_Pnt2d>
+thePoles: TColgp_Array1OfPnt2d
 theTolerance: double
 
 Return
@@ -373,7 +375,7 @@ Description
 -----------
 Check if poleses is in the plane with given precision Returns false if no.
 ") IsLinear;
-		static bool IsLinear(const NCollection_Array1<gp_Pnt2d> & thePoles, const double theTolerance, Standard_Real &OutValue);
+		static bool IsLinear(const TColgp_Array1OfPnt2d & thePoles, const double theTolerance, Standard_Real &OutValue);
 
 		/****** ShapeCustom_Curve2d::SimplifyBSpline2d ******/
 		/****** md5 signature: 4eb64c8cbcdbddf4ff36e3e5992d3aa9 ******/
@@ -697,6 +699,70 @@ Sets Segment mode for surface. If Segment is True surface is approximated in the
 ") SegmentSurfaceMode;
 		bool & SegmentSurfaceMode();
 
+		%extend{
+			int GetGMaxDegree() { return self->GMaxDegree(); }
+			void SetGMaxDegree(int value) { self->GMaxDegree() = value; }
+		};
+		%extend{
+			int GetGMaxSeg() { return self->GMaxSeg(); }
+			void SetGMaxSeg(int value) { self->GMaxSeg() = value; }
+		};
+		%extend{
+			bool GetConvertPlane() { return self->ConvertPlane(); }
+			void SetConvertPlane(bool value) { self->ConvertPlane() = value; }
+		};
+		%extend{
+			bool GetConvertBezierSurf() { return self->ConvertBezierSurf(); }
+			void SetConvertBezierSurf(bool value) { self->ConvertBezierSurf() = value; }
+		};
+		%extend{
+			bool GetConvertRevolutionSurf() { return self->ConvertRevolutionSurf(); }
+			void SetConvertRevolutionSurf(bool value) { self->ConvertRevolutionSurf() = value; }
+		};
+		%extend{
+			bool GetConvertExtrusionSurf() { return self->ConvertExtrusionSurf(); }
+			void SetConvertExtrusionSurf(bool value) { self->ConvertExtrusionSurf() = value; }
+		};
+		%extend{
+			bool GetConvertOffsetSurf() { return self->ConvertOffsetSurf(); }
+			void SetConvertOffsetSurf(bool value) { self->ConvertOffsetSurf() = value; }
+		};
+		%extend{
+			bool GetConvertCylindricalSurf() { return self->ConvertCylindricalSurf(); }
+			void SetConvertCylindricalSurf(bool value) { self->ConvertCylindricalSurf() = value; }
+		};
+		%extend{
+			bool GetConvertConicalSurf() { return self->ConvertConicalSurf(); }
+			void SetConvertConicalSurf(bool value) { self->ConvertConicalSurf() = value; }
+		};
+		%extend{
+			bool GetConvertToroidalSurf() { return self->ConvertToroidalSurf(); }
+			void SetConvertToroidalSurf(bool value) { self->ConvertToroidalSurf() = value; }
+		};
+		%extend{
+			bool GetConvertSphericalSurf() { return self->ConvertSphericalSurf(); }
+			void SetConvertSphericalSurf(bool value) { self->ConvertSphericalSurf() = value; }
+		};
+		%extend{
+			bool GetSegmentSurfaceMode() { return self->SegmentSurfaceMode(); }
+			void SetSegmentSurfaceMode(bool value) { self->SegmentSurfaceMode() = value; }
+		};
+		%extend{
+			bool GetConvertCurve3d() { return self->ConvertCurve3d(); }
+			void SetConvertCurve3d(bool value) { self->ConvertCurve3d() = value; }
+		};
+		%extend{
+			bool GetConvertOffsetCurv3d() { return self->ConvertOffsetCurv3d(); }
+			void SetConvertOffsetCurv3d(bool value) { self->ConvertOffsetCurv3d() = value; }
+		};
+		%extend{
+			bool GetConvertCurve2d() { return self->ConvertCurve2d(); }
+			void SetConvertCurve2d(bool value) { self->ConvertCurve2d() = value; }
+		};
+		%extend{
+			bool GetConvertOffsetCurv2d() { return self->ConvertOffsetCurv2d(); }
+			void SetConvertOffsetCurv2d(bool value) { self->ConvertOffsetCurv2d() = value; }
+		};
 };
 
 

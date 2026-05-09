@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_projlib.html"
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom_module.hxx>
+#include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<math_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -69,6 +70,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_projlib.html"
 %import Adaptor2d.i
 %import GeomAbs.i
 %import Geom.i
+%import TColStd.i
 %import AppParCurves.i
 %import math.i
 %import GeomAdaptor.i
@@ -96,6 +98,13 @@ from OCC.Core.Exception import *
 %template(ProjLib_SequenceOfHSequenceOfPnt) NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -842,13 +851,13 @@ Returns the resulting 3d-point of projecting of the curve interval with number I
 		%feature("compactdefaultargs") GetSequence;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<NCollection_HSequence<gp_Pnt>>>>
+opencascade::handle<NCollection_HSequence<opencascade::handle<TColgp_HSequenceOfPnt>>>
 
 Description
 -----------
 No available documentation.
 ") GetSequence;
-		const opencascade::handle<NCollection_HSequence<opencascade::handle<NCollection_HSequence<gp_Pnt>>>> GetSequence();
+		const opencascade::handle<NCollection_HSequence<opencascade::handle<TColgp_HSequenceOfPnt>>> & GetSequence();
 
 		/****** ProjLib_CompProjectedCurve::GetSurface ******/
 		/****** md5 signature: 56dff0248d5d8fc9e2bd341c8dad1556 ******/
@@ -913,7 +922,7 @@ computes a set of projected point and determine the continuous parts of the proj
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -924,7 +933,7 @@ Description
 -----------
 Returns the parameters corresponding to S discontinuities. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_CompProjectedCurve::IsSinglePnt ******/
 		/****** md5 signature: 2f66692f522981cb852053dc8a21bb9c ******/
@@ -2307,7 +2316,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2318,7 +2327,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectOnPlane::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -2950,7 +2959,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2961,7 +2970,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** ProjLib_ProjectedCurve::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/

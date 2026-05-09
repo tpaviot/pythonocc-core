@@ -76,9 +76,21 @@ from OCC.Core.Exception import *
 %template(TopBas_ListOfTestInterference) NCollection_List<TopBas_TestInterference>;
 
 %extend NCollection_List<TopBas_TestInterference> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopBas_ListIteratorOfListOfTestInterference(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -309,6 +321,14 @@ No available documentation.
 ") Transition;
 		TopAbs_Orientation Transition();
 
+		%extend{
+			double GetChangeIntersection() { return self->ChangeIntersection(); }
+			void SetChangeIntersection(double value) { self->ChangeIntersection() = value; }
+		};
+		%extend{
+			int GetChangeBoundary() { return self->ChangeBoundary(); }
+			void SetChangeBoundary(int value) { self->ChangeBoundary() = value; }
+		};
 };
 
 

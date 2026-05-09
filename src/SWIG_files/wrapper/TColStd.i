@@ -93,6 +93,27 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(TColStd_HPackedMapOfInteger)
+%wrap_handle(TColStd_HArray1OfCharacter)
+%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfByte)
+%wrap_handle(TColStd_HArray1OfBoolean)
+%wrap_handle(TColStd_HArray1OfInteger)
+%wrap_handle(TColStd_HArray1OfAsciiString)
+%wrap_handle(TColStd_HArray1OfTransient)
+%wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfExtendedString)
+%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HArray2OfBoolean)
+%wrap_handle(TColStd_HArray2OfCharacter)
+%wrap_handle(TColStd_HSequenceOfReal)
+%wrap_handle(TColStd_HSequenceOfTransient)
+%wrap_handle(TColStd_HSequenceOfInteger)
+%wrap_handle(TColStd_HSequenceOfExtendedString)
+%wrap_handle(TColStd_HSequenceOfHAsciiString)
+%wrap_handle(TColStd_HSequenceOfHExtendedString)
+%wrap_handle(TColStd_HSequenceOfAsciiString)
 /* end handles declaration */
 
 /* templates */
@@ -111,19 +132,23 @@ Array1ExtendIter(char)
 %template(TColStd_Array1OfExtendedString) NCollection_Array1<TCollection_ExtendedString>;
 Array1ExtendIter(TCollection_ExtendedString)
 
-%template(TColStd_Array1OfInteger) NCollection_Array1<int>;
-Array1ExtendIter(int)
-
-%template(TColStd_Array1OfReal) NCollection_Array1<double>;
-Array1ExtendIter(double)
-
+%apply (long long* IN_ARRAY1, int DIM1) { (long long* numpyArray1, int nRows1) };
+%apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray1Argout, int nRows1Argout) };
+Array1NumpyTemplate(TColStd_Array1OfInteger, long long, int)
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArray1, int nRows1) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray1Argout, int nRows1Argout) };
+Array1NumpyTemplate(TColStd_Array1OfReal, double, double)
 %template(TColStd_Array1OfTransient) NCollection_Array1<opencascade::handle<Standard_Transient>>;
 Array1ExtendIter(opencascade::handle<Standard_Transient>)
 
 %template(TColStd_Array2OfBoolean) NCollection_Array2<bool>;
 %template(TColStd_Array2OfCharacter) NCollection_Array2<char>;
-%template(TColStd_Array2OfInteger) NCollection_Array2<int>;
-%template(TColStd_Array2OfReal) NCollection_Array2<double>;
+%apply (long long* IN_ARRAY2, int DIM1, int DIM2) { (long long* numpyArray2, int nRows2, int nCols2) };
+%apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray2Argout, int aSizeArgout) };
+Array2NumpyTemplate(TColStd_Array2OfInteger, long long, int)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nCols2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
 %template(TColStd_Array2OfTransient) NCollection_Array2<opencascade::handle<Standard_Transient>>;
 %ignore NCollection_DataMap<TCollection_AsciiString,int>::Items;
 %ignore NCollection_DataMap<TCollection_AsciiString,int>::KeyValues;
@@ -131,15 +156,63 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %ignore NCollection_DataMap<int,int>::Items;
 %ignore NCollection_DataMap<int,int>::KeyValues;
 %template(TColStd_DataMapOfIntegerInteger) NCollection_DataMap<int,int>;
+
+%extend NCollection_DataMap<int,int> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TColStd_ListOfInteger>::Items;
 %ignore NCollection_DataMap<int,TColStd_ListOfInteger>::KeyValues;
 %template(TColStd_DataMapOfIntegerListOfInteger) NCollection_DataMap<int,TColStd_ListOfInteger>;
+
+%extend NCollection_DataMap<int,TColStd_ListOfInteger> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerListOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,double>::Items;
 %ignore NCollection_DataMap<int,double>::KeyValues;
 %template(TColStd_DataMapOfIntegerReal) NCollection_DataMap<int,double>;
+
+%extend NCollection_DataMap<int,double> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerReal::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<Standard_Transient>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<Standard_Transient>>::KeyValues;
 %template(TColStd_DataMapOfIntegerTransient) NCollection_DataMap<int,opencascade::handle<Standard_Transient>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<Standard_Transient>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerTransient::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<TCollection_ExtendedString,int>::Items;
 %ignore NCollection_DataMap<TCollection_ExtendedString,int>::KeyValues;
 %template(TColStd_DataMapOfStringInteger) NCollection_DataMap<TCollection_ExtendedString,int>;
@@ -178,42 +251,98 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_ListOfAsciiString) NCollection_List<TCollection_AsciiString>;
 
 %extend NCollection_List<TCollection_AsciiString> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfAsciiString(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TColStd_ListOfInteger) NCollection_List<int>;
 
 %extend NCollection_List<int> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfInteger(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TColStd_ListOfReal) NCollection_List<double>;
 
 %extend NCollection_List<double> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfReal(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TColStd_ListOfTransient) NCollection_List<opencascade::handle<Standard_Transient>>;
 
 %extend NCollection_List<opencascade::handle<Standard_Transient>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TColStd_ListIteratorOfListOfTransient(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TColStd_MapOfAsciiString) NCollection_Map<TCollection_AsciiString>;
 %template(TColStd_MapOfInteger) NCollection_Map<int>;
 %template(TColStd_MapOfReal) NCollection_Map<double>;
 %template(TColStd_MapOfTransient) NCollection_Map<opencascade::handle<Standard_Transient>>;
+%template(TColStd_PackedMapOfInteger) NCollection_PackedMap<int>;
 %template(TColStd_SequenceOfAddress) NCollection_Sequence<void*>;
 
 %extend NCollection_Sequence<void*> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -222,6 +351,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfAsciiString) NCollection_Sequence<TCollection_AsciiString>;
 
 %extend NCollection_Sequence<TCollection_AsciiString> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -230,6 +366,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfBoolean) NCollection_Sequence<bool>;
 
 %extend NCollection_Sequence<bool> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -238,6 +381,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfExtendedString) NCollection_Sequence<TCollection_ExtendedString>;
 
 %extend NCollection_Sequence<TCollection_ExtendedString> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -246,6 +396,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfHAsciiString) NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>;
 
 %extend NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -254,6 +411,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfHExtendedString) NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>;
 
 %extend NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -262,6 +426,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfInteger) NCollection_Sequence<int>;
 
 %extend NCollection_Sequence<int> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -270,6 +441,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfReal) NCollection_Sequence<double>;
 
 %extend NCollection_Sequence<double> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -278,6 +456,13 @@ Array1ExtendIter(opencascade::handle<Standard_Transient>)
 %template(TColStd_SequenceOfTransient) NCollection_Sequence<opencascade::handle<Standard_Transient>>;
 
 %extend NCollection_Sequence<opencascade::handle<Standard_Transient>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -469,39 +654,6 @@ Returns const reference to the underlying map.
 
 /* harray1 classes */
 
-class TColStd_HArray1OfAsciiString : public NCollection_Array1<TCollection_AsciiString>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_AsciiString>::value_type& theValue);
-    TColStd_HArray1OfAsciiString(const NCollection_Array1<TCollection_AsciiString>& theOther);
-    const NCollection_Array1<TCollection_AsciiString>& Array1();
-    NCollection_Array1<TCollection_AsciiString>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfAsciiString)
-
-
-class TColStd_HArray1OfBoolean : public NCollection_Array1<bool>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<bool>::value_type& theValue);
-    TColStd_HArray1OfBoolean(const NCollection_Array1<bool>& theOther);
-    const NCollection_Array1<bool>& Array1();
-    NCollection_Array1<bool>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfBoolean)
-
-
-class TColStd_HArray1OfByte : public NCollection_Array1<uint8_t>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<uint8_t>::value_type& theValue);
-    TColStd_HArray1OfByte(const NCollection_Array1<uint8_t>& theOther);
-    const NCollection_Array1<uint8_t>& Array1();
-    NCollection_Array1<uint8_t>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfByte)
-
-
 class TColStd_HArray1OfCharacter : public NCollection_Array1<char>, public Standard_Transient {
   public:
     TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -511,39 +663,6 @@ class TColStd_HArray1OfCharacter : public NCollection_Array1<char>, public Stand
     NCollection_Array1<char>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfCharacter)
-
-
-class TColStd_HArray1OfExtendedString : public NCollection_Array1<TCollection_ExtendedString>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_ExtendedString>::value_type& theValue);
-    TColStd_HArray1OfExtendedString(const NCollection_Array1<TCollection_ExtendedString>& theOther);
-    const NCollection_Array1<TCollection_ExtendedString>& Array1();
-    NCollection_Array1<TCollection_ExtendedString>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfExtendedString)
-
-
-class TColStd_HArray1OfInteger : public NCollection_Array1<int>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<int>::value_type& theValue);
-    TColStd_HArray1OfInteger(const NCollection_Array1<int>& theOther);
-    const NCollection_Array1<int>& Array1();
-    NCollection_Array1<int>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfInteger)
-
-
-class TColStd_HArray1OfListOfInteger : public NCollection_Array1<TColStd_ListOfInteger>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_ListOfInteger>::value_type& theValue);
-    TColStd_HArray1OfListOfInteger(const NCollection_Array1<TColStd_ListOfInteger>& theOther);
-    const NCollection_Array1<TColStd_ListOfInteger>& Array1();
-    NCollection_Array1<TColStd_ListOfInteger>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfListOfInteger)
 
 
 class TColStd_HArray1OfReal : public NCollection_Array1<double>, public Standard_Transient {
@@ -557,6 +676,50 @@ class TColStd_HArray1OfReal : public NCollection_Array1<double>, public Standard
 %make_alias(TColStd_HArray1OfReal)
 
 
+class TColStd_HArray1OfByte : public NCollection_Array1<uint8_t>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<uint8_t>::value_type& theValue);
+    TColStd_HArray1OfByte(const NCollection_Array1<uint8_t>& theOther);
+    const NCollection_Array1<uint8_t>& Array1();
+    NCollection_Array1<uint8_t>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfByte)
+
+
+class TColStd_HArray1OfBoolean : public NCollection_Array1<bool>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<bool>::value_type& theValue);
+    TColStd_HArray1OfBoolean(const NCollection_Array1<bool>& theOther);
+    const NCollection_Array1<bool>& Array1();
+    NCollection_Array1<bool>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfBoolean)
+
+
+class TColStd_HArray1OfInteger : public NCollection_Array1<int>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<int>::value_type& theValue);
+    TColStd_HArray1OfInteger(const NCollection_Array1<int>& theOther);
+    const NCollection_Array1<int>& Array1();
+    NCollection_Array1<int>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfInteger)
+
+
+class TColStd_HArray1OfAsciiString : public NCollection_Array1<TCollection_AsciiString>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_AsciiString>::value_type& theValue);
+    TColStd_HArray1OfAsciiString(const NCollection_Array1<TCollection_AsciiString>& theOther);
+    const NCollection_Array1<TCollection_AsciiString>& Array1();
+    NCollection_Array1<TCollection_AsciiString>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfAsciiString)
+
+
 class TColStd_HArray1OfTransient : public NCollection_Array1<opencascade::handle<Standard_Transient>>, public Standard_Transient {
   public:
     TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -567,7 +730,68 @@ class TColStd_HArray1OfTransient : public NCollection_Array1<opencascade::handle
 };
 %make_alias(TColStd_HArray1OfTransient)
 
+
+class TColStd_HArray1OfListOfInteger : public NCollection_Array1<TColStd_ListOfInteger>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_ListOfInteger>::value_type& theValue);
+    TColStd_HArray1OfListOfInteger(const NCollection_Array1<TColStd_ListOfInteger>& theOther);
+    const NCollection_Array1<TColStd_ListOfInteger>& Array1();
+    NCollection_Array1<TColStd_ListOfInteger>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfListOfInteger)
+
+
+class TColStd_HArray1OfExtendedString : public NCollection_Array1<TCollection_ExtendedString>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_ExtendedString>::value_type& theValue);
+    TColStd_HArray1OfExtendedString(const NCollection_Array1<TCollection_ExtendedString>& theOther);
+    const NCollection_Array1<TCollection_ExtendedString>& Array1();
+    NCollection_Array1<TCollection_ExtendedString>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfExtendedString)
+
 /* harray2 classes */
+class TColStd_HArray2OfReal : public NCollection_Array2<double>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<double>::value_type& theValue);
+    TColStd_HArray2OfReal(const NCollection_Array2<double>& theOther);
+    const NCollection_Array2<double>& Array2 ();
+    NCollection_Array2<double>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfReal)
+
+
+class TColStd_HArray2OfInteger : public NCollection_Array2<int>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<int>::value_type& theValue);
+    TColStd_HArray2OfInteger(const NCollection_Array2<int>& theOther);
+    const NCollection_Array2<int>& Array2 ();
+    NCollection_Array2<int>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfInteger)
+
+
+class TColStd_HArray2OfTransient : public NCollection_Array2<opencascade::handle<Standard_Transient>>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Standard_Transient>>::value_type& theValue);
+    TColStd_HArray2OfTransient(const NCollection_Array2<opencascade::handle<Standard_Transient>>& theOther);
+    const NCollection_Array2<opencascade::handle<Standard_Transient>>& Array2 ();
+    NCollection_Array2<opencascade::handle<Standard_Transient>>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfTransient)
+
+
 class TColStd_HArray2OfBoolean : public NCollection_Array2<bool>, public Standard_Transient {
   public:
     TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -594,56 +818,41 @@ class TColStd_HArray2OfCharacter : public NCollection_Array2<char>, public Stand
 %make_alias(TColStd_HArray2OfCharacter)
 
 
-class TColStd_HArray2OfInteger : public NCollection_Array2<int>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<int>::value_type& theValue);
-    TColStd_HArray2OfInteger(const NCollection_Array2<int>& theOther);
-    const NCollection_Array2<int>& Array2 ();
-    NCollection_Array2<int>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfInteger)
-
-
-class TColStd_HArray2OfReal : public NCollection_Array2<double>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<double>::value_type& theValue);
-    TColStd_HArray2OfReal(const NCollection_Array2<double>& theOther);
-    const NCollection_Array2<double>& Array2 ();
-    NCollection_Array2<double>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfReal)
-
-
-class TColStd_HArray2OfTransient : public NCollection_Array2<opencascade::handle<Standard_Transient>>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Standard_Transient>>::value_type& theValue);
-    TColStd_HArray2OfTransient(const NCollection_Array2<opencascade::handle<Standard_Transient>>& theOther);
-    const NCollection_Array2<opencascade::handle<Standard_Transient>>& Array2 ();
-    NCollection_Array2<opencascade::handle<Standard_Transient>>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfTransient)
-
-
 /* hsequence classes */
-class TColStd_HSequenceOfAsciiString : public NCollection_Sequence<TCollection_AsciiString>, public Standard_Transient {
+class TColStd_HSequenceOfReal : public NCollection_Sequence<double>, public Standard_Transient {
   public:
-    TColStd_HSequenceOfAsciiString();
-    TColStd_HSequenceOfAsciiString(const NCollection_Sequence<TCollection_AsciiString>& theOther);
-    const NCollection_Sequence<TCollection_AsciiString>& Sequence();
-    void Append (const NCollection_Sequence<TCollection_AsciiString>::value_type& theItem);
-    void Append (NCollection_Sequence<TCollection_AsciiString>& theSequence);
-    NCollection_Sequence<TCollection_AsciiString>& ChangeSequence();
+    TColStd_HSequenceOfReal();
+    TColStd_HSequenceOfReal(const NCollection_Sequence<double>& theOther);
+    const NCollection_Sequence<double>& Sequence();
+    void Append (const NCollection_Sequence<double>::value_type& theItem);
+    void Append (NCollection_Sequence<double>& theSequence);
+    NCollection_Sequence<double>& ChangeSequence();
 };
-%make_alias(TColStd_HSequenceOfAsciiString)
+%make_alias(TColStd_HSequenceOfReal)
+
+
+class TColStd_HSequenceOfTransient : public NCollection_Sequence<opencascade::handle<Standard_Transient>>, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfTransient();
+    TColStd_HSequenceOfTransient(const NCollection_Sequence<opencascade::handle<Standard_Transient>>& theOther);
+    const NCollection_Sequence<opencascade::handle<Standard_Transient>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<Standard_Transient>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<Standard_Transient>>& theSequence);
+    NCollection_Sequence<opencascade::handle<Standard_Transient>>& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfTransient)
+
+
+class TColStd_HSequenceOfInteger : public NCollection_Sequence<int>, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfInteger();
+    TColStd_HSequenceOfInteger(const NCollection_Sequence<int>& theOther);
+    const NCollection_Sequence<int>& Sequence();
+    void Append (const NCollection_Sequence<int>::value_type& theItem);
+    void Append (NCollection_Sequence<int>& theSequence);
+    NCollection_Sequence<int>& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfInteger)
 
 
 class TColStd_HSequenceOfExtendedString : public NCollection_Sequence<TCollection_ExtendedString>, public Standard_Transient {
@@ -682,40 +891,16 @@ class TColStd_HSequenceOfHExtendedString : public NCollection_Sequence<opencasca
 %make_alias(TColStd_HSequenceOfHExtendedString)
 
 
-class TColStd_HSequenceOfInteger : public NCollection_Sequence<int>, public Standard_Transient {
+class TColStd_HSequenceOfAsciiString : public NCollection_Sequence<TCollection_AsciiString>, public Standard_Transient {
   public:
-    TColStd_HSequenceOfInteger();
-    TColStd_HSequenceOfInteger(const NCollection_Sequence<int>& theOther);
-    const NCollection_Sequence<int>& Sequence();
-    void Append (const NCollection_Sequence<int>::value_type& theItem);
-    void Append (NCollection_Sequence<int>& theSequence);
-    NCollection_Sequence<int>& ChangeSequence();
+    TColStd_HSequenceOfAsciiString();
+    TColStd_HSequenceOfAsciiString(const NCollection_Sequence<TCollection_AsciiString>& theOther);
+    const NCollection_Sequence<TCollection_AsciiString>& Sequence();
+    void Append (const NCollection_Sequence<TCollection_AsciiString>::value_type& theItem);
+    void Append (NCollection_Sequence<TCollection_AsciiString>& theSequence);
+    NCollection_Sequence<TCollection_AsciiString>& ChangeSequence();
 };
-%make_alias(TColStd_HSequenceOfInteger)
-
-
-class TColStd_HSequenceOfReal : public NCollection_Sequence<double>, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfReal();
-    TColStd_HSequenceOfReal(const NCollection_Sequence<double>& theOther);
-    const NCollection_Sequence<double>& Sequence();
-    void Append (const NCollection_Sequence<double>::value_type& theItem);
-    void Append (NCollection_Sequence<double>& theSequence);
-    NCollection_Sequence<double>& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfReal)
-
-
-class TColStd_HSequenceOfTransient : public NCollection_Sequence<opencascade::handle<Standard_Transient>>, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfTransient();
-    TColStd_HSequenceOfTransient(const NCollection_Sequence<opencascade::handle<Standard_Transient>>& theOther);
-    const NCollection_Sequence<opencascade::handle<Standard_Transient>>& Sequence();
-    void Append (const NCollection_Sequence<opencascade::handle<Standard_Transient>>::value_type& theItem);
-    void Append (NCollection_Sequence<opencascade::handle<Standard_Transient>>& theSequence);
-    NCollection_Sequence<opencascade::handle<Standard_Transient>>& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfTransient)
+%make_alias(TColStd_HSequenceOfAsciiString)
 
 
 /* class aliases */

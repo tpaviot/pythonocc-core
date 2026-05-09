@@ -599,22 +599,53 @@ Message_FAIL = Message_StatusType.Message_FAIL
 %template(Message_ListOfAlert) NCollection_List<opencascade::handle<Message_Alert>>;
 
 %extend NCollection_List<opencascade::handle<Message_Alert>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Message_ListIteratorOfListOfAlert(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Message_ListOfMsg) NCollection_List<Message_Msg>;
 
 %extend NCollection_List<Message_Msg> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Message_ListIteratorOfListOfMsg(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Message_SequenceOfPrinters) NCollection_Sequence<opencascade::handle<Message_Printer>>;
 
 %extend NCollection_Sequence<opencascade::handle<Message_Printer>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1014,13 +1045,13 @@ theStatus: Message_Status
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>>
+opencascade::handle<TColStd_HSequenceOfHExtendedString>
 
 Description
 -----------
 Return the strings associated with the indicated status; Null handle if no such status or no strings associated with it.
 ") GetMessageStrings;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HExtendedString>>> GetMessageStrings(const Message_Status & theStatus);
+		opencascade::handle<TColStd_HSequenceOfHExtendedString> GetMessageStrings(const Message_Status & theStatus);
 
 		/****** Message_Algorithm::GetMessenger ******/
 		/****** md5 signature: 29076e594d0ec0e5d3c6d238094013a4 ******/
@@ -1073,7 +1104,7 @@ Prepares a string containing a list of integers contained in theError map, but n
 		%feature("autodoc", "
 Parameters
 ----------
-theReportSeq: TCollection_HExtendedString
+theReportSeq: TColStd_SequenceOfHExtendedString
 theMaxCount: int
 
 Return
@@ -1084,7 +1115,7 @@ Description
 -----------
 Prepares a string containing a list of names contained in theReportSeq sequence, but not more than theMaxCount.
 ") PrepareReport;
-		static TCollection_ExtendedString PrepareReport(const NCollection_Sequence<opencascade::handle<TCollection_HExtendedString> > & theReportSeq, const int theMaxCount);
+		static TCollection_ExtendedString PrepareReport(const TColStd_SequenceOfHExtendedString & theReportSeq, const int theMaxCount);
 
 		/****** Message_Algorithm::SendMessages ******/
 		/****** md5 signature: 94a619c7e0c94d18167449c97b5712f8 ******/

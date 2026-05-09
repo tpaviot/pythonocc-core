@@ -104,6 +104,11 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(IGESControl_ActorWrite)
+%wrap_handle(IGESControl_AlgoContainer)
+%wrap_handle(IGESControl_Controller)
+%wrap_handle(IGESControl_IGESBoundary)
+%wrap_handle(IGESControl_ToolContainer)
 /* end handles declaration */
 
 /* templates */
@@ -171,6 +176,8 @@ Transfers Shape to IGES Entities //! ModeTrans may be: 0 -> groups of Faces or 1
 };
 
 
+%make_alias(IGESControl_ActorWrite)
+
 %extend IGESControl_ActorWrite {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -197,6 +204,8 @@ Empty constructor.
 
 };
 
+
+%make_alias(IGESControl_AlgoContainer)
 
 %extend IGESControl_AlgoContainer {
 	%pythoncode {
@@ -314,6 +323,8 @@ Takes one Shape and transfers it to the InterfaceModel (already created by NewMo
 };
 
 
+%make_alias(IGESControl_Controller)
+
 %extend IGESControl_Controller {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -379,6 +390,8 @@ Checks result of translation of IGES boundary entities (types 141, 142 or 508). 
 
 };
 
+
+%make_alias(IGESControl_IGESBoundary)
 
 %extend IGESControl_IGESBoundary {
 	%pythoncode {
@@ -541,6 +554,8 @@ Returns IGESControl_IGESBoundary.
 
 };
 
+
+%make_alias(IGESControl_ToolContainer)
 
 %extend IGESControl_ToolContainer {
 	%pythoncode {

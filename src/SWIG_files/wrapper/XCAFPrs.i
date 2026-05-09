@@ -127,6 +127,8 @@ enum  {
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XCAFPrs_AISObject)
+%wrap_handle(XCAFPrs_Driver)
 %wrap_handle(XCAFPrs_Texture)
 /* end handles declaration */
 
@@ -315,6 +317,8 @@ Sets the material aspect. This method assigns the new default material without o
 };
 
 
+%make_alias(XCAFPrs_AISObject)
+
 %extend XCAFPrs_AISObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -369,7 +373,7 @@ Parameter theDefStyle default style for nodes with undefined style.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRoots: NCollection_Sequence<TDF_Label>
+theRoots: TDF_LabelSequence
 theFlags: int
 theDefStyle: XCAFPrs_Style (optional, default to XCAFPrs_Style())
 
@@ -385,7 +389,7 @@ Parameter theRoots root labels to explore within specified document
 Parameter theFlags iteration flags 
 Parameter theDefStyle default style for nodes with undefined style.
 ") XCAFPrs_DocumentExplorer;
-		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::ChangeCurrent ******/
 		/****** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ******/
@@ -573,7 +577,7 @@ Parameter theDefStyle default style for nodes with undefined style.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRoots: NCollection_Sequence<TDF_Label>
+theRoots: TDF_LabelSequence
 theFlags: int
 theDefStyle: XCAFPrs_Style (optional, default to XCAFPrs_Style())
 
@@ -589,7 +593,7 @@ Parameter theRoots root labels to explore within specified document
 Parameter theFlags iteration flags 
 Parameter theDefStyle default style for nodes with undefined style.
 ") Init;
-		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
+		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
 		/****** XCAFPrs_DocumentExplorer::More ******/
 		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
@@ -790,6 +794,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XCAFPrs_Driver)
 
 %extend XCAFPrs_Driver {
 	%pythoncode {

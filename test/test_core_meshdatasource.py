@@ -127,10 +127,9 @@ def testset_check_normals():
     # get all nodes
     all_nodes = a_data_source.GetAllNodes()
     assert all_nodes.NbBuckets() == 101
-    all_nodes.Statistics()
+    # NCollection_PackedMap.Statistics() was removed in OCCT 8.0
     # get all GetAllElements
     all_elements = a_data_source.GetAllElements()
-    all_elements.Statistics()
     assert all_elements.NbBuckets() == 101
 
 

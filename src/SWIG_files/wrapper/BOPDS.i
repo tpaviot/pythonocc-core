@@ -44,9 +44,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopds.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntTools_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<IntTools_module.hxx>
@@ -82,9 +84,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopds.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import Bnd.i
 %import IntTools.i
 %import TopoDS.i
+%import TopTools.i
 %import TopAbs.i
 %import gp.i
 
@@ -132,35 +136,46 @@ from OCC.Core.Exception import *
 %template(BOPDS_ListOfPave) NCollection_List<BOPDS_Pave>;
 
 %extend NCollection_List<BOPDS_Pave> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPDS_ListIteratorOfListOfPave(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>>;
 %template(BOPDS_MapOfPair) NCollection_Map<BOPDS_Pair>;
 %template(BOPDS_MapOfPave) NCollection_Map<BOPDS_Pave>;
 %template(BOPDS_MapOfPaveBlock) NCollection_Map<opencascade::handle<BOPDS_PaveBlock>>;
-%template(BOPDS_VectorOfCurve) NCollection_Vector<BOPDS_Curve>;
-%template(BOPDS_VectorOfFaceInfo) NCollection_Vector<BOPDS_FaceInfo>;
-%template(BOPDS_VectorOfIndexRange) NCollection_Vector<BOPDS_IndexRange>;
-%template(BOPDS_VectorOfInterfEE) NCollection_Vector<BOPDS_InterfEE>;
-%template(BOPDS_VectorOfInterfEF) NCollection_Vector<BOPDS_InterfEF>;
-%template(BOPDS_VectorOfInterfEZ) NCollection_Vector<BOPDS_InterfEZ>;
-%template(BOPDS_VectorOfInterfFF) NCollection_Vector<BOPDS_InterfFF>;
-%template(BOPDS_VectorOfInterfFZ) NCollection_Vector<BOPDS_InterfFZ>;
-%template(BOPDS_VectorOfInterfVE) NCollection_Vector<BOPDS_InterfVE>;
-%template(BOPDS_VectorOfInterfVF) NCollection_Vector<BOPDS_InterfVF>;
-%template(BOPDS_VectorOfInterfVV) NCollection_Vector<BOPDS_InterfVV>;
-%template(BOPDS_VectorOfInterfVZ) NCollection_Vector<BOPDS_InterfVZ>;
-%template(BOPDS_VectorOfInterfZZ) NCollection_Vector<BOPDS_InterfZZ>;
-%template(BOPDS_VectorOfPair) NCollection_Vector<BOPDS_Pair>;
+%template(BOPDS_VectorOfCurve) NCollection_DynamicArray<BOPDS_Curve>;
+%template(BOPDS_VectorOfFaceInfo) NCollection_DynamicArray<BOPDS_FaceInfo>;
+%template(BOPDS_VectorOfIndexRange) NCollection_DynamicArray<BOPDS_IndexRange>;
+%template(BOPDS_VectorOfInterfEE) NCollection_DynamicArray<BOPDS_InterfEE>;
+%template(BOPDS_VectorOfInterfEF) NCollection_DynamicArray<BOPDS_InterfEF>;
+%template(BOPDS_VectorOfInterfEZ) NCollection_DynamicArray<BOPDS_InterfEZ>;
+%template(BOPDS_VectorOfInterfFF) NCollection_DynamicArray<BOPDS_InterfFF>;
+%template(BOPDS_VectorOfInterfFZ) NCollection_DynamicArray<BOPDS_InterfFZ>;
+%template(BOPDS_VectorOfInterfVE) NCollection_DynamicArray<BOPDS_InterfVE>;
+%template(BOPDS_VectorOfInterfVF) NCollection_DynamicArray<BOPDS_InterfVF>;
+%template(BOPDS_VectorOfInterfVV) NCollection_DynamicArray<BOPDS_InterfVV>;
+%template(BOPDS_VectorOfInterfVZ) NCollection_DynamicArray<BOPDS_InterfVZ>;
+%template(BOPDS_VectorOfInterfZZ) NCollection_DynamicArray<BOPDS_InterfZZ>;
+%template(BOPDS_VectorOfPair) NCollection_DynamicArray<BOPDS_Pair>;
 %template(BOPDS_VectorOfPave) NCollection_Array1<BOPDS_Pave>;
 Array1ExtendIter(BOPDS_Pave)
 
-%template(BOPDS_VectorOfPoint) NCollection_Vector<BOPDS_Point>;
-%template(BOPDS_VectorOfShapeInfo) NCollection_Vector<BOPDS_ShapeInfo>;
-%template(BOPDS_VectorOfVectorOfPair) NCollection_Vector<BOPDS_VectorOfPair>;
+%template(BOPDS_VectorOfPoint) NCollection_DynamicArray<BOPDS_Point>;
+%template(BOPDS_VectorOfShapeInfo) NCollection_DynamicArray<BOPDS_ShapeInfo>;
 /* end templates declaration */
 
 /* typedefs */
@@ -182,24 +197,24 @@ typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>> BOPDS_MapOfCommo
 typedef NCollection_Map<BOPDS_Pair> BOPDS_MapOfPair;
 typedef NCollection_Map<BOPDS_Pave> BOPDS_MapOfPave;
 typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>> BOPDS_MapOfPaveBlock;
-typedef NCollection_Vector<BOPDS_Curve> BOPDS_VectorOfCurve;
-typedef NCollection_Vector<BOPDS_FaceInfo> BOPDS_VectorOfFaceInfo;
-typedef NCollection_Vector<BOPDS_IndexRange> BOPDS_VectorOfIndexRange;
-typedef NCollection_Vector<BOPDS_InterfEE> BOPDS_VectorOfInterfEE;
-typedef NCollection_Vector<BOPDS_InterfEF> BOPDS_VectorOfInterfEF;
-typedef NCollection_Vector<BOPDS_InterfEZ> BOPDS_VectorOfInterfEZ;
-typedef NCollection_Vector<BOPDS_InterfFF> BOPDS_VectorOfInterfFF;
-typedef NCollection_Vector<BOPDS_InterfFZ> BOPDS_VectorOfInterfFZ;
-typedef NCollection_Vector<BOPDS_InterfVE> BOPDS_VectorOfInterfVE;
-typedef NCollection_Vector<BOPDS_InterfVF> BOPDS_VectorOfInterfVF;
-typedef NCollection_Vector<BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
-typedef NCollection_Vector<BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
-typedef NCollection_Vector<BOPDS_InterfZZ> BOPDS_VectorOfInterfZZ;
-typedef NCollection_Vector<BOPDS_Pair> BOPDS_VectorOfPair;
+typedef NCollection_DynamicArray<BOPDS_Curve> BOPDS_VectorOfCurve;
+typedef NCollection_DynamicArray<BOPDS_FaceInfo> BOPDS_VectorOfFaceInfo;
+typedef NCollection_DynamicArray<BOPDS_IndexRange> BOPDS_VectorOfIndexRange;
+typedef NCollection_DynamicArray<BOPDS_InterfEE> BOPDS_VectorOfInterfEE;
+typedef NCollection_DynamicArray<BOPDS_InterfEF> BOPDS_VectorOfInterfEF;
+typedef NCollection_DynamicArray<BOPDS_InterfEZ> BOPDS_VectorOfInterfEZ;
+typedef NCollection_DynamicArray<BOPDS_InterfFF> BOPDS_VectorOfInterfFF;
+typedef NCollection_DynamicArray<BOPDS_InterfFZ> BOPDS_VectorOfInterfFZ;
+typedef NCollection_DynamicArray<BOPDS_InterfVE> BOPDS_VectorOfInterfVE;
+typedef NCollection_DynamicArray<BOPDS_InterfVF> BOPDS_VectorOfInterfVF;
+typedef NCollection_DynamicArray<BOPDS_InterfVV> BOPDS_VectorOfInterfVV;
+typedef NCollection_DynamicArray<BOPDS_InterfVZ> BOPDS_VectorOfInterfVZ;
+typedef NCollection_DynamicArray<BOPDS_InterfZZ> BOPDS_VectorOfInterfZZ;
+typedef NCollection_DynamicArray<BOPDS_Pair> BOPDS_VectorOfPair;
 typedef NCollection_Array1<BOPDS_Pave> BOPDS_VectorOfPave;
-typedef NCollection_Vector<BOPDS_Point> BOPDS_VectorOfPoint;
-typedef NCollection_Vector<BOPDS_ShapeInfo> BOPDS_VectorOfShapeInfo;
-typedef NCollection_Vector<BOPDS_VectorOfPair> BOPDS_VectorOfVectorOfPair;
+typedef NCollection_DynamicArray<BOPDS_Point> BOPDS_VectorOfPoint;
+typedef NCollection_DynamicArray<BOPDS_ShapeInfo> BOPDS_VectorOfShapeInfo;
+typedef NCollection_DynamicArray<BOPDS_VectorOfPair> BOPDS_VectorOfVectorOfPair;
 /* end typedefs declaration */
 
 /**************************
@@ -281,7 +296,7 @@ Modifier Adds the pave block <aPB> to the list of pave blocks of the common bloc
 		%feature("autodoc", "
 Parameters
 ----------
-aLF: NCollection_List<int>
+aLF: TColStd_ListOfInteger
 
 Return
 -------
@@ -291,7 +306,7 @@ Description
 -----------
 Modifier Appends the list of indices of faces <aLF> to the list of indices of faces of the common block (the input list is emptied).
 ") AppendFaces;
-		void AppendFaces(NCollection_List<int> & aLF);
+		void AppendFaces(TColStd_ListOfInteger & aLF);
 
 		/****** BOPDS_CommonBlock::Contains ******/
 		/****** md5 signature: 4b3272a694594675bae785a65b0903cf ******/
@@ -360,13 +375,13 @@ Selector Returns the index of the edge of all pave blocks of the common block.
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Selector Returns the list of indices of faces of the common block.
 ") Faces;
-		const NCollection_List<int> & Faces();
+		const TColStd_ListOfInteger & Faces();
 
 		/****** BOPDS_CommonBlock::IsPaveBlockOnEdge ******/
 		/****** md5 signature: 2d57f1d25bca31907689f1231d430daf ******/
@@ -472,7 +487,7 @@ Modifier Assign the index <theEdge> as the edge index to all pave blocks of the 
 		%feature("autodoc", "
 Parameters
 ----------
-aLF: NCollection_List<int>
+aLF: TColStd_ListOfInteger
 
 Return
 -------
@@ -482,7 +497,7 @@ Description
 -----------
 Modifier Sets the list of indices of faces <aLF> of the common block.
 ") SetFaces;
-		void SetFaces(const NCollection_List<int> & aLF);
+		void SetFaces(const TColStd_ListOfInteger & aLF);
 
 		/****** BOPDS_CommonBlock::SetPaveBlocks ******/
 		/****** md5 signature: 9ce14e8841ee61c82967a6fb7939fac5 ******/
@@ -500,7 +515,7 @@ Description
 -----------
 Modifier Sets the list of pave blocks for the common block.
 ") SetPaveBlocks;
-		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & aLPB);
+		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & aLPB);
 
 		/****** BOPDS_CommonBlock::SetRealPaveBlock ******/
 		/****** md5 signature: bd90910404bf474e53d2306cbe0b543b ******/
@@ -909,13 +924,13 @@ Selector/Modifier Returns the list of pave blocks of the curve.
 		%feature("compactdefaultargs") ChangeTechnoVertices;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Selector/Modifier Returns list of indices of technologic vertices of the curve.
 ") ChangeTechnoVertices;
-		NCollection_List<int> & ChangeTechnoVertices();
+		TColStd_ListOfInteger & ChangeTechnoVertices();
 
 		/****** BOPDS_Curve::Curve ******/
 		/****** md5 signature: f601887c73fa6c5311bace5eeee9b758 ******/
@@ -1021,7 +1036,7 @@ Description
 -----------
 No available documentation.
 ") SetPaveBlocks;
-		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & theLPB);
+		void SetPaveBlocks(const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & theLPB);
 
 		/****** BOPDS_Curve::SetTolerance ******/
 		/****** md5 signature: 46723e0a5720b7717ac743274fef3d11 ******/
@@ -1059,13 +1074,13 @@ Returns the tangential tolerance of the curve.
 		%feature("compactdefaultargs") TechnoVertices;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Selector Returns list of indices of technologic vertices of the curve.
 ") TechnoVertices;
-		const NCollection_List<int> & TechnoVertices();
+		const TColStd_ListOfInteger & TechnoVertices();
 
 		/****** BOPDS_Curve::Tolerance ******/
 		/****** md5 signature: 0f371f25723fe3719d8c637d644b341d ******/
@@ -1184,7 +1199,7 @@ Selector.
 Parameters
 ----------
 theFaceIndex: int
-theVertexList: NCollection_List<int>
+theVertexList: TColStd_ListOfInteger
 
 Return
 -------
@@ -1194,7 +1209,7 @@ Description
 -----------
 Selector Returns the indices of alone vertices for the face with index @p theFaceIndex.
 ") AloneVertices;
-		void AloneVertices(const int theFaceIndex, NCollection_List<int> & theVertexList);
+		void AloneVertices(const int theFaceIndex, TColStd_ListOfInteger & theVertexList);
 
 		/****** BOPDS_DS::Append ******/
 		/****** md5 signature: 8247691645497818952579581db4a2ba ******/
@@ -1237,13 +1252,13 @@ Modifier Appends the default information about the shape [theS] to the data stru
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Selector Returns the arguments of an operation.
 ") Arguments;
-		const NCollection_List<TopoDS_Shape> Arguments();
+		const TopTools_ListOfShape & Arguments();
 
 		/****** BOPDS_DS::BuildBndBoxSolid ******/
 		/****** md5 signature: 97e2214a5b5b405ea8d6174f4b73e3f8 ******/
@@ -1302,17 +1317,17 @@ Selector/Modifier Returns the pave blocks for the shape with index theIndex.
 		NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocks(const int theIndex);
 
 		/****** BOPDS_DS::ChangePaveBlocksPool ******/
-		/****** md5 signature: 47ad8ec3b0aac5f0ffc3cf68b62d90ac ******/
+		/****** md5 signature: 97b39ee777fbbf0aae9a8416d2d02daf ******/
 		%feature("compactdefaultargs") ChangePaveBlocksPool;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
+NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
 
 Description
 -----------
 Selector/Modifier Returns the information about pave blocks on source edges.
 ") ChangePaveBlocksPool;
-		NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & ChangePaveBlocksPool();
+		NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & ChangePaveBlocksPool();
 
 		/****** BOPDS_DS::ChangeShapeInfo ******/
 		/****** md5 signature: cc6f62809d6e81d4621028ac8240dc36 ******/
@@ -1402,7 +1417,7 @@ Parameters
 ----------
 theIndex: int
 theMPB: BOPDS_PaveBlock
-theMVP: NCollection_Map<int>
+theMVP: TColStd_MapOfInteger
 
 Return
 -------
@@ -1412,7 +1427,7 @@ Description
 -----------
 Selector Returns the state In [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoIn;
-		void FaceInfoIn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & theMPB, NCollection_Map<int> & theMVP);
+		void FaceInfoIn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & theMPB, TColStd_MapOfInteger & theMVP);
 
 		/****** BOPDS_DS::FaceInfoOn ******/
 		/****** md5 signature: 98f0d5944e4a03f045f0cfb8e53928e5 ******/
@@ -1422,7 +1437,7 @@ Parameters
 ----------
 theIndex: int
 theMPB: BOPDS_PaveBlock
-theMVP: NCollection_Map<int>
+theMVP: TColStd_MapOfInteger
 
 Return
 -------
@@ -1432,20 +1447,20 @@ Description
 -----------
 Selector Returns the state On [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoOn;
-		void FaceInfoOn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & theMPB, NCollection_Map<int> & theMVP);
+		void FaceInfoOn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & theMPB, TColStd_MapOfInteger & theMVP);
 
 		/****** BOPDS_DS::FaceInfoPool ******/
-		/****** md5 signature: 8961cf8a4951fd6e88dc15b3e0d6696c ******/
+		/****** md5 signature: d112e6b704fee4761a5287a8ddfc87d5 ******/
 		%feature("compactdefaultargs") FaceInfoPool;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_FaceInfo>
+NCollection_DynamicArray<BOPDS_FaceInfo>
 
 Description
 -----------
 Selector Returns the information about state of faces.
 ") FaceInfoPool;
-		const NCollection_Vector<BOPDS_FaceInfo> & FaceInfoPool();
+		const NCollection_DynamicArray<BOPDS_FaceInfo> & FaceInfoPool();
 
 		/****** BOPDS_DS::GetSameDomainIndex ******/
 		/****** md5 signature: 713c51ff0932a6e8a48c31d23af06a17 ******/
@@ -1650,134 +1665,134 @@ No available documentation.
 		void InitPaveBlocksForVertex(const int theNV);
 
 		/****** BOPDS_DS::InterfEE ******/
-		/****** md5 signature: 4622cd96c70124f07a910dbf48d0dc50 ******/
+		/****** md5 signature: 651ba59807224abb63c084efeb9c96fe ******/
 		%feature("compactdefaultargs") InterfEE;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfEE>
+NCollection_DynamicArray<BOPDS_InterfEE>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Edge.
 ") InterfEE;
-		NCollection_Vector<BOPDS_InterfEE> & InterfEE();
+		NCollection_DynamicArray<BOPDS_InterfEE> & InterfEE();
 
 		/****** BOPDS_DS::InterfEF ******/
-		/****** md5 signature: 19cbe7e83e4aba38ac127127d0e5309b ******/
+		/****** md5 signature: 3143af825731697bf392f4bca52cc701 ******/
 		%feature("compactdefaultargs") InterfEF;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfEF>
+NCollection_DynamicArray<BOPDS_InterfEF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Face.
 ") InterfEF;
-		NCollection_Vector<BOPDS_InterfEF> & InterfEF();
+		NCollection_DynamicArray<BOPDS_InterfEF> & InterfEF();
 
 		/****** BOPDS_DS::InterfEZ ******/
-		/****** md5 signature: 017c127698c03157196147d9db3d150d ******/
+		/****** md5 signature: c6033d06e7bc0fe9f2008e97208e97d2 ******/
 		%feature("compactdefaultargs") InterfEZ;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfEZ>
+NCollection_DynamicArray<BOPDS_InterfEZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Edge/Solid.
 ") InterfEZ;
-		NCollection_Vector<BOPDS_InterfEZ> & InterfEZ();
+		NCollection_DynamicArray<BOPDS_InterfEZ> & InterfEZ();
 
 		/****** BOPDS_DS::InterfFF ******/
-		/****** md5 signature: cf6414da1b3ae4053361ac0a410a454d ******/
+		/****** md5 signature: efc9cd895f2035ffcc0112546da2fe20 ******/
 		%feature("compactdefaultargs") InterfFF;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfFF>
+NCollection_DynamicArray<BOPDS_InterfFF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Face/Face.
 ") InterfFF;
-		NCollection_Vector<BOPDS_InterfFF> & InterfFF();
+		NCollection_DynamicArray<BOPDS_InterfFF> & InterfFF();
 
 		/****** BOPDS_DS::InterfFZ ******/
-		/****** md5 signature: dd6dabdbeb707e8ef04ed581b6d20b49 ******/
+		/****** md5 signature: 131716e6c152520b6b52546e71a84fb9 ******/
 		%feature("compactdefaultargs") InterfFZ;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfFZ>
+NCollection_DynamicArray<BOPDS_InterfFZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Face/Solid.
 ") InterfFZ;
-		NCollection_Vector<BOPDS_InterfFZ> & InterfFZ();
+		NCollection_DynamicArray<BOPDS_InterfFZ> & InterfFZ();
 
 		/****** BOPDS_DS::InterfVE ******/
-		/****** md5 signature: ff3e63455a5023aced24a299bc0ccf06 ******/
+		/****** md5 signature: b7e46c6790f7b9b198f0693f66dde86b ******/
 		%feature("compactdefaultargs") InterfVE;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfVE>
+NCollection_DynamicArray<BOPDS_InterfVE>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Edge.
 ") InterfVE;
-		NCollection_Vector<BOPDS_InterfVE> & InterfVE();
+		NCollection_DynamicArray<BOPDS_InterfVE> & InterfVE();
 
 		/****** BOPDS_DS::InterfVF ******/
-		/****** md5 signature: 42576a36bcd5a1565f4ff63cc3b1e38d ******/
+		/****** md5 signature: bd1784aaa5491a1cffeb8813cf7f7255 ******/
 		%feature("compactdefaultargs") InterfVF;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfVF>
+NCollection_DynamicArray<BOPDS_InterfVF>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Face.
 ") InterfVF;
-		NCollection_Vector<BOPDS_InterfVF> & InterfVF();
+		NCollection_DynamicArray<BOPDS_InterfVF> & InterfVF();
 
 		/****** BOPDS_DS::InterfVV ******/
-		/****** md5 signature: f18180263cda53351be7c2fe3bc126f1 ******/
+		/****** md5 signature: a99c27178135645f17ddccf43e361a68 ******/
 		%feature("compactdefaultargs") InterfVV;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfVV>
+NCollection_DynamicArray<BOPDS_InterfVV>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Vertex.
 ") InterfVV;
-		NCollection_Vector<BOPDS_InterfVV> & InterfVV();
+		NCollection_DynamicArray<BOPDS_InterfVV> & InterfVV();
 
 		/****** BOPDS_DS::InterfVZ ******/
-		/****** md5 signature: 6b94361fb3e9d45df4fa855ba65809dd ******/
+		/****** md5 signature: 8ee7c01ed2d4fd9aa38fd35dbb2e6b06 ******/
 		%feature("compactdefaultargs") InterfVZ;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfVZ>
+NCollection_DynamicArray<BOPDS_InterfVZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Vertex/Solid.
 ") InterfVZ;
-		NCollection_Vector<BOPDS_InterfVZ> & InterfVZ();
+		NCollection_DynamicArray<BOPDS_InterfVZ> & InterfVZ();
 
 		/****** BOPDS_DS::InterfZZ ******/
-		/****** md5 signature: 2621f066ab3f631da67146494453c420 ******/
+		/****** md5 signature: d60ace4a79aec470695dd7ae87d2b539 ******/
 		%feature("compactdefaultargs") InterfZZ;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_InterfZZ>
+NCollection_DynamicArray<BOPDS_InterfZZ>
 
 Description
 -----------
 Selector/Modifier Returns the collection of interferences Solid/Solid.
 ") InterfZZ;
-		NCollection_Vector<BOPDS_InterfZZ> & InterfZZ();
+		NCollection_DynamicArray<BOPDS_InterfZZ> & InterfZZ();
 
 		/****** BOPDS_DS::Interferences ******/
 		/****** md5 signature: b3cf058c3fe2c6b826585598c99df3c2 ******/
@@ -1954,17 +1969,17 @@ Selector Returns the pave blocks for the shape with index theIndex.
 		const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocks(const int theIndex);
 
 		/****** BOPDS_DS::PaveBlocksPool ******/
-		/****** md5 signature: ab74c6e62d508fecb7fa16f6e60af44f ******/
+		/****** md5 signature: e61ed297db698fbfc593441dc7b6857d ******/
 		%feature("compactdefaultargs") PaveBlocksPool;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
+NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>
 
 Description
 -----------
 Selector Returns the information about pave blocks on source edges.
 ") PaveBlocksPool;
-		const NCollection_Vector<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & PaveBlocksPool();
+		const NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & PaveBlocksPool();
 
 		/****** BOPDS_DS::Paves ******/
 		/****** md5 signature: 5e26b5d981dc5a811609964299ab07c2 ******/
@@ -2084,7 +2099,7 @@ Clears information about PaveBlocks for the untouched edges.
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -2094,7 +2109,7 @@ Description
 -----------
 Modifier Sets the arguments [theLS] of an operation.
 ") SetArguments;
-		void SetArguments(const NCollection_List<TopoDS_Shape> & theLS);
+		void SetArguments(const TopTools_ListOfShape & theLS);
 
 		/****** BOPDS_DS::SetCommonBlock ******/
 		/****** md5 signature: e4c808b4502142fd887ea0b4a1ee2d11 ******/
@@ -2156,13 +2171,13 @@ Selector Returns the information about the shape with index theIndex.
 		%feature("compactdefaultargs") ShapesSD;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<int, int>
+TColStd_DataMapOfIntegerInteger
 
 Description
 -----------
 Selector Returns the collection same domain shapes.
 ") ShapesSD;
-		NCollection_DataMap<int, int> & ShapesSD();
+		TColStd_DataMapOfIntegerInteger & ShapesSD();
 
 		/****** BOPDS_DS::SharedEdges ******/
 		/****** md5 signature: 3339feba3a05d0f5e4028a92962dd7db ******/
@@ -2172,7 +2187,7 @@ Parameters
 ----------
 theFaceIndex1: int
 theFaceIndex2: int
-theEdgeList: NCollection_List<int>
+theEdgeList: TColStd_ListOfInteger
 theAllocator: NCollection_BaseAllocator
 
 Return
@@ -2183,7 +2198,7 @@ Description
 -----------
 Returns the indices of edges that are shared for the faces with indices @p theFaceIndex1 and @p theFaceIndex2.
 ") SharedEdges;
-		void SharedEdges(const int theFaceIndex1, const int theFaceIndex2, NCollection_List<int> & theEdgeList, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
+		void SharedEdges(const int theFaceIndex1, const int theFaceIndex2, TColStd_ListOfInteger & theEdgeList, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPDS_DS::SubShapesOnIn ******/
 		/****** md5 signature: 368c299b2bd0ecda6dac38199d7ee03d ******/
@@ -2193,8 +2208,8 @@ Parameters
 ----------
 theFaceIndex1: int
 theFaceIndex2: int
-theMVOnIn: NCollection_Map<int>
-theMVCommon: NCollection_Map<int>
+theMVOnIn: TColStd_MapOfInteger
+theMVCommon: TColStd_MapOfInteger
 thePBOnIn: BOPDS_PaveBlock
 theCommonPaveBlocks: BOPDS_PaveBlock
 
@@ -2212,7 +2227,7 @@ Parameter theMVCommon the indices of common vertices for both faces
 Parameter thePBOnIn all On/In pave blocks from both faces 
 Parameter theCommonPaveBlocks the common pave blocks (that are shared by both faces).
 ") SubShapesOnIn;
-		void SubShapesOnIn(const int theFaceIndex1, const int theFaceIndex2, NCollection_Map<int> & theMVOnIn, NCollection_Map<int> & theMVCommon, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock> > & thePBOnIn, NCollection_Map<opencascade::handle<BOPDS_PaveBlock> > & theCommonPaveBlocks);
+		void SubShapesOnIn(const int theFaceIndex1, const int theFaceIndex2, TColStd_MapOfInteger & theMVOnIn, TColStd_MapOfInteger & theMVCommon, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & thePBOnIn, NCollection_Map<opencascade::handle<BOPDS_PaveBlock>> & theCommonPaveBlocks);
 
 		/****** BOPDS_DS::UpdateCommonBlock ******/
 		/****** md5 signature: 109f7ee85e3286f7205bef33e6b0b757 ******/
@@ -2275,7 +2290,7 @@ Update the state In of face with index theIndex.
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_Map<int>
+theFaces: TColStd_MapOfInteger
 
 Return
 -------
@@ -2285,7 +2300,7 @@ Description
 -----------
 Update the state IN for all faces in the given map.
 ") UpdateFaceInfoIn;
-		void UpdateFaceInfoIn(const NCollection_Map<int> & theFaces);
+		void UpdateFaceInfoIn(const TColStd_MapOfInteger & theFaces);
 
 		/****** BOPDS_DS::UpdateFaceInfoOn ******/
 		/****** md5 signature: 508bd6c278ca3fbc04df53ae015f8ed2 ******/
@@ -2311,7 +2326,7 @@ Update the state On of face with index theIndex.
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_Map<int>
+theFaces: TColStd_MapOfInteger
 
 Return
 -------
@@ -2321,7 +2336,7 @@ Description
 -----------
 Update the state ON for all faces in the given map.
 ") UpdateFaceInfoOn;
-		void UpdateFaceInfoOn(const NCollection_Map<int> & theFaces);
+		void UpdateFaceInfoOn(const TColStd_MapOfInteger & theFaces);
 
 		/****** BOPDS_DS::UpdatePaveBlock ******/
 		/****** md5 signature: 973c8bac7cd25e5ce96fdadcf00095b9 ******/
@@ -2475,39 +2490,39 @@ No available documentation.
 		%feature("compactdefaultargs") ChangeVerticesIn;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for vertices of the face that have state In //! On.
 ") ChangeVerticesIn;
-		NCollection_Map<int> & ChangeVerticesIn();
+		TColStd_MapOfInteger & ChangeVerticesIn();
 
 		/****** BOPDS_FaceInfo::ChangeVerticesOn ******/
 		/****** md5 signature: d18d42185703288808272f8539de979c ******/
 		%feature("compactdefaultargs") ChangeVerticesOn;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for vertices of the face that have state On //! Sections.
 ") ChangeVerticesOn;
-		NCollection_Map<int> & ChangeVerticesOn();
+		TColStd_MapOfInteger & ChangeVerticesOn();
 
 		/****** BOPDS_FaceInfo::ChangeVerticesSc ******/
 		/****** md5 signature: 51d23f5bfc67d6d521e0f699312004d3 ******/
 		%feature("compactdefaultargs") ChangeVerticesSc;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector/Modifier Returns the list of indices for section vertices of the face //! Others.
 ") ChangeVerticesSc;
-		NCollection_Map<int> & ChangeVerticesSc();
+		TColStd_MapOfInteger & ChangeVerticesSc();
 
 		/****** BOPDS_FaceInfo::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2597,39 +2612,39 @@ Modifier Sets the index of the face <theI>.
 		%feature("compactdefaultargs") VerticesIn;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector Returns the list of indices for vertices of the face that have state In.
 ") VerticesIn;
-		const NCollection_Map<int> & VerticesIn();
+		const TColStd_MapOfInteger & VerticesIn();
 
 		/****** BOPDS_FaceInfo::VerticesOn ******/
 		/****** md5 signature: 706bcf9d4be328e966bb07d12f3b8b75 ******/
 		%feature("compactdefaultargs") VerticesOn;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector Returns the list of indices for vertices of the face that have state On.
 ") VerticesOn;
-		const NCollection_Map<int> & VerticesOn();
+		const TColStd_MapOfInteger & VerticesOn();
 
 		/****** BOPDS_FaceInfo::VerticesSc ******/
 		/****** md5 signature: 271d7354ad4f592f1d72e9dbbc01e100 ******/
 		%feature("compactdefaultargs") VerticesSc;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Selector Returns the list of indices for section vertices of the face.
 ") VerticesSc;
-		const NCollection_Map<int> & VerticesSc();
+		const TColStd_MapOfInteger & VerticesSc();
 
 };
 
@@ -2920,7 +2935,7 @@ Initializes the iterator theType1 - the first type of shape theType2 - the secon
 		%feature("autodoc", "
 Parameters
 ----------
-theIndicies: NCollection_Map<int>
+theIndicies: TColStd_MapOfInteger
 
 Return
 -------
@@ -2930,7 +2945,7 @@ Description
 -----------
 Updates the tree of Bounding Boxes with increased boxes and intersects such elements with the tree.
 ") IntersectExt;
-		void IntersectExt(const NCollection_Map<int> & theIndicies);
+		void IntersectExt(const TColStd_MapOfInteger & theIndicies);
 
 		/****** BOPDS_Iterator::More ******/
 		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
@@ -3838,7 +3853,7 @@ Description
 -----------
 Modifier Updates the pave block. The extra paves are used to create new pave blocks <theLPB>. <theFlag> - if true, the first and second pave are used to produce new pave blocks.
 ") Update;
-		void Update(NCollection_List<opencascade::handle<BOPDS_PaveBlock> > & theLPB, const bool theFlag = true);
+		void Update(NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & theLPB, const bool theFlag = true);
 
 };
 
@@ -4070,13 +4085,13 @@ Selector/Modifier Returns the boundung box of the shape.
 		%feature("compactdefaultargs") ChangeSubShapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Selector/ Modifier Returns the list of indices of sub-shapes.
 ") ChangeSubShapes;
-		NCollection_List<int> & ChangeSubShapes();
+		TColStd_ListOfInteger & ChangeSubShapes();
 
 		/****** BOPDS_ShapeInfo::Dump ******/
 		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
@@ -4325,13 +4340,13 @@ Selector Returns the type of shape.
 		%feature("compactdefaultargs") SubShapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Selector Returns the list of indices of sub-shapes.
 ") SubShapes;
-		const NCollection_List<int> & SubShapes();
+		const TColStd_ListOfInteger & SubShapes();
 
 };
 
@@ -4480,7 +4495,7 @@ Sets the data structure <pDS> to process. It is used to access the shapes and th
 		%feature("autodoc", "
 Parameters
 ----------
-theLI: NCollection_List<int>
+theLI: TColStd_ListOfInteger
 
 Return
 -------
@@ -4490,7 +4505,7 @@ Description
 -----------
 Sets the first set of indices <theLI> to process.
 ") SetSubSet1;
-		void SetSubSet1(const NCollection_List<int> & theLI);
+		void SetSubSet1(const TColStd_ListOfInteger & theLI);
 
 		/****** BOPDS_SubIterator::SetSubSet2 ******/
 		/****** md5 signature: 75d415ba5078073865c8d0fcd4d6e2fc ******/
@@ -4498,7 +4513,7 @@ Sets the first set of indices <theLI> to process.
 		%feature("autodoc", "
 Parameters
 ----------
-theLI: NCollection_List<int>
+theLI: TColStd_ListOfInteger
 
 Return
 -------
@@ -4508,33 +4523,33 @@ Description
 -----------
 Sets the second set of indices <theLI> to process.
 ") SetSubSet2;
-		void SetSubSet2(const NCollection_List<int> & theLI);
+		void SetSubSet2(const TColStd_ListOfInteger & theLI);
 
 		/****** BOPDS_SubIterator::SubSet1 ******/
 		/****** md5 signature: 97915776bc92a1f5dd0a804c9e63bcf9 ******/
 		%feature("compactdefaultargs") SubSet1;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Returns the first set of indices to process.
 ") SubSet1;
-		const NCollection_List<int> & SubSet1();
+		const TColStd_ListOfInteger & SubSet1();
 
 		/****** BOPDS_SubIterator::SubSet2 ******/
 		/****** md5 signature: d6cdd8f53e14b0c5efcc1f9459cd451a ******/
 		%feature("compactdefaultargs") SubSet2;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Returns the second set of indices to process.
 ") SubSet2;
-		const NCollection_List<int> & SubSet2();
+		const TColStd_ListOfInteger & SubSet2();
 
 		/****** BOPDS_SubIterator::Value ******/
 		/****** md5 signature: 5ccfc0ac3b3b4c10c79203b7c68bc8f9 ******/
@@ -4879,46 +4894,46 @@ Description
 		 BOPDS_InterfFF();
 
 		/****** BOPDS_InterfFF::ChangeCurves ******/
-		/****** md5 signature: 5d83c789d4c500c9f3970aa2488f214d ******/
+		/****** md5 signature: 4c57192d10cc86a40d7d1087b35f53fd ******/
 		%feature("compactdefaultargs") ChangeCurves;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_Curve>
+NCollection_DynamicArray<BOPDS_Curve>
 
 Description
 -----------
 /** * Selector/Modifier * Returns the intersection curves * 
 Return: * intersection curves */.
 ") ChangeCurves;
-		NCollection_Vector<BOPDS_Curve> & ChangeCurves();
+		NCollection_DynamicArray<BOPDS_Curve> & ChangeCurves();
 
 		/****** BOPDS_InterfFF::ChangePoints ******/
-		/****** md5 signature: 184de52774b815ea59e677f947f9d0ca ******/
+		/****** md5 signature: aac9c1b42a70af3e6bff10eda7281e4f ******/
 		%feature("compactdefaultargs") ChangePoints;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_Point>
+NCollection_DynamicArray<BOPDS_Point>
 
 Description
 -----------
 /** * Selector/Modifier * Returns the intersection points * 
 Return: * intersection points */.
 ") ChangePoints;
-		NCollection_Vector<BOPDS_Point> & ChangePoints();
+		NCollection_DynamicArray<BOPDS_Point> & ChangePoints();
 
 		/****** BOPDS_InterfFF::Curves ******/
-		/****** md5 signature: 9abace0bf0b2fd813ce1ed5d0a3f40b9 ******/
+		/****** md5 signature: fa39cd758ab9dcd35f40b5112a268592 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_Curve>
+NCollection_DynamicArray<BOPDS_Curve>
 
 Description
 -----------
 /** * Selector * Returns the intersection curves * 
 Return: * intersection curves */.
 ") Curves;
-		NCollection_Vector<BOPDS_Curve> Curves();
+		NCollection_DynamicArray<BOPDS_Curve> Curves();
 
 		/****** BOPDS_InterfFF::Init ******/
 		/****** md5 signature: 67cae55cef2e39fa32338808680a53f2 ******/
@@ -4940,18 +4955,18 @@ No available documentation.
 		void Init(const int theNbCurves, const int theNbPoints);
 
 		/****** BOPDS_InterfFF::Points ******/
-		/****** md5 signature: 083905ee445dab15ae300905022d2def ******/
+		/****** md5 signature: 1eabb4d6b34db38732a6cd2c930d8626 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
-NCollection_Vector<BOPDS_Point>
+NCollection_DynamicArray<BOPDS_Point>
 
 Description
 -----------
 /** * Selector * Returns the intersection points * 
 Return: * intersection points */.
 ") Points;
-		const NCollection_Vector<BOPDS_Point> & Points();
+		const NCollection_DynamicArray<BOPDS_Point> & Points();
 
 		/****** BOPDS_InterfFF::SetTangentFaces ******/
 		/****** md5 signature: a0d5aea1cb04f1f47cdb384bfec35f9e ******/

@@ -47,10 +47,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_blendfunc.html"
 #include<Adaptor3d_module.hxx>
 #include<gp_module.hxx>
 #include<Convert_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Blend_module.hxx>
 #include<Law_module.hxx>
 #include<math_module.hxx>
+#include<TColgp_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
@@ -65,10 +67,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_blendfunc.html"
 %import Adaptor3d.i
 %import gp.i
 %import Convert.i
+%import TColStd.i
 %import GeomAbs.i
 %import Blend.i
 %import Law.i
 %import math.i
+%import TColgp.i
 %import Adaptor2d.i
 
 %pythoncode {
@@ -168,7 +172,7 @@ SectShape: BlendFunc_SectionShape
 TConv: Convert_ParameterisationType
 AngleMin: double
 AngleMax: double
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -178,7 +182,7 @@ Description
 -----------
 No available documentation.
 ") GetMinimalWeights;
-		static void GetMinimalWeights(const BlendFunc_SectionShape SectShape, const Convert_ParameterisationType TConv, const double AngleMin, const double AngleMax, NCollection_Array1<double> & Weigths);
+		static void GetMinimalWeights(const BlendFunc_SectionShape SectShape, const Convert_ParameterisationType TConv, const double AngleMin, const double AngleMax, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc::GetShape ******/
 		/****** md5 signature: 136c16a5c705dfd3b30d42039ef83659 ******/
@@ -307,7 +311,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -317,7 +321,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_CSCircular::GetSection ******/
 		/****** md5 signature: ecb123000e18615829a4a5735fccf980 ******/
@@ -329,8 +333,8 @@ Param: double
 U: double
 V: double
 W: double
-tabP: NCollection_Array1<gp_Pnt>
-tabV: NCollection_Array1<gp_Vec>
+tabP: TColgp_Array1OfPnt
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -340,7 +344,7 @@ Description
 -----------
 No available documentation.
 ") GetSection;
-		bool GetSection(const double Param, const double U, const double V, const double W, NCollection_Array1<gp_Pnt> & tabP, NCollection_Array1<gp_Vec> & tabV);
+		bool GetSection(const double Param, const double U, const double V, const double W, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
 		/****** BlendFunc_CSCircular::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -422,7 +426,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -433,7 +437,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_CSCircular::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -486,7 +490,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -496,7 +500,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_CSCircular::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -504,7 +508,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -514,7 +518,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_CSCircular::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -662,15 +666,15 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -680,7 +684,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_CSCircular::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -689,12 +693,12 @@ Used for the first and last section The method returns true if the derivatives a
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -704,7 +708,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_CSCircular::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -713,9 +717,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -725,7 +729,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_CSCircular::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/
@@ -978,7 +982,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -988,7 +992,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_CSConstRad::GetSection ******/
 		/****** md5 signature: ecb123000e18615829a4a5735fccf980 ******/
@@ -1000,8 +1004,8 @@ Param: double
 U: double
 V: double
 W: double
-tabP: NCollection_Array1<gp_Pnt>
-tabV: NCollection_Array1<gp_Vec>
+tabP: TColgp_Array1OfPnt
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -1011,7 +1015,7 @@ Description
 -----------
 No available documentation.
 ") GetSection;
-		bool GetSection(const double Param, const double U, const double V, const double W, NCollection_Array1<gp_Pnt> & tabP, NCollection_Array1<gp_Vec> & tabV);
+		bool GetSection(const double Param, const double U, const double V, const double W, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
 		/****** BlendFunc_CSConstRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -1093,7 +1097,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1104,7 +1108,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_CSConstRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -1157,7 +1161,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1167,7 +1171,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_CSConstRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -1175,7 +1179,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1185,7 +1189,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_CSConstRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -1320,15 +1324,15 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1338,7 +1342,7 @@ Description
 -----------
 Used for the first and last section The method returns true if the derivatives are computed, otherwise it returns false.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_CSConstRad::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -1347,12 +1351,12 @@ Used for the first and last section The method returns true if the derivatives a
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1362,7 +1366,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_CSConstRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -1371,9 +1375,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1383,7 +1387,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_CSConstRad::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/
@@ -1669,7 +1673,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1679,7 +1683,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_ChAsym::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -1761,7 +1765,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1772,7 +1776,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_ChAsym::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -1825,7 +1829,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1835,7 +1839,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_ChAsym::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -1843,7 +1847,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1853,7 +1857,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_ChAsym::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -1963,9 +1967,9 @@ Utile pour une visu rapide et approximative de la surface.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1975,7 +1979,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_ChAsym::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -1984,12 +1988,12 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -1999,7 +2003,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_ChAsym::Section ******/
 		/****** md5 signature: 6f6f4c888ddceca92f3fa6c8fdae3e34 ******/
@@ -2008,15 +2012,15 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2026,7 +2030,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_ChAsym::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/
@@ -2557,7 +2561,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2567,7 +2571,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_ConstRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -2649,7 +2653,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2660,7 +2664,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_ConstRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -2713,7 +2717,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -2723,7 +2727,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_ConstRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -2731,7 +2735,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2741,7 +2745,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_ConstRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -2851,15 +2855,15 @@ Useful for a quick and approximate visualization of the surface area.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2869,7 +2873,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_ConstRad::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -2878,12 +2882,12 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2893,7 +2897,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_ConstRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -2902,9 +2906,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -2914,7 +2918,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_ConstRad::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/
@@ -3647,7 +3651,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -3657,7 +3661,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_EvolRad::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -3739,7 +3743,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -3750,7 +3754,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_EvolRad::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -3803,7 +3807,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -3813,7 +3817,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_EvolRad::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -3821,7 +3825,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3831,7 +3835,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_EvolRad::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -3941,15 +3945,15 @@ Method for graphic traces.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -3959,7 +3963,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_EvolRad::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -3968,12 +3972,12 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -3983,7 +3987,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_EvolRad::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -3992,9 +3996,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4004,7 +4008,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_EvolRad::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/
@@ -4599,7 +4603,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4609,7 +4613,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_GenChamfer::GetShape ******/
 		/****** md5 signature: 363e82c53157bdd080784e1e83b31277 ******/
@@ -4678,7 +4682,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -4689,7 +4693,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_GenChamfer::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -4710,7 +4714,7 @@ Returns False.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -4720,7 +4724,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_GenChamfer::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -4728,7 +4732,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -4738,7 +4742,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_GenChamfer::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -4822,15 +4826,15 @@ Obsolete method.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4840,7 +4844,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_GenChamfer::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -4849,12 +4853,12 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4864,7 +4868,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_GenChamfer::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -4873,9 +4877,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -4885,7 +4889,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_GenChamfer::Set ******/
 		/****** md5 signature: 75de96e3dd3d14d6332679576ea5961c ******/
@@ -5073,7 +5077,7 @@ Returns the minimal Distance between two extremities of calculated sections.
 		%feature("autodoc", "
 Parameters
 ----------
-Weigths: NCollection_Array1<double>
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5083,7 +5087,7 @@ Description
 -----------
 Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
-		void GetMinimalWeight(NCollection_Array1<double> & Weigths);
+		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_Ruled::GetSection ******/
 		/****** md5 signature: d2ecd0f0f674e1c1453f67b7fb995475 ******/
@@ -5096,8 +5100,8 @@ U1: double
 V1: double
 U2: double
 V2: double
-tabP: NCollection_Array1<gp_Pnt>
-tabV: NCollection_Array1<gp_Vec>
+tabP: TColgp_Array1OfPnt
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -5107,7 +5111,7 @@ Description
 -----------
 No available documentation.
 ") GetSection;
-		bool GetSection(const double Param, const double U1, const double V1, const double U2, const double V2, NCollection_Array1<gp_Pnt> & tabP, NCollection_Array1<gp_Vec> & tabV);
+		bool GetSection(const double Param, const double U1, const double V1, const double U2, const double V2, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
 		/****** BlendFunc_Ruled::GetSectionSize ******/
 		/****** md5 signature: 4b20b399dae9a40b81b614c46e43dbe0 ******/
@@ -5189,7 +5193,7 @@ Returns the tolerance to reach in approximation to respect BoundTol error at the
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -5200,7 +5204,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals() raises OutOfRange from Standard.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BlendFunc_Ruled::IsRational ******/
 		/****** md5 signature: 43e7b94be36c1d44222e606d2d075195 ******/
@@ -5253,7 +5257,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TKnots: NCollection_Array1<double>
+TKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -5263,7 +5267,7 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(NCollection_Array1<double> & TKnots);
+		void Knots(TColStd_Array1OfReal & TKnots);
 
 		/****** BlendFunc_Ruled::Mults ******/
 		/****** md5 signature: 533abca17062c451e56616867e5ff1a2 ******/
@@ -5271,7 +5275,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TMults: NCollection_Array1<int>
+TMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -5281,7 +5285,7 @@ Description
 -----------
 No available documentation.
 ") Mults;
-		void Mults(NCollection_Array1<int> & TMults);
+		void Mults(TColStd_Array1OfInteger & TMults);
 
 		/****** BlendFunc_Ruled::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -5367,15 +5371,15 @@ No available documentation.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-D2Poles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-D2Poles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
-D2Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+D2Poles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+D2Poles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
+D2Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5385,7 +5389,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Vec> & D2Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<gp_Vec2d> & D2Poles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths, NCollection_Array1<double> & D2Weigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
 		/****** BlendFunc_Ruled::Section ******/
 		/****** md5 signature: 8829facb3a5568465aca472419737777 ******/
@@ -5394,12 +5398,12 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-DPoles: NCollection_Array1<gp_Vec>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-DPoles2d: NCollection_Array1<gp_Vec2d>
-Weigths: NCollection_Array1<double>
-DWeigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+DPoles: TColgp_Array1OfVec
+Poles2d: TColgp_Array1OfPnt2d
+DPoles2d: TColgp_Array1OfVec2d
+Weigths: TColStd_Array1OfReal
+DWeigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5409,7 +5413,7 @@ Description
 -----------
 Used for the first and last section.
 ") Section;
-		bool Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Vec> & DPoles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<gp_Vec2d> & DPoles2d, NCollection_Array1<double> & Weigths, NCollection_Array1<double> & DWeigths);
+		bool Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
 		/****** BlendFunc_Ruled::Section ******/
 		/****** md5 signature: 854a31f8dfe55e0672f7cd1dc2ed6b18 ******/
@@ -5418,9 +5422,9 @@ Used for the first and last section.
 Parameters
 ----------
 P: Blend_Point
-Poles: NCollection_Array1<gp_Pnt>
-Poles2d: NCollection_Array1<gp_Pnt2d>
-Weigths: NCollection_Array1<double>
+Poles: TColgp_Array1OfPnt
+Poles2d: TColgp_Array1OfPnt2d
+Weigths: TColStd_Array1OfReal
 
 Return
 -------
@@ -5430,7 +5434,7 @@ Description
 -----------
 No available documentation.
 ") Section;
-		void Section(const Blend_Point & P, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt2d> & Poles2d, NCollection_Array1<double> & Weigths);
+		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
 		/****** BlendFunc_Ruled::Set ******/
 		/****** md5 signature: b605056efb3500b59398ce278f827e0a ******/

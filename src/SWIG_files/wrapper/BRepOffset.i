@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffset.html"
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<ChFiDS_module.hxx>
 #include<Message_module.hxx>
 #include<BRepAlgo_module.hxx>
@@ -104,6 +105,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffset.html"
 %import NCollection.i
 %import Geom.i
 %import TopoDS.i
+%import TopTools.i
 %import ChFiDS.i
 %import Message.i
 %import BRepAlgo.i
@@ -238,9 +240,21 @@ BRepOffset_Unknown = BRepOffset_Status.BRepOffset_Unknown
 %template(BRepOffset_ListOfInterval) NCollection_List<BRepOffset_Interval>;
 
 %extend NCollection_List<BRepOffset_Interval> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepOffset_ListIteratorOfListOfInterval(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -356,7 +370,7 @@ Parameters
 ----------
 theFace: TopoDS_Face
 theCo: TopoDS_Compound
-theMap: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMap: TopTools_MapOfShape
 theType: ChFiDS_TypeOfConcavity
 
 Return
@@ -367,7 +381,7 @@ Description
 -----------
 Add in <CO> the faces of the shell containing <Face> where all the connex edges are of type <Side>.
 ") AddFaces;
-		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMap, const ChFiDS_TypeOfConcavity theType);
+		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType);
 
 		/****** BRepOffset_Analyse::AddFaces ******/
 		/****** md5 signature: ad4d040a56934aeaff6f0015ab9b5368 ******/
@@ -377,7 +391,7 @@ Parameters
 ----------
 theFace: TopoDS_Face
 theCo: TopoDS_Compound
-theMap: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMap: TopTools_MapOfShape
 theType1: ChFiDS_TypeOfConcavity
 theType2: ChFiDS_TypeOfConcavity
 
@@ -389,7 +403,7 @@ Description
 -----------
 Add in <CO> the faces of the shell containing <Face> where all the connex edges are of type <Side1> or <Side2>.
 ") AddFaces;
-		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theMap, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
+		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
 		/****** BRepOffset_Analyse::Ancestors ******/
 		/****** md5 signature: e95e7e9134c33a93931a8ce35c9931c8 ******/
@@ -401,13 +415,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns ancestors for the shape.
 ") Ancestors;
-		const NCollection_List<TopoDS_Shape> Ancestors(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Ancestors(const TopoDS_Shape & theS);
 
 		/****** BRepOffset_Analyse::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -433,13 +447,13 @@ theUpdate: bool (optional, default to false)
 
 Return
 -------
-NCollection_List<TopoDS_Shape> *
+TopTools_ListOfShape *
 
 Description
 -----------
 Returns the shape descendants.
 ") Descendants;
-		const NCollection_List<TopoDS_Shape> * Descendants(const TopoDS_Shape & theS, const bool theUpdate = false);
+		const TopTools_ListOfShape * Descendants(const TopoDS_Shape & theS, const bool theUpdate = false);
 
 		/****** BRepOffset_Analyse::EdgeReplacement ******/
 		/****** md5 signature: 0f27e29432c1193c65637801fb97edd1 ******/
@@ -468,7 +482,7 @@ Parameters
 ----------
 theV: TopoDS_Vertex
 theType: ChFiDS_TypeOfConcavity
-theL: NCollection_List<TopoDS_Shape>
+theL: TopTools_ListOfShape
 
 Return
 -------
@@ -478,7 +492,7 @@ Description
 -----------
 Stores in <L> all the edges of Type <T> on the vertex <V>.
 ") Edges;
-		void Edges(const TopoDS_Vertex & theV, const ChFiDS_TypeOfConcavity theType, NCollection_List<TopoDS_Shape> & theL);
+		void Edges(const TopoDS_Vertex & theV, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
 		/****** BRepOffset_Analyse::Edges ******/
 		/****** md5 signature: 9306774a49d2312b4e4625add27d1f9d ******/
@@ -488,7 +502,7 @@ Parameters
 ----------
 theF: TopoDS_Face
 theType: ChFiDS_TypeOfConcavity
-theL: NCollection_List<TopoDS_Shape>
+theL: TopTools_ListOfShape
 
 Return
 -------
@@ -498,7 +512,7 @@ Description
 -----------
 Stores in <L> all the edges of Type <T> on the face <F>.
 ") Edges;
-		void Edges(const TopoDS_Face & theF, const ChFiDS_TypeOfConcavity theType, NCollection_List<TopoDS_Shape> & theL);
+		void Edges(const TopoDS_Face & theF, const ChFiDS_TypeOfConcavity theType, TopTools_ListOfShape & theL);
 
 		/****** BRepOffset_Analyse::Explode ******/
 		/****** md5 signature: 1d3e038224f05da142cf2d39bc0c3e1c ******/
@@ -506,7 +520,7 @@ Stores in <L> all the edges of Type <T> on the face <F>.
 		%feature("autodoc", "
 Parameters
 ----------
-theL: NCollection_List<TopoDS_Shape>
+theL: TopTools_ListOfShape
 theType: ChFiDS_TypeOfConcavity
 
 Return
@@ -517,7 +531,7 @@ Description
 -----------
 Explode in compounds of faces where all the connex edges are of type <Side>.
 ") Explode;
-		void Explode(NCollection_List<TopoDS_Shape> & theL, const ChFiDS_TypeOfConcavity theType);
+		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType);
 
 		/****** BRepOffset_Analyse::Explode ******/
 		/****** md5 signature: 264d59d84e8bfaba13779298eba3413b ******/
@@ -525,7 +539,7 @@ Explode in compounds of faces where all the connex edges are of type <Side>.
 		%feature("autodoc", "
 Parameters
 ----------
-theL: NCollection_List<TopoDS_Shape>
+theL: TopTools_ListOfShape
 theType1: ChFiDS_TypeOfConcavity
 theType2: ChFiDS_TypeOfConcavity
 
@@ -537,7 +551,7 @@ Description
 -----------
 Explode in compounds of faces where all the connex edges are of type <Side1> or <Side2>.
 ") Explode;
-		void Explode(NCollection_List<TopoDS_Shape> & theL, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
+		void Explode(TopTools_ListOfShape & theL, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
 		/****** BRepOffset_Analyse::Generated ******/
 		/****** md5 signature: 15ef1939924c301a6d85999ccd64b15d ******/
@@ -611,13 +625,13 @@ Returns status of the algorithm.
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the new faces constructed between tangent faces having different offset values on the shape.
 ") NewFaces;
-		const NCollection_List<TopoDS_Shape> NewFaces();
+		const TopTools_ListOfShape & NewFaces();
 
 		/****** BRepOffset_Analyse::Perform ******/
 		/****** md5 signature: eaed7817b648fc10aa8e23a8c54b04d0 ******/
@@ -645,7 +659,7 @@ Performs the analysis.
 		%feature("autodoc", "
 Parameters
 ----------
-theMap: NCollection_DataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher>
+theMap: TopTools_DataMapOfShapeReal
 
 Return
 -------
@@ -655,7 +669,7 @@ Description
 -----------
 Sets the face-offset data map to analyze tangential cases.
 ") SetFaceOffsetMap;
-		void SetFaceOffsetMap(const NCollection_DataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher> & theMap);
+		void SetFaceOffsetMap(const TopTools_DataMapOfShapeReal & theMap);
 
 		/****** BRepOffset_Analyse::SetOffsetValue ******/
 		/****** md5 signature: 670ce4a59e153b614be1c54aad4a1af3 ******/
@@ -683,7 +697,7 @@ Parameters
 ----------
 theEdge: TopoDS_Edge
 theVertex: TopoDS_Vertex
-theEdges: NCollection_List<TopoDS_Shape>
+theEdges: TopTools_ListOfShape
 
 Return
 -------
@@ -693,7 +707,7 @@ Description
 -----------
 set in <Edges> all the Edges of <Shape> which are tangent to <Edge> at the vertex <Vertex>.
 ") TangentEdges;
-		void TangentEdges(const TopoDS_Edge & theEdge, const TopoDS_Vertex & theVertex, NCollection_List<TopoDS_Shape> & theEdges);
+		void TangentEdges(const TopoDS_Edge & theEdge, const TopoDS_Vertex & theVertex, TopTools_ListOfShape & theEdges);
 
 		/****** BRepOffset_Analyse::Type ******/
 		/****** md5 signature: f54512eb56610eb7b28eb0b9f6009b4a ******/
@@ -735,10 +749,10 @@ Parameters
 ----------
 AsDes: BRepAlgo_AsDes
 F: TopoDS_Face
-NewEdges: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+NewEdges: TopTools_IndexedMapOfShape
 Tol: double
-theEdgeIntEdges: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theDMVV: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
+theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 theRange: Message_ProgressRange
 
 Return
@@ -749,7 +763,7 @@ Description
 -----------
 Computes the intersections between the edges stored is AsDes as descendants of <F> . Intersections is computed between two edges if one of them is bound in NewEdges. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") Compute;
-		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & NewEdges, const double Tol, const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeIntEdges, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theDMVV, const Message_ProgressRange & theRange);
+		static void Compute(const opencascade::handle<BRepAlgo_AsDes> & AsDes, const TopoDS_Face & F, const TopTools_IndexedMapOfShape & NewEdges, const double Tol, const TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter2d::ConnexIntByInt ******/
 		/****** md5 signature: 6ee27872500f739659d06e8520b5d82a ******/
@@ -759,17 +773,17 @@ Parameters
 ----------
 FI: TopoDS_Face
 OFI: BRepOffset_Offset
-MES: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Build: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+MES: TopTools_DataMapOfShapeShape
+Build: TopTools_DataMapOfShapeShape
 theAsDes: BRepAlgo_AsDes
 AsDes2d: BRepAlgo_AsDes
 Offset: double
 Tol: double
 Analyse: BRepOffset_Analyse
-FacesWithVerts: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+FacesWithVerts: TopTools_IndexedMapOfShape
 theImageVV: BRepAlgo_Image
-theEdgeIntEdges: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theDMVV: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theEdgeIntEdges: TopTools_DataMapOfShapeListOfShape
+theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 theRange: Message_ProgressRange
 
 Return
@@ -780,7 +794,7 @@ Description
 -----------
 Computes the intersection between the offset edges of the <FI>. All intersection vertices will be stored in AsDes2d. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") ConnexIntByInt;
-		static bool ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & MES, const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const double Offset, const double Tol, const BRepOffset_Analyse & Analyse, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & FacesWithVerts, BRepAlgo_Image & theImageVV, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theEdgeIntEdges, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theDMVV, const Message_ProgressRange & theRange);
+		static bool ConnexIntByInt(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const double Offset, const double Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedMapOfShape & FacesWithVerts, BRepAlgo_Image & theImageVV, TopTools_DataMapOfShapeListOfShape & theEdgeIntEdges, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter2d::ConnexIntByIntInVert ******/
 		/****** md5 signature: 0208cb70381cc59c6c75792d5ceddeae ******/
@@ -790,13 +804,13 @@ Parameters
 ----------
 FI: TopoDS_Face
 OFI: BRepOffset_Offset
-MES: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Build: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+MES: TopTools_DataMapOfShapeShape
+Build: TopTools_DataMapOfShapeShape
 AsDes: BRepAlgo_AsDes
 AsDes2d: BRepAlgo_AsDes
 Tol: double
 Analyse: BRepOffset_Analyse
-theDMVV: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 theRange: Message_ProgressRange
 
 Return
@@ -807,7 +821,7 @@ Description
 -----------
 Computes the intersection between the offset edges generated from vertices and stored into AsDes as descendants of the <FI>. All intersection vertices will be stored in AsDes2d. When all faces of the shape are treated the intersection vertices have to be fused using the FuseVertices method. theDMVV contains the vertices that should be fused.
 ") ConnexIntByIntInVert;
-		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & MES, const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const double Tol, const BRepOffset_Analyse & Analyse, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theDMVV, const Message_ProgressRange & theRange);
+		static void ConnexIntByIntInVert(const TopoDS_Face & FI, BRepOffset_Offset & OFI, TopTools_DataMapOfShapeShape & MES, const TopTools_DataMapOfShapeShape & Build, const opencascade::handle<BRepAlgo_AsDes> & AsDes, const opencascade::handle<BRepAlgo_AsDes> & AsDes2d, const double Tol, const BRepOffset_Analyse & Analyse, TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter2d::ExtentEdge ******/
 		/****** md5 signature: 8a9706aac012632569f59f23c084d0ee ******/
@@ -835,7 +849,7 @@ extents the edge.
 		%feature("autodoc", "
 Parameters
 ----------
-theDMVV: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theDMVV: TopTools_IndexedDataMapOfShapeListOfShape
 theAsDes: BRepAlgo_AsDes
 theImageVV: BRepAlgo_Image
 
@@ -847,7 +861,7 @@ Description
 -----------
 Fuses the chains of vertices in the theDMVV and updates AsDes by replacing the old vertices with the new ones.
 ") FuseVertices;
-		static bool FuseVertices(const NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, BRepAlgo_Image & theImageVV);
+		static bool FuseVertices(const TopTools_IndexedDataMapOfShapeListOfShape & theDMVV, const opencascade::handle<BRepAlgo_AsDes> & theAsDes, BRepAlgo_Image & theImageVV);
 
 };
 
@@ -902,7 +916,7 @@ Returns AsDes tool.
 		%feature("autodoc", "
 Parameters
 ----------
-SetOfFaces: NCollection_List<TopoDS_Shape>
+SetOfFaces: TopTools_ListOfShape
 InitOffsetFace: BRepAlgo_Image
 theRange: Message_ProgressRange
 
@@ -914,7 +928,7 @@ Description
 -----------
 No available documentation.
 ") CompletInt;
-		void CompletInt(const NCollection_List<TopoDS_Shape> & SetOfFaces, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
+		void CompletInt(const TopTools_ListOfShape & SetOfFaces, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter3d::ConnexIntByArc ******/
 		/****** md5 signature: 398ac2d3fae8fcbfa396ec4c4970cc4a ******/
@@ -922,7 +936,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-SetOfFaces: NCollection_List<TopoDS_Shape>
+SetOfFaces: TopTools_ListOfShape
 ShapeInit: TopoDS_Shape
 Analyse: BRepOffset_Analyse
 InitOffsetFace: BRepAlgo_Image
@@ -936,7 +950,7 @@ Description
 -----------
 Computes connections of the offset faces that have to be connected by arcs.
 ") ConnexIntByArc;
-		void ConnexIntByArc(const NCollection_List<TopoDS_Shape> & SetOfFaces, const TopoDS_Shape & ShapeInit, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
+		void ConnexIntByArc(const TopTools_ListOfShape & SetOfFaces, const TopoDS_Shape & ShapeInit, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter3d::ConnexIntByInt ******/
 		/****** md5 signature: e7553cf2e3c46763c181ffbdbd2606b0 ******/
@@ -947,9 +961,9 @@ Parameters
 SI: TopoDS_Shape
 MapSF: NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher>
 A: BRepOffset_Analyse
-MES: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Build: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Failed: NCollection_List<TopoDS_Shape>
+MES: TopTools_DataMapOfShapeShape
+Build: TopTools_DataMapOfShapeShape
+Failed: TopTools_ListOfShape
 theRange: Message_ProgressRange
 bIsPlanar: bool (optional, default to false)
 
@@ -961,7 +975,7 @@ Description
 -----------
 Computes intersection of the offset faces that have to be connected by sharp edges, i.e. it computes intersection between extended offset faces.
 ") ConnexIntByInt;
-		void ConnexIntByInt(const TopoDS_Shape & SI, const NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> & MapSF, const BRepOffset_Analyse & A, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & MES, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Build, NCollection_List<TopoDS_Shape> & Failed, const Message_ProgressRange & theRange, const bool bIsPlanar = false);
+		void ConnexIntByInt(const TopoDS_Shape & SI, const NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Message_ProgressRange & theRange, const bool bIsPlanar = false);
 
 		/****** BRepOffset_Inter3d::ContextIntByArc ******/
 		/****** md5 signature: cac5ec5ba46c7e6d8393e8221b468c40 ******/
@@ -969,7 +983,7 @@ Computes intersection of the offset faces that have to be connected by sharp edg
 		%feature("autodoc", "
 Parameters
 ----------
-ContextFaces: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+ContextFaces: TopTools_IndexedMapOfShape
 ExtentContext: bool
 Analyse: BRepOffset_Analyse
 InitOffsetFace: BRepAlgo_Image
@@ -984,7 +998,7 @@ Description
 -----------
 Computes connections of the not offset faces that have to be connected by arcs.
 ") ContextIntByArc;
-		void ContextIntByArc(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & ContextFaces, const bool ExtentContext, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, BRepAlgo_Image & InitOffsetEdge, const Message_ProgressRange & theRange);
+		void ContextIntByArc(const TopTools_IndexedMapOfShape & ContextFaces, const bool ExtentContext, const BRepOffset_Analyse & Analyse, const BRepAlgo_Image & InitOffsetFace, BRepAlgo_Image & InitOffsetEdge, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_Inter3d::ContextIntByInt ******/
 		/****** md5 signature: 78142a90013f56943002de6773e11408 ******/
@@ -992,13 +1006,13 @@ Computes connections of the not offset faces that have to be connected by arcs.
 		%feature("autodoc", "
 Parameters
 ----------
-ContextFaces: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+ContextFaces: TopTools_IndexedMapOfShape
 ExtentContext: bool
 MapSF: NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher>
 A: BRepOffset_Analyse
-MES: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Build: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-Failed: NCollection_List<TopoDS_Shape>
+MES: TopTools_DataMapOfShapeShape
+Build: TopTools_DataMapOfShapeShape
+Failed: TopTools_ListOfShape
 theRange: Message_ProgressRange
 bIsPlanar: bool (optional, default to false)
 
@@ -1010,7 +1024,7 @@ Description
 -----------
 Computes intersection with not offset faces .
 ") ContextIntByInt;
-		void ContextIntByInt(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & ContextFaces, const bool ExtentContext, const NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> & MapSF, const BRepOffset_Analyse & A, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & MES, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Build, NCollection_List<TopoDS_Shape> & Failed, const Message_ProgressRange & theRange, const bool bIsPlanar = false);
+		void ContextIntByInt(const TopTools_IndexedMapOfShape & ContextFaces, const bool ExtentContext, const NCollection_DataMap<TopoDS_Shape, BRepOffset_Offset, TopTools_ShapeMapHasher> & MapSF, const BRepOffset_Analyse & A, TopTools_DataMapOfShapeShape & MES, TopTools_DataMapOfShapeShape & Build, TopTools_ListOfShape & Failed, const Message_ProgressRange & theRange, const bool bIsPlanar = false);
 
 		/****** BRepOffset_Inter3d::FaceInter ******/
 		/****** md5 signature: 62d9b8b2341ea348e10a9705c1e1a1d6 ******/
@@ -1056,13 +1070,13 @@ Checks if the pair of faces has already been treated.
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 Returns new edges.
 ") NewEdges;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> NewEdges();
+		TopTools_IndexedMapOfShape & NewEdges();
 
 		/****** BRepOffset_Inter3d::SetDone ******/
 		/****** md5 signature: d9f3a39ef77387fe413720595d42df62 ******/
@@ -1088,13 +1102,13 @@ Marks the pair of faces as already intersected.
 		%feature("compactdefaultargs") TouchedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 Returns touched faces.
 ") TouchedFaces;
-		NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> TouchedFaces();
+		TopTools_IndexedMapOfShape & TouchedFaces();
 
 };
 
@@ -1269,7 +1283,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-LF: NCollection_List<TopoDS_Shape>
+LF: TopTools_ListOfShape
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
 theImageVV: BRepAlgo_Image
@@ -1283,7 +1297,7 @@ Description
 -----------
 No available documentation.
 ") Build;
-		void Build(const NCollection_List<TopoDS_Shape> & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, BRepAlgo_Image & theImageVV, const Message_ProgressRange & theRange);
+		void Build(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, BRepAlgo_Image & theImageVV, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_MakeLoops::BuildFaces ******/
 		/****** md5 signature: 1b50d3f316e594846b9f351daf6fa994 ******/
@@ -1291,7 +1305,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-LF: NCollection_List<TopoDS_Shape>
+LF: TopTools_ListOfShape
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
 theRange: Message_ProgressRange
@@ -1304,7 +1318,7 @@ Description
 -----------
 No available documentation.
 ") BuildFaces;
-		void BuildFaces(const NCollection_List<TopoDS_Shape> & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const Message_ProgressRange & theRange);
+		void BuildFaces(const TopTools_ListOfShape & LF, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const Message_ProgressRange & theRange);
 
 		/****** BRepOffset_MakeLoops::BuildOnContext ******/
 		/****** md5 signature: 902b6087fc8aa125e7e9e9f3eb9554c6 ******/
@@ -1312,7 +1326,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-LContext: NCollection_List<TopoDS_Shape>
+LContext: TopTools_ListOfShape
 Analyse: BRepOffset_Analyse
 AsDes: BRepAlgo_AsDes
 Image: BRepAlgo_Image
@@ -1327,7 +1341,7 @@ Description
 -----------
 No available documentation.
 ") BuildOnContext;
-		void BuildOnContext(const NCollection_List<TopoDS_Shape> & LContext, const BRepOffset_Analyse & Analyse, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const bool InSide, const Message_ProgressRange & theRange);
+		void BuildOnContext(const TopTools_ListOfShape & LContext, const BRepOffset_Analyse & Analyse, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & Image, const bool InSide, const Message_ProgressRange & theRange);
 
 };
 
@@ -1456,13 +1470,13 @@ No available documentation.
 		%feature("compactdefaultargs") ClosingFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 Returns the list of closing faces stores by AddFace.
 ") ClosingFaces;
-		const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> ClosingFaces();
+		const TopTools_IndexedMapOfShape & ClosingFaces();
 
 		/****** BRepOffset_MakeOffset::Error ******/
 		/****** md5 signature: 204aa201182f580c2b3b629785fe7270 ******/
@@ -1487,13 +1501,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
 		/****** BRepOffset_MakeOffset::GetBadShape ******/
 		/****** md5 signature: ba57b2eb9f7240c2efaee696f343f099 ******/
@@ -1637,13 +1651,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
 		/****** BRepOffset_MakeOffset::OffsetEdgesFromShapes ******/
 		/****** md5 signature: 68926d492e1e9d71593e4c5da8672674 ******/
@@ -2026,7 +2040,7 @@ Parameters
 ----------
 Face: TopoDS_Face
 Offset: double
-Created: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+Created: TopTools_DataMapOfShapeShape
 OffsetOutside: bool (optional, default to true)
 JoinType: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
 
@@ -2038,7 +2052,7 @@ Description
 -----------
 This method will be called when you want to share the edges soon generated from an other face. e.g. when two faces are tangents the common edge will generate only one edge ( no pipe). //! The Map will be fill as follow: //! Created(E) = E' with: E = an edge of <Face> E' = the image of E in the offsetting of another face sharing E with a continuity at least G1.
 ") BRepOffset_Offset;
-		 BRepOffset_Offset(const TopoDS_Face & Face, const double Offset, const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Created, const bool OffsetOutside = true, const GeomAbs_JoinType JoinType = GeomAbs_Arc);
+		 BRepOffset_Offset(const TopoDS_Face & Face, const double Offset, const TopTools_DataMapOfShapeShape & Created, const bool OffsetOutside = true, const GeomAbs_JoinType JoinType = GeomAbs_Arc);
 
 		/****** BRepOffset_Offset::BRepOffset_Offset ******/
 		/****** md5 signature: ed2184acf5afdcd8e1e78e0ca7b89b32 ******/
@@ -2097,7 +2111,7 @@ No available documentation.
 Parameters
 ----------
 Vertex: TopoDS_Vertex
-LEdge: NCollection_List<TopoDS_Shape>
+LEdge: TopTools_ListOfShape
 Offset: double
 Polynomial: bool (optional, default to false)
 Tol: double (optional, default to 1.0e-4)
@@ -2111,7 +2125,7 @@ Description
 -----------
 Tol and Conti are only used if Polynomial is True (Used to perform the approximation).
 ") BRepOffset_Offset;
-		 BRepOffset_Offset(const TopoDS_Vertex & Vertex, const NCollection_List<TopoDS_Shape> & LEdge, const double Offset, const bool Polynomial = false, const double Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
+		 BRepOffset_Offset(const TopoDS_Vertex & Vertex, const TopTools_ListOfShape & LEdge, const double Offset, const bool Polynomial = false, const double Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
 
 		/****** BRepOffset_Offset::Face ******/
 		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
@@ -2173,7 +2187,7 @@ Parameters
 ----------
 Face: TopoDS_Face
 Offset: double
-Created: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+Created: TopTools_DataMapOfShapeShape
 OffsetOutside: bool (optional, default to true)
 JoinType: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
 
@@ -2185,7 +2199,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Face & Face, const double Offset, const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & Created, const bool OffsetOutside = true, const GeomAbs_JoinType JoinType = GeomAbs_Arc);
+		void Init(const TopoDS_Face & Face, const double Offset, const TopTools_DataMapOfShapeShape & Created, const bool OffsetOutside = true, const GeomAbs_JoinType JoinType = GeomAbs_Arc);
 
 		/****** BRepOffset_Offset::Init ******/
 		/****** md5 signature: 297c2ddb798e1433f015a745f860b426 ******/
@@ -2244,7 +2258,7 @@ No available documentation.
 Parameters
 ----------
 Vertex: TopoDS_Vertex
-LEdge: NCollection_List<TopoDS_Shape>
+LEdge: TopTools_ListOfShape
 Offset: double
 Polynomial: bool (optional, default to false)
 Tol: double (optional, default to 1.0e-4)
@@ -2258,7 +2272,7 @@ Description
 -----------
 Tol and Conti are only used if Polynomial is True (Used to perform the approximation).
 ") Init;
-		void Init(const TopoDS_Vertex & Vertex, const NCollection_List<TopoDS_Shape> & LEdge, const double Offset, const bool Polynomial = false, const double Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
+		void Init(const TopoDS_Vertex & Vertex, const TopTools_ListOfShape & LEdge, const double Offset, const bool Polynomial = false, const double Tol = 1.0e-4, const GeomAbs_Shape Conti = GeomAbs_C1);
 
 		/****** BRepOffset_Offset::Init ******/
 		/****** md5 signature: e8ade1852de2fd47eebc3fa821428ac4 ******/
@@ -2495,8 +2509,8 @@ Parameters
 ----------
 W: TopoDS_Wire
 F: TopoDS_Face
-NOnV1: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-NOnV2: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+NOnV1: TopTools_DataMapOfShapeShape
+NOnV2: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -2506,7 +2520,7 @@ Description
 -----------
 Via the wire explorer store in <NOnV1> for an Edge <E> of <W> his Edge neighbour on the first vertex <V1> of <E>. Store in NOnV2 the Neighbour of <E>on the last vertex <V2> of <E>.
 ") BuildNeighbour;
-		static void BuildNeighbour(const TopoDS_Wire & W, const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & NOnV1, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & NOnV2);
+		static void BuildNeighbour(const TopoDS_Wire & W, const TopoDS_Face & F, TopTools_DataMapOfShapeShape & NOnV1, TopTools_DataMapOfShapeShape & NOnV2);
 
 		/****** BRepOffset_Tool::CheckBounds ******/
 		/****** md5 signature: 6cf54453a3f1f2209d07dced77c5c1fa ******/
@@ -2556,7 +2570,7 @@ Compares the normal directions of the planar faces and returns True if the direc
 Parameters
 ----------
 SI: TopoDS_Shape
-NewEdges: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+NewEdges: TopTools_IndexedMapOfShape
 AsDes: BRepAlgo_AsDes
 InitOffset: BRepAlgo_Image
 Offset: double
@@ -2569,7 +2583,7 @@ Description
 -----------
 No available documentation.
 ") CorrectOrientation;
-		static void CorrectOrientation(const TopoDS_Shape & SI, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & NewEdges, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & InitOffset, const double Offset);
+		static void CorrectOrientation(const TopoDS_Shape & SI, const TopTools_IndexedMapOfShape & NewEdges, const opencascade::handle<BRepAlgo_AsDes> & AsDes, BRepAlgo_Image & InitOffset, const double Offset);
 
 		/****** BRepOffset_Tool::Deboucle3D ******/
 		/****** md5 signature: 067f5a6cbf98fc1bd6309ade5daf190a ******/
@@ -2578,7 +2592,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-Boundary: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+Boundary: TopTools_MapOfShape
 
 Return
 -------
@@ -2588,7 +2602,7 @@ Description
 -----------
 Remove the non valid part of an offsetshape 1 - Remove all the free boundary and the faces connex to such edges. 2 - Remove all the shapes not valid in the result (according to the side of offsetting) in this version only the first point is implemented.
 ") Deboucle3D;
-		static TopoDS_Shape Deboucle3D(const TopoDS_Shape & S, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & Boundary);
+		static TopoDS_Shape Deboucle3D(const TopoDS_Shape & S, const TopTools_MapOfShape & Boundary);
 
 		/****** BRepOffset_Tool::EdgeVertices ******/
 		/****** md5 signature: 5ea655ac8e07a63dd8753acf779f31df ******/
@@ -2646,8 +2660,8 @@ Returns True if The Surface of <NF> has changed. if <ChangeGeom> is True the sur
 Parameters
 ----------
 F: TopoDS_Face
-ConstShapes: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
-ToBuild: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+ConstShapes: TopTools_DataMapOfShapeShape
+ToBuild: TopTools_DataMapOfShapeShape
 Side: TopAbs_State
 TolConf: double
 NF: TopoDS_Face
@@ -2660,7 +2674,7 @@ Description
 -----------
 No available documentation.
 ") ExtentFace;
-		static void ExtentFace(const TopoDS_Face & F, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & ConstShapes, NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & ToBuild, const TopAbs_State Side, const double TolConf, TopoDS_Face & NF);
+		static void ExtentFace(const TopoDS_Face & F, TopTools_DataMapOfShapeShape & ConstShapes, TopTools_DataMapOfShapeShape & ToBuild, const TopAbs_State Side, const double TolConf, TopoDS_Face & NF);
 
 		/****** BRepOffset_Tool::FindCommonShapes ******/
 		/****** md5 signature: b3a0f90a70c233bc105d5aaaff7b4698 ******/
@@ -2670,8 +2684,8 @@ Parameters
 ----------
 theF1: TopoDS_Face
 theF2: TopoDS_Face
-theLE: NCollection_List<TopoDS_Shape>
-theLV: NCollection_List<TopoDS_Shape>
+theLE: TopTools_ListOfShape
+theLV: TopTools_ListOfShape
 
 Return
 -------
@@ -2681,7 +2695,7 @@ Description
 -----------
 Looks for the common Vertices and Edges between faces <theF1> and <theF2>. Returns True if common shapes have been found. <theLE> will contain the found common edges; <theLV> will contain the found common vertices.
 ") FindCommonShapes;
-		static bool FindCommonShapes(const TopoDS_Face & theF1, const TopoDS_Face & theF2, NCollection_List<TopoDS_Shape> & theLE, NCollection_List<TopoDS_Shape> & theLV);
+		static bool FindCommonShapes(const TopoDS_Face & theF1, const TopoDS_Face & theF2, TopTools_ListOfShape & theLE, TopTools_ListOfShape & theLV);
 
 		/****** BRepOffset_Tool::FindCommonShapes ******/
 		/****** md5 signature: 86cff291f64710df39a64766d5b85c24 ******/
@@ -2692,7 +2706,7 @@ Parameters
 theS1: TopoDS_Shape
 theS2: TopoDS_Shape
 theType: TopAbs_ShapeEnum
-theLSC: NCollection_List<TopoDS_Shape>
+theLSC: TopTools_ListOfShape
 
 Return
 -------
@@ -2702,7 +2716,7 @@ Description
 -----------
 Looks for the common shapes of type <theType> between shapes <theS1> and <theS2>. Returns True if common shapes have been found. <theLSC> will contain the found common shapes.
 ") FindCommonShapes;
-		static bool FindCommonShapes(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const TopAbs_ShapeEnum theType, NCollection_List<TopoDS_Shape> & theLSC);
+		static bool FindCommonShapes(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const TopAbs_ShapeEnum theType, TopTools_ListOfShape & theLSC);
 
 		/****** BRepOffset_Tool::Gabarit ******/
 		/****** md5 signature: 6db0927b9f87e8c6c23e08634bc61a1d ******/
@@ -2731,7 +2745,7 @@ Parameters
 F: TopoDS_Face
 E1: TopoDS_Edge
 E2: TopoDS_Edge
-LV: NCollection_List<TopoDS_Shape>
+LV: TopTools_ListOfShape
 Tol: double
 
 Return
@@ -2742,7 +2756,7 @@ Description
 -----------
 No available documentation.
 ") Inter2d;
-		static void Inter2d(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, NCollection_List<TopoDS_Shape> & LV, const double Tol);
+		static void Inter2d(const TopoDS_Face & F, const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopTools_ListOfShape & LV, const double Tol);
 
 		/****** BRepOffset_Tool::Inter3D ******/
 		/****** md5 signature: bc8b25b531e91430da10ffd5b2d88e26 ******/
@@ -2752,8 +2766,8 @@ Parameters
 ----------
 F1: TopoDS_Face
 F2: TopoDS_Face
-LInt1: NCollection_List<TopoDS_Shape>
-LInt2: NCollection_List<TopoDS_Shape>
+LInt1: TopTools_ListOfShape
+LInt2: TopTools_ListOfShape
 Side: TopAbs_State
 RefEdge: TopoDS_Edge
 RefFace1: TopoDS_Face
@@ -2767,7 +2781,7 @@ Description
 -----------
 Computes the Section between <F1> and <F2> the edges solution are stored in <LInt1> with the orientation on <F1>, the sames edges are stored in <Lint2> with the orientation on <F2>.
 ") Inter3D;
-		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, NCollection_List<TopoDS_Shape> & LInt1, NCollection_List<TopoDS_Shape> & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const TopoDS_Face & RefFace1, const TopoDS_Face & RefFace2);
+		static void Inter3D(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const TopoDS_Edge & RefEdge, const TopoDS_Face & RefFace1, const TopoDS_Face & RefFace2);
 
 		/****** BRepOffset_Tool::InterOrExtent ******/
 		/****** md5 signature: 4e05295afb2e1c59dcc5943d1e40c828 ******/
@@ -2777,8 +2791,8 @@ Parameters
 ----------
 F1: TopoDS_Face
 F2: TopoDS_Face
-LInt1: NCollection_List<TopoDS_Shape>
-LInt2: NCollection_List<TopoDS_Shape>
+LInt1: TopTools_ListOfShape
+LInt2: TopTools_ListOfShape
 Side: TopAbs_State
 
 Return
@@ -2789,7 +2803,7 @@ Description
 -----------
 No available documentation.
 ") InterOrExtent;
-		static void InterOrExtent(const TopoDS_Face & F1, const TopoDS_Face & F2, NCollection_List<TopoDS_Shape> & LInt1, NCollection_List<TopoDS_Shape> & LInt2, const TopAbs_State Side);
+		static void InterOrExtent(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side);
 
 		/****** BRepOffset_Tool::MapVertexEdges ******/
 		/****** md5 signature: 753e0db883237322f46d079e65dbb7dc ******/
@@ -2798,7 +2812,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-MVE: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+MVE: TopTools_DataMapOfShapeListOfShape
 
 Return
 -------
@@ -2808,7 +2822,7 @@ Description
 -----------
 Store in MVE for a vertex <V> in <S> the incident edges <E> in <S>. An Edge is Store only one Time for a vertex.
 ") MapVertexEdges;
-		static void MapVertexEdges(const TopoDS_Shape & S, NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & MVE);
+		static void MapVertexEdges(const TopoDS_Shape & S, TopTools_DataMapOfShapeListOfShape & MVE);
 
 		/****** BRepOffset_Tool::OrientSection ******/
 		/****** md5 signature: 6fcc8549a4ba547fa845250a54719b66 ******/
@@ -2839,8 +2853,8 @@ Parameters
 ----------
 F1: TopoDS_Face
 F2: TopoDS_Face
-LInt1: NCollection_List<TopoDS_Shape>
-LInt2: NCollection_List<TopoDS_Shape>
+LInt1: TopTools_ListOfShape
+LInt2: TopTools_ListOfShape
 Side: TopAbs_State
 
 Return
@@ -2851,7 +2865,7 @@ Description
 -----------
 No available documentation.
 ") PipeInter;
-		static void PipeInter(const TopoDS_Face & F1, const TopoDS_Face & F2, NCollection_List<TopoDS_Shape> & LInt1, NCollection_List<TopoDS_Shape> & LInt2, const TopAbs_State Side);
+		static void PipeInter(const TopoDS_Face & F1, const TopoDS_Face & F2, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side);
 
 		/****** BRepOffset_Tool::TryProject ******/
 		/****** md5 signature: 166e3e188b96d592540e3743efbe231d ******/
@@ -2861,9 +2875,9 @@ Parameters
 ----------
 F1: TopoDS_Face
 F2: TopoDS_Face
-Edges: NCollection_List<TopoDS_Shape>
-LInt1: NCollection_List<TopoDS_Shape>
-LInt2: NCollection_List<TopoDS_Shape>
+Edges: TopTools_ListOfShape
+LInt1: TopTools_ListOfShape
+LInt2: TopTools_ListOfShape
 Side: TopAbs_State
 TolConf: double
 
@@ -2875,7 +2889,7 @@ Description
 -----------
 Find if the edges <Edges> of the face <F2> are on the face <F1>. Set in <LInt1> <LInt2> the updated edges. If all the edges are computed, returns true.
 ") TryProject;
-		static bool TryProject(const TopoDS_Face & F1, const TopoDS_Face & F2, const NCollection_List<TopoDS_Shape> & Edges, NCollection_List<TopoDS_Shape> & LInt1, NCollection_List<TopoDS_Shape> & LInt2, const TopAbs_State Side, const double TolConf);
+		static bool TryProject(const TopoDS_Face & F1, const TopoDS_Face & F2, const TopTools_ListOfShape & Edges, TopTools_ListOfShape & LInt1, TopTools_ListOfShape & LInt2, const TopAbs_State Side, const double TolConf);
 
 };
 

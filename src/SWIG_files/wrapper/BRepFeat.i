@@ -47,10 +47,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
+#include<TColgp_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BOPAlgo_module.hxx>
+#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<BRepBuilderAPI_module.hxx>
+#include<TColGeom_module.hxx>
 #include<LocOpe_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRepAdaptor_module.hxx>
@@ -84,10 +87,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfeat.html"
 %import TopoDS.i
 %import gp.i
 %import Geom.i
+%import TColgp.i
 %import TopAbs.i
 %import BOPAlgo.i
+%import TopTools.i
 %import Message.i
 %import BRepBuilderAPI.i
+%import TColGeom.i
 %import LocOpe.i
 
 %pythoncode {
@@ -366,7 +372,7 @@ Prints the Error description of the State <St> as a String on the Stream <S> and
 Parameters
 ----------
 S: TopoDS_Shape
-Pt: NCollection_Sequence<gp_Pnt>
+Pt: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -376,7 +382,7 @@ Description
 -----------
 No available documentation.
 ") SampleEdges;
-		static void SampleEdges(const TopoDS_Shape & S, NCollection_Sequence<gp_Pnt> & Pt);
+		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
 
 		/****** BRepFeat::Tool ******/
 		/****** md5 signature: e034f31a8da64d381b1bc24eb325043a ******/
@@ -475,7 +481,7 @@ Collects the removed parts of the tool into myRemoved map.
 Parameters
 ----------
 theS: TopoDS_Shape
-theM: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
+theM: TopTools_MapOfShape
 
 Return
 -------
@@ -485,7 +491,7 @@ Description
 -----------
 Adds the shape S and its sub-shapes into myRemoved map.
 ") FillRemoved;
-		void FillRemoved(const TopoDS_Shape & theS, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theM);
+		void FillRemoved(const TopoDS_Shape & theS, TopTools_MapOfShape & theM);
 
 		/****** BRepFeat_Builder::Init ******/
 		/****** md5 signature: e8c5d8680206212eeeecebd0f84dc5c5 ******/
@@ -548,7 +554,7 @@ Adds shape theS and all its sub-shapes into myShapes map.
 		%feature("autodoc", "
 Parameters
 ----------
-theIm: NCollection_List<TopoDS_Shape>
+theIm: TopTools_ListOfShape
 
 Return
 -------
@@ -558,7 +564,7 @@ Description
 -----------
 Initializes parts of the tool for second step of algorithm. Collects shapes and all sub-shapes into myShapes map.
 ") KeepParts;
-		void KeepParts(const NCollection_List<TopoDS_Shape> & theIm);
+		void KeepParts(const TopTools_ListOfShape & theIm);
 
 		/****** BRepFeat_Builder::PartsOfTool ******/
 		/****** md5 signature: d1be5a19e117904ddd8832cd3bc4bf33 ******/
@@ -566,7 +572,7 @@ Initializes parts of the tool for second step of algorithm. Collects shapes and 
 		%feature("autodoc", "
 Parameters
 ----------
-theLT: NCollection_List<TopoDS_Shape>
+theLT: TopTools_ListOfShape
 
 Return
 -------
@@ -576,7 +582,7 @@ Description
 -----------
 Collects parts of the tool.
 ") PartsOfTool;
-		void PartsOfTool(NCollection_List<TopoDS_Shape> & theLT);
+		void PartsOfTool(TopTools_ListOfShape & theLT);
 
 		/****** BRepFeat_Builder::PerformResult ******/
 		/****** md5 signature: ad968597e719efbcf84e11e3ce8b1439 ******/
@@ -604,8 +610,8 @@ Parameters
 ----------
 theE: TopoDS_Shape
 theF: TopoDS_Face
-theME: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
-aLEIm: NCollection_List<TopoDS_Shape>
+theME: TopTools_MapOfShape
+aLEIm: TopTools_ListOfShape
 
 Return
 -------
@@ -615,7 +621,7 @@ Description
 -----------
 Rebuilds edges in accordance with the kept parts of the tool.
 ") RebuildEdge;
-		void RebuildEdge(const TopoDS_Shape & theE, const TopoDS_Face & theF, const NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & theME, NCollection_List<TopoDS_Shape> & aLEIm);
+		void RebuildEdge(const TopoDS_Shape & theE, const TopoDS_Face & theF, const TopTools_MapOfShape & theME, TopTools_ListOfShape & aLEIm);
 
 		/****** BRepFeat_Builder::RebuildFaces ******/
 		/****** md5 signature: a13f1f83a7ee0e9f7f7f1dfc7462f976 ******/
@@ -727,7 +733,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-S: Geom_Curve
+S: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -737,20 +743,20 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		virtual void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
+		virtual void Curves(TColGeom_SequenceOfCurve & S);
 
 		/****** BRepFeat_Form::FirstShape ******/
 		/****** md5 signature: c9bedc7df57b665d447c534ae0afce77 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
-		const NCollection_List<TopoDS_Shape> FirstShape();
+		const TopTools_ListOfShape & FirstShape();
 
 		/****** BRepFeat_Form::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
@@ -762,13 +768,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns a list of the created faces from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepFeat_Form::GeneratedShapeValid ******/
 		/****** md5 signature: 63a556c0a5250c6b6acde4db96ea4c68 ******/
@@ -819,13 +825,13 @@ No available documentation.
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
-		const NCollection_List<TopoDS_Shape> LastShape();
+		const TopTools_ListOfShape & LastShape();
 
 		/****** BRepFeat_Form::Modified ******/
 		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
@@ -837,26 +843,26 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns the list of generated Faces.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_Form::NewEdges ******/
 		/****** md5 signature: 86593e867343002ba235ed58e9970c34 ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
-		const NCollection_List<TopoDS_Shape> NewEdges();
+		const TopTools_ListOfShape & NewEdges();
 
 		/****** BRepFeat_Form::PerfSelectionValid ******/
 		/****** md5 signature: e860c269c453c4afb0c3c359332fcefc ******/
@@ -915,13 +921,13 @@ Initializes the topological construction if the sketch face is present. If the s
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
-		const NCollection_List<TopoDS_Shape> TgtEdges();
+		const TopTools_ListOfShape & TgtEdges();
 
 };
 
@@ -1098,13 +1104,13 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of generated Faces.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_Gluer::OpeType ******/
 		/****** md5 signature: 6301740c99fde6f602c33a48a205b637 ******/
@@ -1140,7 +1146,7 @@ class BRepFeat_RibSlot : public BRepBuilderAPI_MakeShape {
 		%feature("autodoc", "
 Parameters
 ----------
-faces: NCollection_List<TopoDS_Shape>
+faces: TopTools_ListOfShape
 cc: Geom_Curve
 par: double
 bnd: double
@@ -1154,7 +1160,7 @@ Description
 -----------
 No available documentation.
 ") ChoiceOfFaces;
-		static TopoDS_Face ChoiceOfFaces(NCollection_List<TopoDS_Shape> & faces, const opencascade::handle<Geom_Curve> & cc, const double par, const double bnd, const opencascade::handle<Geom_Plane> & Pln);
+		static TopoDS_Face ChoiceOfFaces(TopTools_ListOfShape & faces, const opencascade::handle<Geom_Curve> & cc, const double par, const double bnd, const opencascade::handle<Geom_Plane> & Pln);
 
 		/****** BRepFeat_RibSlot::CurrentStatusError ******/
 		/****** md5 signature: 5c642a7308522a33086b9a7dc347c71b ******/
@@ -1174,26 +1180,26 @@ No available documentation.
 		%feature("compactdefaultargs") FacesForDraft;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of the limiting and glueing faces generated by the feature. These faces did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of a draft to a face. It may be an empty list. If a face has tangent edges, no draft is possible, and the tangent edges must subsequently be removed if you want to add a draft to the face.
 ") FacesForDraft;
-		const NCollection_List<TopoDS_Shape> FacesForDraft();
+		const TopTools_ListOfShape & FacesForDraft();
 
 		/****** BRepFeat_RibSlot::FirstShape ******/
 		/****** md5 signature: c9bedc7df57b665d447c534ae0afce77 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes created at the bottom of the created form. It may be an empty list.
 ") FirstShape;
-		const NCollection_List<TopoDS_Shape> FirstShape();
+		const TopTools_ListOfShape & FirstShape();
 
 		/****** BRepFeat_RibSlot::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
@@ -1205,13 +1211,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list NCollection_List<TopoDS_Shape> of the faces S created in the shape.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepFeat_RibSlot::IntPar ******/
 		/****** md5 signature: 62640fbecfc930ffe1bfe3681e8dc87f ******/
@@ -1255,13 +1261,13 @@ Returns true if F a TopoDS_Shape of type edge or face has been deleted.
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes created at the top of the created form. It may be an empty list.
 ") LastShape;
-		const NCollection_List<TopoDS_Shape> LastShape();
+		const TopTools_ListOfShape & LastShape();
 
 		/****** BRepFeat_RibSlot::Modified ******/
 		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
@@ -1273,39 +1279,39 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of generated Faces F. This list may be empty.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_RibSlot::NewEdges ******/
 		/****** md5 signature: 86593e867343002ba235ed58e9970c34 ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape. The list provides the information necessary for subsequent addition of fillets. It may be an empty list.
 ") NewEdges;
-		const NCollection_List<TopoDS_Shape> NewEdges();
+		const TopTools_ListOfShape & NewEdges();
 
 		/****** BRepFeat_RibSlot::TgtEdges ******/
 		/****** md5 signature: 4625c2d2cf027a1f9f8defe365dcab16 ******/
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of the tangent edges among the limiting and glueing edges generated by the feature. These edges did not originally exist in the basis shape and are tangent to the face against which the feature is built. The list provides the information necessary for subsequent addition of fillets. It may be an empty list. If an edge is tangent, no fillet is possible, and the edge must subsequently be removed if you want to add a fillet.
 ") TgtEdges;
-		const NCollection_List<TopoDS_Shape> TgtEdges();
+		const TopTools_ListOfShape & TgtEdges();
 
 };
 
@@ -1358,7 +1364,7 @@ Creates the process with the shape <S>.
 		%feature("autodoc", "
 Parameters
 ----------
-theEdges: NCollection_Sequence<TopoDS_Shape>
+theEdges: TopTools_SequenceOfShape
 
 Return
 -------
@@ -1368,7 +1374,7 @@ Description
 -----------
 Add splitting edges or wires for whole initial shape without additional specification edge->face, edge->edge This method puts edge on the corresponding faces from initial shape.
 ") Add;
-		bool Add(const NCollection_Sequence<TopoDS_Shape> & theEdges);
+		bool Add(const TopTools_SequenceOfShape & theEdges);
 
 		/****** BRepFeat_SplitShape::Add ******/
 		/****** md5 signature: 73487f98ab9ba9984904e685f5fae091 ******/
@@ -1469,13 +1475,13 @@ Builds the cut and the resulting faces and edges as well.
 		%feature("compactdefaultargs") DirectLeft;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the faces which are the left of the projected wires.
 ") DirectLeft;
-		const NCollection_List<TopoDS_Shape> DirectLeft();
+		const TopTools_ListOfShape & DirectLeft();
 
 		/****** BRepFeat_SplitShape::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -1518,13 +1524,13 @@ Returns true if the shape has been deleted.
 		%feature("compactdefaultargs") Left;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the faces of the 'left' part on the shape. (It is build from DirectLeft, with the faces connected to this set, and so on...). Raises NotDone if IsDone returns <false>.
 ") Left;
-		const NCollection_List<TopoDS_Shape> Left();
+		const TopTools_ListOfShape & Left();
 
 		/****** BRepFeat_SplitShape::Modified ******/
 		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
@@ -1536,26 +1542,26 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of generated Faces.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFeat_SplitShape::Right ******/
 		/****** md5 signature: da3e6dc85b561fc4dde07609854b7d14 ******/
 		%feature("compactdefaultargs") Right;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the faces of the 'right' part on the shape.
 ") Right;
-		const NCollection_List<TopoDS_Shape> Right();
+		const TopTools_ListOfShape & Right();
 
 		/****** BRepFeat_SplitShape::SetCheckInterior ******/
 		/****** md5 signature: efb1f3d0d41242227a9413162dceab9f ******/
@@ -1868,7 +1874,7 @@ Determination of TopEdges and LatEdges. sig = 1 -> TopEdges = FirstShape of the 
 		%feature("autodoc", "
 Parameters
 ----------
-S: Geom_Curve
+S: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -1878,7 +1884,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
+		void Curves(TColGeom_SequenceOfCurve & S);
 
 		/****** BRepFeat_MakeDPrism::Init ******/
 		/****** md5 signature: c33155d84a1245f86d179db325aec81d ******/
@@ -1908,13 +1914,13 @@ Initializes this algorithm for building draft prisms along surfaces. A face Pbas
 		%feature("compactdefaultargs") LatEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of TopoDS Edges of the bottom of the boss.
 ") LatEdges;
-		const NCollection_List<TopoDS_Shape> LatEdges();
+		const TopTools_ListOfShape & LatEdges();
 
 		/****** BRepFeat_MakeDPrism::Perform ******/
 		/****** md5 signature: 2474763ac9fc71c5fd80717db35c55ab ******/
@@ -2039,13 +2045,13 @@ Assigns both a limiting shape, Until from TopoDS_Shape, and a height, Height at 
 		%feature("compactdefaultargs") TopEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of TopoDS Edges of the top of the boss.
 ") TopEdges;
-		const NCollection_List<TopoDS_Shape> TopEdges();
+		const TopTools_ListOfShape & TopEdges();
 
 };
 
@@ -2160,7 +2166,7 @@ Performs a prism from the wire to the plane along the basis shape Sbase. Reconst
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 F: TopoDS_Face
 FPoint: gp_Pnt
 LPoint: gp_Pnt
@@ -2173,7 +2179,7 @@ Description
 -----------
 No available documentation.
 ") Propagate;
-		bool Propagate(NCollection_List<TopoDS_Shape> & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
+		bool Propagate(TopTools_ListOfShape & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
 
 };
 
@@ -2267,7 +2273,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-S: Geom_Curve
+S: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -2277,7 +2283,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
+		void Curves(TColGeom_SequenceOfCurve & S);
 
 		/****** BRepFeat_MakePipe::Init ******/
 		/****** md5 signature: 76862028d3c54d0384e177c4c3ffef7c ******/
@@ -2440,7 +2446,7 @@ Generates a curve along the center of mass of the primitive.
 		%feature("autodoc", "
 Parameters
 ----------
-S: Geom_Curve
+S: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -2450,7 +2456,7 @@ Description
 -----------
 Returns the list of curves S parallel to the axis of the prism.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
+		void Curves(TColGeom_SequenceOfCurve & S);
 
 		/****** BRepFeat_MakePrism::Init ******/
 		/****** md5 signature: 27c09a4d7a08fcc0281741cad3c3a3c8 ******/
@@ -2681,7 +2687,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-S: Geom_Curve
+S: TColGeom_SequenceOfCurve
 
 Return
 -------
@@ -2691,7 +2697,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		void Curves(NCollection_Sequence<opencascade::handle<Geom_Curve> > & S);
+		void Curves(TColGeom_SequenceOfCurve & S);
 
 		/****** BRepFeat_MakeRevol::Init ******/
 		/****** md5 signature: 05f8f2c41d6ff03878d1d9df687ace7b ******/
@@ -2916,7 +2922,7 @@ Performs a prism from the wire to the plane along the basis shape S. Reconstruct
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 F: TopoDS_Face
 FPoint: gp_Pnt
 LPoint: gp_Pnt
@@ -2929,7 +2935,7 @@ Description
 -----------
 No available documentation.
 ") Propagate;
-		bool Propagate(NCollection_List<TopoDS_Shape> & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
+		bool Propagate(TopTools_ListOfShape & L, const TopoDS_Face & F, const gp_Pnt & FPoint, const gp_Pnt & LPoint, Standard_Boolean &OutValue);
 
 };
 

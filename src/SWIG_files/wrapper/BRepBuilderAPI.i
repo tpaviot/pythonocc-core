@@ -46,7 +46,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepbuilderapi.ht
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
 #include<Bnd_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<BRepTools_module.hxx>
 #include<Message_module.hxx>
 #include<gp_module.hxx>
@@ -66,7 +68,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepbuilderapi.ht
 %import NCollection.i
 %import Geom.i
 %import Bnd.i
+%import TColStd.i
 %import TopoDS.i
+%import TopTools.i
 %import BRepTools.i
 %import Message.i
 %import gp.i
@@ -227,7 +231,7 @@ BRepBuilderAPI_NonManifoldWire = BRepBuilderAPI_WireError.BRepBuilderAPI_NonMani
 
 /* typedefs */
 typedef NCollection_CellFilter<BRepBuilderAPI_VertexInspector> BRepBuilderAPI_CellFilter;
-typedef NCollection_Vector<gp_XYZ> VectorOfPoint;
+typedef NCollection_DynamicArray<gp_XYZ> VectorOfPoint;
 /* end typedefs declaration */
 
 /***********************
@@ -381,13 +385,13 @@ Return: True if the bounding box does not intersect with the current.
 		%feature("compactdefaultargs") ResInd;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Get list of indexes of boxes intersecting with the current box.
 ") ResInd;
-		const NCollection_List<int> & ResInd();
+		const TColStd_ListOfInteger & ResInd();
 
 		/****** BRepBuilderAPI_BndBoxTreeSelector::SetCurrent ******/
 		/****** md5 signature: f630ad6cec547ab81dd1ff7942351413 ******/
@@ -514,26 +518,26 @@ No available documentation.
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 No available documentation.
 ") Generated;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Generated();
+		const TopTools_DataMapOfShapeListOfShape & Generated();
 
 		/****** BRepBuilderAPI_Collect::Modification ******/
 		/****** md5 signature: d4cc580187e1ad64b3a2dd513daf9b8b ******/
 		%feature("compactdefaultargs") Modification;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 No available documentation.
 ") Modification;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Modification();
+		const TopTools_DataMapOfShapeListOfShape & Modification();
 
 };
 
@@ -925,13 +929,13 @@ index: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Gives the sections (edge) belonging to a contiguous edge.
 ") ContigousEdgeCouple;
-		const NCollection_List<TopoDS_Shape> ContigousEdgeCouple(const int index);
+		const TopTools_ListOfShape & ContigousEdgeCouple(const int index);
 
 		/****** BRepBuilderAPI_Sewing::DegeneratedShape ******/
 		/****** md5 signature: c68ee497bd94dc28a04346b118a632f1 ******/
@@ -1687,13 +1691,13 @@ Implementation of inspection method.
 		%feature("compactdefaultargs") ResInd;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Get list of indexes of points adjacent with the current.
 ") ResInd;
-		const NCollection_List<int> & ResInd();
+		const TColStd_ListOfInteger & ResInd();
 
 		/****** BRepBuilderAPI_VertexInspector::SetCurrent ******/
 		/****** md5 signature: 52c7652c9c3b17a93e1b9f74b55265ec ******/
@@ -1775,13 +1779,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		virtual const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_MakeShape::IsDeleted ******/
 		/****** md5 signature: e5acdee934b156f336bbe6774e83cc78 ******/
@@ -1811,13 +1815,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		virtual const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_MakeShape::Shape ******/
 		/****** md5 signature: 2d17c0c46a6272e892d56c2b4312553d ******/
@@ -5056,7 +5060,7 @@ Add the edges of <W> to the current wire.
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -5066,7 +5070,7 @@ Description
 -----------
 Adds the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically. If some of them are not connected the Status give DisconnectedWire but the 'Maker' is Done() and you can get the partial result. (i.e. connected to the first edgeof the list <L>).
 ") Add;
-		void Add(const NCollection_List<TopoDS_Shape> & L);
+		void Add(const TopTools_ListOfShape & L);
 
 		/****** BRepBuilderAPI_MakeWire::Edge ******/
 		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
@@ -5158,13 +5162,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_ModifyShape::ModifiedShape ******/
 		/****** md5 signature: 2b7ee5e0dcc7da5f7f19b64339c05803 ******/
@@ -5313,13 +5317,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_GTransform::ModifiedShape ******/
 		/****** md5 signature: 03484d6ed49b502775c03b5171cdf2be ******/
@@ -5414,13 +5418,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_NurbsConvert::ModifiedShape ******/
 		/****** md5 signature: 03484d6ed49b502775c03b5171cdf2be ******/
@@ -5522,13 +5526,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepBuilderAPI_Transform::ModifiedShape ******/
 		/****** md5 signature: 03484d6ed49b502775c03b5171cdf2be ******/

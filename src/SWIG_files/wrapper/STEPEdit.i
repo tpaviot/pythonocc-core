@@ -81,6 +81,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(STEPEdit_EditContext)
+%wrap_handle(STEPEdit_EditSDR)
 /* end handles declaration */
 
 /* templates */
@@ -293,6 +295,8 @@ No available documentation.
 };
 
 
+%make_alias(STEPEdit_EditContext)
+
 %extend STEPEdit_EditContext {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -409,6 +413,8 @@ No available documentation.
 
 };
 
+
+%make_alias(STEPEdit_EditSDR)
 
 %extend STEPEdit_EditSDR {
 	%pythoncode {

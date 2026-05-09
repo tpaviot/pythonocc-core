@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -53,6 +54,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intana.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -110,9 +112,21 @@ IntAna_NoGeometricSolution = IntAna_ResultType.IntAna_NoGeometricSolution
 %template(IntAna_ListOfCurve) NCollection_List<IntAna_Curve>;
 
 %extend NCollection_List<IntAna_Curve> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntAna_ListIteratorOfListOfCurve(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -185,7 +199,7 @@ Returns the parametric domain of the curve.
 Parameters
 ----------
 P: gp_Pnt
-theParams: NCollection_List<double>
+theParams: TColStd_ListOfReal
 
 Return
 -------
@@ -195,7 +209,7 @@ Description
 -----------
 Tries to find the parameter of the point P on the curve. If the method returns False, the 'projection' is impossible. If the method returns True at least one parameter has been found. theParams is always sorted in ascending order.
 ") FindParameter;
-		void FindParameter(const gp_Pnt & P, NCollection_List<double> & theParams);
+		void FindParameter(const gp_Pnt & P, TColStd_ListOfReal & theParams);
 
 		/****** IntAna_Curve::IsConstant ******/
 		/****** md5 signature: 004cfe784b2152966984d86bf19ad8a1 ******/

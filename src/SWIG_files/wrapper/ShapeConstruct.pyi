@@ -7,9 +7,12 @@ from OCC.Core.Geom import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.Geom2d import *
 from OCC.Core.TopAbs import *
+from OCC.Core.TopTools import *
 from OCC.Core.TopoDS import *
 from OCC.Core.gp import *
+from OCC.Core.TColStd import *
 from OCC.Core.BRepBuilderAPI import *
+from OCC.Core.TColgp import *
 from OCC.Core.Message import *
 from OCC.Core.ShapeAnalysis import *
 from OCC.Core.ShapeExtend import *
@@ -24,6 +27,8 @@ class shapeconstruct:
     def ConvertCurveToBSpline(C2D: Geom2d_Curve, First: float, Last: float, Tol2d: float, Continuity: GeomAbs_Shape, MaxSegments: int, MaxDegree: int) -> Geom2d_BSplineCurve: ...
     @staticmethod
     def ConvertSurfaceToBSpline(surf: Geom_Surface, UF: float, UL: float, VF: float, VL: float, Tol3d: float, Continuity: GeomAbs_Shape, MaxSegments: int, MaxDegree: int) -> Geom_BSplineSurface: ...
+    @staticmethod
+    def JoinPCurves(theEdges: TopTools_HSequenceOfShape, theFace: TopoDS_Face, theEdge: TopoDS_Edge) -> bool: ...
 
 class ShapeConstruct_Curve:
     def AdjustCurve(self, C3D: Geom_Curve, P1: gp_Pnt, P2: gp_Pnt, take1: Optional[bool] = true, take2: Optional[bool] = true) -> bool: ...
@@ -33,8 +38,16 @@ class ShapeConstruct_Curve:
     def ConvertToBSpline(self, C: Geom_Curve, first: float, last: float, prec: float) -> Geom_BSplineCurve: ...
     @overload
     def ConvertToBSpline(self, C: Geom2d_Curve, first: float, last: float, prec: float) -> Geom2d_BSplineCurve: ...
+    @overload
+    @staticmethod
+    def FixKnots(knots: TColStd_HArray1OfReal) -> bool: ...
+    @overload
+    @staticmethod
+    def FixKnots(knots: TColStd_Array1OfReal) -> bool: ...
 
 class ShapeConstruct_MakeTriangulation(BRepBuilderAPI_MakeShape):
+    @overload
+    def __init__(self, pnts: TColgp_Array1OfPnt, prec: Optional[float] = 0.0) -> None: ...
     @overload
     def __init__(self, wire: TopoDS_Wire, prec: Optional[float] = 0.0) -> None: ...
     def Build(self, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...

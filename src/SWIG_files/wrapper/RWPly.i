@@ -48,6 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwply.html"
 #include<RWMesh_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<gp_module.hxx>
 #include<CDF_module.hxx>
@@ -98,6 +100,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwply.html"
 %import RWMesh.i
 %import XCAFPrs.i
 %import TDocStd.i
+%import TDF.i
+%import TColStd.i
 %import Message.i
 %import gp.i
 
@@ -272,9 +276,9 @@ Return True if vertex position should be stored with double floating point preci
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: NCollection_Sequence<TDF_Label>
-theLabelFilter: NCollection_Map<TCollection_AsciiString> *
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theRootLabels: TDF_LabelSequence
+theLabelFilter: TColStd_MapOfAsciiString *
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -291,7 +295,7 @@ Input parameter: theFileInfo map with file metadata to put into PLY header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWPly_CafWriter::Perform ******/
 		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
@@ -300,7 +304,7 @@ Return: False on file writing failure.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -315,7 +319,7 @@ Input parameter: theFileInfo map with file metadata to put into PLY header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWPly_CafWriter::SetColors ******/
 		/****** md5 signature: ba154b7155d7a27211ce6b222d360537 ******/
@@ -773,7 +777,7 @@ Parameters
 ----------
 theNbNodes: int
 theNbElems: int
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theFileInfo: TColStd_IndexedDataMapOfStringString
 
 Return
 -------
@@ -786,7 +790,7 @@ Input parameter: theNbNodes number of vertex nodes
 Input parameter: theNbElems number of mesh elements 
 Input parameter: theFileInfo optional comments.
 ") WriteHeader;
-		bool WriteHeader(const int theNbNodes, const int theNbElems, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo);
+		bool WriteHeader(const int theNbNodes, const int theNbElems, const TColStd_IndexedDataMapOfStringString & theFileInfo);
 
 		/****** RWPly_PlyWriterContext::WriteQuad ******/
 		/****** md5 signature: f35d5ea7c5c569033d689878bb35cb60 ******/

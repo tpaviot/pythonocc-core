@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dint.html"
 #include<Adaptor2d_module.hxx>
 #include<IntRes2d_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<math_module.hxx>
 #include<IntCurve_module.hxx>
@@ -67,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dint.html"
 %import Adaptor2d.i
 %import IntRes2d.i
 %import gp.i
+%import TColStd.i
 %import GeomAbs.i
 %import math.i
 %import IntCurve.i
@@ -781,7 +783,7 @@ Parameters
 ----------
 C: Adaptor2d_Curve2d
 Index: int
-Tab: NCollection_Array1<double>
+Tab: TColStd_Array1OfReal
 
 Return
 -------
@@ -792,7 +794,7 @@ Description
 -----------
 output the bounds of interval of index <Index> used if Type == Composite.
 ") GetInterval;
-		static void GetInterval(const Adaptor2d_Curve2d & C, const int Index, const NCollection_Array1<double> & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void GetInterval(const Adaptor2d_Curve2d & C, const int Index, const TColStd_Array1OfReal & Tab, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** Geom2dInt_Geom2dCurveTool::GetType ******/
 		/****** md5 signature: 3307087cce71727ba86c3994c56d1dfd ******/
@@ -837,7 +839,7 @@ Returns the Hypr2d from gp corresponding to the curve C. This method is called o
 Parameters
 ----------
 C: Adaptor2d_Curve2d
-Tab: NCollection_Array1<double>
+Tab: TColStd_Array1OfReal
 
 Return
 -------
@@ -847,7 +849,7 @@ Description
 -----------
 compute Tab.
 ") Intervals;
-		static void Intervals(const Adaptor2d_Curve2d & C, NCollection_Array1<double> & Tab);
+		static void Intervals(const Adaptor2d_Curve2d & C, TColStd_Array1OfReal & Tab);
 
 		/****** Geom2dInt_Geom2dCurveTool::LastParameter ******/
 		/****** md5 signature: 6ee41bce6c1996bc4bd48036bcb7bcfd ******/
@@ -1863,10 +1865,10 @@ TheImpTool: IntCurve_IConicTool
 TheParCurve: Adaptor2d_Curve2d
 TheImpCurveDomain: IntRes2d_Domain
 TheParCurveDomain: IntRes2d_Domain
-Inter2_And_Domain2: NCollection_Array1<double>
-Inter1: NCollection_Array1<double>
-Resultat1: NCollection_Array1<double>
-Resultat2: NCollection_Array1<double>
+Inter2_And_Domain2: TColStd_Array1OfReal
+Inter1: TColStd_Array1OfReal
+Resultat1: TColStd_Array1OfReal
+Resultat2: TColStd_Array1OfReal
 EpsNul: double
 
 Return
@@ -1877,7 +1879,7 @@ Description
 -----------
 No available documentation.
 ") And_Domaine_Objet1_Intersections;
-		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const Adaptor2d_Curve2d & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, NCollection_Array1<double> & Inter2_And_Domain2, NCollection_Array1<double> & Inter1, NCollection_Array1<double> & Resultat1, NCollection_Array1<double> & Resultat2, const double EpsNul);
+		void And_Domaine_Objet1_Intersections(const IntCurve_IConicTool & TheImpTool, const Adaptor2d_Curve2d & TheParCurve, const IntRes2d_Domain & TheImpCurveDomain, const IntRes2d_Domain & TheParCurveDomain, Standard_Integer &OutValue, TColStd_Array1OfReal & Inter2_And_Domain2, TColStd_Array1OfReal & Inter1, TColStd_Array1OfReal & Resultat1, TColStd_Array1OfReal & Resultat2, const double EpsNul);
 
 		/****** Geom2dInt_TheIntersectorOfTheIntConicCurveOfGInter::FindU ******/
 		/****** md5 signature: 20ec63826e43bd2e6a8f6ecefcfe8aca ******/

@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dadaptor.htm
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dadaptor.htm
 %import Geom2d.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -503,7 +505,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -514,7 +516,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Geom2dAdaptor_Curve::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -528,6 +530,19 @@ Description
 No available documentation.
 ") IsClosed;
 		bool IsClosed();
+
+		/****** Geom2dAdaptor_Curve::IsInitialized ******/
+		/****** md5 signature: 01666b35dc0d7af2bf9583d3f531f49b ******/
+		%feature("compactdefaultargs") IsInitialized;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the adaptor has been loaded with a curve.
+") IsInitialized;
+		bool IsInitialized();
 
 		/****** Geom2dAdaptor_Curve::IsPeriodic ******/
 		/****** md5 signature: c33341d130b25859848a016acbcaf4dd ******/

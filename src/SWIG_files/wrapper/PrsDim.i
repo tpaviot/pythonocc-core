@@ -56,6 +56,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsdim.html"
 #include<SelectMgr_module.hxx>
 #include<PrsMgr_module.hxx>
 #include<DsgPrs_module.hxx>
+#include<TColStd_module.hxx>
 #include<V3d_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Message_module.hxx>
@@ -84,6 +85,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsdim.html"
 %import SelectMgr.i
 %import PrsMgr.i
 %import DsgPrs.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -283,6 +285,29 @@ PrsDim_TypeOfDist_Vertical = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Vertical
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(PrsDim_Dimension)
+%wrap_handle(PrsDim_DimensionOwner)
+%wrap_handle(PrsDim_Relation)
+%wrap_handle(PrsDim_AngleDimension)
+%wrap_handle(PrsDim_Chamf2dDimension)
+%wrap_handle(PrsDim_Chamf3dDimension)
+%wrap_handle(PrsDim_ConcentricRelation)
+%wrap_handle(PrsDim_DiameterDimension)
+%wrap_handle(PrsDim_EllipseRadiusDimension)
+%wrap_handle(PrsDim_EqualDistanceRelation)
+%wrap_handle(PrsDim_EqualRadiusRelation)
+%wrap_handle(PrsDim_FixRelation)
+%wrap_handle(PrsDim_IdenticRelation)
+%wrap_handle(PrsDim_LengthDimension)
+%wrap_handle(PrsDim_MidPointRelation)
+%wrap_handle(PrsDim_OffsetDimension)
+%wrap_handle(PrsDim_ParallelRelation)
+%wrap_handle(PrsDim_PerpendicularRelation)
+%wrap_handle(PrsDim_RadiusDimension)
+%wrap_handle(PrsDim_SymmetricRelation)
+%wrap_handle(PrsDim_TangentRelation)
+%wrap_handle(PrsDim_MaxRadiusDimension)
+%wrap_handle(PrsDim_MinRadiusDimension)
 /* end handles declaration */
 
 /* templates */
@@ -1366,6 +1391,8 @@ Unsets user defined text positioning and enables text positioning by other param
 };
 
 
+%make_alias(PrsDim_Dimension)
+
 %extend PrsDim_Dimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1474,6 +1501,8 @@ Removes highlighting from the selected part of dimension.
 
 };
 
+
+%make_alias(PrsDim_DimensionOwner)
 
 %extend PrsDim_DimensionOwner {
 	%pythoncode {
@@ -1923,6 +1952,8 @@ Returns the value of each object in the relation.
 
 };
 
+
+%make_alias(PrsDim_Relation)
 
 %extend PrsDim_Relation {
 	%pythoncode {
@@ -2433,6 +2464,8 @@ Return: third argument shape.
 };
 
 
+%make_alias(PrsDim_AngleDimension)
+
 %extend PrsDim_AngleDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2518,6 +2551,8 @@ Indicates that we are concerned with a 2d length.
 };
 
 
+%make_alias(PrsDim_Chamf2dDimension)
+
 %extend PrsDim_Chamf2dDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2601,6 +2636,8 @@ Indicates that we are concerned with a 3d length.
 };
 
 
+%make_alias(PrsDim_Chamf3dDimension)
+
 %extend PrsDim_Chamf3dDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2634,6 +2671,8 @@ Constructs the display object for concentric relations between shapes. This obje
 
 };
 
+
+%make_alias(PrsDim_ConcentricRelation)
 
 %extend PrsDim_ConcentricRelation {
 	%pythoncode {
@@ -2899,6 +2938,8 @@ Return: the measured shape.
 };
 
 
+%make_alias(PrsDim_DiameterDimension)
+
 %extend PrsDim_DiameterDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2952,6 +2993,8 @@ No available documentation.
 
 };
 
+
+%make_alias(PrsDim_EllipseRadiusDimension)
 
 %extend PrsDim_EllipseRadiusDimension {
 	%pythoncode {
@@ -3145,6 +3188,8 @@ Returns the shape aShape4 from the framework created at construction time.
 };
 
 
+%make_alias(PrsDim_EqualDistanceRelation)
+
 %extend PrsDim_EqualDistanceRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3178,6 +3223,8 @@ Creates equal relation of two arc's radiuses. If one of edges is not in the give
 
 };
 
+
+%make_alias(PrsDim_EqualRadiusRelation)
 
 %extend PrsDim_EqualRadiusRelation {
 	%pythoncode {
@@ -3319,6 +3366,8 @@ Returns the wire which connects vertices in a fixed relation.
 };
 
 
+%make_alias(PrsDim_FixRelation)
+
 %extend PrsDim_FixRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3412,16 +3461,18 @@ Returns true if the interactive object is movable.
 		%feature("compactdefaultargs") Users;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<Standard_Transient>>
+TColStd_ListOfTransient
 
 Description
 -----------
 No available documentation.
 ") Users;
-		const NCollection_List<opencascade::handle<Standard_Transient>> & Users();
+		const TColStd_ListOfTransient & Users();
 
 };
 
+
+%make_alias(PrsDim_IdenticRelation)
 
 %extend PrsDim_IdenticRelation {
 	%pythoncode {
@@ -3833,6 +3884,8 @@ No available documentation.
 };
 
 
+%make_alias(PrsDim_LengthDimension)
+
 %extend PrsDim_LengthDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3911,6 +3964,8 @@ No available documentation.
 
 };
 
+
+%make_alias(PrsDim_MidPointRelation)
 
 %extend PrsDim_MidPointRelation {
 	%pythoncode {
@@ -3991,6 +4046,8 @@ Sets a transformation aTrsf for presentation and selection to a relative positio
 };
 
 
+%make_alias(PrsDim_OffsetDimension)
+
 %extend PrsDim_OffsetDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4061,6 +4118,8 @@ Returns true if the parallelism is movable.
 };
 
 
+%make_alias(PrsDim_ParallelRelation)
+
 %extend PrsDim_ParallelRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4113,6 +4172,8 @@ Constructs an object to display constraints of perpendicularity on shapes. This 
 
 };
 
+
+%make_alias(PrsDim_PerpendicularRelation)
 
 %extend PrsDim_PerpendicularRelation {
 	%pythoncode {
@@ -4403,6 +4464,8 @@ Return: the measured shape.
 };
 
 
+%make_alias(PrsDim_RadiusDimension)
+
 %extend PrsDim_RadiusDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4482,6 +4545,8 @@ Sets the tool aSymmetricTool composed of a first shape, a second shape, and a pl
 };
 
 
+%make_alias(PrsDim_SymmetricRelation)
+
 %extend PrsDim_SymmetricRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4548,6 +4613,8 @@ Sets the external reference for tangency, aRef. The values are as follows: - 0 -
 };
 
 
+%make_alias(PrsDim_TangentRelation)
+
 %extend PrsDim_TangentRelation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4605,6 +4672,8 @@ Max Ellipse radius dimension with position Shape can be edge, planar face or cyl
 };
 
 
+%make_alias(PrsDim_MaxRadiusDimension)
+
 %extend PrsDim_MaxRadiusDimension {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4661,6 +4730,8 @@ Max Ellipse radius dimension with position Shape can be edge, planar face or cyl
 
 };
 
+
+%make_alias(PrsDim_MinRadiusDimension)
 
 %extend PrsDim_MinRadiusDimension {
 	%pythoncode {

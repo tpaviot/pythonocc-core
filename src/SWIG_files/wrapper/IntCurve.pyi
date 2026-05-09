@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 from OCC.Core.IntRes2d import *
+from OCC.Core.TColStd import *
 from OCC.Core.math import *
 from OCC.Core.GeomAbs import *
 

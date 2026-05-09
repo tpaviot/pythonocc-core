@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 #include<TopTools_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<AppParCurves_module.hxx>
@@ -56,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 #include<GeomAbs_module.hxx>
 #include<GeomFill_module.hxx>
 #include<AppCont_module.hxx>
+#include<TColgp_module.hxx>
 #include<BRepMAT2d_module.hxx>
 #include<Law_module.hxx>
 #include<Bisector_module.hxx>
@@ -85,6 +87,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 %import TopTools.i
 %import TopoDS.i
 %import gp.i
+%import TColStd.i
 %import Geom.i
 %import Geom2d.i
 %import AppParCurves.i
@@ -93,6 +96,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 %import GeomAbs.i
 %import GeomFill.i
 %import AppCont.i
+%import TColgp.i
 %import BRepMAT2d.i
 %import Law.i
 %import Bisector.i
@@ -165,6 +169,7 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BRepFill_CurveConstraint)
 %wrap_handle(BRepFill_LocationLaw)
 %wrap_handle(BRepFill_PipeShell)
 %wrap_handle(BRepFill_SectionLaw)
@@ -207,14 +212,33 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 %template(BRepFill_ListOfOffsetWire) NCollection_List<BRepFill_OffsetWire>;
 
 %extend NCollection_List<BRepFill_OffsetWire> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepFill_ListIteratorOfListOfOffsetWire(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BRepFill_SequenceOfEdgeFaceAndOrder) NCollection_Sequence<BRepFill_EdgeFaceAndOrder>;
 
 %extend NCollection_Sequence<BRepFill_EdgeFaceAndOrder> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -223,6 +247,13 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 %template(BRepFill_SequenceOfFaceAndOrder) NCollection_Sequence<BRepFill_FaceAndOrder>;
 
 %extend NCollection_Sequence<BRepFill_FaceAndOrder> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -231,6 +262,13 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
 %template(BRepFill_SequenceOfSection) NCollection_Sequence<BRepFill_Section>;
 
 %extend NCollection_Sequence<BRepFill_Section> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -295,7 +333,7 @@ Computes <AxeProf> as Follow. <Location> is the Position of the nearest vertex V
 Parameters
 ----------
 wire: TopoDS_Wire
-ACR: NCollection_Array1<double>
+ACR: TColStd_Array1OfReal
 
 Return
 -------
@@ -305,7 +343,7 @@ Description
 -----------
 Compute ACR on a wire.
 ") ComputeACR;
-		static void ComputeACR(const TopoDS_Wire & wire, NCollection_Array1<double> & ACR);
+		static void ComputeACR(const TopoDS_Wire & wire, TColStd_Array1OfReal & ACR);
 
 		/****** BRepFill::Face ******/
 		/****** md5 signature: d63ae9062edc6e9968525d33571f93de ******/
@@ -333,7 +371,7 @@ Computes a ruled surface between two edges.
 Parameters
 ----------
 wire: TopoDS_Wire
-ACRcuts: NCollection_Array1<double>
+ACRcuts: TColStd_Array1OfReal
 prec: double
 
 Return
@@ -344,7 +382,7 @@ Description
 -----------
 Insert ACR on a wire.
 ") InsertACR;
-		static TopoDS_Wire InsertACR(const TopoDS_Wire & wire, const NCollection_Array1<double> & ACRcuts, const double prec);
+		static TopoDS_Wire InsertACR(const TopoDS_Wire & wire, const TColStd_Array1OfReal & ACRcuts, const double prec);
 
 		/****** BRepFill::Shell ******/
 		/****** md5 signature: 88d6b874e94f58733b1bc7baa4c7ea78 ******/
@@ -628,7 +666,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Sections: NCollection_Sequence<TopoDS_Shape>
+Sections: TopTools_SequenceOfShape
 
 Return
 -------
@@ -638,20 +676,20 @@ Description
 -----------
 No available documentation.
 ") BRepFill_CompatibleWires;
-		 BRepFill_CompatibleWires(const NCollection_Sequence<TopoDS_Shape> & Sections);
+		 BRepFill_CompatibleWires(const TopTools_SequenceOfShape & Sections);
 
 		/****** BRepFill_CompatibleWires::Generated ******/
 		/****** md5 signature: 87cd0ad47838d627e7014b5b7da796f5 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 No available documentation.
 ") Generated;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Generated();
+		const TopTools_DataMapOfShapeListOfShape & Generated();
 
 		/****** BRepFill_CompatibleWires::GeneratedShapes ******/
 		/****** md5 signature: f9873580f955f2d90bec3ded127c8041 ******/
@@ -663,13 +701,13 @@ SubSection: TopoDS_Edge
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the shapes created from a subshape <SubSection> of a section.
 ") GeneratedShapes;
-		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Edge & SubSection);
+		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Edge & SubSection);
 
 		/****** BRepFill_CompatibleWires::GetStatus ******/
 		/****** md5 signature: d01d66bd030c1232d59d2b7253fc3b10 ******/
@@ -690,7 +728,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Sections: NCollection_Sequence<TopoDS_Shape>
+Sections: TopTools_SequenceOfShape
 
 Return
 -------
@@ -700,7 +738,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const NCollection_Sequence<TopoDS_Shape> & Sections);
+		void Init(const TopTools_SequenceOfShape & Sections);
 
 		/****** BRepFill_CompatibleWires::IsDegeneratedFirstSection ******/
 		/****** md5 signature: 799951ede21bdb58355bbd8da2c2272c ******/
@@ -782,13 +820,13 @@ No available documentation.
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 returns the generated sequence.
 ") Shape;
-		const NCollection_Sequence<TopoDS_Shape> Shape();
+		const TopTools_SequenceOfShape & Shape();
 
 };
 
@@ -1138,6 +1176,8 @@ No available documentation.
 };
 
 
+%make_alias(BRepFill_CurveConstraint)
+
 %extend BRepFill_CurveConstraint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1179,13 +1219,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepFill_Draft::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -1462,13 +1502,13 @@ ProfShape: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 ") GeneratedShapes;
-		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
+		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
 
 		/****** BRepFill_Evolved::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -1881,13 +1921,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepFill_Filling::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -2031,13 +2071,13 @@ No available documentation.
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 Returns all the shapes created.
 ") Generated;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Generated();
+		const TopTools_DataMapOfShapeListOfShape & Generated();
 
 		/****** BRepFill_Generator::GeneratedShapes ******/
 		/****** md5 signature: 3f65f2b0742c196a65daa7ca44522117 ******/
@@ -2049,13 +2089,13 @@ SSection: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the shapes created from a subshape <SSection> of a section.
 ") GeneratedShapes;
-		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Shape & SSection);
+		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SSection);
 
 		/****** BRepFill_Generator::GetStatus ******/
 		/****** md5 signature: d01d66bd030c1232d59d2b7253fc3b10 ******/
@@ -2266,7 +2306,7 @@ Return a error status, if the status is not PipeOk then it exist a parameter tli
 		%feature("autodoc", "
 Parameters
 ----------
-Interval: NCollection_Array1<int>
+Interval: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2276,7 +2316,7 @@ Description
 -----------
 No available documentation.
 ") Holes;
-		void Holes(NCollection_Array1<int> & Interval);
+		void Holes(TColStd_Array1OfInteger & Interval);
 
 		/****** BRepFill_LocationLaw::IsClosed ******/
 		/****** md5 signature: 66fc0caa1853d24780b1d28b8296bc6c ******/
@@ -2556,8 +2596,8 @@ raises if IsParticularCase is <False>.
 Parameters
 ----------
 theU: double
-theVec2d: NCollection_Array1<gp_Vec2d>
-theVec: NCollection_Array1<gp_Vec>
+theVec2d: TColgp_Array1OfVec2d
+theVec: TColgp_Array1OfVec
 
 Return
 -------
@@ -2567,7 +2607,7 @@ Description
 -----------
 Returns the derivative at parameter <theU>.
 ") D1;
-		bool D1(const double theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
+		bool D1(const double theU, TColgp_Array1OfVec2d & theVec2d, TColgp_Array1OfVec & theVec);
 
 		/****** BRepFill_MultiLine::FirstParameter ******/
 		/****** md5 signature: a030fd3ced91f50691075634ae7b49fb ******/
@@ -2633,8 +2673,8 @@ Returns the current point on the 3d curve.
 Parameters
 ----------
 theU: double
-thePnt2d: NCollection_Array1<gp_Pnt2d>
-thePnt: NCollection_Array1<gp_Pnt>
+thePnt2d: TColgp_Array1OfPnt2d
+thePnt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2644,7 +2684,7 @@ Description
 -----------
 Returns the point at parameter <theU>.
 ") Value;
-		bool Value(const double theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
+		bool Value(const double theU, TColgp_Array1OfPnt2d & thePnt2d, TColgp_Array1OfPnt & thePnt);
 
 		/****** BRepFill_MultiLine::Value3dOnF1OnF2 ******/
 		/****** md5 signature: f05e20fec1d2c7fbc525191b8e8800a3 ******/
@@ -2872,13 +2912,13 @@ SpineShape: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the shapes created from a subshape <SpineShape> of the spine. Returns the last computed Offset.
 ") GeneratedShapes;
-		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Shape & SpineShape);
+		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape);
 
 		/****** BRepFill_OffsetWire::Init ******/
 		/****** md5 signature: 20cdbc88c6b16cae965fca7361033325 ******/
@@ -3114,7 +3154,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -3124,7 +3164,7 @@ Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		void Generated(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & L);
+		void Generated(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
 		/****** BRepFill_Pipe::LastShape ******/
 		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
@@ -3371,7 +3411,7 @@ Returns the TopoDS Shape of the bottom of the sweep.
 Parameters
 ----------
 S: TopoDS_Shape
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -3381,7 +3421,7 @@ Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		void Generated(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & L);
+		void Generated(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
 		/****** BRepFill_PipeShell::GetStatus ******/
 		/****** md5 signature: ee71a82e4f5af8e3c4016af8fa6d8de6 ******/
@@ -3454,7 +3494,7 @@ Transform the sweeping Shell in Solid. If the section are not closed returns Fal
 		%feature("autodoc", "
 Parameters
 ----------
-theProfiles: NCollection_List<TopoDS_Shape>
+theProfiles: TopTools_ListOfShape
 
 Return
 -------
@@ -3464,7 +3504,7 @@ Description
 -----------
 Returns the list of original profiles.
 ") Profiles;
-		void Profiles(NCollection_List<TopoDS_Shape> & theProfiles);
+		void Profiles(TopTools_ListOfShape & theProfiles);
 
 		/****** BRepFill_PipeShell::Set ******/
 		/****** md5 signature: 36f3ff9d49162e12568c38812d1553eb ******/
@@ -3746,7 +3786,7 @@ Returns the result Shape.
 Parameters
 ----------
 NumberOfSection: int
-Sections: NCollection_List<TopoDS_Shape>
+Sections: TopTools_ListOfShape
 
 Return
 -------
@@ -3756,7 +3796,7 @@ Description
 -----------
 Perform simulation of the sweep: Some Section are returned.
 ") Simulate;
-		void Simulate(const int NumberOfSection, NCollection_List<TopoDS_Shape> & Sections);
+		void Simulate(const int NumberOfSection, TopTools_ListOfShape & Sections);
 
 		/****** BRepFill_PipeShell::Spine ******/
 		/****** md5 signature: 6331688635fc3e41ab0cf89de46bd269 ******/
@@ -4322,9 +4362,9 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-ReversedEdges: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>
-Tapes: NCollection_HArray2<TopoDS_Shape
-Rails: NCollection_HArray2<TopoDS_Shape
+ReversedEdges: TopTools_MapOfShape
+Tapes: TopTools_HArray2OfShape
+Rails: TopTools_HArray2OfShape
 Transition: BRepFill_TransitionStyle (optional, default to BRepFill_Modified)
 Continuity: GeomAbs_Shape (optional, default to GeomAbs_C2)
 Approx: GeomFill_ApproxStyle (optional, default to GeomFill_Location)
@@ -4339,7 +4379,7 @@ Description
 -----------
 Build the Sweep Surface Transition define Transition strategy Approx define Approximation Strategy - GeomFill_Section: The composed Function Location X Section is directly approximated. - GeomFill_Location: The location law is approximated, and the SweepSurface builds an algebraic composition of approximated location law and section law This option is Ok, if Section.Surface() methode is effective. Continuity: The continuity in v waiting on the surface Degmax: The maximum degree in v required on the surface Segmax: The maximum number of span in v required on the surface.
 ") Build;
-		void Build(NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> & ReversedEdges, NCollection_DataMap<TopoDS_Shape, opencascade::handle<NCollection_HArray2<TopoDS_Shape> >, TopTools_ShapeMapHasher> & Tapes, NCollection_DataMap<TopoDS_Shape, opencascade::handle<NCollection_HArray2<TopoDS_Shape> >, TopTools_ShapeMapHasher> & Rails, const BRepFill_TransitionStyle Transition = BRepFill_Modified, const GeomAbs_Shape Continuity = GeomAbs_C2, const GeomFill_ApproxStyle Approx = GeomFill_Location, const int Degmax = 11, const int Segmax = 30);
+		void Build(TopTools_MapOfShape & ReversedEdges, NCollection_DataMap<TopoDS_Shape, opencascade::handle<TopTools_HArray2OfShape>, TopTools_ShapeMapHasher> & Tapes, NCollection_DataMap<TopoDS_Shape, opencascade::handle<TopTools_HArray2OfShape>, TopTools_ShapeMapHasher> & Rails, const BRepFill_TransitionStyle Transition = BRepFill_Modified, const GeomAbs_Shape Continuity = GeomAbs_C2, const GeomFill_ApproxStyle Approx = GeomFill_Location, const int Degmax = 11, const int Segmax = 30);
 
 		/****** BRepFill_Sweep::ErrorOnSurface ******/
 		/****** md5 signature: 0ab673c2dfbd4ce8e0d165ef9c450b15 ******/
@@ -4359,13 +4399,13 @@ Get the Approximation error.
 		%feature("compactdefaultargs") InterFaces;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<TopoDS_Shape>>
+opencascade::handle<TopTools_HArray2OfShape>
 
 Description
 -----------
 No available documentation.
 ") InterFaces;
-		opencascade::handle<NCollection_HArray2<TopoDS_Shape>> InterFaces();
+		opencascade::handle<TopTools_HArray2OfShape> InterFaces();
 
 		/****** BRepFill_Sweep::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -4385,13 +4425,13 @@ Say if the Shape is Build.
 		%feature("compactdefaultargs") Sections;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<TopoDS_Shape>>
+opencascade::handle<TopTools_HArray2OfShape>
 
 Description
 -----------
 No available documentation.
 ") Sections;
-		opencascade::handle<NCollection_HArray2<TopoDS_Shape>> Sections();
+		opencascade::handle<TopTools_HArray2OfShape> Sections();
 
 		/****** BRepFill_Sweep::SetAngularControl ******/
 		/****** md5 signature: 73c0b3495fb19b085b32a8ab06bc099d ******/
@@ -4488,13 +4528,13 @@ Returns the Sweeping Shape.
 		%feature("compactdefaultargs") SubShape;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray2<TopoDS_Shape>>
+opencascade::handle<TopTools_HArray2OfShape>
 
 Description
 -----------
 No available documentation.
 ") SubShape;
-		opencascade::handle<NCollection_HArray2<TopoDS_Shape>> SubShape();
+		opencascade::handle<TopTools_HArray2OfShape> SubShape();
 
 		/****** BRepFill_Sweep::Tape ******/
 		/****** md5 signature: 065554f796bd0d622183b5a017c4a443 ******/
@@ -4571,7 +4611,7 @@ Parameters
 Start: bool
 Edge1: TopoDS_Edge
 Edge2: TopoDS_Edge
-Params: NCollection_Sequence<gp_Pnt>
+Params: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -4581,7 +4621,7 @@ Description
 -----------
 No available documentation.
 ") AddOrConfuse;
-		void AddOrConfuse(const bool Start, const TopoDS_Edge & Edge1, const TopoDS_Edge & Edge2, NCollection_Sequence<gp_Pnt> & Params);
+		void AddOrConfuse(const bool Start, const TopoDS_Edge & Edge1, const TopoDS_Edge & Edge2, TColgp_SequenceOfPnt & Params);
 
 		/****** BRepFill_TrimEdgeTool::IntersectWith ******/
 		/****** md5 signature: acf078dbbf36baa548712d85b25ec66f ******/
@@ -4597,7 +4637,7 @@ End1: TopoDS_Vertex
 End2: TopoDS_Vertex
 theJoinType: GeomAbs_JoinType
 IsOpenResult: bool
-Params: NCollection_Sequence<gp_Pnt>
+Params: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -4607,7 +4647,7 @@ Description
 -----------
 No available documentation.
 ") IntersectWith;
-		void IntersectWith(const TopoDS_Edge & Edge1, const TopoDS_Edge & Edge2, const TopoDS_Shape & InitShape1, const TopoDS_Shape & InitShape2, const TopoDS_Vertex & End1, const TopoDS_Vertex & End2, const GeomAbs_JoinType theJoinType, const bool IsOpenResult, NCollection_Sequence<gp_Pnt> & Params);
+		void IntersectWith(const TopoDS_Edge & Edge1, const TopoDS_Edge & Edge2, const TopoDS_Shape & InitShape1, const TopoDS_Shape & InitShape2, const TopoDS_Vertex & End1, const TopoDS_Vertex & End2, const GeomAbs_JoinType theJoinType, const bool IsOpenResult, TColgp_SequenceOfPnt & Params);
 
 		/****** BRepFill_TrimEdgeTool::IsInside ******/
 		/****** md5 signature: 3583837dccf3c0c4b99d1a2cfb21a344 ******/
@@ -4647,7 +4687,7 @@ class BRepFill_TrimShellCorner {
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_HArray2<TopoDS_Shape
+theFaces: TopTools_HArray2OfShape
 theTransition: BRepFill_TransitionStyle
 theAxeOfBisPlane: gp_Ax2
 theIntPointCrossDir: gp_Vec
@@ -4660,7 +4700,7 @@ Description
 -----------
 Constructor: takes faces to intersect, type of transition (it can be RightCorner or RoundCorner) and axis of bisector plane theIntersectPointCrossDirection: prev path direction at the origin point of theAxeOfBisPlane cross next path direction at the origin point of theAxeOfBisPlane. used when EE has more than one vertices.
 ") BRepFill_TrimShellCorner;
-		 BRepFill_TrimShellCorner(const opencascade::handle<NCollection_HArray2<TopoDS_Shape> > & theFaces, const BRepFill_TransitionStyle theTransition, const gp_Ax2 & theAxeOfBisPlane, const gp_Vec & theIntPointCrossDir);
+		 BRepFill_TrimShellCorner(const opencascade::handle<TopTools_HArray2OfShape> & theFaces, const BRepFill_TransitionStyle theTransition, const gp_Ax2 & theAxeOfBisPlane, const gp_Vec & theIntPointCrossDir);
 
 		/****** BRepFill_TrimShellCorner::AddBounds ******/
 		/****** md5 signature: 0c6f0cc1fa17e085de1f61a2c1d7758e ******/
@@ -4668,7 +4708,7 @@ Constructor: takes faces to intersect, type of transition (it can be RightCorner
 		%feature("autodoc", "
 Parameters
 ----------
-Bounds: NCollection_HArray2<TopoDS_Shape
+Bounds: TopTools_HArray2OfShape
 
 Return
 -------
@@ -4678,7 +4718,7 @@ Description
 -----------
 No available documentation.
 ") AddBounds;
-		void AddBounds(const opencascade::handle<NCollection_HArray2<TopoDS_Shape> > & Bounds);
+		void AddBounds(const opencascade::handle<TopTools_HArray2OfShape> & Bounds);
 
 		/****** BRepFill_TrimShellCorner::AddUEdges ******/
 		/****** md5 signature: 044c846620965ffbc25a387c77cf3973 ******/
@@ -4686,7 +4726,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theUEdges: NCollection_HArray2<TopoDS_Shape
+theUEdges: TopTools_HArray2OfShape
 
 Return
 -------
@@ -4696,7 +4736,7 @@ Description
 -----------
 No available documentation.
 ") AddUEdges;
-		void AddUEdges(const opencascade::handle<NCollection_HArray2<TopoDS_Shape> > & theUEdges);
+		void AddUEdges(const opencascade::handle<TopTools_HArray2OfShape> & theUEdges);
 
 		/****** BRepFill_TrimShellCorner::AddVEdges ******/
 		/****** md5 signature: 30e52edf4f5d2dae3c7681b0bf7829f0 ******/
@@ -4704,7 +4744,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theVEdges: NCollection_HArray2<TopoDS_Shape
+theVEdges: TopTools_HArray2OfShape
 theIndex: int
 
 Return
@@ -4715,7 +4755,7 @@ Description
 -----------
 No available documentation.
 ") AddVEdges;
-		void AddVEdges(const opencascade::handle<NCollection_HArray2<TopoDS_Shape> > & theVEdges, const int theIndex);
+		void AddVEdges(const opencascade::handle<TopTools_HArray2OfShape> & theVEdges, const int theIndex);
 
 		/****** BRepFill_TrimShellCorner::HasSection ******/
 		/****** md5 signature: 1a10ee43794f46ad601dc55b48eb30d5 ******/
@@ -4750,7 +4790,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-theModified: NCollection_List<TopoDS_Shape>
+theModified: TopTools_ListOfShape
 
 Return
 -------
@@ -4760,7 +4800,7 @@ Description
 -----------
 No available documentation.
 ") Modified;
-		void Modified(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & theModified);
+		void Modified(const TopoDS_Shape & S, TopTools_ListOfShape & theModified);
 
 		/****** BRepFill_TrimShellCorner::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -4821,7 +4861,7 @@ Parameters
 ----------
 EdgeOnF1: TopoDS_Edge
 EdgeOnF2: TopoDS_Edge
-Points: NCollection_Sequence<gp_Pnt>
+Points: TColgp_SequenceOfPnt
 
 Return
 -------
@@ -4831,7 +4871,7 @@ Description
 -----------
 Intersect <Bis> with the projection of the edges <EdgeOnFi> and returns the intersecting parameters on Bis and on the edges P.X(): Parameter on Bis P.Y(): Parameter on EdgeOnF1 P.Z(): Parameter on EdgeOnF2 raises if <Edge> is not a edge of Face1 or Face2.
 ") IntersectWith;
-		void IntersectWith(const TopoDS_Edge & EdgeOnF1, const TopoDS_Edge & EdgeOnF2, NCollection_Sequence<gp_Pnt> & Points);
+		void IntersectWith(const TopoDS_Edge & EdgeOnF1, const TopoDS_Edge & EdgeOnF2, TColgp_SequenceOfPnt & Points);
 
 		/****** BRepFill_TrimSurfaceTool::IsOnFace ******/
 		/****** md5 signature: 589c42e2795942ba98cdbff82f1489ec ******/
@@ -5030,7 +5070,7 @@ class BRepFill_NSections : public BRepFill_SectionLaw {
 		%feature("autodoc", "
 Parameters
 ----------
-S: NCollection_Sequence<TopoDS_Shape>
+S: TopTools_SequenceOfShape
 Build: bool (optional, default to true)
 
 Return
@@ -5041,7 +5081,7 @@ Description
 -----------
 Construct.
 ") BRepFill_NSections;
-		 BRepFill_NSections(const NCollection_Sequence<TopoDS_Shape> & S, const bool Build = true);
+		 BRepFill_NSections(const TopTools_SequenceOfShape & S, const bool Build = true);
 
 		/****** BRepFill_NSections::BRepFill_NSections ******/
 		/****** md5 signature: ce3a0683ff5cef18284dd45cb1ed9698 ******/
@@ -5049,9 +5089,9 @@ Construct.
 		%feature("autodoc", "
 Parameters
 ----------
-S: NCollection_Sequence<TopoDS_Shape>
+S: TopTools_SequenceOfShape
 Trsfs: NCollection_Sequence<gp_Trsf>
-P: NCollection_Sequence<double>
+P: TColStd_SequenceOfReal
 VF: double
 VL: double
 Build: bool (optional, default to true)
@@ -5064,7 +5104,7 @@ Description
 -----------
 Construct.
 ") BRepFill_NSections;
-		 BRepFill_NSections(const NCollection_Sequence<TopoDS_Shape> & S, const NCollection_Sequence<gp_Trsf> & Trsfs, const NCollection_Sequence<double> & P, const double VF, const double VL, const bool Build = true);
+		 BRepFill_NSections(const TopTools_SequenceOfShape & S, const NCollection_Sequence<gp_Trsf> & Trsfs, const TColStd_SequenceOfReal & P, const double VF, const double VL, const bool Build = true);
 
 		/****** BRepFill_NSections::ConcatenedLaw ******/
 		/****** md5 signature: 51a6e8f5492494ca773beae28ebb4ae8 ******/

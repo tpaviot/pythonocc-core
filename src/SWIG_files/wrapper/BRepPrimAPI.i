@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepprimapi.html"
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
 #include<BRepPrim_module.hxx>
+#include<TopTools_module.hxx>
 #include<BRepSweep_module.hxx>
 #include<Geom_module.hxx>
 #include<TopLoc_module.hxx>
@@ -72,6 +73,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepprimapi.html"
 %import TopoDS.i
 %import Message.i
 %import BRepPrim.i
+%import TopTools.i
 %import BRepSweep.i
 %import Geom.i
 
@@ -1145,13 +1147,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns ListOfShape from TopTools.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepPrimAPI_MakePrism::IsDeleted ******/
 		/****** md5 signature: bccb9782bf72a0b11faae5cda38123ec ******/
@@ -1293,13 +1295,13 @@ Builds the resulting shape (redefined from MakeShape).
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of degenerated edges.
 ") Degenerated;
-		const NCollection_List<TopoDS_Shape> Degenerated();
+		const TopTools_ListOfShape & Degenerated();
 
 		/****** BRepPrimAPI_MakeRevol::FirstShape ******/
 		/****** md5 signature: cdf66e19ba39bdf16401bc58aff5897f ******/
@@ -1342,13 +1344,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns list of shape generated from shape S Warning: shape S must be shape of type VERTEX, EDGE, FACE, SOLID. For shapes of other types method always returns empty list.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepPrimAPI_MakeRevol::HasDegenerated ******/
 		/****** md5 signature: 4ae6ec529854fbe7a4b05acee4716b30 ******/

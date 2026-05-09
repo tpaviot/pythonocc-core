@@ -87,6 +87,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XmlMNaming_NamedShapeDriver)
+%wrap_handle(XmlMNaming_NamingDriver)
 /* end handles declaration */
 
 /* templates */
@@ -273,6 +275,8 @@ Output the shapes into DOM element.
 };
 
 
+%make_alias(XmlMNaming_NamedShapeDriver)
+
 %extend XmlMNaming_NamedShapeDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -357,6 +361,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMNaming_NamingDriver)
 
 %extend XmlMNaming_NamingDriver {
 	%pythoncode {

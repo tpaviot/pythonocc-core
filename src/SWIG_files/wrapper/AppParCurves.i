@@ -45,7 +45,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appparcurves.html
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<math_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -55,7 +57,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appparcurves.html
 %import Standard.i
 %import NCollection.i
 %import math.i
+%import TColgp.i
 %import gp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -106,6 +110,13 @@ Array1ExtendIter(AppParCurves_MultiPoint)
 %template(AppParCurves_SequenceOfMultiBSpCurve) NCollection_Sequence<AppParCurves_MultiBSpCurve>;
 
 %extend NCollection_Sequence<AppParCurves_MultiBSpCurve> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -114,6 +125,13 @@ Array1ExtendIter(AppParCurves_MultiPoint)
 %template(AppParCurves_SequenceOfMultiCurve) NCollection_Sequence<AppParCurves_MultiCurve>;
 
 %extend NCollection_Sequence<AppParCurves_MultiCurve> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -402,7 +420,7 @@ creates a MultiCurve, describing Bezier curves all containing the same number of
 Parameters
 ----------
 CuIndex: int
-TabPnt: NCollection_Array1<gp_Pnt>
+TabPnt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -412,7 +430,7 @@ Description
 -----------
 returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 2d.
 ") Curve;
-		void Curve(const int CuIndex, NCollection_Array1<gp_Pnt> & TabPnt);
+		void Curve(const int CuIndex, TColgp_Array1OfPnt & TabPnt);
 
 		/****** AppParCurves_MultiCurve::Curve ******/
 		/****** md5 signature: 1beb0674d6e939e98bf2ba3c0db10db9 ******/
@@ -421,7 +439,7 @@ returns the Pole array of the curve of range CuIndex. An exception is raised if 
 Parameters
 ----------
 CuIndex: int
-TabPnt: NCollection_Array1<gp_Pnt2d>
+TabPnt: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -431,7 +449,7 @@ Description
 -----------
 returns the Pole array of the curve of range CuIndex. An exception is raised if the dimension of the curve is 3d.
 ") Curve;
-		void Curve(const int CuIndex, NCollection_Array1<gp_Pnt2d> & TabPnt);
+		void Curve(const int CuIndex, TColgp_Array1OfPnt2d & TabPnt);
 
 		/****** AppParCurves_MultiCurve::D1 ******/
 		/****** md5 signature: 41bb28afcd670f3d68e9f44dcb232c2e ******/
@@ -824,7 +842,7 @@ constructs a set of Points used to approximate a Multiline. These Points can be 
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
+tabP: TColgp_Array1OfPnt
 
 Return
 -------
@@ -834,7 +852,7 @@ Description
 -----------
 creates a MultiPoint only composed of 3D points.
 ") AppParCurves_MultiPoint;
-		 AppParCurves_MultiPoint(const NCollection_Array1<gp_Pnt> & tabP);
+		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt & tabP);
 
 		/****** AppParCurves_MultiPoint::AppParCurves_MultiPoint ******/
 		/****** md5 signature: 463404773874bbafc5a1c28b0a294e68 ******/
@@ -842,7 +860,7 @@ creates a MultiPoint only composed of 3D points.
 		%feature("autodoc", "
 Parameters
 ----------
-tabP2d: NCollection_Array1<gp_Pnt2d>
+tabP2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -852,7 +870,7 @@ Description
 -----------
 creates a MultiPoint only composed of 2D points.
 ") AppParCurves_MultiPoint;
-		 AppParCurves_MultiPoint(const NCollection_Array1<gp_Pnt2d> & tabP2d);
+		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt2d & tabP2d);
 
 		/****** AppParCurves_MultiPoint::AppParCurves_MultiPoint ******/
 		/****** md5 signature: 5c2c6a15a2754a72a88c19476b1f897a ******/
@@ -860,8 +878,8 @@ creates a MultiPoint only composed of 2D points.
 		%feature("autodoc", "
 Parameters
 ----------
-tabP: NCollection_Array1<gp_Pnt>
-tabP2d: NCollection_Array1<gp_Pnt2d>
+tabP: TColgp_Array1OfPnt
+tabP2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -871,7 +889,7 @@ Description
 -----------
 constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d. NbPoints is the total number of Points.
 ") AppParCurves_MultiPoint;
-		 AppParCurves_MultiPoint(const NCollection_Array1<gp_Pnt> & tabP, const NCollection_Array1<gp_Pnt2d> & tabP2d);
+		 AppParCurves_MultiPoint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d);
 
 		/****** AppParCurves_MultiPoint::Dimension ******/
 		/****** md5 signature: c68e191a19d8e35bfa569e68487fd331 ******/
@@ -1106,8 +1124,8 @@ creates a MultiBSpCurve, describing BSpline curves all containing the same numbe
 Parameters
 ----------
 tabMU: NCollection_Array1<AppParCurves_MultiPoint>
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1117,7 +1135,7 @@ Description
 -----------
 creates a MultiBSpCurve, describing BSpline curves all containing the same number of MultiPoint. Each MultiPoint must have NbCurves Poles.
 ") AppParCurves_MultiBSpCurve;
-		 AppParCurves_MultiBSpCurve(const NCollection_Array1<AppParCurves_MultiPoint> & tabMU, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
+		 AppParCurves_MultiBSpCurve(const NCollection_Array1<AppParCurves_MultiPoint> & tabMU, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
 		/****** AppParCurves_MultiBSpCurve::AppParCurves_MultiBSpCurve ******/
 		/****** md5 signature: eb4f55e7b79abd4251330cc713b3fddb ******/
@@ -1126,8 +1144,8 @@ creates a MultiBSpCurve, describing BSpline curves all containing the same numbe
 Parameters
 ----------
 SC: AppParCurves_MultiCurve
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1137,7 +1155,7 @@ Description
 -----------
 creates a MultiBSpCurve, describing BSpline curves, taking control points from <SC>.
 ") AppParCurves_MultiBSpCurve;
-		 AppParCurves_MultiBSpCurve(const AppParCurves_MultiCurve & SC, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
+		 AppParCurves_MultiBSpCurve(const AppParCurves_MultiCurve & SC, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
 		/****** AppParCurves_MultiBSpCurve::D1 ******/
 		/****** md5 signature: b59dec3818e2e2dc18df7c71fc834c00 ******/
@@ -1260,26 +1278,26 @@ Prints on the stream o information on the current state of the object. Is used t
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** AppParCurves_MultiBSpCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns an array of Reals containing the multiplicities of curves resulting from the approximation.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** AppParCurves_MultiBSpCurve::SetKnots ******/
 		/****** md5 signature: 1675fd8b3bf7b3fc6d33e28caf9a4e61 ******/
@@ -1287,7 +1305,7 @@ Returns an array of Reals containing the multiplicities of curves resulting from
 		%feature("autodoc", "
 Parameters
 ----------
-theKnots: NCollection_Array1<double>
+theKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -1297,7 +1315,7 @@ Description
 -----------
 Knots of the multiBSpCurve are assigned to <theknots>.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & theKnots);
+		void SetKnots(const TColStd_Array1OfReal & theKnots);
 
 		/****** AppParCurves_MultiBSpCurve::SetMultiplicities ******/
 		/****** md5 signature: e0140fa1aadf739834d0c505bdcfc37f ******/
@@ -1305,7 +1323,7 @@ Knots of the multiBSpCurve are assigned to <theknots>.
 		%feature("autodoc", "
 Parameters
 ----------
-theMults: NCollection_Array1<int>
+theMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1315,7 +1333,7 @@ Description
 -----------
 Multiplicities of the multiBSpCurve are assigned to <theMults>.
 ") SetMultiplicities;
-		void SetMultiplicities(const NCollection_Array1<int> & theMults);
+		void SetMultiplicities(const TColStd_Array1OfInteger & theMults);
 
 		/****** AppParCurves_MultiBSpCurve::Value ******/
 		/****** md5 signature: b057961f770b5649de9a2c2305a9e239 ******/

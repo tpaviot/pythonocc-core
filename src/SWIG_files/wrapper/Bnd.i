@@ -44,7 +44,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bnd.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
 #include<BVH_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -53,7 +55,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bnd.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import gp.i
+%import TColgp.i
 %import BVH.i
 
 %pythoncode {
@@ -148,7 +152,7 @@ theBox: Bnd_Box
 
 Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
@@ -156,7 +160,7 @@ Compares the bounding box theBox, with the set of bounding boxes provided to thi
 Parameter theBox The bounding box to be compared. 
 Return: The list of indices of bounding boxes that intersect the bounding box theBox or are inside it.
 ") Compare;
-		const NCollection_List<int> & Compare(const Bnd_Box & theBox);
+		const TColStd_ListOfInteger & Compare(const Bnd_Box & theBox);
 
 		/****** Bnd_BoundSortBox::Compare ******/
 		/****** md5 signature: 214533d338091dd6a4f5f4693ffc0975 ******/
@@ -168,7 +172,7 @@ thePlane: gp_Pln
 
 Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
@@ -176,7 +180,7 @@ Compares the plane @p thePlane with the set of bounding boxes provided to this a
 Parameter thePlane The plane to be compared. 
 Return: The list of indices of bounding boxes that intersect the plane thePlane.
 ") Compare;
-		const NCollection_List<int> & Compare(const gp_Pln & thePlane);
+		const TColStd_ListOfInteger & Compare(const gp_Pln & thePlane);
 
 		/****** Bnd_BoundSortBox::Initialize ******/
 		/****** md5 signature: 86ef064eae0e1ef0a06746103ef6e690 ******/
@@ -195,7 +199,7 @@ Description
 Initializes this comparison algorithm with the set of boxes. 
 Parameter theSetOfBoxes The set of bounding boxes to be used by this algorithm.
 ") Initialize;
-		void Initialize(const opencascade::handle<NCollection_HArray1<Bnd_Box> > & theSetOfBoxes);
+		void Initialize(const opencascade::handle<NCollection_HArray1<Bnd_Box>> & theSetOfBoxes);
 
 		/****** Bnd_BoundSortBox::Initialize ******/
 		/****** md5 signature: 24dc1f1a6c0d6cd1be61d5a62c4f5407 ******/
@@ -216,7 +220,7 @@ Initializes this comparison algorithm with the set of boxes and the bounding box
 Parameter theEnclosingBox The bounding box that contains all the boxes in @p theSetOfBoxes. 
 Parameter theSetOfBoxes The set of bounding boxes to be used by this algorithm.
 ") Initialize;
-		void Initialize(const Bnd_Box & theEnclosingBox, const opencascade::handle<NCollection_HArray1<Bnd_Box> > & theSetOfBoxes);
+		void Initialize(const Bnd_Box & theEnclosingBox, const opencascade::handle<NCollection_HArray1<Bnd_Box>> & theSetOfBoxes);
 
 		/****** Bnd_BoundSortBox::Initialize ******/
 		/****** md5 signature: 5437f93deb6b3f3215aa43310d58ea10 ******/
@@ -2268,8 +2272,8 @@ Returns the local coordinates system of this oriented box. So that applying it t
 		%feature("autodoc", "
 Parameters
 ----------
-theListOfPoints: NCollection_Array1<gp_Pnt>
-theListOfTolerances: NCollection_Array1<double> * (optional, default to nullptr)
+theListOfPoints: TColgp_Array1OfPnt
+theListOfTolerances: TColStd_Array1OfReal * (optional, default to nullptr)
 theIsOptimal: bool (optional, default to false)
 
 Return
@@ -2280,7 +2284,7 @@ Description
 -----------
 Creates new OBB covering every point in theListOfPoints. Tolerance of every such point is set by *theListOfTolerances array. If this array is not void (not null-pointer) then the resulted Bnd_OBB will be enlarged using tolerances of points lying on the box surface. <theIsOptimal> flag defines the mode in which the OBB will be built. Constructing Optimal box takes more time, but the resulting box is usually more tight. In case of construction of Optimal OBB more possible axes are checked.
 ") ReBuild;
-		void ReBuild(const NCollection_Array1<gp_Pnt> & theListOfPoints, const NCollection_Array1<double> * theListOfTolerances = nullptr, const bool theIsOptimal = false);
+		void ReBuild(const TColgp_Array1OfPnt & theListOfPoints, const TColStd_Array1OfReal * theListOfTolerances = nullptr, const bool theIsOptimal = false);
 
 		/****** Bnd_OBB::SetAABox ******/
 		/****** md5 signature: d5f9ef6bcfedbe77b201524974699250 ******/

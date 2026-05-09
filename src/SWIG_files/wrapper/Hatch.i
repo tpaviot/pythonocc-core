@@ -88,6 +88,13 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
 %template(Hatch_SequenceOfLine) NCollection_Sequence<Hatch_Line>;
 
 %extend NCollection_Sequence<Hatch_Line> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -96,6 +103,13 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
 %template(Hatch_SequenceOfParameter) NCollection_Sequence<Hatch_Parameter>;
 
 %extend NCollection_Sequence<Hatch_Parameter> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

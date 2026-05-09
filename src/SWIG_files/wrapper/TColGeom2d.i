@@ -69,6 +69,11 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom2d_HArray1OfBezierCurve)
+%wrap_handle(TColGeom2d_HArray1OfCurve)
+%wrap_handle(TColGeom2d_HSequenceOfBoundedCurve)
+%wrap_handle(TColGeom2d_HSequenceOfCurve)
 /* end handles declaration */
 
 /* templates */
@@ -84,6 +89,13 @@ Array1ExtendIter(opencascade::handle<Geom2d_Curve>)
 %template(TColGeom2d_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -92,6 +104,13 @@ Array1ExtendIter(opencascade::handle<Geom2d_Curve>)
 %template(TColGeom2d_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom2d_Curve>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom2d_Curve>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -100,6 +119,13 @@ Array1ExtendIter(opencascade::handle<Geom2d_Curve>)
 %template(TColGeom2d_SequenceOfGeometry) NCollection_Sequence<opencascade::handle<Geom2d_Geometry>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom2d_Geometry>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

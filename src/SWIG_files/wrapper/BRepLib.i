@@ -44,6 +44,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplib.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TopTools_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -68,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplib.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TopTools.i
 %import gp.i
 %import TopoDS.i
 %import GeomAbs.i
@@ -212,7 +214,7 @@ class BRepLib {
 		%feature("autodoc", "
 Parameters
 ----------
-theLV: NCollection_List<TopoDS_Shape>
+theLV: TopTools_ListOfShape
 theNewCenter: gp_Pnt
 
 Return
@@ -223,7 +225,7 @@ Description
 -----------
 Calculates the bounding sphere around the set of vertexes from the theLV list. Returns the center (theNewCenter) and the radius (theNewTol) of this sphere. This can be used to construct the new vertex which covers the given set of other vertices.
 ") BoundingVertex;
-		static void BoundingVertex(const NCollection_List<TopoDS_Shape> & theLV, gp_Pnt & theNewCenter, Standard_Real &OutValue);
+		static void BoundingVertex(const TopTools_ListOfShape & theLV, gp_Pnt & theNewCenter, Standard_Real &OutValue);
 
 		/****** BRepLib::BuildCurve3d ******/
 		/****** md5 signature: 9fe7a270bbad327f47685c8b8ced4221 ******/
@@ -392,7 +394,7 @@ Encodes the Regularity of edges on a Shape. Warning: <TolAng> is an angular tole
 Parameters
 ----------
 S: TopoDS_Shape
-LE: NCollection_List<TopoDS_Shape>
+LE: TopTools_ListOfShape
 TolAng: double (optional, default to 1.0e-10)
 
 Return
@@ -403,7 +405,7 @@ Description
 -----------
 Encodes the Regularity of edges in list <LE> on the shape <S> Warning: <TolAng> is an angular tolerance, expressed in Rad. Warning: If the edges's regularity are coded before, nothing is done.
 ") EncodeRegularity;
-		static void EncodeRegularity(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & LE, const double TolAng = 1.0e-10);
+		static void EncodeRegularity(const TopoDS_Shape & S, const TopTools_ListOfShape & LE, const double TolAng = 1.0e-10);
 
 		/****** BRepLib::EncodeRegularity ******/
 		/****** md5 signature: 8e5f272254cdf650c5b97e1466890104 ******/
@@ -609,7 +611,7 @@ Returns the default precision.
 Parameters
 ----------
 S: TopoDS_Shape
-LF: NCollection_List<TopoDS_Shape>
+LF: TopTools_ListOfShape
 
 Return
 -------
@@ -619,7 +621,7 @@ Description
 -----------
 Sorts in LF the Faces of S on the reverse complexity of their surfaces (other,Torus,Sphere,Cone,Cylinder,Plane).
 ") ReverseSortFaces;
-		static void ReverseSortFaces(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LF);
+		static void ReverseSortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
 
 		/****** BRepLib::SameParameter ******/
 		/****** md5 signature: 93361a379487c6a95ee9debc32df969d ******/
@@ -727,7 +729,7 @@ will make all the curve representation have the same range domain for the parame
 Parameters
 ----------
 S: TopoDS_Shape
-LF: NCollection_List<TopoDS_Shape>
+LF: TopTools_ListOfShape
 
 Return
 -------
@@ -737,7 +739,7 @@ Description
 -----------
 Sorts in LF the Faces of S on the complexity of their surfaces (Plane,Cylinder,Cone,Sphere,Torus,other).
 ") SortFaces;
-		static void SortFaces(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & LF);
+		static void SortFaces(const TopoDS_Shape & S, TopTools_ListOfShape & LF);
 
 		/****** BRepLib::UpdateDeflection ******/
 		/****** md5 signature: 76d35fdabbd1c46be0db3f1ad51bcdc9 ******/
@@ -1246,7 +1248,7 @@ Initialise members and build construction of map of ancestors.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapEdg: TopTools_IndexedMapOfShape
 
 Return
 -------
@@ -1256,7 +1258,7 @@ Description
 -----------
 set edges to avoid being fused.
 ") AvoidEdges;
-		void AvoidEdges(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapEdg);
+		void AvoidEdges(const TopTools_IndexedMapOfShape & theMapEdg);
 
 		/****** BRepLib_FuseEdges::Edges ******/
 		/****** md5 signature: 5379174e9d14e3e3ea311fe7df3bef29 ******/
@@ -1264,7 +1266,7 @@ set edges to avoid being fused.
 		%feature("autodoc", "
 Parameters
 ----------
-theMapLstEdg: NCollection_DataMap<int, NCollection_List<TopoDS_Shape> >
+theMapLstEdg: TopTools_DataMapOfIntegerListOfShape
 
 Return
 -------
@@ -1274,7 +1276,7 @@ Description
 -----------
 returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 ") Edges;
-		void Edges(NCollection_DataMap<int, NCollection_List<TopoDS_Shape> > & theMapLstEdg);
+		void Edges(TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
 		/****** BRepLib_FuseEdges::Faces ******/
 		/****** md5 signature: e6edd7a821bbcfb3e5ad657809fa2a22 ******/
@@ -1282,7 +1284,7 @@ returns all the list of edges to be fused each list of the map represent a set o
 		%feature("autodoc", "
 Parameters
 ----------
-theMapFac: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapFac: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -1292,7 +1294,7 @@ Description
 -----------
 returns the map of modified faces.
 ") Faces;
-		void Faces(NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & theMapFac);
+		void Faces(TopTools_DataMapOfShapeShape & theMapFac);
 
 		/****** BRepLib_FuseEdges::NbVertices ******/
 		/****** md5 signature: 45ce1fb31ba11f2d666ff6e9e2192133 ******/
@@ -1326,7 +1328,7 @@ Using map of list of connex edges, fuse each list to one edge and then update my
 		%feature("autodoc", "
 Parameters
 ----------
-theMapEdg: NCollection_DataMap<int, TopoDS_Shape>
+theMapEdg: TopTools_DataMapOfIntegerShape
 
 Return
 -------
@@ -1336,7 +1338,7 @@ Description
 -----------
 returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i).
 ") ResultEdges;
-		void ResultEdges(NCollection_DataMap<int, TopoDS_Shape> & theMapEdg);
+		void ResultEdges(TopTools_DataMapOfIntegerShape & theMapEdg);
 
 		/****** BRepLib_FuseEdges::SetConcatBSpl ******/
 		/****** md5 signature: 6d129e69069790bcb6417528371bbae2 ******/
@@ -1826,13 +1828,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns the list of generated Faces.
 ") DescendantFaces;
-		virtual const NCollection_List<TopoDS_Shape> DescendantFaces(const TopoDS_Face & F);
+		virtual const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
 
 		/****** BRepLib_MakeShape::FaceStatus ******/
 		/****** md5 signature: 5ba76a83c885c175dfdc1ccf1a0b227c ******/
@@ -1862,13 +1864,13 @@ E: TopoDS_Edge
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns a list of the created faces from the edge <E>.
 ") FacesFromEdges;
-		virtual const NCollection_List<TopoDS_Shape> FacesFromEdges(const TopoDS_Edge & E);
+		virtual const TopTools_ListOfShape & FacesFromEdges(const TopoDS_Edge & E);
 
 		/****** BRepLib_MakeShape::HasDescendants ******/
 		/****** md5 signature: ca2809a6d801cfc899d44016b6c2993b ******/
@@ -1911,13 +1913,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Return the faces created for surface I.
 ") NewFaces;
-		virtual const NCollection_List<TopoDS_Shape> NewFaces(const int I);
+		virtual const TopTools_ListOfShape & NewFaces(const int I);
 
 		/****** BRepLib_MakeShape::Shape ******/
 		/****** md5 signature: 35cc6b8a92112f8b2067e768b8f01ff2 ******/
@@ -5047,7 +5049,7 @@ Add the edges of <W> to the current wire.
 		%feature("autodoc", "
 Parameters
 ----------
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -5057,7 +5059,7 @@ Description
 -----------
 Add the edges of <L> to the current wire. The edges are not to be consecutive. But they are to be all connected geometrically or topologically.
 ") Add;
-		void Add(const NCollection_List<TopoDS_Shape> & L);
+		void Add(const TopTools_ListOfShape & L);
 
 		/****** BRepLib_MakeWire::Edge ******/
 		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/

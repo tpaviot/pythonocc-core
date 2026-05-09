@@ -40,6 +40,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_GraphicsLibrary.hxx>
 #include<Aspect_Grid.hxx>
 #include<Aspect_GridDrawMode.hxx>
+#include<Aspect_GridParams.hxx>
 #include<Aspect_GridType.hxx>
 #include<Aspect_Handle.hxx>
 #include<Aspect_HatchStyle.hxx>

@@ -47,6 +47,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_faircurve.html"
 #include<gp_module.hxx>
 #include<Geom2d_module.hxx>
 #include<math_module.hxx>
+#include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -58,6 +60,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_faircurve.html"
 %import gp.i
 %import Geom2d.i
 %import math.i
+%import TColgp.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -713,13 +717,13 @@ returns the number of variables of the energy.
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<gp_Pnt2d>>
+opencascade::handle<TColgp_HArray1OfPnt2d>
 
 Description
 -----------
 return the poles.
 ") Poles;
-		const opencascade::handle<NCollection_HArray1<gp_Pnt2d>> Poles();
+		const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles();
 
 		/****** FairCurve_Energy::Value ******/
 		/****** md5 signature: a76cb02434bec60c18ea5eede648a0e3 ******/
@@ -867,8 +871,8 @@ class FairCurve_DistributionOfJerk : public FairCurve_DistributionOfEnergy {
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: NCollection_HArray1<double
-Poles: NCollection_HArray1<gp_Pnt2d
+FlatKnots: TColStd_HArray1OfReal
+Poles: TColgp_HArray1OfPnt2d
 DerivativeOrder: int
 Law: FairCurve_BattenLaw
 NbValAux: int (optional, default to 0)
@@ -881,7 +885,7 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfJerk;
-		 FairCurve_DistributionOfJerk(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
+		 FairCurve_DistributionOfJerk(const int BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
 
 		/****** FairCurve_DistributionOfJerk::Value ******/
 		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
@@ -923,8 +927,8 @@ class FairCurve_DistributionOfSagging : public FairCurve_DistributionOfEnergy {
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: NCollection_HArray1<double
-Poles: NCollection_HArray1<gp_Pnt2d
+FlatKnots: TColStd_HArray1OfReal
+Poles: TColgp_HArray1OfPnt2d
 DerivativeOrder: int
 Law: FairCurve_BattenLaw
 NbValAux: int (optional, default to 0)
@@ -937,7 +941,7 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfSagging;
-		 FairCurve_DistributionOfSagging(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
+		 FairCurve_DistributionOfSagging(const int BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const int DerivativeOrder, const FairCurve_BattenLaw & Law, const int NbValAux = 0);
 
 		/****** FairCurve_DistributionOfSagging::Value ******/
 		/****** md5 signature: 0c7370340ec5630e535d5a2268027fba ******/
@@ -979,8 +983,8 @@ class FairCurve_DistributionOfTension : public FairCurve_DistributionOfEnergy {
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: NCollection_HArray1<double
-Poles: NCollection_HArray1<gp_Pnt2d
+FlatKnots: TColStd_HArray1OfReal
+Poles: TColgp_HArray1OfPnt2d
 DerivativeOrder: int
 LengthSliding: double
 Law: FairCurve_BattenLaw
@@ -995,7 +999,7 @@ Description
 -----------
 No available documentation.
 ") FairCurve_DistributionOfTension;
-		 FairCurve_DistributionOfTension(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int DerivativeOrder, const double LengthSliding, const FairCurve_BattenLaw & Law, const int NbValAux = 0, const bool Uniform = false);
+		 FairCurve_DistributionOfTension(const int BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const int DerivativeOrder, const double LengthSliding, const FairCurve_BattenLaw & Law, const int NbValAux = 0, const bool Uniform = false);
 
 		/****** FairCurve_DistributionOfTension::SetLengthSliding ******/
 		/****** md5 signature: b2e6ec88d081bdee92288e409dbf6b29 ******/
@@ -1055,8 +1059,8 @@ class FairCurve_EnergyOfBatten : public FairCurve_Energy {
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: NCollection_HArray1<double
-Poles: NCollection_HArray1<gp_Pnt2d
+FlatKnots: TColStd_HArray1OfReal
+Poles: TColgp_HArray1OfPnt2d
 ContrOrder1: int
 ContrOrder2: int
 Law: FairCurve_BattenLaw
@@ -1073,7 +1077,7 @@ Description
 -----------
 Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfBatten;
-		 FairCurve_EnergyOfBatten(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0);
+		 FairCurve_EnergyOfBatten(const int BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0);
 
 		/****** FairCurve_EnergyOfBatten::LengthSliding ******/
 		/****** md5 signature: 11484c3b60e3aad6790ca4483662a526 ******/
@@ -1140,8 +1144,8 @@ class FairCurve_EnergyOfMVC : public FairCurve_Energy {
 Parameters
 ----------
 BSplOrder: int
-FlatKnots: NCollection_HArray1<double
-Poles: NCollection_HArray1<gp_Pnt2d
+FlatKnots: TColStd_HArray1OfReal
+Poles: TColgp_HArray1OfPnt2d
 ContrOrder1: int
 ContrOrder2: int
 Law: FairCurve_BattenLaw
@@ -1161,7 +1165,7 @@ Description
 -----------
 Angles correspond to the Ox axis.
 ") FairCurve_EnergyOfMVC;
-		 FairCurve_EnergyOfMVC(const int BSplOrder, const opencascade::handle<NCollection_HArray1<double> > & FlatKnots, const opencascade::handle<NCollection_HArray1<gp_Pnt2d> > & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double PhysicalRatio, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0, const double Curvature1 = 0, const double Curvature2 = 0);
+		 FairCurve_EnergyOfMVC(const int BSplOrder, const opencascade::handle<TColStd_HArray1OfReal> & FlatKnots, const opencascade::handle<TColgp_HArray1OfPnt2d> & Poles, const int ContrOrder1, const int ContrOrder2, const FairCurve_BattenLaw & Law, const double PhysicalRatio, const double LengthSliding, const bool FreeSliding = true, const double Angle1 = 0, const double Angle2 = 0, const double Curvature1 = 0, const double Curvature2 = 0);
 
 		/****** FairCurve_EnergyOfMVC::LengthSliding ******/
 		/****** md5 signature: 11484c3b60e3aad6790ca4483662a526 ******/

@@ -79,6 +79,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BinXCAFDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinXCAFDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -195,6 +197,8 @@ No available documentation.
 };
 
 
+%make_alias(BinXCAFDrivers_DocumentRetrievalDriver)
+
 %extend BinXCAFDrivers_DocumentRetrievalDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -239,6 +243,8 @@ No available documentation.
 
 };
 
+
+%make_alias(BinXCAFDrivers_DocumentStorageDriver)
 
 %extend BinXCAFDrivers_DocumentStorageDriver {
 	%pythoncode {

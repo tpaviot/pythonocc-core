@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_units.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -53,6 +54,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_units.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -84,6 +86,13 @@ from OCC.Core.Exception import *
 %template(Units_QtsSequence) NCollection_Sequence<opencascade::handle<Units_Quantity>>;
 
 %extend NCollection_Sequence<opencascade::handle<Units_Quantity>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -92,6 +101,13 @@ from OCC.Core.Exception import *
 %template(Units_TksSequence) NCollection_Sequence<opencascade::handle<Units_Token>>;
 
 %extend NCollection_Sequence<opencascade::handle<Units_Token>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -100,6 +116,13 @@ from OCC.Core.Exception import *
 %template(Units_UtsSequence) NCollection_Sequence<opencascade::handle<Units_Unit>>;
 
 %extend NCollection_Sequence<opencascade::handle<Units_Unit>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1563,7 +1586,7 @@ Description
 -----------
 Creates a new Quantity object with <aname> which is the name of the physical quantity, <adimensions> which is the physical dimensions, and <aunitssequence> which describes all the units known for this quantity.
 ") Units_Quantity;
-		 Units_Quantity(const char * const aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit> > > & aunitssequence);
+		 Units_Quantity(const char * const aname, const opencascade::handle<Units_Dimensions> & adimensions, const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Unit>> > & aunitssequence);
 
 		/****** Units_Quantity::Dimensions ******/
 		/****** md5 signature: f6d82f417c034a7603f1ff62dccce1d1 ******/
@@ -1744,7 +1767,7 @@ Description
 -----------
 Sets the field <thesequenceoftokens> to <asequenceoftokens>.
 ") Sequence;
-		void Sequence(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token> > > & asequenceoftokens);
+		void Sequence(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Token>> > & asequenceoftokens);
 
 		/****** Units_Sentence::SetConstants ******/
 		/****** md5 signature: 09057b17d30a3997a1d663ff1e7333d5 ******/
@@ -2553,13 +2576,13 @@ Adds a new symbol <asymbol> attached to <self>.
 		%feature("compactdefaultargs") SymbolsSequence;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
 Returns the sequence of symbols <thesymbolssequence>.
 ") SymbolsSequence;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<TCollection_HAsciiString>>> SymbolsSequence();
+		opencascade::handle<TColStd_HSequenceOfHAsciiString> SymbolsSequence();
 
 		/****** Units_Unit::Token ******/
 		/****** md5 signature: b1ebc3cec140dca2e0c8fb99dfd7d0f8 ******/
@@ -2817,13 +2840,13 @@ Returns for <aquantity> the active unit.
 		%feature("compactdefaultargs") ActiveUnitsSequence;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<int>>
+opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
 Returns a sequence of integer in correspondence with the sequence of quantities, which indicates, for each redefined quantity, the index into the sequence of units, of the active unit.
 ") ActiveUnitsSequence;
-		opencascade::handle<NCollection_HSequence<int>> ActiveUnitsSequence();
+		opencascade::handle<TColStd_HSequenceOfInteger> ActiveUnitsSequence();
 
 		/****** Units_UnitsSystem::ConvertSIValueToUserSystem ******/
 		/****** md5 signature: b2bf5f73e866137be19d06acbc13e683 ******/
@@ -3300,7 +3323,7 @@ Description
 -----------
 Creates and returns a UnitSentence. The string <astring> describes in natural language the unit to be analysed. The sequence of physical quantities <asequenceofquantities> describes the available dictionary of units you want to use.
 ") Units_UnitSentence;
-		 Units_UnitSentence(const char * const astring, const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity> > > & aquantitiessequence);
+		 Units_UnitSentence(const char * const astring, const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>> > & aquantitiessequence);
 
 		/****** Units_UnitSentence::Analyse ******/
 		/****** md5 signature: 7a03a82444f6b3d45e5bfd115d1feda6 ******/
@@ -3331,7 +3354,7 @@ Description
 -----------
 For each token which represents a unit, finds in the sequence of physical quantities all the characteristics of the unit found.
 ") SetUnits;
-		void SetUnits(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity> > > & aquantitiessequence);
+		void SetUnits(const opencascade::handle<NCollection_HSequence<opencascade::handle<Units_Quantity>> > & aquantitiessequence);
 
 };
 

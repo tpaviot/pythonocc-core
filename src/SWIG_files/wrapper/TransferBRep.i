@@ -45,6 +45,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transferbrep.html
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Interface_module.hxx>
+#include<TColStd_module.hxx>
+#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<Transfer_module.hxx>
 #include<TopoDS_module.hxx>
@@ -69,6 +71,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transferbrep.html
 %import Standard.i
 %import NCollection.i
 %import Interface.i
+%import TColStd.i
+%import TopTools.i
 %import Message.i
 %import Transfer.i
 %import TopoDS.i
@@ -99,6 +103,13 @@ from OCC.Core.Exception import *
 %template(TransferBRep_SequenceOfTransferResultInfo) NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>;
 
 %extend NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -147,13 +158,13 @@ alsoshapes: bool (optional, default to false)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the list of objects to which a non-empty Check is bound in a check-list. Objects are transients, they can then be either Imagine objects entities for an Interface Norm. <alsoshapes> commands Shapes to be returned too (as ShapeMapper), see also CheckedShapes.
 ") Checked;
-		static opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Checked(const Interface_CheckIterator & chl, const bool alsoshapes = false);
+		static opencascade::handle<TColStd_HSequenceOfTransient> Checked(const Interface_CheckIterator & chl, const bool alsoshapes = false);
 
 		/****** TransferBRep::CheckedShapes ******/
 		/****** md5 signature: 126f080d495f23a9b3457849911b0f88 ******/
@@ -165,13 +176,13 @@ chl: Interface_CheckIterator
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Returns the list of shapes to which a non-empty Check is bound in a check-list.
 ") CheckedShapes;
-		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> CheckedShapes(const Interface_CheckIterator & chl);
+		static opencascade::handle<TopTools_HSequenceOfShape> CheckedShapes(const Interface_CheckIterator & chl);
 
 		/****** TransferBRep::PrintResultInfo ******/
 		/****** md5 signature: 37e2b11704f7882e65a02be038f90604 ******/
@@ -359,13 +370,13 @@ rootsonly: bool (optional, default to true)
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Gets the Shapes recorded in a TransientProcess as result of a Transfer, considers roots only or all results according <rootsonly>, returns them as a HSequence.
 ") Shapes;
-		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const bool rootsonly = true);
+		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const bool rootsonly = true);
 
 		/****** TransferBRep::Shapes ******/
 		/****** md5 signature: da088c57afc5717cd643a6a18d242495 ******/
@@ -374,17 +385,17 @@ Gets the Shapes recorded in a TransientProcess as result of a Transfer, consider
 Parameters
 ----------
 TP: Transfer_TransientProcess
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Gets the Shapes recorded in a TransientProcess as result of a Transfer, for a given list of starting entities, returns the shapes as a HSequence.
 ") Shapes;
-		static opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list);
+		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient > & list);
 
 		/****** TransferBRep::TransferResultInfo ******/
 		/****** md5 signature: 29088a827361bc6fbd72b567473bc625 ******/
@@ -393,7 +404,7 @@ Gets the Shapes recorded in a TransientProcess as result of a Transfer, for a gi
 Parameters
 ----------
 TP: Transfer_TransientProcess
-EntityTypes: NCollection_HSequence<
+EntityTypes: TColStd_HSequenceOfTransient
 InfoSeq: NCollection_HSequence<
 
 Return
@@ -404,7 +415,7 @@ Description
 -----------
 Fills sequence of TransferResultInfo for each type of entity given in the EntityTypes (entity are given as objects). Method IsKind applied to the entities in TP is used to compare with entities in EntityTypes. TopAbs_ShapeEnum).
 ") TransferResultInfo;
-		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & EntityTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo> > > & InfoSeq);
+		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient > & EntityTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> > & InfoSeq);
 
 		/****** TransferBRep::TransferResultInfo ******/
 		/****** md5 signature: 3cc221e8c25fd3e7d44f43649797d50f ******/
@@ -413,7 +424,7 @@ Fills sequence of TransferResultInfo for each type of entity given in the Entity
 Parameters
 ----------
 FP: Transfer_FinderProcess
-ShapeTypes: NCollection_HSequence<int
+ShapeTypes: TColStd_HSequenceOfInteger
 InfoSeq: NCollection_HSequence<
 
 Return
@@ -424,7 +435,7 @@ Description
 -----------
 Fills sequence of TransferResultInfo for each type of shape given in the ShapeTypes (which are in fact considered as TopAbs_ShapeEnum). The Finders in the FP are considered as ShapeMappers.
 ") TransferResultInfo;
-		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<NCollection_HSequence<int> > & ShapeTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo> > > & InfoSeq);
+		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes, opencascade::handle<NCollection_HSequence<opencascade::handle<TransferBRep_TransferResultInfo>> > & InfoSeq);
 
 		/****** TransferBRep::TransientFromShape ******/
 		/****** md5 signature: ac27ec8ebd551812170c1783235621b5 ******/
@@ -950,13 +961,13 @@ Returns a Shape produced from a given entity (if it was individually transferred
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 Returns the complete list of produced Shapes.
 ") Shapes;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Shapes();
+		opencascade::handle<TopTools_HSequenceOfShape> Shapes();
 
 		/****** TransferBRep_Reader::SyntaxError ******/
 		/****** md5 signature: 433d999e6b11feb4e67a26c1a70d9c2a ******/
@@ -996,7 +1007,7 @@ Transfers an Entity given its rank in the Model (Root or not) Returns True if it
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<
+list: TColStd_HSequenceOfTransient
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1007,7 +1018,7 @@ Description
 -----------
 Transfers a list of Entities (only the ones also in the Model) Remark: former result is cleared.
 ") TransferList;
-		virtual void TransferList(const opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient > & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TransferBRep_Reader::TransferRoots ******/
 		/****** md5 signature: b19043600acd2d46b55f29ea05e21678 ******/
@@ -1063,14 +1074,18 @@ Returns the TransientProcess. It records information about the very last transfe
 		%feature("compactdefaultargs") Transients;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>>
+opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
 Returns the complete list of produced Transient Results.
 ") Transients;
-		opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient>>> Transients();
+		opencascade::handle<TColStd_HSequenceOfTransient> Transients();
 
+		%extend{
+			bool GetModeNewTransfer() { return self->ModeNewTransfer(); }
+			void SetModeNewTransfer(bool value) { self->ModeNewTransfer() = value; }
+		};
 };
 
 
@@ -1154,7 +1169,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-list: NCollection_HSequence<TopoDS_Shape
+list: TopTools_HSequenceOfShape
 
 Return
 -------
@@ -1164,7 +1179,7 @@ Description
 -----------
 No available documentation.
 ") TransferBRep_ShapeListBinder;
-		 TransferBRep_ShapeListBinder(const opencascade::handle<NCollection_HSequence<TopoDS_Shape> > & list);
+		 TransferBRep_ShapeListBinder(const opencascade::handle<TopTools_HSequenceOfShape> & list);
 
 		/****** TransferBRep_ShapeListBinder::AddResult ******/
 		/****** md5 signature: 307f4fac54065cc112d1d37fa0ba84d6 ******/
@@ -1287,13 +1302,13 @@ No available documentation.
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") Result;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> Result();
+		opencascade::handle<TopTools_HSequenceOfShape> Result();
 
 		/****** TransferBRep_ShapeListBinder::ResultType ******/
 		/****** md5 signature: 4e004b8040dfd0ab644b911d7c8c2437 ******/
@@ -1685,6 +1700,38 @@ No available documentation.
 ") ResultWarningFail;
 		int & ResultWarningFail();
 
+		%extend{
+			int GetResult() { return self->Result(); }
+			void SetResult(int value) { self->Result() = value; }
+		};
+		%extend{
+			int GetResultWarning() { return self->ResultWarning(); }
+			void SetResultWarning(int value) { self->ResultWarning() = value; }
+		};
+		%extend{
+			int GetResultFail() { return self->ResultFail(); }
+			void SetResultFail(int value) { self->ResultFail() = value; }
+		};
+		%extend{
+			int GetResultWarningFail() { return self->ResultWarningFail(); }
+			void SetResultWarningFail(int value) { self->ResultWarningFail() = value; }
+		};
+		%extend{
+			int GetNoResult() { return self->NoResult(); }
+			void SetNoResult(int value) { self->NoResult() = value; }
+		};
+		%extend{
+			int GetNoResultWarning() { return self->NoResultWarning(); }
+			void SetNoResultWarning(int value) { self->NoResultWarning() = value; }
+		};
+		%extend{
+			int GetNoResultFail() { return self->NoResultFail(); }
+			void SetNoResultFail(int value) { self->NoResultFail() = value; }
+		};
+		%extend{
+			int GetNoResultWarningFail() { return self->NoResultWarningFail(); }
+			void SetNoResultWarningFail(int value) { self->NoResultWarningFail() = value; }
+		};
 };
 
 

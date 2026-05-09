@@ -130,6 +130,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(STEPCAFControl_ActorWrite)
+%wrap_handle(STEPCAFControl_Controller)
 %wrap_handle(STEPCAFControl_ExternFile)
 /* end handles declaration */
 
@@ -258,6 +260,8 @@ Set standard mode of work In standard mode Actor (default) behaves exactly as it
 };
 
 
+%make_alias(STEPCAFControl_ActorWrite)
+
 %extend STEPCAFControl_ActorWrite {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -297,6 +301,8 @@ Standard Initialisation. It creates a Controller for STEP-XCAF and records it to
 
 };
 
+
+%make_alias(STEPCAFControl_Controller)
 
 %extend STEPCAFControl_Controller {
 	%pythoncode {
@@ -2344,7 +2350,7 @@ Method to transfer part of the document specified by label This method uses if n
 		%feature("autodoc", "
 Parameters
 ----------
-theLabelSeq: NCollection_Sequence<TDF_Label>
+theLabelSeq: TDF_LabelSequence
 theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
 theIsMulti: char * (optional, default to nullptr)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -2357,7 +2363,7 @@ Description
 -----------
 Method to writing sequence of root assemblies or part of the file specified by use by one label.
 ") Transfer;
-		bool Transfer(const NCollection_Sequence<TDF_Label> & theLabelSeq, const STEPControl_StepModelType theMode = STEPControl_AsIs, const char * const theIsMulti = nullptr, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const TDF_LabelSequence & theLabelSeq, const STEPControl_StepModelType theMode = STEPControl_AsIs, const char * const theIsMulti = nullptr, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
 		/****** md5 signature: 508718485e787554ea6a051492b4d382 ******/
@@ -2365,7 +2371,7 @@ Method to writing sequence of root assemblies or part of the file specified by u
 		%feature("autodoc", "
 Parameters
 ----------
-theLabelSeq: NCollection_Sequence<TDF_Label>
+theLabelSeq: TDF_LabelSequence
 theParams: DESTEP_Parameters
 theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
 theIsMulti: char * (optional, default to nullptr)
@@ -2379,7 +2385,7 @@ Description
 -----------
 Method to writing sequence of root assemblies or part of the file specified by use by one label. This method is utilized if there's a need to set parameters avoiding initialization from Interface_Static.
 ") Transfer;
-		bool Transfer(const NCollection_Sequence<TDF_Label> & theLabelSeq, const DESTEP_Parameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, const char * const theIsMulti = nullptr, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const TDF_LabelSequence & theLabelSeq, const DESTEP_Parameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, const char * const theIsMulti = nullptr, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Write ******/
 		/****** md5 signature: 599b126410ec48980a682c091be91941 ******/

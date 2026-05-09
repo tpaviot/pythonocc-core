@@ -45,7 +45,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopalgo.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<IntTools_module.hxx>
 #include<BOPDS_module.hxx>
 #include<Bnd_module.hxx>
@@ -80,7 +82,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bopalgo.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import Message.i
+%import TColStd.i
 %import IntTools.i
 %import BOPDS.i
 %import Bnd.i
@@ -188,9 +192,21 @@ BOPAlgo_UNKNOWN = BOPAlgo_Operation.BOPAlgo_UNKNOWN
 %template(BOPAlgo_ListOfCheckResult) NCollection_List<BOPAlgo_CheckResult>;
 
 %extend NCollection_List<BOPAlgo_CheckResult> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPAlgo_ListIteratorOfListOfCheckResult(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -272,26 +288,26 @@ gets status of faulty.
 		%feature("compactdefaultargs") GetFaultyShapes1;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns list of faulty shapes for object.
 ") GetFaultyShapes1;
-		const NCollection_List<TopoDS_Shape> GetFaultyShapes1();
+		const TopTools_ListOfShape & GetFaultyShapes1();
 
 		/****** BOPAlgo_CheckResult::GetFaultyShapes2 ******/
 		/****** md5 signature: 9a9729e1f37c2dc45ee3798cb0dea0c7 ******/
 		%feature("compactdefaultargs") GetFaultyShapes2;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns list of faulty shapes for tool.
 ") GetFaultyShapes2;
-		const NCollection_List<TopoDS_Shape> GetFaultyShapes2();
+		const TopTools_ListOfShape & GetFaultyShapes2();
 
 		/****** BOPAlgo_CheckResult::GetMaxDistance1 ******/
 		/****** md5 signature: ceabcd6ab788acde00f211bb3822f7a4 ******/
@@ -887,13 +903,13 @@ Constructor.
 		%feature("compactdefaultargs") ChangeSteps;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns modifiable steps.
 ") ChangeSteps;
-		NCollection_Array1<double> & ChangeSteps();
+		TColStd_Array1OfReal & ChangeSteps();
 
 		/****** BOPAlgo_PISteps::GetStep ******/
 		/****** md5 signature: c7e4889ba28b8868a99fb9ca6bc35f18 ******/
@@ -937,13 +953,13 @@ Assign the value theStep to theOperation.
 		%feature("compactdefaultargs") Steps;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the steps.
 ") Steps;
-		const NCollection_Array1<double> & Steps();
+		const TColStd_Array1OfReal & Steps();
 
 };
 
@@ -1105,13 +1121,13 @@ class BOPAlgo_Tools {
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_List<TopoDS_Shape>
-theSolids: NCollection_List<TopoDS_Shape>
+theFaces: TopTools_ListOfShape
+theSolids: TopTools_ListOfShape
 theRunParallel: bool
 theContext: IntTools_Context
-theInParts: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
-theShapeBoxMap: NCollection_DataMap<TopoDS_Shape, Bnd_Box, TopTools_ShapeMapHasher> (optional, default to NCollection_DataMap<TopoDS_Shape,Bnd_Box,TopTools_ShapeMapHasher>())
-theSolidsIF: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> (optional, default to NCollection_DataMap<TopoDS_Shape,NCollection_List<TopoDS_Shape>,TopTools_ShapeMapHasher>())
+theInParts: TopTools_IndexedDataMapOfShapeListOfShape
+theShapeBoxMap: TopTools_DataMapOfShapeBox (optional, default to NCollection_DataMap<TopoDS_Shape,Bnd_Box,TopTools_ShapeMapHasher>())
+theSolidsIF: TopTools_DataMapOfShapeListOfShape (optional, default to NCollection_DataMap<TopoDS_Shape,NCollection_List<TopoDS_Shape>,TopTools_ShapeMapHasher>())
 theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1122,7 +1138,7 @@ Description
 -----------
 Classifies the faces <theFaces> relatively solids <theSolids>. The IN faces for solids are stored into output data map <theInParts>. //! The map <theSolidsIF> contains INTERNAL faces of the solids, to avoid their additional classification. //! Firstly, it checks the intersection of bounding boxes of the shapes. If the Box is not stored in the <theShapeBoxMap> map, it builds the box. If the bounding boxes of solid and face are interfering the classification is performed. //! It is assumed that all faces and solids are already intersected and do not have any geometrically coinciding parts without topological sharing of these parts.
 ") ClassifyFaces;
-		static void ClassifyFaces(const NCollection_List<TopoDS_Shape> & theFaces, const NCollection_List<TopoDS_Shape> & theSolids, const bool theRunParallel, opencascade::handle<IntTools_Context> & theContext, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theInParts, const NCollection_DataMap<TopoDS_Shape, Bnd_Box, TopTools_ShapeMapHasher> & theShapeBoxMap = NCollection_DataMap<TopoDS_Shape,Bnd_Box,TopTools_ShapeMapHasher>(), const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theSolidsIF = NCollection_DataMap<TopoDS_Shape,NCollection_List<TopoDS_Shape>,TopTools_ShapeMapHasher>(), const Message_ProgressRange & theRange = Message_ProgressRange());
+		static void ClassifyFaces(const TopTools_ListOfShape & theFaces, const TopTools_ListOfShape & theSolids, const bool theRunParallel, opencascade::handle<IntTools_Context> & theContext, TopTools_IndexedDataMapOfShapeListOfShape & theInParts, const TopTools_DataMapOfShapeBox & theShapeBoxMap = NCollection_DataMap<TopoDS_Shape,Bnd_Box,TopTools_ShapeMapHasher>(), const TopTools_DataMapOfShapeListOfShape & theSolidsIF = NCollection_DataMap<TopoDS_Shape,NCollection_List<TopoDS_Shape>,TopTools_ShapeMapHasher>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BOPAlgo_Tools::ComputeToleranceOfCB ******/
 		/****** md5 signature: eca458e0175bf03031268d569d3f2d36 ******/
@@ -1171,9 +1187,9 @@ Creates planar wires from the given edges. The input edges are expected to be pl
 		%feature("autodoc", "
 Parameters
 ----------
-theSolids: NCollection_List<TopoDS_Shape>
-theParts: NCollection_List<TopoDS_Shape>
-theImages: NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theSolids: TopTools_ListOfShape
+theParts: TopTools_ListOfShape
+theImages: TopTools_DataMapOfShapeListOfShape
 theContext: IntTools_Context
 
 Return
@@ -1188,7 +1204,7 @@ Parameter theParts - The parts to classify relatively solids
 Parameter theImages - Possible images of the parts that has to be classified 
 Parameter theContext - cached geometrical tools to speed-up classifications.
 ") FillInternals;
-		static void FillInternals(const NCollection_List<TopoDS_Shape> & theSolids, const NCollection_List<TopoDS_Shape> & theParts, const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theImages, const opencascade::handle<IntTools_Context> & theContext);
+		static void FillInternals(const TopTools_ListOfShape & theSolids, const TopTools_ListOfShape & theParts, const TopTools_DataMapOfShapeListOfShape & theImages, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPAlgo_Tools::IntersectVertices ******/
 		/****** md5 signature: d0501bcb44222f85a30ce9efeead84de ******/
@@ -1196,9 +1212,9 @@ Parameter theContext - cached geometrical tools to speed-up classifications.
 		%feature("autodoc", "
 Parameters
 ----------
-theVertices: NCollection_IndexedDataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher>
+theVertices: TopTools_IndexedDataMapOfShapeReal
 theFuzzyValue: double
-theChains: NCollection_List<NCollection_List<TopoDS_Shape> >
+theChains: TopTools_ListOfListOfShape
 
 Return
 -------
@@ -1208,7 +1224,7 @@ Description
 -----------
 Finds chains of intersecting vertices.
 ") IntersectVertices;
-		static void IntersectVertices(const NCollection_IndexedDataMap<TopoDS_Shape, double, TopTools_ShapeMapHasher> & theVertices, const double theFuzzyValue, NCollection_List<NCollection_List<TopoDS_Shape> > & theChains);
+		static void IntersectVertices(const TopTools_IndexedDataMapOfShapeReal & theVertices, const double theFuzzyValue, TopTools_ListOfListOfShape & theChains);
 
 		/****** BOPAlgo_Tools::PerformCommonBlocks ******/
 		/****** md5 signature: 2f7eac18bbe1df14dcf08be76284faa6 ******/
@@ -1229,7 +1245,7 @@ Description
 -----------
 Create Common Blocks from the groups of pave blocks of <theMBlocks> connection map.
 ") PerformCommonBlocks;
-		static void PerformCommonBlocks(NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, NCollection_List<opencascade::handle<BOPDS_PaveBlock> > > & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & theDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void PerformCommonBlocks(NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, NCollection_List<opencascade::handle<BOPDS_PaveBlock>> > & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & theDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPAlgo_Tools::PerformCommonBlocks ******/
 		/****** md5 signature: acff3c463f15ba4e7f532c7fbc513d9c ******/
@@ -1250,7 +1266,7 @@ Description
 -----------
 Create Common Blocks on faces using the PB->Faces connection map <theMBlocks>.
 ") PerformCommonBlocks;
-		static void PerformCommonBlocks(const NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, NCollection_List<int> > & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
+		static void PerformCommonBlocks(const NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger> & theMBlocks, const opencascade::handle<NCollection_BaseAllocator> & theAllocator, BOPDS_PDS & pDS, const opencascade::handle<IntTools_Context> & theContext = opencascade::handle<IntTools_Context>());
 
 		/****** BOPAlgo_Tools::TrsfToPoint ******/
 		/****** md5 signature: a8eb2c1277ec8a867ed510362ee5ba57 ******/
@@ -1441,26 +1457,26 @@ No available documentation.
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes();
+		const TopTools_ListOfShape & Shapes();
 
 		/****** BOPAlgo_WireEdgeSet::StartElements ******/
 		/****** md5 signature: 8affdda449171035a3b1e1ddba936aa5 ******/
 		%feature("compactdefaultargs") StartElements;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") StartElements;
-		const NCollection_List<TopoDS_Shape> StartElements();
+		const TopTools_ListOfShape & StartElements();
 
 };
 
@@ -1547,13 +1563,13 @@ Input parameter: theS One of the argument shapes.
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of arguments of the operation.
 ") Arguments;
-		const NCollection_List<TopoDS_Shape> Arguments();
+		const TopTools_ListOfShape & Arguments();
 
 		/****** BOPAlgo_MakeConnected::Clear ******/
 		/****** md5 signature: ab6e404047ce7939c2c44403f9a869b9 ******/
@@ -1591,14 +1607,14 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the given shape. 
 Input parameter: theS The shape for which the modified shapes are necessary.
 ") GetModified;
-		const NCollection_List<TopoDS_Shape> GetModified(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & GetModified(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_MakeConnected::GetOrigins ******/
 		/****** md5 signature: 0fadeaddb54df7987bbd7a0b4ec0031e ******/
@@ -1610,14 +1626,14 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of original shapes from which the current shape has been created. 
 Input parameter: theS The shape for which the origins are necessary.
 ") GetOrigins;
-		const NCollection_List<TopoDS_Shape> GetOrigins(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & GetOrigins(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_MakeConnected::History ******/
 		/****** md5 signature: 773151b712351341bc4cedd074c69f00 ******/
@@ -1661,14 +1677,14 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the original shapes which images contain the the given shape with REVERSED orientation. 
 Input parameter: theS The shape for which the materials are necessary.
 ") MaterialsOnNegativeSide;
-		const NCollection_List<TopoDS_Shape> MaterialsOnNegativeSide(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & MaterialsOnNegativeSide(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_MakeConnected::MaterialsOnPositiveSide ******/
 		/****** md5 signature: 3fb20dab960ae2784ef2e2fdc3b8a3bc ******/
@@ -1680,14 +1696,14 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the original shapes which images contain the the given shape with FORWARD orientation. 
 Input parameter: theS The shape for which the materials are necessary.
 ") MaterialsOnPositiveSide;
-		const NCollection_List<TopoDS_Shape> MaterialsOnPositiveSide(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & MaterialsOnPositiveSide(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_MakeConnected::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -1755,7 +1771,7 @@ Input parameter: theTimes Requested number of repetitions (sign of the value def
 		%feature("autodoc", "
 Parameters
 ----------
-theArgs: NCollection_List<TopoDS_Shape>
+theArgs: TopTools_ListOfShape
 
 Return
 -------
@@ -1766,7 +1782,7 @@ Description
 Sets the shape for making them connected. 
 Input parameter: theArgs The arguments for the operation.
 ") SetArguments;
-		void SetArguments(const NCollection_List<TopoDS_Shape> & theArgs);
+		void SetArguments(const TopTools_ListOfShape & theArgs);
 
 		/****** BOPAlgo_MakeConnected::Shape ******/
 		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
@@ -1845,14 +1861,14 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the identical shapes for the given shape located on the opposite periodic side. Returns empty list in case the shape has no twin. //! 
 Input parameter: theS Shape to get the twins for.
 ") GetTwins;
-		const NCollection_List<TopoDS_Shape> GetTwins(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & GetTwins(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_MakePeriodic::History ******/
 		/****** md5 signature: 773151b712351341bc4cedd074c69f00 ******/
@@ -2733,6 +2749,46 @@ Returns (modifiable) mode that means checking of tangency between subshapes.
 ") TangentMode;
 		bool & TangentMode();
 
+		%extend{
+			bool GetStopOnFirstFaulty() { return self->StopOnFirstFaulty(); }
+			void SetStopOnFirstFaulty(bool value) { self->StopOnFirstFaulty() = value; }
+		};
+		%extend{
+			bool GetArgumentTypeMode() { return self->ArgumentTypeMode(); }
+			void SetArgumentTypeMode(bool value) { self->ArgumentTypeMode() = value; }
+		};
+		%extend{
+			bool GetSelfInterMode() { return self->SelfInterMode(); }
+			void SetSelfInterMode(bool value) { self->SelfInterMode() = value; }
+		};
+		%extend{
+			bool GetSmallEdgeMode() { return self->SmallEdgeMode(); }
+			void SetSmallEdgeMode(bool value) { self->SmallEdgeMode() = value; }
+		};
+		%extend{
+			bool GetRebuildFaceMode() { return self->RebuildFaceMode(); }
+			void SetRebuildFaceMode(bool value) { self->RebuildFaceMode() = value; }
+		};
+		%extend{
+			bool GetTangentMode() { return self->TangentMode(); }
+			void SetTangentMode(bool value) { self->TangentMode() = value; }
+		};
+		%extend{
+			bool GetMergeVertexMode() { return self->MergeVertexMode(); }
+			void SetMergeVertexMode(bool value) { self->MergeVertexMode() = value; }
+		};
+		%extend{
+			bool GetMergeEdgeMode() { return self->MergeEdgeMode(); }
+			void SetMergeEdgeMode(bool value) { self->MergeEdgeMode() = value; }
+		};
+		%extend{
+			bool GetContinuityMode() { return self->ContinuityMode(); }
+			void SetContinuityMode(bool value) { self->ContinuityMode() = value; }
+		};
+		%extend{
+			bool GetCurveOnSurfaceMode() { return self->CurveOnSurfaceMode(); }
+			void SetCurveOnSurfaceMode(bool value) { self->CurveOnSurfaceMode() = value; }
+		};
 };
 
 
@@ -2754,13 +2810,13 @@ class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
 		%feature("compactdefaultargs") Areas;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the found areas.
 ") Areas;
-		const NCollection_List<TopoDS_Shape> Areas();
+		const TopTools_ListOfShape & Areas();
 
 		/****** BOPAlgo_BuilderArea::IsAvoidInternalShapes ******/
 		/****** md5 signature: 94fba414957cd1aad374e6ae91b93e5d ******/
@@ -2780,13 +2836,13 @@ Returns the AvoidInternalShapes flag.
 		%feature("compactdefaultargs") Loops;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the found loops.
 ") Loops;
-		const NCollection_List<TopoDS_Shape> Loops();
+		const TopTools_ListOfShape & Loops();
 
 		/****** BOPAlgo_BuilderArea::SetAvoidInternalShapes ******/
 		/****** md5 signature: d88a017bc2d3e72e7e5ee4d3c37d12b6 ******/
@@ -2830,7 +2886,7 @@ Sets the context for the algorithms.
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -2840,20 +2896,20 @@ Description
 -----------
 Sets the shapes for building areas.
 ") SetShapes;
-		void SetShapes(const NCollection_List<TopoDS_Shape> & theLS);
+		void SetShapes(const TopTools_ListOfShape & theLS);
 
 		/****** BOPAlgo_BuilderArea::Shapes ******/
 		/****** md5 signature: dcc9fb3797b3fd8183a75c7bc6f77ab4 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the input shapes.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes();
+		const TopTools_ListOfShape & Shapes();
 
 };
 
@@ -2880,13 +2936,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes Generated from the shape theS.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_BuilderShape::HasDeleted ******/
 		/****** md5 signature: a4c5053067f6df96c7d3f9722284805a ******/
@@ -2981,13 +3037,13 @@ theS: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes Modified from the shape theS.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & theS);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
 		/****** BOPAlgo_BuilderShape::SetToFillHistory ******/
 		/****** md5 signature: 99738357009a5a30fb7a877bbcbe43fb ******/
@@ -3126,13 +3182,13 @@ Adds the argument for operation.
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of arguments.
 ") Arguments;
-		const NCollection_List<TopoDS_Shape> Arguments();
+		const TopTools_ListOfShape & Arguments();
 
 		/****** BOPAlgo_PaveFiller::Context ******/
 		/****** md5 signature: 61a08d8ec3c36cb7537272ccd635f363 ******/
@@ -3236,7 +3292,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -3246,7 +3302,7 @@ Description
 -----------
 Sets the arguments for operation.
 ") SetArguments;
-		void SetArguments(const NCollection_List<TopoDS_Shape> & theLS);
+		void SetArguments(const TopTools_ListOfShape & theLS);
 
 		/****** BOPAlgo_PaveFiller::SetArguments ******/
 		/****** md5 signature: aa4855a2ee60e020d48efe30e876494a ******/
@@ -3254,7 +3310,7 @@ Sets the arguments for operation.
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -3264,7 +3320,7 @@ Description
 -----------
 Sets the arguments for operation (move semantics).
 ") SetArguments;
-		void SetArguments(NCollection_List<TopoDS_Shape> & theLS);
+		void SetArguments(TopTools_ListOfShape & theLS);
 
 		/****** BOPAlgo_PaveFiller::SetAvoidBuildPCurve ******/
 		/****** md5 signature: e8a329852a4fa99b9dbab7c6a5a73fb1 ******/
@@ -3428,13 +3484,13 @@ performs the algorithm.
 		%feature("compactdefaultargs") Shells;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns the loops.
 ") Shells;
-		const NCollection_List<TopoDS_Shape> Shells();
+		const TopTools_ListOfShape & Shells();
 
 		/****** BOPAlgo_ShellSplitter::SplitBlock ******/
 		/****** md5 signature: b4a3a42e521935db4e11e49c5e4189a8 ******/
@@ -3459,13 +3515,13 @@ No available documentation.
 		%feature("compactdefaultargs") StartElements;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 return the faces to process.
 ") StartElements;
-		const NCollection_List<TopoDS_Shape> StartElements();
+		const TopTools_ListOfShape & StartElements();
 
 };
 
@@ -3531,7 +3587,7 @@ Returns the context.
 		%feature("autodoc", "
 Parameters
 ----------
-theLE: NCollection_List<TopoDS_Shape>
+theLE: TopTools_ListOfShape
 theW: TopoDS_Wire
 
 Return
@@ -3542,7 +3598,7 @@ Description
 -----------
 No available documentation.
 ") MakeWire;
-		static void MakeWire(NCollection_List<TopoDS_Shape> & theLE, TopoDS_Wire & theW);
+		static void MakeWire(TopTools_ListOfShape & theLE, TopoDS_Wire & theW);
 
 		/****** BOPAlgo_WireSplitter::Perform ******/
 		/****** md5 signature: 058a93f55ca886306283dd0509f66ebe ******/
@@ -3700,13 +3756,13 @@ Adds the argument to the operation.
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of arguments.
 ") Arguments;
-		const NCollection_List<TopoDS_Shape> Arguments();
+		const TopTools_ListOfShape & Arguments();
 
 		/****** BOPAlgo_Builder::BuildBOP ******/
 		/****** md5 signature: e511996b4ef1296d2d40ac2d2dceb479 ******/
@@ -3714,9 +3770,9 @@ Returns the list of arguments.
 		%feature("autodoc", "
 Parameters
 ----------
-theObjects: NCollection_List<TopoDS_Shape>
+theObjects: TopTools_ListOfShape
 theObjState: TopAbs_State
-theTools: NCollection_List<TopoDS_Shape>
+theTools: TopTools_ListOfShape
 theToolsState: TopAbs_State
 theRange: Message_ProgressRange
 theReport: Message_Report (optional, default to nullptr)
@@ -3734,7 +3790,7 @@ Parameter theTools - The group of Tools for BOP;
 Parameter theToolsState - State for tools faces to pass into result; 
 Parameter theReport - The alternative report to avoid pollution of the main one.
 ") BuildBOP;
-		virtual void BuildBOP(const NCollection_List<TopoDS_Shape> & theObjects, const TopAbs_State theObjState, const NCollection_List<TopoDS_Shape> & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = nullptr);
+		virtual void BuildBOP(const TopTools_ListOfShape & theObjects, const TopAbs_State theObjState, const TopTools_ListOfShape & theTools, const TopAbs_State theToolsState, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = nullptr);
 
 		/****** BOPAlgo_Builder::BuildBOP ******/
 		/****** md5 signature: d10469cf03a8ad6bc53e752be3c7aeae ******/
@@ -3742,8 +3798,8 @@ Parameter theReport - The alternative report to avoid pollution of the main one.
 		%feature("autodoc", "
 Parameters
 ----------
-theObjects: NCollection_List<TopoDS_Shape>
-theTools: NCollection_List<TopoDS_Shape>
+theObjects: TopTools_ListOfShape
+theTools: TopTools_ListOfShape
 theOperation: BOPAlgo_Operation
 theRange: Message_ProgressRange
 theReport: Message_Report (optional, default to nullptr)
@@ -3761,7 +3817,7 @@ Parameter theOperation - The BOP type;
 Parameter theRange - The parameter to progressIndicator 
 Parameter theReport - The alternative report to avoid pollution of the global one.
 ") BuildBOP;
-		void BuildBOP(const NCollection_List<TopoDS_Shape> & theObjects, const NCollection_List<TopoDS_Shape> & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = nullptr);
+		void BuildBOP(const TopTools_ListOfShape & theObjects, const TopTools_ListOfShape & theTools, const BOPAlgo_Operation theOperation, const Message_ProgressRange & theRange, opencascade::handle<Message_Report > theReport = nullptr);
 
 		/****** BOPAlgo_Builder::CheckInverted ******/
 		/****** md5 signature: 78188b8ce2947b165a496dc28f65cbcf ******/
@@ -3820,13 +3876,13 @@ Returns the glue option of the algorithm.
 		%feature("compactdefaultargs") Images;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 Returns the map of images.
 ") Images;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Images();
+		const TopTools_DataMapOfShapeListOfShape & Images();
 
 		/****** BOPAlgo_Builder::NonDestructive ******/
 		/****** md5 signature: 4933fd2f0edc15441d15a9e3162a6a3b ******/
@@ -3846,13 +3902,13 @@ Returns the flag that defines the mode of treatment. In non-destructive mode the
 		%feature("compactdefaultargs") Origins;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeListOfShape
 
 Description
 -----------
 Returns the map of origins.
 ") Origins;
-		const NCollection_DataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> Origins();
+		const TopTools_DataMapOfShapeListOfShape & Origins();
 
 		/****** BOPAlgo_Builder::PDS ******/
 		/****** md5 signature: a30b9b6ee088c51b53e93ae172dde611 ******/
@@ -3923,7 +3979,7 @@ Performs the operation with the prepared filler. The intersection will not be pe
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 
 Return
 -------
@@ -3933,7 +3989,7 @@ Description
 -----------
 Sets the list of arguments for the operation.
 ") SetArguments;
-		virtual void SetArguments(const NCollection_List<TopoDS_Shape> & theLS);
+		virtual void SetArguments(const TopTools_ListOfShape & theLS);
 
 		/****** BOPAlgo_Builder::SetCheckInverted ******/
 		/****** md5 signature: 99f6323623bc052bf1fd5de947d7c818 ******/
@@ -3994,13 +4050,13 @@ Sets the flag that defines the mode of treatment. In non-destructive mode the ar
 		%feature("compactdefaultargs") ShapesSD;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeShape
 
 Description
 -----------
 Returns the map of Same Domain (SD) shapes - coinciding shapes from different arguments.
 ") ShapesSD;
-		const NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> ShapesSD();
+		const TopTools_DataMapOfShapeShape & ShapesSD();
 
 };
 
@@ -4159,13 +4215,13 @@ Constructor with allocator.
 		%feature("compactdefaultargs") GetBoxesMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TopoDS_Shape, Bnd_Box, TopTools_ShapeMapHasher>
+TopTools_DataMapOfShapeBox
 
 Description
 -----------
 For classification purposes the algorithm builds the bounding boxes for all created solids. This method returns the data map of solid - box pairs.
 ") GetBoxesMap;
-		const NCollection_DataMap<TopoDS_Shape, Bnd_Box, TopTools_ShapeMapHasher> GetBoxesMap();
+		const TopTools_DataMapOfShapeBox & GetBoxesMap();
 
 		/****** BOPAlgo_BuilderSolid::Perform ******/
 		/****** md5 signature: 058a93f55ca886306283dd0509f66ebe ******/
@@ -4300,7 +4356,7 @@ Input parameter: theFace The shape to extract the faces for removal.
 		%feature("autodoc", "
 Parameters
 ----------
-theFaces: NCollection_List<TopoDS_Shape>
+theFaces: TopTools_ListOfShape
 
 Return
 -------
@@ -4311,7 +4367,7 @@ Description
 Adds the faces to remove from the input shape. 
 Input parameter: theFaces The list of shapes to extract the faces for removal.
 ") AddFacesToRemove;
-		void AddFacesToRemove(const NCollection_List<TopoDS_Shape> & theFaces);
+		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
 		/****** BOPAlgo_RemoveFeatures::Clear ******/
 		/****** md5 signature: ab6e404047ce7939c2c44403f9a869b9 ******/
@@ -4331,13 +4387,13 @@ Clears the contents of the algorithm from previous run, allowing reusing it for 
 		%feature("compactdefaultargs") FacesToRemove;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of faces which have been requested for removal from the input shape.
 ") FacesToRemove;
-		const NCollection_List<TopoDS_Shape> FacesToRemove();
+		const TopTools_ListOfShape & FacesToRemove();
 
 		/****** BOPAlgo_RemoveFeatures::InputShape ******/
 		/****** md5 signature: c0c04276bd1d5989adf5070d423aadb7 ******/
@@ -4459,8 +4515,8 @@ Add all split parts to result. <theMaterial> defines the removal of internal bou
 		%feature("autodoc", "
 Parameters
 ----------
-theLSToTake: NCollection_List<TopoDS_Shape>
-theLSToAvoid: NCollection_List<TopoDS_Shape>
+theLSToTake: TopTools_ListOfShape
+theLSToAvoid: TopTools_ListOfShape
 theMaterial: int (optional, default to 0)
 theUpdate: bool (optional, default to false)
 
@@ -4472,7 +4528,7 @@ Description
 -----------
 Adding the parts to result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be taken into result; <theLSToAvoid> defines the arguments which parts should not be taken into result; To be taken into result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>. //! To remove internal boundaries between any cells in the result <theMaterial> variable should be used. The boundaries between cells with the same material will be removed. Default value is 0. Thus, to remove any boundary the value of this variable should not be equal to 0. <theUpdate> parameter defines whether to remove boundaries now or not.
 ") AddToResult;
-		void AddToResult(const NCollection_List<TopoDS_Shape> & theLSToTake, const NCollection_List<TopoDS_Shape> & theLSToAvoid, const int theMaterial = 0, const bool theUpdate = false);
+		void AddToResult(const TopTools_ListOfShape & theLSToTake, const TopTools_ListOfShape & theLSToAvoid, const int theMaterial = 0, const bool theUpdate = false);
 
 		/****** BOPAlgo_CellsBuilder::Clear ******/
 		/****** md5 signature: 1c0d2ab59d0f6282725648dcdf130adb ******/
@@ -4532,8 +4588,8 @@ Remove all parts from result.
 		%feature("autodoc", "
 Parameters
 ----------
-theLSToTake: NCollection_List<TopoDS_Shape>
-theLSToAvoid: NCollection_List<TopoDS_Shape>
+theLSToTake: TopTools_ListOfShape
+theLSToAvoid: TopTools_ListOfShape
 
 Return
 -------
@@ -4543,7 +4599,7 @@ Description
 -----------
 Removing the parts from result. The parts are defined by two lists of shapes: <theLSToTake> defines the arguments which parts should be removed from result; <theLSToAvoid> defines the arguments which parts should not be removed from result. To be removed from the result the part must be IN for all shapes from the list <theLSToTake> and must be OUT of all shapes from the list <theLSToAvoid>.
 ") RemoveFromResult;
-		void RemoveFromResult(const NCollection_List<TopoDS_Shape> & theLSToTake, const NCollection_List<TopoDS_Shape> & theLSToAvoid);
+		void RemoveFromResult(const TopTools_ListOfShape & theLSToTake, const TopTools_ListOfShape & theLSToAvoid);
 
 		/****** BOPAlgo_CellsBuilder::RemoveInternalBoundaries ******/
 		/****** md5 signature: 2ea3e927bcf8e9d3e7d159aea16eac8b ******/
@@ -4634,13 +4690,13 @@ Clears the data.
 		%feature("compactdefaultargs") Faces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the processed faces <myFaces>.
 ") Faces;
-		const NCollection_List<TopoDS_Shape> Faces();
+		const TopTools_ListOfShape & Faces();
 
 		/****** BOPAlgo_MakerVolume::IsAvoidInternalShapes ******/
 		/****** md5 signature: 94fba414957cd1aad374e6ae91b93e5d ******/
@@ -4849,7 +4905,7 @@ Clears internal fields and arguments.
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_List<TopoDS_Shape>
+theShapes: TopTools_ListOfShape
 
 Return
 -------
@@ -4859,20 +4915,20 @@ Description
 -----------
 Adds the Tool arguments of the operation.
 ") SetTools;
-		virtual void SetTools(const NCollection_List<TopoDS_Shape> & theShapes);
+		virtual void SetTools(const TopTools_ListOfShape & theShapes);
 
 		/****** BOPAlgo_ToolsProvider::Tools ******/
 		/****** md5 signature: f354d26768926e996d17ca393c56586f ******/
 		%feature("compactdefaultargs") Tools;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the Tool arguments of the operation.
 ") Tools;
-		const NCollection_List<TopoDS_Shape> Tools();
+		const TopTools_ListOfShape & Tools();
 
 };
 

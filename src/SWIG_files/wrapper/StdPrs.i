@@ -51,13 +51,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdprs.html"
 #include<gp_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<TColgp_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<BRepAdaptor_module.hxx>
+#include<TColStd_module.hxx>
 #include<Poly_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRep_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRepLib_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -91,13 +94,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdprs.html"
 %import gp.i
 %import Graphic3d.i
 %import Adaptor3d.i
+%import TColgp.i
 %import HLRAlgo.i
 %import BRepAdaptor.i
+%import TColStd.i
 %import Poly.i
 %import TopLoc.i
 %import BRep.i
 %import GeomAbs.i
 %import Bnd.i
+%import TopTools.i
 %import TopAbs.i
 %import BRepLib.i
 
@@ -673,7 +679,7 @@ Parameters
 aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
 aDrawer: Prs3d_Drawer
-Points: NCollection_Sequence<gp_Pnt>
+Points: TColgp_SequenceOfPnt
 drawCurve: bool (optional, default to true)
 
 Return
@@ -684,7 +690,7 @@ Description
 -----------
 adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, NCollection_Sequence<gp_Pnt> & Points, const bool drawCurve = true);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, TColgp_SequenceOfPnt & Points, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Add ******/
 		/****** md5 signature: 85133d5c9268e434475a88c5445b2b23 ******/
@@ -696,7 +702,7 @@ aPresentation: Prs3d_Presentation
 aCurve: Adaptor3d_Curve
 U1: double
 U2: double
-Points: NCollection_Sequence<gp_Pnt>
+Points: TColgp_SequenceOfPnt
 aNbPoints: int (optional, default to 30)
 drawCurve: bool (optional, default to true)
 
@@ -708,7 +714,7 @@ Description
 -----------
 adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals false the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const double U1, const double U2, NCollection_Sequence<gp_Pnt> & Points, const int aNbPoints = 30, const bool drawCurve = true);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const double U1, const double U2, TColgp_SequenceOfPnt & Points, const int aNbPoints = 30, const bool drawCurve = true);
 
 		/****** StdPrs_Curve::Match ******/
 		/****** md5 signature: 0d26ee80676357f82d1bb27424ca76b6 ******/
@@ -1072,8 +1078,8 @@ Parameters
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
 theDeflection: double
-theUPolylines: NCollection_HSequence<gp_Pnt
-theVPolylines: NCollection_HSequence<gp_Pnt
+theUPolylines: TColgp_HSequenceOfPnt
+theVPolylines: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -1086,7 +1092,7 @@ Input parameter: theFace the face.
 Input parameter: theDrawer the display settings. 
 Input parameter: theDeflection the deflection for isolines-on-surface version.
 ") Add;
-		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
+		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theUPolylines, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnSurface ******/
 		/****** md5 signature: ca05cdb6c862f780d3f39f8217cb5103 ******/
@@ -1122,8 +1128,8 @@ Parameters
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
 theDeflection: double
-theUPolylines: NCollection_HSequence<gp_Pnt
-theVPolylines: NCollection_HSequence<gp_Pnt
+theUPolylines: TColgp_HSequenceOfPnt
+theVPolylines: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -1136,7 +1142,7 @@ Input parameter: theFace the face
 Input parameter: theDrawer the display settings 
 Input parameter: theDeflection the deflection value @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnSurface;
-		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
+		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theUPolylines, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnSurface ******/
 		/****** md5 signature: d619f6b2ae6e87aed3f69c39bdf76402 ******/
@@ -1148,8 +1154,8 @@ thePresentation: Prs3d_Presentation
 theSurface: BRepAdaptor_Surface
 theDrawer: Prs3d_Drawer
 theDeflection: double
-theUIsoParams: NCollection_Sequence<double>
-theVIsoParams: NCollection_Sequence<double>
+theUIsoParams: TColStd_SequenceOfReal
+theVIsoParams: TColStd_SequenceOfReal
 
 Return
 -------
@@ -1165,7 +1171,7 @@ Input parameter: theDeflection the deflection value.
 Input parameter: theUIsoParams the parameters of u isolines to compute. 
 Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnSurface;
-		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, const NCollection_Sequence<double> & theUIsoParams, const NCollection_Sequence<double> & theVIsoParams);
+		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const double theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
 		/****** StdPrs_Isolines::AddOnTriangulation ******/
 		/****** md5 signature: edc7640cc9248e14e63a44d5f239dbf2 ******/
@@ -1198,8 +1204,8 @@ Parameters
 ----------
 theFace: TopoDS_Face
 theDrawer: Prs3d_Drawer
-theUPolylines: NCollection_HSequence<gp_Pnt
-theVPolylines: NCollection_HSequence<gp_Pnt
+theUPolylines: TColgp_HSequenceOfPnt
+theVPolylines: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -1211,7 +1217,7 @@ Computes isolines on triangulation.
 Input parameter: theFace the face. 
 Input parameter: theDrawer the display settings. @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnTriangulation;
-		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theUPolylines, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theVPolylines);
+		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theUPolylines, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theVPolylines);
 
 		/****** StdPrs_Isolines::AddOnTriangulation ******/
 		/****** md5 signature: eddcc14971886f9d8ab975130cf91cce ******/
@@ -1224,8 +1230,8 @@ theTriangulation: Poly_Triangulation
 theSurface: Geom_Surface
 theLocation: TopLoc_Location
 theDrawer: Prs3d_Drawer
-theUIsoParams: NCollection_Sequence<double>
-theVIsoParams: NCollection_Sequence<double>
+theUIsoParams: TColStd_SequenceOfReal
+theVIsoParams: TColStd_SequenceOfReal
 
 Return
 -------
@@ -1242,7 +1248,7 @@ Input parameter: theDrawer the display settings.
 Input parameter: theUIsoParams the parameters of u isolines to compute. 
 Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnTriangulation;
-		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const NCollection_Sequence<double> & theUIsoParams, const NCollection_Sequence<double> & theVIsoParams);
+		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
 		/****** StdPrs_Isolines::UVIsoParameters ******/
 		/****** md5 signature: 0b16428ad602b54151e7340fd4c61e01 ******/
@@ -1254,8 +1260,8 @@ theFace: TopoDS_Face
 theNbIsoU: int
 theNbIsoV: int
 theUVLimit: double
-theUIsoParams: NCollection_Sequence<double>
-theVIsoParams: NCollection_Sequence<double>
+theUIsoParams: TColStd_SequenceOfReal
+theVIsoParams: TColStd_SequenceOfReal
 
 Return
 -------
@@ -1272,7 +1278,7 @@ Input parameter: theNbIsoU the number of u isolines.
 Input parameter: theNbIsoV the number of v isolines. 
 Input parameter: theUVLimit the u, v parameter value limit. @param[out] theUIsoParams the sequence of u isoline parameters. @param[out] theVIsoParams the sequence of v isoline parameters. @param[out] theUmin the lower U boundary of theFace. @param[out] theUmax the upper U boundary of theFace. @param[out] theVmin the lower V boundary of theFace. @param[out] theVmax the upper V boundary of theFace.
 ") UVIsoParameters;
-		static void UVIsoParameters(const TopoDS_Face & theFace, const int theNbIsoU, const int theNbIsoV, const double theUVLimit, NCollection_Sequence<double> & theUIsoParams, NCollection_Sequence<double> & theVIsoParams, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void UVIsoParameters(const TopoDS_Face & theFace, const int theNbIsoU, const int theNbIsoV, const double theUVLimit, TColStd_SequenceOfReal & theUIsoParams, TColStd_SequenceOfReal & theVIsoParams, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -1721,13 +1727,13 @@ No available documentation.
 		%feature("compactdefaultargs") FacesOfEdge;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TopoDS_Shape>>
+opencascade::handle<TopTools_HSequenceOfShape>
 
 Description
 -----------
 No available documentation.
 ") FacesOfEdge;
-		opencascade::handle<NCollection_HSequence<TopoDS_Shape>> FacesOfEdge();
+		opencascade::handle<TopTools_HSequenceOfShape> FacesOfEdge();
 
 		/****** StdPrs_ShapeTool::GetCurve ******/
 		/****** md5 signature: ccf034d9f6867e07e3c267d12089ab5c ******/
@@ -2395,7 +2401,7 @@ Deflection: double
 NBUiso: int
 NBViso: int
 aDrawer: Prs3d_Drawer
-Curves: NCollection_HSequence<gp_Pnt
+Curves: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -2405,7 +2411,7 @@ Description
 -----------
 Defines a display of a delection-specified face. The display will feature U and V isoparameters. Adds the topology aShape to the StdPrs_WFRestrictedFace algorithm. This shape is found in the presentation object aPresentation, and its display attributes - except the number of U and V isoparameters - are set in the attribute manager aDrawer. The function sets the number of U and V isoparameters, NBUiso and NBViso, in the shape. To do this, the arguments DrawUIso and DrawVIso must be true. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface. Curves give a sequence of face curves, it is used if the PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const bool DrawUIso, const bool DrawVIso, const double Deflection, const int NBUiso, const int NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & Curves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const bool DrawUIso, const bool DrawVIso, const double Deflection, const int NBUiso, const int NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & Curves);
 
 		/****** StdPrs_WFDeflectionRestrictedFace::AddUIso ******/
 		/****** md5 signature: abfa66a39e010c944e7999fccfbc51bc ******/
@@ -2639,7 +2645,7 @@ theDrawVIso: bool
 theNbUIso: int
 theNbVIso: int
 theDrawer: Prs3d_Drawer
-theCurves: NCollection_HSequence<gp_Pnt
+theCurves: TColgp_HSequenceOfPnt
 
 Return
 -------
@@ -2649,7 +2655,7 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const bool theDrawUIso, const bool theDrawVIso, const int theNbUIso, const int theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<NCollection_HSequence<gp_Pnt> > > & theCurves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const bool theDrawUIso, const bool theDrawVIso, const int theNbUIso, const int theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt> > & theCurves);
 
 		/****** StdPrs_WFRestrictedFace::Add ******/
 		/****** md5 signature: c9cfe87ac0d1f4614d3646ecf19658e1 ******/
@@ -2895,7 +2901,7 @@ Input parameter: theToExcludeGeometric flag indicating that Faces with defined S
 		%feature("autodoc", "
 Parameters
 ----------
-theSegments: NCollection_Sequence<gp_Pnt>
+theSegments: TColgp_SequenceOfPnt
 theShape: TopoDS_Shape
 theToExcludeGeometric: bool (optional, default to true)
 
@@ -2910,7 +2916,7 @@ Input parameter: theSegments the sequence of points defining segments
 Input parameter: theShape the list of triangulated faces 
 Input parameter: theToExcludeGeometric flag indicating that Faces with defined Surface should be skipped.
 ") AddEdgesOnTriangulation;
-		static void AddEdgesOnTriangulation(NCollection_Sequence<gp_Pnt> & theSegments, const TopoDS_Shape & theShape, const bool theToExcludeGeometric = true);
+		static void AddEdgesOnTriangulation(TColgp_SequenceOfPnt & theSegments, const TopoDS_Shape & theShape, const bool theToExcludeGeometric = true);
 
 		/****** StdPrs_WFShape::AddVertexes ******/
 		/****** md5 signature: d1b2dca7db78c7cfdddec40caebf910c ******/

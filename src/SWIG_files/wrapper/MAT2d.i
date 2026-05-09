@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<MAT_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 %import Standard.i
 %import NCollection.i
 %import GeomAbs.i
+%import TColStd.i
 %import Geom2d.i
 %import gp.i
 %import MAT.i
@@ -92,21 +94,88 @@ from OCC.Core.Exception import *
 %ignore NCollection_DataMap<int,Bisector_Bisec>::Items;
 %ignore NCollection_DataMap<int,Bisector_Bisec>::KeyValues;
 %template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap<int,Bisector_Bisec>;
+
+%extend NCollection_DataMap<int,Bisector_Bisec> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerBisec::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>::KeyValues;
 %template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,gp_Pnt2d>::Items;
 %ignore NCollection_DataMap<int,gp_Pnt2d>::KeyValues;
 %template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap<int,gp_Pnt2d>;
+
+%extend NCollection_DataMap<int,gp_Pnt2d> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerPnt2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::Items;
 %ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::KeyValues;
 %template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<int,MAT2d_SequenceOfConnexion>;
+
+%extend NCollection_DataMap<int,MAT2d_SequenceOfConnexion> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,gp_Vec2d>::Items;
 %ignore NCollection_DataMap<int,gp_Vec2d>::KeyValues;
 %template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<int,gp_Vec2d>;
+
+%extend NCollection_DataMap<int,gp_Vec2d> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerVec2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %template(MAT2d_SequenceOfConnexion) NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>;
 
 %extend NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -115,6 +184,13 @@ from OCC.Core.Exception import *
 %template(MAT2d_SequenceOfSequenceOfCurve) NCollection_Sequence<TColGeom2d_SequenceOfCurve>;
 
 %extend NCollection_Sequence<TColGeom2d_SequenceOfCurve> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -123,6 +199,13 @@ from OCC.Core.Exception import *
 %template(MAT2d_SequenceOfSequenceOfGeometry) NCollection_Sequence<TColGeom2d_SequenceOfGeometry>;
 
 %extend NCollection_Sequence<TColGeom2d_SequenceOfGeometry> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -375,8 +458,8 @@ Returns the Number of Items .
 		%feature("autodoc", "
 Parameters
 ----------
-aFigure: Geom2d_Geometry
-IsClosed: NCollection_Sequence<bool>
+aFigure: NCollection_Sequence<TColGeom2d_SequenceOfGeometry >
+IsClosed: TColStd_SequenceOfBoolean
 IndRefLine: int
 Trigo: bool
 
@@ -388,7 +471,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(NCollection_Sequence<NCollection_Sequence<opencascade::handle<Geom2d_Geometry> > > & aFigure, const NCollection_Sequence<bool> & IsClosed, const int IndRefLine, const bool Trigo);
+		void Perform(NCollection_Sequence<TColGeom2d_SequenceOfGeometry > & aFigure, const TColStd_SequenceOfBoolean & IsClosed, const int IndRefLine, const bool Trigo);
 
 		/****** MAT2d_Circuit::RefToEqui ******/
 		/****** md5 signature: 772616c2e19b113067904e5ba8af6988 ******/
@@ -401,13 +484,13 @@ IndCurve: int
 
 Return
 -------
-NCollection_Sequence<int>
+TColStd_SequenceOfInteger
 
 Description
 -----------
 Returns the set of index of the items in <self>corresponding to the curve <IndCurve> on the line <IndLine> from the initial figure.
 ") RefToEqui;
-		const NCollection_Sequence<int> & RefToEqui(const int IndLine, const int IndCurve);
+		const TColStd_SequenceOfInteger & RefToEqui(const int IndLine, const int IndCurve);
 
 		/****** MAT2d_Circuit::Value ******/
 		/****** md5 signature: 4ba4404f3282d32f220058a0d13e6c74 ******/
@@ -1094,7 +1177,7 @@ Returns the sequence of connexions corresponding to the path.
 		%feature("autodoc", "
 Parameters
 ----------
-Figure: Geom2d_Geometry
+Figure: NCollection_Sequence<TColGeom2d_SequenceOfGeometry >
 IndStart: int
 Sense: bool
 
@@ -1106,7 +1189,7 @@ Description
 -----------
 Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 ") Perform;
-		void Perform(const NCollection_Sequence<NCollection_Sequence<opencascade::handle<Geom2d_Geometry> > > & Figure, const int IndStart, const bool Sense);
+		void Perform(const NCollection_Sequence<TColGeom2d_SequenceOfGeometry > & Figure, const int IndStart, const bool Sense);
 
 		/****** MAT2d_MiniPath::RunOnConnexions ******/
 		/****** md5 signature: ee2ac7d20b87c24fc63fb1334502d079 ******/

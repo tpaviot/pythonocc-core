@@ -7,6 +7,7 @@ from OCC.Core.TopoDS import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
+from OCC.Core.TColgp import *
 from OCC.Core.BRepTools import *
 from OCC.Core.ShapeExtend import *
 from OCC.Core.Message import *

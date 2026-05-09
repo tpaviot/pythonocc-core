@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepcheck.html"
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
@@ -61,6 +62,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepcheck.html"
 %import NCollection.i
 %import Adaptor3d.i
 %import TopoDS.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum
@@ -211,9 +213,21 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 %template(BRepCheck_ListOfStatus) NCollection_List<BRepCheck_Status>;
 
 %extend NCollection_List<BRepCheck_Status> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BRepCheck_ListIteratorOfListOfStatus(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -1269,7 +1283,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theSets: NCollection_List<TopoDS_Shape>
+theSets: TopTools_ListOfShape
 
 Return
 -------
@@ -1279,7 +1293,7 @@ Description
 -----------
 No available documentation.
 ") NbConnectedSet;
-		int NbConnectedSet(NCollection_List<TopoDS_Shape> & theSets);
+		int NbConnectedSet(TopTools_ListOfShape & theSets);
 
 		/****** BRepCheck_Shell::Orientation ******/
 		/****** md5 signature: e2bf8c977f022a9933dda3f548822410 ******/

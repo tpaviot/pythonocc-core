@@ -50,9 +50,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
 #include<Geom2d_module.hxx>
+#include<TColGeom2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -66,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 %import Geom2d.i
 %import gp.i
 %import TopoDS.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -356,26 +359,26 @@ IndexContour: int
 
 Return
 -------
-NCollection_Sequence<opencascade::handle<Geom2d_Curve>>
+TColGeom2d_SequenceOfCurve
 
 Description
 -----------
 No available documentation.
 ") Contour;
-		const NCollection_Sequence<opencascade::handle<Geom2d_Curve>> & Contour(const int IndexContour);
+		TColGeom2d_SequenceOfCurve Contour(const int IndexContour);
 
 		/****** BRepMAT2d_Explorer::GetIsClosed ******/
 		/****** md5 signature: 62aa08df54af4b680b7d41bcaac9b956 ******/
 		%feature("compactdefaultargs") GetIsClosed;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<bool>
+TColStd_SequenceOfBoolean
 
 Description
 -----------
 No available documentation.
 ") GetIsClosed;
-		const NCollection_Sequence<bool> & GetIsClosed();
+		const TColStd_SequenceOfBoolean & GetIsClosed();
 
 		/****** BRepMAT2d_Explorer::Init ******/
 		/****** md5 signature: a031d59c13af49fe20bb3bfec920c7f9 ******/

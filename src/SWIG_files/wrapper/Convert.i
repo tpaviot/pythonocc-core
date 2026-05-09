@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_convert.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TColgp_module.hxx>
+#include<TColStd_module.hxx>
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -54,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_convert.html"
 %import Standard.i
 %import NCollection.i
 %import TColgp.i
+%import TColStd.i
 %import gp.i
 
 %pythoncode {
@@ -105,6 +107,13 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
 %template(Convert_SequenceOfArray1OfPoles) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -113,6 +122,13 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
 %template(Convert_SequenceOfArray1OfPoles2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -143,10 +159,10 @@ NumCurves: int
 Continuity: int
 Dimension: int
 MaxDegree: int
-NumCoeffPerCurve: NCollection_HArray1<int
-Coefficients: NCollection_HArray1<double
-PolynomialIntervals: NCollection_HArray2<double
-TrueIntervals: NCollection_HArray1<double
+NumCoeffPerCurve: TColStd_HArray1OfInteger
+Coefficients: TColStd_HArray1OfReal
+PolynomialIntervals: TColStd_HArray2OfReal
+TrueIntervals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -156,7 +172,7 @@ Description
 -----------
 Warning! Continuity can be at MOST the maximum degree of the polynomial functions TrueIntervals: this is the true parameterisation for the composite curve that is: the curve has myContinuity if the nth curve is parameterized between myTrueIntervals(n) and myTrueIntervals(n+1) //! Coefficients have to be the implicit 'c form': Coefficients[Numcurves][MaxDegree+1][Dimension] //! Warning! The NumberOfCoefficient of an polynome is his degree + 1 Example: To convert the linear function f(x) = 2*x + 1 on the domaine [2,5] to BSpline with the bound [-1,1]. Arguments are: NumCurves = 1; Continuity = 1; Dimension = 1; MaxDegree = 1; NumCoeffPerCurve [1] = {2}; Coefficients[2] = {1, 2}; PolynomialIntervals[1,2] = {{2,5}} TrueIntervals[2] = {-1, 1}.
 ") Convert_CompPolynomialToPoles;
-		 Convert_CompPolynomialToPoles(const int NumCurves, const int Continuity, const int Dimension, const int MaxDegree, const opencascade::handle<NCollection_HArray1<int> > & NumCoeffPerCurve, const opencascade::handle<NCollection_HArray1<double> > & Coefficients, const opencascade::handle<NCollection_HArray2<double> > & PolynomialIntervals, const opencascade::handle<NCollection_HArray1<double> > & TrueIntervals);
+		 Convert_CompPolynomialToPoles(const int NumCurves, const int Continuity, const int Dimension, const int MaxDegree, const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeffPerCurve, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray2OfReal> & PolynomialIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueIntervals);
 
 		/****** Convert_CompPolynomialToPoles::Convert_CompPolynomialToPoles ******/
 		/****** md5 signature: f301b4a6e8d022445164f4279d43cf0d ******/
@@ -167,11 +183,11 @@ Parameters
 NumCurves: int
 Dimension: int
 MaxDegree: int
-Continuity: NCollection_Array1<int>
-NumCoeffPerCurve: NCollection_Array1<int>
-Coefficients: NCollection_Array1<double>
-PolynomialIntervals: NCollection_Array2<double>
-TrueIntervals: NCollection_Array1<double>
+Continuity: TColStd_Array1OfInteger
+NumCoeffPerCurve: TColStd_Array1OfInteger
+Coefficients: TColStd_Array1OfReal
+PolynomialIntervals: TColStd_Array2OfReal
+TrueIntervals: TColStd_Array1OfReal
 
 Return
 -------
@@ -181,7 +197,7 @@ Description
 -----------
 To Convert several span with different order of Continuity. Warning: The Length of Continuity have to be NumCurves-1.
 ") Convert_CompPolynomialToPoles;
-		 Convert_CompPolynomialToPoles(const int NumCurves, const int Dimension, const int MaxDegree, const NCollection_Array1<int> & Continuity, const NCollection_Array1<int> & NumCoeffPerCurve, const NCollection_Array1<double> & Coefficients, const NCollection_Array2<double> & PolynomialIntervals, const NCollection_Array1<double> & TrueIntervals);
+		 Convert_CompPolynomialToPoles(const int NumCurves, const int Dimension, const int MaxDegree, const TColStd_Array1OfInteger & Continuity, const TColStd_Array1OfInteger & NumCoeffPerCurve, const TColStd_Array1OfReal & Coefficients, const TColStd_Array2OfReal & PolynomialIntervals, const TColStd_Array1OfReal & TrueIntervals);
 
 		/****** Convert_CompPolynomialToPoles::Convert_CompPolynomialToPoles ******/
 		/****** md5 signature: 57b6b24dbf3ea7dd5957e59bc478c01c ******/
@@ -192,9 +208,9 @@ Parameters
 Dimension: int
 MaxDegree: int
 Degree: int
-Coefficients: NCollection_Array1<double>
-PolynomialIntervals: NCollection_Array1<double>
-TrueIntervals: NCollection_Array1<double>
+Coefficients: TColStd_Array1OfReal
+PolynomialIntervals: TColStd_Array1OfReal
+TrueIntervals: TColStd_Array1OfReal
 
 Return
 -------
@@ -204,7 +220,7 @@ Description
 -----------
 To Convert only one span.
 ") Convert_CompPolynomialToPoles;
-		 Convert_CompPolynomialToPoles(const int Dimension, const int MaxDegree, const int Degree, const NCollection_Array1<double> & Coefficients, const NCollection_Array1<double> & PolynomialIntervals, const NCollection_Array1<double> & TrueIntervals);
+		 Convert_CompPolynomialToPoles(const int Dimension, const int MaxDegree, const int Degree, const TColStd_Array1OfReal & Coefficients, const TColStd_Array1OfReal & PolynomialIntervals, const TColStd_Array1OfReal & TrueIntervals);
 
 		/****** Convert_CompPolynomialToPoles::Degree ******/
 		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
@@ -237,13 +253,13 @@ Returns true if the conversion was successful.
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots of the n-dimensional BSpline.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Convert_CompPolynomialToPoles::Knots ******/
 		/****** md5 signature: 378ed3f75f0cf624594cb5dfaaf354f8 ******/
@@ -251,7 +267,7 @@ Returns the knots of the n-dimensional BSpline.
 		%feature("autodoc", "
 Parameters
 ----------
-theKnots: NCollection_HArray1<double
+theKnots: TColStd_HArray1OfReal
 
 Return
 -------
@@ -261,20 +277,20 @@ Description
 -----------
 No available documentation.
 ") Knots;
-		void Knots(opencascade::handle<NCollection_HArray1<double> > & theKnots);
+		void Knots(opencascade::handle<TColStd_HArray1OfReal> & theKnots);
 
 		/****** Convert_CompPolynomialToPoles::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the knots in the BSpline.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Convert_CompPolynomialToPoles::Multiplicities ******/
 		/****** md5 signature: 95242acc5d0b3d2767cba661962c9651 ******/
@@ -282,7 +298,7 @@ Returns the multiplicities of the knots in the BSpline.
 		%feature("autodoc", "
 Parameters
 ----------
-theMults: NCollection_HArray1<int
+theMults: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -292,7 +308,7 @@ Description
 -----------
 No available documentation.
 ") Multiplicities;
-		void Multiplicities(opencascade::handle<NCollection_HArray1<int> > & theMults);
+		void Multiplicities(opencascade::handle<TColStd_HArray1OfInteger> & theMults);
 
 		/****** Convert_CompPolynomialToPoles::NbKnots ******/
 		/****** md5 signature: 1d7f6bb61170b57fc8534832d22fab99 ******/
@@ -325,13 +341,13 @@ Returns the number of poles of the n-dimensional BSpline.
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 Returns the poles of the n-dimensional BSpline in the following format: [1..NumPoles][1..Dimension].
 ") Poles;
-		const NCollection_Array2<double> & Poles();
+		const TColStd_Array2OfReal & Poles();
 
 		/****** Convert_CompPolynomialToPoles::Poles ******/
 		/****** md5 signature: d50ce4a256dd38d7819abda041d6d185 ******/
@@ -339,7 +355,7 @@ Returns the poles of the n-dimensional BSpline in the following format: [1..NumP
 		%feature("autodoc", "
 Parameters
 ----------
-thePoles: NCollection_HArray2<double
+thePoles: TColStd_HArray2OfReal
 
 Return
 -------
@@ -349,7 +365,7 @@ Description
 -----------
 No available documentation.
 ") Poles;
-		void Poles(opencascade::handle<NCollection_HArray2<double> > & thePoles);
+		void Poles(opencascade::handle<TColStd_HArray2OfReal> & thePoles);
 
 };
 
@@ -373,11 +389,11 @@ class Convert_ConicToBSplineCurve {
 Parameters
 ----------
 theParametrisation: Convert_ParameterisationType
-theCosNumerator: NCollection_HArray1<double
-theSinNumerator: NCollection_HArray1<double
-theDenominator: NCollection_HArray1<double
-theKnots: NCollection_HArray1<double
-theMults: NCollection_HArray1<int
+theCosNumerator: TColStd_HArray1OfReal
+theSinNumerator: TColStd_HArray1OfReal
+theDenominator: TColStd_HArray1OfReal
+theKnots: TColStd_HArray1OfReal
+theMults: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -387,7 +403,7 @@ Description
 -----------
 No available documentation.
 ") BuildCosAndSin;
-		void BuildCosAndSin(const Convert_ParameterisationType theParametrisation, opencascade::handle<NCollection_HArray1<double> > & theCosNumerator, opencascade::handle<NCollection_HArray1<double> > & theSinNumerator, opencascade::handle<NCollection_HArray1<double> > & theDenominator, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<double> > & theKnots, opencascade::handle<NCollection_HArray1<int> > & theMults);
+		void BuildCosAndSin(const Convert_ParameterisationType theParametrisation, opencascade::handle<TColStd_HArray1OfReal> & theCosNumerator, opencascade::handle<TColStd_HArray1OfReal> & theSinNumerator, opencascade::handle<TColStd_HArray1OfReal> & theDenominator, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theKnots, opencascade::handle<TColStd_HArray1OfInteger> & theMults);
 
 		/****** Convert_ConicToBSplineCurve::BuildCosAndSin ******/
 		/****** md5 signature: 2cd39a5dd3b4cccad7fc749de77ba968 ******/
@@ -398,11 +414,11 @@ Parameters
 theParametrisation: Convert_ParameterisationType
 theUFirst: double
 theULast: double
-theCosNumerator: NCollection_HArray1<double
-theSinNumerator: NCollection_HArray1<double
-theDenominator: NCollection_HArray1<double
-theKnots: NCollection_HArray1<double
-theMults: NCollection_HArray1<int
+theCosNumerator: TColStd_HArray1OfReal
+theSinNumerator: TColStd_HArray1OfReal
+theDenominator: TColStd_HArray1OfReal
+theKnots: TColStd_HArray1OfReal
+theMults: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -412,7 +428,7 @@ Description
 -----------
 No available documentation.
 ") BuildCosAndSin;
-		void BuildCosAndSin(const Convert_ParameterisationType theParametrisation, const double theUFirst, const double theULast, opencascade::handle<NCollection_HArray1<double> > & theCosNumerator, opencascade::handle<NCollection_HArray1<double> > & theSinNumerator, opencascade::handle<NCollection_HArray1<double> > & theDenominator, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<double> > & theKnots, opencascade::handle<NCollection_HArray1<int> > & theMults);
+		void BuildCosAndSin(const Convert_ParameterisationType theParametrisation, const double theUFirst, const double theULast, opencascade::handle<TColStd_HArray1OfReal> & theCosNumerator, opencascade::handle<TColStd_HArray1OfReal> & theSinNumerator, opencascade::handle<TColStd_HArray1OfReal> & theDenominator, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theKnots, opencascade::handle<TColStd_HArray1OfInteger> & theMults);
 
 		/****** Convert_ConicToBSplineCurve::Degree ******/
 		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
@@ -463,26 +479,26 @@ No available documentation.
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots of the BSpline curve.
 ") Knots;
-		const NCollection_Array1<double> & Knots();
+		const TColStd_Array1OfReal & Knots();
 
 		/****** Convert_ConicToBSplineCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the BSpline curve.
 ") Multiplicities;
-		const NCollection_Array1<int> & Multiplicities();
+		const TColStd_Array1OfInteger & Multiplicities();
 
 		/****** Convert_ConicToBSplineCurve::Multiplicity ******/
 		/****** md5 signature: 0da8c91e0049068a2a6fa429a9347c8b ******/
@@ -551,13 +567,13 @@ No available documentation.
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_Pnt2d>
+TColgp_Array1OfPnt2d
 
 Description
 -----------
 Returns the poles of the BSpline curve.
 ") Poles;
-		const NCollection_Array1<gp_Pnt2d> Poles();
+		const TColgp_Array1OfPnt2d & Poles();
 
 		/****** Convert_ConicToBSplineCurve::Weight ******/
 		/****** md5 signature: ccfa24ffddf0f5f72a33299a562e240e ******/
@@ -582,13 +598,13 @@ No available documentation.
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the weights of the BSpline curve.
 ") Weights;
-		const NCollection_Array1<double> & Weights();
+		const TColStd_Array1OfReal & Weights();
 
 };
 
@@ -707,13 +723,13 @@ No available documentation.
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 Returns the poles of the BSpline surface.
 ") Poles;
-		const NCollection_Array2<gp_Pnt> Poles();
+		const TColgp_Array2OfPnt & Poles();
 
 		/****** Convert_ElementarySurfaceToBSplineSurface::UDegree ******/
 		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
@@ -751,26 +767,26 @@ No available documentation.
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the U-knots of the BSpline surface.
 ") UKnots;
-		const NCollection_Array1<double> & UKnots();
+		const TColStd_Array1OfReal & UKnots();
 
 		/****** Convert_ElementarySurfaceToBSplineSurface::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the U-multiplicities of the BSpline surface.
 ") UMultiplicities;
-		const NCollection_Array1<int> & UMultiplicities();
+		const TColStd_Array1OfInteger & UMultiplicities();
 
 		/****** Convert_ElementarySurfaceToBSplineSurface::UMultiplicity ******/
 		/****** md5 signature: 1fecbf807fed760eda3f998c7edb022f ******/
@@ -826,26 +842,26 @@ No available documentation.
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the V-knots of the BSpline surface.
 ") VKnots;
-		const NCollection_Array1<double> & VKnots();
+		const TColStd_Array1OfReal & VKnots();
 
 		/****** Convert_ElementarySurfaceToBSplineSurface::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the V-multiplicities of the BSpline surface.
 ") VMultiplicities;
-		const NCollection_Array1<int> & VMultiplicities();
+		const TColStd_Array1OfInteger & VMultiplicities();
 
 		/****** Convert_ElementarySurfaceToBSplineSurface::VMultiplicity ******/
 		/****** md5 signature: ff1ff8db7d362092f1741bc8fc99fee6 ******/
@@ -889,13 +905,13 @@ No available documentation.
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<double>
+TColStd_Array2OfReal
 
 Description
 -----------
 Returns the weights of the BSpline surface.
 ") Weights;
-		const NCollection_Array2<double> & Weights();
+		const TColStd_Array2OfReal & Weights();
 
 };
 
@@ -919,10 +935,10 @@ Parameters
 ----------
 MaxUDegree: int
 MaxVDegree: int
-NumCoeff: NCollection_HArray1<int
-Coefficients: NCollection_HArray1<double
-PolynomialUIntervals: NCollection_HArray1<double
-PolynomialVIntervals: NCollection_HArray1<double
+NumCoeff: TColStd_HArray1OfInteger
+Coefficients: TColStd_HArray1OfReal
+PolynomialUIntervals: TColStd_HArray1OfReal
+PolynomialVIntervals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -932,7 +948,7 @@ Description
 -----------
 To only one polynomial Surface. The Length of <PolynomialUIntervals> and <PolynomialVIntervals> have to be 2. This values defined the parametric domain of the Polynomial Equation. //! Coefficients: The <Coefficients> have to be formatted than an 'C array' [MaxUDegree+1] [MaxVDegree+1] [3].
 ") Convert_GridPolynomialToPoles;
-		 Convert_GridPolynomialToPoles(const int MaxUDegree, const int MaxVDegree, const opencascade::handle<NCollection_HArray1<int> > & NumCoeff, const opencascade::handle<NCollection_HArray1<double> > & Coefficients, const opencascade::handle<NCollection_HArray1<double> > & PolynomialUIntervals, const opencascade::handle<NCollection_HArray1<double> > & PolynomialVIntervals);
+		 Convert_GridPolynomialToPoles(const int MaxUDegree, const int MaxVDegree, const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeff, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals);
 
 		/****** Convert_GridPolynomialToPoles::Convert_GridPolynomialToPoles ******/
 		/****** md5 signature: fece90d636d49bb5b2a9645afdbf9b03 ******/
@@ -946,12 +962,12 @@ UContinuity: int
 VContinuity: int
 MaxUDegree: int
 MaxVDegree: int
-NumCoeffPerSurface: NCollection_HArray2<int
-Coefficients: NCollection_HArray1<double
-PolynomialUIntervals: NCollection_HArray1<double
-PolynomialVIntervals: NCollection_HArray1<double
-TrueUIntervals: NCollection_HArray1<double
-TrueVIntervals: NCollection_HArray1<double
+NumCoeffPerSurface: TColStd_HArray2OfInteger
+Coefficients: TColStd_HArray1OfReal
+PolynomialUIntervals: TColStd_HArray1OfReal
+PolynomialVIntervals: TColStd_HArray1OfReal
+TrueUIntervals: TColStd_HArray1OfReal
+TrueVIntervals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -961,7 +977,7 @@ Description
 -----------
 To one grid of polynomial Surface. Warning! Continuity in each parametric direction can be at MOST the maximum degree of the polynomial functions. //! <TrueUIntervals>, <TrueVIntervals>: this is the true parameterisation for the composite surface //! Coefficients: The Coefficients have to be formatted than an 'C array' [NbVSurfaces] [NBUSurfaces] [MaxUDegree+1] [MaxVDegree+1] [3] raises DomainError if <NumCoeffPerSurface> is not a [1, NbVSurfaces*NbUSurfaces, 1,2] array. if <Coefficients> is not a.
 ") Convert_GridPolynomialToPoles;
-		 Convert_GridPolynomialToPoles(const int NbUSurfaces, const int NBVSurfaces, const int UContinuity, const int VContinuity, const int MaxUDegree, const int MaxVDegree, const opencascade::handle<NCollection_HArray2<int> > & NumCoeffPerSurface, const opencascade::handle<NCollection_HArray1<double> > & Coefficients, const opencascade::handle<NCollection_HArray1<double> > & PolynomialUIntervals, const opencascade::handle<NCollection_HArray1<double> > & PolynomialVIntervals, const opencascade::handle<NCollection_HArray1<double> > & TrueUIntervals, const opencascade::handle<NCollection_HArray1<double> > & TrueVIntervals);
+		 Convert_GridPolynomialToPoles(const int NbUSurfaces, const int NBVSurfaces, const int UContinuity, const int VContinuity, const int MaxUDegree, const int MaxVDegree, const opencascade::handle<TColStd_HArray2OfInteger> & NumCoeffPerSurface, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueVIntervals);
 
 		/****** Convert_GridPolynomialToPoles::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -1033,13 +1049,13 @@ Returns the number of poles in the V parametric direction.
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
-NCollection_Array2<gp_Pnt>
+TColgp_Array2OfPnt
 
 Description
 -----------
 Returns the poles of the BSpline Surface.
 ") Poles;
-		const NCollection_Array2<gp_Pnt> Poles();
+		const TColgp_Array2OfPnt & Poles();
 
 		/****** Convert_GridPolynomialToPoles::UDegree ******/
 		/****** md5 signature: 82316803b09fa91a345f15577c8b3c82 ******/
@@ -1059,26 +1075,26 @@ Returns the degree in the U parametric direction.
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots in the U direction.
 ") UKnots;
-		const NCollection_Array1<double> & UKnots();
+		const TColStd_Array1OfReal & UKnots();
 
 		/****** Convert_GridPolynomialToPoles::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the knots in the U direction.
 ") UMultiplicities;
-		const NCollection_Array1<int> & UMultiplicities();
+		const TColStd_Array1OfInteger & UMultiplicities();
 
 		/****** Convert_GridPolynomialToPoles::VDegree ******/
 		/****** md5 signature: 10a01c94db483e5b8afe43596e767a03 ******/
@@ -1098,26 +1114,26 @@ Returns the degree in the V parametric direction.
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 Returns the knots in the V direction.
 ") VKnots;
-		const NCollection_Array1<double> & VKnots();
+		const TColStd_Array1OfReal & VKnots();
 
 		/****** Convert_GridPolynomialToPoles::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns the multiplicities of the knots in the V direction.
 ") VMultiplicities;
-		const NCollection_Array1<int> & VMultiplicities();
+		const TColStd_Array1OfInteger & VMultiplicities();
 
 };
 

@@ -103,6 +103,13 @@ LProp_Computed = LProp_Status.LProp_Computed
 %template(LProp_SequenceOfCIType) NCollection_Sequence<LProp_CIType>;
 
 %extend NCollection_Sequence<LProp_CIType> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

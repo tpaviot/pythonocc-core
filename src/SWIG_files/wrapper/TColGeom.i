@@ -69,6 +69,13 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TColGeom_HArray1OfSurface)
+%wrap_handle(TColGeom_HArray1OfBezierCurve)
+%wrap_handle(TColGeom_HArray1OfCurve)
+%wrap_handle(TColGeom_HArray1OfBSplineCurve)
+%wrap_handle(TColGeom_HArray2OfSurface)
+%wrap_handle(TColGeom_HSequenceOfBoundedCurve)
+%wrap_handle(TColGeom_HSequenceOfCurve)
 /* end handles declaration */
 
 /* templates */
@@ -88,6 +95,13 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
 %template(TColGeom_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -96,6 +110,13 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
 %template(TColGeom_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom_Curve>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom_Curve>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -104,6 +125,13 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
 %template(TColGeom_SequenceOfSurface) NCollection_Sequence<opencascade::handle<Geom_Surface>>;
 
 %extend NCollection_Sequence<opencascade::handle<Geom_Surface>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -132,15 +160,15 @@ typedef NCollection_Sequence<opencascade::handle<Geom_Surface>> TColGeom_Sequenc
 
 /* harray1 classes */
 
-class TColGeom_HArray1OfBSplineCurve : public NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>, public Standard_Transient {
+class TColGeom_HArray1OfSurface : public NCollection_Array1<opencascade::handle<Geom_Surface>>, public Standard_Transient {
   public:
-    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>::value_type& theValue);
-    TColGeom_HArray1OfBSplineCurve(const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& theOther);
-    const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& Array1();
-    NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& ChangeArray1();
+    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_Surface>>::value_type& theValue);
+    TColGeom_HArray1OfSurface(const NCollection_Array1<opencascade::handle<Geom_Surface>>& theOther);
+    const NCollection_Array1<opencascade::handle<Geom_Surface>>& Array1();
+    NCollection_Array1<opencascade::handle<Geom_Surface>>& ChangeArray1();
 };
-%make_alias(TColGeom_HArray1OfBSplineCurve)
+%make_alias(TColGeom_HArray1OfSurface)
 
 
 class TColGeom_HArray1OfBezierCurve : public NCollection_Array1<opencascade::handle<Geom_BezierCurve>>, public Standard_Transient {
@@ -165,15 +193,15 @@ class TColGeom_HArray1OfCurve : public NCollection_Array1<opencascade::handle<Ge
 %make_alias(TColGeom_HArray1OfCurve)
 
 
-class TColGeom_HArray1OfSurface : public NCollection_Array1<opencascade::handle<Geom_Surface>>, public Standard_Transient {
+class TColGeom_HArray1OfBSplineCurve : public NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>, public Standard_Transient {
   public:
-    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_Surface>>::value_type& theValue);
-    TColGeom_HArray1OfSurface(const NCollection_Array1<opencascade::handle<Geom_Surface>>& theOther);
-    const NCollection_Array1<opencascade::handle<Geom_Surface>>& Array1();
-    NCollection_Array1<opencascade::handle<Geom_Surface>>& ChangeArray1();
+    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>::value_type& theValue);
+    TColGeom_HArray1OfBSplineCurve(const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& theOther);
+    const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& Array1();
+    NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& ChangeArray1();
 };
-%make_alias(TColGeom_HArray1OfSurface)
+%make_alias(TColGeom_HArray1OfBSplineCurve)
 
 /* harray2 classes */
 class TColGeom_HArray2OfSurface : public NCollection_Array2<opencascade::handle<Geom_Surface>>, public Standard_Transient {

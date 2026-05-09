@@ -402,7 +402,7 @@ Description
 -----------
 Fills the map by all registered drivers.
 ") CreateDrvMap;
-		void CreateDrvMap(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver> > & theDriverMap);
+		void CreateDrvMap(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>> & theDriverMap);
 
 		/****** XmlMDF_ADriverTable::GetDriver ******/
 		/****** md5 signature: dc208869a5dd8b54c26b788b841f9171 ******/

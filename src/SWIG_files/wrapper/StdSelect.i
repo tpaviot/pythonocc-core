@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdselect.html"
 #include<TopLoc_module.hxx>
 #include<V3d_module.hxx>
 #include<Select3D_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<TShort_module.hxx>
@@ -86,6 +87,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stdselect.html"
 %import TopLoc.i
 %import V3d.i
 %import Select3D.i
+%import TopTools.i
 %import TopAbs.i
 
 %pythoncode {
@@ -590,7 +592,7 @@ Input parameter: theNbPOnEdge sensitivity parameters @param[out] theMaxiParam se
 		%feature("autodoc", "
 Parameters
 ----------
-theSubfacesMap: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theSubfacesMap: TopTools_IndexedMapOfShape
 theOwner: SelectMgr_EntityOwner
 theSelection: SelectMgr_Selection
 
@@ -605,7 +607,7 @@ Input parameter: theSubfacesMap map of cylinder faces
 Input parameter: theOwner selectable owner object 
 Input parameter: theSelection selection to append new sensitive entities.
 ") GetSensitiveForCylinder;
-		static bool GetSensitiveForCylinder(const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theSubfacesMap, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection);
+		static bool GetSensitiveForCylinder(const TopTools_IndexedMapOfShape & theSubfacesMap, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
 		/****** StdSelect_BRepSelectionTool::GetSensitiveForFace ******/
 		/****** md5 signature: eebf0d660e4e23c9e9d5bc2c8399a8d1 ******/
@@ -635,7 +637,7 @@ Input parameter: theNbPOnEdge sensitivity parameters
 Input parameter: theMaxiParam sensitivity parameters 
 Input parameter: theInteriorFlag flag indicating that face interior (True) or face boundary (False) should be selectable.
 ") GetSensitiveForFace;
-		static bool GetSensitiveForFace(const TopoDS_Face & theFace, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity> > & theOutList, const bool theAutoTriang = true, const int theNbPOnEdge = 9, const double theMaxiParam = 500, const bool theInteriorFlag = true);
+		static bool GetSensitiveForFace(const TopoDS_Face & theFace, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> & theOutList, const bool theAutoTriang = true, const int theNbPOnEdge = 9, const double theMaxiParam = 500, const bool theInteriorFlag = true);
 
 		/****** StdSelect_BRepSelectionTool::GetStandardPriority ******/
 		/****** md5 signature: da0812c84c6cccca6a86575ce93b3d1e ******/

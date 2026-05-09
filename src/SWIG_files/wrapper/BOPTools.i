@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_boptools.html"
 #include<IntTools_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TopTools_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -77,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_boptools.html"
 %import IntTools.i
 %import gp.i
 %import TopAbs.i
+%import TopTools.i
 %import Message.i
 %import Geom.i
 %import Geom2d.i
@@ -109,17 +111,41 @@ from OCC.Core.Exception import *
 %template(BOPTools_ListOfConnexityBlock) NCollection_List<BOPTools_ConnexityBlock>;
 
 %extend NCollection_List<BOPTools_ConnexityBlock> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPTools_ListIteratorOfListOfConnexityBlock(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BOPTools_ListOfCoupleOfShape) NCollection_List<BOPTools_CoupleOfShape>;
 
 %extend NCollection_List<BOPTools_CoupleOfShape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = BOPTools_ListIteratorOfListOfCoupleOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set>;
@@ -239,7 +265,7 @@ Parameters
 theFace: TopoDS_Face
 theSolid: TopoDS_Solid
 theTol: double
-theBounds: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theBounds: TopTools_IndexedMapOfShape
 theContext: IntTools_Context
 
 Return
@@ -250,7 +276,7 @@ Description
 -----------
 Computes the 3-D state of the face theFace toward solid theSolid. theTol - value of precision of computation theBounds - set of edges of <theSolid> to avoid theContext- cached geometrical tools Returns 3-D state.
 ") ComputeState;
-		static TopAbs_State ComputeState(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, const double theTol, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theBounds, const opencascade::handle<IntTools_Context> & theContext);
+		static TopAbs_State ComputeState(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, const double theTol, const TopTools_IndexedMapOfShape & theBounds, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::ComputeStateByOnePoint ******/
 		/****** md5 signature: 13df6befa7c129923bc6cc44c36ca6ff ******/
@@ -358,7 +384,7 @@ Makes a copy of <theEdge> with vertices.
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapToAvoid: TopTools_IndexedMapOfShape
 theTolMax: double (optional, default to 0.0001)
 theRunParallel: bool (optional, default to false)
 
@@ -370,7 +396,7 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidCurveOnSurface.
 ") CorrectCurveOnSurface;
-		static void CorrectCurveOnSurface(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
+		static void CorrectCurveOnSurface(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectPointOnCurve ******/
 		/****** md5 signature: cdc9ba82b5a03fe4c8e422ab3a97a22f ******/
@@ -379,7 +405,7 @@ Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_I
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapToAvoid: TopTools_IndexedMapOfShape
 theTolMax: double (optional, default to 0.0001)
 theRunParallel: bool (optional, default to false)
 
@@ -391,7 +417,7 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> in terms of BRepCheck_InvalidPointOnCurve.
 ") CorrectPointOnCurve;
-		static void CorrectPointOnCurve(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
+		static void CorrectPointOnCurve(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectRange ******/
 		/****** md5 signature: 1d43794148dcee778ea6198feb9555eb ******/
@@ -442,7 +468,7 @@ Correct shrunk range <aSR> taking into account 3D-curve resolution and correspon
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapToAvoid: TopTools_IndexedMapOfShape
 theRunParallel: bool (optional, default to false)
 
 Return
@@ -453,7 +479,7 @@ Description
 -----------
 Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
 ") CorrectShapeTolerances;
-		static void CorrectShapeTolerances(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const bool theRunParallel = false);
+		static void CorrectShapeTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::CorrectTolerances ******/
 		/****** md5 signature: 52d517e632140794f680e122c6617d8f ******/
@@ -462,7 +488,7 @@ Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
 Parameters
 ----------
 theS: TopoDS_Shape
-theMapToAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+theMapToAvoid: TopTools_IndexedMapOfShape
 theTolMax: double (optional, default to 0.0001)
 theRunParallel: bool (optional, default to false)
 
@@ -474,7 +500,7 @@ Description
 -----------
 Provides valid values of tolerances for the shape <theS> <theTolMax> is max value of the tolerance that can be accepted for correction. If real value of the tolerance will be greater than <aTolMax>, the correction does not perform.
 ") CorrectTolerances;
-		static void CorrectTolerances(const TopoDS_Shape & theS, const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
+		static void CorrectTolerances(const TopoDS_Shape & theS, const TopTools_IndexedMapOfShape & theMapToAvoid, const double theTolMax = 0.0001, const bool theRunParallel = false);
 
 		/****** BOPTools_AlgoTools::DTolerance ******/
 		/****** md5 signature: 7b76ced701ea366f39cacbed1635644c ******/
@@ -658,7 +684,7 @@ Parameters
 ----------
 theFace: TopoDS_Face
 theEdge: TopoDS_Edge
-theLF: NCollection_List<TopoDS_Shape>
+theLF: TopTools_ListOfShape
 theContext: IntTools_Context
 
 Return
@@ -669,7 +695,7 @@ Description
 -----------
 Returns True if the face theFace is inside of the appropriate couple of faces (from the set theLF). The faces of the set theLF and theFace must share the edge theEdge * 0 state is not IN * 1 state is IN * 2 state can not be found by the method of angles.
 ") IsInternalFace;
-		static int IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, NCollection_List<TopoDS_Shape> & theLF, const opencascade::handle<IntTools_Context> & theContext);
+		static int IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge, TopTools_ListOfShape & theLF, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsInternalFace ******/
 		/****** md5 signature: bf9c6bb9b21acc2ec20ae3f756ca63e8 ******/
@@ -679,7 +705,7 @@ Parameters
 ----------
 theFace: TopoDS_Face
 theSolid: TopoDS_Solid
-theMEF: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theMEF: TopTools_IndexedDataMapOfShapeListOfShape
 theTol: double
 theContext: IntTools_Context
 
@@ -691,7 +717,7 @@ Description
 -----------
 Returns True if the face theFace is inside the solid theSolid. theMEF - Map Edge/Faces for theSolid theTol - value of precision of computation theContext- cached geometrical tools.
 ") IsInternalFace;
-		static bool IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theMEF, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
+		static bool IsInternalFace(const TopoDS_Face & theFace, const TopoDS_Solid & theSolid, TopTools_IndexedDataMapOfShapeListOfShape & theMEF, const double theTol, const opencascade::handle<IntTools_Context> & theContext);
 
 		/****** BOPTools_AlgoTools::IsInvertedSolid ******/
 		/****** md5 signature: 0800d5ee51ff506f32c2811e57a90510 ******/
@@ -848,9 +874,9 @@ Add-on for the *IsSplitToReverse()* to check for its errors and in case of any a
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
-theMapAvoid: NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
-theLSCB: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
+theMapAvoid: TopTools_IndexedMapOfShape
+theLSCB: TopTools_ListOfShape
 theAllocator: NCollection_BaseAllocator
 
 Return
@@ -861,7 +887,7 @@ Description
 -----------
 For the list of faces theLS build block theLSCB in terms of connexity by edges theMapAvoid - set of edges to avoid for the treatment.
 ") MakeConnexityBlock;
-		static void MakeConnexityBlock(NCollection_List<TopoDS_Shape> & theLS, NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> & theMapAvoid, NCollection_List<TopoDS_Shape> & theLSCB, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
+		static void MakeConnexityBlock(TopTools_ListOfShape & theLS, TopTools_IndexedMapOfShape & theMapAvoid, TopTools_ListOfShape & theLSCB, const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
 		/****** md5 signature: 1384520c901775ef49f428557aabfdf4 ******/
@@ -872,7 +898,7 @@ Parameters
 theS: TopoDS_Shape
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
-theLCB: NCollection_List<TopoDS_Shape>
+theLCB: TopTools_ListOfShape
 
 Return
 -------
@@ -882,7 +908,7 @@ Description
 -----------
 For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list <theLCB>.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<TopoDS_Shape> & theLCB);
+		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfShape & theLCB);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
 		/****** md5 signature: 1348a1b768a360184d17d68c2f17646d ******/
@@ -893,8 +919,8 @@ Parameters
 theS: TopoDS_Shape
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
-theLCB: NCollection_List<NCollection_List<TopoDS_Shape> >
-theConnectionMap: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theLCB: TopTools_ListOfListOfShape
+theConnectionMap: TopTools_IndexedDataMapOfShapeListOfShape
 
 Return
 -------
@@ -904,7 +930,7 @@ Description
 -----------
 For the compound <theS> builds the blocks (compounds) of elements of type <theElementType> connected through the shapes of the type <theConnectionType>. The blocks are stored into the list of lists <theLCB>. Returns also the connection map <theConnectionMap>, filled during operation.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<NCollection_List<TopoDS_Shape> > & theLCB, NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theConnectionMap);
+		static void MakeConnexityBlocks(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, TopTools_ListOfListOfShape & theLCB, TopTools_IndexedDataMapOfShapeListOfShape & theConnectionMap);
 
 		/****** BOPTools_AlgoTools::MakeConnexityBlocks ******/
 		/****** md5 signature: bbc3e1a46a8b8e0b0d598696cf8051f6 ******/
@@ -912,7 +938,7 @@ For the compound <theS> builds the blocks (compounds) of elements of type <theEl
 		%feature("autodoc", "
 Parameters
 ----------
-theLS: NCollection_List<TopoDS_Shape>
+theLS: TopTools_ListOfShape
 theConnectionType: TopAbs_ShapeEnum
 theElementType: TopAbs_ShapeEnum
 theLCB: NCollection_List<BOPTools_ConnexityBlock>
@@ -925,7 +951,7 @@ Description
 -----------
 Makes connexity blocks of elements of the given type with the given type of the connecting elements. The blocks are checked on regularity (multi-connectivity) and stored to the list of blocks <theLCB>.
 ") MakeConnexityBlocks;
-		static void MakeConnexityBlocks(const NCollection_List<TopoDS_Shape> & theLS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<BOPTools_ConnexityBlock> & theLCB);
+		static void MakeConnexityBlocks(const TopTools_ListOfShape & theLS, const TopAbs_ShapeEnum theConnectionType, const TopAbs_ShapeEnum theElementType, NCollection_List<BOPTools_ConnexityBlock> & theLCB);
 
 		/****** BOPTools_AlgoTools::MakeContainer ******/
 		/****** md5 signature: d164053e2421f42b427ee6ca8c740ef3 ******/
@@ -1129,7 +1155,7 @@ Make the edge from base edge <aE1> and two vertices <aV1,aV2> at parameters <aP1
 		%feature("autodoc", "
 Parameters
 ----------
-theLV: NCollection_List<TopoDS_Shape>
+theLV: TopTools_ListOfShape
 theV: TopoDS_Vertex
 
 Return
@@ -1140,7 +1166,7 @@ Description
 -----------
 Makes the vertex in the middle of given vertices with the tolerance covering all tolerance spheres of vertices.
 ") MakeVertex;
-		static void MakeVertex(const NCollection_List<TopoDS_Shape> & theLV, TopoDS_Vertex & theV);
+		static void MakeVertex(const TopTools_ListOfShape & theLV, TopoDS_Vertex & theV);
 
 		/****** BOPTools_AlgoTools::OrientEdgesOnWire ******/
 		/****** md5 signature: 3119ef215b80e42dba9486eca423d427 ******/
@@ -1225,8 +1251,8 @@ Checks if the normals direction of the given faces computed near the shared edge
 Parameters
 ----------
 theS: TopoDS_Shape
-theList: NCollection_List<TopoDS_Shape>
-theMap: NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> * (optional, default to nullptr)
+theList: TopTools_ListOfShape
+theMap: TopTools_MapOfShape * (optional, default to nullptr)
 
 Return
 -------
@@ -1236,7 +1262,7 @@ Description
 -----------
 Collects in the output list recursively all non-compound sub-shapes of the first level of the given shape theS. The optional map theMap is used to avoid the duplicates in the output list, so it will also contain all non-compound sub-shapes.
 ") TreatCompound;
-		static void TreatCompound(const TopoDS_Shape & theS, NCollection_List<TopoDS_Shape> & theList, NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> * theMap = nullptr);
+		static void TreatCompound(const TopoDS_Shape & theS, TopTools_ListOfShape & theList, TopTools_MapOfShape * theMap = nullptr);
 
 		/****** BOPTools_AlgoTools::UpdateVertex ******/
 		/****** md5 signature: 302dfd27a25ab2460715984142b83b41 ******/
@@ -2147,26 +2173,26 @@ No available documentation.
 		%feature("compactdefaultargs") ChangeLoops;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeLoops;
-		NCollection_List<TopoDS_Shape> ChangeLoops();
+		TopTools_ListOfShape & ChangeLoops();
 
 		/****** BOPTools_ConnexityBlock::ChangeShapes ******/
 		/****** md5 signature: ef78ffba6b513d0f6d6595cfd3a278c4 ******/
 		%feature("compactdefaultargs") ChangeShapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") ChangeShapes;
-		NCollection_List<TopoDS_Shape> ChangeShapes();
+		TopTools_ListOfShape & ChangeShapes();
 
 		/****** BOPTools_ConnexityBlock::IsRegular ******/
 		/****** md5 signature: 5c2b2dd1f03601f7418ebcb10f6737d0 ******/
@@ -2186,13 +2212,13 @@ No available documentation.
 		%feature("compactdefaultargs") Loops;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Loops;
-		const NCollection_List<TopoDS_Shape> Loops();
+		const TopTools_ListOfShape & Loops();
 
 		/****** BOPTools_ConnexityBlock::SetRegular ******/
 		/****** md5 signature: 37bdd721f4ace6b4f1f17f764a89f121 ******/
@@ -2217,13 +2243,13 @@ No available documentation.
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Shapes;
-		const NCollection_List<TopoDS_Shape> Shapes();
+		const TopTools_ListOfShape & Shapes();
 
 };
 

@@ -46,6 +46,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgo.html"
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TopExp_module.hxx>
@@ -77,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepalgo.html"
 %import NCollection.i
 %import TopoDS.i
 %import GeomAbs.i
+%import TopTools.i
 %import TopAbs.i
 %import Adaptor3d.i
 
@@ -231,7 +233,7 @@ Checks if the shape is 'correct'. If not, returns <false>, else returns <true>.
 		%feature("autodoc", "
 Parameters
 ----------
-theArgs: NCollection_List<TopoDS_Shape>
+theArgs: TopTools_ListOfShape
 theResult: TopoDS_Shape
 closedSolid: bool (optional, default to false)
 GeomCtrl: bool (optional, default to true)
@@ -244,7 +246,7 @@ Description
 -----------
 Checks if the Generated and Modified Faces from the shapes <arguments> in the shape <result> are 'correct'. The args may be empty, then all faces will be checked. If <Closed> is True, only closed shape are valid. If <GeomCtrl> is False the geometry of new vertices and edges are not verified and the auto-intersection of new wires are not searched.
 ") IsValid;
-		static bool IsValid(const NCollection_List<TopoDS_Shape> & theArgs, const TopoDS_Shape & theResult, const bool closedSolid = false, const bool GeomCtrl = true);
+		static bool IsValid(const TopTools_ListOfShape & theArgs, const TopoDS_Shape & theResult, const bool closedSolid = false, const bool GeomCtrl = true);
 
 };
 
@@ -299,7 +301,7 @@ Stores <SS> as a futur subshape of <S>.
 Parameters
 ----------
 S: TopoDS_Shape
-SS: NCollection_List<TopoDS_Shape>
+SS: TopTools_ListOfShape
 
 Return
 -------
@@ -309,7 +311,7 @@ Description
 -----------
 Stores <SS> as futurs SubShapes of <S>.
 ") Add;
-		void Add(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & SS);
+		void Add(const TopoDS_Shape & S, const TopTools_ListOfShape & SS);
 
 		/****** BRepAlgo_AsDes::Ascendant ******/
 		/****** md5 signature: a060de1b6e354a6ab597faef913355c5 ******/
@@ -321,13 +323,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the Shape containing <S>.
 ") Ascendant;
-		const NCollection_List<TopoDS_Shape> Ascendant(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Ascendant(const TopoDS_Shape & S);
 
 		/****** BRepAlgo_AsDes::ChangeDescendant ******/
 		/****** md5 signature: a246523e7944d52771230bb1d503eef7 ******/
@@ -339,13 +341,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns futur subhapes of <S>.
 ") ChangeDescendant;
-		NCollection_List<TopoDS_Shape> ChangeDescendant(const TopoDS_Shape & S);
+		TopTools_ListOfShape & ChangeDescendant(const TopoDS_Shape & S);
 
 		/****** BRepAlgo_AsDes::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -370,13 +372,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns futur subhapes of <S>.
 ") Descendant;
-		const NCollection_List<TopoDS_Shape> Descendant(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Descendant(const TopoDS_Shape & S);
 
 		/****** BRepAlgo_AsDes::HasAscendant ******/
 		/****** md5 signature: c453c09c38b71f082d51778663edbbed ******/
@@ -404,7 +406,7 @@ Parameters
 ----------
 S1: TopoDS_Shape
 S2: TopoDS_Shape
-LC: NCollection_List<TopoDS_Shape>
+LC: TopTools_ListOfShape
 
 Return
 -------
@@ -414,7 +416,7 @@ Description
 -----------
 Returns True if (S1> and <S2> has common Descendants. Stores in <LC> the Commons Descendants.
 ") HasCommonDescendant;
-		bool HasCommonDescendant(const TopoDS_Shape & S1, const TopoDS_Shape & S2, NCollection_List<TopoDS_Shape> & LC);
+		bool HasCommonDescendant(const TopoDS_Shape & S1, const TopoDS_Shape & S2, TopTools_ListOfShape & LC);
 
 		/****** BRepAlgo_AsDes::HasDescendant ******/
 		/****** md5 signature: 3ac8065cb9a11e2ada447d10a00ea7b9 ******/
@@ -669,7 +671,7 @@ Add <NewS> to the image of <OldS>.
 Parameters
 ----------
 OldS: TopoDS_Shape
-NewS: NCollection_List<TopoDS_Shape>
+NewS: TopTools_ListOfShape
 
 Return
 -------
@@ -679,7 +681,7 @@ Description
 -----------
 Add <NewS> to the image of <OldS>.
 ") Add;
-		void Add(const TopoDS_Shape & OldS, const NCollection_List<TopoDS_Shape> & NewS);
+		void Add(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
 		/****** BRepAlgo_Image::Bind ******/
 		/****** md5 signature: 94395a7acc1c19970a6c18429f703cbd ******/
@@ -707,7 +709,7 @@ Links <NewS> as image of <OldS>.
 Parameters
 ----------
 OldS: TopoDS_Shape
-NewS: NCollection_List<TopoDS_Shape>
+NewS: TopTools_ListOfShape
 
 Return
 -------
@@ -717,7 +719,7 @@ Description
 -----------
 Links <NewS> as image of <OldS>.
 ") Bind;
-		void Bind(const TopoDS_Shape & OldS, const NCollection_List<TopoDS_Shape> & NewS);
+		void Bind(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
 		/****** BRepAlgo_Image::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -792,13 +794,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the Image of <S>. Returns <S> in the list if HasImage(S) is false.
 ") Image;
-		const NCollection_List<TopoDS_Shape> Image(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Image(const TopoDS_Shape & S);
 
 		/****** BRepAlgo_Image::ImageFrom ******/
 		/****** md5 signature: 2290fb99e58edb77e8d51c7bee3ddaa5 ******/
@@ -843,7 +845,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-L: NCollection_List<TopoDS_Shape>
+L: TopTools_ListOfShape
 
 Return
 -------
@@ -853,7 +855,7 @@ Description
 -----------
 Stores in <L> the images of images of...images of <S>. <L> contains only <S> if HasImage(S) is false.
 ") LastImage;
-		void LastImage(const TopoDS_Shape & S, NCollection_List<TopoDS_Shape> & L);
+		void LastImage(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
 		/****** BRepAlgo_Image::Remove ******/
 		/****** md5 signature: 05a88c75d9ea5ff51b2f8c0a39e09679 ******/
@@ -933,13 +935,13 @@ Returns the upper generator of <S>.
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Roots;
-		const NCollection_List<TopoDS_Shape> Roots();
+		const TopTools_ListOfShape & Roots();
 
 		/****** BRepAlgo_Image::SetRoot ******/
 		/****** md5 signature: 81eb99d7d9d22432167b234cf063481a ******/
@@ -1010,7 +1012,7 @@ Add <E> as const edge, E can be in the result.
 		%feature("autodoc", "
 Parameters
 ----------
-LE: NCollection_List<TopoDS_Shape>
+LE: TopTools_ListOfShape
 
 Return
 -------
@@ -1020,7 +1022,7 @@ Description
 -----------
 Add <LE> as a set of const edges.
 ") AddConstEdges;
-		void AddConstEdges(const NCollection_List<TopoDS_Shape> & LE);
+		void AddConstEdges(const TopTools_ListOfShape & LE);
 
 		/****** BRepAlgo_Loop::AddEdge ******/
 		/****** md5 signature: 48149f5be331baa19d0b6f92971f106f ******/
@@ -1029,7 +1031,7 @@ Add <LE> as a set of const edges.
 Parameters
 ----------
 E: TopoDS_Edge
-LV: NCollection_List<TopoDS_Shape>
+LV: TopTools_ListOfShape
 
 Return
 -------
@@ -1039,7 +1041,7 @@ Description
 -----------
 Add E with <LV>. <E> will be copied and trim by vertices in <LV>.
 ") AddEdge;
-		void AddEdge(TopoDS_Edge & E, const NCollection_List<TopoDS_Shape> & LV);
+		void AddEdge(TopoDS_Edge & E, const TopTools_ListOfShape & LV);
 
 		/****** BRepAlgo_Loop::CutEdge ******/
 		/****** md5 signature: cb581a499f555f2a867a34448c100186 ******/
@@ -1048,8 +1050,8 @@ Add E with <LV>. <E> will be copied and trim by vertices in <LV>.
 Parameters
 ----------
 E: TopoDS_Edge
-VonE: NCollection_List<TopoDS_Shape>
-NE: NCollection_List<TopoDS_Shape>
+VonE: TopTools_ListOfShape
+NE: TopTools_ListOfShape
 
 Return
 -------
@@ -1059,7 +1061,7 @@ Description
 -----------
 Cut the edge <E> in several edges <NE> on the vertices<VonE>.
 ") CutEdge;
-		void CutEdge(const TopoDS_Edge & E, const NCollection_List<TopoDS_Shape> & VonE, NCollection_List<TopoDS_Shape> & NE);
+		void CutEdge(const TopoDS_Edge & E, const TopTools_ListOfShape & VonE, TopTools_ListOfShape & NE);
 
 		/****** BRepAlgo_Loop::GetTolConf ******/
 		/****** md5 signature: f5e2f9ccb05e680b29da799a9a75730c ******/
@@ -1080,7 +1082,7 @@ Get maximal tolerance used for comparing distances between vertices.
 		%feature("autodoc", "
 Parameters
 ----------
-VerVerMap: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+VerVerMap: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -1090,7 +1092,7 @@ Description
 -----------
 Returns the datamap of vertices with their substitutes.
 ") GetVerticesForSubstitute;
-		void GetVerticesForSubstitute(NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & VerVerMap);
+		void GetVerticesForSubstitute(TopTools_DataMapOfShapeShape & VerVerMap);
 
 		/****** BRepAlgo_Loop::Init ******/
 		/****** md5 signature: a8dfaa68079e743e08190fe58d950a9a ******/
@@ -1120,39 +1122,39 @@ E: TopoDS_Edge
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of new edges built from an edge <E> it can be an empty list.
 ") NewEdges;
-		const NCollection_List<TopoDS_Shape> NewEdges(const TopoDS_Edge & E);
+		const TopTools_ListOfShape & NewEdges(const TopoDS_Edge & E);
 
 		/****** BRepAlgo_Loop::NewFaces ******/
 		/****** md5 signature: 622f2c4b34e58c0e41f678dc9e8f0afe ******/
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of faces. Warning: The method <WiresToFaces> as to be called before. can be an empty list.
 ") NewFaces;
-		const NCollection_List<TopoDS_Shape> NewFaces();
+		const TopTools_ListOfShape & NewFaces();
 
 		/****** BRepAlgo_Loop::NewWires ******/
 		/****** md5 signature: 59af415d459f9ad3abed970f07bfc029 ******/
 		%feature("compactdefaultargs") NewWires;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of wires performed. can be an empty list.
 ") NewWires;
-		const NCollection_List<TopoDS_Shape> NewWires();
+		const TopTools_ListOfShape & NewWires();
 
 		/****** BRepAlgo_Loop::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -1209,7 +1211,7 @@ Set maximal tolerance used for comparing distances between vertices.
 		%feature("autodoc", "
 Parameters
 ----------
-theVEmap: NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher>
+theVEmap: TopTools_IndexedDataMapOfShapeListOfShape
 
 Return
 -------
@@ -1219,7 +1221,7 @@ Description
 -----------
 Update VE map according to Image Vertex - Vertex.
 ") UpdateVEmap;
-		void UpdateVEmap(NCollection_IndexedDataMap<TopoDS_Shape, NCollection_List<TopoDS_Shape>, TopTools_ShapeMapHasher> & theVEmap);
+		void UpdateVEmap(TopTools_IndexedDataMapOfShapeListOfShape & theVEmap);
 
 		/****** BRepAlgo_Loop::VerticesForSubstitute ******/
 		/****** md5 signature: 3e4af163c66e0ce2e191c8ab5c7f052f ******/
@@ -1227,7 +1229,7 @@ Update VE map according to Image Vertex - Vertex.
 		%feature("autodoc", "
 Parameters
 ----------
-VerVerMap: NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>
+VerVerMap: TopTools_DataMapOfShapeShape
 
 Return
 -------
@@ -1237,7 +1239,7 @@ Description
 -----------
 No available documentation.
 ") VerticesForSubstitute;
-		void VerticesForSubstitute(NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> & VerVerMap);
+		void VerticesForSubstitute(TopTools_DataMapOfShapeShape & VerVerMap);
 
 		/****** BRepAlgo_Loop::WiresToFaces ******/
 		/****** md5 signature: ba4d21c35d79af050089e2828b0fc192 ******/
@@ -1352,7 +1354,7 @@ Builds the result as a compound.
 		%feature("autodoc", "
 Parameters
 ----------
-Liste: NCollection_List<TopoDS_Shape>
+Liste: TopTools_ListOfShape
 
 Return
 -------
@@ -1362,7 +1364,7 @@ Description
 -----------
 build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
 ") BuildWire;
-		bool BuildWire(NCollection_List<TopoDS_Shape> & Liste);
+		bool BuildWire(TopTools_ListOfShape & Liste);
 
 		/****** BRepAlgo_NormalProjection::Compute3d ******/
 		/****** md5 signature: 8b864583fd604bf1369f0261b87b0b61 ******/
@@ -1410,13 +1412,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepAlgo_NormalProjection::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/

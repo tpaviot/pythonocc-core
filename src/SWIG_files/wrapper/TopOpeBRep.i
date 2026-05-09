@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrep.html"
 #include<Bnd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<IntRes2d_module.hxx>
@@ -88,6 +89,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrep.html"
 %import Bnd.i
 %import TopAbs.i
 %import gp.i
+%import TopTools.i
 %import Geom2d.i
 %import Geom.i
 %import IntRes2d.i
@@ -180,14 +182,33 @@ Array1ExtendIter(TopOpeBRep_VPointInter)
 %template(TopOpeBRep_ListOfBipoint) NCollection_List<TopOpeBRep_Bipoint>;
 
 %extend NCollection_List<TopOpeBRep_Bipoint> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRep_ListIteratorOfListOfBipoint(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TopOpeBRep_SequenceOfPoint2d) NCollection_Sequence<TopOpeBRep_Point2d>;
 
 %extend NCollection_Sequence<TopOpeBRep_Point2d> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -2088,7 +2109,7 @@ VP processing for restriction line and line sharing same domain with section edg
 		%feature("autodoc", "
 Parameters
 ----------
-LES: NCollection_List<TopoDS_Shape>
+LES: TopTools_ListOfShape
 
 Return
 -------
@@ -2098,7 +2119,7 @@ Description
 -----------
 Get map <mapES > of restriction edges having parts IN one of the 2 faces.
 ") GetESL;
-		void GetESL(NCollection_List<TopoDS_Shape> & LES);
+		void GetESL(TopTools_ListOfShape & LES);
 
 		/****** TopOpeBRep_FacesFiller::GetFFGeometry ******/
 		/****** md5 signature: f25b21d04c01d0097321f777cf12fcae ******/
@@ -2156,7 +2177,7 @@ Description
 -----------
 Get the geometry of a DS point <DSP>. Search for it with ScanInterfList (previous method). if found, set <G> to the geometry of the interference found. else, add the point <DSP> in the <DS> and set <G> to the value of the new geometry such created. returns the value of ScanInterfList().
 ") GetGeometry;
-		bool GetGeometry(NCollection_List<opencascade::handle<TopOpeBRepDS_Interference> >::Iterator & IT, const TopOpeBRep_VPointInter & VP, Standard_Integer &OutValue, TopOpeBRepDS_Kind & K);
+		bool GetGeometry(NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>::Iterator & IT, const TopOpeBRep_VPointInter & VP, Standard_Integer &OutValue, TopOpeBRepDS_Kind & K);
 
 		/****** TopOpeBRep_FacesFiller::GetTraceIndex ******/
 		/****** md5 signature: 085d0b28dcee8a1c31ade4d859a30c33 ******/
@@ -2238,7 +2259,7 @@ Computes the transition <T> of the VPoint <iVP> on the edge of <SI12>. Returns <
 Parameters
 ----------
 L: TopOpeBRep_LineInter
-ERL: NCollection_List<TopoDS_Shape>
+ERL: TopTools_ListOfShape
 
 Return
 -------
@@ -2248,7 +2269,7 @@ Description
 -----------
 Returns <True> if <L> shares a same geometric domain with at least one of the section edges of <ERL>.
 ") LSameDomainERL;
-		static bool LSameDomainERL(const TopOpeBRep_LineInter & L, const NCollection_List<TopoDS_Shape> & ERL);
+		static bool LSameDomainERL(const TopOpeBRep_LineInter & L, const TopTools_ListOfShape & ERL);
 
 		/****** TopOpeBRep_FacesFiller::Lminmax ******/
 		/****** md5 signature: 450fff8769f3545581d4b670a9406162 ******/
@@ -3040,13 +3061,13 @@ No available documentation.
 		%feature("compactdefaultargs") Restrictions;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 returns the map of edges found as TopeBRepBRep_RESTRICTION.
 ") Restrictions;
-		const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> Restrictions();
+		const TopTools_IndexedMapOfShape & Restrictions();
 
 		/****** TopOpeBRep_FacesIntersector::SameDomain ******/
 		/****** md5 signature: 04e91c914703008df31ace2fe13dd1dd ******/
@@ -5193,7 +5214,7 @@ Parameters
 ----------
 anObj: TopoDS_Shape
 aReference: TopoDS_Shape
-aListOfShape: NCollection_List<TopoDS_Shape>
+aListOfShape: TopTools_ListOfShape
 
 Return
 -------
@@ -5203,7 +5224,7 @@ Description
 -----------
 No available documentation.
 ") RejectedFaces;
-		void RejectedFaces(const TopoDS_Shape & anObj, const TopoDS_Shape & aReference, NCollection_List<TopoDS_Shape> & aListOfShape);
+		void RejectedFaces(const TopoDS_Shape & anObj, const TopoDS_Shape & aReference, TopTools_ListOfShape & aListOfShape);
 
 		/****** TopOpeBRep_ShapeIntersector::Shape ******/
 		/****** md5 signature: c64b1321f94deb4fb6cde82de95d62cc ******/

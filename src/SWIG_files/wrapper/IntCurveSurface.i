@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurvesurface.h
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Intf_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntSurf_module.hxx>
@@ -67,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intcurvesurface.h
 %import Adaptor3d.i
 %import Geom.i
 %import GeomAbs.i
+%import TColStd.i
 %import Intf.i
 %import Bnd.i
 %import IntSurf.i
@@ -105,6 +107,13 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
 %template(IntCurveSurface_SequenceOfPnt) NCollection_Sequence<IntCurveSurface_IntersectionPoint>;
 
 %extend NCollection_Sequence<IntCurveSurface_IntersectionPoint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -113,6 +122,13 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
 %template(IntCurveSurface_SequenceOfSeg) NCollection_Sequence<IntCurveSurface_IntersectionSegment>;
 
 %extend NCollection_Sequence<IntCurveSurface_IntersectionSegment> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1168,7 +1184,7 @@ No available documentation.
 Parameters
 ----------
 C: Adaptor3d_Curve
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1179,7 +1195,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		static void Intervals(const opencascade::handle<Adaptor3d_Curve> & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** IntCurveSurface_TheHCurveTool::IsClosed ******/
 		/****** md5 signature: b229007a72b110f368a977486fc9b60b ******/
@@ -1361,7 +1377,7 @@ NbMin: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
@@ -1373,7 +1389,7 @@ Input parameter: Defl deflection tolerance
 Input parameter: NbMin minimum number of sample points 
 Return: array of sample parameter values.
 ") SamplePars;
-		static opencascade::handle<NCollection_HArray1<double>> SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin);
+		static opencascade::handle<TColStd_HArray1OfReal> SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin);
 
 		/****** IntCurveSurface_TheHCurveTool::SamplePars ******/
 		/****** md5 signature: 04ef48e8971fdba663161152af15047f ******/
@@ -1386,7 +1402,7 @@ U0: double
 U1: double
 Defl: double
 NbMin: int
-Pars: NCollection_HArray1<double
+Pars: TColStd_HArray1OfReal
 
 Return
 -------
@@ -1396,7 +1412,7 @@ Description
 -----------
 No available documentation.
 ") SamplePars;
-		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<NCollection_HArray1<double> > & Pars);
+		static void SamplePars(const opencascade::handle<Adaptor3d_Curve> & C, const double U0, const double U1, const double Defl, const int NbMin, opencascade::handle<TColStd_HArray1OfReal> & Pars);
 
 		/****** IntCurveSurface_TheHCurveTool::Value ******/
 		/****** md5 signature: 12d50f41171920cb7684ceb1b87ec20a ******/
@@ -1778,7 +1794,7 @@ No available documentation.
 Parameters
 ----------
 Curve: Adaptor3d_Curve
-Upars: NCollection_Array1<double>
+Upars: TColStd_Array1OfReal
 
 Return
 -------
@@ -1788,7 +1804,7 @@ Description
 -----------
 No available documentation.
 ") IntCurveSurface_ThePolygonOfHInter;
-		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const NCollection_Array1<double> & Upars);
+		 IntCurveSurface_ThePolygonOfHInter(const opencascade::handle<Adaptor3d_Curve> & Curve, const TColStd_Array1OfReal & Upars);
 
 		/****** IntCurveSurface_ThePolygonOfHInter::ApproxParamOnCurve ******/
 		/****** md5 signature: 520ca19aee00f08506bff5bce4928594 ******/

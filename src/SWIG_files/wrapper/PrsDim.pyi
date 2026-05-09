@@ -15,6 +15,7 @@ from OCC.Core.TCollection import *
 from OCC.Core.SelectMgr import *
 from OCC.Core.PrsMgr import *
 from OCC.Core.DsgPrs import *
+from OCC.Core.TColStd import *
 
 
 class PrsDim_DimensionSelectionMode(IntEnum):
@@ -384,7 +385,7 @@ class PrsDim_IdenticRelation(PrsDim_Relation):
     def ClearUsers(self) -> None: ...
     def HasUsers(self) -> bool: ...
     def IsMovable(self) -> bool: ...
-    def Users(self) -> False: ...
+    def Users(self) -> TColStd_ListOfTransient: ...
 
 class PrsDim_LengthDimension(PrsDim_Dimension):
     @overload

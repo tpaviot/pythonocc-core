@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_monitool.html"
 #include<Message_module.hxx>
 #include<TCollection_module.hxx>
 #include<OSD_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -61,6 +62,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_monitool.html"
 %import Message.i
 %import TCollection.i
 %import OSD.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -137,6 +139,13 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 %template(MoniTool_SequenceOfElement) NCollection_Sequence<opencascade::handle<MoniTool_Element>>;
 
 %extend NCollection_Sequence<opencascade::handle<MoniTool_Element>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1552,6 +1561,10 @@ No available documentation.
 ") Value;
 		int Value();
 
+		%extend{
+			int GetCValue() { return self->CValue(); }
+			void SetCValue(int value) { self->CValue() = value; }
+		};
 };
 
 
@@ -1612,6 +1625,10 @@ No available documentation.
 ") Value;
 		double Value();
 
+		%extend{
+			double GetCValue() { return self->CValue(); }
+			void SetCValue(double value) { self->CValue() = value; }
+		};
 };
 
 
@@ -2579,7 +2596,7 @@ Parameters
 interp: MoniTool_ValueInterpret
 satisf: MoniTool_ValueSatisfies
 satisname: char *
-enums: NCollection_DataMap<TCollection_AsciiString, int>
+enums: TColStd_DataMapOfAsciiStringInteger
 
 Return
 -------
@@ -2589,7 +2606,7 @@ Description
 -----------
 Access to internal data which have no other access.
 ") Internals;
-		void Internals(MoniTool_ValueInterpret & interp, MoniTool_ValueSatisfies & satisf, const char * & satisname, NCollection_DataMap<TCollection_AsciiString, int> & enums);
+		void Internals(MoniTool_ValueInterpret & interp, MoniTool_ValueSatisfies & satisf, const char * & satisname, TColStd_DataMapOfAsciiStringInteger & enums);
 
 		/****** MoniTool_TypedValue::Interpret ******/
 		/****** md5 signature: 6e8edc616aae23bcfccf203fb5cd50dd ******/
@@ -2659,13 +2676,13 @@ Returns the TypedValue bound with a given Name Null Handle if none recorded Warn
 		%feature("compactdefaultargs") LibList;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_AsciiString>>
+opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
 Returns the list of names of items of the Library of Types Library of TypedValue as Valued Parameters, accessed by parameter name for use by management of Static Parameters.
 ") LibList;
-		static opencascade::handle<NCollection_HSequence<TCollection_AsciiString>> LibList();
+		static opencascade::handle<TColStd_HSequenceOfAsciiString> LibList();
 
 		/****** MoniTool_TypedValue::MaxLength ******/
 		/****** md5 signature: f7f61d418d075aa36e1eba86ab143941 ******/

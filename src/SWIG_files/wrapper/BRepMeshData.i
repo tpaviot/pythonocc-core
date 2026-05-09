@@ -82,6 +82,12 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BRepMeshData_Curve)
+%wrap_handle(BRepMeshData_Edge)
+%wrap_handle(BRepMeshData_Face)
+%wrap_handle(BRepMeshData_Model)
+%wrap_handle(BRepMeshData_PCurve)
+%wrap_handle(BRepMeshData_Wire)
 /* end handles declaration */
 
 /* templates */
@@ -222,6 +228,8 @@ Removes point with the given index.
 
 };
 
+
+%make_alias(BRepMeshData_Curve)
 
 %extend BRepMeshData_Curve {
 	%pythoncode {
@@ -397,6 +405,8 @@ Returns number of pcurves assigned to current edge.
 };
 
 
+%make_alias(BRepMeshData_Edge)
+
 %extend BRepMeshData_Edge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -529,6 +539,8 @@ Gets number of children.
 
 };
 
+
+%make_alias(BRepMeshData_Face)
 
 %extend BRepMeshData_Face {
 	%pythoncode {
@@ -759,6 +771,8 @@ Sets maximum size of shape's bounding box.
 };
 
 
+%make_alias(BRepMeshData_Model)
+
 %extend BRepMeshData_Model {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -915,6 +929,8 @@ Removes point with the given index.
 
 };
 
+
+%make_alias(BRepMeshData_PCurve)
 
 %extend BRepMeshData_PCurve {
 	%pythoncode {
@@ -1075,6 +1091,8 @@ Returns True if orientation of discrete edge with the given index is forward.
 
 };
 
+
+%make_alias(BRepMeshData_Wire)
 
 %extend BRepMeshData_Wire {
 	%pythoncode {

@@ -80,6 +80,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XmlXCAFDrivers_DocumentRetrievalDriver)
+%wrap_handle(XmlXCAFDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
@@ -178,6 +180,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlXCAFDrivers_DocumentRetrievalDriver)
+
 %extend XmlXCAFDrivers_DocumentRetrievalDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -227,6 +231,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlXCAFDrivers_DocumentStorageDriver)
 
 %extend XmlXCAFDrivers_DocumentStorageDriver {
 	%pythoncode {

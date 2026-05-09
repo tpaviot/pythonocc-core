@@ -94,14 +94,16 @@ BinLDrivers_ENDLABEL = BinLDrivers_Marker.BinLDrivers_ENDLABEL
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BinLDrivers_DocumentRetrievalDriver)
+%wrap_handle(BinLDrivers_DocumentStorageDriver)
 /* end handles declaration */
 
 /* templates */
-%template(BinLDrivers_VectorOfDocumentSection) NCollection_Vector<BinLDrivers_DocumentSection>;
+%template(BinLDrivers_VectorOfDocumentSection) NCollection_DynamicArray<BinLDrivers_DocumentSection>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Vector<BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocumentSection;
+typedef NCollection_DynamicArray<BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocumentSection;
 /* end typedefs declaration */
 
 /********************
@@ -256,6 +258,8 @@ No available documentation.
 
 };
 
+
+%make_alias(BinLDrivers_DocumentRetrievalDriver)
 
 %extend BinLDrivers_DocumentRetrievalDriver {
 	%pythoncode {
@@ -568,6 +572,8 @@ Write <theDocument> to theOStream.
 
 };
 
+
+%make_alias(BinLDrivers_DocumentStorageDriver)
 
 %extend BinLDrivers_DocumentStorageDriver {
 	%pythoncode {

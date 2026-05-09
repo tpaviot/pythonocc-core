@@ -80,6 +80,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(APIHeaderSection_EditHeader)
 /* end handles declaration */
 
 /* templates */
@@ -199,6 +200,8 @@ No available documentation.
 };
 
 
+%make_alias(APIHeaderSection_EditHeader)
+
 %extend APIHeaderSection_EditHeader {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -287,13 +290,13 @@ Creates an empty header for a new STEP model and allows the header fields to be 
 		%feature("compactdefaultargs") Author;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") Author;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> Author();
+		opencascade::handle<Interface_HArray1OfHAsciiString> Author();
 
 		/****** APIHeaderSection_MakeHeader::AuthorValue ******/
 		/****** md5 signature: 7f81943772f25bd3f67bfcd57e5b0d0b ******/
@@ -331,13 +334,13 @@ Returns the value of the authorization attribute for the file_name entity.
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") Description;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> Description();
+		opencascade::handle<Interface_HArray1OfHAsciiString> Description();
 
 		/****** APIHeaderSection_MakeHeader::DescriptionValue ******/
 		/****** md5 signature: bb966a700c45a354e0c96ae396f8f968 ******/
@@ -567,13 +570,13 @@ Builds a Header, creates a new StepModel, then applies the Header to the StepMod
 		%feature("compactdefaultargs") Organization;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") Organization;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> Organization();
+		opencascade::handle<Interface_HArray1OfHAsciiString> Organization();
 
 		/****** APIHeaderSection_MakeHeader::OrganizationValue ******/
 		/****** md5 signature: e20ad0422367d001d1467461cc709c58 ******/
@@ -624,13 +627,13 @@ Returns the name of the preprocessor_version for the file_name entity.
 		%feature("compactdefaultargs") SchemaIdentifiers;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") SchemaIdentifiers;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> SchemaIdentifiers();
+		opencascade::handle<Interface_HArray1OfHAsciiString> SchemaIdentifiers();
 
 		/****** APIHeaderSection_MakeHeader::SchemaIdentifiersValue ******/
 		/****** md5 signature: d701b10128ce855b9eafbc3c2bfe2aa8 ******/
@@ -656,7 +659,7 @@ Returns the value of the schema_identifier attribute for the file_schema entity.
 		%feature("autodoc", "
 Parameters
 ----------
-aAuthor: NCollection_HArray1<
+aAuthor: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -666,7 +669,7 @@ Description
 -----------
 No available documentation.
 ") SetAuthor;
-		void SetAuthor(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aAuthor);
+		void SetAuthor(const opencascade::handle<Interface_HArray1OfHAsciiString > & aAuthor);
 
 		/****** APIHeaderSection_MakeHeader::SetAuthorValue ******/
 		/****** md5 signature: af2ed108b9009a11d8d539ff13df8beb ******/
@@ -711,7 +714,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aDescription: NCollection_HArray1<
+aDescription: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -721,7 +724,7 @@ Description
 -----------
 No available documentation.
 ") SetDescription;
-		void SetDescription(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aDescription);
+		void SetDescription(const opencascade::handle<Interface_HArray1OfHAsciiString > & aDescription);
 
 		/****** APIHeaderSection_MakeHeader::SetDescriptionValue ******/
 		/****** md5 signature: 280cf891119ea905fb369cbe734b2dd1 ******/
@@ -784,7 +787,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aOrganization: NCollection_HArray1<
+aOrganization: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -794,7 +797,7 @@ Description
 -----------
 No available documentation.
 ") SetOrganization;
-		void SetOrganization(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aOrganization);
+		void SetOrganization(const opencascade::handle<Interface_HArray1OfHAsciiString > & aOrganization);
 
 		/****** APIHeaderSection_MakeHeader::SetOrganizationValue ******/
 		/****** md5 signature: b10cf852ab992576eb6dd4d2bdbf308a ******/
@@ -857,7 +860,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aSchemaIdentifiers: NCollection_HArray1<
+aSchemaIdentifiers: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -867,7 +870,7 @@ Description
 -----------
 No available documentation.
 ") SetSchemaIdentifiers;
-		void SetSchemaIdentifiers(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aSchemaIdentifiers);
+		void SetSchemaIdentifiers(const opencascade::handle<Interface_HArray1OfHAsciiString > & aSchemaIdentifiers);
 
 		/****** APIHeaderSection_MakeHeader::SetSchemaIdentifiersValue ******/
 		/****** md5 signature: 14cc0f016057df61702b2deddb44cfc0 ******/

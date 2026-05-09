@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_draft.html"
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<BRepTools_module.hxx>
+#include<TopTools_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TopLoc_module.hxx>
 #include<BRep_module.hxx>
@@ -69,6 +70,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_draft.html"
 %import Geom2d.i
 %import Geom.i
 %import BRepTools.i
+%import TopTools.i
 %import GeomAbs.i
 %import TopLoc.i
 
@@ -714,13 +716,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
-		const NCollection_List<TopoDS_Shape> ConnectedFaces(const TopoDS_Face & F);
+		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
 
 		/****** Draft_Modification::Continuity ******/
 		/****** md5 signature: d1e0a7e2e1d461e6b97ab64ce63033de ******/
@@ -794,13 +796,13 @@ Returns True if Perform has been successfully called. Otherwise more information
 		%feature("compactdefaultargs") ModifiedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns all the faces on which a modification has been given.
 ") ModifiedFaces;
-		const NCollection_List<TopoDS_Shape> ModifiedFaces();
+		const TopTools_ListOfShape & ModifiedFaces();
 
 		/****** Draft_Modification::NewCurve ******/
 		/****** md5 signature: 039bf25957d908407657950d3c1e5d6a ******/

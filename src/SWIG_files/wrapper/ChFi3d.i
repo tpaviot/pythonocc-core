@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi3d.html"
 #include<GeomAbs_module.hxx>
 #include<TopOpeBRepBuild_module.hxx>
 #include<Geom_module.hxx>
+#include<TopTools_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<math_module.hxx>
 #include<Law_module.hxx>
@@ -89,6 +90,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_chfi3d.html"
 %import GeomAbs.i
 %import TopOpeBRepBuild.i
 %import Geom.i
+%import TopTools.i
 %import Adaptor3d.i
 %import math.i
 %import Law.i
@@ -490,13 +492,13 @@ EouV: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Advanced function for the history.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & EouV);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & EouV);
 
 		/****** ChFi3d_Builder::HasResult ******/
 		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
@@ -764,7 +766,7 @@ Description
 -----------
 Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 ") SplitKPart;
-		bool SplitKPart(const opencascade::handle<ChFiDS_SurfData> & Data, NCollection_Sequence<opencascade::handle<ChFiDS_SurfData> > & SetData, const opencascade::handle<ChFiDS_Spine> & Spine, const int Iedge, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
+		bool SplitKPart(const opencascade::handle<ChFiDS_SurfData> & Data, NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> & SetData, const opencascade::handle<ChFiDS_Spine> & Spine, const int Iedge, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
 		/****** ChFi3d_Builder::StripeStatus ******/
 		/****** md5 signature: 6555865e90e352e8f5838e54359c66f4 ******/
@@ -1142,7 +1144,7 @@ Description
 -----------
 Methode, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer).
 ") PerformSurf;
-		bool PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData> > & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecOnS1, const bool RecOnS2, const math_Vector & Soldep, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		bool PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecOnS1, const bool RecOnS2, const math_Vector & Soldep, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** ChFi3d_ChBuilder::PerformSurf ******/
 		/****** md5 signature: de32c6710e3dbba9edd570e2024930a7 ******/
@@ -1183,7 +1185,7 @@ Description
 -----------
 Method, implemented in the inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 ") PerformSurf;
-		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData> > & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP, const bool RecS, const bool RecRst, const math_Vector & Soldep);
+		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const TopAbs_Orientation Or2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP, const bool RecS, const bool RecRst, const math_Vector & Soldep);
 
 		/****** ChFi3d_ChBuilder::PerformSurf ******/
 		/****** md5 signature: 04f27727e62f4ee05258f22cc8f526d2 ******/
@@ -1224,7 +1226,7 @@ Description
 -----------
 Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/face.
 ") PerformSurf;
-		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData> > & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP, const bool RecS, const bool RecRst, const math_Vector & Soldep);
+		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP, const bool RecS, const bool RecRst, const math_Vector & Soldep);
 
 		/****** ChFi3d_ChBuilder::PerformSurf ******/
 		/****** md5 signature: c464bcd977196b4e6883f1676500a93b ******/
@@ -1271,7 +1273,7 @@ Description
 -----------
 Method, implemented in inheritants, calculates the elements of construction of the surface (fillet or chamfer) contact edge/edge.
 ") PerformSurf;
-		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData> > & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP1, const bool RecRst1, const bool RecP2, const bool RecRst2, const math_Vector & Soldep);
+		void PerformSurf(NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>> & Data, const opencascade::handle<ChFiDS_ElSpine> & Guide, const opencascade::handle<ChFiDS_Spine> & Spine, const int Choix, const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & I1, const opencascade::handle<BRepAdaptor_Curve2d> & PC1, const opencascade::handle<BRepAdaptor_Surface> & Sref1, const opencascade::handle<BRepAdaptor_Curve2d> & PCref1, Standard_Boolean &OutValue, const TopAbs_Orientation Or1, const opencascade::handle<BRepAdaptor_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & I2, const opencascade::handle<BRepAdaptor_Curve2d> & PC2, const opencascade::handle<BRepAdaptor_Surface> & Sref2, const opencascade::handle<BRepAdaptor_Curve2d> & PCref2, Standard_Boolean &OutValue, const TopAbs_Orientation Or2, const double MaxStep, const double Fleche, const double TolGuide, Standard_Real &OutValue, Standard_Real &OutValue, const bool Inside, const bool Appro, const bool Forward, const bool RecP1, const bool RecRst1, const bool RecP2, const bool RecRst2, const math_Vector & Soldep);
 
 		/****** ChFi3d_ChBuilder::ResetContour ******/
 		/****** md5 signature: 04d69710edabf0c1cadc743818bdf3a2 ******/

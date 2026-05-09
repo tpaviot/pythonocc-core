@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomtostep.html"
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<StepGeom_module.hxx>
+#include<TColgp_module.hxx>
 #include<Message_module.hxx>
 #include<StepBasic_module.hxx>
 #include<StepBasic_module.hxx>
@@ -75,6 +76,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomtostep.html"
 %import Geom.i
 %import Geom2d.i
 %import StepGeom.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -1742,7 +1744,7 @@ class GeomToStep_MakePolyline : public GeomToStep_Root {
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt>
+P: TColgp_Array1OfPnt
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
@@ -1753,7 +1755,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePolyline;
-		 GeomToStep_MakePolyline(const NCollection_Array1<gp_Pnt> & P, const StepData_Factors & theLocalFactors = StepData_Factors());
+		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt & P, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** GeomToStep_MakePolyline::GeomToStep_MakePolyline ******/
 		/****** md5 signature: 09fb5f8f2838c03e39da50ed9ff23dc4 ******/
@@ -1761,7 +1763,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<gp_Pnt2d>
+P: TColgp_Array1OfPnt2d
 theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
@@ -1772,7 +1774,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePolyline;
-		 GeomToStep_MakePolyline(const NCollection_Array1<gp_Pnt2d> & P, const StepData_Factors & theLocalFactors = StepData_Factors());
+		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt2d & P, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** GeomToStep_MakePolyline::Value ******/
 		/****** md5 signature: 7a62b6b5beb908aa8df3a455e1d0bf50 ******/

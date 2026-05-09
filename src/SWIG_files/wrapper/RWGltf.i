@@ -48,6 +48,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwgltf.html"
 #include<TCollection_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Quantity_module.hxx>
 #include<Poly_module.hxx>
@@ -104,6 +106,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwgltf.html"
 %import TCollection.i
 %import XCAFPrs.i
 %import TDocStd.i
+%import TDF.i
+%import TColStd.i
 %import Message.i
 %import Quantity.i
 %import Poly.i
@@ -355,10 +359,14 @@ RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TR
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(RWGltf_CafReader)
 %wrap_handle(RWGltf_CafWriter)
 %wrap_handle(RWGltf_GltfFace)
+%wrap_handle(RWGltf_GltfLatePrimitiveArray)
+%wrap_handle(RWGltf_GltfMaterialMap)
 %wrap_handle(RWGltf_MaterialCommon)
 %wrap_handle(RWGltf_MaterialMetallicRoughness)
+%wrap_handle(RWGltf_TriangulationReader)
 /* end handles declaration */
 
 /* templates */
@@ -671,6 +679,8 @@ Set flag to use Mesh name in case if Node name is empty, True by default.
 };
 
 
+%make_alias(RWGltf_CafReader)
+
 %extend RWGltf_CafReader {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -817,9 +827,9 @@ Return name format for exporting Nodes; RWMesh_NameFormat_InstanceOrProduct by d
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: NCollection_Sequence<TDF_Label>
-theLabelFilter: NCollection_Map<TCollection_AsciiString> *
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theRootLabels: TDF_LabelSequence
+theLabelFilter: TColStd_MapOfAsciiString *
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -836,7 +846,7 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWGltf_CafWriter::Perform ******/
 		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
@@ -845,7 +855,7 @@ Return: False on file writing failure.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -860,7 +870,7 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWGltf_CafWriter::SetCompressionParameters ******/
 		/****** md5 signature: f822f9c1b83a8bd720a91827f059b8c1 ******/
@@ -1493,6 +1503,8 @@ Set type of primitive array.
 };
 
 
+%make_alias(RWGltf_GltfLatePrimitiveArray)
+
 %extend RWGltf_GltfLatePrimitiveArray {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1683,6 +1695,8 @@ Return base color texture.
 
 };
 
+
+%make_alias(RWGltf_GltfMaterialMap)
 
 %extend RWGltf_GltfMaterialMap {
 	%pythoncode {
@@ -1937,6 +1951,8 @@ Return: False on error.
 
 };
 
+
+%make_alias(RWGltf_TriangulationReader)
 
 %extend RWGltf_TriangulationReader {
 	%pythoncode {

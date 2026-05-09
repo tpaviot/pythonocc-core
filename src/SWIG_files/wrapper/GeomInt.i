@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomint.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<math_module.hxx>
+#include<TColStd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -58,6 +59,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomint.html"
 #include<IntImp_module.hxx>
 #include<ApproxInt_module.hxx>
 #include<IntSurf_module.hxx>
+#include<TColgp_module.hxx>
 #include<Bnd_module.hxx>
 #include<IntAna_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -72,6 +74,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomint.html"
 %import Standard.i
 %import NCollection.i
 %import math.i
+%import TColStd.i
 %import AppParCurves.i
 %import Geom.i
 %import Geom2d.i
@@ -85,6 +88,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomint.html"
 %import IntImp.i
 %import ApproxInt.i
 %import IntSurf.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -106,17 +110,24 @@ from OCC.Core.Exception import *
 %template(GeomInt_SequenceOfParameterAndOrientation) NCollection_Sequence<GeomInt_ParameterAndOrientation>;
 
 %extend NCollection_Sequence<GeomInt_ParameterAndOrientation> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
     }
 };
-%template(GeomInt_VectorOfReal) NCollection_Vector<double>;
+%template(GeomInt_VectorOfReal) NCollection_DynamicArray<double>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Sequence<GeomInt_ParameterAndOrientation> GeomInt_SequenceOfParameterAndOrientation;
-typedef NCollection_Vector<double> GeomInt_VectorOfReal;
+typedef NCollection_DynamicArray<double> GeomInt_VectorOfReal;
 /* end typedefs declaration */
 
 /****************
@@ -228,8 +239,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 NbPol: int
 
 Return
@@ -240,7 +251,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has <NbPol> control points.
 ") GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox;
-		 GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int NbPol);
+		 GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int NbPol);
 
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::CurveValue ******/
 		/****** md5 signature: c83ed6c1c3091309bccd8d719a30ec54 ******/
@@ -304,7 +315,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
@@ -368,7 +379,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -563,8 +574,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -580,7 +591,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
-		 GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox ******/
 		/****** md5 signature: 29d064c457661edf32624c1b4b134615 ******/
@@ -589,8 +600,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -605,7 +616,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox;
-		 GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -1469,7 +1480,7 @@ converts RLine to Geom(2d)_Curve.
 		static void TreatRLine(const opencascade::handle<IntPatch_RLine> & theRL, const opencascade::handle<GeomAdaptor_Surface> & theHS1, const opencascade::handle<GeomAdaptor_Surface> & theHS2, opencascade::handle<Geom_Curve> & theC3d, opencascade::handle<Geom2d_Curve> & theC2d1, opencascade::handle<Geom2d_Curve> & theC2d2, Standard_Real &OutValue);
 
 		/****** GeomInt_IntSS::TrimILineOnSurfBoundaries ******/
-		/****** md5 signature: ec50a99319813603b38b85764eb42f36 ******/
+		/****** md5 signature: b97d82e914a23fb06a48f0916420ecb4 ******/
 		%feature("compactdefaultargs") TrimILineOnSurfBoundaries;
 		%feature("autodoc", "
 Parameters
@@ -1478,7 +1489,7 @@ theC2d1: Geom2d_Curve
 theC2d2: Geom2d_Curve
 theBound1: Bnd_Box2d
 theBound2: Bnd_Box2d
-theArrayOfParameters: NCollection_Vector<double>
+theArrayOfParameters: NCollection_DynamicArray<double>
 
 Return
 -------
@@ -1488,7 +1499,7 @@ Description
 -----------
 puts into theArrayOfParameters the parameters of intersection points of given theC2d1 and theC2d2 curves with the boundaries of the source surface.
 ") TrimILineOnSurfBoundaries;
-		static void TrimILineOnSurfBoundaries(const opencascade::handle<Geom2d_Curve> & theC2d1, const opencascade::handle<Geom2d_Curve> & theC2d2, const Bnd_Box2d & theBound1, const Bnd_Box2d & theBound2, NCollection_Vector<double> & theArrayOfParameters);
+		static void TrimILineOnSurfBoundaries(const opencascade::handle<Geom2d_Curve> & theC2d1, const opencascade::handle<Geom2d_Curve> & theC2d2, const Bnd_Box2d & theBound1, const Bnd_Box2d & theBound2, NCollection_DynamicArray<double> & theArrayOfParameters);
 
 };
 
@@ -1644,7 +1655,7 @@ Description
 -----------
 No available documentation.
 ") DecompositionOfWLine;
-		static bool DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const double aTolSum, const GeomInt_LineConstructor & theLConstructor, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theNewLines);
+		static bool DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const double aTolSum, const GeomInt_LineConstructor & theLConstructor, NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theNewLines);
 
 		/****** GeomInt_LineTool::FirstParameter ******/
 		/****** md5 signature: 20e748e32634f14a0845f9b64c25bc02 ******/
@@ -1744,8 +1755,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Deg: int
 Tol3d: double
 Tol2d: double
@@ -1759,7 +1770,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
-		 GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
+		 GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 1);
 
 		/****** GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox ******/
 		/****** md5 signature: 1f6360802debb3350301f1e774964d35 ******/
@@ -1772,8 +1783,8 @@ FirstPoint: int
 LastPoint: int
 TheConstraints: NCollection_HArray1<AppParCurves_ConstraintCouple
 Parameters: math_Vector
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Deg: int
 Tol3d: double
 Tol2d: double
@@ -1789,7 +1800,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox;
-		 GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
+		 GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations, const double lambda1, const double lambda2);
 
 		/****** GeomInt_MyBSplGradientOfTheComputeLineOfWLApprox::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -1912,7 +1923,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox;
-		 GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
+		 GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -2035,7 +2046,7 @@ Description
 -----------
 Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") GeomInt_MyGradientbisOfTheComputeLineOfWLApprox;
-		 GeomInt_MyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
+		 GeomInt_MyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, math_Vector & Parameters, const int Deg, const double Tol3d, const double Tol2d, const int NbIterations = 200);
 
 		/****** GeomInt_MyGradientbisOfTheComputeLineOfWLApprox::AverageError ******/
 		/****** md5 signature: 85ff9e1a5f7944ea296ab9fed61363d6 ******/
@@ -2155,7 +2166,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox;
-		 GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -2206,7 +2217,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -2244,7 +2255,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -2370,7 +2381,7 @@ Description
 -----------
 initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox;
-		 GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const math_Vector & Parameters, const int Deg);
+		 GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const math_Vector & Parameters, const int Deg);
 
 		/****** GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::CurveValue ******/
 		/****** md5 signature: c2e2cb976554936214bdfe3487b0362c ******/
@@ -2421,7 +2432,7 @@ Description
 -----------
 No available documentation.
 ") FirstConstraint;
-		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int FirstPoint);
+		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
 		/****** GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::Gradient ******/
 		/****** md5 signature: 5a8a1d40b699db9ffadb1f48516992a9 ******/
@@ -2459,7 +2470,7 @@ Description
 -----------
 No available documentation.
 ") LastConstraint;
-		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & TheConstraints, const int LastPoint);
+		AppParCurves_Constraint LastConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int LastPoint);
 
 		/****** GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::MaxError2d ******/
 		/****** md5 signature: e40f7393d6ea618082caa59e47fa5a95 ******/
@@ -2618,8 +2629,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2635,7 +2646,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
-		 GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox ******/
 		/****** md5 signature: a9317d4635097eef902ce4fca8b01333 ******/
@@ -2644,8 +2655,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -2660,7 +2671,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox;
-		 GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -2996,8 +3007,8 @@ Initializes the fields of the object.
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3013,7 +3024,7 @@ Description
 -----------
 given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
-		 GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
+		 GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const int NbPol);
 
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox ******/
 		/****** md5 signature: 15357c09a5382af2ea2fb121a79aa626 ******/
@@ -3022,8 +3033,8 @@ given a MultiLine, this algorithm computes the least square resolution using the
 Parameters
 ----------
 SSP: GeomInt_TheMultiLineOfWLApprox
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 FirstPoint: int
 LastPoint: int
 FirstCons: AppParCurves_Constraint
@@ -3038,7 +3049,7 @@ Description
 -----------
 Initializes the fields of the object.
 ") GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox;
-		 GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
+		 GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int FirstPoint, const int LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const int NbPol);
 
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::BSplineValue ******/
 		/****** md5 signature: a38863f7c9b6fa566ee9fea09f971d5c ******/
@@ -3465,7 +3476,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
-		 GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintDerivative ******/
 		/****** md5 signature: 855ddd04145278d0e8f361d24afbc420 ******/
@@ -3581,7 +3592,7 @@ Description
 -----------
 Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
-		 GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple> > & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
+		 GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
 		/****** GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintDerivative ******/
 		/****** md5 signature: 855ddd04145278d0e8f361d24afbc420 ******/
@@ -3887,13 +3898,13 @@ Index: int (optional, default to 1)
 
 Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the multicurve <Index>.
 ") Parameters;
-		const NCollection_Array1<double> & Parameters(const int Index = 1);
+		const TColStd_Array1OfReal & Parameters(const int Index = 1);
 
 		/****** GeomInt_TheComputeLineBezierOfWLApprox::Parametrization ******/
 		/****** md5 signature: 28de4bdef662891658a0d7c12417a76f ******/
@@ -4235,13 +4246,13 @@ returns False if the status NoPointsAdded has been sent.
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double>
+TColStd_Array1OfReal
 
 Description
 -----------
 returns the new parameters of the approximation corresponding to the points of the MultiBSpCurve.
 ") Parameters;
-		const NCollection_Array1<double> & Parameters();
+		const TColStd_Array1OfReal & Parameters();
 
 		/****** GeomInt_TheComputeLineOfWLApprox::Perform ******/
 		/****** md5 signature: e115d44c5fb2b2b1ce99193ba9c7c351 ******/
@@ -4323,7 +4334,7 @@ changes the degrees of the approximation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -4333,7 +4344,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & Knots);
+		void SetKnots(const TColStd_Array1OfReal & Knots);
 
 		/****** GeomInt_TheComputeLineOfWLApprox::SetKnotsAndMultiplicities ******/
 		/****** md5 signature: 2bee60c8ad635ef591f756f28601492a ******/
@@ -4341,8 +4352,8 @@ The approximation will be done with the set of knots <Knots>. The multiplicities
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -4352,7 +4363,7 @@ Description
 -----------
 The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 ") SetKnotsAndMultiplicities;
-		void SetKnotsAndMultiplicities(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults);
+		void SetKnotsAndMultiplicities(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
 		/****** GeomInt_TheComputeLineOfWLApprox::SetParameters ******/
 		/****** md5 signature: b1eab3f1f1c8f0892e7a87810e5892e3 ******/
@@ -4488,7 +4499,7 @@ No available documentation.
 Parameters
 ----------
 ChoixIso: IntImp_ConstIsoparametric
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 UVap: math_Vector
 BornInf: math_Vector
 BornSup: math_Vector
@@ -4502,7 +4513,7 @@ Description
 -----------
 No available documentation.
 ") ComputeParameters;
-		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const NCollection_Array1<double> & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
+		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const TColStd_Array1OfReal & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
 
 		/****** GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Derivatives ******/
 		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
@@ -4569,7 +4580,7 @@ No available documentation.
 Parameters
 ----------
 UVap: math_Vector
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 BestChoix: IntImp_ConstIsoparametric
 
 Return
@@ -4580,7 +4591,7 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		bool IsTangent(const math_Vector & UVap, NCollection_Array1<double> & Param, IntImp_ConstIsoparametric & BestChoix);
+		bool IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric & BestChoix);
 
 		/****** GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -4883,7 +4894,7 @@ class GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox {
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
 TolTangency: double
@@ -4896,7 +4907,7 @@ Description
 -----------
 compute the solution point with the close point.
 ") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
-		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const NCollection_Array1<double> & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
+		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox ******/
 		/****** md5 signature: 371e69ab9621de386354ac7796064e5a ******/
@@ -5028,7 +5039,7 @@ Returns True if the surfaces are tangent at the intersection point.
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 Rsnld: math_FunctionSetRoot
 
 Return
@@ -5039,7 +5050,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld);
+		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
 
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Perform ******/
 		/****** md5 signature: ba4d806ab7c094897017f5371cb7c643 ******/
@@ -5047,7 +5058,7 @@ returns the best constant isoparametric to find the next intersection's point +s
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 Rsnld: math_FunctionSetRoot
 ChoixIso: IntImp_ConstIsoparametric
 
@@ -5059,7 +5070,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
+		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/
@@ -5279,7 +5290,7 @@ Returns the number of 3d points of a TheLine.
 Parameters
 ----------
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -5289,7 +5300,7 @@ Description
 -----------
 Returns the 3d tangency points of the multipoint <MPointIndex> only when 3d points exist.
 ") Tangency;
-		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
+		bool Tangency(const int MPointIndex, TColgp_Array1OfVec & tabV);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::Tangency ******/
 		/****** md5 signature: 6adca0bdfc2f14a9b2d2e748dd223ff3 ******/
@@ -5298,7 +5309,7 @@ Returns the 3d tangency points of the multipoint <MPointIndex> only when 3d poin
 Parameters
 ----------
 MPointIndex: int
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5308,7 +5319,7 @@ Description
 -----------
 Returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
+		bool Tangency(const int MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::Tangency ******/
 		/****** md5 signature: f4a861843c0d21680dada851aa5373fe ******/
@@ -5317,8 +5328,8 @@ Returns the 2d tangency points of the multipoint <MPointIndex> only when 2d poin
 Parameters
 ----------
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV: TColgp_Array1OfVec
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5328,7 +5339,7 @@ Description
 -----------
 Returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		bool Tangency(const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
+		bool Tangency(const int MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::Value ******/
 		/****** md5 signature: bf9db9427c08427650d3a62ba7773999 ******/
@@ -5337,7 +5348,7 @@ Returns the 3d and 2d points of the multipoint <MPointIndex>.
 Parameters
 ----------
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
+tabPt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -5347,7 +5358,7 @@ Description
 -----------
 Returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
+		void Value(const int MPointIndex, TColgp_Array1OfPnt & tabPt);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::Value ******/
 		/****** md5 signature: a98900519cdc0086a3f3828b0190bebb ******/
@@ -5356,7 +5367,7 @@ Returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 Parameters
 ----------
 MPointIndex: int
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5366,7 +5377,7 @@ Description
 -----------
 Returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		void Value(const int MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::Value ******/
 		/****** md5 signature: 9d7b6d0990f59d91fd43833bb2d1f05b ******/
@@ -5375,8 +5386,8 @@ Returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 Parameters
 ----------
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt: TColgp_Array1OfPnt
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5386,7 +5397,7 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		void Value(const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		void Value(const int MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** GeomInt_TheMultiLineOfWLApprox::WhatStatus ******/
 		/****** md5 signature: 76f55e4a417176afbc003868c157efc5 ******/
@@ -5423,7 +5434,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -5433,7 +5444,7 @@ Description
 -----------
 returns the 3d curvature of the multipoint <MPointIndex> when only 3d points exist.
 ") Curvature;
-		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
+		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec & tabV);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Curvature ******/
 		/****** md5 signature: 004fcbbecb9b445ea9e9fa5882b98bbb ******/
@@ -5443,7 +5454,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5453,7 +5464,7 @@ Description
 -----------
 returns the 2d curvature points of the multipoint <MPointIndex> only when 2d points exist.
 ") Curvature;
-		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Curvature ******/
 		/****** md5 signature: f1e6ed1ee00aa94f7ea4cc7b50a8d773 ******/
@@ -5463,8 +5474,8 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV: TColgp_Array1OfVec
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5474,7 +5485,7 @@ Description
 -----------
 returns the 3d and 2d curvature of the multipoint <MPointIndex>.
 ") Curvature;
-		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Curvature(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Dump ******/
 		/****** md5 signature: 83bb31963a02a9571556f72963cd8928 ******/
@@ -5617,7 +5628,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
+tabV: TColgp_Array1OfVec
 
 Return
 -------
@@ -5627,7 +5638,7 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Tangency;
-		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV);
+		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec & tabV);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Tangency ******/
 		/****** md5 signature: 38f6796d869f78c679632c804cee5d1d ******/
@@ -5637,7 +5648,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5647,7 +5658,7 @@ Description
 -----------
 returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
-		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Tangency ******/
 		/****** md5 signature: 43789a04b5e1bc606095a53d65fa04a3 ******/
@@ -5657,8 +5668,8 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabV: NCollection_Array1<gp_Vec>
-tabV2d: NCollection_Array1<gp_Vec2d>
+tabV: TColgp_Array1OfVec
+tabV2d: TColgp_Array1OfVec2d
 
 Return
 -------
@@ -5668,7 +5679,7 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
-		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Vec> & tabV, NCollection_Array1<gp_Vec2d> & tabV2d);
+		static bool Tangency(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Value ******/
 		/****** md5 signature: d82d5fd0603904d3c8e9a2799e76a078 ******/
@@ -5678,7 +5689,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
+tabPt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -5688,7 +5699,7 @@ Description
 -----------
 returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
-		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt);
+		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfPnt & tabPt);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Value ******/
 		/****** md5 signature: e2c0494bbd1751a65a6fd73538172c1d ******/
@@ -5698,7 +5709,7 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5708,7 +5719,7 @@ Description
 -----------
 returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
-		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::Value ******/
 		/****** md5 signature: f3c601701db780535d7442f21f99276c ******/
@@ -5718,8 +5729,8 @@ Parameters
 ----------
 ML: GeomInt_TheMultiLineOfWLApprox
 MPointIndex: int
-tabPt: NCollection_Array1<gp_Pnt>
-tabPt2d: NCollection_Array1<gp_Pnt2d>
+tabPt: TColgp_Array1OfPnt
+tabPt2d: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -5729,7 +5740,7 @@ Description
 -----------
 returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
-		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, NCollection_Array1<gp_Pnt> & tabPt, NCollection_Array1<gp_Pnt2d> & tabPt2d);
+		static void Value(const GeomInt_TheMultiLineOfWLApprox & ML, const int MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 
 		/****** GeomInt_TheMultiLineToolOfWLApprox::WhatStatus ******/
 		/****** md5 signature: e97cc886b4a0923ba9f35918844ae084 ******/

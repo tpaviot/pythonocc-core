@@ -183,14 +183,14 @@ class TopTools_ShapeSet:
 
 # harray1 classes
 
-class TopTools_HArray1OfListOfShape(NCollection_Array1<TopTools_ListOfShape>, Standard_Transient):
-    def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> NCollection_Array1<TopTools_ListOfShape>: ...
-
-
 class TopTools_HArray1OfShape(NCollection_Array1<TopoDS_Shape>, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> NCollection_Array1<TopoDS_Shape>: ...
+
+
+class TopTools_HArray1OfListOfShape(NCollection_Array1<TopTools_ListOfShape>, Standard_Transient):
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def Array1(self) -> NCollection_Array1<TopTools_ListOfShape>: ...
 
 # harray2 classes
 

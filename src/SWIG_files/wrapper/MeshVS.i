@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_meshvs.html"
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
+#include<TColgp_module.hxx>
 #include<TCollection_module.hxx>
 #include<Quantity_module.hxx>
 #include<Graphic3d_module.hxx>
@@ -89,6 +90,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_meshvs.html"
 %import gp.i
 %import TColStd.i
 %import Bnd.i
+%import TColgp.i
 %import TCollection.i
 %import Quantity.i
 %import Graphic3d.i
@@ -344,6 +346,7 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
 %wrap_handle(MeshVS_DataSource)
 %wrap_handle(MeshVS_Drawer)
 %wrap_handle(MeshVS_DummySensitiveEntity)
+%wrap_handle(MeshVS_Mesh)
 %wrap_handle(MeshVS_MeshEntityOwner)
 %wrap_handle(MeshVS_MeshOwner)
 %wrap_handle(MeshVS_PrsBuilder)
@@ -371,30 +374,138 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
 %ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::KeyValues;
 %template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,TCollection_AsciiString>::Items;
 %ignore NCollection_DataMap<int,TCollection_AsciiString>::KeyValues;
 %template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap<int,TCollection_AsciiString>;
+
+%extend NCollection_DataMap<int,TCollection_AsciiString> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerAsciiString::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,bool>::Items;
 %ignore NCollection_DataMap<int,bool>::KeyValues;
 %template(MeshVS_DataMapOfIntegerBoolean) NCollection_DataMap<int,bool>;
+
+%extend NCollection_DataMap<int,bool> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerBoolean::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,Quantity_Color>::Items;
 %ignore NCollection_DataMap<int,Quantity_Color>::KeyValues;
 %template(MeshVS_DataMapOfIntegerColor) NCollection_DataMap<int,Quantity_Color>;
+
+%extend NCollection_DataMap<int,Quantity_Color> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerColor::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,Graphic3d_MaterialAspect>::Items;
 %ignore NCollection_DataMap<int,Graphic3d_MaterialAspect>::KeyValues;
 %template(MeshVS_DataMapOfIntegerMaterial) NCollection_DataMap<int,Graphic3d_MaterialAspect>;
+
+%extend NCollection_DataMap<int,Graphic3d_MaterialAspect> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMaterial::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<MeshVS_MeshEntityOwner>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<MeshVS_MeshEntityOwner>>::KeyValues;
 %template(MeshVS_DataMapOfIntegerMeshEntityOwner) NCollection_DataMap<int,opencascade::handle<MeshVS_MeshEntityOwner>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MeshVS_MeshEntityOwner>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerMeshEntityOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,opencascade::handle<SelectMgr_EntityOwner>>::Items;
 %ignore NCollection_DataMap<int,opencascade::handle<SelectMgr_EntityOwner>>::KeyValues;
 %template(MeshVS_DataMapOfIntegerOwner) NCollection_DataMap<int,opencascade::handle<SelectMgr_EntityOwner>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<SelectMgr_EntityOwner>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,MeshVS_TwoColors>::Items;
 %ignore NCollection_DataMap<int,MeshVS_TwoColors>::KeyValues;
 %template(MeshVS_DataMapOfIntegerTwoColors) NCollection_DataMap<int,MeshVS_TwoColors>;
+
+%extend NCollection_DataMap<int,MeshVS_TwoColors> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerTwoColors::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,gp_Vec>::Items;
 %ignore NCollection_DataMap<int,gp_Vec>::KeyValues;
 %template(MeshVS_DataMapOfIntegerVector) NCollection_DataMap<int,gp_Vec>;
+
+%extend NCollection_DataMap<int,gp_Vec> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfIntegerVector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger>::Items;
 %ignore NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger>::KeyValues;
 %template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger>;
@@ -402,6 +513,13 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
 %template(MeshVS_SequenceOfPrsBuilder) NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>>;
 
 %extend NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -644,7 +762,7 @@ class MeshVS_DataSource : public Standard_Transient {
 Parameters
 ----------
 ID: int
-Data: NCollection_HArray1<NCollection_Sequence<int
+Data: NCollection_HArray1<TColStd_SequenceOfInteger
 
 Return
 -------
@@ -654,7 +772,7 @@ Description
 -----------
 This method returns topology information about 3D-element Returns false if element with ID isn't 3D or because other troubles.
 ") Get3DGeom;
-		virtual bool Get3DGeom(const int ID, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & Data);
+		virtual bool Get3DGeom(const int ID, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & Data);
 
 		/****** MeshVS_DataSource::GetAddr ******/
 		/****** md5 signature: 770e620ce42eccde108d24e72fa5ee7e ******/
@@ -787,7 +905,7 @@ Returns maps of entities (nodes and elements) detected by mouse selection with r
 Parameters
 ----------
 Prs: MeshVS_Mesh
-Polyline: NCollection_Array1<gp_Pnt2d>
+Polyline: TColgp_Array1OfPnt2d
 aBox: Bnd_Box2d
 aTol: double
 Nodes: TColStd_HPackedMapOfInteger
@@ -801,7 +919,7 @@ Description
 -----------
 Returns maps of entities (nodes and elements) detected by mouse selection with the polyline <Polyline> on the current view plane, with the tolerance aTol. Returns True if something is detected. It should be redefined if the advanced mesh selection is activated. Default implementation returns False.
 ") GetDetectedEntities;
-		virtual bool GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const NCollection_Array1<gp_Pnt2d> & Polyline, const Bnd_Box2d & aBox, const double aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
+		virtual bool GetDetectedEntities(const opencascade::handle<MeshVS_Mesh> & Prs, const TColgp_Array1OfPnt2d & Polyline, const Bnd_Box2d & aBox, const double aTol, opencascade::handle<TColStd_HPackedMapOfInteger> & Nodes, opencascade::handle<TColStd_HPackedMapOfInteger> & Elements);
 
 		/****** MeshVS_DataSource::GetDetectedEntities ******/
 		/****** md5 signature: 5e75ca19aff48127d3854c0c236ca824 ******/
@@ -831,7 +949,7 @@ Parameters
 ----------
 ID: int
 IsElement: bool
-Coords: NCollection_Array1<double>
+Coords: TColStd_Array1OfReal
 
 Return
 -------
@@ -842,7 +960,7 @@ Description
 -----------
 Returns geometry information about node or element ID is the numerical identificator of node or element IsElement indicates this ID describe node ( if false ) or element ( if true ) Coords is an array of coordinates of node(s). For node it is only 3 numbers: X, Y, Z in the strict order For element it is 3*n numbers, where n is number of this element vertices The order is strict also: X1, Y1, Z1, X2,...., where Xi, Yi, Zi are coordinates of vertices NbNodes is number of nodes. It is recommended this parameter to be set to 1 for node. Type is type of node or element (from enumeration). It is recommended this parameter to be set to MeshVS_ET_Node for node.
 ") GetGeom;
-		virtual bool GetGeom(const int ID, const bool IsElement, NCollection_Array1<double> & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
+		virtual bool GetGeom(const int ID, const bool IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
 
 		/****** MeshVS_DataSource::GetGeomType ******/
 		/****** md5 signature: 7cb010ffade0241be61fe071ce296f1c ******/
@@ -928,7 +1046,7 @@ This method return normal of node ranknode of face Id, which is using for smooth
 Parameters
 ----------
 ID: int
-NodeIDs: NCollection_Array1<int>
+NodeIDs: TColStd_Array1OfInteger
 
 Return
 -------
@@ -938,7 +1056,7 @@ Description
 -----------
 This method returns information about nodes this element consist of. ID is the numerical identificator of element. NodeIDs is the output array of nodes IDs in correct order, the same as coordinates returned by GetGeom(). NbNodes is number of nodes (number of items set in NodeIDs). Returns False if element does not exist.
 ") GetNodesByElement;
-		virtual bool GetNodesByElement(const int ID, NCollection_Array1<int> & NodeIDs, Standard_Integer &OutValue);
+		virtual bool GetNodesByElement(const int ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
 
 		/****** MeshVS_DataSource::GetNormal ******/
 		/****** md5 signature: 01c3fe573cb32cf80bf09a9c7b053705 ******/
@@ -970,7 +1088,7 @@ Parameters
 Id: int
 IsNodal: bool
 MaxNodes: int
-Normals: NCollection_HArray1<double
+Normals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -980,7 +1098,7 @@ Description
 -----------
 This method puts components of normal vectors at each node of a mesh face (at each face of a mesh volume) into the output array. Returns false if some problem was detected during calculation of normals. Id is an identifier of the mesh element. IsNodal, when true, means that normals at mesh element nodes are needed. If nodal normals are not available, or IsNodal is false, or the mesh element is a volume, then the output array contents depend on the element type: face: a normal calculated by GetNormal() is duplicated for each node of the face; volume: normals to all faces of the volume are computed (not for each node!). MaxNodes is maximal number of nodes an element can consist of. Normals contains the result.
 ") GetNormalsByElement;
-		virtual bool GetNormalsByElement(const int Id, const bool IsNodal, const int MaxNodes, opencascade::handle<NCollection_HArray1<double> > & Normals);
+		virtual bool GetNormalsByElement(const int Id, const bool IsNodal, const int MaxNodes, opencascade::handle<TColStd_HArray1OfReal> & Normals);
 
 		/****** MeshVS_DataSource::IsAdvancedSelectionEnabled ******/
 		/****** md5 signature: 95741cde3c11d3f7feb98e4337db6fcd ******/
@@ -1886,7 +2004,7 @@ Description
 -----------
 Draw selected owners presentation.
 ") HilightSelected;
-		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theOwners);
+		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePrsMgr, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theOwners);
 
 		/****** MeshVS_Mesh::IsHiddenElem ******/
 		/****** md5 signature: f2890bb74bdfe174b03292401d8d3152 ******/
@@ -2191,6 +2309,8 @@ Automatically computes selectable nodes; the node is considered as being selecta
 
 };
 
+
+%make_alias(MeshVS_Mesh)
 
 %extend MeshVS_Mesh {
 	%pythoncode {
@@ -2842,7 +2962,7 @@ class MeshVS_SensitiveFace : public Select3D_SensitiveFace {
 Parameters
 ----------
 theOwner: SelectMgr_EntityOwner
-thePoints: NCollection_Array1<gp_Pnt>
+thePoints: TColgp_Array1OfPnt
 theSensType: Select3D_TypeOfSensitivity (optional, default to Select3D_TOS_INTERIOR)
 
 Return
@@ -2853,7 +2973,7 @@ Description
 -----------
 No available documentation.
 ") MeshVS_SensitiveFace;
-		 MeshVS_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const NCollection_Array1<gp_Pnt> & thePoints, const Select3D_TypeOfSensitivity theSensType = Select3D_TOS_INTERIOR);
+		 MeshVS_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const TColgp_Array1OfPnt & thePoints, const Select3D_TypeOfSensitivity theSensType = Select3D_TOS_INTERIOR);
 
 };
 
@@ -2997,8 +3117,8 @@ class MeshVS_SensitivePolyhedron : public Select3D_SensitiveEntity {
 Parameters
 ----------
 theOwner: SelectMgr_EntityOwner
-theNodes: NCollection_Array1<gp_Pnt>
-theTopo: NCollection_HArray1<NCollection_Sequence<int
+theNodes: TColgp_Array1OfPnt
+theTopo: NCollection_HArray1<TColStd_SequenceOfInteger
 
 Return
 -------
@@ -3008,7 +3128,7 @@ Description
 -----------
 No available documentation.
 ") MeshVS_SensitivePolyhedron;
-		 MeshVS_SensitivePolyhedron(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const NCollection_Array1<gp_Pnt> & theNodes, const opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & theTopo);
+		 MeshVS_SensitivePolyhedron(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const TColgp_Array1OfPnt & theNodes, const opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & theTopo);
 
 		/****** MeshVS_SensitivePolyhedron::BoundingBox ******/
 		/****** md5 signature: 633863f7086aa730ff696b4814fc0aea ******/
@@ -3104,7 +3224,7 @@ class MeshVS_SensitiveQuad : public Select3D_SensitiveEntity {
 Parameters
 ----------
 theOwner: SelectMgr_EntityOwner
-theQuadVerts: NCollection_Array1<gp_Pnt>
+theQuadVerts: TColgp_Array1OfPnt
 
 Return
 -------
@@ -3114,7 +3234,7 @@ Description
 -----------
 Creates a new instance and initializes quadrangle vertices with the given points.
 ") MeshVS_SensitiveQuad;
-		 MeshVS_SensitiveQuad(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const NCollection_Array1<gp_Pnt> & theQuadVerts);
+		 MeshVS_SensitiveQuad(const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const TColgp_Array1OfPnt & theQuadVerts);
 
 		/****** MeshVS_SensitiveQuad::MeshVS_SensitiveQuad ******/
 		/****** md5 signature: 8164a0cdeb9a24fa1506bde94ab30186 ******/
@@ -3377,7 +3497,7 @@ Creates text aspect with values from Drawer according to keys from DrawerAttribu
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<double>
+Nodes: TColStd_Array1OfReal
 Norm: gp_Vec
 
 Return
@@ -3388,7 +3508,7 @@ Description
 -----------
 Get an average of normals to non-planar polygon described by these points or compute normal of planar polygon. If the polygon isn't planar, function returns false.
 ") GetAverageNormal;
-		static bool GetAverageNormal(const NCollection_Array1<double> & Nodes, gp_Vec & Norm);
+		static bool GetAverageNormal(const TColStd_Array1OfReal & Nodes, gp_Vec & Norm);
 
 		/****** MeshVS_Tool::GetNormal ******/
 		/****** md5 signature: dbbea41a0358db219fa34466771d7407 ******/
@@ -3396,7 +3516,7 @@ Get an average of normals to non-planar polygon described by these points or com
 		%feature("autodoc", "
 Parameters
 ----------
-Nodes: NCollection_Array1<double>
+Nodes: TColStd_Array1OfReal
 Norm: gp_Vec
 
 Return
@@ -3407,7 +3527,7 @@ Description
 -----------
 Get one of normals to polygon described by these points. If the polygon isn't planar, function returns false.
 ") GetNormal;
-		static bool GetNormal(const NCollection_Array1<double> & Nodes, gp_Vec & Norm);
+		static bool GetNormal(const TColStd_Array1OfReal & Nodes, gp_Vec & Norm);
 
 };
 
@@ -3515,13 +3635,13 @@ BasePoints: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>>
+opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>>
 
 Description
 -----------
 No available documentation.
 ") CreatePrismTopology;
-		static opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>> CreatePrismTopology(const int BasePoints);
+		static opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>> CreatePrismTopology(const int BasePoints);
 
 		/****** MeshVS_DataSource3D::CreatePyramidTopology ******/
 		/****** md5 signature: 283b0ad8571cc4a7e53c4a4a674aa403 ******/
@@ -3533,13 +3653,13 @@ BasePoints: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>>
+opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>>
 
 Description
 -----------
 No available documentation.
 ") CreatePyramidTopology;
-		static opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>> CreatePyramidTopology(const int BasePoints);
+		static opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>> CreatePyramidTopology(const int BasePoints);
 
 		/****** MeshVS_DataSource3D::GetPrismTopology ******/
 		/****** md5 signature: ab826f7c413ec3a1c2a3737bb66cd0df ******/
@@ -3551,13 +3671,13 @@ BasePoints: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>>
+opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>>
 
 Description
 -----------
 No available documentation.
 ") GetPrismTopology;
-		opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>> GetPrismTopology(const int BasePoints);
+		opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>> GetPrismTopology(const int BasePoints);
 
 		/****** MeshVS_DataSource3D::GetPyramidTopology ******/
 		/****** md5 signature: 3c372add30ddef369f58791ab78a891a ******/
@@ -3569,13 +3689,13 @@ BasePoints: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>>
+opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>>
 
 Description
 -----------
 No available documentation.
 ") GetPyramidTopology;
-		opencascade::handle<NCollection_HArray1<NCollection_Sequence<int>>> GetPyramidTopology(const int BasePoints);
+		opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger>> GetPyramidTopology(const int BasePoints);
 
 };
 
@@ -3619,7 +3739,7 @@ Constructor theNonDeformDS is canonical non-deformed data source, by which we ar
 Parameters
 ----------
 ID: int
-Data: NCollection_HArray1<NCollection_Sequence<int
+Data: NCollection_HArray1<TColStd_SequenceOfInteger
 
 Return
 -------
@@ -3629,7 +3749,7 @@ Description
 -----------
 No available documentation.
 ") Get3DGeom;
-		bool Get3DGeom(const int ID, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & Data);
+		bool Get3DGeom(const int ID, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & Data);
 
 		/****** MeshVS_DeformedDataSource::GetAddr ******/
 		/****** md5 signature: 158dc720c1b54acb641ae4f9eea1dfb2 ******/
@@ -3684,7 +3804,7 @@ Parameters
 ----------
 ID: int
 IsElement: bool
-Coords: NCollection_Array1<double>
+Coords: TColStd_Array1OfReal
 
 Return
 -------
@@ -3695,7 +3815,7 @@ Description
 -----------
 No available documentation.
 ") GetGeom;
-		bool GetGeom(const int ID, const bool IsElement, NCollection_Array1<double> & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
+		bool GetGeom(const int ID, const bool IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
 
 		/****** MeshVS_DeformedDataSource::GetGeomType ******/
 		/****** md5 signature: 2204248ae7ab690685990a0b4da6481e ******/
@@ -3736,7 +3856,7 @@ With this methods you can read and change magnify coefficient of nodal displacem
 Parameters
 ----------
 ID: int
-NodeIDs: NCollection_Array1<int>
+NodeIDs: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3746,7 +3866,7 @@ Description
 -----------
 No available documentation.
 ") GetNodesByElement;
-		bool GetNodesByElement(const int ID, NCollection_Array1<int> & NodeIDs, Standard_Integer &OutValue);
+		bool GetNodesByElement(const int ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
 
 		/****** MeshVS_DeformedDataSource::GetNonDeformedDataSource ******/
 		/****** md5 signature: 1fb350b85c910da319116b42f8799dba ******/
@@ -4174,8 +4294,8 @@ Creates builder with certain display mode flags, data source, ID and priority.
 		%feature("autodoc", "
 Parameters
 ----------
-Topo: NCollection_HArray1<NCollection_Sequence<int
-Nodes: NCollection_Array1<double>
+Topo: NCollection_HArray1<TColStd_SequenceOfInteger
+Nodes: TColStd_Array1OfReal
 NbNodes: int
 Array: Graphic3d_ArrayOfPrimitives
 IsReflected: bool
@@ -4191,7 +4311,7 @@ Description
 -----------
 Add to array polygons or polylines representing volume.
 ") AddVolumePrs;
-		static void AddVolumePrs(const opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & Topo, const NCollection_Array1<double> & Nodes, const int NbNodes, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Array, const bool IsReflected, const bool IsShrinked, const bool IsSelect, const double ShrinkCoef);
+		static void AddVolumePrs(const opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & Topo, const TColStd_Array1OfReal & Nodes, const int NbNodes, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Array, const bool IsReflected, const bool IsShrinked, const bool IsSelect, const double ShrinkCoef);
 
 		/****** MeshVS_MeshPrsBuilder::Build ******/
 		/****** md5 signature: 729b1cd0a0078d3cb1f8227ea1e49f44 ******/
@@ -4283,7 +4403,7 @@ Builds nodes presentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Topo: NCollection_HArray1<NCollection_Sequence<int
+Topo: NCollection_HArray1<TColStd_SequenceOfInteger
 AsPolygons: bool
 IsSelect: bool
 NbNodes: int
@@ -4297,7 +4417,7 @@ Description
 -----------
 Calculate how many polygons or polylines are necessary to draw passed topology.
 ") HowManyPrimitives;
-		static void HowManyPrimitives(const opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & Topo, const bool AsPolygons, const bool IsSelect, const int NbNodes, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void HowManyPrimitives(const opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & Topo, const bool AsPolygons, const bool IsSelect, const int NbNodes, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 };
 
@@ -4343,9 +4463,9 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theTopo: NCollection_HArray1<NCollection_Sequence<int
-theNodes: NCollection_Array1<int>
-theCoords: NCollection_Array1<double>
+theTopo: NCollection_HArray1<TColStd_SequenceOfInteger
+theNodes: TColStd_Array1OfInteger
+theCoords: TColStd_Array1OfReal
 theArray: Graphic3d_ArrayOfPrimitives
 theIsShaded: bool
 theNbColors: int
@@ -4360,7 +4480,7 @@ Description
 -----------
 Add to array polygons or polylines representing volume.
 ") AddVolumePrs;
-		void AddVolumePrs(const opencascade::handle<NCollection_HArray1<NCollection_Sequence<int> > > & theTopo, const NCollection_Array1<int> & theNodes, const NCollection_Array1<double> & theCoords, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & theArray, const bool theIsShaded, const int theNbColors, const int theNbTexColors, const double theColorRatio);
+		void AddVolumePrs(const opencascade::handle<NCollection_HArray1<TColStd_SequenceOfInteger> > & theTopo, const TColStd_Array1OfInteger & theNodes, const TColStd_Array1OfReal & theCoords, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & theArray, const bool theIsShaded, const int theNbColors, const int theNbTexColors, const double theColorRatio);
 
 		/****** MeshVS_NodalColorPrsBuilder::Build ******/
 		/****** md5 signature: 729b1cd0a0078d3cb1f8227ea1e49f44 ******/
@@ -4465,13 +4585,13 @@ Return correspondence between node IDs and texture coordinate (range [0, 1]).
 		%feature("compactdefaultargs") GetTextureCoords;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<int, double>
+TColStd_DataMapOfIntegerReal
 
 Description
 -----------
 Get correspondence between node IDs and texture coordinates (range [0, 1]).
 ") GetTextureCoords;
-		const NCollection_DataMap<int, double> & GetTextureCoords();
+		const TColStd_DataMapOfIntegerReal & GetTextureCoords();
 
 		/****** MeshVS_NodalColorPrsBuilder::HasColors ******/
 		/****** md5 signature: cf70820a255929ca118d94593afd3b51 ******/
@@ -4597,7 +4717,7 @@ Specify correspondence between node ID and texture coordinate (range [0, 1]).
 		%feature("autodoc", "
 Parameters
 ----------
-theMap: NCollection_DataMap<int, double>
+theMap: TColStd_DataMapOfIntegerReal
 
 Return
 -------
@@ -4607,7 +4727,7 @@ Description
 -----------
 Specify correspondence between node IDs and texture coordinates (range [0, 1]).
 ") SetTextureCoords;
-		void SetTextureCoords(const NCollection_DataMap<int, double> & theMap);
+		void SetTextureCoords(const TColStd_DataMapOfIntegerReal & theMap);
 
 		/****** MeshVS_NodalColorPrsBuilder::UseTexture ******/
 		/****** md5 signature: ec50b64bd04947bb5afb104b797e2ea2 ******/
@@ -4856,7 +4976,7 @@ Parameters
 theTrsf: gp_Trsf
 Length: double
 MaxLength: double
-ArrowPoints: NCollection_Array1<gp_Pnt>
+ArrowPoints: TColgp_Array1OfPnt
 Lines: Graphic3d_ArrayOfPrimitives
 ArrowLines: Graphic3d_ArrayOfPrimitives
 Triangles: Graphic3d_ArrayOfPrimitives
@@ -4869,7 +4989,7 @@ Description
 -----------
 Adds to array of polygons and polylines some primitive representing single vector.
 ") DrawVector;
-		void DrawVector(const gp_Trsf & theTrsf, const double Length, const double MaxLength, const NCollection_Array1<gp_Pnt> & ArrowPoints, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Lines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & ArrowLines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Triangles);
+		void DrawVector(const gp_Trsf & theTrsf, const double Length, const double MaxLength, const TColgp_Array1OfPnt & ArrowPoints, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Lines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & ArrowLines, const opencascade::handle<Graphic3d_ArrayOfPrimitives> & Triangles);
 
 		/****** MeshVS_VectorPrsBuilder::GetMinMaxVectorValue ******/
 		/****** md5 signature: 99fd63e9bd349438fddb6c76421ab455 ******/
@@ -5029,7 +5149,7 @@ Sets map of vectors assigned with nodes or elements.
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_Array1<gp_Pnt>
+Points: TColgp_Array1OfPnt
 Length: double
 ArrowPart: double
 
@@ -5041,7 +5161,7 @@ Description
 -----------
 Calculates points of arrow presentation.
 ") calculateArrow;
-		static double calculateArrow(NCollection_Array1<gp_Pnt> & Points, const double Length, const double ArrowPart);
+		static double calculateArrow(TColgp_Array1OfPnt & Points, const double Length, const double ArrowPart);
 
 };
 

@@ -62,7 +62,11 @@ from OCC.Core.Exception import *
 %include "NCollection_Array2.hxx";
 %include "NCollection_BaseList.hxx";
 %include "NCollection_BaseMap.hxx";
-%include "NCollection_BasePointerVector.hxx";
+// occt-800rc5: NCollection_BasePointerVector methods are declared
+// Standard_EXPORT but not exported from libTKernel.so. Skip the header
+// entirely so SWIG does not emit linker references.
+//%include "NCollection_BasePointerVector.hxx";
+%ignore NCollection_BasePointerVector;
 %include "NCollection_Map.hxx";
 %include "NCollection_List.hxx";
 %include "NCollection_Sequence.hxx";
@@ -117,6 +121,26 @@ public:
   void Init(const TheItemType& theValue);
 };
 
+// occt-800: NCollection_PackedMap is a heavily-templated class with
+// constexpr/std::conditional that SWIG cannot fully parse. Declare a
+// minimal SWIG-visible shim so %template instantiations like
+// `TColStd_PackedMapOfInteger = NCollection_PackedMap<int>` link and
+// expose the small surface that pythonocc users actually need.
+template <typename IntType>
+class NCollection_PackedMap
+{
+public:
+  NCollection_PackedMap();
+  size_t Size() const;
+  size_t Extent() const;
+  size_t NbBuckets() const;
+  bool IsEmpty() const;
+  void Clear();
+  bool Add(IntType theValue);
+  bool Contains(IntType theValue) const;
+  bool Remove(IntType theValue);
+};
+
 template <typename TheItemType>
 class NCollection_HSequence : public Standard_Transient
 {
@@ -140,6 +164,28 @@ public:
 %include "NCollection_UBTreeFiller.hxx";
 %include "NCollection_Lerp.hxx";
 %include "NCollection_Vector.hxx";
+// occt-800: NCollection_DynamicArray is a new container deriving from
+// NCollection_BasePointerVector. Forward-declare an empty wrapper so
+// %template instantiations like NCollection_DynamicArray<X> link.
+// (BasePointerVector methods are declared Standard_EXPORT but not actually
+//  exported from libTKernel.so in 8.0rc5, so we cannot wrap them directly.)
+template <class TheItemType>
+class NCollection_DynamicArray
+{
+public:
+  NCollection_DynamicArray();
+  NCollection_DynamicArray(const size_t theIncrement);
+  size_t Length() const;
+  size_t Size() const;
+  bool IsEmpty() const;
+  void Clear();
+  const TheItemType& Value(const size_t theIndex) const;
+  const TheItemType& First() const;
+  const TheItemType& Last() const;
+  TheItemType& ChangeValue(const size_t theIndex);
+  void Append(const TheItemType& theValue);
+  void SetValue(const size_t theIndex, const TheItemType& theValue);
+};
 %include "NCollection_Vec2.hxx";
 %include "NCollection_Vec3.hxx";
 %include "NCollection_Vec4.hxx";
@@ -249,6 +295,9 @@ typedef NCollection_UtfString<char> NCollection_String;
 /*************************
 * class NCollection_Lerp *
 *************************/
+/*********************************
+* class NCollection_LinearVector *
+*********************************/
 /*****************************
 * class NCollection_ListNode *
 *****************************/
@@ -421,23 +470,7 @@ class NCollection_Allocator:
 	pass
 
 @classnotwrapped
-class NCollection_Array1:
-	pass
-
-@classnotwrapped
-class NCollection_Array2:
-	pass
-
-@classnotwrapped
 class NCollection_BaseAllocator:
-	pass
-
-@classnotwrapped
-class NCollection_BaseList:
-	pass
-
-@classnotwrapped
-class NCollection_BaseMap:
 	pass
 
 @classnotwrapped
@@ -461,19 +494,7 @@ class NCollection_CellFilter:
 	pass
 
 @classnotwrapped
-class NCollection_DataMap:
-	pass
-
-@classnotwrapped
 class NCollection_DefaultHasher:
-	pass
-
-@classnotwrapped
-class NCollection_DoubleMap:
-	pass
-
-@classnotwrapped
-class NCollection_DynamicArray:
 	pass
 
 @classnotwrapped
@@ -489,18 +510,6 @@ class NCollection_FlatMap:
 	pass
 
 @classnotwrapped
-class NCollection_HArray1:
-	pass
-
-@classnotwrapped
-class NCollection_HArray2:
-	pass
-
-@classnotwrapped
-class NCollection_HSequence:
-	pass
-
-@classnotwrapped
 class NCollection_Handle:
 	pass
 
@@ -513,15 +522,7 @@ class NCollection_IncAllocator:
 	pass
 
 @classnotwrapped
-class NCollection_IndexedDataMap:
-	pass
-
-@classnotwrapped
 class NCollection_IndexedIterator:
-	pass
-
-@classnotwrapped
-class NCollection_IndexedMap:
 	pass
 
 @classnotwrapped
@@ -565,7 +566,7 @@ class NCollection_Lerp:
 	pass
 
 @classnotwrapped
-class NCollection_List:
+class NCollection_LinearVector:
 	pass
 
 @classnotwrapped
@@ -574,10 +575,6 @@ class NCollection_ListNode:
 
 @classnotwrapped
 class NCollection_LocalArray:
-	pass
-
-@classnotwrapped
-class NCollection_Map:
 	pass
 
 @classnotwrapped
@@ -605,10 +602,6 @@ class NCollection_PackedMap:
 	pass
 
 @classnotwrapped
-class NCollection_Sequence:
-	pass
-
-@classnotwrapped
 class NCollection_Shared:
 	pass
 
@@ -625,19 +618,7 @@ class NCollection_StlIterator:
 	pass
 
 @classnotwrapped
-class NCollection_TListIterator:
-	pass
-
-@classnotwrapped
 class NCollection_TListNode:
-	pass
-
-@classnotwrapped
-class NCollection_UBTree:
-	pass
-
-@classnotwrapped
-class NCollection_UBTreeFiller:
 	pass
 
 @classnotwrapped

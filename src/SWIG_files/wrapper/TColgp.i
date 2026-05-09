@@ -91,6 +91,34 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TColgp_HArray1OfLin2d)
+%wrap_handle(TColgp_HArray1OfVec2d)
+%wrap_handle(TColgp_HArray1OfXY)
+%wrap_handle(TColgp_HArray1OfPnt)
+%wrap_handle(TColgp_HArray1OfXYZ)
+%wrap_handle(TColgp_HArray1OfDir2d)
+%wrap_handle(TColgp_HArray1OfVec)
+%wrap_handle(TColgp_HArray1OfDir)
+%wrap_handle(TColgp_HArray1OfPnt2d)
+%wrap_handle(TColgp_HArray1OfCirc2d)
+%wrap_handle(TColgp_HArray2OfDir2d)
+%wrap_handle(TColgp_HArray2OfVec2d)
+%wrap_handle(TColgp_HArray2OfVec)
+%wrap_handle(TColgp_HArray2OfPnt2d)
+%wrap_handle(TColgp_HArray2OfPnt)
+%wrap_handle(TColgp_HArray2OfXYZ)
+%wrap_handle(TColgp_HArray2OfLin2d)
+%wrap_handle(TColgp_HArray2OfXY)
+%wrap_handle(TColgp_HArray2OfDir)
+%wrap_handle(TColgp_HArray2OfCirc2d)
+%wrap_handle(TColgp_HSequenceOfXY)
+%wrap_handle(TColgp_HSequenceOfPnt2d)
+%wrap_handle(TColgp_HSequenceOfDir2d)
+%wrap_handle(TColgp_HSequenceOfPnt)
+%wrap_handle(TColgp_HSequenceOfVec)
+%wrap_handle(TColgp_HSequenceOfXYZ)
+%wrap_handle(TColgp_HSequenceOfDir)
+%wrap_handle(TColgp_HSequenceOfVec2d)
 /* end handles declaration */
 
 /* templates */
@@ -153,6 +181,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfArray1OfPnt2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -161,6 +196,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfAx1) NCollection_Sequence<gp_Ax1>;
 
 %extend NCollection_Sequence<gp_Ax1> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -169,6 +211,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfDir) NCollection_Sequence<gp_Dir>;
 
 %extend NCollection_Sequence<gp_Dir> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -177,6 +226,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfDir2d) NCollection_Sequence<gp_Dir2d>;
 
 %extend NCollection_Sequence<gp_Dir2d> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -185,6 +241,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfPnt) NCollection_Sequence<gp_Pnt>;
 
 %extend NCollection_Sequence<gp_Pnt> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -193,6 +256,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfPnt2d) NCollection_Sequence<gp_Pnt2d>;
 
 %extend NCollection_Sequence<gp_Pnt2d> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -201,6 +271,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfVec) NCollection_Sequence<gp_Vec>;
 
 %extend NCollection_Sequence<gp_Vec> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -209,6 +286,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfVec2d) NCollection_Sequence<gp_Vec2d>;
 
 %extend NCollection_Sequence<gp_Vec2d> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -217,6 +301,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfXY) NCollection_Sequence<gp_XY>;
 
 %extend NCollection_Sequence<gp_XY> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -225,6 +316,13 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfXYZ) NCollection_Sequence<gp_XYZ>;
 
 %extend NCollection_Sequence<gp_XYZ> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -295,39 +393,6 @@ typedef NCollection_Sequence<gp_XYZ> TColgp_SequenceOfXYZ;
 
 /* harray1 classes */
 
-class TColgp_HArray1OfCirc2d : public NCollection_Array1<gp_Circ2d>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Circ2d>::value_type& theValue);
-    TColgp_HArray1OfCirc2d(const NCollection_Array1<gp_Circ2d>& theOther);
-    const NCollection_Array1<gp_Circ2d>& Array1();
-    NCollection_Array1<gp_Circ2d>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfCirc2d)
-
-
-class TColgp_HArray1OfDir : public NCollection_Array1<gp_Dir>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir>::value_type& theValue);
-    TColgp_HArray1OfDir(const NCollection_Array1<gp_Dir>& theOther);
-    const NCollection_Array1<gp_Dir>& Array1();
-    NCollection_Array1<gp_Dir>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfDir)
-
-
-class TColgp_HArray1OfDir2d : public NCollection_Array1<gp_Dir2d>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir2d>::value_type& theValue);
-    TColgp_HArray1OfDir2d(const NCollection_Array1<gp_Dir2d>& theOther);
-    const NCollection_Array1<gp_Dir2d>& Array1();
-    NCollection_Array1<gp_Dir2d>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfDir2d)
-
-
 class TColgp_HArray1OfLin2d : public NCollection_Array1<gp_Lin2d>, public Standard_Transient {
   public:
     TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -337,39 +402,6 @@ class TColgp_HArray1OfLin2d : public NCollection_Array1<gp_Lin2d>, public Standa
     NCollection_Array1<gp_Lin2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfLin2d)
-
-
-class TColgp_HArray1OfPnt : public NCollection_Array1<gp_Pnt>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt>::value_type& theValue);
-    TColgp_HArray1OfPnt(const NCollection_Array1<gp_Pnt>& theOther);
-    const NCollection_Array1<gp_Pnt>& Array1();
-    NCollection_Array1<gp_Pnt>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfPnt)
-
-
-class TColgp_HArray1OfPnt2d : public NCollection_Array1<gp_Pnt2d>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt2d>::value_type& theValue);
-    TColgp_HArray1OfPnt2d(const NCollection_Array1<gp_Pnt2d>& theOther);
-    const NCollection_Array1<gp_Pnt2d>& Array1();
-    NCollection_Array1<gp_Pnt2d>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfPnt2d)
-
-
-class TColgp_HArray1OfVec : public NCollection_Array1<gp_Vec>, public Standard_Transient {
-  public:
-    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Vec>::value_type& theValue);
-    TColgp_HArray1OfVec(const NCollection_Array1<gp_Vec>& theOther);
-    const NCollection_Array1<gp_Vec>& Array1();
-    NCollection_Array1<gp_Vec>& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfVec)
 
 
 class TColgp_HArray1OfVec2d : public NCollection_Array1<gp_Vec2d>, public Standard_Transient {
@@ -394,6 +426,17 @@ class TColgp_HArray1OfXY : public NCollection_Array1<gp_XY>, public Standard_Tra
 %make_alias(TColgp_HArray1OfXY)
 
 
+class TColgp_HArray1OfPnt : public NCollection_Array1<gp_Pnt>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt>::value_type& theValue);
+    TColgp_HArray1OfPnt(const NCollection_Array1<gp_Pnt>& theOther);
+    const NCollection_Array1<gp_Pnt>& Array1();
+    NCollection_Array1<gp_Pnt>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfPnt)
+
+
 class TColgp_HArray1OfXYZ : public NCollection_Array1<gp_XYZ>, public Standard_Transient {
   public:
     TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -404,33 +447,62 @@ class TColgp_HArray1OfXYZ : public NCollection_Array1<gp_XYZ>, public Standard_T
 };
 %make_alias(TColgp_HArray1OfXYZ)
 
+
+class TColgp_HArray1OfDir2d : public NCollection_Array1<gp_Dir2d>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir2d>::value_type& theValue);
+    TColgp_HArray1OfDir2d(const NCollection_Array1<gp_Dir2d>& theOther);
+    const NCollection_Array1<gp_Dir2d>& Array1();
+    NCollection_Array1<gp_Dir2d>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfDir2d)
+
+
+class TColgp_HArray1OfVec : public NCollection_Array1<gp_Vec>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Vec>::value_type& theValue);
+    TColgp_HArray1OfVec(const NCollection_Array1<gp_Vec>& theOther);
+    const NCollection_Array1<gp_Vec>& Array1();
+    NCollection_Array1<gp_Vec>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfVec)
+
+
+class TColgp_HArray1OfDir : public NCollection_Array1<gp_Dir>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir>::value_type& theValue);
+    TColgp_HArray1OfDir(const NCollection_Array1<gp_Dir>& theOther);
+    const NCollection_Array1<gp_Dir>& Array1();
+    NCollection_Array1<gp_Dir>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfDir)
+
+
+class TColgp_HArray1OfPnt2d : public NCollection_Array1<gp_Pnt2d>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt2d>::value_type& theValue);
+    TColgp_HArray1OfPnt2d(const NCollection_Array1<gp_Pnt2d>& theOther);
+    const NCollection_Array1<gp_Pnt2d>& Array1();
+    NCollection_Array1<gp_Pnt2d>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfPnt2d)
+
+
+class TColgp_HArray1OfCirc2d : public NCollection_Array1<gp_Circ2d>, public Standard_Transient {
+  public:
+    TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Circ2d>::value_type& theValue);
+    TColgp_HArray1OfCirc2d(const NCollection_Array1<gp_Circ2d>& theOther);
+    const NCollection_Array1<gp_Circ2d>& Array1();
+    NCollection_Array1<gp_Circ2d>& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfCirc2d)
+
 /* harray2 classes */
-class TColgp_HArray2OfCirc2d : public NCollection_Array2<gp_Circ2d>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfCirc2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfCirc2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Circ2d>::value_type& theValue);
-    TColgp_HArray2OfCirc2d(const NCollection_Array2<gp_Circ2d>& theOther);
-    const NCollection_Array2<gp_Circ2d>& Array2 ();
-    NCollection_Array2<gp_Circ2d>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfCirc2d)
-
-
-class TColgp_HArray2OfDir : public NCollection_Array2<gp_Dir>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfDir(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfDir(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Dir>::value_type& theValue);
-    TColgp_HArray2OfDir(const NCollection_Array2<gp_Dir>& theOther);
-    const NCollection_Array2<gp_Dir>& Array2 ();
-    NCollection_Array2<gp_Dir>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfDir)
-
-
 class TColgp_HArray2OfDir2d : public NCollection_Array2<gp_Dir2d>, public Standard_Transient {
   public:
     TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -442,58 +514,6 @@ class TColgp_HArray2OfDir2d : public NCollection_Array2<gp_Dir2d>, public Standa
     NCollection_Array2<gp_Dir2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfDir2d)
-
-
-class TColgp_HArray2OfLin2d : public NCollection_Array2<gp_Lin2d>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Lin2d>::value_type& theValue);
-    TColgp_HArray2OfLin2d(const NCollection_Array2<gp_Lin2d>& theOther);
-    const NCollection_Array2<gp_Lin2d>& Array2 ();
-    NCollection_Array2<gp_Lin2d>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfLin2d)
-
-
-class TColgp_HArray2OfPnt : public NCollection_Array2<gp_Pnt>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt>::value_type& theValue);
-    TColgp_HArray2OfPnt(const NCollection_Array2<gp_Pnt>& theOther);
-    const NCollection_Array2<gp_Pnt>& Array2 ();
-    NCollection_Array2<gp_Pnt>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfPnt)
-
-
-class TColgp_HArray2OfPnt2d : public NCollection_Array2<gp_Pnt2d>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfPnt2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfPnt2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt2d>::value_type& theValue);
-    TColgp_HArray2OfPnt2d(const NCollection_Array2<gp_Pnt2d>& theOther);
-    const NCollection_Array2<gp_Pnt2d>& Array2 ();
-    NCollection_Array2<gp_Pnt2d>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfPnt2d)
-
-
-class TColgp_HArray2OfVec : public NCollection_Array2<gp_Vec>, public Standard_Transient {
-  public:
-    TColgp_HArray2OfVec(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfVec(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_Vec>::value_type& theValue);
-    TColgp_HArray2OfVec(const NCollection_Array2<gp_Vec>& theOther);
-    const NCollection_Array2<gp_Vec>& Array2 ();
-    NCollection_Array2<gp_Vec>& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfVec)
 
 
 class TColgp_HArray2OfVec2d : public NCollection_Array2<gp_Vec2d>, public Standard_Transient {
@@ -509,17 +529,43 @@ class TColgp_HArray2OfVec2d : public NCollection_Array2<gp_Vec2d>, public Standa
 %make_alias(TColgp_HArray2OfVec2d)
 
 
-class TColgp_HArray2OfXY : public NCollection_Array2<gp_XY>, public Standard_Transient {
+class TColgp_HArray2OfVec : public NCollection_Array2<gp_Vec>, public Standard_Transient {
   public:
-    TColgp_HArray2OfXY(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColgp_HArray2OfVec(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColgp_HArray2OfXY(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<gp_XY>::value_type& theValue);
-    TColgp_HArray2OfXY(const NCollection_Array2<gp_XY>& theOther);
-    const NCollection_Array2<gp_XY>& Array2 ();
-    NCollection_Array2<gp_XY>& ChangeArray2 (); 
+    TColgp_HArray2OfVec(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Vec>::value_type& theValue);
+    TColgp_HArray2OfVec(const NCollection_Array2<gp_Vec>& theOther);
+    const NCollection_Array2<gp_Vec>& Array2 ();
+    NCollection_Array2<gp_Vec>& ChangeArray2 (); 
 };
-%make_alias(TColgp_HArray2OfXY)
+%make_alias(TColgp_HArray2OfVec)
+
+
+class TColgp_HArray2OfPnt2d : public NCollection_Array2<gp_Pnt2d>, public Standard_Transient {
+  public:
+    TColgp_HArray2OfPnt2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfPnt2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt2d>::value_type& theValue);
+    TColgp_HArray2OfPnt2d(const NCollection_Array2<gp_Pnt2d>& theOther);
+    const NCollection_Array2<gp_Pnt2d>& Array2 ();
+    NCollection_Array2<gp_Pnt2d>& ChangeArray2 (); 
+};
+%make_alias(TColgp_HArray2OfPnt2d)
+
+
+class TColgp_HArray2OfPnt : public NCollection_Array2<gp_Pnt>, public Standard_Transient {
+  public:
+    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt>::value_type& theValue);
+    TColgp_HArray2OfPnt(const NCollection_Array2<gp_Pnt>& theOther);
+    const NCollection_Array2<gp_Pnt>& Array2 ();
+    NCollection_Array2<gp_Pnt>& ChangeArray2 (); 
+};
+%make_alias(TColgp_HArray2OfPnt)
 
 
 class TColgp_HArray2OfXYZ : public NCollection_Array2<gp_XYZ>, public Standard_Transient {
@@ -535,17 +581,81 @@ class TColgp_HArray2OfXYZ : public NCollection_Array2<gp_XYZ>, public Standard_T
 %make_alias(TColgp_HArray2OfXYZ)
 
 
-/* hsequence classes */
-class TColgp_HSequenceOfDir : public NCollection_Sequence<gp_Dir>, public Standard_Transient {
+class TColgp_HArray2OfLin2d : public NCollection_Array2<gp_Lin2d>, public Standard_Transient {
   public:
-    TColgp_HSequenceOfDir();
-    TColgp_HSequenceOfDir(const NCollection_Sequence<gp_Dir>& theOther);
-    const NCollection_Sequence<gp_Dir>& Sequence();
-    void Append (const NCollection_Sequence<gp_Dir>::value_type& theItem);
-    void Append (NCollection_Sequence<gp_Dir>& theSequence);
-    NCollection_Sequence<gp_Dir>& ChangeSequence();
+    TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Lin2d>::value_type& theValue);
+    TColgp_HArray2OfLin2d(const NCollection_Array2<gp_Lin2d>& theOther);
+    const NCollection_Array2<gp_Lin2d>& Array2 ();
+    NCollection_Array2<gp_Lin2d>& ChangeArray2 (); 
 };
-%make_alias(TColgp_HSequenceOfDir)
+%make_alias(TColgp_HArray2OfLin2d)
+
+
+class TColgp_HArray2OfXY : public NCollection_Array2<gp_XY>, public Standard_Transient {
+  public:
+    TColgp_HArray2OfXY(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfXY(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_XY>::value_type& theValue);
+    TColgp_HArray2OfXY(const NCollection_Array2<gp_XY>& theOther);
+    const NCollection_Array2<gp_XY>& Array2 ();
+    NCollection_Array2<gp_XY>& ChangeArray2 (); 
+};
+%make_alias(TColgp_HArray2OfXY)
+
+
+class TColgp_HArray2OfDir : public NCollection_Array2<gp_Dir>, public Standard_Transient {
+  public:
+    TColgp_HArray2OfDir(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfDir(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Dir>::value_type& theValue);
+    TColgp_HArray2OfDir(const NCollection_Array2<gp_Dir>& theOther);
+    const NCollection_Array2<gp_Dir>& Array2 ();
+    NCollection_Array2<gp_Dir>& ChangeArray2 (); 
+};
+%make_alias(TColgp_HArray2OfDir)
+
+
+class TColgp_HArray2OfCirc2d : public NCollection_Array2<gp_Circ2d>, public Standard_Transient {
+  public:
+    TColgp_HArray2OfCirc2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfCirc2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<gp_Circ2d>::value_type& theValue);
+    TColgp_HArray2OfCirc2d(const NCollection_Array2<gp_Circ2d>& theOther);
+    const NCollection_Array2<gp_Circ2d>& Array2 ();
+    NCollection_Array2<gp_Circ2d>& ChangeArray2 (); 
+};
+%make_alias(TColgp_HArray2OfCirc2d)
+
+
+/* hsequence classes */
+class TColgp_HSequenceOfXY : public NCollection_Sequence<gp_XY>, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfXY();
+    TColgp_HSequenceOfXY(const NCollection_Sequence<gp_XY>& theOther);
+    const NCollection_Sequence<gp_XY>& Sequence();
+    void Append (const NCollection_Sequence<gp_XY>::value_type& theItem);
+    void Append (NCollection_Sequence<gp_XY>& theSequence);
+    NCollection_Sequence<gp_XY>& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfXY)
+
+
+class TColgp_HSequenceOfPnt2d : public NCollection_Sequence<gp_Pnt2d>, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfPnt2d();
+    TColgp_HSequenceOfPnt2d(const NCollection_Sequence<gp_Pnt2d>& theOther);
+    const NCollection_Sequence<gp_Pnt2d>& Sequence();
+    void Append (const NCollection_Sequence<gp_Pnt2d>::value_type& theItem);
+    void Append (NCollection_Sequence<gp_Pnt2d>& theSequence);
+    NCollection_Sequence<gp_Pnt2d>& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfPnt2d)
 
 
 class TColgp_HSequenceOfDir2d : public NCollection_Sequence<gp_Dir2d>, public Standard_Transient {
@@ -572,18 +682,6 @@ class TColgp_HSequenceOfPnt : public NCollection_Sequence<gp_Pnt>, public Standa
 %make_alias(TColgp_HSequenceOfPnt)
 
 
-class TColgp_HSequenceOfPnt2d : public NCollection_Sequence<gp_Pnt2d>, public Standard_Transient {
-  public:
-    TColgp_HSequenceOfPnt2d();
-    TColgp_HSequenceOfPnt2d(const NCollection_Sequence<gp_Pnt2d>& theOther);
-    const NCollection_Sequence<gp_Pnt2d>& Sequence();
-    void Append (const NCollection_Sequence<gp_Pnt2d>::value_type& theItem);
-    void Append (NCollection_Sequence<gp_Pnt2d>& theSequence);
-    NCollection_Sequence<gp_Pnt2d>& ChangeSequence();
-};
-%make_alias(TColgp_HSequenceOfPnt2d)
-
-
 class TColgp_HSequenceOfVec : public NCollection_Sequence<gp_Vec>, public Standard_Transient {
   public:
     TColgp_HSequenceOfVec();
@@ -596,30 +694,6 @@ class TColgp_HSequenceOfVec : public NCollection_Sequence<gp_Vec>, public Standa
 %make_alias(TColgp_HSequenceOfVec)
 
 
-class TColgp_HSequenceOfVec2d : public NCollection_Sequence<gp_Vec2d>, public Standard_Transient {
-  public:
-    TColgp_HSequenceOfVec2d();
-    TColgp_HSequenceOfVec2d(const NCollection_Sequence<gp_Vec2d>& theOther);
-    const NCollection_Sequence<gp_Vec2d>& Sequence();
-    void Append (const NCollection_Sequence<gp_Vec2d>::value_type& theItem);
-    void Append (NCollection_Sequence<gp_Vec2d>& theSequence);
-    NCollection_Sequence<gp_Vec2d>& ChangeSequence();
-};
-%make_alias(TColgp_HSequenceOfVec2d)
-
-
-class TColgp_HSequenceOfXY : public NCollection_Sequence<gp_XY>, public Standard_Transient {
-  public:
-    TColgp_HSequenceOfXY();
-    TColgp_HSequenceOfXY(const NCollection_Sequence<gp_XY>& theOther);
-    const NCollection_Sequence<gp_XY>& Sequence();
-    void Append (const NCollection_Sequence<gp_XY>::value_type& theItem);
-    void Append (NCollection_Sequence<gp_XY>& theSequence);
-    NCollection_Sequence<gp_XY>& ChangeSequence();
-};
-%make_alias(TColgp_HSequenceOfXY)
-
-
 class TColgp_HSequenceOfXYZ : public NCollection_Sequence<gp_XYZ>, public Standard_Transient {
   public:
     TColgp_HSequenceOfXYZ();
@@ -630,6 +704,30 @@ class TColgp_HSequenceOfXYZ : public NCollection_Sequence<gp_XYZ>, public Standa
     NCollection_Sequence<gp_XYZ>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfXYZ)
+
+
+class TColgp_HSequenceOfDir : public NCollection_Sequence<gp_Dir>, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfDir();
+    TColgp_HSequenceOfDir(const NCollection_Sequence<gp_Dir>& theOther);
+    const NCollection_Sequence<gp_Dir>& Sequence();
+    void Append (const NCollection_Sequence<gp_Dir>::value_type& theItem);
+    void Append (NCollection_Sequence<gp_Dir>& theSequence);
+    NCollection_Sequence<gp_Dir>& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfDir)
+
+
+class TColgp_HSequenceOfVec2d : public NCollection_Sequence<gp_Vec2d>, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfVec2d();
+    TColgp_HSequenceOfVec2d(const NCollection_Sequence<gp_Vec2d>& theOther);
+    const NCollection_Sequence<gp_Vec2d>& Sequence();
+    void Append (const NCollection_Sequence<gp_Vec2d>::value_type& theItem);
+    void Append (NCollection_Sequence<gp_Vec2d>& theSequence);
+    NCollection_Sequence<gp_Vec2d>& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfVec2d)
 
 
 /* class aliases */

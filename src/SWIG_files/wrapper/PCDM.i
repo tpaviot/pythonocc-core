@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_pcdm.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<Message_module.hxx>
+#include<TColStd_module.hxx>
 #include<CDM_module.hxx>
 #include<Resource_module.hxx>
 #include<TColgp_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_pcdm.html"
 %import TCollection.i
 %import Storage.i
 %import Message.i
+%import TColStd.i
 %import CDM.i
 
 %pythoncode {
@@ -212,6 +214,13 @@ PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
 %template(PCDM_SequenceOfDocument) NCollection_Sequence<opencascade::handle<PCDM_Document>>;
 
 %extend NCollection_Sequence<opencascade::handle<PCDM_Document>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -220,6 +229,13 @@ PCDM_TOFD_Unknown = PCDM_TypeOfFileDriver.PCDM_TOFD_Unknown
 %template(PCDM_SequenceOfReference) NCollection_Sequence<PCDM_Reference>;
 
 %extend NCollection_Sequence<PCDM_Reference> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -380,7 +396,7 @@ No available documentation.
 Parameters
 ----------
 aFileName: str
-theExtensions: NCollection_Sequence<TCollection_ExtendedString>
+theExtensions: TColStd_SequenceOfExtendedString
 theMsgDriver: Message_Messenger
 
 Return
@@ -391,7 +407,7 @@ Description
 -----------
 No available documentation.
 ") ReadExtensions;
-		virtual void ReadExtensions(TCollection_ExtendedString aFileName, NCollection_Sequence<TCollection_ExtendedString> & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		virtual void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** PCDM_ReadWriter::ReadReferenceCounter ******/
 		/****** md5 signature: e2117d2ada641346f5174e6005551493 ******/
@@ -1306,7 +1322,7 @@ No available documentation.
 Parameters
 ----------
 aFileName: str
-theExtensions: NCollection_Sequence<TCollection_ExtendedString>
+theExtensions: TColStd_SequenceOfExtendedString
 theMsgDriver: Message_Messenger
 
 Return
@@ -1317,7 +1333,7 @@ Description
 -----------
 No available documentation.
 ") ReadExtensions;
-		void ReadExtensions(TCollection_ExtendedString aFileName, NCollection_Sequence<TCollection_ExtendedString> & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
+		void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** PCDM_ReadWriter_1::ReadReferenceCounter ******/
 		/****** md5 signature: badcc7b76fb5ef4388ee8c8009586938 ******/
@@ -1624,7 +1640,7 @@ Description
 -----------
 By default, puts in the Sequence the document returns by the previous Make method.
 ") Make;
-		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, NCollection_Sequence<opencascade::handle<PCDM_Document> > & Documents);
+		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, NCollection_Sequence<opencascade::handle<PCDM_Document>> & Documents);
 
 		/****** PCDM_StorageDriver::SetFormat ******/
 		/****** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ******/

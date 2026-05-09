@@ -95,9 +95,33 @@ from OCC.Core.Exception import *
 %ignore NCollection_DataMap<int,Geom2dHatch_Hatching>::Items;
 %ignore NCollection_DataMap<int,Geom2dHatch_Hatching>::KeyValues;
 %template(Geom2dHatch_Hatchings) NCollection_DataMap<int,Geom2dHatch_Hatching>;
+
+%extend NCollection_DataMap<int,Geom2dHatch_Hatching> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (Geom2dHatch_Hatchings::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 %ignore NCollection_DataMap<int,Geom2dHatch_Element>::Items;
 %ignore NCollection_DataMap<int,Geom2dHatch_Element>::KeyValues;
 %template(Geom2dHatch_MapOfElements) NCollection_DataMap<int,Geom2dHatch_Element>;
+
+%extend NCollection_DataMap<int,Geom2dHatch_Element> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (Geom2dHatch_MapOfElements::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
 /* end templates declaration */
 
 /* typedefs */

@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor3d.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<math_module.hxx>
@@ -62,6 +63,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_adaptor3d.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 %import TopAbs.i
 %import Adaptor2d.i
 %import math.i
@@ -414,7 +416,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -425,7 +427,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Curve::IsClosed ******/
 		/****** md5 signature: 49d9d49cc3fa9662ba5676889922566f ******/
@@ -1301,7 +1303,7 @@ No available documentation.
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theTab: NCollection_Array1<double>
+theTab: TColStd_Array1OfReal
 theSh: GeomAbs_Shape
 
 Return
@@ -1312,7 +1314,7 @@ Description
 -----------
 No available documentation.
 ") UIntervals;
-		static void UIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, NCollection_Array1<double> & theTab, const GeomAbs_Shape theSh);
+		static void UIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::UPeriod ******/
 		/****** md5 signature: 7127066bac41d91734a287f595385519 ******/
@@ -1379,7 +1381,7 @@ If <First> >= <Last>.
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theTab: NCollection_Array1<double>
+theTab: TColStd_Array1OfReal
 theSh: GeomAbs_Shape
 
 Return
@@ -1390,7 +1392,7 @@ Description
 -----------
 No available documentation.
 ") VIntervals;
-		static void VIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, NCollection_Array1<double> & theTab, const GeomAbs_Shape theSh);
+		static void VIntervals(const opencascade::handle<Adaptor3d_Surface> & theSurf, TColStd_Array1OfReal & theTab, const GeomAbs_Shape theSh);
 
 		/****** Adaptor3d_HSurfaceTool::VPeriod ******/
 		/****** md5 signature: c04cb2c1afb48c14ad608dafd7a0515c ******/
@@ -2348,7 +2350,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2359,7 +2361,7 @@ Description
 -----------
 Returns the intervals with the requested continuity in the U direction.
 ") UIntervals;
-		virtual void UIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::UPeriod ******/
 		/****** md5 signature: da114fd3a2d26886e0b27128e1d80a77 ******/
@@ -2444,7 +2446,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2455,7 +2457,7 @@ Description
 -----------
 Returns the intervals with the requested continuity in the V direction.
 ") VIntervals;
-		virtual void VIntervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_Surface::VPeriod ******/
 		/****** md5 signature: e86089463b2a89664feb779cfe8eac35 ******/
@@ -3048,7 +3050,7 @@ returns 3d tolerance of the vertex V.
 		%feature("autodoc", "
 Parameters
 ----------
-theArray: NCollection_Array1<double>
+theArray: TColStd_Array1OfReal
 
 Return
 -------
@@ -3058,7 +3060,7 @@ Description
 -----------
 return the set of U parameters on the surface obtained by the method SamplePnts.
 ") UParameters;
-		void UParameters(NCollection_Array1<double> & theArray);
+		void UParameters(TColStd_Array1OfReal & theArray);
 
 		/****** Adaptor3d_TopolTool::VParameters ******/
 		/****** md5 signature: ba2cab239565f9c8bfe9e02fce39a79c ******/
@@ -3066,7 +3068,7 @@ return the set of U parameters on the surface obtained by the method SamplePnts.
 		%feature("autodoc", "
 Parameters
 ----------
-theArray: NCollection_Array1<double>
+theArray: TColStd_Array1OfReal
 
 Return
 -------
@@ -3076,7 +3078,7 @@ Description
 -----------
 return the set of V parameters on the surface obtained by the method SamplePnts.
 ") VParameters;
-		void VParameters(NCollection_Array1<double> & theArray);
+		void VParameters(TColStd_Array1OfReal & theArray);
 
 		/****** Adaptor3d_TopolTool::Value ******/
 		/****** md5 signature: 69341486cc398dcbf57c11fda47f97ca ******/
@@ -3436,7 +3438,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -3447,7 +3449,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_CurveOnSurface::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -3993,7 +3995,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -4004,7 +4006,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Adaptor3d_IsoCurve::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/

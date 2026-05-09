@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_filletsurf.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TopTools_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<ChFi3d_module.hxx>
@@ -77,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_filletsurf.html"
 %import Standard.i
 %import NCollection.i
 %import TopoDS.i
+%import TopTools.i
 %import Geom.i
 %import Geom2d.i
 %import ChFi3d.i
@@ -166,7 +168,7 @@ class FilletSurf_Builder {
 Parameters
 ----------
 S: TopoDS_Shape
-E: NCollection_List<TopoDS_Shape>
+E: TopTools_ListOfShape
 R: double
 Ta: double (optional, default to 1.0e-2)
 Tapp3d: double (optional, default to 1.0e-4)
@@ -180,7 +182,7 @@ Description
 -----------
 initialize of the information necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance.
 ") FilletSurf_Builder;
-		 FilletSurf_Builder(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & E, const double R, const double Ta = 1.0e-2, const double Tapp3d = 1.0e-4, const double Tapp2d = 1.0e-5);
+		 FilletSurf_Builder(const TopoDS_Shape & S, const TopTools_ListOfShape & E, const double R, const double Ta = 1.0e-2, const double Tapp3d = 1.0e-4, const double Tapp2d = 1.0e-5);
 
 		/****** FilletSurf_Builder::CurveOnFace1 ******/
 		/****** md5 signature: 51f2abc0c2227189add087172cf7b0eb ******/
@@ -581,7 +583,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-E: NCollection_List<TopoDS_Shape>
+E: TopTools_ListOfShape
 R: double
 
 Return
@@ -592,7 +594,7 @@ Description
 -----------
 Initializes the contour with a list of Edges 0: no problem 1: empty list 2: the edges are not G1 3: two connected faces on a same support are not G1 4: the edge is not on shape 5: NotSharpEdge: the edge is not sharp.
 ") Add;
-		int Add(const NCollection_List<TopoDS_Shape> & E, const double R);
+		int Add(const TopTools_ListOfShape & E, const double R);
 
 		/****** FilletSurf_InternalBuilder::CurveOnFace1 ******/
 		/****** md5 signature: 51f2abc0c2227189add087172cf7b0eb ******/

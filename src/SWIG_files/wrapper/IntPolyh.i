@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpolyh.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -58,6 +59,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intpolyh.html"
 %import Standard.i
 %import NCollection.i
 %import Adaptor3d.i
+%import TColStd.i
 %import Bnd.i
 
 %pythoncode {
@@ -81,14 +83,33 @@ from OCC.Core.Exception import *
 %template(IntPolyh_ListOfCouples) NCollection_List<IntPolyh_Couple>;
 
 %extend NCollection_List<IntPolyh_Couple> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntPolyh_ListIteratorOfListOfCouples(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntPolyh_SeqOfStartPoints) NCollection_Sequence<IntPolyh_StartPoint>;
 
 %extend NCollection_Sequence<IntPolyh_StartPoint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -559,11 +580,11 @@ Constructor for intersection of two surfaces with the given size of the sampling
 Parameters
 ----------
 theS1: Adaptor3d_Surface
-theUPars1: NCollection_Array1<double>
-theVPars1: NCollection_Array1<double>
+theUPars1: TColStd_Array1OfReal
+theVPars1: TColStd_Array1OfReal
 theS2: Adaptor3d_Surface
-theUPars2: NCollection_Array1<double>
-theVPars2: NCollection_Array1<double>
+theUPars2: TColStd_Array1OfReal
+theVPars2: TColStd_Array1OfReal
 
 Return
 -------
@@ -573,7 +594,7 @@ Description
 -----------
 Constructor for intersection of two surfaces with the precomputed sampling. Performs intersection.
 ") IntPolyh_Intersection;
-		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const NCollection_Array1<double> & theUPars1, const NCollection_Array1<double> & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const NCollection_Array1<double> & theUPars2, const NCollection_Array1<double> & theVPars2);
+		 IntPolyh_Intersection(const opencascade::handle<Adaptor3d_Surface> & theS1, const TColStd_Array1OfReal & theUPars1, const TColStd_Array1OfReal & theVPars1, const opencascade::handle<Adaptor3d_Surface> & theS2, const TColStd_Array1OfReal & theUPars2, const TColStd_Array1OfReal & theVPars2);
 
 		/****** IntPolyh_Intersection::GetLinePoint ******/
 		/****** md5 signature: 267a43dfbc3a6a887e0345e3c00e0c51 ******/
@@ -2029,8 +2050,8 @@ class IntPolyh_Tools {
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theUPars: NCollection_Array1<double>
-theVPars: NCollection_Array1<double>
+theUPars: TColStd_Array1OfReal
+theVPars: TColStd_Array1OfReal
 
 Return
 -------
@@ -2040,7 +2061,7 @@ Description
 -----------
 Computes the deflection tolerance on the surface for the given sampling.
 ") ComputeDeflection;
-		static double ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurf, const NCollection_Array1<double> & theUPars, const NCollection_Array1<double> & theVPars);
+		static double ComputeDeflection(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars);
 
 		/****** IntPolyh_Tools::FillArrayOfPointNormal ******/
 		/****** md5 signature: 2aceb5a42339a233bbafe0d8a4a3afa0 ******/
@@ -2049,8 +2070,8 @@ Computes the deflection tolerance on the surface for the given sampling.
 Parameters
 ----------
 theSurf: Adaptor3d_Surface
-theUPars: NCollection_Array1<double>
-theVPars: NCollection_Array1<double>
+theUPars: TColStd_Array1OfReal
+theVPars: TColStd_Array1OfReal
 thePoints: IntPolyh_ArrayOfPointNormal
 
 Return
@@ -2061,7 +2082,7 @@ Description
 -----------
 Fills the array <thePoints> with the points (triangulation nodes) on the surface and normal directions of the surface in these points.
 ") FillArrayOfPointNormal;
-		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const NCollection_Array1<double> & theUPars, const NCollection_Array1<double> & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
+		static void FillArrayOfPointNormal(const opencascade::handle<Adaptor3d_Surface> & theSurf, const TColStd_Array1OfReal & theUPars, const TColStd_Array1OfReal & theVPars, IntPolyh_ArrayOfPointNormal & thePoints);
 
 		/****** IntPolyh_Tools::IsEnlargePossible ******/
 		/****** md5 signature: 63a5e556d32de05e89f2a5edba6ab1ff ******/
@@ -2092,8 +2113,8 @@ theSurf: Adaptor3d_Surface
 theNbSU: int
 theNbSV: int
 theEnlargeZone: bool
-theUPars: NCollection_Array1<double>
-theVPars: NCollection_Array1<double>
+theUPars: TColStd_Array1OfReal
+theVPars: TColStd_Array1OfReal
 
 Return
 -------
@@ -2103,7 +2124,7 @@ Description
 -----------
 Makes the sampling of the given surface <theSurf> making the net of <theNbSU> x <theNbSV> sampling points. The flag <theEnlargeZone> controls the enlargement of the sampling zone on the surface. The parameters of the sampling points are stored into <theUPars> and <theVPars> arrays.
 ") MakeSampling;
-		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const int theNbSU, const int theNbSV, const bool theEnlargeZone, NCollection_Array1<double> & theUPars, NCollection_Array1<double> & theVPars);
+		static void MakeSampling(const opencascade::handle<Adaptor3d_Surface> & theSurf, const int theNbSU, const int theNbSV, const bool theEnlargeZone, TColStd_Array1OfReal & theUPars, TColStd_Array1OfReal & theVPars);
 
 };
 

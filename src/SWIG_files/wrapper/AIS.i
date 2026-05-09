@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ais.html"
 #include<TopAbs_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Prs3d_module.hxx>
+#include<TColStd_module.hxx>
 #include<Aspect_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<V3d_module.hxx>
@@ -59,7 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ais.html"
 #include<gp_module.hxx>
 #include<TopLoc_module.hxx>
 #include<StdSelect_module.hxx>
-#include<TColStd_module.hxx>
+#include<TColgp_module.hxx>
 #include<Select3D_module.hxx>
 #include<SelectBasics_module.hxx>
 #include<Geom_module.hxx>
@@ -93,6 +94,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ais.html"
 %import TopAbs.i
 %import TopoDS.i
 %import Prs3d.i
+%import TColStd.i
 %import Aspect.i
 %import Graphic3d.i
 %import V3d.i
@@ -100,7 +102,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ais.html"
 %import gp.i
 %import TopLoc.i
 %import StdSelect.i
-%import TColStd.i
+%import TColgp.i
 %import Select3D.i
 %import SelectBasics.i
 %import Geom.i
@@ -570,13 +572,50 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 
 /* handles */
 %wrap_handle(AIS_Animation)
+%wrap_handle(AIS_AttributeFilter)
+%wrap_handle(AIS_BadEdgeFilter)
+%wrap_handle(AIS_C0RegularityFilter)
+%wrap_handle(AIS_ColoredDrawer)
+%wrap_handle(AIS_ExclusionFilter)
 %wrap_handle(AIS_GlobalStatus)
 %wrap_handle(AIS_InteractiveContext)
+%wrap_handle(AIS_InteractiveObject)
+%wrap_handle(AIS_LightSourceOwner)
+%wrap_handle(AIS_ManipulatorOwner)
+%wrap_handle(AIS_PointCloudOwner)
 %wrap_handle(AIS_Selection)
+%wrap_handle(AIS_TrihedronOwner)
+%wrap_handle(AIS_TypeFilter)
+%wrap_handle(AIS_ViewCubeOwner)
+%wrap_handle(AIS_ViewCubeSensitive)
 %wrap_handle(AIS_AnimationCamera)
+%wrap_handle(AIS_Axis)
 %wrap_handle(AIS_BaseAnimationObject)
+%wrap_handle(AIS_CameraFrustum)
+%wrap_handle(AIS_Circle)
+%wrap_handle(AIS_ColorScale)
+%wrap_handle(AIS_ConnectedInteractive)
+%wrap_handle(AIS_LightSource)
+%wrap_handle(AIS_Line)
+%wrap_handle(AIS_Manipulator)
+%wrap_handle(AIS_MediaPlayer)
+%wrap_handle(AIS_MultipleConnectedInteractive)
+%wrap_handle(AIS_Plane)
+%wrap_handle(AIS_PlaneTrihedron)
+%wrap_handle(AIS_Point)
+%wrap_handle(AIS_PointCloud)
+%wrap_handle(AIS_RubberBand)
+%wrap_handle(AIS_Shape)
+%wrap_handle(AIS_SignatureFilter)
+%wrap_handle(AIS_TextLabel)
+%wrap_handle(AIS_Triangulation)
+%wrap_handle(AIS_Trihedron)
+%wrap_handle(AIS_ViewCube)
+%wrap_handle(AIS_XRTrackedDevice)
 %wrap_handle(AIS_AnimationAxisRotation)
 %wrap_handle(AIS_AnimationObject)
+%wrap_handle(AIS_ColoredShape)
+%wrap_handle(AIS_TexturedShape)
 /* end handles declaration */
 
 /* templates */
@@ -590,9 +629,21 @@ AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 %template(AIS_ListOfInteractive) NCollection_List<opencascade::handle<AIS_InteractiveObject>>;
 
 %extend NCollection_List<opencascade::handle<AIS_InteractiveObject>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = AIS_ListIteratorOfListOfInteractive(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(AIS_NArray1OfEntityOwner) NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>>;
@@ -601,9 +652,21 @@ Array1ExtendIter(opencascade::handle<SelectMgr_EntityOwner>)
 %template(AIS_NListOfEntityOwner) NCollection_List<opencascade::handle<SelectMgr_EntityOwner>>;
 
 %extend NCollection_List<opencascade::handle<SelectMgr_EntityOwner>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = AIS_NListIteratorOfListOfEntityOwner(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -1253,6 +1316,8 @@ Removes the setting for width from the filter.
 };
 
 
+%make_alias(AIS_AttributeFilter)
+
 %extend AIS_AttributeFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1371,6 +1436,8 @@ sets <myContour> with current contour. used by IsOk.
 };
 
 
+%make_alias(AIS_BadEdgeFilter)
+
 %extend AIS_BadEdgeFilter {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1438,6 +1505,8 @@ No available documentation.
 
 };
 
+
+%make_alias(AIS_C0RegularityFilter)
 
 %extend AIS_C0RegularityFilter {
 	%pythoncode {
@@ -1673,6 +1742,8 @@ No available documentation.
 };
 
 
+%make_alias(AIS_ColoredDrawer)
+
 %extend AIS_ColoredDrawer {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1847,7 +1918,7 @@ No available documentation.
 Parameters
 ----------
 aType: AIS_KindOfInteractive
-TheStoredList: NCollection_List<int>
+TheStoredList: TColStd_ListOfInteger
 
 Return
 -------
@@ -1857,7 +1928,7 @@ Description
 -----------
 No available documentation.
 ") ListOfSignature;
-		void ListOfSignature(const AIS_KindOfInteractive aType, NCollection_List<int> & TheStoredList);
+		void ListOfSignature(const AIS_KindOfInteractive aType, TColStd_ListOfInteger & TheStoredList);
 
 		/****** AIS_ExclusionFilter::ListOfStoredTypes ******/
 		/****** md5 signature: 8680b84b79bccd01ae95de60f153c56d ******/
@@ -1865,7 +1936,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-TheList: NCollection_List<int>
+TheList: TColStd_ListOfInteger
 
 Return
 -------
@@ -1875,7 +1946,7 @@ Description
 -----------
 No available documentation.
 ") ListOfStoredTypes;
-		void ListOfStoredTypes(NCollection_List<int> & TheList);
+		void ListOfStoredTypes(TColStd_ListOfInteger & TheList);
 
 		/****** AIS_ExclusionFilter::Remove ******/
 		/****** md5 signature: 1c5f2e265ca43dc2f194d9925acfb62e ******/
@@ -1934,6 +2005,8 @@ No available documentation.
 
 };
 
+
+%make_alias(AIS_ExclusionFilter)
 
 %extend AIS_ExclusionFilter {
 	%pythoncode {
@@ -2083,13 +2156,13 @@ Remove selection mode.
 		%feature("compactdefaultargs") SelectionModes;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 Returns active selection modes of the object.
 ") SelectionModes;
-		const NCollection_List<int> & SelectionModes();
+		const TColStd_ListOfInteger & SelectionModes();
 
 		/****** AIS_GlobalStatus::SetDisplayMode ******/
 		/****** md5 signature: e8e6901d77a66a90acf6b94e4ae659ff ******/
@@ -2410,7 +2483,7 @@ Activates the given selection mode for the all displayed objects.
 Parameters
 ----------
 anIobj: AIS_InteractiveObject
-theList: NCollection_List<int>
+theList: TColStd_ListOfInteger
 
 Return
 -------
@@ -2420,7 +2493,7 @@ Description
 -----------
 Returns the list of activated selection modes.
 ") ActivatedModes;
-		void ActivatedModes(const opencascade::handle<AIS_InteractiveObject> & anIobj, NCollection_List<int> & theList);
+		void ActivatedModes(const opencascade::handle<AIS_InteractiveObject> & anIobj, TColStd_ListOfInteger & theList);
 
 		/****** AIS_InteractiveContext::AddFilter ******/
 		/****** md5 signature: 8a902c12e6fe5b2f586f4e19c0758623 ******/
@@ -3166,7 +3239,7 @@ Description
 -----------
 Returns the list of displayed objects of a particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals -1. This means that there is a check on type only.
 ") DisplayedObjects;
-		void DisplayedObjects(NCollection_List<opencascade::handle<AIS_InteractiveObject> > & aListOfIO);
+		void DisplayedObjects(NCollection_List<opencascade::handle<AIS_InteractiveObject>> & aListOfIO);
 
 		/****** AIS_InteractiveContext::DisplayedObjects ******/
 		/****** md5 signature: 24c63341d93dc6be9fd0ad3f0b65c6f5 ******/
@@ -3186,7 +3259,7 @@ Description
 -----------
 gives the list of displayed objects of a particular Type and signature. by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") DisplayedObjects;
-		void DisplayedObjects(const AIS_KindOfInteractive theWhichKind, const int theWhichSignature, NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO);
+		void DisplayedObjects(const AIS_KindOfInteractive theWhichKind, const int theWhichSignature, NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO);
 
 		/****** AIS_InteractiveContext::DrawHiddenLine ******/
 		/****** md5 signature: f101b8f6d639c91c9dfd43356964ef9e ******/
@@ -3337,7 +3410,7 @@ Description
 -----------
 Returns the list theListOfIO of erased objects (hidden objects) particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 ") ErasedObjects;
-		void ErasedObjects(NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO);
+		void ErasedObjects(NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO);
 
 		/****** AIS_InteractiveContext::ErasedObjects ******/
 		/****** md5 signature: 36aa955c27886fe500ec3a67d71b531a ******/
@@ -3357,7 +3430,7 @@ Description
 -----------
 gives the list of erased objects (hidden objects) Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") ErasedObjects;
-		void ErasedObjects(const AIS_KindOfInteractive theWhichKind, const int theWhichSignature, NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO);
+		void ErasedObjects(const AIS_KindOfInteractive theWhichKind, const int theWhichSignature, NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO);
 
 		/****** AIS_InteractiveContext::FilterType ******/
 		/****** md5 signature: e37fce598a0b5e9b676a367504573e6c ******/
@@ -4408,7 +4481,7 @@ Description
 -----------
 Returns the list theListOfIO of objects with indicated display status particular Type WhichKind and Signature WhichSignature. By Default, WhichSignature equals 1. This means that there is a check on type only.
 ") ObjectsByDisplayStatus;
-		void ObjectsByDisplayStatus(const PrsMgr_DisplayStatus theStatus, NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO);
+		void ObjectsByDisplayStatus(const PrsMgr_DisplayStatus theStatus, NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO);
 
 		/****** AIS_InteractiveContext::ObjectsByDisplayStatus ******/
 		/****** md5 signature: fab48c225f39eaf4c6f0ff333ff57ad5 ******/
@@ -4429,7 +4502,7 @@ Description
 -----------
 gives the list of objects with indicated display status Type and signature by Default, <WhichSignature> = -1 means control only on <WhichKind>.
 ") ObjectsByDisplayStatus;
-		void ObjectsByDisplayStatus(const AIS_KindOfInteractive WhichKind, const int WhichSignature, const PrsMgr_DisplayStatus theStatus, NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO);
+		void ObjectsByDisplayStatus(const AIS_KindOfInteractive WhichKind, const int WhichSignature, const PrsMgr_DisplayStatus theStatus, NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO);
 
 		/****** AIS_InteractiveContext::ObjectsForView ******/
 		/****** md5 signature: c2f1594f93d738ecabf7a8e145a41a7f ******/
@@ -4450,7 +4523,7 @@ Description
 -----------
 Query objects visible or hidden in specified view due to affinity mask.
 ") ObjectsForView;
-		void ObjectsForView(NCollection_List<opencascade::handle<AIS_InteractiveObject> > & theListOfIO, const opencascade::handle<V3d_View> & theView, const bool theIsVisibleInView, const PrsMgr_DisplayStatus theStatus = PrsMgr_DisplayStatus_None);
+		void ObjectsForView(NCollection_List<opencascade::handle<AIS_InteractiveObject>> & theListOfIO, const opencascade::handle<V3d_View> & theView, const bool theIsVisibleInView, const PrsMgr_DisplayStatus theStatus = PrsMgr_DisplayStatus_None);
 
 		/****** AIS_InteractiveContext::ObjectsInside ******/
 		/****** md5 signature: 27dce5875be7a9f6ece73085559febe9 ******/
@@ -4470,7 +4543,7 @@ Description
 -----------
 fills <aListOfIO> with objects of a particular Type and Signature with no consideration of display status. by Default, <WhichSignature> = -1 means control only on <WhichKind>. if <WhichKind> = AIS_KindOfInteractive_None and <WhichSignature> = -1, all the objects are put into the list.
 ") ObjectsInside;
-		void ObjectsInside(NCollection_List<opencascade::handle<AIS_InteractiveObject> > & aListOfIO, const AIS_KindOfInteractive WhichKind = AIS_KindOfInteractive_None, const int WhichSignature = -1);
+		void ObjectsInside(NCollection_List<opencascade::handle<AIS_InteractiveObject>> & aListOfIO, const AIS_KindOfInteractive WhichKind = AIS_KindOfInteractive_None, const int WhichSignature = -1);
 
 		/****** AIS_InteractiveContext::PickingStrategy ******/
 		/****** md5 signature: 7ec32744d1635811c168c2b831c6636a ******/
@@ -4752,7 +4825,7 @@ Parameter theOwners owners to change selection state
 Parameter theSelScheme selection scheme 
 Return: picking status.
 ") Select;
-		AIS_StatusOfPick Select(const NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner> > & theOwners, const AIS_SelectionScheme theSelScheme);
+		AIS_StatusOfPick Select(const NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> & theOwners, const AIS_SelectionScheme theSelScheme);
 
 		/****** AIS_InteractiveContext::Select ******/
 		/****** md5 signature: 74d5695ed8c4aa8965184e0aa133851e ******/
@@ -4783,7 +4856,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-thePolyline: NCollection_Array1<gp_Pnt2d>
+thePolyline: TColgp_Array1OfPnt2d
 theView: V3d_View
 theToUpdateViewer: bool
 
@@ -4795,7 +4868,7 @@ Description
 -----------
 No available documentation.
 ") Select;
-		AIS_StatusOfPick Select(const NCollection_Array1<gp_Pnt2d> & thePolyline, const opencascade::handle<V3d_View> & theView, const bool theToUpdateViewer);
+		AIS_StatusOfPick Select(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const bool theToUpdateViewer);
 
 		/****** AIS_InteractiveContext::Select ******/
 		/****** md5 signature: bc58a90f1be3bd472e49d5d50df8539f ******/
@@ -4867,7 +4940,7 @@ Return: picking status.
 		%feature("autodoc", "
 Parameters
 ----------
-thePolyline: NCollection_Array1<gp_Pnt2d>
+thePolyline: TColgp_Array1OfPnt2d
 theView: V3d_View
 theSelScheme: AIS_SelectionScheme (optional, default to AIS_SelectionScheme_Replace)
 
@@ -4883,7 +4956,7 @@ Input parameter: theView active view where polyline is defined
 Input parameter: theSelScheme selection scheme 
 Return: picking status.
 ") SelectPolygon;
-		AIS_StatusOfPick SelectPolygon(const NCollection_Array1<gp_Pnt2d> & thePolyline, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
+		AIS_StatusOfPick SelectPolygon(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const AIS_SelectionScheme theSelScheme = AIS_SelectionScheme_Replace);
 
 		/****** AIS_InteractiveContext::SelectRectangle ******/
 		/****** md5 signature: 19fd20cc256b5225ccea8899939ad1f2 ******/
@@ -5870,7 +5943,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-thePolyline: NCollection_Array1<gp_Pnt2d>
+thePolyline: TColgp_Array1OfPnt2d
 theView: V3d_View
 theToUpdateViewer: bool
 
@@ -5882,7 +5955,7 @@ Description
 -----------
 No available documentation.
 ") ShiftSelect;
-		AIS_StatusOfPick ShiftSelect(const NCollection_Array1<gp_Pnt2d> & thePolyline, const opencascade::handle<V3d_View> & theView, const bool theToUpdateViewer);
+		AIS_StatusOfPick ShiftSelect(const TColgp_Array1OfPnt2d & thePolyline, const opencascade::handle<V3d_View> & theView, const bool theToUpdateViewer);
 
 		/****** AIS_InteractiveContext::ShiftSelect ******/
 		/****** md5 signature: 7708dbea6b48449ad5dc0ef9ec15e704 ******/
@@ -6517,6 +6590,8 @@ Returns the kind of Interactive Object; AIS_KindOfInteractive_None by default.
 };
 
 
+%make_alias(AIS_InteractiveObject)
+
 %extend AIS_InteractiveObject {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6603,6 +6678,8 @@ Always update dynamic highlighting.
 
 };
 
+
+%make_alias(AIS_LightSourceOwner)
 
 %extend AIS_LightSourceOwner {
 	%pythoncode {
@@ -6722,6 +6799,8 @@ No available documentation.
 
 };
 
+
+%make_alias(AIS_ManipulatorOwner)
 
 %extend AIS_ManipulatorOwner {
 	%pythoncode {
@@ -6851,6 +6930,8 @@ Removes highlighting.
 
 };
 
+
+%make_alias(AIS_PointCloudOwner)
 
 %extend AIS_PointCloudOwner {
 	%pythoncode {
@@ -7075,7 +7156,7 @@ Input parameter: theSelScheme selection scheme, defines how owner is selected
 Input parameter: theToAllowSelOverlap selection flag, if true - overlapped entities are allowed 
 Input parameter: theFilter context filter to skip not acceptable owners.
 ") SelectOwners;
-		virtual void SelectOwners(const NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner> > & thePickedOwners, const AIS_SelectionScheme theSelScheme, const bool theToAllowSelOverlap, const opencascade::handle<SelectMgr_Filter> & theFilter);
+		virtual void SelectOwners(const NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>> & thePickedOwners, const AIS_SelectionScheme theSelScheme, const bool theToAllowSelOverlap, const opencascade::handle<SelectMgr_Filter> & theFilter);
 
 		/****** AIS_Selection::Value ******/
 		/****** md5 signature: af0cbe2fba1d118547342f72cf6f251c ******/
@@ -7200,6 +7281,8 @@ Removes highlighting from the owner of a detected selectable object in the prese
 };
 
 
+%make_alias(AIS_TrihedronOwner)
+
 %extend AIS_TrihedronOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7249,6 +7332,8 @@ Returns False if the transient is not an Interactive Object, or if the type of t
 
 };
 
+
+%make_alias(AIS_TypeFilter)
 
 %extend AIS_TypeFilter {
 	%pythoncode {
@@ -7952,7 +8037,7 @@ Parameter theScheme selection scheme.
 		%feature("autodoc", "
 Parameters
 ----------
-thePnts: NCollection_Sequence<NCollection_Vec2<int> >
+thePnts: NCollection_Sequence<NCollection_Vec2<int>>
 theScheme: AIS_SelectionScheme (optional, default to AIS_SelectionScheme_Replace)
 
 Return
@@ -7965,7 +8050,7 @@ Perform selection in 3D viewer. This method is expected to be called from UI thr
 Parameter thePnts picking point 
 Parameter theScheme selection scheme.
 ") SelectInViewer;
-		virtual void SelectInViewer(const NCollection_Sequence<NCollection_Vec2<int> > & thePnts, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
+		virtual void SelectInViewer(const NCollection_Sequence<NCollection_Vec2<int>> & thePnts, const AIS_SelectionScheme theScheme = AIS_SelectionScheme_Replace);
 
 		/****** AIS_ViewController::SetAllowDragging ******/
 		/****** md5 signature: df0d4841ca91c4e463f1b9ff172bb5a7 ******/
@@ -9516,6 +9601,8 @@ Return new orientation to set.
 };
 
 
+%make_alias(AIS_ViewCubeOwner)
+
 %extend AIS_ViewCubeOwner {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9567,6 +9654,8 @@ Checks whether element overlaps current selecting volume.
 
 };
 
+
+%make_alias(AIS_ViewCubeSensitive)
 
 %extend AIS_ViewCubeSensitive {
 	%pythoncode {
@@ -10313,6 +10402,8 @@ No available documentation.
 };
 
 
+%make_alias(AIS_Axis)
+
 %extend AIS_Axis {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10455,6 +10546,8 @@ Restore transparency setting.
 
 };
 
+
+%make_alias(AIS_CameraFrustum)
 
 %extend AIS_CameraFrustum {
 	%pythoncode {
@@ -10712,6 +10805,8 @@ Removes width settings from the solid line boundary of the circle datum.
 
 };
 
+
+%make_alias(AIS_Circle)
 
 %extend AIS_Circle {
 	%pythoncode {
@@ -11042,7 +11137,7 @@ Returns the type of labels, Aspect_TOCSD_AUTO by default. Aspect_TOCSD_AUTO - la
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TCollection_ExtendedString>
+theLabels: TColStd_SequenceOfExtendedString
 
 Return
 -------
@@ -11052,7 +11147,7 @@ Description
 -----------
 Returns the user specified labels.
 ") GetLabels;
-		void GetLabels(NCollection_Sequence<TCollection_ExtendedString> & theLabels);
+		void GetLabels(TColStd_SequenceOfExtendedString & theLabels);
 
 		/****** AIS_ColorScale::GetMax ******/
 		/****** md5 signature: 7bc9614550d3e3642484718733bd9491 ******/
@@ -11313,13 +11408,13 @@ Return True if color transition between neighbor intervals should be linearly in
 		%feature("compactdefaultargs") Labels;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TCollection_ExtendedString>
+TColStd_SequenceOfExtendedString
 
 Description
 -----------
 Returns the user specified labels.
 ") Labels;
-		const NCollection_Sequence<TCollection_ExtendedString> & Labels();
+		const TColStd_SequenceOfExtendedString & Labels();
 
 		/****** AIS_ColorScale::MakeUniformColors ******/
 		/****** md5 signature: f7e7dcaf615d48d82a7b30faaadf83ef ******/
@@ -11576,7 +11671,7 @@ Sets the type of labels. Aspect_TOCSD_AUTO - labels as boundary values for inter
 		%feature("autodoc", "
 Parameters
 ----------
-theSeq: NCollection_Sequence<TCollection_ExtendedString>
+theSeq: TColStd_SequenceOfExtendedString
 
 Return
 -------
@@ -11586,7 +11681,7 @@ Description
 -----------
 Sets the color scale labels. The length of the sequence should be equal to GetNumberOfIntervals() or to GetNumberOfIntervals() + 1 if IsLabelAtBorder() is true. If length of the sequence does not much the number of intervals, then these labels will be considered as 'free' and will be located at the virtual intervals corresponding to the number of labels (with flag IsLabelAtBorder() having the same effect as in normal case).
 ") SetLabels;
-		void SetLabels(const NCollection_Sequence<TCollection_ExtendedString> & theSeq);
+		void SetLabels(const TColStd_SequenceOfExtendedString & theSeq);
 
 		/****** AIS_ColorScale::SetLogarithmic ******/
 		/****** md5 signature: cabe634b1cf5ade1e81622c3082e654e ******/
@@ -11943,6 +12038,8 @@ Shift hue into valid range. Lightness and Saturation should be specified in vali
 };
 
 
+%make_alias(AIS_ColorScale)
+
 %extend AIS_ColorScale {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12126,6 +12223,8 @@ Returns KOI_Object.
 
 };
 
+
+%make_alias(AIS_ConnectedInteractive)
 
 %extend AIS_ConnectedInteractive {
 	%pythoncode {
@@ -12576,6 +12675,8 @@ Returns kind of the object.
 };
 
 
+%make_alias(AIS_LightSource)
+
 %extend AIS_LightSource {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12815,6 +12916,8 @@ Removes the width setting and returns the original width.
 };
 
 
+%make_alias(AIS_Line)
+
 %extend AIS_Line {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12946,7 +13049,7 @@ Description
 -----------
 Attaches himself to the input interactive object group and become displayed in the same context. It become attached to the first object, baut manage manipulation of the whole group. It is placed in the center of object bounding box, and its size is adjusted to the object bounding box.
 ") Attach;
-		void Attach(const opencascade::handle<NCollection_HSequence<opencascade::handle<AIS_InteractiveObject> > > & theObject, OptionsForAttach theOptions = OptionsForAttach());
+		void Attach(const opencascade::handle<NCollection_HSequence<opencascade::handle<AIS_InteractiveObject>> > & theObject, OptionsForAttach theOptions = OptionsForAttach());
 
 		/****** AIS_Manipulator::ClearSelected ******/
 		/****** md5 signature: bbf73c5d3ff19ae0db25243e1c446610 ******/
@@ -13109,7 +13212,7 @@ Description
 -----------
 Method which draws selected owners (for fast presentation draw).
 ") HilightSelected;
-		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theSeq);
+		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theSeq);
 
 		/****** AIS_Manipulator::IsAttached ******/
 		/****** md5 signature: cc16703b3093937bcc6e1b23813c2195 ******/
@@ -13611,6 +13714,8 @@ Returns state of zoom persistence mode, whether it turned on or off.
 };
 
 
+%make_alias(AIS_Manipulator)
+
 %extend AIS_Manipulator {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -13758,6 +13863,8 @@ Schedule player to be closed.
 
 };
 
+
+%make_alias(AIS_MediaPlayer)
 
 %extend AIS_MediaPlayer {
 	%pythoncode {
@@ -13993,6 +14100,8 @@ No available documentation.
 
 };
 
+
+%make_alias(AIS_MultipleConnectedInteractive)
 
 %extend AIS_MultipleConnectedInteractive {
 	%pythoncode {
@@ -14550,6 +14659,8 @@ No available documentation.
 };
 
 
+%make_alias(AIS_Plane)
+
 %extend AIS_Plane {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14781,6 +14892,8 @@ Returns the 'YAxis'.
 };
 
 
+%make_alias(AIS_PlaneTrihedron)
+
 %extend AIS_PlaneTrihedron {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -14976,6 +15089,8 @@ Converts a point into a vertex.
 };
 
 
+%make_alias(AIS_Point)
+
 %extend AIS_Point {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -15121,9 +15236,9 @@ Input parameter: thePoints the array of points.
 		%feature("autodoc", "
 Parameters
 ----------
-theCoords: NCollection_HArray1<gp_Pnt
-theColors: NCollection_HArray1<Quantity_Color (optional, default to nullptr)
-theNormals: NCollection_HArray1<gp_Dir (optional, default to nullptr)
+theCoords: TColgp_HArray1OfPnt
+theColors: Quantity_HArray1OfColor (optional, default to nullptr)
+theNormals: TColgp_HArray1OfDir (optional, default to nullptr)
 
 Return
 -------
@@ -15136,7 +15251,7 @@ Input parameter: theCoords the array of coordinates
 Input parameter: theColors optional array of colors 
 Input parameter: theNormals optional array of normals.
 ") SetPoints;
-		virtual void SetPoints(const opencascade::handle<NCollection_HArray1<gp_Pnt> > & theCoords, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & theColors = nullptr, const opencascade::handle<NCollection_HArray1<gp_Dir> > & theNormals = nullptr);
+		virtual void SetPoints(const opencascade::handle<TColgp_HArray1OfPnt> & theCoords, const opencascade::handle<Quantity_HArray1OfColor> & theColors = nullptr, const opencascade::handle<TColgp_HArray1OfDir> & theNormals = nullptr);
 
 		/****** AIS_PointCloud::UnsetColor ******/
 		/****** md5 signature: 11f9cda4f631b34a4be33c2bf7cf48b1 ******/
@@ -15166,6 +15281,8 @@ Restore default material.
 
 };
 
+
+%make_alias(AIS_PointCloud)
 
 %extend AIS_PointCloud {
 	%pythoncode {
@@ -15371,13 +15488,13 @@ Return: width of lines.
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<NCollection_Vec2<int> >
+NCollection_Sequence<NCollection_Vec2<int>>
 
 Description
 -----------
 Return: points for the rubber band polygon.
 ") Points;
-		const NCollection_Sequence<NCollection_Vec2<int> > & Points();
+		const NCollection_Sequence<NCollection_Vec2<int>> & Points();
 
 		/****** AIS_RubberBand::RemoveLastPoint ******/
 		/****** md5 signature: 90c19d859f20a83ceba67713ab84917b ******/
@@ -15564,6 +15681,8 @@ Sets rectangle bounds.
 
 };
 
+
+%make_alias(AIS_RubberBand)
 
 %extend AIS_RubberBand {
 	%pythoncode {
@@ -16215,6 +16334,8 @@ Compute HLR presentation for specified shape.
 };
 
 
+%make_alias(AIS_Shape)
+
 %extend AIS_Shape {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16265,6 +16386,8 @@ Returns False if the transient is not an AIS_InteractiveObject. Returns False if
 
 };
 
+
+%make_alias(AIS_SignatureFilter)
 
 %extend AIS_SignatureFilter {
 	%pythoncode {
@@ -16778,6 +16901,8 @@ Removes the transparency setting.
 };
 
 
+%make_alias(AIS_TextLabel)
+
 %extend AIS_TextLabel {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -16812,13 +16937,13 @@ Constructs the Triangulation display object.
 		%feature("compactdefaultargs") GetColors;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Get the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red.
 ") GetColors;
-		opencascade::handle<NCollection_HArray1<int>> GetColors();
+		opencascade::handle<TColStd_HArray1OfInteger> GetColors();
 
 		/****** AIS_Triangulation::GetTriangulation ******/
 		/****** md5 signature: 43bd327b5645ba0da5653a0bd81a9f5b ******/
@@ -16852,7 +16977,7 @@ Returns true if triangulation has vertex colors.
 		%feature("autodoc", "
 Parameters
 ----------
-aColor: NCollection_HArray1<int
+aColor: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -16862,7 +16987,7 @@ Description
 -----------
 Set the color for each node. Each 32-bit color is Alpha << 24 + Blue << 16 + Green << 8 + Red Order of color components is essential for further usage by OpenGL.
 ") SetColors;
-		void SetColors(const opencascade::handle<NCollection_HArray1<int> > & aColor);
+		void SetColors(const opencascade::handle<TColStd_HArray1OfInteger> & aColor);
 
 		/****** AIS_Triangulation::SetTransparency ******/
 		/****** md5 signature: e5e4b890b6aeb9b23a1ad2e264a87891 ******/
@@ -16915,6 +17040,8 @@ Removes the setting for transparency in the reconstructed compound shape.
 
 };
 
+
+%make_alias(AIS_Triangulation)
 
 %extend AIS_Triangulation {
 	%pythoncode {
@@ -17109,7 +17236,7 @@ Description
 -----------
 Method which draws selected owners (for fast presentation draw).
 ") HilightSelected;
-		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theOwners);
+		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theOwners);
 
 		/****** AIS_Trihedron::Label ******/
 		/****** md5 signature: cd3b87f754f01f91f4db0b402e5a6620 ******/
@@ -17533,6 +17660,8 @@ Removes any non-default settings for size of this trihedron object. If the objec
 
 };
 
+
+%make_alias(AIS_Trihedron)
 
 %extend AIS_Trihedron {
 	%pythoncode {
@@ -17961,7 +18090,7 @@ Description
 -----------
 Method which draws selected owners.
 ") HilightSelected;
-		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner> > & theSeq);
+		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theSeq);
 
 		/****** AIS_ViewCube::InnerColor ******/
 		/****** md5 signature: 14a7d761b72d032118329dab4a717cc8 ******/
@@ -18888,6 +19017,8 @@ Return view animation.
 };
 
 
+%make_alias(AIS_ViewCube)
+
 %extend AIS_ViewCube {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -19057,6 +19188,8 @@ Return unit scale factor.
 
 };
 
+
+%make_alias(AIS_XRTrackedDevice)
 
 %extend AIS_XRTrackedDevice {
 	%pythoncode {
@@ -19427,6 +19560,8 @@ Setup line width of entire shape.
 
 };
 
+
+%make_alias(AIS_ColoredShape)
 
 %extend AIS_ColoredShape {
 	%pythoncode {
@@ -19869,6 +20004,8 @@ Return: texture repeat V value.
 
 };
 
+
+%make_alias(AIS_TexturedShape)
 
 %extend AIS_TexturedShape {
 	%pythoncode {

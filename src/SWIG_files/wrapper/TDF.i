@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdf.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TDataStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
@@ -54,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tdf.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -91,6 +93,7 @@ enum  {
 %wrap_handle(TDF_TagSource)
 %wrap_handle(TDF_DefaultDeltaOnModification)
 %wrap_handle(TDF_DefaultDeltaOnRemoval)
+%wrap_handle(TDF_HAttributeArray1)
 /* end handles declaration */
 
 /* templates */
@@ -103,24 +106,55 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
 %template(TDF_AttributeDeltaList) NCollection_List<opencascade::handle<TDF_AttributeDelta>>;
 
 %extend NCollection_List<opencascade::handle<TDF_AttributeDelta>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_AttributeDeltaList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_AttributeDoubleMap) NCollection_DoubleMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>>;
 %template(TDF_AttributeList) NCollection_List<opencascade::handle<TDF_Attribute>>;
 
 %extend NCollection_List<opencascade::handle<TDF_Attribute>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_AttributeList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>>;
 %template(TDF_AttributeSequence) NCollection_Sequence<opencascade::handle<TDF_Attribute>>;
 
 %extend NCollection_Sequence<opencascade::handle<TDF_Attribute>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -129,9 +163,21 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
 %template(TDF_DeltaList) NCollection_List<opencascade::handle<TDF_Delta>>;
 
 %extend NCollection_List<opencascade::handle<TDF_Delta>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_DeltaList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_GUIDProgIDMap) NCollection_DoubleMap<Standard_GUID,TCollection_ExtendedString>;
@@ -139,9 +185,21 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
 %template(TDF_IDList) NCollection_List<Standard_GUID>;
 
 %extend NCollection_List<Standard_GUID> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_IDList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_IDMap) NCollection_Map<Standard_GUID>;
@@ -160,15 +218,34 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
 %template(TDF_LabelList) NCollection_List<TDF_Label>;
 
 %extend NCollection_List<TDF_Label> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDF_LabelList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDF_LabelMap) NCollection_Map<TDF_Label>;
 %template(TDF_LabelSequence) NCollection_Sequence<TDF_Label>;
 
 %extend NCollection_Sequence<TDF_Label> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -630,7 +707,7 @@ Description
 -----------
 Dumps the attribute content on <aStream>, using <aMap> like this: if an attribute is not in the map, first put add it to the map and then dump it. Use the map rank instead of dumping each attribute field.
 ") ExtendedDump;
-		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute> > & aMap);
+		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute>> & aMap);
 
 		/****** TDF_Attribute::FindAttribute ******/
 		/****** md5 signature: 0a56f2d7f5718761468df46291c8b3fd ******/
@@ -1560,8 +1637,8 @@ Builds the transitive closure of label and attribute sets into <aDataSet>. Uses 
 Parameters
 ----------
 aLabel: TDF_Label
-aLabMap: NCollection_Map<TDF_Label>
-anAttMap: TDF_Attribute
+aLabMap: TDF_LabelMap
+anAttMap: TDF_AttributeMap
 aFilter: TDF_IDFilter
 aMode: TDF_ClosureMode
 
@@ -1573,7 +1650,7 @@ Description
 -----------
 Builds the transitive closure of <aLabel>.
 ") Closure;
-		static void Closure(const TDF_Label & aLabel, NCollection_Map<TDF_Label> & aLabMap, NCollection_Map<opencascade::handle<TDF_Attribute> > & anAttMap, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
+		static void Closure(const TDF_Label & aLabel, TDF_LabelMap & aLabMap, TDF_AttributeMap & anAttMap, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
 };
 
@@ -1744,7 +1821,7 @@ CopyTool.
 Parameters
 ----------
 Lab: TDF_Label
-aExternals: TDF_Attribute
+aExternals: TDF_AttributeMap
 aFilter: TDF_IDFilter
 
 Return
@@ -1755,7 +1832,7 @@ Description
 -----------
 Check external references and if exist fills the aExternals Map.
 ") ExternalReferences;
-		static bool ExternalReferences(const TDF_Label & Lab, NCollection_Map<opencascade::handle<TDF_Attribute> > & aExternals, const TDF_IDFilter & aFilter);
+		static bool ExternalReferences(const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter);
 
 		/****** TDF_CopyLabel::ExternalReferences ******/
 		/****** md5 signature: d5c4011792d0bcaad1f2750f90c053ad ******/
@@ -1765,7 +1842,7 @@ Parameters
 ----------
 aRefLab: TDF_Label
 Lab: TDF_Label
-aExternals: TDF_Attribute
+aExternals: TDF_AttributeMap
 aFilter: TDF_IDFilter
 aDataSet: TDF_DataSet
 
@@ -1777,7 +1854,7 @@ Description
 -----------
 Check external references and if exist fills the aExternals Map.
 ") ExternalReferences;
-		static void ExternalReferences(const TDF_Label & aRefLab, const TDF_Label & Lab, NCollection_Map<opencascade::handle<TDF_Attribute> > & aExternals, const TDF_IDFilter & aFilter, opencascade::handle<TDF_DataSet> & aDataSet);
+		static void ExternalReferences(const TDF_Label & aRefLab, const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter, opencascade::handle<TDF_DataSet> & aDataSet);
 
 		/****** TDF_CopyLabel::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
@@ -2297,13 +2374,13 @@ Adds a root label to <myRootLabels>.
 		%feature("compactdefaultargs") Attributes;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<opencascade::handle<TDF_Attribute>>
+TDF_AttributeMap
 
 Description
 -----------
 Returns the map of attributes in the current data set. This map can be used directly, or updated.
 ") Attributes;
-		NCollection_Map<opencascade::handle<TDF_Attribute>> & Attributes();
+		TDF_AttributeMap & Attributes();
 
 		/****** TDF_DataSet::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -2389,26 +2466,26 @@ Returns true if there is at least one label or one attribute.
 		%feature("compactdefaultargs") Labels;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 Returns the map of labels in this data set. This map can be used directly, or updated.
 ") Labels;
-		NCollection_Map<TDF_Label> & Labels();
+		TDF_LabelMap & Labels();
 
 		/****** TDF_DataSet::Roots ******/
 		/****** md5 signature: 906e66c6d8282dd194d4af3c3b221503 ******/
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TDF_Label>
+TDF_LabelList
 
 Description
 -----------
 Returns <myRootLabels> to be used or updated.
 ") Roots;
-		NCollection_List<TDF_Label> & Roots();
+		TDF_LabelList & Roots();
 
 };
 
@@ -2444,13 +2521,13 @@ Creates a delta.
 		%feature("compactdefaultargs") AttributeDeltas;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<TDF_AttributeDelta>>
+TDF_AttributeDeltaList
 
 Description
 -----------
 Returns the field <myAttDeltaList>.
 ") AttributeDeltas;
-		const NCollection_List<opencascade::handle<TDF_AttributeDelta>> & AttributeDeltas();
+		const TDF_AttributeDeltaList & AttributeDeltas();
 
 		/****** TDF_Delta::BeginTime ******/
 		/****** md5 signature: 309ca32f9653a338f4834cf946692cd4 ******/
@@ -2553,7 +2630,7 @@ Returns true if there is nothing to undo.
 		%feature("autodoc", "
 Parameters
 ----------
-aLabelList: NCollection_List<TDF_Label>
+aLabelList: TDF_LabelList
 
 Return
 -------
@@ -2563,7 +2640,7 @@ Description
 -----------
 Adds in <aLabelList> the labels of the attribute deltas. Caution: <aLabelList> is not cleared before use.
 ") Labels;
-		void Labels(NCollection_List<TDF_Label> & aLabelList);
+		void Labels(TDF_LabelList & aLabelList);
 
 		/****** TDF_Delta::Name ******/
 		/****** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ******/
@@ -2692,7 +2769,7 @@ Writes the contents of <self> to <OS>.
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -2702,7 +2779,7 @@ Description
 -----------
 Copies the list of ID to be kept or ignored in <anIDList>. <anIDList> is cleared before use.
 ") IDList;
-		void IDList(NCollection_List<Standard_GUID> & anIDList);
+		void IDList(TDF_IDList & anIDList);
 
 		/****** TDF_IDFilter::Ignore ******/
 		/****** md5 signature: ef193e95aeab177af35fe8cb04756e08 ******/
@@ -2728,7 +2805,7 @@ An attribute with <anID> as ID is to be ignored and the filter will answer false
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -2738,7 +2815,7 @@ Description
 -----------
 Attributes with ID owned by <anIDList> are to be ignored and the filter will answer false to the question IsKept(<anID>) with ID from <anIDList>.
 ") Ignore;
-		void Ignore(const NCollection_List<Standard_GUID> & anIDList);
+		void Ignore(const TDF_IDList & anIDList);
 
 		/****** TDF_IDFilter::IgnoreAll ******/
 		/****** md5 signature: d2b6389dd0af2d4a262188eeecfd89ff ******/
@@ -2867,7 +2944,7 @@ An attribute with <anID> as ID is to be kept and the filter will answer true to 
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -2877,7 +2954,7 @@ Description
 -----------
 Attributes with ID owned by <anIDList> are to be kept and the filter will answer true to the question IsKept(<anID>) with ID from <anIDList>.
 ") Keep;
-		void Keep(const NCollection_List<Standard_GUID> & anIDList);
+		void Keep(const TDF_IDList & anIDList);
 
 };
 
@@ -3015,7 +3092,7 @@ Description
 -----------
 Dumps the label on <aStream> and its attributes rank in <aMap> if their IDs are kept by <IDFilter>.
 ") ExtendedDump;
-		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute> > & aMap);
+		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, NCollection_IndexedMap<opencascade::handle<TDF_Attribute>> & aMap);
 
 		/****** TDF_Label::Father ******/
 		/****** md5 signature: a0f1cf18875c9b067fe3f49cfc73a13d ******/
@@ -3567,13 +3644,13 @@ Returns <myAfterRelocate>.
 		%feature("compactdefaultargs") AttributeTable;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>
+TDF_AttributeDataMap
 
 Description
 -----------
 Returns <myAttributeTable> to be used or updated.
 ") AttributeTable;
-		NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>> & AttributeTable();
+		TDF_AttributeDataMap & AttributeTable();
 
 		/****** TDF_RelocationTable::Clear ******/
 		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
@@ -3670,13 +3747,13 @@ Finds the relocation value of <aSourceTransient> and returns it into <aTargetTra
 		%feature("compactdefaultargs") LabelTable;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TDF_Label, TDF_Label>
+TDF_LabelDataMap
 
 Description
 -----------
 Returns <myLabelTable> to be used or updated.
 ") LabelTable;
-		NCollection_DataMap<TDF_Label, TDF_Label> & LabelTable();
+		TDF_LabelDataMap & LabelTable();
 
 		/****** TDF_RelocationTable::SelfRelocate ******/
 		/****** md5 signature: 3e1b07f895a73d55e0487b8a46cabfcf ******/
@@ -3772,7 +3849,7 @@ Sets the relocation value of <aSourceTransient> to <aTargetTransient>.
 		%feature("autodoc", "
 Parameters
 ----------
-anAttributeMap: TDF_Attribute
+anAttributeMap: TDF_AttributeMap
 
 Return
 -------
@@ -3782,7 +3859,7 @@ Description
 -----------
 Fills <anAttributeMap> with target relocation attributes. <anAttributeMap> is not cleared before use.
 ") TargetAttributeMap;
-		void TargetAttributeMap(NCollection_Map<opencascade::handle<TDF_Attribute> > & anAttributeMap);
+		void TargetAttributeMap(TDF_AttributeMap & anAttributeMap);
 
 		/****** TDF_RelocationTable::TargetLabelMap ******/
 		/****** md5 signature: 0963e30442e08dda1b8617df24b3d966 ******/
@@ -3790,7 +3867,7 @@ Fills <anAttributeMap> with target relocation attributes. <anAttributeMap> is no
 		%feature("autodoc", "
 Parameters
 ----------
-aLabelMap: NCollection_Map<TDF_Label>
+aLabelMap: TDF_LabelMap
 
 Return
 -------
@@ -3800,20 +3877,20 @@ Description
 -----------
 Fills <aLabelMap> with target relocation labels. <aLabelMap> is not cleared before use.
 ") TargetLabelMap;
-		void TargetLabelMap(NCollection_Map<TDF_Label> & aLabelMap);
+		void TargetLabelMap(TDF_LabelMap & aLabelMap);
 
 		/****** TDF_RelocationTable::TransientTable ******/
 		/****** md5 signature: 6d4496b49f010df17e7cef670da702cf ******/
 		%feature("compactdefaultargs") TransientTable;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
+TColStd_IndexedDataMapOfTransientTransient
 
 Description
 -----------
 Returns <myTransientTable> to be used or updated.
 ") TransientTable;
-		NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>> & TransientTable();
+		TColStd_IndexedDataMapOfTransientTransient & TransientTable();
 
 };
 
@@ -3837,8 +3914,8 @@ class TDF_Tool {
 		%feature("autodoc", "
 Parameters
 ----------
-aLabelList: NCollection_List<TDF_Label>
-aLabelMap: NCollection_DataMap<TDF_Label, int>
+aLabelList: TDF_LabelList
+aLabelMap: TDF_LabelIntegerMap
 
 Return
 -------
@@ -3848,7 +3925,7 @@ Description
 -----------
 Adds the labels of <aLabelList> to <aLabelMap> if they are unbound, or increases their reference counters. At the end of the process, <aLabelList> contains only the ADDED labels.
 ") CountLabels;
-		static void CountLabels(NCollection_List<TDF_Label> & aLabelList, NCollection_DataMap<TDF_Label, int> & aLabelMap);
+		static void CountLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
 		/****** TDF_Tool::DeductLabels ******/
 		/****** md5 signature: cc688196b31d25eb8246b95a4fd547fb ******/
@@ -3856,8 +3933,8 @@ Adds the labels of <aLabelList> to <aLabelMap> if they are unbound, or increases
 		%feature("autodoc", "
 Parameters
 ----------
-aLabelList: NCollection_List<TDF_Label>
-aLabelMap: NCollection_DataMap<TDF_Label, int>
+aLabelList: TDF_LabelList
+aLabelMap: TDF_LabelIntegerMap
 
 Return
 -------
@@ -3867,7 +3944,7 @@ Description
 -----------
 Decreases the reference counters of the labels of <aLabelList> to <aLabelMap>, and removes labels with null counter. At the end of the process, <aLabelList> contains only the SUPPRESSED labels.
 ") DeductLabels;
-		static void DeductLabels(NCollection_List<TDF_Label> & aLabelList, NCollection_DataMap<TDF_Label, int> & aLabelMap);
+		static void DeductLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
 		/****** TDF_Tool::DeepDump ******/
 		/****** md5 signature: 0865990b45a67afdb1d24c85517acea1 ******/
@@ -4048,7 +4125,7 @@ Returns the label expressed by <anEntry>; creates the label if it does not exist
 Parameters
 ----------
 aDF: TDF_Data
-aTagList: NCollection_List<int>
+aTagList: TColStd_ListOfInteger
 aLabel: TDF_Label
 create: bool (optional, default to false)
 
@@ -4060,7 +4137,7 @@ Description
 -----------
 Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 ") Label;
-		static void Label(const opencascade::handle<TDF_Data> & aDF, const NCollection_List<int> & aTagList, TDF_Label & aLabel, const bool create = false);
+		static void Label(const opencascade::handle<TDF_Data> & aDF, const TColStd_ListOfInteger & aTagList, TDF_Label & aLabel, const bool create = false);
 
 		/****** TDF_Tool::NbAttributes ******/
 		/****** md5 signature: bcf1ecbdbb7cc156d8caea69ffd28fde ******/
@@ -4124,7 +4201,7 @@ Returns the number of labels of the tree, including <aLabel>. aLabel is also inc
 Parameters
 ----------
 aLabel: TDF_Label
-atts: TDF_Attribute
+atts: TDF_AttributeMap
 
 Return
 -------
@@ -4134,7 +4211,7 @@ Description
 -----------
 Returns in <atts> the referenced attributes. Caution: <atts> is not cleared before use!.
 ") OutReferences;
-		static void OutReferences(const TDF_Label & aLabel, NCollection_Map<opencascade::handle<TDF_Attribute> > & atts);
+		static void OutReferences(const TDF_Label & aLabel, TDF_AttributeMap & atts);
 
 		/****** TDF_Tool::OutReferences ******/
 		/****** md5 signature: df14fe99c61daf4255d85e75fca749ac ******/
@@ -4145,7 +4222,7 @@ Parameters
 aLabel: TDF_Label
 aFilterForReferers: TDF_IDFilter
 aFilterForReferences: TDF_IDFilter
-atts: TDF_Attribute
+atts: TDF_AttributeMap
 
 Return
 -------
@@ -4155,7 +4232,7 @@ Description
 -----------
 Returns in <atts> the referenced attributes and kept by <aFilterForReferences>. It considers only the referrers kept by <aFilterForReferers>. Caution: <atts> is not cleared before use!.
 ") OutReferences;
-		static void OutReferences(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, NCollection_Map<opencascade::handle<TDF_Attribute> > & atts);
+		static void OutReferences(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
 		/****** TDF_Tool::OutReferers ******/
 		/****** md5 signature: da6d8a4fb99001e6db36a26efd2b3e61 ******/
@@ -4164,7 +4241,7 @@ Returns in <atts> the referenced attributes and kept by <aFilterForReferences>. 
 Parameters
 ----------
 theLabel: TDF_Label
-theAtts: TDF_Attribute
+theAtts: TDF_AttributeMap
 
 Return
 -------
@@ -4174,7 +4251,7 @@ Description
 -----------
 Returns in <theAtts> the attributes having out references. //! Caution: <theAtts> is not cleared before use!.
 ") OutReferers;
-		static void OutReferers(const TDF_Label & theLabel, NCollection_Map<opencascade::handle<TDF_Attribute> > & theAtts);
+		static void OutReferers(const TDF_Label & theLabel, TDF_AttributeMap & theAtts);
 
 		/****** TDF_Tool::OutReferers ******/
 		/****** md5 signature: a17c4dc7134e031811924b8de84142fd ******/
@@ -4185,7 +4262,7 @@ Parameters
 aLabel: TDF_Label
 aFilterForReferers: TDF_IDFilter
 aFilterForReferences: TDF_IDFilter
-atts: TDF_Attribute
+atts: TDF_AttributeMap
 
 Return
 -------
@@ -4195,7 +4272,7 @@ Description
 -----------
 Returns in <atts> the attributes having out references and kept by <aFilterForReferers>. It considers only the references kept by <aFilterForReferences>. Caution: <atts> is not cleared before use!.
 ") OutReferers;
-		static void OutReferers(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, NCollection_Map<opencascade::handle<TDF_Attribute> > & atts);
+		static void OutReferers(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
 		/****** TDF_Tool::RelocateLabel ******/
 		/****** md5 signature: d9638965e89df920543566c6f8443819 ******/
@@ -4226,7 +4303,7 @@ Returns the label having the same sub-entry as <aLabel> but located as descendan
 Parameters
 ----------
 aLabel: TDF_Label
-aTagList: NCollection_List<int>
+aTagList: TColStd_ListOfInteger
 
 Return
 -------
@@ -4236,7 +4313,7 @@ Description
 -----------
 Returns the entry of <aLabel> as list of integers in <aTagList>.
 ") TagList;
-		static void TagList(const TDF_Label & aLabel, NCollection_List<int> & aTagList);
+		static void TagList(const TDF_Label & aLabel, TColStd_ListOfInteger & aTagList);
 
 		/****** TDF_Tool::TagList ******/
 		/****** md5 signature: 6ef3e8d455c379241f9a6da80cc8f61c ******/
@@ -4245,7 +4322,7 @@ Returns the entry of <aLabel> as list of integers in <aTagList>.
 Parameters
 ----------
 anEntry: str
-aTagList: NCollection_List<int>
+aTagList: TColStd_ListOfInteger
 
 Return
 -------
@@ -4255,7 +4332,7 @@ Description
 -----------
 Returns the entry expressed by <anEntry> as list of integers in <aTagList>.
 ") TagList;
-		static void TagList(TCollection_AsciiString anEntry, NCollection_List<int> & aTagList);
+		static void TagList(TCollection_AsciiString anEntry, TColStd_ListOfInteger & aTagList);
 
 };
 

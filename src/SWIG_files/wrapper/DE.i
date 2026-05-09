@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<TDocStd_module.hxx>
 #include<XSControl_module.hxx>
 #include<Message_module.hxx>
@@ -67,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
+%import TColStd.i
 %import TDocStd.i
 %import XSControl.i
 %import Message.i
@@ -250,7 +252,7 @@ Return: false if parameter is not defined or has a wrong type.
 Parameters
 ----------
 theParam: str
-theValue: NCollection_List<TCollection_AsciiString>
+theValue: TColStd_ListOfAsciiString
 theScope: str (optional, default to "")
 
 Return
@@ -264,7 +266,7 @@ Input parameter: theParam complex parameter name @param[out] theValue value to g
 Input parameter: theScope base parameter name 
 Return: false if parameter is not defined or has a wrong type.
 ") GetStringSeq;
-		bool GetStringSeq(TCollection_AsciiString theParam, NCollection_List<TCollection_AsciiString> & theValue, TCollection_AsciiString theScope = "");
+		bool GetStringSeq(TCollection_AsciiString theParam, TColStd_ListOfAsciiString & theValue, TCollection_AsciiString theScope = "");
 
 		/****** DE_ConfigurationContext::IntegerVal ******/
 		/****** md5 signature: 6c0c04700038279895d3ad9ad180c58e ******/
@@ -1172,7 +1174,7 @@ Return: true if binded.
 Parameters
 ----------
 theFormat: str
-theVendorPriority: NCollection_List<TCollection_AsciiString>
+theVendorPriority: TColStd_ListOfAsciiString
 theToDisable: bool (optional, default to false)
 
 Return
@@ -1186,7 +1188,7 @@ Input parameter: theFormat input node CAD format
 Input parameter: theVendorPriority priority of work with vendors 
 Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
-		void ChangePriority(TCollection_AsciiString theFormat, const NCollection_List<TCollection_AsciiString> & theVendorPriority, const bool theToDisable = false);
+		void ChangePriority(TCollection_AsciiString theFormat, const TColStd_ListOfAsciiString & theVendorPriority, const bool theToDisable = false);
 
 		/****** DE_Wrapper::ChangePriority ******/
 		/****** md5 signature: 2ee8ba94b40bf213779d9de6f1eec08a ******/
@@ -1194,7 +1196,7 @@ Input parameter: theToDisable flag for disabling nodes that are not included in 
 		%feature("autodoc", "
 Parameters
 ----------
-theVendorPriority: NCollection_List<TCollection_AsciiString>
+theVendorPriority: TColStd_ListOfAsciiString
 theToDisable: bool (optional, default to false)
 
 Return
@@ -1207,7 +1209,7 @@ Changes provider priority to all loaded nodes
 Input parameter: theVendorPriority priority of work with vendors 
 Input parameter: theToDisable flag for disabling nodes that are not included in the priority.
 ") ChangePriority;
-		void ChangePriority(const NCollection_List<TCollection_AsciiString> & theVendorPriority, const bool theToDisable = false);
+		void ChangePriority(const TColStd_ListOfAsciiString & theVendorPriority, const bool theToDisable = false);
 
 		/****** DE_Wrapper::Copy ******/
 		/****** md5 signature: eda87f309cc4af4bc0dc983df7323008 ******/
@@ -1634,8 +1636,8 @@ Parameters
 ----------
 theResourcePath: str
 theIsRecursive: bool (optional, default to true)
-theFormats: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
-theVendors: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
+theFormats: TColStd_ListOfAsciiString (optional, default to NCollection_List<TCollection_AsciiString>())
+theVendors: TColStd_ListOfAsciiString (optional, default to NCollection_List<TCollection_AsciiString>())
 
 Return
 -------
@@ -1650,7 +1652,7 @@ Input parameter: theFormats list of formats to save. If empty, saves all availab
 Input parameter: theVendors list of providers to save. If empty, saves all available 
 Return: true if the Configuration has saved correctly.
 ") Save;
-		bool Save(TCollection_AsciiString theResourcePath, const bool theIsRecursive = true, const NCollection_List<TCollection_AsciiString> & theFormats = NCollection_List<TCollection_AsciiString>(), const NCollection_List<TCollection_AsciiString> & theVendors = NCollection_List<TCollection_AsciiString>());
+		bool Save(TCollection_AsciiString theResourcePath, const bool theIsRecursive = true, const TColStd_ListOfAsciiString & theFormats = NCollection_List<TCollection_AsciiString>(), const TColStd_ListOfAsciiString & theVendors = NCollection_List<TCollection_AsciiString>());
 
 		/****** DE_Wrapper::Save ******/
 		/****** md5 signature: 10dd8f9dc619b58a4753b0622590d007 ******/
@@ -1659,8 +1661,8 @@ Return: true if the Configuration has saved correctly.
 Parameters
 ----------
 theIsRecursive: bool (optional, default to true)
-theFormats: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
-theVendors: NCollection_List<TCollection_AsciiString> (optional, default to NCollection_List<TCollection_AsciiString>())
+theFormats: TColStd_ListOfAsciiString (optional, default to NCollection_List<TCollection_AsciiString>())
+theVendors: TColStd_ListOfAsciiString (optional, default to NCollection_List<TCollection_AsciiString>())
 
 Return
 -------
@@ -1674,7 +1676,7 @@ Input parameter: theFormats list of formats to save. If empty, saves all availab
 Input parameter: theVendors list of providers to save. If empty, saves all available 
 Return: result resource string.
 ") Save;
-		TCollection_AsciiString Save(const bool theIsRecursive = true, const NCollection_List<TCollection_AsciiString> & theFormats = NCollection_List<TCollection_AsciiString>(), const NCollection_List<TCollection_AsciiString> & theVendors = NCollection_List<TCollection_AsciiString>());
+		TCollection_AsciiString Save(const bool theIsRecursive = true, const TColStd_ListOfAsciiString & theFormats = NCollection_List<TCollection_AsciiString>(), const TColStd_ListOfAsciiString & theVendors = NCollection_List<TCollection_AsciiString>());
 
 		/****** DE_Wrapper::SetGlobalWrapper ******/
 		/****** md5 signature: c12f22416c96f19cad70ed542d976aec ******/

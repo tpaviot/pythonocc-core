@@ -50,7 +50,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwobj.html"
 #include<RWMesh_module.hxx>
 #include<XCAFPrs_module.hxx>
 #include<TDocStd_module.hxx>
+#include<TDF_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
+#include<Interface_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -99,7 +102,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwobj.html"
 %import RWMesh.i
 %import XCAFPrs.i
 %import TDocStd.i
+%import TDF.i
+%import TColStd.i
 %import TopoDS.i
+%import Interface.i
 
 %pythoncode {
 from enum import IntEnum
@@ -249,9 +255,9 @@ Return default material definition to be used for nodes with only color defined.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theRootLabels: NCollection_Sequence<TDF_Label>
-theLabelFilter: NCollection_Map<TCollection_AsciiString> *
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theRootLabels: TDF_LabelSequence
+theLabelFilter: TColStd_MapOfAsciiString *
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -268,7 +274,7 @@ Input parameter: theFileInfo map with file metadata to put into OBJ header secti
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_Sequence<TDF_Label> & theRootLabels, const NCollection_Map<TCollection_AsciiString> * theLabelFilter, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_CafWriter::Perform ******/
 		/****** md5 signature: 9fa7d5982eff451b653a549335726dd7 ******/
@@ -277,7 +283,7 @@ Return: False on file writing failure.
 Parameters
 ----------
 theDocument: TDocStd_Document
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theFileInfo: TColStd_IndexedDataMapOfStringString
 theProgress: Message_ProgressRange
 
 Return
@@ -292,7 +298,7 @@ Input parameter: theFileInfo map with file metadata to put into glTF header sect
 Input parameter: theProgress optional progress indicator 
 Return: False on file writing failure.
 ") Perform;
-		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo, const Message_ProgressRange & theProgress);
+		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
 		/****** RWObj_CafWriter::SetCoordinateSystemConverter ******/
 		/****** md5 signature: 8488d2b612c66076826cc33d2ac72536 ******/
@@ -669,7 +675,7 @@ Parameters
 theNbNodes: int
 theNbElems: int
 theMatLib: str
-theFileInfo: NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+theFileInfo: TColStd_IndexedDataMapOfStringString
 
 Return
 -------
@@ -679,7 +685,7 @@ Description
 -----------
 Write the header.
 ") WriteHeader;
-		bool WriteHeader(const int theNbNodes, const int theNbElems, TCollection_AsciiString theMatLib, const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & theFileInfo);
+		bool WriteHeader(const int theNbNodes, const int theNbElems, TCollection_AsciiString theMatLib, const TColStd_IndexedDataMapOfStringString & theFileInfo);
 
 		/****** RWObj_ObjWriterContext::WriteNormal ******/
 		/****** md5 signature: 7723912d6a8974e4328cf44ec9bd4e7f ******/
@@ -793,13 +799,13 @@ class RWObj_Reader : public Standard_Transient {
 		%feature("compactdefaultargs") ExternalFiles;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TCollection_AsciiString>
+Interface_IndexedMapOfAsciiString
 
 Description
 -----------
 Return the list of external file references.
 ") ExternalFiles;
-		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles();
+		const Interface_IndexedMapOfAsciiString & ExternalFiles();
 
 		/****** RWObj_Reader::FileComments ******/
 		/****** md5 signature: 5907111e18d42fb1ae04fda50f8a0338 ******/

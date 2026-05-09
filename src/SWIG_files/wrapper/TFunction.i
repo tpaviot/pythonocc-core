@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tfunction.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TDF_module.hxx>
+#include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -53,6 +54,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tfunction.html"
 %import Standard.i
 %import NCollection.i
 %import TDF.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -129,7 +131,7 @@ class TFunction_Driver : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-args: NCollection_List<TDF_Label>
+args: TDF_LabelList
 
 Return
 -------
@@ -139,7 +141,7 @@ Description
 -----------
 The method fills-in the list by labels, where the arguments of the function are located.
 ") Arguments;
-		virtual void Arguments(NCollection_List<TDF_Label> & args);
+		virtual void Arguments(TDF_LabelList & args);
 
 		/****** TFunction_Driver::Execute ******/
 		/****** md5 signature: 4d82c635563ebfa7330a2fb2d96a1890 ******/
@@ -214,7 +216,7 @@ Analyzes the labels in the logbook log. Returns true if attributes have been mod
 		%feature("autodoc", "
 Parameters
 ----------
-res: NCollection_List<TDF_Label>
+res: TDF_LabelList
 
 Return
 -------
@@ -224,7 +226,7 @@ Description
 -----------
 The method fills-in the list by labels, where the results of the function are located.
 ") Results;
-		virtual void Results(NCollection_List<TDF_Label> & res);
+		virtual void Results(TDF_LabelList & res);
 
 		/****** TFunction_Driver::Validate ******/
 		/****** md5 signature: 423a12c33d12bdceb19c48f26ec9e67b ******/
@@ -803,26 +805,26 @@ Returns the GUID for GraphNode attribute. Instant methods =============== Constr
 		%feature("compactdefaultargs") GetNext;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Returns a map of next functions.
 ") GetNext;
-		const NCollection_Map<int> & GetNext();
+		const TColStd_MapOfInteger & GetNext();
 
 		/****** TFunction_GraphNode::GetPrevious ******/
 		/****** md5 signature: e8fc0dd31ecb307c2cbdb750b0547616 ******/
 		%feature("compactdefaultargs") GetPrevious;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<int>
+TColStd_MapOfInteger
 
 Description
 -----------
 Returns a map of previous functions.
 ") GetPrevious;
-		const NCollection_Map<int> & GetPrevious();
+		const TColStd_MapOfInteger & GetPrevious();
 
 		/****** TFunction_GraphNode::GetStatus ******/
 		/****** md5 signature: d22ac7893e97d480932227129700806c ******/
@@ -1105,7 +1107,7 @@ A constructor. Initializes the interface by the label of function.
 		%feature("autodoc", "
 Parameters
 ----------
-args: NCollection_List<TDF_Label>
+args: TDF_LabelList
 
 Return
 -------
@@ -1115,7 +1117,7 @@ Description
 -----------
 The method fills-in the list by labels, where the arguments of the function are located.
 ") Arguments;
-		void Arguments(NCollection_List<TDF_Label> & args);
+		void Arguments(TDF_LabelList & args);
 
 		/****** TFunction_IFunction::DeleteFunction ******/
 		/****** md5 signature: e00c4c65b307bcf47f52dbfcf7786e5c ******/
@@ -1198,7 +1200,7 @@ Returns the Logbook - keeper of modifications.
 		%feature("autodoc", "
 Parameters
 ----------
-prev: NCollection_List<TDF_Label>
+prev: TDF_LabelList
 
 Return
 -------
@@ -1208,7 +1210,7 @@ Description
 -----------
 Returns a list of next functions.
 ") GetNext;
-		void GetNext(NCollection_List<TDF_Label> & prev);
+		void GetNext(TDF_LabelList & prev);
 
 		/****** TFunction_IFunction::GetPrevious ******/
 		/****** md5 signature: 5b18a41871bc7d19747931812cef3b6c ******/
@@ -1216,7 +1218,7 @@ Returns a list of next functions.
 		%feature("autodoc", "
 Parameters
 ----------
-prev: NCollection_List<TDF_Label>
+prev: TDF_LabelList
 
 Return
 -------
@@ -1226,7 +1228,7 @@ Description
 -----------
 Returns a list of previous functions.
 ") GetPrevious;
-		void GetPrevious(NCollection_List<TDF_Label> & prev);
+		void GetPrevious(TDF_LabelList & prev);
 
 		/****** TFunction_IFunction::GetStatus ******/
 		/****** md5 signature: d22ac7893e97d480932227129700806c ******/
@@ -1297,7 +1299,7 @@ Sets a new function attached to a label <L> with <ID>. It creates a new TFunctio
 		%feature("autodoc", "
 Parameters
 ----------
-res: NCollection_List<TDF_Label>
+res: TDF_LabelList
 
 Return
 -------
@@ -1307,7 +1309,7 @@ Description
 -----------
 The method fills-in the list by labels, where the results of the function are located.
 ") Results;
-		void Results(NCollection_List<TDF_Label> & res);
+		void Results(TDF_LabelList & res);
 
 		/****** TFunction_IFunction::SetStatus ******/
 		/****** md5 signature: 6b13bf361b6b05641737bfa869b959e5 ******/
@@ -1408,13 +1410,13 @@ A constructor. Initializes the iterator.
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TDF_Label>
+TDF_LabelList
 
 Description
 -----------
 Returns the current list of functions. If the iterator uses the execution status, the returned list contains only the functions with 'not executed' status.
 ") Current;
-		virtual const NCollection_List<TDF_Label> & Current();
+		virtual const TDF_LabelList & Current();
 
 		/****** TFunction_Iterator::Dump ******/
 		/****** md5 signature: ee51cac270c7787d1809a1cb8cf01d91 ******/
@@ -1651,39 +1653,39 @@ Returns the GUID for logbook attribute.
 		%feature("compactdefaultargs") GetImpacted;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 Returns the map of impacted labels contained in this logbook.
 ") GetImpacted;
-		const NCollection_Map<TDF_Label> & GetImpacted();
+		const TDF_LabelMap & GetImpacted();
 
 		/****** TFunction_Logbook::GetTouched ******/
 		/****** md5 signature: fa58d459f40f64a3917f5956e50c84db ******/
 		%feature("compactdefaultargs") GetTouched;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 Returns the map of touched labels in this logbook. A touched label is the one modified by the end user.
 ") GetTouched;
-		const NCollection_Map<TDF_Label> & GetTouched();
+		const TDF_LabelMap & GetTouched();
 
 		/****** TFunction_Logbook::GetValid ******/
 		/****** md5 signature: e544ee87bdeef2f9f564bf6e738a5f18 ******/
 		%feature("compactdefaultargs") GetValid;
 		%feature("autodoc", "Return
 -------
-NCollection_Map<TDF_Label>
+TDF_LabelMap
 
 Description
 -----------
 Returns the map of valid labels in this logbook.
 ") GetValid;
-		const NCollection_Map<TDF_Label> & GetValid();
+		const TDF_LabelMap & GetValid();
 
 		/****** TFunction_Logbook::GetValid ******/
 		/****** md5 signature: 34c1e4015941f40fee89db0e6a8bf38d ******/
@@ -1691,7 +1693,7 @@ Returns the map of valid labels in this logbook.
 		%feature("autodoc", "
 Parameters
 ----------
-Ls: NCollection_Map<TDF_Label>
+Ls: TDF_LabelMap
 
 Return
 -------
@@ -1701,7 +1703,7 @@ Description
 -----------
 No available documentation.
 ") GetValid;
-		void GetValid(NCollection_Map<TDF_Label> & Ls);
+		void GetValid(TDF_LabelMap & Ls);
 
 		/****** TFunction_Logbook::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -1891,7 +1893,7 @@ Sets the label L as a valid label in this logbook.
 		%feature("autodoc", "
 Parameters
 ----------
-Ls: NCollection_Map<TDF_Label>
+Ls: TDF_LabelMap
 
 Return
 -------
@@ -1901,7 +1903,7 @@ Description
 -----------
 No available documentation.
 ") SetValid;
-		void SetValid(const NCollection_Map<TDF_Label> & Ls);
+		void SetValid(const TDF_LabelMap & Ls);
 
 };
 

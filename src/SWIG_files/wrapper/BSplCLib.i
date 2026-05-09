@@ -44,7 +44,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bsplclib.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<math_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Message_module.hxx>
@@ -55,7 +57,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_bsplclib.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import math.i
+%import TColgp.i
 %import gp.i
 %import GeomAbs.i
 
@@ -208,9 +212,9 @@ Performs the Boor Algorithm at parameter <U> with the given <Degree> and the arr
 		%feature("autodoc", "
 Parameters
 ----------
-Parameters: NCollection_Array1<double>
-OrderArray: NCollection_Array1<int>
-FlatKnots: NCollection_Array1<double>
+Parameters: TColStd_Array1OfReal
+OrderArray: TColStd_Array1OfInteger
+FlatKnots: TColStd_Array1OfReal
 Degree: int
 Matrix: math_Matrix
 
@@ -223,7 +227,7 @@ Description
 -----------
 This Builds a fully blown Matrix of (ni) Bi (tj) //! with i and j within 1..Order + NumPoles The integer ni is the ith slot of the array OrderArray, tj is the jth slot of the array Parameters.
 ") BuildBSpMatrix;
-		static int BuildBSpMatrix(const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & OrderArray, const NCollection_Array1<double> & FlatKnots, const int Degree, math_Matrix & Matrix, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static int BuildBSpMatrix(const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & OrderArray, const TColStd_Array1OfReal & FlatKnots, const int Degree, math_Matrix & Matrix, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::BuildBoor ******/
 		/****** md5 signature: c46c4789d73422cbf3a20f23c1fb8233 ******/
@@ -234,7 +238,7 @@ Parameters
 Index: int
 Length: int
 Dimension: int
-Poles: NCollection_Array1<double>
+Poles: TColStd_Array1OfReal
 
 Return
 -------
@@ -244,7 +248,7 @@ Description
 -----------
 Copy in <LP> poles for <Dimension> Boor scheme. Starting from <Index> * <Dimension>, copy <Length+1> poles.
 ") BuildBoor;
-		static void BuildBoor(const int Index, const int Length, const int Dimension, const NCollection_Array1<double> & Poles, Standard_Real &OutValue);
+		static void BuildBoor(const int Index, const int Length, const int Dimension, const TColStd_Array1OfReal & Poles, Standard_Real &OutValue);
 
 		/****** BSplCLib::BuildCache ******/
 		/****** md5 signature: 5debbf7f8d71e788d7caf60067645259 ******/
@@ -256,11 +260,11 @@ U: double
 InverseOfSpanDomain: double
 PeriodicFlag: bool
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-CachePoles: NCollection_Array1<gp_Pnt>
-CacheWeights: NCollection_Array1<double> *
+FlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+CachePoles: TColgp_Array1OfPnt
+CacheWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -270,7 +274,7 @@ Description
 -----------
 Perform the evaluation of the Taylor expansion of the Bspline normalized between 0 and 1. If rational computes the homogeneous Taylor expansion for the numerator and stores it in CachePoles.
 ") BuildCache;
-		static void BuildCache(const double U, const double InverseOfSpanDomain, const bool PeriodicFlag, const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<gp_Pnt> & CachePoles, NCollection_Array1<double> * CacheWeights);
+		static void BuildCache(const double U, const double InverseOfSpanDomain, const bool PeriodicFlag, const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
 		/****** BSplCLib::BuildCache ******/
 		/****** md5 signature: 347aced39bbca69a3bc76387e2420773 ******/
@@ -282,11 +286,11 @@ U: double
 InverseOfSpanDomain: double
 PeriodicFlag: bool
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-CachePoles: NCollection_Array1<gp_Pnt2d>
-CacheWeights: NCollection_Array1<double> *
+FlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+CachePoles: TColgp_Array1OfPnt2d
+CacheWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -296,7 +300,7 @@ Description
 -----------
 Perform the evaluation of the Taylor expansion of the Bspline normalized between 0 and 1. If rational computes the homogeneous Taylor expansion for the numerator and stores it in CachePoles.
 ") BuildCache;
-		static void BuildCache(const double U, const double InverseOfSpanDomain, const bool PeriodicFlag, const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<gp_Pnt2d> & CachePoles, NCollection_Array1<double> * CacheWeights);
+		static void BuildCache(const double U, const double InverseOfSpanDomain, const bool PeriodicFlag, const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
 		/****** BSplCLib::BuildCache ******/
 		/****** md5 signature: 8a525a25b5bcb8a99f2cefa94851be8c ******/
@@ -309,10 +313,10 @@ theSpanDomain: double
 thePeriodicFlag: bool
 theDegree: int
 theSpanIndex: int
-theFlatKnots: NCollection_Array1<double>
-thePoles: NCollection_Array1<gp_Pnt>
-theWeights: NCollection_Array1<double> *
-theCacheArray: NCollection_Array2<double>
+theFlatKnots: TColStd_Array1OfReal
+thePoles: TColgp_Array1OfPnt
+theWeights: TColStd_Array1OfReal *
+theCacheArray: TColStd_Array2OfReal
 
 Return
 -------
@@ -322,7 +326,7 @@ Description
 -----------
 Perform the evaluation of the Taylor expansion of the Bspline normalized between 0 and 1. Structure of result optimized for BSplCLib_Cache.
 ") BuildCache;
-		static void BuildCache(const double theParameter, const double theSpanDomain, const bool thePeriodicFlag, const int theDegree, const int theSpanIndex, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt> & thePoles, const NCollection_Array1<double> * theWeights, NCollection_Array2<double> & theCacheArray);
+		static void BuildCache(const double theParameter, const double theSpanDomain, const bool thePeriodicFlag, const int theDegree, const int theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
 		/****** BSplCLib::BuildCache ******/
 		/****** md5 signature: 3bb6f8adfda2b1a12b85bbf5036ceed3 ******/
@@ -335,10 +339,10 @@ theSpanDomain: double
 thePeriodicFlag: bool
 theDegree: int
 theSpanIndex: int
-theFlatKnots: NCollection_Array1<double>
-thePoles: NCollection_Array1<gp_Pnt2d>
-theWeights: NCollection_Array1<double> *
-theCacheArray: NCollection_Array2<double>
+theFlatKnots: TColStd_Array1OfReal
+thePoles: TColgp_Array1OfPnt2d
+theWeights: TColStd_Array1OfReal *
+theCacheArray: TColStd_Array2OfReal
 
 Return
 -------
@@ -348,7 +352,7 @@ Description
 -----------
 Perform the evaluation of the Taylor expansion of the Bspline normalized between 0 and 1. Structure of result optimized for BSplCLib_Cache.
 ") BuildCache;
-		static void BuildCache(const double theParameter, const double theSpanDomain, const bool thePeriodicFlag, const int theDegree, const int theSpanIndex, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt2d> & thePoles, const NCollection_Array1<double> * theWeights, NCollection_Array2<double> & theCacheArray);
+		static void BuildCache(const double theParameter, const double theSpanDomain, const bool thePeriodicFlag, const int theDegree, const int theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
 		/****** BSplCLib::BuildEval ******/
 		/****** md5 signature: 3294f5ed7ab7fdc94c776f2cc17bad12 ******/
@@ -358,8 +362,8 @@ Parameters
 ----------
 Degree: int
 Index: int
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double> *
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -369,7 +373,7 @@ Description
 -----------
 No available documentation.
 ") BuildEval;
-		static void BuildEval(const int Degree, const int Index, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> * Weights, Standard_Real &OutValue);
+		static void BuildEval(const int Degree, const int Index, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
 		/****** BSplCLib::BuildEval ******/
 		/****** md5 signature: cda04e299b3a8cab853c90aad738f9ac ******/
@@ -379,8 +383,8 @@ Parameters
 ----------
 Degree: int
 Index: int
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -390,7 +394,7 @@ Description
 -----------
 No available documentation.
 ") BuildEval;
-		static void BuildEval(const int Degree, const int Index, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, Standard_Real &OutValue);
+		static void BuildEval(const int Degree, const int Index, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
 		/****** BSplCLib::BuildEval ******/
 		/****** md5 signature: 27cd862be9771c50e9aab3a002fb5584 ******/
@@ -400,8 +404,8 @@ Parameters
 ----------
 Degree: int
 Index: int
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -411,7 +415,7 @@ Description
 -----------
 Copy in <LP> the poles and weights for the Eval scheme. starting from Poles(Poles.Lower()+Index).
 ") BuildEval;
-		static void BuildEval(const int Degree, const int Index, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, Standard_Real &OutValue);
+		static void BuildEval(const int Degree, const int Index, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
 		/****** BSplCLib::BuildKnots ******/
 		/****** md5 signature: 122df8fb2c39c06c40883f78b0f2300b ******/
@@ -422,8 +426,8 @@ Parameters
 Degree: int
 Index: int
 Periodic: bool
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 
 Return
 -------
@@ -433,7 +437,7 @@ Description
 -----------
 Stores in LK the useful knots for the BoorSchem on the span Knots(Index) - Knots(Index+1).
 ") BuildKnots;
-		static void BuildKnots(const int Degree, const int Index, const bool Periodic, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, Standard_Real &OutValue);
+		static void BuildKnots(const int Degree, const int Index, const bool Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue);
 
 		/****** BSplCLib::BuildSchoenbergPoints ******/
 		/****** md5 signature: 05f6e36dbf8642a04f28a5c5900db51a ******/
@@ -442,8 +446,8 @@ Stores in LK the useful knots for the BoorSchem on the span Knots(Index) - Knots
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
 
 Return
 -------
@@ -453,7 +457,7 @@ Description
 -----------
 builds the Schoenberg points from the flat knot used to interpolate a BSpline since the BSpline matrix is invertible.
 ") BuildSchoenbergPoints;
-		static void BuildSchoenbergPoints(const int Degree, const NCollection_Array1<double> & FlatKnots, NCollection_Array1<double> & Parameters);
+		static void BuildSchoenbergPoints(const int Degree, const TColStd_Array1OfReal & FlatKnots, TColStd_Array1OfReal & Parameters);
 
 		/****** BSplCLib::CacheD0 ******/
 		/****** md5 signature: 87cf8ca605183b641fb14a490d2ec83a ******/
@@ -465,8 +469,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 
 Return
@@ -477,7 +481,7 @@ Description
 -----------
 Perform the evaluation of the of the cache the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights this just evaluates the current point the CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effects.
 ") CacheD0;
-		static void CacheD0(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point);
+		static void CacheD0(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
 		/****** BSplCLib::CacheD0 ******/
 		/****** md5 signature: 4b34dc1893bd5c92ea43af66dfa6e5cf ******/
@@ -489,8 +493,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 
 Return
@@ -501,7 +505,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights ththe CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effectsis just evaluates the current point.
 ") CacheD0;
-		static void CacheD0(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point);
+		static void CacheD0(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
 		/****** BSplCLib::CacheD1 ******/
 		/****** md5 signature: a07e73852900dba02806efff98ac6290 ******/
@@ -513,8 +517,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec: gp_Vec
 
@@ -526,7 +530,7 @@ Description
 -----------
 Perform the evaluation of the of the cache the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights this just evaluates the current point the CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effects.
 ") CacheD1;
-		static void CacheD1(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec);
+		static void CacheD1(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
 		/****** BSplCLib::CacheD1 ******/
 		/****** md5 signature: a3112ee03a6d5a8cdb405989d79c7917 ******/
@@ -538,8 +542,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec: gp_Vec2d
 
@@ -551,7 +555,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights ththe CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effectsis just evaluates the current point.
 ") CacheD1;
-		static void CacheD1(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
+		static void CacheD1(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
 		/****** BSplCLib::CacheD2 ******/
 		/****** md5 signature: 5924a7bf8203c893754fb53e52742f72 ******/
@@ -563,8 +567,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec1: gp_Vec
 Vec2: gp_Vec
@@ -577,7 +581,7 @@ Description
 -----------
 Perform the evaluation of the of the cache the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights this just evaluates the current point the CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effects.
 ") CacheD2;
-		static void CacheD2(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
+		static void CacheD2(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
 		/****** BSplCLib::CacheD2 ******/
 		/****** md5 signature: 826ac44a16308f5e2052c9ccd4e5936b ******/
@@ -589,8 +593,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec1: gp_Vec2d
 Vec2: gp_Vec2d
@@ -603,7 +607,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights ththe CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effectsis just evaluates the current point.
 ") CacheD2;
-		static void CacheD2(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
+		static void CacheD2(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
 		/****** BSplCLib::CacheD3 ******/
 		/****** md5 signature: 037f047bb27a39731e6f16f73c31b57c ******/
@@ -615,8 +619,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec1: gp_Vec
 Vec2: gp_Vec
@@ -630,7 +634,7 @@ Description
 -----------
 Perform the evaluation of the of the cache the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights this just evaluates the current point the CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effects.
 ") CacheD3;
-		static void CacheD3(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
+		static void CacheD3(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
 		/****** BSplCLib::CacheD3 ******/
 		/****** md5 signature: deb7a323c7c0ee3375c1e6065661fe27 ******/
@@ -642,8 +646,8 @@ U: double
 Degree: int
 CacheParameter: double
 SpanLenght: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec1: gp_Vec2d
 Vec2: gp_Vec2d
@@ -657,7 +661,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point the parameter must be normalized between the 0 and 1 for the span. The Cache must be valid when calling this routine. Geom Package will insure that. and then multiplies by the weights ththe CacheParameter is where the Cache was constructed the SpanLength is to normalize the polynomial in the cache to avoid bad conditioning effectsis just evaluates the current point.
 ") CacheD3;
-		static void CacheD3(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
+		static void CacheD3(const double U, const int Degree, const double CacheParameter, const double SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
 		/****** BSplCLib::CoefsD0 ******/
 		/****** md5 signature: 83be13699ce59e138f792b0891efabdc ******/
@@ -666,8 +670,8 @@ Perform the evaluation of the Bspline Basis and then multiplies by the weights t
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 
 Return
@@ -678,7 +682,7 @@ Description
 -----------
 Calls CacheD0 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD0;
-		static void CoefsD0(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point);
+		static void CoefsD0(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
 		/****** BSplCLib::CoefsD0 ******/
 		/****** md5 signature: 952b58747c08a0664193d01e3919dd8a ******/
@@ -687,8 +691,8 @@ Calls CacheD0 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 
 Return
@@ -699,7 +703,7 @@ Description
 -----------
 Calls CacheD0 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD0;
-		static void CoefsD0(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point);
+		static void CoefsD0(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
 		/****** BSplCLib::CoefsD1 ******/
 		/****** md5 signature: f1fceb7e39ffeb9246220e15561b8b56 ******/
@@ -708,8 +712,8 @@ Calls CacheD0 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec: gp_Vec
 
@@ -721,7 +725,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD1;
-		static void CoefsD1(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec);
+		static void CoefsD1(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
 		/****** BSplCLib::CoefsD1 ******/
 		/****** md5 signature: 490f19ba3f8b46f6065b0064e4691738 ******/
@@ -730,8 +734,8 @@ Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec: gp_Vec2d
 
@@ -743,7 +747,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD1;
-		static void CoefsD1(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
+		static void CoefsD1(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
 		/****** BSplCLib::CoefsD2 ******/
 		/****** md5 signature: fce24b1a98d4657b7105ab66631fef1b ******/
@@ -752,8 +756,8 @@ Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec1: gp_Vec
 Vec2: gp_Vec
@@ -766,7 +770,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD2;
-		static void CoefsD2(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
+		static void CoefsD2(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
 		/****** BSplCLib::CoefsD2 ******/
 		/****** md5 signature: 665afd4969302b4e51c145d1defdc072 ******/
@@ -775,8 +779,8 @@ Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec1: gp_Vec2d
 Vec2: gp_Vec2d
@@ -789,7 +793,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD2;
-		static void CoefsD2(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
+		static void CoefsD2(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
 		/****** BSplCLib::CoefsD3 ******/
 		/****** md5 signature: 076abd7259f777162c350217590431ea ******/
@@ -798,8 +802,8 @@ Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt
 Vec1: gp_Vec
 Vec2: gp_Vec
@@ -813,7 +817,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD3;
-		static void CoefsD3(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
+		static void CoefsD3(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
 		/****** BSplCLib::CoefsD3 ******/
 		/****** md5 signature: 450ee603c54e99d98d6e29e1ecb977c3 ******/
@@ -822,8 +826,8 @@ Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficient
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 Point: gp_Pnt2d
 Vec1: gp_Vec2d
 Vec2: gp_Vec2d
@@ -837,7 +841,7 @@ Description
 -----------
 Calls CacheD1 for Bezier Curves Arrays computed with the method PolesCoefficients. Warning: To be used for Beziercurves ONLY!!!.
 ") CoefsD3;
-		static void CoefsD3(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
+		static void CoefsD3(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
 		/****** BSplCLib::D0 ******/
 		/****** md5 signature: 404cf0a7d7d8f850804b5e41ff0897f6 ******/
@@ -849,10 +853,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 
 Return
 -------
@@ -862,7 +866,7 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, Standard_Real &OutValue);
+		static void D0(const double U, const int Index, const int Degree, const bool Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue);
 
 		/****** BSplCLib::D0 ******/
 		/****** md5 signature: 6f2617cff0cca48a1e6f6a5af0c31a09 ******/
@@ -874,10 +878,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt
 
 Return
@@ -888,7 +892,7 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt & P);
+		static void D0(const double U, const int Index, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P);
 
 		/****** BSplCLib::D0 ******/
 		/****** md5 signature: 46b5d26c42c8fc3684f1da22e4b0412e ******/
@@ -900,10 +904,10 @@ U: double
 UIndex: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt2d
 
 Return
@@ -914,7 +918,7 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const double U, const int UIndex, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt2d & P);
+		static void D0(const double U, const int UIndex, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P);
 
 		/****** BSplCLib::D0 ******/
 		/****** md5 signature: d1f9c64b2bead5ff6bd29fe19674f1e7 ******/
@@ -923,8 +927,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt
 
 Return
@@ -935,7 +939,7 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & P);
+		static void D0(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P);
 
 		/****** BSplCLib::D0 ******/
 		/****** md5 signature: 57673d7d0b53a5c8e156148a23cc64e4 ******/
@@ -944,8 +948,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt2d
 
 Return
@@ -956,7 +960,7 @@ Description
 -----------
 No available documentation.
 ") D0;
-		static void D0(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & P);
+		static void D0(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P);
 
 		/****** BSplCLib::D1 ******/
 		/****** md5 signature: 6dc3168b2187988769ae762ad2decaf7 ******/
@@ -968,10 +972,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 
 Return
 -------
@@ -982,7 +986,7 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void D1(const double U, const int Index, const int Degree, const bool Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::D1 ******/
 		/****** md5 signature: 9f3f3d549163bf60893e262c8650d76e ******/
@@ -994,10 +998,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt
 V: gp_Vec
 
@@ -1009,7 +1013,7 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt & P, gp_Vec & V);
+		static void D1(const double U, const int Index, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V);
 
 		/****** BSplCLib::D1 ******/
 		/****** md5 signature: b18b2ce3539bd1bdd83808784eef9c1d ******/
@@ -1021,10 +1025,10 @@ U: double
 UIndex: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -1036,7 +1040,7 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const double U, const int UIndex, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const double U, const int UIndex, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** BSplCLib::D1 ******/
 		/****** md5 signature: 6ea0fb73df8d8dece537b7e37c633ac7 ******/
@@ -1045,8 +1049,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt
 V: gp_Vec
 
@@ -1058,7 +1062,7 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & P, gp_Vec & V);
+		static void D1(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V);
 
 		/****** BSplCLib::D1 ******/
 		/****** md5 signature: 062c34063a1e9e809fee2bbc521184f4 ******/
@@ -1067,8 +1071,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt2d
 V: gp_Vec2d
 
@@ -1080,7 +1084,7 @@ Description
 -----------
 No available documentation.
 ") D1;
-		static void D1(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & P, gp_Vec2d & V);
+		static void D1(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V);
 
 		/****** BSplCLib::D2 ******/
 		/****** md5 signature: bf342f73f7ccfbb9cb7b766861440ba7 ******/
@@ -1092,10 +1096,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 
 Return
 -------
@@ -1107,7 +1111,7 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void D2(const double U, const int Index, const int Degree, const bool Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::D2 ******/
 		/****** md5 signature: 355e99a7d3f533062f155342b7fcb709 ******/
@@ -1119,10 +1123,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1135,7 +1139,7 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const double U, const int Index, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** BSplCLib::D2 ******/
 		/****** md5 signature: d36cce6e427f36fe50c6c3d96d43adb2 ******/
@@ -1147,10 +1151,10 @@ U: double
 UIndex: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1163,7 +1167,7 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const double U, const int UIndex, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const double U, const int UIndex, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** BSplCLib::D2 ******/
 		/****** md5 signature: 9b2f889b8e0bc2f376ebd25d5eee6cfc ******/
@@ -1172,8 +1176,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1186,7 +1190,7 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
+		static void D2(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
 		/****** BSplCLib::D2 ******/
 		/****** md5 signature: 41f23ca8056bb7d28854b234d2842cb1 ******/
@@ -1195,8 +1199,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1209,7 +1213,7 @@ Description
 -----------
 No available documentation.
 ") D2;
-		static void D2(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
+		static void D2(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
 		/****** BSplCLib::D3 ******/
 		/****** md5 signature: 338d635e7466cc9aa16dc944a6c67e7a ******/
@@ -1221,10 +1225,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 
 Return
 -------
@@ -1237,7 +1241,7 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void D3(const double U, const int Index, const int Degree, const bool Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::D3 ******/
 		/****** md5 signature: c10024ef49a6dc201dd96d60c70124bf ******/
@@ -1249,10 +1253,10 @@ U: double
 Index: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1266,7 +1270,7 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const double U, const int Index, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const double U, const int Index, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** BSplCLib::D3 ******/
 		/****** md5 signature: f106fd809dedbab84ea4fea3ea0f099c ******/
@@ -1278,10 +1282,10 @@ U: double
 UIndex: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1295,7 +1299,7 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const double U, const int UIndex, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const double U, const int UIndex, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** BSplCLib::D3 ******/
 		/****** md5 signature: 6689abe1184fbf799b5946b467f05d1b ******/
@@ -1304,8 +1308,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt
 V1: gp_Vec
 V2: gp_Vec
@@ -1319,7 +1323,7 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const double U, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
+		static void D3(const double U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
 		/****** BSplCLib::D3 ******/
 		/****** md5 signature: 7d4c5a41ef06241b73a6eee149fc4be7 ******/
@@ -1328,8 +1332,8 @@ No available documentation.
 Parameters
 ----------
 U: double
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 P: gp_Pnt2d
 V1: gp_Vec2d
 V2: gp_Vec2d
@@ -1343,7 +1347,7 @@ Description
 -----------
 No available documentation.
 ") D3;
-		static void D3(const double U, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
+		static void D3(const double U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
 		/****** BSplCLib::Derivative ******/
 		/****** md5 signature: 5e52517228cbb7352a60ca74ac2bb065 ******/
@@ -1398,7 +1402,7 @@ U: double
 PeriodicFlag: bool
 DerivativeRequest: int
 Degree: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 ArrayDimension: int
 
 Return
@@ -1411,7 +1415,7 @@ Description
 -----------
 Perform the De Boor algorithm to evaluate a point at parameter <U>, with <Degree> and <Dimension>. //! Poles is an array of Reals of size //! <Dimension> * <Degree>+1 //! Containing the poles. At the end <Poles> contains the current point. Poles Contain all the poles of the BsplineCurve, Knots also Contains all the knots of the BsplineCurve. ExtrapMode has two slots [0] = Degree used to extrapolate before the first knot [1] = Degre used to extrapolate after the last knot has to be between 1 and Degree.
 ") Eval;
-		static void Eval(const double U, const bool PeriodicFlag, const int DerivativeRequest, Standard_Integer &OutValue, const int Degree, const NCollection_Array1<double> & FlatKnots, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Eval(const double U, const bool PeriodicFlag, const int DerivativeRequest, Standard_Integer &OutValue, const int Degree, const TColStd_Array1OfReal & FlatKnots, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::Eval ******/
 		/****** md5 signature: 907fd9886ea05dcf0ed2f608b279620d ******/
@@ -1423,7 +1427,7 @@ U: double
 PeriodicFlag: bool
 DerivativeRequest: int
 Degree: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 ArrayDimension: int
 
 Return
@@ -1438,7 +1442,7 @@ Description
 -----------
 Perform the De Boor algorithm to evaluate a point at parameter <U>, with <Degree> and <Dimension>. Evaluates by multiplying the Poles by the Weights and gives the homogeneous result in PolesResult that is the results of the evaluation of the numerator once it has been multiplied by the weights and in WeightsResult one has the result of the evaluation of the denominator //! Warning: <PolesResult> and <WeightsResult> must be dimensioned properly.
 ") Eval;
-		static void Eval(const double U, const bool PeriodicFlag, const int DerivativeRequest, Standard_Integer &OutValue, const int Degree, const NCollection_Array1<double> & FlatKnots, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void Eval(const double U, const bool PeriodicFlag, const int DerivativeRequest, Standard_Integer &OutValue, const int Degree, const TColStd_Array1OfReal & FlatKnots, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::Eval ******/
 		/****** md5 signature: 0c1587686950825e20f84df544d85bb2 ******/
@@ -1450,9 +1454,9 @@ U: double
 PeriodicFlag: bool
 HomogeneousFlag: bool
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
 Point: gp_Pnt
 
 Return
@@ -1464,7 +1468,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point.
 ") Eval;
-		static void Eval(const double U, const bool PeriodicFlag, const bool HomogeneousFlag, Standard_Integer &OutValue, const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & Weights, gp_Pnt & Point, Standard_Real &OutValue);
+		static void Eval(const double U, const bool PeriodicFlag, const bool HomogeneousFlag, Standard_Integer &OutValue, const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, gp_Pnt & Point, Standard_Real &OutValue);
 
 		/****** BSplCLib::Eval ******/
 		/****** md5 signature: b2a5a27d536f96461bb38a46f68a9812 ******/
@@ -1476,9 +1480,9 @@ U: double
 PeriodicFlag: bool
 HomogeneousFlag: bool
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
 Point: gp_Pnt2d
 
 Return
@@ -1490,7 +1494,7 @@ Description
 -----------
 Perform the evaluation of the Bspline Basis and then multiplies by the weights this just evaluates the current point.
 ") Eval;
-		static void Eval(const double U, const bool PeriodicFlag, const bool HomogeneousFlag, Standard_Integer &OutValue, const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & Weights, gp_Pnt2d & Point, Standard_Real &OutValue);
+		static void Eval(const double U, const bool PeriodicFlag, const bool HomogeneousFlag, Standard_Integer &OutValue, const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, gp_Pnt2d & Point, Standard_Real &OutValue);
 
 		/****** BSplCLib::EvalBsplineBasis ******/
 		/****** md5 signature: afe1952f049ae59d42e9d5144a616151 ******/
@@ -1500,7 +1504,7 @@ Parameters
 ----------
 DerivativeOrder: int
 Order: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 Parameter: double
 BsplineBasis: math_Matrix
 isPeriodic: bool (optional, default to false)
@@ -1513,7 +1517,7 @@ Description
 -----------
 This evaluates the Bspline Basis at a given parameter Parameter up to the requested DerivativeOrder and store the result in the array BsplineBasis in the following fashion BSplineBasis(1,1) = value of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BsplineBasis(1,2) = value of second non vanishing Bspline function which has Index FirstNonZeroBsplineIndex + 1 BsplineBasis(1,n) = value of second non vanishing non vanishing Bspline function which has Index FirstNonZeroBsplineIndex + n (n <= Order) BSplineBasis(2,1) = value of derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex BSplineBasis(N,1) = value of Nth derivative of first non vanishing Bspline function which has Index FirstNonZeroBsplineIndex if N <= DerivativeOrder + 1.
 ") EvalBsplineBasis;
-		static int EvalBsplineBasis(const int DerivativeOrder, const int Order, const NCollection_Array1<double> & FlatKnots, const double Parameter, Standard_Integer &OutValue, math_Matrix & BsplineBasis, const bool isPeriodic = false);
+		static int EvalBsplineBasis(const int DerivativeOrder, const int Order, const TColStd_Array1OfReal & FlatKnots, const double Parameter, Standard_Integer &OutValue, math_Matrix & BsplineBasis, const bool isPeriodic = false);
 
 		/****** BSplCLib::FactorBandedMatrix ******/
 		/****** md5 signature: 1ec21a8ebf64a9ddbf9754e631498f17 ******/
@@ -1542,7 +1546,7 @@ this factors the Banded Matrix in the LU form with a Banded storage of component
 Parameters
 ----------
 Degree: int
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1552,7 +1556,7 @@ Description
 -----------
 Computes the index of the knots value which gives the start point of the curve.
 ") FirstUKnotIndex;
-		static int FirstUKnotIndex(const int Degree, const NCollection_Array1<int> & Mults);
+		static int FirstUKnotIndex(const int Degree, const TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::FlatBezierKnots ******/
 		/****** md5 signature: b1845c0e4c454144f07f08ff324a27be ******/
@@ -1580,7 +1584,7 @@ Parameters
 ----------
 Degree: int
 Index: int
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 Periodic: bool
 
 Return
@@ -1591,7 +1595,7 @@ Description
 -----------
 Computes the index of the flats knots sequence corresponding to <Index> in the knots sequence which multiplicities are <Mults>.
 ") FlatIndex;
-		static int FlatIndex(const int Degree, const int Index, const NCollection_Array1<int> & Mults, const bool Periodic);
+		static int FlatIndex(const int Degree, const int Index, const TColStd_Array1OfInteger & Mults, const bool Periodic);
 
 		/****** BSplCLib::FunctionMultiply ******/
 		/****** md5 signature: 031288cf7c5e1ecbe3a53ea1b2515121 ******/
@@ -1601,9 +1605,9 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
 PolesDimension: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
 
 Return
@@ -1616,7 +1620,7 @@ Description
 -----------
 this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following: 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of a(t)*F(t).
 ") FunctionMultiply;
-		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const int PolesDimension, Standard_Real &OutValue, const NCollection_Array1<double> & FlatKnots, const int NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
+		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const int PolesDimension, Standard_Real &OutValue, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionMultiply ******/
 		/****** md5 signature: fe1fdc830572c4a6f5fd8bce6de45eaa ******/
@@ -1626,11 +1630,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<double>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColStd_Array1OfReal
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<double>
+NewPoles: TColStd_Array1OfReal
 
 Return
 -------
@@ -1640,7 +1644,7 @@ Description
 -----------
 this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following: 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of a(t)*F(t).
 ") FunctionMultiply;
-		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<double> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColStd_Array1OfReal & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionMultiply ******/
 		/****** md5 signature: 11d7f0d7a9e14fba98666c75456f2926 ******/
@@ -1650,11 +1654,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<gp_Pnt2d>
+NewPoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -1664,7 +1668,7 @@ Description
 -----------
 this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following: 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of a(t)*F(t).
 ") FunctionMultiply;
-		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<gp_Pnt2d> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionMultiply ******/
 		/****** md5 signature: a70e296c3cde5aeb88a70509278c9256 ******/
@@ -1674,11 +1678,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<gp_Pnt>
+NewPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1688,7 +1692,7 @@ Description
 -----------
 this will multiply a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] by a function a(t) which is assumed to satisfy the following: 1. a(t) * F(t) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. the range of a(t) is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of a(t)*F(t).
 ") FunctionMultiply;
-		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<gp_Pnt> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionReparameterise ******/
 		/****** md5 signature: 7bbe44e2badd29df3ccd8f21ef7f7288 ******/
@@ -1698,9 +1702,9 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
 PolesDimension: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
 
 Return
@@ -1713,7 +1717,7 @@ Description
 -----------
 This function will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: //! 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots //! 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) //! Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method //! theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of F(a(t)).
 ") FunctionReparameterise;
-		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const int PolesDimension, Standard_Real &OutValue, const NCollection_Array1<double> & FlatKnots, const int NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
+		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const int PolesDimension, Standard_Real &OutValue, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionReparameterise ******/
 		/****** md5 signature: 37890e7bdb4c8885099b5440802f24af ******/
@@ -1723,11 +1727,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<double>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColStd_Array1OfReal
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<double>
+NewPoles: TColStd_Array1OfReal
 
 Return
 -------
@@ -1737,7 +1741,7 @@ Description
 -----------
 This function will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: //! 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots //! 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) //! Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method //! theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of F(a(t)).
 ") FunctionReparameterise;
-		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<double> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColStd_Array1OfReal & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionReparameterise ******/
 		/****** md5 signature: fbfd30f022d2da7f8c88588c325268ad ******/
@@ -1747,11 +1751,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<gp_Pnt>
+NewPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -1761,7 +1765,7 @@ Description
 -----------
 this will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of F(a(t)).
 ") FunctionReparameterise;
-		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<gp_Pnt> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::FunctionReparameterise ******/
 		/****** md5 signature: 64a3829372eeb01bf2aa1d2c3124fa09 ******/
@@ -1771,11 +1775,11 @@ Parameters
 ----------
 Function: BSplCLib_EvaluatorFunction
 BSplineDegree: int
-BSplineFlatKnots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-FlatKnots: NCollection_Array1<double>
+BSplineFlatKnots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+FlatKnots: TColStd_Array1OfReal
 NewDegree: int
-NewPoles: NCollection_Array1<gp_Pnt2d>
+NewPoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -1785,7 +1789,7 @@ Description
 -----------
 this will compose a given Vectorial BSpline F(t) defined by its BSplineDegree and BSplineFlatKnotsl, its Poles array which are coded as an array of Real of the form [1..NumPoles][1..PolesDimension] with a function a(t) which is assumed to satisfy the following: 1. F(a(t)) is a polynomial BSpline that can be expressed exactly as a BSpline of degree NewDegree on the knots FlatKnots 2. a(t) defines a differentiable isomorphism between the range of FlatKnots to the range of BSplineFlatKnots which is the same as the range of F(t) Warning: it is the caller's responsibility to insure that conditions 1. and 2. above are satisfied: no check whatsoever is made in this method theStatus will return 0 if OK else it will return the pivot index of the matrix that was inverted to compute the multiplied BSpline: the method used is interpolation at Schoenenberg points of F(a(t)).
 ") FunctionReparameterise;
-		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const NCollection_Array1<double> & BSplineFlatKnots, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> & FlatKnots, const int NewDegree, NCollection_Array1<gp_Pnt2d> & NewPoles, Standard_Integer &OutValue);
+		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const int BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & FlatKnots, const int NewDegree, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::GetPole ******/
 		/****** md5 signature: 6a63cd71122a4e413ae7d4657fc60bc3 ******/
@@ -1797,7 +1801,7 @@ Index: int
 Length: int
 Depth: int
 Dimension: int
-Pole: NCollection_Array1<double>
+Pole: TColStd_Array1OfReal
 
 Return
 -------
@@ -1808,7 +1812,7 @@ Description
 -----------
 Copy the pole at position <Index> in the Boor scheme of dimension <Dimension> to <Position> in the array <Pole>. <Position> is updated.
 ") GetPole;
-		static void GetPole(const int Index, const int Length, const int Depth, const int Dimension, Standard_Real &OutValue, Standard_Integer &OutValue, NCollection_Array1<double> & Pole);
+		static void GetPole(const int Index, const int Length, const int Depth, const int Dimension, Standard_Real &OutValue, Standard_Integer &OutValue, TColStd_Array1OfReal & Pole);
 
 		/****** BSplCLib::Hunt ******/
 		/****** md5 signature: e367223826eabc57a1398638bb6a04e0 ******/
@@ -1816,7 +1820,7 @@ Copy the pole at position <Index> in the Boor scheme of dimension <Dimension> to
 		%feature("autodoc", "
 Parameters
 ----------
-theArray: NCollection_Array1<double>
+theArray: TColStd_Array1OfReal
 theX: double
 
 Return
@@ -1827,7 +1831,7 @@ Description
 -----------
 This routine searches the position of the real value theX in the monotonically increasing set of real values theArray using bisection algorithm. //! If the given value is out of range or array values, algorithm returns either theArray.Lower()-1 or theArray.Upper()+1 depending on theX position in the ordered set. //! This routine is used to locate a knot value in a set of knots.
 ") Hunt;
-		static void Hunt(const NCollection_Array1<double> & theArray, const double theX, Standard_Integer &OutValue);
+		static void Hunt(const TColStd_Array1OfReal & theArray, const double theX, Standard_Integer &OutValue);
 
 		/****** BSplCLib::IncreaseDegree ******/
 		/****** md5 signature: 1e30057c388cf208eb08f6f8bab5c811 ******/
@@ -1839,12 +1843,12 @@ Degree: int
 NewDegree: int
 Periodic: bool
 Dimension: int
-Poles: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<double>
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColStd_Array1OfReal
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1854,7 +1858,7 @@ Description
 -----------
 No available documentation.
 ") IncreaseDegree;
-		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const int Dimension, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<double> & NewPoles, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults);
+		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const int Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
 		/****** BSplCLib::IncreaseDegree ******/
 		/****** md5 signature: 8ae1a0a0d5d04a79236e80fca12fba9d ******/
@@ -1865,14 +1869,14 @@ Parameters
 Degree: int
 NewDegree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1882,7 +1886,7 @@ Description
 -----------
 No available documentation.
 ") IncreaseDegree;
-		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults);
+		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
 		/****** BSplCLib::IncreaseDegree ******/
 		/****** md5 signature: bd43bf7d863dd2080b8f1b6dba3b431f ******/
@@ -1893,14 +1897,14 @@ Parameters
 Degree: int
 NewDegree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1910,7 +1914,7 @@ Description
 -----------
 No available documentation.
 ") IncreaseDegree;
-		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults);
+		static void IncreaseDegree(const int Degree, const int NewDegree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
 		/****** BSplCLib::IncreaseDegree ******/
 		/****** md5 signature: 2d21975a117da7f9d73a1c85bb9b4be1 ******/
@@ -1919,10 +1923,10 @@ No available documentation.
 Parameters
 ----------
 NewDegree: int
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -1932,7 +1936,7 @@ Description
 -----------
 No available documentation.
 ") IncreaseDegree;
-		static void IncreaseDegree(const int NewDegree, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void IncreaseDegree(const int NewDegree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::IncreaseDegree ******/
 		/****** md5 signature: 834654507bb0f01391eed095595d3ef5 ******/
@@ -1941,10 +1945,10 @@ No available documentation.
 Parameters
 ----------
 theNewDegree: int
-thePoles: NCollection_Array1<gp_Pnt2d>
-theWeights: NCollection_Array1<double> *
-theNewPoles: NCollection_Array1<gp_Pnt2d>
-theNewWeights: NCollection_Array1<double> *
+thePoles: TColgp_Array1OfPnt2d
+theWeights: TColStd_Array1OfReal *
+theNewPoles: TColgp_Array1OfPnt2d
+theNewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -1954,7 +1958,7 @@ Description
 -----------
 Increase the degree of a bspline (or bezier) curve of dimension theDimension form theDegree to theNewDegree. //! The number of poles in the new curve is: @code Poles.Length() + (NewDegree - Degree) * Number of spans @endcode Where the number of spans is: @code LastUKnotIndex(Mults) - FirstUKnotIndex(Mults) + 1 @endcode for a non-periodic curve, and @code Knots.Length() - 1 @endcode for a periodic curve. //! The multiplicities of all knots are increased by the degree elevation. //! The new knots are usually the same knots with the exception of a non-periodic curve with the first and last multiplicity not equal to Degree+1 where knots are removed form the start and the bottom until the sum of the multiplicities is equal to NewDegree+1 at the knots corresponding to the first and last parameters of the curve. //! Example: Suppose a curve of degree 3 starting with following knots and multiplicities: @code knot: 0. 1. 2. mult: 1 2 1 @endcode //! The FirstUKnot is 2.0 because the sum of multiplicities is @code Degree+1: 1 + 2 + 1 = 4 = 3 + 1 @endcode i.e. the first parameter of the curve is 2.0 and will still be 2.0 after degree elevation. Let raise this curve to degree 4. The multiplicities are increased by 2. //! They become 2 3 2. But we need a sum of multiplicities of 5 at knot 2. So the first knot is removed and the new knots are: @code knot: 1. 2. mult: 3 2 @endcode The multiplicity of the first knot may also be reduced if the sum is still too big. //! In the most common situations (periodic curve or curve with first and last multiplicities equals to Degree+1) the knots are knot changes. //! The method IncreaseDegreeCountKnots can be used to compute the new number of knots.
 ") IncreaseDegree;
-		static void IncreaseDegree(const int theNewDegree, const NCollection_Array1<gp_Pnt2d> & thePoles, const NCollection_Array1<double> * theWeights, NCollection_Array1<gp_Pnt2d> & theNewPoles, NCollection_Array1<double> * theNewWeights);
+		static void IncreaseDegree(const int theNewDegree, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColgp_Array1OfPnt2d & theNewPoles, TColStd_Array1OfReal * theNewWeights);
 
 		/****** BSplCLib::IncreaseDegreeCountKnots ******/
 		/****** md5 signature: 54576c15efdc4595a968fbc33722d8a3 ******/
@@ -1965,7 +1969,7 @@ Parameters
 Degree: int
 NewDegree: int
 Periodic: bool
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1975,7 +1979,7 @@ Description
 -----------
 Returns the number of knots of a curve with multiplicities <Mults> after elevating the degree from <Degree> to <NewDegree>. See the IncreaseDegree method for more comments.
 ") IncreaseDegreeCountKnots;
-		static int IncreaseDegreeCountKnots(const int Degree, const int NewDegree, const bool Periodic, const NCollection_Array1<int> & Mults);
+		static int IncreaseDegreeCountKnots(const int Degree, const int NewDegree, const bool Periodic, const TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::InsertKnot ******/
 		/****** md5 signature: 351efe4f03de8fdf7a3f57573519e55b ******/
@@ -1988,12 +1992,12 @@ U: double
 UMult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -2003,7 +2007,7 @@ Description
 -----------
 No available documentation.
 ") InsertKnot;
-		static void InsertKnot(const int UIndex, const double U, const int UMult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void InsertKnot(const int UIndex, const double U, const int UMult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::InsertKnot ******/
 		/****** md5 signature: 1cd9c19ec4abf34aae79c55006cad836 ******/
@@ -2016,12 +2020,12 @@ U: double
 UMult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -2031,7 +2035,7 @@ Description
 -----------
 Insert a new knot U of multiplicity UMult in the knot sequence. //! The location of the new Knot should be given as an input data. UIndex locates the new knot U in the knot sequence and Knots (UIndex) < U < Knots (UIndex + 1). //! The new control points corresponding to this insertion are returned. Knots and Mults are not updated.
 ") InsertKnot;
-		static void InsertKnot(const int UIndex, const double U, const int UMult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void InsertKnot(const int UIndex, const double U, const int UMult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::InsertKnots ******/
 		/****** md5 signature: b9b7f9d993ccde102b2ab1719fe2d4f3 ******/
@@ -2042,14 +2046,14 @@ Parameters
 Degree: int
 Periodic: bool
 Dimension: int
-Poles: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-AddKnots: NCollection_Array1<double>
-AddMults: NCollection_Array1<int> *
-NewPoles: NCollection_Array1<double>
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+AddKnots: TColStd_Array1OfReal
+AddMults: TColStd_Array1OfInteger *
+NewPoles: TColStd_Array1OfReal
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Epsilon: double
 Add: bool (optional, default to true)
 
@@ -2061,7 +2065,7 @@ Description
 -----------
 No available documentation.
 ") InsertKnots;
-		static void InsertKnots(const int Degree, const bool Periodic, const int Dimension, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & AddKnots, const NCollection_Array1<int> * AddMults, NCollection_Array1<double> & NewPoles, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Epsilon, const bool Add = true);
+		static void InsertKnots(const int Degree, const bool Periodic, const int Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Epsilon, const bool Add = true);
 
 		/****** BSplCLib::InsertKnots ******/
 		/****** md5 signature: 61d3a8643f95edf711bf5e759ae8628e ******/
@@ -2071,16 +2075,16 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-AddKnots: NCollection_Array1<double>
-AddMults: NCollection_Array1<int> *
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+AddKnots: TColStd_Array1OfReal
+AddMults: TColStd_Array1OfInteger *
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Epsilon: double
 Add: bool (optional, default to true)
 
@@ -2092,7 +2096,7 @@ Description
 -----------
 No available documentation.
 ") InsertKnots;
-		static void InsertKnots(const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & AddKnots, const NCollection_Array1<int> * AddMults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Epsilon, const bool Add = true);
+		static void InsertKnots(const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Epsilon, const bool Add = true);
 
 		/****** BSplCLib::InsertKnots ******/
 		/****** md5 signature: 504cf1c677925385b429c7fc08de6042 ******/
@@ -2102,16 +2106,16 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-AddKnots: NCollection_Array1<double>
-AddMults: NCollection_Array1<int> *
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+AddKnots: TColStd_Array1OfReal
+AddMults: TColStd_Array1OfInteger *
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Epsilon: double
 Add: bool (optional, default to true)
 
@@ -2123,7 +2127,7 @@ Description
 -----------
 Insert a sequence of knots <AddKnots> with multiplicities <AddMults>. <AddKnots> must be a non decreasing sequence and verifies: //! Knots(Knots.Lower()) <= AddKnots(AddKnots.Lower()) Knots(Knots.Upper()) >= AddKnots(AddKnots.Upper()) //! The NewPoles and NewWeights arrays must have a length: Poles.Length() + Sum(AddMults()) //! When a knot to insert is identic to an existing knot the multiplicities are added. //! Epsilon is used to test knots for equality. //! When AddMult is negative or null the knot is not inserted. No multiplicity will becomes higher than the degree. //! The new Knots and Multiplicities are copied in <NewKnots> and <NewMults>. //! All the New arrays should be correctly dimensioned. //! When all the new knots are existing knots, i.e. only the multiplicities will change it is safe to use the same arrays as input and output.
 ") InsertKnots;
-		static void InsertKnots(const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & AddKnots, const NCollection_Array1<int> * AddMults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Epsilon, const bool Add = true);
+		static void InsertKnots(const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Epsilon, const bool Add = true);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: f409420224a74ecbaec7e017716212e5 ******/
@@ -2132,10 +2136,10 @@ Insert a sequence of knots <AddKnots> with multiplicities <AddMults>. <AddKnots>
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2145,7 +2149,7 @@ Description
 -----------
 Performs the interpolation of the data given in the Poles array according to the requests in ContactOrderArray that is: if ContactOrderArray(i) has value d it means that Poles(i) contains the dth derivative of the function to be interpolated. The length L of the following arrays must be the same: Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, NCollection_Array1<gp_Pnt> & Poles, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt & Poles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: 4ca9cfa487e905140e8d7c5d52ba79a7 ******/
@@ -2154,10 +2158,10 @@ Performs the interpolation of the data given in the Poles array according to the
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt2d>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2167,7 +2171,7 @@ Description
 -----------
 Performs the interpolation of the data given in the Poles array according to the requests in ContactOrderArray that is: if ContactOrderArray(i) has value d it means that Poles(i) contains the dth derivative of the function to be interpolated. The length L of the following arrays must be the same: Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, NCollection_Array1<gp_Pnt2d> & Poles, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt2d & Poles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: e2df752eaef0572fb5977d568f089368 ******/
@@ -2176,11 +2180,11 @@ Performs the interpolation of the data given in the Poles array according to the
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -2190,7 +2194,7 @@ Description
 -----------
 Performs the interpolation of the data given in the Poles array according to the requests in ContactOrderArray that is: if ContactOrderArray(i) has value d it means that Poles(i) contains the dth derivative of the function to be interpolated. The length L of the following arrays must be the same: Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<double> & Weights, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: 739983ab24ca7a1c03404f3a62b8293f ******/
@@ -2199,11 +2203,11 @@ Performs the interpolation of the data given in the Poles array according to the
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -2213,7 +2217,7 @@ Description
 -----------
 Performs the interpolation of the data given in the Poles array according to the requests in ContactOrderArray that is: if ContactOrderArray(i) has value d it means that Poles(i) contains the dth derivative of the function to be interpolated. The length L of the following arrays must be the same: Parameters, ContactOrderArray, Poles, The length of FlatKnots is Degree + L + 1 Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation at knots or interpolation at Scheonberg points the method will work. The InversionProblem will report 0 if there was no problem else it will give the i.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, NCollection_Array1<gp_Pnt2d> & Poles, NCollection_Array1<double> & Weights, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: fb97a54a5ab501f529db4ffe9b9672f1 ******/
@@ -2222,9 +2226,9 @@ Performs the interpolation of the data given in the Poles array according to the
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
 ArrayDimension: int
 
 Return
@@ -2236,7 +2240,7 @@ Description
 -----------
 Performs the interpolation of the data given in the Poles array according to the requests in ContactOrderArray that is: if ContactOrderArray(i) has value d it means that Poles(i) contains the dth derivative of the function to be interpolated. The length L of the following arrays must be the same: Parameters, ContactOrderArray The length of FlatKnots is Degree + L + 1 The PolesArray is an seen as an Array[1..N][1..ArrayDimension] with N = tge length of the parameters array Warning: the method used to do that interpolation is gauss elimination WITHOUT pivoting. Thus if the diagonal is not dominant there is no guarantee that the algorithm will work. Nevertheless for Cubic interpolation or interpolation at Scheonberg points the method will work The InversionProblem will report 0 if there was no problem else it will give the index of the faulty pivot.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, const int ArrayDimension, Standard_Real &OutValue, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, const int ArrayDimension, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Interpolate ******/
 		/****** md5 signature: 780d4515e195a1cbde334ea2e0586c51 ******/
@@ -2245,9 +2249,9 @@ Performs the interpolation of the data given in the Poles array according to the
 Parameters
 ----------
 Degree: int
-FlatKnots: NCollection_Array1<double>
-Parameters: NCollection_Array1<double>
-ContactOrderArray: NCollection_Array1<int>
+FlatKnots: TColStd_Array1OfReal
+Parameters: TColStd_Array1OfReal
+ContactOrderArray: TColStd_Array1OfInteger
 ArrayDimension: int
 
 Return
@@ -2260,7 +2264,7 @@ Description
 -----------
 No available documentation.
 ") Interpolate;
-		static void Interpolate(const int Degree, const NCollection_Array1<double> & FlatKnots, const NCollection_Array1<double> & Parameters, const NCollection_Array1<int> & ContactOrderArray, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue);
+		static void Interpolate(const int Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::Intervals ******/
 		/****** md5 signature: 407b0cff97f3b0adf109f4cd54edfb99 ******/
@@ -2268,15 +2272,15 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theKnots: NCollection_Array1<double>
-theMults: NCollection_Array1<int>
+theKnots: TColStd_Array1OfReal
+theMults: TColStd_Array1OfInteger
 theDegree: int
 isPeriodic: bool
 theContinuity: int
 theFirst: double
 theLast: double
 theTolerance: double
-theIntervals: NCollection_Array1<double> *
+theIntervals: TColStd_Array1OfReal *
 
 Return
 -------
@@ -2295,7 +2299,7 @@ Input parameter: theLast the end of the target range
 Input parameter: theTolerance the tolerance @param[in,out] theIntervals the array to store intervals if isn't nullptr 
 Return: the number of intervals.
 ") Intervals;
-		static int Intervals(const NCollection_Array1<double> & theKnots, const NCollection_Array1<int> & theMults, int theDegree, bool isPeriodic, int theContinuity, double theFirst, double theLast, double theTolerance, NCollection_Array1<double> * theIntervals);
+		static int Intervals(const TColStd_Array1OfReal & theKnots, const TColStd_Array1OfInteger & theMults, int theDegree, bool isPeriodic, int theContinuity, double theFirst, double theLast, double theTolerance, TColStd_Array1OfReal * theIntervals);
 
 		/****** BSplCLib::IsRational ******/
 		/****** md5 signature: 00e4aa25a78ffed93b6064b4e0245d3a ******/
@@ -2303,7 +2307,7 @@ Return: the number of intervals.
 		%feature("autodoc", "
 Parameters
 ----------
-Weights: NCollection_Array1<double>
+Weights: TColStd_Array1OfReal
 I1: int
 I2: int
 Epsilon: double (optional, default to 0.0)
@@ -2316,7 +2320,7 @@ Description
 -----------
 Returns False if all the weights of the array <Weights> between I1 an I2 are identic. Epsilon is used for comparing weights. If Epsilon is 0. the Epsilon of the first weight is used.
 ") IsRational;
-		static bool IsRational(const NCollection_Array1<double> & Weights, const int I1, const int I2, const double Epsilon = 0.0);
+		static bool IsRational(const TColStd_Array1OfReal & Weights, const int I1, const int I2, const double Epsilon = 0.0);
 
 		/****** BSplCLib::KnotAnalysis ******/
 		/****** md5 signature: 60baf5cca805bb33239510c706cdaa78 ******/
@@ -2326,8 +2330,8 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-CKnots: NCollection_Array1<double>
-CMults: NCollection_Array1<int>
+CKnots: TColStd_Array1OfReal
+CMults: TColStd_Array1OfInteger
 KnotForm: GeomAbs_BSplKnotDistribution
 
 Return
@@ -2338,7 +2342,7 @@ Description
 -----------
 Analyzes the array of knots. Returns the form and the maximum knot multiplicity.
 ") KnotAnalysis;
-		static void KnotAnalysis(const int Degree, const bool Periodic, const NCollection_Array1<double> & CKnots, const NCollection_Array1<int> & CMults, GeomAbs_BSplKnotDistribution & KnotForm, Standard_Integer &OutValue);
+		static void KnotAnalysis(const int Degree, const bool Periodic, const TColStd_Array1OfReal & CKnots, const TColStd_Array1OfInteger & CMults, GeomAbs_BSplKnotDistribution & KnotForm, Standard_Integer &OutValue);
 
 		/****** BSplCLib::KnotForm ******/
 		/****** md5 signature: e6f22b03260a479442cfcd1a49f536a4 ******/
@@ -2346,7 +2350,7 @@ Analyzes the array of knots. Returns the form and the maximum knot multiplicity.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 FromK1: int
 ToK2: int
 
@@ -2358,7 +2362,7 @@ Description
 -----------
 Analyses if the knots distribution is 'Uniform' or 'NonUniform' between the knot FromK1 and the knot ToK2. There is no repetition of knot in the knots'sequence <Knots>.
 ") KnotForm;
-		static BSplCLib_KnotDistribution KnotForm(const NCollection_Array1<double> & Knots, const int FromK1, const int ToK2);
+		static BSplCLib_KnotDistribution KnotForm(const TColStd_Array1OfReal & Knots, const int FromK1, const int ToK2);
 
 		/****** BSplCLib::KnotSequence ******/
 		/****** md5 signature: 5befcb304afe0b45ac498b75c1628014 ******/
@@ -2366,9 +2370,9 @@ Analyses if the knots distribution is 'Uniform' or 'NonUniform' between the knot
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-KnotSeq: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+KnotSeq: TColStd_Array1OfReal
 Periodic: bool (optional, default to false)
 
 Return
@@ -2379,7 +2383,7 @@ Description
 -----------
 No available documentation.
 ") KnotSequence;
-		static void KnotSequence(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<double> & KnotSeq, const bool Periodic = false);
+		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & KnotSeq, const bool Periodic = false);
 
 		/****** BSplCLib::KnotSequence ******/
 		/****** md5 signature: 53295fa09231d0234deaf76cc6acac12 ******/
@@ -2387,11 +2391,11 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool
-KnotSeq: NCollection_Array1<double>
+KnotSeq: TColStd_Array1OfReal
 
 Return
 -------
@@ -2401,7 +2405,7 @@ Description
 -----------
 Computes the sequence of knots KnotSeq with repetition of the knots of multiplicity greater than 1. //! Length of KnotSeq must be KnotSequenceLength(Mults,Degree,Periodic).
 ") KnotSequence;
-		static void KnotSequence(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const int Degree, const bool Periodic, NCollection_Array1<double> & KnotSeq);
+		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const int Degree, const bool Periodic, TColStd_Array1OfReal & KnotSeq);
 
 		/****** BSplCLib::KnotSequenceLength ******/
 		/****** md5 signature: efa2328923c108d5020bc8c2bf96549a ******/
@@ -2409,7 +2413,7 @@ Computes the sequence of knots KnotSeq with repetition of the knots of multiplic
 		%feature("autodoc", "
 Parameters
 ----------
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool
 
@@ -2421,7 +2425,7 @@ Description
 -----------
 Returns the length of the sequence of knots with repetition. //! Periodic: //! Sum(Mults(i), i = Mults.Lower(); i <= Mults.Upper()); //! Non Periodic: //! Sum(Mults(i); i = Mults.Lower(); i < Mults.Upper()) + 2 * Degree.
 ") KnotSequenceLength;
-		static int KnotSequenceLength(const NCollection_Array1<int> & Mults, const int Degree, const bool Periodic);
+		static int KnotSequenceLength(const TColStd_Array1OfInteger & Mults, const int Degree, const bool Periodic);
 
 		/****** BSplCLib::Knots ******/
 		/****** md5 signature: af44ac492f56adc11a854bc254f194ee ******/
@@ -2429,9 +2433,9 @@ Returns the length of the sequence of knots with repetition. //! Periodic: //! S
 		%feature("autodoc", "
 Parameters
 ----------
-KnotSeq: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+KnotSeq: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Periodic: bool (optional, default to false)
 
 Return
@@ -2442,7 +2446,7 @@ Description
 -----------
 Computes the sequence of knots Knots without repetition of the knots of multiplicity greater than 1. //! Length of <Knots> and <Mults> must be KnotsLength(KnotSequence,Periodic).
 ") Knots;
-		static void Knots(const NCollection_Array1<double> & KnotSeq, NCollection_Array1<double> & Knots, NCollection_Array1<int> & Mults, const bool Periodic = false);
+		static void Knots(const TColStd_Array1OfReal & KnotSeq, TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults, const bool Periodic = false);
 
 		/****** BSplCLib::KnotsLength ******/
 		/****** md5 signature: f40a24946ae1a69065b09adb1c711c81 ******/
@@ -2450,7 +2454,7 @@ Computes the sequence of knots Knots without repetition of the knots of multipli
 		%feature("autodoc", "
 Parameters
 ----------
-KnotSeq: NCollection_Array1<double>
+KnotSeq: TColStd_Array1OfReal
 Periodic: bool (optional, default to false)
 
 Return
@@ -2461,7 +2465,7 @@ Description
 -----------
 Returns thelength of the sequence of knots (and Mults) without repetition.
 ") KnotsLength;
-		static int KnotsLength(const NCollection_Array1<double> & KnotSeq, const bool Periodic = false);
+		static int KnotsLength(const TColStd_Array1OfReal & KnotSeq, const bool Periodic = false);
 
 		/****** BSplCLib::LastUKnotIndex ******/
 		/****** md5 signature: 1b5289fbc4b6ee553c20e799545d1a30 ******/
@@ -2470,7 +2474,7 @@ Returns thelength of the sequence of knots (and Mults) without repetition.
 Parameters
 ----------
 Degree: int
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2480,7 +2484,7 @@ Description
 -----------
 Computes the index of the knots value which gives the end point of the curve.
 ") LastUKnotIndex;
-		static int LastUKnotIndex(const int Degree, const NCollection_Array1<int> & Mults);
+		static int LastUKnotIndex(const int Degree, const TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::LocateParameter ******/
 		/****** md5 signature: 235a65dbddc8fcba4206d434525e022b ******/
@@ -2489,8 +2493,8 @@ Computes the index of the knots value which gives the end point of the curve.
 Parameters
 ----------
 Degree: int
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 U: double
 IsPeriodic: bool
 FromK1: int
@@ -2505,7 +2509,7 @@ Description
 -----------
 Locates the parametric value U in the knots sequence between the knot K1 and the knot K2. The value return in Index verifies. //! Knots(Index) <= U < Knots(Index + 1) if U <= Knots (K1) then Index = K1 if U >= Knots (K2) then Index = K2 - 1 //! If Periodic is True U may be modified to fit in the range Knots(K1), Knots(K2). In any case the correct value is returned in NewU. //! Warnings: Index is used as input data to initialize the searching function. Warning: Knots have to be 'with repetitions'.
 ") LocateParameter;
-		static void LocateParameter(const int Degree, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double U, const bool IsPeriodic, const int FromK1, const int ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
+		static void LocateParameter(const int Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double U, const bool IsPeriodic, const int FromK1, const int ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::LocateParameter ******/
 		/****** md5 signature: 27fda83f3f172e929438d4ce26868d21 ******/
@@ -2514,7 +2518,7 @@ Locates the parametric value U in the knots sequence between the knot K1 and the
 Parameters
 ----------
 Degree: int
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 U: double
 IsPeriodic: bool
 FromK1: int
@@ -2529,7 +2533,7 @@ Description
 -----------
 Locates the parametric value U in the knots sequence between the knot K1 and the knot K2. The value return in Index verifies. //! Knots(Index) <= U < Knots(Index + 1) if U <= Knots (K1) then Index = K1 if U >= Knots (K2) then Index = K2 - 1 //! If Periodic is True U may be modified to fit in the range Knots(K1), Knots(K2). In any case the correct value is returned in NewU. //! Warnings: Index is used as input data to initialize the searching function. Warning: Knots have to be 'flat'.
 ") LocateParameter;
-		static void LocateParameter(const int Degree, const NCollection_Array1<double> & Knots, const double U, const bool IsPeriodic, const int FromK1, const int ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
+		static void LocateParameter(const int Degree, const TColStd_Array1OfReal & Knots, const double U, const bool IsPeriodic, const int FromK1, const int ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::LocateParameter ******/
 		/****** md5 signature: 69f47f15d5f4455717c4c3aee97bf920 ******/
@@ -2538,8 +2542,8 @@ Locates the parametric value U in the knots sequence between the knot K1 and the
 Parameters
 ----------
 Degree: int
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int> *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger *
 U: double
 Periodic: bool
 
@@ -2552,7 +2556,7 @@ Description
 -----------
 No available documentation.
 ") LocateParameter;
-		static void LocateParameter(const int Degree, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> * Mults, const double U, const bool Periodic, Standard_Integer &OutValue, Standard_Real &OutValue);
+		static void LocateParameter(const int Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, const double U, const bool Periodic, Standard_Integer &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::MaxDegree ******/
 		/****** md5 signature: 88089bb9c3b2a23c0cb823cd83b36e06 ******/
@@ -2573,7 +2577,7 @@ returns the degree maxima for a BSplineCurve.
 		%feature("autodoc", "
 Parameters
 ----------
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 K1: int
 K2: int
 
@@ -2585,7 +2589,7 @@ Description
 -----------
 Finds the greatest multiplicity in a set of knots between K1 and K2. Mults is the multiplicity associated with each knot value.
 ") MaxKnotMult;
-		static int MaxKnotMult(const NCollection_Array1<int> & Mults, const int K1, const int K2);
+		static int MaxKnotMult(const TColStd_Array1OfInteger & Mults, const int K1, const int K2);
 
 		/****** BSplCLib::MaxUnitWeightsSize ******/
 		/****** md5 signature: 45d23fd5749328f8943a881b326ed227 ******/
@@ -2610,13 +2614,13 @@ Tolerance: double
 StartValue: double
 EndValue: double
 Degree1: int
-Knots1: NCollection_Array1<double>
-Mults1: NCollection_Array1<int>
+Knots1: TColStd_Array1OfReal
+Mults1: TColStd_Array1OfInteger
 Degree2: int
-Knots2: NCollection_Array1<double>
-Mults2: NCollection_Array1<int>
-NewKnots: NCollection_HArray1<double
-NewMults: NCollection_HArray1<int
+Knots2: TColStd_Array1OfReal
+Mults2: TColStd_Array1OfInteger
+NewKnots: TColStd_HArray1OfReal
+NewMults: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -2626,7 +2630,7 @@ Description
 -----------
 Merges two knot vector by setting the starting and ending values to StartValue and EndValue.
 ") MergeBSplineKnots;
-		static void MergeBSplineKnots(const double Tolerance, const double StartValue, const double EndValue, const int Degree1, const NCollection_Array1<double> & Knots1, const NCollection_Array1<int> & Mults1, const int Degree2, const NCollection_Array1<double> & Knots2, const NCollection_Array1<int> & Mults2, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<double> > & NewKnots, opencascade::handle<NCollection_HArray1<int> > & NewMults);
+		static void MergeBSplineKnots(const double Tolerance, const double StartValue, const double EndValue, const int Degree1, const TColStd_Array1OfReal & Knots1, const TColStd_Array1OfInteger & Mults1, const int Degree2, const TColStd_Array1OfReal & Knots2, const TColStd_Array1OfInteger & Mults2, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & NewKnots, opencascade::handle<TColStd_HArray1OfInteger> & NewMults);
 
 		/****** BSplCLib::MinKnotMult ******/
 		/****** md5 signature: f3bc91a7edf7229538a883759ecaa245 ******/
@@ -2634,7 +2638,7 @@ Merges two knot vector by setting the starting and ending values to StartValue a
 		%feature("autodoc", "
 Parameters
 ----------
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 K1: int
 K2: int
 
@@ -2646,7 +2650,7 @@ Description
 -----------
 Finds the lowest multiplicity in a set of knots between K1 and K2. Mults is the multiplicity associated with each knot value.
 ") MinKnotMult;
-		static int MinKnotMult(const NCollection_Array1<int> & Mults, const int K1, const int K2);
+		static int MinKnotMult(const TColStd_Array1OfInteger & Mults, const int K1, const int K2);
 
 		/****** BSplCLib::MovePoint ******/
 		/****** md5 signature: 9523abea54d085a88b244bab294b6053 ******/
@@ -2659,10 +2663,10 @@ Displ: gp_Vec2d
 Index1: int
 Index2: int
 Degree: int
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt2d>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2673,7 +2677,7 @@ Description
 -----------
 Find the new poles which allows an old point (with a given <u> as parameter) to reach a new position Index1 and Index2 indicate the range of poles we can move (1, NbPoles-1) or (2, NbPoles) -> no constraint for one side don't enter (1,NbPoles) -> error: rigid move (2, NbPoles-1) -> the ends are enforced (3, NbPoles-2) -> the ends and the tangency are enforced if Problem in BSplineBasis calculation, no change for the curve and FirstIndex, LastIndex = 0.
 ") MovePoint;
-		static void MovePoint(const double U, const gp_Vec2d & Displ, const int Index1, const int Index2, const int Degree, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, NCollection_Array1<gp_Pnt2d> & NewPoles);
+		static void MovePoint(const double U, const gp_Vec2d & Displ, const int Index1, const int Index2, const int Degree, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, TColgp_Array1OfPnt2d & NewPoles);
 
 		/****** BSplCLib::MovePoint ******/
 		/****** md5 signature: 2f385a3f21f2930b3152ce40b45fd878 ******/
@@ -2686,10 +2690,10 @@ Displ: gp_Vec
 Index1: int
 Index2: int
 Degree: int
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2700,7 +2704,7 @@ Description
 -----------
 Find the new poles which allows an old point (with a given <u> as parameter) to reach a new position Index1 and Index2 indicate the range of poles we can move (1, NbPoles-1) or (2, NbPoles) -> no constraint for one side don't enter (1,NbPoles) -> error: rigid move (2, NbPoles-1) -> the ends are enforced (3, NbPoles-2) -> the ends and the tangency are enforced if Problem in BSplineBasis calculation, no change for the curve and FirstIndex, LastIndex = 0.
 ") MovePoint;
-		static void MovePoint(const double U, const gp_Vec & Displ, const int Index1, const int Index2, const int Degree, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, NCollection_Array1<gp_Pnt> & NewPoles);
+		static void MovePoint(const double U, const gp_Vec & Displ, const int Index1, const int Index2, const int Degree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, TColgp_Array1OfPnt & NewPoles);
 
 		/****** BSplCLib::MovePointAndTangent ******/
 		/****** md5 signature: d064d73a2859d1ca4bce7c4337e06fa3 ******/
@@ -2714,8 +2718,8 @@ Tolerance: double
 Degree: int
 StartingCondition: int
 EndingCondition: int
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
 
 Return
 -------
@@ -2729,7 +2733,7 @@ Description
 -----------
 This is the dimension free version of the utility U is the parameter must be within the first FlatKnots and the last FlatKnots Delta is the amount the curve has to be moved DeltaDerivative is the amount the derivative has to be moved. Delta and DeltaDerivative must be array of dimension ArrayDimension Degree is the degree of the BSpline and the FlatKnots are the knots of the BSpline Starting Condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... Same holds for EndingCondition Poles are the poles of the curve Weights are the weights of the curve if not NULL NewPoles are the poles of the deformed curve ErrorStatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions The way to solve this problem is to add knots to the BSpline If StartCondition = 1 and EndCondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a C1 cubic you will need have at least 2 internal knots.
 ") MovePointAndTangent;
-		static void MovePointAndTangent(const double U, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, Standard_Real &OutValue, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, Standard_Real &OutValue, Standard_Integer &OutValue);
+		static void MovePointAndTangent(const double U, const int ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, Standard_Real &OutValue, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Real &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::MovePointAndTangent ******/
 		/****** md5 signature: 23023ed0ba18d3bfdd08ad0a917d8c0b ******/
@@ -2744,10 +2748,10 @@ Tolerance: double
 Degree: int
 StartingCondition: int
 EndingCondition: int
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2757,7 +2761,7 @@ Description
 -----------
 This is the dimension free version of the utility U is the parameter must be within the first FlatKnots and the last FlatKnots Delta is the amount the curve has to be moved DeltaDerivative is the amount the derivative has to be moved. Delta and DeltaDerivative must be array of dimension ArrayDimension Degree is the degree of the BSpline and the FlatKnots are the knots of the BSpline Starting Condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... Same holds for EndingCondition Poles are the poles of the curve Weights are the weights of the curve if not NULL NewPoles are the poles of the deformed curve ErrorStatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions The way to solve this problem is to add knots to the BSpline If StartCondition = 1 and EndCondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a C1 cubic you will need have at least 2 internal knots.
 ") MovePointAndTangent;
-		static void MovePointAndTangent(const double U, const gp_Vec & Delta, const gp_Vec & DeltaDerivative, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, NCollection_Array1<gp_Pnt> & NewPoles, Standard_Integer &OutValue);
+		static void MovePointAndTangent(const double U, const gp_Vec & Delta, const gp_Vec & DeltaDerivative, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::MovePointAndTangent ******/
 		/****** md5 signature: e86ace21279bc65714292e26ba607ced ******/
@@ -2772,10 +2776,10 @@ Tolerance: double
 Degree: int
 StartingCondition: int
 EndingCondition: int
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt2d>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2785,7 +2789,7 @@ Description
 -----------
 This is the dimension free version of the utility U is the parameter must be within the first FlatKnots and the last FlatKnots Delta is the amount the curve has to be moved DeltaDerivative is the amount the derivative has to be moved. Delta and DeltaDerivative must be array of dimension ArrayDimension Degree is the degree of the BSpline and the FlatKnots are the knots of the BSpline Starting Condition if = -1 means the starting point of the curve can move = 0 means the starting point of the curve cannot move but tangent starting point of the curve cannot move = 1 means the starting point and tangents cannot move = 2 means the starting point tangent and curvature cannot move = ... Same holds for EndingCondition Poles are the poles of the curve Weights are the weights of the curve if not NULL NewPoles are the poles of the deformed curve ErrorStatus will be 0 if no error happened 1 if there are not enough knots/poles the imposed conditions The way to solve this problem is to add knots to the BSpline If StartCondition = 1 and EndCondition = 1 then you need at least 4 + 2 = 6 poles so for example to have a C1 cubic you will need have at least 2 internal knots.
 ") MovePointAndTangent;
-		static void MovePointAndTangent(const double U, const gp_Vec2d & Delta, const gp_Vec2d & DeltaDerivative, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, NCollection_Array1<gp_Pnt2d> & NewPoles, Standard_Integer &OutValue);
+		static void MovePointAndTangent(const double U, const gp_Vec2d & Delta, const gp_Vec2d & DeltaDerivative, const double Tolerance, const int Degree, const int StartingCondition, const int EndingCondition, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
 		/****** BSplCLib::MultForm ******/
 		/****** md5 signature: ae3331d77ca8825968c886b5232f2a9d ******/
@@ -2793,7 +2797,7 @@ This is the dimension free version of the utility U is the parameter must be wit
 		%feature("autodoc", "
 Parameters
 ----------
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 FromK1: int
 ToK2: int
 
@@ -2805,7 +2809,7 @@ Description
 -----------
 Analyses the distribution of multiplicities between the knot FromK1 and the Knot ToK2.
 ") MultForm;
-		static BSplCLib_MultDistribution MultForm(const NCollection_Array1<int> & Mults, const int FromK1, const int ToK2);
+		static BSplCLib_MultDistribution MultForm(const TColStd_Array1OfInteger & Mults, const int FromK1, const int ToK2);
 
 		/****** BSplCLib::NbPoles ******/
 		/****** md5 signature: ce27447dcd760658d907f394c1736653 ******/
@@ -2815,7 +2819,7 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2825,33 +2829,33 @@ Description
 -----------
 Returns the number of poles of the curve. Returns 0 if one of the multiplicities is incorrect. //! * Non positive. //! * Greater than Degree, or Degree+1 at the first and last knot of a non periodic curve. //! * The last periodicity on a periodic curve is not equal to the first.
 ") NbPoles;
-		static int NbPoles(const int Degree, const bool Periodic, const NCollection_Array1<int> & Mults);
+		static int NbPoles(const int Degree, const bool Periodic, const TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::NoMults ******/
 		/****** md5 signature: 201f782b460a00d724c2c12741112544 ******/
 		%feature("compactdefaultargs") NoMults;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int> *
+TColStd_Array1OfInteger *
 
 Description
 -----------
 Used as argument for a flatknots evaluation.
 ") NoMults;
-		static NCollection_Array1<int> * NoMults();
+		static TColStd_Array1OfInteger * NoMults();
 
 		/****** BSplCLib::NoWeights ******/
 		/****** md5 signature: 92aedb658cced8a52effdd7906442c7b ******/
 		%feature("compactdefaultargs") NoWeights;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<double> *
+TColStd_Array1OfReal *
 
 Description
 -----------
 Used as argument for a non rational curve.
 ") NoWeights;
-		static NCollection_Array1<double> * NoWeights();
+		static TColStd_Array1OfReal * NoWeights();
 
 		/****** BSplCLib::PoleIndex ******/
 		/****** md5 signature: 0ba166a6663046539e7e0088c969ecea ******/
@@ -2862,7 +2866,7 @@ Parameters
 Degree: int
 Index: int
 Periodic: bool
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -2872,7 +2876,7 @@ Description
 -----------
 Return the index of the first Pole to use on the span Mults(Index) - Mults(Index+1). This index must be added to Poles.Lower().
 ") PoleIndex;
-		static int PoleIndex(const int Degree, const int Index, const bool Periodic, const NCollection_Array1<int> & Mults);
+		static int PoleIndex(const int Degree, const int Index, const bool Periodic, const TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::PolesCoefficients ******/
 		/****** md5 signature: 19808068b0cec1e9ca4d4682e99bdcbc ******/
@@ -2880,8 +2884,8 @@ Return the index of the first Pole to use on the span Mults(Index) - Mults(Index
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-CachePoles: NCollection_Array1<gp_Pnt2d>
+Poles: TColgp_Array1OfPnt2d
+CachePoles: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -2891,7 +2895,7 @@ Description
 -----------
 No available documentation.
 ") PolesCoefficients;
-		static void PolesCoefficients(const NCollection_Array1<gp_Pnt2d> & Poles, NCollection_Array1<gp_Pnt2d> & CachePoles);
+		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, TColgp_Array1OfPnt2d & CachePoles);
 
 		/****** BSplCLib::PolesCoefficients ******/
 		/****** md5 signature: 25463173aef9471e25f1c8c49ccea29c ******/
@@ -2899,10 +2903,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-CachePoles: NCollection_Array1<gp_Pnt2d>
-CacheWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+CachePoles: TColgp_Array1OfPnt2d
+CacheWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -2912,7 +2916,7 @@ Description
 -----------
 No available documentation.
 ") PolesCoefficients;
-		static void PolesCoefficients(const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<gp_Pnt2d> & CachePoles, NCollection_Array1<double> * CacheWeights);
+		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
 		/****** BSplCLib::PolesCoefficients ******/
 		/****** md5 signature: 73318ae0c9a3d89e98b5834a0b7abbe4 ******/
@@ -2920,8 +2924,8 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-CachePoles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
+CachePoles: TColgp_Array1OfPnt
 
 Return
 -------
@@ -2931,7 +2935,7 @@ Description
 -----------
 No available documentation.
 ") PolesCoefficients;
-		static void PolesCoefficients(const NCollection_Array1<gp_Pnt> & Poles, NCollection_Array1<gp_Pnt> & CachePoles);
+		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt & CachePoles);
 
 		/****** BSplCLib::PolesCoefficients ******/
 		/****** md5 signature: 0c0a6af007f0f30391192d745c42f1b9 ******/
@@ -2939,10 +2943,10 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-CachePoles: NCollection_Array1<gp_Pnt>
-CacheWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+CachePoles: TColgp_Array1OfPnt
+CacheWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -2952,7 +2956,7 @@ Description
 -----------
 Encapsulation of BuildCache to perform the evaluation of the Taylor expansion for beziercurves at parameter 0. Warning: To be used for Beziercurves ONLY!!!.
 ") PolesCoefficients;
-		static void PolesCoefficients(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<gp_Pnt> & CachePoles, NCollection_Array1<double> * CacheWeights);
+		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
 		/****** BSplCLib::PrepareInsertKnots ******/
 		/****** md5 signature: fb40c888618f6d9a55af35c36a2d1eab ******/
@@ -2962,10 +2966,10 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-AddKnots: NCollection_Array1<double>
-AddMults: NCollection_Array1<int> *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+AddKnots: TColStd_Array1OfReal
+AddMults: TColStd_Array1OfInteger *
 Epsilon: double
 Add: bool (optional, default to true)
 
@@ -2978,7 +2982,7 @@ Description
 -----------
 Returns in <NbPoles, NbKnots> the new number of poles and knots if the sequence of knots <AddKnots, AddMults> is inserted in the sequence <Knots, Mults>. //! Epsilon is used to compare knots for equality. //! If Add is True the multiplicities on equal knots are added. //! If Add is False the max value of the multiplicities is kept. //! Return False if: The knew knots are knot increasing. The new knots are not in the range.
 ") PrepareInsertKnots;
-		static bool PrepareInsertKnots(const int Degree, const bool Periodic, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & AddKnots, const NCollection_Array1<int> * AddMults, Standard_Integer &OutValue, Standard_Integer &OutValue, const double Epsilon, const bool Add = true);
+		static bool PrepareInsertKnots(const int Degree, const bool Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, Standard_Integer &OutValue, Standard_Integer &OutValue, const double Epsilon, const bool Add = true);
 
 		/****** BSplCLib::PrepareTrimming ******/
 		/****** md5 signature: 7b0e51aad6fe7cb528eff36c2d933892 ******/
@@ -2988,8 +2992,8 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 U1: double
 U2: double
 
@@ -3002,7 +3006,7 @@ Description
 -----------
 Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve resulting from the trimming of the BSplinecurve defined with <degree>, <knots>, <mults>.
 ") PrepareTrimming;
-		static void PrepareTrimming(const int Degree, const bool Periodic, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double U1, const double U2, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void PrepareTrimming(const int Degree, const bool Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double U1, const double U2, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::PrepareUnperiodize ******/
 		/****** md5 signature: 1403796fb4781b1a777c106a72a932bb ******/
@@ -3011,7 +3015,7 @@ Set in <NbKnots> and <NbPoles> the number of Knots and Poles of the curve result
 Parameters
 ----------
 Degree: int
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3022,7 +3026,7 @@ Description
 -----------
 Set in <NbKnots> and <NbPolesToAdd> the number of Knots and Poles of the NotPeriodic Curve identical at the periodic curve with a degree <Degree>, a knots-distribution with Multiplicities <Mults>.
 ") PrepareUnperiodize;
-		static void PrepareUnperiodize(const int Degree, const NCollection_Array1<int> & Mults, Standard_Integer &OutValue, Standard_Integer &OutValue);
+		static void PrepareUnperiodize(const int Degree, const TColStd_Array1OfInteger & Mults, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****** BSplCLib::RaiseMultiplicity ******/
 		/****** md5 signature: 406b3669f49677f13bbb04ba3ee29a9c ******/
@@ -3034,12 +3038,12 @@ KnotIndex: int
 Mult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3049,7 +3053,7 @@ Description
 -----------
 No available documentation.
 ") RaiseMultiplicity;
-		static void RaiseMultiplicity(const int KnotIndex, const int Mult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void RaiseMultiplicity(const int KnotIndex, const int Mult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::RaiseMultiplicity ******/
 		/****** md5 signature: 8442ffbb492558261ce873354dcf03fe ******/
@@ -3061,12 +3065,12 @@ KnotIndex: int
 Mult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3076,7 +3080,7 @@ Description
 -----------
 Raise the multiplicity of knot to <UMult>. //! The new control points are returned. Knots and Mults are not updated.
 ") RaiseMultiplicity;
-		static void RaiseMultiplicity(const int KnotIndex, const int Mult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void RaiseMultiplicity(const int KnotIndex, const int Mult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::RemoveKnot ******/
 		/****** md5 signature: 02589c7f188d43b6dcb2d94b431617bc ******/
@@ -3089,12 +3093,12 @@ Mult: int
 Degree: int
 Periodic: bool
 Dimension: int
-Poles: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<double>
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColStd_Array1OfReal
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Tolerance: double
 
 Return
@@ -3105,7 +3109,7 @@ Description
 -----------
 No available documentation.
 ") RemoveKnot;
-		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const int Dimension, const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<double> & NewPoles, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Tolerance);
+		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const int Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Tolerance);
 
 		/****** BSplCLib::RemoveKnot ******/
 		/****** md5 signature: 9789e4e2cfdfcc0a7dd4a89850ab839a ******/
@@ -3117,14 +3121,14 @@ Index: int
 Mult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Tolerance: double
 
 Return
@@ -3135,7 +3139,7 @@ Description
 -----------
 No available documentation.
 ") RemoveKnot;
-		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Tolerance);
+		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Tolerance);
 
 		/****** BSplCLib::RemoveKnot ******/
 		/****** md5 signature: bff12d670d08e4c7bb37f8e7988c5ae8 ******/
@@ -3147,14 +3151,14 @@ Index: int
 Mult: int
 Degree: int
 Periodic: bool
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
 Tolerance: double
 
 Return
@@ -3165,7 +3169,7 @@ Description
 -----------
 Decrement the multiplicity of <Knots(Index)> to <Mult>. If <Mult> is null the knot is removed. //! As there are two ways to compute the new poles the midlle will be used as long as the distance is lower than Tolerance. //! If a distance is bigger than tolerance the methods returns False and the new arrays are not modified. //! A low tolerance can be used to test if the knot can be removed without modifying the curve. //! A high tolerance can be used to 'smooth' the curve.
 ") RemoveKnot;
-		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, const double Tolerance);
+		static bool RemoveKnot(const int Index, const int Mult, const int Degree, const bool Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const double Tolerance);
 
 		/****** BSplCLib::Reparametrize ******/
 		/****** md5 signature: 80b5061ee1013b4cbece9f91962c34fc ******/
@@ -3175,7 +3179,7 @@ Parameters
 ----------
 U1: double
 U2: double
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -3185,7 +3189,7 @@ Description
 -----------
 Reparametrizes a B-spline curve to [U1, U2]. The knot values are recomputed such that Knots (Lower) = U1 and Knots (Upper) = U2 but the knot form is not modified. Warnings: In the array Knots the values must be in ascending order. U1 must not be equal to U2 to avoid division by zero.
 ") Reparametrize;
-		static void Reparametrize(const double U1, const double U2, NCollection_Array1<double> & Knots);
+		static void Reparametrize(const double U1, const double U2, TColStd_Array1OfReal & Knots);
 
 		/****** BSplCLib::Resolution ******/
 		/****** md5 signature: f43eb0f99241ab62e54e46aa421fabe7 ******/
@@ -3195,8 +3199,8 @@ Parameters
 ----------
 ArrayDimension: int
 NumPoles: int
-Weights: NCollection_Array1<double> *
-FlatKnots: NCollection_Array1<double>
+Weights: TColStd_Array1OfReal *
+FlatKnots: TColStd_Array1OfReal
 Degree: int
 Tolerance3D: double
 
@@ -3209,7 +3213,7 @@ Description
 -----------
 given a tolerance in 3D space returns a tolerance in U parameter space such that all u1 and u0 in the domain of the curve f(u) | u1 - u0 | < UTolerance and we have |f (u1) - f (u0)| < Tolerance3D.
 ") Resolution;
-		static void Resolution(Standard_Real &OutValue, const int ArrayDimension, const int NumPoles, const NCollection_Array1<double> * Weights, const NCollection_Array1<double> & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
+		static void Resolution(Standard_Real &OutValue, const int ArrayDimension, const int NumPoles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
 
 		/****** BSplCLib::Resolution ******/
 		/****** md5 signature: 1e280883aa90580694771ea0e9e91d08 ******/
@@ -3217,10 +3221,10 @@ given a tolerance in 3D space returns a tolerance in U parameter space such that
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 NumPoles: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 Degree: int
 Tolerance3D: double
 
@@ -3232,7 +3236,7 @@ Description
 -----------
 given a tolerance in 3D space returns a tolerance in U parameter space such that all u1 and u0 in the domain of the curve f(u) | u1 - u0 | < UTolerance and we have |f (u1) - f (u0)| < Tolerance3D.
 ") Resolution;
-		static void Resolution(const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const int NumPoles, const NCollection_Array1<double> & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
+		static void Resolution(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const int NumPoles, const TColStd_Array1OfReal & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
 
 		/****** BSplCLib::Resolution ******/
 		/****** md5 signature: 849dc3cbd7c43768d60f9feff7171a51 ******/
@@ -3240,10 +3244,10 @@ given a tolerance in 3D space returns a tolerance in U parameter space such that
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 NumPoles: int
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 Degree: int
 Tolerance3D: double
 
@@ -3255,7 +3259,7 @@ Description
 -----------
 given a tolerance in 3D space returns a tolerance in U parameter space such that all u1 and u0 in the domain of the curve f(u) | u1 - u0 | < UTolerance and we have |f (u1) - f (u0)| < Tolerance3D.
 ") Resolution;
-		static void Resolution(const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const int NumPoles, const NCollection_Array1<double> & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
+		static void Resolution(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const int NumPoles, const TColStd_Array1OfReal & FlatKnots, const int Degree, const double Tolerance3D, Standard_Real &OutValue);
 
 		/****** BSplCLib::Reverse ******/
 		/****** md5 signature: 96a63fde26d7b9857e76b9b836807658 ******/
@@ -3263,7 +3267,7 @@ given a tolerance in 3D space returns a tolerance in U parameter space such that
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
 
 Return
 -------
@@ -3273,7 +3277,7 @@ Description
 -----------
 Reverses the array knots to become the knots sequence of the reversed curve.
 ") Reverse;
-		static void Reverse(NCollection_Array1<double> & Knots);
+		static void Reverse(TColStd_Array1OfReal & Knots);
 
 		/****** BSplCLib::Reverse ******/
 		/****** md5 signature: dfcaa50054603c1c8ad4d2bc7b949253 ******/
@@ -3281,7 +3285,7 @@ Reverses the array knots to become the knots sequence of the reversed curve.
 		%feature("autodoc", "
 Parameters
 ----------
-Mults: NCollection_Array1<int>
+Mults: TColStd_Array1OfInteger
 
 Return
 -------
@@ -3291,7 +3295,7 @@ Description
 -----------
 Reverses the array of multiplicities.
 ") Reverse;
-		static void Reverse(NCollection_Array1<int> & Mults);
+		static void Reverse(TColStd_Array1OfInteger & Mults);
 
 		/****** BSplCLib::Reverse ******/
 		/****** md5 signature: 90ad3f9e8b13ac6dd665fd5047137b18 ******/
@@ -3299,7 +3303,7 @@ Reverses the array of multiplicities.
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt>
+Poles: TColgp_Array1OfPnt
 Last: int
 
 Return
@@ -3310,7 +3314,7 @@ Description
 -----------
 Reverses the array of poles. Last is the index of the new first pole. On a non periodic curve last is Poles.Upper(). On a periodic curve last is //! (number of flat knots - degree - 1) //! or //! (sum of multiplicities(but for the last) + degree - 1).
 ") Reverse;
-		static void Reverse(NCollection_Array1<gp_Pnt> & Poles, const int Last);
+		static void Reverse(TColgp_Array1OfPnt & Poles, const int Last);
 
 		/****** BSplCLib::Reverse ******/
 		/****** md5 signature: 006b50d16623921c31e7871c459041ea ******/
@@ -3318,7 +3322,7 @@ Reverses the array of poles. Last is the index of the new first pole. On a non p
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<gp_Pnt2d>
+Poles: TColgp_Array1OfPnt2d
 Last: int
 
 Return
@@ -3329,7 +3333,7 @@ Description
 -----------
 Reverses the array of poles.
 ") Reverse;
-		static void Reverse(NCollection_Array1<gp_Pnt2d> & Poles, const int Last);
+		static void Reverse(TColgp_Array1OfPnt2d & Poles, const int Last);
 
 		/****** BSplCLib::Reverse ******/
 		/****** md5 signature: 76a2dba983dbe98378062e5e6c07eaf5 ******/
@@ -3337,7 +3341,7 @@ Reverses the array of poles.
 		%feature("autodoc", "
 Parameters
 ----------
-Weights: NCollection_Array1<double>
+Weights: TColStd_Array1OfReal
 Last: int
 
 Return
@@ -3348,7 +3352,7 @@ Description
 -----------
 Reverses the array of poles.
 ") Reverse;
-		static void Reverse(NCollection_Array1<double> & Weights, const int Last);
+		static void Reverse(TColStd_Array1OfReal & Weights, const int Last);
 
 		/****** BSplCLib::SolveBandedSystem ******/
 		/****** md5 signature: b94b18269784c6456227fb0a5dfc66bd ******/
@@ -3380,7 +3384,7 @@ Parameters
 Matrix: math_Matrix
 UpperBandWidth: int
 LowerBandWidth: int
-Array: NCollection_Array1<gp_Pnt2d>
+Array: TColgp_Array1OfPnt2d
 
 Return
 -------
@@ -3390,7 +3394,7 @@ Description
 -----------
 This solves the system Matrix.X = B with when Matrix is factored in LU form The Array has the length of the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension.
 ") SolveBandedSystem;
-		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, NCollection_Array1<gp_Pnt2d> & Array);
+		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, TColgp_Array1OfPnt2d & Array);
 
 		/****** BSplCLib::SolveBandedSystem ******/
 		/****** md5 signature: f772b838b6d3cd46d0b6369b6c5e8862 ******/
@@ -3401,7 +3405,7 @@ Parameters
 Matrix: math_Matrix
 UpperBandWidth: int
 LowerBandWidth: int
-Array: NCollection_Array1<gp_Pnt>
+Array: TColgp_Array1OfPnt
 
 Return
 -------
@@ -3411,7 +3415,7 @@ Description
 -----------
 This solves the system Matrix.X = B with when Matrix is factored in LU form The Array has the length of the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension.
 ") SolveBandedSystem;
-		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, NCollection_Array1<gp_Pnt> & Array);
+		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, TColgp_Array1OfPnt & Array);
 
 		/****** BSplCLib::SolveBandedSystem ******/
 		/****** md5 signature: 385d8efc5adf66024d620ab1cab24997 ******/
@@ -3446,8 +3450,8 @@ Matrix: math_Matrix
 UpperBandWidth: int
 LowerBandWidth: int
 HomogenousFlag: bool
-Array: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double>
+Array: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -3457,7 +3461,7 @@ Description
 -----------
 This solves the system Matrix.X = B with when Matrix is factored in LU form The Array is an seen as an Array[1..N][1..ArrayDimension] with N = the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension. If HomogeneousFlag == 0 the Poles are multiplied by the Weights upon Entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
 ") SolveBandedSystem;
-		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, const bool HomogenousFlag, NCollection_Array1<gp_Pnt2d> & Array, NCollection_Array1<double> & Weights);
+		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, const bool HomogenousFlag, TColgp_Array1OfPnt2d & Array, TColStd_Array1OfReal & Weights);
 
 		/****** BSplCLib::SolveBandedSystem ******/
 		/****** md5 signature: 3fda7081a0b8ccfe5653aa9375930c29 ******/
@@ -3469,8 +3473,8 @@ Matrix: math_Matrix
 UpperBandWidth: int
 LowerBandWidth: int
 HomogeneousFlag: bool
-Array: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double>
+Array: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal
 
 Return
 -------
@@ -3480,7 +3484,7 @@ Description
 -----------
 This solves the system Matrix.X = B with when Matrix is factored in LU form The Array is an seen as an Array[1..N][1..ArrayDimension] with N = the rank of the matrix Matrix. The result is stored in Array when each coordinate is solved that is B is the array whose values are B[i] = Array[i][p] for each p in 1..ArrayDimension If HomogeneousFlag == 0 the Poles are multiplied by the Weights upon Entry and once interpolation is carried over the result of the poles are divided by the result of the interpolation of the weights. Otherwise if HomogenousFlag == 1 the Poles and Weights are treated homogeneously that is that those are interpolated as they are and result is returned without division by the interpolated weights.
 ") SolveBandedSystem;
-		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, const bool HomogeneousFlag, NCollection_Array1<gp_Pnt> & Array, NCollection_Array1<double> & Weights);
+		static int SolveBandedSystem(const math_Matrix & Matrix, const int UpperBandWidth, const int LowerBandWidth, const bool HomogeneousFlag, TColgp_Array1OfPnt & Array, TColStd_Array1OfReal & Weights);
 
 		/****** BSplCLib::TangExtendToConstraint ******/
 		/****** md5 signature: 72d0b825d9653a3912af646f6f3d566b ******/
@@ -3488,12 +3492,12 @@ This solves the system Matrix.X = B with when Matrix is factored in LU form The 
 		%feature("autodoc", "
 Parameters
 ----------
-FlatKnots: NCollection_Array1<double>
+FlatKnots: TColStd_Array1OfReal
 C1Coefficient: double
 NumPoles: int
 Dimension: int
 Degree: int
-ConstraintPoint: NCollection_Array1<double>
+ConstraintPoint: TColStd_Array1OfReal
 Continuity: int
 After: bool
 
@@ -3509,7 +3513,7 @@ Description
 -----------
 Extend a BSpline nD using the tangency map <C1Coefficient> is the coefficient of reparametrisation <Continuity> must be equal to 1, 2 or 3. <Degree> must be greater or equal than <Continuity> + 1. //! Warning: <KnotsResult> and <PolesResult> must be dimensioned properly.
 ") TangExtendToConstraint;
-		static void TangExtendToConstraint(const NCollection_Array1<double> & FlatKnots, const double C1Coefficient, const int NumPoles, Standard_Real &OutValue, const int Dimension, const int Degree, const NCollection_Array1<double> & ConstraintPoint, const int Continuity, const bool After, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+		static void TangExtendToConstraint(const TColStd_Array1OfReal & FlatKnots, const double C1Coefficient, const int NumPoles, Standard_Real &OutValue, const int Dimension, const int Degree, const TColStd_Array1OfReal & ConstraintPoint, const int Continuity, const bool After, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** BSplCLib::Trimming ******/
 		/****** md5 signature: 502a5214cd1e6f655cb857842058c9cd ******/
@@ -3520,14 +3524,14 @@ Parameters
 Degree: int
 Periodic: bool
 Dimension: int
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-Poles: NCollection_Array1<double>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+Poles: TColStd_Array1OfReal
 U1: double
 U2: double
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<double>
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
+NewPoles: TColStd_Array1OfReal
 
 Return
 -------
@@ -3537,7 +3541,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const int Degree, const bool Periodic, const int Dimension, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & Poles, const double U1, const double U2, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, NCollection_Array1<double> & NewPoles);
+		static void Trimming(const int Degree, const bool Periodic, const int Dimension, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Poles, const double U1, const double U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewPoles);
 
 		/****** BSplCLib::Trimming ******/
 		/****** md5 signature: 7c654ce22eef2e3b3dcaa248555297c9 ******/
@@ -3547,16 +3551,16 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
 U1: double
 U2: double
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3566,7 +3570,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const int Degree, const bool Periodic, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, const double U1, const double U2, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void Trimming(const int Degree, const bool Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const double U1, const double U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::Trimming ******/
 		/****** md5 signature: 3871fa358f86f73eab8bfcca19f715b7 ******/
@@ -3576,16 +3580,16 @@ Parameters
 ----------
 Degree: int
 Periodic: bool
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
 U1: double
 U2: double
-NewKnots: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
+NewKnots: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3595,7 +3599,7 @@ Description
 -----------
 No available documentation.
 ") Trimming;
-		static void Trimming(const int Degree, const bool Periodic, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, const double U1, const double U2, NCollection_Array1<double> & NewKnots, NCollection_Array1<int> & NewMults, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void Trimming(const int Degree, const bool Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const double U1, const double U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::UnitWeights ******/
 		/****** md5 signature: 973a3666d63138060f560663338e281a ******/
@@ -3639,12 +3643,12 @@ Parameters
 ----------
 Degree: int
 Dimension: int
-Mults: NCollection_Array1<int>
-Knots: NCollection_Array1<double>
-Poles: NCollection_Array1<double>
-NewMults: NCollection_Array1<int>
-NewKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<double>
+Mults: TColStd_Array1OfInteger
+Knots: TColStd_Array1OfReal
+Poles: TColStd_Array1OfReal
+NewMults: TColStd_Array1OfInteger
+NewKnots: TColStd_Array1OfReal
+NewPoles: TColStd_Array1OfReal
 
 Return
 -------
@@ -3654,7 +3658,7 @@ Description
 -----------
 No available documentation.
 ") Unperiodize;
-		static void Unperiodize(const int Degree, const int Dimension, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & Knots, const NCollection_Array1<double> & Poles, NCollection_Array1<int> & NewMults, NCollection_Array1<double> & NewKnots, NCollection_Array1<double> & NewPoles);
+		static void Unperiodize(const int Degree, const int Dimension, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfReal & Poles, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfReal & NewPoles);
 
 		/****** BSplCLib::Unperiodize ******/
 		/****** md5 signature: 5a5abe8e7a50cfb3870abcc3adb8bb7a ******/
@@ -3663,14 +3667,14 @@ No available documentation.
 Parameters
 ----------
 Degree: int
-Mults: NCollection_Array1<int>
-Knots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt>
-Weights: NCollection_Array1<double> *
-NewMults: NCollection_Array1<int>
-NewKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt>
-NewWeights: NCollection_Array1<double> *
+Mults: TColStd_Array1OfInteger
+Knots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt
+Weights: TColStd_Array1OfReal *
+NewMults: TColStd_Array1OfInteger
+NewKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3680,7 +3684,7 @@ Description
 -----------
 No available documentation.
 ") Unperiodize;
-		static void Unperiodize(const int Degree, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & Knots, const NCollection_Array1<gp_Pnt> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<int> & NewMults, NCollection_Array1<double> & NewKnots, NCollection_Array1<gp_Pnt> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void Unperiodize(const int Degree, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 		/****** BSplCLib::Unperiodize ******/
 		/****** md5 signature: c860d18783013ce5d77cf0679b9e1bac ******/
@@ -3689,14 +3693,14 @@ No available documentation.
 Parameters
 ----------
 Degree: int
-Mults: NCollection_Array1<int>
-Knots: NCollection_Array1<double>
-Poles: NCollection_Array1<gp_Pnt2d>
-Weights: NCollection_Array1<double> *
-NewMults: NCollection_Array1<int>
-NewKnots: NCollection_Array1<double>
-NewPoles: NCollection_Array1<gp_Pnt2d>
-NewWeights: NCollection_Array1<double> *
+Mults: TColStd_Array1OfInteger
+Knots: TColStd_Array1OfReal
+Poles: TColgp_Array1OfPnt2d
+Weights: TColStd_Array1OfReal *
+NewMults: TColStd_Array1OfInteger
+NewKnots: TColStd_Array1OfReal
+NewPoles: TColgp_Array1OfPnt2d
+NewWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3706,7 +3710,7 @@ Description
 -----------
 No available documentation.
 ") Unperiodize;
-		static void Unperiodize(const int Degree, const NCollection_Array1<int> & Mults, const NCollection_Array1<double> & Knots, const NCollection_Array1<gp_Pnt2d> & Poles, const NCollection_Array1<double> * Weights, NCollection_Array1<int> & NewMults, NCollection_Array1<double> & NewKnots, NCollection_Array1<gp_Pnt2d> & NewPoles, NCollection_Array1<double> * NewWeights);
+		static void Unperiodize(const int Degree, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
 };
 
@@ -3734,9 +3738,9 @@ Parameters
 ----------
 theDegree: int
 thePeriodic: bool
-theFlatKnots: NCollection_Array1<double>
-thePoles2d: NCollection_Array1<gp_Pnt2d>
-theWeights: NCollection_Array1<double> * (optional, default to nullptr)
+theFlatKnots: TColStd_Array1OfReal
+thePoles2d: TColgp_Array1OfPnt2d
+theWeights: TColStd_Array1OfReal * (optional, default to nullptr)
 
 Return
 -------
@@ -3746,7 +3750,7 @@ Description
 -----------
 Constructor, prepares data structures for caching values on a 2d curve. \param theDegree degree of the curve \param thePeriodic identify whether the curve is periodic \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles2d array of poles of 2D curve \param theWeights array of weights of corresponding poles.
 ") BSplCLib_Cache;
-		 BSplCLib_Cache(const int & theDegree, const bool & thePeriodic, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt2d> & thePoles2d, const NCollection_Array1<double> * theWeights = nullptr);
+		 BSplCLib_Cache(const int & theDegree, const bool & thePeriodic, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles2d, const TColStd_Array1OfReal * theWeights = nullptr);
 
 		/****** BSplCLib_Cache::BSplCLib_Cache ******/
 		/****** md5 signature: 8c94c3f41b0b14f114690fb71a0fe7ff ******/
@@ -3756,9 +3760,9 @@ Parameters
 ----------
 theDegree: int
 thePeriodic: bool
-theFlatKnots: NCollection_Array1<double>
-thePoles: NCollection_Array1<gp_Pnt>
-theWeights: NCollection_Array1<double> * (optional, default to nullptr)
+theFlatKnots: TColStd_Array1OfReal
+thePoles: TColgp_Array1OfPnt
+theWeights: TColStd_Array1OfReal * (optional, default to nullptr)
 
 Return
 -------
@@ -3768,7 +3772,7 @@ Description
 -----------
 Constructor, prepares data structures for caching values on a 3d curve. \param theDegree degree of the curve \param thePeriodic identify whether the curve is periodic \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles array of poles of 3D curve \param theWeights array of weights of corresponding poles.
 ") BSplCLib_Cache;
-		 BSplCLib_Cache(const int & theDegree, const bool & thePeriodic, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt> & thePoles, const NCollection_Array1<double> * theWeights = nullptr);
+		 BSplCLib_Cache(const int & theDegree, const bool & thePeriodic, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights = nullptr);
 
 		/****** BSplCLib_Cache::BuildCache ******/
 		/****** md5 signature: d87b5058e425537d188232d7edc33185 ******/
@@ -3777,9 +3781,9 @@ Constructor, prepares data structures for caching values on a 3d curve. \param t
 Parameters
 ----------
 theParameter: double
-theFlatKnots: NCollection_Array1<double>
-thePoles2d: NCollection_Array1<gp_Pnt2d>
-theWeights: NCollection_Array1<double> *
+theFlatKnots: TColStd_Array1OfReal
+thePoles2d: TColgp_Array1OfPnt2d
+theWeights: TColStd_Array1OfReal *
 
 Return
 -------
@@ -3789,7 +3793,7 @@ Description
 -----------
 Recomputes the cache data for 2D curves. Does not verify validity of the cache \param theParameter the value on the knot's axis to identify the span \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles2d array of poles of 2D curve \param theWeights array of weights of corresponding poles.
 ") BuildCache;
-		void BuildCache(const double & theParameter, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt2d> & thePoles2d, const NCollection_Array1<double> * theWeights);
+		void BuildCache(const double & theParameter, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles2d, const TColStd_Array1OfReal * theWeights);
 
 		/****** BSplCLib_Cache::BuildCache ******/
 		/****** md5 signature: d7812158414173d19f77aae37ca031aa ******/
@@ -3798,9 +3802,9 @@ Recomputes the cache data for 2D curves. Does not verify validity of the cache \
 Parameters
 ----------
 theParameter: double
-theFlatKnots: NCollection_Array1<double>
-thePoles: NCollection_Array1<gp_Pnt>
-theWeights: NCollection_Array1<double> * (optional, default to nullptr)
+theFlatKnots: TColStd_Array1OfReal
+thePoles: TColgp_Array1OfPnt
+theWeights: TColStd_Array1OfReal * (optional, default to nullptr)
 
 Return
 -------
@@ -3810,7 +3814,7 @@ Description
 -----------
 Recomputes the cache data for 3D curves. Does not verify validity of the cache \param theParameter the value on the knot's axis to identify the span \param theFlatKnots knots of Bezier/B-spline curve (with repetitions) \param thePoles array of poles of 3D curve \param theWeights array of weights of corresponding poles.
 ") BuildCache;
-		void BuildCache(const double & theParameter, const NCollection_Array1<double> & theFlatKnots, const NCollection_Array1<gp_Pnt> & thePoles, const NCollection_Array1<double> * theWeights = nullptr);
+		void BuildCache(const double & theParameter, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights = nullptr);
 
 		/****** BSplCLib_Cache::D0 ******/
 		/****** md5 signature: a26533dce1d3e0742117b0c711d50d25 ******/

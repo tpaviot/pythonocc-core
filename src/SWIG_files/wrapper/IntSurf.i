@@ -116,14 +116,33 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 %template(IntSurf_ListOfPntOn2S) NCollection_List<IntSurf_PntOn2S>;
 
 %extend NCollection_List<IntSurf_PntOn2S> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntSurf_ListIteratorOfListOfPntOn2S(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntSurf_SequenceOfCouple) NCollection_Sequence<IntSurf_Couple>;
 
 %extend NCollection_Sequence<IntSurf_Couple> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -132,6 +151,13 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 %template(IntSurf_SequenceOfInteriorPoint) NCollection_Sequence<IntSurf_InteriorPoint>;
 
 %extend NCollection_Sequence<IntSurf_InteriorPoint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -140,6 +166,13 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 %template(IntSurf_SequenceOfPathPoint) NCollection_Sequence<IntSurf_PathPoint>;
 
 %extend NCollection_Sequence<IntSurf_PathPoint> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -148,6 +181,13 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
 %template(IntSurf_SequenceOfPntOn2S) NCollection_Sequence<IntSurf_PntOn2S>;
 
 %extend NCollection_Sequence<IntSurf_PntOn2S> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()

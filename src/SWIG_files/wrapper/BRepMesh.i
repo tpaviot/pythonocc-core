@@ -59,6 +59,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmesh.html"
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<IMeshData_module.hxx>
+#include<TColgp_module.hxx>
 #include<TShort_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
@@ -90,6 +91,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmesh.html"
 %import Geom2d.i
 %import Geom.i
 %import IMeshData.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -131,18 +133,32 @@ BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BRepMesh_BaseMeshAlgo)
 %wrap_handle(BRepMesh_Classifier)
+%wrap_handle(BRepMesh_Context)
+%wrap_handle(BRepMesh_CurveTessellator)
 %wrap_handle(BRepMesh_DataStructureOfDelaun)
 %wrap_handle(BRepMesh_Deflection)
+%wrap_handle(BRepMesh_DelabellaMeshAlgoFactory)
 %wrap_handle(BRepMesh_DiscretAlgoFactory)
 %wrap_handle(BRepMesh_DiscretRoot)
+%wrap_handle(BRepMesh_EdgeDiscret)
 %wrap_handle(BRepMesh_FaceChecker)
+%wrap_handle(BRepMesh_FaceDiscret)
+%wrap_handle(BRepMesh_MeshAlgoFactory)
 %wrap_handle(BRepMesh_MeshTool)
+%wrap_handle(BRepMesh_ModelBuilder)
+%wrap_handle(BRepMesh_ModelHealer)
+%wrap_handle(BRepMesh_ModelPostProcessor)
+%wrap_handle(BRepMesh_ModelPreProcessor)
 %wrap_handle(BRepMesh_SelectorOfDataStructureOfDelaun)
 %wrap_handle(BRepMesh_ShapeTool)
+%wrap_handle(BRepMesh_ShapeVisitor)
 %wrap_handle(BRepMesh_VertexTool)
 %wrap_handle(BRepMesh_IncrementalMesh)
 %wrap_handle(BRepMesh_IncrementalMeshFactory)
+%wrap_handle(BRepMesh_DelaunayBaseMeshAlgo)
+%wrap_handle(BRepMesh_DelabellaBaseMeshAlgo)
 /* end handles declaration */
 
 /* templates */
@@ -157,7 +173,7 @@ BRepMesh_Deleted = BRepMesh_DegreeOfFreedom.BRepMesh_Deleted
 %nodefaultctor BRepMesh_BaseMeshAlgo;
 class BRepMesh_BaseMeshAlgo : public IMeshTools_MeshAlgo {
 	public:
-typedef NCollection_Shared<NCollection_Vector<gp_Pnt>> VectorOfPnt;
+typedef NCollection_Shared<NCollection_DynamicArray<gp_Pnt>> VectorOfPnt;
 		/****** BRepMesh_BaseMeshAlgo::Perform ******/
 		/****** md5 signature: a8d5e9a9a4e2a82eb235898db8b8c964 ******/
 		%feature("compactdefaultargs") Perform;
@@ -180,6 +196,8 @@ Performs processing of the given face.
 
 };
 
+
+%make_alias(BRepMesh_BaseMeshAlgo)
 
 %extend BRepMesh_BaseMeshAlgo {
 	%pythoncode {
@@ -879,6 +897,8 @@ Constructor.
 };
 
 
+%make_alias(BRepMesh_Context)
+
 %extend BRepMesh_Context {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -970,6 +990,8 @@ Return: True in case of valid result, false elewhere.
 
 };
 
+
+%make_alias(BRepMesh_CurveTessellator)
 
 %extend BRepMesh_CurveTessellator {
 	%pythoncode {
@@ -1424,24 +1446,6 @@ Parameter isForce if True node will be removed even if movability is not Free.
 ") RemoveNode;
 		void RemoveNode(const int theIndex, const bool isForce = false);
 
-		/****** BRepMesh_DataStructureOfDelaun::Statistics ******/
-		/****** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ******/
-		%feature("compactdefaultargs") Statistics;
-		%feature("autodoc", "
-Parameters
-----------
-
-Return
--------
-theStream: Standard_OStream
-
-Description
------------
-Dumps information about this structure. 
-Parameter theStream stream to be used for dump.
-") Statistics;
-		void Statistics(std::ostream &OutValue);
-
 		/****** BRepMesh_DataStructureOfDelaun::SubstituteElement ******/
 		/****** md5 signature: d63528a82ccda5662087898549f08f62 ******/
 		%feature("compactdefaultargs") SubstituteElement;
@@ -1889,6 +1893,8 @@ Creates instance of meshing algorithm for the given type of surface.
 
 };
 
+
+%make_alias(BRepMesh_DelabellaMeshAlgoFactory)
 
 %extend BRepMesh_DelabellaMeshAlgoFactory {
 	%pythoncode {
@@ -2675,6 +2681,8 @@ Updates 3d discrete edge model using the given tessellation tool.
 };
 
 
+%make_alias(BRepMesh_EdgeDiscret)
+
 %extend BRepMesh_EdgeDiscret {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2692,7 +2700,7 @@ Updates 3d discrete edge model using the given tessellation tool.
 *****************************/
 class BRepMesh_FaceChecker : public Standard_Transient {
 	public:
-typedef NCollection_Shared<NCollection_Vector<Segment>> Segments;
+typedef NCollection_Shared<NCollection_DynamicArray<Segment>> Segments;
 typedef NCollection_Shared<NCollection_Array1<opencascade ::handle<Segments>>> ArrayOfSegments;
 		class Segment {};
 		/****** BRepMesh_FaceChecker::BRepMesh_FaceChecker ******/
@@ -2764,6 +2772,8 @@ Constructor.
 
 };
 
+
+%make_alias(BRepMesh_FaceDiscret)
 
 %extend BRepMesh_FaceDiscret {
 	%pythoncode {
@@ -3061,6 +3071,8 @@ Creates instance of meshing algorithm for the given type of surface.
 };
 
 
+%make_alias(BRepMesh_MeshAlgoFactory)
+
 %extend BRepMesh_MeshAlgoFactory {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3304,6 +3316,8 @@ Constructor.
 };
 
 
+%make_alias(BRepMesh_ModelBuilder)
+
 %extend BRepMesh_ModelBuilder {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3330,6 +3344,8 @@ Constructor.
 
 };
 
+
+%make_alias(BRepMesh_ModelHealer)
 
 %extend BRepMesh_ModelHealer {
 	%pythoncode {
@@ -3358,6 +3374,8 @@ Constructor.
 };
 
 
+%make_alias(BRepMesh_ModelPostProcessor)
+
 %extend BRepMesh_ModelPostProcessor {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3384,6 +3402,8 @@ Constructor.
 
 };
 
+
+%make_alias(BRepMesh_ModelPreProcessor)
 
 %extend BRepMesh_ModelPreProcessor {
 	%pythoncode {
@@ -4339,6 +4359,8 @@ Handles TopoDS_Edge object.
 };
 
 
+%make_alias(BRepMesh_ShapeVisitor)
+
 %extend BRepMesh_ShapeVisitor {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4508,13 +4530,13 @@ def __eq__(self, right):
 class BRepMesh_Triangulator {
 	public:
 		/****** BRepMesh_Triangulator::BRepMesh_Triangulator ******/
-		/****** md5 signature: 1adb085db48e79112c75f535a7a41d14 ******/
+		/****** md5 signature: 699052d5cc149a39c6622c82868ab031 ******/
 		%feature("compactdefaultargs") BRepMesh_Triangulator;
 		%feature("autodoc", "
 Parameters
 ----------
-theXYZs: NCollection_Vector<gp_XYZ>
-theWires: NCollection_List<NCollection_Sequence<int> >
+theXYZs: NCollection_DynamicArray<gp_XYZ>
+theWires: NCollection_List<TColStd_SequenceOfInteger>
 theNorm: gp_Dir
 
 Return
@@ -4525,7 +4547,7 @@ Description
 -----------
 Constructor. Initialized tool by the given parameters.
 ") BRepMesh_Triangulator;
-		 BRepMesh_Triangulator(const NCollection_Vector<gp_XYZ> & theXYZs, const NCollection_List<NCollection_Sequence<int> > & theWires, const gp_Dir & theNorm);
+		 BRepMesh_Triangulator(const NCollection_DynamicArray<gp_XYZ> & theXYZs, const NCollection_List<TColStd_SequenceOfInteger> & theWires, const gp_Dir & theNorm);
 
 		/****** BRepMesh_Triangulator::Perform ******/
 		/****** md5 signature: 12b937c665ea1f7fb66486a29a7a1903 ******/
@@ -4569,7 +4591,7 @@ Set messenger for output information without this Message::DefaultMessenger() wi
 		%feature("autodoc", "
 Parameters
 ----------
-theNodes: NCollection_Array1<gp_Pnt>
+theNodes: TColgp_Array1OfPnt
 thePolyTriangles: NCollection_List<Poly_Triangle>
 
 Return
@@ -4580,7 +4602,7 @@ Description
 -----------
 Performs conversion of the given list of triangles to Poly_Triangulation.
 ") ToPolyTriangulation;
-		static opencascade::handle<Poly_Triangulation> ToPolyTriangulation(const NCollection_Array1<gp_Pnt> & theNodes, const NCollection_List<Poly_Triangle> & thePolyTriangles);
+		static opencascade::handle<Poly_Triangulation> ToPolyTriangulation(const TColgp_Array1OfPnt & theNodes, const NCollection_List<Poly_Triangle> & thePolyTriangles);
 
 };
 
@@ -5318,23 +5340,6 @@ Parameter theToleranceY tolerance for Y dimension.
 ") SetTolerance;
 		void SetTolerance(const double theToleranceX, const double theToleranceY);
 
-		/****** BRepMesh_VertexTool::Statistics ******/
-		/****** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ******/
-		%feature("compactdefaultargs") Statistics;
-		%feature("autodoc", "
-Parameters
-----------
-
-Return
--------
-theStream: Standard_OStream
-
-Description
------------
-Prints statistics.
-") Statistics;
-		void Statistics(std::ostream &OutValue);
-
 		/****** BRepMesh_VertexTool::Substitute ******/
 		/****** md5 signature: 2a4563718012e8ba084360267c1d7acc ******/
 		%feature("compactdefaultargs") Substitute;
@@ -6021,6 +6026,8 @@ Constructor.
 };
 
 
+%make_alias(BRepMesh_DelaunayBaseMeshAlgo)
+
 %extend BRepMesh_DelaunayBaseMeshAlgo {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6177,6 +6184,8 @@ Constructor.
 
 };
 
+
+%make_alias(BRepMesh_DelabellaBaseMeshAlgo)
 
 %extend BRepMesh_DelabellaBaseMeshAlgo {
 	%pythoncode {

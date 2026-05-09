@@ -3,8 +3,10 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
+from OCC.Core.TColgp import *
 from OCC.Core.gp import *
 from OCC.Core.math import *
+from OCC.Core.TColStd import *
 
 
 class CSLib_DerivativeStatus(IntEnum):
@@ -48,6 +50,14 @@ CSLib_D1NuIsParallelD1Nv = CSLib_NormalStatus.CSLib_D1NuIsParallelD1Nv
 class cslib:
     @overload
     @staticmethod
+    def DNNUV(theNu: int, theNv: int, theDerSurf: TColgp_Array2OfVec) -> gp_Vec: ...
+    @overload
+    @staticmethod
+    def DNNUV(theNu: int, theNv: int, theDerSurf1: TColgp_Array2OfVec, theDerSurf2: TColgp_Array2OfVec) -> gp_Vec: ...
+    @staticmethod
+    def DNNormal(theNu: int, theNv: int, theDerNUV: TColgp_Array2OfVec, theIduref: Optional[int] = 0, theIdvref: Optional[int] = 0) -> gp_Vec: ...
+    @overload
+    @staticmethod
     def Normal(theD1U: gp_Vec, theD1V: gp_Vec, theSinTol: float, theNormal: gp_Dir) -> CSLib_DerivativeStatus: ...
     @overload
     @staticmethod
@@ -57,7 +67,7 @@ class cslib:
     def Normal(theD1U: gp_Vec, theD1V: gp_Vec, theMagTol: float, theNormal: gp_Dir) -> CSLib_NormalStatus: ...
 
 class CSLib_NormalPolyDef(math_FunctionWithDerivative):
-    pass
+    def __init__(self, theK0: int, theLi: TColStd_Array1OfReal) -> None: ...
 
 #classnotwrapped
 class CSLib_Class2d: ...

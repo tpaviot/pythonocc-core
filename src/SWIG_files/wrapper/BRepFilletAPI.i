@@ -47,11 +47,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfilletapi.htm
 #include<BRepBuilderAPI_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
+#include<TopTools_module.hxx>
 #include<ChFi2d_module.hxx>
 #include<TopOpeBRepBuild_module.hxx>
 #include<ChFiDS_module.hxx>
 #include<ChFi3d_module.hxx>
 #include<Law_module.hxx>
+#include<TColgp_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -90,11 +92,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfilletapi.htm
 %import BRepBuilderAPI.i
 %import TopoDS.i
 %import Message.i
+%import TopTools.i
 %import ChFi2d.i
 %import TopOpeBRepBuild.i
 %import ChFiDS.i
 %import ChFi3d.i
 %import Law.i
+%import TColgp.i
 %import Geom.i
 %import GeomAbs.i
 
@@ -591,13 +595,13 @@ Update the result and set the Done flag.
 		%feature("compactdefaultargs") ChamferEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 Returns the table of chamfers on the face modified by this algorithm.
 ") ChamferEdges;
-		const NCollection_Sequence<TopoDS_Shape> ChamferEdges();
+		const TopTools_SequenceOfShape & ChamferEdges();
 
 		/****** BRepFilletAPI_MakeFillet2d::DescendantEdge ******/
 		/****** md5 signature: aeb8944df5eff8bc10450ec6f2cf0e76 ******/
@@ -622,13 +626,13 @@ Returns the chamfered or filleted edge built from the edge E on the face modifie
 		%feature("compactdefaultargs") FilletEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<TopoDS_Shape>
+TopTools_SequenceOfShape
 
 Description
 -----------
 Returns the table of fillets on the face modified by this algorithm.
 ") FilletEdges;
-		const NCollection_Sequence<TopoDS_Shape> FilletEdges();
+		const TopTools_SequenceOfShape & FilletEdges();
 
 		/****** BRepFilletAPI_MakeFillet2d::HasDescendant ******/
 		/****** md5 signature: 365b4df1a18354984e8758587033cb70 ******/
@@ -713,13 +717,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepFilletAPI_MakeFillet2d::ModifyChamfer ******/
 		/****** md5 signature: 48770fe1b90a246f42a86504f6052639 ******/
@@ -832,13 +836,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Return the Edges created for curve I.
 ") NewEdges;
-		const NCollection_List<TopoDS_Shape> NewEdges(const int I);
+		const TopTools_ListOfShape & NewEdges(const int I);
 
 		/****** BRepFilletAPI_MakeFillet2d::RemoveChamfer ******/
 		/****** md5 signature: e2fe904642b9955c8a660d5a9fc1f9db ******/
@@ -1170,13 +1174,13 @@ EorV: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <EorV>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & EorV);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & EorV);
 
 		/****** BRepFilletAPI_MakeChamfer::GetDist ******/
 		/****** md5 signature: 7fd61b153d7190ea44e1ceb34110d3dd ******/
@@ -1333,13 +1337,13 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <F>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFilletAPI_MakeChamfer::NbContours ******/
 		/****** md5 signature: f8e44d3c13b70146476faf1a4da75633 ******/
@@ -1709,7 +1713,7 @@ Adds a fillet description in the builder - builds a contour of tangent edges, - 
 		%feature("autodoc", "
 Parameters
 ----------
-UandR: NCollection_Array1<gp_Pnt2d>
+UandR: TColgp_Array1OfPnt2d
 E: TopoDS_Edge
 
 Return
@@ -1720,7 +1724,7 @@ Description
 -----------
 Adds a fillet description in the builder - builds a contour of tangent edges, - sets the radius evolution law interpolating the values given in the array UandR: //! p2d.X() = relative parameter on the spine [0,1] p2d.Y() = value of the radius.
 ") Add;
-		void Add(const NCollection_Array1<gp_Pnt2d> & UandR, const TopoDS_Edge & E);
+		void Add(const TColgp_Array1OfPnt2d & UandR, const TopoDS_Edge & E);
 
 		/****** BRepFilletAPI_MakeFillet::BadShape ******/
 		/****** md5 signature: bc4bc683dd2daee18cd73177f824f6ce ******/
@@ -1922,13 +1926,13 @@ EorV: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <EorV>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & EorV);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & EorV);
 
 		/****** BRepFilletAPI_MakeFillet::GetBounds ******/
 		/****** md5 signature: 6074bc0a95d0dad129ffc96863913f3f ******/
@@ -2096,13 +2100,13 @@ F: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <F>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & F);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & F);
 
 		/****** BRepFilletAPI_MakeFillet::NbComputedSurfaces ******/
 		/****** md5 signature: e48001905aea524ddac6966e32d0ada7 ******/
@@ -2220,13 +2224,13 @@ I: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Return the faces created for surface <I>.
 ") NewFaces;
-		const NCollection_List<TopoDS_Shape> NewFaces(const int I);
+		const TopTools_ListOfShape & NewFaces(const int I);
 
 		/****** BRepFilletAPI_MakeFillet::Radius ******/
 		/****** md5 signature: 57aa4caaba33f42753e0de69d19c617b ******/
@@ -2499,7 +2503,7 @@ Sets the parameters of the fillet along the contour of index IC generated using 
 		%feature("autodoc", "
 Parameters
 ----------
-UandR: NCollection_Array1<gp_Pnt2d>
+UandR: TColgp_Array1OfPnt2d
 IC: int
 IinC: int
 
@@ -2511,7 +2515,7 @@ Description
 -----------
 Sets the parameters of the fillet along the contour of index IC generated using the Add function in the internal data structure of this algorithm, where the radius of the fillet evolves according to the evolution law which interpolates the set of parameter and radius pairs given in the array UandR as follows: - the X coordinate of a point in UandR defines a relative parameter on the contour (i.e. a parameter between 0 and 1), - the Y coordinate of a point in UandR gives the corresponding value of the radius, and the radius evolves between the first and last vertices of the contour of index IC.
 ") SetRadius;
-		void SetRadius(const NCollection_Array1<gp_Pnt2d> & UandR, const int IC, const int IinC);
+		void SetRadius(const TColgp_Array1OfPnt2d & UandR, const int IC, const int IinC);
 
 		/****** BRepFilletAPI_MakeFillet::SetRadius ******/
 		/****** md5 signature: 96a61a863a28ba92c361af409cc20f91 ******/

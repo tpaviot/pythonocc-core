@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_inttools.html"
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom2dHatch_module.hxx>
@@ -92,6 +93,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_inttools.html"
 %import TopoDS.i
 %import gp.i
 %import Geom.i
+%import TColStd.i
 %import TopAbs.i
 %import Bnd.i
 %import Geom2dHatch.i
@@ -141,25 +143,61 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_ListOfBox) NCollection_List<Bnd_Box>;
 
 %extend NCollection_List<Bnd_Box> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfBox(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_ListOfCurveRangeSample) NCollection_List<IntTools_CurveRangeSample>;
 
 %extend NCollection_List<IntTools_CurveRangeSample> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfCurveRangeSample(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_ListOfSurfaceRangeSample) NCollection_List<IntTools_SurfaceRangeSample>;
 
 %extend NCollection_List<IntTools_SurfaceRangeSample> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = IntTools_ListIteratorOfListOfSurfaceRangeSample(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample>;
@@ -167,6 +205,13 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_SequenceOfCommonPrts) NCollection_Sequence<IntTools_CommonPrt>;
 
 %extend NCollection_Sequence<IntTools_CommonPrt> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -175,6 +220,13 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_SequenceOfCurves) NCollection_Sequence<IntTools_Curve>;
 
 %extend NCollection_Sequence<IntTools_Curve> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -183,6 +235,13 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_SequenceOfPntOn2Faces) NCollection_Sequence<IntTools_PntOn2Faces>;
 
 %extend NCollection_Sequence<IntTools_PntOn2Faces> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -191,6 +250,13 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_SequenceOfRanges) NCollection_Sequence<IntTools_Range>;
 
 %extend NCollection_Sequence<IntTools_Range> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -199,6 +265,13 @@ Array1ExtendIter(IntTools_Root)
 %template(IntTools_SequenceOfRoots) NCollection_Sequence<IntTools_Root>;
 
 %extend NCollection_Sequence<IntTools_Root> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -323,7 +396,7 @@ tMax: double
 tMin: double
 Discret: int
 Deflect: double
-anArgs: NCollection_Array1<double>
+anArgs: TColStd_Array1OfReal
 
 Return
 -------
@@ -333,7 +406,7 @@ Description
 -----------
 No available documentation.
 ") PrepareArgs;
-		static int PrepareArgs(BRepAdaptor_Curve & C, const double tMax, const double tMin, const int Discret, const double Deflect, NCollection_Array1<double> & anArgs);
+		static int PrepareArgs(BRepAdaptor_Curve & C, const double tMax, const double tMin, const int Discret, const double Deflect, TColStd_Array1OfReal & anArgs);
 
 		/****** IntTools::RemoveIdenticalRoots ******/
 		/****** md5 signature: 66298b2d36f515de5ebf77c070854eaa ******/
@@ -3244,7 +3317,7 @@ build set of ranges which consists of one range with boundary values theFirstBou
 		%feature("autodoc", "
 Parameters
 ----------
-theSortedArray: NCollection_Array1<double>
+theSortedArray: TColStd_Array1OfReal
 theInitFlag: int
 
 Return
@@ -3255,7 +3328,7 @@ Description
 -----------
 Build set of ranges based on the array of progressive sorted values //! Warning: The constructor do not check if the values of array are not sorted It should be checked before function invocation.
 ") IntTools_MarkedRangeSet;
-		 IntTools_MarkedRangeSet(const NCollection_Array1<double> & theSortedArray, const int theInitFlag);
+		 IntTools_MarkedRangeSet(const TColStd_Array1OfReal & theSortedArray, const int theInitFlag);
 
 		/****** IntTools_MarkedRangeSet::Flag ******/
 		/****** md5 signature: 395c5934506db02625e6465478cda7ac ******/
@@ -3322,13 +3395,13 @@ theValue: double
 
 Return
 -------
-NCollection_Sequence<int>
+TColStd_SequenceOfInteger
 
 Description
 -----------
 No available documentation.
 ") GetIndices;
-		const NCollection_Sequence<int> & GetIndices(const double theValue);
+		const TColStd_SequenceOfInteger & GetIndices(const double theValue);
 
 		/****** IntTools_MarkedRangeSet::InsertRange ******/
 		/****** md5 signature: 4517595576d752d576bb91a3e6732c34 ******/
@@ -3486,7 +3559,7 @@ Set flag theFlag for range with index theIndex.
 		%feature("autodoc", "
 Parameters
 ----------
-theSortedArray: NCollection_Array1<double>
+theSortedArray: TColStd_Array1OfReal
 theInitFlag: int
 
 Return
@@ -3497,7 +3570,7 @@ Description
 -----------
 Build set of ranges based on the array of progressive sorted values //! Warning: The function do not check if the values of array are not sorted It should be checked before function invocation.
 ") SetRanges;
-		void SetRanges(const NCollection_Array1<double> & theSortedArray, const int theInitFlag);
+		void SetRanges(const TColStd_Array1OfReal & theSortedArray, const int theInitFlag);
 
 };
 
@@ -6164,7 +6237,7 @@ Description
 -----------
 No available documentation.
 ") DecompositionOfWLine;
-		static bool DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const bool theAvoidLConstructor, const double theTol, NCollection_Sequence<opencascade::handle<IntPatch_Line> > & theNewLines, const opencascade::handle<IntTools_Context > &);
+		static bool DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const bool theAvoidLConstructor, const double theTol, NCollection_Sequence<opencascade::handle<IntPatch_Line>> & theNewLines, const opencascade::handle<IntTools_Context > &);
 
 		/****** IntTools_WLineTool::NotUseSurfacesForApprox ******/
 		/****** md5 signature: bb55cc6c1a25e98ff2aa465392389b8b ******/

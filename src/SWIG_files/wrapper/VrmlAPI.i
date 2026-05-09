@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlapi.html"
 #include<RWMesh_module.hxx>
 #include<VrmlConverter_module.hxx>
 #include<Vrml_module.hxx>
+#include<Quantity_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
 #include<Geom_module.hxx>
@@ -100,6 +101,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_vrmlapi.html"
 %import RWMesh.i
 %import VrmlConverter.i
 %import Vrml.i
+%import Quantity.i
 %import TDocStd.i
 
 %pythoncode {
@@ -358,7 +360,7 @@ Resets all parameters (representation, deflection) to their default values..
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: NCollection_HArray1<Quantity_Color
+Color: Quantity_HArray1OfColor
 
 Return
 -------
@@ -368,7 +370,7 @@ Description
 -----------
 No available documentation.
 ") SetAmbientColorToMaterial;
-		void SetAmbientColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
+		void SetAmbientColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****** VrmlAPI_Writer::SetDeflection ******/
 		/****** md5 signature: cadbb483fd0847577f031c832400cb85 ******/
@@ -395,7 +397,7 @@ Sets the deflection aDef of the mesh algorithm which is used to compute the shad
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: NCollection_HArray1<Quantity_Color
+Color: Quantity_HArray1OfColor
 
 Return
 -------
@@ -405,7 +407,7 @@ Description
 -----------
 No available documentation.
 ") SetDiffuseColorToMaterial;
-		void SetDiffuseColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
+		void SetDiffuseColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****** VrmlAPI_Writer::SetEmissiveColorToMaterial ******/
 		/****** md5 signature: 97942ca574623dfb81f9d6bb10231902 ******/
@@ -414,7 +416,7 @@ No available documentation.
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: NCollection_HArray1<Quantity_Color
+Color: Quantity_HArray1OfColor
 
 Return
 -------
@@ -424,7 +426,7 @@ Description
 -----------
 No available documentation.
 ") SetEmissiveColorToMaterial;
-		void SetEmissiveColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
+		void SetEmissiveColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****** VrmlAPI_Writer::SetRepresentation ******/
 		/****** md5 signature: 0369655e9fa20e8a3bf3d2fc75c6f6c5 ******/
@@ -470,7 +472,7 @@ No available documentation.
 Parameters
 ----------
 aMaterial: Vrml_Material
-Color: NCollection_HArray1<Quantity_Color
+Color: Quantity_HArray1OfColor
 
 Return
 -------
@@ -480,7 +482,7 @@ Description
 -----------
 No available documentation.
 ") SetSpecularColorToMaterial;
-		void SetSpecularColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<NCollection_HArray1<Quantity_Color> > & Color);
+		void SetSpecularColorToMaterial(opencascade::handle<Vrml_Material> & aMaterial, const opencascade::handle<Quantity_HArray1OfColor> & Color);
 
 		/****** VrmlAPI_Writer::SetTransparencyToMaterial ******/
 		/****** md5 signature: b0e3375a7c3c442f58797d0a206d3f9e ******/

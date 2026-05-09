@@ -111,6 +111,8 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(StepShape_Block)
+%wrap_handle(StepShape_BooleanResult)
 %wrap_handle(StepShape_BoxDomain)
 %wrap_handle(StepShape_ConnectedFaceShapeRepresentation)
 %wrap_handle(StepShape_ContextDependentShapeRepresentation)
@@ -118,25 +120,38 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_DimensionalCharacteristicRepresentation)
 %wrap_handle(StepShape_DimensionalLocation)
 %wrap_handle(StepShape_DimensionalSize)
+%wrap_handle(StepShape_EdgeBasedWireframeModel)
+%wrap_handle(StepShape_FaceBasedSurfaceModel)
+%wrap_handle(StepShape_GeometricSet)
+%wrap_handle(StepShape_HalfSpaceSolid)
 %wrap_handle(StepShape_LimitsAndFits)
 %wrap_handle(StepShape_MeasureQualification)
 %wrap_handle(StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem)
 %wrap_handle(StepShape_PlusMinusTolerance)
 %wrap_handle(StepShape_PrecisionQualifier)
 %wrap_handle(StepShape_QualifiedRepresentationItem)
+%wrap_handle(StepShape_RightAngularWedge)
+%wrap_handle(StepShape_RightCircularCone)
+%wrap_handle(StepShape_RightCircularCylinder)
 %wrap_handle(StepShape_ShapeDefinitionRepresentation)
 %wrap_handle(StepShape_ShapeRepresentation)
+%wrap_handle(StepShape_ShellBasedSurfaceModel)
+%wrap_handle(StepShape_SolidModel)
+%wrap_handle(StepShape_Sphere)
 %wrap_handle(StepShape_ToleranceValue)
 %wrap_handle(StepShape_TopologicalRepresentationItem)
+%wrap_handle(StepShape_Torus)
 %wrap_handle(StepShape_TypeQualifier)
 %wrap_handle(StepShape_ValueFormatTypeQualifier)
 %wrap_handle(StepShape_AdvancedBrepShapeRepresentation)
 %wrap_handle(StepShape_AngularLocation)
 %wrap_handle(StepShape_AngularSize)
+%wrap_handle(StepShape_BoxedHalfSpace)
 %wrap_handle(StepShape_CompoundShapeRepresentation)
 %wrap_handle(StepShape_ConnectedEdgeSet)
 %wrap_handle(StepShape_ConnectedFaceSet)
 %wrap_handle(StepShape_CsgShapeRepresentation)
+%wrap_handle(StepShape_CsgSolid)
 %wrap_handle(StepShape_DimensionalLocationWithPath)
 %wrap_handle(StepShape_DimensionalSizeWithPath)
 %wrap_handle(StepShape_DirectedDimensionalLocation)
@@ -145,29 +160,41 @@ StepShape_boUnion = StepShape_BooleanOperator.StepShape_boUnion
 %wrap_handle(StepShape_Face)
 %wrap_handle(StepShape_FaceBound)
 %wrap_handle(StepShape_FacetedBrepShapeRepresentation)
+%wrap_handle(StepShape_GeometricCurveSet)
 %wrap_handle(StepShape_GeometricallyBoundedSurfaceShapeRepresentation)
 %wrap_handle(StepShape_GeometricallyBoundedWireframeShapeRepresentation)
 %wrap_handle(StepShape_Loop)
 %wrap_handle(StepShape_LoopAndPath)
+%wrap_handle(StepShape_ManifoldSolidBrep)
 %wrap_handle(StepShape_ManifoldSurfaceShapeRepresentation)
 %wrap_handle(StepShape_NonManifoldSurfaceShapeRepresentation)
 %wrap_handle(StepShape_Path)
 %wrap_handle(StepShape_PointRepresentation)
 %wrap_handle(StepShape_ShapeDimensionRepresentation)
 %wrap_handle(StepShape_ShapeRepresentationWithParameters)
+%wrap_handle(StepShape_SolidReplica)
+%wrap_handle(StepShape_SweptAreaSolid)
+%wrap_handle(StepShape_SweptFaceSolid)
 %wrap_handle(StepShape_TransitionalShapeRepresentation)
 %wrap_handle(StepShape_Vertex)
+%wrap_handle(StepShape_BrepWithVoids)
 %wrap_handle(StepShape_ClosedShell)
 %wrap_handle(StepShape_ConnectedFaceSubSet)
 %wrap_handle(StepShape_EdgeCurve)
 %wrap_handle(StepShape_EdgeLoop)
+%wrap_handle(StepShape_ExtrudedAreaSolid)
+%wrap_handle(StepShape_ExtrudedFaceSolid)
 %wrap_handle(StepShape_FaceOuterBound)
 %wrap_handle(StepShape_FaceSurface)
+%wrap_handle(StepShape_FacetedBrep)
+%wrap_handle(StepShape_FacetedBrepAndBrepWithVoids)
 %wrap_handle(StepShape_OpenShell)
 %wrap_handle(StepShape_OrientedEdge)
 %wrap_handle(StepShape_OrientedFace)
 %wrap_handle(StepShape_OrientedPath)
 %wrap_handle(StepShape_PolyLoop)
+%wrap_handle(StepShape_RevolvedAreaSolid)
+%wrap_handle(StepShape_RevolvedFaceSolid)
 %wrap_handle(StepShape_Subedge)
 %wrap_handle(StepShape_Subface)
 %wrap_handle(StepShape_VertexLoop)
@@ -405,6 +432,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_Block)
 
 %extend StepShape_Block {
 	%pythoncode {
@@ -728,6 +757,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_BooleanResult)
 
 %extend StepShape_BooleanResult {
 	%pythoncode {
@@ -1688,7 +1719,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet> > > & aEbwmBoundary);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> > & aEbwmBoundary);
 
 		/****** StepShape_EdgeBasedWireframeModel::SetEbwmBoundary ******/
 		/****** md5 signature: 865dda2de15374499b91e32753de1637 ******/
@@ -1706,10 +1737,12 @@ Description
 -----------
 Set field EbwmBoundary.
 ") SetEbwmBoundary;
-		void SetEbwmBoundary(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet> > > & EbwmBoundary);
+		void SetEbwmBoundary(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedEdgeSet>> > & EbwmBoundary);
 
 };
 
+
+%make_alias(StepShape_EdgeBasedWireframeModel)
 
 %extend StepShape_EdgeBasedWireframeModel {
 	%pythoncode {
@@ -1765,7 +1798,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet> > > & aFbsmFaces);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> > & aFbsmFaces);
 
 		/****** StepShape_FaceBasedSurfaceModel::SetFbsmFaces ******/
 		/****** md5 signature: 08174a96c217a5f918687f8384fd1705 ******/
@@ -1783,10 +1816,12 @@ Description
 -----------
 Set field FbsmFaces.
 ") SetFbsmFaces;
-		void SetFbsmFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet> > > & FbsmFaces);
+		void SetFbsmFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_ConnectedFaceSet>> > & FbsmFaces);
 
 };
 
+
+%make_alias(StepShape_FaceBasedSurfaceModel)
 
 %extend StepShape_FaceBasedSurfaceModel {
 	%pythoncode {
@@ -1860,7 +1895,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect> > & aElements);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect>> & aElements);
 
 		/****** StepShape_GeometricSet::NbElements ******/
 		/****** md5 signature: 936a04e4c43c96574b096e69196411e4 ******/
@@ -1891,10 +1926,12 @@ Description
 -----------
 No available documentation.
 ") SetElements;
-		void SetElements(const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect> > & aElements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<StepShape_GeometricSetSelect>> & aElements);
 
 };
 
+
+%make_alias(StepShape_GeometricSet)
 
 %extend StepShape_GeometricSet {
 	%pythoncode {
@@ -2088,6 +2125,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_HalfSpaceSolid)
 
 %extend StepShape_HalfSpaceSolid {
 	%pythoncode {
@@ -2319,7 +2358,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & name, const opencascade::handle<TCollection_HAsciiString> & description, const opencascade::handle<Standard_Transient> & qualified_measure, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & name, const opencascade::handle<TCollection_HAsciiString> & description, const opencascade::handle<Standard_Transient> & qualified_measure, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_MeasureQualification::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -2461,7 +2500,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_MeasureQualification::SetQualifiersValue ******/
 		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
@@ -2530,7 +2569,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent, const StepBasic_Unit & aUnitComponent, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureValueMember> & aValueComponent, const StepBasic_Unit & aUnitComponent, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::Measure ******/
 		/****** md5 signature: cebce694e5bf47672e110f61cddfb670 ******/
@@ -2623,7 +2662,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_MeasureRepresentationItemAndQualifiedRepresentationItem::SetQualifiersValue ******/
 		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
@@ -2878,7 +2917,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_QualifiedRepresentationItem::NbQualifiers ******/
 		/****** md5 signature: 9a03d8e16f10ad80149f300ca16c9699 ******/
@@ -2940,7 +2979,7 @@ Description
 -----------
 No available documentation.
 ") SetQualifiers;
-		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier> > & qualifiers);
+		void SetQualifiers(const opencascade::handle<NCollection_HArray1<StepShape_ValueQualifier>> & qualifiers);
 
 		/****** StepShape_QualifiedRepresentationItem::SetQualifiersValue ******/
 		/****** md5 signature: 0467add7cdcf22fda1f9e2f6c4d5bfc1 ******/
@@ -3294,6 +3333,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_RightAngularWedge)
+
 %extend StepShape_RightAngularWedge {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3467,6 +3508,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_RightCircularCone)
+
 %extend StepShape_RightCircularCone {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3607,6 +3650,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_RightCircularCylinder)
 
 %extend StepShape_RightCircularCylinder {
 	%pythoncode {
@@ -3875,7 +3920,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_Shell> > & aSbsmBoundary);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<StepShape_Shell>> & aSbsmBoundary);
 
 		/****** StepShape_ShellBasedSurfaceModel::NbSbsmBoundary ******/
 		/****** md5 signature: 3002ad0af5525ac7faa563101d71f316 ******/
@@ -3937,10 +3982,12 @@ Description
 -----------
 No available documentation.
 ") SetSbsmBoundary;
-		void SetSbsmBoundary(const opencascade::handle<NCollection_HArray1<StepShape_Shell> > & aSbsmBoundary);
+		void SetSbsmBoundary(const opencascade::handle<NCollection_HArray1<StepShape_Shell>> & aSbsmBoundary);
 
 };
 
+
+%make_alias(StepShape_ShellBasedSurfaceModel)
 
 %extend StepShape_ShellBasedSurfaceModel {
 	%pythoncode {
@@ -3968,6 +4015,8 @@ Returns a SolidModel.
 
 };
 
+
+%make_alias(StepShape_SolidModel)
 
 %extend StepShape_SolidModel {
 	%pythoncode {
@@ -4077,6 +4126,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_Sphere)
 
 %extend StepShape_Sphere {
 	%pythoncode {
@@ -4486,6 +4537,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_Torus)
 
 %extend StepShape_Torus {
 	%pythoncode {
@@ -4998,6 +5051,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_BoxedHalfSpace)
+
 %extend StepShape_BoxedHalfSpace {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5081,7 +5136,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge> > > & aCesEdges);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>> > & aCesEdges);
 
 		/****** StepShape_ConnectedEdgeSet::SetCesEdges ******/
 		/****** md5 signature: a114b8f4c02c1053a7a988dd07371607 ******/
@@ -5099,7 +5154,7 @@ Description
 -----------
 Set field CesEdges.
 ") SetCesEdges;
-		void SetCesEdges(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge> > > & CesEdges);
+		void SetCesEdges(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Edge>> > & CesEdges);
 
 };
 
@@ -5178,7 +5233,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>> > & aCfsFaces);
 
 		/****** StepShape_ConnectedFaceSet::NbCfsFaces ******/
 		/****** md5 signature: 98970f4b348165a508c8634e325296b1 ******/
@@ -5209,7 +5264,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		virtual void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
+		virtual void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>> > & aCfsFaces);
 
 };
 
@@ -5321,6 +5376,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_CsgSolid)
 
 %extend StepShape_CsgSolid {
 	%pythoncode {
@@ -5726,7 +5783,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> > & aBounds);
 
 		/****** StepShape_Face::NbBounds ******/
 		/****** md5 signature: 9a69f23dce79e3b6215c5cd624683cea ******/
@@ -5757,7 +5814,7 @@ Description
 -----------
 No available documentation.
 ") SetBounds;
-		virtual void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
+		virtual void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> > & aBounds);
 
 };
 
@@ -5930,6 +5987,8 @@ Returns a GeometricCurveSet.
 
 };
 
+
+%make_alias(StepShape_GeometricCurveSet)
 
 %extend StepShape_GeometricCurveSet {
 	%pythoncode {
@@ -6110,7 +6169,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 		/****** StepShape_LoopAndPath::Loop ******/
 		/****** md5 signature: f652913b7c4b894441725a83cb117195 ******/
@@ -6167,7 +6226,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 		/****** StepShape_LoopAndPath::SetLoop ******/
 		/****** md5 signature: 3a2d8eadbfda92800e911c985713fe3c ******/
@@ -6306,6 +6365,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_ManifoldSolidBrep)
+
 %extend StepShape_ManifoldSolidBrep {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6436,7 +6497,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 		/****** StepShape_Path::NbEdgeList ******/
 		/****** md5 signature: 224541a067f6710a1d6b8791f07ec5b4 ******/
@@ -6467,7 +6528,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		virtual void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		virtual void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 };
 
@@ -6545,7 +6606,7 @@ Description
 -----------
 Initialize all fields AP214.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepShape_ShapeDimensionRepresentation::Init ******/
 		/****** md5 signature: 50cd097034d53a3aed863acecea5b261 ******/
@@ -6565,7 +6626,7 @@ Description
 -----------
 Initialize all fields AP242.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem> > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem>> & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems);
 
 		/****** StepShape_ShapeDimensionRepresentation::ItemsAP242 ******/
 		/****** md5 signature: e3d6ff714aec00c28f9b211345777a11 ******/
@@ -6596,7 +6657,7 @@ Description
 -----------
 No available documentation.
 ") SetItemsAP242;
-		void SetItemsAP242(const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem> > & theItems);
+		void SetItemsAP242(const opencascade::handle<NCollection_HArray1<StepShape_ShapeDimensionRepresentationItem>> & theItems);
 
 };
 
@@ -6741,6 +6802,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_SolidReplica)
+
 %extend StepShape_SolidReplica {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6818,6 +6881,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_SweptAreaSolid)
+
 %extend StepShape_SweptAreaSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6894,6 +6959,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_SweptFaceSolid)
 
 %extend StepShape_SweptFaceSolid {
 	%pythoncode {
@@ -6995,7 +7062,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> > & aVoids);
 
 		/****** StepShape_BrepWithVoids::NbVoids ******/
 		/****** md5 signature: eab110eb7472076d485d3b995b0e5603 ******/
@@ -7026,7 +7093,7 @@ Description
 -----------
 No available documentation.
 ") SetVoids;
-		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
+		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> > & aVoids);
 
 		/****** StepShape_BrepWithVoids::Voids ******/
 		/****** md5 signature: e0f8a11fcaf292a75413ebb79f3afa09 ******/
@@ -7061,6 +7128,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_BrepWithVoids)
 
 %extend StepShape_BrepWithVoids {
 	%pythoncode {
@@ -7133,7 +7202,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aConnectedFaceSet_CfsFaces, const opencascade::handle<StepShape_ConnectedFaceSet> & aParentFaceSet);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>> > & aConnectedFaceSet_CfsFaces, const opencascade::handle<StepShape_ConnectedFaceSet> & aParentFaceSet);
 
 		/****** StepShape_ConnectedFaceSubSet::ParentFaceSet ******/
 		/****** md5 signature: fb7362a7a27a0c47b6febb2fb8adc703 ******/
@@ -7356,7 +7425,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 		/****** StepShape_EdgeLoop::NbEdgeList ******/
 		/****** md5 signature: ff1f68d4f9ea9b46d4af9e64d43848a4 ******/
@@ -7387,7 +7456,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 };
 
@@ -7504,6 +7573,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_ExtrudedAreaSolid)
+
 %extend StepShape_ExtrudedAreaSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7614,6 +7685,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_ExtrudedFaceSolid)
+
 %extend StepShape_ExtrudedFaceSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7699,7 +7772,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds, const opencascade::handle<StepGeom_Surface> & aFaceGeometry, const bool aSameSense);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> > & aBounds, const opencascade::handle<StepGeom_Surface> & aFaceGeometry, const bool aSameSense);
 
 		/****** StepShape_FaceSurface::SameSense ******/
 		/****** md5 signature: a45add58374f4310c3a05d42dc01c1bb ******/
@@ -7781,6 +7854,8 @@ Returns a FacetedBrep.
 
 };
 
+
+%make_alias(StepShape_FacetedBrep)
 
 %extend StepShape_FacetedBrep {
 	%pythoncode {
@@ -7871,7 +7946,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepShape_ClosedShell> & aOuter, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> > & aVoids);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::NbVoids ******/
 		/****** md5 signature: eab110eb7472076d485d3b995b0e5603 ******/
@@ -7938,7 +8013,7 @@ Description
 -----------
 No available documentation.
 ") SetVoids;
-		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell> > > & aVoids);
+		void SetVoids(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedClosedShell>> > & aVoids);
 
 		/****** StepShape_FacetedBrepAndBrepWithVoids::Voids ******/
 		/****** md5 signature: e0f8a11fcaf292a75413ebb79f3afa09 ******/
@@ -7973,6 +8048,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_FacetedBrepAndBrepWithVoids)
 
 %extend StepShape_FacetedBrepAndBrepWithVoids {
 	%pythoncode {
@@ -8306,7 +8383,7 @@ Description
 -----------
 No available documentation.
 ") SetBounds;
-		void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aBounds);
+		void SetBounds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> > & aBounds);
 
 		/****** StepShape_OrientedFace::SetFaceElement ******/
 		/****** md5 signature: 4f96abb4f0ba73ab6f9930fbcc07e5f7 ******/
@@ -8479,7 +8556,7 @@ Description
 -----------
 No available documentation.
 ") SetEdgeList;
-		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge> > > & aEdgeList);
+		void SetEdgeList(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_OrientedEdge>> > & aEdgeList);
 
 		/****** StepShape_OrientedPath::SetOrientation ******/
 		/****** md5 signature: 425aaa57c4b4e44e20e5b9e7ed41c832 ******/
@@ -8563,7 +8640,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPolygon);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aPolygon);
 
 		/****** StepShape_PolyLoop::NbPolygon ******/
 		/****** md5 signature: 6ef42a17fc215d7232c4192c6071571f ******/
@@ -8625,7 +8702,7 @@ Description
 -----------
 No available documentation.
 ") SetPolygon;
-		void SetPolygon(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint> > > & aPolygon);
+		void SetPolygon(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepGeom_CartesianPoint>> > & aPolygon);
 
 };
 
@@ -8741,6 +8818,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepShape_RevolvedAreaSolid)
 
 %extend StepShape_RevolvedAreaSolid {
 	%pythoncode {
@@ -8871,6 +8950,8 @@ No available documentation.
 };
 
 
+%make_alias(StepShape_RevolvedFaceSolid)
+
 %extend StepShape_RevolvedFaceSolid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8994,7 +9075,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound> > > & aFace_Bounds, const opencascade::handle<StepShape_Face> & aParentFace);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_FaceBound>> > & aFace_Bounds, const opencascade::handle<StepShape_Face> & aParentFace);
 
 		/****** StepShape_Subface::ParentFace ******/
 		/****** md5 signature: 51c5277caa4f09b077301c4e0e7e180b ******/
@@ -9349,7 +9430,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
+		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>> > & aCfsFaces);
 
 		/****** StepShape_OrientedClosedShell::SetClosedShellElement ******/
 		/****** md5 signature: fc53cd1031dc353a6c94705f98c71b4b ******/
@@ -9522,7 +9603,7 @@ Description
 -----------
 No available documentation.
 ") SetCfsFaces;
-		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face> > > & aCfsFaces);
+		void SetCfsFaces(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepShape_Face>> > & aCfsFaces);
 
 		/****** StepShape_OrientedOpenShell::SetOpenShellElement ******/
 		/****** md5 signature: b7d967d72833f8e5989bb20c977d4d6a ******/

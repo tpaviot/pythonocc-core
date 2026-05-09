@@ -47,7 +47,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 #include<TDF_module.hxx>
 #include<TCollection_module.hxx>
 #include<TDocStd_module.hxx>
+#include<Interface_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<XCAFPrs_module.hxx>
@@ -76,6 +78,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 #include<PCDM_module.hxx>
 #include<TShort_module.hxx>
 #include<Graphic3d_module.hxx>
+#include<Interface_module.hxx>
+#include<MoniTool_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -86,7 +90,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwmesh.html"
 %import TDF.i
 %import TCollection.i
 %import TDocStd.i
+%import Interface.i
 %import gp.i
+%import TColStd.i
 %import Message.i
 %import TopoDS.i
 %import XCAFPrs.i
@@ -279,13 +285,13 @@ Return target document.
 		%feature("compactdefaultargs") ExternalFiles;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TCollection_AsciiString>
+Interface_IndexedMapOfAsciiString
 
 Description
 -----------
 Return the list of complementary files - external references (textures, data, etc.).
 ") ExternalFiles;
-		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles();
+		const Interface_IndexedMapOfAsciiString & ExternalFiles();
 
 		/****** RWMesh_CafReader::ExtraStatus ******/
 		/****** md5 signature: c6cb1e1a17350f03fc572be27ff2bcd2 ******/
@@ -371,13 +377,13 @@ Return memory usage limit in MiB, -1 by default which means no limit.
 		%feature("compactdefaultargs") Metadata;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString>
+TColStd_IndexedDataMapOfStringString
 
 Description
 -----------
 Return metadata map.
 ") Metadata;
-		const NCollection_IndexedDataMap<TCollection_AsciiString, TCollection_AsciiString> & Metadata();
+		const TColStd_IndexedDataMapOfStringString & Metadata();
 
 		/****** RWMesh_CafReader::Perform ******/
 		/****** md5 signature: fb9d26fc55229f4ce3ada0d70bce287b ******/
@@ -1733,13 +1739,13 @@ Returns True if triangulation has some geometry.
 		%feature("compactdefaultargs") InternalEdges;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<int>
+TColStd_Array1OfInteger
 
 Description
 -----------
 Returns an internal array of edges. Edge()/SetEdge() should be used instead in portable code.
 ") InternalEdges;
-		NCollection_Array1<int> & InternalEdges();
+		TColStd_Array1OfInteger & InternalEdges();
 
 		/****** RWMesh_TriangulationSource::NbDeferredNodes ******/
 		/****** md5 signature: 5bba066efcec585abb275dc94692fea3 ******/
@@ -1889,6 +1895,10 @@ Sets reader allowing to read data from the buffer.
 ") SetReader;
 		void SetReader(const opencascade::handle<RWMesh_TriangulationReader> & theReader);
 
+		%extend{
+			int GetChangeDegeneratedTriNb() { return self->ChangeDegeneratedTriNb(); }
+			void SetChangeDegeneratedTriNb(int value) { self->ChangeDegeneratedTriNb() = value; }
+		};
 };
 
 

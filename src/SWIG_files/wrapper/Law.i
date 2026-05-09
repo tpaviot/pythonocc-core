@@ -44,8 +44,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_law.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColgp_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -57,8 +59,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_law.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColStd.i
 %import Adaptor3d.i
 %import GeomAbs.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -88,9 +92,21 @@ from OCC.Core.Exception import *
 %template(Law_Laws) NCollection_List<opencascade::handle<Law_Function>>;
 
 %extend NCollection_List<opencascade::handle<Law_Function>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = Law_Laws(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(Law_ListIteratorOfLaws) NCollection_TListIterator<opencascade::handle<Law_Function>>;
@@ -132,19 +148,19 @@ This algorithm searches the knot values corresponding to the splitting of a give
 Parameters
 ----------
 Degree: int
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 Lin: Law_Linear
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Builds the poles of the 1d bspline that is near from Lin with null derivatives at the extremities.
 ") MixBnd;
-		static opencascade::handle<NCollection_HArray1<double>> MixBnd(const int Degree, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const opencascade::handle<Law_Linear> & Lin);
+		static opencascade::handle<TColStd_HArray1OfReal> MixBnd(const int Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const opencascade::handle<Law_Linear> & Lin);
 
 		/****** Law::MixTgt ******/
 		/****** md5 signature: 613240ab2d504d09ab45141aa92a08a3 ******/
@@ -153,20 +169,20 @@ Builds the poles of the 1d bspline that is near from Lin with null derivatives a
 Parameters
 ----------
 Degree: int
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 NulOnTheRight: bool
 Index: int
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Builds the poles of the 1d bspline that is null on the right side of Knots(Index) (on the left if NulOnTheRight is false) and that is like a t*(1-t)(1-t) curve on the left side of Knots(Index) (on the right if NulOnTheRight is false). The result curve is C1 with a derivative equal to 1. at first parameter (-1 at last parameter if NulOnTheRight is false). Warning: Mults(Index) must greater or equal to degree-1.
 ") MixTgt;
-		static opencascade::handle<NCollection_HArray1<double>> MixTgt(const int Degree, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const bool NulOnTheRight, const int Index);
+		static opencascade::handle<TColStd_HArray1OfReal> MixTgt(const int Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const bool NulOnTheRight, const int Index);
 
 		/****** Law::Reparametrize ******/
 		/****** md5 signature: 575e532b4e248bef6c0c09b71b745518 ******/
@@ -260,9 +276,9 @@ class Law_BSpline : public Standard_Transient {
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 
@@ -274,7 +290,7 @@ Description
 -----------
 Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Law_BSpline;
-		 Law_BSpline(const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
+		 Law_BSpline(const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Law_BSpline::Law_BSpline ******/
 		/****** md5 signature: e4676a69c0173545cbc9a1b8ae2d879c ******/
@@ -282,10 +298,10 @@ Creates a non-rational B_spline curve on the basis <Knots, Multiplicities> of de
 		%feature("autodoc", "
 Parameters
 ----------
-Poles: NCollection_Array1<double>
-Weights: NCollection_Array1<double>
-Knots: NCollection_Array1<double>
-Multiplicities: NCollection_Array1<int>
+Poles: TColStd_Array1OfReal
+Weights: TColStd_Array1OfReal
+Knots: TColStd_Array1OfReal
+Multiplicities: TColStd_Array1OfInteger
 Degree: int
 Periodic: bool (optional, default to false)
 
@@ -297,7 +313,7 @@ Description
 -----------
 Creates a rational B_spline curve on the basis <Knots, Multiplicities> of degree <Degree>.
 ") Law_BSpline;
-		 Law_BSpline(const NCollection_Array1<double> & Poles, const NCollection_Array1<double> & Weights, const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Multiplicities, const int Degree, const bool Periodic = false);
+		 Law_BSpline(const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Multiplicities, const int Degree, const bool Periodic = false);
 
 		/****** Law_BSpline::Continuity ******/
 		/****** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ******/
@@ -578,8 +594,8 @@ Inserts a knot value in the sequence of knots. If <U> is an existing knot the mu
 		%feature("autodoc", "
 Parameters
 ----------
-Knots: NCollection_Array1<double>
-Mults: NCollection_Array1<int>
+Knots: TColStd_Array1OfReal
+Mults: TColStd_Array1OfInteger
 ParametricTolerance: double (optional, default to 0.0)
 Add: bool (optional, default to false)
 
@@ -591,7 +607,7 @@ Description
 -----------
 Inserts a set of knots values in the sequence of knots. //! For each U = Knots(i), M = Mults(i) //! If <U> is an existing knot the multiplicity is increased by <M> if <Add> is True, increased to <M> if <Add> is False. //! If U is not on the parameter range nothing is done. //! If the multiplicity is negative or null nothing is done. The new multiplicity is limited to the degree. //! The tolerance criterion for knots equality is the max of Epsilon(U) and ParametricTolerance.
 ") InsertKnots;
-		void InsertKnots(const NCollection_Array1<double> & Knots, const NCollection_Array1<int> & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
+		void InsertKnots(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const double ParametricTolerance = 0.0, const bool Add = false);
 
 		/****** Law_BSpline::IsCN ******/
 		/****** md5 signature: 1b01b4a36ecc507b96a58e616c23d89c ******/
@@ -687,7 +703,7 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -697,7 +713,7 @@ Description
 -----------
 Returns the knots sequence. In this sequence the knots with a multiplicity greater than 1 are repeated. Example: K = {k1, k1, k1, k2, k3, k3, k4, k4, k4} //! Raised if the length of K is not equal to NbPoles + Degree + 1.
 ") KnotSequence;
-		void KnotSequence(NCollection_Array1<double> & K);
+		void KnotSequence(TColStd_Array1OfReal & K);
 
 		/****** Law_BSpline::Knots ******/
 		/****** md5 signature: 28e846af74f6d8e9d9bca42676b511f9 ******/
@@ -705,7 +721,7 @@ Returns the knots sequence. In this sequence the knots with a multiplicity great
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -715,7 +731,7 @@ Description
 -----------
 returns the knot values of the B-spline curve; //! Raised if the length of K is not equal to the number of knots.
 ") Knots;
-		void Knots(NCollection_Array1<double> & K);
+		void Knots(TColStd_Array1OfReal & K);
 
 		/****** Law_BSpline::LastParameter ******/
 		/****** md5 signature: fca5164159fd9f44a10664b338b6e402 ******/
@@ -933,7 +949,7 @@ Changes the value of the Law at parameter U to NewValue. and makes its derivativ
 		%feature("autodoc", "
 Parameters
 ----------
-M: NCollection_Array1<int>
+M: TColStd_Array1OfInteger
 
 Return
 -------
@@ -943,7 +959,7 @@ Description
 -----------
 Returns the multiplicity of the knots of the curve. //! Raised if the length of M is not equal to NbKnots.
 ") Multiplicities;
-		void Multiplicities(NCollection_Array1<int> & M);
+		void Multiplicities(TColStd_Array1OfInteger & M);
 
 		/****** Law_BSpline::Multiplicity ******/
 		/****** md5 signature: 6deea6eef255db56cfdeb88488a383cc ******/
@@ -1030,7 +1046,7 @@ Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 		%feature("autodoc", "
 Parameters
 ----------
-P: NCollection_Array1<double>
+P: TColStd_Array1OfReal
 
 Return
 -------
@@ -1040,7 +1056,7 @@ Description
 -----------
 Returns the poles of the B-spline curve; //! Raised if the length of P is not equal to the number of poles.
 ") Poles;
-		void Poles(NCollection_Array1<double> & P);
+		void Poles(TColStd_Array1OfReal & P);
 
 		/****** Law_BSpline::RemoveKnot ******/
 		/****** md5 signature: 54905b41bbca7519e1f70b87cdd71db9 ******/
@@ -1175,7 +1191,7 @@ Changes the knot of range Index with its multiplicity. You can increase the mult
 		%feature("autodoc", "
 Parameters
 ----------
-K: NCollection_Array1<double>
+K: TColStd_Array1OfReal
 
 Return
 -------
@@ -1185,7 +1201,7 @@ Description
 -----------
 Changes all the knots of the curve The multiplicity of the knots are not modified. //! Raised if there is an index such that K (Index+1) <= K (Index). //! Raised if K.Lower() < 1 or K.Upper() > NbKnots.
 ") SetKnots;
-		void SetKnots(const NCollection_Array1<double> & K);
+		void SetKnots(const TColStd_Array1OfReal & K);
 
 		/****** Law_BSpline::SetNotPeriodic ******/
 		/****** md5 signature: ccfbd171d2b38df3531b77ecbc51dcae ******/
@@ -1344,7 +1360,7 @@ Returns the weight of the pole of range Index . Raised if Index < 1 or Index > N
 		%feature("autodoc", "
 Parameters
 ----------
-W: NCollection_Array1<double>
+W: TColStd_Array1OfReal
 
 Return
 -------
@@ -1354,7 +1370,7 @@ Description
 -----------
 Returns the weights of the B-spline curve; //! Raised if the length of W is not equal to NbPoles.
 ") Weights;
-		void Weights(NCollection_Array1<double> & W);
+		void Weights(TColStd_Array1OfReal & W);
 
 };
 
@@ -1428,7 +1444,7 @@ Returns the index of the knot corresponding to the splitting of range Index. //!
 		%feature("autodoc", "
 Parameters
 ----------
-SplitValues: NCollection_Array1<int>
+SplitValues: TColStd_Array1OfInteger
 
 Return
 -------
@@ -1438,7 +1454,7 @@ Description
 -----------
 Returns the indexes of the BSpline curve knots corresponding to the splitting. //! Raised if the length of SplitValues is not equal to NbSPlit.
 ") Splitting;
-		void Splitting(NCollection_Array1<int> & SplitValues);
+		void Splitting(TColStd_Array1OfInteger & SplitValues);
 
 };
 
@@ -1531,7 +1547,7 @@ Returns the value, first and second derivatives at parameter X.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1542,7 +1558,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
-		virtual void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Law_Function::NbIntervals ******/
 		/****** md5 signature: 9ac7bc3c23f26b850f256bf654af74c8 ******/
@@ -1622,7 +1638,7 @@ class Law_Interpolate {
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_HArray1<double
+Points: TColStd_HArray1OfReal
 PeriodicFlag: bool
 Tolerance: double
 
@@ -1634,7 +1650,7 @@ Description
 -----------
 Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic.
 ") Law_Interpolate;
-		 Law_Interpolate(const opencascade::handle<NCollection_HArray1<double> > & Points, const bool PeriodicFlag, const double Tolerance);
+		 Law_Interpolate(const opencascade::handle<TColStd_HArray1OfReal> & Points, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Law_Interpolate::Law_Interpolate ******/
 		/****** md5 signature: 0166af133770af013b04733441c1a1eb ******/
@@ -1642,8 +1658,8 @@ Tolerance is to check if the points are not too close to one an other. It is als
 		%feature("autodoc", "
 Parameters
 ----------
-Points: NCollection_HArray1<double
-Parameters: NCollection_HArray1<double
+Points: TColStd_HArray1OfReal
+Parameters: TColStd_HArray1OfReal
 PeriodicFlag: bool
 Tolerance: double
 
@@ -1655,7 +1671,7 @@ Description
 -----------
 Tolerance is to check if the points are not too close to one an other. It is also used to check if the tangent vector is not too small. There should be at least 2 points. If PeriodicFlag is True then the curve will be periodic be periodic.
 ") Law_Interpolate;
-		 Law_Interpolate(const opencascade::handle<NCollection_HArray1<double> > & Points, const opencascade::handle<NCollection_HArray1<double> > & Parameters, const bool PeriodicFlag, const double Tolerance);
+		 Law_Interpolate(const opencascade::handle<TColStd_HArray1OfReal> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const bool PeriodicFlag, const double Tolerance);
 
 		/****** Law_Interpolate::Curve ******/
 		/****** md5 signature: 532bf252f584bdb8f5e20aed8fa40bce ******/
@@ -1708,8 +1724,8 @@ loads initial and final tangents if any.
 		%feature("autodoc", "
 Parameters
 ----------
-Tangents: NCollection_Array1<double>
-TangentFlags: NCollection_HArray1<bool
+Tangents: TColStd_Array1OfReal
+TangentFlags: TColStd_HArray1OfBoolean
 
 Return
 -------
@@ -1719,7 +1735,7 @@ Description
 -----------
 loads the tangents. We should have as many tangents as they are points in the array if TangentFlags.Value(i) is true use the tangent Tangents.Value(i) otherwise the tangent is not constrained.
 ") Load;
-		void Load(const NCollection_Array1<double> & Tangents, const opencascade::handle<NCollection_HArray1<bool> > & TangentFlags);
+		void Load(const TColStd_Array1OfReal & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags);
 
 		/****** Law_Interpolate::Perform ******/
 		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
@@ -1874,7 +1890,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -1885,7 +1901,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Law_BSpFunc::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -2117,7 +2133,7 @@ Returns the value, first and second derivatives at parameter X.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2128,7 +2144,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters, i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Law_Composite::IsPeriodic ******/
 		/****** md5 signature: d36764d6f9b1283d23b2bfdabe28da79 ******/
@@ -2317,7 +2333,7 @@ Returns the value, first and second derivatives at parameter X.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2328,7 +2344,7 @@ Description
 -----------
 No available documentation.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Law_Constant::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -2511,7 +2527,7 @@ Returns the value, first and second derivatives at parameter X.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -2522,7 +2538,7 @@ Description
 -----------
 No available documentation.
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** Law_Linear::NbIntervals ******/
 		/****** md5 signature: b2aaad8a5aa5a35490639df04a76a09e ******/
@@ -2636,7 +2652,7 @@ Constructs an empty interpolative evolution law. The function Set is used to def
 		%feature("autodoc", "
 Parameters
 ----------
-ParAndRad: NCollection_Array1<gp_Pnt2d>
+ParAndRad: TColgp_Array1OfPnt2d
 Periodic: bool (optional, default to false)
 
 Return
@@ -2647,7 +2663,7 @@ Description
 -----------
 Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. Warning - The X coordinates of points in the table ParAndRad must be given in ascendant order. - If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
 ") Set;
-		void Set(const NCollection_Array1<gp_Pnt2d> & ParAndRad, const bool Periodic = false);
+		void Set(const TColgp_Array1OfPnt2d & ParAndRad, const bool Periodic = false);
 
 		/****** Law_Interpol::Set ******/
 		/****** md5 signature: c61bb22a42277032e685ce9d0f6e5dcb ******/
@@ -2655,7 +2671,7 @@ Defines this evolution law by interpolating the set of 2D points ParAndRad. The 
 		%feature("autodoc", "
 Parameters
 ----------
-ParAndRad: NCollection_Array1<gp_Pnt2d>
+ParAndRad: TColgp_Array1OfPnt2d
 Dd: double
 Df: double
 Periodic: bool (optional, default to false)
@@ -2668,7 +2684,7 @@ Description
 -----------
 Defines this evolution law by interpolating the set of 2D points ParAndRad. The Y coordinate of a point of ParAndRad is the value of the function at the parameter point given by its X coordinate. If Periodic is true, this function is assumed to be periodic. In the second syntax, Dd and Df define the values of the first derivative of the function at its first and last points. Warning - The X coordinates of points in the table ParAndRad must be given in ascendant order. - If Periodic is true, the first and last Y coordinates of points in the table ParAndRad are assumed to be equal. In addition, with the second syntax, Dd and Df are also assumed to be equal. If this is not the case, Set uses the first value(s) as last value(s).
 ") Set;
-		void Set(const NCollection_Array1<gp_Pnt2d> & ParAndRad, const double Dd, const double Df, const bool Periodic = false);
+		void Set(const TColgp_Array1OfPnt2d & ParAndRad, const double Dd, const double Df, const bool Periodic = false);
 
 		/****** Law_Interpol::SetInRelative ******/
 		/****** md5 signature: ea3c2417ef715a12ff07899ff4e37fef ******/
@@ -2676,7 +2692,7 @@ Defines this evolution law by interpolating the set of 2D points ParAndRad. The 
 		%feature("autodoc", "
 Parameters
 ----------
-ParAndRad: NCollection_Array1<gp_Pnt2d>
+ParAndRad: TColgp_Array1OfPnt2d
 Ud: double
 Uf: double
 Periodic: bool (optional, default to false)
@@ -2689,7 +2705,7 @@ Description
 -----------
 No available documentation.
 ") SetInRelative;
-		void SetInRelative(const NCollection_Array1<gp_Pnt2d> & ParAndRad, const double Ud, const double Uf, const bool Periodic = false);
+		void SetInRelative(const TColgp_Array1OfPnt2d & ParAndRad, const double Ud, const double Uf, const bool Periodic = false);
 
 		/****** Law_Interpol::SetInRelative ******/
 		/****** md5 signature: 0773a27903d91d07a45a6d396c5ac392 ******/
@@ -2697,7 +2713,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-ParAndRad: NCollection_Array1<gp_Pnt2d>
+ParAndRad: TColgp_Array1OfPnt2d
 Ud: double
 Uf: double
 Dd: double
@@ -2712,7 +2728,7 @@ Description
 -----------
 No available documentation.
 ") SetInRelative;
-		void SetInRelative(const NCollection_Array1<gp_Pnt2d> & ParAndRad, const double Ud, const double Uf, const double Dd, const double Df, const bool Periodic = false);
+		void SetInRelative(const TColgp_Array1OfPnt2d & ParAndRad, const double Ud, const double Uf, const double Dd, const double Df, const bool Periodic = false);
 
 };
 

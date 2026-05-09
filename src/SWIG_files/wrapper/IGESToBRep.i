@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igestobrep.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<IGESData_module.hxx>
+#include<TColStd_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Transfer_module.hxx>
 #include<Interface_module.hxx>
@@ -78,6 +79,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igestobrep.html"
 %import Standard.i
 %import NCollection.i
 %import IGESData.i
+%import TColStd.i
 %import TopoDS.i
 %import Transfer.i
 %import Interface.i
@@ -102,6 +104,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(IGESToBRep_Actor)
 %wrap_handle(IGESToBRep_AlgoContainer)
 %wrap_handle(IGESToBRep_IGESBoundary)
 %wrap_handle(IGESToBRep_ToolContainer)
@@ -139,7 +142,7 @@ Returns default AlgoContainer.
 Parameters
 ----------
 curve: IGESData_IGESEntity
-sequence: NCollection_HSequence<
+sequence: TColStd_HSequenceOfTransient
 
 Return
 -------
@@ -149,7 +152,7 @@ Description
 -----------
 No available documentation.
 ") IGESCurveToSequenceOfIGESCurve;
-		static int IGESCurveToSequenceOfIGESCurve(const opencascade::handle<IGESData_IGESEntity> & curve, opencascade::handle<NCollection_HSequence<opencascade::handle<Standard_Transient> > > & sequence);
+		static int IGESCurveToSequenceOfIGESCurve(const opencascade::handle<IGESData_IGESEntity> & curve, opencascade::handle<TColStd_HSequenceOfTransient > & sequence);
 
 		/****** IGESToBRep::Init ******/
 		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
@@ -439,6 +442,8 @@ Returns the tolerance which was actually used, either from the file or from stat
 
 };
 
+
+%make_alias(IGESToBRep_Actor)
 
 %extend IGESToBRep_Actor {
 	%pythoncode {
@@ -1318,7 +1323,7 @@ Description
 -----------
 Translates 141 and 142 entities. Returns True if the curve has been successfully translated, otherwise returns False. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: model space curve for 142 and current model space curve for 141, <toreverse3d>: False for 142 and current orientation flag for 141, <curves2d>: 1 parameter space curve for 142 or list of them for current model space curves for 141, <number>: 1 for 142 and rank number of model space curve for 141.
 ") Transfer;
-		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<IGESData_IGESEntity> & curve3d, const bool toreverse3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & curves2d, const int number);
+		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<IGESData_IGESEntity> & curve3d, const bool toreverse3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> > & curves2d, const int number);
 
 		/****** IGESToBRep_IGESBoundary::Transfer ******/
 		/****** md5 signature: 8ec18c86da4309a1540a44977b93a75e ******/
@@ -1342,7 +1347,7 @@ Description
 -----------
 Translates 508 entity. Returns True if the curve has been successfully translated, otherwise returns False. Input object IGESBoundary must be created and initialized before. <okCurve..>: flags that indicate whether corresponding representation has been successfully translated (must be set to True before first call), <curve3d>: result of translation of current edge, <curves2d>: list of parameter space curves for edge, <toreverse2d>: orientation flag of current edge in respect to its model space curve, <number>: rank number of edge, <lsewd>: returns the result of translation of current edge.
 ") Transfer;
-		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<ShapeExtend_WireData> & curve3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity> > > & curves2d, const bool toreverse2d, const int number, opencascade::handle<ShapeExtend_WireData> & lsewd);
+		bool Transfer(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<ShapeExtend_WireData> & curve3d, const opencascade::handle<NCollection_HArray1<opencascade::handle<IGESData_IGESEntity>> > & curves2d, const bool toreverse2d, const int number, opencascade::handle<ShapeExtend_WireData> & lsewd);
 
 		/****** IGESToBRep_IGESBoundary::WireData ******/
 		/****** md5 signature: 8eebf0143620bf74880205da954b56c6 ******/

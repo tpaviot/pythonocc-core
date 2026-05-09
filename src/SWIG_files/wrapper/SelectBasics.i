@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectbasics.html
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<TColgp_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom_module.hxx>
 #include<Select3D_module.hxx>
@@ -59,6 +60,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectbasics.html
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -487,12 +489,12 @@ Valid only for point and rectangular selection. Returns projection of 2d mouse p
 		virtual gp_Pnt GetNearPickedPnt();
 
 		/****** SelectBasics_SelectingVolumeManager::GetPlanes ******/
-		/****** md5 signature: 77a21078c4c6a86f4e2bbb84109a665f ******/
+		/****** md5 signature: 6bb33508a082451c5c7f42cc8bf8657f ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
 ----------
-thePlaneEquations: NCollection_Vector<NCollection_Vec4<double> >
+thePlaneEquations: NCollection_DynamicArray<NCollection_Vec4<double>>
 
 Return
 -------
@@ -502,7 +504,7 @@ Description
 -----------
 Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0) to the given vector.
 ") GetPlanes;
-		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<double> > & thePlaneEquations);
+		virtual void GetPlanes(NCollection_DynamicArray<NCollection_Vec4<double>> & thePlaneEquations);
 
 		/****** SelectBasics_SelectingVolumeManager::GetViewRayDirection ******/
 		/****** md5 signature: 0c7768eea029564c9cfc1831463172ef ******/
@@ -626,7 +628,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPts: NCollection_HArray1<gp_Pnt
+theArrayOfPts: TColgp_HArray1OfPnt
 theSensType: int
 thePickResult: SelectBasics_PickResult
 
@@ -638,7 +640,7 @@ Description
 -----------
 No available documentation.
 ") Overlaps;
-		bool Overlaps(const opencascade::handle<NCollection_HArray1<gp_Pnt> > & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
+		bool Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
 		/****** md5 signature: 0f0e970c02857f94a5b1fcf42809fa7a ******/
@@ -646,7 +648,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPts: NCollection_Array1<gp_Pnt>
+theArrayOfPts: TColgp_Array1OfPnt
 theSensType: int
 thePickResult: SelectBasics_PickResult
 
@@ -658,7 +660,7 @@ Description
 -----------
 No available documentation.
 ") Overlaps;
-		bool Overlaps(const NCollection_Array1<gp_Pnt> & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
+		bool Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
 		/****** md5 signature: 58c6dcc75485902ba049e48e685ed3e2 ******/
@@ -873,7 +875,7 @@ Returns true if selecting volume is overlapped by point thePnt. Does not perform
 		%feature("autodoc", "
 Parameters
 ----------
-theArrayOfPts: NCollection_Array1<gp_Pnt>
+theArrayOfPts: TColgp_Array1OfPnt
 theSensType: int
 thePickResult: SelectBasics_PickResult
 
@@ -885,7 +887,7 @@ Description
 -----------
 Returns true if selecting volume is overlapped by planar convex polygon, which points are stored in theArrayOfPts, taking into account sensitivity type theSensType.
 ") OverlapsPolygon;
-		virtual bool OverlapsPolygon(const NCollection_Array1<gp_Pnt> & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
+		virtual bool OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, int theSensType, SelectBasics_PickResult & thePickResult);
 
 		/****** SelectBasics_SelectingVolumeManager::OverlapsSegment ******/
 		/****** md5 signature: 20691bdd3c3b383b48db4b9ad392e8b7 ******/

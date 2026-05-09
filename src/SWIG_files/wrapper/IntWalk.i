@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intwalk.html"
 #include<math_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<IntImp_module.hxx>
+#include<TColStd_module.hxx>
 #include<gp_module.hxx>
 #include<IntSurf_module.hxx>
 #include<Geom_module.hxx>
@@ -64,6 +65,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intwalk.html"
 %import math.i
 %import Adaptor3d.i
 %import IntImp.i
+%import TColStd.i
 %import gp.i
 %import IntSurf.i
 
@@ -169,7 +171,7 @@ No available documentation.
 Parameters
 ----------
 ChoixIso: IntImp_ConstIsoparametric
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 UVap: math_Vector
 BornInf: math_Vector
 BornSup: math_Vector
@@ -183,7 +185,7 @@ Description
 -----------
 No available documentation.
 ") ComputeParameters;
-		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const NCollection_Array1<double> & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
+		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const TColStd_Array1OfReal & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::Derivatives ******/
 		/****** md5 signature: 00f7bf70701f1cd8a54c33dd76de6f69 ******/
@@ -250,7 +252,7 @@ No available documentation.
 Parameters
 ----------
 UVap: math_Vector
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 
 Return
 -------
@@ -260,7 +262,7 @@ Description
 -----------
 No available documentation.
 ") IsTangent;
-		bool IsTangent(const math_Vector & UVap, NCollection_Array1<double> & Param, IntImp_ConstIsoparametric &OutValue);
+		bool IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric &OutValue);
 
 		/****** IntWalk_TheFunctionOfTheInt2S::NbEquations ******/
 		/****** md5 signature: d96db90f938251af5669711b5ae9a95b ******/
@@ -373,7 +375,7 @@ class IntWalk_TheInt2S {
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 S1: Adaptor3d_Surface
 S2: Adaptor3d_Surface
 TolTangency: double
@@ -386,7 +388,7 @@ Description
 -----------
 compute the solution point with the close point.
 ") IntWalk_TheInt2S;
-		 IntWalk_TheInt2S(const NCollection_Array1<double> & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
+		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
 		/****** IntWalk_TheInt2S::IntWalk_TheInt2S ******/
 		/****** md5 signature: ea7da6dd1a29d0e424dcfabcd8b19f0e ******/
@@ -518,7 +520,7 @@ Returns True if the surfaces are tangent at the intersection point.
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 Rsnld: math_FunctionSetRoot
 
 Return
@@ -529,7 +531,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld);
+		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
 
 		/****** IntWalk_TheInt2S::Perform ******/
 		/****** md5 signature: ba4d806ab7c094897017f5371cb7c643 ******/
@@ -537,7 +539,7 @@ returns the best constant isoparametric to find the next intersection's point +s
 		%feature("autodoc", "
 Parameters
 ----------
-Param: NCollection_Array1<double>
+Param: TColStd_Array1OfReal
 Rsnld: math_FunctionSetRoot
 ChoixIso: IntImp_ConstIsoparametric
 
@@ -549,7 +551,7 @@ Description
 -----------
 returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso).
 ") Perform;
-		IntImp_ConstIsoparametric Perform(const NCollection_Array1<double> & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
+		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
 		/****** IntWalk_TheInt2S::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/

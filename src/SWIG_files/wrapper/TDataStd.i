@@ -124,6 +124,7 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 %wrap_handle(TDataStd_NoteBook)
 %wrap_handle(TDataStd_Relation)
 %wrap_handle(TDataStd_Tick)
+%wrap_handle(TDataStd_HLabelArray1)
 /* end handles declaration */
 
 /* templates */
@@ -150,17 +151,41 @@ Array1ExtendIter(TDF_Label)
 %template(TDataStd_ListOfByte) NCollection_List<uint8_t>;
 
 %extend NCollection_List<uint8_t> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDataStd_ListIteratorOfListOfByte(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(TDataStd_ListOfExtendedString) NCollection_List<TCollection_ExtendedString>;
 
 %extend NCollection_List<TCollection_ExtendedString> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = TDataStd_ListIteratorOfListOfExtendedString(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -196,7 +221,7 @@ class TDataStd {
 		%feature("autodoc", "
 Parameters
 ----------
-anIDList: NCollection_List<Standard_GUID>
+anIDList: TDF_IDList
 
 Return
 -------
@@ -206,7 +231,7 @@ Description
 -----------
 Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use.
 ") IDList;
-		static void IDList(NCollection_List<Standard_GUID> & anIDList);
+		static void IDList(TDF_IDList & anIDList);
 
 		/****** TDataStd::Print ******/
 		/****** md5 signature: 34ef93cfb1f41df788d00d50ea442396 ******/
@@ -598,13 +623,13 @@ Initialize the inner array with bounds from <lower> to <upper>.
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<uint8_t>>
+opencascade::handle<TColStd_HArray1OfByte>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<NCollection_HArray1<uint8_t>> & InternalArray();
+		const opencascade::handle<TColStd_HArray1OfByte> & InternalArray();
 
 		/****** TDataStd_BooleanArray::Length ******/
 		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
@@ -760,7 +785,7 @@ Sets default GUID for the attribute.
 		%feature("autodoc", "
 Parameters
 ----------
-values: NCollection_HArray1<uint8_t
+values: TColStd_HArray1OfByte
 
 Return
 -------
@@ -770,7 +795,7 @@ Description
 -----------
 No available documentation.
 ") SetInternalArray;
-		void SetInternalArray(const opencascade::handle<NCollection_HArray1<uint8_t> > & values);
+		void SetInternalArray(const opencascade::handle<TColStd_HArray1OfByte> & values);
 
 		/****** TDataStd_BooleanArray::SetValue ******/
 		/****** md5 signature: 848214bcea36dd5fd13328455e58f3c3 ******/
@@ -1041,13 +1066,13 @@ No available documentation.
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-NCollection_List<uint8_t>
+TDataStd_ListOfByte
 
 Description
 -----------
 1 - means True, 0 - means False.
 ") List;
-		const NCollection_List<uint8_t> & List();
+		const TDataStd_ListOfByte & List();
 
 		/****** TDataStd_BooleanList::NewEmpty ******/
 		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
@@ -1238,7 +1263,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: NCollection_HArray1<uint8_t
+newArray: TColStd_HArray1OfByte
 isCheckItems: bool (optional, default to true)
 
 Return
@@ -1249,7 +1274,7 @@ Description
 -----------
 Sets the inner array <myValue> of the attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values. If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<NCollection_HArray1<uint8_t> > & newArray, const bool isCheckItems = true);
+		void ChangeArray(const opencascade::handle<TColStd_HArray1OfByte> & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_ByteArray::DeltaOnModification ******/
 		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
@@ -1370,13 +1395,13 @@ Initialize the inner array with bounds from <lower> to <upper>.
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<uint8_t>>
+opencascade::handle<TColStd_HArray1OfByte>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<NCollection_HArray1<uint8_t>> & InternalArray();
+		const opencascade::handle<TColStd_HArray1OfByte> & InternalArray();
 
 		/****** TDataStd_ByteArray::Length ******/
 		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
@@ -2274,13 +2299,13 @@ class methods =============.
 		%feature("compactdefaultargs") GetVariables;
 		%feature("autodoc", "Return
 -------
-NCollection_List<opencascade::handle<TDF_Attribute>>
+TDF_AttributeList
 
 Description
 -----------
 No available documentation.
 ") GetVariables;
-		NCollection_List<opencascade::handle<TDF_Attribute>> & GetVariables();
+		TDF_AttributeList & GetVariables();
 
 		/****** TDataStd_Expression::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -2428,13 +2453,13 @@ No available documentation.
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<TCollection_ExtendedString>>
+opencascade::handle<TColStd_HArray1OfExtendedString>
 
 Description
 -----------
 Return the inner array of the ExtStringArray attribute.
 ") Array;
-		const opencascade::handle<NCollection_HArray1<TCollection_ExtendedString>> & Array();
+		const opencascade::handle<TColStd_HArray1OfExtendedString> & Array();
 
 		/****** TDataStd_ExtStringArray::ChangeArray ******/
 		/****** md5 signature: 9801affe705697324d9c29b8714610e7 ******/
@@ -2442,7 +2467,7 @@ Return the inner array of the ExtStringArray attribute.
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: NCollection_HArray1<TCollection_ExtendedString
+newArray: TColStd_HArray1OfExtendedString
 isCheckItems: bool (optional, default to true)
 
 Return
@@ -2453,7 +2478,7 @@ Description
 -----------
 Sets the inner array <myValue> of the ExtStringArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfExtendedString that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<NCollection_HArray1<TCollection_ExtendedString> > & newArray, const bool isCheckItems = true);
+		void ChangeArray(const opencascade::handle<TColStd_HArray1OfExtendedString> & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_ExtStringArray::DeltaOnModification ******/
 		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
@@ -3044,13 +3069,13 @@ No available documentation.
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TCollection_ExtendedString>
+TDataStd_ListOfExtendedString
 
 Description
 -----------
 No available documentation.
 ") List;
-		const NCollection_List<TCollection_ExtendedString> & List();
+		const TDataStd_ListOfExtendedString & List();
 
 		/****** TDataStd_ExtStringList::NewEmpty ******/
 		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
@@ -3270,7 +3295,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_DataMap<TCollection_ExtendedString, uint8_t>
+theOther: TDataStd_DataMapOfStringByte
 
 Return
 -------
@@ -3280,33 +3305,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringByte;
-		 TDataStd_HDataMapOfStringByte(const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & theOther);
+		 TDataStd_HDataMapOfStringByte(const TDataStd_DataMapOfStringByte & theOther);
 
 		/****** TDataStd_HDataMapOfStringByte::ChangeMap ******/
 		/****** md5 signature: f25d2fa3a6be2c71ea4bb6a4b353bbcc ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, uint8_t>
+TDataStd_DataMapOfStringByte
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, uint8_t> & ChangeMap();
+		TDataStd_DataMapOfStringByte & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringByte::Map ******/
 		/****** md5 signature: 5e6a1284ff530878fb79a84804e5fd36 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, uint8_t>
+TDataStd_DataMapOfStringByte
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & Map();
+		const TDataStd_DataMapOfStringByte & Map();
 
 };
 
@@ -3348,7 +3373,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_HArray1<int
+theOther: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -3358,33 +3383,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfInteger;
-		 TDataStd_HDataMapOfStringHArray1OfInteger(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int> > > & theOther);
+		 TDataStd_HDataMapOfStringHArray1OfInteger(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger> > & theOther);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap ******/
 		/****** md5 signature: 7b884a7f6270351f39baeb1630165358 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::Map ******/
 		/****** md5 signature: e71d4bf5539a22163368464c550ac4d0 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> & Map();
 
 };
 
@@ -3426,7 +3451,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_HArray1<double
+theOther: TColStd_HArray1OfReal
 
 Return
 -------
@@ -3436,33 +3461,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfReal;
-		 TDataStd_HDataMapOfStringHArray1OfReal(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double> > > & theOther);
+		 TDataStd_HDataMapOfStringHArray1OfReal(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal> > & theOther);
 
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap ******/
 		/****** md5 signature: 2299b3cdec329e77bd0cdecc056632d2 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>>
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & ChangeMap();
+		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::Map ******/
 		/****** md5 signature: d0990736972c1d8354f84f1a4ed0e974 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>>
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & Map();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> & Map();
 
 };
 
@@ -3504,7 +3529,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_DataMap<TCollection_ExtendedString, int>
+theOther: TColStd_DataMapOfStringInteger
 
 Return
 -------
@@ -3514,33 +3539,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringInteger;
-		 TDataStd_HDataMapOfStringInteger(const NCollection_DataMap<TCollection_ExtendedString, int> & theOther);
+		 TDataStd_HDataMapOfStringInteger(const TColStd_DataMapOfStringInteger & theOther);
 
 		/****** TDataStd_HDataMapOfStringInteger::ChangeMap ******/
 		/****** md5 signature: bbc64500a252b5d1177543f20cf828cd ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, int>
+TColStd_DataMapOfStringInteger
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, int> & ChangeMap();
+		TColStd_DataMapOfStringInteger & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringInteger::Map ******/
 		/****** md5 signature: ea6f9bd2903ee4e7de326f59f5f7fe0b ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, int>
+TColStd_DataMapOfStringInteger
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, int> & Map();
+		const TColStd_DataMapOfStringInteger & Map();
 
 };
 
@@ -3582,7 +3607,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_DataMap<TCollection_ExtendedString, double>
+theOther: TDataStd_DataMapOfStringReal
 
 Return
 -------
@@ -3592,33 +3617,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringReal;
-		 TDataStd_HDataMapOfStringReal(const NCollection_DataMap<TCollection_ExtendedString, double> & theOther);
+		 TDataStd_HDataMapOfStringReal(const TDataStd_DataMapOfStringReal & theOther);
 
 		/****** TDataStd_HDataMapOfStringReal::ChangeMap ******/
 		/****** md5 signature: 62dbc4dc76d69ed8d81e7b8ce6e53760 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, double>
+TDataStd_DataMapOfStringReal
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, double> & ChangeMap();
+		TDataStd_DataMapOfStringReal & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringReal::Map ******/
 		/****** md5 signature: c06e389766508e1ad1efbf382f7c67a5 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, double>
+TDataStd_DataMapOfStringReal
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, double> & Map();
+		const TDataStd_DataMapOfStringReal & Map();
 
 };
 
@@ -3660,7 +3685,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
+theOther: TDataStd_DataMapOfStringString
 
 Return
 -------
@@ -3670,33 +3695,33 @@ Description
 -----------
 No available documentation.
 ") TDataStd_HDataMapOfStringString;
-		 TDataStd_HDataMapOfStringString(const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & theOther);
+		 TDataStd_HDataMapOfStringString(const TDataStd_DataMapOfStringString & theOther);
 
 		/****** TDataStd_HDataMapOfStringString::ChangeMap ******/
 		/****** md5 signature: 04004d52a8d232412fb2730b8d63f1ea ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
+TDataStd_DataMapOfStringString
 
 Description
 -----------
 No available documentation.
 ") ChangeMap;
-		NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & ChangeMap();
+		TDataStd_DataMapOfStringString & ChangeMap();
 
 		/****** TDataStd_HDataMapOfStringString::Map ******/
 		/****** md5 signature: ac2be5d3f36be6a3b1a4b00bcfd8048a ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
+TDataStd_DataMapOfStringString
 
 Description
 -----------
 No available documentation.
 ") Map;
-		const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & Map();
+		const TDataStd_DataMapOfStringString & Map();
 
 };
 
@@ -4355,13 +4380,13 @@ No available documentation.
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Return the inner array of the IntegerArray attribute.
 ") Array;
-		const opencascade::handle<NCollection_HArray1<int>> & Array();
+		const opencascade::handle<TColStd_HArray1OfInteger> & Array();
 
 		/****** TDataStd_IntegerArray::ChangeArray ******/
 		/****** md5 signature: b76f2a5f24bace08a34c441cd87057b6 ******/
@@ -4369,7 +4394,7 @@ Return the inner array of the IntegerArray attribute.
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: NCollection_HArray1<int
+newArray: TColStd_HArray1OfInteger
 isCheckItems: bool (optional, default to true)
 
 Return
@@ -4380,7 +4405,7 @@ Description
 -----------
 Sets the inner array <myValue> of the IntegerArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfInteger that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<NCollection_HArray1<int> > & newArray, const bool isCheckItems = true);
+		void ChangeArray(const opencascade::handle<TColStd_HArray1OfInteger> & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_IntegerArray::DeltaOnModification ******/
 		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
@@ -4971,13 +4996,13 @@ No available documentation.
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-NCollection_List<int>
+TColStd_ListOfInteger
 
 Description
 -----------
 No available documentation.
 ") List;
-		const NCollection_List<int> & List();
+		const TColStd_ListOfInteger & List();
 
 		/****** TDataStd_IntegerList::NewEmpty ******/
 		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
@@ -5186,7 +5211,7 @@ Empty constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-theArraysOfIntegers: NCollection_HArray1<int
+theArraysOfIntegers: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -5196,7 +5221,7 @@ Description
 -----------
 Replace the container content by new content of the <theArraysOfIntegers>.
 ") ChangeArraysOfIntegers;
-		void ChangeArraysOfIntegers(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int> > > & theArraysOfIntegers);
+		void ChangeArraysOfIntegers(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger> > & theArraysOfIntegers);
 
 		/****** TDataStd_NamedData::ChangeArraysOfReals ******/
 		/****** md5 signature: 9e06093b825e9d701cc4370a47d40532 ******/
@@ -5204,7 +5229,7 @@ Replace the container content by new content of the <theArraysOfIntegers>.
 		%feature("autodoc", "
 Parameters
 ----------
-theArraysOfReals: NCollection_HArray1<double
+theArraysOfReals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -5214,7 +5239,7 @@ Description
 -----------
 Replace the container content by new content of the <theArraysOfReals>.
 ") ChangeArraysOfReals;
-		void ChangeArraysOfReals(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double> > > & theArraysOfReals);
+		void ChangeArraysOfReals(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal> > & theArraysOfReals);
 
 		/****** TDataStd_NamedData::ChangeBytes ******/
 		/****** md5 signature: eccf66fe581c6a433ab10fefcf0f1873 ******/
@@ -5222,7 +5247,7 @@ Replace the container content by new content of the <theArraysOfReals>.
 		%feature("autodoc", "
 Parameters
 ----------
-theBytes: NCollection_DataMap<TCollection_ExtendedString, uint8_t>
+theBytes: TDataStd_DataMapOfStringByte
 
 Return
 -------
@@ -5232,7 +5257,7 @@ Description
 -----------
 Replace the container content by new content of the <theBytes>.
 ") ChangeBytes;
-		void ChangeBytes(const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & theBytes);
+		void ChangeBytes(const TDataStd_DataMapOfStringByte & theBytes);
 
 		/****** TDataStd_NamedData::ChangeIntegers ******/
 		/****** md5 signature: b423bf2099cf0e6df5607c0a7e646d11 ******/
@@ -5240,7 +5265,7 @@ Replace the container content by new content of the <theBytes>.
 		%feature("autodoc", "
 Parameters
 ----------
-theIntegers: NCollection_DataMap<TCollection_ExtendedString, int>
+theIntegers: TColStd_DataMapOfStringInteger
 
 Return
 -------
@@ -5250,7 +5275,7 @@ Description
 -----------
 Replace the container content by new content of the <theIntegers>.
 ") ChangeIntegers;
-		void ChangeIntegers(const NCollection_DataMap<TCollection_ExtendedString, int> & theIntegers);
+		void ChangeIntegers(const TColStd_DataMapOfStringInteger & theIntegers);
 
 		/****** TDataStd_NamedData::ChangeReals ******/
 		/****** md5 signature: 968451bd143cf17065b6651dc131092b ******/
@@ -5258,7 +5283,7 @@ Replace the container content by new content of the <theIntegers>.
 		%feature("autodoc", "
 Parameters
 ----------
-theReals: NCollection_DataMap<TCollection_ExtendedString, double>
+theReals: TDataStd_DataMapOfStringReal
 
 Return
 -------
@@ -5268,7 +5293,7 @@ Description
 -----------
 Replace the container content by new content of the <theReals>.
 ") ChangeReals;
-		void ChangeReals(const NCollection_DataMap<TCollection_ExtendedString, double> & theReals);
+		void ChangeReals(const TDataStd_DataMapOfStringReal & theReals);
 
 		/****** TDataStd_NamedData::ChangeStrings ******/
 		/****** md5 signature: 03a31a6b82edb86ef1840d5c7829bebf ******/
@@ -5276,7 +5301,7 @@ Replace the container content by new content of the <theReals>.
 		%feature("autodoc", "
 Parameters
 ----------
-theStrings: NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
+theStrings: TDataStd_DataMapOfStringString
 
 Return
 -------
@@ -5286,7 +5311,7 @@ Description
 -----------
 Replace the container content by new content of the <theStrings>.
 ") ChangeStrings;
-		void ChangeStrings(const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & theStrings);
+		void ChangeStrings(const TDataStd_DataMapOfStringString & theStrings);
 
 		/****** TDataStd_NamedData::Clear ******/
 		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
@@ -5349,13 +5374,13 @@ theName: str
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<int>>
+opencascade::handle<TColStd_HArray1OfInteger>
 
 Description
 -----------
 Returns the named array of integer values. It returns a NULL Handle if there is no such a named array of integers (use HasArrayOfIntegers()).
 ") GetArrayOfIntegers;
-		const opencascade::handle<NCollection_HArray1<int>> & GetArrayOfIntegers(TCollection_ExtendedString theName);
+		const opencascade::handle<TColStd_HArray1OfInteger> & GetArrayOfIntegers(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetArrayOfReals ******/
 		/****** md5 signature: 4b07348b7ff7e8d6afa3b42f8c59b9d6 ******/
@@ -5367,39 +5392,39 @@ theName: str
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the named array of real values. It returns a NULL Handle if there is no such a named array of reals (use HasArrayOfReals()).
 ") GetArrayOfReals;
-		const opencascade::handle<NCollection_HArray1<double>> & GetArrayOfReals(TCollection_ExtendedString theName);
+		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(TCollection_ExtendedString theName);
 
 		/****** TDataStd_NamedData::GetArraysOfIntegersContainer ******/
 		/****** md5 signature: cf977acc7f469d36984569613d43db4a ******/
 		%feature("compactdefaultargs") GetArraysOfIntegersContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>>
 
 Description
 -----------
 Returns the internal container of named arrays of integer values.
 ") GetArraysOfIntegersContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<int>>> & GetArraysOfIntegersContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> & GetArraysOfIntegersContainer();
 
 		/****** TDataStd_NamedData::GetArraysOfRealsContainer ******/
 		/****** md5 signature: 61ebbbc5b18d4639a6832102c99db856 ******/
 		%feature("compactdefaultargs") GetArraysOfRealsContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>>
+NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>>
 
 Description
 -----------
 Returns the internal container of named arrays of real values.
 ") GetArraysOfRealsContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<NCollection_HArray1<double>>> & GetArraysOfRealsContainer();
+		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> & GetArraysOfRealsContainer();
 
 		/****** TDataStd_NamedData::GetByte ******/
 		/****** md5 signature: ec50a8a97fb11a6d684e0c664bad2492 ******/
@@ -5424,13 +5449,13 @@ Returns the named byte. It returns 0 if there is no such a named byte (use HasBy
 		%feature("compactdefaultargs") GetBytesContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, uint8_t>
+TDataStd_DataMapOfStringByte
 
 Description
 -----------
 Returns the internal container of named bytes.
 ") GetBytesContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, uint8_t> & GetBytesContainer();
+		const TDataStd_DataMapOfStringByte & GetBytesContainer();
 
 		/****** TDataStd_NamedData::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -5468,13 +5493,13 @@ Returns the integer value specified by the Name. It returns 0 if internal map do
 		%feature("compactdefaultargs") GetIntegersContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, int>
+TColStd_DataMapOfStringInteger
 
 Description
 -----------
 Returns the internal container of named integers.
 ") GetIntegersContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, int> & GetIntegersContainer();
+		const TColStd_DataMapOfStringInteger & GetIntegersContainer();
 
 		/****** TDataStd_NamedData::GetReal ******/
 		/****** md5 signature: 12b3ad6ec8942b8b8553a5af56c22bda ******/
@@ -5499,13 +5524,13 @@ Returns the named real. It returns 0.0 if there is no such a named real (use Has
 		%feature("compactdefaultargs") GetRealsContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, double>
+TDataStd_DataMapOfStringReal
 
 Description
 -----------
 Returns the internal container of named reals.
 ") GetRealsContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, double> & GetRealsContainer();
+		const TDataStd_DataMapOfStringReal & GetRealsContainer();
 
 		/****** TDataStd_NamedData::GetString ******/
 		/****** md5 signature: 431d366e9e5181ba3f9d7b2cb04484f9 ******/
@@ -5530,13 +5555,13 @@ Returns the named string. It returns an empty string if there is no such a named
 		%feature("compactdefaultargs") GetStringsContainer;
 		%feature("autodoc", "Return
 -------
-NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>
+TDataStd_DataMapOfStringString
 
 Description
 -----------
 Returns the internal container of named strings.
 ") GetStringsContainer;
-		const NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> & GetStringsContainer();
+		const TDataStd_DataMapOfStringString & GetStringsContainer();
 
 		/****** TDataStd_NamedData::HasArrayOfIntegers ******/
 		/****** md5 signature: f4bf7cccf14d928a4b296e2a77889a56 ******/
@@ -5845,7 +5870,7 @@ Finds or creates a named data attribute.
 Parameters
 ----------
 theName: str
-theArrayOfIntegers: NCollection_HArray1<int
+theArrayOfIntegers: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -5857,7 +5882,7 @@ Defines a named array of integer values.
 Input parameter: theName key 
 Input parameter: theArrayOfIntegers new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfIntegers;
-		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<int> > & theArrayOfIntegers);
+		void SetArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
 		/****** TDataStd_NamedData::SetArrayOfReals ******/
 		/****** md5 signature: 07dd4ccfdcec4e8f0946b17d2faa8ad6 ******/
@@ -5866,7 +5891,7 @@ Input parameter: theArrayOfIntegers new value, overrides existing (passed array 
 Parameters
 ----------
 theName: str
-theArrayOfReals: NCollection_HArray1<double
+theArrayOfReals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -5878,7 +5903,7 @@ Defines a named array of real values.
 Input parameter: theName key 
 Input parameter: theArrayOfReals new value, overrides existing (passed array will be copied by value!).
 ") SetArrayOfReals;
-		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<double> > & theArrayOfReals);
+		void SetArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
 		/****** TDataStd_NamedData::SetByte ******/
 		/****** md5 signature: 7dc2dc2d1d062a7821b2e285bbb970a6 ******/
@@ -5990,7 +6015,7 @@ Clear data without calling Backup().
 Parameters
 ----------
 theName: str
-theArrayOfIntegers: NCollection_HArray1<int
+theArrayOfIntegers: TColStd_HArray1OfInteger
 
 Return
 -------
@@ -6000,7 +6025,7 @@ Description
 -----------
 Defines a named array of integer values (without calling Backup).
 ") setArrayOfIntegers;
-		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<int> > & theArrayOfIntegers);
+		void setArrayOfIntegers(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfInteger> & theArrayOfIntegers);
 
 		/****** TDataStd_NamedData::setArrayOfReals ******/
 		/****** md5 signature: 7a4fcc8d7aa64ea98538e17af71d95b6 ******/
@@ -6009,7 +6034,7 @@ Defines a named array of integer values (without calling Backup).
 Parameters
 ----------
 theName: str
-theArrayOfReals: NCollection_HArray1<double
+theArrayOfReals: TColStd_HArray1OfReal
 
 Return
 -------
@@ -6019,7 +6044,7 @@ Description
 -----------
 Defines a named array of real values (without calling Backup).
 ") setArrayOfReals;
-		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<NCollection_HArray1<double> > & theArrayOfReals);
+		void setArrayOfReals(TCollection_ExtendedString theName, const opencascade::handle<TColStd_HArray1OfReal> & theArrayOfReals);
 
 		/****** TDataStd_NamedData::setByte ******/
 		/****** md5 signature: 7dc2dc2d1d062a7821b2e285bbb970a6 ******/
@@ -6419,13 +6444,13 @@ No available documentation.
 		%feature("compactdefaultargs") Array;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the handle of this array of reals.
 ") Array;
-		const opencascade::handle<NCollection_HArray1<double>> & Array();
+		const opencascade::handle<TColStd_HArray1OfReal> & Array();
 
 		/****** TDataStd_RealArray::ChangeArray ******/
 		/****** md5 signature: d5c452ac8a4e4490f7de91cf8f237c16 ******/
@@ -6433,7 +6458,7 @@ Returns the handle of this array of reals.
 		%feature("autodoc", "
 Parameters
 ----------
-newArray: NCollection_HArray1<double
+newArray: TColStd_HArray1OfReal
 isCheckItems: bool (optional, default to true)
 
 Return
@@ -6444,7 +6469,7 @@ Description
 -----------
 Sets the inner array <myValue> of the RealArray attribute to <newArray>. If value of <newArray> differs from <myValue>, Backup performed and myValue refers to new instance of HArray1OfReal that holds <newArray> values If <isCheckItems> equal True each item of <newArray> will be checked with each item of <myValue> for coincidence (to avoid backup).
 ") ChangeArray;
-		void ChangeArray(const opencascade::handle<NCollection_HArray1<double> > & newArray, const bool isCheckItems = true);
+		void ChangeArray(const opencascade::handle<TColStd_HArray1OfReal> & newArray, const bool isCheckItems = true);
 
 		/****** TDataStd_RealArray::DeltaOnModification ******/
 		/****** md5 signature: dcdd915c66595b49f08644d07738621a ******/
@@ -7035,13 +7060,13 @@ No available documentation.
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-NCollection_List<double>
+TColStd_ListOfReal
 
 Description
 -----------
 No available documentation.
 ") List;
-		const NCollection_List<double> & List();
+		const TColStd_ListOfReal & List();
 
 		/****** TDataStd_RealList::NewEmpty ******/
 		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/
@@ -7332,13 +7357,13 @@ Initialize the inner array with bounds from <lower> to <upper>.
 		%feature("compactdefaultargs") InternalArray;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<TDF_Label>>
+opencascade::handle<TDataStd_HLabelArray1>
 
 Description
 -----------
 No available documentation.
 ") InternalArray;
-		const opencascade::handle<NCollection_HArray1<TDF_Label>> & InternalArray();
+		const opencascade::handle<TDataStd_HLabelArray1> & InternalArray();
 
 		/****** TDataStd_ReferenceArray::Length ******/
 		/****** md5 signature: f07a384d0f09ac6092cb8ed89442c8a8 ******/
@@ -7512,7 +7537,7 @@ Sets default GUID for the attribute.
 		%feature("autodoc", "
 Parameters
 ----------
-values: NCollection_HArray1<TDF_Label
+values: TDataStd_HLabelArray1
 isCheckItems: bool (optional, default to true)
 
 Return
@@ -7523,7 +7548,7 @@ Description
 -----------
 No available documentation.
 ") SetInternalArray;
-		void SetInternalArray(const opencascade::handle<NCollection_HArray1<TDF_Label> > & values, const bool isCheckItems = true);
+		void SetInternalArray(const opencascade::handle<TDataStd_HLabelArray1> & values, const bool isCheckItems = true);
 
 		/****** TDataStd_ReferenceArray::SetValue ******/
 		/****** md5 signature: e6ebbe0b478dd8722d3a179a797e039f ******/
@@ -7832,13 +7857,13 @@ No available documentation.
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TDF_Label>
+TDF_LabelList
 
 Description
 -----------
 No available documentation.
 ") List;
-		const NCollection_List<TDF_Label> & List();
+		const TDF_LabelList & List();
 
 		/****** TDataStd_ReferenceList::NewEmpty ******/
 		/****** md5 signature: 4ebad80fa2cacb9f9e231bbb83a29a98 ******/

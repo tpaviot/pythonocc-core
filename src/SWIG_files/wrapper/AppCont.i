@@ -44,6 +44,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appcont.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<TColgp_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -53,6 +54,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_appcont.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import TColgp.i
 %import AppParCurves.i
 
 %pythoncode {
@@ -90,8 +92,8 @@ class AppCont_Function {
 Parameters
 ----------
 theU: double
-theVec2d: NCollection_Array1<gp_Vec2d>
-theVec: NCollection_Array1<gp_Vec>
+theVec2d: TColgp_Array1OfVec2d
+theVec: TColgp_Array1OfVec
 
 Return
 -------
@@ -101,7 +103,7 @@ Description
 -----------
 Returns the derivative at parameter <theU>.
 ") D1;
-		virtual bool D1(const double theU, NCollection_Array1<gp_Vec2d> & theVec2d, NCollection_Array1<gp_Vec> & theVec);
+		virtual bool D1(const double theU, TColgp_Array1OfVec2d & theVec2d, TColgp_Array1OfVec & theVec);
 
 		/****** AppCont_Function::FirstParameter ******/
 		/****** md5 signature: a78bafc15480770b071a253f06828586 ******/
@@ -200,8 +202,8 @@ Parameter theDimIdx Defines index in output parameters space. 1 <= theDimIdx <= 
 Parameters
 ----------
 theU: double
-thePnt2d: NCollection_Array1<gp_Pnt2d>
-thePnt: NCollection_Array1<gp_Pnt>
+thePnt2d: TColgp_Array1OfPnt2d
+thePnt: TColgp_Array1OfPnt
 
 Return
 -------
@@ -211,7 +213,7 @@ Description
 -----------
 Returns the point at parameter <theU>.
 ") Value;
-		virtual bool Value(const double theU, NCollection_Array1<gp_Pnt2d> & thePnt2d, NCollection_Array1<gp_Pnt> & thePnt);
+		virtual bool Value(const double theU, TColgp_Array1OfPnt2d & thePnt2d, TColgp_Array1OfPnt & thePnt);
 
 };
 

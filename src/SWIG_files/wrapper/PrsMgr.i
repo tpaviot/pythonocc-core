@@ -51,6 +51,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 #include<TopLoc_module.hxx>
 #include<Aspect_module.hxx>
 #include<gp_module.hxx>
+#include<TColStd_module.hxx>
 #include<V3d_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
@@ -91,6 +92,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 %import TopLoc.i
 %import Aspect.i
 %import gp.i
+%import TColStd.i
 %import V3d.i
 
 %pythoncode {
@@ -150,9 +152,21 @@ PrsMgr_TOP_ProjectorDependent = PrsMgr_TypeOfPresentation3d.PrsMgr_TOP_Projector
 %template(PrsMgr_ListOfPresentations) NCollection_List<opencascade::handle<Prs3d_Presentation>>;
 
 %extend NCollection_List<opencascade::handle<Prs3d_Presentation>> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = PrsMgr_ListIteratorOfListOfPresentations(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -1229,7 +1243,7 @@ Parameter theToIncludeHidden when True, also checks hidden presentations.
 		%feature("autodoc", "
 Parameters
 ----------
-ListOfMode: NCollection_List<int>
+ListOfMode: TColStd_ListOfInteger
 
 Return
 -------
@@ -1239,7 +1253,7 @@ Description
 -----------
 gives the list of modes which are flagged 'to be updated'.
 ") ToBeUpdated;
-		void ToBeUpdated(NCollection_List<int> & ListOfMode);
+		void ToBeUpdated(TColStd_ListOfInteger & ListOfMode);
 
 		/****** PrsMgr_PresentableObject::ToPropagateVisualState ******/
 		/****** md5 signature: c93d9d8e0962efe39bca6640addb1dbb ******/

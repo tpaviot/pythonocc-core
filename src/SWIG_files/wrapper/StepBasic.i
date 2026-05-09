@@ -46,6 +46,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepbasic.html"
 #include<NCollection_module.hxx>
 #include<TCollection_module.hxx>
 #include<StepData_module.hxx>
+#include<TColStd_module.hxx>
+#include<Interface_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TCollection_module.hxx>
 #include<StepBasic_module.hxx>
@@ -62,6 +64,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepbasic.html"
 %import NCollection.i
 %import TCollection.i
 %import StepData.i
+%import TColStd.i
+%import Interface.i
 
 %pythoncode {
 from enum import IntEnum
@@ -300,6 +304,7 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_IdentificationAssignment)
 %wrap_handle(StepBasic_IdentificationRole)
 %wrap_handle(StepBasic_LocalTime)
+%wrap_handle(StepBasic_MeasureValueMember)
 %wrap_handle(StepBasic_MeasureWithUnit)
 %wrap_handle(StepBasic_NameAssignment)
 %wrap_handle(StepBasic_NamedUnit)
@@ -323,6 +328,7 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_SecurityClassification)
 %wrap_handle(StepBasic_SecurityClassificationAssignment)
 %wrap_handle(StepBasic_SecurityClassificationLevel)
+%wrap_handle(StepBasic_SizeMember)
 %wrap_handle(StepBasic_VersionedActionRequest)
 %wrap_handle(StepBasic_AreaUnit)
 %wrap_handle(StepBasic_CalendarDate)
@@ -4497,7 +4503,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement> > > & elements);
+		void Init(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> > & elements);
 
 		/****** StepBasic_DerivedUnit::NbElements ******/
 		/****** md5 signature: 936a04e4c43c96574b096e69196411e4 ******/
@@ -4528,7 +4534,7 @@ Description
 -----------
 No available documentation.
 ") SetElements;
-		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement> > > & elements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> > & elements);
 
 };
 
@@ -6077,13 +6083,13 @@ Empty constructor.
 		%feature("compactdefaultargs") Angles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns field Angles.
 ") Angles;
-		opencascade::handle<NCollection_HArray1<double>> Angles();
+		opencascade::handle<TColStd_HArray1OfReal> Angles();
 
 		/****** StepBasic_EulerAngles::Init ******/
 		/****** md5 signature: 1f761eb26924f0370ac36047fa98a74f ******/
@@ -6091,7 +6097,7 @@ Returns field Angles.
 		%feature("autodoc", "
 Parameters
 ----------
-aAngles: NCollection_HArray1<double
+aAngles: TColStd_HArray1OfReal
 
 Return
 -------
@@ -6101,7 +6107,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<NCollection_HArray1<double> > & aAngles);
+		void Init(const opencascade::handle<TColStd_HArray1OfReal> & aAngles);
 
 		/****** StepBasic_EulerAngles::SetAngles ******/
 		/****** md5 signature: da398f8c5bac7f9e507e8821f7798046 ******/
@@ -6109,7 +6115,7 @@ Initialize all fields (own and inherited).
 		%feature("autodoc", "
 Parameters
 ----------
-Angles: NCollection_HArray1<double
+Angles: TColStd_HArray1OfReal
 
 Return
 -------
@@ -6119,7 +6125,7 @@ Description
 -----------
 Set field Angles.
 ") SetAngles;
-		void SetAngles(const opencascade::handle<NCollection_HArray1<double> > & Angles);
+		void SetAngles(const opencascade::handle<TColStd_HArray1OfReal> & Angles);
 
 };
 
@@ -7584,6 +7590,8 @@ No available documentation.
 };
 
 
+%make_alias(StepBasic_MeasureValueMember)
+
 %extend StepBasic_MeasureValueMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8476,11 +8484,11 @@ aLastName: TCollection_HAsciiString
 hasAfirstName: bool
 aFirstName: TCollection_HAsciiString
 hasAmiddleNames: bool
-aMiddleNames: NCollection_HArray1<
+aMiddleNames: Interface_HArray1OfHAsciiString
 hasAprefixTitles: bool
-aPrefixTitles: NCollection_HArray1<
+aPrefixTitles: Interface_HArray1OfHAsciiString
 hasAsuffixTitles: bool
-aSuffixTitles: NCollection_HArray1<
+aSuffixTitles: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -8490,7 +8498,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const bool hasAlastName, const opencascade::handle<TCollection_HAsciiString> & aLastName, const bool hasAfirstName, const opencascade::handle<TCollection_HAsciiString> & aFirstName, const bool hasAmiddleNames, const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aMiddleNames, const bool hasAprefixTitles, const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aPrefixTitles, const bool hasAsuffixTitles, const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aSuffixTitles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const bool hasAlastName, const opencascade::handle<TCollection_HAsciiString> & aLastName, const bool hasAfirstName, const opencascade::handle<TCollection_HAsciiString> & aFirstName, const bool hasAmiddleNames, const opencascade::handle<Interface_HArray1OfHAsciiString > & aMiddleNames, const bool hasAprefixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString > & aPrefixTitles, const bool hasAsuffixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString > & aSuffixTitles);
 
 		/****** StepBasic_Person::LastName ******/
 		/****** md5 signature: de2911d8bac319b53e48cc2cfb8e5982 ******/
@@ -8510,13 +8518,13 @@ No available documentation.
 		%feature("compactdefaultargs") MiddleNames;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") MiddleNames;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> MiddleNames();
+		opencascade::handle<Interface_HArray1OfHAsciiString> MiddleNames();
 
 		/****** StepBasic_Person::MiddleNamesValue ******/
 		/****** md5 signature: 9d03a76ec4d24e8872bbf8a2b54ab8c9 ******/
@@ -8580,13 +8588,13 @@ No available documentation.
 		%feature("compactdefaultargs") PrefixTitles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") PrefixTitles;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> PrefixTitles();
+		opencascade::handle<Interface_HArray1OfHAsciiString> PrefixTitles();
 
 		/****** StepBasic_Person::PrefixTitlesValue ******/
 		/****** md5 signature: 76fbbe353ff6692d23f0940e00b7e0d2 ******/
@@ -8666,7 +8674,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aMiddleNames: NCollection_HArray1<
+aMiddleNames: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -8676,7 +8684,7 @@ Description
 -----------
 No available documentation.
 ") SetMiddleNames;
-		void SetMiddleNames(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aMiddleNames);
+		void SetMiddleNames(const opencascade::handle<Interface_HArray1OfHAsciiString > & aMiddleNames);
 
 		/****** StepBasic_Person::SetPrefixTitles ******/
 		/****** md5 signature: ecbdec1137f3eeb6e241348cf2fe2573 ******/
@@ -8684,7 +8692,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aPrefixTitles: NCollection_HArray1<
+aPrefixTitles: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -8694,7 +8702,7 @@ Description
 -----------
 No available documentation.
 ") SetPrefixTitles;
-		void SetPrefixTitles(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aPrefixTitles);
+		void SetPrefixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString > & aPrefixTitles);
 
 		/****** StepBasic_Person::SetSuffixTitles ******/
 		/****** md5 signature: 94cc2e7de62c14917d5c8142e660cf3c ******/
@@ -8702,7 +8710,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aSuffixTitles: NCollection_HArray1<
+aSuffixTitles: Interface_HArray1OfHAsciiString
 
 Return
 -------
@@ -8712,20 +8720,20 @@ Description
 -----------
 No available documentation.
 ") SetSuffixTitles;
-		void SetSuffixTitles(const opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString> > > & aSuffixTitles);
+		void SetSuffixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString > & aSuffixTitles);
 
 		/****** StepBasic_Person::SuffixTitles ******/
 		/****** md5 signature: 270f6143cead775c16a5f9b5af7f4e89 ******/
 		%feature("compactdefaultargs") SuffixTitles;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>>
+opencascade::handle<Interface_HArray1OfHAsciiString>
 
 Description
 -----------
 No available documentation.
 ") SuffixTitles;
-		opencascade::handle<NCollection_HArray1<opencascade::handle<TCollection_HAsciiString>>> SuffixTitles();
+		opencascade::handle<Interface_HArray1OfHAsciiString> SuffixTitles();
 
 		/****** StepBasic_Person::SuffixTitlesValue ******/
 		/****** md5 signature: dfb67cf978aa5afab6ca1f40b3b2bb9f ******/
@@ -9284,7 +9292,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext> > > & aFrameOfReference);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> > & aFrameOfReference);
 
 		/****** StepBasic_Product::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -9346,7 +9354,7 @@ Description
 -----------
 No available documentation.
 ") SetFrameOfReference;
-		void SetFrameOfReference(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext> > > & aFrameOfReference);
+		void SetFrameOfReference(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> > & aFrameOfReference);
 
 		/****** StepBasic_Product::SetId ******/
 		/****** md5 signature: a589ed4c1f87cc154c05276cfb60f4ea ******/
@@ -11603,6 +11611,8 @@ No available documentation.
 };
 
 
+%make_alias(StepBasic_SizeMember)
+
 %extend StepBasic_SizeMember {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12787,7 +12797,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization> > > & aOrganizations, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>> > & aOrganizations, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_OrganizationalAddress::NbOrganizations ******/
 		/****** md5 signature: 93b9d6d6874fbb20eb20aaabc8e5d832 ******/
@@ -12867,7 +12877,7 @@ Description
 -----------
 No available documentation.
 ") SetOrganizations;
-		void SetOrganizations(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization> > > & aOrganizations);
+		void SetOrganizations(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>> > & aOrganizations);
 
 };
 
@@ -12952,7 +12962,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person> > > & aPeople, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>> > & aPeople, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_PersonalAddress::NbPeople ******/
 		/****** md5 signature: 56087ab33789e01f9da97e647ef0524a ******/
@@ -13032,7 +13042,7 @@ Description
 -----------
 No available documentation.
 ") SetPeople;
-		void SetPeople(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person> > > & aPeople);
+		void SetPeople(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>> > & aPeople);
 
 };
 
@@ -13683,7 +13693,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinitionFormation> & aFormation, const opencascade::handle<StepBasic_ProductDefinitionContext> & aFrame, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document> > > & aDocIds);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinitionFormation> & aFormation, const opencascade::handle<StepBasic_ProductDefinitionContext> & aFrame, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>> > & aDocIds);
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::NbDocIds ******/
 		/****** md5 signature: 7257c23bfa14edd9d0eff982e6526558 ******/
@@ -13714,7 +13724,7 @@ Description
 -----------
 No available documentation.
 ") SetDocIds;
-		void SetDocIds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document> > > & DocIds);
+		void SetDocIds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>> > & DocIds);
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::SetDocIdsValue ******/
 		/****** md5 signature: a697ee50a5ca107f028279e812dcfbf4 ******/
@@ -13783,7 +13793,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product> > > & aProducts);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>> > & aProducts);
 
 		/****** StepBasic_ProductRelatedProductCategory::NbProducts ******/
 		/****** md5 signature: 9650fef31042cd02acdc5e585fcaa6fc ******/
@@ -13845,7 +13855,7 @@ Description
 -----------
 No available documentation.
 ") SetProducts;
-		void SetProducts(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product> > > & aProducts);
+		void SetProducts(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>> > & aProducts);
 
 };
 

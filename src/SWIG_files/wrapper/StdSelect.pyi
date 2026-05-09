@@ -10,6 +10,7 @@ from OCC.Core.PrsMgr import *
 from OCC.Core.TopLoc import *
 from OCC.Core.V3d import *
 from OCC.Core.Select3D import *
+from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 
 
@@ -90,6 +91,8 @@ class StdSelect_BRepSelectionTool:
     def ComputeSensitive(theShape: TopoDS_Shape, theOwner: SelectMgr_EntityOwner, theSelection: SelectMgr_Selection, theDeflection: float, theDeflAngle: float, theNbPOnEdge: int, theMaxiParam: float, theAutoTriang: Optional[bool] = true) -> None: ...
     @staticmethod
     def GetEdgeSensitive(theShape: TopoDS_Shape, theOwner: SelectMgr_EntityOwner, theSelection: SelectMgr_Selection, theDeflection: float, theDeviationAngle: float, theNbPOnEdge: int, theMaxiParam: float, theSensitive: Select3D_SensitiveEntity) -> None: ...
+    @staticmethod
+    def GetSensitiveForCylinder(theSubfacesMap: TopTools_IndexedMapOfShape, theOwner: SelectMgr_EntityOwner, theSelection: SelectMgr_Selection) -> bool: ...
     @staticmethod
     def GetStandardPriority(theShape: TopoDS_Shape, theType: TopAbs_ShapeEnum) -> int: ...
     @overload

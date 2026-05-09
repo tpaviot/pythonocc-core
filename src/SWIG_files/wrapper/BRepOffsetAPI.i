@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Message_module.hxx>
+#include<TopTools_module.hxx>
 #include<Draft_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAbs_module.hxx>
@@ -110,6 +111,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 %import TopoDS.i
 %import gp.i
 %import Message.i
+%import TopTools.i
 %import Draft.i
 %import Geom.i
 %import GeomAbs.i
@@ -140,6 +142,13 @@ from OCC.Core.Exception import *
 %template(BRepOffsetAPI_SequenceOfSequenceOfReal) NCollection_Sequence<TColStd_SequenceOfReal>;
 
 %extend NCollection_Sequence<TColStd_SequenceOfReal> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -148,6 +157,13 @@ from OCC.Core.Exception import *
 %template(BRepOffsetAPI_SequenceOfSequenceOfShape) NCollection_Sequence<TopTools_SequenceOfShape>;
 
 %extend NCollection_Sequence<TopTools_SequenceOfShape> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -273,13 +289,13 @@ F: TopoDS_Face
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
-		const NCollection_List<TopoDS_Shape> ConnectedFaces(const TopoDS_Face & F);
+		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
 
 		/****** BRepOffsetAPI_DraftAngle::CorrectWires ******/
 		/****** md5 signature: 81ca023a91873cfa63a02fb08e0cbd78 ******/
@@ -304,13 +320,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -340,26 +356,26 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_DraftAngle::ModifiedFaces ******/
 		/****** md5 signature: 04d53bdf9425df173667a3e8bed63dfa ******/
 		%feature("compactdefaultargs") ModifiedFaces;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns all the faces on which a modification has been given.
 ") ModifiedFaces;
-		const NCollection_List<TopoDS_Shape> ModifiedFaces();
+		const TopTools_ListOfShape & ModifiedFaces();
 
 		/****** BRepOffsetAPI_DraftAngle::ModifiedShape ******/
 		/****** md5 signature: 03484d6ed49b502775c03b5171cdf2be ******/
@@ -502,13 +518,13 @@ index: int
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of edges coincident with the contiguous edge of index index found by the function Perform. There are as many edges in the list as there are faces adjacent to this contiguous edge. Exceptions Standard_OutOfRange if: - index is less than 1, or - index is greater than the number of contiguous edges found by the function Perform on the shapes added to this algorithm.
 ") ContigousEdgeCouple;
-		const NCollection_List<TopoDS_Shape> ContigousEdgeCouple(const int index);
+		const TopTools_ListOfShape & ContigousEdgeCouple(const int index);
 
 		/****** BRepOffsetAPI_FindContigousEdges::DegeneratedShape ******/
 		/****** md5 signature: c68ee497bd94dc28a04346b118a632f1 ******/
@@ -719,13 +735,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeDraft::Perform ******/
 		/****** md5 signature: 9d9ab6613b03c320d8f9e5fc88ef5b38 ******/
@@ -942,13 +958,13 @@ ProfShape: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the shapes created from a subshape <SpineShape> of the spine and a subshape <ProfShape> on the profile.
 ") GeneratedShapes;
-		const NCollection_List<TopoDS_Shape> GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
+		const TopTools_ListOfShape & GeneratedShapes(const TopoDS_Shape & SpineShape, const TopoDS_Shape & ProfShape);
 
 		/****** BRepOffsetAPI_MakeEvolved::Top ******/
 		/****** md5 signature: c5b73d85ae980e083fd62982344b1f23 ******/
@@ -1224,13 +1240,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeFilling::IsDone ******/
 		/****** md5 signature: 2be114a985aea21262ebd32099ccc3a6 ******/
@@ -1456,13 +1472,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 returns a list of the created shapes from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffset::Init ******/
 		/****** md5 signature: 20cdbc88c6b16cae965fca7361033325 ******/
@@ -1595,13 +1611,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffsetShape::GetJoinType ******/
 		/****** md5 signature: 98bbd653674d56f0804dd681f91e2cf5 ******/
@@ -1657,13 +1673,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes Modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakeOffsetShape::PerformByJoin ******/
 		/****** md5 signature: d3b7fce4a1d6fb690efb37353df0df1b ******/
@@ -1818,13 +1834,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 No available documentation.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakePipe::Generated ******/
 		/****** md5 signature: da81408487ea6911b58fe475fd4ea546 ******/
@@ -2016,13 +2032,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepOffsetAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods Add).
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_MakePipeShell::GetStatus ******/
 		/****** md5 signature: 7fc2662f43e326653463499b95ca8153 ******/
@@ -2095,7 +2111,7 @@ Transforms the sweeping Shell in Solid. If a propfile is not closed returns Fals
 		%feature("autodoc", "
 Parameters
 ----------
-theProfiles: NCollection_List<TopoDS_Shape>
+theProfiles: TopTools_ListOfShape
 
 Return
 -------
@@ -2105,7 +2121,7 @@ Description
 -----------
 Returns the list of original profiles.
 ") Profiles;
-		void Profiles(NCollection_List<TopoDS_Shape> & theProfiles);
+		void Profiles(TopTools_ListOfShape & theProfiles);
 
 		/****** BRepOffsetAPI_MakePipeShell::SetDiscreteMode ******/
 		/****** md5 signature: 0366446a5945e513e46ee5778018b32d ******/
@@ -2372,7 +2388,7 @@ Sets the transition mode to manage discontinuities on the swept shape caused by 
 Parameters
 ----------
 NumberOfSection: int
-Result: NCollection_List<TopoDS_Shape>
+Result: TopTools_ListOfShape
 
 Return
 -------
@@ -2382,7 +2398,7 @@ Description
 -----------
 Simulates the resulting shape by calculating its cross-sections. The spine is divided by this cross-sections into (NumberOfSection - 1) equal parts, the number of cross-sections is NumberOfSection. The cross-sections are wires and they are returned in the list Result. This gives a rapid preview of the resulting shape, which will be obtained using the settings you have provided. Raises NotDone if <self> it is not Ready.
 ") Simulate;
-		void Simulate(const int NumberOfSection, NCollection_List<TopoDS_Shape> & Result);
+		void Simulate(const int NumberOfSection, TopTools_ListOfShape & Result);
 
 		/****** BRepOffsetAPI_MakePipeShell::Spine ******/
 		/****** md5 signature: 6331688635fc3e41ab0cf89de46bd269 ******/
@@ -2554,7 +2570,7 @@ Builds the result of the projection as a compound of wires. Tries to build orien
 		%feature("autodoc", "
 Parameters
 ----------
-Liste: NCollection_List<TopoDS_Shape>
+Liste: TopTools_ListOfShape
 
 Return
 -------
@@ -2564,7 +2580,7 @@ Description
 -----------
 build the result as a list of wire if possible in -- a first returns a wire only if there is only a wire.
 ") BuildWire;
-		bool BuildWire(NCollection_List<TopoDS_Shape> & Liste);
+		bool BuildWire(TopTools_ListOfShape & Liste);
 
 		/****** BRepOffsetAPI_NormalProjection::Compute3d ******/
 		/****** md5 signature: 8b864583fd604bf1369f0261b87b0b61 ******/
@@ -2612,13 +2628,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes generated from the shape <S>.
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_NormalProjection::Init ******/
 		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
@@ -2883,13 +2899,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns a list of new shapes generated from the shape S by the shell-generating algorithm. This function is redefined from BRepBuilderAPI_MakeShape::Generated. S can be an edge or a vertex of a given Profile (see methods AddWire and AddVertex).
 ") Generated;
-		const NCollection_List<TopoDS_Shape> Generated(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
 		/****** BRepOffsetAPI_ThruSections::GeneratedFace ******/
 		/****** md5 signature: 03196f2ef499f6adc08e797085c3e792 ******/
@@ -3122,13 +3138,13 @@ Define the approximation algorithm.
 		%feature("compactdefaultargs") Wires;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of original wires.
 ") Wires;
-		const NCollection_List<TopoDS_Shape> Wires();
+		const TopTools_ListOfShape & Wires();
 
 };
 
@@ -3182,7 +3198,7 @@ No available documentation.
 Parameters
 ----------
 S: TopoDS_Shape
-ClosingFaces: NCollection_List<TopoDS_Shape>
+ClosingFaces: TopTools_ListOfShape
 Offset: double
 Tol: double
 Mode: BRepOffset_Mode (optional, default to BRepOffset_Skin)
@@ -3200,7 +3216,7 @@ Description
 -----------
 Constructs a hollowed solid from the solid S by removing the set of faces ClosingFaces from S, where: Offset defines the thickness of the walls. Its sign indicates which side of the surface of the solid the hollowed shape is built on; - Tol defines the tolerance criterion for coincidence in generated shapes; - Mode defines the construction type of parallels applied to free edges of shape S. Currently, only one construction type is implemented, namely the one where the free edges do not generate parallels; this corresponds to the default value BRepOffset_Skin; Intersection specifies how the algorithm must work in order to limit the parallels to two adjacent shapes: - if Intersection is false (default value), the intersection is calculated with the parallels to the two adjacent shapes, - if Intersection is true, the intersection is calculated by taking account of all parallels generated; this computation method is more general as it avoids self-intersections generated in the offset shape from features of small dimensions on shape S, however this method has not been completely implemented and therefore is not recommended for use; - SelfInter tells the algorithm whether a computation to eliminate self-intersections needs to be applied to the resulting shape. However, as this functionality is not yet implemented, you should use the default value (false); - Join defines how to fill the holes that may appear between parallels to the two adjacent faces. It may take values GeomAbs_Arc or GeomAbs_Intersection: - if Join is equal to GeomAbs_Arc, then pipes are generated between two free edges of two adjacent parallels, and spheres are generated on 'images' of vertices; it is the default value, - if Join is equal to GeomAbs_Intersection, then the parallels to the two adjacent faces are enlarged and intersected, so that there are no free edges on parallels to faces. RemoveIntEdges flag defines whether to remove the INTERNAL edges from the result or not. Warnings Since the algorithm of MakeThickSolid is based on MakeOffsetShape algorithm, the warnings are the same as for MakeOffsetShape.
 ") MakeThickSolidByJoin;
-		void MakeThickSolidByJoin(const TopoDS_Shape & S, const NCollection_List<TopoDS_Shape> & ClosingFaces, const double Offset, const double Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const bool Intersection = false, const bool SelfInter = false, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool RemoveIntEdges = false, const Message_ProgressRange & theRange = Message_ProgressRange());
+		void MakeThickSolidByJoin(const TopoDS_Shape & S, const TopTools_ListOfShape & ClosingFaces, const double Offset, const double Tol, const BRepOffset_Mode Mode = BRepOffset_Skin, const bool Intersection = false, const bool SelfInter = false, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool RemoveIntEdges = false, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** BRepOffsetAPI_MakeThickSolid::MakeThickSolidBySimple ******/
 		/****** md5 signature: 842c4b953e3c653636f62c4006a2e7a6 ******/
@@ -3231,13 +3247,13 @@ S: TopoDS_Shape
 
 Return
 -------
-NCollection_List<TopoDS_Shape>
+TopTools_ListOfShape
 
 Description
 -----------
 Returns the list of shapes modified from the shape <S>.
 ") Modified;
-		const NCollection_List<TopoDS_Shape> Modified(const TopoDS_Shape & S);
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
 };
 

@@ -74,6 +74,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(AppStd_Application)
 /* end handles declaration */
 
 /* templates */
@@ -123,6 +124,8 @@ returns the file name which contains application resources.
 
 };
 
+
+%make_alias(AppStd_Application)
 
 %extend AppStd_Application {
 	%pythoncode {

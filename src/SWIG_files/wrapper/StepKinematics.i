@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepkinematics.ht
 #include<TCollection_module.hxx>
 #include<StepGeom_module.hxx>
 #include<StepData_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<StepGeom_module.hxx>
@@ -69,6 +70,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepkinematics.ht
 %import TCollection.i
 %import StepGeom.i
 %import StepData.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -102,6 +104,86 @@ StepKinematics_adNotActuated = StepKinematics_ActuatedDirection.StepKinematics_a
 
 /* handles */
 %wrap_handle(StepKinematics_ContextDependentKinematicLinkRepresentation)
+%wrap_handle(StepKinematics_KinematicJoint)
+%wrap_handle(StepKinematics_KinematicLink)
+%wrap_handle(StepKinematics_KinematicLinkRepresentation)
+%wrap_handle(StepKinematics_KinematicLinkRepresentationAssociation)
+%wrap_handle(StepKinematics_KinematicPair)
+%wrap_handle(StepKinematics_KinematicPropertyDefinitionRepresentation)
+%wrap_handle(StepKinematics_KinematicTopologyDirectedStructure)
+%wrap_handle(StepKinematics_KinematicTopologyNetworkStructure)
+%wrap_handle(StepKinematics_KinematicTopologyStructure)
+%wrap_handle(StepKinematics_MechanismRepresentation)
+%wrap_handle(StepKinematics_MechanismStateRepresentation)
+%wrap_handle(StepKinematics_OrientedJoint)
+%wrap_handle(StepKinematics_PairRepresentationRelationship)
+%wrap_handle(StepKinematics_PairValue)
+%wrap_handle(StepKinematics_ProductDefinitionKinematics)
+%wrap_handle(StepKinematics_ProductDefinitionRelationshipKinematics)
+%wrap_handle(StepKinematics_RotationAboutDirection)
+%wrap_handle(StepKinematics_ActuatedKinPairAndOrderKinPair)
+%wrap_handle(StepKinematics_ActuatedKinematicPair)
+%wrap_handle(StepKinematics_CylindricalPairValue)
+%wrap_handle(StepKinematics_GearPairValue)
+%wrap_handle(StepKinematics_HighOrderKinematicPair)
+%wrap_handle(StepKinematics_KinematicPropertyMechanismRepresentation)
+%wrap_handle(StepKinematics_LinearFlexibleLinkRepresentation)
+%wrap_handle(StepKinematics_LowOrderKinematicPair)
+%wrap_handle(StepKinematics_LowOrderKinematicPairValue)
+%wrap_handle(StepKinematics_LowOrderKinematicPairWithMotionCoupling)
+%wrap_handle(StepKinematics_PlanarPairValue)
+%wrap_handle(StepKinematics_PointOnPlanarCurvePairValue)
+%wrap_handle(StepKinematics_PointOnSurfacePairValue)
+%wrap_handle(StepKinematics_PrismaticPairValue)
+%wrap_handle(StepKinematics_RackAndPinionPairValue)
+%wrap_handle(StepKinematics_RevolutePairValue)
+%wrap_handle(StepKinematics_RigidLinkRepresentation)
+%wrap_handle(StepKinematics_RollingCurvePairValue)
+%wrap_handle(StepKinematics_RollingSurfacePairValue)
+%wrap_handle(StepKinematics_ScrewPairValue)
+%wrap_handle(StepKinematics_SlidingCurvePairValue)
+%wrap_handle(StepKinematics_SlidingSurfacePairValue)
+%wrap_handle(StepKinematics_SphericalPairValue)
+%wrap_handle(StepKinematics_UnconstrainedPairValue)
+%wrap_handle(StepKinematics_UniversalPairValue)
+%wrap_handle(StepKinematics_CylindricalPair)
+%wrap_handle(StepKinematics_FullyConstrainedPair)
+%wrap_handle(StepKinematics_GearPair)
+%wrap_handle(StepKinematics_LinearFlexibleAndPinionPair)
+%wrap_handle(StepKinematics_LinearFlexibleAndPlanarCurvePair)
+%wrap_handle(StepKinematics_LowOrderKinematicPairWithRange)
+%wrap_handle(StepKinematics_PlanarCurvePair)
+%wrap_handle(StepKinematics_PlanarPair)
+%wrap_handle(StepKinematics_PointOnPlanarCurvePair)
+%wrap_handle(StepKinematics_PointOnSurfacePair)
+%wrap_handle(StepKinematics_PrismaticPair)
+%wrap_handle(StepKinematics_RackAndPinionPair)
+%wrap_handle(StepKinematics_RevolutePair)
+%wrap_handle(StepKinematics_ScrewPair)
+%wrap_handle(StepKinematics_SphericalPair)
+%wrap_handle(StepKinematics_SphericalPairWithPin)
+%wrap_handle(StepKinematics_SurfacePair)
+%wrap_handle(StepKinematics_UnconstrainedPair)
+%wrap_handle(StepKinematics_UniversalPair)
+%wrap_handle(StepKinematics_CylindricalPairWithRange)
+%wrap_handle(StepKinematics_GearPairWithRange)
+%wrap_handle(StepKinematics_HomokineticPair)
+%wrap_handle(StepKinematics_PlanarCurvePairRange)
+%wrap_handle(StepKinematics_PlanarPairWithRange)
+%wrap_handle(StepKinematics_PointOnPlanarCurvePairWithRange)
+%wrap_handle(StepKinematics_PointOnSurfacePairWithRange)
+%wrap_handle(StepKinematics_PrismaticPairWithRange)
+%wrap_handle(StepKinematics_RackAndPinionPairWithRange)
+%wrap_handle(StepKinematics_RevolutePairWithRange)
+%wrap_handle(StepKinematics_RollingCurvePair)
+%wrap_handle(StepKinematics_RollingSurfacePair)
+%wrap_handle(StepKinematics_ScrewPairWithRange)
+%wrap_handle(StepKinematics_SlidingCurvePair)
+%wrap_handle(StepKinematics_SlidingSurfacePair)
+%wrap_handle(StepKinematics_SphericalPairWithPinAndRange)
+%wrap_handle(StepKinematics_SphericalPairWithRange)
+%wrap_handle(StepKinematics_SurfacePairWithRange)
+%wrap_handle(StepKinematics_UniversalPairWithRange)
 /* end handles declaration */
 
 /* templates */
@@ -241,6 +323,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_KinematicJoint)
+
 %extend StepKinematics_KinematicJoint {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -267,6 +351,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_KinematicLink)
 
 %extend StepKinematics_KinematicLink {
 	%pythoncode {
@@ -311,7 +397,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicLink> & theRepresentedLink);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicLink> & theRepresentedLink);
 
 		/****** StepKinematics_KinematicLinkRepresentation::RepresentedLink ******/
 		/****** md5 signature: de6c35595b3640206535a9be7e9d6835 ******/
@@ -347,6 +433,8 @@ Sets field RepresentedLink.
 };
 
 
+%make_alias(StepKinematics_KinematicLinkRepresentation)
+
 %extend StepKinematics_KinematicLinkRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -373,6 +461,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_KinematicLinkRepresentationAssociation)
 
 %extend StepKinematics_KinematicLinkRepresentationAssociation {
 	%pythoncode {
@@ -487,6 +577,8 @@ Sets field Joint.
 };
 
 
+%make_alias(StepKinematics_KinematicPair)
+
 %extend StepKinematics_KinematicPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -513,6 +605,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_KinematicPropertyDefinitionRepresentation)
 
 %extend StepKinematics_KinematicPropertyDefinitionRepresentation {
 	%pythoncode {
@@ -557,7 +651,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
 		/****** StepKinematics_KinematicTopologyDirectedStructure::Parent ******/
 		/****** md5 signature: 7e9d5155e4e641596ce641fe8a5914e1 ******/
@@ -592,6 +686,8 @@ Sets field Parent.
 
 };
 
+
+%make_alias(StepKinematics_KinematicTopologyDirectedStructure)
 
 %extend StepKinematics_KinematicTopologyDirectedStructure {
 	%pythoncode {
@@ -636,7 +732,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
 		/****** StepKinematics_KinematicTopologyNetworkStructure::Parent ******/
 		/****** md5 signature: 7e9d5155e4e641596ce641fe8a5914e1 ******/
@@ -671,6 +767,8 @@ Sets field Parent.
 
 };
 
+
+%make_alias(StepKinematics_KinematicTopologyNetworkStructure)
 
 %extend StepKinematics_KinematicTopologyNetworkStructure {
 	%pythoncode {
@@ -783,6 +881,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_KinematicTopologyStructure)
+
 %extend StepKinematics_KinematicTopologyStructure {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -826,7 +926,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const StepKinematics_KinematicTopologyRepresentationSelect & theRepresentedTopology);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentation_Name, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theRepresentation_Items, const opencascade::handle<StepRepr_RepresentationContext> & theRepresentation_ContextOfItems, const StepKinematics_KinematicTopologyRepresentationSelect & theRepresentedTopology);
 
 		/****** StepKinematics_MechanismRepresentation::RepresentedTopology ******/
 		/****** md5 signature: d7649991f36b2e011cd22c8a30ed3fea ******/
@@ -861,6 +961,8 @@ Sets field RepresentedTopology.
 
 };
 
+
+%make_alias(StepKinematics_MechanismRepresentation)
 
 %extend StepKinematics_MechanismRepresentation {
 	%pythoncode {
@@ -905,7 +1007,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem> > > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> & theMechanism);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepRepr_RepresentationItem>> > & theItems, const opencascade::handle<StepRepr_RepresentationContext> & theContextOfItems, const opencascade::handle<StepKinematics_MechanismRepresentation> & theMechanism);
 
 		/****** StepKinematics_MechanismStateRepresentation::Mechanism ******/
 		/****** md5 signature: 08cdf7021078a7d81a012290f38d9d95 ******/
@@ -941,6 +1043,8 @@ No available documentation.
 };
 
 
+%make_alias(StepKinematics_MechanismStateRepresentation)
+
 %extend StepKinematics_MechanismStateRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -967,6 +1071,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_OrientedJoint)
 
 %extend StepKinematics_OrientedJoint {
 	%pythoncode {
@@ -1050,6 +1156,8 @@ Sets data for supertype RepresentationRelationshipWithTransformation.
 };
 
 
+%make_alias(StepKinematics_PairRepresentationRelationship)
+
 %extend StepKinematics_PairRepresentationRelationship {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1127,6 +1235,8 @@ Sets field AppliesToPair.
 };
 
 
+%make_alias(StepKinematics_PairValue)
+
 %extend StepKinematics_PairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1154,6 +1264,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_ProductDefinitionKinematics)
+
 %extend StepKinematics_ProductDefinitionKinematics {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1180,6 +1292,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_ProductDefinitionRelationshipKinematics)
 
 %extend StepKinematics_ProductDefinitionRelationshipKinematics {
 	%pythoncode {
@@ -1361,6 +1475,8 @@ Sets field RotationAngle.
 };
 
 
+%make_alias(StepKinematics_RotationAboutDirection)
+
 %extend StepKinematics_RotationAboutDirection {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1421,13 +1537,13 @@ Returns Value as RotationAboutDirection (or Null if another type).
 		%feature("compactdefaultargs") YprRotation;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns Value as YprRotation (or Null if another type).
 ") YprRotation;
-		opencascade::handle<NCollection_HArray1<double>> YprRotation();
+		opencascade::handle<TColStd_HArray1OfReal> YprRotation();
 
 };
 
@@ -1617,6 +1733,8 @@ No available documentation.
 
 };
 
+
+%make_alias(StepKinematics_ActuatedKinPairAndOrderKinPair)
 
 %extend StepKinematics_ActuatedKinPairAndOrderKinPair {
 	%pythoncode {
@@ -1945,6 +2063,8 @@ Returns field TZ.
 };
 
 
+%make_alias(StepKinematics_ActuatedKinematicPair)
+
 %extend StepKinematics_ActuatedKinematicPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2055,6 +2175,8 @@ Sets field ActualTranslation.
 };
 
 
+%make_alias(StepKinematics_CylindricalPairValue)
+
 %extend StepKinematics_CylindricalPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2133,6 +2255,8 @@ Sets field ActualRotation1.
 };
 
 
+%make_alias(StepKinematics_GearPairValue)
+
 %extend StepKinematics_GearPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2159,6 +2283,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_HighOrderKinematicPair)
 
 %extend StepKinematics_HighOrderKinematicPair {
 	%pythoncode {
@@ -2238,6 +2364,8 @@ Sets field Base.
 };
 
 
+%make_alias(StepKinematics_KinematicPropertyMechanismRepresentation)
+
 %extend StepKinematics_KinematicPropertyMechanismRepresentation {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2264,6 +2392,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_LinearFlexibleLinkRepresentation)
 
 %extend StepKinematics_LinearFlexibleLinkRepresentation {
 	%pythoncode {
@@ -2508,6 +2638,8 @@ Returns field TZ.
 };
 
 
+%make_alias(StepKinematics_LowOrderKinematicPair)
+
 %extend StepKinematics_LowOrderKinematicPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2746,6 +2878,8 @@ Sets field ActualTranslationZ.
 };
 
 
+%make_alias(StepKinematics_LowOrderKinematicPairValue)
+
 %extend StepKinematics_LowOrderKinematicPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2772,6 +2906,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_LowOrderKinematicPairWithMotionCoupling)
 
 %extend StepKinematics_LowOrderKinematicPairWithMotionCoupling {
 	%pythoncode {
@@ -2915,6 +3051,8 @@ Sets field ActualTranslationY.
 };
 
 
+%make_alias(StepKinematics_PlanarPairValue)
+
 %extend StepKinematics_PlanarPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3024,6 +3162,8 @@ Sets field InputOrientation.
 
 };
 
+
+%make_alias(StepKinematics_PointOnPlanarCurvePairValue)
 
 %extend StepKinematics_PointOnPlanarCurvePairValue {
 	%pythoncode {
@@ -3135,6 +3275,8 @@ Sets field InputOrientation.
 };
 
 
+%make_alias(StepKinematics_PointOnSurfacePairValue)
+
 %extend StepKinematics_PointOnSurfacePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3212,6 +3354,8 @@ Sets field ActualTranslation.
 
 };
 
+
+%make_alias(StepKinematics_PrismaticPairValue)
 
 %extend StepKinematics_PrismaticPairValue {
 	%pythoncode {
@@ -3291,6 +3435,8 @@ Sets field ActualDisplacement.
 };
 
 
+%make_alias(StepKinematics_RackAndPinionPairValue)
+
 %extend StepKinematics_RackAndPinionPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3369,6 +3515,8 @@ Sets field ActualRotation.
 };
 
 
+%make_alias(StepKinematics_RevolutePairValue)
+
 %extend StepKinematics_RevolutePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3395,6 +3543,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_RigidLinkRepresentation)
 
 %extend StepKinematics_RigidLinkRepresentation {
 	%pythoncode {
@@ -3473,6 +3623,8 @@ Sets field ActualPointOnCurve1.
 
 };
 
+
+%make_alias(StepKinematics_RollingCurvePairValue)
 
 %extend StepKinematics_RollingCurvePairValue {
 	%pythoncode {
@@ -3584,6 +3736,8 @@ Sets field ActualRotation.
 };
 
 
+%make_alias(StepKinematics_RollingSurfacePairValue)
+
 %extend StepKinematics_RollingSurfacePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3661,6 +3815,8 @@ Sets field ActualRotation.
 
 };
 
+
+%make_alias(StepKinematics_ScrewPairValue)
 
 %extend StepKinematics_ScrewPairValue {
 	%pythoncode {
@@ -3771,6 +3927,8 @@ Sets field ActualPointOnCurve2.
 
 };
 
+
+%make_alias(StepKinematics_SlidingCurvePairValue)
 
 %extend StepKinematics_SlidingCurvePairValue {
 	%pythoncode {
@@ -3914,6 +4072,8 @@ Sets field ActualRotation.
 };
 
 
+%make_alias(StepKinematics_SlidingSurfacePairValue)
+
 %extend StepKinematics_SlidingSurfacePairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3992,6 +4152,8 @@ Sets field InputOrientation.
 };
 
 
+%make_alias(StepKinematics_SphericalPairValue)
+
 %extend StepKinematics_SphericalPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4069,6 +4231,8 @@ Sets field ActualPlacement.
 
 };
 
+
+%make_alias(StepKinematics_UnconstrainedPairValue)
 
 %extend StepKinematics_UnconstrainedPairValue {
 	%pythoncode {
@@ -4180,6 +4344,8 @@ Sets field SecondRotationAngle.
 };
 
 
+%make_alias(StepKinematics_UniversalPairValue)
+
 %extend StepKinematics_UniversalPairValue {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4207,6 +4373,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_CylindricalPair)
+
 %extend StepKinematics_CylindricalPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4233,6 +4401,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_FullyConstrainedPair)
 
 %extend StepKinematics_FullyConstrainedPair {
 	%pythoncode {
@@ -4445,6 +4615,8 @@ Sets field RadiusSecondLink.
 };
 
 
+%make_alias(StepKinematics_GearPair)
+
 %extend StepKinematics_GearPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -4527,6 +4699,8 @@ Sets field PinionRadius.
 
 };
 
+
+%make_alias(StepKinematics_LinearFlexibleAndPinionPair)
 
 %extend StepKinematics_LinearFlexibleAndPinionPair {
 	%pythoncode {
@@ -4642,6 +4816,8 @@ Sets field PairCurve.
 
 };
 
+
+%make_alias(StepKinematics_LinearFlexibleAndPlanarCurvePair)
 
 %extend StepKinematics_LinearFlexibleAndPlanarCurvePair {
 	%pythoncode {
@@ -5252,6 +5428,8 @@ Returns field UpperLimitActualTranslationZ.
 };
 
 
+%make_alias(StepKinematics_LowOrderKinematicPairWithRange)
+
 %extend StepKinematics_LowOrderKinematicPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5399,6 +5577,8 @@ Sets field Orientation.
 };
 
 
+%make_alias(StepKinematics_PlanarCurvePair)
+
 %extend StepKinematics_PlanarCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5425,6 +5605,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_PlanarPair)
 
 %extend StepKinematics_PlanarPair {
 	%pythoncode {
@@ -5541,6 +5723,8 @@ Sets field PairCurve.
 };
 
 
+%make_alias(StepKinematics_PointOnPlanarCurvePair)
+
 %extend StepKinematics_PointOnPlanarCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5624,6 +5808,8 @@ Sets field PairSurface.
 };
 
 
+%make_alias(StepKinematics_PointOnSurfacePair)
+
 %extend StepKinematics_PointOnSurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5650,6 +5836,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_PrismaticPair)
 
 %extend StepKinematics_PrismaticPair {
 	%pythoncode {
@@ -5734,6 +5922,8 @@ Sets field PinionRadius.
 };
 
 
+%make_alias(StepKinematics_RackAndPinionPair)
+
 %extend StepKinematics_RackAndPinionPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5760,6 +5950,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_RevolutePair)
 
 %extend StepKinematics_RevolutePair {
 	%pythoncode {
@@ -5844,6 +6036,8 @@ Sets field Pitch.
 };
 
 
+%make_alias(StepKinematics_ScrewPair)
+
 %extend StepKinematics_ScrewPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5871,6 +6065,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_SphericalPair)
+
 %extend StepKinematics_SphericalPair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5897,6 +6093,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_SphericalPairWithPin)
 
 %extend StepKinematics_SphericalPairWithPin {
 	%pythoncode {
@@ -6045,6 +6243,8 @@ Returns field Surface2.
 };
 
 
+%make_alias(StepKinematics_SurfacePair)
+
 %extend StepKinematics_SurfacePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6071,6 +6271,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_UnconstrainedPair)
 
 %extend StepKinematics_UnconstrainedPair {
 	%pythoncode {
@@ -6174,6 +6376,8 @@ Sets field InputSkewAngle.
 
 };
 
+
+%make_alias(StepKinematics_UniversalPair)
 
 %extend StepKinematics_UniversalPair {
 	%pythoncode {
@@ -6416,6 +6620,8 @@ Returns field UpperLimitActualTranslation.
 };
 
 
+%make_alias(StepKinematics_CylindricalPairWithRange)
+
 %extend StepKinematics_CylindricalPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6564,6 +6770,8 @@ Returns field UpperLimitActualRotation1.
 };
 
 
+%make_alias(StepKinematics_GearPairWithRange)
+
 %extend StepKinematics_GearPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6590,6 +6798,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_HomokineticPair)
 
 %extend StepKinematics_HomokineticPair {
 	%pythoncode {
@@ -6708,6 +6918,8 @@ Sets field RangeOnCurve2.
 
 };
 
+
+%make_alias(StepKinematics_PlanarCurvePairRange)
 
 %extend StepKinematics_PlanarCurvePairRange {
 	%pythoncode {
@@ -7041,6 +7253,8 @@ Returns field UpperLimitActualTranslationY.
 
 };
 
+
+%make_alias(StepKinematics_PlanarPairWithRange)
 
 %extend StepKinematics_PlanarPairWithRange {
 	%pythoncode {
@@ -7403,6 +7617,8 @@ Returns field UpperLimitYaw.
 };
 
 
+%make_alias(StepKinematics_PointOnPlanarCurvePairWithRange)
+
 %extend StepKinematics_PointOnPlanarCurvePairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7763,6 +7979,8 @@ Returns field UpperLimitYaw.
 };
 
 
+%make_alias(StepKinematics_PointOnSurfacePairWithRange)
+
 %extend StepKinematics_PointOnSurfacePairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7912,6 +8130,8 @@ Returns field UpperLimitActualTranslation.
 };
 
 
+%make_alias(StepKinematics_PrismaticPairWithRange)
+
 %extend StepKinematics_PrismaticPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8055,6 +8275,8 @@ Returns field UpperLimitRackDisplacement.
 
 };
 
+
+%make_alias(StepKinematics_RackAndPinionPairWithRange)
 
 %extend StepKinematics_RackAndPinionPairWithRange {
 	%pythoncode {
@@ -8205,6 +8427,8 @@ Returns field UpperLimitActualRotation.
 };
 
 
+%make_alias(StepKinematics_RevolutePairWithRange)
+
 %extend StepKinematics_RevolutePairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8232,6 +8456,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_RollingCurvePair)
+
 %extend StepKinematics_RollingCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8258,6 +8484,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_RollingSurfacePair)
 
 %extend StepKinematics_RollingSurfacePair {
 	%pythoncode {
@@ -8403,6 +8631,8 @@ Returns field UpperLimitActualRotation.
 };
 
 
+%make_alias(StepKinematics_ScrewPairWithRange)
+
 %extend StepKinematics_ScrewPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8430,6 +8660,8 @@ default constructor.
 };
 
 
+%make_alias(StepKinematics_SlidingCurvePair)
+
 %extend StepKinematics_SlidingCurvePair {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8456,6 +8688,8 @@ default constructor.
 
 };
 
+
+%make_alias(StepKinematics_SlidingSurfacePair)
 
 %extend StepKinematics_SlidingSurfacePair {
 	%pythoncode {
@@ -8697,6 +8931,8 @@ Returns field UpperLimitYaw.
 
 };
 
+
+%make_alias(StepKinematics_SphericalPairWithPinAndRange)
 
 %extend StepKinematics_SphericalPairWithPinAndRange {
 	%pythoncode {
@@ -9031,6 +9267,8 @@ Returns field UpperLimitYaw.
 };
 
 
+%make_alias(StepKinematics_SphericalPairWithRange)
+
 %extend StepKinematics_SphericalPairWithRange {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9240,6 +9478,8 @@ Returns field UpperLimitActualRotation.
 
 };
 
+
+%make_alias(StepKinematics_SurfacePairWithRange)
 
 %extend StepKinematics_SurfacePairWithRange {
 	%pythoncode {
@@ -9483,6 +9723,8 @@ Returns field UpperLimitSecondRotation.
 
 };
 
+
+%make_alias(StepKinematics_UniversalPairWithRange)
 
 %extend StepKinematics_UniversalPairWithRange {
 	%pythoncode {

@@ -82,6 +82,20 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XmlMXCAFDoc_AssemblyItemRefDriver)
+%wrap_handle(XmlMXCAFDoc_CentroidDriver)
+%wrap_handle(XmlMXCAFDoc_ColorDriver)
+%wrap_handle(XmlMXCAFDoc_DatumDriver)
+%wrap_handle(XmlMXCAFDoc_DimTolDriver)
+%wrap_handle(XmlMXCAFDoc_GraphNodeDriver)
+%wrap_handle(XmlMXCAFDoc_LengthUnitDriver)
+%wrap_handle(XmlMXCAFDoc_LocationDriver)
+%wrap_handle(XmlMXCAFDoc_MaterialDriver)
+%wrap_handle(XmlMXCAFDoc_NoteDriver)
+%wrap_handle(XmlMXCAFDoc_VisMaterialDriver)
+%wrap_handle(XmlMXCAFDoc_VisMaterialToolDriver)
+%wrap_handle(XmlMXCAFDoc_NoteBinDataDriver)
+%wrap_handle(XmlMXCAFDoc_NoteCommentDriver)
 /* end handles declaration */
 
 /* templates */
@@ -203,6 +217,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_AssemblyItemRefDriver)
+
 %extend XmlMXCAFDoc_AssemblyItemRefDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -287,6 +303,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_CentroidDriver)
 
 %extend XmlMXCAFDoc_CentroidDriver {
 	%pythoncode {
@@ -373,6 +391,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_ColorDriver)
+
 %extend XmlMXCAFDoc_ColorDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -457,6 +477,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_DatumDriver)
 
 %extend XmlMXCAFDoc_DatumDriver {
 	%pythoncode {
@@ -543,6 +565,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_DimTolDriver)
+
 %extend XmlMXCAFDoc_DimTolDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -628,6 +652,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_GraphNodeDriver)
+
 %extend XmlMXCAFDoc_GraphNodeDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -712,6 +738,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_LengthUnitDriver)
 
 %extend XmlMXCAFDoc_LengthUnitDriver {
 	%pythoncode {
@@ -856,6 +884,8 @@ Translate a storable Location to a non storable Location.
 };
 
 
+%make_alias(XmlMXCAFDoc_LocationDriver)
+
 %extend XmlMXCAFDoc_LocationDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -941,6 +971,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_MaterialDriver)
+
 %extend XmlMXCAFDoc_MaterialDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -995,6 +1027,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_NoteDriver)
 
 %extend XmlMXCAFDoc_NoteDriver {
 	%pythoncode {
@@ -1081,6 +1115,8 @@ Paste attribute from document into persistence.
 };
 
 
+%make_alias(XmlMXCAFDoc_VisMaterialDriver)
+
 %extend XmlMXCAFDoc_VisMaterialDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1165,6 +1201,8 @@ Paste attribute from document into persistence.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_VisMaterialToolDriver)
 
 %extend XmlMXCAFDoc_VisMaterialToolDriver {
 	%pythoncode {
@@ -1251,6 +1289,8 @@ No available documentation.
 };
 
 
+%make_alias(XmlMXCAFDoc_NoteBinDataDriver)
+
 %extend XmlMXCAFDoc_NoteBinDataDriver {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1335,6 +1375,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XmlMXCAFDoc_NoteCommentDriver)
 
 %extend XmlMXCAFDoc_NoteCommentDriver {
 	%pythoncode {

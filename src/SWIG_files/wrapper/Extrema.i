@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -65,6 +66,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 %import Geom2d.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 %import Adaptor3d.i
 %import Geom.i
 %import GeomAdaptor.i
@@ -143,6 +145,13 @@ Array1ExtendIter(Extrema_POnSurf)
 %template(Extrema_SequenceOfPOnCurv) NCollection_Sequence<Extrema_POnCurv>;
 
 %extend NCollection_Sequence<Extrema_POnCurv> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -151,6 +160,13 @@ Array1ExtendIter(Extrema_POnSurf)
 %template(Extrema_SequenceOfPOnCurv2d) NCollection_Sequence<Extrema_POnCurv2d>;
 
 %extend NCollection_Sequence<Extrema_POnCurv2d> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -159,6 +175,13 @@ Array1ExtendIter(Extrema_POnSurf)
 %template(Extrema_SequenceOfPOnSurf) NCollection_Sequence<Extrema_POnSurf>;
 
 %extend NCollection_Sequence<Extrema_POnSurf> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -383,13 +406,13 @@ theC: Adaptor2d_Curve2d
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method.
 ") DeflCurvIntervals;
-		static opencascade::handle<NCollection_HArray1<double>> DeflCurvIntervals(const Adaptor2d_Curve2d & theC);
+		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor2d_Curve2d & theC);
 
 		/****** Extrema_Curve2dTool::Degree ******/
 		/****** md5 signature: c8b1e8778c828e2bc2a32f188d86d508 ******/
@@ -488,7 +511,7 @@ No available documentation.
 Parameters
 ----------
 theC: Adaptor2d_Curve2d
-theT: NCollection_Array1<double>
+theT: TColStd_Array1OfReal
 theS: GeomAbs_Shape
 
 Return
@@ -499,7 +522,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>.
 ") Intervals;
-		static void Intervals(const Adaptor2d_Curve2d & theC, NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
+		static void Intervals(const Adaptor2d_Curve2d & theC, TColStd_Array1OfReal & theT, const GeomAbs_Shape theS);
 
 		/****** Extrema_Curve2dTool::IsClosed ******/
 		/****** md5 signature: f76f3d49135f8033305ba32127671472 ******/
@@ -922,13 +945,13 @@ theC: Adaptor3d_Curve
 
 Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method.
 ") DeflCurvIntervals;
-		static opencascade::handle<NCollection_HArray1<double>> DeflCurvIntervals(const Adaptor3d_Curve & theC);
+		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor3d_Curve & theC);
 
 		/****** Extrema_CurveTool::Degree ******/
 		/****** md5 signature: 88ef3028bafc455a0aea5e9c8bd42c5c ******/
@@ -1027,7 +1050,7 @@ No available documentation.
 Parameters
 ----------
 theC: Adaptor3d_Curve
-theT: NCollection_Array1<double>
+theT: TColStd_Array1OfReal
 theS: GeomAbs_Shape
 
 Return
@@ -1038,7 +1061,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		static void Intervals(Adaptor3d_Curve & theC, NCollection_Array1<double> & theT, const GeomAbs_Shape theS);
+		static void Intervals(Adaptor3d_Curve & theC, TColStd_Array1OfReal & theT, const GeomAbs_Shape theS);
 
 		/****** Extrema_CurveTool::IsPeriodic ******/
 		/****** md5 signature: fbfcd3dbd08e5fcb750662c78f6ee821 ******/
@@ -5367,13 +5390,13 @@ Return the value of the Nth distance.
 		%feature("compactdefaultargs") SquareDistances;
 		%feature("autodoc", "Return
 -------
-NCollection_Sequence<double>
+TColStd_SequenceOfReal
 
 Description
 -----------
 Change Sequence of SquareDistance.
 ") SquareDistances;
-		NCollection_Sequence<double> & SquareDistances();
+		TColStd_SequenceOfReal & SquareDistances();
 
 		/****** Extrema_FuncExtCS::Value ******/
 		/****** md5 signature: aae97e1be41ad26d9b2b682964a26bb0 ******/

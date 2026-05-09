@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwheadersection.h
 #include<Interface_module.hxx>
 #include<HeaderSection_module.hxx>
 #include<TCollection_module.hxx>
+#include<TColStd_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<Message_module.hxx>
@@ -63,6 +64,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_rwheadersection.h
 %import Interface.i
 %import HeaderSection.i
 %import TCollection.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum
@@ -78,6 +80,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(RWHeaderSection_GeneralModule)
+%wrap_handle(RWHeaderSection_ReadWriteModule)
 /* end handles declaration */
 
 /* templates */
@@ -215,6 +219,8 @@ No available documentation.
 
 };
 
+
+%make_alias(RWHeaderSection_GeneralModule)
 
 %extend RWHeaderSection_GeneralModule {
 	%pythoncode {
@@ -465,7 +471,7 @@ associates a positive Case Number to each type of HeaderSection entity, given as
 		%feature("autodoc", "
 Parameters
 ----------
-types: NCollection_Sequence<TCollection_AsciiString>
+types: TColStd_SequenceOfAsciiString
 
 Return
 -------
@@ -475,7 +481,7 @@ Description
 -----------
 associates a positive Case Number to each type of HeaderSection Complex entity, given as a String defined in the EXPRESS form.
 ") CaseStep;
-		int CaseStep(const NCollection_Sequence<TCollection_AsciiString> & types);
+		int CaseStep(const TColStd_SequenceOfAsciiString & types);
 
 		/****** RWHeaderSection_ReadWriteModule::IsComplex ******/
 		/****** md5 signature: 4ded93fc1cf7b4339f7fba22c29d50e9 ******/
@@ -557,6 +563,8 @@ No available documentation.
 
 };
 
+
+%make_alias(RWHeaderSection_ReadWriteModule)
 
 %extend RWHeaderSection_ReadWriteModule {
 	%pythoncode {

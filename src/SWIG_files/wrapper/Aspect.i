@@ -1172,6 +1172,13 @@ Aspect_XRTrackedDeviceRole_Other = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDe
 %template(Aspect_SequenceOfColor) NCollection_Sequence<Quantity_Color>;
 
 %extend NCollection_Sequence<Quantity_Color> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -1926,6 +1933,719 @@ returns the x Origin of the grid.
 %make_alias(Aspect_Grid)
 
 %extend Aspect_Grid {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************
+* class Aspect_GridParams *
+**************************/
+class Aspect_GridParams {
+	public:
+		/****** Aspect_GridParams::Aspect_GridParams ******/
+		/****** md5 signature: fd48d8138a7c40c7a3304f985f9c7908 ******/
+		%feature("compactdefaultargs") Aspect_GridParams;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Construct with sensible defaults: grey lines on the plane origin with axis coloring enabled, 1/100 plane-unit spacing, overlay mode, unbounded in extent and radius.
+") Aspect_GridParams;
+		 Aspect_GridParams();
+
+		/****** Aspect_GridParams::AccentAngularScale ******/
+		/****** md5 signature: 50491444376e6f200c160c4cfdfd6d30 ******/
+		%feature("compactdefaultargs") AccentAngularScale;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return accent overlay angular scale for circular-grid spokes. Zero disables the angular accent layer.
+") AccentAngularScale;
+		double AccentAngularScale();
+
+		/****** Aspect_GridParams::AccentColor ******/
+		/****** md5 signature: a578ac25c0075154130387981f557625 ******/
+		%feature("compactdefaultargs") AccentColor;
+		%feature("autodoc", "Return
+-------
+Quantity_Color
+
+Description
+-----------
+Return every-tenth-line / accent colour rendered by the shader.
+") AccentColor;
+		const Quantity_Color & AccentColor();
+
+		/****** Aspect_GridParams::AccentScaleX ******/
+		/****** md5 signature: 3a6722a14640d894e54e93737ff30b5a ******/
+		%feature("compactdefaultargs") AccentScaleX;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return accent overlay scale along the plane X/radial direction. Zero disables the accent layer on that axis.
+") AccentScaleX;
+		double AccentScaleX();
+
+		/****** Aspect_GridParams::AccentScaleY ******/
+		/****** md5 signature: 2f51a71565854108c8ee93857c758a66 ******/
+		%feature("compactdefaultargs") AccentScaleY;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return accent overlay scale along the plane Y direction. Zero disables the accent layer on that axis.
+") AccentScaleY;
+		double AccentScaleY();
+
+		/****** Aspect_GridParams::AngleEnd ******/
+		/****** md5 signature: a3c25a3cb1bfc70bfb950a15be6ceac3 ******/
+		%feature("compactdefaultargs") AngleEnd;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return arc end angle (radians). Meaningful only when IsArc() is true.
+") AngleEnd;
+		double AngleEnd();
+
+		/****** Aspect_GridParams::AngleStart ******/
+		/****** md5 signature: bf552f3b94d480f6d2e62ea7c6c4733f ******/
+		%feature("compactdefaultargs") AngleStart;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return arc start angle (radians). Meaningful only when IsArc() is true.
+") AngleStart;
+		double AngleStart();
+
+		/****** Aspect_GridParams::AngularDivisions ******/
+		/****** md5 signature: 155b3ac8be21103b641b42a1cd650c46 ******/
+		%feature("compactdefaultargs") AngularDivisions;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Return the angular subdivision count of the half-circle for circular grids. Zero means rectangular grid (default); any positive value switches the renderer to polar rings (Scale -> radial step) and spokes at pi/N rad.
+") AngularDivisions;
+		int AngularDivisions();
+
+		/****** Aspect_GridParams::Color ******/
+		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
+		%feature("compactdefaultargs") Color;
+		%feature("autodoc", "Return
+-------
+Quantity_Color
+
+Description
+-----------
+Return grid line color.
+") Color;
+		const Quantity_Color & Color();
+
+		/****** Aspect_GridParams::DrawMode ******/
+		/****** md5 signature: 820acf5cdbd9b081ca2fdb9e8fa43978 ******/
+		%feature("compactdefaultargs") DrawMode;
+		%feature("autodoc", "Return
+-------
+Aspect_GridDrawMode
+
+Description
+-----------
+Return draw mode: lines, points at grid intersections, or none.
+") DrawMode;
+		Aspect_GridDrawMode DrawMode();
+
+		/****** Aspect_GridParams::EffectiveScaleY ******/
+		/****** md5 signature: 834f54e43be70738e1e098ce436c7b28 ******/
+		%feature("compactdefaultargs") EffectiveScaleY;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Effective Y-direction scale actually consumed by the renderer.
+") EffectiveScaleY;
+		double EffectiveScaleY();
+
+		/****** Aspect_GridParams::IsArc ******/
+		/****** md5 signature: ce9a0f58cf021c5abc6fcacdaf55e271 ******/
+		%feature("compactdefaultargs") IsArc;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True when the circular grid is restricted to a sub-arc.
+") IsArc;
+		bool IsArc();
+
+		/****** Aspect_GridParams::IsBackground ******/
+		/****** md5 signature: f24f945cb4e4ca07e26f39c42641c5f0 ******/
+		%feature("compactdefaultargs") IsBackground;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if grid is drawn as a view-space background (behind all geometry).
+") IsBackground;
+		bool IsBackground();
+
+		/****** Aspect_GridParams::IsBounded ******/
+		/****** md5 signature: fc08e1307b1552460c5a8f2d81d1a03c ******/
+		%feature("compactdefaultargs") IsBounded;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True when the parameters describe a bounded rectangle or disc.
+") IsBounded;
+		bool IsBounded();
+
+		/****** Aspect_GridParams::IsCircular ******/
+		/****** md5 signature: 75a0876e5d27b7e3995ed1c1a2165b9f ******/
+		%feature("compactdefaultargs") IsCircular;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True when the parameters describe a circular (polar) grid.
+") IsCircular;
+		bool IsCircular();
+
+		/****** Aspect_GridParams::IsDrawAxis ******/
+		/****** md5 signature: aa86a763d4a16ceea896bcc0c6adb80a ******/
+		%feature("compactdefaultargs") IsDrawAxis;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if axis lines on the grid plane are drawn in red/green/blue.
+") IsDrawAxis;
+		bool IsDrawAxis();
+
+		/****** Aspect_GridParams::IsViewAdaptive ******/
+		/****** md5 signature: 972d041ecf62a011be0ea9973e2fc12b ******/
+		%feature("compactdefaultargs") IsViewAdaptive;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if grid spacing and visible extents adapt to the camera view.
+") IsViewAdaptive;
+		bool IsViewAdaptive();
+
+		/****** Aspect_GridParams::LineThickness ******/
+		/****** md5 signature: 161d9bfcff2f0671f9613717a0132b88 ******/
+		%feature("compactdefaultargs") LineThickness;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return line thickness in plane units (minimum pixel-space line width is derived from fwidth).
+") LineThickness;
+		double LineThickness();
+
+		/****** Aspect_GridParams::Origin ******/
+		/****** md5 signature: 6d77c7df792d3b308e4ef8436a8e2063 ******/
+		%feature("compactdefaultargs") Origin;
+		%feature("autodoc", "Return
+-------
+gp_Pnt
+
+Description
+-----------
+Return local offset of the grid origin within the plane.
+") Origin;
+		const gp_Pnt Origin();
+
+		/****** Aspect_GridParams::Radius ******/
+		/****** md5 signature: 1f0279eb23f422b6f225b95988440743 ******/
+		%feature("compactdefaultargs") Radius;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return circular bounded radius; 0.0 means unbounded.
+") Radius;
+		double Radius();
+
+		/****** Aspect_GridParams::RotationAngle ******/
+		/****** md5 signature: 80fa368144f50917103cb1d533b95fc8 ******/
+		%feature("compactdefaultargs") RotationAngle;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return in-plane rotation angle (radians) applied to the grid axes around the plane normal.
+") RotationAngle;
+		double RotationAngle();
+
+		/****** Aspect_GridParams::Scale ******/
+		/****** md5 signature: 0692a776bbe69c585f3d8d4b86bd225b ******/
+		%feature("compactdefaultargs") Scale;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return major-grid scale factor along the plane X direction (cells per plane unit).
+") Scale;
+		double Scale();
+
+		/****** Aspect_GridParams::ScaleY ******/
+		/****** md5 signature: 7bcadf7548cc3212f60a788db91a3cbe ******/
+		%feature("compactdefaultargs") ScaleY;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return explicit Y-direction scale. When 0.0, renderer falls back to Scale() (isotropic).
+") ScaleY;
+		double ScaleY();
+
+		/****** Aspect_GridParams::SetAccentAngularScale ******/
+		/****** md5 signature: b950f9b3f3848d1929eeca5b44c9602f ******/
+		%feature("compactdefaultargs") SetAccentAngularScale;
+		%feature("autodoc", "
+Parameters
+----------
+theScale: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set accent overlay angular scale for circular-grid spokes.
+") SetAccentAngularScale;
+		void SetAccentAngularScale(const double theScale);
+
+		/****** Aspect_GridParams::SetAccentColor ******/
+		/****** md5 signature: 02a99a194a57fbf69d60e44e22bf26c3 ******/
+		%feature("compactdefaultargs") SetAccentColor;
+		%feature("autodoc", "
+Parameters
+----------
+theColor: Quantity_Color
+
+Return
+-------
+None
+
+Description
+-----------
+Set every-tenth-line / accent colour rendered by the shader.
+") SetAccentColor;
+		void SetAccentColor(const Quantity_Color & theColor);
+
+		/****** Aspect_GridParams::SetAccentScaleX ******/
+		/****** md5 signature: 644bb6f0e19ec85676d061ba21e65b36 ******/
+		%feature("compactdefaultargs") SetAccentScaleX;
+		%feature("autodoc", "
+Parameters
+----------
+theScale: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set accent overlay scale along the plane X/radial direction.
+") SetAccentScaleX;
+		void SetAccentScaleX(const double theScale);
+
+		/****** Aspect_GridParams::SetAccentScaleY ******/
+		/****** md5 signature: ac7a5f20a6881515d0a8152fda8da0c7 ******/
+		%feature("compactdefaultargs") SetAccentScaleY;
+		%feature("autodoc", "
+Parameters
+----------
+theScale: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set accent overlay scale along the plane Y direction.
+") SetAccentScaleY;
+		void SetAccentScaleY(const double theScale);
+
+		/****** Aspect_GridParams::SetAngularDivisions ******/
+		/****** md5 signature: db6be7ca7ab11ce5a7cad633d71a60ba ******/
+		%feature("compactdefaultargs") SetAngularDivisions;
+		%feature("autodoc", "
+Parameters
+----------
+theDivisions: int
+
+Return
+-------
+None
+
+Description
+-----------
+Set angular subdivision count (0 = rectangular grid, N>0 = circular with N spokes per 180 deg).
+") SetAngularDivisions;
+		void SetAngularDivisions(const int theDivisions);
+
+		/****** Aspect_GridParams::SetArcRange ******/
+		/****** md5 signature: 605f4aaee7a00e8ea6849004b7bbcbd2 ******/
+		%feature("compactdefaultargs") SetArcRange;
+		%feature("autodoc", "
+Parameters
+----------
+theStart: double
+theEnd: double
+
+Return
+-------
+None
+
+Description
+-----------
+Restrict the circular grid to an angular wedge [start, end], walking CCW. Equal start and end (e.g. 0.0 and 0.0) returns to full-circle rendering.
+") SetArcRange;
+		void SetArcRange(const double theStart, const double theEnd);
+
+		/****** Aspect_GridParams::SetColor ******/
+		/****** md5 signature: 289e78889c9a8b48d6cf1ce3b205415d ******/
+		%feature("compactdefaultargs") SetColor;
+		%feature("autodoc", "
+Parameters
+----------
+theColor: Quantity_Color
+
+Return
+-------
+None
+
+Description
+-----------
+Set grid line color.
+") SetColor;
+		void SetColor(const Quantity_Color & theColor);
+
+		/****** Aspect_GridParams::SetDrawMode ******/
+		/****** md5 signature: f8a9fa40921d1904657daf0c0db6632e ******/
+		%feature("compactdefaultargs") SetDrawMode;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: Aspect_GridDrawMode
+
+Return
+-------
+None
+
+Description
+-----------
+Set draw mode. Aspect_GDM_None suppresses rendering entirely; Points draws dots at grid-line intersections, Lines (default) draws the full grid.
+") SetDrawMode;
+		void SetDrawMode(const Aspect_GridDrawMode theMode);
+
+		/****** Aspect_GridParams::SetIsBackground ******/
+		/****** md5 signature: c69459edf628b44fb72f8f03e582a939 ******/
+		%feature("compactdefaultargs") SetIsBackground;
+		%feature("autodoc", "
+Parameters
+----------
+theIsBackground: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set background-mode rendering on/off.
+") SetIsBackground;
+		void SetIsBackground(const bool theIsBackground);
+
+		/****** Aspect_GridParams::SetIsDrawAxis ******/
+		/****** md5 signature: 932d138de50945e717f2d20d8e02f858 ******/
+		%feature("compactdefaultargs") SetIsDrawAxis;
+		%feature("autodoc", "
+Parameters
+----------
+theIsDrawAxis: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set axis coloring on/off.
+") SetIsDrawAxis;
+		void SetIsDrawAxis(const bool theIsDrawAxis);
+
+		/****** Aspect_GridParams::SetIsViewAdaptive ******/
+		/****** md5 signature: 0eb0dda2940384b5d884e75c8e7ee293 ******/
+		%feature("compactdefaultargs") SetIsViewAdaptive;
+		%feature("autodoc", "
+Parameters
+----------
+theIsViewAdaptive: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set view-adaptive grid on/off. When enabled, renderer derives temporary cell spacing and bounds from the current camera. The inverse of ScaleY() (or Scale() when ScaleY() is zero) is used as the target number of cells across the view height.
+") SetIsViewAdaptive;
+		void SetIsViewAdaptive(const bool theIsViewAdaptive);
+
+		/****** Aspect_GridParams::SetLineThickness ******/
+		/****** md5 signature: 8ee2158a06eaf3b547802463c5f9df98 ******/
+		%feature("compactdefaultargs") SetLineThickness;
+		%feature("autodoc", "
+Parameters
+----------
+theThickness: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set line thickness in plane units.
+") SetLineThickness;
+		void SetLineThickness(const double theThickness);
+
+		/****** Aspect_GridParams::SetOrigin ******/
+		/****** md5 signature: dc46429bcbc02c8c4be0a0ef82571e72 ******/
+		%feature("compactdefaultargs") SetOrigin;
+		%feature("autodoc", "
+Parameters
+----------
+theOrigin: gp_Pnt
+
+Return
+-------
+None
+
+Description
+-----------
+Set local offset of the grid origin within the plane.
+") SetOrigin;
+		void SetOrigin(const gp_Pnt & theOrigin);
+
+		/****** Aspect_GridParams::SetRadius ******/
+		/****** md5 signature: 33acdaa90253f5b439514ff8a38f6451 ******/
+		%feature("compactdefaultargs") SetRadius;
+		%feature("autodoc", "
+Parameters
+----------
+theRadius: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set circular bounded radius; 0.0 means unbounded.
+") SetRadius;
+		void SetRadius(const double theRadius);
+
+		/****** Aspect_GridParams::SetRotationAngle ******/
+		/****** md5 signature: c1098d805a3925dbd22f208a9a5d95d7 ******/
+		%feature("compactdefaultargs") SetRotationAngle;
+		%feature("autodoc", "
+Parameters
+----------
+theAngle: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set in-plane rotation angle (radians) applied to the grid axes around the plane normal.
+") SetRotationAngle;
+		void SetRotationAngle(const double theAngle);
+
+		/****** Aspect_GridParams::SetScale ******/
+		/****** md5 signature: f03e0b150cf827a9c371719a495ebff6 ******/
+		%feature("compactdefaultargs") SetScale;
+		%feature("autodoc", "
+Parameters
+----------
+theScale: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set major-grid scale factor along the plane X direction (cells per plane unit). Must be non-negative; zero is a valid 'unused' sentinel.
+") SetScale;
+		void SetScale(const double theScale);
+
+		/****** Aspect_GridParams::SetScaleY ******/
+		/****** md5 signature: aea51cdeadf1deaa14e0c0796c3b9a07 ******/
+		%feature("compactdefaultargs") SetScaleY;
+		%feature("autodoc", "
+Parameters
+----------
+theScaleY: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set explicit Y-direction scale. Pass 0.0 to mirror Scale() (isotropic, default).
+") SetScaleY;
+		void SetScaleY(const double theScaleY);
+
+		/****** Aspect_GridParams::SetSizeX ******/
+		/****** md5 signature: 8052170087d62c478cde6edc8a84e266 ******/
+		%feature("compactdefaultargs") SetSizeX;
+		%feature("autodoc", "
+Parameters
+----------
+theSize: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set rectangular bounded extent along plane X; 0.0 means unbounded.
+") SetSizeX;
+		void SetSizeX(const double theSize);
+
+		/****** Aspect_GridParams::SetSizeY ******/
+		/****** md5 signature: c89b22c5c95bf41e45cc98fe26db0b9a ******/
+		%feature("compactdefaultargs") SetSizeY;
+		%feature("autodoc", "
+Parameters
+----------
+theSize: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set rectangular bounded extent along plane Y; 0.0 means unbounded.
+") SetSizeY;
+		void SetSizeY(const double theSize);
+
+		/****** Aspect_GridParams::SetZOffset ******/
+		/****** md5 signature: a61962d116fd8100e8eaaaff952a9ad7 ******/
+		%feature("compactdefaultargs") SetZOffset;
+		%feature("autodoc", "
+Parameters
+----------
+theOffset: double
+
+Return
+-------
+None
+
+Description
+-----------
+Set signed plane-normal offset applied at render time (display only; snap math stays on the unshifted plane).
+") SetZOffset;
+		void SetZOffset(const double theOffset);
+
+		/****** Aspect_GridParams::SizeX ******/
+		/****** md5 signature: 27feca19632082efd993c4086128bd36 ******/
+		%feature("compactdefaultargs") SizeX;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return rectangular bounded extent along plane X; 0.0 means unbounded.
+") SizeX;
+		double SizeX();
+
+		/****** Aspect_GridParams::SizeY ******/
+		/****** md5 signature: 7df7cb9b2b94a46f50006623b67d5411 ******/
+		%feature("compactdefaultargs") SizeY;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return rectangular bounded extent along plane Y; 0.0 means unbounded.
+") SizeY;
+		double SizeY();
+
+		/****** Aspect_GridParams::ZOffset ******/
+		/****** md5 signature: dcbf4e9515a24714a61e3b7852c6c1a1 ******/
+		%feature("compactdefaultargs") ZOffset;
+		%feature("autodoc", "Return
+-------
+double
+
+Description
+-----------
+Return signed plane-normal offset applied at render time.
+") ZOffset;
+		double ZOffset();
+
+};
+
+
+%extend Aspect_GridParams {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

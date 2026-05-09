@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafdoc.html"
 #include<TopLoc_module.hxx>
 #include<XCAFNoteObjects_module.hxx>
 #include<OSD_module.hxx>
+#include<TopTools_module.hxx>
 #include<XCAFView_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Resource_module.hxx>
@@ -88,6 +89,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafdoc.html"
 %import TopLoc.i
 %import XCAFNoteObjects.i
 %import OSD.i
+%import TopTools.i
 %import XCAFView.i
 %import Graphic3d.i
 
@@ -119,7 +121,36 @@ XCAFDoc_ColorCurv = XCAFDoc_ColorType.XCAFDoc_ColorCurv
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XCAFDoc_Area)
 %wrap_handle(XCAFDoc_AssemblyGraph)
+%wrap_handle(XCAFDoc_AssemblyItemRef)
+%wrap_handle(XCAFDoc_Centroid)
+%wrap_handle(XCAFDoc_ClippingPlaneTool)
+%wrap_handle(XCAFDoc_Color)
+%wrap_handle(XCAFDoc_ColorTool)
+%wrap_handle(XCAFDoc_Datum)
+%wrap_handle(XCAFDoc_DimTol)
+%wrap_handle(XCAFDoc_DimTolTool)
+%wrap_handle(XCAFDoc_Dimension)
+%wrap_handle(XCAFDoc_DocumentTool)
+%wrap_handle(XCAFDoc_GraphNode)
+%wrap_handle(XCAFDoc_LayerTool)
+%wrap_handle(XCAFDoc_LengthUnit)
+%wrap_handle(XCAFDoc_Location)
+%wrap_handle(XCAFDoc_Material)
+%wrap_handle(XCAFDoc_MaterialTool)
+%wrap_handle(XCAFDoc_Note)
+%wrap_handle(XCAFDoc_NotesTool)
+%wrap_handle(XCAFDoc_ShapeMapTool)
+%wrap_handle(XCAFDoc_ShapeTool)
+%wrap_handle(XCAFDoc_View)
+%wrap_handle(XCAFDoc_ViewTool)
+%wrap_handle(XCAFDoc_VisMaterial)
+%wrap_handle(XCAFDoc_VisMaterialTool)
+%wrap_handle(XCAFDoc_Volume)
+%wrap_handle(XCAFDoc_NoteBinData)
+%wrap_handle(XCAFDoc_NoteComment)
+%wrap_handle(XCAFDoc_NoteBalloon)
 /* end handles declaration */
 
 /* templates */
@@ -639,6 +670,8 @@ Find, or create, an Area attribute and set its value.
 };
 
 
+%make_alias(XCAFDoc_Area)
+
 %extend XCAFDoc_Area {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -791,13 +824,13 @@ Description
 		%feature("compactdefaultargs") GetNodes;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TDF_Label>
+TDF_LabelIndexedMap
 
 Description
 -----------
 \brief Returns the unordered set of graph nodes. eturn graph nodes.
 ") GetNodes;
-		const NCollection_IndexedMap<TDF_Label> & GetNodes();
+		const TDF_LabelIndexedMap & GetNodes();
 
 		/****** XCAFDoc_AssemblyGraph::GetRoots ******/
 		/****** md5 signature: a9e5a8c4207210773dc54e4bb1aa3b34 ******/
@@ -941,7 +974,7 @@ Constructs an empty item ID.
 		%feature("autodoc", "
 Parameters
 ----------
-thePath: NCollection_List<TCollection_AsciiString>
+thePath: TColStd_ListOfAsciiString
 
 Return
 -------
@@ -951,7 +984,7 @@ Description
 -----------
 Constructs an item ID from a list of strings, where every string is a label entry. \param[in] thePath - list of label entries.
 ") XCAFDoc_AssemblyItemId;
-		 XCAFDoc_AssemblyItemId(const NCollection_List<TCollection_AsciiString> & thePath);
+		 XCAFDoc_AssemblyItemId(const TColStd_ListOfAsciiString & thePath);
 
 		/****** XCAFDoc_AssemblyItemId::XCAFDoc_AssemblyItemId ******/
 		/****** md5 signature: 4f4fd6890c8e5f971165c7982fbcb794 ******/
@@ -997,13 +1030,13 @@ Dump the object to JSON string.
 		%feature("compactdefaultargs") GetPath;
 		%feature("autodoc", "Return
 -------
-NCollection_List<TCollection_AsciiString>
+TColStd_ListOfAsciiString
 
 Description
 -----------
 Returns the full path as a list of label entries.
 ") GetPath;
-		const NCollection_List<TCollection_AsciiString> & GetPath();
+		const TColStd_ListOfAsciiString & GetPath();
 
 		/****** XCAFDoc_AssemblyItemId::Init ******/
 		/****** md5 signature: dcc84bdbee9466c522f9fb190f1a3100 ******/
@@ -1011,7 +1044,7 @@ Returns the full path as a list of label entries.
 		%feature("autodoc", "
 Parameters
 ----------
-thePath: NCollection_List<TCollection_AsciiString>
+thePath: TColStd_ListOfAsciiString
 
 Return
 -------
@@ -1021,7 +1054,7 @@ Description
 -----------
 Initializes the item ID from a list of strings, where every string is a label entry. \param[in] thePath - list of label entries.
 ") Init;
-		void Init(const NCollection_List<TCollection_AsciiString> & thePath);
+		void Init(const TColStd_ListOfAsciiString & thePath);
 
 		/****** XCAFDoc_AssemblyItemId::Init ******/
 		/****** md5 signature: 202b959385f798c770333c9d3efef0aa ******/
@@ -1512,7 +1545,7 @@ Sets the assembly item ID that the reference points to. Extra reference data (if
 		%feature("autodoc", "
 Parameters
 ----------
-thePath: NCollection_List<TCollection_AsciiString>
+thePath: TColStd_ListOfAsciiString
 
 Return
 -------
@@ -1522,7 +1555,7 @@ Description
 -----------
 Sets the assembly item ID from a list of label entries that the reference points to. Extra reference data (if any) will be cleared.
 ") SetItem;
-		void SetItem(const NCollection_List<TCollection_AsciiString> & thePath);
+		void SetItem(const TColStd_ListOfAsciiString & thePath);
 
 		/****** XCAFDoc_AssemblyItemRef::SetItem ******/
 		/****** md5 signature: ed6d4d7b28f4f31e5058482ec17190c4 ******/
@@ -1562,6 +1595,8 @@ Sets the assembly item's subshape that the reference points to. The base assembl
 
 };
 
+
+%make_alias(XCAFDoc_AssemblyItemRef)
 
 %extend XCAFDoc_AssemblyItemRef {
 	%pythoncode {
@@ -1880,6 +1915,8 @@ No available documentation.
 };
 
 
+%make_alias(XCAFDoc_Centroid)
+
 %extend XCAFDoc_Centroid {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2077,7 +2114,7 @@ Returns ClippingPlane defined by label lab Returns False if the label is not in 
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -2087,7 +2124,7 @@ Description
 -----------
 Returns a sequence of clipping planes currently stored in the ClippingPlane table.
 ") GetClippingPlanes;
-		void GetClippingPlanes(NCollection_Sequence<TDF_Label> & Labels);
+		void GetClippingPlanes(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ClippingPlaneTool::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -2210,6 +2247,8 @@ Sets new value of plane and name to the given clipping plane label or do nothing
 
 };
 
+
+%make_alias(XCAFDoc_ClippingPlaneTool)
 
 %extend XCAFDoc_ClippingPlaneTool {
 	%pythoncode {
@@ -2560,6 +2599,8 @@ No available documentation.
 };
 
 
+%make_alias(XCAFDoc_Color)
+
 %extend XCAFDoc_Color {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -2905,7 +2946,7 @@ Returns color assigned to <L> as <type> Returns False if no such color is assign
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -2915,7 +2956,7 @@ Description
 -----------
 Returns a sequence of colors currently stored in the colortable.
 ") GetColors;
-		void GetColors(NCollection_Sequence<TDF_Label> & Labels);
+		void GetColors(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ColorTool::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -3414,6 +3455,8 @@ Removes a link with GUID defined by <type> (see XCAFDoc::ColorRefGUID()) from la
 };
 
 
+%make_alias(XCAFDoc_ColorTool)
+
 %extend XCAFDoc_ColorTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3667,6 +3710,8 @@ Updates parent's label and its sub-labels with data taken from theDatumObject. O
 };
 
 
+%make_alias(XCAFDoc_Datum)
+
 %extend XCAFDoc_Datum {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -3769,13 +3814,13 @@ No available documentation.
 		%feature("compactdefaultargs") GetVal;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<double>>
+opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
 No available documentation.
 ") GetVal;
-		opencascade::handle<NCollection_HArray1<double>> GetVal();
+		opencascade::handle<TColStd_HArray1OfReal> GetVal();
 
 		/****** XCAFDoc_DimTol::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -3848,7 +3893,7 @@ Parameters
 ----------
 label: TDF_Label
 kind: int
-aVal: NCollection_HArray1<double
+aVal: TColStd_HArray1OfReal
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
 
@@ -3860,7 +3905,7 @@ Description
 -----------
 No available documentation.
 ") Set;
-		static opencascade::handle<XCAFDoc_DimTol> Set(const TDF_Label & label, const int kind, const opencascade::handle<NCollection_HArray1<double> > & aVal, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		static opencascade::handle<XCAFDoc_DimTol> Set(const TDF_Label & label, const int kind, const opencascade::handle<TColStd_HArray1OfReal> & aVal, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** XCAFDoc_DimTol::Set ******/
 		/****** md5 signature: fb1b1e88713805ab114c3e25d04b73c1 ******/
@@ -3869,7 +3914,7 @@ No available documentation.
 Parameters
 ----------
 kind: int
-aVal: NCollection_HArray1<double
+aVal: TColStd_HArray1OfReal
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
 
@@ -3881,10 +3926,12 @@ Description
 -----------
 No available documentation.
 ") Set;
-		void Set(const int kind, const opencascade::handle<NCollection_HArray1<double> > & aVal, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Set(const int kind, const opencascade::handle<TColStd_HArray1OfReal> & aVal, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 };
 
+
+%make_alias(XCAFDoc_DimTol)
 
 %extend XCAFDoc_DimTol {
 	%pythoncode {
@@ -3950,7 +3997,7 @@ Adds a datum definition to the GD&T table and returns its label.
 Parameters
 ----------
 theKind: int
-theVal: NCollection_HArray1<double
+theVal: TColStd_HArray1OfReal
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 
@@ -3962,7 +4009,7 @@ Description
 -----------
 Adds a dimension tolerance definition with the specified kind, value, name and description to the GD&T table and returns its label.
 ") AddDimTol;
-		TDF_Label AddDimTol(const int theKind, const opencascade::handle<NCollection_HArray1<double> > & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+		TDF_Label AddDimTol(const int theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****** XCAFDoc_DimTolTool::AddDimension ******/
 		/****** md5 signature: 2448da71f93125dbf15e2a84b4a8e8d9 ******/
@@ -4052,7 +4099,7 @@ Finds a datum satisfying the specified name, description and identification and 
 Parameters
 ----------
 theKind: int
-theVal: NCollection_HArray1<double
+theVal: TColStd_HArray1OfReal
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 lab: TDF_Label
@@ -4065,7 +4112,7 @@ Description
 -----------
 Finds a dimension tolerance definition in the GD&T table satisfying the specified kind, values, name and description and returns its label if found. Returns False if dimension tolerance is not found in DGTtable.
 ") FindDimTol;
-		bool FindDimTol(const int theKind, const opencascade::handle<NCollection_HArray1<double> > & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, TDF_Label & lab);
+		bool FindDimTol(const int theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, TDF_Label & lab);
 
 		/****** XCAFDoc_DimTolTool::FindDimTol ******/
 		/****** md5 signature: a20b6efd9ec978979e319be9f003dc5a ******/
@@ -4074,7 +4121,7 @@ Finds a dimension tolerance definition in the GD&T table satisfying the specifie
 Parameters
 ----------
 theKind: int
-theVal: NCollection_HArray1<double
+theVal: TColStd_HArray1OfReal
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 
@@ -4086,7 +4133,7 @@ Description
 -----------
 Finds a dimension tolerance in the GD&T table satisfying the specified kind, values, name and description and returns its label if found (or Null label else).
 ") FindDimTol;
-		TDF_Label FindDimTol(const int theKind, const opencascade::handle<NCollection_HArray1<double> > & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+		TDF_Label FindDimTol(const int theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****** XCAFDoc_DimTolTool::GetDatum ******/
 		/****** md5 signature: 74d72eb30a845767352795d903cd7273 ******/
@@ -4114,7 +4161,7 @@ Returns datum assigned to theDatumL label. Returns False if no such datum is ass
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -4124,7 +4171,7 @@ Description
 -----------
 Returns a sequence of Datums currently stored in the GD&T table.
 ") GetDatumLabels;
-		void GetDatumLabels(NCollection_Sequence<TDF_Label> & Labels);
+		void GetDatumLabels(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_DimTolTool::GetDatumOfTolerLabels ******/
 		/****** md5 signature: 05725f4a02063cb5f775eac59887f6f0 ******/
@@ -4133,7 +4180,7 @@ Returns a sequence of Datums currently stored in the GD&T table.
 Parameters
 ----------
 theDimTolL: TDF_Label
-theDatums: NCollection_Sequence<TDF_Label>
+theDatums: TDF_LabelSequence
 
 Return
 -------
@@ -4143,7 +4190,7 @@ Description
 -----------
 Returns all Datum labels defined for theDimTolL label.
 ") GetDatumOfTolerLabels;
-		static bool GetDatumOfTolerLabels(const TDF_Label & theDimTolL, NCollection_Sequence<TDF_Label> & theDatums);
+		static bool GetDatumOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
 		/****** XCAFDoc_DimTolTool::GetDatumWithObjectOfTolerLabels ******/
 		/****** md5 signature: ad1b11a7537fec1bdd41cf309b8dbe3f ******/
@@ -4152,7 +4199,7 @@ Returns all Datum labels defined for theDimTolL label.
 Parameters
 ----------
 theDimTolL: TDF_Label
-theDatums: NCollection_Sequence<TDF_Label>
+theDatums: TDF_LabelSequence
 
 Return
 -------
@@ -4162,7 +4209,7 @@ Description
 -----------
 Returns all Datum labels with XCAFDimTolObjects_DatumObject defined for label theDimTolL.
 ") GetDatumWithObjectOfTolerLabels;
-		static bool GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, NCollection_Sequence<TDF_Label> & theDatums);
+		static bool GetDatumWithObjectOfTolerLabels(const TDF_Label & theDimTolL, TDF_LabelSequence & theDatums);
 
 		/****** XCAFDoc_DimTolTool::GetDimTol ******/
 		/****** md5 signature: 8a0d877aae085f1f06eafd74ab2a1819 ******/
@@ -4171,7 +4218,7 @@ Returns all Datum labels with XCAFDimTolObjects_DatumObject defined for label th
 Parameters
 ----------
 theDimTolL: TDF_Label
-theVal: NCollection_HArray1<double
+theVal: TColStd_HArray1OfReal
 
 Return
 -------
@@ -4183,7 +4230,7 @@ Description
 -----------
 Returns dimension tolerance assigned to theDimTolL label. Returns False if no such dimension tolerance is assigned.
 ") GetDimTol;
-		bool GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<NCollection_HArray1<double> > & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
+		bool GetDimTol(const TDF_Label & theDimTolL, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & theVal, opencascade::handle<TCollection_HAsciiString> &OutValue, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
 		/****** XCAFDoc_DimTolTool::GetDimTolLabels ******/
 		/****** md5 signature: d52f170215b81229bb9eee435ba2b2cb ******/
@@ -4191,7 +4238,7 @@ Returns dimension tolerance assigned to theDimTolL label. Returns False if no su
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -4201,7 +4248,7 @@ Description
 -----------
 Returns a sequence of D&GTs currently stored in the GD&T table.
 ") GetDimTolLabels;
-		void GetDimTolLabels(NCollection_Sequence<TDF_Label> & Labels);
+		void GetDimTolLabels(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_DimTolTool::GetDimensionLabels ******/
 		/****** md5 signature: 9dbc31c3018cb99ff4f4844e2cd8b43d ******/
@@ -4209,7 +4256,7 @@ Returns a sequence of D&GTs currently stored in the GD&T table.
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TDF_Label>
+theLabels: TDF_LabelSequence
 
 Return
 -------
@@ -4219,7 +4266,7 @@ Description
 -----------
 Returns a sequence of Dimension labels currently stored in the GD&T table.
 ") GetDimensionLabels;
-		void GetDimensionLabels(NCollection_Sequence<TDF_Label> & theLabels);
+		void GetDimensionLabels(TDF_LabelSequence & theLabels);
 
 		/****** XCAFDoc_DimTolTool::GetGDTPresentations ******/
 		/****** md5 signature: d56c55b273c67e9c64e4bb8d45f185c4 ******/
@@ -4245,7 +4292,7 @@ fill the map GDT label -> shape presentation.
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TDF_Label>
+theLabels: TDF_LabelSequence
 
 Return
 -------
@@ -4255,7 +4302,7 @@ Description
 -----------
 Returns a sequence of Tolerance labels currently stored in the GD&T table.
 ") GetGeomToleranceLabels;
-		void GetGeomToleranceLabels(NCollection_Sequence<TDF_Label> & theLabels);
+		void GetGeomToleranceLabels(TDF_LabelSequence & theLabels);
 
 		/****** XCAFDoc_DimTolTool::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -4277,7 +4324,7 @@ Returns the standard GD&T tool GUID.
 Parameters
 ----------
 theShapeL: TDF_Label
-theDatum: NCollection_Sequence<TDF_Label>
+theDatum: TDF_LabelSequence
 
 Return
 -------
@@ -4287,7 +4334,7 @@ Description
 -----------
 Returns Datum label defined for theShapeL label.
 ") GetRefDatumLabel;
-		bool GetRefDatumLabel(const TDF_Label & theShapeL, NCollection_Sequence<TDF_Label> & theDatum);
+		bool GetRefDatumLabel(const TDF_Label & theShapeL, TDF_LabelSequence & theDatum);
 
 		/****** XCAFDoc_DimTolTool::GetRefDimensionLabels ******/
 		/****** md5 signature: ebe42bef2539abade6a83594a9af6055 ******/
@@ -4296,7 +4343,7 @@ Returns Datum label defined for theShapeL label.
 Parameters
 ----------
 theShapeL: TDF_Label
-theDimensions: NCollection_Sequence<TDF_Label>
+theDimensions: TDF_LabelSequence
 
 Return
 -------
@@ -4306,7 +4353,7 @@ Description
 -----------
 Returns all Dimension labels defined for theShapeL.
 ") GetRefDimensionLabels;
-		bool GetRefDimensionLabels(const TDF_Label & theShapeL, NCollection_Sequence<TDF_Label> & theDimensions);
+		bool GetRefDimensionLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimensions);
 
 		/****** XCAFDoc_DimTolTool::GetRefGeomToleranceLabels ******/
 		/****** md5 signature: 85ac2b3f4e47dfc47a11e46655a135d7 ******/
@@ -4315,7 +4362,7 @@ Returns all Dimension labels defined for theShapeL.
 Parameters
 ----------
 theShapeL: TDF_Label
-theDimTols: NCollection_Sequence<TDF_Label>
+theDimTols: TDF_LabelSequence
 
 Return
 -------
@@ -4325,7 +4372,7 @@ Description
 -----------
 Returns all GeomTolerance labels defined for theShapeL.
 ") GetRefGeomToleranceLabels;
-		bool GetRefGeomToleranceLabels(const TDF_Label & theShapeL, NCollection_Sequence<TDF_Label> & theDimTols);
+		bool GetRefGeomToleranceLabels(const TDF_Label & theShapeL, TDF_LabelSequence & theDimTols);
 
 		/****** XCAFDoc_DimTolTool::GetRefShapeLabel ******/
 		/****** md5 signature: a46cc1fbe999994f85f0c1cadafc42d5 ******/
@@ -4334,8 +4381,8 @@ Returns all GeomTolerance labels defined for theShapeL.
 Parameters
 ----------
 theL: TDF_Label
-theShapeLFirst: NCollection_Sequence<TDF_Label>
-theShapeLSecond: NCollection_Sequence<TDF_Label>
+theShapeLFirst: TDF_LabelSequence
+theShapeLSecond: TDF_LabelSequence
 
 Return
 -------
@@ -4345,7 +4392,7 @@ Description
 -----------
 Gets all shape labels referred by theL label of the GD&T table. Returns False if there are no shape labels added to the sequences.
 ") GetRefShapeLabel;
-		static bool GetRefShapeLabel(const TDF_Label & theL, NCollection_Sequence<TDF_Label> & theShapeLFirst, NCollection_Sequence<TDF_Label> & theShapeLSecond);
+		static bool GetRefShapeLabel(const TDF_Label & theL, TDF_LabelSequence & theShapeLFirst, TDF_LabelSequence & theShapeLSecond);
 
 		/****** XCAFDoc_DimTolTool::GetTolerOfDatumLabels ******/
 		/****** md5 signature: fa730d7b67becc3574ac05f4b3a3d016 ******/
@@ -4354,7 +4401,7 @@ Gets all shape labels referred by theL label of the GD&T table. Returns False if
 Parameters
 ----------
 theDatumL: TDF_Label
-theTols: NCollection_Sequence<TDF_Label>
+theTols: TDF_LabelSequence
 
 Return
 -------
@@ -4364,7 +4411,7 @@ Description
 -----------
 Returns all GeomToleranses labels defined for theDatumL label.
 ") GetTolerOfDatumLabels;
-		bool GetTolerOfDatumLabels(const TDF_Label & theDatumL, NCollection_Sequence<TDF_Label> & theTols);
+		bool GetTolerOfDatumLabels(const TDF_Label & theDatumL, TDF_LabelSequence & theTols);
 
 		/****** XCAFDoc_DimTolTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -4511,7 +4558,7 @@ Creates (if not exist) DimTolTool attribute.
 		%feature("autodoc", "
 Parameters
 ----------
-theShapeLabels: NCollection_Sequence<TDF_Label>
+theShapeLabels: TDF_LabelSequence
 theDatumL: TDF_Label
 
 Return
@@ -4522,7 +4569,7 @@ Description
 -----------
 Sets a datum to the sequence of shape labels.
 ") SetDatum;
-		void SetDatum(const NCollection_Sequence<TDF_Label> & theShapeLabels, const TDF_Label & theDatumL);
+		void SetDatum(const TDF_LabelSequence & theShapeLabels, const TDF_Label & theDatumL);
 
 		/****** XCAFDoc_DimTolTool::SetDatum ******/
 		/****** md5 signature: d982af1bc9dd960ae3ae8d920d54dad2 ******/
@@ -4592,7 +4639,7 @@ Parameters
 ----------
 theL: TDF_Label
 theKind: int
-theVal: NCollection_HArray1<double
+theVal: TColStd_HArray1OfReal
 theName: TCollection_HAsciiString
 theDescription: TCollection_HAsciiString
 
@@ -4604,7 +4651,7 @@ Description
 -----------
 Creates a dimension tolerance and sets it to theL label.
 ") SetDimTol;
-		TDF_Label SetDimTol(const TDF_Label & theL, const int theKind, const opencascade::handle<NCollection_HArray1<double> > & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
+		TDF_Label SetDimTol(const TDF_Label & theL, const int theKind, const opencascade::handle<TColStd_HArray1OfReal> & theVal, const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
 		/****** XCAFDoc_DimTolTool::SetDimension ******/
 		/****** md5 signature: 27eca9b26f753b69de2e8bdaa68375a3 ******/
@@ -4612,8 +4659,8 @@ Creates a dimension tolerance and sets it to theL label.
 		%feature("autodoc", "
 Parameters
 ----------
-theFirstLS: NCollection_Sequence<TDF_Label>
-theSecondLS: NCollection_Sequence<TDF_Label>
+theFirstLS: TDF_LabelSequence
+theSecondLS: TDF_LabelSequence
 theDimL: TDF_Label
 
 Return
@@ -4624,7 +4671,7 @@ Description
 -----------
 Sets a dimension to sequences target labels.
 ") SetDimension;
-		void SetDimension(const NCollection_Sequence<TDF_Label> & theFirstLS, const NCollection_Sequence<TDF_Label> & theSecondLS, const TDF_Label & theDimL);
+		void SetDimension(const TDF_LabelSequence & theFirstLS, const TDF_LabelSequence & theSecondLS, const TDF_Label & theDimL);
 
 		/****** XCAFDoc_DimTolTool::SetDimension ******/
 		/****** md5 signature: 195e81604b6cf3cc5c4843b69ed128bb ******/
@@ -4708,7 +4755,7 @@ Sets a geometry tolerance from theGeomTolL to theL label. Checks if theGeomTolL 
 		%feature("autodoc", "
 Parameters
 ----------
-theL: NCollection_Sequence<TDF_Label>
+theL: TDF_LabelSequence
 theGeomTolL: TDF_Label
 
 Return
@@ -4719,7 +4766,7 @@ Description
 -----------
 Sets a geometry tolerance from theGeomTolL to sequence of labels theL. Checks if theGeomTolL is a geometry tolerance definition first.
 ") SetGeomTolerance;
-		void SetGeomTolerance(const NCollection_Sequence<TDF_Label> & theL, const TDF_Label & theGeomTolL);
+		void SetGeomTolerance(const TDF_LabelSequence & theL, const TDF_Label & theGeomTolL);
 
 		/****** XCAFDoc_DimTolTool::ShapeTool ******/
 		/****** md5 signature: f3b52ea6763fc2a237d4ce7351722eb2 ******/
@@ -4754,6 +4801,8 @@ Unlock the given GDT.
 
 };
 
+
+%make_alias(XCAFDoc_DimTolTool)
 
 %extend XCAFDoc_DimTolTool {
 	%pythoncode {
@@ -4877,6 +4926,8 @@ Updates parent's label and its sub-labels with data taken from theDimensionObjec
 
 };
 
+
+%make_alias(XCAFDoc_Dimension)
 
 %extend XCAFDoc_Dimension {
 	%pythoncode {
@@ -5580,6 +5631,8 @@ Creates (if it does not exist) XCAFDoc_VisMaterialTool attribute on VisMaterialL
 };
 
 
+%make_alias(XCAFDoc_DocumentTool)
+
 %extend XCAFDoc_DocumentTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -5622,7 +5675,7 @@ Input parameter: theToCopyMaterial copying material
 Input parameter: theToCopyVisMaterial copying visual material 
 Input parameter: theToCopyAttributes copying of other node attributes, for example, a shape's property.
 ") CloneMetaData;
-		static void CloneMetaData(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial> > * theVisMatMap, const bool theToCopyColor = true, const bool theToCopyLayer = true, const bool theToCopyMaterial = true, const bool theToCopyVisMaterial = true, const bool theToCopyAttributes = true);
+		static void CloneMetaData(const TDF_Label & theSrcLabel, const TDF_Label & theDstLabel, NCollection_DataMap<opencascade::handle<XCAFDoc_VisMaterial>, opencascade::handle<XCAFDoc_VisMaterial>> * theVisMatMap, const bool theToCopyColor = true, const bool theToCopyLayer = true, const bool theToCopyMaterial = true, const bool theToCopyVisMaterial = true, const bool theToCopyAttributes = true);
 
 		/****** XCAFDoc_Editor::CloneShapeLabel ******/
 		/****** md5 signature: 892fa9b918adb713c3b1e7d3c310c2e8 ******/
@@ -5633,7 +5686,7 @@ Parameters
 theSrcLabel: TDF_Label
 theSrcShapeTool: XCAFDoc_ShapeTool
 theDstShapeTool: XCAFDoc_ShapeTool
-theMap: NCollection_DataMap<TDF_Label, TDF_Label>
+theMap: TDF_LabelDataMap
 
 Return
 -------
@@ -5647,7 +5700,7 @@ Input parameter: theSrcShapeTool shape tool to get
 Input parameter: theDstShapeTool shape tool to set @param[out] theMap relating map of the original shapes label and labels created from them 
 Return: result shape label.
 ") CloneShapeLabel;
-		static TDF_Label CloneShapeLabel(const TDF_Label & theSrcLabel, const opencascade::handle<XCAFDoc_ShapeTool> & theSrcShapeTool, const opencascade::handle<XCAFDoc_ShapeTool> & theDstShapeTool, NCollection_DataMap<TDF_Label, TDF_Label> & theMap);
+		static TDF_Label CloneShapeLabel(const TDF_Label & theSrcLabel, const opencascade::handle<XCAFDoc_ShapeTool> & theSrcShapeTool, const opencascade::handle<XCAFDoc_ShapeTool> & theDstShapeTool, TDF_LabelDataMap & theMap);
 
 		/****** XCAFDoc_Editor::Expand ******/
 		/****** md5 signature: 8e7facb5fb17eb3b7f2f4eb941c1e568 ******/
@@ -5701,7 +5754,7 @@ Return: True if shape successfully expanded.
 		%feature("autodoc", "
 Parameters
 ----------
-theSrcLabels: NCollection_Sequence<TDF_Label>
+theSrcLabels: TDF_LabelSequence
 theDstLabel: TDF_Label
 theIsNoVisMat: bool (optional, default to false)
 
@@ -5717,7 +5770,7 @@ Input parameter: theDstLabel label to set result as a component of or a main doc
 Input parameter: theIsNoVisMat get a VisMaterial attributes as is or convert to color 
 Return: True if shape successfully extracted.
 ") Extract;
-		static bool Extract(const NCollection_Sequence<TDF_Label> & theSrcLabels, const TDF_Label & theDstLabel, const bool theIsNoVisMat = false);
+		static bool Extract(const TDF_LabelSequence & theSrcLabels, const TDF_Label & theDstLabel, const bool theIsNoVisMat = false);
 
 		/****** XCAFDoc_Editor::Extract ******/
 		/****** md5 signature: a938a60b72324690367837d6e857eb78 ******/
@@ -5750,7 +5803,7 @@ Return: True if shape successfully extracted.
 Parameters
 ----------
 theShapeTool: XCAFDoc_ShapeTool
-theLabelsToKeep: NCollection_Map<TDF_Label>
+theLabelsToKeep: TDF_LabelMap
 
 Return
 -------
@@ -5763,7 +5816,7 @@ Input parameter: theShapeTool shape tool to extract from
 Input parameter: theLabelsToKeep labels to keep 
 Return: true if the tree was filtered successfully.
 ") FilterShapeTree;
-		static bool FilterShapeTree(const opencascade::handle<XCAFDoc_ShapeTool> & theShapeTool, const NCollection_Map<TDF_Label> & theLabelsToKeep);
+		static bool FilterShapeTree(const opencascade::handle<XCAFDoc_ShapeTool> & theShapeTool, const TDF_LabelMap & theLabelsToKeep);
 
 		/****** XCAFDoc_Editor::GetChildShapeLabels ******/
 		/****** md5 signature: f37cf67e90a0245b1894c136e48d1ce8 ******/
@@ -5772,7 +5825,7 @@ Return: true if the tree was filtered successfully.
 Parameters
 ----------
 theLabel: TDF_Label
-theRelatedLabels: NCollection_Map<TDF_Label>
+theRelatedLabels: TDF_LabelMap
 
 Return
 -------
@@ -5783,7 +5836,7 @@ Description
 Gets shape labels that has up relation with the input label. 
 Input parameter: theLabel input label @param[out] theRelatedLabels output labels.
 ") GetChildShapeLabels;
-		static void GetChildShapeLabels(const TDF_Label & theLabel, NCollection_Map<TDF_Label> & theRelatedLabels);
+		static void GetChildShapeLabels(const TDF_Label & theLabel, TDF_LabelMap & theRelatedLabels);
 
 		/****** XCAFDoc_Editor::GetParentShapeLabels ******/
 		/****** md5 signature: 4a8ed72cfb7b35affa56bd061d38a51e ******/
@@ -5792,7 +5845,7 @@ Input parameter: theLabel input label @param[out] theRelatedLabels output labels
 Parameters
 ----------
 theLabel: TDF_Label
-theRelatedLabels: NCollection_Map<TDF_Label>
+theRelatedLabels: TDF_LabelMap
 
 Return
 -------
@@ -5803,7 +5856,7 @@ Description
 Gets shape labels that has down relation with the input label. 
 Input parameter: theLabel input label @param[out] theRelatedLabels output labels.
 ") GetParentShapeLabels;
-		static void GetParentShapeLabels(const TDF_Label & theLabel, NCollection_Map<TDF_Label> & theRelatedLabels);
+		static void GetParentShapeLabels(const TDF_Label & theLabel, TDF_LabelMap & theRelatedLabels);
 
 		/****** XCAFDoc_Editor::RescaleGeometry ******/
 		/****** md5 signature: 304f127e58a892f9edc0da2ef680c8e3 ******/
@@ -6323,6 +6376,8 @@ Remove Father GraphNode by index from Fathers GraphNodeSequence. and remove link
 };
 
 
+%make_alias(XCAFDoc_GraphNode)
+
 %extend XCAFDoc_GraphNode {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6495,7 +6550,7 @@ Returns Layer defined by label lab Returns False if the label is not in Layertab
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -6505,7 +6560,7 @@ Description
 -----------
 Returns a sequence of Layers currently stored in the Layertable.
 ") GetLayerLabels;
-		void GetLayerLabels(NCollection_Sequence<TDF_Label> & Labels);
+		void GetLayerLabels(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: c18eec4f316c1825ee20a3c6df412e0c ******/
@@ -6514,7 +6569,7 @@ Returns a sequence of Layers currently stored in the Layertable.
 Parameters
 ----------
 L: TDF_Label
-aLayerS: NCollection_HSequence<TCollection_ExtendedString
+aLayerS: TColStd_HSequenceOfExtendedString
 
 Return
 -------
@@ -6524,7 +6579,7 @@ Description
 -----------
 Return sequence of strings <aLayerS> that associated with label <L>.
 ") GetLayers;
-		bool GetLayers(const TDF_Label & L, opencascade::handle<NCollection_HSequence<TCollection_ExtendedString> > & aLayerS);
+		bool GetLayers(const TDF_Label & L, opencascade::handle<TColStd_HSequenceOfExtendedString> & aLayerS);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: eeb680328019d023d4b942c386c5419f ******/
@@ -6533,7 +6588,7 @@ Return sequence of strings <aLayerS> that associated with label <L>.
 Parameters
 ----------
 L: TDF_Label
-aLayerLS: NCollection_Sequence<TDF_Label>
+aLayerLS: TDF_LabelSequence
 
 Return
 -------
@@ -6543,7 +6598,7 @@ Description
 -----------
 Return sequence of labels <aLayerSL> that associated with label <L>.
 ") GetLayers;
-		bool GetLayers(const TDF_Label & L, NCollection_Sequence<TDF_Label> & aLayerLS);
+		bool GetLayers(const TDF_Label & L, TDF_LabelSequence & aLayerLS);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: 60800ae52dd05e0b49770c381aa4b6f3 ******/
@@ -6555,13 +6610,13 @@ L: TDF_Label
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_ExtendedString>>
+opencascade::handle<TColStd_HSequenceOfExtendedString>
 
 Description
 -----------
 Return sequence of strings that associated with label <L>.
 ") GetLayers;
-		opencascade::handle<NCollection_HSequence<TCollection_ExtendedString>> GetLayers(const TDF_Label & L);
+		opencascade::handle<TColStd_HSequenceOfExtendedString> GetLayers(const TDF_Label & L);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: a6bd610fa73b84cbac06d862128d92ee ******/
@@ -6570,7 +6625,7 @@ Return sequence of strings that associated with label <L>.
 Parameters
 ----------
 Sh: TopoDS_Shape
-aLayerS: NCollection_HSequence<TCollection_ExtendedString
+aLayerS: TColStd_HSequenceOfExtendedString
 
 Return
 -------
@@ -6580,7 +6635,7 @@ Description
 -----------
 Return sequence of strings <aLayerS> that associated with shape <Sh>.
 ") GetLayers;
-		bool GetLayers(const TopoDS_Shape & Sh, opencascade::handle<NCollection_HSequence<TCollection_ExtendedString> > & aLayerS);
+		bool GetLayers(const TopoDS_Shape & Sh, opencascade::handle<TColStd_HSequenceOfExtendedString> & aLayerS);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: 3d16020e8dd49c55e716f5d3c808cc93 ******/
@@ -6589,7 +6644,7 @@ Return sequence of strings <aLayerS> that associated with shape <Sh>.
 Parameters
 ----------
 Sh: TopoDS_Shape
-aLayerLS: NCollection_Sequence<TDF_Label>
+aLayerLS: TDF_LabelSequence
 
 Return
 -------
@@ -6599,7 +6654,7 @@ Description
 -----------
 Return sequence of labels <aLayerLS> that associated with shape <Sh>.
 ") GetLayers;
-		bool GetLayers(const TopoDS_Shape & Sh, NCollection_Sequence<TDF_Label> & aLayerLS);
+		bool GetLayers(const TopoDS_Shape & Sh, TDF_LabelSequence & aLayerLS);
 
 		/****** XCAFDoc_LayerTool::GetLayers ******/
 		/****** md5 signature: e0693fd0d0b57d20feecff1826528ece ******/
@@ -6611,13 +6666,13 @@ Sh: TopoDS_Shape
 
 Return
 -------
-opencascade::handle<NCollection_HSequence<TCollection_ExtendedString>>
+opencascade::handle<TColStd_HSequenceOfExtendedString>
 
 Description
 -----------
 Return sequence of strings that associated with shape <Sh>.
 ") GetLayers;
-		opencascade::handle<NCollection_HSequence<TCollection_ExtendedString>> GetLayers(const TopoDS_Shape & Sh);
+		opencascade::handle<TColStd_HSequenceOfExtendedString> GetLayers(const TopoDS_Shape & Sh);
 
 		/****** XCAFDoc_LayerTool::GetShapesOfLayer ******/
 		/****** md5 signature: a600ebd4a8ee63dbb596a3dfc0d3bce2 ******/
@@ -6626,7 +6681,7 @@ Return sequence of strings that associated with shape <Sh>.
 Parameters
 ----------
 theLayerL: TDF_Label
-theShLabels: NCollection_Sequence<TDF_Label>
+theShLabels: TDF_LabelSequence
 
 Return
 -------
@@ -6636,7 +6691,7 @@ Description
 -----------
 Return sequanese of shape labels that assigned with layers to <ShLabels>.
 ") GetShapesOfLayer;
-		static void GetShapesOfLayer(const TDF_Label & theLayerL, NCollection_Sequence<TDF_Label> & theShLabels);
+		static void GetShapesOfLayer(const TDF_Label & theLayerL, TDF_LabelSequence & theShLabels);
 
 		/****** XCAFDoc_LayerTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -7026,6 +7081,8 @@ Remove link between shape <Sh> and layer <aLayerL>. returns False if no such lay
 };
 
 
+%make_alias(XCAFDoc_LayerTool)
+
 %extend XCAFDoc_LayerTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7279,6 +7336,8 @@ Parameter theUnitValue - length scale factor to meter.
 };
 
 
+%make_alias(XCAFDoc_LengthUnit)
+
 %extend XCAFDoc_LengthUnit {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7452,6 +7511,8 @@ No available documentation.
 
 };
 
+
+%make_alias(XCAFDoc_Location)
 
 %extend XCAFDoc_Location {
 	%pythoncode {
@@ -7687,6 +7748,8 @@ No available documentation.
 };
 
 
+%make_alias(XCAFDoc_Material)
+
 %extend XCAFDoc_Material {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -7826,7 +7889,7 @@ Returns Material assigned to <MatL> Returns False if no such Material is assigne
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -7836,7 +7899,7 @@ Description
 -----------
 Returns a sequence of materials currently stored in the material table.
 ") GetMaterialLabels;
-		void GetMaterialLabels(NCollection_Sequence<TDF_Label> & Labels);
+		void GetMaterialLabels(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_MaterialTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -7944,6 +8007,8 @@ Returns internal XCAFDoc_ShapeTool tool.
 
 };
 
+
+%make_alias(XCAFDoc_MaterialTool)
 
 %extend XCAFDoc_MaterialTool {
 	%pythoncode {
@@ -8160,6 +8225,8 @@ Returns the user name, who created the note.
 };
 
 
+%make_alias(XCAFDoc_Note)
+
 %extend XCAFDoc_Note {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -8354,7 +8421,7 @@ theUserName: str
 theTimeStamp: str
 theTitle: str
 theMIMEtype: str
-theData: NCollection_HArray1<uint8_t
+theData: TColStd_HArray1OfByte
 
 Return
 -------
@@ -8364,7 +8431,7 @@ Description
 -----------
 Create a new note with data loaded from a byte data array. Creates a new label under the notes hive and attaches ef XCAFDoc_NoteComment attribute (derived ftom ef XCAFDoc_Note). \param[in] theUserName - the user associated with the note. \param[in] theTimeStamp - timestamp of the note. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of the file. \param[in] theData - byte data array. eturn a handle to the base note attribute.
 ") CreateBinData;
-		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<NCollection_HArray1<uint8_t> > & theData);
+		opencascade::handle<XCAFDoc_Note> CreateBinData(TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****** XCAFDoc_NotesTool::CreateComment ******/
 		/****** md5 signature: 41b663076b0b608af4ceedbf243160b2 ******/
@@ -8423,7 +8490,7 @@ Deletes the given note. Removes all links with items annotated by the note. \par
 		%feature("autodoc", "
 Parameters
 ----------
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8433,7 +8500,7 @@ Description
 -----------
 Deletes the given notes. Removes all links with items annotated by the notes. \param[in] theNoteLabels - note label sequence. eturn number of deleted notes.
 ") DeleteNotes;
-		int DeleteNotes(NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int DeleteNotes(TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::DeleteOrphanNotes ******/
 		/****** md5 signature: bbbef2304a5603a8f89a4507fd669c64 ******/
@@ -8583,7 +8650,7 @@ Finds a label of the given labeled item's subshape in the annotated items hive. 
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TDF_Label>
+theLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8593,7 +8660,7 @@ Description
 -----------
 Returns all labels from the annotated items hive. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetAnnotatedItems;
-		void GetAnnotatedItems(NCollection_Sequence<TDF_Label> & theLabels);
+		void GetAnnotatedItems(TDF_LabelSequence & theLabels);
 
 		/****** XCAFDoc_NotesTool::GetAnnotatedItemsLabel ******/
 		/****** md5 signature: ed92168a16310f5f00b16c87f1b19956 ******/
@@ -8616,7 +8683,7 @@ Parameters
 ----------
 theItemId: XCAFDoc_AssemblyItemId
 theGUID: Standard_GUID
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8626,7 +8693,7 @@ Description
 -----------
 Gets all note labels of the assembly item's attribute. Notes linked to the item itself or to item's subshapes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[in] theGUID - assembly item's attribute GUID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetAttrNotes;
-		int GetAttrNotes(const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int GetAttrNotes(const XCAFDoc_AssemblyItemId & theItemId, const Standard_GUID & theGUID, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetAttrNotes ******/
 		/****** md5 signature: 504aea38ad8c32e5a333734a8f0ac0b7 ******/
@@ -8636,7 +8703,7 @@ Parameters
 ----------
 theItemLabel: TDF_Label
 theGUID: Standard_GUID
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8646,7 +8713,7 @@ Description
 -----------
 Gets all note labels of the labeled item's attribute. Notes linked to the item itself or to item's subshapes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemLabel - item label. \param[in] theGUID - item's attribute GUID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetAttrNotes;
-		int GetAttrNotes(const TDF_Label & theItemLabel, const Standard_GUID & theGUID, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int GetAttrNotes(const TDF_Label & theItemLabel, const Standard_GUID & theGUID, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -8667,7 +8734,7 @@ Returns default attribute GUID.
 		%feature("autodoc", "
 Parameters
 ----------
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8677,7 +8744,7 @@ Description
 -----------
 Returns all labels from the notes hive. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetNotes;
-		void GetNotes(NCollection_Sequence<TDF_Label> & theNoteLabels);
+		void GetNotes(TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetNotes ******/
 		/****** md5 signature: 24278e4af73055d7c5d2e1a0994a9f08 ******/
@@ -8686,7 +8753,7 @@ Returns all labels from the notes hive. The label sequence isn't cleared beforeh
 Parameters
 ----------
 theItemId: XCAFDoc_AssemblyItemId
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8696,7 +8763,7 @@ Description
 -----------
 Gets all note labels of the assembly item. Notes linked to item's subshapes or attributes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetNotes;
-		int GetNotes(const XCAFDoc_AssemblyItemId & theItemId, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int GetNotes(const XCAFDoc_AssemblyItemId & theItemId, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetNotes ******/
 		/****** md5 signature: 6b8e649085d636c4f4c6b5de3dafab81 ******/
@@ -8705,7 +8772,7 @@ Gets all note labels of the assembly item. Notes linked to item's subshapes or a
 Parameters
 ----------
 theItemLabel: TDF_Label
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8715,7 +8782,7 @@ Description
 -----------
 Gets all note labels of the labeled item. Notes linked to item's attributes aren't taken into account. The label sequence isn't cleared beforehand. \param[in] theItemLabel - item label. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetNotes;
-		int GetNotes(const TDF_Label & theItemLabel, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int GetNotes(const TDF_Label & theItemLabel, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetNotesLabel ******/
 		/****** md5 signature: 4fe051c0e9aeba91b144247aba0adb33 ******/
@@ -8736,7 +8803,7 @@ Returns the label of the notes hive.
 		%feature("autodoc", "
 Parameters
 ----------
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8746,7 +8813,7 @@ Description
 -----------
 Returns note labels that aren't linked to annotated items. The label sequence isn't cleared beforehand. \param[out] theNoteLabels - sequence of labels.
 ") GetOrphanNotes;
-		void GetOrphanNotes(NCollection_Sequence<TDF_Label> & theNoteLabels);
+		void GetOrphanNotes(TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::GetSubshapeNotes ******/
 		/****** md5 signature: f9b6245e522ecba409cf2e0f7f2c1220 ******/
@@ -8756,7 +8823,7 @@ Parameters
 ----------
 theItemId: XCAFDoc_AssemblyItemId
 theSubshapeIndex: int
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -8766,7 +8833,7 @@ Description
 -----------
 Gets all note labels of the annotated item. Notes linked to the item itself or to item's attributes taken into account. The label sequence isn't cleared beforehand. \param[in] theItemId - assembly item ID. \param[in] theSubshapeIndex - assembly item's subshape index. \param[out] theNoteLabels - sequence of labels. eturn number of added labels.
 ") GetSubshapeNotes;
-		int GetSubshapeNotes(const XCAFDoc_AssemblyItemId & theItemId, int theSubshapeIndex, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		int GetSubshapeNotes(const XCAFDoc_AssemblyItemId & theItemId, int theSubshapeIndex, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_NotesTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -9099,6 +9166,8 @@ Create (if not exist) a notes tool from XCAFDoc on theLabel.
 };
 
 
+%make_alias(XCAFDoc_NotesTool)
+
 %extend XCAFDoc_NotesTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -9162,13 +9231,13 @@ No available documentation.
 		%feature("compactdefaultargs") GetMap;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 No available documentation.
 ") GetMap;
-		const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> GetMap();
+		const TopTools_IndexedMapOfShape & GetMap();
 
 		/****** XCAFDoc_ShapeMapTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -9289,6 +9358,8 @@ Sets representation (TopoDS_Shape) for top-level shape.
 
 };
 
+
+%make_alias(XCAFDoc_ShapeMapTool)
 
 %extend XCAFDoc_ShapeMapTool {
 	%pythoncode {
@@ -9571,7 +9642,7 @@ Convert Shape (compound/compsolid/shell/wire) to assembly.
 Parameters
 ----------
 theShape: TopoDS_Shape
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -9581,7 +9652,7 @@ Description
 -----------
 Search the path of labels in the document, that corresponds the component from any assembly Try to search the sequence of labels with location that produce this shape as component of any assembly NOTE: Clear sequence of labels before filling.
 ") FindComponent;
-		bool FindComponent(const TopoDS_Shape & theShape, NCollection_Sequence<TDF_Label> & Labels);
+		bool FindComponent(const TopoDS_Shape & theShape, TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ShapeTool::FindMainShape ******/
 		/****** md5 signature: 37e4e0c22653d7d223843876d69e26d9 ******/
@@ -9625,7 +9696,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 theSHUOAttr: XCAFDoc_GraphNode
 
 Return
@@ -9636,7 +9707,7 @@ Description
 -----------
 Searches the SHUO by labels of components from upper_usage component to next_usage Returns null attribute if no SHUO found.
 ") FindSHUO;
-		static bool FindSHUO(const NCollection_Sequence<TDF_Label> & Labels, opencascade::handle<XCAFDoc_GraphNode> & theSHUOAttr);
+		static bool FindSHUO(const TDF_LabelSequence & Labels, opencascade::handle<XCAFDoc_GraphNode> & theSHUOAttr);
 
 		/****** XCAFDoc_ShapeTool::FindShape ******/
 		/****** md5 signature: bd3d5cc4adb045b727540e10dbef52f0 ******/
@@ -9704,7 +9775,7 @@ Finds a label for subshape <sub> of shape stored on label shapeL Returns Null la
 Parameters
 ----------
 CompLabel: TDF_Label
-SHUOAttrs: TDF_Attribute
+SHUOAttrs: TDF_AttributeSequence
 
 Return
 -------
@@ -9714,7 +9785,7 @@ Description
 -----------
 Returns founded SHUO GraphNodes of indicated component Returns false in other case.
 ") GetAllComponentSHUO;
-		static bool GetAllComponentSHUO(const TDF_Label & CompLabel, NCollection_Sequence<opencascade::handle<TDF_Attribute> > & SHUOAttrs);
+		static bool GetAllComponentSHUO(const TDF_Label & CompLabel, TDF_AttributeSequence & SHUOAttrs);
 
 		/****** XCAFDoc_ShapeTool::GetAllSHUOInstances ******/
 		/****** md5 signature: 7a3727e4b045f8288ca09cee98de6f16 ******/
@@ -9723,7 +9794,7 @@ Returns founded SHUO GraphNodes of indicated component Returns false in other ca
 Parameters
 ----------
 theSHUO: XCAFDoc_GraphNode
-theSHUOShapeSeq: NCollection_Sequence<TopoDS_Shape>
+theSHUOShapeSeq: TopTools_SequenceOfShape
 
 Return
 -------
@@ -9733,7 +9804,7 @@ Description
 -----------
 Searching for component shapes that styled by shuo Returns empty sequence of shape if no any shape is found.
 ") GetAllSHUOInstances;
-		bool GetAllSHUOInstances(const opencascade::handle<XCAFDoc_GraphNode> & theSHUO, NCollection_Sequence<TopoDS_Shape> & theSHUOShapeSeq);
+		bool GetAllSHUOInstances(const opencascade::handle<XCAFDoc_GraphNode> & theSHUO, TopTools_SequenceOfShape & theSHUOShapeSeq);
 
 		/****** XCAFDoc_ShapeTool::GetComponents ******/
 		/****** md5 signature: 823b458bd0418d4bce061313c82d60c4 ******/
@@ -9742,7 +9813,7 @@ Searching for component shapes that styled by shuo Returns empty sequence of sha
 Parameters
 ----------
 L: TDF_Label
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 getsubchilds: bool (optional, default to false)
 
 Return
@@ -9753,7 +9824,7 @@ Description
 -----------
 Returns list of components of assembly Returns False if label is not assembly.
 ") GetComponents;
-		static bool GetComponents(const TDF_Label & L, NCollection_Sequence<TDF_Label> & Labels, const bool getsubchilds = false);
+		static bool GetComponents(const TDF_Label & L, TDF_LabelSequence & Labels, const bool getsubchilds = false);
 
 		/****** XCAFDoc_ShapeTool::GetExternRefs ******/
 		/****** md5 signature: 251cf6564cb71950e8b9c2ce64c1a09e ******/
@@ -9762,7 +9833,7 @@ Returns list of components of assembly Returns False if label is not assembly.
 Parameters
 ----------
 L: TDF_Label
-SHAS: TCollection_HAsciiString
+SHAS: TColStd_SequenceOfHAsciiString
 
 Return
 -------
@@ -9772,7 +9843,7 @@ Description
 -----------
 Gets the names of references on the no-step files.
 ") GetExternRefs;
-		static void GetExternRefs(const TDF_Label & L, NCollection_Sequence<opencascade::handle<TCollection_HAsciiString> > & SHAS);
+		static void GetExternRefs(const TDF_Label & L, TColStd_SequenceOfHAsciiString & SHAS);
 
 		/****** XCAFDoc_ShapeTool::GetFreeShapes ******/
 		/****** md5 signature: a94047e9d4c729b92c7cd63df449f5c2 ******/
@@ -9780,7 +9851,7 @@ Gets the names of references on the no-step files.
 		%feature("autodoc", "
 Parameters
 ----------
-FreeLabels: NCollection_Sequence<TDF_Label>
+FreeLabels: TDF_LabelSequence
 
 Return
 -------
@@ -9790,7 +9861,7 @@ Description
 -----------
 Returns a sequence of all top-level shapes which are free (i.e. not referred by any other).
 ") GetFreeShapes;
-		void GetFreeShapes(NCollection_Sequence<TDF_Label> & FreeLabels);
+		void GetFreeShapes(TDF_LabelSequence & FreeLabels);
 
 		/****** XCAFDoc_ShapeTool::GetID ******/
 		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
@@ -9873,7 +9944,7 @@ Return: Handle to the NamedData attribute or Null if there is none.
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TDF_Label>
+theLabels: TDF_LabelSequence
 
 Return
 -------
@@ -9885,7 +9956,7 @@ Gets shape from a sequence of shape's labels
 Input parameter: theLabels a sequence of labels to get shapes from 
 Return: original shape in case of one label and a compound of shapes in case of more.
 ") GetOneShape;
-		static TopoDS_Shape GetOneShape(const NCollection_Sequence<TDF_Label> & theLabels);
+		static TopoDS_Shape GetOneShape(const TDF_LabelSequence & theLabels);
 
 		/****** XCAFDoc_ShapeTool::GetOneShape ******/
 		/****** md5 signature: 5c1df85e1e2a72b0b93fde509f26a709 ******/
@@ -9964,7 +10035,7 @@ Search for the component shape that styled by shuo Returns null shape if no any 
 Parameters
 ----------
 UpperUsageL: TDF_Label
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -9974,7 +10045,7 @@ Description
 -----------
 Returns the sequence of labels of SHUO attributes, which is next_usage for this upper_usage SHUO attribute (that indicated by label) NOTE: returns next_usages only on one level (not recurse) NOTE: do not clear the sequence before filling.
 ") GetSHUONextUsage;
-		static bool GetSHUONextUsage(const TDF_Label & UpperUsageL, NCollection_Sequence<TDF_Label> & Labels);
+		static bool GetSHUONextUsage(const TDF_Label & UpperUsageL, TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ShapeTool::GetSHUOUpperUsage ******/
 		/****** md5 signature: dc1880774571350fe1b782c2fc5f7d90 ******/
@@ -9983,7 +10054,7 @@ Returns the sequence of labels of SHUO attributes, which is next_usage for this 
 Parameters
 ----------
 NextUsageL: TDF_Label
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -9993,7 +10064,7 @@ Description
 -----------
 Returns the sequence of labels of SHUO attributes, which is upper_usage for this next_usage SHUO attribute (that indicated by label) NOTE: returns upper_usages only on one level (not recurse) NOTE: do not clear the sequence before filling.
 ") GetSHUOUpperUsage;
-		static bool GetSHUOUpperUsage(const TDF_Label & NextUsageL, NCollection_Sequence<TDF_Label> & Labels);
+		static bool GetSHUOUpperUsage(const TDF_Label & NextUsageL, TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ShapeTool::GetShape ******/
 		/****** md5 signature: 3202796e33c26749c754d5b9a390ff78 ******/
@@ -10038,7 +10109,7 @@ To get TopoDS_Shape from shape's label For component, returns new shape with cor
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -10048,7 +10119,7 @@ Description
 -----------
 Returns a sequence of all top-level shapes.
 ") GetShapes;
-		void GetShapes(NCollection_Sequence<TDF_Label> & Labels);
+		void GetShapes(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ShapeTool::GetSubShapes ******/
 		/****** md5 signature: f575638c9c85a9e2b83266a5e8e9e7b1 ******/
@@ -10057,7 +10128,7 @@ Returns a sequence of all top-level shapes.
 Parameters
 ----------
 L: TDF_Label
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -10067,7 +10138,7 @@ Description
 -----------
 Returns list of labels identifying subshapes of the given shape Returns False if no subshapes are placed on that label.
 ") GetSubShapes;
-		static bool GetSubShapes(const TDF_Label & L, NCollection_Sequence<TDF_Label> & Labels);
+		static bool GetSubShapes(const TDF_Label & L, TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_ShapeTool::GetUsers ******/
 		/****** md5 signature: 1eb5749b3effa68772bf46924feefd7e ******/
@@ -10076,7 +10147,7 @@ Returns list of labels identifying subshapes of the given shape Returns False if
 Parameters
 ----------
 L: TDF_Label
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 getsubchilds: bool (optional, default to false)
 
 Return
@@ -10087,7 +10158,7 @@ Description
 -----------
 Returns list of labels which refer shape L as component Returns number of users (0 if shape is free).
 ") GetUsers;
-		static int GetUsers(const TDF_Label & L, NCollection_Sequence<TDF_Label> & Labels, const bool getsubchilds = false);
+		static int GetUsers(const TDF_Label & L, TDF_LabelSequence & Labels, const bool getsubchilds = false);
 
 		/****** XCAFDoc_ShapeTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -10486,7 +10557,7 @@ Sets auto-naming mode to <V>. If True then for added shapes, links, assemblies a
 		%feature("autodoc", "
 Parameters
 ----------
-SHAS: TCollection_HAsciiString
+SHAS: TColStd_SequenceOfHAsciiString
 
 Return
 -------
@@ -10496,7 +10567,7 @@ Description
 -----------
 Sets the names of references on the no-step files.
 ") SetExternRefs;
-		TDF_Label SetExternRefs(const NCollection_Sequence<opencascade::handle<TCollection_HAsciiString> > & SHAS);
+		TDF_Label SetExternRefs(const TColStd_SequenceOfHAsciiString & SHAS);
 
 		/****** XCAFDoc_ShapeTool::SetExternRefs ******/
 		/****** md5 signature: 01d85f052bc124a5dfbe0dc20c615a73 ******/
@@ -10505,7 +10576,7 @@ Sets the names of references on the no-step files.
 Parameters
 ----------
 L: TDF_Label
-SHAS: TCollection_HAsciiString
+SHAS: TColStd_SequenceOfHAsciiString
 
 Return
 -------
@@ -10515,7 +10586,7 @@ Description
 -----------
 Sets the names of references on the no-step files.
 ") SetExternRefs;
-		void SetExternRefs(const TDF_Label & L, const NCollection_Sequence<opencascade::handle<TCollection_HAsciiString> > & SHAS);
+		void SetExternRefs(const TDF_Label & L, const TColStd_SequenceOfHAsciiString & SHAS);
 
 		/****** XCAFDoc_ShapeTool::SetInstanceSHUO ******/
 		/****** md5 signature: 3a2876846d7fb4d04fba56e940da38a9 ******/
@@ -10564,7 +10635,7 @@ Return: True if new location was set.
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 MainSHUOAttr: XCAFDoc_GraphNode
 
 Return
@@ -10575,7 +10646,7 @@ Description
 -----------
 Sets the SHUO structure between upper_usage and next_usage create multy-level (if number of labels > 2) SHUO from first to last Initialise out <MainSHUOAttr> by main upper_usage SHUO attribute. Returns False if some of labels in not component label.
 ") SetSHUO;
-		bool SetSHUO(const NCollection_Sequence<TDF_Label> & Labels, opencascade::handle<XCAFDoc_GraphNode> & MainSHUOAttr);
+		bool SetSHUO(const TDF_LabelSequence & Labels, opencascade::handle<XCAFDoc_GraphNode> & MainSHUOAttr);
 
 		/****** XCAFDoc_ShapeTool::SetShape ******/
 		/****** md5 signature: a0d7d58b60bcc078c2a64a6ff54f1afc ******/
@@ -10611,6 +10682,8 @@ Top-down update for all assembly compounds stored in the document.
 
 };
 
+
+%make_alias(XCAFDoc_ShapeTool)
 
 %extend XCAFDoc_ShapeTool {
 	%pythoncode {
@@ -10714,6 +10787,8 @@ Updates parent's label and its sub-labels with data taken from theViewObject. Ol
 };
 
 
+%make_alias(XCAFDoc_View)
+
 %extend XCAFDoc_View {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -10784,7 +10859,7 @@ No available documentation.
 Parameters
 ----------
 theViewL: TDF_Label
-theAnnotationLabels: NCollection_Sequence<TDF_Label>
+theAnnotationLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10794,7 +10869,7 @@ Description
 -----------
 Returns Annotation labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefAnnotationLabel;
-		bool GetRefAnnotationLabel(const TDF_Label & theViewL, NCollection_Sequence<TDF_Label> & theAnnotationLabels);
+		bool GetRefAnnotationLabel(const TDF_Label & theViewL, TDF_LabelSequence & theAnnotationLabels);
 
 		/****** XCAFDoc_ViewTool::GetRefClippingPlaneLabel ******/
 		/****** md5 signature: 03df396fead5268f7883f50332de9c19 ******/
@@ -10803,7 +10878,7 @@ Returns Annotation labels defined for label theViewL Returns False if the theVie
 Parameters
 ----------
 theViewL: TDF_Label
-theClippingPlaneLabels: NCollection_Sequence<TDF_Label>
+theClippingPlaneLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10813,7 +10888,7 @@ Description
 -----------
 Returns ClippingPlane labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefClippingPlaneLabel;
-		bool GetRefClippingPlaneLabel(const TDF_Label & theViewL, NCollection_Sequence<TDF_Label> & theClippingPlaneLabels);
+		bool GetRefClippingPlaneLabel(const TDF_Label & theViewL, TDF_LabelSequence & theClippingPlaneLabels);
 
 		/****** XCAFDoc_ViewTool::GetRefGDTLabel ******/
 		/****** md5 signature: 82b892347e4c3ce9a4f9c3ed59c72931 ******/
@@ -10822,7 +10897,7 @@ Returns ClippingPlane labels defined for label theViewL Returns False if the the
 Parameters
 ----------
 theViewL: TDF_Label
-theGDTLabels: NCollection_Sequence<TDF_Label>
+theGDTLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10832,7 +10907,7 @@ Description
 -----------
 Returns GDT labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefGDTLabel;
-		bool GetRefGDTLabel(const TDF_Label & theViewL, NCollection_Sequence<TDF_Label> & theGDTLabels);
+		bool GetRefGDTLabel(const TDF_Label & theViewL, TDF_LabelSequence & theGDTLabels);
 
 		/****** XCAFDoc_ViewTool::GetRefNoteLabel ******/
 		/****** md5 signature: e29b19160b4b3dddb3216b30b3779c74 ******/
@@ -10841,7 +10916,7 @@ Returns GDT labels defined for label theViewL Returns False if the theViewL is n
 Parameters
 ----------
 theViewL: TDF_Label
-theNoteLabels: NCollection_Sequence<TDF_Label>
+theNoteLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10851,7 +10926,7 @@ Description
 -----------
 Returns Notes labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefNoteLabel;
-		bool GetRefNoteLabel(const TDF_Label & theViewL, NCollection_Sequence<TDF_Label> & theNoteLabels);
+		bool GetRefNoteLabel(const TDF_Label & theViewL, TDF_LabelSequence & theNoteLabels);
 
 		/****** XCAFDoc_ViewTool::GetRefShapeLabel ******/
 		/****** md5 signature: e1d130ffebdc2283e29d27db19769bcc ******/
@@ -10860,7 +10935,7 @@ Returns Notes labels defined for label theViewL Returns False if the theViewL is
 Parameters
 ----------
 theViewL: TDF_Label
-theShapeLabels: NCollection_Sequence<TDF_Label>
+theShapeLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10870,7 +10945,7 @@ Description
 -----------
 Returns shape labels defined for label theViewL Returns False if the theViewL is not in View table.
 ") GetRefShapeLabel;
-		bool GetRefShapeLabel(const TDF_Label & theViewL, NCollection_Sequence<TDF_Label> & theShapeLabels);
+		bool GetRefShapeLabel(const TDF_Label & theViewL, TDF_LabelSequence & theShapeLabels);
 
 		/****** XCAFDoc_ViewTool::GetViewLabels ******/
 		/****** md5 signature: 36b471bb18ba1f43a4f4108febdc4790 ******/
@@ -10878,7 +10953,7 @@ Returns shape labels defined for label theViewL Returns False if the theViewL is
 		%feature("autodoc", "
 Parameters
 ----------
-theLabels: NCollection_Sequence<TDF_Label>
+theLabels: TDF_LabelSequence
 
 Return
 -------
@@ -10888,7 +10963,7 @@ Description
 -----------
 Returns a sequence of View labels currently stored in the View table.
 ") GetViewLabels;
-		void GetViewLabels(NCollection_Sequence<TDF_Label> & theLabels);
+		void GetViewLabels(TDF_LabelSequence & theLabels);
 
 		/****** XCAFDoc_ViewTool::GetViewLabelsForAnnotation ******/
 		/****** md5 signature: 049eafdf6fac276fb913af25d1a2f3b8 ******/
@@ -10897,7 +10972,7 @@ Returns a sequence of View labels currently stored in the View table.
 Parameters
 ----------
 theAnnotationL: TDF_Label
-theViews: NCollection_Sequence<TDF_Label>
+theViews: TDF_LabelSequence
 
 Return
 -------
@@ -10907,7 +10982,7 @@ Description
 -----------
 Returns all View labels defined for label AnnotationL.
 ") GetViewLabelsForAnnotation;
-		bool GetViewLabelsForAnnotation(const TDF_Label & theAnnotationL, NCollection_Sequence<TDF_Label> & theViews);
+		bool GetViewLabelsForAnnotation(const TDF_Label & theAnnotationL, TDF_LabelSequence & theViews);
 
 		/****** XCAFDoc_ViewTool::GetViewLabelsForClippingPlane ******/
 		/****** md5 signature: 51d545a416de304ef0c6b807c9788b5a ******/
@@ -10916,7 +10991,7 @@ Returns all View labels defined for label AnnotationL.
 Parameters
 ----------
 theClippingPlaneL: TDF_Label
-theViews: NCollection_Sequence<TDF_Label>
+theViews: TDF_LabelSequence
 
 Return
 -------
@@ -10926,7 +11001,7 @@ Description
 -----------
 Returns all View labels defined for label ClippingPlaneL.
 ") GetViewLabelsForClippingPlane;
-		bool GetViewLabelsForClippingPlane(const TDF_Label & theClippingPlaneL, NCollection_Sequence<TDF_Label> & theViews);
+		bool GetViewLabelsForClippingPlane(const TDF_Label & theClippingPlaneL, TDF_LabelSequence & theViews);
 
 		/****** XCAFDoc_ViewTool::GetViewLabelsForGDT ******/
 		/****** md5 signature: 7508a638dc8aa9d481066efea64ee1b9 ******/
@@ -10935,7 +11010,7 @@ Returns all View labels defined for label ClippingPlaneL.
 Parameters
 ----------
 theGDTL: TDF_Label
-theViews: NCollection_Sequence<TDF_Label>
+theViews: TDF_LabelSequence
 
 Return
 -------
@@ -10945,7 +11020,7 @@ Description
 -----------
 Returns all View labels defined for label GDTL.
 ") GetViewLabelsForGDT;
-		bool GetViewLabelsForGDT(const TDF_Label & theGDTL, NCollection_Sequence<TDF_Label> & theViews);
+		bool GetViewLabelsForGDT(const TDF_Label & theGDTL, TDF_LabelSequence & theViews);
 
 		/****** XCAFDoc_ViewTool::GetViewLabelsForNote ******/
 		/****** md5 signature: 8d5bc360b595e9c68884cc8defd872dd ******/
@@ -10954,7 +11029,7 @@ Returns all View labels defined for label GDTL.
 Parameters
 ----------
 theNoteL: TDF_Label
-theViews: NCollection_Sequence<TDF_Label>
+theViews: TDF_LabelSequence
 
 Return
 -------
@@ -10964,7 +11039,7 @@ Description
 -----------
 Returns all View labels defined for label NoteL.
 ") GetViewLabelsForNote;
-		bool GetViewLabelsForNote(const TDF_Label & theNoteL, NCollection_Sequence<TDF_Label> & theViews);
+		bool GetViewLabelsForNote(const TDF_Label & theNoteL, TDF_LabelSequence & theViews);
 
 		/****** XCAFDoc_ViewTool::GetViewLabelsForShape ******/
 		/****** md5 signature: 7a22b1ac9e53629fe3204dcce3f788a2 ******/
@@ -10973,7 +11048,7 @@ Returns all View labels defined for label NoteL.
 Parameters
 ----------
 theShapeL: TDF_Label
-theViews: NCollection_Sequence<TDF_Label>
+theViews: TDF_LabelSequence
 
 Return
 -------
@@ -10983,7 +11058,7 @@ Description
 -----------
 Returns all View labels defined for label ShapeL.
 ") GetViewLabelsForShape;
-		bool GetViewLabelsForShape(const TDF_Label & theShapeL, NCollection_Sequence<TDF_Label> & theViews);
+		bool GetViewLabelsForShape(const TDF_Label & theShapeL, TDF_LabelSequence & theViews);
 
 		/****** XCAFDoc_ViewTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
@@ -11094,7 +11169,7 @@ Creates (if not exist) ViewTool.
 		%feature("autodoc", "
 Parameters
 ----------
-theClippingPlaneLabels: NCollection_Sequence<TDF_Label>
+theClippingPlaneLabels: TDF_LabelSequence
 theViewL: TDF_Label
 
 Return
@@ -11105,7 +11180,7 @@ Description
 -----------
 Set Clipping planes to given View.
 ") SetClippingPlanes;
-		void SetClippingPlanes(const NCollection_Sequence<TDF_Label> & theClippingPlaneLabels, const TDF_Label & theViewL);
+		void SetClippingPlanes(const TDF_LabelSequence & theClippingPlaneLabels, const TDF_Label & theViewL);
 
 		/****** XCAFDoc_ViewTool::SetView ******/
 		/****** md5 signature: 155ee29b611e9191ff10a4d073b713cd ******/
@@ -11113,11 +11188,11 @@ Set Clipping planes to given View.
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_Sequence<TDF_Label>
-theGDTs: NCollection_Sequence<TDF_Label>
-theClippingPlanes: NCollection_Sequence<TDF_Label>
-theNotes: NCollection_Sequence<TDF_Label>
-theAnnotations: NCollection_Sequence<TDF_Label>
+theShapes: TDF_LabelSequence
+theGDTs: TDF_LabelSequence
+theClippingPlanes: TDF_LabelSequence
+theNotes: TDF_LabelSequence
+theAnnotations: TDF_LabelSequence
 theViewL: TDF_Label
 
 Return
@@ -11128,7 +11203,7 @@ Description
 -----------
 Sets a link with GUID.
 ") SetView;
-		void SetView(const NCollection_Sequence<TDF_Label> & theShapes, const NCollection_Sequence<TDF_Label> & theGDTs, const NCollection_Sequence<TDF_Label> & theClippingPlanes, const NCollection_Sequence<TDF_Label> & theNotes, const NCollection_Sequence<TDF_Label> & theAnnotations, const TDF_Label & theViewL);
+		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_LabelSequence & theClippingPlanes, const TDF_LabelSequence & theNotes, const TDF_LabelSequence & theAnnotations, const TDF_Label & theViewL);
 
 		/****** XCAFDoc_ViewTool::SetView ******/
 		/****** md5 signature: cb24d6adccccb367b8fb9dcdd3f56cba ******/
@@ -11136,9 +11211,9 @@ Sets a link with GUID.
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_Sequence<TDF_Label>
-theGDTs: NCollection_Sequence<TDF_Label>
-theClippingPlanes: NCollection_Sequence<TDF_Label>
+theShapes: TDF_LabelSequence
+theGDTs: TDF_LabelSequence
+theClippingPlanes: TDF_LabelSequence
 theViewL: TDF_Label
 
 Return
@@ -11149,7 +11224,7 @@ Description
 -----------
 Sets a link with GUID.
 ") SetView;
-		void SetView(const NCollection_Sequence<TDF_Label> & theShapes, const NCollection_Sequence<TDF_Label> & theGDTs, const NCollection_Sequence<TDF_Label> & theClippingPlanes, const TDF_Label & theViewL);
+		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_LabelSequence & theClippingPlanes, const TDF_Label & theViewL);
 
 		/****** XCAFDoc_ViewTool::SetView ******/
 		/****** md5 signature: 7d72f78b58f15b61198b33f6f7e3132e ******/
@@ -11157,8 +11232,8 @@ Sets a link with GUID.
 		%feature("autodoc", "
 Parameters
 ----------
-theShapes: NCollection_Sequence<TDF_Label>
-theGDTs: NCollection_Sequence<TDF_Label>
+theShapes: TDF_LabelSequence
+theGDTs: TDF_LabelSequence
 theViewL: TDF_Label
 
 Return
@@ -11169,7 +11244,7 @@ Description
 -----------
 Sets a link with GUID.
 ") SetView;
-		void SetView(const NCollection_Sequence<TDF_Label> & theShapes, const NCollection_Sequence<TDF_Label> & theGDTs, const TDF_Label & theViewL);
+		void SetView(const TDF_LabelSequence & theShapes, const TDF_LabelSequence & theGDTs, const TDF_Label & theViewL);
 
 		/****** XCAFDoc_ViewTool::Unlock ******/
 		/****** md5 signature: 47087adf5c901031f9be4fa4e9008a89 ******/
@@ -11191,6 +11266,8 @@ Unlock the given View.
 
 };
 
+
+%make_alias(XCAFDoc_ViewTool)
 
 %extend XCAFDoc_ViewTool {
 	%pythoncode {
@@ -11679,6 +11756,8 @@ Setup undefined metal-roughness PBR material.
 };
 
 
+%make_alias(XCAFDoc_VisMaterial)
+
 %extend XCAFDoc_VisMaterial {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -11922,7 +12001,7 @@ Returns Material defined by specified Label, or NULL if the label is not in Mate
 		%feature("autodoc", "
 Parameters
 ----------
-Labels: NCollection_Sequence<TDF_Label>
+Labels: TDF_LabelSequence
 
 Return
 -------
@@ -11932,7 +12011,7 @@ Description
 -----------
 Returns a sequence of Materials currently stored in the Material Table.
 ") GetMaterials;
-		void GetMaterials(NCollection_Sequence<TDF_Label> & Labels);
+		void GetMaterials(TDF_LabelSequence & Labels);
 
 		/****** XCAFDoc_VisMaterialTool::GetShapeMaterial ******/
 		/****** md5 signature: e422a802dd9f9698ddcee5f109c13da2 ******/
@@ -12259,6 +12338,8 @@ Return: True if such link existed.
 };
 
 
+%make_alias(XCAFDoc_VisMaterialTool)
+
 %extend XCAFDoc_VisMaterialTool {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12418,6 +12499,8 @@ Find, or create, an Volume attribute and set its value.
 };
 
 
+%make_alias(XCAFDoc_Volume)
+
 %extend XCAFDoc_Volume {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12450,13 +12533,13 @@ Creates an empty binary data note.
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<NCollection_HArray1<uint8_t>>
+opencascade::handle<TColStd_HArray1OfByte>
 
 Description
 -----------
 Returns byte data array.
 ") Data;
-		const opencascade::handle<NCollection_HArray1<uint8_t>> & Data();
+		const opencascade::handle<TColStd_HArray1OfByte> & Data();
 
 		/****** XCAFDoc_NoteBinData::Dump ******/
 		/****** md5 signature: 93728f1e04c6a4610b0181e40f01badf ******/
@@ -12616,7 +12699,7 @@ theUserName: str
 theTimeStamp: str
 theTitle: str
 theMIMEtype: str
-theData: NCollection_HArray1<uint8_t
+theData: TColStd_HArray1OfByte
 
 Return
 -------
@@ -12626,7 +12709,7 @@ Description
 -----------
 Create (if not exist) a binary note byte data array. \param[in] theLabel - label to add the attribute. \param[in] theUserName - the name of the user, who created the note. \param[in] theTimeStamp - creation timestamp of the note. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of data. \param[in] theData - byte data array. eturn A handle to the attribute instance.
 ") Set;
-		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<NCollection_HArray1<uint8_t> > & theData);
+		static opencascade::handle<XCAFDoc_NoteBinData> Set(const TDF_Label & theLabel, TCollection_ExtendedString theUserName, TCollection_ExtendedString theTimeStamp, TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****** XCAFDoc_NoteBinData::Set ******/
 		/****** md5 signature: ff8731b2c0afd6180999966d31cd8f1d ******/
@@ -12656,7 +12739,7 @@ Parameters
 ----------
 theTitle: str
 theMIMEtype: str
-theData: NCollection_HArray1<uint8_t
+theData: TColStd_HArray1OfByte
 
 Return
 -------
@@ -12666,7 +12749,7 @@ Description
 -----------
 Sets title, MIME type and data from a byte array. \param[in] theTitle - data title. \param[in] theMIMEtype - MIME type of data. \param[in] theData - byte data array.
 ") Set;
-		void Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<NCollection_HArray1<uint8_t> > & theData);
+		void Set(TCollection_ExtendedString theTitle, TCollection_AsciiString theMIMEtype, const opencascade::handle<TColStd_HArray1OfByte> & theData);
 
 		/****** XCAFDoc_NoteBinData::Size ******/
 		/****** md5 signature: 95fd550d1712c017c7cad2fbb2186e09 ******/
@@ -12696,6 +12779,8 @@ Returns the note title.
 
 };
 
+
+%make_alias(XCAFDoc_NoteBinData)
 
 %extend XCAFDoc_NoteBinData {
 	%pythoncode {
@@ -12887,6 +12972,8 @@ Sets the comment text.
 };
 
 
+%make_alias(XCAFDoc_NoteComment)
+
 %extend XCAFDoc_NoteComment {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -12978,6 +13065,8 @@ Create (if not exist) a comment note on the given label. \param[in] theLabel - n
 
 };
 
+
+%make_alias(XCAFDoc_NoteBalloon)
 
 %extend XCAFDoc_NoteBalloon {
 	%pythoncode {

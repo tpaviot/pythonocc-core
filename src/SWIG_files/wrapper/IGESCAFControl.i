@@ -577,7 +577,7 @@ Transfers a document to a IGES model Returns True if translation is OK.
 		%feature("autodoc", "
 Parameters
 ----------
-labels: NCollection_Sequence<TDF_Label>
+labels: TDF_LabelSequence
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -588,7 +588,7 @@ Description
 -----------
 Transfers labels to a IGES model Returns True if translation is OK.
 ") Transfer;
-		bool Transfer(const NCollection_Sequence<TDF_Label> & labels, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		bool Transfer(const TDF_LabelSequence & labels, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** IGESCAFControl_Writer::Transfer ******/
 		/****** md5 signature: ca7b47ce1b5e362004eefb01c34a9039 ******/

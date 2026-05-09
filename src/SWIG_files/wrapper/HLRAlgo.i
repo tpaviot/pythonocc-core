@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlralgo.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<TopAbs_module.hxx>
+#include<TColgp_module.hxx>
 #include<Bnd_module.hxx>
 #include<gp_module.hxx>
 #include<gp_module.hxx>
@@ -56,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlralgo.html"
 %import Standard.i
 %import NCollection.i
 %import TopAbs.i
+%import TColgp.i
 %import Bnd.i
 %import gp.i
 
@@ -142,9 +144,21 @@ Array1ExtendIter(HLRAlgo_TriangleData)
 %template(HLRAlgo_InterferenceList) NCollection_List<HLRAlgo_Interference>;
 
 %extend NCollection_List<HLRAlgo_Interference> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRAlgo_InterferenceList(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 %template(HLRAlgo_ListIteratorOfInterferenceList) NCollection_TListIterator<HLRAlgo_Interference>;
@@ -152,9 +166,21 @@ Array1ExtendIter(HLRAlgo_TriangleData)
 %template(HLRAlgo_ListOfBPoint) NCollection_List<HLRAlgo_BiPoint>;
 
 %extend NCollection_List<HLRAlgo_BiPoint> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        it = HLRAlgo_ListIteratorOfListOfBPoint(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */
@@ -2309,7 +2335,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-HNodes: NCollection_HArray1<gp_XYZ
+HNodes: TColgp_HArray1OfXYZ
 
 Return
 -------
@@ -2319,7 +2345,7 @@ Description
 -----------
 No available documentation.
 ") HNodes;
-		void HNodes(const opencascade::handle<NCollection_HArray1<gp_XYZ> > & HNodes);
+		void HNodes(const opencascade::handle<TColgp_HArray1OfXYZ> & HNodes);
 
 		/****** HLRAlgo_PolyData::HPHDat ******/
 		/****** md5 signature: 84b21d416f83099f9d82765a2d1f1a52 ******/
@@ -2337,7 +2363,7 @@ Description
 -----------
 No available documentation.
 ") HPHDat;
-		void HPHDat(const opencascade::handle<NCollection_HArray1<HLRAlgo_PolyHidingData> > & HPHDat);
+		void HPHDat(const opencascade::handle<NCollection_HArray1<HLRAlgo_PolyHidingData>> & HPHDat);
 
 		/****** HLRAlgo_PolyData::HTData ******/
 		/****** md5 signature: 288d50379a08f7af5d7d65b1bd7d29d7 ******/
@@ -2355,7 +2381,7 @@ Description
 -----------
 No available documentation.
 ") HTData;
-		void HTData(const opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData> > & HTData);
+		void HTData(const opencascade::handle<NCollection_HArray1<HLRAlgo_TriangleData>> & HTData);
 
 		/****** HLRAlgo_PolyData::Hiding ******/
 		/****** md5 signature: 1ecaf9532c51f7586db9e63b215ba79e ******/
@@ -2375,13 +2401,13 @@ No available documentation.
 		%feature("compactdefaultargs") Nodes;
 		%feature("autodoc", "Return
 -------
-NCollection_Array1<gp_XYZ>
+TColgp_Array1OfXYZ
 
 Description
 -----------
 No available documentation.
 ") Nodes;
-		NCollection_Array1<gp_XYZ> Nodes();
+		TColgp_Array1OfXYZ & Nodes();
 
 		/****** HLRAlgo_PolyData::PHDat ******/
 		/****** md5 signature: 9f59ebc4007ceaf4a2c3717d66bcfa38 ******/
@@ -2482,7 +2508,7 @@ Description
 -----------
 No available documentation.
 ") AddNode;
-		int AddNode(HLRAlgo_PolyInternalNode::NodeData & theNod1RValues, HLRAlgo_PolyInternalNode::NodeData & theNod2RValues, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2, const double theCoef1, const double theX3, const double theY3, const double theZ3);
+		int AddNode(HLRAlgo_PolyInternalNode::NodeData & theNod1RValues, HLRAlgo_PolyInternalNode::NodeData & theNod2RValues, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod2, const double theCoef1, const double theX3, const double theY3, const double theZ3);
 
 		/****** HLRAlgo_PolyInternalData::DecPINod ******/
 		/****** md5 signature: 23c9a454c260ae9304cb22b337d0f0ff ******/
@@ -2553,7 +2579,7 @@ Description
 -----------
 No available documentation.
 ") IncPINod;
-		void IncPINod(NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2);
+		void IncPINod(NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod2);
 
 		/****** HLRAlgo_PolyInternalData::IncPISeg ******/
 		/****** md5 signature: cdfae8b14010c8c1896073e40d2a74b0 ******/
@@ -2751,7 +2777,7 @@ Description
 -----------
 No available documentation.
 ") UpdateLinks;
-		void UpdateLinks(NCollection_Array1<HLRAlgo_TriangleData> & theTData, NCollection_Array1<HLRAlgo_PolyInternalSegment> & thePISeg, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > & thePINod);
+		void UpdateLinks(NCollection_Array1<HLRAlgo_TriangleData> & theTData, NCollection_Array1<HLRAlgo_PolyInternalSegment> & thePISeg, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> & thePINod);
 
 		/****** HLRAlgo_PolyInternalData::UpdateLinks ******/
 		/****** md5 signature: b9caa06ceffbea68f86030781de62747 ******/
@@ -2777,7 +2803,7 @@ Description
 -----------
 No available documentation.
 ") UpdateLinks;
-		void UpdateLinks(const int theIp1, const int theIp2, const int theIp3, NCollection_Array1<HLRAlgo_TriangleData> * & theTData1, NCollection_Array1<HLRAlgo_TriangleData> * & theTData2, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg1, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg2, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode> > * & thePINod2);
+		void UpdateLinks(const int theIp1, const int theIp2, const int theIp3, NCollection_Array1<HLRAlgo_TriangleData> * & theTData1, NCollection_Array1<HLRAlgo_TriangleData> * & theTData2, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg1, NCollection_Array1<HLRAlgo_PolyInternalSegment> * & thePISeg2, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod1, NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> * & thePINod2);
 
 };
 

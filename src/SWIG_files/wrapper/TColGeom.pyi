@@ -167,9 +167,9 @@ class TColGeom_SequenceOfSurface:
 
 # harray1 classes
 
-class TColGeom_HArray1OfBSplineCurve(NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>, Standard_Transient):
+class TColGeom_HArray1OfSurface(NCollection_Array1<opencascade::handle<Geom_Surface>>, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>: ...
+    def Array1(self) -> NCollection_Array1<opencascade::handle<Geom_Surface>>: ...
 
 
 class TColGeom_HArray1OfBezierCurve(NCollection_Array1<opencascade::handle<Geom_BezierCurve>>, Standard_Transient):
@@ -182,9 +182,9 @@ class TColGeom_HArray1OfCurve(NCollection_Array1<opencascade::handle<Geom_Curve>
     def Array1(self) -> NCollection_Array1<opencascade::handle<Geom_Curve>>: ...
 
 
-class TColGeom_HArray1OfSurface(NCollection_Array1<opencascade::handle<Geom_Surface>>, Standard_Transient):
+class TColGeom_HArray1OfBSplineCurve(NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> NCollection_Array1<opencascade::handle<Geom_Surface>>: ...
+    def Array1(self) -> NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>: ...
 
 # harray2 classes
 

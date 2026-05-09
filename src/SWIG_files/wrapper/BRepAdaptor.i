@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepadaptor.html"
 #include<Geom_module.hxx>
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColStd_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -68,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepadaptor.html"
 %import Geom.i
 %import gp.i
 %import GeomAbs.i
+%import TColStd.i
 %import GeomAdaptor.i
 %import Geom2dAdaptor.i
 %import Adaptor2d.i
@@ -86,6 +88,10 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(BRepAdaptor_CompCurve)
+%wrap_handle(BRepAdaptor_Curve)
+%wrap_handle(BRepAdaptor_Curve2d)
+%wrap_handle(BRepAdaptor_Surface)
 /* end handles declaration */
 
 /* templates */
@@ -432,7 +438,7 @@ Sets wire <W> and trimmed parameter.
 		%feature("autodoc", "
 Parameters
 ----------
-T: NCollection_Array1<double>
+T: TColStd_Array1OfReal
 S: GeomAbs_Shape
 
 Return
@@ -443,7 +449,7 @@ Description
 -----------
 Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
-		void Intervals(NCollection_Array1<double> & T, const GeomAbs_Shape S);
+		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
 		/****** BRepAdaptor_CompCurve::IsClosed ******/
 		/****** md5 signature: e10ee7204b25ff2ff849146f37c83359 ******/
@@ -647,6 +653,8 @@ Returns the wire.
 };
 
 
+%make_alias(BRepAdaptor_CompCurve)
+
 %extend BRepAdaptor_CompCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -820,6 +828,8 @@ Returns a curve equivalent of <self> between parameters <First> and <Last>. <Tol
 };
 
 
+%make_alias(BRepAdaptor_Curve)
+
 %extend BRepAdaptor_Curve {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -924,6 +934,8 @@ Shallow copy of adaptor.
 };
 
 
+%make_alias(BRepAdaptor_Curve2d)
+
 %extend BRepAdaptor_Curve2d {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -1027,6 +1039,8 @@ Returns the face tolerance.
 
 };
 
+
+%make_alias(BRepAdaptor_Surface)
 
 %extend BRepAdaptor_Surface {
 	%pythoncode {

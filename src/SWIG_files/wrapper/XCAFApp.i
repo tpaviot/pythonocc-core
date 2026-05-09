@@ -77,6 +77,7 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(XCAFApp_Application)
 /* end handles declaration */
 
 /* templates */
@@ -158,6 +159,8 @@ methods from TDocStd_Application ================================.
 
 };
 
+
+%make_alias(XCAFApp_Application)
 
 %extend XCAFApp_Application {
 	%pythoncode {

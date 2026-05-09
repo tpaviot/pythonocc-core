@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass3d.html"
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
 #include<IntCurveSurface_module.hxx>
+#include<TopTools_module.hxx>
 #include<IntCurvesFace_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<TopLoc_module.hxx>
@@ -71,6 +72,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepclass3d.html"
 %import gp.i
 %import TopAbs.i
 %import IntCurveSurface.i
+%import TopTools.i
 %import IntCurvesFace.i
 %import BRepAdaptor.i
 
@@ -678,13 +680,13 @@ Returns the index of face for which last segment is calculated.
 		%feature("compactdefaultargs") GetMapEV;
 		%feature("autodoc", "Return
 -------
-NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher>
+TopTools_IndexedMapOfShape
 
 Description
 -----------
 Return edge/vertices map for current shape.
 ") GetMapEV;
-		const NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> GetMapEV();
+		const TopTools_IndexedMapOfShape & GetMapEV();
 
 		/****** BRepClass3d_SolidExplorer::GetShape ******/
 		/****** md5 signature: 68adf76e3cbb4c2e8340f398e62eb4da ******/
