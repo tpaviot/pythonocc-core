@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 21d80e6
+git revision : c30631c
 
 operating system : Linux 64bit 6.17.0-22-generic
 
 occt version targeted : 8.0.0
 
-date : 2026-05-09 12:43:14.346524
+date : 2026-05-09 18:34:52.468662
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -1137,7 +1137,6 @@ date : 2026-05-09 12:43:14.346524
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
-[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_MultipleVarFunction
@@ -11721,7 +11720,7 @@ date : 2026-05-09 12:43:14.346524
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.63s
+SWIG interface file generation completed in 14.56s
 #################################################
 
 [INFO ]  Number of classes: 3915
