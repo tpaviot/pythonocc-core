@@ -3487,7 +3487,11 @@ Description
 Initializes an ExtendedString from a std::u16string_view. 
 Input parameter: theStringView the string view to copy.
 ") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const std::u16string_view & theStringView);
+		// occt-800: the std::u16string_view ctor is inline and calls the private,
+		// non-exported allocate(), which breaks the Windows link (LNK2019). It is
+		// also unreachable from Python (no u16string_view typemap); str is built
+		// via the char16_t*/wchar_t* ctors. Skip it.
+		// TCollection_ExtendedString(const std::u16string_view & theStringView);
 
 		/****** TCollection_ExtendedString::u16string_view ******/
 		/****** md5 signature: 2c5272a7bc3d3e18c7d49843bb69015c ******/
@@ -3655,7 +3659,9 @@ Description
 Appends the std::u16string_view to this extended string. 
 Input parameter: theStringView the string view to append.
 ") AssignCat;
-		void AssignCat(const std::u16string_view & theStringView);
+		// occt-800: inline AssignCat(u16string_view) calls the private, non-exported
+		// reallocate() (Windows LNK2019); the char16_t* overload covers it. Skip it.
+		// void AssignCat(const std::u16string_view & theStringView);
 
 		/****** TCollection_ExtendedString::Capitalize ******/
 		/****** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ******/
@@ -5362,7 +5368,9 @@ def __iadd__(self, right):
 
 %extend{
     void __iadd_wrapper__(const std::u16string_view other) {
-    *self += other;
+    // occt-800: avoid operator+=(u16string_view) -> inline reallocate (Windows LNK2019);
+    // use the Standard_EXPORT AssignCat(char16_t*, int) overload instead.
+    self->AssignCat(other.data(), static_cast<int>(other.size()));
     }
 }
 %pythoncode {
