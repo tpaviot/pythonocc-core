@@ -320,6 +320,22 @@ Returns a shape built by the shape construction algorithm. Does not check if the
 /********************************
 * class BRepAlgoAPI_BuilderAlgo *
 ********************************/
+// occt-800: BRepAlgoAPI_BuilderAlgo gained deleted copy/move members, so the
+// generator dropped it into the excluded-classes list. That severed the
+// inheritance chain (BooleanOperation/Splitter -> BuilderAlgo -> Algo), hiding
+// the inherited Shape() from every boolean operation. Re-wrap it (empty body
+// is enough) so Shape() is exposed again.
+%nodefaultctor BRepAlgoAPI_BuilderAlgo;
+class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
+	public:
+};
+
+%extend BRepAlgoAPI_BuilderAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************
 * class BRepAlgoAPI_Defeaturing *
 ********************************/
@@ -1475,10 +1491,6 @@ initialize the tool <Sf> - tool Obsolete.
 
 /* python proxy for excluded classes */
 %pythoncode {
-@classnotwrapped
-class BRepAlgoAPI_BuilderAlgo:
-	pass
-
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
