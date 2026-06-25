@@ -28,7 +28,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_BaseAllocator.hxx>
 #include<NCollection_BaseList.hxx>
 #include<NCollection_BaseMap.hxx>
-#include<NCollection_BasePointerVector.hxx>
+// occt-800: NCollection_BasePointerVector.hxx was removed; the class is
+// %ignore'd in NCollection.i, so drop the include to keep wrappers compiling.
+//#include<NCollection_BasePointerVector.hxx>
 #include<NCollection_BaseSequence.hxx>
 #include<NCollection_Buffer.hxx>
 #include<NCollection_CellFilter.hxx>
