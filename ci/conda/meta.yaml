@@ -1,4 +1,4 @@
-{% set version = "7.9.3" %}
+{% set version = "8.0.0" %}
 
 package:
   name: pythonocc-core
@@ -29,11 +29,11 @@ requirements:
     - python {{ python }}
     - python_abi * *_cp313  [py==313]
     - python_abi * *_cp314  [py==314]
-    - occt ==7.9.3
+    - occt ==8.0.0
     - numpy >=1.17
 
   run:
-    - occt ==7.9.3
+    - occt ==8.0.0
     - numpy >=1.17
     - python_abi * *_cp313  [py==313]
     - python_abi * *_cp314  [py==314]
