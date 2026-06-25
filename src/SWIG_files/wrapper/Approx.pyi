@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -294,14 +294,14 @@ class Approx_SweepFunction(Standard_Transient):
 
 # harray1 classes
 
-class Approx_HArray1OfAdHSurface(NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>, Standard_Transient):
+class Approx_HArray1OfAdHSurface(Approx_Array1OfAdHSurface, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>: ...
+    def Array1(self) -> Approx_Array1OfAdHSurface: ...
 
 
-class Approx_HArray1OfGTrsf2d(NCollection_Array1<gp_GTrsf2d>, Standard_Transient):
+class Approx_HArray1OfGTrsf2d(Approx_Array1OfGTrsf2d, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> NCollection_Array1<gp_GTrsf2d>: ...
+    def Array1(self) -> Approx_Array1OfGTrsf2d: ...
 
 # harray2 classes
 # hsequence classes
