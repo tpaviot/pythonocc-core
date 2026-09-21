@@ -46,13 +46,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approx.html"
 #include<NCollection_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<TColStd_module.hxx>
-#include<TColgp_module.hxx>
-#include<Geom_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
+#include<Geom_module.hxx>
 #include<AppCont_module.hxx>
 #include<AppParCurves_module.hxx>
+#include<TColgp_module.hxx>
 #include<gp_module.hxx>
 #include<FEmTool_module.hxx>
 #include<Adaptor2d_module.hxx>
@@ -66,13 +66,13 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_approx.html"
 %import NCollection.i
 %import Adaptor3d.i
 %import TColStd.i
-%import TColgp.i
-%import Geom.i
 %import Adaptor2d.i
 %import GeomAbs.i
 %import Geom2d.i
+%import Geom.i
 %import AppCont.i
 %import AppParCurves.i
+%import TColgp.i
 %import gp.i
 
 %pythoncode {
@@ -152,291 +152,6 @@ typedef NCollection_HArray1<opencascade::handle<Adaptor3d_Surface>> Approx_HArra
 typedef NCollection_HArray1<gp_GTrsf2d> Approx_HArray1OfGTrsf2d;
 typedef NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> Approx_SequenceOfHArray1OfReal;
 /* end typedefs declaration */
-
-/***********************************
-* class Approx_BSplineApproxInterp *
-***********************************/
-class Approx_BSplineApproxInterp {
-	public:
-		/****** Approx_BSplineApproxInterp::Approx_BSplineApproxInterp ******/
-		/****** md5 signature: 327aa9c8cae4778ed421f8deffe06de7 ******/
-		%feature("compactdefaultargs") Approx_BSplineApproxInterp;
-		%feature("autodoc", "
-Parameters
-----------
-thePoints: TColgp_Array1OfPnt
-theNbControlPts: int
-theDegree: int (optional, default to 3)
-theContinuousIfClosed: bool (optional, default to false)
-
-Return
--------
-None
-
-Description
------------
-Creates a constrained approximation solver. 
-Input parameter: thePoints array of 3D points to fit (1-based indexing) 
-Input parameter: theNbControlPts desired number of control points for the B-spline 
-Input parameter: theDegree degree of the B-spline (default 3) 
-Input parameter: theContinuousIfClosed if true, enforces C2 continuity for closed curves.
-") Approx_BSplineApproxInterp;
-		 Approx_BSplineApproxInterp(const TColgp_Array1OfPnt & thePoints, int theNbControlPts, int theDegree = 3, bool theContinuousIfClosed = false);
-
-		/****** Approx_BSplineApproxInterp::Curve ******/
-		/****** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ******/
-		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_BSplineCurve>
-
-Description
------------
-Returns the resulting B-spline curve.
-") Curve;
-		const opencascade::handle<Geom_BSplineCurve> & Curve();
-
-		/****** Approx_BSplineApproxInterp::InterpolatePoint ******/
-		/****** md5 signature: 88cab115881f613dfba7ed44fe7f3eca ******/
-		%feature("compactdefaultargs") InterpolatePoint;
-		%feature("autodoc", "
-Parameters
-----------
-thePointIndex: int
-theWithKink: bool (optional, default to false)
-
-Return
--------
-None
-
-Description
------------
-Marks a point to be exactly interpolated rather than approximated. 
-Input parameter: thePointIndex 0-based index of the point 
-Input parameter: theWithKink if true, a kink (C0 break) is inserted at this parameter.
-") InterpolatePoint;
-		void InterpolatePoint(int thePointIndex, bool theWithKink = false);
-
-		/****** Approx_BSplineApproxInterp::IsDone ******/
-		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns true if the fit was successfully computed.
-") IsDone;
-		bool IsDone();
-
-		/****** Approx_BSplineApproxInterp::MaxError ******/
-		/****** md5 signature: 48ec91e4ff08cef7b377cac5e0e8d40a ******/
-		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "Return
--------
-double
-
-Description
------------
-Returns the maximum approximation error (distance at approximated points).
-") MaxError;
-		double MaxError();
-
-		/****** Approx_BSplineApproxInterp::Perform ******/
-		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Performs the fit using automatically computed parameters. Parameters are computed from input points using current parametrization alpha.
-") Perform;
-		void Perform();
-
-		/****** Approx_BSplineApproxInterp::Perform ******/
-		/****** md5 signature: edd8da24abbeab549db6739ff7d86cac ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "
-Parameters
-----------
-theParams: TColStd_Array1OfReal
-
-Return
--------
-None
-
-Description
------------
-Performs the fit with given parameters. 
-Input parameter: theParams parameter values for each point (size must match point count).
-") Perform;
-		void Perform(const TColStd_Array1OfReal & theParams);
-
-		/****** Approx_BSplineApproxInterp::PerformOptimal ******/
-		/****** md5 signature: 9208ad1faca7f61290cf24b3e701c16d ******/
-		%feature("compactdefaultargs") PerformOptimal;
-		%feature("autodoc", "
-Parameters
-----------
-theMaxIter: int
-
-Return
--------
-None
-
-Description
------------
-Performs the fit with iterative parameter optimization using automatically computed initial parameters. 
-Input parameter: theMaxIter maximum number of optimization iterations.
-") PerformOptimal;
-		void PerformOptimal(int theMaxIter);
-
-		/****** Approx_BSplineApproxInterp::PerformOptimal ******/
-		/****** md5 signature: 39ed52935923f49d5478c48507e4540a ******/
-		%feature("compactdefaultargs") PerformOptimal;
-		%feature("autodoc", "
-Parameters
-----------
-theParams: TColStd_Array1OfReal
-theMaxIter: int
-
-Return
--------
-None
-
-Description
------------
-Performs the fit with iterative parameter optimization. Parameters of approximated points are re-projected onto the curve after each iteration to improve the fit. 
-Input parameter: theParams initial parameter values 
-Input parameter: theMaxIter maximum number of optimization iterations.
-") PerformOptimal;
-		void PerformOptimal(const TColStd_Array1OfReal & theParams, int theMaxIter);
-
-		/****** Approx_BSplineApproxInterp::SetClosedTolerance ******/
-		/****** md5 signature: c8a4c45fa8db6f2cf7a3064333529aef ******/
-		%feature("compactdefaultargs") SetClosedTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theRelTol: double
-
-Return
--------
-None
-
-Description
------------
-Sets the relative tolerance for detecting closed curves. Closedness is detected when first/last points are within theRelTol * (bounding box diagonal). 
-Input parameter: theRelTol relative tolerance (default 1e-12).
-") SetClosedTolerance;
-		void SetClosedTolerance(double theRelTol);
-
-		/****** Approx_BSplineApproxInterp::SetConvergenceTolerance ******/
-		/****** md5 signature: 32dd19fe3bd8a68a10704dfeaf23af3f ******/
-		%feature("compactdefaultargs") SetConvergenceTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theTol: double
-
-Return
--------
-None
-
-Description
------------
-Sets the convergence tolerance for parameter optimization. Optimization stops when relative error reduction falls below this value. 
-Input parameter: theTol convergence tolerance (default 1e-3).
-") SetConvergenceTolerance;
-		void SetConvergenceTolerance(double theTol);
-
-		/****** Approx_BSplineApproxInterp::SetKnotInsertionTolerance ******/
-		/****** md5 signature: fba00dbe4b829b430f2eca8881356d4f ******/
-		%feature("compactdefaultargs") SetKnotInsertionTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theTol: double
-
-Return
--------
-None
-
-Description
------------
-Sets the tolerance for detecting duplicate knot positions during insertion. 
-Input parameter: theTol knot matching tolerance (default 1e-4).
-") SetKnotInsertionTolerance;
-		void SetKnotInsertionTolerance(double theTol);
-
-		/****** Approx_BSplineApproxInterp::SetMinPivot ******/
-		/****** md5 signature: 76d4a0e19014e897215028588328ad63 ******/
-		%feature("compactdefaultargs") SetMinPivot;
-		%feature("autodoc", "
-Parameters
-----------
-theMinPivot: double
-
-Return
--------
-None
-
-Description
------------
-Sets the minimum pivot value for the Gauss solver. Matrices with pivots below this threshold are treated as singular. 
-Input parameter: theMinPivot minimum pivot threshold (default 1e-20).
-") SetMinPivot;
-		void SetMinPivot(double theMinPivot);
-
-		/****** Approx_BSplineApproxInterp::SetParametrizationAlpha ******/
-		/****** md5 signature: ac54d445809a59b404b537fce3ccc531 ******/
-		%feature("compactdefaultargs") SetParametrizationAlpha;
-		%feature("autodoc", "
-Parameters
-----------
-theAlpha: double
-
-Return
--------
-None
-
-Description
------------
-Sets the parametrization power for automatic parameter computation. 0.0 = uniform, 0.5 = centripetal (default), 1.0 = chord-length. 
-Input parameter: theAlpha parametrization exponent in [0, 1].
-") SetParametrizationAlpha;
-		void SetParametrizationAlpha(double theAlpha);
-
-		/****** Approx_BSplineApproxInterp::SetProjectionTolerance ******/
-		/****** md5 signature: a2d46914406443eccff22bac9af1d607 ******/
-		%feature("compactdefaultargs") SetProjectionTolerance;
-		%feature("autodoc", "
-Parameters
-----------
-theTol: double
-
-Return
--------
-None
-
-Description
------------
-Sets the tolerance for point projection onto curve during optimization. 
-Input parameter: theTol projection accuracy (default 1e-6).
-") SetProjectionTolerance;
-		void SetProjectionTolerance(double theTol);
-
-};
-
-
-%extend Approx_BSplineApproxInterp {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
 
 /***********************
 * class Approx_Curve2d *

@@ -51,7 +51,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomFill_FunctionGuide.hxx>
 #include<GeomFill_Generator.hxx>
 #include<GeomFill_Gordon.hxx>
-#include<GeomFill_GordonBuilder.hxx>
 #include<GeomFill_GuideTrihedronAC.hxx>
 #include<GeomFill_GuideTrihedronPlan.hxx>
 #include<GeomFill_HArray1OfLocationLaw.hxx>
@@ -63,6 +62,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomFill_LocationGuide.hxx>
 #include<GeomFill_LocationLaw.hxx>
 #include<GeomFill_NSections.hxx>
+#include<GeomFill_NetworkSurface.hxx>
 #include<GeomFill_Pipe.hxx>
 #include<GeomFill_PipeError.hxx>
 #include<GeomFill_PlanFunc.hxx>

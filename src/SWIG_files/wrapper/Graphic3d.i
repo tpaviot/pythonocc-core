@@ -407,7 +407,8 @@ enum Graphic3d_ShaderFlags {
 	Graphic3d_ShaderFlags_AlphaTest = 1024,
 	Graphic3d_ShaderFlags_WriteOit = 2048,
 	Graphic3d_ShaderFlags_OitDepthPeeling = 4096,
-	Graphic3d_ShaderFlags_NB = 8192,
+	Graphic3d_ShaderFlags_VertColorFrontOnly = 8192,
+	Graphic3d_ShaderFlags_NB = 16384,
 	Graphic3d_ShaderFlags_IsPoint = Graphic3d_ShaderFlags_PointSimple | Graphic3d_ShaderFlags_PointSprite | Graphic3d_ShaderFlags_PointSpriteA,
 	Graphic3d_ShaderFlags_HasTextures = Graphic3d_ShaderFlags_TextureRGB | Graphic3d_ShaderFlags_TextureEnv,
 	Graphic3d_ShaderFlags_NeedsGeomShader = Graphic3d_ShaderFlags_MeshEdges,
@@ -1174,7 +1175,8 @@ class Graphic3d_ShaderFlags(IntEnum):
 	Graphic3d_ShaderFlags_AlphaTest = 1024
 	Graphic3d_ShaderFlags_WriteOit = 2048
 	Graphic3d_ShaderFlags_OitDepthPeeling = 4096
-	Graphic3d_ShaderFlags_NB = 8192
+	Graphic3d_ShaderFlags_VertColorFrontOnly = 8192
+	Graphic3d_ShaderFlags_NB = 16384
 	Graphic3d_ShaderFlags_IsPoint = Graphic3d_ShaderFlags_PointSimple | Graphic3d_ShaderFlags_PointSprite | Graphic3d_ShaderFlags_PointSpriteA
 	Graphic3d_ShaderFlags_HasTextures = Graphic3d_ShaderFlags_TextureRGB | Graphic3d_ShaderFlags_TextureEnv
 	Graphic3d_ShaderFlags_NeedsGeomShader = Graphic3d_ShaderFlags_MeshEdges
@@ -1194,6 +1196,7 @@ Graphic3d_ShaderFlags_MeshEdges = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_Me
 Graphic3d_ShaderFlags_AlphaTest = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_AlphaTest
 Graphic3d_ShaderFlags_WriteOit = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_WriteOit
 Graphic3d_ShaderFlags_OitDepthPeeling = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_OitDepthPeeling
+Graphic3d_ShaderFlags_VertColorFrontOnly = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_VertColorFrontOnly
 Graphic3d_ShaderFlags_NB = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_NB
 Graphic3d_ShaderFlags_IsPoint = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_IsPoint
 Graphic3d_ShaderFlags_HasTextures = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_HasTextures
@@ -4745,6 +4748,24 @@ Setup texture array to be mapped.
 ") SetTextureSet;
 		void SetTextureSet(const opencascade::handle<Graphic3d_TextureSet> & theTextures);
 
+		/****** Graphic3d_Aspects::SetUseVertexColorForBackFaces ******/
+		/****** md5 signature: 39136bc04cb8a71bf2c2745322e837b3 ******/
+		%feature("compactdefaultargs") SetUseVertexColorForBackFaces;
+		%feature("autodoc", "
+Parameters
+----------
+theToUse: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set whether per-vertex color should be applied to back-facing fragments. When disabled, back faces use back material/interior color without vertex color modulation.
+") SetUseVertexColorForBackFaces;
+		void SetUseVertexColorForBackFaces(bool theToUse);
+
 		/****** Graphic3d_Aspects::ShaderProgram ******/
 		/****** md5 signature: 857f7359f9600b740c8753a620f5d3f1 ******/
 		%feature("compactdefaultargs") ShaderProgram;
@@ -4952,6 +4973,19 @@ Description
 No available documentation.
 ") ToSuppressBackFaces;
 		bool ToSuppressBackFaces();
+
+		/****** Graphic3d_Aspects::ToUseVertexColorForBackFaces ******/
+		/****** md5 signature: 8721dd0b1c7957d1018ff0cb03e7308a ******/
+		%feature("compactdefaultargs") ToUseVertexColorForBackFaces;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return true if per-vertex color should be applied to back-facing fragments. True by default for backward compatibility.
+") ToUseVertexColorForBackFaces;
+		bool ToUseVertexColorForBackFaces();
 
 };
 
@@ -23943,6 +23977,66 @@ Compute PosedXRCamera() based on current XR head pose and make it active.
 ") SetupXRPosedCamera;
 		void SetupXRPosedCamera();
 
+		/****** Graphic3d_CView::ShaderGridEcho ******/
+		/****** md5 signature: 3468eae540a38094582a1ff765cbb00a ******/
+		%feature("compactdefaultargs") ShaderGridEcho;
+		%feature("autodoc", "
+Parameters
+----------
+theX: int
+theY: int
+thePoint: Graphic3d_Vertex
+
+Return
+-------
+bool
+
+Description
+-----------
+Return snapped point for the shader-rendered grid under the window pixel. The default implementation is a no-op; drivers with shader grid support override it.
+") ShaderGridEcho;
+		virtual bool ShaderGridEcho(const int theX, const int theY, Graphic3d_Vertex & thePoint);
+
+		/****** Graphic3d_CView::ShaderGridEcho ******/
+		/****** md5 signature: 538572efb2b0d7ed81862b472f66d802 ******/
+		%feature("compactdefaultargs") ShaderGridEcho;
+		%feature("autodoc", "
+Parameters
+----------
+theX: int
+theY: int
+thePoint: Graphic3d_Vertex
+theDisplayPoint: Graphic3d_Vertex
+
+Return
+-------
+bool
+
+Description
+-----------
+Return snapped point and display point for the shader-rendered grid under the window pixel. The snapped point is the geometric grid point in world coordinates. The display point is a clip-safe proxy projected to the same window position for echo marker presentation; it should not be used as the geometric snap result.
+") ShaderGridEcho;
+		virtual bool ShaderGridEcho(const int theX, const int theY, Graphic3d_Vertex & thePoint, Graphic3d_Vertex & theDisplayPoint);
+
+		/****** Graphic3d_CView::ShaderGridSnapPoint ******/
+		/****** md5 signature: 9d501c63bbea1091554845d529094f27 ******/
+		%feature("compactdefaultargs") ShaderGridSnapPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint: Graphic3d_Vertex
+theGridPoint: Graphic3d_Vertex
+
+Return
+-------
+bool
+
+Description
+-----------
+Return snapped point for the shader-rendered grid from an arbitrary world point. The default implementation is a no-op; drivers with shader grid support override it.
+") ShaderGridSnapPoint;
+		virtual bool ShaderGridSnapPoint(const Graphic3d_Vertex & thePoint, Graphic3d_Vertex & theGridPoint);
+
 		/****** Graphic3d_CView::ShadingModel ******/
 		/****** md5 signature: abf83d7e5f232094cc54f18d79b6661e ******/
 		%feature("compactdefaultargs") ShadingModel;
@@ -24288,6 +24382,25 @@ Description
 Return XR session.
 ") XRSession;
 		const opencascade::handle<Aspect_XRSession> & XRSession();
+
+		/****** Graphic3d_CView::ZFitAllBounds ******/
+		/****** md5 signature: 8d3520e36b8b49d4063e99f174bd64e7 ******/
+		%feature("compactdefaultargs") ZFitAllBounds;
+		%feature("autodoc", "
+Parameters
+----------
+thePrimaryBox: Bnd_Box
+theGraphicBox: Bnd_Box
+
+Return
+-------
+None
+
+Description
+-----------
+Return primary and graphical bounding boxes used by camera Z fitting.
+") ZFitAllBounds;
+		virtual void ZFitAllBounds(Bnd_Box & thePrimaryBox, Bnd_Box & theGraphicBox);
 
 		/****** Graphic3d_CView::ZLayerMax ******/
 		/****** md5 signature: cee0b501ef5076c76ef8b97cf515bf58 ******/

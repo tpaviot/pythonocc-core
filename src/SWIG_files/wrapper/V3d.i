@@ -1921,6 +1921,27 @@ Converts the projected point into the nearest grid point in the reference frame 
 		void ConvertToGrid(const int Xp, const int Yp, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** V3d_View::ConvertToGrid ******/
+		/****** md5 signature: 3928ab3107a614d02543982a3719e6bc ******/
+		%feature("compactdefaultargs") ConvertToGrid;
+		%feature("autodoc", "
+Parameters
+----------
+Xp: int
+Yp: int
+theGridPoint: Graphic3d_Vertex
+
+Return
+-------
+bool
+
+Description
+-----------
+Converts the projected point into the nearest visible grid point. 
+Return: True when an active grid accepts the point; False otherwise. Unlike the double-output overload, this method has no unproject fallback and is intended for grid echo / snap-hit callers.
+") ConvertToGrid;
+		bool ConvertToGrid(const int Xp, const int Yp, Graphic3d_Vertex & theGridPoint);
+
+		/****** V3d_View::ConvertToGrid ******/
 		/****** md5 signature: c9f66a5d2cc5f0d3338531b674669e4a ******/
 		%feature("compactdefaultargs") ConvertToGrid;
 		%feature("autodoc", "
@@ -1941,6 +1962,27 @@ Description
 Converts the point into the nearest grid point and display the grid marker.
 ") ConvertToGrid;
 		void ConvertToGrid(const double X, const double Y, const double Z, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+
+		/****** V3d_View::ConvertToGridEcho ******/
+		/****** md5 signature: bbe9ef89112b706e8b137a61760a8779 ******/
+		%feature("compactdefaultargs") ConvertToGridEcho;
+		%feature("autodoc", "
+Parameters
+----------
+Xp: int
+Yp: int
+theGridPoint: Graphic3d_Vertex
+theEchoPoint: Graphic3d_Vertex
+
+Return
+-------
+bool
+
+Description
+-----------
+Converts the projected point into the nearest visible grid point and echo display point. The echo display point is suitable only for displaying the grid echo marker.
+") ConvertToGridEcho;
+		bool ConvertToGridEcho(const int Xp, const int Yp, Graphic3d_Vertex & theGridPoint, Graphic3d_Vertex & theEchoPoint);
 
 		/****** V3d_View::ConvertWithProj ******/
 		/****** md5 signature: f7cf27d0af86692429d8c22f7a3404a6 ******/
@@ -2353,7 +2395,7 @@ None
 
 Description
 -----------
-Per-view immediate-mode shader; supports unbounded extents, AA, background, arc range. GridDisplay erases the viewer-wide CPU grid rendering on entry (snap geometry on Aspect_*Grid is preserved). GridErase only tears down the shader grid on this view; restoring the CPU rendering needs V3d_Viewer::ActivateGrid.
+Per-view immediate-mode shader grid; supports unbounded extents, AA, background, circular grids, arc range and view-adaptive spacing.
 ") GridDisplay;
 		void GridDisplay(const Aspect_GridParams & theParams);
 
@@ -2500,6 +2542,19 @@ Returns the status of the view regarding the displayed structures inside Returns
 ") IsEmpty;
 		bool IsEmpty();
 
+		/****** V3d_View::IsGridActive ******/
+		/****** md5 signature: 3e414d50fa1146f934deef23be9d4be0 ******/
+		%feature("compactdefaultargs") IsGridActive;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if either viewer-managed grid or per-view shader grid is active.
+") IsGridActive;
+		bool IsGridActive();
+
 		/****** V3d_View::IsImageBasedLighting ******/
 		/****** md5 signature: 5ea8857896460e3a0b11cd94c00c3667 ******/
 		%feature("compactdefaultargs") IsImageBasedLighting;
@@ -2538,6 +2593,19 @@ Description
 Returns true if immediate layer content has been invalidated.
 ") IsInvalidatedImmediate;
 		bool IsInvalidatedImmediate();
+
+		/****** V3d_View::IsShaderGridActive ******/
+		/****** md5 signature: e10e2724a9343517f552321ea09c5beb ******/
+		%feature("compactdefaultargs") IsShaderGridActive;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if the per-view shader grid is active.
+") IsShaderGridActive;
+		bool IsShaderGridActive();
 
 		/****** V3d_View::IsSubview ******/
 		/****** md5 signature: e4786984f763125a6b3ee9d1975a34eb ******/
@@ -3597,7 +3665,7 @@ None
 
 Description
 -----------
-Snap + CPU rendering. The CPU grid lives on the viewer's structure manager and is visible in every active view; SetGrid on a view that has the shader grid enabled erases the shader grid on this view, the CPU grid is left intact (or re-displayed by V3d_Viewer::ActivateGrid).
+Viewer-managed grid plane and snap object. It is separate from the per-view shader grid controlled by GridDisplay().
 ") SetGrid;
 		void SetGrid(const gp_Ax3 & aPlane, const opencascade::handle<Aspect_Grid> & aGrid);
 

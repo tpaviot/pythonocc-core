@@ -3581,6 +3581,114 @@ returns the values <F> of the functions and the derivatives <D> for the variable
 ************************/
 class GeomFill_Gordon {
 	public:
+		class BuildReport {};
+/* public enums */
+enum class ResultStatus {
+	NotStarted = 0,
+	Done = 1,
+	InvalidInput = 2,
+	ConversionFailed = 3,
+	IntersectionFailed = 4,
+	OrderingFailed = 5,
+	ReparametrizationFailed = 6,
+	CompatibilityFailed = 7,
+	CurveCompatibilityFailed = 8,
+	RationalReparametrizationFailed = 9,
+	SkinningFailed = 10,
+	ReferenceSurfaceFailed = 11,
+	KnotAlignmentFailed = 12,
+	RationalDegreeOverflow = 13,
+	RationalConstructionFailed = 14,
+	PeriodicityFailed = 15,
+	ApproximationFailed = 16,
+	ConstructionFailed = 17,
+};
+
+enum class ApproximationMode {
+	ExactOnly = 0,
+	AllowApproximateFallback = 1,
+};
+
+enum class BuildStage {
+	NotStarted = 0,
+	InputConversion = 1,
+	ContactDiscovery = 2,
+	NetworkOrdering = 3,
+	Reparametrization = 4,
+	ExactConstruction = 5,
+	Validation = 6,
+	Approximation = 7,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class ResultStatus(IntEnum):
+	NotStarted = 0
+	Done = 1
+	InvalidInput = 2
+	ConversionFailed = 3
+	IntersectionFailed = 4
+	OrderingFailed = 5
+	ReparametrizationFailed = 6
+	CompatibilityFailed = 7
+	CurveCompatibilityFailed = 8
+	RationalReparametrizationFailed = 9
+	SkinningFailed = 10
+	ReferenceSurfaceFailed = 11
+	KnotAlignmentFailed = 12
+	RationalDegreeOverflow = 13
+	RationalConstructionFailed = 14
+	PeriodicityFailed = 15
+	ApproximationFailed = 16
+	ConstructionFailed = 17
+NotStarted = ResultStatus.NotStarted
+Done = ResultStatus.Done
+InvalidInput = ResultStatus.InvalidInput
+ConversionFailed = ResultStatus.ConversionFailed
+IntersectionFailed = ResultStatus.IntersectionFailed
+OrderingFailed = ResultStatus.OrderingFailed
+ReparametrizationFailed = ResultStatus.ReparametrizationFailed
+CompatibilityFailed = ResultStatus.CompatibilityFailed
+CurveCompatibilityFailed = ResultStatus.CurveCompatibilityFailed
+RationalReparametrizationFailed = ResultStatus.RationalReparametrizationFailed
+SkinningFailed = ResultStatus.SkinningFailed
+ReferenceSurfaceFailed = ResultStatus.ReferenceSurfaceFailed
+KnotAlignmentFailed = ResultStatus.KnotAlignmentFailed
+RationalDegreeOverflow = ResultStatus.RationalDegreeOverflow
+RationalConstructionFailed = ResultStatus.RationalConstructionFailed
+PeriodicityFailed = ResultStatus.PeriodicityFailed
+ApproximationFailed = ResultStatus.ApproximationFailed
+ConstructionFailed = ResultStatus.ConstructionFailed
+
+class ApproximationMode(IntEnum):
+	ExactOnly = 0
+	AllowApproximateFallback = 1
+ExactOnly = ApproximationMode.ExactOnly
+AllowApproximateFallback = ApproximationMode.AllowApproximateFallback
+
+class BuildStage(IntEnum):
+	NotStarted = 0
+	InputConversion = 1
+	ContactDiscovery = 2
+	NetworkOrdering = 3
+	Reparametrization = 4
+	ExactConstruction = 5
+	Validation = 6
+	Approximation = 7
+NotStarted = BuildStage.NotStarted
+InputConversion = BuildStage.InputConversion
+ContactDiscovery = BuildStage.ContactDiscovery
+NetworkOrdering = BuildStage.NetworkOrdering
+Reparametrization = BuildStage.Reparametrization
+ExactConstruction = BuildStage.ExactConstruction
+Validation = BuildStage.Validation
+Approximation = BuildStage.Approximation
+};
+/* end python proxy for enums */
+
 		/****** GeomFill_Gordon::GeomFill_Gordon ******/
 		/****** md5 signature: e2e7daa5f86fd43ddcc8ccf7f150c135 ******/
 		%feature("compactdefaultargs") GeomFill_Gordon;
@@ -3593,6 +3701,19 @@ Description
 Creates an empty Gordon surface algorithm.
 ") GeomFill_Gordon;
 		 GeomFill_Gordon();
+
+		/****** GeomFill_Gordon::GetApproximationMode ******/
+		/****** md5 signature: 78c1aacdfd6ab6a9fc6d93691895c587 ******/
+		%feature("compactdefaultargs") GetApproximationMode;
+		%feature("autodoc", "Return
+-------
+GeomFill_Gordon::ApproximationMode
+
+Description
+-----------
+Returns current fallback behavior.
+") GetApproximationMode;
+		GeomFill_Gordon::ApproximationMode GetApproximationMode();
 
 		/****** GeomFill_Gordon::Init ******/
 		/****** md5 signature: 2d7fc0c728426802234b299b3562e9e3 ******/
@@ -3616,6 +3737,19 @@ Input parameter: theGuides array of guide curves (U-direction sections, must be 
 Input parameter: theTolerance geometric tolerance for intersection detection.
 ") Init;
 		void Init(const TColGeom_Array1OfCurve & theProfiles, const TColGeom_Array1OfCurve & theGuides, double theTolerance);
+
+		/****** GeomFill_Gordon::IsApproximate ******/
+		/****** md5 signature: 133d2060372498f0e1da1d398027bdc4 ******/
+		%feature("compactdefaultargs") IsApproximate;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the resulting surface was produced by approximate fallback. Approximate results do not have the exact Gordon interpolation guarantee.
+") IsApproximate;
+		bool IsApproximate();
 
 		/****** GeomFill_Gordon::IsDone ******/
 		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
@@ -3656,6 +3790,37 @@ Performs the Gordon surface construction.
 ") Perform;
 		void Perform();
 
+		/****** GeomFill_Gordon::Report ******/
+		/****** md5 signature: 96bc8709745847b718838205e928fbc8 ******/
+		%feature("compactdefaultargs") Report;
+		%feature("autodoc", "Return
+-------
+GeomFill_Gordon::BuildReport
+
+Description
+-----------
+Returns diagnostics for the last Perform() call.
+") Report;
+		GeomFill_Gordon::BuildReport Report();
+
+		/****** GeomFill_Gordon::SetApproximationMode ******/
+		/****** md5 signature: f5573ad0d93c1f4b2dafe69f82fe7280 ******/
+		%feature("compactdefaultargs") SetApproximationMode;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: ApproximationMode
+
+Return
+-------
+None
+
+Description
+-----------
+Sets optional fallback behavior for failures in exact B-spline construction. Approximate fallback results should be checked by IsApproximate().
+") SetApproximationMode;
+		void SetApproximationMode(ApproximationMode theMode);
+
 		/****** GeomFill_Gordon::SetParallelMode ******/
 		/****** md5 signature: dfd8184bddd5dc09e9a96572f87e3ce5 ******/
 		%feature("compactdefaultargs") SetParallelMode;
@@ -3674,6 +3839,19 @@ Enables/disables parallel processing in internal stages. By default, single-thre
 ") SetParallelMode;
 		void SetParallelMode(bool theToUseParallel);
 
+		/****** GeomFill_Gordon::Status ******/
+		/****** md5 signature: d311d45190a50ebbf306b0412ce237fd ******/
+		%feature("compactdefaultargs") Status;
+		%feature("autodoc", "Return
+-------
+GeomFill_Gordon::ResultStatus
+
+Description
+-----------
+Returns the result state of the last Perform() call.
+") Status;
+		GeomFill_Gordon::ResultStatus Status();
+
 		/****** GeomFill_Gordon::Surface ******/
 		/****** md5 signature: 671a5de971e9a6baf08b4e111daa768f ******/
 		%feature("compactdefaultargs") Surface;
@@ -3691,174 +3869,6 @@ Returns the resulting Gordon B-spline surface.
 
 
 %extend GeomFill_Gordon {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************
-* class GeomFill_GordonBuilder *
-*******************************/
-class GeomFill_GordonBuilder {
-	public:
-		/****** GeomFill_GordonBuilder::GeomFill_GordonBuilder ******/
-		/****** md5 signature: 8cfff7419d8602124f7a3bb0671c8e11 ******/
-		%feature("compactdefaultargs") GeomFill_GordonBuilder;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Creates an empty Gordon builder.
-") GeomFill_GordonBuilder;
-		 GeomFill_GordonBuilder();
-
-		/****** GeomFill_GordonBuilder::GuideSurface ******/
-		/****** md5 signature: f7188aa3d7330d2975199a54b7a0e3ff ******/
-		%feature("compactdefaultargs") GuideSurface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_BSplineSurface>
-
-Description
------------
-Returns the intermediate surface skinned through guides.
-") GuideSurface;
-		const opencascade::handle<Geom_BSplineSurface> & GuideSurface();
-
-		/****** GeomFill_GordonBuilder::Init ******/
-		/****** md5 signature: cf6c78e4bb888a09ebec543dbd8e0ccb ******/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "
-Parameters
-----------
-theProfiles: TColGeom_Array1OfBSplineCurve
-theGuides: TColGeom_Array1OfBSplineCurve
-theProfileParams: TColStd_Array1OfReal
-theGuideParams: TColStd_Array1OfReal
-theTolerance: double
-theIsUClosed: bool (optional, default to false)
-theIsVClosed: bool (optional, default to false)
-
-Return
--------
-None
-
-Description
------------
-Initializes the builder with compatible BSpline curves and intersection parameters. 
-Input parameter: theProfiles array of profile curves (V-direction sections), must share  the same degree and knot vector 
-Input parameter: theGuides array of guide curves (U-direction sections), must share  the same degree and knot vector 
-Input parameter: theProfileParams parameter values at which profiles are positioned  (in V-direction), size must equal theProfiles.Length() 
-Input parameter: theGuideParams parameter values at which guides are positioned  (in U-direction), size must equal theGuides.Length() 
-Input parameter: theTolerance geometric tolerance for validation 
-Input parameter: theIsUClosed if true, the U-direction (guides) forms a closed loop 
-Input parameter: theIsVClosed if true, the V-direction (profiles) forms a closed loop.
-") Init;
-		void Init(const TColGeom_Array1OfBSplineCurve & theProfiles, const TColGeom_Array1OfBSplineCurve & theGuides, const TColStd_Array1OfReal & theProfileParams, const TColStd_Array1OfReal & theGuideParams, double theTolerance, bool theIsUClosed = false, bool theIsVClosed = false);
-
-		/****** GeomFill_GordonBuilder::IsDone ******/
-		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
-		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns true if the surface was successfully constructed.
-") IsDone;
-		bool IsDone();
-
-		/****** GeomFill_GordonBuilder::IsParallelMode ******/
-		/****** md5 signature: 8f26eb5f23a1592f8117f2bf9193e47d ******/
-		%feature("compactdefaultargs") IsParallelMode;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Returns true if internal parallel processing is enabled.
-") IsParallelMode;
-		bool IsParallelMode();
-
-		/****** GeomFill_GordonBuilder::Perform ******/
-		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
-		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Performs the Gordon surface construction.
-") Perform;
-		void Perform();
-
-		/****** GeomFill_GordonBuilder::ProfileSurface ******/
-		/****** md5 signature: 7fd4d3d18e51b899c482734ee0a7b127 ******/
-		%feature("compactdefaultargs") ProfileSurface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_BSplineSurface>
-
-Description
------------
-Returns the intermediate surface skinned through profiles.
-") ProfileSurface;
-		const opencascade::handle<Geom_BSplineSurface> & ProfileSurface();
-
-		/****** GeomFill_GordonBuilder::SetParallelMode ******/
-		/****** md5 signature: dfd8184bddd5dc09e9a96572f87e3ce5 ******/
-		%feature("compactdefaultargs") SetParallelMode;
-		%feature("autodoc", "
-Parameters
-----------
-theToUseParallel: bool
-
-Return
--------
-None
-
-Description
------------
-Enables/disables parallel processing in internal stages. By default, single-thread mode is used.
-") SetParallelMode;
-		void SetParallelMode(bool theToUseParallel);
-
-		/****** GeomFill_GordonBuilder::Surface ******/
-		/****** md5 signature: 671a5de971e9a6baf08b4e111daa768f ******/
-		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_BSplineSurface>
-
-Description
------------
-Returns the resulting Gordon surface. 
-Return: handle to the constructed B-spline surface.
-") Surface;
-		const opencascade::handle<Geom_BSplineSurface> & Surface();
-
-		/****** GeomFill_GordonBuilder::TensorSurface ******/
-		/****** md5 signature: eb73bf4ca862fd8c7260a69831a03769 ******/
-		%feature("compactdefaultargs") TensorSurface;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom_BSplineSurface>
-
-Description
------------
-Returns the intermediate tensor product surface.
-") TensorSurface;
-		const opencascade::handle<Geom_BSplineSurface> & TensorSurface();
-
-};
-
-
-%extend GeomFill_GordonBuilder {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4502,6 +4512,166 @@ Give the number of trace (Curves 2d which are not restriction) Returns 0 (defaul
 %make_alias(GeomFill_LocationLaw)
 
 %extend GeomFill_LocationLaw {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class GeomFill_NetworkSurface *
+********************************/
+class GeomFill_NetworkSurface {
+	public:
+/* public enums */
+enum class ResultStatus {
+	NotStarted = 0,
+	Done = 1,
+	InvalidInput = 2,
+	CurveCompatibilityFailed = 3,
+	SkinningFailed = 4,
+	ReferenceSurfaceFailed = 5,
+	KnotAlignmentFailed = 6,
+	RationalDegreeOverflow = 7,
+	RationalConstructionFailed = 8,
+	ConstructionFailed = 9,
+	PeriodicityFailed = 10,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class ResultStatus(IntEnum):
+	NotStarted = 0
+	Done = 1
+	InvalidInput = 2
+	CurveCompatibilityFailed = 3
+	SkinningFailed = 4
+	ReferenceSurfaceFailed = 5
+	KnotAlignmentFailed = 6
+	RationalDegreeOverflow = 7
+	RationalConstructionFailed = 8
+	ConstructionFailed = 9
+	PeriodicityFailed = 10
+NotStarted = ResultStatus.NotStarted
+Done = ResultStatus.Done
+InvalidInput = ResultStatus.InvalidInput
+CurveCompatibilityFailed = ResultStatus.CurveCompatibilityFailed
+SkinningFailed = ResultStatus.SkinningFailed
+ReferenceSurfaceFailed = ResultStatus.ReferenceSurfaceFailed
+KnotAlignmentFailed = ResultStatus.KnotAlignmentFailed
+RationalDegreeOverflow = ResultStatus.RationalDegreeOverflow
+RationalConstructionFailed = ResultStatus.RationalConstructionFailed
+ConstructionFailed = ResultStatus.ConstructionFailed
+PeriodicityFailed = ResultStatus.PeriodicityFailed
+};
+/* end python proxy for enums */
+
+		/****** GeomFill_NetworkSurface::GeomFill_NetworkSurface ******/
+		/****** md5 signature: e2412bca5d62cfce73f0f91e6ba2c23c ******/
+		%feature("compactdefaultargs") GeomFill_NetworkSurface;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Creates an empty network surface algorithm.
+") GeomFill_NetworkSurface;
+		 GeomFill_NetworkSurface();
+
+		/****** GeomFill_NetworkSurface::Init ******/
+		/****** md5 signature: 70bb280b5efa3c549b30af37204c8754 ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theProfiles: TColGeom_Array1OfBSplineCurve
+theGuides: TColGeom_Array1OfBSplineCurve
+theProfileParameters: TColStd_Array1OfReal
+theGuideParameters: TColStd_Array1OfReal
+theIntersectionPoints: TColgp_Array2OfPnt
+theIntersectionWeights: TColStd_Array2OfReal
+theTolerance: double
+theIsUClosed: bool
+theIsVClosed: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes the algorithm with a compatible profile/guide B-spline network. 
+Input parameter: theProfiles profile curves evaluated in U direction 
+Input parameter: theGuides guide curves evaluated in V direction 
+Input parameter: theProfileParameters V parameters locating profiles on guide skin 
+Input parameter: theGuideParameters U parameters locating guides on profile skin 
+Input parameter: theIntersectionPoints validated profile/guide contact grid 
+Input parameter: theIntersectionWeights rational weights for the contact grid 
+Input parameter: theTolerance geometric tolerance for closed-seam checks 
+Input parameter: theIsUClosed indicates that first/last guide curves close the U seam 
+Input parameter: theIsVClosed indicates that first/last profile curves close the V seam.
+") Init;
+		void Init(const TColGeom_Array1OfBSplineCurve & theProfiles, const TColGeom_Array1OfBSplineCurve & theGuides, const TColStd_Array1OfReal & theProfileParameters, const TColStd_Array1OfReal & theGuideParameters, const TColgp_Array2OfPnt & theIntersectionPoints, const TColStd_Array2OfReal & theIntersectionWeights, double theTolerance, bool theIsUClosed, bool theIsVClosed);
+
+		/****** GeomFill_NetworkSurface::IsDone ******/
+		/****** md5 signature: 05e29e49040d98b489fbc7af11aabb8e ******/
+		%feature("compactdefaultargs") IsDone;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if the surface was successfully constructed.
+") IsDone;
+		bool IsDone();
+
+		/****** GeomFill_NetworkSurface::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Performs the pole-based network surface construction.
+") Perform;
+		void Perform();
+
+		/****** GeomFill_NetworkSurface::Status ******/
+		/****** md5 signature: d311d45190a50ebbf306b0412ce237fd ******/
+		%feature("compactdefaultargs") Status;
+		%feature("autodoc", "Return
+-------
+GeomFill_NetworkSurface::ResultStatus
+
+Description
+-----------
+Returns the result state of the last Perform() call.
+") Status;
+		GeomFill_NetworkSurface::ResultStatus Status();
+
+		/****** GeomFill_NetworkSurface::Surface ******/
+		/****** md5 signature: 671a5de971e9a6baf08b4e111daa768f ******/
+		%feature("compactdefaultargs") Surface;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Geom_BSplineSurface>
+
+Description
+-----------
+Returns the constructed B-spline surface. @throws StdFail_NotDone if Perform() has not completed successfully.
+") Surface;
+		const opencascade::handle<Geom_BSplineSurface> & Surface();
+
+};
+
+
+%extend GeomFill_NetworkSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

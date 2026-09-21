@@ -5,11 +5,11 @@ Running pythonocc-generator.
 ############################
 git revision : c30631c
 
-operating system : Linux 64bit 6.17.0-22-generic
+operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.0
 
-date : 2026-05-09 18:34:52.468662
+date : 2026-09-21 05:01:50.769688
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -832,11 +832,15 @@ date : 2026-05-09 18:34:52.468662
 [WARNI]      [TypeHint] Skipping type static double, should contain _
 [INFO ]  Class: Poly_ArrayOfNodes
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Poly_ArrayOfUVNodes
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
@@ -2222,7 +2226,6 @@ date : 2026-05-09 18:34:52.468662
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: Approx_BSplineApproxInterp
 [INFO ]  Class: Approx_Curve2d
 [INFO ]  Class: Approx_Curve3d
 [INFO ]  Class: Approx_CurveOnSurface
@@ -4514,7 +4517,14 @@ date : 2026-05-09 18:34:52.468662
 [INFO ]  Class: GeomFill_FunctionGuide
 [INFO ]      explicitly excluded method GeomFill_FunctionGuide::80afa01ac910d0083e9e313d8813e6a1
 [INFO ]  Class: GeomFill_Gordon
-[INFO ]  Class: GeomFill_GordonBuilder
+[INFO ]      Wrap nested class GeomFill_Gordon::BuildReport
+[INFO ]  Enum: ResultStatus
+[INFO ]  Enum: ApproximationMode
+[INFO ]  Enum: BuildStage
+[WARNI]      [TypeHint] Skip type GeomFill_Gordon::ApproximationMode, because of trailing :
+[WARNI]      [TypeHint] Skip type GeomFill_Gordon::BuildReport, because of trailing :
+[WARNI]      [TypeHint] Skipping type ApproximationMode, should contain _
+[WARNI]      [TypeHint] Skip type GeomFill_Gordon::ResultStatus, because of trailing :
 [INFO ]  Class: GeomFill_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomFill_LocFunction
@@ -4527,6 +4537,9 @@ date : 2026-05-09 18:34:52.468662
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
+[INFO ]  Class: GeomFill_NetworkSurface
+[INFO ]  Enum: ResultStatus
+[WARNI]      [TypeHint] Skip type GeomFill_NetworkSurface::ResultStatus, because of trailing :
 [INFO ]  Class: GeomFill_Pipe
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomFill_PlanFunc
@@ -11720,8 +11733,8 @@ date : 2026-05-09 18:34:52.468662
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 14.56s
+SWIG interface file generation completed in 11.74s
 #################################################
 
-[INFO ]  Number of classes: 3915
-[INFO ]  Number of methods: 43996
+[INFO ]  Number of classes: 3914
+[INFO ]  Number of methods: 44004

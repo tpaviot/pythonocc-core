@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_BaseAllocator.hxx>
 #include<NCollection_BaseList.hxx>
 #include<NCollection_BaseMap.hxx>
-#include<NCollection_BasePointerVector.hxx>
 #include<NCollection_BaseSequence.hxx>
 #include<NCollection_Buffer.hxx>
 #include<NCollection_CellFilter.hxx>

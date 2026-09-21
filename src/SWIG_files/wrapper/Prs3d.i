@@ -5856,6 +5856,37 @@ Change the polygons transparency value. Warning: aValue must be in the range 0,1
 ") SetTransparency;
 		void SetTransparency(const double aValue, const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_BOTH_SIDE);
 
+		/****** Prs3d_ShadingAspect::SetUseVertexColorForBackFaces ******/
+		/****** md5 signature: 39136bc04cb8a71bf2c2745322e837b3 ******/
+		%feature("compactdefaultargs") SetUseVertexColorForBackFaces;
+		%feature("autodoc", "
+Parameters
+----------
+theToUse: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Set whether per-vertex color should be applied to back-facing fragments.
+") SetUseVertexColorForBackFaces;
+		void SetUseVertexColorForBackFaces(bool theToUse);
+
+		/****** Prs3d_ShadingAspect::ToUseVertexColorForBackFaces ******/
+		/****** md5 signature: 8721dd0b1c7957d1018ff0cb03e7308a ******/
+		%feature("compactdefaultargs") ToUseVertexColorForBackFaces;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return true if per-vertex color should be applied to back-facing fragments.
+") ToUseVertexColorForBackFaces;
+		bool ToUseVertexColorForBackFaces();
+
 		/****** Prs3d_ShadingAspect::Transparency ******/
 		/****** md5 signature: 5507ef614c5cd83cbb13f3e5920cbf86 ******/
 		%feature("compactdefaultargs") Transparency;

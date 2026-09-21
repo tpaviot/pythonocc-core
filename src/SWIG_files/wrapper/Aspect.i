@@ -2437,7 +2437,7 @@ None
 
 Description
 -----------
-Set view-adaptive grid on/off. When enabled, renderer derives temporary cell spacing and bounds from the current camera. The inverse of ScaleY() (or Scale() when ScaleY() is zero) is used as the target number of cells across the view height.
+Set view-adaptive grid on/off. When enabled, shader renderer keeps the screen-space grid step stable by scaling the cell spacing with camera zoom.
 ") SetIsViewAdaptive;
 		void SetIsViewAdaptive(const bool theIsViewAdaptive);
 
@@ -2599,7 +2599,7 @@ None
 
 Description
 -----------
-Set signed plane-normal offset applied at render time (display only; snap math stays on the unshifted plane).
+Set signed plane-normal offset applied at render and echo time.
 ") SetZOffset;
 		void SetZOffset(const double theOffset);
 

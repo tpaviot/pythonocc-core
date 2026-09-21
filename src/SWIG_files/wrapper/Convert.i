@@ -928,17 +928,17 @@ Returns the weights of the BSpline surface.
 class Convert_GridPolynomialToPoles {
 	public:
 		/****** Convert_GridPolynomialToPoles::Convert_GridPolynomialToPoles ******/
-		/****** md5 signature: caf0cfa30897676f20bfeeadf0ccfce3 ******/
+		/****** md5 signature: acee66d9ba4bed951516ed9dbbd5038d ******/
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxUDegree: int
-MaxVDegree: int
-NumCoeff: TColStd_HArray1OfInteger
-Coefficients: TColStd_HArray1OfReal
-PolynomialUIntervals: TColStd_HArray1OfReal
-PolynomialVIntervals: TColStd_HArray1OfReal
+theMaxUDegree: int
+theMaxVDegree: int
+theNumCoeff: TColStd_Array1OfInteger
+theCoefficients: TColStd_Array1OfReal
+thePolynomialUIntervals: TColStd_Array1OfReal
+thePolynomialVIntervals: TColStd_Array1OfReal
 
 Return
 -------
@@ -948,26 +948,49 @@ Description
 -----------
 To only one polynomial Surface. The Length of <PolynomialUIntervals> and <PolynomialVIntervals> have to be 2. This values defined the parametric domain of the Polynomial Equation. //! Coefficients: The <Coefficients> have to be formatted than an 'C array' [MaxUDegree+1] [MaxVDegree+1] [3].
 ") Convert_GridPolynomialToPoles;
-		 Convert_GridPolynomialToPoles(const int MaxUDegree, const int MaxVDegree, const opencascade::handle<TColStd_HArray1OfInteger> & NumCoeff, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals);
+		 Convert_GridPolynomialToPoles(const int theMaxUDegree, const int theMaxVDegree, const TColStd_Array1OfInteger & theNumCoeff, const TColStd_Array1OfReal & theCoefficients, const TColStd_Array1OfReal & thePolynomialUIntervals, const TColStd_Array1OfReal & thePolynomialVIntervals);
 
 		/****** Convert_GridPolynomialToPoles::Convert_GridPolynomialToPoles ******/
-		/****** md5 signature: fece90d636d49bb5b2a9645afdbf9b03 ******/
+		/****** md5 signature: b77233b852099069d7716a4bfea8b9de ******/
 		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
 		%feature("autodoc", "
 Parameters
 ----------
-NbUSurfaces: int
-NBVSurfaces: int
-UContinuity: int
-VContinuity: int
-MaxUDegree: int
-MaxVDegree: int
-NumCoeffPerSurface: TColStd_HArray2OfInteger
-Coefficients: TColStd_HArray1OfReal
-PolynomialUIntervals: TColStd_HArray1OfReal
-PolynomialVIntervals: TColStd_HArray1OfReal
-TrueUIntervals: TColStd_HArray1OfReal
-TrueVIntervals: TColStd_HArray1OfReal
+theMaxUDegree: int
+theMaxVDegree: int
+theNumCoeff: TColStd_HArray1OfInteger
+theCoefficients: TColStd_HArray1OfReal
+thePolynomialUIntervals: TColStd_HArray1OfReal
+thePolynomialVIntervals: TColStd_HArray1OfReal
+
+Return
+-------
+None
+
+Description
+-----------
+Handle-based overload (delegates to the array-based constructor). Provided for backward compatibility; new code should prefer the @c NCollection_Array1 form which avoids unnecessary heap allocation.
+") Convert_GridPolynomialToPoles;
+		 Convert_GridPolynomialToPoles(const int theMaxUDegree, const int theMaxVDegree, const opencascade::handle<TColStd_HArray1OfInteger> & theNumCoeff, const opencascade::handle<TColStd_HArray1OfReal> & theCoefficients, const opencascade::handle<TColStd_HArray1OfReal> & thePolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & thePolynomialVIntervals);
+
+		/****** Convert_GridPolynomialToPoles::Convert_GridPolynomialToPoles ******/
+		/****** md5 signature: 6b9f920a041ca8bf40668dbd0e83070e ******/
+		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
+		%feature("autodoc", "
+Parameters
+----------
+theNbUSurfaces: int
+theNbVSurfaces: int
+theUContinuity: int
+theVContinuity: int
+theMaxUDegree: int
+theMaxVDegree: int
+theNumCoeffPerSurface: TColStd_Array2OfInteger
+theCoefficients: TColStd_Array1OfReal
+thePolynomialUIntervals: TColStd_Array1OfReal
+thePolynomialVIntervals: TColStd_Array1OfReal
+theTrueUIntervals: TColStd_Array1OfReal
+theTrueVIntervals: TColStd_Array1OfReal
 
 Return
 -------
@@ -977,7 +1000,36 @@ Description
 -----------
 To one grid of polynomial Surface. Warning! Continuity in each parametric direction can be at MOST the maximum degree of the polynomial functions. //! <TrueUIntervals>, <TrueVIntervals>: this is the true parameterisation for the composite surface //! Coefficients: The Coefficients have to be formatted than an 'C array' [NbVSurfaces] [NBUSurfaces] [MaxUDegree+1] [MaxVDegree+1] [3] raises DomainError if <NumCoeffPerSurface> is not a [1, NbVSurfaces*NbUSurfaces, 1,2] array. if <Coefficients> is not a.
 ") Convert_GridPolynomialToPoles;
-		 Convert_GridPolynomialToPoles(const int NbUSurfaces, const int NBVSurfaces, const int UContinuity, const int VContinuity, const int MaxUDegree, const int MaxVDegree, const opencascade::handle<TColStd_HArray2OfInteger> & NumCoeffPerSurface, const opencascade::handle<TColStd_HArray1OfReal> & Coefficients, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & PolynomialVIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & TrueVIntervals);
+		 Convert_GridPolynomialToPoles(const int theNbUSurfaces, const int theNbVSurfaces, const int theUContinuity, const int theVContinuity, const int theMaxUDegree, const int theMaxVDegree, const TColStd_Array2OfInteger & theNumCoeffPerSurface, const TColStd_Array1OfReal & theCoefficients, const TColStd_Array1OfReal & thePolynomialUIntervals, const TColStd_Array1OfReal & thePolynomialVIntervals, const TColStd_Array1OfReal & theTrueUIntervals, const TColStd_Array1OfReal & theTrueVIntervals);
+
+		/****** Convert_GridPolynomialToPoles::Convert_GridPolynomialToPoles ******/
+		/****** md5 signature: 6929cf7c5d6f8a15a72d4ba2e362fb62 ******/
+		%feature("compactdefaultargs") Convert_GridPolynomialToPoles;
+		%feature("autodoc", "
+Parameters
+----------
+theNbUSurfaces: int
+theNbVSurfaces: int
+theUContinuity: int
+theVContinuity: int
+theMaxUDegree: int
+theMaxVDegree: int
+theNumCoeffPerSurface: TColStd_HArray2OfInteger
+theCoefficients: TColStd_HArray1OfReal
+thePolynomialUIntervals: TColStd_HArray1OfReal
+thePolynomialVIntervals: TColStd_HArray1OfReal
+theTrueUIntervals: TColStd_HArray1OfReal
+theTrueVIntervals: TColStd_HArray1OfReal
+
+Return
+-------
+None
+
+Description
+-----------
+Handle-based overload (delegates to the array-based constructor).
+") Convert_GridPolynomialToPoles;
+		 Convert_GridPolynomialToPoles(const int theNbUSurfaces, const int theNbVSurfaces, const int theUContinuity, const int theVContinuity, const int theMaxUDegree, const int theMaxVDegree, const opencascade::handle<TColStd_HArray2OfInteger> & theNumCoeffPerSurface, const opencascade::handle<TColStd_HArray1OfReal> & theCoefficients, const opencascade::handle<TColStd_HArray1OfReal> & thePolynomialUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & thePolynomialVIntervals, const opencascade::handle<TColStd_HArray1OfReal> & theTrueUIntervals, const opencascade::handle<TColStd_HArray1OfReal> & theTrueVIntervals);
 
 		/****** Convert_GridPolynomialToPoles::IsDone ******/
 		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/

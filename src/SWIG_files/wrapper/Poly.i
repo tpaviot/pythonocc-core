@@ -644,6 +644,25 @@ A generalized setter for point.
 ") SetValue;
 		void SetValue(int theIndex, const gp_Pnt & theValue);
 
+		/****** Poly_ArrayOfNodes::SetValue ******/
+		/****** md5 signature: cce3590750e9625afdc05f6b292358dc ******/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: size_t
+theValue: gp_Pnt
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") SetValue;
+		void SetValue(const size_t theIndex, const gp_Pnt & theValue);
+
 		/****** Poly_ArrayOfNodes::Value ******/
 		/****** md5 signature: 9ba07c85255bdcbc4eaef08933866db9 ******/
 		%feature("compactdefaultargs") Value;
@@ -661,6 +680,24 @@ Description
 A generalized accessor to point.
 ") Value;
 		gp_Pnt Value(int theIndex);
+
+		/****** Poly_ArrayOfNodes::Value ******/
+		/****** md5 signature: 4742d79b6c2ada82c7ac55deb35535c8 ******/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: size_t
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+No available documentation.
+") Value;
+		gp_Pnt Value(const size_t theIndex);
 
 };
 
@@ -867,6 +904,25 @@ A generalized setter for point.
 ") SetValue;
 		void SetValue(int theIndex, const gp_Pnt2d & theValue);
 
+		/****** Poly_ArrayOfUVNodes::SetValue ******/
+		/****** md5 signature: 087113b8b3b75ded44898f050c680c57 ******/
+		%feature("compactdefaultargs") SetValue;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: size_t
+theValue: gp_Pnt2d
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") SetValue;
+		void SetValue(const size_t theIndex, const gp_Pnt2d & theValue);
+
 		/****** Poly_ArrayOfUVNodes::Value ******/
 		/****** md5 signature: ae83cecf88fe018010460e9e779e6261 ******/
 		%feature("compactdefaultargs") Value;
@@ -884,6 +940,24 @@ Description
 A generalized accessor to point.
 ") Value;
 		gp_Pnt2d Value(int theIndex);
+
+		/****** Poly_ArrayOfUVNodes::Value ******/
+		/****** md5 signature: 1feb587eb09fb91d4a0fa8709c93d4ca ******/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "
+Parameters
+----------
+theIndex: size_t
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+No available documentation.
+") Value;
+		gp_Pnt2d Value(const size_t theIndex);
 
 };
 
@@ -2791,6 +2865,19 @@ Returns the table of nodes for this polygon.
 ") ChangeNodes;
 		TColgp_Array1OfPnt2d & ChangeNodes();
 
+		/****** Poly_Polygon2D::Copy ******/
+		/****** md5 signature: 8ed92f6674349cd397fbdf61a900a90c ******/
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Poly_Polygon2D>
+
+Description
+-----------
+Creates a copy of current polygon.
+") Copy;
+		virtual opencascade::handle<Poly_Polygon2D> Copy();
+
 		/****** Poly_Polygon2D::Deflection ******/
 		/****** md5 signature: e7bafce0869e6419d801f7a7f285ba00 ******/
 		%feature("compactdefaultargs") Deflection;
@@ -3156,6 +3243,19 @@ Constructs a 3D polygon on the triangulation of a shape, defined by: - the table
 ") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes, const TColStd_Array1OfReal & Parameters);
 
+		/****** Poly_PolygonOnTriangulation::ChangeNodeArray ******/
+		/****** md5 signature: bff5ee2d09f5d12b0416ce2a9591a4fa ******/
+		%feature("compactdefaultargs") ChangeNodeArray;
+		%feature("autodoc", "Return
+-------
+TColStd_Array1OfInteger
+
+Description
+-----------
+Returns mutable node-index array.
+") ChangeNodeArray;
+		TColStd_Array1OfInteger & ChangeNodeArray();
+
 		/****** Poly_PolygonOnTriangulation::ChangeNodes ******/
 		/****** md5 signature: 46f5466dd3cf38fa96c2aeb99fab937e ******/
 		%feature("compactdefaultargs") ChangeNodes;
@@ -3168,6 +3268,19 @@ Description
 No available documentation.
 ") ChangeNodes;
 		TColStd_Array1OfInteger & ChangeNodes();
+
+		/****** Poly_PolygonOnTriangulation::ChangeParameterArray ******/
+		/****** md5 signature: aa877638dd381168fab45cb6dc139184 ******/
+		%feature("compactdefaultargs") ChangeParameterArray;
+		%feature("autodoc", "Return
+-------
+TColStd_Array1OfReal
+
+Description
+-----------
+Returns mutable parameter array.
+") ChangeParameterArray;
+		TColStd_Array1OfReal & ChangeParameterArray();
 
 		/****** Poly_PolygonOnTriangulation::ChangeParameters ******/
 		/****** md5 signature: ff00f0571a955a8781d9d3b3207a3826 ******/
@@ -4577,6 +4690,19 @@ Description
 Returns angular deflection or -1 if undefined.
 ") Angle;
 		double Angle();
+
+		/****** Poly_TriangulationParameters::Copy ******/
+		/****** md5 signature: 057a07dbf4074babcff224d1c39f4a06 ******/
+		%feature("compactdefaultargs") Copy;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<Poly_TriangulationParameters>
+
+Description
+-----------
+Creates a copy of current triangulation parameters.
+") Copy;
+		opencascade::handle<Poly_TriangulationParameters> Copy();
 
 		/****** Poly_TriangulationParameters::Deflection ******/
 		/****** md5 signature: e7bafce0869e6419d801f7a7f285ba00 ******/
