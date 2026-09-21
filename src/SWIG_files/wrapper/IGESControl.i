@@ -52,6 +52,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igescontrol.html"
 #include<TopoDS_module.hxx>
 #include<IFSelect_module.hxx>
 #include<IGESData_module.hxx>
+#include<Resource_module.hxx>
 #include<DE_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -88,6 +89,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_igescontrol.html"
 %import TopoDS.i
 %import IFSelect.i
 %import IGESData.i
+%import Resource.i
 %import DE.i
 
 %pythoncode {
@@ -692,14 +694,14 @@ Computes the entities found in the model, which is ready to be written. This con
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** IGESControl_Writer::GetShapeProcessFlags ******/
 		/****** md5 signature: 154ac0ed4a5b957edb90a1bb81c83699 ******/
@@ -734,7 +736,7 @@ Returns the IGES model to be written in output.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -745,7 +747,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** IGESControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -753,7 +755,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -764,7 +766,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** IGESControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
@@ -773,7 +775,7 @@ Parameter theParameters the parameters for shape processing.
 Parameters
 ----------
 theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+theAdditionalParameters: Resource_DataMapOfAsciiStringAsciiString (optional, default to {})
 
 Return
 -------
@@ -785,7 +787,7 @@ Sets parameters for shape processing. Parameters from @p theParameters are copie
 Parameter theParameters the parameters for shape processing. 
 Parameter theAdditionalParameters the additional parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const Resource_DataMapOfAsciiStringAsciiString & theAdditionalParameters = {});
 
 		/****** IGESControl_Writer::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/

@@ -47,8 +47,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_aspect.html"
 #include<Quantity_module.hxx>
 #include<gp_module.hxx>
 #include<TCollection_module.hxx>
-#include<Image_module.hxx>
-#include<Graphic3d_module.hxx>
 #include<Bnd_module.hxx>
 #include<Media_module.hxx>
 #include<TColgp_module.hxx>
@@ -61,8 +59,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_aspect.html"
 %import Quantity.i
 %import gp.i
 %import TCollection.i
-%import Image.i
-%import Graphic3d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -5115,50 +5111,6 @@ Return left hand orientation.
 ") LeftHandPose;
 		gp_Trsf LeftHandPose();
 
-		/****** Aspect_XRSession::LoadRenderModel ******/
-		/****** md5 signature: 868427ab3f474fde3cffc70133057e1c ******/
-		%feature("compactdefaultargs") LoadRenderModel;
-		%feature("autodoc", "
-Parameters
-----------
-theDevice: int
-theTexture: Image_Texture
-
-Return
--------
-opencascade::handle<Graphic3d_ArrayOfTriangles>
-
-Description
------------
-Load model for displaying device. 
-Input parameter: theDevice device index @param[out] theTexture texture source 
-Return: model triangulation or NULL if not found.
-") LoadRenderModel;
-		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(int theDevice, opencascade::handle<Image_Texture> & theTexture);
-
-		/****** Aspect_XRSession::LoadRenderModel ******/
-		/****** md5 signature: 8a242756122fc2d8bd6351dbbfd7f04e ******/
-		%feature("compactdefaultargs") LoadRenderModel;
-		%feature("autodoc", "
-Parameters
-----------
-theDevice: int
-theToApplyUnitFactor: bool
-theTexture: Image_Texture
-
-Return
--------
-opencascade::handle<Graphic3d_ArrayOfTriangles>
-
-Description
------------
-Load model for displaying device. 
-Input parameter: theDevice device index 
-Input parameter: theToApplyUnitFactor flag to apply unit scale factor @param[out] theTexture texture source 
-Return: model triangulation or NULL if not found.
-") LoadRenderModel;
-		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(int theDevice, bool theToApplyUnitFactor, opencascade::handle<Image_Texture> & theTexture);
-
 		/****** Aspect_XRSession::NamedTrackedDevice ******/
 		/****** md5 signature: 1ab0cfc61a18165ef0eebce369fdf26b ******/
 		%feature("compactdefaultargs") NamedTrackedDevice;
@@ -5409,6 +5361,10 @@ Fetch actual poses of tracked devices.
 %extend Aspect_XRSession {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def LoadRenderModel(self):
+		pass
 	}
 };
 

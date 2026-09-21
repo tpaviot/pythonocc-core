@@ -47,7 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transfer.html"
 #include<Message_module.hxx>
 #include<Interface_module.hxx>
 #include<TColStd_module.hxx>
-#include<DE_module.hxx>
+#include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TDF_module.hxx>
@@ -70,7 +70,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_transfer.html"
 %import Message.i
 %import Interface.i
 %import TColStd.i
-%import DE.i
+%import Resource.i
 
 %pythoncode {
 from enum import IntEnum
@@ -3884,14 +3884,14 @@ No available documentation.
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** Transfer_ActorOfFinderProcess::GetShapeProcessFlags ******/
 		/****** md5 signature: 9a36ef61377dc7b1e6932eb1cc2f212e ******/
@@ -3926,7 +3926,7 @@ Returns the Transfer Mode, modifiable.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -3937,7 +3937,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** Transfer_ActorOfFinderProcess::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -3945,7 +3945,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -3956,28 +3956,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
-
-		/****** Transfer_ActorOfFinderProcess::SetShapeFixParameters ******/
-		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
-		%feature("compactdefaultargs") SetShapeFixParameters;
-		%feature("autodoc", "
-Parameters
-----------
-theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
-
-Return
--------
-None
-
-Description
------------
-Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
-Parameter theParameters the parameters for shape processing. 
-Parameter theAdditionalParameters the additional parameters for shape processing.
-") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** Transfer_ActorOfFinderProcess::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
@@ -4110,14 +4089,14 @@ Return: Pair: the flags defining operations to be performed on shapes and a bool
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** Transfer_ActorOfTransientProcess::SetProcessingFlags ******/
 		/****** md5 signature: ba5863441d51d46161ddfa6b423b2152 ******/
@@ -4144,7 +4123,7 @@ Parameter theFlags The flags defining operations to be performed on shapes.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -4155,7 +4134,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** Transfer_ActorOfTransientProcess::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -4163,7 +4142,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -4174,28 +4153,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
-
-		/****** Transfer_ActorOfTransientProcess::SetShapeFixParameters ******/
-		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
-		%feature("compactdefaultargs") SetShapeFixParameters;
-		%feature("autodoc", "
-Parameters
-----------
-theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
-
-Return
--------
-None
-
-Description
------------
-Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
-Parameter theParameters the parameters for shape processing. 
-Parameter theAdditionalParameters the additional parameters for shape processing.
-") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** Transfer_ActorOfTransientProcess::Transfer ******/
 		/****** md5 signature: 61d6387dc674010808ec9a991a18e31d ******/

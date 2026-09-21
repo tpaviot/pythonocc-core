@@ -3322,19 +3322,6 @@ The returned vector gives the value of the derivative for the order of derivatio
 ") EvalDN;
 		gp_Vec2d EvalDN(const double U, const int N);
 
-		/****** Geom2d_OffsetCurve::EvalRepresentation ******/
-		/****** md5 signature: 79008f0c02d59fb82e2c23399f4e977c ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom2dEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & EvalRepresentation();
-
 		/****** Geom2d_OffsetCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
@@ -3525,24 +3512,6 @@ Changes this offset curve by assigning C as the basis curve from which it is bui
 ") SetBasisCurve;
 		void SetBasisCurve(const opencascade::handle<Geom2d_Curve> & C, const bool isNotCheckC0 = false);
 
-		/****** Geom2d_OffsetCurve::SetEvalRepresentation ******/
-		/****** md5 signature: 71cef6212c8b55d57a83bcf2966726c8 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: Geom2dEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom2d_OffsetCurve::SetOffsetValue ******/
 		/****** md5 signature: 638fc518e51dadf4ff1193be6830c419 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
@@ -3606,6 +3575,14 @@ Returns the parameter on the transformed curve for the transform of the point of
 %extend Geom2d_OffsetCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -4341,19 +4318,6 @@ Description
 For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the 'right' of the singularity. Raises UndefinedDerivative if the continuity of the curve is not CN. RangeError if N < 1. The following functions computes the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
 ") EvalDN;
 		gp_Vec2d EvalDN(const double U, const int N);
-
-		/****** Geom2d_BSplineCurve::EvalRepresentation ******/
-		/****** md5 signature: 79008f0c02d59fb82e2c23399f4e977c ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom2dEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & EvalRepresentation();
 
 		/****** Geom2d_BSplineCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
@@ -5206,24 +5170,6 @@ Modifies this BSpline curve by segmenting it between U1 and U2. Either of these 
 ") Segment;
 		void Segment(const double U1, const double U2, const double theTolerance = Precision::PConfusion());
 
-		/****** Geom2d_BSplineCurve::SetEvalRepresentation ******/
-		/****** md5 signature: 71cef6212c8b55d57a83bcf2966726c8 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: Geom2dEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom2d_BSplineCurve::SetKnot ******/
 		/****** md5 signature: 3671e77deddb12405c65a4fc2c4c7333 ******/
 		%feature("compactdefaultargs") SetKnot;
@@ -5484,6 +5430,14 @@ Returns a const reference to the weights array. For rational curves: the interna
 %extend Geom2d_BSplineCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -5723,19 +5677,6 @@ Description
 For this Bezier curve, computes - the point P of parameter U, or - the point P and one or more of the following values: - V1, the first derivative vector, - V2, the second derivative vector, - V3, the third derivative vector. Note: the parameter U can be outside the bounds of the curve. Raises RangeError if N < 1.
 ") EvalDN;
 		gp_Vec2d EvalDN(const double U, const int N);
-
-		/****** Geom2d_BezierCurve::EvalRepresentation ******/
-		/****** md5 signature: 79008f0c02d59fb82e2c23399f4e977c ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Geom2dEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & EvalRepresentation();
 
 		/****** Geom2d_BezierCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
@@ -6091,24 +6032,6 @@ Segments the curve between U1 and U2 which can be out of the bounds of the curve
 ") Segment;
 		void Segment(const double U1, const double U2);
 
-		/****** Geom2d_BezierCurve::SetEvalRepresentation ******/
-		/****** md5 signature: 71cef6212c8b55d57a83bcf2966726c8 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: Geom2dEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<Geom2dEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom2d_BezierCurve::SetPole ******/
 		/****** md5 signature: b8d081066cbf2144ae6f346b405d703b ******/
 		%feature("compactdefaultargs") SetPole;
@@ -6268,6 +6191,14 @@ Returns a const reference to the weights array. For rational curves: the interna
 %extend Geom2d_BezierCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 

@@ -53,7 +53,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 #include<TCollection_module.hxx>
 #include<Message_module.hxx>
 #include<TopTools_module.hxx>
-#include<DE_module.hxx>
+#include<Resource_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
@@ -83,7 +83,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xscontrol.html"
 %import TCollection.i
 %import Message.i
 %import TopTools.i
-%import DE.i
+%import Resource.i
 %import Geom.i
 %import Geom2d.i
 %import gp.i
@@ -879,14 +879,14 @@ Clears the list of shapes that may have accumulated in calls to TransferOne or T
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** XSControl_Reader::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
@@ -1205,7 +1205,7 @@ Sets a specific norm to <self> Returns True if done, False if <norm> is not avai
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1216,7 +1216,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** XSControl_Reader::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -1224,7 +1224,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1235,28 +1235,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
-
-		/****** XSControl_Reader::SetShapeFixParameters ******/
-		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
-		%feature("compactdefaultargs") SetShapeFixParameters;
-		%feature("autodoc", "
-Parameters
-----------
-theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
-
-Return
--------
-None
-
-Description
------------
-Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
-Parameter theParameters the parameters for shape processing. 
-Parameter theAdditionalParameters the additional parameters for shape processing.
-") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** XSControl_Reader::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/

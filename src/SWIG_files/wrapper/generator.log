@@ -1,15 +1,15 @@
-[INFO ]  Built 277 typedef rewrite mappings from OCCT headers
+[INFO ]  Built 278 typedef rewrite mappings from OCCT headers
 [INFO ]  
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 7d8956f
+git revision : ee5a5b7
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 19:29:17.389941
+date : 2026-09-21 20:51:44.586987
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -1464,35 +1464,35 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
 [INFO ]  Class: Geom2d_OffsetCurve
+[INFO ]      explicitly excluded method Geom2d_OffsetCurve::79008f0c02d59fb82e2c23399f4e977c
+[INFO ]      explicitly excluded method Geom2d_OffsetCurve::71cef6212c8b55d57a83bcf2966726c8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom2d_VectorWithMagnitude
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: Geom2d_BSplineCurve
+[INFO ]      explicitly excluded method Geom2d_BSplineCurve::79008f0c02d59fb82e2c23399f4e977c
+[INFO ]      explicitly excluded method Geom2d_BSplineCurve::71cef6212c8b55d57a83bcf2966726c8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom2d_BezierCurve
+[INFO ]      explicitly excluded method Geom2d_BezierCurve::79008f0c02d59fb82e2c23399f4e977c
+[INFO ]      explicitly excluded method Geom2d_BezierCurve::71cef6212c8b55d57a83bcf2966726c8
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type Geom2dEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom2d_Circle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
@@ -1736,66 +1736,66 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
 [INFO ]  Class: Geom_OffsetCurve
+[INFO ]      explicitly excluded method Geom_OffsetCurve::a570242ee5a0b07b20294756091ee6a1
+[INFO ]      explicitly excluded method Geom_OffsetCurve::c94b922fdbdc3ba23286b9a9dc213d1c
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom_OffsetSurface
+[INFO ]      explicitly excluded method Geom_OffsetSurface::3617b015e3ba969ec1b703f98bc3c155
+[INFO ]      explicitly excluded method Geom_OffsetSurface::ba0656344d83f9e314a8dcd831fef6f3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: Geom_SweptSurface
 [INFO ]  Class: Geom_VectorWithMagnitude
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom_BSplineCurve
+[INFO ]      explicitly excluded method Geom_BSplineCurve::a570242ee5a0b07b20294756091ee6a1
+[INFO ]      explicitly excluded method Geom_BSplineCurve::c94b922fdbdc3ba23286b9a9dc213d1c
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom_BSplineSurface
+[INFO ]      explicitly excluded method Geom_BSplineSurface::3617b015e3ba969ec1b703f98bc3c155
+[INFO ]      explicitly excluded method Geom_BSplineSurface::ba0656344d83f9e314a8dcd831fef6f3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [INFO ]  Class: Geom_BezierCurve
+[INFO ]      explicitly excluded method Geom_BezierCurve::a570242ee5a0b07b20294756091ee6a1
+[INFO ]      explicitly excluded method Geom_BezierCurve::c94b922fdbdc3ba23286b9a9dc213d1c
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type GeomEval_RepCurveDesc::Base, because of trailing :
 [INFO ]  Class: Geom_BezierSurface
+[INFO ]      explicitly excluded method Geom_BezierSurface::3617b015e3ba969ec1b703f98bc3c155
+[INFO ]      explicitly excluded method Geom_BezierSurface::ba0656344d83f9e314a8dcd831fef6f3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [INFO ]  Class: Geom_Circle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
@@ -1855,20 +1855,20 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
 [INFO ]  Class: Geom_SurfaceOfLinearExtrusion
+[INFO ]      explicitly excluded method Geom_SurfaceOfLinearExtrusion::3617b015e3ba969ec1b703f98bc3c155
+[INFO ]      explicitly excluded method Geom_SurfaceOfLinearExtrusion::ba0656344d83f9e314a8dcd831fef6f3
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: Geom_SurfaceOfRevolution
+[INFO ]      explicitly excluded method Geom_SurfaceOfRevolution::3617b015e3ba969ec1b703f98bc3c155
+[INFO ]      explicitly excluded method Geom_SurfaceOfRevolution::ba0656344d83f9e314a8dcd831fef6f3
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
-[WARNI]      [TypeHint] Skip type GeomEval_RepSurfaceDesc::Base, because of trailing :
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: Geom_ToroidalSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7023,6 +7023,8 @@ date : 2026-09-21 19:29:17.389941
 [INFO ]      Class Aspect_XRSession is abstract, using %nodefaultctor.
 [INFO ]  Enum: TrackingUniverseOrigin
 [INFO ]  Enum: InfoString
+[INFO ]      explicitly excluded method Aspect_XRSession::868427ab3f474fde3cffc70133057e1c
+[INFO ]      explicitly excluded method Aspect_XRSession::8a242756122fc2d8bd6351dbbfd7f04e
 [WARNI]      [TypeHint] Skipping type NCollection_Mat4<double, seems to be a template
 [WARNI]      [TypeHint] Skipping type InfoString, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_Mat4<double, seems to be a template
@@ -8255,11 +8257,7 @@ date : 2026-09-21 19:29:17.389941
 [INFO ]  Class: IGESControl_ToolContainer
 [INFO ]  Class: IGESControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  ## Processing module IGESData
 [INFO ]  Enum: IGESData_DefList
@@ -8369,11 +8367,7 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]      [TypeHint] Skip type NCollection_HArray1<opencascade::handle<IGESData_IGESEntity, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_HArray1<opencascade::handle<IGESData_IGESEntity, because of trailing :
 [INFO ]  Class: IGESToBRep_Reader
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: IGESToBRep_ToolContainer
 [INFO ]  Class: IGESToBRep_BRepEntity
@@ -8609,11 +8603,7 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [INFO ]  ## Processing module STEPEdit
@@ -10568,25 +10558,17 @@ date : 2026-09-21 19:29:17.389941
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: STEPCAFControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
@@ -11001,20 +10983,14 @@ date : 2026-09-21 19:29:17.389941
 [INFO ]  Class: Transfer_TransferOutput
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Transfer_ActorOfFinderProcess
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
+[INFO ]      explicitly excluded method Transfer_ActorOfFinderProcess::e895be254466ec0dab7446ab439d8103
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: Transfer_ActorOfTransientProcess
+[INFO ]      explicitly excluded method Transfer_ActorOfTransientProcess::e895be254466ec0dab7446ab439d8103
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [INFO ]  Class: Transfer_FinderProcess
 [INFO ]  Class: Transfer_IteratorOfProcessForFinder
 [WARNI]      [TypeHint] Skip type NCollection_HSequence<opencascade::handle<Transfer_Finder, because of trailing :
@@ -11066,13 +11042,10 @@ date : 2026-09-21 19:29:17.389941
 [INFO ]  Class: XSControl_FuncShape
 [INFO ]  Class: XSControl_Functions
 [INFO ]  Class: XSControl_Reader
+[INFO ]      explicitly excluded method XSControl_Reader::e895be254466ec0dab7446ab439d8103
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
-[WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ParameterMap, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: XSControl_SelectForTransfer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -11784,8 +11757,8 @@ date : 2026-09-21 19:29:17.389941
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 9.25s
+SWIG interface file generation completed in 11.07s
 #################################################
 
 [INFO ]  Number of classes: 3932
-[INFO ]  Number of methods: 44445
+[INFO ]  Number of methods: 44418

@@ -59,6 +59,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 #include<StepVisual_module.hxx>
 #include<XCAFDoc_module.hxx>
 #include<STEPConstruct_module.hxx>
+#include<Resource_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
 #include<DE_module.hxx>
@@ -112,6 +113,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 %import StepVisual.i
 %import XCAFDoc.i
 %import STEPConstruct.i
+%import Resource.i
 %import TDocStd.i
 %import Message.i
 %import DE.i
@@ -1109,14 +1111,14 @@ No available documentation.
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** STEPCAFControl_Reader::GetShapeLabelMap ******/
 		/****** md5 signature: f83ef2e143db8e0ae32d043a1d35e142 ******/
@@ -1517,7 +1519,7 @@ Set SHUO mode for indicate write SHUO or not.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1528,7 +1530,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPCAFControl_Reader::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -1536,7 +1538,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1547,7 +1549,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPCAFControl_Reader::SetShapeFixParameters ******/
 		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
@@ -1556,7 +1558,7 @@ Parameter theParameters the parameters for shape processing.
 Parameters
 ----------
 theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+theAdditionalParameters: Resource_DataMapOfAsciiStringAsciiString (optional, default to {})
 
 Return
 -------
@@ -1568,7 +1570,7 @@ Sets parameters for shape processing. Parameters from @p theParameters are copie
 Parameter theParameters the parameters for shape processing. 
 Parameter theAdditionalParameters the additional parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const Resource_DataMapOfAsciiStringAsciiString & theAdditionalParameters = {});
 
 		/****** STEPCAFControl_Reader::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
@@ -1879,14 +1881,14 @@ No available documentation.
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** STEPCAFControl_Writer::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
@@ -2164,7 +2166,7 @@ Set SHUO mode for indicate write SHUO or not.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -2175,7 +2177,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPCAFControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -2183,7 +2185,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -2194,7 +2196,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPCAFControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
@@ -2203,7 +2205,7 @@ Parameter theParameters the parameters for shape processing.
 Parameters
 ----------
 theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+theAdditionalParameters: Resource_DataMapOfAsciiStringAsciiString (optional, default to {})
 
 Return
 -------
@@ -2215,7 +2217,7 @@ Sets parameters for shape processing. Parameters from @p theParameters are copie
 Parameter theParameters the parameters for shape processing. 
 Parameter theAdditionalParameters the additional parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const Resource_DataMapOfAsciiStringAsciiString & theAdditionalParameters = {});
 
 		/****** STEPCAFControl_Writer::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/

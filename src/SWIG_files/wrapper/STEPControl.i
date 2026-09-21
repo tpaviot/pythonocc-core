@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 #include<XSControl_module.hxx>
 #include<IFSelect_module.hxx>
 #include<TColStd_module.hxx>
+#include<Resource_module.hxx>
 #include<DE_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -91,6 +92,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 %import XSControl.i
 %import IFSelect.i
 %import TColStd.i
+%import Resource.i
 %import DE.i
 
 %pythoncode {
@@ -947,14 +949,14 @@ No available documentation.
 		%feature("compactdefaultargs") GetShapeFixParameters;
 		%feature("autodoc", "Return
 -------
-XSAlgo_ShapeProcessor::ParameterMap
+Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
 Returns parameters for shape processing that was set by SetParameters() method. 
 Return: the parameters for shape processing. Empty map if no parameters were set.
 ") GetShapeFixParameters;
-		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
 		/****** STEPControl_Writer::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
@@ -1013,7 +1015,7 @@ Displays the statistics for the last translation. what defines the kind of stati
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1024,7 +1026,7 @@ Description
 Sets parameters for shape processing. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(const Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
@@ -1032,7 +1034,7 @@ Parameter theParameters the parameters for shape processing.
 		%feature("autodoc", "
 Parameters
 ----------
-theParameters: XSAlgo_ShapeProcessor::ParameterMap
+theParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1043,7 +1045,7 @@ Description
 Sets parameters for shape processing. Parameters are moved from the input map. 
 Parameter theParameters the parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+		void SetShapeFixParameters(Resource_DataMapOfAsciiStringAsciiString & theParameters);
 
 		/****** STEPControl_Writer::SetShapeFixParameters ******/
 		/****** md5 signature: 4f412e1c837504f5b41e81b72871258d ******/
@@ -1071,7 +1073,7 @@ Parameter theParameters the parameters for shape processing.
 Parameters
 ----------
 theParameters: DE_ShapeFixParameters
-theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap
+theAdditionalParameters: Resource_DataMapOfAsciiStringAsciiString
 
 Return
 -------
@@ -1083,7 +1085,7 @@ Sets parameters for shape processing. Parameters from @p theParameters are copie
 Parameter theParameters the parameters for shape processing. 
 Parameter theAdditionalParameters the additional parameters for shape processing.
 ") SetShapeFixParameters;
-		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters);
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const Resource_DataMapOfAsciiStringAsciiString & theAdditionalParameters);
 
 		/****** STEPControl_Writer::SetShapeProcessFlags ******/
 		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/

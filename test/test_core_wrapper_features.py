@@ -128,7 +128,8 @@ from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
 from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
-from OCC.Core.TCollection import TCollection_HAsciiString
+from OCC.Core.TCollection import TCollection_AsciiString, TCollection_HAsciiString
+from OCC.Core.Resource import Resource_DataMapOfAsciiStringAsciiString
 from OCC.Core.Interface import Interface_HArray1OfHAsciiString
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
@@ -950,8 +951,8 @@ def test_import_all_modules() -> None:
     pythonocc_core_path = OCC.Core.__path__[0]
     available_core_modules = glob.glob(os.path.join(pythonocc_core_path, "*.py"))
     nb_available_modules = len(available_core_modules)
-    # don't know the exact number of modules, it's around 305 or 306
-    assert nb_available_modules > 300
+    # don't know the exact number of modules, it's around 295
+    assert nb_available_modules > 290
 
     # try to import the module
     for core_module in available_core_modules:
@@ -1107,6 +1108,25 @@ def test_ReadStream():
     result = step_reader.ReadStream("stream_name", step_file_content)
     assert result == IFSelect_RetDone
     step_reader.TransferRoots()
+
+
+def test_step_reader_shape_fix_parameters():
+    """XSAlgo_ShapeProcessor::ParameterMap is wrapped as
+    Resource_DataMapOfAsciiStringAsciiString"""
+    step_reader = STEPControl_Reader()
+    # parameters are held by the actor, that exists once a file is read
+    result = step_reader.ReadFile(os.path.join(".", "test_io", "as1-oc-214.stp"))
+    assert result == IFSelect_RetDone
+    parameters = Resource_DataMapOfAsciiStringAsciiString()
+    parameters.Bind(
+        TCollection_AsciiString("FixFreeShellMode"), TCollection_AsciiString("0")
+    )
+    step_reader.SetShapeFixParameters(parameters)
+    read_parameters = step_reader.GetShapeFixParameters()
+    assert isinstance(read_parameters, Resource_DataMapOfAsciiStringAsciiString)
+    value = read_parameters.Find(TCollection_AsciiString("FixFreeShellMode"))
+    assert value.ToCString() == "0"
+    assert step_reader.TransferRoots() == 1
 
 
 def test_WriteStream():

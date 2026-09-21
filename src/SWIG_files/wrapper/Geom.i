@@ -4647,19 +4647,6 @@ The returned vector gives the value of the derivative for the order of derivatio
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const int N);
 
-		/****** Geom_OffsetCurve::EvalRepresentation ******/
-		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
-
 		/****** Geom_OffsetCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
 		%feature("compactdefaultargs") FirstParameter;
@@ -4868,24 +4855,6 @@ Changes this offset curve by assigning V as the reference vector used to compute
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
-		/****** Geom_OffsetCurve::SetEvalRepresentation ******/
-		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom_OffsetCurve::SetOffsetValue ******/
 		/****** md5 signature: 638fc518e51dadf4ff1193be6830c419 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
@@ -4949,6 +4918,14 @@ Returns the parameter on the transformed curve for the transform of the point of
 %extend Geom_OffsetCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -5186,19 +5163,6 @@ Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an except
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
 
-		/****** Geom_OffsetSurface::EvalRepresentation ******/
-		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepSurfaceDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
-
 		/****** Geom_OffsetSurface::GetBasisSurfContinuity ******/
 		/****** md5 signature: 40b8f706c00d911b3fc43528ba8520d6 ******/
 		%feature("compactdefaultargs") GetBasisSurfContinuity;
@@ -5362,24 +5326,6 @@ Description
 Raised if S is not at least C1. Warnings: No check is done to verify that a unique normal direction is defined at any point of the basis surface S. If isNotCheckC0 = True checking if basis surface has C0-continuity is not made. Exceptions Standard_ConstructionError if the surface S is not at least 'C1' continuous.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<Geom_Surface> & S, const bool isNotCheckC0 = false);
-
-		/****** Geom_OffsetSurface::SetEvalRepresentation ******/
-		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepSurfaceDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
 
 		/****** Geom_OffsetSurface::SetOffsetValue ******/
 		/****** md5 signature: 638fc518e51dadf4ff1193be6830c419 ******/
@@ -5621,6 +5567,14 @@ Computes the v parameter on the modified surface, produced by reversing the or v
 %extend Geom_OffsetSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -6413,19 +6367,6 @@ Description
 For the point of parameter U of this BSpline curve, computes the vector corresponding to the Nth derivative. Warning On a point where the continuity of the curve is not the one requested, this function impacts the part defined by the parameter with a value greater than U, i.e. the part of the curve to the 'right' of the singularity. Exceptions Standard_RangeError if N is less than 1. //! The following functions compute the point of parameter U and the derivatives at this point on the B-spline curve arc defined between the knot FromK1 and the knot ToK2. U can be out of bounds [Knot (FromK1), Knot (ToK2)] but for the computation we only use the definition of the curve between these two knots. This method is useful to compute local derivative, if the order of continuity of the whole curve is not greater enough. Inside the parametric domain Knot (FromK1), Knot (ToK2) the evaluations are the same as if we consider the whole definition of the curve. Of course the evaluations are different outside this parametric domain.
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const int N);
-
-		/****** Geom_BSplineCurve::EvalRepresentation ******/
-		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
 
 		/****** Geom_BSplineCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
@@ -7240,24 +7181,6 @@ Modifies this BSpline curve by segmenting it between U1 and U2. Either of these 
 ") Segment;
 		void Segment(const double U1, const double U2, const double theTolerance = Precision::PConfusion());
 
-		/****** Geom_BSplineCurve::SetEvalRepresentation ******/
-		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom_BSplineCurve::SetKnot ******/
 		/****** md5 signature: 3671e77deddb12405c65a4fc2c4c7333 ******/
 		%feature("compactdefaultargs") SetKnot;
@@ -7537,6 +7460,14 @@ Returns a const reference to the weights array. For rational curves: the interna
 %extend Geom_BSplineCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -7816,19 +7747,6 @@ Description
 Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an exception on failure. //! Raised if the continuity of the surface is not CNu in the U direction and CNv in the V direction. //! Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0. //! The following functions computes the point for the parametric values (U, V) and the derivatives at this point on the B-spline surface patch delimited with the knots FromUK1, FromVK1 and the knots ToUK2, ToVK2. (U, V) can be out of these parametric bounds but for the computation we only use the definition of the surface between these knots. This method is useful to compute local derivative, if the order of continuity of the whole surface is not greater enough. Inside the parametric knot's domain previously defined the evaluations are the same as if we consider the whole definition of the surface. Of course the evaluations are different outside this parametric domain.
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
-
-		/****** Geom_BSplineSurface::EvalRepresentation ******/
-		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepSurfaceDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
 
 		/****** Geom_BSplineSurface::ExchangeUV ******/
 		/****** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ******/
@@ -8686,24 +8604,6 @@ Description
 Segments the surface between U1 and U2 in the U-Direction. between V1 and V2 in the V-Direction. The control points are modified, the first and the last point are not the same. //! Parameters theUTolerance, theVTolerance define the possible proximity along the corresponding direction of the segment boundaries and B-spline knots to treat them as equal. //! Warnings: Even if <self> is not closed it can become closed after the segmentation for example if U1 or U2 are out of the bounds of the surface <self> or if the surface makes loop. raises if U2 < U1 or V2 < V1. Standard_DomainError if U2 - U1 exceeds the uperiod for uperiodic surfaces. i.e. ((U2 - U1) - UPeriod) > Precision::PConfusion(). Standard_DomainError if V2 - V1 exceeds the vperiod for vperiodic surfaces. i.e. ((V2 - V1) - VPeriod) > Precision::PConfusion()).
 ") Segment;
 		void Segment(const double U1, const double U2, const double V1, const double V2, const double theUTolerance = Precision::PConfusion(), const double theVTolerance = Precision::PConfusion());
-
-		/****** Geom_BSplineSurface::SetEvalRepresentation ******/
-		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepSurfaceDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
 
 		/****** Geom_BSplineSurface::SetPole ******/
 		/****** md5 signature: d32ef8558923803e33dc7d68f2f2bfd1 ******/
@@ -9619,6 +9519,14 @@ Returns a const reference to the weights array. For rational surfaces: the inter
 %extend Geom_BSplineSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -9859,19 +9767,6 @@ Description
 For the point of parameter U of this Bezier curve, computes the vector corresponding to the Nth derivative. Note: the parameter U can be outside the bounds of the curve. Exceptions Standard_RangeError if N is less than 1.
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const int N);
-
-		/****** Geom_BezierCurve::EvalRepresentation ******/
-		/****** md5 signature: a570242ee5a0b07b20294756091ee6a1 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepCurveDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepCurveDesc::Base> & EvalRepresentation();
 
 		/****** Geom_BezierCurve::FirstParameter ******/
 		/****** md5 signature: c178e87663f41d496599eac833971a1b ******/
@@ -10265,24 +10160,6 @@ Segments the curve between U1 and U2 which can be out of the bounds of the curve
 ") Segment;
 		void Segment(const double U1, const double U2);
 
-		/****** Geom_BezierCurve::SetEvalRepresentation ******/
-		/****** md5 signature: c94b922fdbdc3ba23286b9a9dc213d1c ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepCurveDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepCurveDesc::Base> & theDesc);
-
 		/****** Geom_BezierCurve::SetPole ******/
 		/****** md5 signature: 6c1b16e4a0213de20b4394ce01a770f0 ******/
 		%feature("compactdefaultargs") SetPole;
@@ -10442,6 +10319,14 @@ Returns a const reference to the weights array. For rational curves: the interna
 %extend Geom_BezierCurve {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -10682,19 +10567,6 @@ Description
 Computes the derivative of order Nu in the u parametric direction, and Nv in the v parametric direction, at the point of parameters (U, V) of this Bezier surface. Note: The parameters U and V can be outside the bounds of the surface. Raises an exception on failure. Exceptions Standard_RangeError if: - Nu + Nv is less than 1, or Nu or Nv is negative.
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
-
-		/****** Geom_BezierSurface::EvalRepresentation ******/
-		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepSurfaceDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
 
 		/****** Geom_BezierSurface::ExchangeUV ******/
 		/****** md5 signature: fcaf4a45cf2f84fab80e6127ee17ec77 ******/
@@ -11176,24 +11048,6 @@ Modifies this Bezier surface by segmenting it between U1 and U2 in the u paramet
 ") Segment;
 		void Segment(const double U1, const double U2, const double V1, const double V2);
 
-		/****** Geom_BezierSurface::SetEvalRepresentation ******/
-		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepSurfaceDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
-
 		/****** Geom_BezierSurface::SetPole ******/
 		/****** md5 signature: d32ef8558923803e33dc7d68f2f2bfd1 ******/
 		%feature("compactdefaultargs") SetPole;
@@ -11662,6 +11516,14 @@ Returns a const reference to the weights array. For rational surfaces: the inter
 %extend Geom_BezierSurface {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -16106,19 +15968,6 @@ Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an except
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
 
-		/****** Geom_SurfaceOfLinearExtrusion::EvalRepresentation ******/
-		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepSurfaceDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
-
 		/****** Geom_SurfaceOfLinearExtrusion::HasEvalRepresentation ******/
 		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
 		%feature("compactdefaultargs") HasEvalRepresentation;
@@ -16274,24 +16123,6 @@ Assigns V as the 'direction of extrusion' for this surface of linear extrusion.
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
-		/****** Geom_SurfaceOfLinearExtrusion::SetEvalRepresentation ******/
-		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepSurfaceDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
-
 		/****** Geom_SurfaceOfLinearExtrusion::Transform ******/
 		/****** md5 signature: dbcb855e51c20670a25d86074457a834 ******/
 		%feature("compactdefaultargs") Transform;
@@ -16435,6 +16266,14 @@ Computes the v parameter on the modified surface, produced by reversing its u v 
 %extend Geom_SurfaceOfLinearExtrusion {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
@@ -16639,19 +16478,6 @@ Computes the derivative of order Nu in U and Nv in V at (U, V). Raises an except
 ") EvalDN;
 		gp_Vec EvalDN(const double U, const double V, const int Nu, const int Nv);
 
-		/****** Geom_SurfaceOfRevolution::EvalRepresentation ******/
-		/****** md5 signature: 3617b015e3ba969ec1b703f98bc3c155 ******/
-		%feature("compactdefaultargs") EvalRepresentation;
-		%feature("autodoc", "Return
--------
-opencascade::handle<GeomEval_RepSurfaceDesc::Base>
-
-Description
------------
-Returns the current evaluation representation descriptor (may be null).
-") EvalRepresentation;
-		const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & EvalRepresentation();
-
 		/****** Geom_SurfaceOfRevolution::HasEvalRepresentation ******/
 		/****** md5 signature: 4c7fcc1bfd1528c32230ca532f41f437 ******/
 		%feature("compactdefaultargs") HasEvalRepresentation;
@@ -16851,24 +16677,6 @@ Changes the direction of the revolution axis. Warnings: It is not checked that t
 ") SetDirection;
 		void SetDirection(const gp_Dir & V);
 
-		/****** Geom_SurfaceOfRevolution::SetEvalRepresentation ******/
-		/****** md5 signature: ba0656344d83f9e314a8dcd831fef6f3 ******/
-		%feature("compactdefaultargs") SetEvalRepresentation;
-		%feature("autodoc", "
-Parameters
-----------
-theDesc: GeomEval_RepSurfaceDesc::Base
-
-Return
--------
-None
-
-Description
------------
-Sets a new evaluation representation. Validates descriptor data and ensures no circular references.
-") SetEvalRepresentation;
-		void SetEvalRepresentation(const opencascade::handle<GeomEval_RepSurfaceDesc::Base> & theDesc);
-
 		/****** Geom_SurfaceOfRevolution::SetLocation ******/
 		/****** md5 signature: c028aee785b685956e8e7d5cba7ecb46 ******/
 		%feature("compactdefaultargs") SetLocation;
@@ -17030,6 +16838,14 @@ Computes the v parameter on the modified surface, when reversing its v parametri
 %extend Geom_SurfaceOfRevolution {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def EvalRepresentation(self):
+		pass
+
+	@methodnotwrapped
+	def SetEvalRepresentation(self):
+		pass
 	}
 };
 
