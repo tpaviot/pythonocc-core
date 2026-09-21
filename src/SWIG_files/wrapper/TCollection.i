@@ -3470,39 +3470,6 @@ Input parameter: theLength the length of the string.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const char16_t * const theString, const int theLength);
 
-		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
-		/****** md5 signature: e72e19fb497ab7c85bcc889d7fff8360 ******/
-		%feature("compactdefaultargs") TCollection_ExtendedString;
-		%feature("autodoc", "
-Parameters
-----------
-theStringView: std::u16string_view
-
-Return
--------
-None
-
-Description
------------
-Initializes an ExtendedString from a std::u16string_view. 
-Input parameter: theStringView the string view to copy.
-") TCollection_ExtendedString;
-		 TCollection_ExtendedString(const std::u16string_view & theStringView);
-
-		/****** TCollection_ExtendedString::u16string_view ******/
-		/****** md5 signature: 2c5272a7bc3d3e18c7d49843bb69015c ******/
-		%feature("compactdefaultargs") u16string_view;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Conversion to std::u16string_view. 
-Return: a non-owning view of the string data.
-") u16string_view;
-		 u16string_view();
-
 		/****** TCollection_ExtendedString::AssignCat ******/
 		/****** md5 signature: b9d98745e1e15a47e6df172035fe0ac3 ******/
 		%feature("compactdefaultargs") AssignCat;
@@ -3637,25 +3604,6 @@ Appends the char16_t string to this extended string.
 Input parameter: theString the string to append.
 ") AssignCat;
 		void AssignCat(const char16_t * const theString);
-
-		/****** TCollection_ExtendedString::AssignCat ******/
-		/****** md5 signature: 3ae91af5f946507f47e4d780b4740003 ******/
-		%feature("compactdefaultargs") AssignCat;
-		%feature("autodoc", "
-Parameters
-----------
-theStringView: std::u16string_view
-
-Return
--------
-None
-
-Description
------------
-Appends the std::u16string_view to this extended string. 
-Input parameter: theStringView the string view to append.
-") AssignCat;
-		void AssignCat(const std::u16string_view & theStringView);
 
 		/****** TCollection_ExtendedString::Capitalize ******/
 		/****** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ******/
@@ -5361,17 +5309,6 @@ def __iadd__(self, right):
 }
 
 %extend{
-    void __iadd_wrapper__(const std::u16string_view other) {
-    *self += other;
-    }
-}
-%pythoncode {
-def __iadd__(self, right):
-    self.__iadd_wrapper__(right)
-    return self
-}
-
-%extend{
     bool __eq_wrapper__(const char16_t * const other) {
         if (*self==other) return true;
         else return false;
@@ -5411,6 +5348,10 @@ def __eq__(self, right):
 
 	@methodnotwrapped
 	def Move(self):
+		pass
+
+	@methodnotwrapped
+	def u16string_view(self):
 		pass
 	}
 };

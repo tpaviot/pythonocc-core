@@ -9,7 +9,7 @@ operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 11:42:02.909468
+date : 2026-09-21 17:12:38.432104
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -361,6 +361,10 @@ date : 2026-09-21 11:42:02.909468
 [INFO ]      operand > cannot be wrapped
 [INFO ]      operand > cannot be wrapped
 [INFO ]  Class: TCollection_ExtendedString
+[INFO ]      explicitly excluded method TCollection_ExtendedString::e72e19fb497ab7c85bcc889d7fff8360
+[INFO ]      explicitly excluded method TCollection_ExtendedString::2c5272a7bc3d3e18c7d49843bb69015c
+[INFO ]      explicitly excluded method TCollection_ExtendedString::3ae91af5f946507f47e4d780b4740003
+[INFO ]      explicitly excluded method TCollection_ExtendedString::4a2c41388814b7ffd1d0c471db11b04f
 [INFO ]      explicitly excluded method TCollection_ExtendedString::65fff4a141c762cb6d030518fe8f7f05
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator< skipped because invalid name
@@ -373,12 +377,10 @@ date : 2026-09-21 11:42:02.909468
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
-[WARNI]      [TypeHint] Skip type std::u16string_view, because of trailing :
 [WARNI]      [TypeHint] Skipping type const char, should contain _
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
-[WARNI]      [TypeHint] Skip type std::u16string_view, because of trailing :
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping type const char, should contain _
@@ -11734,8 +11736,8 @@ date : 2026-09-21 11:42:02.909468
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.18s
+SWIG interface file generation completed in 10.61s
 #################################################
 
 [INFO ]  Number of classes: 3915
-[INFO ]  Number of methods: 44028
+[INFO ]  Number of methods: 44025
