@@ -16,15 +16,25 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
+import math
 import os
 from xml.etree import ElementTree as ET
 
+import pytest
+
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeCone,
+    BRepPrimAPI_MakeCylinder,
     BRepPrimAPI_MakeTorus,
     BRepPrimAPI_MakeSphere,
 )
+from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.Tesselator import ShapeTesselator
+from OCC.Core.TopoDS import TopoDS_Compound
 
 from OCC.Extend.DataExchange import read_step_file
 
@@ -152,3 +162,63 @@ def test_tessellate_twice():
     torus_tess = ShapeTesselator(another_torus)
     torus_tess.Compute()
     torus_tess.Compute()
+
+
+def test_no_null_normal_at_singular_points():
+    """the normal can't be computed from the surface at the poles of a sphere
+    or the apex of a cone, it must not be null anyway"""
+    for shape in (
+        BRepPrimAPI_MakeSphere(5).Shape(),
+        BRepPrimAPI_MakeCone(5, 0, 10).Shape(),
+    ):
+        tess = ShapeTesselator(shape)
+        tess.Compute(mesh_quality=0.5)
+        for i in range(tess.ObjGetNormalCount()):
+            assert math.hypot(*tess.GetNormal(i)) == pytest.approx(1.0, abs=1e-3)
+
+
+@pytest.mark.parametrize("parallel", [False, True])
+def test_normals_follow_triangles_orientation(parallel):
+    """the normals must point to the side the triangles are facing, including
+    for the reversed faces of a boolean operation"""
+    box = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
+    cylinder = BRepPrimAPI_MakeCylinder(
+        gp_Ax2(gp_Pnt(5, 5, -1), gp_Dir(0, 0, 1)), 2, 12
+    ).Shape()
+    tess = ShapeTesselator(BRepAlgoAPI_Cut(box, cylinder).Shape())
+    tess.Compute(mesh_quality=0.5, parallel=parallel)
+    positions = tess.GetVerticesPositionAsTuple()
+    normals = tess.GetNormalsAsTuple()
+    for t in range(tess.ObjGetTriangleCount()):
+        p = [positions[9 * t + 3 * k : 9 * t + 3 * k + 3] for k in range(3)]
+        u = [p[1][i] - p[0][i] for i in range(3)]
+        v = [p[2][i] - p[0][i] for i in range(3)]
+        cross = [
+            u[1] * v[2] - u[2] * v[1],
+            u[2] * v[0] - u[0] * v[2],
+            u[0] * v[1] - u[1] * v[0],
+        ]
+        normal = [sum(normals[9 * t + 3 * k + i] for k in range(3)) for i in range(3)]
+        assert sum(cross[i] * normal[i] for i in range(3)) > 0
+
+
+def test_edges_with_free_edges():
+    """free edges are skipped, they must not shift the other edges"""
+    builder = BRep_Builder()
+    compound = TopoDS_Compound()
+    builder.MakeCompound(compound)
+    builder.Add(
+        compound, BRepBuilderAPI_MakeEdge(gp_Pnt(-5, 0, 0), gp_Pnt(-5, 9, 0)).Edge()
+    )
+    builder.Add(compound, BRepPrimAPI_MakeSphere(4).Shape())
+    tess = ShapeTesselator(compound)
+    tess.Compute(compute_edges=True, mesh_quality=0.5)
+    # the sphere seam and the two degenerated edges at the poles
+    assert tess.ObjGetEdgeCount() == 3
+    nb_vertices = sorted(tess.ObjEdgeGetVertexCount(i) for i in range(3))
+    assert nb_vertices[:2] == [2, 2]
+    assert nb_vertices[2] > 10
+    for i in range(3):
+        for j in range(tess.ObjEdgeGetVertexCount(i)):
+            x, y, z = tess.GetEdgeVertex(i, j)
+            assert math.hypot(x, y, z) == pytest.approx(4.0, abs=1e-3)

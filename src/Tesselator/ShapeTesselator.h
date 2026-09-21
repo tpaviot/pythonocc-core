@@ -202,9 +202,15 @@ private:
     //! @param face The face
     //! @param triangulation Triangulation data  
     //! @param face_data Face data to update
-    void ProcessNormals(const TopoDS_Face& face,
-                       const Handle(Poly_Triangulation)& triangulation,
-                       Face& face_data);
+    //! @return Number of null normals, at the singular points of the surface
+    Standard_Integer ProcessNormals(const TopoDS_Face& face,
+                                    const Handle(Poly_Triangulation)& triangulation,
+                                    Face& face_data);
+
+    //! Replace the null normals of a face by the average normal of the
+    //! triangles sharing the vertex
+    //! @param face_data Face data to update, triangles must be processed
+    static void FixNullNormals(Face& face_data);
 
     //! Process triangles for a face
     //! @param face The face
