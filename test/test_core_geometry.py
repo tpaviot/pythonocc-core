@@ -17,10 +17,14 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import math
+
 from OCC.Core.gp import (
     gp,
     gp_Pnt,
     gp_Pnt2d,
+    gp_Ax2,
+    gp_Ax2d,
     gp_Ax3,
     gp_Vec,
     gp_Pln,
@@ -47,6 +51,7 @@ from OCC.Core.Geom import (
     Geom_RectangularTrimmedSurface,
     Geom_BSplineCurve,
     Geom_Ellipse,
+    Geom_Curve,
 )
 from OCC.Core.GeomAPI import (
     GeomAPI_PointsToBSpline,
@@ -93,6 +98,12 @@ from OCC.Core.GeomFill import (
 )
 from OCC.Core.Convert import Convert_TgtThetaOver2
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
+from OCC.Core.GeomEval import (
+    GeomEval_CircularHelixCurve,
+    GeomEval_EllipsoidSurface,
+    GeomEval_HyperboloidSurface,
+)
+from OCC.Core.Geom2dEval import Geom2dEval_ArchimedeanSpiralCurve
 
 #
 # Utility functions
@@ -709,3 +720,21 @@ def test_curve_adaptor():
     #     assert
     #         isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve)
     #     )
+
+
+def test_geom_eval_curves_and_surfaces():
+    # GeomEval/Geom2dEval packages, new in occt 8.0
+    helix = GeomEval_CircularHelixCurve(gp_Ax2(), 10.0, 5.0)
+    assert isinstance(helix, Geom_Curve)
+    # after one turn, back on the circle, one pitch higher
+    assert helix.Value(2 * math.pi).IsEqual(gp_Pnt(10.0, 0.0, 5.0), 1e-9)
+    ellipsoid = GeomEval_EllipsoidSurface(gp_Ax3(), 3.0, 2.0, 1.0)
+    assert ellipsoid.Value(0.0, 0.0).IsEqual(gp_Pnt(3.0, 0.0, 0.0), 1e-9)
+    two_sheets = GeomEval_HyperboloidSurface.SheetMode.TwoSheets
+    hyperboloid = GeomEval_HyperboloidSurface(gp_Ax3(), 1.0, 1.0, two_sheets)
+    assert hyperboloid.Mode() == two_sheets
+    # r = r0 + growth_rate * theta
+    spiral = Geom2dEval_ArchimedeanSpiralCurve(
+        gp_Ax2d(gp_Pnt2d(0.0, 0.0), gp_Dir2d(1.0, 0.0)), 1.0, 2.0
+    )
+    assert spiral.Value(math.pi).IsEqual(gp_Pnt2d(-1.0 - 2.0 * math.pi, 0.0), 1e-9)

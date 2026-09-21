@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 7099e8c
+git revision : 7d8956f
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 19:26:08.690789
+date : 2026-09-21 19:29:17.389941
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -1527,6 +1527,33 @@ date : 2026-09-21 19:26:08.690789
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  ## Processing module Geom2dEval
+[INFO ]  Class: Geom2dEval_AHTBezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  Class: Geom2dEval_ArchimedeanSpiralCurve
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  Class: Geom2dEval_CircleInvoluteCurve
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  Class: Geom2dEval_LogarithmicSpiralCurve
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  Class: Geom2dEval_SineWaveCurve
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  Class: Geom2dEval_TBezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
 [INFO ]  ## Processing module LProp
 [INFO ]  Enum: LProp_CIType
 [INFO ]  Enum: LProp_Status
@@ -1898,6 +1925,70 @@ date : 2026-09-21 19:26:08.690789
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAdaptor_SurfaceOfRevolution
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module GeomEval
+[INFO ]  Class: GeomEval_AHTBezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_AHTBezierSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_CircularHelicoidSurface
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_CircularHelixCurve
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_EllipsoidSurface
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_HypParaboloidSurface
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_HyperboloidSurface
+[INFO ]  Enum: SheetMode
+[WARNI]      [TypeHint] Skipping type SheetMode, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[WARNI]      [TypeHint] Skip type GeomEval_HyperboloidSurface::SheetMode, because of trailing :
+[WARNI]      [TypeHint] Skipping type SheetMode, should contain _
+[INFO ]  Class: GeomEval_ParaboloidSurface
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_SineWaveCurve
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_TBezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD3, because of trailing :
+[INFO ]  Class: GeomEval_TBezierSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
 [INFO ]  ## Processing module GeomLProp
 [INFO ]  Class: GeomLProp
 [INFO ]  Class: GeomLProp_CurAndInf2d
@@ -11693,8 +11784,8 @@ date : 2026-09-21 19:26:08.690789
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.29s
+SWIG interface file generation completed in 9.25s
 #################################################
 
-[INFO ]  Number of classes: 3915
-[INFO ]  Number of methods: 44025
+[INFO ]  Number of classes: 3932
+[INFO ]  Number of methods: 44445

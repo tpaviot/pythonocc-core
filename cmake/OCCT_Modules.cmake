@@ -51,11 +51,13 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	TColGeom2d
 	Adaptor2d
 	Geom2dAdaptor
+	Geom2dEval
 # TKG3d
 	Geom
 	GProp
 	TColGeom
 	GeomAdaptor
+	GeomEval
 	AdvApprox
 	GeomLProp
 	Adaptor3d
