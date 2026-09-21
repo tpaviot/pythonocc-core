@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -18,7 +18,7 @@ from OCC.Core.GeomFill import *
 from OCC.Core.Law import *
 from OCC.Core.Approx import *
 
-BRepOffsetAPI_Sewing = NewType("BRepOffsetAPI_Sewing", BRepBuilderAPI_Sewing)
+BRepOffsetAPI_Sewing = BRepBuilderAPI_Sewing
 
 class BRepOffsetAPI_SequenceOfSequenceOfReal:
     def __init__(self) -> None: ...

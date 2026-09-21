@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -26,8 +26,8 @@ from OCC.Core.Geom import *
 from OCC.Core.Poly import *
 from OCC.Core.Image import *
 
-AIS_AnimationTimer = NewType("AIS_AnimationTimer", Media_Timer)
-AIS_DisplayStatus = NewType("AIS_DisplayStatus", PrsMgr_DisplayStatus)
+AIS_AnimationTimer = Media_Timer
+AIS_DisplayStatus = PrsMgr_DisplayStatus
 
 class AIS_ListOfInteractive:
     def __init__(self) -> None: ...

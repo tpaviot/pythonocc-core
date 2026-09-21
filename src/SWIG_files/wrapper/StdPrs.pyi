@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -23,7 +23,7 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 from OCC.Core.BRepLib import *
 
-StdPrs_BndBox = NewType("StdPrs_BndBox", Prs3d_BndBox)
+StdPrs_BndBox = Prs3d_BndBox
 # the following typedef cannot be wrapped as is
 StdPrs_Point = NewType("StdPrs_Point", Any)
 # the following typedef cannot be wrapped as is

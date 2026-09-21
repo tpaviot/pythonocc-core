@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -20,7 +20,7 @@ from OCC.Core.TopTools import *
 from OCC.Core.XCAFView import *
 from OCC.Core.Graphic3d import *
 
-XCAFDoc_PartId = NewType("XCAFDoc_PartId", TCollection_AsciiString)
+XCAFDoc_PartId = TCollection_AsciiString
 
 class XCAFDoc_ColorType(IntEnum):
     XCAFDoc_ColorGen: int = ...

@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -16,7 +16,7 @@ from OCC.Core.TColStd import *
 from OCC.Core.Bnd import *
 from OCC.Core.IntAna import *
 
-IntPatch_SearchPnt = NewType("IntPatch_SearchPnt", Intf_InterferencePolygon2d)
+IntPatch_SearchPnt = Intf_InterferencePolygon2d
 
 class IntPatch_SequenceOfIWLineOfTheIWalking:
     def __init__(self) -> None: ...

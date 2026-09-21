@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -13,7 +13,7 @@ from OCC.Core.TColStd import *
 from OCC.Core.Bnd import *
 from OCC.Core.Image import *
 
-V3d_Light = NewType("V3d_Light", Graphic3d_CLight)
+V3d_Light = Graphic3d_CLight
 
 class V3d_ListOfLight:
     def __init__(self) -> None: ...

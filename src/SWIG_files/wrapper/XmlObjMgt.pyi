@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -9,8 +9,8 @@ from OCC.Core.gp import *
 from OCC.Core.Storage import *
 
 XmlObjMgt_DOMString = NewType("XmlObjMgt_DOMString", LDOMString)
-XmlObjMgt_Document = NewType("XmlObjMgt_Document", LDOM_Document)
-XmlObjMgt_Element = NewType("XmlObjMgt_Element", LDOM_Element)
+XmlObjMgt_Document = LDOM_Document
+XmlObjMgt_Element = LDOM_Element
 
 class xmlobjmgt:
     @staticmethod

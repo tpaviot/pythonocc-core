@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -21,22 +21,22 @@ from OCC.Core.Law import *
 from OCC.Core.ChFiDS import *
 from OCC.Core.TopAbs import *
 
-BRepBlend_CSCircular = NewType("BRepBlend_CSCircular", BlendFunc_CSCircular)
-BRepBlend_CSConstRad = NewType("BRepBlend_CSConstRad", BlendFunc_CSConstRad)
-BRepBlend_ChAsym = NewType("BRepBlend_ChAsym", BlendFunc_ChAsym)
-BRepBlend_ChAsymInv = NewType("BRepBlend_ChAsymInv", BlendFunc_ChAsymInv)
-BRepBlend_ChamfInv = NewType("BRepBlend_ChamfInv", BlendFunc_ChamfInv)
-BRepBlend_Chamfer = NewType("BRepBlend_Chamfer", BlendFunc_Chamfer)
-BRepBlend_ConstRad = NewType("BRepBlend_ConstRad", BlendFunc_ConstRad)
-BRepBlend_ConstRadInv = NewType("BRepBlend_ConstRadInv", BlendFunc_ConstRadInv)
-BRepBlend_ConstThroat = NewType("BRepBlend_ConstThroat", BlendFunc_ConstThroat)
-BRepBlend_ConstThroatInv = NewType("BRepBlend_ConstThroatInv", BlendFunc_ConstThroatInv)
-BRepBlend_ConstThroatWithPenetration = NewType("BRepBlend_ConstThroatWithPenetration", BlendFunc_ConstThroatWithPenetration)
-BRepBlend_ConstThroatWithPenetrationInv = NewType("BRepBlend_ConstThroatWithPenetrationInv", BlendFunc_ConstThroatWithPenetrationInv)
-BRepBlend_EvolRad = NewType("BRepBlend_EvolRad", BlendFunc_EvolRad)
-BRepBlend_EvolRadInv = NewType("BRepBlend_EvolRadInv", BlendFunc_EvolRadInv)
-BRepBlend_Ruled = NewType("BRepBlend_Ruled", BlendFunc_Ruled)
-BRepBlend_RuledInv = NewType("BRepBlend_RuledInv", BlendFunc_RuledInv)
+BRepBlend_CSCircular = BlendFunc_CSCircular
+BRepBlend_CSConstRad = BlendFunc_CSConstRad
+BRepBlend_ChAsym = BlendFunc_ChAsym
+BRepBlend_ChAsymInv = BlendFunc_ChAsymInv
+BRepBlend_ChamfInv = BlendFunc_ChamfInv
+BRepBlend_Chamfer = BlendFunc_Chamfer
+BRepBlend_ConstRad = BlendFunc_ConstRad
+BRepBlend_ConstRadInv = BlendFunc_ConstRadInv
+BRepBlend_ConstThroat = BlendFunc_ConstThroat
+BRepBlend_ConstThroatInv = BlendFunc_ConstThroatInv
+BRepBlend_ConstThroatWithPenetration = BlendFunc_ConstThroatWithPenetration
+BRepBlend_ConstThroatWithPenetrationInv = BlendFunc_ConstThroatWithPenetrationInv
+BRepBlend_EvolRad = BlendFunc_EvolRad
+BRepBlend_EvolRadInv = BlendFunc_EvolRadInv
+BRepBlend_Ruled = BlendFunc_Ruled
+BRepBlend_RuledInv = BlendFunc_RuledInv
 
 class BRepBlend_SequenceOfLine:
     def __init__(self) -> None: ...

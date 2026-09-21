@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 6193765
+git revision : 74c6818
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 08:00:06.066986
+date : 2026-09-21 11:42:02.909468
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -11734,7 +11734,7 @@ date : 2026-09-21 08:00:06.066986
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 15.20s
+SWIG interface file generation completed in 10.18s
 #################################################
 
 [INFO ]  Number of classes: 3915

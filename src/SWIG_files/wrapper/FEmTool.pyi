@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -69,12 +69,12 @@ class FEmTool_SparseMatrix: ...
 # harray1 classes
 # harray2 classes
 
-class FEmTool_HAssemblyTable(NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>, Standard_Transient):
+class FEmTool_HAssemblyTable(FEmTool_AssemblyTable, Standard_Transient):
     @overload
     def __init__(self, theRowLow: int, theRowUpp: int, theColLow: int, theColUpp: int) -> None: ...
     @overload
-    def __init__(self, theOther: NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>) -> None: ...
-    def Array2(self) -> NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>: ...
+    def __init__(self, theOther: FEmTool_AssemblyTable) -> None: ...
+    def Array2(self) -> FEmTool_AssemblyTable: ...
 
 # hsequence classes
 

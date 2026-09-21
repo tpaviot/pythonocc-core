@@ -1,5 +1,5 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -14,7 +14,7 @@ from OCC.Core.Aspect import *
 from OCC.Core.Quantity import *
 from OCC.Core.TColStd import *
 
-Prs3d_Presentation = NewType("Prs3d_Presentation", Graphic3d_Structure)
+Prs3d_Presentation = Graphic3d_Structure
 
 class Prs3d_NListOfSequenceOfPnt:
     def __init__(self) -> None: ...
