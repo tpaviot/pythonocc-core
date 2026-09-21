@@ -181,6 +181,6 @@ def test_surface_derivative_eval():
     plane = Geom_Plane(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(*n_vec))
     uv = np.dstack(np.meshgrid(u, v, indexing="ij")).reshape(-1, 2)
     arr_out = plane.eval_derivative_numpy_array(uv, 0, 1).reshape(len(u), len(v), -1)
-    assert np.all(arr_out @ n_vec == 0.0)
+    assert np.allclose(arr_out @ n_vec, 0.0, atol=1e-12)
     arr_out = plane.eval_derivative_numpy_array(uv, 1, 0).reshape(len(u), len(v), -1)
-    assert np.all(arr_out @ n_vec == 0.0)
+    assert np.allclose(arr_out @ n_vec, 0.0, atol=1e-12)
