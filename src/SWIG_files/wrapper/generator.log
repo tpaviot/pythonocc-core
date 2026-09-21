@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 74c6818
+git revision : 7099e8c
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 17:12:38.432104
+date : 2026-09-21 19:26:08.690789
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -1527,10 +1527,6 @@ date : 2026-09-21 17:12:38.432104
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
-[INFO ]  ## Processing module Geom2dEvaluator
-[WARNI]  No file for module Geom2dEvaluator. Please check that the module name is part of occt.
-[INFO ]  ## Processing module Geom2dLProp
-[WARNI]  No file for module Geom2dLProp. Please check that the module name is part of occt.
 [INFO ]  ## Processing module LProp
 [INFO ]  Enum: LProp_CIType
 [INFO ]  Enum: LProp_Status
@@ -1902,14 +1898,10 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAdaptor_SurfaceOfRevolution
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module GeomEvaluator
-[WARNI]  No file for module GeomEvaluator. Please check that the module name is part of occt.
 [INFO ]  ## Processing module GeomLProp
 [INFO ]  Class: GeomLProp
 [INFO ]  Class: GeomLProp_CurAndInf2d
 [INFO ]      ToolAccess skipped because it is a class template
-[INFO ]  ## Processing module LProp3d
-[WARNI]  No file for module LProp3d. Please check that the module name is part of occt.
 [INFO ]  ## Processing module TColGeom
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -5219,8 +5211,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Plate_SampledCurveConstraint
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<Plate_PinpointConstraint>, seems to be a template
-[INFO ]  ## Processing module TopClass
-[WARNI]  No file for module TopClass. Please check that the module name is part of occt.
 [INFO ]  ## Processing module TopTrans
 [INFO ]  Class: TopTrans_CurveTransition
 [INFO ]  Class: TopTrans_SurfaceTransition
@@ -7384,8 +7374,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]  Enum: 
 [INFO ]      equal_to<opencascade::handle<Image_Texture>> skipped because it is a class template
 [INFO ]      hash<opencascade::handle<Image_Texture>> skipped because it is a class template
-[INFO ]  ## Processing module InterfaceGraphic
-[WARNI]  No file for module InterfaceGraphic. Please check that the module name is part of occt.
 [INFO ]  ## Processing module Media
 [INFO ]  Class: Media_BufferPool
 [WARNI]      [TypeHint] Skipping type AVBufferRef *, should contain _
@@ -7427,8 +7415,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]  Class: Media_Scaler
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: Media_Timer
-[INFO ]  ## Processing module TColQuantity
-[WARNI]  No file for module TColQuantity. Please check that the module name is part of occt.
 [INFO ]  Processing toolkit TKV3d ===
 [INFO ]  ## Processing module AIS
 [INFO ]  Enum: AIS_DisplayMode
@@ -8498,12 +8484,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]  Class: GeomToStep_MakeToroidalSurface
 [INFO ]  Class: GeomToStep_MakeVector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  ## Processing module RWStepAP203
-[WARNI]  No file for module RWStepAP203. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepAP214
-[WARNI]  No file for module RWStepAP214. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepAP242
-[WARNI]  No file for module RWStepAP242. Please check that the module name is part of occt.
 [INFO ]  ## Processing module STEPConstruct
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type gp_Pnt,opencascade::handle, because of trailing :
@@ -8850,10 +8830,6 @@ date : 2026-09-21 17:12:38.432104
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Processing toolkit TKSTEP209 ===
-[INFO ]  ## Processing module RWStepElement
-[WARNI]  No file for module RWStepElement. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepFEA
-[WARNI]  No file for module RWStepFEA. Please check that the module name is part of occt.
 [INFO ]  ## Processing module StepElement
 [INFO ]  Enum: StepElement_CurveEdge
 [INFO ]  Enum: StepElement_Element2dShape
@@ -9055,12 +9031,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]  Class: StepFEA_NodeWithSolutionCoordinateSystem
 [INFO ]  Class: StepFEA_NodeWithVector
 [INFO ]  Processing toolkit TKSTEPAttr ===
-[INFO ]  ## Processing module RWStepDimTol
-[WARNI]  No file for module RWStepDimTol. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepKinematics
-[WARNI]  No file for module RWStepKinematics. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepVisual
-[WARNI]  No file for module RWStepVisual. Please check that the module name is part of occt.
 [INFO ]  ## Processing module StepDimTol
 [INFO ]  Enum: StepDimTol_AreaUnitType
 [INFO ]  Enum: StepDimTol_DatumReferenceModifierType
@@ -9470,14 +9440,6 @@ date : 2026-09-21 17:12:38.432104
 [INFO ]  Class: StepVisual_TessellatedConnectingEdge
 [INFO ]  Class: StepVisual_TriangulatedFace
 [INFO ]  Processing toolkit TKSTEPBase ===
-[INFO ]  ## Processing module RWStepBasic
-[WARNI]  No file for module RWStepBasic. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepGeom
-[WARNI]  No file for module RWStepGeom. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepRepr
-[WARNI]  No file for module RWStepRepr. Please check that the module name is part of occt.
-[INFO ]  ## Processing module RWStepShape
-[WARNI]  No file for module RWStepShape. Please check that the module name is part of occt.
 [INFO ]  ## Processing module StepBasic
 [INFO ]  Enum: StepBasic_AheadOrBehind
 [INFO ]  Enum: StepBasic_SiPrefix
@@ -11116,11 +11078,6 @@ date : 2026-09-21 17:12:38.432104
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
-[INFO ]  Processing toolkit TKXDECascade ===
-[INFO ]  ## Processing module DEBRepCascade
-[WARNI]  No file for module DEBRepCascade. Please check that the module name is part of occt.
-[INFO ]  ## Processing module DEXCAFCascade
-[WARNI]  No file for module DEXCAFCascade. Please check that the module name is part of occt.
 [INFO ]  Processing toolkit TKBin ===
 [INFO ]  ## Processing module BinDrivers
 [INFO ]  Enum: BinDrivers_Marker
@@ -11736,7 +11693,7 @@ date : 2026-09-21 17:12:38.432104
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.61s
+SWIG interface file generation completed in 10.29s
 #################################################
 
 [INFO ]  Number of classes: 3915

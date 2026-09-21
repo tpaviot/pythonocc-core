@@ -54,7 +54,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 #include<Bnd_module.hxx>
 #include<Image_module.hxx>
 #include<TShort_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom_module.hxx>
 #include<BVH_module.hxx>

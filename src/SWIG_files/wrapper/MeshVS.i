@@ -63,7 +63,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_meshvs.html"
 #include<Geom_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<Poly_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<TopoDS_module.hxx>
 #include<V3d_module.hxx>
 #include<TopLoc_module.hxx>

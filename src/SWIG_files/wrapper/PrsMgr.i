@@ -62,7 +62,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prsmgr.html"
 #include<Message_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Poly_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Quantity_module.hxx>

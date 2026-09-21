@@ -68,7 +68,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xcafprs.html"
 #include<SelectBasics_module.hxx>
 #include<Prs3d_module.hxx>
 #include<Media_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<TDF_module.hxx>
 #include<TDataStd_module.hxx>
 #include<TNaming_module.hxx>

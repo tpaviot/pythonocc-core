@@ -65,7 +65,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_selectmgr.html"
 #include<SelectBasics_module.hxx>
 #include<gp_module.hxx>
 #include<HLRAlgo_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Geom_module.hxx>
 #include<Aspect_module.hxx>
 #include<Poly_module.hxx>

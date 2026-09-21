@@ -55,7 +55,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_prs3d.html"
 #include<Quantity_module.hxx>
 #include<TColStd_module.hxx>
 #include<TShort_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Message_module.hxx>
 #include<BVH_module.hxx>
 #include<V3d_module.hxx>

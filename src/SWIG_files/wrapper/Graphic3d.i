@@ -56,7 +56,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_graphic3d.html"
 #include<OSD_module.hxx>
 #include<Media_module.hxx>
 #include<TShort_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<BVH_module.hxx>
 #include<TopTools_module.hxx>
 #include<SelectMgr_module.hxx>

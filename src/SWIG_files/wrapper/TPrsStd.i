@@ -61,7 +61,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_tprsstd.html"
 #include<Aspect_module.hxx>
 #include<TNaming_module.hxx>
 #include<Select3D_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Message_module.hxx>
 #include<Poly_module.hxx>
 #include<Prs3d_module.hxx>

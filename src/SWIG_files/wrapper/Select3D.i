@@ -55,7 +55,6 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_select3d.html"
 #include<TColStd_module.hxx>
 #include<Geom_module.hxx>
 #include<TShort_module.hxx>
-#include<TColQuantity_module.hxx>
 #include<Aspect_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<Quantity_module.hxx>

@@ -50,9 +50,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	LProp
 	TColGeom2d
 	Adaptor2d
-	Geom2dLProp
 	Geom2dAdaptor
-	Geom2dEvaluator
 # TKG3d
 	Geom
 	GProp
@@ -61,9 +59,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	AdvApprox
 	GeomLProp
 	Adaptor3d
-	LProp3d
 	TopAbs
-	GeomEvaluator
 # TKGeomBase
 	ProjLib
 	GeomProjLib
@@ -147,7 +143,6 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	FairCurve
 	NLPlate
 	IntPolyh
-	TopClass
 # TKHLR
 	HLRTopoBRep
 	HLRBRep
@@ -209,9 +204,7 @@ LIST(APPEND OCCT_TOOLKIT_VISUALIZATION
 # TKService
 	Aspect
 	Image
-	InterfaceGraphic
 	Media
-	TColQuantity
 	Graphic3d
 # TKV3d
 	AIS
@@ -245,9 +238,7 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	RWMesh
 # TKSTEP
 	StepAP214
-	RWStepAP214
 	StepAP203
-	RWStepAP203
 	STEPConstruct
 	STEPEdit
 	GeomToStep
@@ -257,29 +248,19 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	STEPControl
 	STEPSelections
 	StepAP209
-	RWStepAP242
 	StepAP242
 # TKSTEP209
-	RWStepElement
-	RWStepFEA
 	StepElement
 	StepFEA
 # TKSTEPAttr
-	RWStepDimTol
-	RWStepKinematics
-	RWStepVisual
 	StepDimTol
 	StepKinematics
 	StepVisual
 # TKSTEPBase
 	StepBasic
-	RWStepBasic
 	StepRepr
-	RWStepRepr
 	StepGeom
-	RWStepGeom
 	StepShape
-	RWStepShape
 	StepData
 # TKSTL
 	StlAPI
@@ -315,9 +296,6 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	XmlMXCAFDoc
 # TKXDE
 	DE
-# TKXDECascade
-    DEBRepCascade
-    DEXCAFCascade
 )
 
 LIST(APPEND OCCT_TOOLKIT_OCAF
