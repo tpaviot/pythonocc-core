@@ -34,6 +34,7 @@ from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
 from OCC.Core.GeomAbs import (
     GeomAbs_Shape,
     GeomAbs_C0,
+    GeomAbs_BezierCurve,
     GeomAbs_Plane,
     GeomAbs_Cylinder,
     GeomAbs_Cone,
@@ -71,7 +72,6 @@ from OCC.Core.gp import (
     gp_Mat,
     gp_XYZ,
 )
-from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 
 from OCC.Extend.TopologyUtils import is_edge, is_face
 
@@ -80,8 +80,8 @@ from OCC.Extend.TopologyUtils import is_edge, is_face
 # assert utils
 #
 def assert_shape_not_null(shp: TopoDS_Shape) -> None:
-    """Checks if a shape is not None."""
-    if shp is None:
+    """Checks if a shape is neither None nor a null shape."""
+    if shp is None or shp.IsNull():
         raise AssertionError("Shape is Null.")
 
 
@@ -167,6 +167,7 @@ def make_wire(*args: Union[List[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
         for i in args[0]:
             wire.Add(i)
         wire.Build()
+        assert_isdone(wire, "failed to produce wire")
         return wire.Wire()
     wire = BRepBuilderAPI_MakeWire(*args)
     assert_isdone(wire, "failed to produce wire")
@@ -180,10 +181,7 @@ def points_to_bspline(pnts: List[gp_Pnt]) -> Geom_BSplineCurve:
     :param pnts: A list of gp_Pnt.
     :return: A Geom_BSplineCurve.
     """
-    pts = TColgp_Array1OfPnt(0, len(pnts) - 1)
-    for n, i in enumerate(pnts):
-        pts.SetValue(n, i)
-    crv = GeomAPI_PointsToBSpline(pts)
+    crv = GeomAPI_PointsToBSpline(point_list_to_TColgp_Array1OfPnt(pnts))
     return crv.Curve()
 
 
@@ -200,7 +198,7 @@ def edge_to_bezier(
         - The degree of the Bezier curve if successful, otherwise None.
     """
     ad = BRepAdaptor_Curve(topods_edge)
-    if ad.IsRational():
+    if ad.GetType() == GeomAbs_BezierCurve:
         return True, ad.Bezier(), ad.Degree()
     return False, None, None
 
@@ -357,20 +355,21 @@ def get_boundingbox(
 
     :param shape: The TopoDS_Shape to compute the bounding box from.
     :param tol: The tolerance of the bounding box. Defaults to 1e-6.
-    :param use_mesh: If True, the shape is meshed before computing the
-        bounding box for better accuracy. Defaults to True.
+    :param use_mesh: If True, computes a precise bounding box, from the exact
+        geometry of the shape. Otherwise the box is faster to compute but
+        larger. The name is kept for compatibility: the shape used to be
+        meshed, which was slower, less precise and modified the shape.
+        Defaults to True.
     :return: A tuple of the min and max coordinates (xmin, ymin, zmin, xmax, ymax, zmax).
     """
     bbox = Bnd_Box()
     bbox.SetGap(tol)
     if use_mesh:
-        mesh = BRepMesh_IncrementalMesh()
-        mesh.SetParallelDefault(True)
-        mesh.SetShape(shape)
-        mesh.Perform()
-        if not mesh.IsDone():
-            raise AssertionError("Mesh not done.")
-    brepbndlib.Add(shape, bbox, use_mesh)
+        use_triangulation = False
+        use_shape_tolerance = True
+        brepbndlib.AddOptimal(shape, bbox, use_triangulation, use_shape_tolerance)
+    else:
+        brepbndlib.Add(shape, bbox, False)
 
     xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
     return xmin, ymin, zmin, xmax, ymax, zmax
@@ -474,9 +473,8 @@ def make_extrusion(
         vector = gp_Vec(0.0, 0.0, 1.0)
     if not isinstance(vector, gp_Vec):
         raise TypeError("vector must be a gp_Vec")
-    vector.Normalize()
-    vector.Scale(length)
-    return BRepPrimAPI_MakePrism(face, vector).Shape()
+    # don't modify the vector passed by the caller
+    return BRepPrimAPI_MakePrism(face, vector.Normalized() * length).Shape()
 
 
 ##################################

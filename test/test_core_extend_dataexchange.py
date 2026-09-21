@@ -19,7 +19,10 @@
 
 import os
 
+import pytest
+
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+from OCC.Core.Interface import Interface_Static
 from OCC.Core.TopoDS import TopoDS_Compound
 
 from OCC.Extend.DataExchange import (
@@ -185,3 +188,20 @@ def test_write_gltf_ascii():
     write_gltf_file(A_TOPODS_SHAPE, gltf_filename, binary=False)
     check_is_file(gltf_filename)
     check_is_file(get_test_fullname("sample_ascii.bin"))
+
+
+def test_write_step_file_restores_schema():
+    schema = Interface_Static.CVal("write.step.schema")
+    write_step_file(
+        A_TOPODS_SHAPE,
+        get_test_fullname("sample_242.stp"),
+        application_protocol="AP242DIS",
+    )
+    assert Interface_Static.CVal("write.step.schema") == schema
+
+
+def test_read_step_file_names_colors_invalid_file(tmp_path):
+    invalid_step_file = tmp_path / "invalid.stp"
+    invalid_step_file.write_text("not a step file")
+    with pytest.raises(IOError):
+        read_step_file_with_names_colors(str(invalid_step_file))

@@ -111,7 +111,7 @@ def discretize_wire(
     a_wire: TopoDS_Wire,
     deflection: float = 0.5,
     algorithm: str = "QuasiUniformDeflection",
-) -> List[gp_Pnt]: ...
+) -> List[Tuple[float, float, float]]: ...
 def discretize_edge(
     a_edge: TopoDS_Edge,
     deflection: float = 0.2,

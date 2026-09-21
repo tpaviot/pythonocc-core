@@ -16,6 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import warnings
 from typing import Union, List, Dict, Tuple, Any
 
 from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape
@@ -41,6 +42,9 @@ from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import (
     XCAFDoc_DocumentTool,
     XCAFDoc_ColorTool,
+    XCAFDoc_ColorGen,
+    XCAFDoc_ColorSurf,
+    XCAFDoc_ColorCurv,
 )
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
@@ -171,19 +175,23 @@ def write_step_file(
 
     if application_protocol not in ["AP203", "AP214IS", "AP242DIS"]:
         raise AssertionError(
-            f"application_protocol must be either AP203 or AP214IS. You passed {application_protocol}."
+            "application_protocol must be either AP203, AP214IS or AP242DIS. "
+            f"You passed {application_protocol}."
         )
 
     if os.path.isfile(filename):
-        print(f"Warning: {filename} file already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced")
 
-    # Initialize STEP writer
-    writer = STEPControl_Writer()
+    # the schema is a global parameter: restore it once the file is written
+    previous_schema = Interface_Static.CVal("write.step.schema")
     Interface_Static.SetCVal("write.step.schema", application_protocol)
-
-    # Convert and write shape
-    writer.Transfer(shape, STEPControl_AsIs)
-    status = writer.Write(filename)
+    try:
+        # Convert and write shape
+        writer = STEPControl_Writer()
+        writer.Transfer(shape, STEPControl_AsIs)
+        status = writer.Write(filename)
+    finally:
+        Interface_Static.SetCVal("write.step.schema", previous_schema)
 
     if status != IFSelect_RetDone:
         raise IOError("Error while writing shape to STEP file.")
@@ -227,149 +235,66 @@ def read_step_file_with_names_colors(
     step_reader.SetGDTMode(True)
 
     status = step_reader.ReadFile(filename)
-    if status == IFSelect_RetDone:
-        step_reader.Transfer(doc)
+    if status != IFSelect_RetDone:
+        raise IOError(f"Error while reading STEP file {filename}.")
+    step_reader.Transfer(doc)
 
     locs = []
+    color_types = (XCAFDoc_ColorGen, XCAFDoc_ColorSurf, XCAFDoc_ColorCurv)
 
-    def _get_sub_shapes(lab, loc):
-        l_subss = TDF_LabelSequence()
-        shape_tool.GetSubShapes(lab, l_subss)
-        # print("Nb subshapes   :", l_subss.Length())
-        l_comps = TDF_LabelSequence()
-        shape_tool.GetComponents(lab, l_comps)
+    def _get_color(shape, label):
+        """Returns the instance color of the shape, or the color of its label,
+        or a default grey color."""
+        color = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
+        if any(
+            color_tool.GetInstanceColor(shape, t, color) for t in color_types
+        ) or any(XCAFDoc_ColorTool.GetColor(label, t, color) for t in color_types):
+            for color_type in color_types:
+                color_tool.SetInstanceColor(shape, color_type, color)
+        return color
 
-        name = lab.GetLabelName()
-        print("Name :", name)
-
+    def _get_sub_shapes(lab):
         if shape_tool.IsAssembly(lab):
             l_c = TDF_LabelSequence()
             shape_tool.GetComponents(lab, l_c)
             for i in range(l_c.Length()):
                 label = l_c.Value(i + 1)
                 if shape_tool.IsReference(label):
-                    # print("\n########  reference label :", label)
                     label_reference = TDF_Label()
                     shape_tool.GetReferredShape(label, label_reference)
-                    loc = shape_tool.GetLocation(label)
-                    locs.append(loc)
-                    _get_sub_shapes(label_reference, loc)
+                    locs.append(shape_tool.GetLocation(label))
+                    _get_sub_shapes(label_reference)
                     locs.pop()
 
         elif shape_tool.IsSimpleShape(lab):
-            # print("\n########  simpleshape label :", lab)
             shape = shape_tool.GetShape(lab)
-            # print("    all ass locs   :", locs)
 
             loc = TopLoc_Location()
             for location in locs:
                 loc = loc.Multiplied(location)
 
-            c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
-            color_set = False
-            if (
-                color_tool.GetInstanceColor(shape, 0, c)
-                or color_tool.GetInstanceColor(shape, 1, c)
-                or color_tool.GetInstanceColor(shape, 2, c)
-            ):
-                color_tool.SetInstanceColor(shape, 0, c)
-                color_tool.SetInstanceColor(shape, 1, c)
-                color_tool.SetInstanceColor(shape, 2, c)
-                color_set = True
-                n = c.Name(c.Red(), c.Green(), c.Blue())
-                print(
-                    "    instance color Name & RGB: ",
-                    c,
-                    n,
-                    c.Red(),
-                    c.Green(),
-                    c.Blue(),
-                )
-
-            if not color_set:
-                if (
-                    XCAFDoc_ColorTool.GetColor(lab, 0, c)
-                    or XCAFDoc_ColorTool.GetColor(lab, 1, c)
-                    or XCAFDoc_ColorTool.GetColor(lab, 2, c)
-                ):
-                    color_tool.SetInstanceColor(shape, 0, c)
-                    color_tool.SetInstanceColor(shape, 1, c)
-                    color_tool.SetInstanceColor(shape, 2, c)
-
-                    n = c.Name(c.Red(), c.Green(), c.Blue())
-                    print(
-                        "    shape color Name & RGB: ",
-                        c,
-                        n,
-                        c.Red(),
-                        c.Green(),
-                        c.Blue(),
-                    )
-
+            c = _get_color(shape, lab)
             shape_disp = BRepBuilderAPI_Transform(shape, loc.Transformation()).Shape()
             if shape_disp not in output_shapes:
                 output_shapes[shape_disp] = [lab.GetLabelName(), c]
+
+            l_subss = TDF_LabelSequence()
+            shape_tool.GetSubShapes(lab, l_subss)
             for i in range(l_subss.Length()):
                 lab_subs = l_subss.Value(i + 1)
-                # print("\n########  simpleshape subshape label :", lab)
                 shape_sub = shape_tool.GetShape(lab_subs)
-
-                c = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
-                color_set = False
-                if (
-                    color_tool.GetInstanceColor(shape_sub, 0, c)
-                    or color_tool.GetInstanceColor(shape_sub, 1, c)
-                    or color_tool.GetInstanceColor(shape_sub, 2, c)
-                ):
-                    color_tool.SetInstanceColor(shape_sub, 0, c)
-                    color_tool.SetInstanceColor(shape_sub, 1, c)
-                    color_tool.SetInstanceColor(shape_sub, 2, c)
-                    color_set = True
-                    n = c.Name(c.Red(), c.Green(), c.Blue())
-                    print(
-                        "    instance color Name & RGB: ",
-                        c,
-                        n,
-                        c.Red(),
-                        c.Green(),
-                        c.Blue(),
-                    )
-
-                if not color_set:
-                    if (
-                        XCAFDoc_ColorTool.GetColor(lab_subs, 0, c)
-                        or XCAFDoc_ColorTool.GetColor(lab_subs, 1, c)
-                        or XCAFDoc_ColorTool.GetColor(lab_subs, 2, c)
-                    ):
-                        color_tool.SetInstanceColor(shape, 0, c)
-                        color_tool.SetInstanceColor(shape, 1, c)
-                        color_tool.SetInstanceColor(shape, 2, c)
-
-                        n = c.Name(c.Red(), c.Green(), c.Blue())
-                        print(
-                            "    shape color Name & RGB: ",
-                            c,
-                            n,
-                            c.Red(),
-                            c.Green(),
-                            c.Blue(),
-                        )
+                c = _get_color(shape_sub, lab_subs)
+                # position the subshape to display
                 shape_to_disp = BRepBuilderAPI_Transform(
                     shape_sub, loc.Transformation()
                 ).Shape()
-                # position the subshape to display
                 if shape_to_disp not in output_shapes:
                     output_shapes[shape_to_disp] = [lab_subs.GetLabelName(), c]
 
-    def _get_shapes():
-        labels = TDF_LabelSequence()
-        shape_tool.GetFreeShapes(labels)
-        print("Number of shapes at root :", labels.Length())
-        for i in range(labels.Length()):
-            root_item = labels.Value(i + 1)
-            _get_sub_shapes(root_item, None)
-
-    _get_shapes()
+    labels = TDF_LabelSequence()
+    shape_tool.GetFreeShapes(labels)
+    for i in range(labels.Length()):
+        _get_sub_shapes(labels.Value(i + 1))
     return output_shapes
 
 
@@ -407,7 +332,7 @@ def write_stl_file(
         raise AssertionError("mode should be either ascii or binary")
 
     if os.path.isfile(filename):
-        print(f"Warning: {filename} already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced")
 
     # Mesh the shape
     mesh = BRepMesh_IncrementalMesh(
@@ -420,9 +345,7 @@ def write_stl_file(
     # Export to STL
     writer = StlAPI_Writer()
     writer.SetASCIIMode(mode == "ascii")
-    writer.Write(shape, filename)
-
-    if not os.path.isfile(filename):
+    if not writer.Write(shape, filename) or not os.path.isfile(filename):
         raise IOError("File not written to disk.")
 
 
@@ -539,7 +462,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
     if a_shape.IsNull():
         raise AssertionError("Shape is null.")
     if os.path.isfile(filename):
-        print(f"Warning: {filename} already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced")
     # create and initialize the step exporter
     iges_writer = IGESControl_Writer()
     iges_writer.AddShape(a_shape)
@@ -664,7 +587,7 @@ def export_shape_to_svg(
     bb2d_height = y_max - y_min
 
     # build the svg drawing
-    dwg = svgwrite.Drawing(filename, (width, height), debug=True)
+    dwg = svgwrite.Drawing(filename, (width, height), debug=False)
     # adjust the view box so that the lines fit then svg canvas
     dwg.viewbox(
         x_min - margin_left,
@@ -684,9 +607,35 @@ def export_shape_to_svg(
         dwg.save()
         if not os.path.isfile(filename):
             raise AssertionError("svg export failed")
-        print(f"Shape successfully exported to {filename}")
         return True
     return dwg.tostring()
+
+
+def _mesh_shape_to_document(
+    a_shape: TopoDS_Shape, doc_name: str
+) -> Tuple[TDocStd_Document, TColStd_IndexedDataMapOfStringString]:
+    """
+    Meshes a shape and adds it to a new XCAF document, for the mesh writers.
+
+    :param a_shape: The TopoDS_Shape to mesh. Its previous triangulation is removed.
+    :param doc_name: The name of the document.
+    :return: The document and the file metadata.
+    """
+    doc = TDocStd_Document(doc_name)
+    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+
+    # mesh shape, with a linear deflection of 1.0
+    breptools.Clean(a_shape)
+    BRepMesh_IncrementalMesh(a_shape, 1.0)
+
+    shape_tool.AddShape(a_shape)
+
+    # metadata
+    a_file_info = TColStd_IndexedDataMapOfStringString()
+    a_file_info.Add(
+        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
+    )
+    return doc, a_file_info
 
 
 #################################################
@@ -699,22 +648,7 @@ def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
     :param a_shape: The TopoDS_Shape to export.
     :param ply_filename: The path to the output PLY file.
     """
-    # create a document
-    doc = TDocStd_Document("pythonocc-doc-ply-export")
-    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
-
-    # mesh shape
-    breptools.Clean(a_shape)
-    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
-    msh_algo.Perform()
-
-    shape_tool.AddShape(a_shape)
-
-    # metadata
-    a_file_info = TColStd_IndexedDataMapOfStringString()
-    a_file_info.Add(
-        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
-    )
+    doc, a_file_info = _mesh_shape_to_document(a_shape, "pythonocc-doc-ply-export")
 
     rwply_writer = RWPly_CafWriter(ply_filename)
 
@@ -724,7 +658,8 @@ def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
     rwply_writer.SetPartId(True)
     rwply_writer.SetFaceId(True)
 
-    rwply_writer.Perform(doc, a_file_info, Message_ProgressRange())
+    if not rwply_writer.Perform(doc, a_file_info, Message_ProgressRange()):
+        raise IOError("Error while writing shape to PLY file.")
 
 
 #################################################
@@ -737,22 +672,7 @@ def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str):
     :param a_shape: The TopoDS_Shape to export.
     :param obj_filename: The path to the output OBJ file.
     """
-    # create a document
-    doc = TDocStd_Document("pythonocc-doc-obj-export")
-    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
-
-    # mesh shape
-    breptools.Clean(a_shape)
-    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
-    msh_algo.Perform()
-
-    shape_tool.AddShape(a_shape)
-
-    # metadata
-    a_file_info = TColStd_IndexedDataMapOfStringString()
-    a_file_info.Add(
-        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
-    )
+    doc, a_file_info = _mesh_shape_to_document(a_shape, "pythonocc-doc-obj-export")
 
     rwobj_writer = RWObj_CafWriter(obj_filename)
 
@@ -767,7 +687,8 @@ def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str):
 
     rwobj_writer.SetCoordinateSystemConverter(csc)
 
-    rwobj_writer.Perform(doc, a_file_info, Message_ProgressRange())
+    if not rwobj_writer.Perform(doc, a_file_info, Message_ProgressRange()):
+        raise IOError("Error while writing shape to OBJ file.")
 
 
 ########
@@ -808,9 +729,7 @@ def read_gltf_file(
     gltf_reader.SetToPrintDebugMessages(verbose)
     gltf_reader.SetLoadAllScenes(load_all_scenes)
 
-    status = gltf_reader.Perform(filename, Message_ProgressRange())
-
-    if status != IFSelect_RetDone:
+    if not gltf_reader.Perform(filename, Message_ProgressRange()):
         raise IOError("Error while reading GLTF file.")
 
     return [gltf_reader.SingleShape()]
@@ -825,26 +744,9 @@ def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
     :param binary: If True, exports to a binary glTF (.glb) file. Defaults to True.
     :raises IOError: If the export fails.
     """
-    # create a document
-    doc = TDocStd_Document("pythonocc-doc-gltf-export")
-    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
-
-    # mesh shape
-    breptools.Clean(a_shape)
-    msh_algo = BRepMesh_IncrementalMesh(a_shape, True)
-    msh_algo.Perform()
-
-    shape_tool.AddShape(a_shape)
-
-    # metadata
-    a_file_info = TColStd_IndexedDataMapOfStringString()
-    a_file_info.Add(
-        TCollection_AsciiString("Authors"), TCollection_AsciiString("pythonocc")
-    )
+    doc, a_file_info = _mesh_shape_to_document(a_shape, "pythonocc-doc-gltf-export")
 
     rwgltf_writer = RWGltf_CafWriter(gltf_filename, binary)
 
-    status = rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange())
-
-    if status != IFSelect_RetDone:
+    if not rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange()):
         raise IOError("Error while writing shape to GLTF file.")

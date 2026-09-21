@@ -211,3 +211,47 @@ def test_topology_summary():
         "number_of_compounds": 0,
         "number_of_comp_solids": 0,
     }
+
+
+def test_get_type_as_string_shell():
+    shell = next(TopologyExplorer(get_test_box_shape()).shells())
+    assert get_type_as_string(shell) == "Shell"
+
+
+def test_number_of_solids_from_shell():
+    topo_box = TopologyExplorer(get_test_box_shape())
+    shell = next(topo_box.shells())
+    assert topo_box.number_of_solids_from_shell(shell) == 1
+    assert len(list(topo_box.solids_from_shell(shell))) == 1
+
+
+def test_no_ancestor():
+    # a face alone has no solid ancestor: nothing is returned, not None
+    face = next(TopologyExplorer(get_test_box_shape()).faces())
+    topo_face = TopologyExplorer(face)
+    assert list(topo_face.solids_from_face(face)) == []
+    assert topo_face.number_of_solids_from_face(face) == 0
+    # an entity that is not part of the explored shape has no ancestor
+    other_edge = next(TopologyExplorer(get_test_sphere_shape()).edges())
+    assert list(topo_face.faces_from_edge(other_edge)) == []
+    assert topo_face.number_of_faces_from_edge(other_edge) == 0
+
+
+def test_ancestors_count_consistency():
+    # counts must match the iterated ancestors, with or without orientation:
+    # a box vertex belongs to 3 edges, each one present with 2 orientations
+    for ignore_orientation, nb_edges in ((True, 3), (False, 6)):
+        topo_box = TopologyExplorer(get_test_box_shape(), ignore_orientation)
+        for vertex in topo_box.vertices():
+            edges = list(topo_box.edges_from_vertex(vertex))
+            assert len(edges) == nb_edges
+            assert topo_box.number_of_edges_from_vertex(vertex) == nb_edges
+
+
+def test_ancestors_after_shape_change():
+    topo_explorer = TopologyExplorer(get_test_box_shape())
+    edge = next(topo_explorer.edges())
+    assert topo_explorer.number_of_faces_from_edge(edge) == 2
+    # the ancestors maps must be rebuilt for the new shape
+    topo_explorer.my_shape = get_test_sphere_shape()
+    assert topo_explorer.number_of_faces_from_edge(edge) == 0
