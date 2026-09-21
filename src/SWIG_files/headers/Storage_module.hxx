@@ -51,6 +51,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_StreamModeError.hxx>
 #include<Storage_StreamReadError.hxx>
 #include<Storage_StreamTypeMismatchError.hxx>
+#include<Storage_StreamUnknownTypeError.hxx>
 #include<Storage_StreamWriteError.hxx>
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>

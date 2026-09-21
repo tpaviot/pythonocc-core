@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : c30631c
+git revision : 6193765
 
 operating system : Linux 64bit 7.0.0-31-generic
 
-occt version targeted : 8.0.0
+occt version targeted : 8.0.1
 
-date : 2026-09-21 05:01:50.769688
+date : 2026-09-21 08:00:06.066986
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -612,7 +612,6 @@ date : 2026-09-21 05:01:50.769688
 [INFO ]      Constructor skipped for abstract class BSplCLib_EvaluatorFunction
 [WARNI]      [TypeHint] Skipping type const double *, should contain _
 [INFO ]      operand () cannot be wrapped
-[INFO ]      operand = cannot be wrapped
 [INFO ]  ## Processing module BSplSLib
 [INFO ]  Class: BSplSLib
 [WARNI]      [TypeHint] Skipping type int &, should contain _
@@ -2999,6 +2998,8 @@ date : 2026-09-21 05:01:50.769688
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_List<BOPAlgo_CheckResult>, seems to be a template
 [INFO ]  Class: BRepAlgoAPI_Algo
+[INFO ]  Class: BRepAlgoAPI_BuilderAlgo
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepAlgoAPI_Defeaturing
 [INFO ]  Class: BRepAlgoAPI_BooleanOperation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -11733,8 +11734,8 @@ date : 2026-09-21 05:01:50.769688
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.74s
+SWIG interface file generation completed in 15.20s
 #################################################
 
-[INFO ]  Number of classes: 3914
-[INFO ]  Number of methods: 44004
+[INFO ]  Number of classes: 3915
+[INFO ]  Number of methods: 44028

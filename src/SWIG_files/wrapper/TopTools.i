@@ -99,8 +99,8 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TopTools_HArray1OfShape)
 %wrap_handle(TopTools_HArray1OfListOfShape)
+%wrap_handle(TopTools_HArray1OfShape)
 %wrap_handle(TopTools_HArray2OfShape)
 %wrap_handle(TopTools_HSequenceOfShape)
 /* end handles declaration */
@@ -994,17 +994,6 @@ Writes the geometry of <S> on the stream <OS> in a format that can be read back 
 
 /* harray1 classes */
 
-class TopTools_HArray1OfShape : public NCollection_Array1<TopoDS_Shape>, public Standard_Transient {
-  public:
-    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopoDS_Shape>::value_type& theValue);
-    TopTools_HArray1OfShape(const NCollection_Array1<TopoDS_Shape>& theOther);
-    const NCollection_Array1<TopoDS_Shape>& Array1();
-    NCollection_Array1<TopoDS_Shape>& ChangeArray1();
-};
-%make_alias(TopTools_HArray1OfShape)
-
-
 class TopTools_HArray1OfListOfShape : public NCollection_Array1<TopTools_ListOfShape>, public Standard_Transient {
   public:
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1014,6 +1003,17 @@ class TopTools_HArray1OfListOfShape : public NCollection_Array1<TopTools_ListOfS
     NCollection_Array1<TopTools_ListOfShape>& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfListOfShape)
+
+
+class TopTools_HArray1OfShape : public NCollection_Array1<TopoDS_Shape>, public Standard_Transient {
+  public:
+    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopoDS_Shape>::value_type& theValue);
+    TopTools_HArray1OfShape(const NCollection_Array1<TopoDS_Shape>& theOther);
+    const NCollection_Array1<TopoDS_Shape>& Array1();
+    NCollection_Array1<TopoDS_Shape>& ChangeArray1();
+};
+%make_alias(TopTools_HArray1OfShape)
 
 /* harray2 classes */
 class TopTools_HArray2OfShape : public NCollection_Array2<TopoDS_Shape>, public Standard_Transient {

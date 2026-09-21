@@ -93,27 +93,27 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(TColStd_HPackedMapOfInteger)
-%wrap_handle(TColStd_HArray1OfCharacter)
-%wrap_handle(TColStd_HArray1OfReal)
-%wrap_handle(TColStd_HArray1OfByte)
-%wrap_handle(TColStd_HArray1OfBoolean)
-%wrap_handle(TColStd_HArray1OfInteger)
 %wrap_handle(TColStd_HArray1OfAsciiString)
-%wrap_handle(TColStd_HArray1OfTransient)
-%wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfBoolean)
+%wrap_handle(TColStd_HArray1OfByte)
+%wrap_handle(TColStd_HArray1OfCharacter)
 %wrap_handle(TColStd_HArray1OfExtendedString)
-%wrap_handle(TColStd_HArray2OfReal)
-%wrap_handle(TColStd_HArray2OfInteger)
-%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HArray1OfInteger)
+%wrap_handle(TColStd_HArray1OfListOfInteger)
+%wrap_handle(TColStd_HArray1OfReal)
+%wrap_handle(TColStd_HArray1OfTransient)
 %wrap_handle(TColStd_HArray2OfBoolean)
 %wrap_handle(TColStd_HArray2OfCharacter)
-%wrap_handle(TColStd_HSequenceOfReal)
-%wrap_handle(TColStd_HSequenceOfTransient)
-%wrap_handle(TColStd_HSequenceOfInteger)
+%wrap_handle(TColStd_HArray2OfInteger)
+%wrap_handle(TColStd_HArray2OfReal)
+%wrap_handle(TColStd_HArray2OfTransient)
+%wrap_handle(TColStd_HSequenceOfAsciiString)
 %wrap_handle(TColStd_HSequenceOfExtendedString)
 %wrap_handle(TColStd_HSequenceOfHAsciiString)
 %wrap_handle(TColStd_HSequenceOfHExtendedString)
-%wrap_handle(TColStd_HSequenceOfAsciiString)
+%wrap_handle(TColStd_HSequenceOfInteger)
+%wrap_handle(TColStd_HSequenceOfReal)
+%wrap_handle(TColStd_HSequenceOfTransient)
 /* end handles declaration */
 
 /* templates */
@@ -654,37 +654,15 @@ Returns const reference to the underlying map.
 
 /* harray1 classes */
 
-class TColStd_HArray1OfCharacter : public NCollection_Array1<char>, public Standard_Transient {
+class TColStd_HArray1OfAsciiString : public NCollection_Array1<TCollection_AsciiString>, public Standard_Transient {
   public:
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<char>::value_type& theValue);
-    TColStd_HArray1OfCharacter(const NCollection_Array1<char>& theOther);
-    const NCollection_Array1<char>& Array1();
-    NCollection_Array1<char>& ChangeArray1();
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_AsciiString>::value_type& theValue);
+    TColStd_HArray1OfAsciiString(const NCollection_Array1<TCollection_AsciiString>& theOther);
+    const NCollection_Array1<TCollection_AsciiString>& Array1();
+    NCollection_Array1<TCollection_AsciiString>& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfCharacter)
-
-
-class TColStd_HArray1OfReal : public NCollection_Array1<double>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<double>::value_type& theValue);
-    TColStd_HArray1OfReal(const NCollection_Array1<double>& theOther);
-    const NCollection_Array1<double>& Array1();
-    NCollection_Array1<double>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfReal)
-
-
-class TColStd_HArray1OfByte : public NCollection_Array1<uint8_t>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<uint8_t>::value_type& theValue);
-    TColStd_HArray1OfByte(const NCollection_Array1<uint8_t>& theOther);
-    const NCollection_Array1<uint8_t>& Array1();
-    NCollection_Array1<uint8_t>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfByte)
+%make_alias(TColStd_HArray1OfAsciiString)
 
 
 class TColStd_HArray1OfBoolean : public NCollection_Array1<bool>, public Standard_Transient {
@@ -698,6 +676,39 @@ class TColStd_HArray1OfBoolean : public NCollection_Array1<bool>, public Standar
 %make_alias(TColStd_HArray1OfBoolean)
 
 
+class TColStd_HArray1OfByte : public NCollection_Array1<uint8_t>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<uint8_t>::value_type& theValue);
+    TColStd_HArray1OfByte(const NCollection_Array1<uint8_t>& theOther);
+    const NCollection_Array1<uint8_t>& Array1();
+    NCollection_Array1<uint8_t>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfByte)
+
+
+class TColStd_HArray1OfCharacter : public NCollection_Array1<char>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<char>::value_type& theValue);
+    TColStd_HArray1OfCharacter(const NCollection_Array1<char>& theOther);
+    const NCollection_Array1<char>& Array1();
+    NCollection_Array1<char>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfCharacter)
+
+
+class TColStd_HArray1OfExtendedString : public NCollection_Array1<TCollection_ExtendedString>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_ExtendedString>::value_type& theValue);
+    TColStd_HArray1OfExtendedString(const NCollection_Array1<TCollection_ExtendedString>& theOther);
+    const NCollection_Array1<TCollection_ExtendedString>& Array1();
+    NCollection_Array1<TCollection_ExtendedString>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfExtendedString)
+
+
 class TColStd_HArray1OfInteger : public NCollection_Array1<int>, public Standard_Transient {
   public:
     TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -707,28 +718,6 @@ class TColStd_HArray1OfInteger : public NCollection_Array1<int>, public Standard
     NCollection_Array1<int>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfInteger)
-
-
-class TColStd_HArray1OfAsciiString : public NCollection_Array1<TCollection_AsciiString>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_AsciiString>::value_type& theValue);
-    TColStd_HArray1OfAsciiString(const NCollection_Array1<TCollection_AsciiString>& theOther);
-    const NCollection_Array1<TCollection_AsciiString>& Array1();
-    NCollection_Array1<TCollection_AsciiString>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfAsciiString)
-
-
-class TColStd_HArray1OfTransient : public NCollection_Array1<opencascade::handle<Standard_Transient>>, public Standard_Transient {
-  public:
-    TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Standard_Transient>>::value_type& theValue);
-    TColStd_HArray1OfTransient(const NCollection_Array1<opencascade::handle<Standard_Transient>>& theOther);
-    const NCollection_Array1<opencascade::handle<Standard_Transient>>& Array1();
-    NCollection_Array1<opencascade::handle<Standard_Transient>>& ChangeArray1();
-};
-%make_alias(TColStd_HArray1OfTransient)
 
 
 class TColStd_HArray1OfListOfInteger : public NCollection_Array1<TColStd_ListOfInteger>, public Standard_Transient {
@@ -742,56 +731,28 @@ class TColStd_HArray1OfListOfInteger : public NCollection_Array1<TColStd_ListOfI
 %make_alias(TColStd_HArray1OfListOfInteger)
 
 
-class TColStd_HArray1OfExtendedString : public NCollection_Array1<TCollection_ExtendedString>, public Standard_Transient {
+class TColStd_HArray1OfReal : public NCollection_Array1<double>, public Standard_Transient {
   public:
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_ExtendedString>::value_type& theValue);
-    TColStd_HArray1OfExtendedString(const NCollection_Array1<TCollection_ExtendedString>& theOther);
-    const NCollection_Array1<TCollection_ExtendedString>& Array1();
-    NCollection_Array1<TCollection_ExtendedString>& ChangeArray1();
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<double>::value_type& theValue);
+    TColStd_HArray1OfReal(const NCollection_Array1<double>& theOther);
+    const NCollection_Array1<double>& Array1();
+    NCollection_Array1<double>& ChangeArray1();
 };
-%make_alias(TColStd_HArray1OfExtendedString)
+%make_alias(TColStd_HArray1OfReal)
+
+
+class TColStd_HArray1OfTransient : public NCollection_Array1<opencascade::handle<Standard_Transient>>, public Standard_Transient {
+  public:
+    TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Standard_Transient>>::value_type& theValue);
+    TColStd_HArray1OfTransient(const NCollection_Array1<opencascade::handle<Standard_Transient>>& theOther);
+    const NCollection_Array1<opencascade::handle<Standard_Transient>>& Array1();
+    NCollection_Array1<opencascade::handle<Standard_Transient>>& ChangeArray1();
+};
+%make_alias(TColStd_HArray1OfTransient)
 
 /* harray2 classes */
-class TColStd_HArray2OfReal : public NCollection_Array2<double>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<double>::value_type& theValue);
-    TColStd_HArray2OfReal(const NCollection_Array2<double>& theOther);
-    const NCollection_Array2<double>& Array2 ();
-    NCollection_Array2<double>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfReal)
-
-
-class TColStd_HArray2OfInteger : public NCollection_Array2<int>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<int>::value_type& theValue);
-    TColStd_HArray2OfInteger(const NCollection_Array2<int>& theOther);
-    const NCollection_Array2<int>& Array2 ();
-    NCollection_Array2<int>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfInteger)
-
-
-class TColStd_HArray2OfTransient : public NCollection_Array2<opencascade::handle<Standard_Transient>>, public Standard_Transient {
-  public:
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Standard_Transient>>::value_type& theValue);
-    TColStd_HArray2OfTransient(const NCollection_Array2<opencascade::handle<Standard_Transient>>& theOther);
-    const NCollection_Array2<opencascade::handle<Standard_Transient>>& Array2 ();
-    NCollection_Array2<opencascade::handle<Standard_Transient>>& ChangeArray2 (); 
-};
-%make_alias(TColStd_HArray2OfTransient)
-
-
 class TColStd_HArray2OfBoolean : public NCollection_Array2<bool>, public Standard_Transient {
   public:
     TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -818,41 +779,56 @@ class TColStd_HArray2OfCharacter : public NCollection_Array2<char>, public Stand
 %make_alias(TColStd_HArray2OfCharacter)
 
 
+class TColStd_HArray2OfInteger : public NCollection_Array2<int>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<int>::value_type& theValue);
+    TColStd_HArray2OfInteger(const NCollection_Array2<int>& theOther);
+    const NCollection_Array2<int>& Array2 ();
+    NCollection_Array2<int>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfInteger)
+
+
+class TColStd_HArray2OfReal : public NCollection_Array2<double>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<double>::value_type& theValue);
+    TColStd_HArray2OfReal(const NCollection_Array2<double>& theOther);
+    const NCollection_Array2<double>& Array2 ();
+    NCollection_Array2<double>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfReal)
+
+
+class TColStd_HArray2OfTransient : public NCollection_Array2<opencascade::handle<Standard_Transient>>, public Standard_Transient {
+  public:
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Standard_Transient>>::value_type& theValue);
+    TColStd_HArray2OfTransient(const NCollection_Array2<opencascade::handle<Standard_Transient>>& theOther);
+    const NCollection_Array2<opencascade::handle<Standard_Transient>>& Array2 ();
+    NCollection_Array2<opencascade::handle<Standard_Transient>>& ChangeArray2 (); 
+};
+%make_alias(TColStd_HArray2OfTransient)
+
+
 /* hsequence classes */
-class TColStd_HSequenceOfReal : public NCollection_Sequence<double>, public Standard_Transient {
+class TColStd_HSequenceOfAsciiString : public NCollection_Sequence<TCollection_AsciiString>, public Standard_Transient {
   public:
-    TColStd_HSequenceOfReal();
-    TColStd_HSequenceOfReal(const NCollection_Sequence<double>& theOther);
-    const NCollection_Sequence<double>& Sequence();
-    void Append (const NCollection_Sequence<double>::value_type& theItem);
-    void Append (NCollection_Sequence<double>& theSequence);
-    NCollection_Sequence<double>& ChangeSequence();
+    TColStd_HSequenceOfAsciiString();
+    TColStd_HSequenceOfAsciiString(const NCollection_Sequence<TCollection_AsciiString>& theOther);
+    const NCollection_Sequence<TCollection_AsciiString>& Sequence();
+    void Append (const NCollection_Sequence<TCollection_AsciiString>::value_type& theItem);
+    void Append (NCollection_Sequence<TCollection_AsciiString>& theSequence);
+    NCollection_Sequence<TCollection_AsciiString>& ChangeSequence();
 };
-%make_alias(TColStd_HSequenceOfReal)
-
-
-class TColStd_HSequenceOfTransient : public NCollection_Sequence<opencascade::handle<Standard_Transient>>, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfTransient();
-    TColStd_HSequenceOfTransient(const NCollection_Sequence<opencascade::handle<Standard_Transient>>& theOther);
-    const NCollection_Sequence<opencascade::handle<Standard_Transient>>& Sequence();
-    void Append (const NCollection_Sequence<opencascade::handle<Standard_Transient>>::value_type& theItem);
-    void Append (NCollection_Sequence<opencascade::handle<Standard_Transient>>& theSequence);
-    NCollection_Sequence<opencascade::handle<Standard_Transient>>& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfTransient)
-
-
-class TColStd_HSequenceOfInteger : public NCollection_Sequence<int>, public Standard_Transient {
-  public:
-    TColStd_HSequenceOfInteger();
-    TColStd_HSequenceOfInteger(const NCollection_Sequence<int>& theOther);
-    const NCollection_Sequence<int>& Sequence();
-    void Append (const NCollection_Sequence<int>::value_type& theItem);
-    void Append (NCollection_Sequence<int>& theSequence);
-    NCollection_Sequence<int>& ChangeSequence();
-};
-%make_alias(TColStd_HSequenceOfInteger)
+%make_alias(TColStd_HSequenceOfAsciiString)
 
 
 class TColStd_HSequenceOfExtendedString : public NCollection_Sequence<TCollection_ExtendedString>, public Standard_Transient {
@@ -891,16 +867,40 @@ class TColStd_HSequenceOfHExtendedString : public NCollection_Sequence<opencasca
 %make_alias(TColStd_HSequenceOfHExtendedString)
 
 
-class TColStd_HSequenceOfAsciiString : public NCollection_Sequence<TCollection_AsciiString>, public Standard_Transient {
+class TColStd_HSequenceOfInteger : public NCollection_Sequence<int>, public Standard_Transient {
   public:
-    TColStd_HSequenceOfAsciiString();
-    TColStd_HSequenceOfAsciiString(const NCollection_Sequence<TCollection_AsciiString>& theOther);
-    const NCollection_Sequence<TCollection_AsciiString>& Sequence();
-    void Append (const NCollection_Sequence<TCollection_AsciiString>::value_type& theItem);
-    void Append (NCollection_Sequence<TCollection_AsciiString>& theSequence);
-    NCollection_Sequence<TCollection_AsciiString>& ChangeSequence();
+    TColStd_HSequenceOfInteger();
+    TColStd_HSequenceOfInteger(const NCollection_Sequence<int>& theOther);
+    const NCollection_Sequence<int>& Sequence();
+    void Append (const NCollection_Sequence<int>::value_type& theItem);
+    void Append (NCollection_Sequence<int>& theSequence);
+    NCollection_Sequence<int>& ChangeSequence();
 };
-%make_alias(TColStd_HSequenceOfAsciiString)
+%make_alias(TColStd_HSequenceOfInteger)
+
+
+class TColStd_HSequenceOfReal : public NCollection_Sequence<double>, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfReal();
+    TColStd_HSequenceOfReal(const NCollection_Sequence<double>& theOther);
+    const NCollection_Sequence<double>& Sequence();
+    void Append (const NCollection_Sequence<double>::value_type& theItem);
+    void Append (NCollection_Sequence<double>& theSequence);
+    NCollection_Sequence<double>& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfReal)
+
+
+class TColStd_HSequenceOfTransient : public NCollection_Sequence<opencascade::handle<Standard_Transient>>, public Standard_Transient {
+  public:
+    TColStd_HSequenceOfTransient();
+    TColStd_HSequenceOfTransient(const NCollection_Sequence<opencascade::handle<Standard_Transient>>& theOther);
+    const NCollection_Sequence<opencascade::handle<Standard_Transient>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<Standard_Transient>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<Standard_Transient>>& theSequence);
+    NCollection_Sequence<opencascade::handle<Standard_Transient>>& ChangeSequence();
+};
+%make_alias(TColStd_HSequenceOfTransient)
 
 
 /* class aliases */

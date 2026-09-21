@@ -76,6 +76,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepfill.html"
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<LProp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>

@@ -320,6 +320,389 @@ Returns a shape built by the shape construction algorithm. Does not check if the
 /********************************
 * class BRepAlgoAPI_BuilderAlgo *
 ********************************/
+class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
+	public:
+		/****** BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo ******/
+		/****** md5 signature: f034b0ea83263b0b12a5034e2ab03c28 ******/
+		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Empty constructor.
+") BRepAlgoAPI_BuilderAlgo;
+		 BRepAlgoAPI_BuilderAlgo();
+
+		/****** BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo ******/
+		/****** md5 signature: 87f0646930c224a38e316c8395128e53 ******/
+		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
+		%feature("autodoc", "
+Parameters
+----------
+thePF: BOPAlgo_PaveFiller
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor with prepared Filler object.
+") BRepAlgoAPI_BuilderAlgo;
+		 BRepAlgoAPI_BuilderAlgo(const BOPAlgo_PaveFiller & thePF);
+
+		/****** BRepAlgoAPI_BuilderAlgo::Arguments ******/
+		/****** md5 signature: 7729dc5bed49818f4be5c095d2e3edec ******/
+		%feature("compactdefaultargs") Arguments;
+		%feature("autodoc", "Return
+-------
+TopTools_ListOfShape
+
+Description
+-----------
+Gets the arguments.
+") Arguments;
+		const TopTools_ListOfShape & Arguments();
+
+		/****** BRepAlgoAPI_BuilderAlgo::Build ******/
+		/****** md5 signature: f3b0074314a23751c5565edb1d5f04f5 ******/
+		%feature("compactdefaultargs") Build;
+		%feature("autodoc", "
+Parameters
+----------
+theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Performs the algorithm.
+") Build;
+		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
+
+		/****** BRepAlgoAPI_BuilderAlgo::Builder ******/
+		/****** md5 signature: 8b185d6cf1a66c51174428861a33b6c7 ******/
+		%feature("compactdefaultargs") Builder;
+		%feature("autodoc", "Return
+-------
+BOPAlgo_PBuilder
+
+Description
+-----------
+Returns the Building tool.
+") Builder;
+		const BOPAlgo_PBuilder & Builder();
+
+		/****** BRepAlgoAPI_BuilderAlgo::CheckInverted ******/
+		/****** md5 signature: 78188b8ce2947b165a496dc28f65cbcf ******/
+		%feature("compactdefaultargs") CheckInverted;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns the flag defining whether the check for input solids on inverted status should be performed or not.
+") CheckInverted;
+		bool CheckInverted();
+
+		/****** BRepAlgoAPI_BuilderAlgo::DSFiller ******/
+		/****** md5 signature: eacda80fa3f8437b06bd46026236195a ******/
+		%feature("compactdefaultargs") DSFiller;
+		%feature("autodoc", "Return
+-------
+BOPAlgo_PPaveFiller
+
+Description
+-----------
+Returns the Intersection tool.
+") DSFiller;
+		const BOPAlgo_PPaveFiller & DSFiller();
+
+		/****** BRepAlgoAPI_BuilderAlgo::Generated ******/
+		/****** md5 signature: 9b9a05fc05596bf1aae965197e0fcaf8 ******/
+		%feature("compactdefaultargs") Generated;
+		%feature("autodoc", "
+Parameters
+----------
+theS: TopoDS_Shape
+
+Return
+-------
+TopTools_ListOfShape
+
+Description
+-----------
+Returns the list of shapes generated from the shape <theS>. In frames of Boolean Operations algorithms only Edges and Faces could have Generated elements, as only they produce new elements during intersection: - Edges can generate new vertices; - Faces can generate new edges and vertices.
+") Generated;
+		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
+
+		/****** BRepAlgoAPI_BuilderAlgo::Glue ******/
+		/****** md5 signature: 2a0ac34b43f154dd0238ac1408d9079b ******/
+		%feature("compactdefaultargs") Glue;
+		%feature("autodoc", "Return
+-------
+BOPAlgo_GlueEnum
+
+Description
+-----------
+Returns the glue option of the algorithm.
+") Glue;
+		BOPAlgo_GlueEnum Glue();
+
+		/****** BRepAlgoAPI_BuilderAlgo::HasDeleted ******/
+		/****** md5 signature: 9af855f0e7dfa60c7b3bcd573b520120 ******/
+		%feature("compactdefaultargs") HasDeleted;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if any of the input shapes has been deleted during operation. Normally, General Fuse operation should not have Deleted elements, but all derived operation can have.
+") HasDeleted;
+		virtual bool HasDeleted();
+
+		/****** BRepAlgoAPI_BuilderAlgo::HasGenerated ******/
+		/****** md5 signature: f2540eb5a2ba9856f4501cf8a3b86f5a ******/
+		%feature("compactdefaultargs") HasGenerated;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if any of the input shapes has generated shapes during operation.
+") HasGenerated;
+		virtual bool HasGenerated();
+
+		/****** BRepAlgoAPI_BuilderAlgo::HasHistory ******/
+		/****** md5 signature: 4e7f7d67e0066c12e74fcbd6a94053ea ******/
+		%feature("compactdefaultargs") HasHistory;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns flag of history availability.
+") HasHistory;
+		bool HasHistory();
+
+		/****** BRepAlgoAPI_BuilderAlgo::HasModified ******/
+		/****** md5 signature: f5286605b2147aa4cab96d15d0becdba ******/
+		%feature("compactdefaultargs") HasModified;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if any of the input shapes has been modified during operation.
+") HasModified;
+		virtual bool HasModified();
+
+		/****** BRepAlgoAPI_BuilderAlgo::History ******/
+		/****** md5 signature: a47770f1ee9d6f229a149d416a698dc5 ******/
+		%feature("compactdefaultargs") History;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<BRepTools_History>
+
+Description
+-----------
+History tool.
+") History;
+		opencascade::handle<BRepTools_History> History();
+
+		/****** BRepAlgoAPI_BuilderAlgo::IsDeleted ******/
+		/****** md5 signature: c4c4a1620c69764b3bae183c871bab2e ******/
+		%feature("compactdefaultargs") IsDeleted;
+		%feature("autodoc", "
+Parameters
+----------
+aS: TopoDS_Shape
+
+Return
+-------
+bool
+
+Description
+-----------
+Checks if the shape <theS> has been completely removed from the result, i.e. the result does not contain the shape itself and any of its splits. Returns True if the shape has been deleted.
+") IsDeleted;
+		bool IsDeleted(const TopoDS_Shape & aS);
+
+		/****** BRepAlgoAPI_BuilderAlgo::Modified ******/
+		/****** md5 signature: fe07e72bf2ba9abb3cc72857d221a523 ******/
+		%feature("compactdefaultargs") Modified;
+		%feature("autodoc", "
+Parameters
+----------
+theS: TopoDS_Shape
+
+Return
+-------
+TopTools_ListOfShape
+
+Description
+-----------
+Returns the shapes modified from the shape <theS>. If any, the list will contain only those splits of the given shape, contained in the result.
+") Modified;
+		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
+
+		/****** BRepAlgoAPI_BuilderAlgo::NonDestructive ******/
+		/****** md5 signature: 4933fd2f0edc15441d15a9e3162a6a3b ******/
+		%feature("compactdefaultargs") NonDestructive;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+") NonDestructive;
+		bool NonDestructive();
+
+		/****** BRepAlgoAPI_BuilderAlgo::SectionEdges ******/
+		/****** md5 signature: a6fa9a85398d20392969c848eac3c4fc ******/
+		%feature("compactdefaultargs") SectionEdges;
+		%feature("autodoc", "Return
+-------
+TopTools_ListOfShape
+
+Description
+-----------
+Returns a list of section edges. The edges represent the result of intersection between arguments of operation.
+") SectionEdges;
+		const TopTools_ListOfShape & SectionEdges();
+
+		/****** BRepAlgoAPI_BuilderAlgo::SetArguments ******/
+		/****** md5 signature: f784627b8f41b340faa4284816ab82a0 ******/
+		%feature("compactdefaultargs") SetArguments;
+		%feature("autodoc", "
+Parameters
+----------
+theLS: TopTools_ListOfShape
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the arguments.
+") SetArguments;
+		void SetArguments(const TopTools_ListOfShape & theLS);
+
+		/****** BRepAlgoAPI_BuilderAlgo::SetCheckInverted ******/
+		/****** md5 signature: 99f6323623bc052bf1fd5de947d7c818 ******/
+		%feature("compactdefaultargs") SetCheckInverted;
+		%feature("autodoc", "
+Parameters
+----------
+theCheck: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Enables/Disables the check of the input solids for inverted status.
+") SetCheckInverted;
+		void SetCheckInverted(const bool theCheck);
+
+		/****** BRepAlgoAPI_BuilderAlgo::SetGlue ******/
+		/****** md5 signature: bae09c43d6b988a5d7d19b6376a5aa05 ******/
+		%feature("compactdefaultargs") SetGlue;
+		%feature("autodoc", "
+Parameters
+----------
+theGlue: BOPAlgo_GlueEnum
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the glue option for the algorithm, which allows increasing performance of the intersection of the input shapes.
+") SetGlue;
+		void SetGlue(const BOPAlgo_GlueEnum theGlue);
+
+		/****** BRepAlgoAPI_BuilderAlgo::SetNonDestructive ******/
+		/****** md5 signature: 38476983f1e33d19d25886356719adec ******/
+		%feature("compactdefaultargs") SetNonDestructive;
+		%feature("autodoc", "
+Parameters
+----------
+theFlag: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the flag that defines the mode of treatment. In non-destructive mode the argument shapes are not modified. Instead a copy of a sub-shape is created in the result if it is needed to be updated.
+") SetNonDestructive;
+		void SetNonDestructive(const bool theFlag);
+
+		/****** BRepAlgoAPI_BuilderAlgo::SetToFillHistory ******/
+		/****** md5 signature: 99738357009a5a30fb7a877bbcbe43fb ******/
+		%feature("compactdefaultargs") SetToFillHistory;
+		%feature("autodoc", "
+Parameters
+----------
+theHistFlag: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Allows disabling the history collection.
+") SetToFillHistory;
+		void SetToFillHistory(const bool theHistFlag);
+
+		/****** BRepAlgoAPI_BuilderAlgo::SimplifyResult ******/
+		/****** md5 signature: 523911a7927e860c9caa7a65414cf861 ******/
+		%feature("compactdefaultargs") SimplifyResult;
+		%feature("autodoc", "
+Parameters
+----------
+theUnifyEdges: bool (optional, default to true)
+theUnifyFaces: bool (optional, default to true)
+theAngularTol: double (optional, default to Precision::Angular())
+
+Return
+-------
+None
+
+Description
+-----------
+Simplification of the result shape is performed by the means of *ShapeUpgrade_UnifySameDomain* algorithm. The result of the operation will be overwritten with the simplified result. //! The simplification is performed without creation of the Internal shapes, i.e. shapes connections will never be broken. //! Simplification is performed on the whole result shape. Thus, if the input shapes contained connected tangent edges or faces unmodified during the operation they will also be unified. //! After simplification, the History of result simplification is merged into the main history of operation. So, it is taken into account when asking for Modified, Generated and Deleted shapes. //! Some options of the main operation are passed into the Unifier: - Fuzzy tolerance of the operation is given to the Unifier as the linear tolerance. - Non destructive mode here controls the safe input mode in Unifier. //! 
+Parameter theUnifyEdges Controls the edges unification. True by default. 
+Parameter theUnifyFaces Controls the faces unification. True by default. 
+Parameter theAngularTol Angular criteria for tangency of edges and faces.  Precision::Angular() by default.
+") SimplifyResult;
+		void SimplifyResult(const bool theUnifyEdges = true, const bool theUnifyFaces = true, const double theAngularTol = Precision::Angular());
+
+};
+
+
+%extend BRepAlgoAPI_BuilderAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /********************************
 * class BRepAlgoAPI_Defeaturing *
 ********************************/
@@ -1473,14 +1856,6 @@ initialize the tool <Sf> - tool Obsolete.
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class BRepAlgoAPI_BuilderAlgo:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

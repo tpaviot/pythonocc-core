@@ -100,6 +100,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<BRepAlgo_module.hxx>
 #include<ChFiDS_module.hxx>
 #include<TopTools_module.hxx>
+#include<LProp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
