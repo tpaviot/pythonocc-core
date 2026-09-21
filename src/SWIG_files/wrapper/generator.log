@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : ee5a5b7
+git revision : cfb4c3b
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 20:51:44.586987
+date : 2026-09-21 21:05:16.975997
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -2631,6 +2631,71 @@ date : 2026-09-21 20:51:44.586987
 [INFO ]  Class: Geom2dConvert_CompCurveToBSplineCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dConvert_PPoint
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module GeomBndLib
+[INFO ]  Class: GeomBndLib_BSplineCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_BSplineCurve2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_BSplineSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_BezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_BezierCurve2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_BezierSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Circle
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Circle2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Cone
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Curve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Curve2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Cylinder
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Ellipse
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Ellipse2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Hyperbola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Hyperbola2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Line
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Line2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OffsetCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OffsetCurve2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OffsetSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OtherCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OtherCurve2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_OtherSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Parabola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Parabola2d
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Plane
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Sphere
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Surface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_SurfaceOfExtrusion
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_SurfaceOfRevolution
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: GeomBndLib_Torus
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GeomConvert
 [INFO ]  Enum: GeomConvert_ConvType
@@ -11757,8 +11822,8 @@ date : 2026-09-21 20:51:44.586987
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.07s
+SWIG interface file generation completed in 10.40s
 #################################################
 
-[INFO ]  Number of classes: 3932
-[INFO ]  Number of methods: 44418
+[INFO ]  Number of classes: 3964
+[INFO ]  Number of methods: 44622

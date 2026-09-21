@@ -17,7 +17,10 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import gc
 import math
+
+import pytest
 
 from OCC.Core.gp import (
     gp,
@@ -104,6 +107,8 @@ from OCC.Core.GeomEval import (
     GeomEval_HyperboloidSurface,
 )
 from OCC.Core.Geom2dEval import Geom2dEval_ArchimedeanSpiralCurve
+from OCC.Core.GeomAdaptor import GeomAdaptor_Curve, GeomAdaptor_Surface
+from OCC.Core.GeomBndLib import GeomBndLib_Curve, GeomBndLib_Surface
 
 #
 # Utility functions
@@ -738,3 +743,27 @@ def test_geom_eval_curves_and_surfaces():
         gp_Ax2d(gp_Pnt2d(0.0, 0.0), gp_Dir2d(1.0, 0.0)), 1.0, 2.0
     )
     assert spiral.Value(math.pi).IsEqual(gp_Pnt2d(-1.0 - 2.0 * math.pi, 0.0), 1e-9)
+
+
+def test_geom_bnd_lib():
+    # GeomBndLib package, new in occt 8.0
+    circle = Geom_Circle(gp_Ax2(), 10.0)
+    box = GeomBndLib_Curve(circle).Box(0.0)
+    assert box.Get() == pytest.approx((-10.0, -10.0, 0.0, 10.0, 10.0, 0.0))
+    sphere = Geom_SphericalSurface(gp_Ax3(), 2.0)
+    box = GeomBndLib_Surface(sphere).Box(0.0)
+    assert box.Get() == pytest.approx((-2.0, -2.0, -2.0, 2.0, 2.0, 2.0))
+
+
+def test_geom_bnd_lib_keeps_adaptor_alive():
+    # GeomBndLib_Curve only stores a pointer to the adaptor, which must not
+    # be garbage collected while the GeomBndLib_Curve is used
+    bnd_curve = GeomBndLib_Curve(GeomAdaptor_Curve(Geom_Circle(gp_Ax2(), 10.0)))
+    bnd_surface = GeomBndLib_Surface(
+        GeomAdaptor_Surface(Geom_SphericalSurface(gp_Ax3(), 2.0))
+    )
+    gc.collect()
+    box = bnd_curve.BoxOptimal(0.0)
+    assert box.Get() == pytest.approx((-10.0, -10.0, 0.0, 10.0, 10.0, 0.0))
+    box = bnd_surface.BoxOptimal(0.0)
+    assert box.Get() == pytest.approx((-2.0, -2.0, -2.0, 2.0, 2.0, 2.0))

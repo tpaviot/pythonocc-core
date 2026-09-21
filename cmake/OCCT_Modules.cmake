@@ -80,6 +80,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	Geom2dConvert
 	Hermit
 	BndLib
+	GeomBndLib
 	AppDef
 	GeomTools
 	GC
