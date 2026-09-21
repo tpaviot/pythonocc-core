@@ -41,7 +41,9 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include <typeinfo>
 %}
 
-%inline %{
+// Helper functions, not wrapped (%{ %} rather than %inline %{ %}): they are
+// defined in every module and must not be exported to python
+%{
 
 // Configuration for debugging (can be enabled/disabled)
 #ifndef PYTHONOCC_DEBUG_EXCEPTIONS
@@ -49,7 +51,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 // Utility function to get a readable class name
-std::string get_readable_class_name(const std::string& class_name) {
+static std::string get_readable_class_name(const std::string& class_name) {
     if (class_name.empty() || class_name == "$parentclassname") {
         return "Unknown";
     }
@@ -57,7 +59,7 @@ std::string get_readable_class_name(const std::string& class_name) {
 }
 
 // Utility function to get a readable method name
-std::string get_readable_method_name(const std::string& method_name) {
+static std::string get_readable_method_name(const std::string& method_name) {
     if (method_name.empty() || method_name == "$name") {
         return "Unknown";
     }
@@ -65,7 +67,7 @@ std::string get_readable_method_name(const std::string& method_name) {
 }
 
 // Mapping OpenCASCADE exceptions to appropriate Python exceptions
-PyObject* get_exception_type(const Standard_Failure& error) {
+static PyObject* get_exception_type(const Standard_Failure& error) {
     const std::string type_name = error.ExceptionType();
     
     // Specific error type mapping
@@ -107,7 +109,7 @@ PyObject* get_exception_type(const Standard_Failure& error) {
 }
 
 // Main function for processing OpenCASCADE exceptions
-void process_opencascade_exception(const Standard_Failure& error, 
+static void process_opencascade_exception(const Standard_Failure& error, 
                                   const std::string& method_name, 
                                   const std::string& class_name) {
     std::ostringstream oss;

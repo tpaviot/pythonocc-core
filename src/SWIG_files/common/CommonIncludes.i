@@ -29,8 +29,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 //  see it expand to declare opencascade::handle aliases for many classes)
 #define DEFINE_STANDARD_RTTI_INLINE(C1, C2)
 #define DEFINE_STANDARD_RTTIEXT(C1, C2)
-%include <python/std_array.i>
-%include <python/std_list.i>
 %include <python/std_string.i>
 %include <python/std_basic_string.i>
 

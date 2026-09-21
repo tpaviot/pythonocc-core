@@ -32,9 +32,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 Standard_CString parameter transformation
 */
 
+/*
+The string typemaps raise a TypeError if the argument is not a str: OCCT
+must never get a NULL pointer (e.g. TCollection_AsciiString aborts)
+*/
 %typemap(in) Standard_CString
 {
     $1 = PyUnicode_AsUTF8($input);
+    if (!$1) {
+        SWIG_fail;
+    }
 }
 
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) Standard_CString {
@@ -50,7 +57,11 @@ TCollection_ExtendedString parameter transformation
 
 %typemap(in) TCollection_ExtendedString
 {
-    $1 = TCollection_ExtendedString(PyUnicode_AsUTF8($input), true);
+    const char* utf8_string = PyUnicode_AsUTF8($input);
+    if (!utf8_string) {
+        SWIG_fail;
+    }
+    $1 = TCollection_ExtendedString(utf8_string, true);
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_ExtendedString {
     $1 = PyUnicode_Check($input) ? 1 : 0;
@@ -66,7 +77,12 @@ TCollection_AsciiString parameter transformation
 
 %typemap(in) TCollection_AsciiString
 {
-    $1 = TCollection_AsciiString(PyUnicode_AsUTF8($input));
+    Py_ssize_t utf8_length = 0;
+    const char* utf8_string = PyUnicode_AsUTF8AndSize($input, &utf8_length);
+    if (!utf8_string) {
+        SWIG_fail;
+    }
+    $1 = TCollection_AsciiString(utf8_string, static_cast<int>(utf8_length));
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_AsciiString {
     $1 = PyUnicode_Check($input) ? 1 : 0;

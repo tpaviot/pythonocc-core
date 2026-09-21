@@ -48,6 +48,7 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_Sewing,
 )
+from OCC.Core.BinObjMgt import BinObjMgt_Persistent
 from OCC.Core.BRepTools import BRepTools_ShapeSet, breptools
 from OCC.Core.gp import (
     gp_Pnt,
@@ -1127,6 +1128,30 @@ def test_step_reader_shape_fix_parameters():
     value = read_parameters.Find(TCollection_AsciiString("FixFreeShellMode"))
     assert value.ToCString() == "0"
     assert step_reader.TransferRoots() == 1
+
+
+def test_ReadStream_bytes():
+    """read a step file from bytes"""
+    with open(os.path.join(".", "test_io", "io1-ug-214.stp"), "rb") as step_file:
+        step_file_content = step_file.read()
+    step_reader = STEPControl_Reader()
+    result = step_reader.ReadStream("stream_name", step_file_content)
+    assert result == IFSelect_RetDone
+    assert step_reader.TransferRoots() > 0
+
+
+def test_read_brep_from_string():
+    """the input stream can be read back and forth"""
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shape = breptools.ReadFromString(breptools.WriteToString(box))
+    assert shape.ShapeType() == box.ShapeType()
+
+
+def test_string_parameter_type_error():
+    """passing a non str to a string parameter raises a TypeError, instead of
+    aborting the python interpreter"""
+    with pytest.raises(TypeError):
+        BinObjMgt_Persistent().PutAsciiString(3.5)
 
 
 def test_WriteStream():

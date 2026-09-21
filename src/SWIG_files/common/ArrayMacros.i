@@ -13,6 +13,10 @@
 %import Standard.i
 %import NCollection.i
 
+%{
+#include <Standard_DimensionError.hxx>
+%}
+
 /* macros */
 
 %define Array1ExtendIter(T)
@@ -35,19 +39,9 @@
             return self.Length()
 
         def __iter__(self):
-            self.low = self.Lower()
-            self.up = self.Upper()
-            self.current = self.Lower() - 1
-            return self
-
-        def next(self):
-            if self.current >= self.Upper():
-                raise StopIteration
-            else:
-                self.current += 1
-            return self.Value(self.current)
-
-        __next__ = next
+            value = self.Value
+            for i in range(self.Lower(), self.Upper() + 1):
+                yield value(i)
         }
     };
 
@@ -61,14 +55,20 @@
 
     %extend NCollection_Array1<T> {
         void AddDataFromNumpyArray(array_dtype* numpyArray1, int nRows1) {
+            if (nRows1 != self->Length()) {
+                throw Standard_DimensionError("The numpy array and the NCollection_Array1 don't have the same length");
+            }
             for (int rowID = 0; rowID < nRows1; rowID++)
             {
                 array_dtype v = numpyArray1[rowID];
-                self->SetValue(rowID + 1, v);
+                self->SetValue(rowID + self->Lower(), v);
             }
         }
 
         void BuildNumpyArray(array_dtype* numpyArray1Argout, int nRows1Argout) {
+            if (nRows1Argout > self->Length()) {
+                throw Standard_DimensionError("The numpy array is larger than the NCollection_Array1");
+            }
             for (int rowID = 0; rowID < nRows1Argout; rowID++)
             {
                 T v = self->Value(rowID + self->Lower());
@@ -97,6 +97,9 @@
 
     %extend NCollection_Array2<T> {
         void AddDataFromNumpyArray(array_dtype* numpyArray2, int nRows2, int nCols2) {
+            if (nRows2 != self->ColLength() || nCols2 != self->RowLength()) {
+                throw Standard_DimensionError("The numpy array and the NCollection_Array2 don't have the same shape");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows2; rowID++)
@@ -105,12 +108,16 @@
                 {
                     array_dtype v = numpyArray2[flatID];
                     flatID += 1;
-                    self->SetValue(rowID + 1, colID + 1, v);
+                    self->SetValue(rowID + self->LowerRow(), colID + self->LowerCol(), v);
                 }
             }
         }
 
         void BuildNumpyArray(array_dtype* numpyArray2Argout, int aSizeArgout, int nRows2Argout, int nCols2Argout) {
+            if (nRows2Argout > self->ColLength() || nCols2Argout > self->RowLength()
+                || aSizeArgout < nRows2Argout * nCols2Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows2Argout; rowID++)
@@ -148,6 +155,9 @@
 
     %extend NCollection_Array1<T> {
         void AddDataFromNumpyArray(double* numpyArray2, int nRows2, int nDims2) {
+            if (nRows2 != self->Length() || nDims2 < 2) {
+                throw Standard_DimensionError("The numpy array doesn't match the NCollection_Array1 length and point dimension");
+            }
             double x=0., y=0.;
             int flatID = 0;
 
@@ -156,11 +166,15 @@
                 x = numpyArray2[flatID];
                 y = numpyArray2[flatID + 1];
                 flatID += nDims2;
-                self->SetValue(rowID + 1, T(x, y));
+                self->SetValue(rowID + self->Lower(), T(x, y));
             }
         }
 
         void BuildNumpyArray(double* numpyArray2Argout, int aSizeArgout, int nRows2Argout, int nDims2Argout) {
+            if (nRows2Argout > self->Length() || nDims2Argout < 2
+                || aSizeArgout < nRows2Argout * nDims2Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows2Argout; rowID++)
@@ -195,6 +209,9 @@
 
     %extend NCollection_Array1<T> {
         void AddDataFromNumpyArray(double* numpyArray2, int nRows2, int nDims2) {
+            if (nRows2 != self->Length() || nDims2 < 3) {
+                throw Standard_DimensionError("The numpy array doesn't match the NCollection_Array1 length and point dimension");
+            }
             double x=0., y=0., z=0.;
             int flatID = 0;
 
@@ -204,11 +221,15 @@
                 y = numpyArray2[flatID + 1];
                 z = numpyArray2[flatID + 2];
                 flatID += nDims2;
-                self->SetValue(rowID + 1, T(x, y, z));
+                self->SetValue(rowID + self->Lower(), T(x, y, z));
             }
         }
 
         void BuildNumpyArray(double* numpyArray2Argout, int aSizeArgout, int nRows2Argout, int nDims2Argout) {
+            if (nRows2Argout > self->Length() || nDims2Argout < 3
+                || aSizeArgout < nRows2Argout * nDims2Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows2Argout; rowID++)
@@ -244,6 +265,9 @@
 
     %extend NCollection_Array1<T> {
         void AddDataFromNumpyArray(long long* numpyArray2, int nRows2, int nDims2) {
+            if (nRows2 != self->Length() || nDims2 < 3) {
+                throw Standard_DimensionError("The numpy array doesn't match the NCollection_Array1 length and point dimension");
+            }
             long long p1=0, p2=0, p3=0;
             int flatID = 0;
 
@@ -253,11 +277,15 @@
                 p2 = numpyArray2[flatID + 1];
                 p3 = numpyArray2[flatID + 2];
                 flatID += nDims2;
-                self->SetValue(rowID + 1, T(p1, p2, p3));
+                self->SetValue(rowID + self->Lower(), T(p1, p2, p3));
             }
         }
 
         void BuildNumpyArray(long long* numpyArray2Argout, int aSizeArgout, int nRows2Argout, int nDims2Argout) {
+            if (nRows2Argout > self->Length() || nDims2Argout < 3
+                || aSizeArgout < nRows2Argout * nDims2Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows2Argout; rowID++)
@@ -291,6 +319,9 @@
 
     %extend NCollection_Array2<T> {
         void AddDataFromNumpyArray(double* numpyArray3, int nRows3, int nCols3, int nDims3) {
+            if (nRows3 != self->ColLength() || nCols3 != self->RowLength() || nDims3 < 2) {
+                throw Standard_DimensionError("The numpy array doesn't match the NCollection_Array2 shape and point dimension");
+            }
             double x=0., y=0.;
             int flatID = 0;
 
@@ -301,12 +332,16 @@
                     x = numpyArray3[flatID];
                     y = numpyArray3[flatID + 1];
                     flatID += nDims3;
-                    self->SetValue(rowID + 1, colID + 1, T(x, y));
+                    self->SetValue(rowID + self->LowerRow(), colID + self->LowerCol(), T(x, y));
                 }
             }
         }
 
         void BuildNumpyArray(double* numpyArray3Argout, int aSizeArgout, int nRows3Argout, int nCols3Argout, int nDims3Argout) {
+            if (nRows3Argout > self->ColLength() || nCols3Argout > self->RowLength()
+                || nDims3Argout < 2 || aSizeArgout < nRows3Argout * nCols3Argout * nDims3Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows3Argout; rowID++)
@@ -345,6 +380,9 @@
 
     %extend NCollection_Array2<T> {
         void AddDataFromNumpyArray(double* numpyArray3, int nRows3, int nCols3, int nDims3) {
+            if (nRows3 != self->ColLength() || nCols3 != self->RowLength() || nDims3 < 3) {
+                throw Standard_DimensionError("The numpy array doesn't match the NCollection_Array2 shape and point dimension");
+            }
             double x=0., y=0., z=0.;
             int flatID = 0;
 
@@ -356,12 +394,16 @@
                     y = numpyArray3[flatID + 1];
                     z = numpyArray3[flatID + 2];
                     flatID += nDims3;
-                    self->SetValue(rowID + 1, colID + 1, T(x, y, z));
+                    self->SetValue(rowID + self->LowerRow(), colID + self->LowerCol(), T(x, y, z));
                 }
             }
         }
 
         void BuildNumpyArray(double* numpyArray3Argout, int aSizeArgout, int nRows3Argout, int nCols3Argout, int nDims3Argout) {
+            if (nRows3Argout > self->ColLength() || nCols3Argout > self->RowLength()
+                || nDims3Argout < 3 || aSizeArgout < nRows3Argout * nCols3Argout * nDims3Argout) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRows3Argout; rowID++)
@@ -398,6 +440,9 @@
 %define CurveArrayEvalExtend(T)
     %extend T{
         void evalNumpy(double* numpyArrayU, int nRowsU, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult) {
+            if (nDimsResult < 3 || aSizeArgout < nRowsU * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsU; rowID++)
@@ -412,6 +457,9 @@
         }
 
         void evalDerivativeNumpy(double* numpyArrayU, int nRowsU, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult, int nU) {
+            if (nDimsResult < 3 || aSizeArgout < nRowsU * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsU; rowID++)
@@ -441,6 +489,9 @@
 %define SurfaceArrayEvalExtend(T)
     %extend T{
         void evalNumpy(double* numpyArrayUV, int nRowsUV, int nColUV, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult) {
+            if (nColUV < 2 || nDimsResult < 3 || aSizeArgout < nRowsUV * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsUV; rowID++)
@@ -456,6 +507,9 @@
         }
 
         void evalDerivativeNumpy(double* numpyArrayUV, int nRowsUV, int nColUV, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult, int nU, int nV) {
+            if (nColUV < 2 || nDimsResult < 3 || aSizeArgout < nRowsUV * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsUV; rowID++)
@@ -485,6 +539,9 @@
 %define Curve2dArrayEvalExtend(T)
     %extend T{
         void evalNumpy(double* numpyArrayU, int nRowsU, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult) {
+            if (nDimsResult < 2 || aSizeArgout < nRowsU * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsU; rowID++)
@@ -498,6 +555,9 @@
         }
 
         void evalDerivativeNumpy(double* numpyArrayU, int nRowsU, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult, int nU) {
+            if (nDimsResult < 2 || aSizeArgout < nRowsU * nDimsResult) {
+                throw Standard_DimensionError("Inconsistent numpy array size");
+            }
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsU; rowID++)

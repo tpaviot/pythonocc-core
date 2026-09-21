@@ -15,88 +15,115 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 Refactored for Python 3 only - No Python 2 support
 */
 
-%include <python/std_iostream.i>
+// The std::ostream/std::istream parameters are converted by the typemaps
+// below: python/std_iostream.i is not included, it would wrap the ios_base,
+// ostream, istream... classes and the cout/cerr variables in every module,
+// and they can't be used from python.
 %include <python/std_string.i>
+
+//=============================================================================
+// Python str/bytes data, as a C buffer
+//=============================================================================
+%fragment("pythonocc_stream_data", "header") {
+#include <istream>
+#include <sstream>
+#include <streambuf>
+
+// Returns the data of a str (UTF-8 encoded) or bytes object, without copy.
+// The buffer is owned by the python object. Returns false and sets a
+// TypeError if the object is neither a str nor a bytes.
+static bool pythonocc_get_stream_data(PyObject* obj, const char** data, Py_ssize_t* size) {
+    if (PyUnicode_Check(obj)) {
+        *data = PyUnicode_AsUTF8AndSize(obj, size);
+        return *data != nullptr;
+    }
+    if (PyBytes_Check(obj)) {
+        char* bytes_data = nullptr;
+        if (PyBytes_AsStringAndSize(obj, &bytes_data, size) != 0) {
+            return false;
+        }
+        *data = bytes_data;
+        return true;
+    }
+    PyErr_SetString(PyExc_TypeError, "Expected str or bytes object");
+    return false;
+}
+
+// Read-only, seekable stream buffer over memory it doesn't own
+class pythonocc_memory_streambuf : public std::streambuf {
+public:
+    pythonocc_memory_streambuf(const char* data, size_t size) {
+        char* begin = const_cast<char*>(data);
+        setg(begin, begin, begin + size);
+    }
+
+protected:
+    pos_type seekoff(off_type off, std::ios_base::seekdir dir,
+                     std::ios_base::openmode which = std::ios_base::in) override {
+        if (!(which & std::ios_base::in)) {
+            return pos_type(off_type(-1));
+        }
+        off_type base = 0;
+        if (dir == std::ios_base::cur) {
+            base = gptr() - eback();
+        } else if (dir == std::ios_base::end) {
+            base = egptr() - eback();
+        }
+        const off_type target = base + off;
+        if (target < 0 || target > egptr() - eback()) {
+            return pos_type(off_type(-1));
+        }
+        setg(eback(), eback() + target, egptr());
+        return pos_type(target);
+    }
+
+    pos_type seekpos(pos_type pos, std::ios_base::openmode which = std::ios_base::in) override {
+        return seekoff(off_type(pos), std::ios_base::beg, which);
+    }
+};
+
+// Input stream reading the data of a python object without copying it: the
+// object must be kept alive while the stream is used (the argument of the
+// wrapped function is, during the call)
+class pythonocc_memory_istream : public std::istream {
+public:
+    pythonocc_memory_istream(const char* data, size_t size)
+        : std::istream(nullptr), myBuffer(data, size) {
+        rdbuf(&myBuffer);
+    }
+
+private:
+    pythonocc_memory_streambuf myBuffer;
+};
+}
 
 //=============================================================================
 // Input stream conversion: Python str/bytes -> std::istream&
 //=============================================================================
-%typemap(in) std::istream& {
-    if (!PyUnicode_Check($input) && !PyBytes_Check($input)) {
-        PyErr_SetString(PyExc_TypeError, "Expected str or bytes object");
-        SWIG_fail;
-    }
-    
-    PyObject* encoded_bytes = nullptr;
+%typemap(in, fragment="pythonocc_stream_data") std::istream& {
     const char* data_ptr = nullptr;
-    
-    if (PyUnicode_Check($input)) {
-        encoded_bytes = PyUnicode_AsEncodedString($input, "UTF-8", "strict");
-        if (!encoded_bytes) {
-            PyErr_SetString(PyExc_UnicodeError, "Failed to encode string as UTF-8");
-            SWIG_fail;
-        }
-        data_ptr = PyBytes_AsString(encoded_bytes);
-    } else {
-        // Input is already bytes
-        data_ptr = PyBytes_AsString($input);
-        encoded_bytes = $input;
-        Py_INCREF(encoded_bytes);
-    }
-    
-    if (!data_ptr) {
-        Py_XDECREF(encoded_bytes);
-        PyErr_SetString(PyExc_ValueError, "Failed to extract string data");
+    Py_ssize_t data_size = 0;
+    if (!pythonocc_get_stream_data($input, &data_ptr, &data_size)) {
         SWIG_fail;
     }
-    
-    std::string cpp_data(data_ptr);
-    Py_DECREF(encoded_bytes);
-    
-    std::stringstream* stream = new std::stringstream(cpp_data);
-    $1 = stream;
+    $1 = new pythonocc_memory_istream(data_ptr, static_cast<size_t>(data_size));
 }
 
 %typemap(freearg) std::istream& {
-    delete static_cast<std::stringstream*>($1);
+    delete static_cast<pythonocc_memory_istream*>($1);
 }
 
 //=============================================================================
 // String stream conversion: Python str/bytes -> std::stringstream&
 //=============================================================================
-%typemap(in) std::stringstream& {
-    if (!PyUnicode_Check($input) && !PyBytes_Check($input)) {
-        PyErr_SetString(PyExc_TypeError, "Expected str or bytes object");
-        SWIG_fail;
-    }
-    
-    PyObject* encoded_bytes = nullptr;
+%typemap(in, fragment="pythonocc_stream_data") std::stringstream& {
     const char* data_ptr = nullptr;
-    
-    if (PyUnicode_Check($input)) {
-        encoded_bytes = PyUnicode_AsEncodedString($input, "UTF-8", "strict");
-        if (!encoded_bytes) {
-            PyErr_SetString(PyExc_UnicodeError, "Failed to encode string as UTF-8");
-            SWIG_fail;
-        }
-        data_ptr = PyBytes_AsString(encoded_bytes);
-    } else {
-        // Input is already bytes
-        data_ptr = PyBytes_AsString($input);
-        encoded_bytes = $input;
-        Py_INCREF(encoded_bytes);
-    }
-    
-    if (!data_ptr) {
-        Py_XDECREF(encoded_bytes);
-        PyErr_SetString(PyExc_ValueError, "Failed to extract string data");
+    Py_ssize_t data_size = 0;
+    if (!pythonocc_get_stream_data($input, &data_ptr, &data_size)) {
         SWIG_fail;
     }
-    
-    std::string cpp_data(data_ptr);
-    Py_DECREF(encoded_bytes);
-    
-    std::stringstream* stream = new std::stringstream(cpp_data);
+    std::stringstream* stream = new std::stringstream();
+    stream->write(data_ptr, static_cast<std::streamsize>(data_size));
     $1 = stream;
 }
 

@@ -114,7 +114,9 @@ find_package(SWIG 4.2.1...4.5.1 REQUIRED)
 message(STATUS "SWIG version found: ${SWIG_VERSION}")
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual)
+# -fastproxy: the proxy methods are the wrapper functions themselves, rather
+# than python functions calling them: faster calls, smaller .py modules
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual -fastproxy)
 if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
   set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
