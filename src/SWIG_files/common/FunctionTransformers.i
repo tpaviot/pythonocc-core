@@ -307,7 +307,8 @@ Standard_Boolean & function transformation
 /*
 Return by copy the objects returned by const reference by the accessors of the
 NCollection containers (NCollection_Array1::Value, NCollection_Sequence::First,
-NCollection_DataMap::Find, ...) and of their iterators. By default the python
+NCollection_DataMap::Find, ...), of their iterators and of the __getitem__
+method added by ArrayMacros.i. By default the python
 object points into the container storage and is invalid once the container is
 deleted or resized (issue #1482). The more specific typemaps take precedence:
 handles and Standard_Transient subclasses (reference counted), TopoDS_Shape
@@ -317,7 +318,8 @@ return a reference, to modify the container in place.
 %typemap(out) const SWIGTYPE & Value, const SWIGTYPE & First, const SWIGTYPE & Last,
               const SWIGTYPE & Find, const SWIGTYPE & Find1, const SWIGTYPE & Find2,
               const SWIGTYPE & FindKey, const SWIGTYPE & FindFromIndex,
-              const SWIGTYPE & FindFromKey, const SWIGTYPE & Key {
+              const SWIGTYPE & FindFromKey, const SWIGTYPE & Key,
+              const SWIGTYPE & __getitem__ {
     $*1_ltype* copy = new $*1_ltype(*$1);
     $result = SWIG_NewPointerObj(SWIG_as_voidptr(copy), $descriptor, SWIG_POINTER_OWN);
     if (!$result) {

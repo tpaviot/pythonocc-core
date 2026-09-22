@@ -26,7 +26,6 @@ import importlib
 import os
 import pickle
 from typing import Any, Iterator, List
-import sys
 import warnings
 
 import OCC.Core
@@ -669,9 +668,10 @@ def test_downcast_curve() -> None:
     line = Geom_Line.DownCast(curve)
     assert isinstance(line, Geom_Curve)
     # Hence, it should not be possible to downcast it as a B-Spline curve
-    if sys.version_info.major == 3 and sys.version_info.minor < 12:
-        with pytest.raises(SystemError):
-            Geom_BSplineCurve.DownCast(curve)
+    with pytest.raises(TypeError, match="Failed to downcast Geom_Line to Geom_BSplineCurve"):
+        Geom_BSplineCurve.DownCast(curve)
+    # a null handle is downcast to None
+    assert Geom_BSplineCurve.DownCast(None) is None
 
 
 def test_return_enum() -> None:
@@ -715,6 +715,19 @@ def test_array_iterator() -> None:
     assert list_of_points[1].Coord() == [1.0, 2.0, 3.0]
     with pytest.raises(IndexError):
         list_of_points[4]
+    # negative indices count from the end
+    list_of_points[-1] = gp_Pnt(4, 5, 6)
+    assert list_of_points[-1].Coord() == list_of_points.Value(8).Coord()
+    assert list_of_points[-3].Coord() == [1.0, 2.0, 3.0]
+    with pytest.raises(IndexError):
+        list_of_points[-5]
+    with pytest.raises(IndexError):
+        list_of_points[4] = P0
+    # the item is a copy, still valid once the array is deleted
+    pnt = list_of_points[1]
+    del list_of_points
+    assert pnt.Coord() == [1.0, 2.0, 3.0]
+    list_of_points = TColgp_Array1OfPnt(5, 8)
     # iterator creation
     it = iter(list_of_points)
     next(it)

@@ -67,7 +67,6 @@ from OCC.Core.Graphic3d import (
     Graphic3d_Structure,
     Graphic3d_TextureEnv,
     Graphic3d_TOSM_FRAGMENT,
-    Handle_Graphic3d_TextureEnv_Create,
 )
 from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
 from OCC.Core.Quantity import (
@@ -428,10 +427,7 @@ class Viewer3d(Display3d):
         """
         Disables environment mapping.
         """
-        a_null_texture = Handle_Graphic3d_TextureEnv_Create()
-        self.View.SetTextureEnv(
-            a_null_texture
-        )  # Passing null handle to clear the texture data
+        self.View.SetTextureEnv(None)  # a null handle clears the texture data
         self.View.Redraw()
 
     def SetRenderingParams(

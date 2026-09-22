@@ -36,6 +36,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include <Standard_Overflow.hxx>
 #include <Standard_RangeError.hxx>
 #include <Standard_Underflow.hxx>
+#include <cstring>
 #include <sstream>
 #include <iostream>
 #include <typeinfo>
@@ -51,16 +52,16 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 // Utility function to get a readable class name
-static std::string get_readable_class_name(const std::string& class_name) {
-    if (class_name.empty() || class_name == "$parentclassname") {
+static std::string get_readable_class_name(const char* class_name) {
+    if (!class_name || !*class_name || std::strcmp(class_name, "$parentclassname") == 0) {
         return "Unknown";
     }
     return class_name;
 }
 
 // Utility function to get a readable method name
-static std::string get_readable_method_name(const std::string& method_name) {
-    if (method_name.empty() || method_name == "$name") {
+static std::string get_readable_method_name(const char* method_name) {
+    if (!method_name || !*method_name || std::strcmp(method_name, "$name") == 0) {
         return "Unknown";
     }
     return method_name;
@@ -108,10 +109,12 @@ static PyObject* get_exception_type(const Standard_Failure& error) {
     return PyExc_RuntimeError;
 }
 
-// Main function for processing OpenCASCADE exceptions
-static void process_opencascade_exception(const Standard_Failure& error, 
-                                  const std::string& method_name, 
-                                  const std::string& class_name) {
+// Main function for processing OpenCASCADE exceptions. The names are C strings:
+// with std::string parameters, every wrapper built two std::string in its catch
+// block, which made the modules several MB larger
+static void process_opencascade_exception(const Standard_Failure& error,
+                                  const char* method_name,
+                                  const char* class_name) {
     std::ostringstream oss;
     
     // Basic error information

@@ -352,50 +352,21 @@ WRAP_OCC_TRANSIENT(const, TYPE)
   }
 %}
 
-%inline %{
-    opencascade::handle<TYPE> Handle_ ## TYPE ## _Create() {
-        return opencascade::handle<TYPE>();
-    }
-
-    opencascade::handle<TYPE> Handle_ ## TYPE ## _DownCast(const opencascade::handle<Standard_Transient>& t) {
-        if (t.IsNull()) {
-            return opencascade::handle<TYPE>();
-        }
-
-        opencascade::handle<TYPE> downcasted_handle = opencascade::handle<TYPE>::DownCast(t);
-        if (downcasted_handle.IsNull()) {
-            // Plus d'information dans l'erreur
-            PyErr_Format(PyExc_TypeError,
-                        "Failed to downcast %s to %s",
-                        t->DynamicType()->Name(),
-                        #TYPE);
-            return opencascade::handle<TYPE>();
-        }
-        return downcasted_handle;
-    }
-
-    bool Handle_ ## TYPE ## _IsNull(const opencascade::handle<TYPE> & t) {
-        return t.IsNull();
-    }
-
-    void Handle_ ## TYPE ## _ForceRelease(opencascade::handle<TYPE> & t) {
-        t.Nullify();
-    }
-
-    int Handle_ ## TYPE ## _GetRefCount(const opencascade::handle<TYPE> & t) {
-        if (t.IsNull()) return 0;
-        return t->GetRefCount();
-    }
-%}
-
-// These two functions are just for backwards compatibility
+// TYPE.DownCast(t) is a static method wrapped directly, without a python
+// function in between. It returns None for None, and raises TypeError if t is
+// not a TYPE. The Handle_TYPE_Create/_DownCast/_IsNull/_ForceRelease/
+// _GetRefCount functions were removed: 5 wrappers for each of the 2106
+// transient classes (5 MB of code) for functions almost never used (None is
+// a null handle)
 %extend TYPE {
-  %pythoncode {
-
-    @staticmethod
-    def DownCast(t):
-      return Handle_ ## TYPE ## _DownCast(t)
-   }
+  static opencascade::handle<TYPE> DownCast(const opencascade::handle<Standard_Transient>& t) {
+    opencascade::handle<TYPE> downcasted_handle = opencascade::handle<TYPE>::DownCast(t);
+    if (downcasted_handle.IsNull() && !t.IsNull()) {
+      const std::string message = std::string("Failed to downcast ") + t->DynamicType()->Name() + " to " #TYPE;
+      throw Standard_TypeMismatch(message.c_str());
+    }
+    return downcasted_handle;
+  }
 }
 
 %enddef

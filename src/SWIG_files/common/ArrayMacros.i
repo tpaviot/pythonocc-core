@@ -15,29 +15,48 @@
 
 %{
 #include <Standard_DimensionError.hxx>
+#include <Standard_OutOfRange.hxx>
 %}
 
 /* macros */
 
+/*
+The python sequence protocol, with 0-based indices (negative indices count
+from the end). __getitem__, __setitem__ and __len__ are C++ methods: a single
+call, rather than a python method calling Lower, Upper and Value. __getitem__
+returns a copy, like Value (see the const SWIGTYPE & typemap of
+FunctionTransformers.i). Standard_OutOfRange is raised as an IndexError
+*/
 %define Array1ExtendIter(T)
 
     %extend NCollection_Array1<T> {
+        const T& __getitem__(int index) {
+            const int length = self->Length();
+            if (index < 0) {
+                index += length;
+            }
+            if (index < 0 || index >= length) {
+                throw Standard_OutOfRange("array index out of range");
+            }
+            return self->Value(self->Lower() + index);
+        }
+
+        void __setitem__(int index, const T& value) {
+            const int length = self->Length();
+            if (index < 0) {
+                index += length;
+            }
+            if (index < 0 || index >= length) {
+                throw Standard_OutOfRange("array assignment index out of range");
+            }
+            self->SetValue(self->Lower() + index, value);
+        }
+
+        int __len__() {
+            return self->Length();
+        }
+
         %pythoncode {
-        def __getitem__(self, index):
-            if index + self.Lower() > self.Upper():
-                raise IndexError("index out of range")
-            else:
-                return self.Value(index + self.Lower())
-
-        def __setitem__(self, index, value):
-            if index + self.Lower() > self.Upper():
-                raise IndexError("index out of range")
-            else:
-                self.SetValue(index + self.Lower(), value)
-
-        def __len__(self):
-            return self.Length()
-
         def __iter__(self):
             value = self.Value
             for i in range(self.Lower(), self.Upper() + 1):
