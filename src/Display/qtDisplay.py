@@ -277,7 +277,8 @@ class qtViewer3d(qtBaseViewer):
         Called when a mouse button is released.
         """
         pt = event.pos()
-        modifiers = event.modifiers()
+        # modifiers() is a combination of flags, compare with & (issue #1491)
+        shift = bool(event.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier)
 
         if event.button() == QtCore.Qt.MouseButton.LeftButton:
             self._on_left_release()
@@ -285,7 +286,7 @@ class qtViewer3d(qtBaseViewer):
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._select_area = False
-            elif modifiers == QtCore.Qt.Modifier.SHIFT:
+            elif shift:
                 self._display.ShiftSelect(pt.x(), pt.y())
             else:
                 # single select otherwise
@@ -318,18 +319,12 @@ class qtViewer3d(qtBaseViewer):
         """
         pt = evt.pos()
         buttons = evt.buttons()
-        modifiers = evt.modifiers()
+        shift = bool(evt.modifiers() & QtCore.Qt.KeyboardModifier.ShiftModifier)
         # ROTATE
-        if (
-            buttons == QtCore.Qt.MouseButton.LeftButton
-            and modifiers != QtCore.Qt.Modifier.SHIFT
-        ):
+        if buttons == QtCore.Qt.MouseButton.LeftButton and not shift:
             self._on_left_drag(pt)
         # DYNAMIC ZOOM
-        elif (
-            buttons == QtCore.Qt.MouseButton.RightButton
-            and modifiers != QtCore.Qt.Modifier.SHIFT
-        ):
+        elif buttons == QtCore.Qt.MouseButton.RightButton and not shift:
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(
