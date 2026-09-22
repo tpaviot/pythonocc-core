@@ -1,10 +1,16 @@
 from collections.abc import Sequence
 from typing import Any, Callable
 
-from OCC.Core.AIS import AIS_Shape
+from OCC.Core.AIS import AIS_InteractiveContext, AIS_Shape
 from OCC.Core.gp import gp_Pnt, gp_Pnt2d, gp_Vec
-from OCC.Core.Graphic3d import Graphic3d_Structure
+from OCC.Core.Graphic3d import (
+    Graphic3d_Camera,
+    Graphic3d_Structure,
+    Graphic3d_StructureManager,
+)
+from OCC.Core.Prs3d import Prs3d_Drawer
 from OCC.Core.Quantity import Quantity_Color
+from OCC.Core.V3d import V3d_View, V3d_Viewer
 from OCC.Core.Visualization import Display3d
 
 def rgb_color(r: float, g: float, b: float) -> Quantity_Color: ...
@@ -13,6 +19,14 @@ def get_color_from_name(color_name: str) -> Quantity_Color: ...
 SELECTION_TOPOLOGY_MODES: tuple[int, ...]
 
 class Viewer3d(Display3d):
+    Context: AIS_InteractiveContext
+    Viewer: V3d_Viewer
+    View: V3d_View
+    camera: Graphic3d_Camera
+    struc_mgr: Graphic3d_StructureManager
+    # set by Create()
+    default_drawer: Prs3d_Drawer
+    selected_shapes: list[AIS_Shape]
     def __init__(self) -> None: ...
     def get_parent(self) -> Any: ...
     def register_overlay_item(self, overlay_item: Any) -> None: ...

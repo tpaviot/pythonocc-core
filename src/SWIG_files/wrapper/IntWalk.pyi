@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -12,12 +13,12 @@ from OCC.Core.IntSurf import *
 
 
 class IntWalk_StatusDeflection(IntEnum):
-    IntWalk_PasTropGrand: int = ...
-    IntWalk_StepTooSmall: int = ...
-    IntWalk_PointConfondu: int = ...
-    IntWalk_ArretSurPointPrecedent: int = ...
-    IntWalk_ArretSurPoint: int = ...
-    IntWalk_OK: int = ...
+    IntWalk_PasTropGrand = 0
+    IntWalk_StepTooSmall = 1
+    IntWalk_PointConfondu = 2
+    IntWalk_ArretSurPointPrecedent = 3
+    IntWalk_ArretSurPoint = 4
+    IntWalk_OK = 5
 
 IntWalk_PasTropGrand = IntWalk_StatusDeflection.IntWalk_PasTropGrand
 IntWalk_StepTooSmall = IntWalk_StatusDeflection.IntWalk_StepTooSmall

@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -8,6 +9,14 @@ from OCC.Core.TDF import *
 from OCC.Core.XmlObjMgt import *
 from OCC.Core.TCollection import *
 
+
+class XmlMDF_MapOfDriver:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class XmlMDF_TypeADriverMap:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 class xmlmdf:
     @staticmethod
@@ -38,6 +47,7 @@ class XmlMDF_ADriverTable(Standard_Transient):
     @overload
     def AddDerivedDriver(self, theDerivedType: str) -> Standard_Type: ...
     def AddDriver(self, anHDriver: XmlMDF_ADriver) -> None: ...
+    def CreateDrvMap(self, theDriverMap: Any) -> None: ...
     def GetDriver(self, theType: Standard_Type, theDriver: XmlMDF_ADriver) -> bool: ...
 
 class XmlMDF_DerivedDriver(XmlMDF_ADriver):

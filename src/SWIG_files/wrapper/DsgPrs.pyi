@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -6,15 +7,15 @@ from OCC.Core.NCollection import *
 
 
 class DsgPrs_ArrowSide(IntEnum):
-    DsgPrs_AS_NONE: int = ...
-    DsgPrs_AS_FIRSTAR: int = ...
-    DsgPrs_AS_LASTAR: int = ...
-    DsgPrs_AS_BOTHAR: int = ...
-    DsgPrs_AS_FIRSTPT: int = ...
-    DsgPrs_AS_LASTPT: int = ...
-    DsgPrs_AS_BOTHPT: int = ...
-    DsgPrs_AS_FIRSTAR_LASTPT: int = ...
-    DsgPrs_AS_FIRSTPT_LASTAR: int = ...
+    DsgPrs_AS_NONE = 0
+    DsgPrs_AS_FIRSTAR = 1
+    DsgPrs_AS_LASTAR = 2
+    DsgPrs_AS_BOTHAR = 3
+    DsgPrs_AS_FIRSTPT = 4
+    DsgPrs_AS_LASTPT = 5
+    DsgPrs_AS_BOTHPT = 6
+    DsgPrs_AS_FIRSTAR_LASTPT = 7
+    DsgPrs_AS_FIRSTPT_LASTAR = 8
 
 DsgPrs_AS_NONE = DsgPrs_ArrowSide.DsgPrs_AS_NONE
 DsgPrs_AS_FIRSTAR = DsgPrs_ArrowSide.DsgPrs_AS_FIRSTAR

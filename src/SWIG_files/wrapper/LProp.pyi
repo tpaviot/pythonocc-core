@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -21,19 +22,19 @@ class LProp_SequenceOfCIType:
     def SetValue(self, theIndex: int, theValue: LProp_CIType) -> None: ...
 
 class LProp_CIType(IntEnum):
-    LProp_Inflection: int = ...
-    LProp_MinCur: int = ...
-    LProp_MaxCur: int = ...
+    LProp_Inflection = 0
+    LProp_MinCur = 1
+    LProp_MaxCur = 2
 
 LProp_Inflection = LProp_CIType.LProp_Inflection
 LProp_MinCur = LProp_CIType.LProp_MinCur
 LProp_MaxCur = LProp_CIType.LProp_MaxCur
 
 class LProp_Status(IntEnum):
-    LProp_Undecided: int = ...
-    LProp_Undefined: int = ...
-    LProp_Defined: int = ...
-    LProp_Computed: int = ...
+    LProp_Undecided = 0
+    LProp_Undefined = 1
+    LProp_Defined = 2
+    LProp_Computed = 3
 
 LProp_Undecided = LProp_Status.LProp_Undecided
 LProp_Undefined = LProp_Status.LProp_Undefined

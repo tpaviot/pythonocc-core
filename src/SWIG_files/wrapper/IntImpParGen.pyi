@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -16,6 +17,8 @@ class intimppargen:
     @overload
     @staticmethod
     def DetermineTransition(Pos1: IntRes2d_Position, Tan1: gp_Vec2d, Trans1: IntRes2d_Transition, Pos2: IntRes2d_Position, Tan2: gp_Vec2d, Trans2: IntRes2d_Transition, Tol: float) -> bool: ...
+    @staticmethod
+    def NormalizeOnDomain(Dom1: IntRes2d_Domain) -> Tuple[float, float]: ...
 
 #classnotwrapped
 class IntImpParGen_ImpTool: ...

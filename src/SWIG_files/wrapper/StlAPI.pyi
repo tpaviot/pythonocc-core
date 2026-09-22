@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -11,7 +12,7 @@ class stlapi:
     @staticmethod
     def Read(theShape: TopoDS_Shape, aFile: str) -> bool: ...
     @staticmethod
-    def Write(theShape: TopoDS_Shape, theFile: str, theAsciiMode: Optional[bool] = true) -> bool: ...
+    def Write(theShape: TopoDS_Shape, theFile: str, theAsciiMode: Optional[bool] = True) -> bool: ...
 
 class StlAPI_Reader:
     @overload
@@ -26,6 +27,7 @@ class StlAPI_Writer:
     def Write(self, theShape: TopoDS_Shape, theFileName: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
     @overload
     def Write(self, theShape: TopoDS_Shape, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> Tuple[bool, str]: ...
+    def SetASCIIMode(self, theMode: bool) -> None: ...
 
 # harray1 classes
 # harray2 classes

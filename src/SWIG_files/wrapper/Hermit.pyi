@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -14,6 +15,8 @@ class hermit:
     @overload
     @staticmethod
     def Solution(BS: Geom2d_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Geom2d_BSplineCurve: ...
+    @staticmethod
+    def Solutionbis(BS: Geom_BSplineCurve, TolPoles: Optional[float] = 0.000001, TolKnots: Optional[float] = 0.000001) -> Tuple[float, float]: ...
 
 # harray1 classes
 # harray2 classes

@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -10,11 +11,11 @@ from OCC.Core.GeomLProp import *
 
 
 class LocalAnalysis_StatusErrorType(IntEnum):
-    LocalAnalysis_NullFirstDerivative: int = ...
-    LocalAnalysis_NullSecondDerivative: int = ...
-    LocalAnalysis_TangentNotDefined: int = ...
-    LocalAnalysis_NormalNotDefined: int = ...
-    LocalAnalysis_CurvatureNotDefined: int = ...
+    LocalAnalysis_NullFirstDerivative = 0
+    LocalAnalysis_NullSecondDerivative = 1
+    LocalAnalysis_TangentNotDefined = 2
+    LocalAnalysis_NormalNotDefined = 3
+    LocalAnalysis_CurvatureNotDefined = 4
 
 LocalAnalysis_NullFirstDerivative = LocalAnalysis_StatusErrorType.LocalAnalysis_NullFirstDerivative
 LocalAnalysis_NullSecondDerivative = LocalAnalysis_StatusErrorType.LocalAnalysis_NullSecondDerivative

@@ -1,13 +1,16 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 
-# the following typedef cannot be wrapped as is
-NCollection_String = NewType("NCollection_String", Any)
+
+class NCollection_String:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 class NCollection_CellFilter_Action(IntEnum):
-    CellFilter_Keep: int = ...
-    CellFilter_Purge: int = ...
+    CellFilter_Keep = 0
+    CellFilter_Purge = 1
 
 CellFilter_Keep = NCollection_CellFilter_Action.CellFilter_Keep
 CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge

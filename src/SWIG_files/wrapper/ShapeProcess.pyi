@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -16,15 +17,60 @@ from OCC.Core.ShapeBuild import *
 
 
 class shapeprocess:
+    class Operation(IntEnum):
+        First = 0
+        DirectFaces = ...
+        SameParameter = 2
+        SetTolerance = 3
+        SplitAngle = 4
+        BSplineRestriction = 5
+        ElementaryToRevolution = 6
+        SweptToElementary = 7
+        SurfaceToBSpline = 8
+        ToBezier = 9
+        SplitContinuity = 10
+        SplitClosedFaces = 11
+        FixWireGaps = 12
+        FixFaceSize = 13
+        DropSmallSolids = 14
+        DropSmallEdges = 15
+        FixShape = 16
+        SplitClosedEdges = 17
+        SplitCommonVertex = 18
+        Last = ...
+
+    First = Operation.First
+    DirectFaces = Operation.DirectFaces
+    SameParameter = Operation.SameParameter
+    SetTolerance = Operation.SetTolerance
+    SplitAngle = Operation.SplitAngle
+    BSplineRestriction = Operation.BSplineRestriction
+    ElementaryToRevolution = Operation.ElementaryToRevolution
+    SweptToElementary = Operation.SweptToElementary
+    SurfaceToBSpline = Operation.SurfaceToBSpline
+    ToBezier = Operation.ToBezier
+    SplitContinuity = Operation.SplitContinuity
+    SplitClosedFaces = Operation.SplitClosedFaces
+    FixWireGaps = Operation.FixWireGaps
+    FixFaceSize = Operation.FixFaceSize
+    DropSmallSolids = Operation.DropSmallSolids
+    DropSmallEdges = Operation.DropSmallEdges
+    FixShape = Operation.FixShape
+    SplitClosedEdges = Operation.SplitClosedEdges
+    SplitCommonVertex = Operation.SplitCommonVertex
+    Last = Operation.Last
     @staticmethod
     def FindOperator(name: str, op: ShapeProcess_Operator) -> bool: ...
     @overload
     @staticmethod
     def Perform(context: ShapeProcess_Context, seq: str, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
+    @overload
+    @staticmethod
+    def Perform(theContext: ShapeProcess_Context, theOperations: Any, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
     @staticmethod
     def RegisterOperator(name: str, op: ShapeProcess_Operator) -> bool: ...
     @staticmethod
-    def ToOperationFlag(theName: str) -> bool: ...
+    def ToOperationFlag(theName: str) -> Any: ...
 
 class ShapeProcess_Context(Standard_Transient):
     @overload
@@ -33,6 +79,8 @@ class ShapeProcess_Context(Standard_Transient):
     def __init__(self, file: str, scope: Optional[str] = "") -> None: ...
     def BooleanVal(self, param: str, def_: bool) -> bool: ...
     def GetBoolean(self, param: str) -> Tuple[bool, bool]: ...
+    def GetInteger(self, param: str) -> Tuple[bool, int]: ...
+    def GetReal(self, param: str) -> Tuple[bool, float]: ...
     def GetString(self, param: str, val: str) -> bool: ...
     def Init(self, file: str, scope: Optional[str] = "") -> bool: ...
     def IntegerVal(self, param: str, def_: int) -> int: ...
@@ -50,7 +98,7 @@ class ShapeProcess_Context(Standard_Transient):
 
 class ShapeProcess_OperLibrary:
     @staticmethod
-    def ApplyModifier(S: TopoDS_Shape, context: ShapeProcess_ShapeContext, M: BRepTools_Modification, map: TopTools_DataMapOfShapeShape, msg: Optional[ShapeExtend_MsgRegistrator] = nullptr, theMutableInput: Optional[bool] = false) -> TopoDS_Shape: ...
+    def ApplyModifier(S: TopoDS_Shape, context: ShapeProcess_ShapeContext, M: BRepTools_Modification, map: TopTools_DataMapOfShapeShape, msg: Optional[ShapeExtend_MsgRegistrator] = None, theMutableInput: Optional[bool] = False) -> TopoDS_Shape: ...
     @staticmethod
     def Init() -> None: ...
 
@@ -75,13 +123,13 @@ class ShapeProcess_ShapeContext(ShapeProcess_Context):
     def Messages(self) -> ShapeExtend_MsgRegistrator: ...
     def PrintStatistics(self) -> None: ...
     @overload
-    def RecordModification(self, repl: TopTools_DataMapOfShapeShape, msg: Optional[ShapeExtend_MsgRegistrator] = nullptr) -> None: ...
+    def RecordModification(self, repl: TopTools_DataMapOfShapeShape, msg: Optional[ShapeExtend_MsgRegistrator] = None) -> None: ...
     @overload
     def RecordModification(self, repl: ShapeBuild_ReShape, msg: ShapeExtend_MsgRegistrator) -> None: ...
     @overload
     def RecordModification(self, repl: ShapeBuild_ReShape) -> None: ...
     @overload
-    def RecordModification(self, sh: TopoDS_Shape, repl: BRepTools_Modifier, msg: Optional[ShapeExtend_MsgRegistrator] = nullptr) -> None: ...
+    def RecordModification(self, sh: TopoDS_Shape, repl: BRepTools_Modifier, msg: Optional[ShapeExtend_MsgRegistrator] = None) -> None: ...
     def Result(self) -> TopoDS_Shape: ...
     def SetDetalisation(self, level: TopAbs_ShapeEnum) -> None: ...
     def SetNonManifold(self, theNonManifold: bool) -> None: ...

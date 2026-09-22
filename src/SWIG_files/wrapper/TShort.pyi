@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -6,12 +7,6 @@ from OCC.Core.NCollection import *
 
 # the following typedef cannot be wrapped as is
 TShort_Array2OfShortReal = NewType("TShort_Array2OfShortReal", Any)
-# the following typedef cannot be wrapped as is
-TShort_HArray1OfShortReal = NewType("TShort_HArray1OfShortReal", Any)
-# the following typedef cannot be wrapped as is
-TShort_HArray2OfShortReal = NewType("TShort_HArray2OfShortReal", Any)
-# the following typedef cannot be wrapped as is
-TShort_HSequenceOfShortReal = NewType("TShort_HSequenceOfShortReal", Any)
 
 class TShort_Array1OfShortReal:
     @overload
@@ -21,9 +16,7 @@ class TShort_Array1OfShortReal:
     def __getitem__(self, index: int) -> float: ...
     def __setitem__(self, index: int, value: float) -> None: ...
     def __len__(self) -> int: ...
-    def __iter__(self) -> Iterator[float]: ...
-    def next(self) -> float: ...
-    __next__ = next
+    def __iter__(self) -> typing.Iterator[float]: ...
     def Init(self, theValue: float) -> None: ...
     def Size(self) -> int: ...
     def Length(self) -> int: ...

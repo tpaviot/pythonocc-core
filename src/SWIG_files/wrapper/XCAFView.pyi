@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -8,9 +9,9 @@ from OCC.Core.gp import *
 
 
 class XCAFView_ProjectionType(IntEnum):
-    XCAFView_ProjectionType_NoCamera: int = ...
-    XCAFView_ProjectionType_Parallel: int = ...
-    XCAFView_ProjectionType_Central: int = ...
+    XCAFView_ProjectionType_NoCamera = 0
+    XCAFView_ProjectionType_Parallel = 1
+    XCAFView_ProjectionType_Central = 2
 
 XCAFView_ProjectionType_NoCamera = XCAFView_ProjectionType.XCAFView_ProjectionType_NoCamera
 XCAFView_ProjectionType_Parallel = XCAFView_ProjectionType.XCAFView_ProjectionType_Parallel

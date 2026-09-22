@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Literal, overload
 
 from OCC.Core.Bnd import Bnd_Box2d
 from OCC.Core.gp import gp_Dir, gp_Pnt
@@ -8,15 +8,25 @@ from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Shape
 HAVE_SVGWRITE: bool
 
 def check_svgwrite_installed() -> None: ...
+@overload
+def read_step_file(
+    filename: str, as_compound: Literal[True] = True, verbosity: bool = False
+) -> TopoDS_Shape: ...
+@overload
+def read_step_file(
+    filename: str, as_compound: Literal[False], verbosity: bool = False
+) -> list[TopoDS_Shape]: ...
+@overload
 def read_step_file(
     filename: str, as_compound: bool = True, verbosity: bool = False
 ) -> TopoDS_Shape | list[TopoDS_Shape]: ...
 def write_step_file(
     shape: TopoDS_Shape, filename: str, application_protocol: str = "AP203"
 ) -> None: ...
+# the values are [name: str, color: Quantity_Color] lists
 def read_step_file_with_names_colors(
     filename: str,
-) -> dict[TopoDS_Shape, list[str | Quantity_Color]]: ...
+) -> dict[TopoDS_Shape, list[Any]]: ...
 def write_stl_file(
     shape: TopoDS_Shape,
     filename: str,

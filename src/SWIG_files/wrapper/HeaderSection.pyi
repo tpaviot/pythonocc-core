@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -54,6 +55,7 @@ class HeaderSection_FileSchema(Standard_Transient):
 
 class HeaderSection_Protocol(StepData_Protocol):
     def __init__(self) -> None: ...
+    def SchemaName(self, arg0: Interface_InterfaceModel) -> str: ...
     def TypeNumber(self, atype: Standard_Type) -> int: ...
 
 # harray1 classes

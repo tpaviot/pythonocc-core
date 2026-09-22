@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -11,8 +12,18 @@ from OCC.Core.TCollection import *
 
 # the following typedef cannot be wrapped as is
 BinMDF_DoubleMapIteratorOfTypeIdMap = NewType("BinMDF_DoubleMapIteratorOfTypeIdMap", Any)
-# the following typedef cannot be wrapped as is
-BinMDF_TypeIdMap = NewType("BinMDF_TypeIdMap", Any)
+
+class BinMDF_StringIdMap:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class BinMDF_TypeADriverMap:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class BinMDF_TypeIdMap:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 class binmdf:
     @staticmethod

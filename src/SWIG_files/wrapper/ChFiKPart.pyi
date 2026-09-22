@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -10,6 +11,10 @@ from OCC.Core.Adaptor3d import *
 from OCC.Core.TopAbs import *
 from OCC.Core.gp import *
 
+
+class ChFiKPart_RstMap:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 class ChFiKPart_ComputeData:
     @staticmethod

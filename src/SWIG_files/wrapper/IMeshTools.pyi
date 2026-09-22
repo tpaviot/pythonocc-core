@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -11,9 +12,9 @@ from OCC.Core.TopoDS import *
 
 
 class IMeshTools_MeshAlgoType(IntEnum):
-    IMeshTools_MeshAlgoType_DEFAULT: int = ...
-    IMeshTools_MeshAlgoType_Watson: int = ...
-    IMeshTools_MeshAlgoType_Delabella: int = ...
+    IMeshTools_MeshAlgoType_DEFAULT = ...
+    IMeshTools_MeshAlgoType_Watson = 0
+    IMeshTools_MeshAlgoType_Delabella = 1
 
 IMeshTools_MeshAlgoType_DEFAULT = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_DEFAULT
 IMeshTools_MeshAlgoType_Watson = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Watson
@@ -46,9 +47,10 @@ class IMeshTools_Context(IMeshData_Shape):
 
 class IMeshTools_CurveTessellator(Standard_Transient):
     def PointsNb(self) -> int: ...
+    def Value(self, theIndex: int, thePoint: gp_Pnt) -> Tuple[bool, float]: ...
 
 class IMeshTools_MeshAlgo(Standard_Transient):
-    pass
+    def Perform(self, theDFace: Any, theParameters: IMeshTools_Parameters, theRange: Message_ProgressRange) -> None: ...
 
 class IMeshTools_MeshAlgoFactory(Standard_Transient):
     def GetAlgo(self, theSurfaceType: GeomAbs_SurfaceType, theParameters: IMeshTools_Parameters) -> IMeshTools_MeshAlgo: ...
@@ -71,7 +73,7 @@ class IMeshTools_ModelBuilder(Message_Algorithm):
 class IMeshTools_Parameters:
     def __init__(self) -> None: ...
     @staticmethod
-    def RelMinSize() -> False: ...
+    def RelMinSize() -> float: ...
 
 class IMeshTools_ShapeExplorer(IMeshData_Shape):
     def __init__(self, theShape: TopoDS_Shape) -> None: ...

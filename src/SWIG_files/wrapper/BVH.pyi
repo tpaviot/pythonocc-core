@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -50,6 +51,13 @@ BVH_Vec4d = NewType("BVH_Vec4d", Any)
 BVH_Vec4f = NewType("BVH_Vec4f", Any)
 # the following typedef cannot be wrapped as is
 BVH_Vec4i = NewType("BVH_Vec4i", Any)
+BVH_Constants_MaxTreeDepth: int
+BVH_Constants_LeafNodeSizeSingle: int
+BVH_Constants_LeafNodeSizeAverage: int
+BVH_Constants_LeafNodeSizeDefault: int
+BVH_Constants_LeafNodeSizeSmall: int
+BVH_Constants_NbBinsOptimal: int
+BVH_Constants_NbBinsBest: int
 
 
 #classnotwrapped

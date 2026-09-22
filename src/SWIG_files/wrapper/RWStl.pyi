@@ -1,4 +1,5 @@
 from enum import IntEnum
+import typing
 from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
@@ -26,6 +27,9 @@ class rwstl:
     @overload
     @staticmethod
     def ReadFile(theFile: str, theMergeAngle: float, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> Poly_Triangulation: ...
+    @overload
+    @staticmethod
+    def ReadFile(theFile: str, theMergeAngle: float, theTriangList: Any, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> None: ...
     @staticmethod
     def ReadStream(theStream: str, theMergeAngle: Optional[float] = M_PI/2.0, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> Poly_Triangulation: ...
     @overload
