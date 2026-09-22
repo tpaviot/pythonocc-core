@@ -18,6 +18,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from contextlib import contextmanager
+import gc
 import glob
 import json
 from math import sqrt
@@ -83,7 +84,11 @@ from OCC.Core.TopoDS import (
     TopoDS_Shape,
 )
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
-from OCC.Core.TColgp import TColgp_Array1OfPnt, TColgp_HArray1OfPnt
+from OCC.Core.TColgp import (
+    TColgp_Array1OfPnt,
+    TColgp_HArray1OfPnt,
+    TColgp_SequenceOfPnt,
+)
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
@@ -1056,6 +1061,41 @@ def test_deprecated_static_functions():
     with pytest.warns(DeprecationWarning):
         gp_OX()
     assert isinstance(gp.OX(), gp_Ax1)
+
+
+def test_container_values_outlive_container():
+    """Issue #1482: the objects returned by the const accessors of the
+    containers are copies, still valid once the container is deleted"""
+
+    def pack(nb_points):
+        array = TColgp_Array1OfPnt(1, nb_points)
+        sequence = TColgp_SequenceOfPnt()
+        for i in range(1, nb_points + 1):
+            array.SetValue(i, gp_Pnt(i, 10 * i, 100 * i))
+            sequence.Append(gp_Pnt(i, 10 * i, 100 * i))
+        return (
+            [array.Value(i) for i in range(1, nb_points + 1)]
+            + [array.First(), array.Last(), array[0]]
+            + list(array)
+            + [sequence.Value(1), sequence.First(), sequence.Last()]
+        )
+
+    points = pack(12)
+    gc.collect()
+    # reuse the memory of the deleted containers
+    _ = [TColgp_Array1OfPnt(1, 12) for _ in range(50)]
+    expected = [[i, 10 * i, 100 * i] for i in range(1, 13)]
+    expected = (
+        expected
+        + [expected[0], expected[-1], expected[0]]
+        + expected
+        + [expected[0], expected[0], expected[-1]]
+    )
+    assert [list(p.Coord()) for p in points] == expected
+    # the Change* accessors still modify the container in place
+    array = TColgp_Array1OfPnt(1, 2)
+    array.ChangeValue(1).SetX(7.0)
+    assert array.Value(1).X() == 7.0
 
 
 def test_tcollection_strings_str():
