@@ -18,12 +18,15 @@
 from math import sqrt
 import os
 
-from OCC.Core.gp import gp_Pnt, gp_Vec
+from OCC.Core.gp import gp_Pnt, gp_Vec, gp_Dir
 from OCC.Core.MeshDS import MeshDS_DataSource
 from OCC.Core.RWStl import rwstl
-from OCC.Core.TColStd import TColStd_Array1OfInteger
+from OCC.Core.TColStd import TColStd_Array1OfInteger, TColStd_Array1OfReal
+from OCC.Core.MeshVS import MeshVS_ET_Face, MeshVS_ET_Node
+from OCC.Core.Poly import Poly_Triangulation, Poly_Triangle
 
 import numpy as np
+import pytest
 
 STL_BOTTLE_FILENAME = os.path.join(".", "test_io", "bottle_ascii.stl")
 
@@ -165,3 +168,106 @@ def test_create_mesh_datasource_from_numpy_ndarray():
     # create data source
     a_data_source = MeshDS_DataSource(vertices, faces)
     assert isinstance(a_data_source, MeshDS_DataSource)
+
+
+def test_mesh_datasource_counts_and_geom():
+    coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0), gp_Pnt(0, 1, 0)]
+    a_data_source = MeshDS_DataSource(coord_data, [[0, 1, 2, 3], [0, 1, 2]])
+    assert a_data_source.NbNodes() == 4
+    assert a_data_source.NbElements() == 2
+    # all the nodes of the quadrangle, X, Y, Z of each node in turn
+    coords = TColStd_Array1OfReal(1, 12)
+    is_ok, nb_nodes, entity_type = a_data_source.GetGeom(1, True, coords)
+    assert is_ok and nb_nodes == 4 and entity_type == MeshVS_ET_Face
+    assert [coords.Value(i) for i in range(1, 13)] == [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+    ]
+    # a single node
+    is_ok, nb_nodes, entity_type = a_data_source.GetGeom(3, False, coords)
+    assert is_ok and nb_nodes == 1 and entity_type == MeshVS_ET_Node
+    assert [coords.Value(i) for i in range(1, 4)] == [1, 1, 0]
+    # out of range ids and too small arrays are reported, not read
+    assert not a_data_source.GetGeom(3, True, coords)[0]
+    assert not a_data_source.GetGeom(5, False, coords)[0]
+    assert not a_data_source.GetGeom(1, True, TColStd_Array1OfReal(1, 9))[0]
+    node_ids = TColStd_Array1OfInteger(1, 3)
+    assert not a_data_source.GetNodesByElement(1, node_ids)[0]
+    assert a_data_source.GetNodesByElement(2, node_ids)[0]
+    # node rank beyond the element nodes
+    assert a_data_source.GetNodeNormal(3, 2)[0]
+    assert not a_data_source.GetNodeNormal(4, 2)[0]
+    assert not a_data_source.GetNormal(1, 2)[0]
+
+
+def test_mesh_datasource_from_numpy_quadrangles():
+    vertices = np.array(
+        [[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [2, 0, 0], [2, 1, 0]],
+        dtype=np.float64,
+    )
+    faces = np.array([[0, 1, 2, 3], [1, 4, 5, 2]], dtype=np.int32)
+    a_data_source = MeshDS_DataSource(vertices, faces)
+    assert a_data_source.NbNodes() == 6
+    assert a_data_source.NbElements() == 2
+    node_ids = TColStd_Array1OfInteger(1, 4)
+    is_ok, nb_nodes = a_data_source.GetNodesByElement(2, node_ids)
+    assert is_ok and nb_nodes == 4
+    assert [node_ids.Value(i) for i in range(1, 5)] == [2, 5, 6, 3]
+    is_ok, nx, ny, nz = a_data_source.GetNormal(2, 3)
+    assert is_ok and (nx, ny, nz) == (0.0, 0.0, 1.0)
+
+
+def test_mesh_datasource_invalid_input():
+    coord_data = [gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)]
+    # node index out of range
+    with pytest.raises(IndexError):
+        MeshDS_DataSource(coord_data, [[0, 1, 3]])
+    with pytest.raises(IndexError):
+        MeshDS_DataSource(coord_data, [[0, 1, -1]])
+    # not a triangle nor a quadrangle
+    with pytest.raises(Exception):
+        MeshDS_DataSource(coord_data, [[0, 1]])
+    with pytest.raises(Exception):
+        MeshDS_DataSource(coord_data, [[0, 1, 2, 0, 1]])
+    # numpy arrays with a wrong number of columns
+    vertices = np.array([[0, 0, 0], [1, 0, 0], [1, 1, 0]], dtype=np.float64)
+    with pytest.raises(Exception):
+        MeshDS_DataSource(vertices, np.array([[0, 1]], dtype=np.int32))
+    with pytest.raises(Exception):
+        MeshDS_DataSource(vertices[:, :2].copy(), np.array([[0, 1, 2]], dtype=np.int32))
+    with pytest.raises(IndexError):
+        MeshDS_DataSource(vertices, np.array([[0, 1, 5]], dtype=np.int32))
+    # normals must match the elements
+    a_data_source = MeshDS_DataSource(coord_data, [[0, 1, 2]])
+    with pytest.raises(Exception):
+        a_data_source.SetElemNormals([gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)])
+    with pytest.raises(Exception):
+        a_data_source.SetNodeNormals([[gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]])
+
+
+def test_mesh_datasource_triangulation_normals():
+    # the normals of the triangulation are used as node normals
+    triangulation = Poly_Triangulation(3, 1, False)
+    triangulation.SetNode(1, gp_Pnt(0, 0, 0))
+    triangulation.SetNode(2, gp_Pnt(1, 0, 0))
+    triangulation.SetNode(3, gp_Pnt(0, 1, 0))
+    triangulation.SetTriangle(1, Poly_Triangle(1, 2, 3))
+    a_data_source = MeshDS_DataSource(triangulation)
+    assert a_data_source.NbNodes() == 3 and a_data_source.NbElements() == 1
+    assert a_data_source.GetNormal(1, 3) == [True, 0.0, 0.0, 1.0]
+    assert a_data_source.GetNodeNormal(2, 1) == [True, 0.0, 0.0, 1.0]
+    triangulation.AddNormals()
+    for i in range(1, 4):
+        triangulation.SetNormal(i, gp_Dir(0, 0, -1))
+    a_data_source = MeshDS_DataSource(triangulation)
+    assert a_data_source.GetNodeNormal(2, 1) == [True, 0.0, 0.0, -1.0]

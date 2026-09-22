@@ -1,105 +1,151 @@
-#if !defined __MeshDS_DataSource__
-#define __MeshDS_DataSource__
+#ifndef _MeshDS_DataSource_HeaderFile
+#define _MeshDS_DataSource_HeaderFile
 
-
-#include <algorithm>
 #include <vector>
 
-#include <Standard.hxx>
-#include <Standard_Type.hxx>
-#include <Standard_Real.hxx>
-#include <Standard_Boolean.hxx>
-#include <Standard_Integer.hxx>
-#include <TColStd_PackedMapOfInteger.hxx>
-#include <TColStd_HArray2OfInteger.hxx>
-#include <TColStd_HArray2OfReal.hxx>
-#include <TColStd_Array1OfReal.hxx>
-#include <TColStd_Array1OfInteger.hxx>
-#include <TColStd_HArray1OfInteger.hxx>
-#include <TColStd_DataMapOfIntegerInteger.hxx>
-#include <TColStd_DataMapOfIntegerReal.hxx>
-#include <MeshVS_EntityType.hxx>
 #include <MeshVS_DataSource.hxx>
+#include <MeshVS_EntityType.hxx>
+#include <NCollection_Array1.hxx>
 #include <Poly_Triangulation.hxx>
+#include <Standard_Handle.hxx>
+#include <Standard_Type.hxx>
+#include <TColStd_PackedMapOfInteger.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Vec.hxx>
-#include <Precision.hxx>
-#include <Standard_Type.hxx>
-#include <TColgp_SequenceOfXYZ.hxx>
-#include <TopTools_HArray2OfShape.hxx>
-#include <TopTools_HArray1OfListOfShape.hxx>
-#include <TopTools_HArray1OfShape.hxx>
-
 
 class MeshDS_DataSource;
 DEFINE_STANDARD_HANDLE(MeshDS_DataSource, MeshVS_DataSource)
 
+//! MeshVS data source for a surface mesh made of triangles and quadrangles.
+//!
+//! The mesh is given by its nodes and its elements, each element being the
+//! list of its 3 or 4 nodes, as 0-based node indices. Following the MeshVS
+//! convention, node and element ids exposed by the data source are 1-based
+//! and contiguous: node i of the input is node i+1 of the data source.
+//!
+//! Element normals are computed from the three first nodes of each element,
+//! node normals by averaging the normals of the elements sharing the node.
+//! Both can be overridden with SetElemNormals() and SetNodeNormals().
 class MeshDS_DataSource : public MeshVS_DataSource
 {
 public:
+  //! Initializes the data source from a list of nodes and a list of
+  //! elements, each element being 3 or 4 0-based node indices.
+  //! Raises Standard_ConstructionError if an element does not have 3 or 4
+  //! nodes, Standard_OutOfRange if a node index is out of range.
+  MeshDS_DataSource(const std::vector<gp_Pnt>&             theNodes,
+                    const std::vector<std::vector<int>>&   theElements);
 
-	//! Initialize data source with vector of nodes and vector of elements (triangles or quadrangles) 
-	//! Face normals are calculated using the three first nodes of each element
-	//! Node normals are calculated averaging the normals of the neighboring elements
-	MeshDS_DataSource(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData);
+  //! Initializes the data source from row-major arrays, typically numpy
+  //! arrays: theVertices is a theNbVertices x 3 array of coordinates,
+  //! theFaces a theNbFaces x 3 (triangles) or theNbFaces x 4 (quadrangles)
+  //! array of 0-based node indices.
+  //! Raises Standard_DimensionMismatch if the arrays do not have 3 (or 4)
+  //! columns, Standard_OutOfRange if a node index is out of range.
+  MeshDS_DataSource(double* theVertices,
+                    int     theNbVertices,
+                    int     theNbCoords,
+                    int*    theFaces,
+                    int     theNbFaces,
+                    int     theNbFaceNodes);
 
-	MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
+  //! Initializes the data source from a triangulation. When the
+  //! triangulation carries normals, they are used as node normals.
+  MeshDS_DataSource(const occ::handle<Poly_Triangulation>& theTriangulation);
 
-	//! Initialize data source from STL triangulation
-	//! Face normals are calculated using the three nodes of each element
-	//! Node normals are calculated averaging the normals of the neighboring elements 
-	MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri);
+  //! Number of nodes.
+  int NbNodes() const { return static_cast<int>(myNodeCoords.size() / 3); }
 
-	//! This method define the normal of the face for each element
-	void SetElemNormals(const std::vector<gp_Vec>& ElemNormalsData);
+  //! Number of elements.
+  int NbElements() const { return static_cast<int>(myElemNbNodes.size()); }
 
-	//! This method define the normal of all nodes for each element
-	void SetNodeNormals(const std::vector<std::vector<gp_Vec>>& NodeNormalsData);
+  //! Sets the normal of each element, one vector per element.
+  //! Raises Standard_DimensionMismatch if the number of normals differs
+  //! from the number of elements.
+  void SetElemNormals(const std::vector<gp_Vec>& theElemNormals);
 
-	//! Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True )
-	//! by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and
-	//! with nodes order is the same as in wire bounding the face or link. NbNodes is number of nodes of element.
-	//! It is recommended to return 1 for node. Type is an element type.
-	Standard_Boolean GetGeom(const Standard_Integer ID, const Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes, MeshVS_EntityType& Type) const Standard_OVERRIDE;
+  //! Sets the normal at each node of each element, one list of vectors
+  //! per element, one vector per node of the element.
+  //! Raises Standard_DimensionMismatch if the numbers do not match the
+  //! elements.
+  void SetNodeNormals(const std::vector<std::vector<gp_Vec>>& theNodeNormals);
 
-	//! This method is similar to GetGeom, but returns only element or node type. This method is provided for
-	//! a fine performance.
-	Standard_Boolean GetGeomType(const Standard_Integer ID, const Standard_Boolean IsElement, MeshVS_EntityType& Type) const Standard_OVERRIDE;
+  //! Returns the coordinates of node ID (IsElement false), or the
+  //! coordinates of all the nodes of element ID, X, Y, Z of each node in
+  //! turn. Coords must hold 3 * NbNodes values.
+  bool GetGeom(const int                   ID,
+               const bool                  IsElement,
+               NCollection_Array1<double>& Coords,
+               int&                        NbNodes,
+               MeshVS_EntityType&          Type) const override;
 
-	//! This method returns by number an address of any entity which represents element or node data structure.
-	Standard_Address GetAddr(const Standard_Integer ID, const Standard_Boolean IsElement) const Standard_OVERRIDE;
+  //! Returns the type of node or element ID.
+  bool GetGeomType(const int ID, const bool IsElement, MeshVS_EntityType& Type) const override;
 
-	//! This method returns information about what node this element consist of.
-	virtual Standard_Boolean GetNodesByElement(const Standard_Integer ID, TColStd_Array1OfInteger& NodeIDs, Standard_Integer& NbNodes) const Standard_OVERRIDE;
+  //! No data structure is attached to nodes and elements, returns nullptr.
+  void* GetAddr(const int ID, const bool IsElement) const override;
 
-	//! This method returns map of all nodes the object consist of.
-	const TColStd_PackedMapOfInteger& GetAllNodes() const Standard_OVERRIDE;
+  //! Returns the ids of the nodes of element ID.
+  bool GetNodesByElement(const int                ID,
+                         NCollection_Array1<int>& NodeIDs,
+                         int&                     NbNodes) const override;
 
-	//! This method returns map of all elements the object consist of.
-	const TColStd_PackedMapOfInteger& GetAllElements() const Standard_OVERRIDE;
+  //! Returns the ids of all the nodes.
+  const TColStd_PackedMapOfInteger& GetAllNodes() const override;
 
-	//! This method calculates normal of face, which is using for correct reflection presentation.
-	//! There is default method, for advance reflection this method can be redefined.
-	virtual Standard_Boolean GetNormal(const Standard_Integer Id, const Standard_Integer Max, Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const Standard_OVERRIDE;
+  //! Returns the ids of all the elements.
+  const TColStd_PackedMapOfInteger& GetAllElements() const override;
 
-	//! This method return normal of node rankNode of face ElementId, which is using for smooth shading presentation.
-	//! Returns false if normal isn't defined.
-	virtual Standard_Boolean GetNodeNormal(const Standard_Integer rankNode, const Standard_Integer ElementId, Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const Standard_OVERRIDE;
+  //! Returns the normal of element Id, used for flat shading.
+  bool GetNormal(const int Id, const int Max, double& nx, double& ny, double& nz) const override;
 
-	DEFINE_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
+  //! Returns the normal at node rankNode (1-based rank within the element)
+  //! of element ElementId, used for smooth shading.
+  bool GetNodeNormal(const int rankNode,
+                     const int ElementId,
+                     double&   nx,
+                     double&   ny,
+                     double&   nz) const override;
 
-protected:
+  DEFINE_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
 
 private:
-	TColStd_PackedMapOfInteger myNodes;
-	TColStd_PackedMapOfInteger myElements;
-	Handle(TColStd_HArray2OfInteger) myElemNodes;
-	Handle(TColStd_HArray1OfInteger) myElemNumberNodes;
-	Handle(TColStd_HArray2OfReal) myNodeCoords;
-	Handle(TColStd_HArray2OfReal) myElemNormals;
-	Handle(TColStd_HArray2OfReal) myNodeNormals;
-	void InitializeFromData(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData);
-	void InitializeFromData(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2);
+  //! Maximum number of nodes of an element (quadrangle).
+  static constexpr int MaxNodesPerElement = 4;
+
+  //! Fills the data source from flat arrays. theCoords holds 3 values per
+  //! node; theElemNodes theStride 0-based node indices per element, of
+  //! which the theElemNbNodes[i] first ones are used (all of them when
+  //! theElemNbNodes is nullptr).
+  void Initialize(int           theNbNodes,
+                  const double* theCoords,
+                  int           theNbElements,
+                  const int*    theElemNodes,
+                  const int*    theElemNbNodes,
+                  int           theStride);
+
+  //! Computes the element normals from the three first nodes of each
+  //! element, then the node normals as the average of the normals of the
+  //! elements sharing each node.
+  void ComputeNormals();
+
+  bool IsValidElement(const int theId) const
+  {
+    return theId >= 1 && theId <= NbElements();
+  }
+
+  TColStd_PackedMapOfInteger myNodes;
+  TColStd_PackedMapOfInteger myElements;
+  //! X, Y, Z of each node
+  std::vector<double> myNodeCoords;
+  //! MaxNodesPerElement 1-based node ids per element, unused ones set to 0
+  std::vector<int> myElemNodes;
+  //! number of nodes of each element
+  std::vector<int> myElemNbNodes;
+  //! X, Y, Z of the normal of each element
+  std::vector<double> myElemNormals;
+  //! X, Y, Z of the normal at each of the MaxNodesPerElement nodes of each element
+  std::vector<double> myNodeNormals;
 };
 
-#endif
+#endif // _MeshDS_DataSource_HeaderFile
