@@ -1,5 +1,5 @@
 /*
-##Copyright 2021 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2021-2026 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
