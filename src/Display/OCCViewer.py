@@ -17,85 +17,84 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""The 3D viewer, on screen (Viewer3d) or offscreen (OffscreenRenderer)."""
+
 import itertools
+import logging
 import math
 import os
 import sys
 import time
-from typing import Any, Callable, List, Optional, Tuple, Union
+from collections.abc import Sequence
+from typing import Any, Callable, Optional, Union
 
 import OCC
-from OCC.Core.Aspect import Aspect_GFM_VER
+from OCC.Core import Quantity
 from OCC.Core.AIS import (
-    AIS_Shape,
     AIS_Shaded,
+    AIS_Shape,
     AIS_TexturedShape,
     AIS_WireFrame,
 )
-from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
+from OCC.Core.Aspect import (
+    Aspect_FillMethod,
+    Aspect_FM_NONE,
+    Aspect_FM_STRETCH,
+    Aspect_GFM_VER,
+    Aspect_TOTP_RIGHT_LOWER,
+)
 from OCC.Core.BRepBuilderAPI import (
-    BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_MakeEdge2d,
     BRepBuilderAPI_MakeFace,
+    BRepBuilderAPI_MakeVertex,
+)
+from OCC.Core.Geom import Geom_Curve, Geom_Surface
+from OCC.Core.Geom2d import Geom2d_Curve
+from OCC.Core.GeomAbs import GeomAbs_G2
+from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d, gp_Vec
+from OCC.Core.Graphic3d import (
+    Graphic3d_Camera,
+    Graphic3d_GraduatedTrihedron,
+    Graphic3d_MaterialAspect,
+    Graphic3d_NameOfMaterial,
+    Graphic3d_NOM_NEON_GNC,
+    Graphic3d_NOT_ENV_CLOUDS,
+    Graphic3d_RenderingParams,
+    Graphic3d_RM_RASTERIZATION,
+    Graphic3d_RM_RAYTRACING,
+    Graphic3d_StereoMode_QuadBuffer,
+    Graphic3d_Structure,
+    Graphic3d_TextureEnv,
+    Graphic3d_TOSM_FRAGMENT,
+    Handle_Graphic3d_TextureEnv_Create,
+)
+from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
+from OCC.Core.Quantity import (
+    Quantity_Color,
+    Quantity_NOC_BLACK,
+    Quantity_NOC_WHITE,
+    Quantity_TOC_RGB,
 )
 from OCC.Core.TopAbs import (
-    TopAbs_VERTEX,
     TopAbs_EDGE,
-    TopAbs_WIRE,
     TopAbs_FACE,
     TopAbs_SHELL,
     TopAbs_SOLID,
+    TopAbs_VERTEX,
+    TopAbs_WIRE,
 )
-from OCC.Core.GeomAbs import GeomAbs_G2
-from OCC.Core.Geom import Geom_Curve, Geom_Surface
-from OCC.Core.Geom2d import Geom2d_Curve
-from OCC.Core.Visualization import Display3d
 from OCC.Core.V3d import (
-    V3d_ZBUFFER,
-    V3d_Zpos,
-    V3d_Zneg,
-    V3d_Xpos,
     V3d_Xneg,
-    V3d_Ypos,
-    V3d_Yneg,
+    V3d_Xpos,
     V3d_XposYnegZpos,
+    V3d_Yneg,
+    V3d_Ypos,
+    V3d_ZBUFFER,
+    V3d_Zneg,
+    V3d_Zpos,
 )
-from OCC.Core.Quantity import (
-    Quantity_Color,
-    Quantity_TOC_RGB,
-    Quantity_NOC_WHITE,
-    Quantity_NOC_BLACK,
-    Quantity_NOC_BLUE1,
-    Quantity_NOC_CYAN1,
-    Quantity_NOC_RED,
-    Quantity_NOC_GREEN,
-    Quantity_NOC_ORANGE,
-    Quantity_NOC_YELLOW,
-)
-from OCC.Core.Prs3d import Prs3d_Arrow, Prs3d_Text, Prs3d_TextAspect
-from OCC.Core.Graphic3d import (
-    Graphic3d_NOM_NEON_GNC,
-    Graphic3d_NOT_ENV_CLOUDS,
-    Handle_Graphic3d_TextureEnv_Create,
-    Graphic3d_TextureEnv,
-    Graphic3d_Camera,
-    Graphic3d_RM_RAYTRACING,
-    Graphic3d_RM_RASTERIZATION,
-    Graphic3d_StereoMode_QuadBuffer,
-    Graphic3d_RenderingParams,
-    Graphic3d_MaterialAspect,
-    Graphic3d_TOSM_FRAGMENT,
-    Graphic3d_Structure,
-    Graphic3d_GraduatedTrihedron,
-    Graphic3d_NameOfMaterial,
-)
-from OCC.Core.Aspect import (
-    Aspect_TOTP_RIGHT_LOWER,
-    Aspect_FM_STRETCH,
-    Aspect_FM_NONE,
-    Aspect_FillMethod,
-)
+from OCC.Core.Visualization import Display3d
 
 if sys.platform == "win32":
     if "CASROOT" in os.environ:
@@ -121,30 +120,42 @@ if sys.platform == "win32":
             os.environ["CASROOT"] = casroot_path
 
 
+log = logging.getLogger(__name__)
+
+# selection modes cycled by SetSelectionMode() when no mode is given
+SELECTION_TOPOLOGY_MODES = (
+    TopAbs_SOLID,
+    TopAbs_SHELL,
+    TopAbs_FACE,
+    TopAbs_WIRE,
+    TopAbs_EDGE,
+    TopAbs_VERTEX,
+)
+
+
 def rgb_color(r: float, g: float, b: float) -> Quantity_Color:
+    """Returns the Quantity_Color of the (r, g, b) components, each in [0, 1]."""
     return Quantity_Color(r, g, b, Quantity_TOC_RGB)
 
 
 def get_color_from_name(color_name: str) -> Quantity_Color:
-    """from the string 'WHITE', returns Quantity_Color
-    WHITE.
-    color_name is the color name, case insensitive.
+    """Returns the Quantity_Color named color_name, e.g. "WHITE" or "blue".
+
+    The name is one of the Quantity_NameOfColor enumeration, without the
+    Quantity_NOC_ prefix, case insensitive. When a name is declined in
+    several shades (BLUE1, BLUE2, ...), the first one is used. Unknown names
+    fall back to white, with a warning.
     """
     enum_name = f"Quantity_NOC_{color_name.upper()}"
-    if enum_name in globals():
-        color_num = globals()[enum_name]
-    elif f"{enum_name}1" in globals():
-        color_num = globals()[f"{enum_name}1"]
-        print(f"Many colors for color name {color_name}, using first.")
-    else:
+    color_num = getattr(Quantity, enum_name, None)
+    if color_num is None:
+        color_num = getattr(Quantity, f"{enum_name}1", None)
+        if color_num is not None:
+            log.warning("Several shades of color %s, using %s1", color_name, enum_name)
+    if color_num is None:
+        log.warning("Color name %s not defined, using white", color_name)
         color_num = Quantity_NOC_WHITE
-        print("Color name not defined. Use White by default")
     return Quantity_Color(color_num)
-
-
-TOPOLOGY_MODES = itertools.cycle(
-    [TopAbs_SOLID, TopAbs_SHELL, TopAbs_FACE, TopAbs_WIRE, TopAbs_EDGE, TopAbs_VERTEX]
-)
 
 
 class Viewer3d(Display3d):
@@ -160,8 +171,9 @@ class Viewer3d(Display3d):
         """
         Initializes the Viewer3d.
         """
-        Display3d.__init__(self)
+        super().__init__()
         self._parent = None  # the parent opengl GUI container
+        self._topology_modes = itertools.cycle(SELECTION_TOPOLOGY_MODES)
 
         self._inited = False
         self._local_context_opened = False
@@ -175,9 +187,9 @@ class Viewer3d(Display3d):
         self.default_drawer = None
         self._is_offscreen = None
 
-        self.selected_shapes: List[AIS_Shape] = []
-        self._select_callbacks: List[Callable] = []
-        self._overlay_items: List[Any] = []
+        self.selected_shapes: list[AIS_Shape] = []
+        self._select_callbacks: list[Callable] = []
+        self._overlay_items: list[Any] = []
 
         self._window_handle: Optional[Any] = None
 
@@ -210,7 +222,7 @@ class Viewer3d(Display3d):
                 called with the selected shapes as argument.
         """
         if not callable(callback):
-            raise AssertionError("You must provide a callable to register the callback")
+            raise TypeError("You must provide a callable to register the callback")
         self._select_callbacks.append(callback)
 
     def unregister_callback(self, callback: Callable) -> None:
@@ -221,7 +233,7 @@ class Viewer3d(Display3d):
             callback: The callback function to unregister.
         """
         if callback not in self._select_callbacks:
-            raise AssertionError("This callback is not registered")
+            raise ValueError("This callback is not registered")
         self._select_callbacks.remove(callback)
 
     def MoveTo(self, X: int, Y: int) -> None:
@@ -517,18 +529,18 @@ class Viewer3d(Display3d):
 
     def set_bg_gradient_color(
         self,
-        color1: Union[List[float], Quantity_Color],
-        color2: Union[List[float], Quantity_Color],
+        color1: Union[Sequence[float], Quantity_Color],
+        color2: Union[Sequence[float], Quantity_Color],
         fill_method: Aspect_FillMethod = Aspect_GFM_VER,
     ) -> None:
         """
         Sets a background vertical gradient color.
 
         Args:
-            color1: The first color. Can be a list of 3 floats (R, G, B) or a
-                Quantity_Color.
-            color2: The second color. Can be a list of 3 floats (R, G, B) or a
-                Quantity_Color.
+            color1: The first color. Can be a sequence of 3 values (R, G, B) in
+                [0, 255] or a Quantity_Color.
+            color2: The second color. Can be a sequence of 3 values (R, G, B) in
+                [0, 255] or a Quantity_Color.
             fill_method: The fill method to use. Can be one of:
                 - Aspect_GFM_NONE
                 - Aspect_GFM_HOR
@@ -540,18 +552,17 @@ class Viewer3d(Display3d):
                 - Aspect_GFM_CORNER3
                 - Aspect_GFM_CORNER4
         """
-        if isinstance(color1, list) and isinstance(color2, list):
-            R1, G1, B1 = color1
-            R2, G2, B2 = color2
-            color1 = rgb_color(float(R1) / 255.0, float(G1) / 255.0, float(B1) / 255.0)
-            color2 = rgb_color(float(R2) / 255.0, float(G2) / 255.0, float(B2) / 255.0)
-        elif not isinstance(color1, Quantity_Color) and isinstance(
-            color2, Quantity_Color
-        ):
-            raise AssertionError(
-                "color1 and color2 mmust be either [R, G, B] lists or a Quantity_Color"
-            )
-        self.View.SetBgGradientColors(color1, color2, fill_method, True)
+        colors = []
+        for color in (color1, color2):
+            if isinstance(color, Quantity_Color):
+                colors.append(color)
+            elif isinstance(color, Sequence) and len(color) == 3:
+                colors.append(rgb_color(*(float(c) / 255.0 for c in color)))
+            else:
+                raise TypeError(
+                    "color1 and color2 must be [R, G, B] sequences or Quantity_Color"
+                )
+        self.View.SetBgGradientColors(colors[0], colors[1], fill_method, True)
 
     def SetBackgroundImage(self, image_filename: str, stretch: bool = True) -> None:
         """
@@ -562,7 +573,7 @@ class Viewer3d(Display3d):
             stretch (bool): Whether to stretch the image to fit the view.
         """
         if not os.path.isfile(image_filename):
-            raise IOError(f"image file {image_filename} not found.")
+            raise FileNotFoundError(f"image file {image_filename} not found.")
         if stretch:
             self.View.SetBackgroundImage(image_filename, Aspect_FM_STRETCH, True)
         else:
@@ -609,7 +620,7 @@ class Viewer3d(Display3d):
         point: Union[gp_Pnt, gp_Pnt2d],
         text_to_write: str,
         height: float = 14.0,
-        message_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
+        message_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
         update: bool = False,
     ) -> Graphic3d_Structure:
         """
@@ -651,7 +662,7 @@ class Viewer3d(Display3d):
         color: Optional[Union[str, int, Quantity_Color]] = None,
         transparency: Optional[float] = None,
         update: bool = False,
-    ) -> List[AIS_Shape]:
+    ) -> list[AIS_Shape]:
         """
         Displays one or a set of displayable objects.
 
@@ -667,9 +678,9 @@ class Viewer3d(Display3d):
         Returns:
             A list of the displayed AIS_Shape objects.
         """
-        ais_shapes: List[AIS_Shape] = []  # the list of all displayed shapes
+        ais_shapes: list[AIS_Shape] = []  # the list of all displayed shapes
 
-        if issubclass(shapes.__class__, gp_Pnt):
+        if isinstance(shapes, gp_Pnt):
             # if a gp_Pnt is passed, first convert to vertex
             vertex = BRepBuilderAPI_MakeVertex(shapes)
             shapes = [vertex.Shape()]
@@ -694,7 +705,7 @@ class Viewer3d(Display3d):
             shapes = [shapes]
         # build AIS_Shapes list
         for shape in shapes:
-            if material and texture or not material and texture:
+            if texture:
                 shape_to_display = AIS_TexturedShape(shape)
                 (
                     filename,
@@ -724,16 +735,6 @@ class Viewer3d(Display3d):
 
             ais_shapes.append(shape_to_display)
 
-        # if not SOLO:
-        #     # computing graphic properties is expensive
-        #     # if an iterable is found, so cluster all TopoDS_Shape under
-        #     # an AIS_MultipleConnectedInteractive
-        #     #shape_to_display = AIS_MultipleConnectedInteractive()
-        #     for ais_shp in ais_shapes:
-        #         # TODO : following line crashes with oce-0.18
-        #         # why ? fix ?
-        #         #shape_to_display.Connect(i)
-        #         self.Context.Display(ais_shp, False)
         # set the graphic properties
         if material is None:
             # The default material is too shiny to show the object
@@ -742,6 +743,8 @@ class Viewer3d(Display3d):
                 shape_to_display.SetMaterial(
                     Graphic3d_MaterialAspect(Graphic3d_NOM_NEON_GNC)
                 )
+        # a color of 0 or "" is not applied (Layer relies on it), use
+        # Quantity_Color(Quantity_NOC_BLACK) or "BLACK" for black
         if color:
             if isinstance(color, str):
                 color = get_color_from_name(color)
@@ -767,35 +770,27 @@ class Viewer3d(Display3d):
         shapes: Any,
         color: Union[str, Quantity_Color] = "YELLOW",
         update: bool = False,
-    ) -> List[AIS_Shape]:
+    ) -> list[AIS_Shape]:
         """
         Displays a shape with the given color.
 
         Args:
             shapes: The shape(s) to display.
-            color (str or Quantity_Color): The color to use.
+            color (str or Quantity_Color): The color to use, see
+                get_color_from_name for the accepted names.
             update (bool): Whether to update the view.
 
         Returns:
             A list of the displayed AIS_Shape objects.
         """
         if isinstance(color, str):
-            dict_color = {
-                "WHITE": Quantity_NOC_WHITE,
-                "BLUE": Quantity_NOC_BLUE1,
-                "RED": Quantity_NOC_RED,
-                "GREEN": Quantity_NOC_GREEN,
-                "YELLOW": Quantity_NOC_YELLOW,
-                "CYAN": Quantity_NOC_CYAN1,
-                "BLACK": Quantity_NOC_BLACK,
-                "ORANGE": Quantity_NOC_ORANGE,
-            }
-            clr = dict_color[color]
+            clr = get_color_from_name(color)
         elif isinstance(color, Quantity_Color):
             clr = color
         else:
-            raise ValueError(
-                f'color should either be a string ( "BLUE" ) or a Quantity_Color(0.1, 0.8, 0.1) got {color}'
+            raise TypeError(
+                "color should either be a string (e.g. 'BLUE') or a "
+                f"Quantity_Color(0.1, 0.8, 0.1), got {color!r}"
             )
 
         return self.DisplayShape(shapes, color=clr, update=update)
@@ -848,7 +843,7 @@ class Viewer3d(Display3d):
         """
         self.Context.Deactivate()
         if mode is None:
-            topo_level = next(TOPOLOGY_MODES)
+            topo_level = next(self._topology_modes)
             self.Context.Activate(AIS_Shape.SelectionMode(topo_level), True)
         else:
             self.Context.Activate(AIS_Shape.SelectionMode(mode), True)
@@ -902,7 +897,7 @@ class Viewer3d(Display3d):
         """
         self.Context.Deactivate()
 
-    def GetSelectedShapes(self) -> List[AIS_Shape]:
+    def GetSelectedShapes(self) -> list[AIS_Shape]:
         """
         Returns the selected shapes.
 
@@ -920,6 +915,18 @@ class Viewer3d(Display3d):
         """
         return self.Context.SelectedShape()
 
+    def _update_selected_shapes(self) -> None:
+        """Rebuilds selected_shapes from the current selection of the context."""
+        self.Context.InitSelected()
+        self.selected_shapes = []
+        while self.Context.MoreSelected():
+            if self.Context.HasSelectedShape():
+                self.selected_shapes.append(self.Context.SelectedShape())
+            self.Context.NextSelected()
+        # leave the context iterator on the first selected entity, so that
+        # GetSelectedShape() (Context.SelectedShape()) can be called afterwards
+        self.Context.InitSelected()
+
     def SelectArea(self, Xmin: int, Ymin: int, Xmax: int, Ymax: int) -> None:
         """
         Selects objects within the given area.
@@ -931,13 +938,7 @@ class Viewer3d(Display3d):
             Ymax (int): The maximum y-coordinate of the selection area.
         """
         self.Context.Select(Xmin, Ymin, Xmax, Ymax, self.View, True)
-        self.Context.InitSelected()
-        # reinit the selected_shapes list
-        self.selected_shapes = []
-        while self.Context.MoreSelected():
-            if self.Context.HasSelectedShape():
-                self.selected_shapes.append(self.Context.SelectedShape())
-            self.Context.NextSelected()
+        self._update_selected_shapes()
         # callbacks
         for callback in self._select_callbacks:
             callback(self.selected_shapes, Xmin, Ymin, Xmax, Ymax)
@@ -951,12 +952,7 @@ class Viewer3d(Display3d):
             Y (int): The y-coordinate.
         """
         self.Context.Select(True)
-        self.Context.InitSelected()
-
-        self.selected_shapes = []
-        if self.Context.MoreSelected():
-            if self.Context.HasSelectedShape():
-                self.selected_shapes.append(self.Context.SelectedShape())
+        self._update_selected_shapes()
         # callbacks
         for callback in self._select_callbacks:
             callback(self.selected_shapes, X, Y)
@@ -970,13 +966,7 @@ class Viewer3d(Display3d):
             Y (int): The y-coordinate.
         """
         self.Context.ShiftSelect(True)
-        self.Context.InitSelected()
-
-        self.selected_shapes = []
-        while self.Context.MoreSelected():
-            if self.Context.HasSelectedShape():
-                self.selected_shapes.append(self.Context.SelectedShape())
-            self.Context.NextSelected()
+        self._update_selected_shapes()
         # highlight newly selected unhighlight those no longer selected
         self.Context.UpdateSelected(True)
         # callbacks
@@ -1056,14 +1046,14 @@ class OffscreenRenderer(Viewer3d):
     each time it is called.
     """
 
-    def __init__(self, screen_size: Tuple[int, int] = (640, 480)) -> None:
+    def __init__(self, screen_size: tuple[int, int] = (640, 480)) -> None:
         """
         Initializes the OffscreenRenderer.
 
         Args:
             screen_size (tuple): The size of the screen (width, height).
         """
-        Viewer3d.__init__(self)
+        super().__init__()
         # create the renderer
         self.Create()
         self.SetSize(screen_size[0], screen_size[1])
@@ -1083,7 +1073,7 @@ class OffscreenRenderer(Viewer3d):
         dump_image: bool = True,
         dump_image_path: Optional[str] = None,
         dump_image_filename: Optional[str] = None,
-    ) -> List[AIS_Shape]:
+    ) -> list[AIS_Shape]:
         """
         Displays a shape and dumps the view to an image file.
 
@@ -1101,36 +1091,22 @@ class OffscreenRenderer(Viewer3d):
         Returns:
             A list of the displayed AIS_Shape objects.
         """
-        # call the "original" DisplayShape method
-        r = super(OffscreenRenderer, self).DisplayShape(
-            shapes, material, texture, color, transparency, update
-        )  # always update
-        if dump_image or (
-            os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1"
-        ):  # dump to jpeg file
-            timestamp = ("%f" % time.time()).split(".")[0]
-
-            if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
-                path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
-                if not os.path.isdir(path):
-                    raise IOError(f"{path} is not a valid path")
-            elif dump_image_path is not None:
-                if not os.path.isdir(dump_image_path):
-                    raise IOError(f"{dump_image_path} is not a valid path")
-                path = dump_image_path
-            else:
-                path = os.getcwd()
+        r = super().DisplayShape(shapes, material, texture, color, transparency, update)
+        if dump_image or os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1":
+            # the environment variable takes precedence over the argument
+            path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
+            if not path:
+                path = dump_image_path if dump_image_path is not None else os.getcwd()
+            if not os.path.isdir(path):
+                raise NotADirectoryError(f"{path} is not a valid path")
             if dump_image_filename is None:
                 self.capture_number += 1
-                image_filename = "capture-%i-%s.jpeg" % (
-                    self.capture_number,
-                    timestamp.replace(" ", "-"),
+                dump_image_filename = (
+                    f"capture-{self.capture_number}-{int(time.time())}.jpeg"
                 )
-                image_full_name = os.path.join(path, image_filename)
-            else:
-                image_full_name = os.path.join(path, dump_image_filename)
+            image_full_name = os.path.join(path, dump_image_filename)
             self.View.Dump(image_full_name)
             if not os.path.isfile(image_full_name):
-                raise IOError("OffscreenRenderer failed to render image to file")
+                raise OSError("OffscreenRenderer failed to render image to file")
             print(f"OffscreenRenderer content dumped to {image_full_name}")
         return r

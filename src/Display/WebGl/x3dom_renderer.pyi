@@ -1,12 +1,14 @@
-from typing import Any, Dict, Generator, List, Optional, Tuple
+from collections.abc import Generator
+from typing import Any
 
 def spinning_cursor() -> Generator[str, None, None]: ...
-def export_edge_to_indexed_lineset(edge_point_set: List[List[float]]) -> str: ...
+def export_edge_to_indexed_lineset(edge_point_set: list[list[float]]) -> str: ...
 def indexed_lineset_to_x3d_string(
-    str_linesets: List[str],
+    str_linesets: list[str],
     header: bool = True,
     footer: bool = True,
-    ils_id: int = 0,
+    ils_id: int | str = 0,
+    line_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
 ) -> str: ...
 
 class HTMLHeader:
@@ -18,7 +20,7 @@ class HTMLHeader:
 class HTMLBody:
     def __init__(
         self,
-        x3d_shapes: List[str],
+        x3d_shapes: list[str],
         axes_plane: bool,
         axes_plane_zoom_factor: float = 1.0,
     ) -> None: ...
@@ -28,14 +30,14 @@ class X3DExporter:
     def __init__(
         self,
         shape: Any,
-        vertex_shader: Optional[str],
-        fragment_shader: Optional[str],
+        vertex_shader: str | None,
+        fragment_shader: str | None,
         export_edges: bool,
-        color: Tuple[float, float, float],
-        specular_color: Tuple[float, float, float],
+        color: tuple[float, float, float],
+        specular_color: tuple[float, float, float],
         shininess: float,
         transparency: float,
-        line_color: Tuple[float, float, float],
+        line_color: tuple[float, float, float],
         line_width: float,
         mesh_quality: float,
     ) -> None: ...
@@ -46,24 +48,24 @@ class X3DExporter:
 class X3DomRenderer:
     def __init__(
         self,
-        path: Optional[str] = None,
+        path: str | None = None,
         display_axes_plane: bool = True,
         axes_plane_zoom_factor: float = 1.0,
     ) -> None: ...
     def DisplayShape(
         self,
         shape: Any,
-        vertex_shader: Optional[str] = None,
-        fragment_shader: Optional[str] = None,
+        vertex_shader: str | None = None,
+        fragment_shader: str | None = None,
         export_edges: bool = False,
-        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
-        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        color: tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: tuple[float, float, float] = (0.2, 0.2, 0.2),
         shininess: float = 0.9,
         transparency: float = 0.0,
-        line_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
+        line_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
         line_width: float = 2.0,
         mesh_quality: float = 1.0,
-    ) -> Tuple[Dict[str, Any], Dict[str, Any]]: ...
+    ) -> tuple[dict[str, Any], dict[str, Any]]: ...
     def render(
         self,
         addr: str = "localhost",

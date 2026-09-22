@@ -15,10 +15,13 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""Loading of the GUI toolkit (PyQt5, PySide2, PyQt6, PySide6, wx or tk) used
+by the viewer widgets."""
+
 import logging
 import os
 import sys
-from typing import Any, Optional, Tuple
+from typing import Any, Optional
 
 # backend constants
 WX = "wx"
@@ -156,7 +159,7 @@ def load_wx() -> bool:
         return False
     global HAVE_WX
     try:
-        import wx
+        import wx  # noqa: F401, the import is the availability test
 
         HAVE_WX = True
     except ImportError:
@@ -180,37 +183,42 @@ def get_loaded_backend() -> str:
 
 def load_any_qt_backend() -> bool:
     """
-    Loads any Qt-based backend.
-
-    It first tries to load PyQt5, then PyQt6.
+    Loads the first available Qt backend, in the order PyQt5, PySide2,
+    PyQt6, PySide6.
 
     Returns:
-        bool: True if a Qt backend was loaded, False otherwise.
+        bool: True when a Qt backend is loaded.
 
     Raises:
-        AssertionError: If no Qt backend can be loaded.
+        ValueError: If no Qt backend can be loaded, or if another backend
+            is already loaded.
     """
-    pyqt5_loaded = False
-    # by default, load PyQt5
-    pyqt5_loaded = load_backend(PYQT5)
-    if not pyqt5_loaded:
-        pyqt6_loaded = load_backend(PYQT6)
-    if not (pyqt5_loaded or pyqt6_loaded):
-        raise AssertionError("None of the PyQt5 or PyQt6 can be loaded")
-    return True
+    for backend_str in (PYQT5, PYSIDE2, PYQT6, PYSIDE6):
+        try:
+            if load_backend(backend_str) == backend_str:
+                return True
+        except ValueError:
+            continue
+    raise ValueError("None of PyQt5, PySide2, PyQt6 or PySide6 can be loaded")
+
+
+# the loaders of the backends, in the search order
+_BACKEND_LOADERS = (
+    (PYQT5, load_pyqt5),
+    (PYSIDE2, load_pyside2),
+    (PYQT6, load_pyqt6),
+    (PYSIDE6, load_pyside6),
+    (WX, load_wx),
+)
 
 
 def load_backend(backend_str: Optional[str] = None) -> str:
     """Load a GUI backend
 
-    If no Qt backend is found (PyQt5 or PySide), wx is loaded
-
     The search order for pythonocc compatible gui modules is:
         PyQt5, PySide2, PyQt6, PySide6, wx
 
-    Note
-    ----
-    wx is imported when no Qt backend is found.
+    tk, available with any python, is used when none of them is found.
 
     Parameters
     ----------
@@ -218,7 +226,8 @@ def load_backend(backend_str: Optional[str] = None) -> str:
 
         specifies which backend to load
 
-        backend_str is one of ( "pyqt5", "pyqt6", "pyside2", "pyside6", "wx" )
+        backend_str is one of ( "pyqt5", "pyqt6", "pyside2", "pyside6", "wx",
+        "tk" )
 
         if no value has been set, load the first module in gui module search
         order
@@ -227,99 +236,58 @@ def load_backend(backend_str: Optional[str] = None) -> str:
     -------
     str
         the name of the loaded backend
-        one of ( "pyqt5", "pyqt6", "pyside2", "pyside6", "wx" )
+        one of ( "pyqt5", "pyqt6", "pyside2", "pyside6", "wx", "tk" )
 
     Raises
     ------
 
     ValueError
-        * when a backend is already loaded
         * when an invalid backend_str is specified
+        * when the backend specified in ``backend_str`` could not be imported
 
-    ImportError
-        when the backend specified in ``backend_str`` could not be imported
+    Note
+    ----
+    ``load_backend`` loads one backend per session: once a backend is
+    loaded, the following calls return its name whatever ``backend_str``.
 
     """
     global HAVE_BACKEND, BACKEND_MODULE
 
     if HAVE_BACKEND:
-        msg = (
-            "The %s backend is already loaded..."
-            "``load_backend`` can only be called once per session"
-        )
+        msg = "The %s backend is already loaded, load_backend can only be called once"
         log.info(msg, BACKEND_MODULE)
         return BACKEND_MODULE
 
-    if backend_str is not None:
-        compatible_backends = (PYQT5, PYQT6, PYSIDE2, PYSIDE6, WX, TK)
-        if backend_str not in compatible_backends:
-            msg = (
-                f"incompatible backend_str specified: {backend_str}\n"
-                f"backend is one of : {compatible_backends}"
-            )
-            log.critical(msg)
-            raise ValueError(msg)
-
-    if backend_str == PYQT5 or backend_str is None:
-        if load_pyqt5():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "pyqt5"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-    if backend_str == PYQT5 and not HAVE_BACKEND:
-        msg = f"{backend_str} backend could not be loaded"
-        log.exception(msg)
+    compatible_backends = (PYQT5, PYQT6, PYSIDE2, PYSIDE6, WX, TK)
+    if backend_str is not None and backend_str not in compatible_backends:
+        msg = (
+            f"incompatible backend_str specified: {backend_str}\n"
+            f"backend is one of : {compatible_backends}"
+        )
+        log.critical(msg)
         raise ValueError(msg)
 
-    if backend_str == PYSIDE2 or (backend_str is None and not HAVE_BACKEND):
-        if load_pyside2():
+    for name, loader in _BACKEND_LOADERS:
+        if backend_str not in (None, name):
+            continue
+        if loader():
             HAVE_BACKEND = True
-            BACKEND_MODULE = "pyside2"
+            BACKEND_MODULE = name
             log.info("backend loaded: %s", BACKEND_MODULE)
             return BACKEND_MODULE
-        elif backend_str == PYSIDE2 and not HAVE_BACKEND:
-            msg = f"{backend_str} could not be loaded"
-            log.exception(msg)
-            raise ValueError(msg)
-
-    if backend_str == PYQT6 or backend_str is None:
-        if load_pyqt6():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "pyqt6"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-    if backend_str == PYQT6 and not HAVE_BACKEND:
-        msg = f"{backend_str} backend could not be loaded"
-        log.exception(msg)
-        raise ValueError(msg)
-
-    if backend_str == PYSIDE6 or backend_str is None:
-        if load_pyside6():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "pyside6"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-    if backend_str == PYSIDE6 and not HAVE_BACKEND:
-        msg = f"{backend_str} backend could not be loaded"
-        log.exception(msg)
-        raise ValueError(msg)
-
-    if backend_str == WX or (backend_str is None and not HAVE_BACKEND):
-        if load_wx():
-            HAVE_BACKEND = True
-            BACKEND_MODULE = "wx"
-            log.info("backend loaded: %s", BACKEND_MODULE)
-            return BACKEND_MODULE
-        elif backend_str == WX and not HAVE_BACKEND:
+        if backend_str == name:
             msg = f"{backend_str} backend could not be loaded"
-            log.exception("%s backend could not be loaded", backend_str)
+            log.error(msg)
             raise ValueError(msg)
 
-    # finally, return a tk backend, available on all machines
-    return "tk"
+    # finally, the tk backend, available on all machines
+    HAVE_BACKEND = True
+    BACKEND_MODULE = TK
+    log.info("backend loaded: %s", BACKEND_MODULE)
+    return BACKEND_MODULE
 
 
-def get_qt_modules() -> Tuple[Any, Any, Any, Any]:
+def get_qt_modules() -> tuple[Any, Any, Any, Any]:
     """
 
     Returns

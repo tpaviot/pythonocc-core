@@ -17,18 +17,17 @@
 
 import json
 import os
-from string import Template
 import sys
 import tempfile
 import uuid
-from typing import Any, Dict, Generator, List, Optional, Tuple
+from collections.abc import Generator
+from string import Template
+from typing import Any, Optional
 
-from OCC.Core.gp import gp_Vec
-from OCC.Core.Tesselator import ShapeTesselator
 from OCC import VERSION
-
-from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Display.WebGl.simple_server import start_server
+from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
 
 
 def spinning_cursor() -> Generator[str, None, None]:
@@ -39,7 +38,7 @@ def spinning_cursor() -> Generator[str, None, None]:
         yield from "|/-\\"
 
 
-def color_to_hex(rgb_color: Tuple[float, float, float]) -> str:
+def color_to_hex(rgb_color: tuple[float, float, float]) -> str:
     """
     Converts a color from RGB to a hex string.
 
@@ -51,14 +50,11 @@ def color_to_hex(rgb_color: Tuple[float, float, float]) -> str:
     """
     r, g, b = rgb_color
     if not (0 <= r <= 1.0 and 0 <= g <= 1.0 and 0 <= b <= 1.0):
-        raise AssertionError("rgb values must be between 0.0 and 1.0")
-    rh = int(r * 255.0)
-    gh = int(g * 255.0)
-    bh = int(b * 255.0)
-    return "0x%.02x%.02x%.02x" % (rh, gh, bh)
+        raise ValueError("rgb values must be between 0.0 and 1.0")
+    return f"0x{int(r * 255.0):02x}{int(g * 255.0):02x}{int(b * 255.0):02x}"
 
 
-def export_edgedata_to_json(edge_hash: str, point_set: List[List[float]]) -> str:
+def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str:
     """
     Exports a set of points to a LineSegment buffergeometry.
 
@@ -97,8 +93,7 @@ def export_edgedata_to_json(edge_hash: str, point_set: List[List[float]]) -> str
     return json.dumps(edges_data, indent=4)
 
 
-HEADER_TEMPLATE = Template(
-    """
+HEADER_TEMPLATE = Template("""
 <head>
     <title>pythonocc $VERSION webgl renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
@@ -151,11 +146,9 @@ HEADER_TEMPLATE = Template(
         }
     </style>
 </head>
-"""
-)
+""")
 
-BODY_TEMPLATE = Template(
-    """
+BODY_TEMPLATE = Template("""
     <body>
     <div id="container"></div>
     <div id="pythonocc_rocks">
@@ -180,11 +173,9 @@ BODY_TEMPLATE = Template(
     </script>
     <script type="module" src="/main.js"></script>
     </body>
-"""
-)
+""")
 
-MAIN_JS_TEMPLATE = Template(
-    """
+MAIN_JS_TEMPLATE = Template("""
 import * as THREE from 'three';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
@@ -220,10 +211,10 @@ function init() {
 
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 200);
     camera.position.z = 100;
-    
+
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
-    
+
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf0f0f0);
     const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
@@ -238,7 +229,7 @@ function init() {
     scene.add(light1);
 
     $Uniforms
-    
+
     $ShaderMaterialDefinition
 
     $ShapeList
@@ -249,18 +240,18 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio( window.devicePixelRatio );
     container.appendChild(renderer.domElement);
-    
+
     // shadow rendering
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    
+
     // tone mapping
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.0;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    
+
     controls = new TrackballControls(camera, renderer.domElement);
-    
+
     document.addEventListener('keypress', onDocumentKeyPress, false);
     document.addEventListener('click', onDocumentMouseClick, false);
     window.addEventListener('resize', onWindowResize, false);
@@ -291,10 +282,10 @@ function onDocumentKeyPress(event) {
             selected_target.material.visible = !selected_target.material.visible;
         }
   }
-  else if (event.key=="g") { // g key, toggle grid visibility
+  else if (event.key=="g" && gridHelper) { // g key, toggle grid visibility
        gridHelper.visible = !gridHelper.visible;
   }
-  else if (event.key=="a") { // g key, toggle axisHelper visibility
+  else if (event.key=="a" && axisHelper) { // a key, toggle axisHelper visibility
        axisHelper.visible = !axisHelper.visible;
   }
   else if (event.key=="w") { // g key, toggle axisHelper visibility
@@ -336,7 +327,7 @@ function fit_to_scene() {
 
     // compute center of all objects
     scene.traverse(function(child) {
-        if (child instanceof THREE.Mesh) {
+        if (child instanceof THREE.Mesh || child instanceof THREE.Line) {
             child.geometry.computeBoundingBox();
             var box = child.geometry.boundingBox;
             var curCenter = new THREE.Vector3().copy(box.min).add(box.max).multiplyScalar(0.5);
@@ -366,13 +357,13 @@ function fit_to_scene() {
     var direction = new THREE.Vector3().copy(camera.position).sub(controls.target);
     var len = direction.length();
     direction.normalize();
-    
+
     // compute new distance of camera to middle of scene to fit the object to screen
     var lnew = maxRad / Math.sin(camera.fov/180. * Math.PI / 2.);
     direction.multiplyScalar(lnew);
-    
+
     var pnew = new THREE.Vector3().copy(center).add(direction);
-    // change near far values to avoid culling of objects 
+    // change near far values to avoid culling of objects
     camera.position.set(pnew.x, pnew.y, pnew.z);
     camera.far = lnew * 50;
     camera.near = lnew * 50 * 0.001;
@@ -394,8 +385,7 @@ function render() {
     update_lights();
     renderer.render(scene, camera);
 }
-"""
-)
+""")
 
 
 class HTMLHeader:
@@ -443,11 +433,11 @@ class ThreejsRenderer:
                 and JavaScript files will be created. If not specified, a
                 temporary directory will be created.
         """
-        self._path = tempfile.mkdtemp() if not path else path
+        self._path = path if path else tempfile.mkdtemp()
         self._html_filename = os.path.join(self._path, "index.html")
         self._main_js_filename = os.path.join(self._path, "main.js")
-        self._3js_shapes: Dict[str, Any] = {}
-        self._3js_edges: Dict[str, Any] = {}
+        self._3js_shapes: dict[str, Any] = {}
+        self._3js_edges: dict[str, Any] = {}
         self.spinning_cursor = spinning_cursor()
         print("## threejs renderer")
 
@@ -455,14 +445,14 @@ class ThreejsRenderer:
         self,
         shape: Any,
         export_edges: bool = False,
-        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
-        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        color: tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: tuple[float, float, float] = (0.2, 0.2, 0.2),
         shininess: float = 0.9,
         transparency: float = 0.0,
-        line_color: Tuple[float, float, float] = (0, 0.0, 0.0),
+        line_color: tuple[float, float, float] = (0, 0.0, 0.0),
         line_width: float = 1.0,
         mesh_quality: float = 1.0,
-    ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    ) -> tuple[dict[str, Any], dict[str, Any]]:
         """
         Displays a shape.
 
@@ -487,21 +477,21 @@ class ThreejsRenderer:
             edge_hash = f"edg{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(edge_hash, pnts)
             edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
-            with open(edge_full_path, "w") as edge_file:
+            with open(edge_full_path, "w", encoding="utf-8") as edge_file:
                 edge_file.write(str_to_write)
             # store this edge hash
-            self._3js_edges[edge_hash] = [color, line_width]
+            self._3js_edges[edge_hash] = [line_color, line_width]
             return self._3js_shapes, self._3js_edges
-        elif is_wire(shape):
+        if is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
             wire_hash = f"wir{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(wire_hash, pnts)
             wire_full_path = os.path.join(self._path, f"{wire_hash}.json")
-            with open(wire_full_path, "w") as wire_file:
+            with open(wire_full_path, "w", encoding="utf-8") as wire_file:
                 wire_file.write(str_to_write)
             # store this edge hash
-            self._3js_edges[wire_hash] = [color, line_width]
+            self._3js_edges[wire_hash] = [line_color, line_width]
             return self._3js_shapes, self._3js_edges
         shape_uuid = uuid.uuid4().hex
         shape_hash = f"shp{shape_uuid}"
@@ -512,8 +502,8 @@ class ThreejsRenderer:
         )
         # update spinning cursor
         sys.stdout.write(
-            "\r%s mesh shape %s, %i triangles     "
-            % (next(self.spinning_cursor), shape_hash, tess.ObjGetTriangleCount())
+            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, "
+            f"{tess.ObjGetTriangleCount()} triangles     "
         )
         sys.stdout.flush()
         # export to 3JS
@@ -530,7 +520,7 @@ class ThreejsRenderer:
         ]
         # generate the mesh
         # and also to JSON
-        with open(shape_full_path, "w") as json_file:
+        with open(shape_full_path, "w", encoding="utf-8") as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
         if export_edges:
@@ -549,80 +539,71 @@ class ThreejsRenderer:
                 str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
                 edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
-                with open(edge_full_path, "w") as edge_file:
+                with open(edge_full_path, "w", encoding="utf-8") as edge_file:
                     edge_file.write(str_to_write)
-                # store this edge hash, with black color
-                self._3js_edges[edge_hash] = [(0, 0, 0), line_width]
+                # store this edge hash
+                self._3js_edges[edge_hash] = [line_color, line_width]
         return self._3js_shapes, self._3js_edges
 
     def generate_html_file(self) -> None:
         """
         Generates the HTML file to be rendered by the web browser.
         """
-        global BODY_TEMPLATE
         # loop over shapes to generate html shapes stuff
         # the following line is a list that will help generating the string
         # using "".join()
-        shape_string_list = ["var loader = new THREE.BufferGeometryLoader();\n"]
-        for shape_idx, shape_hash in enumerate(self._3js_shapes):
-            # get properties for this shape
-            (
-                export_edges,
-                color,
-                specular_color,
-                shininess,
-                transparency,
-                line_color,
-                line_width,
-            ) = self._3js_shapes[shape_hash]
+        # the scene is fitted once every shape and edge is loaded
+        shape_string_list = [
+            "var loading_manager = new THREE.LoadingManager();\n",
+            "\t\t\tloading_manager.onLoad = function() { fit_to_scene(); };\n",
+            "\t\t\tvar loader = new THREE.BufferGeometryLoader(loading_manager);\n",
+        ]
+        for shape_hash, properties in self._3js_shapes.items():
+            # the edges and their properties are stored in _3js_edges
+            _export_edges, color, specular_color, shininess, transparency, *_ = (
+                properties
+            )
             shape_string_list.extend(
                 (
-                    "\t\t\tvar %s_phong_material = new THREE.MeshPhongMaterial({"
-                    % shape_hash,
+                    f"\t\t\tvar {shape_hash}_phong_material = new THREE.MeshPhongMaterial({{",
                     f"color:{color_to_hex(color)},",
                     f"specular:{color_to_hex(specular_color)},",
-                    "shininess:%g," % shininess,
+                    f"shininess:{shininess:g},",
                     "side: THREE.DoubleSide,",
                     "flatShading:false,",
                 )
             )
             if transparency > 0.0:
+                # three.js opacity is the opposite of the transparency
                 shape_string_list.append(
                     "transparent: true, premultipliedAlpha: true, opacity:%g,"
-                    % transparency
+                    % (1.0 - transparency)
                 )
             shape_string_list.extend(
                 (
                     "});\n",
-                    "\t\t\tloader.load('%s.json', function(geometry) {\n" % shape_hash,
-                    "\t\t\t\tvar mesh = new THREE.Mesh(geometry, %s_phong_material);\n"
-                    % shape_hash,
+                    f"\t\t\tloader.load('{shape_hash}.json', function(geometry) {{\n",
+                    f"\t\t\t\tvar mesh = new THREE.Mesh(geometry, {shape_hash}_phong_material);\n",
                     "\t\t\t\tmesh.castShadow = true;\n",
                     "\t\t\t\tmesh.receiveShadow = true;\n",
                     "\t\t\t\tscene.add(mesh);\n",
                 )
             )
-            # last shape, we request for a fit_to_scene
-            if shape_idx == len(self._3js_shapes) - 1:
-                shape_string_list.append("\tfit_to_scene();});\n")
-            else:
-                shape_string_list.append("\t\t\t});\n\n")
+            shape_string_list.append("\t\t\t});\n\n")
         # Process edges
         edge_string_list = []
-        for edge_hash in self._3js_edges:
-            color, line_width = self._3js_edges[edge_hash]
+        for edge_hash, (color, line_width) in self._3js_edges.items():
             edge_string_list.extend(
                 (
-                    "\tloader.load('%s.json', function(geometry) {\n" % edge_hash,
-                    "\tvar line_material = new THREE.LineBasicMaterial({color: %s, linewidth: %s});\n"
-                    % ((color_to_hex(color), line_width)),
+                    f"\tloader.load('{edge_hash}.json', function(geometry) {{\n",
+                    f"\tvar line_material = new THREE.LineBasicMaterial({{color: {color_to_hex(color)}, linewidth: {line_width}}});\n",
                     "\tvar line = new THREE.Line(geometry, line_material);\n",
                     "\tscene.add(line);\n",
                     "\t});\n",
                 )
             )
         # write the main.js file
-        with open(self._main_js_filename, "w") as fp:
+        with open(self._main_js_filename, "w", encoding="utf-8") as fp:
             main_js = MAIN_JS_TEMPLATE.substitute(
                 {
                     "ShapeList": "".join(shape_string_list),
@@ -634,7 +615,7 @@ class ThreejsRenderer:
             fp.write(main_js)
 
         # write the index.html file
-        with open(self._html_filename, "w") as fp:
+        with open(self._html_filename, "w", encoding="utf-8") as fp:
             fp.write("<!DOCTYPE HTML>\n")
             fp.write("<html lang='en'>")
             # header
@@ -671,11 +652,12 @@ class ThreejsRenderer:
 
 
 if __name__ == "__main__":
-    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+    import time
+
     from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+    from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
     from OCC.Core.gp import gp_Trsf, gp_Vec
     from OCC.Core.TopoDS import TopoDS_Shape
-    import time
 
     def translate_shp(
         shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False
