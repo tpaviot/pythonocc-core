@@ -81,7 +81,13 @@ from OCC.Core.Exception import *
 %include ../SWIG_files/common/numpy.i
 
 %init %{
+/* the init code is in SWIG_mod_exec, returning an int, since SWIG 4.4:
+   import_array() returns NULL, i.e. success, if numpy can't be imported */
+#if SWIG_VERSION >= 0x040400
+   import_array1(-1);
+#else
    import_array();
+#endif
 %}
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* Vertices, int nVerts1, int nVerts2) };
 %apply (int* IN_ARRAY2, int DIM1, int DIM2) { (int* Faces, int nFaces1, int nFaces2) };

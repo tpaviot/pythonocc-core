@@ -62,7 +62,13 @@ https://github.com/tpaviot/pythonocc-core/pull/1381
 %include ../common/numpy.i
 
 %init %{
+/* the init code is in SWIG_mod_exec, returning an int, since SWIG 4.4:
+   import_array() returns NULL, i.e. success, if numpy can't be imported */
+#if SWIG_VERSION >= 0x040400
+        import_array1(-1);
+#else
         import_array();
+#endif
 %}
 
 %pythoncode {
