@@ -370,21 +370,6 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
 %ignore NCollection_DataMap<Quantity_Color,TColStd_MapOfInteger>::Items;
 %ignore NCollection_DataMap<Quantity_Color,TColStd_MapOfInteger>::KeyValues;
 %template(MeshVS_DataMapOfColorMapOfInteger) NCollection_DataMap<Quantity_Color,TColStd_MapOfInteger>;
-%ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::Items;
-%ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::KeyValues;
-%template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>;
-
-%extend NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
 %ignore NCollection_DataMap<int,TCollection_AsciiString>::Items;
 %ignore NCollection_DataMap<int,TCollection_AsciiString>::KeyValues;
 %template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap<int,TCollection_AsciiString>;
@@ -522,6 +507,21 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
     %pythoncode {
     def __len__(self):
         return self.Size()
+    }
+};
+%ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::KeyValues;
+%template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>;
+
+%extend NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
     }
 };
 /* end templates declaration */

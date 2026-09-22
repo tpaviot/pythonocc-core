@@ -117,38 +117,14 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
 /* end handles declaration */
 
 /* templates */
-%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::Items;
-%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::KeyValues;
-%template(TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape) NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::KeyValues;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::IndexedItems;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>::Contained;
 %template(TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo) NCollection_IndexedDataMap<TopoDS_Shape,TopOpeBRepBuild_VertexInfo,TopTools_ShapeMapHasher>;
-%template(TopOpeBRepBuild_ListIteratorOfListOfListOfLoop) NCollection_TListIterator<TopOpeBRepBuild_ListOfLoop>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfLoop) NCollection_TListIterator<opencascade::handle<TopOpeBRepBuild_Loop>>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfPave) NCollection_TListIterator<opencascade::handle<TopOpeBRepBuild_Pave>>;
 %template(TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape) NCollection_TListIterator<TopOpeBRepBuild_ShapeListOfShape>;
-%template(TopOpeBRepBuild_ListOfListOfLoop) NCollection_List<TopOpeBRepBuild_ListOfLoop>;
-
-%extend NCollection_List<TopOpeBRepBuild_ListOfLoop> {
-    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
-    // NCollection_BaseList header is wrapped but its inherited methods
-    // don't propagate cleanly to the typedef-aliased Python class.
-    size_t Size() const noexcept { return $self->Size(); }
-    int Length() const noexcept { return $self->Length(); }
-    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = TopOpeBRepBuild_ListIteratorOfListOfListOfLoop(self)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
 %template(TopOpeBRepBuild_ListOfLoop) NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>>;
 
 %extend NCollection_List<opencascade::handle<TopOpeBRepBuild_Loop>> {
@@ -204,6 +180,30 @@ TopOpeBRepBuild_BLOCK = TopOpeBRepBuild_LoopEnum.TopOpeBRepBuild_BLOCK
 
     def __iter__(self):
         it = TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
+    }
+};
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>::KeyValues;
+%template(TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape) NCollection_DataMap<TopoDS_Shape,TopOpeBRepBuild_ListOfShapeListOfShape,TopTools_ShapeMapHasher>;
+%template(TopOpeBRepBuild_ListIteratorOfListOfListOfLoop) NCollection_TListIterator<TopOpeBRepBuild_ListOfLoop>;
+%template(TopOpeBRepBuild_ListOfListOfLoop) NCollection_List<TopOpeBRepBuild_ListOfLoop>;
+
+%extend NCollection_List<TopOpeBRepBuild_ListOfLoop> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+
+    def __iter__(self):
+        it = TopOpeBRepBuild_ListIteratorOfListOfListOfLoop(self)
         while it.More():
             yield it.Value()
             it.Next()

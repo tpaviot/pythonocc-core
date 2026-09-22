@@ -110,21 +110,6 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 Array1ExtendIter(TopoDS_Shape)
 
 %template(TopTools_Array2OfShape) NCollection_Array2<TopoDS_Shape>;
-%ignore NCollection_DataMap<int,TopTools_ListOfShape>::Items;
-%ignore NCollection_DataMap<int,TopTools_ListOfShape>::KeyValues;
-%template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap<int,TopTools_ListOfShape>;
-
-%extend NCollection_DataMap<int,TopTools_ListOfShape> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopTools_DataMapOfIntegerListOfShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
 %ignore NCollection_DataMap<int,TopoDS_Shape>::Items;
 %ignore NCollection_DataMap<int,TopoDS_Shape>::KeyValues;
 %template(TopTools_DataMapOfIntegerShape) NCollection_DataMap<int,TopoDS_Shape>;
@@ -155,15 +140,9 @@ Array1ExtendIter(TopoDS_Shape)
 %ignore NCollection_DataMap<TopoDS_Shape,TColStd_ListOfInteger,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,TColStd_ListOfInteger,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopTools_DataMapOfShapeListOfInteger) NCollection_DataMap<TopoDS_Shape,TColStd_ListOfInteger,TopTools_ShapeMapHasher>;
-%ignore NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Items;
-%ignore NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::KeyValues;
-%template(TopTools_DataMapOfShapeListOfShape) NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>;
 %ignore NCollection_DataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopTools_DataMapOfShapeReal) NCollection_DataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>;
-%ignore NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>::Items;
-%ignore NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>::KeyValues;
-%template(TopTools_DataMapOfShapeSequenceOfShape) NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>;
 %ignore NCollection_DataMap<TopoDS_Shape,TopoDS_Shape,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,TopoDS_Shape,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopTools_DataMapOfShapeShape) NCollection_DataMap<TopoDS_Shape,TopoDS_Shape,TopTools_ShapeMapHasher>;
@@ -172,11 +151,6 @@ Array1ExtendIter(TopoDS_Shape)
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,void*,TopTools_ShapeMapHasher>::IndexedItems;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,void*,TopTools_ShapeMapHasher>::Contained;
 %template(TopTools_IndexedDataMapOfShapeAddress) NCollection_IndexedDataMap<TopoDS_Shape,void*,TopTools_ShapeMapHasher>;
-%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Items;
-%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::KeyValues;
-%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::IndexedItems;
-%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Contained;
-%template(TopTools_IndexedDataMapOfShapeListOfShape) NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>::KeyValues;
 %ignore NCollection_IndexedDataMap<TopoDS_Shape,double,TopTools_ShapeMapHasher>::IndexedItems;
@@ -197,28 +171,7 @@ Array1ExtendIter(TopoDS_Shape)
 %ignore NCollection_IndexedMap<TopoDS_Shape,TopTools_ShapeMapHasher>::IndexedItems;
 %ignore NCollection_IndexedMap<TopoDS_Shape,TopTools_ShapeMapHasher>::Contained;
 %template(TopTools_IndexedMapOfShape) NCollection_IndexedMap<TopoDS_Shape,TopTools_ShapeMapHasher>;
-%template(TopTools_ListIteratorOfListOfListOfShape) NCollection_TListIterator<TopTools_ListOfShape>;
 %template(TopTools_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
-%template(TopTools_ListOfListOfShape) NCollection_List<TopTools_ListOfShape>;
-
-%extend NCollection_List<TopTools_ListOfShape> {
-    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
-    // NCollection_BaseList header is wrapped but its inherited methods
-    // don't propagate cleanly to the typedef-aliased Python class.
-    size_t Size() const noexcept { return $self->Size(); }
-    int Length() const noexcept { return $self->Length(); }
-    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-
-    def __iter__(self):
-        it = TopTools_ListIteratorOfListOfListOfShape(self)
-        while it.More():
-            yield it.Value()
-            it.Next()
-    }
-};
 %template(TopTools_ListOfShape) NCollection_List<TopoDS_Shape>;
 
 %extend NCollection_List<TopoDS_Shape> {
@@ -254,6 +207,53 @@ Array1ExtendIter(TopoDS_Shape)
     %pythoncode {
     def __len__(self):
         return self.Size()
+    }
+};
+%ignore NCollection_DataMap<int,TopTools_ListOfShape>::Items;
+%ignore NCollection_DataMap<int,TopTools_ListOfShape>::KeyValues;
+%template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap<int,TopTools_ListOfShape>;
+
+%extend NCollection_DataMap<int,TopTools_ListOfShape> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopTools_DataMapOfIntegerListOfShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
+%ignore NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::KeyValues;
+%template(TopTools_DataMapOfShapeListOfShape) NCollection_DataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>;
+%ignore NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>::KeyValues;
+%template(TopTools_DataMapOfShapeSequenceOfShape) NCollection_DataMap<TopoDS_Shape,TopTools_SequenceOfShape,TopTools_ShapeMapHasher>;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Items;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::KeyValues;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>::Contained;
+%template(TopTools_IndexedDataMapOfShapeListOfShape) NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>;
+%template(TopTools_ListIteratorOfListOfListOfShape) NCollection_TListIterator<TopTools_ListOfShape>;
+%template(TopTools_ListOfListOfShape) NCollection_List<TopTools_ListOfShape>;
+
+%extend NCollection_List<TopTools_ListOfShape> {
+    // occt-800: re-export Size/Length/IsEmpty per instantiation; the
+    // NCollection_BaseList header is wrapped but its inherited methods
+    // don't propagate cleanly to the typedef-aliased Python class.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
+    %pythoncode {
+    def __len__(self):
+        return self.Size()
+
+    def __iter__(self):
+        it = TopTools_ListIteratorOfListOfListOfShape(self)
+        while it.More():
+            yield it.Value()
+            it.Next()
     }
 };
 /* end templates declaration */

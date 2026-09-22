@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 5ef8e28
+git revision : bcdd15b
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 04:25:15.018801
+date : 2026-09-22 06:15:08.044404
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -789,6 +789,11 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      Expr_BinaryExpression is abstract, it does not override ['Copy', 'Derivative', 'Evaluate', 'IsIdentical', 'IsLinear', 'ShallowSimplified', 'String']
+[INFO ]      Expr_NamedExpression is abstract, it does not override ['Contains', 'ContainsUnknowns', 'Copy', 'Derivative', 'Evaluate', 'IsLinear', 'NbSubExpressions', 'Replace', 'ShallowSimplified', 'Simplified', 'SubExpression']
+[INFO ]      Expr_PolyExpression is abstract, it does not override ['Copy', 'Derivative', 'Evaluate', 'IsIdentical', 'IsLinear', 'ShallowSimplified', 'String']
+[INFO ]      Expr_SingleRelation is abstract, it does not override ['Copy', 'IsSatisfied', 'Simplified', 'Simplify', 'String']
+[INFO ]      Expr_UnaryExpression is abstract, it does not override ['Copy', 'Derivative', 'Evaluate', 'IsIdentical', 'IsLinear', 'ShallowSimplified', 'String']
 [INFO ]  ## Processing module ExprIntrp
 [INFO ]  Skip typedef ExprIntrp_SequenceOfNamedFunction because ends with 'Function'
 [INFO ]  Skip typedef ExprIntrp_StackOfGeneralFunction because ends with 'Function'
@@ -1258,6 +1263,1056 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepAdaptor_Surface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module BRepGraph
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CoEdgeDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CompSolidDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CompoundDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::EdgeDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::FaceDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CoEdgeDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CompSolidDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::CompoundDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::EdgeDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::FaceDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::OccurrenceDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::ProductDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::ShellDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::SolidDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::VertexDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::WireDef,true, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::OccurrenceDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::ProductDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::ShellDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::SolidDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::VertexDef, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::WireDef, should contain _
+[INFO ]      nested template alias BRepGraph_DefsShellOfSolid not instantiated
+[INFO ]      nested template alias BRepGraph_DefsFaceOfShell not instantiated
+[INFO ]      nested template alias BRepGraph_DefsEdgeOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_DefsWireOfFace not instantiated
+[INFO ]      nested template alias BRepGraph_DefsCoEdgeOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_DefsSolidOfCompSolid not instantiated
+[INFO ]      nested template alias BRepGraph_DefsChildOfCompound not instantiated
+[INFO ]      nested template alias BRepGraph_DefsOccurrenceOfProduct not instantiated
+[INFO ]      nested template alias Traits not instantiated
+[INFO ]      nested template alias RepresentationSlot not instantiated
+[INFO ]      nested template alias BRepGraph_SolidId instantiated
+[INFO ]      nested template alias BRepGraph_ShellId instantiated
+[INFO ]      nested template alias BRepGraph_FaceId instantiated
+[INFO ]      nested template alias BRepGraph_WireId instantiated
+[INFO ]      nested template alias BRepGraph_EdgeId instantiated
+[INFO ]      nested template alias BRepGraph_VertexId instantiated
+[INFO ]      nested template alias BRepGraph_CompoundId instantiated
+[INFO ]      nested template alias BRepGraph_CompSolidId instantiated
+[INFO ]      nested template alias BRepGraph_CoEdgeId instantiated
+[INFO ]      nested template alias BRepGraph_ProductId instantiated
+[INFO ]      nested template alias BRepGraph_OccurrenceId instantiated
+[INFO ]      nested template alias BRepGraph_ShellRefId instantiated
+[INFO ]      nested template alias BRepGraph_FaceRefId instantiated
+[INFO ]      nested template alias BRepGraph_WireRefId instantiated
+[INFO ]      nested template alias BRepGraph_VertexRefId instantiated
+[INFO ]      nested template alias BRepGraph_SolidRefId instantiated
+[INFO ]      nested template alias BRepGraph_ChildRefId instantiated
+[INFO ]      nested template alias BRepGraph_OccurrenceRefId instantiated
+[INFO ]      nested template alias BRepGraph_RefsShellOfSolid not instantiated
+[INFO ]      nested template alias BRepGraph_RefsFaceOfShell not instantiated
+[INFO ]      nested template alias BRepGraph_RefsWireOfFace not instantiated
+[INFO ]      nested template alias BRepGraph_CoEdgesOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_RefsSolidOfCompSolid not instantiated
+[INFO ]      nested template alias BRepGraph_RefsChildOfCompound not instantiated
+[INFO ]      nested template alias BRepGraph_RefsOccurrenceOfProduct not instantiated
+[INFO ]      nested template alias BRepGraph_ShellRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FaceRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_WireRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_VertexRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_SolidRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_ChildRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_OccurrenceRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullShellRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullFaceRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullWireRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullVertexRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullSolidRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullChildRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_FullOccurrenceRefIterator not instantiated
+[INFO ]      nested template alias BRepGraph_EdgesOfVertex not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfVertex not instantiated
+[INFO ]      nested template alias BRepGraph_CoEdgesOfEdge not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfEdge not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfCoEdge not instantiated
+[INFO ]      nested template alias BRepGraph_FacesOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_ShellsOfFace not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfFace not instantiated
+[INFO ]      nested template alias BRepGraph_SolidsOfShell not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfShell not instantiated
+[INFO ]      nested template alias BRepGraph_CompSolidsOfSolid not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfSolid not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfCompSolid not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfCompound not instantiated
+[INFO ]      nested template alias BRepGraph_CompoundsOfChild not instantiated
+[INFO ]      nested template alias BRepGraph_OccurrencesOfProduct not instantiated
+[INFO ]      nested template alias BRepGraph_OccurrencesOfChild not instantiated
+[INFO ]      nested template alias BRepGraph_ProductsOfOccurrence not instantiated
+[INFO ]      nested template alias BRepGraph_RefsFacesOfWire not instantiated
+[INFO ]      nested template alias BRepGraph_RefsShellsOfFace not instantiated
+[INFO ]      nested template alias BRepGraph_RefsSolidsOfShell not instantiated
+[INFO ]      nested template alias BRepGraph_RefsWiresOfCoEdge not instantiated
+[INFO ]      nested template alias BRepGraph_RefsEdgesOfVertex not instantiated
+[INFO ]      nested template alias BRepGraph_RefsCompSolidsOfSolid not instantiated
+[INFO ]      nested template alias BRepGraph_RefsCompoundsOfChild not instantiated
+[INFO ]      nested template alias BRepGraph_RefsProductsOfOccurrence not instantiated
+[INFO ]      nested class BRepGraph_Cache::NodeEntry is not public, skipped
+[INFO ]      nested class BRepGraph_Cache::RefEntry is not public, skipped
+[INFO ]      nested class BRepGraph_Cache::ItemEntry is not public, skipped
+[INFO ]      nested class BRepGraph_CacheDerivedState::EdgeEntry is not public, skipped
+[INFO ]      nested class BRepGraph_CacheDerivedState::CoEdgeSameRangeEntry is not public, skipped
+[INFO ]      nested class BRepGraph_CacheDerivedState::WireEntry is not public, skipped
+[INFO ]      nested class BRepGraph_CacheDerivedState::ShellEntry is not public, skipped
+[INFO ]      nested class BRepGraph_ChildExplorer::StackFrame is not public, skipped
+[INFO ]      nested class BRepGraph_ParentExplorer::StackFrame is not public, skipped
+[INFO ]      BRepGraph_LayerParametric is abstract, it does not override ['Clear', 'CopyTo', 'ID', 'InvalidateAll', 'Name']
+[INFO ]  Class: BRepGraph
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ProductId>, seems to be a template
+[INFO ]  Class: BRepGraph_Cache
+[INFO ]      Class BRepGraph_Cache is abstract, using %nodefaultctor.
+[INFO ]  Class: BRepGraph_CacheIterator
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_CacheIterator, seems to be a template
+[INFO ]  Class: BRepGraph_CacheRegistry
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_ChildExplorer
+[INFO ]  Enum: LinkKind
+[INFO ]  Enum: TraversalMode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::NodeInstance, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_ChildExplorer::LinkKind, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_ChildExplorer, seems to be a template
+[INFO ]  Class: BRepGraph_ChildExplorer_Config
+[INFO ]      property TargetKind of type std::optional<BRepGraph_NodeId::Kind > skipped
+[INFO ]      property AvoidKind of type std::optional<BRepGraph_NodeId::Kind > skipped
+[INFO ]  Class: BRepGraph_ChildRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_CoEdgeId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_CompSolidId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_Compact
+[INFO ]      Class BRepGraph_Compact has a deleted default constructor.
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Compact_Options
+[INFO ]  Enum: CachePolicy
+[INFO ]  Class: BRepGraph_Compact_Result
+[INFO ]  Class: BRepGraph_CompoundId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_Copy
+[INFO ]      Class BRepGraph_Copy has a deleted default constructor.
+[INFO ]  Enum: GeomPolicy
+[INFO ]  Enum: MeshPolicy
+[INFO ]  Enum: CachePolicy
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_CopyRemap
+[INFO ]  Enum: Mode
+[INFO ]  Enum: MappingKind
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_CopyRemap::Mode, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_FlatDataMap<BRepGraph_ItemId,, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Deduplicate
+[INFO ]      Class BRepGraph_Deduplicate has a deleted default constructor.
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Deduplicate_Options
+[INFO ]  Class: BRepGraph_Deduplicate_Result
+[INFO ]      property AffectedFaces of type NCollection_LinearVector<BRepGraph_FaceId > skipped
+[INFO ]      property AffectedEdges of type NCollection_LinearVector<BRepGraph_EdgeId > skipped
+[INFO ]  Class: BRepGraph_DeferredScope
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_EdgeId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_EditorView
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_EditorView_BoundaryIssue>, seems to be a template
+[INFO ]  Class: BRepGraph_EditorView_BoundaryIssue
+[INFO ]  Class: BRepGraph_EditorView_CoEdgeOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::CoEdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::CoEdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::CoEdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::CoEdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::CoEdgeDef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_CompSolidOps
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_SolidId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_SolidRefId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_SolidId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_SolidRefId>, seems to be a template
+[INFO ]  Class: BRepGraph_EditorView_CompoundOps
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ChildRefId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ChildRefId>, seems to be a template
+[INFO ]  Class: BRepGraph_EditorView_EdgeOps
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::EdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::EdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::EdgeDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::EdgeDef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_FaceOps
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_WireId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::FaceRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::FaceRef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::FaceDef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_GenOps
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::ChildRef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::ChildRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::ChildRef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_OccurrenceOps
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::OccurrenceDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::OccurrenceRef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::OccurrenceRef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_ProductOps
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_OccurrenceRefId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ProductId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_OccurrenceRefId>, seems to be a template
+[INFO ]  Class: BRepGraph_EditorView_ShellOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_FaceRefId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_FaceId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_FaceRefId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::ShellRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::ShellRef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_SolidOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ShellRefId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ShellId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ShellRefId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::SolidRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::SolidRef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_VertexOps
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::VertexDef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::VertexRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::VertexRef>, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::VertexDef>, because of trailing :
+[INFO ]  Class: BRepGraph_EditorView_WireOps
+[INFO ]  Enum: CoEdgeOrderStatus
+[INFO ]  Enum: ReplaceEdgeStatus
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_CoEdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_EditorView_WireOps::CoEdgeOrderStatus, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_EditorView_WireOps::CoEdgeOrderStatus, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_CoEdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_EditorView_WireOps::CoEdgeOrderStatus, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_CoEdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_EditorView_WireOps::ReplaceEdgeStatus, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_CoEdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::WireRef>, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ParityOrientation, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_MutGuard<BRepGraphInc::WireRef>, because of trailing :
+[INFO ]  Class: BRepGraph_FaceId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_FaceRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_ItemId
+[INFO ]  Enum: Domain
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_ItemId::Domain, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[INFO ]  Class: BRepGraph_ItemUID
+[INFO ]  Enum: Domain
+[INFO ]      operator< skipped because invalid name
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_ItemUID::Domain, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[INFO ]      BRepGraph_Iterator skipped because it is a class template
+[INFO ]  Class: BRepGraph_Layer
+[INFO ]      Class BRepGraph_Layer is abstract, using %nodefaultctor.
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_RefId>, seems to be a template
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[INFO ]  Class: BRepGraph_LayerHistory_Event
+[INFO ]      property Mapping of type NCollection_DataMap<BRepGraph_NodeId, NCollection_LinearVector<BRepGraph_NodeId> > skipped
+[INFO ]      property UidMapping of type NCollection_DataMap<BRepGraph_UID, NCollection_LinearVector<BRepGraph_UID> > skipped
+[INFO ]      property ItemUidMapping of type NCollection_DataMap<BRepGraph_ItemUID, NCollection_LinearVector<BRepGraph_ItemUID> > skipped
+[INFO ]  Class: BRepGraph_LayerIterator
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_LayerIterator, seems to be a template
+[INFO ]  Class: BRepGraph_LayerLock_ScopedOwnerEdit
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]  Class: BRepGraph_LayerParametric_AddResult
+[INFO ]  Class: BRepGraph_LayerRegistry
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_RefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_MeshView
+[INFO ]  Class: BRepGraph_MeshView_CacheView
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_CacheView::CoEdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_CacheView::EdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_CacheView::FaceOps, because of trailing :
+[INFO ]  Class: BRepGraph_MeshView_CacheView_CoEdgeOps
+[INFO ]  Class: BRepGraph_MeshView_CacheView_EdgeOps
+[INFO ]  Class: BRepGraph_MeshView_CacheView_FaceOps
+[INFO ]  Class: BRepGraph_MeshView_EditorView
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EditorView::CoEdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EditorView::EdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EditorView::FaceOps, because of trailing :
+[INFO ]  Class: BRepGraph_MeshView_EditorView_CoEdgeOps
+[INFO ]  Class: BRepGraph_MeshView_EditorView_EdgeOps
+[INFO ]  Class: BRepGraph_MeshView_EditorView_FaceOps
+[INFO ]  Class: BRepGraph_MeshView_EffectiveView
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EffectiveView::CoEdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EffectiveView::EdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_EffectiveView::FaceOps, because of trailing :
+[INFO ]  Class: BRepGraph_MeshView_EffectiveView_CoEdgeOps
+[INFO ]  Class: BRepGraph_MeshView_EffectiveView_EdgeOps
+[INFO ]  Class: BRepGraph_MeshView_EffectiveView_FaceOps
+[INFO ]  Class: BRepGraph_MeshView_PersistentView
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_PersistentView::CoEdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_PersistentView::EdgeOps, because of trailing :
+[WARNI]      [TypeHint] Skip type BRepGraph_MeshView_PersistentView::FaceOps, because of trailing :
+[INFO ]  Class: BRepGraph_MeshView_PersistentView_CoEdgeOps
+[INFO ]  Class: BRepGraph_MeshView_PersistentView_EdgeOps
+[INFO ]  Class: BRepGraph_MeshView_PersistentView_FaceOps
+[INFO ]  Class: BRepGraph_MeshView_PolyOps
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      BRepGraph_MutGuard skipped because it is a class template
+[INFO ]  Class: BRepGraph_NodeId
+[INFO ]  Enum: Kind
+[INFO ]      operator< skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      BRepGraph_NodeId_Typed skipped because it is a class template
+[INFO ]  Class: BRepGraph_OccurrenceId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_OccurrenceRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_ParallelPolicy
+[INFO ]  Class: BRepGraph_ParallelPolicy_Workload
+[INFO ]  Class: BRepGraph_ParentExplorer
+[INFO ]  Enum: LinkKind
+[INFO ]  Enum: TraversalMode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraphInc::NodeInstance, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_ParentExplorer::LinkKind, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_ParentExplorer, seems to be a template
+[INFO ]  Class: BRepGraph_ParentExplorer_Config
+[INFO ]      property TargetKind of type std::optional<BRepGraph_NodeId::Kind > skipped
+[INFO ]      property AvoidKind of type std::optional<BRepGraph_NodeId::Kind > skipped
+[INFO ]  Class: BRepGraph_ProductId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_RefId
+[INFO ]  Enum: Kind
+[INFO ]      operator< skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[WARNI]      [TypeHint] Skipping type Kind, should contain _
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      BRepGraph_RefId_Typed skipped because it is a class template
+[INFO ]  Class: BRepGraph_RefUID
+[INFO ]      operator< skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[INFO ]  Class: BRepGraph_RefsView
+[INFO ]  Class: BRepGraph_RefsView_ChildOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ChildRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ChildRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ChildRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_FaceOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::FaceRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_FaceRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_GenOps
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_RefId::Kind, because of trailing :
+[INFO ]  Class: BRepGraph_RefsView_OccurrenceOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::OccurrenceRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_OccurrenceRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_OccurrenceRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_ShellOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ShellRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ShellRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_SolidOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::SolidRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_SolidRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_VertexOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::VertexRef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RefsView_WireOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::WireRef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_WireRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_RelatedIterator
+[INFO ]  Enum: RelationKind
+[INFO ]  Enum: Stage
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_RelatedIterator::RelationKind, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_RelatedIterator, seems to be a template
+[INFO ]  Class: BRepGraph_RootProductIterator
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_RootProductIterator, seems to be a template
+[INFO ]  Class: BRepGraph_ShapesView
+[INFO ]  Enum: AddStatus
+[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[INFO ]  Class: BRepGraph_ShapesView_Options
+[INFO ]      property Populate of type BRepGraphInc_Populate::Options skipped
+[INFO ]  Class: BRepGraph_ShapesView_Result
+[INFO ]      property AddedNodes of type NCollection_DataMap<TopoDS_Shape, BRepGraph_NodeId, TopTools_ShapeMapHasher > skipped
+[INFO ]  Class: BRepGraph_ShellId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_ShellRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_SolidId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_SolidRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_SupplementEditor
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_LayerTopoSupplement::AttachmentKind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[INFO ]  Class: BRepGraph_SupplementIterator
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_ForwardRangeIterator<BRepGraph_SupplementIterator, seems to be a template
+[INFO ]  Class: BRepGraph_Tool
+[INFO ]      Class BRepGraph_Tool has a deleted default constructor.
+[INFO ]  Class: BRepGraph_Tool_CoEdge
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static std::pair<double, double >, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type std::pair<gp_Pnt2d,, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Tool_Edge
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static std::pair<double, double >, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static double, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Tool_Face
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static double, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static double, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_Tool::FaceUsage, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Tool_Shell
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_Tool::ShellUsage, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Tool_Vertex
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static double, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type static double, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_Tool::VertexUsage, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Tool_Wire
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skip type BRepGraph_Tool::WireUsage, because of trailing :
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_TopoView
+[INFO ]  Class: BRepGraph_TopoView_CoEdgeOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::CoEdgeDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_TopoView_CompSolidOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::CompSolidDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::CompSolidRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_CompoundOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::CompoundDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::CompoundRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_EdgeOps
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_CoEdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::EdgeDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::EdgeRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_FaceOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::FaceDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::FaceRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_GenOps
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ChildRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_OccurrenceRefId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::BaseDef *, should contain _
+[INFO ]  Class: BRepGraph_TopoView_GeometryOps
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_TopoView_OccurrenceOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::OccurrenceDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::OccurrenceRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_ProductOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ProductDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ProductRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_ShellOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ShellDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::ShellRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_SolidOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::SolidDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::SolidRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_VertexOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::VertexDef &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_EdgeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::VertexRelations &, should contain _
+[INFO ]  Class: BRepGraph_TopoView_WireOps
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::WireDef &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type const BRepGraphInc::WireRelations &, should contain _
+[INFO ]  Class: BRepGraph_Transform
+[INFO ]      Class BRepGraph_Transform has a deleted default constructor.
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_UID
+[INFO ]      operator< skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skip type BRepGraph_NodeId::Kind, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[INFO ]  Class: BRepGraph_UIDsView
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]  Class: BRepGraph_UsagePath
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[INFO ]  Class: BRepGraph_UsagePath_Step
+[INFO ]  Class: BRepGraph_Validate
+[INFO ]      Class BRepGraph_Validate has a deleted default constructor.
+[INFO ]  Enum: Severity
+[INFO ]  Enum: Mode
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]  Class: BRepGraph_Validate_Issue
+[INFO ]  Class: BRepGraph_Validate_Options
+[INFO ]  Class: BRepGraph_Validate_Result
+[INFO ]      property Issues of type NCollection_LinearVector<BRepGraph_Validate_Issue > skipped
+[WARNI]      [TypeHint] Skip type BRepGraph_Validate::Severity, because of trailing :
+[INFO ]  Class: BRepGraph_VersionStamp
+[INFO ]  Enum: Domain
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[INFO ]  Class: BRepGraph_VertexId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_VertexRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_WireId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_NodeId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]  Class: BRepGraph_WireRefId
+[INFO ]      operator< skipped because invalid name
+[INFO ]      operator<= skipped because invalid name
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand BRepGraph_RefId cannot be wrapped
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand ++ cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
+[INFO ]      BaseTraits skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_CoEdgeId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_CompSolidId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_CompoundId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_EdgeId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_FaceId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_OccurrenceId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_ProductId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_ShellId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_SolidId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_VertexId> skipped because it is a class template
+[INFO ]      DefTraits<BRepGraph_WireId> skipped because it is a class template
+[INFO ]      DefsOfParent skipped because it is a class template
+[INFO ]      EdgeParentsOf skipped because it is a class template
+[INFO ]      IdsOfRefs skipped because it is a class template
+[INFO ]      LookupParentRefsOf skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_CoEdgeDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_CompSolidDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_CompoundDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_EdgeDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_FaceDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_OccurrenceDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_ProductDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_ShellDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_SolidDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_VertexDef> skipped because it is a class template
+[INFO ]      NodeTraits<BRepGraphInc_WireDef> skipped because it is a class template
+[INFO ]      ParentRef skipped because it is a class template
+[INFO ]      ParentsOf skipped because it is a class template
+[INFO ]      RefIterator skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_ChildRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_FaceRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_OccurrenceRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_ShellRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_SolidRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_VertexRef> skipped because it is a class template
+[INFO ]      RefTraits<BRepGraphInc_WireRef> skipped because it is a class template
+[INFO ]      RefsOfParent skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_ItemId> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_ItemUID> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_NodeId::Typed<TheKind>> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_NodeId> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_RefId::Typed<TheKind>> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_RefId> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_RefUID> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_UID> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_UsagePath> skipped because it is a class template
+[INFO ]      std::hash<BRepGraph_VersionStamp> skipped because it is a class template
+[INFO ]  Class: BRepGraph_CacheDerivedState
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]      BRepGraph_FacesOfEdge skipped, its base class is not wrapped
+[INFO ]  Class: BRepGraph_LayerHistory
+[INFO ]  Enum: Kind
+[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_FlatMap<BRepGraph_ItemUID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_FlatMap<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_FlatMap<BRepGraph_UID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_UID, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_NodeId, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_UID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ItemUID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_UID, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_UID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_ItemUID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_UID, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping type NCollection_LinearVector<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ItemUID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_UID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_ItemUID>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_NodeId>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<BRepGraph_UID>, seems to be a template
+[INFO ]  Class: BRepGraph_LayerLock
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
+[INFO ]  Class: BRepGraph_LayerParametric
+[INFO ]      Class BRepGraph_LayerParametric is abstract, using %nodefaultctor.
+[INFO ]  Enum: GenerationFlag
+[INFO ]  Enum: MeshQuality
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type GenerationFlag, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping type MeshQuality, should contain _
+[INFO ]      BRepGraph_WiresOfEdge skipped, its base class is not wrapped
 [INFO ]  ## Processing module BRepLProp
 [INFO ]  Class: BRepLProp
 [INFO ]  Class: BRepLProp_SurfaceTool
@@ -1361,6 +2416,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TopTools_ShapeSet
 [INFO ]  ## Processing module TopoDS
+[INFO ]      TopoDS_TVertex is abstract, it does not override ['EmptyCopy']
 [INFO ]  Class: TopoDS_AlertAttribute
 [INFO ]  Class: TopoDS_AlertWithShape
 [INFO ]  Class: TopoDS_Builder
@@ -1396,6 +2452,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Class: TopoDS_TShell
 [INFO ]  Class: TopoDS_TSolid
 [INFO ]  Class: TopoDS_TVertex
+[INFO ]      Class TopoDS_TVertex is abstract, using %nodefaultctor.
 [INFO ]  Class: TopoDS_TWire
 [INFO ]  Class: TopoDS_Vertex
 [INFO ]  Class: TopoDS_Wire
@@ -1667,6 +2724,8 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  ## Processing module Geom
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      Geom_BoundedSurface is abstract, it does not override ['Bounds', 'Continuity', 'Copy', 'EvalD0', 'EvalD1', 'EvalD2', 'EvalD3', 'EvalDN', 'IsCNu', 'IsCNv', 'IsUClosed', 'IsUPeriodic', 'IsVClosed', 'IsVPeriodic', 'Transform', 'UIso', 'UReverse', 'UReversedParameter', 'VIso', 'VReverse', 'VReversedParameter']
+[INFO ]      Geom_SweptSurface is abstract, it does not override ['Bounds', 'Copy', 'EvalD0', 'EvalD1', 'EvalD2', 'EvalD3', 'EvalDN', 'IsCNu', 'IsCNv', 'IsUClosed', 'IsUPeriodic', 'IsVClosed', 'IsVPeriodic', 'Transform', 'UIso', 'UReverse', 'UReversedParameter', 'VIso', 'VReverse', 'VReversedParameter']
 [INFO ]  Class: Geom_Geometry
 [INFO ]      Class Geom_Geometry is abstract, using %nodefaultctor.
 [INFO ]  Class: Geom_Transformation
@@ -2943,6 +4002,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Skip typedef BOPAlgo_PPaveFiller because target is a pointer type
 [INFO ]  Skip typedef BOPAlgo_PSection because target is a pointer type
 [INFO ]  Skip typedef BOPAlgo_PWireEdgeSet because target is a pointer type
+[INFO ]      BOPAlgo_BuilderShape is abstract, it does not override ['Perform']
 [INFO ]  Class: BOPAlgo_CheckResult
 [INFO ]  Class: BOPAlgo_Options
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2971,6 +4031,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Class: BOPAlgo_BuilderArea
 [INFO ]      Class BOPAlgo_BuilderArea is abstract, using %nodefaultctor.
 [INFO ]  Class: BOPAlgo_BuilderShape
+[INFO ]      Class BOPAlgo_BuilderShape is abstract, using %nodefaultctor.
 [INFO ]  Class: BOPAlgo_ParallelAlgo
 [INFO ]      Class BOPAlgo_ParallelAlgo is abstract, using %nodefaultctor.
 [INFO ]      explicitly excluded method BOPAlgo_ParallelAlgo::e23b98e5ba6fc1b2692a5d6fc76fd990
@@ -5694,6 +6755,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Processing toolkit TKMesh ===
 [INFO ]  ## Processing module BRepMesh
 [INFO ]  Enum: BRepMesh_DegreeOfFreedom
+[INFO ]      BRepMesh_ConstrainedBaseMeshAlgo is abstract, it does not override ['generateMesh']
 [INFO ]  Class: BRepMesh_BaseMeshAlgo
 [INFO ]      Class BRepMesh_BaseMeshAlgo is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class BRepMesh_BaseMeshAlgo
@@ -7007,6 +8069,8 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Skip typedef HANDLE because target is a pointer type
 [INFO ]  Skip typedef Aspect_RenderingContext because target is a pointer type
 [WARNI]      [TypeHint] Skipping unknown type size_t,Aspect_Touch, size not in module list
+[INFO ]      Aspect_CircularGrid is abstract, it does not override ['Display', 'Erase', 'IsDisplayed', 'UpdateDisplay']
+[INFO ]      Aspect_RectangularGrid is abstract, it does not override ['Display', 'Erase', 'IsDisplayed', 'UpdateDisplay']
 [INFO ]  Class: Aspect_Background
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Aspect_DisplayConnection
@@ -7984,6 +9048,9 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      SelectMgr_BaseFrustum is abstract, it does not override ['Build', 'CopyWithBuilder', 'IsScalable', 'OverlapsBox', 'OverlapsCircle', 'OverlapsCylinder', 'OverlapsPoint', 'OverlapsPolygon', 'OverlapsSegment', 'OverlapsSphere', 'OverlapsTriangle', 'ScaleAndTransform']
+[INFO ]      SelectMgr_CompositionFilter is abstract, it does not override ['IsOk']
+[INFO ]      SelectMgr_Frustum is abstract, it does not override ['Build', 'CopyWithBuilder', 'IsScalable', 'OverlapsBox', 'OverlapsCircle', 'OverlapsCylinder', 'OverlapsPoint', 'OverlapsPolygon', 'OverlapsSegment', 'OverlapsSphere', 'OverlapsTriangle', 'ScaleAndTransform']
 [INFO ]  Class: SelectMgr
 [INFO ]  Class: SelectMgr_BVHThreadPool
 [INFO ]      Wrap nested class SelectMgr_BVHThreadPool::BVHThread
@@ -8205,6 +9272,7 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping unknown type int,gp_Vec, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type int,opencascade::handle, should contain _
+[INFO ]      MeshVS_DataSource3D is abstract, it does not override ['GetAddr', 'GetAllElements', 'GetAllNodes', 'GetGeom', 'GetGeomType', 'GetNodesByElement']
 [INFO ]  Class: MeshVS_Buffer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
@@ -10358,6 +11426,10 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      VrmlData_ArrayVec3d is abstract, it does not override ['Read']
+[INFO ]      VrmlData_Faceted is abstract, it does not override ['Read', 'TShape']
+[INFO ]      VrmlData_Texture is abstract, it does not override ['Read']
+[INFO ]      VrmlData_TextureTransform is abstract, it does not override ['Read']
 [INFO ]  Class: VrmlData_Node
 [INFO ]      Class VrmlData_Node is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class VrmlData_Node
@@ -10667,6 +11739,10 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      IFSelect_SelectBase is abstract, it does not override ['Label', 'RootResult']
+[INFO ]      IFSelect_SelectCombine is abstract, it does not override ['Label', 'RootResult']
+[INFO ]      IFSelect_SelectControl is abstract, it does not override ['Label', 'RootResult']
+[INFO ]      IFSelect_SelectDeduct is abstract, it does not override ['Label', 'RootResult']
 [INFO ]  Class: IFSelect
 [INFO ]  Class: IFSelect_Activator
 [INFO ]      Class IFSelect_Activator is abstract, using %nodefaultctor.
@@ -10744,6 +11820,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Class: IFSelect_ParamEditor
 [INFO ]  Class: IFSelect_SelectBase
 [INFO ]  Class: IFSelect_SelectCombine
+[INFO ]      Class IFSelect_SelectCombine is abstract, using %nodefaultctor.
 [INFO ]  Class: IFSelect_SelectControl
 [INFO ]  Class: IFSelect_SelectDeduct
 [INFO ]  Class: IFSelect_SessionPilot
@@ -11163,6 +12240,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Class: XmlXCAFDrivers_DocumentStorageDriver
 [INFO ]  Processing toolkit TKXDE ===
 [INFO ]  ## Processing module DE
+[INFO ]      DE_ShapeFixConfigurationNode is abstract, it does not override ['BuildProvider', 'Copy', 'GetExtensions', 'GetFormat', 'GetVendor']
 [INFO ]  Class: DE_ConfigurationContext
 [WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
@@ -11460,6 +12538,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Enum: PCDM_StoreStatus
 [INFO ]  Enum: PCDM_TypeOfFileDriver
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      PCDM_RetrievalDriver is abstract, it does not override ['Read']
 [INFO ]  Class: PCDM
 [INFO ]  Class: PCDM_ReadWriter
 [INFO ]      Class PCDM_ReadWriter is abstract, using %nodefaultctor.
@@ -11502,6 +12581,7 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[INFO ]      TDF_DeltaOnRemoval is abstract, it does not override ['Apply']
 [INFO ]  Class: TDF
 [INFO ]  Class: TDF_Attribute
 [INFO ]      Class TDF_Attribute is abstract, using %nodefaultctor.
@@ -11540,6 +12620,7 @@ date : 2026-09-22 04:25:15.018801
 [INFO ]  Class: TDF_DeltaOnForget
 [INFO ]  Class: TDF_DeltaOnModification
 [INFO ]  Class: TDF_DeltaOnRemoval
+[INFO ]      Class TDF_DeltaOnRemoval is abstract, using %nodefaultctor.
 [INFO ]  Class: TDF_DeltaOnResume
 [INFO ]  Class: TDF_Reference
 [INFO ]  Class: TDF_TagSource
@@ -11826,8 +12907,8 @@ date : 2026-09-22 04:25:15.018801
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 9.50s
+SWIG interface file generation completed in 11.07s
 #################################################
 
-[INFO ]  Number of classes: 3964
-[INFO ]  Number of methods: 44622
+[INFO ]  Number of classes: 4095
+[INFO ]  Number of methods: 45714

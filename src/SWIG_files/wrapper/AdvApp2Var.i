@@ -140,9 +140,9 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
         return self.Size()
     }
 };
-%template(AdvApp2Var_SequenceOfStrip) NCollection_Sequence<AdvApp2Var_Strip>;
+%template(AdvApp2Var_Strip) NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>>;
 
-%extend NCollection_Sequence<AdvApp2Var_Strip> {
+%extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> {
     // occt-800: NCollection_BaseSequence methods are not wrapped through
     // SWIG (its inner SeqNode has private new/delete). Re-export them per
     // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
@@ -155,9 +155,9 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
         return self.Size()
     }
 };
-%template(AdvApp2Var_Strip) NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>>;
+%template(AdvApp2Var_SequenceOfStrip) NCollection_Sequence<AdvApp2Var_Strip>;
 
-%extend NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> {
+%extend NCollection_Sequence<AdvApp2Var_Strip> {
     // occt-800: NCollection_BaseSequence methods are not wrapped through
     // SWIG (its inner SeqNode has private new/delete). Re-export them per
     // instantiation so Python code can call .Size(), .Length(), .IsEmpty()

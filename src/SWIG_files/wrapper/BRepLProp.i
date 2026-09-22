@@ -45,8 +45,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplprop.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<GeomLProp_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<gp_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom_module.hxx>
@@ -65,8 +65,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplprop.html"
 %import Standard.i
 %import NCollection.i
 %import GeomLProp.i
-%import BRepAdaptor.i
 %import gp.i
+%import BRepAdaptor.i
 %import GeomAbs.i
 
 %pythoncode {

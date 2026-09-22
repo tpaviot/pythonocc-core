@@ -136,21 +136,6 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::Items;
-%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::KeyValues;
-%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<int,MAT2d_SequenceOfConnexion>;
-
-%extend NCollection_DataMap<int,MAT2d_SequenceOfConnexion> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
 %ignore NCollection_DataMap<int,gp_Vec2d>::Items;
 %ignore NCollection_DataMap<int,gp_Vec2d>::KeyValues;
 %template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<int,gp_Vec2d>;
@@ -209,6 +194,21 @@ from OCC.Core.Exception import *
     %pythoncode {
     def __len__(self):
         return self.Size()
+    }
+};
+%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::Items;
+%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::KeyValues;
+%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<int,MAT2d_SequenceOfConnexion>;
+
+%extend NCollection_DataMap<int,MAT2d_SequenceOfConnexion> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
     }
 };
 /* end templates declaration */

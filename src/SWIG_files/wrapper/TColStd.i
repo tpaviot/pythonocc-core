@@ -168,21 +168,6 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     return l;
     }
 };
-%ignore NCollection_DataMap<int,TColStd_ListOfInteger>::Items;
-%ignore NCollection_DataMap<int,TColStd_ListOfInteger>::KeyValues;
-%template(TColStd_DataMapOfIntegerListOfInteger) NCollection_DataMap<int,TColStd_ListOfInteger>;
-
-%extend NCollection_DataMap<int,TColStd_ListOfInteger> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TColStd_DataMapOfIntegerListOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
 %ignore NCollection_DataMap<int,double>::Items;
 %ignore NCollection_DataMap<int,double>::KeyValues;
 %template(TColStd_DataMapOfIntegerReal) NCollection_DataMap<int,double>;
@@ -466,6 +451,21 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+    }
+};
+%ignore NCollection_DataMap<int,TColStd_ListOfInteger>::Items;
+%ignore NCollection_DataMap<int,TColStd_ListOfInteger>::KeyValues;
+%template(TColStd_DataMapOfIntegerListOfInteger) NCollection_DataMap<int,TColStd_ListOfInteger>;
+
+%extend NCollection_DataMap<int,TColStd_ListOfInteger> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TColStd_DataMapOfIntegerListOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
     }
 };
 /* end templates declaration */

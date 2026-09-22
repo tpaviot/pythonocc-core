@@ -194,24 +194,6 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
     return l;
     }
 };
-%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::Items;
-%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::KeyValues;
-%template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>;
-
-%extend NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (TopOpeBRepDS_DataMapOfIntegerListOfInterference::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::Items;
-%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::KeyValues;
-%template(TopOpeBRepDS_DataMapOfInterferenceListOfInterference) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>;
 %ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>::Items;
 %ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>::KeyValues;
 %template(TopOpeBRepDS_DataMapOfInterferenceShape) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopoDS_Shape>;
@@ -321,6 +303,24 @@ TopOpeBRepDS_UNKNOWN = TopOpeBRepDS_Kind.TopOpeBRepDS_UNKNOWN
 %ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>::KeyValues;
 %template(TopOpeBRepDS_ShapeSurface) NCollection_DataMap<TopoDS_Shape,opencascade::handle<Geom_Surface>,TopTools_ShapeMapHasher>;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::Items;
+%ignore NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>::KeyValues;
+%template(TopOpeBRepDS_DataMapOfIntegerListOfInterference) NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference>;
+
+%extend NCollection_DataMap<int,TopOpeBRepDS_ListOfInterference> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (TopOpeBRepDS_DataMapOfIntegerListOfInterference::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
+    }
+};
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::Items;
+%ignore NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>::KeyValues;
+%template(TopOpeBRepDS_DataMapOfInterferenceListOfInterference) NCollection_DataMap<opencascade::handle<TopOpeBRepDS_Interference>,TopOpeBRepDS_ListOfInterference>;
 /* end templates declaration */
 
 /* typedefs */

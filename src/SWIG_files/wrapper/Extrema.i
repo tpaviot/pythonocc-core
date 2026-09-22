@@ -44,9 +44,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<Adaptor3d_module.hxx>
-#include<gp_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<gp_module.hxx>
+#include<Adaptor3d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TColStd_module.hxx>
@@ -62,9 +62,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import Adaptor3d.i
-%import gp.i
 %import Adaptor2d.i
+%import gp.i
+%import Adaptor3d.i
 %import Geom2d.i
 %import GeomAbs.i
 %import TColStd.i

@@ -155,9 +155,6 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 /* end handles declaration */
 
 /* templates */
-%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::Items;
-%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::KeyValues;
-%template(TNaming_DataMapOfShapeMapOfShape) NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>;
 %ignore NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>::Items;
 %ignore NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>::KeyValues;
 %template(TNaming_DataMapOfShapePtrRefShape) NCollection_DataMap<TopoDS_Shape,TNaming_PtrRefShape,TopTools_ShapeMapHasher>;
@@ -229,6 +226,9 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
 };
 %template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>>;
 %template(TNaming_MapOfShape) NCollection_Map<TopoDS_Shape>;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::Items;
+%ignore NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>::KeyValues;
+%template(TNaming_DataMapOfShapeMapOfShape) NCollection_DataMap<TopoDS_Shape,TNaming_MapOfShape>;
 /* end templates declaration */
 
 /* typedefs */

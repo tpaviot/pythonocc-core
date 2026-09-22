@@ -4,8 +4,8 @@ from typing import Any, overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.GeomLProp import *
-from OCC.Core.BRepAdaptor import *
 from OCC.Core.gp import *
+from OCC.Core.BRepAdaptor import *
 from OCC.Core.GeomAbs import *
 
 class BRepLProp_CLProps:
