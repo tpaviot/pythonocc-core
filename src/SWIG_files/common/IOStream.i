@@ -113,6 +113,13 @@ private:
     delete static_cast<pythonocc_memory_istream*>($1);
 }
 
+// Overload resolution, e.g. BinTools::Read(shape, stream) or (shape, filename).
+// The precedence is lower than the one of the char* typecheck: a str is a
+// file name if there is such an overload, a bytes is the stream data
+%typemap(typecheck, precedence=SWIG_TYPECHECK_STRING_ARRAY) std::istream&, std::stringstream& {
+    $1 = (PyUnicode_Check($input) || PyBytes_Check($input)) ? 1 : 0;
+}
+
 //=============================================================================
 // String stream conversion: Python str/bytes -> std::stringstream&
 //=============================================================================
@@ -132,68 +139,112 @@ private:
 }
 
 //=============================================================================
-// Output stream conversion: std::ostream& -> Python str (as return value)
+// Output stream conversion: std::ostream& -> Python str or bytes (as return
+// value)
 //=============================================================================
-%typemap(argout) std::ostream& OutValue {
-    // Extract content from the stringstream
-    std::stringstream* ss = static_cast<std::stringstream*>($1);
-    std::string content = ss->str();
-    
-    // Convert to Python Unicode string
-    PyObject* py_str = PyUnicode_FromStringAndSize(content.c_str(), content.size());
-    if (!py_str) {
-        PyErr_SetString(PyExc_UnicodeError, "Failed to create Python string from stream content");
-        SWIG_fail;
+%fragment("pythonocc_ostream", "header") {
+#include <cstring>
+#include <ostream>
+#include <sstream>
+
+// String buffer giving access to the written data without copying it
+// (std::stringbuf::str() returns a copy)
+class pythonocc_ostringbuf : public std::stringbuf {
+public:
+    void written_data(const char** data, size_t* size) {
+        // seek to the high water mark, pptr may be before it if the writer
+        // moved back with seekp
+        pubseekoff(0, std::ios_base::end, std::ios_base::out);
+        *data = pbase();
+        *size = pbase() ? static_cast<size_t>(pptr() - pbase()) : 0;
     }
-    
-    // Handle return value combination
-    if (!$result || $result == Py_None) {
-        // No existing return value or None - use our string as the result
-        Py_XDECREF($result);
-        $result = py_str;
-    } else {
-        // Existing return value - combine into tuple
-        PyObject* current_result = $result;
-        
-        if (!PyTuple_Check(current_result)) {
-            // Convert single value to tuple
-            $result = PyTuple_New(1);
-            if (!$result) {
-                Py_DECREF(py_str);
-                Py_DECREF(current_result);
-                SWIG_fail;
+};
+
+class pythonocc_ostringstream : public std::ostream {
+public:
+    pythonocc_ostringstream() : std::ostream(nullptr) {
+        rdbuf(&myBuffer);
+    }
+
+    // Returns the written data as a str if it is text, i.e. valid UTF-8
+    // without null character, else as a bytes. The data written by the
+    // modules of the Bin* packages (BinTools, BinLDrivers...) is always
+    // returned as a bytes: a short binary output can be valid UTF-8
+    PyObject* to_python(const char* module_name) {
+        const char* data = nullptr;
+        size_t size = 0;
+        myBuffer.written_data(&data, &size);
+        if (!data) {
+            data = "";
+        }
+        const bool binary_module = std::strncmp(module_name, "_Bin", 4) == 0;
+        if (!binary_module && std::memchr(data, '\0', size) == nullptr) {
+            PyObject* text = PyUnicode_DecodeUTF8(data, static_cast<Py_ssize_t>(size), nullptr);
+            if (text) {
+                return text;
             }
-            PyTuple_SET_ITEM($result, 0, current_result);
-            current_result = $result;
+            if (!PyErr_ExceptionMatches(PyExc_UnicodeDecodeError)) {
+                return nullptr;
+            }
+            PyErr_Clear();
         }
-        
-        // Create new tuple with additional string
-        Py_ssize_t old_size = PyTuple_GET_SIZE(current_result);
-        PyObject* new_tuple = PyTuple_New(old_size + 1);
-        if (!new_tuple) {
-            Py_DECREF(py_str);
-            Py_DECREF(current_result);
-            SWIG_fail;
-        }
-        
-        // Copy existing items
+        return PyBytes_FromStringAndSize(data, static_cast<Py_ssize_t>(size));
+    }
+
+private:
+    pythonocc_ostringbuf myBuffer;
+};
+
+// Adds the stream data to the result of the wrapped function: replaces None,
+// else makes a tuple. Steals the reference to data. Returns nullptr on error
+static PyObject* pythonocc_append_stream_output(PyObject* result, PyObject* data) {
+    if (!result || result == Py_None) {
+        Py_XDECREF(result);
+        return data;
+    }
+    const Py_ssize_t old_size = PyTuple_Check(result) ? PyTuple_GET_SIZE(result) : 1;
+    PyObject* new_tuple = PyTuple_New(old_size + 1);
+    if (!new_tuple) {
+        Py_DECREF(data);
+        Py_DECREF(result);
+        return nullptr;
+    }
+    if (PyTuple_Check(result)) {
         for (Py_ssize_t i = 0; i < old_size; ++i) {
-            PyObject* item = PyTuple_GET_ITEM(current_result, i);
+            PyObject* item = PyTuple_GET_ITEM(result, i);
             Py_INCREF(item);
             PyTuple_SET_ITEM(new_tuple, i, item);
         }
-        
-        // Add our string
-        PyTuple_SET_ITEM(new_tuple, old_size, py_str);
-        
-        Py_DECREF(current_result);
-        $result = new_tuple;
+        Py_DECREF(result);
+    } else {
+        PyTuple_SET_ITEM(new_tuple, 0, result);
+    }
+    PyTuple_SET_ITEM(new_tuple, old_size, data);
+    return new_tuple;
+}
+}
+
+%typemap(argout, fragment="pythonocc_ostream") std::ostream& OutValue {
+    PyObject* stream_data = static_cast<pythonocc_ostringstream*>($1)->to_python(SWIG_name);
+    if (!stream_data) {
+        SWIG_fail;
+    }
+    $result = pythonocc_append_stream_output($result, stream_data);
+    if (!$result) {
+        SWIG_fail;
     }
 }
 
 //=============================================================================
-// Output stream input parameter: Create temporary stringstream
+// Output stream input parameter: Create temporary string stream
 //=============================================================================
-%typemap(in, numinputs=0) std::ostream& OutValue (std::stringstream temp_stream) {
+%typemap(in, numinputs=0, fragment="pythonocc_ostream") std::ostream& OutValue (pythonocc_ostringstream temp_stream) {
     $1 = &temp_stream;
+}
+
+// A returned stream (e.g. BinTools::PutReal returns its argument) can't be
+// used from python, the std::ostream class is not wrapped: return None, which
+// the argout typemap above replaces with the stream data
+%typemap(out) std::ostream& {
+    $result = SWIG_Py_Void();
 }

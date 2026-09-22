@@ -21,6 +21,7 @@ from contextlib import contextmanager
 import gc
 import glob
 import json
+import struct
 from math import sqrt
 import importlib
 import os
@@ -50,6 +51,7 @@ from OCC.Core.BRepBuilderAPI import (
 )
 from OCC.Core.BinObjMgt import BinObjMgt_Persistent
 from OCC.Core.BRepTools import BRepTools_ShapeSet, breptools
+from OCC.Core.BinTools import bintools
 from OCC.Core.gp import (
     gp_Pnt,
     gp_Vec,
@@ -1405,3 +1407,42 @@ def test_non_const_handle_reference():
     )
 
     assert isinstance(modified_curve, Geom_BoundedCurve)
+
+
+def test_ostream_output_text_and_binary() -> None:
+    """A std::ostream output is returned as a str for text, as a bytes for
+    binary data"""
+    # text output
+    assert isinstance(gp_Pnt(1.0, 2.0, 3.0).DumpJson(), str)
+    # binary output
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    data = bintools.Write(box)
+    assert isinstance(data, bytes)
+    shape = TopoDS_Shape()
+    bintools.Read(shape, data)
+    assert shape.NbChildren() == box.NbChildren()
+    # a function returning the stream returns the data only
+    assert bintools.PutReal(1.5) == struct.pack("<d", 1.5)
+    assert bintools.PutBool(True) == b"\x01"
+
+
+def test_read_overloads_file_name_or_stream(tmp_path) -> None:
+    """For the overloads (shape, file name) and (shape, stream), a str is a
+    file name, a bytes is the stream data"""
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    file_name = str(tmp_path / "box.brep")
+    assert breptools.Write(box, file_name)
+    shape = TopoDS_Shape()
+    assert breptools.Read(shape, file_name, BRep_Builder())
+    assert shape.NbChildren() == box.NbChildren()
+    shape = TopoDS_Shape()
+    bintools.Read(shape, bintools.Write(box))
+    assert shape.NbChildren() == box.NbChildren()
+
+
+def test_return_extended_string_unicode() -> None:
+    """A TCollection_ExtendedString returned by value is decoded from UTF-16,
+    characters outside the BMP (surrogate pairs) included"""
+    text = "日本語 é 😀"
+    doc = TDocStd_Document(TCollection_ExtendedString(text, True))
+    assert doc.StorageFormat() == text
