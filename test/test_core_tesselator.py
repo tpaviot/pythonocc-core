@@ -177,6 +177,30 @@ def test_no_null_normal_at_singular_points():
             assert math.hypot(*tess.GetNormal(i)) == pytest.approx(1.0, abs=1e-3)
 
 
+def test_cone_apex_normals():
+    """issue #1470: the apex of a cone is shared by a fan of triangles, each
+    one gets the normal of its side of the cone at the apex"""
+    tess = ShapeTesselator(BRepPrimAPI_MakeCone(10, 0, 20).Shape())
+    tess.Compute(compute_edges=False, mesh_quality=1.0)
+    vertices = tess.GetVerticesPositionAsTuple()
+    normals = tess.GetNormalsAsTuple()
+    nb_apex_corners = 0
+    for triangle in range(len(vertices) // 9):
+        corners = [
+            (vertices[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3],
+             normals[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3])
+            for c in range(3)
+        ]
+        for c, (vertex, normal) in enumerate(corners):
+            if math.dist(vertex, (0, 0, 20)) > 1e-6:
+                continue
+            nb_apex_corners += 1
+            side = [sum(n[k] for i, (_, n) in enumerate(corners) if i != c) for k in range(3)]
+            cosine = sum(a * b for a, b in zip(normal, side)) / math.hypot(*side)
+            assert cosine == pytest.approx(1.0, abs=1e-3)
+    assert nb_apex_corners > 2
+
+
 @pytest.mark.parametrize("parallel", [False, True])
 def test_normals_follow_triangles_orientation(parallel):
     """the normals must point to the side the triangles are facing, including

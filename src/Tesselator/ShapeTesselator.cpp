@@ -308,20 +308,33 @@ void ShapeTesselator::ProcessTriangles(const TopoDS_Face& face,
 }
 
 void ShapeTesselator::FixNullNormals(Face& face_data) {
-    // The normal can't be computed from the surface at its singular points:
-    // use the average normal of the triangles sharing the vertex instead. The
-    // triangles winding already takes the face orientation into account.
-    const auto& coords = face_data.vertex_coords;
+    // The normal can't be computed from the surface at its singular points,
+    // e.g. the apex of a cone or the pole of a sphere. Such a node is shared by
+    // a fan of triangles, and no single normal is right for all of them (issue
+    // #1470): the node is duplicated for each triangle, with the normal of the
+    // triangle side of the surface, i.e. the average normal of the two other
+    // vertices of the triangle, or the triangle normal if they are singular
+    // too. The triangles winding already takes the face orientation into
+    // account.
+    auto& coords = face_data.vertex_coords;
     auto& normals = face_data.normal_coords;
+    auto& indices = face_data.triangle_indices;
     const auto nb_nodes = coords.size() / 3;
 
     std::vector<bool> is_null(nb_nodes);
     for (size_t i = 0; i < nb_nodes; ++i) {
         is_null[i] = normals[3 * i] == 0.0f && normals[3 * i + 1] == 0.0f && normals[3 * i + 2] == 0.0f;
     }
+    const auto node_xyz = [&coords](size_t node) {
+        return gp_XYZ(coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]);
+    };
+    const auto normal_xyz = [&normals](size_t node) {
+        return gp_XYZ(normals[3 * node], normals[3 * node + 1], normals[3 * node + 2]);
+    };
 
+    // sum of the normals of the copies of each singular node
     std::vector<gp_XYZ> sums(nb_nodes, gp_XYZ(0., 0., 0.));
-    const auto& indices = face_data.triangle_indices;
+
     for (size_t t = 0; t + 2 < indices.size(); t += 3) {
         // 1-based per-face indices
         const size_t n[3] = {static_cast<size_t>(indices[t] - 1),
@@ -330,21 +343,38 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
         if (!is_null[n[0]] && !is_null[n[1]] && !is_null[n[2]]) {
             continue;
         }
-        const gp_XYZ p0(coords[3 * n[0]], coords[3 * n[0] + 1], coords[3 * n[0] + 2]);
-        const gp_XYZ p1(coords[3 * n[1]], coords[3 * n[1] + 1], coords[3 * n[1] + 2]);
-        const gp_XYZ p2(coords[3 * n[2]], coords[3 * n[2] + 1], coords[3 * n[2] + 2]);
-        const gp_XYZ triangle_normal = (p1 - p0).Crossed(p2 - p0);
-        const auto modulus = triangle_normal.Modulus();
-        if (modulus <= Precision::Confusion()) {
-            continue;  // degenerated triangle
-        }
-        for (const auto node : n) {
-            if (is_null[node]) {
-                sums[node] += triangle_normal / modulus;
+        const gp_XYZ triangle_normal =
+            (node_xyz(n[1]) - node_xyz(n[0])).Crossed(node_xyz(n[2]) - node_xyz(n[0]));
+        for (int c = 0; c < 3; ++c) {
+            if (!is_null[n[c]]) {
+                continue;
             }
+            gp_XYZ normal(0., 0., 0.);
+            for (int other = 0; other < 3; ++other) {
+                if (other != c && !is_null[n[other]]) {
+                    normal += normal_xyz(n[other]);
+                }
+            }
+            if (normal.Modulus() <= Precision::Confusion()) {
+                normal = triangle_normal;
+            }
+            const auto modulus = normal.Modulus();
+            if (modulus <= Precision::Confusion()) {
+                continue;  // degenerated triangle
+            }
+            normal /= modulus;
+            // the vertex of this triangle corner, with its own normal
+            const auto node = n[c];
+            sums[node] += normal;
+            coords.insert(coords.end(), {coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]});
+            normals.insert(normals.end(), {static_cast<float>(normal.X()),
+                                           static_cast<float>(normal.Y()),
+                                           static_cast<float>(normal.Z())});
+            indices[t + c] = static_cast<Standard_Integer>(coords.size() / 3);  // 1-based
         }
     }
-
+    // the singular nodes are no longer used by the triangles: they get the
+    // average normal of their copies, so that no normal is null
     for (size_t i = 0; i < nb_nodes; ++i) {
         const auto modulus = sums[i].Modulus();
         if (is_null[i] && modulus > Precision::Confusion()) {
@@ -354,6 +384,7 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
             normals[3 * i + 2] = static_cast<float>(normal.Z());
         }
     }
+    face_data.number_of_normals = static_cast<Standard_Integer>(normals.size() / 3);
 }
 
 void ShapeTesselator::JoinPrimitives() {
