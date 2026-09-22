@@ -1115,6 +1115,30 @@ def test_osd_thread_pool():
     assert OSD_ThreadPool(3).NbThreads() == 3
 
 
+def test_math_vector_element_access():
+    """Issue #1426: math_Vector elements can be set and read"""
+    from OCC.Core.math import math_IntegerVector, math_Vector
+
+    vector = math_Vector(1, 3, 1.0)
+    vector.SetValue(1, 5.0)
+    assert vector.GetValue(1) == 5.0
+    assert vector.Value(1) == 5.0
+    # python sequence protocol, 0-based as for the NCollection arrays
+    vector[1] = 7.0
+    assert vector.Value(2) == 7.0
+    assert list(vector) == [5.0, 7.0, 1.0]
+    assert len(vector) == 3
+    with pytest.raises(IndexError):
+        vector[3]
+    # a range starting from another index
+    shifted = math_Vector(-2, 0, 0.0)
+    shifted[0] = 4.0
+    assert shifted.GetValue(-2) == 4.0
+    integers = math_IntegerVector(1, 2, 3)
+    integers.SetValue(2, 9)
+    assert list(integers) == [3, 9]
+
+
 def test_tcollection_strings_str():
     """str() returns the text of TCollection_AsciiString/ExtendedString"""
     assert str(TCollection_AsciiString("some text")) == "some text"

@@ -99,6 +99,31 @@ math_NotBracketed = math_Status.math_NotBracketed
 %template(math_Array1OfValueAndWeight) NCollection_Array1<math_ValueAndWeight>;
 Array1ExtendIter(math_ValueAndWeight)
 
+
+%ignore math_VectorBase::Value(const int);
+%extend math_VectorBase {
+    TheItemType GetValue(const int theIndex) const { return self->Value(theIndex); }
+    void SetValue(const int theIndex, const TheItemType theValue) { self->Value(theIndex) = theValue; }
+    %pythoncode {
+    def __getitem__(self, index):
+        if index < 0 or index >= self.Length():
+            raise IndexError("index out of range")
+        return self.GetValue(index + self.Lower())
+
+    def __setitem__(self, index, value):
+        if index < 0 or index >= self.Length():
+            raise IndexError("index out of range")
+        self.SetValue(index + self.Lower(), value)
+
+    def __len__(self):
+        return self.Length()
+
+    def __iter__(self):
+        value = self.GetValue
+        for i in range(self.Lower(), self.Upper() + 1):
+            yield value(i)
+    }
+};
 %include "math_VectorBase.hxx";
 %template(math_IntegerVector) math_VectorBase<int>;
 %template(math_Vector) math_VectorBase<double>;
