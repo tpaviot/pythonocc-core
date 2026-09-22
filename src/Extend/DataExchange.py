@@ -23,7 +23,7 @@ import warnings
 from typing import Any, Optional, Union
 
 from OCC.Core.Bnd import Bnd_Box2d
-from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRep import BRep_Builder, BRep_Tool
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeSolid,
     BRepBuilderAPI_Sewing,
@@ -69,7 +69,11 @@ from OCC.Core.XCAFDoc import (
     XCAFDoc_ColorTool,
     XCAFDoc_DocumentTool,
 )
-from OCC.Extend.TopologyUtils import discretize_edge, get_sorted_hlr_edges
+from OCC.Extend.TopologyUtils import (
+    TopologyExplorer,
+    discretize_edge,
+    get_sorted_hlr_edges,
+)
 
 try:
     import svgwrite
@@ -132,17 +136,17 @@ def read_step_file(
     if nb_shapes == 0:
         raise AssertionError("No shape to transfer.")
 
-    if nb_shapes == 1:
-        if as_compound:
-            return step_reader.Shape(1)
-
-        return [step_reader.Shape(1)]
-
+    # a null shape is returned as None, e.g. for a file without geometry
     shapes = []
     for i in range(1, nb_shapes + 1):
         shape = step_reader.Shape(i)
-        if not shape.IsNull():
+        if shape is not None and not shape.IsNull():
             shapes.append(shape)
+    if not shapes:
+        raise AssertionError("No shape to transfer.")
+
+    if len(shapes) == 1:
+        return shapes[0] if as_compound else shapes
 
     if as_compound:
         compound = TopoDS_Compound()
@@ -185,12 +189,30 @@ def write_step_file(
     if os.path.isfile(filename):
         warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
 
+    if application_protocol != "AP242DIS":
+        # e.g. the faces of a shape read from a glTF, STL or OBJ file: only
+        # their triangulation can be exported, as AP242 tessellated geometry
+        nb_mesh_faces = sum(
+            1
+            for face in TopologyExplorer(shape).faces()
+            if BRep_Tool.Surface(face) is None
+        )
+        if nb_mesh_faces > 0:
+            warnings.warn(
+                f"{nb_mesh_faces} face(s) without geometric surface, e.g. read "
+                "from a mesh file, are not exported with "
+                f"{application_protocol}: use application_protocol='AP242DIS'",
+                stacklevel=2,
+            )
+
+    # the writer defines the write.step.* parameters: create it first, else
+    # the schema is not set at the first call
+    writer = STEPControl_Writer()
     # the schema is a global parameter: restore it once the file is written
     previous_schema = Interface_Static.CVal("write.step.schema")
     Interface_Static.SetCVal("write.step.schema", application_protocol)
     try:
         # Convert and write shape
-        writer = STEPControl_Writer()
         writer.Transfer(shape, STEPControl_AsIs)
         status = writer.Write(filename)
     finally:

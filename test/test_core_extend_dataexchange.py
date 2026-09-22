@@ -18,6 +18,8 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import subprocess
+import sys
 
 import pytest
 
@@ -198,6 +200,35 @@ def test_write_step_file_restores_schema():
         application_protocol="AP242DIS",
     )
     assert Interface_Static.CVal("write.step.schema") == schema
+
+
+def test_write_step_file_protocol_at_first_call(tmp_path):
+    """the application protocol is used by the first write_step_file call of
+    a python session, before any STEP writer defines the write.step.schema
+    parameter"""
+    filename = tmp_path / "first.stp"
+    code = (
+        "from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox\n"
+        "from OCC.Extend.DataExchange import write_step_file\n"
+        "write_step_file(BRepPrimAPI_MakeBox(1, 1, 1).Shape(), "
+        f"{str(filename)!r}, application_protocol='AP203')\n"
+    )
+    subprocess.run([sys.executable, "-c", code], check=True, capture_output=True)
+    assert "CONFIG_CONTROL_DESIGN" in filename.read_text()
+
+
+def test_write_step_file_mesh_faces(tmp_path):
+    """issue #1476: faces without surface, read from a mesh file, can only be
+    exported in AP242, as tessellated geometry"""
+    gltf_filename = str(tmp_path / "torus.gltf")
+    write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
+    mesh_shape = read_gltf_file(gltf_filename)[0]
+    nb_faces = TopologyExplorer(mesh_shape).number_of_faces()
+    with pytest.warns(UserWarning, match="AP242DIS"):
+        write_step_file(mesh_shape, str(tmp_path / "mesh_203.stp"))
+    step_filename = str(tmp_path / "mesh_242.stp")
+    write_step_file(mesh_shape, step_filename, application_protocol="AP242DIS")
+    assert TopologyExplorer(read_step_file(step_filename)).number_of_faces() == nb_faces
 
 
 def test_read_step_file_names_colors_invalid_file(tmp_path):
