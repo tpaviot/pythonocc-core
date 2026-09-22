@@ -46,7 +46,7 @@ jobs:
     displayName: 'Conda config and info'
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=3.12 anaconda-client
     displayName: 'Create Anaconda environment'
-  - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
+  - ${{ if contains(parameters.vmImage, 'win') }}:
     - script: |
         call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
         echo "PATH=%PATH%"
