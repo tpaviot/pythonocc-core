@@ -33,7 +33,7 @@ from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
-from OCC.Core.TCollection import TCollection_AsciiString, TCollection_ExtendedString
+from OCC.Core.TCollection import TCollection_ExtendedString
 from OCC.Core.TDataStd import TDataStd_Integer, TDataStd_Name, TDataStd_NamedData
 from OCC.Core.TDF import TDF_Attribute
 from OCC.Core.XCAFDoc import XCAFDoc_ShapeTool
@@ -76,7 +76,7 @@ def test_find_attribute() -> None:
     TDataStd_Integer.Set(label, 42)
     name = label.FindAttribute(TDataStd_Name.GetID(), TDataStd_Name())
     assert isinstance(name, TDataStd_Name)
-    assert TCollection_AsciiString(name.Get()).ToCString() == "a name"
+    assert str(name.Get()) == "a name"
     integer = label.FindAttribute(TDataStd_Integer.GetID(), 0, TDataStd_Integer())
     assert isinstance(integer, TDataStd_Integer)
     assert integer.Get() == 42

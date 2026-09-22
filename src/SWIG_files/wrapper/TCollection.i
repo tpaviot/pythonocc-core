@@ -3199,6 +3199,10 @@ def __eq__(self, right):
     except:
         return False
 }
+		%extend{
+			std::string __str__() {
+			return std::string(self->ToCString(), self->Length());}
+		};
 };
 
 
@@ -5335,6 +5339,13 @@ def __eq__(self, right):
     except:
         return False
 }
+		%extend{
+			std::string __str__() {
+			std::string txt(self->LengthOfCString(), '\0');
+			char* str = &txt[0];
+			self->ToUTF8CString(str);
+			return txt;}
+		};
 };
 
 

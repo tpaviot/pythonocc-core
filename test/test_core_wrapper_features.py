@@ -129,7 +129,11 @@ from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
 from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
-from OCC.Core.TCollection import TCollection_AsciiString, TCollection_HAsciiString
+from OCC.Core.TCollection import (
+    TCollection_AsciiString,
+    TCollection_ExtendedString,
+    TCollection_HAsciiString,
+)
 from OCC.Core.Resource import Resource_DataMapOfAsciiStringAsciiString
 from OCC.Core.Interface import Interface_HArray1OfHAsciiString
 
@@ -1052,6 +1056,14 @@ def test_deprecated_static_functions():
     with pytest.warns(DeprecationWarning):
         gp_OX()
     assert isinstance(gp.OX(), gp_Ax1)
+
+
+def test_tcollection_strings_str():
+    """str() returns the text of TCollection_AsciiString/ExtendedString"""
+    assert str(TCollection_AsciiString("some text")) == "some text"
+    a_unicode_string = "Some text with umlauts äöü and japanese (琵琶)"
+    assert str(TCollection_ExtendedString(a_unicode_string)) == a_unicode_string
+    assert str(TCollection_ExtendedString("")) == ""
 
 
 def test_wrap_extendedstring_as_pyunicodestring():
