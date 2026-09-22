@@ -231,7 +231,7 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 # TKBinXCAF
 	BinMXCAFDoc
 	BinXCAFDrivers
-# TKIGES
+# TKDEIGES
 	IGESControl
 	IGESData
 	IGESToBRep
@@ -240,7 +240,7 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	RWObj
 	RWMesh
 	RWPly
-# TKSTEP
+# TKDESTEP
 	GeomToStep
 	STEPConstruct
 	STEPControl
@@ -253,22 +253,22 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	StepToGeom
 	StepToTopoDS
 	TopoDSToStep
-# TKSTEP209
+# TKDESTEP (AP209)
 	StepElement
 	StepFEA
-# TKSTEPAttr
+# TKDESTEP (attributes)
 	StepDimTol
 	StepVisual
 	StepKinematics
-# TKSTEPBase
+# TKDESTEP (base)
 	StepBasic
 	StepGeom
 	StepRepr
 	StepShape
-# TKSTL
+# TKDESTL
 	RWStl
 	StlAPI
-# TKVRML
+# TKDEVRML
 	Vrml
 	VrmlAPI
 	VrmlConverter
@@ -280,9 +280,9 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 	XCAFNoteObjects
 	XCAFPrs
 	XCAFView
-# TKXDEIGES
+# TKDEIGES (XCAF)
 	IGESCAFControl
-# TKXDESTEP
+# TKDESTEP (XCAF)
 	STEPCAFControl
 # TKXSBase
 	Interface
@@ -298,7 +298,7 @@ LIST(APPEND OCCT_TOOLKIT_DATAEXCHANGE
 # TKXmlXCAF
 	XmlMXCAFDoc
 	XmlXCAFDrivers
-# TKXDE
+# TKDE
 	DE
 )
 
@@ -335,7 +335,7 @@ LIST(APPEND OCCT_TOOLKIT_OCAF
 	AppStdL
 # TKTObj
 	TObj
-# TKVAF
+# TKVCAF
 	TPrsStd
 # TKXml
 	XmlDrivers
