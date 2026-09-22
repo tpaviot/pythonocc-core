@@ -68,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_v3d.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i

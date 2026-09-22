@@ -78,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepgraph.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 // nested classes wrapped as top level classes
 typedef BRepGraph_CacheMesh::EntryStamp BRepGraph_CacheMesh_EntryStamp;
 typedef BRepGraph_CacheMesh::FaceMeshEntry BRepGraph_CacheMesh_FaceMeshEntry;

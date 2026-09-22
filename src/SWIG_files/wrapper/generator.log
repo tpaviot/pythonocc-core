@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : ffe761f
+git revision : c09a7a0
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 10:16:39.889759
+date : 2026-09-22 11:26:44.877849
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -136,6 +136,20 @@ date : 2026-09-22 10:16:39.889759
 [INFO ]  Enum: OSD_WhoAmI
 [INFO ]  Skip typedef OSD_Function because ends with 'Function'
 [INFO ]  Skip typedef OSD_ThreadFunction because ends with 'Function'
+[INFO ]  Class: OSD_Parallel
+[INFO ]      Wrap nested class OSD_Parallel::IteratorInterface
+[INFO ]      Wrap nested class OSD_Parallel::IteratorWrapper
+[INFO ]      Wrap nested class OSD_Parallel::UniversalIterator
+[INFO ]      Wrap nested class OSD_Parallel::FunctorInterface
+[INFO ]      Wrap nested class OSD_Parallel::FunctorWrapperIter
+[INFO ]      Wrap nested class OSD_Parallel::FunctorWrapperInt
+[INFO ]      Wrap nested class OSD_Parallel::FunctorWrapperForThreadPool
+[INFO ]  Class: OSD_ThreadPool
+[INFO ]      Wrap nested class OSD_ThreadPool::JobInterface
+[INFO ]      Wrap nested class OSD_ThreadPool::EnumeratedThread
+[INFO ]      Wrap nested class OSD_ThreadPool::Launcher
+[INFO ]      Wrap nested class OSD_ThreadPool::JobRange
+[INFO ]      Wrap nested class OSD_ThreadPool::Job
 [INFO ]  ## Processing module Plugin
 [INFO ]  ## Processing module Quantity
 [INFO ]  Enum: Quantity_NameOfColor
@@ -12903,8 +12917,8 @@ date : 2026-09-22 10:16:39.889759
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.45s
+SWIG interface file generation completed in 10.44s
 #################################################
 
-[INFO ]  Number of classes: 4097
-[INFO ]  Number of methods: 45720
+[INFO ]  Number of classes: 4099
+[INFO ]  Number of methods: 45733

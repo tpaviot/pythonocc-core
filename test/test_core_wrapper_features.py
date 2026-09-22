@@ -1098,6 +1098,23 @@ def test_container_values_outlive_container():
     assert array.Value(1).X() == 7.0
 
 
+def test_osd_thread_pool():
+    """Issue #1479: the number of threads of the parallel algorithms can be set
+    with the default OSD_ThreadPool"""
+    from OCC.Core.OSD import OSD_Parallel, OSD_ThreadPool
+
+    assert OSD_Parallel.NbLogicalProcessors() >= 1
+    pool = OSD_ThreadPool.DefaultPool()
+    assert isinstance(pool, OSD_ThreadPool)
+    nb_threads = pool.NbThreads()
+    try:
+        pool.Init(2)
+        assert OSD_ThreadPool.DefaultPool().NbThreads() == 2
+    finally:
+        pool.Init(nb_threads)
+    assert OSD_ThreadPool(3).NbThreads() == 3
+
+
 def test_tcollection_strings_str():
     """str() returns the text of TCollection_AsciiString/ExtendedString"""
     assert str(TCollection_AsciiString("some text")) == "some text"

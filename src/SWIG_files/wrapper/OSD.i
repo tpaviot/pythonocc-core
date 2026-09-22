@@ -48,6 +48,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_osd.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -343,6 +344,10 @@ OSD_WEnvironmentIterator = OSD_WhoAmI.OSD_WEnvironmentIterator
 };
 /* end python proxy for enums */
 
+/* handles */
+%wrap_handle(OSD_ThreadPool)
+/* end handles declaration */
+
 /* templates */
 /* end templates declaration */
 
@@ -389,6 +394,68 @@ typedef pthread_t OSD_PThread;
 /*********************
 * class OSD_Parallel *
 *********************/
+class OSD_Parallel {
+	public:
+		class IteratorInterface {};
+		class IteratorWrapper {};
+		class UniversalIterator {};
+		class FunctorInterface {};
+		class FunctorWrapperIter {};
+		class FunctorWrapperInt {};
+		class FunctorWrapperForThreadPool {};
+		/****** OSD_Parallel::NbLogicalProcessors ******/
+		/****** md5 signature: 310efdaf1280b99bd3194c196eb14f74 ******/
+		%feature("compactdefaultargs") NbLogicalProcessors;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns number of logical processors.
+") NbLogicalProcessors;
+		static int NbLogicalProcessors();
+
+		/****** OSD_Parallel::SetUseOcctThreads ******/
+		/****** md5 signature: 421846164db75655af7c7572470295e3 ******/
+		%feature("compactdefaultargs") SetUseOcctThreads;
+		%feature("autodoc", "
+Parameters
+----------
+theToUseOcct: bool
+
+Return
+-------
+None
+
+Description
+-----------
+Sets if OCCT threads should be used instead of auxiliary threads library. Has no effect if OCCT has been built with no auxiliary threads library.
+") SetUseOcctThreads;
+		static void SetUseOcctThreads(bool theToUseOcct);
+
+		/****** OSD_Parallel::ToUseOcctThreads ******/
+		/****** md5 signature: 25dfdc1e30955fe9c6a0442ebf1fb5e1 ******/
+		%feature("compactdefaultargs") ToUseOcctThreads;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns True if OCCT threads should be used instead of auxiliary threads library; default value is False if alternative library has been enabled while OCCT building and True otherwise.
+") ToUseOcctThreads;
+		static bool ToUseOcctThreads();
+
+};
+
+
+%extend OSD_Parallel {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************
 * class OSD_Path *
 *****************/
@@ -413,6 +480,175 @@ typedef pthread_t OSD_PThread;
 /***********************
 * class OSD_ThreadPool *
 ***********************/
+class OSD_ThreadPool : public Standard_Transient {
+	public:
+		class JobInterface {};
+		class EnumeratedThread {};
+		class Launcher {};
+		class JobRange {};
+		class Job {};
+		/****** OSD_ThreadPool::OSD_ThreadPool ******/
+		/****** md5 signature: 21b3dd16156c27d061371b6cdf390180 ******/
+		%feature("compactdefaultargs") OSD_ThreadPool;
+		%feature("autodoc", "
+Parameters
+----------
+theNbThreads: int (optional, default to -1)
+
+Return
+-------
+None
+
+Description
+-----------
+Main constructor. Application may consider specifying more threads than actually available (OSD_Parallel::NbLogicalProcessors()) and set up NbDefaultThreadsToLaunch() to a smaller value so that concurrent threads will be able using single Thread Pool instance more efficiently. 
+Parameter theNbThreads threads number to be created by pool (if -1 is specified then OSD_Parallel::NbLogicalProcessors() will be used).
+") OSD_ThreadPool;
+		 OSD_ThreadPool(int theNbThreads = -1);
+
+		/****** OSD_ThreadPool::DefaultPool ******/
+		/****** md5 signature: b49bd58ced0cdb12d5b9987de36bd3d7 ******/
+		%feature("compactdefaultargs") DefaultPool;
+		%feature("autodoc", "
+Parameters
+----------
+theNbThreads: int (optional, default to -1)
+
+Return
+-------
+opencascade::handle<OSD_ThreadPool>
+
+Description
+-----------
+Return (or create) a default thread pool. Number of threads argument will be considered only when called first time.
+") DefaultPool;
+		static const opencascade::handle<OSD_ThreadPool> & DefaultPool(int theNbThreads = -1);
+
+		/****** OSD_ThreadPool::HasThreads ******/
+		/****** md5 signature: 71304c6f4cf46968dac20cc4c43a3948 ******/
+		%feature("compactdefaultargs") HasThreads;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Return True if at least 2 threads are available (including self-thread).
+") HasThreads;
+		bool HasThreads();
+
+		/****** OSD_ThreadPool::Init ******/
+		/****** md5 signature: 7d66758c6f0ae666dfcc6ab5406acb8e ******/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theNbThreads: int
+
+Return
+-------
+None
+
+Description
+-----------
+Reinitialize the thread pool with a different number of threads. Should be called only with no active jobs, or exception Standard_ProgramError will be thrown!.
+") Init;
+		void Init(int theNbThreads);
+
+		/****** OSD_ThreadPool::IsInUse ******/
+		/****** md5 signature: 2db2b6fd6395db345cf7f57aae558b46 ******/
+		%feature("compactdefaultargs") IsInUse;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Checks if thread pools has active consumers.
+") IsInUse;
+		bool IsInUse();
+
+		/****** OSD_ThreadPool::LowerThreadIndex ******/
+		/****** md5 signature: 856412986cc98b9ec9163bfa5868b0c6 ******/
+		%feature("compactdefaultargs") LowerThreadIndex;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Return the lower thread index.
+") LowerThreadIndex;
+		int LowerThreadIndex();
+
+		/****** OSD_ThreadPool::NbDefaultThreadsToLaunch ******/
+		/****** md5 signature: 0756e92e5589dfa60900a88f48cd111d ******/
+		%feature("compactdefaultargs") NbDefaultThreadsToLaunch;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Return maximum number of threads to be locked by a single Launcher object by default; the entire thread pool size is returned by default.
+") NbDefaultThreadsToLaunch;
+		int NbDefaultThreadsToLaunch();
+
+		/****** OSD_ThreadPool::NbThreads ******/
+		/****** md5 signature: 2f111ad626f87c36efb7df0056a21b78 ******/
+		%feature("compactdefaultargs") NbThreads;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Return the number of threads; >= 1.
+") NbThreads;
+		int NbThreads();
+
+		/****** OSD_ThreadPool::SetNbDefaultThreadsToLaunch ******/
+		/****** md5 signature: 3c2f6023636939122690279fe130da5d ******/
+		%feature("compactdefaultargs") SetNbDefaultThreadsToLaunch;
+		%feature("autodoc", "
+Parameters
+----------
+theNbThreads: int
+
+Return
+-------
+None
+
+Description
+-----------
+Set maximum number of threads to be locked by a single Launcher object by default. Should be set BEFORE first usage.
+") SetNbDefaultThreadsToLaunch;
+		void SetNbDefaultThreadsToLaunch(int theNbThreads);
+
+		/****** OSD_ThreadPool::UpperThreadIndex ******/
+		/****** md5 signature: ff95d3ecfb337abb3130495d60ce5dbe ******/
+		%feature("compactdefaultargs") UpperThreadIndex;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Return the upper thread index (last index is reserved for self-thread).
+") UpperThreadIndex;
+		int UpperThreadIndex();
+
+};
+
+
+%make_alias(OSD_ThreadPool)
+
+%extend OSD_ThreadPool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************************
 * class OSD_CachedFileSystem *
 *****************************/
@@ -498,10 +734,6 @@ class OSD_MemInfo:
 	pass
 
 @classnotwrapped
-class OSD_Parallel:
-	pass
-
-@classnotwrapped
 class OSD_Path:
 	pass
 
@@ -530,10 +762,6 @@ class OSD_Thread:
 	pass
 
 @classnotwrapped
-class OSD_ThreadPool:
-	pass
-
-@classnotwrapped
 class OSD_Timer:
 	pass
 
@@ -544,4 +772,23 @@ class OSD_Timer:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+}
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def OSD_Parallel_NbLogicalProcessors(*args):
+	return OSD_Parallel.NbLogicalProcessors(*args)
+
+@deprecated
+def OSD_Parallel_SetUseOcctThreads(*args):
+	return OSD_Parallel.SetUseOcctThreads(*args)
+
+@deprecated
+def OSD_Parallel_ToUseOcctThreads(*args):
+	return OSD_Parallel.ToUseOcctThreads(*args)
+
+@deprecated
+def OSD_ThreadPool_DefaultPool(*args):
+	return OSD_ThreadPool.DefaultPool(*args)
+
 }
