@@ -44,9 +44,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplprop.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<GeomLProp_module.hxx>
 #include<BRepAdaptor_module.hxx>
-#include<GeomAbs_module.hxx>
 #include<gp_module.hxx>
+#include<GeomAbs_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
@@ -63,9 +64,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breplprop.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import GeomLProp.i
 %import BRepAdaptor.i
-%import GeomAbs.i
 %import gp.i
+%import GeomAbs.i
 
 %pythoncode {
 from enum import IntEnum
@@ -84,9 +86,15 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%include "GeomLProp_CLProps.hxx";
+%template(BRepLProp_CLProps) GeomLProp_CLPropsBase<gp_Pnt,gp_Vec,gp_Dir,BRepAdaptor_Curve>;
+%include "GeomLProp_SLProps.hxx";
+%template(BRepLProp_SLProps) GeomLProp_SLPropsBase<BRepAdaptor_Surface>;
 /* end templates declaration */
 
 /* typedefs */
+typedef GeomLProp_CLPropsBase<gp_Pnt, gp_Vec, gp_Dir, BRepAdaptor_Curve> BRepLProp_CLProps;
+typedef GeomLProp_SLPropsBase<BRepAdaptor_Surface> BRepLProp_SLProps;
 /* end typedefs declaration */
 
 /******************

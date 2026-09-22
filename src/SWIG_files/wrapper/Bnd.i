@@ -86,12 +86,22 @@ Array1ExtendIter(Bnd_Box2d)
 %template(Bnd_Array1OfSphere) NCollection_Array1<Bnd_Sphere>;
 Array1ExtendIter(Bnd_Sphere)
 
+%include "Bnd_B2.hxx";
+%template(Bnd_B2d) Bnd_B2<double>;
+%template(Bnd_B2f) Bnd_B2<float>;
+%include "Bnd_B3.hxx";
+%template(Bnd_B3d) Bnd_B3<double>;
+%template(Bnd_B3f) Bnd_B3<float>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<Bnd_Box> Bnd_Array1OfBox;
 typedef NCollection_Array1<Bnd_Box2d> Bnd_Array1OfBox2d;
 typedef NCollection_Array1<Bnd_Sphere> Bnd_Array1OfSphere;
+typedef Bnd_B2<double> Bnd_B2d;
+typedef Bnd_B2<float> Bnd_B2f;
+typedef Bnd_B3<double> Bnd_B3d;
+typedef Bnd_B3<float> Bnd_B3f;
 typedef NCollection_HArray1<Bnd_Box> Bnd_HArray1OfBox;
 typedef NCollection_HArray1<Bnd_Box2d> Bnd_HArray1OfBox2d;
 typedef NCollection_HArray1<Bnd_Sphere> Bnd_HArray1OfSphere;

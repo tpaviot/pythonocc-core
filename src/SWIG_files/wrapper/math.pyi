@@ -6,6 +6,14 @@ from OCC.Core.NCollection import *
 from OCC.Core.TColStd import *
 from OCC.Core.Message import *
 
+class math_IntegerVector:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class math_Vector:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
 
 class math_Array1OfValueAndWeight:
     @overload

@@ -3,15 +3,28 @@ from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
+from OCC.Core.Extrema import *
 from OCC.Core.Adaptor2d import *
-from OCC.Core.IntRes2d import *
 from OCC.Core.gp import *
+from OCC.Core.IntRes2d import *
 from OCC.Core.TColStd import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.math import *
 from OCC.Core.IntCurve import *
 from OCC.Core.Intf import *
 from OCC.Core.Bnd import *
+
+class Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 
 class Geom2dInt_ExactIntersectionPointOfTheIntPCurvePCurveOfGInter:

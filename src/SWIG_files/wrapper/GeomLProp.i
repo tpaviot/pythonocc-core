@@ -45,9 +45,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomlprop.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Geom_module.hxx>
+#include<Geom2d_module.hxx>
+#include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<LProp_module.hxx>
-#include<Geom2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -56,9 +57,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomlprop.html"
 %import Standard.i
 %import NCollection.i
 %import Geom.i
+%import Geom2d.i
+%import gp.i
 %import GeomAbs.i
 %import LProp.i
-%import Geom2d.i
 
 %pythoncode {
 from enum import IntEnum
@@ -77,9 +79,17 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%include "GeomLProp_CLProps.hxx";
+%template(GeomLProp_CLProps) GeomLProp_CLPropsBase<gp_Pnt,gp_Vec,gp_Dir,opencascade::handle<Geom_Curve>>;
+%template(GeomLProp_CLProps2d) GeomLProp_CLPropsBase<gp_Pnt2d,gp_Vec2d,gp_Dir2d,opencascade::handle<Geom2d_Curve>>;
+%include "GeomLProp_SLProps.hxx";
+%template(GeomLProp_SLProps) GeomLProp_SLPropsBase<opencascade::handle<Geom_Surface>>;
 /* end templates declaration */
 
 /* typedefs */
+typedef GeomLProp_CLPropsBase<gp_Pnt, gp_Vec, gp_Dir, opencascade::handle<Geom_Curve>> GeomLProp_CLProps;
+typedef GeomLProp_CLPropsBase<gp_Pnt2d, gp_Vec2d, gp_Dir2d, opencascade::handle<Geom2d_Curve>> GeomLProp_CLProps2d;
+typedef GeomLProp_SLPropsBase<opencascade::handle<Geom_Surface>> GeomLProp_SLProps;
 /* end typedefs declaration */
 
 /*********************

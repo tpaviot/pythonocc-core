@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : cfb4c3b
+git revision : 5ef8e28
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-21 21:05:16.975997
+date : 2026-09-22 04:25:15.018801
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -275,7 +275,6 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skipping type char, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type int,int, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger, int,TColStd not in module list
 [WARNI]      [TypeHint] Skipping type int,double, should contain _
 [WARNI]      [TypeHint] Skipping type int,opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -294,6 +293,7 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger, int,TColStd not in module list
 [INFO ]  Class: TColStd_HPackedMapOfInteger
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module TCollection
@@ -1352,8 +1352,8 @@ date : 2026-09-21 21:05:16.975997
 [INFO ]  Enum: TopTools_FormatVersion
 [INFO ]  Enum: 
 [INFO ]  Skip typedef TopTools_LocationSetPtr because target is a pointer type
-[WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape, int,TopTools not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape, int,TopoDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape, int,TopTools not in module list
 [INFO ]  Class: TopTools
 [INFO ]  Class: TopTools_LocationSet
 [INFO ]  Class: TopTools_ShapeMapHasher
@@ -1990,6 +1990,9 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
 [INFO ]  ## Processing module GeomLProp
+[WARNI]      [TypeHint] Skip type gp_Pnt,gp_Vec,gp_Dir,opencascade::handle, because of trailing :
+[WARNI]      [TypeHint] Skip type gp_Pnt2d,gp_Vec2d,gp_Dir2d,opencascade::handle, because of trailing :
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: GeomLProp
 [INFO ]  Class: GeomLProp_CurAndInf2d
 [INFO ]      ToolAccess skipped because it is a class template
@@ -3538,8 +3541,6 @@ date : 2026-09-21 21:05:16.975997
 [INFO ]  Enum: TopOpeBRepDS_Kind
 [INFO ]  Skip typedef TopOpeBRepDS_PDataStructure because target is a pointer type
 [WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CheckStatus, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ListOfInterference, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,NCollection_DefaultHasher, int,TopoDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -3548,6 +3549,8 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_PointData, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_SurfaceData, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ListOfInterference, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: TopOpeBRepDS
 [INFO ]  Class: TopOpeBRepDS_Association
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
@@ -5504,6 +5507,7 @@ date : 2026-09-21 21:05:16.975997
 [INFO ]  Enum: HLRBRep_TypeOfResultingEdge
 [INFO ]  Skip typedef HLRBRep_CurvePtr because target is a pointer type
 [INFO ]  Skip typedef HLRBRep_SurfacePtr because target is a pointer type
+[WARNI]      [TypeHint] Skip type HLRBRep_SurfacePtr,LProp_SurfaceUtils::ToolAccess, because of trailing :
 [INFO ]  Class: HLRBRep
 [WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: HLRBRep_AreaLimit
@@ -6943,9 +6947,9 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skipping unknown type int,Bisector_Bisec, int,Bisector not in module list
 [WARNI]      [TypeHint] Skipping type int,opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping unknown type int,gp_Pnt2d, int,gp not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,MAT2d_SequenceOfConnexion, int,MAT2d not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,gp_Vec2d, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping unknown type int,MAT2d_SequenceOfConnexion, int,MAT2d not in module list
 [INFO ]  Class: MAT2d_BiInt
 [INFO ]  Class: MAT2d_Circuit
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<TColGeom2d_SequenceOfGeometry, seems to be a template
@@ -8192,7 +8196,6 @@ date : 2026-09-21 21:05:16.975997
 [INFO ]  Enum: MeshVS_MeshSelectionMethod
 [INFO ]  Enum: MeshVS_SelectionModeFlags
 [INFO ]  Skip typedef MeshVS_MeshPtr because target is a pointer type
-[WARNI]      [TypeHint] Skipping type int,opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping unknown type int,TCollection_AsciiString, int,TCollection not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,Quantity_Color, int,Quantity not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,Graphic3d_MaterialAspect, int,Graphic3d not in module list
@@ -8201,6 +8204,7 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]      [TypeHint] Skipping unknown type int,MeshVS_TwoColors, int,MeshVS not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,gp_Vec, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
+[WARNI]      [TypeHint] Skipping type int,opencascade::handle, should contain _
 [INFO ]  Class: MeshVS_Buffer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
@@ -11822,7 +11826,7 @@ date : 2026-09-21 21:05:16.975997
 [WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.40s
+SWIG interface file generation completed in 9.50s
 #################################################
 
 [INFO ]  Number of classes: 3964

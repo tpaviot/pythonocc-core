@@ -44,12 +44,15 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Extrema_module.hxx>
+#include<gp_module.hxx>
+#include<GeomLProp_module.hxx>
+#include<LProp_module.hxx>
 #include<TopoDS_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<TopAbs_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<Geom_module.hxx>
-#include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
@@ -78,12 +81,15 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import Extrema.i
+%import gp.i
+%import GeomLProp.i
+%import LProp.i
 %import TopoDS.i
 %import HLRAlgo.i
 %import TopAbs.i
 %import BRepAdaptor.i
 %import Geom.i
-%import gp.i
 %import GeomAbs.i
 %import TColStd.i
 %import TColgp.i
@@ -150,6 +156,8 @@ Array1ExtendIter(HLRBRep_EdgeData)
 %template(HLRBRep_Array1OfFData) NCollection_Array1<HLRBRep_FaceData>;
 Array1ExtendIter(HLRBRep_FaceData)
 
+%include "GeomLProp_CLProps.hxx";
+%template(HLRBRep_CLProps) GeomLProp_CLPropsBase<gp_Pnt2d, gp_Vec2d, gp_Dir2d, const HLRBRep_Curve *, LProp_CurveUtils::ToolAccess<HLRBRep_CLPropsATool>>;
 %template(HLRBRep_ListIteratorOfListOfBPnt2D) NCollection_TListIterator<HLRBRep_BiPnt2D>;
 %template(HLRBRep_ListIteratorOfListOfBPoint) NCollection_TListIterator<HLRBRep_BiPoint>;
 %template(HLRBRep_ListOfBPnt2D) NCollection_List<HLRBRep_BiPnt2D>;
@@ -192,6 +200,10 @@ Array1ExtendIter(HLRBRep_FaceData)
             it.Next()
     }
 };
+%include "Extrema_GFuncExtPC.hxx";
+%template(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter) Extrema_GFuncExtPC<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+%include "GeomLProp_SLProps.hxx";
+%template(HLRBRep_SLProps) GeomLProp_SLPropsBase<HLRBRep_SurfacePtr,LProp_SurfaceUtils::ToolAccess<HLRBRep_SLPropsATool>>;
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
 
 %extend NCollection_Sequence<HLRBRep_ShapeBounds> {
@@ -207,16 +219,25 @@ Array1ExtendIter(HLRBRep_FaceData)
         return self.Size()
     }
 };
+%include "Extrema_GCurveLocator.hxx";
+%template(HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter) Extrema_GCurveLocator<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d>;
+%include "Extrema_GenLocateExtPC.hxx";
+%template(HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter) Extrema_GenLocateExtPC<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d,HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<HLRBRep_EdgeData> HLRBRep_Array1OfEData;
 typedef NCollection_Array1<HLRBRep_FaceData> HLRBRep_Array1OfFData;
+typedef GeomLProp_CLPropsBase<gp_Pnt2d, gp_Vec2d, gp_Dir2d, const HLRBRep_Curve *, LProp_CurveUtils::ToolAccess<HLRBRep_CLPropsATool>> HLRBRep_CLProps;
 typedef NCollection_List<HLRBRep_BiPnt2D>::Iterator HLRBRep_ListIteratorOfListOfBPnt2D;
 typedef NCollection_List<HLRBRep_BiPoint>::Iterator HLRBRep_ListIteratorOfListOfBPoint;
 typedef NCollection_List<HLRBRep_BiPnt2D> HLRBRep_ListOfBPnt2D;
 typedef NCollection_List<HLRBRep_BiPoint> HLRBRep_ListOfBPoint;
+typedef Extrema_GFuncExtPC<HLRBRep_CurvePtr, HLRBRep_CurveTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
+typedef GeomLProp_SLPropsBase<HLRBRep_SurfacePtr, LProp_SurfaceUtils::ToolAccess<HLRBRep_SLPropsATool>> HLRBRep_SLProps;
 typedef NCollection_Sequence<HLRBRep_ShapeBounds> HLRBRep_SeqOfShapeBounds;
+typedef Extrema_GCurveLocator<HLRBRep_CurvePtr, HLRBRep_CurveTool, Extrema_POnCurv2d, gp_Pnt2d> HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter;
+typedef Extrema_GenLocateExtPC<HLRBRep_CurvePtr, HLRBRep_CurveTool, Extrema_POnCurv2d, gp_Pnt2d, HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter> HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter;
 /* end typedefs declaration */
 
 /****************

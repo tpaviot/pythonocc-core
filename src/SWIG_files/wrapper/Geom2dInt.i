@@ -44,9 +44,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dint.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Extrema_module.hxx>
 #include<Adaptor2d_module.hxx>
-#include<IntRes2d_module.hxx>
 #include<gp_module.hxx>
+#include<IntRes2d_module.hxx>
 #include<TColStd_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<math_module.hxx>
@@ -65,9 +66,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dint.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import Extrema.i
 %import Adaptor2d.i
-%import IntRes2d.i
 %import gp.i
+%import IntRes2d.i
 %import TColStd.i
 %import GeomAbs.i
 %import math.i
@@ -92,9 +94,18 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+%include "Extrema_GFuncExtPC.hxx";
+%template(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+%include "Extrema_GCurveLocator.hxx";
+%template(Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter) Extrema_GCurveLocator<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d>;
+%include "Extrema_GenLocateExtPC.hxx";
+%template(Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter) Extrema_GenLocateExtPC<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d,Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter>;
 /* end templates declaration */
 
 /* typedefs */
+typedef Extrema_GFuncExtPC<Adaptor2d_Curve2d, Geom2dInt_Geom2dCurveTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter;
+typedef Extrema_GCurveLocator<Adaptor2d_Curve2d, Geom2dInt_Geom2dCurveTool, Extrema_POnCurv2d, gp_Pnt2d> Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter;
+typedef Extrema_GenLocateExtPC<Adaptor2d_Curve2d, Geom2dInt_Geom2dCurveTool, Extrema_POnCurv2d, gp_Pnt2d, Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter> Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter;
 /* end typedefs declaration */
 
 /*********************************************************************

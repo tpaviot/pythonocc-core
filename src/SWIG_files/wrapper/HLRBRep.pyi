@@ -3,12 +3,15 @@ from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
+from OCC.Core.Extrema import *
+from OCC.Core.gp import *
+from OCC.Core.GeomLProp import *
+from OCC.Core.LProp import *
 from OCC.Core.TopoDS import *
 from OCC.Core.HLRAlgo import *
 from OCC.Core.TopAbs import *
 from OCC.Core.BRepAdaptor import *
 from OCC.Core.Geom import *
-from OCC.Core.gp import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.TColStd import *
 from OCC.Core.TColgp import *
@@ -23,6 +26,26 @@ from OCC.Core.IntCurve import *
 from OCC.Core.Adaptor3d import *
 from OCC.Core.Intf import *
 from OCC.Core.IntSurf import *
+
+class HLRBRep_CLProps:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class HLRBRep_SLProps:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 
 class HLRBRep_Array1OfEData:

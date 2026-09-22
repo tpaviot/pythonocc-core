@@ -44,12 +44,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
+#include<Adaptor3d_module.hxx>
+#include<gp_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<Geom2d_module.hxx>
-#include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TColStd_module.hxx>
-#include<Adaptor3d_module.hxx>
 #include<Geom_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<math_module.hxx>
@@ -62,12 +62,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 %};
 %import Standard.i
 %import NCollection.i
+%import Adaptor3d.i
+%import gp.i
 %import Adaptor2d.i
 %import Geom2d.i
-%import gp.i
 %import GeomAbs.i
 %import TColStd.i
-%import Adaptor3d.i
 %import Geom.i
 %import GeomAdaptor.i
 %import math.i
@@ -142,6 +142,16 @@ Array1ExtendIter(Extrema_POnCurv2d)
 %template(Extrema_Array1OfPOnSurf) NCollection_Array1<Extrema_POnSurf>;
 Array1ExtendIter(Extrema_POnSurf)
 
+%include "Extrema_GFuncExtCC.hxx";
+%template(Extrema_CCLocFOfLocECC) Extrema_GFuncExtCC<Adaptor3d_Curve,Extrema_CurveTool,Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
+%template(Extrema_CCLocFOfLocECC2d) Extrema_GFuncExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+%include "Extrema_GFuncExtPC.hxx";
+%template(Extrema_PCFOfEPCOfELPCOfLocateExtPC) Extrema_GFuncExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
+%template(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+%template(Extrema_PCFOfEPCOfExtPC) Extrema_GFuncExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
+%template(Extrema_PCFOfEPCOfExtPC2d) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+%template(Extrema_PCLocFOfLocEPCOfLocateExtPC) Extrema_GFuncExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
+%template(Extrema_PCLocFOfLocEPCOfLocateExtPC2d) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
 %template(Extrema_SequenceOfPOnCurv) NCollection_Sequence<Extrema_POnCurv>;
 
 %extend NCollection_Sequence<Extrema_POnCurv> {
@@ -189,6 +199,28 @@ Array1ExtendIter(Extrema_POnSurf)
 };
 %template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<int,Bnd_Sphere>;
 %template(Extrema_UBTreeOfSphere) NCollection_UBTree<int,Bnd_Sphere>;
+%include "Extrema_GGenExtPC.hxx";
+%template(Extrema_EPCOfELPCOfLocateExtPC) Extrema_GGenExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_PCFOfEPCOfELPCOfLocateExtPC>;
+%template(Extrema_EPCOfELPCOfLocateExtPC2d) Extrema_GGenExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_PCFOfEPCOfELPCOfLocateExtPC2d>;
+%template(Extrema_EPCOfExtPC) Extrema_GGenExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_PCFOfEPCOfExtPC>;
+%template(Extrema_EPCOfExtPC2d) Extrema_GGenExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_PCFOfEPCOfExtPC2d>;
+%include "Extrema_GenLocateExtCC.hxx";
+%template(Extrema_LocECC) Extrema_GenLocateExtCC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,Extrema_CCLocFOfLocECC>;
+%template(Extrema_LocECC2d) Extrema_GenLocateExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,Extrema_CCLocFOfLocECC2d>;
+%include "Extrema_GenLocateExtPC.hxx";
+%template(Extrema_LocEPCOfLocateExtPC) Extrema_GenLocateExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_PCLocFOfLocEPCOfLocateExtPC>;
+%template(Extrema_LocEPCOfLocateExtPC2d) Extrema_GenLocateExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_PCLocFOfLocEPCOfLocateExtPC2d>;
+%include "Extrema_GGExtPC.hxx";
+%template(Extrema_ELPCOfLocateExtPC) Extrema_GGExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_ExtPElC,gp_Pnt,gp_Vec,Extrema_POnCurv,NCollection_Sequence<Extrema_POnCurv>,Extrema_EPCOfELPCOfLocateExtPC>;
+%template(Extrema_ELPCOfLocateExtPC2d) Extrema_GGExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_ExtPElC2d,gp_Pnt2d,gp_Vec2d,Extrema_POnCurv2d,NCollection_Sequence<Extrema_POnCurv2d>,Extrema_EPCOfELPCOfLocateExtPC2d>;
+%template(Extrema_ExtPC) Extrema_GGExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_ExtPElC,gp_Pnt,gp_Vec,Extrema_POnCurv,NCollection_Sequence<Extrema_POnCurv>,Extrema_EPCOfExtPC>;
+%template(Extrema_ExtPC2d) Extrema_GGExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_ExtPElC2d,gp_Pnt2d,gp_Vec2d,Extrema_POnCurv2d,NCollection_Sequence<Extrema_POnCurv2d>,Extrema_EPCOfExtPC2d>;
+%include "Extrema_GGenExtCC.hxx";
+%template(Extrema_ECC) Extrema_GGenExtCC<Adaptor3d_Curve,Extrema_CurveTool,Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_ExtPC>;
+%template(Extrema_ECC2d) Extrema_GGenExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_ExtPC2d>;
+%include "Extrema_GLocateExtPC.hxx";
+%template(Extrema_LocateExtPC) Extrema_GLocateExtPC<Adaptor3d_Curve,Extrema_CurveTool,gp_Pnt,gp_Vec,Extrema_POnCurv,Extrema_ELPCOfLocateExtPC,Extrema_LocEPCOfLocateExtPC>;
+%template(Extrema_LocateExtPC2d) Extrema_GLocateExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,gp_Pnt2d,gp_Vec2d,Extrema_POnCurv2d,Extrema_ELPCOfLocateExtPC2d,Extrema_LocEPCOfLocateExtPC2d>;
 /* end templates declaration */
 
 /* typedefs */
@@ -199,6 +231,18 @@ typedef NCollection_Array2<Extrema_POnCurv> Extrema_Array2OfPOnCurv;
 typedef NCollection_Array2<Extrema_POnCurv2d> Extrema_Array2OfPOnCurv2d;
 typedef NCollection_Array2<Extrema_POnSurf> Extrema_Array2OfPOnSurf;
 typedef NCollection_Array2<Extrema_POnSurfParams> Extrema_Array2OfPOnSurfParams;
+typedef Extrema_GFuncExtCC<Adaptor3d_Curve, Extrema_CurveTool, Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, gp_Vec, NCollection_Sequence<Extrema_POnCurv>> Extrema_CCLocFOfLocECC;
+typedef Extrema_GFuncExtCC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> Extrema_CCLocFOfLocECC2d;
+typedef Extrema_GGenExtCC<Adaptor3d_Curve, Extrema_CurveTool, Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, Extrema_ExtPC> Extrema_ECC;
+typedef Extrema_GGenExtCC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, Extrema_ExtPC2d> Extrema_ECC2d;
+typedef Extrema_GGExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_ExtPElC, gp_Pnt, gp_Vec, Extrema_POnCurv, NCollection_Sequence<Extrema_POnCurv>, Extrema_EPCOfELPCOfLocateExtPC> Extrema_ELPCOfLocateExtPC;
+typedef Extrema_GGExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_ExtPElC2d, gp_Pnt2d, gp_Vec2d, Extrema_POnCurv2d, NCollection_Sequence<Extrema_POnCurv2d>, Extrema_EPCOfELPCOfLocateExtPC2d> Extrema_ELPCOfLocateExtPC2d;
+typedef Extrema_GGenExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, Extrema_PCFOfEPCOfELPCOfLocateExtPC> Extrema_EPCOfELPCOfLocateExtPC;
+typedef Extrema_GGenExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, Extrema_PCFOfEPCOfELPCOfLocateExtPC2d> Extrema_EPCOfELPCOfLocateExtPC2d;
+typedef Extrema_GGenExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, Extrema_PCFOfEPCOfExtPC> Extrema_EPCOfExtPC;
+typedef Extrema_GGenExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, Extrema_PCFOfEPCOfExtPC2d> Extrema_EPCOfExtPC2d;
+typedef Extrema_GGExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_ExtPElC, gp_Pnt, gp_Vec, Extrema_POnCurv, NCollection_Sequence<Extrema_POnCurv>, Extrema_EPCOfExtPC> Extrema_ExtPC;
+typedef Extrema_GGExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_ExtPElC2d, gp_Pnt2d, gp_Vec2d, Extrema_POnCurv2d, NCollection_Sequence<Extrema_POnCurv2d>, Extrema_EPCOfExtPC2d> Extrema_ExtPC2d;
 typedef NCollection_HArray1<Extrema_POnCurv> Extrema_HArray1OfPOnCurv;
 typedef NCollection_HArray1<Extrema_POnCurv2d> Extrema_HArray1OfPOnCurv2d;
 typedef NCollection_HArray1<Extrema_POnSurf> Extrema_HArray1OfPOnSurf;
@@ -206,6 +250,18 @@ typedef NCollection_HArray2<Extrema_POnCurv> Extrema_HArray2OfPOnCurv;
 typedef NCollection_HArray2<Extrema_POnCurv2d> Extrema_HArray2OfPOnCurv2d;
 typedef NCollection_HArray2<Extrema_POnSurf> Extrema_HArray2OfPOnSurf;
 typedef NCollection_Handle<Extrema_UBTreeOfSphere> Extrema_HUBTreeOfSphere;
+typedef Extrema_GenLocateExtCC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, Extrema_CCLocFOfLocECC> Extrema_LocECC;
+typedef Extrema_GenLocateExtCC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, Extrema_CCLocFOfLocECC2d> Extrema_LocECC2d;
+typedef Extrema_GenLocateExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, Extrema_PCLocFOfLocEPCOfLocateExtPC> Extrema_LocEPCOfLocateExtPC;
+typedef Extrema_GenLocateExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, Extrema_PCLocFOfLocEPCOfLocateExtPC2d> Extrema_LocEPCOfLocateExtPC2d;
+typedef Extrema_GLocateExtPC<Adaptor3d_Curve, Extrema_CurveTool, gp_Pnt, gp_Vec, Extrema_POnCurv, Extrema_ELPCOfLocateExtPC, Extrema_LocEPCOfLocateExtPC> Extrema_LocateExtPC;
+typedef Extrema_GLocateExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, gp_Pnt2d, gp_Vec2d, Extrema_POnCurv2d, Extrema_ELPCOfLocateExtPC2d, Extrema_LocEPCOfLocateExtPC2d> Extrema_LocateExtPC2d;
+typedef Extrema_GFuncExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, gp_Vec, NCollection_Sequence<Extrema_POnCurv>> Extrema_PCFOfEPCOfELPCOfLocateExtPC;
+typedef Extrema_GFuncExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> Extrema_PCFOfEPCOfELPCOfLocateExtPC2d;
+typedef Extrema_GFuncExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, gp_Vec, NCollection_Sequence<Extrema_POnCurv>> Extrema_PCFOfEPCOfExtPC;
+typedef Extrema_GFuncExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> Extrema_PCFOfEPCOfExtPC2d;
+typedef Extrema_GFuncExtPC<Adaptor3d_Curve, Extrema_CurveTool, Extrema_POnCurv, gp_Pnt, gp_Vec, NCollection_Sequence<Extrema_POnCurv>> Extrema_PCLocFOfLocEPCOfLocateExtPC;
+typedef Extrema_GFuncExtPC<Adaptor2d_Curve2d, Extrema_Curve2dTool, Extrema_POnCurv2d, gp_Pnt2d, gp_Vec2d, NCollection_Sequence<Extrema_POnCurv2d>> Extrema_PCLocFOfLocEPCOfLocateExtPC2d;
 typedef NCollection_Sequence<Extrema_POnCurv> Extrema_SequenceOfPOnCurv;
 typedef NCollection_Sequence<Extrema_POnCurv2d> Extrema_SequenceOfPOnCurv2d;
 typedef NCollection_Sequence<Extrema_POnSurf> Extrema_SequenceOfPOnSurf;

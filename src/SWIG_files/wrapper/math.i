@@ -63,10 +63,6 @@ from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
-
-%include "math_VectorBase.hxx";
-%template(math_Vector) math_VectorBase<double>;
-typedef math_VectorBase<double> math_Vector;
 /* public enums */
 enum math_Status {
 	math_OK = 0,
@@ -102,10 +98,15 @@ math_NotBracketed = math_Status.math_NotBracketed
 %template(math_Array1OfValueAndWeight) NCollection_Array1<math_ValueAndWeight>;
 Array1ExtendIter(math_ValueAndWeight)
 
+%include "math_VectorBase.hxx";
+%template(math_IntegerVector) math_VectorBase<int>;
+%template(math_Vector) math_VectorBase<double>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<math_ValueAndWeight> math_Array1OfValueAndWeight;
+typedef math_VectorBase<int> math_IntegerVector;
+typedef math_VectorBase<double> math_Vector;
 /* end typedefs declaration */
 
 /*********************
