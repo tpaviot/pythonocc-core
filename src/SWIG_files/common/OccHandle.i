@@ -403,3 +403,28 @@ WRAP_OCC_TRANSIENT(const, TYPE)
 %define %make_alias(TYPE)
 using Handle_ ## TYPE = opencascade::handle<TYPE>;
 %enddef
+
+// TDF_Label::FindAttribute / TDF_Attribute::FindAttribute (issue #1487)
+// ----------------------------------------------------------------------
+// The generic argout typemap above returns the handle<TDF_Attribute>& argument
+// in place of the bool result: when the attribute is not found, the function
+// returned the object passed as argument, and the found attribute had to be
+// downcast. Return None when the attribute is not found, else the attribute
+// wrapped with its dynamic type (e.g. TDataStd_NamedData) if that type is
+// wrapped by a loaded module, TDF_Attribute otherwise.
+%typemap(argout) opencascade::handle<TDF_Attribute> & anAttribute {
+  Py_XDECREF($result);
+  if (result && $1 && !$1->IsNull()) {
+    TDF_Attribute* presult = $1->get();
+    presult->IncrementRefCounter();
+    const std::string type_name = std::string(presult->DynamicType()->Name()) + " *";
+    swig_type_info* type_info = SWIG_TypeQuery(type_name.c_str());
+    if (!type_info) {
+      type_info = $descriptor(TDF_Attribute *);
+    }
+    $result = SWIG_NewPointerObj(SWIG_as_voidptr(presult), type_info, SWIG_POINTER_OWN);
+  } else {
+    Py_INCREF(Py_None);
+    $result = Py_None;
+  }
+}

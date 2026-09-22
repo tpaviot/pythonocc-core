@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 3965ed9
+git revision : a86d95b
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 08:57:30.131688
+date : 2026-09-22 10:06:25.349840
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -12653,6 +12653,11 @@ date : 2026-09-22 08:57:30.131688
 [INFO ]  Class: TDataStd_ExtStringArray
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_ExtStringList
+[INFO ]  Class: TDataStd_GenericEmpty
+[WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]  Class: TDataStd_GenericExtString
 [INFO ]  Class: TDataStd_HDataMapOfStringByte
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TDataStd_HDataMapOfStringHArray1OfInteger
@@ -12898,8 +12903,8 @@ date : 2026-09-22 08:57:30.131688
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.73s
+SWIG interface file generation completed in 10.36s
 #################################################
 
-[INFO ]  Number of classes: 4095
-[INFO ]  Number of methods: 45710
+[INFO ]  Number of classes: 4097
+[INFO ]  Number of methods: 45720

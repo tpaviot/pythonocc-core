@@ -99,6 +99,8 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 %wrap_handle(TDataStd_Expression)
 %wrap_handle(TDataStd_ExtStringArray)
 %wrap_handle(TDataStd_ExtStringList)
+%wrap_handle(TDataStd_GenericEmpty)
+%wrap_handle(TDataStd_GenericExtString)
 %wrap_handle(TDataStd_HDataMapOfStringByte)
 %wrap_handle(TDataStd_HDataMapOfStringHArray1OfInteger)
 %wrap_handle(TDataStd_HDataMapOfStringHArray1OfReal)
@@ -3263,9 +3265,215 @@ Sets default GUID for the attribute.
 /******************************
 * class TDataStd_GenericEmpty *
 ******************************/
+%nodefaultctor TDataStd_GenericEmpty;
+class TDataStd_GenericEmpty : public TDF_Attribute {
+	public:
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
+        %extend{
+            std::string DumpJson(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
+		/****** TDataStd_GenericEmpty::Paste ******/
+		/****** md5 signature: abb86f226cded3905059a920ebd063c0 ******/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "
+Parameters
+----------
+&: TDF_Attribute
+&: TDF_RelocationTable
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute > &, const opencascade::handle<TDF_RelocationTable > &);
+
+		/****** TDataStd_GenericEmpty::Restore ******/
+		/****** md5 signature: 5fb0284b023e9075031975d2732e8200 ******/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "
+Parameters
+----------
+&: TDF_Attribute
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute > &);
+
+};
+
+
+%make_alias(TDataStd_GenericEmpty)
+
+%extend TDataStd_GenericEmpty {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************************
 * class TDataStd_GenericExtString *
 **********************************/
+%nodefaultctor TDataStd_GenericExtString;
+class TDataStd_GenericExtString : public TDF_Attribute {
+	public:
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
+        %extend{
+            std::string DumpJson(int depth=-1) {
+            std::stringstream s;
+            self->DumpJson(s, depth);
+            return "{" + s.str() + "}" ;}
+        };
+		/****** TDataStd_GenericExtString::Get ******/
+		/****** md5 signature: 6726215b59dbe05bdd2f7d1863007996 ******/
+		%feature("compactdefaultargs") Get;
+		%feature("autodoc", "Return
+-------
+TCollection_ExtendedString
+
+Description
+-----------
+Returns the name contained in this name attribute.
+") Get;
+		virtual const TCollection_ExtendedString & Get();
+
+		/****** TDataStd_GenericExtString::ID ******/
+		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
+		%feature("compactdefaultargs") ID;
+		%feature("autodoc", "Return
+-------
+Standard_GUID
+
+Description
+-----------
+Returns the ID of the attribute.
+") ID;
+		const Standard_GUID & ID();
+
+		/****** TDataStd_GenericExtString::Paste ******/
+		/****** md5 signature: bfece7a0e37cb5034ac0b2a8c488da37 ******/
+		%feature("compactdefaultargs") Paste;
+		%feature("autodoc", "
+Parameters
+----------
+into: TDF_Attribute
+RT: TDF_RelocationTable
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Paste;
+		void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
+
+		/****** TDataStd_GenericExtString::Restore ******/
+		/****** md5 signature: 8bde8d15cc1907242b8c43fe6eb18f19 ******/
+		%feature("compactdefaultargs") Restore;
+		%feature("autodoc", "
+Parameters
+----------
+with: TDF_Attribute
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Restore;
+		void Restore(const opencascade::handle<TDF_Attribute> & with);
+
+		/****** TDataStd_GenericExtString::Set ******/
+		/****** md5 signature: e11c8a37cef2f02b6173486d11f9f8c6 ******/
+		%feature("compactdefaultargs") Set;
+		%feature("autodoc", "
+Parameters
+----------
+S: str
+
+Return
+-------
+None
+
+Description
+-----------
+Sets <S> as name. Raises if <S> is not a valid name.
+") Set;
+		virtual void Set(TCollection_ExtendedString S);
+
+		/****** TDataStd_GenericExtString::SetID ******/
+		/****** md5 signature: 64789516907731f72c16acfd42a0f70f ******/
+		%feature("compactdefaultargs") SetID;
+		%feature("autodoc", "
+Parameters
+----------
+guid: Standard_GUID
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the explicit user defined GUID to the attribute.
+") SetID;
+		void SetID(const Standard_GUID & guid);
+
+};
+
+
+%make_alias(TDataStd_GenericExtString)
+
+%extend TDataStd_GenericExtString {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**************************************
 * class TDataStd_HDataMapOfStringByte *
 **************************************/
@@ -10239,18 +10447,6 @@ Find, or create, a Tick attribute. Tick methods ============.
 	}
 };
 
-/* python proxy for excluded classes */
-%pythoncode {
-@classnotwrapped
-class TDataStd_GenericEmpty:
-	pass
-
-@classnotwrapped
-class TDataStd_GenericExtString:
-	pass
-
-}
-/* end python proxy for excluded classes */
 /* harray1 classes */
 
 class TDataStd_HLabelArray1 : public NCollection_Array1<TDF_Label>, public Standard_Transient {
