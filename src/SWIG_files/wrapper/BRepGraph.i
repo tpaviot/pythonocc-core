@@ -19614,20 +19614,6 @@ Input parameter: theIdx zero-based index.
 ") Value;
 		const BRepGraph_UsagePath_Step & Value(const size_t theIdx);
 
-
-%extend{
-    bool __eq_wrapper__(const BRepGraph_UsagePath other) {
-        if (*self==other) return true;
-        else return false;
-    }
-}
-%pythoncode {
-def __eq__(self, right):
-    try:
-        return self.__eq_wrapper__(right)
-    except:
-        return False
-}
 };
 
 

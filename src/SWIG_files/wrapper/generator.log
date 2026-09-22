@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : c09a7a0
+git revision : 408dd0d
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 11:26:44.877849
+date : 2026-09-22 11:56:48.396816
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -2153,6 +2153,7 @@ date : 2026-09-22 11:26:44.877849
 [WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
 [INFO ]  Class: BRepGraph_UsagePath
 [INFO ]      explicitly excluded method BRepGraph_UsagePath::f2b483b6f4b203ee0ba6014919056d88
+[INFO ]      explicitly excluded method BRepGraph_UsagePath::bad3203c1c26377176850fcd707163c7
 [INFO ]      explicitly excluded method BRepGraph_UsagePath::06b666a7ce1ccd2c4e4b4282e54344e0
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
@@ -12917,7 +12918,7 @@ date : 2026-09-22 11:26:44.877849
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 10.44s
+SWIG interface file generation completed in 10.39s
 #################################################
 
 [INFO ]  Number of classes: 4099
