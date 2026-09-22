@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : bcdd15b
+git revision : 3965ed9
 
 operating system : Linux 64bit 7.0.0-31-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 06:15:08.044404
+date : 2026-09-22 08:57:30.131688
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -1484,9 +1484,8 @@ date : 2026-09-22 06:15:08.044404
 [INFO ]  Class: BRepGraph_CopyRemap
 [INFO ]  Enum: Mode
 [INFO ]  Enum: MappingKind
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
-[WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
+[INFO ]      explicitly excluded method BRepGraph_CopyRemap::51fc4e9d407a8a7fa9906766ecdfbf52
+[INFO ]      explicitly excluded method BRepGraph_CopyRemap::cfd572d89f19386955e4bd64c733dbb0
 [WARNI]      [TypeHint] Skip type BRepGraph_CopyRemap::Mode, because of trailing :
 [WARNI]      [TypeHint] Skipping type NCollection_FlatDataMap<BRepGraph_ItemId,, seems to be a template
 [WARNI]      [TypeHint] Skipping type const BRepGraph &, should contain _
@@ -2139,8 +2138,9 @@ date : 2026-09-22 06:15:08.044404
 [INFO ]  Class: BRepGraph_UIDsView
 [WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
 [INFO ]  Class: BRepGraph_UsagePath
+[INFO ]      explicitly excluded method BRepGraph_UsagePath::f2b483b6f4b203ee0ba6014919056d88
+[INFO ]      explicitly excluded method BRepGraph_UsagePath::06b666a7ce1ccd2c4e4b4282e54344e0
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
@@ -12896,19 +12896,10 @@ date : 2026-09-22 06:15:08.044404
 [INFO ]  Class: XmlTObjDrivers_ObjectDriver
 [INFO ]  Class: XmlTObjDrivers_ReferenceDriver
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
-[INFO ]  Processing toolkit TKIVtk ===
-[INFO ]  ## Processing module IVtk
-[WARNI]  No file for module IVtk. Please check that the module name is part of occt.
-[INFO ]  ## Processing module IVtkOCC
-[WARNI]  No file for module IVtkOCC. Please check that the module name is part of occt.
-[INFO ]  ## Processing module IVtkTools
-[WARNI]  No file for module IVtkTools. Please check that the module name is part of occt.
-[INFO ]  ## Processing module IVtkVTK
-[WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.07s
+SWIG interface file generation completed in 10.73s
 #################################################
 
 [INFO ]  Number of classes: 4095
-[INFO ]  Number of methods: 45714
+[INFO ]  Number of methods: 45710

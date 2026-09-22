@@ -2936,6 +2936,7 @@ Return: true on success, false on failure (empty source).
 /****************************
 * class BRepGraph_CopyRemap *
 ****************************/
+%nodefaultctor BRepGraph_CopyRemap;
 class BRepGraph_CopyRemap {
 	public:
 /* public enums */
@@ -2967,48 +2968,6 @@ Explicit = MappingKind.Explicit
 Identity = MappingKind.Identity
 };
 /* end python proxy for enums */
-
-		/****** BRepGraph_CopyRemap::BRepGraph_CopyRemap ******/
-		/****** md5 signature: 51fc4e9d407a8a7fa9906766ecdfbf52 ******/
-		%feature("compactdefaultargs") BRepGraph_CopyRemap;
-		%feature("autodoc", "
-Parameters
-----------
-theSourceGraph: BRepGraph
-theTargetGraph: BRepGraph
-theItemRemap: NCollection_FlatDataMap<BRepGraph_ItemId, BRepGraph_ItemId >
-theMode: Mode
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") BRepGraph_CopyRemap;
-		 BRepGraph_CopyRemap(const BRepGraph & theSourceGraph, BRepGraph & theTargetGraph, NCollection_FlatDataMap<BRepGraph_ItemId, BRepGraph_ItemId > theItemRemap, Mode theMode);
-
-		/****** BRepGraph_CopyRemap::BRepGraph_CopyRemap ******/
-		/****** md5 signature: cfd572d89f19386955e4bd64c733dbb0 ******/
-		%feature("compactdefaultargs") BRepGraph_CopyRemap;
-		%feature("autodoc", "
-Parameters
-----------
-theSourceGraph: BRepGraph
-theTargetGraph: BRepGraph
-theMappingKind: MappingKind
-theMode: Mode
-
-Return
--------
-None
-
-Description
------------
-Identity-mapping constructor for full identity copy into an empty target. Source item ids are returned directly as target item ids after validation.
-") BRepGraph_CopyRemap;
-		 BRepGraph_CopyRemap(const BRepGraph & theSourceGraph, BRepGraph & theTargetGraph, MappingKind theMappingKind, Mode theMode);
 
 		/****** BRepGraph_CopyRemap::CopyMode ******/
 		/****** md5 signature: 9d1d01c9c1b0aa3d356779b621ecc5e9 ******/
@@ -3202,6 +3161,10 @@ Return target UID for a source item by source->target remap.
 %extend BRepGraph_CopyRemap {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def BRepGraph_CopyRemap(self):
+		pass
 	}
 };
 
@@ -19571,19 +19534,6 @@ Returns the first step in the path.
 ") First;
 		const BRepGraph_UsagePath_Step & First();
 
-		/****** BRepGraph_UsagePath::HashCode ******/
-		/****** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ******/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "Return
--------
-size_t
-
-Description
------------
-Returns a hash code for this path. Uses first step, last step, and size for O(1) computation.
-") HashCode;
-		size_t HashCode();
-
 		/****** BRepGraph_UsagePath::InsertBefore ******/
 		/****** md5 signature: 348e12dd3a682f9e3542e4c283216495 ******/
 		%feature("compactdefaultargs") InsertBefore;
@@ -19617,25 +19567,6 @@ Description
 Returns true if the path has no steps.
 ") IsEmpty;
 		bool IsEmpty();
-
-		/****** BRepGraph_UsagePath::IsEqual ******/
-		/****** md5 signature: f2b483b6f4b203ee0ba6014919056d88 ******/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theOther: BRepGraph_UsagePath
-
-Return
--------
-bool
-
-Description
------------
-Returns true if this path is equal to the other path. 
-Input parameter: theOther path to compare with.
-") IsEqual;
-		bool IsEqual(const BRepGraph_UsagePath & theOther);
 
 		/****** BRepGraph_UsagePath::Last ******/
 		/****** md5 signature: 75c87fdb6d04453fc8c72bfaa3e30949 ******/
@@ -19702,6 +19633,14 @@ def __eq__(self, right):
 %extend BRepGraph_UsagePath {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def IsEqual(self):
+		pass
+
+	@methodnotwrapped
+	def HashCode(self):
+		pass
 	}
 };
 
