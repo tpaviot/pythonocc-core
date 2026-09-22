@@ -15,13 +15,18 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from typing import TYPE_CHECKING, Dict, List, Tuple, Optional
+"""Layers of displayed shapes: group shapes, show, hide, move or color them
+together."""
+
+from typing import TYPE_CHECKING, Optional
 
 from OCC.Core.AIS import AIS_Shape
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 from OCC.Core.gp import gp_Trsf
 from OCC.Core.Graphic3d import Graphic3d_NameOfMaterial
 from OCC.Core.TopoDS import TopoDS_Shape
+
+DEFAULT_MATERIAL = Graphic3d_NameOfMaterial.Graphic3d_NOM_DEFAULT
 
 if TYPE_CHECKING:
     from OCC.Display.OCCViewer import Viewer3d
@@ -42,7 +47,7 @@ class Layer:
         shape: Optional[TopoDS_Shape] = None,
         color: int = 0,
         transparency: float = 0.0,
-        material: Graphic3d_NameOfMaterial = Graphic3d_NameOfMaterial.Graphic3d_NOM_DEFAULT,
+        material: Graphic3d_NameOfMaterial = DEFAULT_MATERIAL,
     ) -> None:
         """
         Initializes a new Layer.
@@ -51,13 +56,14 @@ class Layer:
             from the main application.
         :param shape: A shape to add to the layer upon creation. Defaults to None.
         :param color: The color of the shapes in the layer. Defaults to 0 (black).
-        :param transparency: The transparency of the shapes, from 0.0 (opaque) to 1.0 (fully transparent). Defaults to 0.0.
+        :param transparency: The transparency of the shapes, from 0.0 (opaque)
+            to 1.0 (fully transparent). Defaults to 0.0.
         :param material: The material of the shapes. Defaults to Graphic3d_NOM_DEFAULT.
         """
-        self.element_to_display: Dict[int, Tuple[TopoDS_Shape, AIS_Shape]] = {}
+        self.element_to_display: dict[int, tuple[TopoDS_Shape, AIS_Shape]] = {}
         self.count: int = 0
         self.color: int = color
-        self.display: "Viewer3d" = from_display
+        self.display: Viewer3d = from_display
         self.transparency: float = transparency
         self.material: Graphic3d_NameOfMaterial = material
         if shape is not None:
@@ -111,7 +117,8 @@ class Layer:
         Merges another layer into this one.
 
         :param layer: The Layer to merge from.
-        :param clear: If True, the source layer is cleared after merging. Defaults to False.
+        :param clear: If True, the source layer is cleared after merging.
+            Defaults to False.
         """
         for shape in layer.get_shapes():
             self.add_shape(shape)
@@ -150,21 +157,17 @@ class Layer:
         self.element_to_display = {}
         self.count = 0
 
-    def get_shapes(self) -> List[TopoDS_Shape]:
+    def get_shapes(self) -> list[TopoDS_Shape]:
         """
         Gets all the shapes in the layer.
 
         :return: A list of TopoDS_Shape objects.
         """
-        topods_shapes = []
-        for index, element in self.element_to_display.items():
-            shape, ais_shape = element
-            topods_shapes.append(shape)
-        return topods_shapes
+        return [shape for shape, _ in self.element_to_display.values()]
 
     def get_aisshape_from_topodsshape(
         self, topshape: TopoDS_Shape
-    ) -> Optional[Tuple[AIS_Shape, int]]:
+    ) -> Optional[tuple[AIS_Shape, int]]:
         """
         Gets the displayed AIS_Shape corresponding to a TopoDS_Shape.
 

@@ -15,64 +15,65 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from math import radians
-from typing import Any, List, Tuple, Union
+"""Helpers to build, transform and measure shapes."""
 
+from math import radians
+from typing import Any, Union
+
+from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
 from OCC.Core.BRepBndLib import brepbndlib
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
 from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_GTransform,
     BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeEdge2d,
+    BRepBuilderAPI_MakeFace,
     BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeWire,
-    BRepBuilderAPI_MakeFace,
-    BRepBuilderAPI_MakeEdge2d,
     BRepBuilderAPI_Transform,
-    BRepBuilderAPI_GTransform,
 )
 from OCC.Core.BRepFill import BRepFill_Filling
-from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
+from OCC.Core.BRepGProp import brepgprop
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakePrism
+from OCC.Core.Geom import Geom_BezierCurve, Geom_BSplineCurve, Geom_Surface
 from OCC.Core.GeomAbs import (
-    GeomAbs_Shape,
-    GeomAbs_C0,
     GeomAbs_BezierCurve,
-    GeomAbs_Plane,
-    GeomAbs_Cylinder,
-    GeomAbs_Cone,
-    GeomAbs_Sphere,
-    GeomAbs_Torus,
     GeomAbs_BezierSurface,
     GeomAbs_BSplineSurface,
-    GeomAbs_SurfaceOfRevolution,
-    GeomAbs_SurfaceOfExtrusion,
+    GeomAbs_C0,
+    GeomAbs_Cone,
+    GeomAbs_Cylinder,
     GeomAbs_OffsetSurface,
     GeomAbs_OtherSurface,
+    GeomAbs_Plane,
+    GeomAbs_Shape,
+    GeomAbs_Sphere,
+    GeomAbs_SurfaceOfExtrusion,
+    GeomAbs_SurfaceOfRevolution,
+    GeomAbs_Torus,
 )
-from OCC.Core.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
-from OCC.Core.Geom import Geom_BSplineCurve, Geom_BezierCurve, Geom_Surface
 from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
-from OCC.Core.GProp import GProp_GProps
-from OCC.Core.BRepGProp import brepgprop
-from OCC.Core.TColgp import TColgp_Array1OfPnt
-from OCC.Core.TopoDS import (
-    TopoDS_Face,
-    TopoDS_Shape,
-    TopoDS_Vertex,
-    TopoDS_Edge,
-    TopoDS_Wire,
-)
 from OCC.Core.gp import (
     gp,
-    gp_Vec,
-    gp_Pnt,
-    gp_Trsf,
     gp_Ax1,
     gp_Ax2,
     gp_Dir,
     gp_GTrsf,
     gp_Mat,
+    gp_Pnt,
+    gp_Trsf,
+    gp_Vec,
     gp_XYZ,
 )
-
+from OCC.Core.GProp import GProp_GProps
+from OCC.Core.TColgp import TColgp_Array1OfPnt
+from OCC.Core.TopoDS import (
+    TopoDS_Edge,
+    TopoDS_Face,
+    TopoDS_Shape,
+    TopoDS_Vertex,
+    TopoDS_Wire,
+)
 from OCC.Extend.TopologyUtils import is_edge, is_face
 
 
@@ -91,7 +92,7 @@ def assert_isdone(inst: Any, message: str) -> None:
         raise AssertionError(message)
 
 
-def point_list_to_TColgp_Array1OfPnt(li: List[gp_Pnt]) -> TColgp_Array1OfPnt:
+def point_list_to_TColgp_Array1OfPnt(li: list[gp_Pnt]) -> TColgp_Array1OfPnt:
     """
     Converts a list of gp_Pnt to a TColgp_Array1OfPnt.
 
@@ -151,7 +152,7 @@ def make_edge2d(*args: Any) -> TopoDS_Edge:
     return edge.Edge()
 
 
-def make_wire(*args: Union[List[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
+def make_wire(*args: Union[list[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
     """
     Creates a TopoDS_Wire from a list of edges or by connecting edges.
 
@@ -174,7 +175,7 @@ def make_wire(*args: Union[List[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
     return wire.Wire()
 
 
-def points_to_bspline(pnts: List[gp_Pnt]) -> Geom_BSplineCurve:
+def points_to_bspline(pnts: list[gp_Pnt]) -> Geom_BSplineCurve:
     """
     Creates a BSpline curve from a list of points.
 
@@ -187,7 +188,7 @@ def points_to_bspline(pnts: List[gp_Pnt]) -> Geom_BSplineCurve:
 
 def edge_to_bezier(
     topods_edge: TopoDS_Edge,
-) -> Tuple[bool, Geom_BezierCurve, int]:
+) -> tuple[bool, Geom_BezierCurve, int]:
     """
     Converts a TopoDS_Edge to a Bezier curve if possible.
 
@@ -207,7 +208,7 @@ def edge_to_bezier(
 # 2D
 #
 def make_n_sided(
-    edges: List[TopoDS_Edge], continuity: GeomAbs_Shape = GeomAbs_C0
+    edges: list[TopoDS_Edge], continuity: GeomAbs_Shape = GeomAbs_C0
 ) -> TopoDS_Face:
     """
     Creates an n-sided face from a list of edges.
@@ -242,7 +243,7 @@ def make_face(*args: Union[TopoDS_Wire, Geom_Surface]) -> TopoDS_Face:
 
 def get_aligned_boundingbox(
     shape: TopoDS_Shape, tol: float = 1e-6, optimal_BB: bool = True
-) -> Tuple[gp_Pnt, List[float], TopoDS_Shape]:
+) -> tuple[gp_Pnt, list[float], TopoDS_Shape]:
     """
     Computes the axis-aligned bounding box of a shape.
 
@@ -258,7 +259,8 @@ def get_aligned_boundingbox(
     bbox = Bnd_Box()
     bbox.SetGap(tol)
 
-    # note: useTriangulation is True by default, we set it explicitly, but t's not necessary
+    # note: useTriangulation is True by default, we set it explicitly, but
+    # it's not necessary
     if optimal_BB:
         use_triangulation = True
         use_shapetolerance = True
@@ -278,7 +280,7 @@ def get_aligned_boundingbox(
 
 def get_oriented_boundingbox(
     shape: TopoDS_Shape, optimal_OBB: bool = True
-) -> Tuple[gp_Pnt, List[float], TopoDS_Shape]:
+) -> tuple[gp_Pnt, list[float], TopoDS_Shape]:
     """
     Computes the oriented bounding box of a shape.
 
@@ -349,7 +351,7 @@ def center_boundingbox(shape: TopoDS_Shape) -> gp_Pnt:
 
 def get_boundingbox(
     shape: TopoDS_Shape, tol: float = 1e-6, use_mesh: bool = True
-) -> Tuple[float, float, float, float, float, float]:
+) -> tuple[float, float, float, float, float, float]:
     """
     Computes the axis-aligned bounding box of a shape.
 
@@ -360,7 +362,8 @@ def get_boundingbox(
         larger. The name is kept for compatibility: the shape used to be
         meshed, which was slower, less precise and modified the shape.
         Defaults to True.
-    :return: A tuple of the min and max coordinates (xmin, ymin, zmin, xmax, ymax, zmax).
+    :return: A tuple of the min and max coordinates
+        (xmin, ymin, zmin, xmax, ymax, zmax).
     """
     bbox = Bnd_Box()
     bbox.SetGap(tol)
@@ -381,7 +384,8 @@ def translate_shp(shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False) -> TopoDS_
 
     :param shp: The TopoDS_Shape to translate.
     :param vec: The translation vector (gp_Vec).
-    :param copy: If True, a new shape is created. Otherwise, the original shape is modified. Defaults to False.
+    :param copy: If True, a new shape is created. Otherwise, the original shape
+        is modified. Defaults to False.
     :return: The translated TopoDS_Shape.
     """
     trns = gp_Trsf()
@@ -400,7 +404,8 @@ def rotate_shape(
     :param shape: The TopoDS_Shape to rotate.
     :param axis: The axis of rotation (gp_Ax1).
     :param angle: The angle of rotation.
-    :param unite: The unit of the angle, either "deg" for degrees or "rad" for radians. Defaults to "deg".
+    :param unite: The unit of the angle, either "deg" for degrees or "rad" for
+        radians. Defaults to "deg".
     :return: The rotated TopoDS_Shape.
     """
     assert_shape_not_null(shape)
@@ -423,7 +428,8 @@ def rotate_shp_3_axis(
     :param rx: The rotation angle around the X-axis.
     :param ry: The rotation angle around the Y-axis.
     :param rz: The rotation angle around the Z-axis.
-    :param unity: The unit of the angles, either "deg" for degrees or "rad" for radians. Defaults to "deg".
+    :param unity: The unit of the angles, either "deg" for degrees or "rad" for
+        radians. Defaults to "deg".
     :return: The rotated TopoDS_Shape.
     """
     assert_shape_not_null(shape)
@@ -466,7 +472,8 @@ def make_extrusion(
 
     :param face: The TopoDS_Face to extrude.
     :param length: The length of the extrusion.
-    :param vector: The direction of the extrusion (gp_Vec). If None, the Z-axis is used. Defaults to None.
+    :param vector: The direction of the extrusion (gp_Vec). If None, the Z-axis
+        is used. Defaults to None.
     :return: The extruded TopoDS_Shape (a solid).
     """
     if vector is None:
@@ -482,7 +489,7 @@ def make_extrusion(
 ##################################
 def recognize_face(
     topods_face: TopoDS_Face,
-) -> Tuple[str, gp_Pnt, gp_Dir]:
+) -> tuple[str, gp_Pnt, gp_Dir]:
     """
     Recognizes the type of a TopoDS_Face and returns its properties.
 
@@ -504,7 +511,7 @@ def recognize_face(
         location = gp_pln.Location()  # a point of the plane
         normal = gp_pln.Axis().Direction()  # the plane normal
         return kind, location, normal
-    elif surf_type == GeomAbs_Cylinder:
+    if surf_type == GeomAbs_Cylinder:
         kind = "Cylinder"
         # look for the properties of the cylinder
         # first get the related gp_Cyl
@@ -513,35 +520,34 @@ def recognize_face(
         axis = gp_cyl.Axis().Direction()  # the cylinder axis
         # then export location and normal to the console output
         return kind, location, axis
-    elif surf_type == GeomAbs_Cone:
+    if surf_type == GeomAbs_Cone:
         kind = "Cone"
         return kind, None, None
-    elif surf_type == GeomAbs_Sphere:
+    if surf_type == GeomAbs_Sphere:
         kind = "Sphere"
         return kind, None, None
-    elif surf_type == GeomAbs_Torus:
+    if surf_type == GeomAbs_Torus:
         kind = "Torus"
         return kind, None, None
-    elif surf_type == GeomAbs_BezierSurface:
+    if surf_type == GeomAbs_BezierSurface:
         kind = "Bezier"
         return kind, None, None
-    elif surf_type == GeomAbs_BSplineSurface:
+    if surf_type == GeomAbs_BSplineSurface:
         kind = "BSpline"
         return kind, None, None
-    elif surf_type == GeomAbs_SurfaceOfRevolution:
+    if surf_type == GeomAbs_SurfaceOfRevolution:
         kind = "Revolution"
         return kind, None, None
-    elif surf_type == GeomAbs_SurfaceOfExtrusion:
+    if surf_type == GeomAbs_SurfaceOfExtrusion:
         kind = "Extrusion"
         return kind, None, None
-    elif surf_type == GeomAbs_OffsetSurface:
+    if surf_type == GeomAbs_OffsetSurface:
         kind = "Offset"
         return kind, None, None
-    elif surf_type == GeomAbs_OtherSurface:
+    if surf_type == GeomAbs_OtherSurface:
         kind = "Other"
         return kind, None, None
-    else:
-        return "Unknown", None, None
+    return "Unknown", None, None
 
 
 ##############################################################################
@@ -561,9 +567,10 @@ def measure_shape_volume(shape: TopoDS_Shape) -> float:
 
 def measure_shape_mass_center_of_gravity(
     shape: TopoDS_Shape,
-) -> Tuple[gp_Pnt, float, str]:
+) -> tuple[gp_Pnt, float, str]:
     """
-    Measures the mass, center of gravity, and the property used for mass calculation (Length, Area, or Volume).
+    Measures the mass, center of gravity, and the property used for mass
+    calculation (Length, Area, or Volume).
 
     :param shape: The TopoDS_Shape to measure.
     :return: A tuple containing:

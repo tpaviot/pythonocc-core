@@ -17,57 +17,61 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import warnings
-from typing import Any, Dict, Iterable, Iterator, List, Optional, Tuple
+"""Exploration of the topology of shapes: sub-shapes, wires, edges,
+discretization and hidden line removal."""
 
-from OCC.Core.BRep import BRep_Tool, BRep_Builder
+import warnings
+from collections.abc import Iterable, Iterator
+from typing import Any, Optional
+
+from OCC.Core.BRep import BRep_Builder, BRep_Tool
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 from OCC.Core.BRepTools import BRepTools_WireExplorer
+from OCC.Core.GCPnts import (
+    GCPnts_QuasiUniformDeflection,
+    GCPnts_UniformAbscissa,
+    GCPnts_UniformDeflection,
+)
 from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
-from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
+from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
 from OCC.Core.TopAbs import (
-    TopAbs_VERTEX,
-    TopAbs_EDGE,
-    TopAbs_FACE,
-    TopAbs_WIRE,
-    TopAbs_SHELL,
-    TopAbs_SOLID,
     TopAbs_COMPOUND,
     TopAbs_COMPSOLID,
-    TopAbs_ShapeEnum,
+    TopAbs_EDGE,
+    TopAbs_FACE,
     TopAbs_Orientation,
+    TopAbs_ShapeEnum,
+    TopAbs_SHELL,
+    TopAbs_SOLID,
+    TopAbs_VERTEX,
+    TopAbs_WIRE,
 )
 from OCC.Core.TopExp import TopExp_Explorer, topexp
-from OCC.Core.TopTools import (
-    TopTools_IndexedDataMapOfShapeListOfShape,
-    TopTools_IndexedMapOfShape,
-)
 from OCC.Core.TopoDS import (
-    Wire,
-    Vertex,
+    Compound,
+    CompSolid,
     Edge,
     Face,
     Shell,
     Solid,
-    Compound,
-    CompSolid,
-    TopoDS_Wire,
-    TopoDS_Vertex,
-    TopoDS_Edge,
-    TopoDS_Face,
-    TopoDS_Shell,
-    TopoDS_Solid,
-    TopoDS_Shape,
     TopoDS_Compound,
     TopoDS_CompSolid,
+    TopoDS_Edge,
+    TopoDS_Face,
     TopoDS_Iterator,
+    TopoDS_Shape,
+    TopoDS_Shell,
+    TopoDS_Solid,
+    TopoDS_Vertex,
+    TopoDS_Wire,
+    Vertex,
+    Wire,
 )
-from OCC.Core.GCPnts import (
-    GCPnts_UniformAbscissa,
-    GCPnts_QuasiUniformDeflection,
-    GCPnts_UniformDeflection,
+from OCC.Core.TopTools import (
+    TopTools_IndexedDataMapOfShapeListOfShape,
+    TopTools_IndexedMapOfShape,
 )
-from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
 # Available discretization algorithms for edges and wires
 DISCRETIZATION_ALGORITHMS = {
@@ -104,7 +108,8 @@ def ordered_edges_from_wire(wire: TopoDS_Wire) -> Iterator[TopoDS_Edge]:
 
 class WireExplorer:
     """
-    A class to explore a TopoDS_Wire, providing access to its vertices and edges in order.
+    A class to explore a TopoDS_Wire, providing access to its vertices and edges
+    in order.
     """
 
     def __init__(self, wire: TopoDS_Wire) -> None:
@@ -113,7 +118,7 @@ class WireExplorer:
         :param wire: The wire to explore.
         """
         if not isinstance(wire, TopoDS_Wire):
-            raise AssertionError("not a TopoDS_Wire")
+            raise TypeError("not a TopoDS_Wire")
         self.wire = wire
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
@@ -185,7 +190,7 @@ class TopologyExplorer:
         self.ignore_orientation = ignore_orientation
         # shape -> ancestors maps, built on demand and reused by the *_from_*
         # queries: building one is linear in the size of the shape
-        self._ancestors_maps: Dict[Tuple[Any, Any], Any] = {}
+        self._ancestors_maps: dict[tuple[Any, Any], Any] = {}
         self._ancestors_maps_shape: Optional[TopoDS_Shape] = None
 
         # the topology_factory dicts maps topology types and functions that can
@@ -209,7 +214,8 @@ class TopologyExplorer:
     ) -> Iterator[Any]:
         """
         Generic method to iterate over sub-shapes of a given type.
-        :param topology_type: The type of sub-shapes to iterate over (e.g., TopAbs_FACE).
+        :param topology_type: The type of sub-shapes to iterate over
+            (e.g., TopAbs_FACE).
         :param topological_entity: The shape to explore. If None, explores the shape
             provided in the constructor. Defaults to None.
         :param topology_type_to_avoid: A type of sub-shape to avoid during traversal.
@@ -248,8 +254,8 @@ class TopologyExplorer:
         if self.ignore_orientation:
             # filter out those entities that share the same TShape
             # but do *not* share the same orientation
-            filter_orientation_seq: List = []
-            filter_orientation_hash_codes: Dict[int, List[int]] = {}
+            filter_orientation_seq: list = []
+            filter_orientation_hash_codes: dict[int, list[int]] = {}
             for i in seq:
                 index_list = filter_orientation_hash_codes.setdefault(hash(i), [])
                 if not any(i.IsSame(filter_orientation_seq[j]) for j in index_list):
@@ -405,7 +411,8 @@ class TopologyExplorer:
     ):
         """
         Maps shapes to their ancestors of a different type.
-        For example, can be used to find all faces (ancestors, type 2) that an edge (shape, type 1) belongs to.
+        For example, can be used to find all faces (ancestors, type 2) that an edge
+        (shape, type 1) belongs to.
         :param topology_type_1: The TopAbs_ShapeEnum of the entity.
         :param topology_type_2: The TopAbs_ShapeEnum of the ancestors to find.
         :param topological_entity: The topological entity itself.
@@ -415,9 +422,10 @@ class TopologyExplorer:
             self._ancestors(topology_type_1, topology_type_2, topological_entity)
         )
 
-    def get_topology_summary(self) -> Dict[str, int]:
+    def get_topology_summary(self) -> dict[str, int]:
         """
-        Returns a dictionary with a summary of the number of topological elements in the shape.
+        Returns a dictionary with a summary of the number of topological elements
+        in the shape.
         """
         return {
             "number_of_vertices": self.number_of_vertices(),
@@ -770,7 +778,7 @@ def discretize_wire(
     a_wire: TopoDS_Wire,
     deflection: float = 0.5,
     algorithm: str = "QuasiUniformDeflection",
-) -> List[Tuple[float, float, float]]:
+) -> list[tuple[float, float, float]]:
     """
     Discretizes a wire into a list of points.
     This function takes a TopoDS_Wire and generates a sequence of points
@@ -808,7 +816,7 @@ def discretize_edge(
     a_edge: TopoDS_Edge,
     deflection: float = 0.2,
     algorithm: str = "QuasiUniformDeflection",
-) -> List[Tuple[float, float, float]]:
+) -> list[tuple[float, float, float]]:
     """
     Discretizes an edge into a list of points.
     This function takes a TopoDS_Edge and generates a sequence of points
@@ -829,7 +837,8 @@ def discretize_edge(
         )
     if a_edge.IsNull():
         warnings.warn(
-            "TopoDS_Edge is null, discretize_edge returns an empty list of points."
+            "TopoDS_Edge is null, discretize_edge returns an empty list of points.",
+            stacklevel=2,
         )
         return []
     if algorithm not in DISCRETIZATION_ALGORITHMS:
@@ -931,15 +940,17 @@ def get_sorted_hlr_edges(
     position: Optional[gp_Pnt] = None,
     direction: Optional[gp_Dir] = None,
     export_hidden_edges: Optional[bool] = True,
-) -> Tuple[List, List]:
+) -> tuple[list, list]:
     """
-    Performs Hidden Line Removal (HLR) on a shape and returns the visible and hidden edges.
+    Performs Hidden Line Removal (HLR) on a shape and returns the visible and
+    hidden edges.
     :param shape: The shape to process.
     :param position: The viewpoint position for the HLR algorithm.
         Defaults to the origin (0, 0, 0).
     :param direction: The view direction for the HLR algorithm.
         Defaults to the Z-axis (0, 0, 1).
-    :param export_hidden_edges: If True, the hidden edges are also computed and returned.
+    :param export_hidden_edges: If True, the hidden edges are also computed and
+        returned.
         Defaults to True.
     :return: A tuple containing two lists: the first list contains the visible edges,
         and the second list contains the hidden edges.
@@ -984,8 +995,8 @@ def get_sorted_hlr_edges(
 
 
 def list_of_shapes_to_compound(
-    list_of_shapes: List[TopoDS_Shape],
-) -> Tuple[TopoDS_Compound, bool]:
+    list_of_shapes: list[TopoDS_Shape],
+) -> tuple[TopoDS_Compound, bool]:
     """
     Takes a list of shapes and gathers them into a single compound shape.
     :param list_of_shapes: A list of TopoDS_Shape objects.

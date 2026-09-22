@@ -15,60 +15,60 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""Import and export of shapes to and from the STEP, IGES, STL, BREP,
+glTF, OBJ, PLY, X3D and SVG formats."""
+
 import os
 import warnings
-from typing import Union, List, Dict, Tuple, Any
+from typing import Any, Optional, Union
 
-from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape
-from OCC.Core.BRepTools import breptools
-from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
-from OCC.Core.StlAPI import stlapi, StlAPI_Writer
-from OCC.Core.BRep import BRep_Builder
-from OCC.Core.gp import gp_Pnt, gp_Dir, gp_Pnt2d
 from OCC.Core.Bnd import Bnd_Box2d
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeSolid,
+    BRepBuilderAPI_Sewing,
+    BRepBuilderAPI_Transform,
+)
+from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
+from OCC.Core.BRepTools import breptools
+from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d
+from OCC.Core.IFSelect import IFSelect_ItemsByEntity, IFSelect_RetDone
 from OCC.Core.IGESControl import (
     IGESControl_Controller,
     IGESControl_Reader,
     IGESControl_Writer,
 )
+from OCC.Core.Interface import Interface_Static
+from OCC.Core.Message import Message_ProgressRange
+from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
+from OCC.Core.RWGltf import RWGltf_CafReader, RWGltf_CafWriter
+from OCC.Core.RWMesh import (
+    RWMesh_CoordinateSystem_negZfwd_posYup,
+    RWMesh_CoordinateSystem_posYfwd_posZup,
+)
+from OCC.Core.RWObj import RWObj_CafWriter
+from OCC.Core.RWPly import RWPly_CafWriter
+from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
 from OCC.Core.STEPControl import (
+    STEPControl_AsIs,
     STEPControl_Reader,
     STEPControl_Writer,
-    STEPControl_AsIs,
 )
-from OCC.Core.Interface import Interface_Static
-from OCC.Core.IFSelect import IFSelect_RetDone, IFSelect_ItemsByEntity
+from OCC.Core.StlAPI import StlAPI_Writer, stlapi
+from OCC.Core.TCollection import TCollection_AsciiString
+from OCC.Core.TColStd import TColStd_IndexedDataMapOfStringString
+from OCC.Core.TDF import TDF_Label, TDF_LabelSequence
 from OCC.Core.TDocStd import TDocStd_Document
+from OCC.Core.TopLoc import TopLoc_Location
+from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape
+from OCC.Core.UnitsMethods import unitsmethods
 from OCC.Core.XCAFDoc import (
-    XCAFDoc_DocumentTool,
-    XCAFDoc_ColorTool,
+    XCAFDoc_ColorCurv,
     XCAFDoc_ColorGen,
     XCAFDoc_ColorSurf,
-    XCAFDoc_ColorCurv,
+    XCAFDoc_ColorTool,
+    XCAFDoc_DocumentTool,
 )
-from OCC.Core.STEPCAFControl import STEPCAFControl_Reader
-from OCC.Core.TDF import TDF_LabelSequence, TDF_Label
-from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
-from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.BRepBuilderAPI import (
-    BRepBuilderAPI_Transform,
-    BRepBuilderAPI_Sewing,
-    BRepBuilderAPI_MakeSolid,
-)
-
-from OCC.Core.TColStd import TColStd_IndexedDataMapOfStringString
-from OCC.Core.TCollection import TCollection_AsciiString
-from OCC.Core.RWPly import RWPly_CafWriter
-from OCC.Core.Message import Message_ProgressRange
-
-from OCC.Core.RWGltf import RWGltf_CafReader, RWGltf_CafWriter
-from OCC.Core.RWObj import RWObj_CafWriter
-from OCC.Core.RWMesh import (
-    RWMesh_CoordinateSystem_posYfwd_posZup,
-    RWMesh_CoordinateSystem_negZfwd_posYup,
-)
-from OCC.Core.UnitsMethods import unitsmethods
-
 from OCC.Extend.TopologyUtils import discretize_edge, get_sorted_hlr_edges
 
 try:
@@ -80,9 +80,11 @@ except ImportError:
 
 
 def check_svgwrite_installed():
+    """Raises OSError if the optional svgwrite package is not available."""
     if not HAVE_SVGWRITE:
-        raise IOError(
-            "svg exporter not available because the svgwrite package is not installed. use $pip install svgwrite'"
+        raise OSError(
+            "svg exporter not available because the svgwrite package is not "
+            "installed, use $pip install svgwrite"
         )
 
 
@@ -91,7 +93,7 @@ def check_svgwrite_installed():
 ##########################
 def read_step_file(
     filename: str, as_compound: bool = True, verbosity: bool = False
-) -> Union[TopoDS_Shape, List[TopoDS_Shape]]:
+) -> Union[TopoDS_Shape, list[TopoDS_Shape]]:
     """Read a STEP file and return the contained shape(s).
 
     Args:
@@ -162,7 +164,8 @@ def write_step_file(
         shape: The shape to export
         filename: Target STEP file path
         application_protocol: STEP format version to use.
-                            Can be "AP203" (basic geometry), "AP214IS" (colors and layers),
+                            Can be "AP203" (basic geometry),
+                            "AP214IS" (colors and layers),
                             or "AP242DIS" (latest version with PMI support).
                             Defaults to "AP203".
 
@@ -180,7 +183,7 @@ def write_step_file(
         )
 
     if os.path.isfile(filename):
-        warnings.warn(f"{filename} already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
 
     # the schema is a global parameter: restore it once the file is written
     previous_schema = Interface_Static.CVal("write.step.schema")
@@ -194,14 +197,14 @@ def write_step_file(
         Interface_Static.SetCVal("write.step.schema", previous_schema)
 
     if status != IFSelect_RetDone:
-        raise IOError("Error while writing shape to STEP file.")
+        raise OSError("Error while writing shape to STEP file.")
     if not os.path.isfile(filename):
-        raise IOError(f"{filename} not saved to filesystem.")
+        raise OSError(f"{filename} not saved to filesystem.")
 
 
 def read_step_file_with_names_colors(
     filename: str,
-) -> Dict[TopoDS_Shape, List[Union[str, Quantity_Color]]]:
+) -> dict[TopoDS_Shape, list[Union[str, Quantity_Color]]]:
     """
     Reads a STEP file and extracts shapes with their names and colors using OCAF.
 
@@ -236,7 +239,7 @@ def read_step_file_with_names_colors(
 
     status = step_reader.ReadFile(filename)
     if status != IFSelect_RetDone:
-        raise IOError(f"Error while reading STEP file {filename}.")
+        raise OSError(f"Error while reading STEP file {filename}.")
     step_reader.Transfer(doc)
 
     locs = []
@@ -332,7 +335,7 @@ def write_stl_file(
         raise AssertionError("mode should be either ascii or binary")
 
     if os.path.isfile(filename):
-        warnings.warn(f"{filename} already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
 
     # Mesh the shape
     mesh = BRepMesh_IncrementalMesh(
@@ -346,7 +349,7 @@ def write_stl_file(
     writer = StlAPI_Writer()
     writer.SetASCIIMode(mode == "ascii")
     if not writer.Write(shape, filename) or not os.path.isfile(filename):
-        raise IOError("File not written to disk.")
+        raise OSError("File not written to disk.")
 
 
 def read_stl_file(
@@ -397,7 +400,7 @@ def read_iges_file(
     return_as_shapes: bool = False,
     verbosity: bool = False,
     visible_only: bool = False,
-) -> List[TopoDS_Shape]:
+) -> list[TopoDS_Shape]:
     """
     Reads an IGES file and returns the shapes.
 
@@ -421,7 +424,7 @@ def read_iges_file(
     status = iges_reader.ReadFile(filename)
 
     if status != IFSelect_RetDone:  # check status
-        raise IOError("Cannot read IGES file")
+        raise OSError("Cannot read IGES file")
 
     if verbosity:
         failsonly = False
@@ -462,7 +465,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
     if a_shape.IsNull():
         raise AssertionError("Shape is null.")
     if os.path.isfile(filename):
-        warnings.warn(f"{filename} already exists and will be replaced")
+        warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
     # create and initialize the step exporter
     iges_writer = IGESControl_Writer()
     iges_writer.AddShape(a_shape)
@@ -471,7 +474,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
     if status != IFSelect_RetDone:
         raise AssertionError("Not done.")
     if not os.path.isfile(filename):
-        raise IOError("File not written to disk.")
+        raise OSError("File not written to disk.")
 
 
 ##############
@@ -479,7 +482,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
 ##############
 def edge_to_svg_polyline(
     topods_edge: TopoDS_Edge, tol: float = 0.1, unit: str = "mm"
-) -> Tuple[Any, Bnd_Box2d]:
+) -> tuple[Any, Bnd_Box2d]:
     """
     Converts a TopoDS_Edge to an SVG polyline.
 
@@ -513,14 +516,14 @@ def edge_to_svg_polyline(
 
 def export_shape_to_svg(
     shape: TopoDS_Shape,
-    filename: str = None,
+    filename: Optional[str] = None,
     width: int = 800,
     height: int = 600,
     margin_left: int = 10,
     margin_top: int = 30,
     export_hidden_edges: bool = True,
-    location: gp_Pnt = gp_Pnt(0, 0, 0),
-    direction: gp_Dir = gp_Dir(1, 1, 1),
+    location: Optional[gp_Pnt] = None,
+    direction: Optional[gp_Dir] = None,
     color: str = "black",
     line_width: str = "1px",
     unit: str = "mm",
@@ -535,8 +538,8 @@ def export_shape_to_svg(
     :param margin_left: The left margin in pixels.
     :param margin_top: The top margin in pixels.
     :param export_hidden_edges: If True, hidden edges are drawn with a dashed line.
-    :param location: The viewpoint location for HLR.
-    :param direction: The view direction for HLR.
+    :param location: The viewpoint location for HLR, the origin by default.
+    :param direction: The view direction for HLR, (1, 1, 1) by default.
     :param color: The color of the lines.
     :param line_width: The width of the lines.
     :param unit: The unit of the coordinates ('mm' or 'm').
@@ -547,6 +550,10 @@ def export_shape_to_svg(
 
     if shape.IsNull():
         raise AssertionError("shape is Null")
+    if location is None:
+        location = gp_Pnt(0, 0, 0)
+    if direction is None:
+        direction = gp_Dir(1, 1, 1)
 
     # find all edges
     visible_edges, hidden_edges = get_sorted_hlr_edges(
@@ -613,7 +620,7 @@ def export_shape_to_svg(
 
 def _mesh_shape_to_document(
     a_shape: TopoDS_Shape, doc_name: str
-) -> Tuple[TDocStd_Document, TColStd_IndexedDataMapOfStringString]:
+) -> tuple[TDocStd_Document, TColStd_IndexedDataMapOfStringString]:
     """
     Meshes a shape and adds it to a new XCAF document, for the mesh writers.
 
@@ -659,7 +666,7 @@ def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
     rwply_writer.SetFaceId(True)
 
     if not rwply_writer.Perform(doc, a_file_info, Message_ProgressRange()):
-        raise IOError("Error while writing shape to PLY file.")
+        raise OSError("Error while writing shape to PLY file.")
 
 
 #################################################
@@ -688,7 +695,7 @@ def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str):
     rwobj_writer.SetCoordinateSystemConverter(csc)
 
     if not rwobj_writer.Perform(doc, a_file_info, Message_ProgressRange()):
-        raise IOError("Error while writing shape to OBJ file.")
+        raise OSError("Error while writing shape to OBJ file.")
 
 
 ########
@@ -702,7 +709,7 @@ def read_gltf_file(
     keep_late_data: bool = True,
     verbose: bool = False,
     load_all_scenes: bool = False,
-) -> List[TopoDS_Shape]:
+) -> list[TopoDS_Shape]:
     """
     Reads a glTF file and returns the shape.
 
@@ -730,7 +737,7 @@ def read_gltf_file(
     gltf_reader.SetLoadAllScenes(load_all_scenes)
 
     if not gltf_reader.Perform(filename, Message_ProgressRange()):
-        raise IOError("Error while reading GLTF file.")
+        raise OSError("Error while reading GLTF file.")
 
     return [gltf_reader.SingleShape()]
 
@@ -749,4 +756,4 @@ def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
     rwgltf_writer = RWGltf_CafWriter(gltf_filename, binary)
 
     if not rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange()):
-        raise IOError("Error while writing shape to GLTF file.")
+        raise OSError("Error while writing shape to GLTF file.")
