@@ -71,19 +71,21 @@ endif(APPLE)
 # OpenGL. If available, enable compilation for Visualization module #
 #####################################################################
 find_package(OpenGL)
-include_directories(${OPENGL_INCLUDE_DIR})
 
 #################
 # Build options #
 #################
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCCT_Modules.cmake)
 # add an option to choose toolkits to compile
-if(OPENGL_FOUND)
-  option(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
-else(OPENGL_FOUND)
-  message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
-  set(PYTHONOCC_WRAP_VISU OFF)
-endif(OPENGL_FOUND)
+# ON by default if OpenGL is found, the user choice (-D, cache) is kept
+option(PYTHONOCC_WRAP_VISU "Compile Visualisation" ${OPENGL_FOUND})
+if(PYTHONOCC_WRAP_VISU AND NOT OPENGL_FOUND)
+  message(FATAL_ERROR "PYTHONOCC_WRAP_VISU requires OpenGL, not found: install "
+                      "the OpenGL development files or pass -DPYTHONOCC_WRAP_VISU=OFF")
+endif()
+if(NOT PYTHONOCC_WRAP_VISU)
+  message(STATUS "Visualization wrapper disabled")
+endif()
 option(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
 option(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
@@ -307,10 +309,7 @@ target_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
 # Visualisation #
 #################
 if(PYTHONOCC_WRAP_VISU)
-    find_package(OpenGL REQUIRED)
-    if(OPENGL_FOUND)
-      message(STATUS "OpenGL found; Visualization support enabled")
-    endif()
+    message(STATUS "OpenGL found; Visualization support enabled")
     include_directories(${OPENGL_INCLUDE_DIR})
 
     foreach(OCCT_MODULE ${OCCT_TOOLKIT_VISUALIZATION})
