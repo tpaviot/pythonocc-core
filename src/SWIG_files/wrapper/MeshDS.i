@@ -61,6 +61,7 @@
 #include<Select3D_module.hxx>
 #include<Quantity_module.hxx>
 #include<TopTools_module.hxx>
+#include<OSD_module.hxx>
 %};
 
 %import Standard.i
