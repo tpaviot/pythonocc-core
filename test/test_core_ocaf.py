@@ -22,6 +22,8 @@ import os
 from typing import Any, Iterator
 import warnings
 
+import pytest
+
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorGen
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
@@ -31,6 +33,7 @@ from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.TCollection import TCollection_ExtendedString
 
 
 @contextmanager
@@ -50,6 +53,14 @@ def test_create_doc() -> None:
     # create an handle to a document
     doc = TDocStd_Document("MDTV-CAF")
     assert doc is not None
+
+
+def test_create_doc_from_extended_string() -> None:
+    """Issue #1494: a TCollection_ExtendedString argument aborted the interpreter"""
+    doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
+    assert doc.StorageFormat() == "MDTV-CAF"
+    with pytest.raises(TypeError):
+        TDocStd_Document(None)
 
 
 def test_write_step_file() -> None:

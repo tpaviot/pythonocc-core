@@ -33,8 +33,10 @@ Standard_CString parameter transformation
 */
 
 /*
-The string typemaps raise a TypeError if the argument is not a str: OCCT
-must never get a NULL pointer (e.g. TCollection_AsciiString aborts)
+The string typemaps raise a TypeError if the argument is not a str (or, for
+TCollection_ExtendedString/AsciiString, a wrapped object of that class): OCCT
+must never get a NULL pointer. It throws Standard_NullObject outside of the
+wrapper try/catch, which terminates the interpreter (issue #1494)
 */
 %typemap(in) Standard_CString
 {
@@ -57,14 +59,25 @@ TCollection_ExtendedString parameter transformation
 
 %typemap(in) TCollection_ExtendedString
 {
-    const char* utf8_string = PyUnicode_AsUTF8($input);
-    if (!utf8_string) {
-        SWIG_fail;
+    if (PyUnicode_Check($input)) {
+        const char* utf8_string = PyUnicode_AsUTF8($input);
+        if (!utf8_string) {
+            SWIG_fail;
+        }
+        $1 = TCollection_ExtendedString(utf8_string, true);
+    } else {
+        void* argp = 0;
+        if (!SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_ExtendedString *), 0)) || !argp) {
+            PyErr_SetString(PyExc_TypeError, "expected a str or a TCollection_ExtendedString");
+            SWIG_fail;
+        }
+        $1 = *reinterpret_cast<TCollection_ExtendedString*>(argp);
     }
-    $1 = TCollection_ExtendedString(utf8_string, true);
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_ExtendedString {
-    $1 = PyUnicode_Check($input) ? 1 : 0;
+    void* argp = 0;
+    $1 = (PyUnicode_Check($input) ||
+          SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_ExtendedString *), SWIG_POINTER_NO_NULL))) ? 1 : 0;
 }
 %typemap(out) TCollection_ExtendedString {
     // convert the TCollection_ExtendedString to TCollection_AsciiString
@@ -77,15 +90,26 @@ TCollection_AsciiString parameter transformation
 
 %typemap(in) TCollection_AsciiString
 {
-    Py_ssize_t utf8_length = 0;
-    const char* utf8_string = PyUnicode_AsUTF8AndSize($input, &utf8_length);
-    if (!utf8_string) {
-        SWIG_fail;
+    if (PyUnicode_Check($input)) {
+        Py_ssize_t utf8_length = 0;
+        const char* utf8_string = PyUnicode_AsUTF8AndSize($input, &utf8_length);
+        if (!utf8_string) {
+            SWIG_fail;
+        }
+        $1 = TCollection_AsciiString(utf8_string, static_cast<int>(utf8_length));
+    } else {
+        void* argp = 0;
+        if (!SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_AsciiString *), 0)) || !argp) {
+            PyErr_SetString(PyExc_TypeError, "expected a str or a TCollection_AsciiString");
+            SWIG_fail;
+        }
+        $1 = *reinterpret_cast<TCollection_AsciiString*>(argp);
     }
-    $1 = TCollection_AsciiString(utf8_string, static_cast<int>(utf8_length));
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_AsciiString {
-    $1 = PyUnicode_Check($input) ? 1 : 0;
+    void* argp = 0;
+    $1 = (PyUnicode_Check($input) ||
+          SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_AsciiString *), SWIG_POINTER_NO_NULL))) ? 1 : 0;
 }
 %typemap(out) TCollection_AsciiString {
     $result = PyUnicode_FromString($1.ToCString());
