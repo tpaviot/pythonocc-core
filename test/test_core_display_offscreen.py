@@ -27,7 +27,12 @@ from OCC.Extend.LayerManager import Layer
 
 @pytest.fixture
 def renderer():
-    return OffscreenRenderer()
+    # the offscreen renderer still needs a display connection on Linux,
+    # not available on headless CI machines
+    try:
+        return OffscreenRenderer()
+    except RuntimeError as e:
+        pytest.skip(str(e))
 
 
 def test_get_color_from_name():
