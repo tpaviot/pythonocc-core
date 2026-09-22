@@ -40,6 +40,7 @@ pythonOCC 8.0.1 requires the following components:
 | Component | Version | Purpose |
 |-----------|---------|---------|
 | Python | ≥ 3.9 | Runtime environment |
+| NumPy | ≥ 1.17 | Arrays of the Geom, Poly, TColStd, TColgp... modules |
 | OpenCascade | 8.0.1 | Core CAD functionality |
 | SWIG | 4.2.1 to 4.5.1 | Interface generation |
 | CMake | ≥ 3.18 | Build system |
@@ -165,6 +166,7 @@ Before starting the build process, ensure your system meets these requirements:
 |-----------|---------|---------------|
 | Visual Studio | 2019 or 2022 Community | [Download](https://visualstudio.microsoft.com/downloads/) |
 | Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
+| NumPy | ≥ 1.17 | `pip install numpy` |
 | CMake | ≥ 3.18 | [Download](https://cmake.org/download/) |
 | Git | Latest | [Download](https://git-scm.com/download/win) |
 | RapidJSON | Latest | [Download](https://github.com/Tencent/rapidjson.git) |
@@ -268,16 +270,11 @@ cmake --install .
 
 ## Optional Features
 
-### NumPy Support
+### NumPy Support for MeshDS
 
-To enable fast STL file loading with NumPy support:
-
-1. Install NumPy:
-```bash
-pip install numpy
-```
-
-2. Add the following CMake flag during pythonOCC configuration:
+NumPy is required to build pythonOCC (see the system requirements). To also
+enable fast STL file loading with the NumPy arrays of the MeshDS module, add
+the following CMake flag during pythonOCC configuration:
 ```bash
 -DPYTHONOCC_MESHDS_NUMPY=ON
 ```

@@ -88,20 +88,20 @@ option(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
 option(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
 option(OCCT_HIDE_DEPRECATED "Check this option to disable deprecation warnings for OCCT." ON)
-option(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays (requires numpy dev libraries and headers)." OFF)
+option(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays." OFF)
 
 ############
 # Python 3 #
 ############
 set(Python3_FIND_STRATEGY LOCATION)
 set(Python3_FIND_FRAMEWORK NEVER)
+# numpy is required: the Geom, Geom2d, Poly, TColStd, TColgp and TShort modules
+# use its C API. PYTHONOCC_MESHDS_NUMPY only enables the numpy arrays of MeshDS
+find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+include_directories(${Python3_NumPy_INCLUDE_DIRS})
+message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
 if(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
-    include_directories(${Python3_NumPy_INCLUDE_DIRS})
-    message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
     set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DBUILD_MESHDS_NUMPY)
-else(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 endif(PYTHONOCC_MESHDS_NUMPY)
 message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
 message(STATUS "Python include directory: ${Python3_INCLUDE_DIRS}")
