@@ -1,5 +1,5 @@
 [tool.bumpversion]
-current_version = "7.9.3"
+current_version = "8.0.1"
 commit = true
 tag = false
 tag_name = "{new_major}.{new_minor}.{new_patch}"
