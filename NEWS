@@ -1,3 +1,75 @@
+Version 8.0.1 - September 2026
+==============================
+
+This release requires opencascade-8.0.1
+
+Highlights:
+- OpenCASCADE 8.0.1 and SWIG 4.5.1
+- New OCCT 8 modules: BRepGraph, GeomEval, Geom2dEval, GeomBndLib
+- OCCT 8 template aliases wrapped as public API
+- OSD_ThreadPool and OSD_Parallel wrapped
+- Smaller SWIG modules and faster calls, no more circular module imports
+- ShapeTesselator: faster export, parallel faces processing
+- Type stubs (.pyi) regenerated, OCC.Display and OCC.Extend stubs completed
+
+* wrapper: upgrade to OpenCASCADE 8.0.1, bump SWIG to 4.5.1
+
+* wrapper: add the BRepGraph module, new in OCCT 8
+
+* wrapper: add GeomEval, Geom2dEval and GeomBndLib modules
+
+* wrapper: wrap the OCCT 8 template aliases
+
+* wrapper: wrap OSD_ThreadPool and OSD_Parallel, #1479
+
+* wrapper: math_Vector element accessors and sequence protocol, #1426
+
+* wrapper: return container values by copy from the const accessors, #1482
+
+* wrapper: FindAttribute returns None or the attribute with its type, #1487
+
+* wrapper: str() for TCollection strings, #1487
+
+* wrapper: accept wrapped TCollection strings in the string typemaps, #1494
+
+* wrapper: SWIG common files, smaller modules, faster calls and array indexing, robustness fixes
+
+* wrapper: SWIG common files, binary stream output, shape and string conversions
+
+* wrapper: regenerate SWIG files without circular module imports, remove empty modules
+
+* wrapper: update numpy.i to the current upstream revision
+
+* wrapper: regenerate .pyi stubs (valid python syntax), complete OCC.Display and OCC.Extend stubs
+
+* tesselator: faster export, parallel faces processing, fixes
+
+* tesselator: one normal per triangle at the singular points, #1470
+
+* display: review, bug fixes and modernization
+
+* display: fix shift modifier detection in qtDisplay, #1491
+
+* extend: fix bugs, speed up topology exploration, ruff and pylint pass
+
+* data exchange: STEP export of mesh faces, protocol set at first call, #1476
+
+* MeshDS: validate input, fix quadrangles from numpy, OCCT 8 API
+
+* build: numpy is always required, #1457
+
+* build: PYTHONOCC_WRAP_VISU option defaults to OPENGL_FOUND
+
+* build: fix OpenGL fallback and config.py install, remove dead code and unused IVtk interface files
+
+* build: hide SWIG warnings 303 and 476
+
+* conda: raise macOS deployment target to 11.0
+
+* ci: windows-2025 and ubuntu-26.04 images for python 3.14
+
+* tests: skip offscreen renderer tests when no display is available
+
 Version 7.9.3 - February 2026
 =============================
 

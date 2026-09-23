@@ -2,7 +2,7 @@
 [![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.3)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/8.0.1)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3605364.svg)](https://doi.org/10.5281/zenodo.3605364)
 
 pythonocc-core
@@ -12,7 +12,9 @@ About
 -----
 pythonocc provides 3D modeling and dataexchange features. It is intended for CAD/PDM/PLM/BIM development. It is based on the OpenCascade Technology modeling kernel.
 
-Latest release: [pythonocc-core 7.9.3 (2026-02-12)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.9.3)
+Latest release
+--------------
+[pythonocc-core 8.0.1](https://github.com/tpaviot/pythonocc-core/releases/tag/8.0.1) (2026-09-23) is built on OpenCascade 8.0.1 and SWIG 4.5.1. It wraps the new OCCT 8 modules (BRepGraph, GeomEval, Geom2dEval, GeomBndLib), the OCCT 8 template aliases as well as the OSD_ThreadPool and OSD_Parallel parallel computing classes. SWIG modules are smaller, faster and free of circular imports, the tesselator processes faces in parallel for faster exports, and the type stubs are regenerated, with complete stubs for OCC.Display and OCC.Extend. Many bug fixes in the wrapper, display, data exchange and Extend packages complete this release, see the [NEWS](NEWS) file for the full list of changes.
 
 Features
 --------
@@ -27,7 +29,7 @@ pythonocc provides the following features:
 
 Try online at mybinder
 ----------------------
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.9.3) to open a jupyter notebook running the latest pythonocc-core 7.9.3.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/8.0.1) to open a jupyter notebook running the latest pythonocc-core 8.0.1.
 
 Install with conda
 ------------------
@@ -37,7 +39,7 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=pyoccenv python=3.12
 conda activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.9.3
+conda install -c conda-forge pythonocc-core=8.0.1
 ```
 
 Other conda channels may provide pythonocc-core packages, check [search Anaconda](https://anaconda.org/search?q=pythonocc-core)
@@ -57,12 +59,6 @@ Cite as
 pythonocc is registered as a [Zenodo open access software](https://zenodo.org/record/7471333) and should be cited as:
 
 Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
-
-Support
--------
-pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a french company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us at contact@meedia.ai
-
-<a href="https://meedia.ai/pythonocc-en"><img src="https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png" width="150" alt="meeDIA logo"></a>
 
 Other pythonocc related resources
 ---------------------------------
