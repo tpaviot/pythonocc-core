@@ -39,7 +39,7 @@ pythonOCC 8.0.1 requires the following components:
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
-| Python | ≥ 3.9 | Runtime environment |
+| Python | ≥ 3.10 | Runtime environment |
 | NumPy | ≥ 1.17 | Arrays of the Geom, Poly, TColStd, TColgp... modules |
 | OpenCascade | 8.0.1 | Core CAD functionality |
 | SWIG | 4.2.1 to 4.5.1 | Interface generation |
@@ -165,7 +165,7 @@ Before starting the build process, ensure your system meets these requirements:
 | Component | Version | Download Link |
 |-----------|---------|---------------|
 | Visual Studio | 2019 or 2022 Community | [Download](https://visualstudio.microsoft.com/downloads/) |
-| Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
+| Python | ≥ 3.10 | [Download](https://www.python.org/downloads/) |
 | NumPy | ≥ 1.17 | `pip install numpy` |
 | CMake | ≥ 3.18 | [Download](https://cmake.org/download/) |
 | Git | Latest | [Download](https://git-scm.com/download/win) |
@@ -181,7 +181,7 @@ Before starting the build process, ensure your system meets these requirements:
    - During installation, select "Desktop development with C++"
    - Include "Windows 10 SDK" and "MSBuild"
 
-2. Install Python 3.9 or later:
+2. Install Python 3.10 or later:
    - Download and run the installer
    - Check "Add Python to PATH"
    - Choose "Customize installation"
@@ -242,7 +242,7 @@ cd cmake-build
 
 3. Configure with CMake:
 ```batch
-cmake -G "Visual Studio 16 2019" -A x64 ^
+cmake -G "Visual Studio 17 2022" -A x64 ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-8.0.1-vc10-64\occt-8.0.1\inc ^
     -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-8.0.1-vc10-64\occt-8.0.1\win64\vc14\lib ^
