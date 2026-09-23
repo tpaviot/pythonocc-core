@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<BRepLProp.hxx>
 #include<BRepLProp_CLProps.hxx>
-#include<BRepLProp_CurveTool.hxx>
 #include<BRepLProp_SLProps.hxx>
 #include<BRepLProp_SurfaceTool.hxx>
 

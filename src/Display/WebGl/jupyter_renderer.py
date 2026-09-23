@@ -15,111 +15,109 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import copy
 import enum
-from functools import reduce
 import itertools
 import math
 import uuid
-import sys
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+from functools import reduce
+from typing import Any, Callable, Optional, Union
 
 # pythreejs
 try:
+    import numpy as np
+    from IPython.display import SVG, display
+    from ipywidgets import HTML, Button, Checkbox, Dropdown, HBox, Layout, VBox, embed
     from pythreejs import (
-        CombinedCamera,
+        AmbientLight,
         BufferAttribute,
         BufferGeometry,
-        Mesh,
-        LineSegmentsGeometry,
+        CombinedCamera,
+        DirectionalLight,
+        GridHelper,
+        Group,
+        Line,
+        LineBasicMaterial,
         LineMaterial,
         LineSegments2,
-        AmbientLight,
-        DirectionalLight,
-        Scene,
+        LineSegmentsGeometry,
+        Mesh,
         OrbitControls,
-        Renderer,
         Picker,
-        Group,
-        GridHelper,
-        Line,
-        ShaderMaterial,
-        ShaderLib,
-        LineBasicMaterial,
-        PointsMaterial,
         Points,
+        PointsMaterial,
+        Renderer,
+        Scene,
+        ShaderLib,
+        ShaderMaterial,
         make_text,
     )
-    from IPython.display import display, SVG
-    from ipywidgets import HTML, HBox, VBox, Checkbox, Button, Layout, Dropdown, embed
-    import numpy as np
 except ImportError:
-    error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
+    error_log = """You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
 If you installed pythonocc using conda, just type :
 $ conda install -c conda-forge pythreejs"""
-    print(error_log)
-    sys.exit(0)
+    raise ImportError(error_log) from None
 
 
 from OCC.Core.Bnd import Bnd_Box
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
-from OCC.Core.BRepBndLib import brepbndlib
-from OCC.Core.gp import gp_Pnt, gp_Dir
-from OCC.Core.TopoDS import TopoDS_Compound
-from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepBndLib import brepbndlib
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeSphere
+from OCC.Core.gp import gp_Dir, gp_Pnt
 from OCC.Core.Tesselator import ShapeTesselator
-
-from OCC.Extend.TopologyUtils import (
-    TopologyExplorer,
-    is_edge,
-    is_wire,
-    discretize_edge,
-    discretize_wire,
-    get_type_as_string,
-)
+from OCC.Core.TopoDS import TopoDS_Compound
+from OCC.Extend.DataExchange import export_shape_to_svg
 from OCC.Extend.ShapeFactory import (
-    get_oriented_boundingbox,
     get_aligned_boundingbox,
+    get_oriented_boundingbox,
     measure_shape_mass_center_of_gravity,
     recognize_face,
 )
-from OCC.Extend.DataExchange import export_shape_to_svg
+from OCC.Extend.TopologyUtils import (
+    TopologyExplorer,
+    discretize_edge,
+    discretize_wire,
+    get_type_as_string,
+    is_edge,
+    is_wire,
+)
 
 
 #
 # Util mathematical functions
 #
-def _add(vec1: List[float], vec2: List[float]) -> List[float]:
+def _add(vec1: list[float], vec2: list[float]) -> list[float]:
     """Adds two vectors."""
     return [v1 + v2 for v1, v2 in zip(vec1, vec2)]
 
 
-def _explode(edge_list: List[List[float]]) -> List[List[List[float]]]:
+def _explode(edge_list: list[list[float]]) -> list[list[list[float]]]:
     """Explodes a list of edges into a list of segments."""
     return [[edge_list[i], edge_list[i + 1]] for i in range(len(edge_list) - 1)]
 
 
-def _flatten(nested_dict: Dict[Any, Any]) -> List[Any]:
+def _flatten(nested_dict: dict[Any, Any]) -> list[Any]:
     """Flattens a nested dictionary."""
     return [y for x in nested_dict for y in x]
 
 
 def format_color(r: int, g: int, b: int) -> str:
     """Formats a color from RGB to a hex string."""
-    return "#%02x%02x%02x" % (r, g, b)
+    return f"#{r:02x}{g:02x}{b:02x}"
 
 
-def _distance(v1: List[float], v2: List[float]) -> float:
+def _distance(v1: list[float], v2: list[float]) -> float:
     """Computes the distance between two vectors."""
     return np.linalg.norm([x - y for x, y in zip(v1, v2)])
 
 
-def _bool_or_new(val: Union[bool, Dict[str, Any]]) -> bool:
+def _bool_or_new(val: Union[bool, dict[str, Any]]) -> bool:
     """Returns the value of a boolean or a new value."""
     return val if isinstance(val, bool) else val["new"]
 
 
-def _opt(b1: Tuple[float, ...], b2: Tuple[float, ...]) -> Tuple[float, ...]:
+def _opt(b1: tuple[float, ...], b2: tuple[float, ...]) -> tuple[float, ...]:
     """Returns the union of two bounding boxes."""
     return (
         min(b1[0], b2[0]),
@@ -131,7 +129,7 @@ def _opt(b1: Tuple[float, ...], b2: Tuple[float, ...]) -> Tuple[float, ...]:
     )
 
 
-def _shift(v: List[float], offset: List[float]) -> List[float]:
+def _shift(v: list[float], offset: list[float]) -> list[float]:
     """Shifts a vector by an offset."""
     return [x + o for x, o in zip(v, offset)]
 
@@ -174,7 +172,7 @@ def _nice_number(value: float, round_: bool = False) -> float:
 
 def _nice_bounds(
     axis_start: float, axis_end: float, num_ticks: int = 10
-) -> Tuple[float, float, float]:
+) -> tuple[float, float, float]:
     """
     Returns "nice" bounds for a given axis.
 
@@ -206,7 +204,7 @@ class Helpers:
     A base class for helpers.
     """
 
-    def __init__(self, bb_center: Tuple[float, float, float]) -> None:
+    def __init__(self, bb_center: tuple[float, float, float]) -> None:
         """
         Initializes the Helpers.
 
@@ -216,7 +214,7 @@ class Helpers:
         self.bb_center = bb_center
         self.center = (0, 0, 0)
 
-    def _center(self, zero: bool = True) -> Tuple[float, float, float]:
+    def _center(self, zero: bool = True) -> tuple[float, float, float]:
         """
         Returns the center of the bounding box.
 
@@ -228,7 +226,7 @@ class Helpers:
         """
         return self.center if zero else self.bb_center
 
-    def set_position(self, position: Tuple[float, float, float]) -> None:
+    def set_position(self, position: tuple[float, float, float]) -> None:
         """
         Sets the position of the helper.
 
@@ -266,7 +264,7 @@ class Grid(Helpers):
 
     def __init__(
         self,
-        bb_center: Optional[Tuple[float, float, float]] = None,
+        bb_center: Optional[tuple[float, float, float]] = None,
         maximum: int = 5,
         ticks: int = 10,
         colorCenterLine: str = "#aaa",
@@ -283,6 +281,8 @@ class Grid(Helpers):
             colorGrid (str, optional): The color of the grid.
         """
         Helpers.__init__(self, bb_center)
+        # a degenerated bounding box (single point) would give a null tick
+        maximum = max(maximum, 1e-3)
         axis_start, axis_end, nice_tick = _nice_bounds(-maximum, maximum, 2 * ticks)
         self.step = nice_tick
         self.size = axis_end - axis_start
@@ -294,7 +294,7 @@ class Grid(Helpers):
         )
         self.set_center(True)
 
-    def set_position(self, position: Tuple[float, float, float]) -> None:
+    def set_position(self, position: tuple[float, float, float]) -> None:
         """
         Sets the position of the grid.
 
@@ -312,7 +312,7 @@ class Grid(Helpers):
         """
         self.grid.visible = change
 
-    def set_rotation(self, rotation: Tuple[float, float, float, str]) -> None:
+    def set_rotation(self, rotation: tuple[float, float, float, str]) -> None:
         """
         Sets the rotation of the grid.
 
@@ -336,7 +336,7 @@ class Axes(Helpers):
 
     def __init__(
         self,
-        bb_center: Tuple[float, float, float],
+        bb_center: tuple[float, float, float],
         length: int = 1,
         width: int = 3,
         display_labels: bool = False,
@@ -352,7 +352,7 @@ class Axes(Helpers):
         """
         Helpers.__init__(self, bb_center)
 
-        self.axes: List[Any] = []
+        self.axes: list[Any] = []
         self.axes.extend(
             LineSegments2(
                 LineSegmentsGeometry(
@@ -375,7 +375,7 @@ class Axes(Helpers):
             self.axes.append(y_text)
             self.axes.append(z_text)
 
-    def set_position(self, position: Tuple[float, float, float]) -> None:
+    def set_position(self, position: tuple[float, float, float]) -> None:
         """
         Sets the position of the axes.
 
@@ -434,8 +434,9 @@ class CustomMaterial(ShaderMaterial):
         fragmentShader += shader["fragmentShader"].replace(frag_from, frag_to)
 
         vertexShader = shader["vertexShader"]
-        uniforms = shader["uniforms"]
-        uniforms["alpha"] = dict(value=0.7)
+        # do not alter the uniforms shared by every material of pythreejs
+        uniforms = copy.deepcopy(shader["uniforms"])
+        uniforms["alpha"] = {"value": 0.7}
 
         ShaderMaterial.__init__(
             self,
@@ -492,7 +493,7 @@ class BoundingBox:
     A bounding box helper.
     """
 
-    def __init__(self, objects: List[Any], tol: float = 1e-5) -> None:
+    def __init__(self, objects: list[Any], tol: float = 1e-5) -> None:
         """
         Initializes the BoundingBox.
 
@@ -540,7 +541,7 @@ class BoundingBox:
             )
         )
 
-    def _bounding_box(self, obj: Any, tol: float = 1e-5) -> Tuple[float, ...]:
+    def _bounding_box(self, obj: Any, tol: float = 1e-5) -> tuple[float, ...]:
         """
         Computes the bounding box of an object.
         """
@@ -550,21 +551,14 @@ class BoundingBox:
         values = bbox.Get()
         return (values[0], values[3], values[1], values[4], values[2], values[5])
 
-    def _bbox(self, objects: List[Any]) -> Tuple[float, ...]:
+    def _bbox(self, objects: list[Any]) -> tuple[float, ...]:
         """
         Computes the bounding box of a list of objects.
         """
         return reduce(_opt, [self._bounding_box(obj) for obj in objects])
 
     def __repr__(self) -> str:
-        return "[x(%f .. %f), y(%f .. %f), z(%f .. %f)]" % (
-            self.xmin,
-            self.xmax,
-            self.ymin,
-            self.ymax,
-            self.zmin,
-            self.zmax,
-        )
+        return f"[x({self.xmin:f} .. {self.xmax:f}), y({self.ymin:f} .. {self.ymax:f}), z({self.zmin:f} .. {self.zmax:f})]"
 
 
 class NORMAL(enum.Enum):
@@ -579,8 +573,8 @@ class JupyterRenderer:
 
     def __init__(
         self,
-        size: Tuple[int, int] = (640, 480),
-        compute_normals_mode: int = NORMAL.SERVER_SIDE,
+        size: tuple[int, int] = (640, 480),
+        compute_normals_mode: NORMAL = NORMAL.SERVER_SIDE,
         default_shape_color: str = format_color(166, 166, 166),  # light grey
         default_edge_color: str = format_color(32, 32, 32),  # dark grey
         default_vertex_color: str = format_color(8, 8, 8),  # darker grey
@@ -622,7 +616,7 @@ class JupyterRenderer:
 
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
-        self._shapes: Dict[str, Any] = {}
+        self._shapes: dict[str, Any] = {}
 
         # we save the renderer so that is can be accessed
         self._renderer: Optional[Renderer] = None
@@ -638,11 +632,11 @@ class JupyterRenderer:
 
         self._current_shape_selection: Optional[Any] = None
         self._current_mesh_selection: Optional[Mesh] = None
-        self._savestate: Optional[Tuple[Any, Any]] = None
+        self._savestate: Optional[tuple[Any, Any]] = None
 
         self._selection_color = format_color(232, 176, 36)
 
-        self._select_callbacks: List[Callable] = (
+        self._select_callbacks: list[Callable] = (
             []
         )  # a list of all functions called after an object is selected
 
@@ -737,7 +731,7 @@ class JupyterRenderer:
         del self._shapes[cur_id]
         self._remove_shp_button.disabled = True
 
-    def on_compute_change(self, change: Dict[str, Any]) -> None:
+    def on_compute_change(self, change: dict[str, Any]) -> None:
         """
         Called when the compute dropdown changes.
         """
@@ -751,11 +745,8 @@ class JupyterRenderer:
             )
             # display this point (type gp_Pnt)
             self.DisplayShape([cog])
-            output += (
-                "<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>%.3f<br><b>Ycog=</b>%.3f<br><b>Zcog=</b>%.3f<br>"
-                % (cog.X(), cog.Y(), cog.Z())
-            )
-            output += "<u><b>%s=</b></u>:<b>%.3f</b><br>" % (mass_property, mass)
+            output += f"<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>{cog.X():.3f}<br><b>Ycog=</b>{cog.Y():.3f}<br><b>Zcog=</b>{cog.Z():.3f}<br>"
+            output += f"<u><b>{mass_property}=</b></u>:<b>{mass:.3f}</b><br>"
         elif "Oriented" in selection:
             center, dim, oobb_shp = get_oriented_boundingbox(
                 self._current_shape_selection
@@ -767,14 +758,8 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += (
-                "<u><b>OOBB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                % (center.X(), center.Y(), center.Z())
-            )
-            output += (
-                "<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
-                % (dim[0], dim[1], dim[2])
-            )
+            output += f"<u><b>OOBB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
+            output += f"<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
             output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
                 dim[0] * dim[1] * dim[2]
             )
@@ -789,14 +774,8 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += (
-                "<u><b>ABB center</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                % (center.X(), center.Y(), center.Z())
-            )
-            output += (
-                "<u><b>ABB dimensions</b></u>:<br><b>dX=</b>%.3f<br><b>dY=</b>%.3f<br><b>dZ=</b>%.3f<br>"
-                % (dim[0], dim[1], dim[2])
-            )
+            output += f"<u><b>ABB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
+            output += f"<u><b>ABB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
             output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
                 dim[0] * dim[1] * dim[2]
             )
@@ -807,25 +786,13 @@ class JupyterRenderer:
             if kind == "Plane":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += (
-                    "<u><b>Point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                    % (pnt.X(), pnt.Y(), pnt.Z())
-                )
-                output += (
-                    "<u><b>Normal</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
-                    % (vec.X(), vec.Y(), vec.Z())
-                )
+                output += f"<u><b>Point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
+                output += f"<u><b>Normal</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
             elif kind == "Cylinder":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += (
-                    "<u><b>Axis point</b></u>:<br><b>X=</b>%.3f<br><b>Y=</b>%.3f<br><b>Z=</b>%.3f<br>"
-                    % (pnt.X(), pnt.Y(), pnt.Z())
-                )
-                output += (
-                    "<u><b>Axis direction</b></u>:<br><b>u=</b>%.3f<br><b>v=</b>%.3f<br><b>w=</b>%.3f<br>"
-                    % (vec.X(), vec.Y(), vec.Z())
-                )
+                output += f"<u><b>Axis point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
+                output += f"<u><b>Axis direction</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
         self.html.value = output
 
     def toggle_shape_visibility(self, *kargs: Any) -> None:
@@ -834,13 +801,13 @@ class JupyterRenderer:
         """
         self.clicked_obj.visible = not self.clicked_obj.visible
 
-    def toggle_axes_visibility(self, change: Dict[str, Any]) -> None:
+    def toggle_axes_visibility(self, change: dict[str, Any]) -> None:
         """
         Toggles the visibility of the axes.
         """
         self.axes.set_visibility(_bool_or_new(change))
 
-    def toggle_grid_visibility(self, change: Dict[str, Any]) -> None:
+    def toggle_grid_visibility(self, change: dict[str, Any]) -> None:
         """
         Toggles the visibility of the grid.
         """
@@ -882,8 +849,8 @@ class JupyterRenderer:
                 obj.material.opacity = 0.5
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
-                html_value = "<b>Shape type:</b> %s<br>" % get_type_as_string(
-                    selected_shape
+                html_value = (
+                    f"<b>Shape type:</b> {get_type_as_string(selected_shape)}<br>"
                 )
                 html_value += f"<b>Shape id:</b> {id_clicked}<br>"
                 self.html.value = html_value
@@ -902,9 +869,8 @@ class JupyterRenderer:
             callback: The callback to add.
         """
         if not callable(callback):
-            raise AssertionError("You must provide a callable to register the callback")
-        else:
-            self._select_callbacks.append(callback)
+            raise TypeError("You must provide a callable to register the callback")
+        self._select_callbacks.append(callback)
 
     def unregister_callback(self, callback: Callable) -> None:
         """
@@ -914,9 +880,8 @@ class JupyterRenderer:
             callback: The callback to remove.
         """
         if callback not in self._select_callbacks:
-            raise AssertionError("This callback is not registered")
-        else:
-            self._select_callbacks.remove(callback)
+            raise ValueError("This callback is not registered")
+        self._select_callbacks.remove(callback)
 
     def GetSelectedShape(self) -> Any:
         """
@@ -928,8 +893,8 @@ class JupyterRenderer:
         self,
         shp: Any,
         export_hidden_edges: bool = True,
-        location: gp_Pnt = gp_Pnt(0, 0, 0),
-        direction: gp_Dir = gp_Dir(1, 1, 1),
+        location: Optional[gp_Pnt] = None,
+        direction: Optional[gp_Dir] = None,
         color: str = "black",
         line_width: float = 0.5,
     ) -> None:
@@ -944,6 +909,10 @@ class JupyterRenderer:
             color (str, optional): The color of the shape.
             line_width (float, optional): The width of the lines.
         """
+        if location is None:
+            location = gp_Pnt(0, 0, 0)
+        if direction is None:
+            direction = gp_Dir(1, 1, 1)
         svg_string = export_shape_to_svg(
             shp,
             export_hidden_edges=export_hidden_edges,
@@ -996,9 +965,9 @@ class JupyterRenderer:
         if vertex_color is None:
             vertex_color = self._default_vertex_color
 
-        output: List[Any] = []  # a list of all geometries created from the shape
+        output: list[Any] = []  # a list of all geometries created from the shape
         # is it list of gp_Pnt ?
-        if isinstance(shp, list) and isinstance(shp[0], gp_Pnt):
+        if isinstance(shp, list) and shp and isinstance(shp[0], gp_Pnt):
             result = self.AddVerticesToScene(shp, vertex_color)
             output.append(result)
         # or a 1d element such as edge or wire ?
@@ -1039,15 +1008,20 @@ class JupyterRenderer:
             )
             output.append(result)
 
-        if selectable:  # Add geometries to pickable or non pickable objects
-            for elem in output:
-                self._displayed_pickable_objects.add(elem)
+        # Add geometries to pickable or non pickable objects
+        group = (
+            self._displayed_pickable_objects
+            if selectable
+            else self._displayed_non_pickable_objects
+        )
+        for elem in output:
+            group.add(elem)
 
         if update:
             self.Display()
 
     def AddVerticesToScene(
-        self, pnt_list: List[gp_Pnt], vertex_color: str, vertex_width: int = 5
+        self, pnt_list: list[gp_Pnt], vertex_color: str, vertex_width: int = 5
     ) -> Points:
         """
         Adds a list of vertices to the scene.
@@ -1060,7 +1034,7 @@ class JupyterRenderer:
         Returns:
             The created Points object.
         """
-        vertices_list: List[List[float]] = []  # will be passed to pythreejs
+        vertices_list: list[list[float]] = []  # will be passed to pythreejs
         BB = BRep_Builder()
         compound = TopoDS_Compound()
         BB.MakeCompound(compound)
@@ -1099,6 +1073,8 @@ class JupyterRenderer:
             pnts = discretize_edge(shp, deflection)
         elif is_wire(shp):
             pnts = discretize_wire(shp, deflection)
+        else:
+            raise TypeError("the shape must be an edge or a wire")
         np_edge_vertices = np.array(pnts, dtype=np.float32)
         np_edge_indices = np.arange(np_edge_vertices.shape[0], dtype=np.uint32)
         edge_geometry = BufferGeometry(
@@ -1113,9 +1089,7 @@ class JupyterRenderer:
         edge_id = f"{uuid.uuid4().hex}"
         self._shapes[edge_id] = shp
 
-        edge_line = Line(geometry=edge_geometry, material=edge_material, name=edge_id)
-
-        return edge_line
+        return Line(geometry=edge_geometry, material=edge_material, name=edge_id)
 
     def AddShapeToScene(
         self,
@@ -1204,15 +1178,13 @@ class JupyterRenderer:
 
         # edge rendering, if set to True
         if render_edges:
-            edges = list(
-                map(
-                    lambda i_edge: [
-                        tess.GetEdgeVertex(i_edge, i_vert)
-                        for i_vert in range(tess.ObjEdgeGetVertexCount(i_edge))
-                    ],
-                    range(tess.ObjGetEdgeCount()),
-                )
-            )
+            edges = [
+                [
+                    tess.GetEdgeVertex(i_edge, i_vert)
+                    for i_vert in range(tess.ObjEdgeGetVertexCount(i_edge))
+                ]
+                for i_edge in range(tess.ObjGetEdgeCount())
+            ]
             edge_list = _flatten(list(map(_explode, edges)))
             lines = LineSegmentsGeometry(positions=edge_list)
             mat = LineMaterial(linewidth=1, color=edge_color)
@@ -1221,7 +1193,7 @@ class JupyterRenderer:
 
         return shape_mesh
 
-    def _scale(self, vec: List[float]) -> List[float]:
+    def _scale(self, vec: list[float]) -> list[float]:
         """
         Scales a vector.
         """
@@ -1256,15 +1228,17 @@ class JupyterRenderer:
         """
         self._shapes = {}
         self._displayed_pickable_objects = Group()
+        self._displayed_non_pickable_objects = Group()
         self._current_shape_selection = None
         self._current_mesh_selection = None
-        self._current_selection_material = None
-        self._renderer.scene = Scene(children=[])
+        self._current_selection_material_color = None
+        if self._renderer is not None:
+            self._renderer.scene = Scene(children=[])
 
     def Display(
         self,
-        position: Optional[Tuple[float, float, float]] = None,
-        rotation: Optional[Tuple[float, float, float]] = None,
+        position: Optional[tuple[float, float, float]] = None,
+        rotation: Optional[tuple[float, float, float]] = None,
     ) -> None:
         """
         Displays the renderer.
@@ -1336,8 +1310,8 @@ class JupyterRenderer:
             children=[
                 self._displayed_pickable_objects,
                 self._displayed_non_pickable_objects,
+                *environment,
             ]
-            + environment
         )
 
         # Set up Controllers

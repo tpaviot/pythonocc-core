@@ -17,17 +17,17 @@
 
 import os
 import sys
-from string import Template
 import tempfile
 import uuid
-from typing import Any, Dict, Generator, List, Optional, Tuple
+from collections.abc import Generator
+from string import Template
+from typing import Any, Optional, Union
 from xml.etree import ElementTree
 
-from OCC.Core.Tesselator import ShapeTesselator
 from OCC import VERSION
-
-from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
+from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Display.WebGl.simple_server import start_server
+from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
 
 
 def spinning_cursor() -> Generator[str, None, None]:
@@ -38,8 +38,7 @@ def spinning_cursor() -> Generator[str, None, None]:
         yield from "|/-\\"
 
 
-X3DFILE_HEADER_TEMPLATE = Template(
-    """<?xml version="1.0" encoding="UTF-8"?>
+X3DFILE_HEADER_TEMPLATE = Template("""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
 <head>
@@ -49,11 +48,9 @@ X3DFILE_HEADER_TEMPLATE = Template(
     <meta name="description" content="pythonocc-$VERSION x3dom based shape rendering"/>
 </head>
 <Scene>
-"""
-)
+""")
 
-HEADER_TEMPLATE = Template(
-    """
+HEADER_TEMPLATE = Template("""
 <head>
     <title>pythonOCC $VERSION x3dom renderer</title>
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
@@ -108,11 +105,9 @@ HEADER_TEMPLATE = Template(
         }
     </style>
 </head>
-"""
-)
+""")
 
-BODY_TEMPLATE = Template(
-    """
+BODY_TEMPLATE = Template("""
 <body>
     $X3DSCENE
     <div id="pythonocc_rocks">
@@ -129,8 +124,8 @@ BODY_TEMPLATE = Template(
     var current_selected_shape = null;
     var current_mat = null;
     function fitCamera()
-    {            
-        var x3dElem = document.getElementById('pythonocc-x3d-scene');            
+    {
+        var x3dElem = document.getElementById('pythonocc-x3d-scene');
         x3dElem.runtime.fitAll();
     }
     function select(the_shape) // called whenever a shape is clicked
@@ -171,11 +166,10 @@ BODY_TEMPLATE = Template(
     document.addEventListener('keypress', onDocumentKeyPress, false);
     </script>
 </body>
-"""
-)
+""")
 
 
-def export_edge_to_indexed_lineset(edge_point_set: List[List[float]]) -> str:
+def export_edge_to_indexed_lineset(edge_point_set: list[list[float]]) -> str:
     """
     Exports an edge to an IndexedLineSet string.
 
@@ -194,7 +188,11 @@ def export_edge_to_indexed_lineset(edge_point_set: List[List[float]]) -> str:
 
 
 def indexed_lineset_to_x3d_string(
-    str_linesets: List[str], header: bool = True, footer: bool = True, ils_id: int = 0
+    str_linesets: list[str],
+    header: bool = True,
+    footer: bool = True,
+    ils_id: Union[int, str] = 0,
+    line_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
 ) -> str:
     """
     Converts an IndexedLineSet string to an X3D string.
@@ -203,7 +201,9 @@ def indexed_lineset_to_x3d_string(
         str_linesets (list): A list of IndexedLineSet strings.
         header (bool, optional): Whether to include the X3D header.
         footer (bool, optional): Whether to include the X3D footer.
-        ils_id (int, optional): The ID of the IndexedLineSet.
+        ils_id (int or str, optional): The ID of the IndexedLineSet, the
+            line sets are named edg{ils_id}_{index}.
+        line_color (tuple, optional): The (R, G, B) color of the lines.
 
     Returns:
         str: The X3D string.
@@ -214,11 +214,16 @@ def indexed_lineset_to_x3d_string(
     x3dfile_str += "<Switch whichChoice='0' id='swBRP'>\n"
     x3dfile_str += "\t<Group>\n"
 
-    for ils_id, str_lineset in enumerate(str_linesets):
-        x3dfile_str += f"\t\t<Transform scale='1 1 1'><Shape DEF='edg{ils_id}'>\n"
-        # empty appearance, but the x3d validator complains if nothing set
+    emissive_color = f"{line_color[0]} {line_color[1]} {line_color[2]}"
+    for index, str_lineset in enumerate(str_linesets):
         x3dfile_str += (
-            "\t\t\t<Appearance><Material emissiveColor='0 0 0'/></Appearance>\n\t\t"
+            f"\t\t<Transform scale='1 1 1'><Shape DEF='edg{ils_id}_{index}'>\n"
+        )
+        # the lines are drawn with the emissive color, unlit
+        x3dfile_str += (
+            "\t\t\t<Appearance>"
+            f"<Material emissiveColor='{emissive_color}'/>"
+            "</Appearance>\n\t\t"
         )
         x3dfile_str += str_lineset
         x3dfile_str += "\t\t</Shape></Transform>\n"
@@ -268,7 +273,7 @@ class HTMLBody:
 
     def __init__(
         self,
-        x3d_shapes: List[str],
+        x3d_shapes: list[str],
         axes_plane: bool,
         axes_plane_zoom_factor: float = 1.0,
     ) -> None:
@@ -306,14 +311,14 @@ class HTMLBody:
         x3dcontent += '<transform id="global_scene_rotation_Id" rotation="1 0 0 -1.57079632679">\n'
         for cur_shp, shp_uid in enumerate(self._x3d_shapes, start=1):
             sys.stdout.write(
-                "\r%s meshing shapes... %i%%"
-                % (next(self.spinning_cursor), round(cur_shp / nb_shape * 100))
+                f"\r{next(self.spinning_cursor)} meshing shapes... "
+                f"{round(cur_shp / nb_shape * 100)}%"
             )
             sys.stdout.flush()
             # only the last downloaded shape raises a fitCamera event
             x3dcontent += "\t\t\t<Inline "
             if cur_shp == nb_shape:
-                x3dcontent += 'onload="fitCamera() "'
+                x3dcontent += 'onload="fitCamera()" '
             x3dcontent += f'mapDEFToID="true" url="{shp_uid}.x3d"></Inline>\n'
         x3dcontent += "\t\t\t</transform>\n\t\t</Scene>\n\t</x3d>\n"
 
@@ -331,11 +336,11 @@ class X3DExporter:
         vertex_shader: Optional[str],
         fragment_shader: Optional[str],
         export_edges: bool,
-        color: Tuple[float, float, float],
-        specular_color: Tuple[float, float, float],
+        color: tuple[float, float, float],
+        specular_color: tuple[float, float, float],
         shininess: float,
         transparency: float,
-        line_color: Tuple[float, float, float],
+        line_color: tuple[float, float, float],
         line_width: float,
         mesh_quality: float,
     ) -> None:
@@ -355,9 +360,13 @@ class X3DExporter:
             line_width: The width of the lines.
             mesh_quality: The quality of the mesh.
         """
+        if (vertex_shader is None) != (fragment_shader is None):
+            raise ValueError("both the vertex and the fragment shaders are required")
         self._shape = shape
         self._vs = vertex_shader
         self._fs = fragment_shader
+        self._line_color = line_color
+        self._line_width = line_width
         self._export_edges = export_edges
         self._color = color
         self._shininess = shininess
@@ -367,8 +376,8 @@ class X3DExporter:
         # the list of indexed face sets that compose the shape
         # if ever the map_faces_to_mesh option is enabled, this list
         # maybe composed of dozains of TriangleSet
-        self._triangle_sets: List[str] = []
-        self._line_sets: List[str] = []
+        self._triangle_sets: list[str] = []
+        self._line_sets: list[str] = []
         self._x3d_string = ""  # the string that contains the x3d description
 
     def compute(self) -> None:
@@ -427,10 +436,11 @@ class X3DExporter:
                 x3dfile_str += (
                     '<ComposedShader><ShaderPart type="VERTEX" style="display:none;">\n'
                 )
-                x3dfile_str += self._vs
+                # CDATA sections keep the <, > and & of the GLSL sources
+                x3dfile_str += f"<![CDATA[{self._vs}]]>"
                 x3dfile_str += "</ShaderPart>\n"
                 x3dfile_str += '<ShaderPart type="FRAGMENT" style="display:none;">\n'
-                x3dfile_str += self._fs
+                x3dfile_str += f"<![CDATA[{self._fs}]]>"
                 x3dfile_str += "</ShaderPart></ComposedShader>\n"
             x3dfile_str += "</Appearance>\n"
             # export triangles
@@ -443,7 +453,11 @@ class X3DExporter:
             # the "Switch" node selects the group to be displayed
 
             x3dfile_str += indexed_lineset_to_x3d_string(
-                self._line_sets, header=False, footer=False
+                self._line_sets,
+                header=False,
+                footer=False,
+                ils_id=f"shape{shape_id}",
+                line_color=self._line_color,
             )
         x3dfile_str += "</Scene>\n</X3D>\n"
 
@@ -451,7 +465,7 @@ class X3DExporter:
         # use ElementTree to ensure xml file quality
         #
         xml_et = ElementTree.fromstring(x3dfile_str)
-        return ElementTree.tostring(xml_et, encoding="utf8").decode("utf8")
+        return ElementTree.tostring(xml_et, encoding="UTF-8").decode("utf-8")
 
     def write_to_file(self, filename: str, shape_id: int) -> None:
         """
@@ -461,7 +475,7 @@ class X3DExporter:
             filename (str): The name of the file to write to.
             shape_id (int): The ID of the shape.
         """
-        with open(filename, "w") as f:
+        with open(filename, "w", encoding="utf-8") as f:
             f.write(self.to_x3dfile_string(shape_id))
 
 
@@ -486,10 +500,10 @@ class X3DomRenderer:
             display_axes_plane (bool, optional): Whether to display the axes plane.
             axes_plane_zoom_factor (float, optional): The zoom factor for the axes plane.
         """
-        self._path = tempfile.mkdtemp() if not path else path
+        self._path = path if path else tempfile.mkdtemp()
         self._html_filename = os.path.join(self._path, "index.html")
-        self._x3d_shapes: Dict[str, Any] = {}
-        self._x3d_edges: Dict[str, Any] = {}
+        self._x3d_shapes: dict[str, Any] = {}
+        self._x3d_edges: dict[str, Any] = {}
         self._axes_plane = (
             display_axes_plane  # display the small RVB axes and the plane
         )
@@ -505,14 +519,14 @@ class X3DomRenderer:
         vertex_shader: Optional[str] = None,
         fragment_shader: Optional[str] = None,
         export_edges: bool = False,
-        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
-        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        color: tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: tuple[float, float, float] = (0.2, 0.2, 0.2),
         shininess: float = 0.9,
         transparency: float = 0.0,
-        line_color: Tuple[float, float, float] = (0.0, 0.0, 0.0),
+        line_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
         line_width: float = 2.0,
         mesh_quality: float = 1.0,
-    ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+    ) -> tuple[dict[str, Any], dict[str, Any]]:
         """
         Adds a shape to the rendering buffer.
 
@@ -541,13 +555,13 @@ class X3DomRenderer:
             edge_hash = f"edg{uuid.uuid4().hex}"
             line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string(
-                [line_set], ils_id=edge_hash
+                [line_set], ils_id=edge_hash, line_color=line_color
             )
             edge_full_path = os.path.join(self._path, f"{edge_hash}.x3d")
-            with open(edge_full_path, "w") as edge_file:
+            with open(edge_full_path, "w", encoding="utf-8") as edge_file:
                 edge_file.write(x3dfile_content)
             # store this edge hash
-            self._x3d_edges[edge_hash] = [color, line_width]
+            self._x3d_edges[edge_hash] = [line_color, line_width]
             return self._x3d_shapes, self._x3d_edges
 
         if is_wire(shape):
@@ -556,13 +570,13 @@ class X3DomRenderer:
             wire_hash = f"wir{uuid.uuid4().hex}"
             line_set = export_edge_to_indexed_lineset(pnts)
             x3dfile_content = indexed_lineset_to_x3d_string(
-                [line_set], ils_id=wire_hash
+                [line_set], ils_id=wire_hash, line_color=line_color
             )
             wire_full_path = os.path.join(self._path, f"{wire_hash}.x3d")
-            with open(wire_full_path, "w") as wire_file:
+            with open(wire_full_path, "w", encoding="utf-8") as wire_file:
                 wire_file.write(x3dfile_content)
             # store this edge hash
-            self._x3d_edges[wire_hash] = [color, line_width]
+            self._x3d_edges[wire_hash] = [line_color, line_width]
             return self._x3d_shapes, self._x3d_edges
 
         shape_uuid = uuid.uuid4().hex
@@ -621,7 +635,7 @@ class X3DomRenderer:
             axes_plane (bool): Whether to display the axes plane.
             axes_plane_zoom_factor (float): The zoom factor for the axes plane.
         """
-        with open(self._html_filename, "w") as html_file:
+        with open(self._html_filename, "w", encoding="utf-8") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")
             html_file.write('<html lang="en">')
             # header

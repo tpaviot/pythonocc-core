@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -21,11 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<StepToTopoDS.hxx>
 #include<StepToTopoDS_BuilderError.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfRI.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>
-#include<StepToTopoDS_DataMapIteratorOfDataMapOfTRI.hxx>
-#include<StepToTopoDS_DataMapIteratorOfPointEdgeMap.hxx>
-#include<StepToTopoDS_DataMapIteratorOfPointVertexMap.hxx>
 #include<StepToTopoDS_DataMapOfRI.hxx>
 #include<StepToTopoDS_DataMapOfRINames.hxx>
 #include<StepToTopoDS_DataMapOfTRI.hxx>

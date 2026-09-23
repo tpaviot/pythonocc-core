@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -73,10 +73,12 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapeupgrade.html
 #include<Adaptor2d_module.hxx>
 #include<Precision_module.hxx>
 #include<Geom_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -149,7 +151,7 @@ from OCC.Core.Exception import *
 class ShapeUpgrade {
 	public:
 		/****** ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve ******/
-		/****** md5 signature: 421f63f6ad773af9d12ede386977a2cf ******/
+		/****** md5 signature: aba0b26913e22d4e1167dfc53beed791 ******/
 		%feature("compactdefaultargs") C0BSplineToSequenceOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -165,10 +167,10 @@ Description
 -----------
 Unifies same domain faces and edges of specified shape.
 ") C0BSplineToSequenceOfC1BSplineCurve;
-		static Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HSequenceOfBoundedCurve> & seqBS);
+		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HSequenceOfBoundedCurve > & seqBS);
 
 		/****** ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve ******/
-		/****** md5 signature: b2f124ea9a65afe841263d044caf576a ******/
+		/****** md5 signature: 6bfb9b9d3a89361e0687d37304f13e14 ******/
 		%feature("compactdefaultargs") C0BSplineToSequenceOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -184,7 +186,7 @@ Description
 -----------
 Converts C0 B-Spline curve into sequence of C1 B-Spline curves. This method splits B-Spline at the knots with multiplicities equal to degree, i.e. unlike method GeomConvert::C0BSplineToArrayOfC1BSplineCurve this one does not use any tolerance and therefore does not change the geometry of B-Spline. Returns True if C0 B-Spline was successfully split, else returns False (if BS is C1 B-Spline).
 ") C0BSplineToSequenceOfC1BSplineCurve;
-		static Standard_Boolean C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve> & seqBS);
+		static bool C0BSplineToSequenceOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HSequenceOfBoundedCurve > & seqBS);
 
 };
 
@@ -214,7 +216,7 @@ Empty constructor.
 		 ShapeUpgrade_RemoveLocations();
 
 		/****** ShapeUpgrade_RemoveLocations::GetModifiedShapesMap ******/
-		/****** md5 signature: 07c478fd6fe912829b8598bbec832ae9 ******/
+		/****** md5 signature: 496329fe3b13180d82d92739572c8840 ******/
 		%feature("compactdefaultargs") GetModifiedShapesMap;
 		%feature("autodoc", "Return
 -------
@@ -258,7 +260,7 @@ Returns modified shape obtained from initial shape.
 		TopoDS_Shape ModifiedShape(const TopoDS_Shape & theInitShape);
 
 		/****** ShapeUpgrade_RemoveLocations::Remove ******/
-		/****** md5 signature: 6fd9ebf3d70b78220e210a8e91c47876 ******/
+		/****** md5 signature: 35c23a2673bf1176799e61ead5a16897 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -273,7 +275,7 @@ Description
 -----------
 Removes all location correspondingly to RemoveLevel.
 ") Remove;
-		Standard_Boolean Remove(const TopoDS_Shape & theShape);
+		bool Remove(const TopoDS_Shape & theShape);
 
 		/****** ShapeUpgrade_RemoveLocations::RemoveLevel ******/
 		/****** md5 signature: 21ab2af202f5ca8d0968f7579fa3de76 ******/
@@ -398,12 +400,12 @@ Returns message registrator.
 		opencascade::handle<ShapeExtend_BasicMsgRegistrator> MsgRegistrator();
 
 		/****** ShapeUpgrade_ShapeDivide::Perform ******/
-		/****** md5 signature: 18b7b1e421cfaf7d27fabf76c888c2c3 ******/
+		/****** md5 signature: adbcbe3c6738769427e4aef2cb0411b4 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-newContext: bool (optional, default to Standard_True)
+newContext: bool (optional, default to true)
 
 Return
 -------
@@ -413,7 +415,7 @@ Description
 -----------
 Performs splitting and computes the resulting shape If newContext is True (default), the internal context will be cleared at start, else previous substitutions will be acting.
 ") Perform;
-		virtual Standard_Boolean Perform(const Standard_Boolean newContext = Standard_True);
+		virtual bool Perform(const bool newContext = true);
 
 		/****** ShapeUpgrade_ShapeDivide::Result ******/
 		/****** md5 signature: e7d296a4a4a5995509cb67e3ee28f5dc ******/
@@ -462,12 +464,12 @@ None
 
 Description
 -----------
-Sets context with recorded modifications to be applied during next call(s) to Perform(shape,Standard_False).
+Sets context with recorded modifications to be applied during next call(s) to Perform(shape,false).
 ") SetContext;
 		void SetContext(const opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****** ShapeUpgrade_ShapeDivide::SetEdgeMode ******/
-		/****** md5 signature: 18c0b0d2d7ab990e98ccbb784724e0a7 ******/
+		/****** md5 signature: 31c2dceac9265d661ebb7b6a6274a7b5 ******/
 		%feature("compactdefaultargs") SetEdgeMode;
 		%feature("autodoc", "
 Parameters
@@ -482,15 +484,15 @@ Description
 -----------
 Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
 ") SetEdgeMode;
-		void SetEdgeMode(const Standard_Integer aEdgeMode);
+		void SetEdgeMode(const int aEdgeMode);
 
 		/****** ShapeUpgrade_ShapeDivide::SetMaxTolerance ******/
-		/****** md5 signature: ab801fe49011ef1da17c304e1a6984da ******/
+		/****** md5 signature: 89c2fe708f49a26d4248897f865c07e8 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -500,15 +502,15 @@ Description
 -----------
 Sets maximal allowed tolerance.
 ") SetMaxTolerance;
-		void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeUpgrade_ShapeDivide::SetMinTolerance ******/
-		/****** md5 signature: cc2021943713342170d3a4430319bb02 ******/
+		/****** md5 signature: 33804631779269d0d8a6051263cb6c12 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -518,7 +520,7 @@ Description
 -----------
 Sets minimal allowed tolerance.
 ") SetMinTolerance;
-		void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeUpgrade_ShapeDivide::SetMsgRegistrator ******/
 		/****** md5 signature: 684cc840be09df59bc67d102aa6274f1 ******/
@@ -539,12 +541,12 @@ Sets message registrator.
 		virtual void SetMsgRegistrator(const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & msgreg);
 
 		/****** ShapeUpgrade_ShapeDivide::SetPrecision ******/
-		/****** md5 signature: 683e72fa620702e8c921bb4783d3d0b5 ******/
+		/****** md5 signature: f9c41d0388ab8dedd7f97163565c355a ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-Prec: float
+Prec: double
 
 Return
 -------
@@ -554,7 +556,7 @@ Description
 -----------
 Defines the spatial precision used for splitting.
 ") SetPrecision;
-		void SetPrecision(const Standard_Real Prec);
+		void SetPrecision(const double Prec);
 
 		/****** ShapeUpgrade_ShapeDivide::SetSplitFaceTool ******/
 		/****** md5 signature: 6333125ac2fed1a2119271cedc5cf06b ******/
@@ -575,7 +577,7 @@ Sets the tool for splitting faces.
 		void SetSplitFaceTool(const opencascade::handle<ShapeUpgrade_FaceDivide> & splitFaceTool);
 
 		/****** ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode ******/
-		/****** md5 signature: be112b9c06ada1bc38a6ffc5ac01085f ******/
+		/****** md5 signature: 97f5793106195949d6ea9b23bb7fd025 ******/
 		%feature("compactdefaultargs") SetSurfaceSegmentMode;
 		%feature("autodoc", "
 Parameters
@@ -590,10 +592,10 @@ Description
 -----------
 Purpose sets mode for trimming (segment) surface by wire UV bounds.
 ") SetSurfaceSegmentMode;
-		void SetSurfaceSegmentMode(const Standard_Boolean Segment);
+		void SetSurfaceSegmentMode(const bool Segment);
 
 		/****** ShapeUpgrade_ShapeDivide::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -608,7 +610,7 @@ Description
 -----------
 Queries the status of last call to Perform OK: no splitting was done (or no call to Perform) DONE1: some edges were split DONE2: surface was split FAIL1: some errors occurred.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -638,13 +640,13 @@ Creates a ShellSewing, empty.
 		 ShapeUpgrade_ShellSewing();
 
 		/****** ShapeUpgrade_ShellSewing::ApplySewing ******/
-		/****** md5 signature: b4bb58c970656c83c667c95aa27582a2 ******/
+		/****** md5 signature: 52d1e0c7759e57d8efa209db2661951e ******/
 		%feature("compactdefaultargs") ApplySewing;
 		%feature("autodoc", "
 Parameters
 ----------
 shape: TopoDS_Shape
-tol: float (optional, default to 0.0)
+tol: double (optional, default to 0.0)
 
 Return
 -------
@@ -654,7 +656,7 @@ Description
 -----------
 Builds a new shape from a former one, by calling Sewing from BRepBuilderAPI. Rebuilt solids are oriented to be 'not infinite' //! If <tol> is not given (i.e. value 0. by default), it is computed as the mean tolerance recorded in <shape> //! If no shell has been sewed, this method returns the input shape.
 ") ApplySewing;
-		TopoDS_Shape ApplySewing(const TopoDS_Shape & shape, const Standard_Real tol = 0.0);
+		TopoDS_Shape ApplySewing(const TopoDS_Shape & shape, const double tol = 0.0);
 
 };
 
@@ -684,7 +686,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitCurve();
 
 		/****** ShapeUpgrade_SplitCurve::Build ******/
-		/****** md5 signature: 2c9f0d7f3c99a11dca5832cdace7f27b ******/
+		/****** md5 signature: b681ceda349cf0ec307efcf6341adc0d ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -699,7 +701,7 @@ Description
 -----------
 If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		virtual void Build(const bool Segment);
 
 		/****** ShapeUpgrade_SplitCurve::Compute ******/
 		/****** md5 signature: 68eced81da9e27c35540afe112634b9d ******/
@@ -715,13 +717,13 @@ Calculates points for correction/splitting of the curve.
 		virtual void Compute();
 
 		/****** ShapeUpgrade_SplitCurve::Init ******/
-		/****** md5 signature: e3c9adc1741e8b6d11ad7c0a92336e38 ******/
+		/****** md5 signature: 6d4d9b5ce5591f97039d1c3755e4ad20 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-First: float
-Last: float
+First: double
+Last: double
 
 Return
 -------
@@ -731,15 +733,15 @@ Description
 -----------
 Initializes with curve first and last parameters.
 ") Init;
-		void Init(const Standard_Real First, const Standard_Real Last);
+		void Init(const double First, const double Last);
 
 		/****** ShapeUpgrade_SplitCurve::Perform ******/
-		/****** md5 signature: f19fe529840a01c5a1a2d89aafc1a081 ******/
+		/****** md5 signature: 136ab4c37562512fa63ccf67b5bf0b93 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Segment: bool (optional, default to Standard_True)
+Segment: bool (optional, default to true)
 
 Return
 -------
@@ -749,10 +751,10 @@ Description
 -----------
 Performs correction/splitting of the curve. First defines splitting values by method Compute(), then calls method Build().
 ") Perform;
-		void Perform(const Standard_Boolean Segment = Standard_True);
+		void Perform(const bool Segment = true);
 
 		/****** ShapeUpgrade_SplitCurve::SetSplitValues ******/
-		/****** md5 signature: 28831bdcff62a4474f36a23c7bad5d57 ******/
+		/****** md5 signature: 8e738bd2d4c4909adddd0d4c5414ffcd ******/
 		%feature("compactdefaultargs") SetSplitValues;
 		%feature("autodoc", "
 Parameters
@@ -770,7 +772,7 @@ Sets the parameters where splitting has to be done.
 		void SetSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & SplitValues);
 
 		/****** ShapeUpgrade_SplitCurve::SplitValues ******/
-		/****** md5 signature: 74e88be29642adc22987688fe2ab7f12 ******/
+		/****** md5 signature: 4f80ad4ab1c3944f47be6b2230b596a4 ******/
 		%feature("compactdefaultargs") SplitValues;
 		%feature("autodoc", "Return
 -------
@@ -783,7 +785,7 @@ returns all the splitting values including the First and Last parameters of the 
 		const opencascade::handle<TColStd_HSequenceOfReal> & SplitValues();
 
 		/****** ShapeUpgrade_SplitCurve::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -798,7 +800,7 @@ Description
 -----------
 Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one segment DONE2 - splitting is required, but gives only one segment (initial) DONE3 - geometric form of the curve or parametrisation is modified.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -830,7 +832,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitSurface();
 
 		/****** ShapeUpgrade_SplitSurface::Build ******/
-		/****** md5 signature: 2c9f0d7f3c99a11dca5832cdace7f27b ******/
+		/****** md5 signature: b681ceda349cf0ec307efcf6341adc0d ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -845,15 +847,15 @@ Description
 -----------
 Performs splitting of the supporting surface. If resulting surface is B-Spline and Segment is True, the result is composed with segments of the surface bounded by the U and V SplitValues (method Geom_BSplineSurface::Segment is used). If Segment is False, the result is composed with Geom_RectangularTrimmedSurface all based on the same complete surface. Fields myNbResultingRow and myNbResultingCol must be set to specify the size of resulting grid of surfaces.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		virtual void Build(const bool Segment);
 
 		/****** ShapeUpgrade_SplitSurface::Compute ******/
-		/****** md5 signature: f801f72d3fe83b2b6e0adfadc49f30a0 ******/
+		/****** md5 signature: 4ad4406fa9bbbfc0a49e49c6b0f50d51 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
 ----------
-Segment: bool (optional, default to Standard_True)
+Segment: bool (optional, default to true)
 
 Return
 -------
@@ -863,7 +865,7 @@ Description
 -----------
 Calculates points for correction/splitting of the surface.
 ") Compute;
-		virtual void Compute(const Standard_Boolean Segment = Standard_True);
+		virtual void Compute(const bool Segment = true);
 
 		/****** ShapeUpgrade_SplitSurface::Init ******/
 		/****** md5 signature: ae778074c5c355f705c26cfe08f002f6 ******/
@@ -884,17 +886,17 @@ Initializes with single supporting surface.
 		void Init(const opencascade::handle<Geom_Surface> & S);
 
 		/****** ShapeUpgrade_SplitSurface::Init ******/
-		/****** md5 signature: c7d10a11179e927adbd9f6f482589311 ******/
+		/****** md5 signature: 390cac988355beb6ec6991a27b1028a6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
-UFirst: float
-ULast: float
-VFirst: float
-VLast: float
-theArea: float (optional, default to 0)
+UFirst: double
+ULast: double
+VFirst: double
+VLast: double
+theArea: double (optional, default to 0)
 
 Return
 -------
@@ -904,15 +906,15 @@ Description
 -----------
 Initializes with single supporting surface with bounding parameters.
 ") Init;
-		void Init(const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, const Standard_Real theArea = 0);
+		void Init(const opencascade::handle<Geom_Surface> & S, const double UFirst, const double ULast, const double VFirst, const double VLast, const double theArea = 0);
 
 		/****** ShapeUpgrade_SplitSurface::Perform ******/
-		/****** md5 signature: f19fe529840a01c5a1a2d89aafc1a081 ******/
+		/****** md5 signature: 136ab4c37562512fa63ccf67b5bf0b93 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Segment: bool (optional, default to Standard_True)
+Segment: bool (optional, default to true)
 
 Return
 -------
@@ -922,7 +924,7 @@ Description
 -----------
 Performs correction/splitting of the surface. First defines splitting values by method Compute(), then calls method Build().
 ") Perform;
-		void Perform(const Standard_Boolean Segment = Standard_True);
+		void Perform(const bool Segment = true);
 
 		/****** ShapeUpgrade_SplitSurface::ResSurfaces ******/
 		/****** md5 signature: b6252c047eef94757daa2ce878b28d4a ******/
@@ -938,7 +940,7 @@ Returns obtained surfaces after splitting as CompositeSurface.
 		const opencascade::handle<ShapeExtend_CompositeSurface> & ResSurfaces();
 
 		/****** ShapeUpgrade_SplitSurface::SetUSplitValues ******/
-		/****** md5 signature: c4d4444c48da4618785e670668259df5 ******/
+		/****** md5 signature: 0b9fe9a815997f957794dc2b342b9499 ******/
 		%feature("compactdefaultargs") SetUSplitValues;
 		%feature("autodoc", "
 Parameters
@@ -956,7 +958,7 @@ Sets U parameters where splitting has to be done.
 		void SetUSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & UValues);
 
 		/****** ShapeUpgrade_SplitSurface::SetVSplitValues ******/
-		/****** md5 signature: e6570307ebb97aaab26d75d78a70cabd ******/
+		/****** md5 signature: 4ae528987506f72f2e98d3b2667b4139 ******/
 		%feature("compactdefaultargs") SetVSplitValues;
 		%feature("autodoc", "
 Parameters
@@ -974,7 +976,7 @@ Sets V parameters where splitting has to be done.
 		void SetVSplitValues(const opencascade::handle<TColStd_HSequenceOfReal> & VValues);
 
 		/****** ShapeUpgrade_SplitSurface::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -989,10 +991,10 @@ Description
 -----------
 Returns the status OK - no splitting is needed DONE1 - splitting required and gives more than one patch DONE2 - splitting is required, but gives only single patch (initial) DONE3 - geometric form of the surface or parametrisation is modified.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 		/****** ShapeUpgrade_SplitSurface::USplitValues ******/
-		/****** md5 signature: 901ea5ae80d1329033183e4cdace8f3f ******/
+		/****** md5 signature: 56271d304c57aa6bc41593b449c751f9 ******/
 		%feature("compactdefaultargs") USplitValues;
 		%feature("autodoc", "Return
 -------
@@ -1005,7 +1007,7 @@ returns all the U splitting values including the First and Last parameters of th
 		const opencascade::handle<TColStd_HSequenceOfReal> & USplitValues();
 
 		/****** ShapeUpgrade_SplitSurface::VSplitValues ******/
-		/****** md5 signature: 38dafe2dc9fe8e8f5b3d6c5b856c8404 ******/
+		/****** md5 signature: 19a6193e3cd6bc63a83e5d642a864a72 ******/
 		%feature("compactdefaultargs") VSplitValues;
 		%feature("autodoc", "Return
 -------
@@ -1060,61 +1062,61 @@ Returns context.
 		opencascade::handle<ShapeBuild_ReShape> Context();
 
 		/****** ShapeUpgrade_Tool::LimitTolerance ******/
-		/****** md5 signature: 1120a13b64b8d00fb9f9fc07e07ffa98 ******/
+		/****** md5 signature: 7853e4a6f09988ff18c714ab2dd1c7c5 ******/
 		%feature("compactdefaultargs") LimitTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-toler: float
+toler: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns tolerance limited by [myMinTol,myMaxTol].
 ") LimitTolerance;
-		Standard_Real LimitTolerance(const Standard_Real toler);
+		double LimitTolerance(const double toler);
 
 		/****** ShapeUpgrade_Tool::MaxTolerance ******/
-		/****** md5 signature: b0c09a40965fea8fc4d63c52a795d7fd ******/
+		/****** md5 signature: 42b12d569fc6c97ab3b734f04b37ec44 ******/
 		%feature("compactdefaultargs") MaxTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns maximal allowed tolerance.
 ") MaxTolerance;
-		Standard_Real MaxTolerance();
+		double MaxTolerance();
 
 		/****** ShapeUpgrade_Tool::MinTolerance ******/
-		/****** md5 signature: 2629547ec2afd3a7a2edaa268cbc0366 ******/
+		/****** md5 signature: df77f4a3b7576c4b27daf21be8de21c5 ******/
 		%feature("compactdefaultargs") MinTolerance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns minimal allowed tolerance.
 ") MinTolerance;
-		Standard_Real MinTolerance();
+		double MinTolerance();
 
 		/****** ShapeUpgrade_Tool::Precision ******/
-		/****** md5 signature: 34c7e39bd57a685873eea74fa4629747 ******/
+		/****** md5 signature: 619d4ae2a460550f8d9105bf9304b5d1 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns basic precision value.
 ") Precision;
-		Standard_Real Precision();
+		double Precision();
 
 		/****** ShapeUpgrade_Tool::Set ******/
 		/****** md5 signature: 1bd0f96c6565d39989ff1ad7d130d45b ******/
@@ -1153,12 +1155,12 @@ Sets context.
 		void SetContext(const opencascade::handle<ShapeBuild_ReShape> & context);
 
 		/****** ShapeUpgrade_Tool::SetMaxTolerance ******/
-		/****** md5 signature: ab801fe49011ef1da17c304e1a6984da ******/
+		/****** md5 signature: 89c2fe708f49a26d4248897f865c07e8 ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-maxtol: float
+maxtol: double
 
 Return
 -------
@@ -1168,15 +1170,15 @@ Description
 -----------
 Sets maximal allowed tolerance.
 ") SetMaxTolerance;
-		void SetMaxTolerance(const Standard_Real maxtol);
+		void SetMaxTolerance(const double maxtol);
 
 		/****** ShapeUpgrade_Tool::SetMinTolerance ******/
-		/****** md5 signature: cc2021943713342170d3a4430319bb02 ******/
+		/****** md5 signature: 33804631779269d0d8a6051263cb6c12 ******/
 		%feature("compactdefaultargs") SetMinTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-mintol: float
+mintol: double
 
 Return
 -------
@@ -1186,15 +1188,15 @@ Description
 -----------
 Sets minimal allowed tolerance.
 ") SetMinTolerance;
-		void SetMinTolerance(const Standard_Real mintol);
+		void SetMinTolerance(const double mintol);
 
 		/****** ShapeUpgrade_Tool::SetPrecision ******/
-		/****** md5 signature: a601cf881702916ad1a5bcd1fec314c4 ******/
+		/****** md5 signature: e2e651a513d3749ed1bd1fef071518ff ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
 ----------
-preci: float
+preci: double
 
 Return
 -------
@@ -1204,7 +1206,7 @@ Description
 -----------
 Sets basic precision value.
 ") SetPrecision;
-		void SetPrecision(const Standard_Real preci);
+		void SetPrecision(const double preci);
 
 };
 
@@ -1223,7 +1225,7 @@ Sets basic precision value.
 class ShapeUpgrade_UnifySameDomain : public Standard_Transient {
 	public:
 typedef NCollection_DataMap<TopoDS_Shape , opencascade ::handle<Geom_Plane>, TopTools_ShapeMapHasher> DataMapOfFacePlane;
-typedef NCollection_DataMap<TopoDS_Shape , TopTools_MapOfShape , TopTools_ShapeMapHasher> DataMapOfShapeMapOfShape;
+typedef NCollection_DataMap<TopoDS_Shape , NCollection_Map<TopoDS_Shape , TopTools_ShapeMapHasher>, TopTools_ShapeMapHasher> DataMapOfShapeMapOfShape;
 		/****** ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain ******/
 		/****** md5 signature: 81e68dd91fd764ff95aa62b12dc88ed6 ******/
 		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
@@ -1238,15 +1240,15 @@ Empty constructor.
 		 ShapeUpgrade_UnifySameDomain();
 
 		/****** ShapeUpgrade_UnifySameDomain::ShapeUpgrade_UnifySameDomain ******/
-		/****** md5 signature: 47e47dc0915dcf3836cb412ba192ed88 ******/
+		/****** md5 signature: aeea28809159f08b2b650b7df8b66f89 ******/
 		%feature("compactdefaultargs") ShapeUpgrade_UnifySameDomain;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-UnifyEdges: bool (optional, default to Standard_True)
-UnifyFaces: bool (optional, default to Standard_True)
-ConcatBSplines: bool (optional, default to Standard_False)
+UnifyEdges: bool (optional, default to true)
+UnifyFaces: bool (optional, default to true)
+ConcatBSplines: bool (optional, default to false)
 
 Return
 -------
@@ -1256,10 +1258,10 @@ Description
 -----------
 Constructor defining input shape and necessary flags. It does not perform unification.
 ") ShapeUpgrade_UnifySameDomain;
-		 ShapeUpgrade_UnifySameDomain(const TopoDS_Shape & aShape, const Standard_Boolean UnifyEdges = Standard_True, const Standard_Boolean UnifyFaces = Standard_True, const Standard_Boolean ConcatBSplines = Standard_False);
+		 ShapeUpgrade_UnifySameDomain(const TopoDS_Shape & aShape, const bool UnifyEdges = true, const bool UnifyFaces = true, const bool ConcatBSplines = false);
 
 		/****** ShapeUpgrade_UnifySameDomain::AllowInternalEdges ******/
-		/****** md5 signature: 48eef653fce504dcef3e2dd3fce379c6 ******/
+		/****** md5 signature: 549209f0c2352345b285a74a3c9af077 ******/
 		%feature("compactdefaultargs") AllowInternalEdges;
 		%feature("autodoc", "
 Parameters
@@ -1274,7 +1276,7 @@ Description
 -----------
 Sets the flag defining whether it is allowed to create internal edges inside merged faces in the case of non-manifold topology. Without this flag merging through multi connected edge is forbidden. Default value is false.
 ") AllowInternalEdges;
-		void AllowInternalEdges(const Standard_Boolean theValue);
+		void AllowInternalEdges(const bool theValue);
 
 		/****** ShapeUpgrade_UnifySameDomain::Build ******/
 		/****** md5 signature: 634d88e5c99c5ce236c07b337243d591 ******/
@@ -1316,15 +1318,15 @@ Returns the history of the processed shapes.
 		opencascade::handle<BRepTools_History> & History();
 
 		/****** ShapeUpgrade_UnifySameDomain::Initialize ******/
-		/****** md5 signature: 212ee766e2186df224e0192db6daa5bc ******/
+		/****** md5 signature: 793ca5b204ff05e9c87ae640f1c5f1dd ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
-UnifyEdges: bool (optional, default to Standard_True)
-UnifyFaces: bool (optional, default to Standard_True)
-ConcatBSplines: bool (optional, default to Standard_False)
+UnifyEdges: bool (optional, default to true)
+UnifyFaces: bool (optional, default to true)
+ConcatBSplines: bool (optional, default to false)
 
 Return
 -------
@@ -1334,7 +1336,7 @@ Description
 -----------
 Initializes with a shape and necessary flags. It does not perform unification. If you intend to nullify the History place holder do it after initialization.
 ") Initialize;
-		void Initialize(const TopoDS_Shape & aShape, const Standard_Boolean UnifyEdges = Standard_True, const Standard_Boolean UnifyFaces = Standard_True, const Standard_Boolean ConcatBSplines = Standard_False);
+		void Initialize(const TopoDS_Shape & aShape, const bool UnifyEdges = true, const bool UnifyFaces = true, const bool ConcatBSplines = false);
 
 		/****** ShapeUpgrade_UnifySameDomain::KeepShape ******/
 		/****** md5 signature: 25c6ac25e90f7bad683e9591e58de819 ******/
@@ -1355,7 +1357,7 @@ Sets the shape for avoid merging of the faces/edges. This shape can be vertex or
 		void KeepShape(const TopoDS_Shape & theShape);
 
 		/****** ShapeUpgrade_UnifySameDomain::KeepShapes ******/
-		/****** md5 signature: b7be57d8907fbbdf23c6f96f55b6b901 ******/
+		/****** md5 signature: 6e3460ec6151f8c3433fb26b6b71b9bb ******/
 		%feature("compactdefaultargs") KeepShapes;
 		%feature("autodoc", "
 Parameters
@@ -1373,12 +1375,12 @@ Sets the map of shapes for avoid merging of the faces/edges. It allows passing a
 		void KeepShapes(const TopTools_MapOfShape & theShapes);
 
 		/****** ShapeUpgrade_UnifySameDomain::SetAngularTolerance ******/
-		/****** md5 signature: 9c2325568a0877a199b1e66bd573a14d ******/
+		/****** md5 signature: b948a93ae53a8dea244687f51587d407 ******/
 		%feature("compactdefaultargs") SetAngularTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -1388,15 +1390,15 @@ Description
 -----------
 Sets the angular tolerance. If two shapes form a connection angle greater than this value they will not be merged. Default value is Precision::Angular().
 ") SetAngularTolerance;
-		void SetAngularTolerance(const Standard_Real theValue);
+		void SetAngularTolerance(const double theValue);
 
 		/****** ShapeUpgrade_UnifySameDomain::SetLinearTolerance ******/
-		/****** md5 signature: 7c895313a7bdad4782180ded2f81563b ******/
+		/****** md5 signature: 6c2a8589e6c08af3685623246837aca8 ******/
 		%feature("compactdefaultargs") SetLinearTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-theValue: float
+theValue: double
 
 Return
 -------
@@ -1406,10 +1408,10 @@ Description
 -----------
 Sets the linear tolerance. It plays the role of chord error when taking decision about merging of shapes. Default value is Precision::Confusion().
 ") SetLinearTolerance;
-		void SetLinearTolerance(const Standard_Real theValue);
+		void SetLinearTolerance(const double theValue);
 
 		/****** ShapeUpgrade_UnifySameDomain::SetSafeInputMode ******/
-		/****** md5 signature: e99a88b05b298e17df231dade6d3a8d0 ******/
+		/****** md5 signature: 9ae95c5a6666cc9807848d10ba862576 ******/
 		%feature("compactdefaultargs") SetSafeInputMode;
 		%feature("autodoc", "
 Parameters
@@ -1424,7 +1426,7 @@ Description
 -----------
 Sets the flag defining the behavior of the algorithm regarding modification of input shape. If this flag is equal to True then the input (original) shape can't be modified during modification process. Default value is true.
 ") SetSafeInputMode;
-		void SetSafeInputMode(Standard_Boolean theValue);
+		void SetSafeInputMode(bool theValue);
 
 		/****** ShapeUpgrade_UnifySameDomain::Shape ******/
 		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
@@ -1469,7 +1471,7 @@ Empty constructor.
 		 ShapeUpgrade_ConvertSurfaceToBezierBasis();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::Build ******/
-		/****** md5 signature: 711e3eb54e55e074aaa7b888776cf6b5 ******/
+		/****** md5 signature: 3f9df2556981aed4effef4769b3af71e ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1484,10 +1486,10 @@ Description
 -----------
 Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		void Build(const bool Segment);
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::Compute ******/
-		/****** md5 signature: 3918f6756d95dedfd02ea39677789c2b ******/
+		/****** md5 signature: ac8eaf8d85b089f794dc508b4acb3645 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -1502,10 +1504,10 @@ Description
 -----------
 Converts surface into a grid of bezier based surfaces, and stores this grid.
 ") Compute;
-		virtual void Compute(const Standard_Boolean Segment);
+		void Compute(const bool Segment);
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::GetBSplineMode ******/
-		/****** md5 signature: 52b8a0ea6784022c49c6df9e2a2479da ******/
+		/****** md5 signature: b2a124222d5fa04479fb1ae7ae326e74 ******/
 		%feature("compactdefaultargs") GetBSplineMode;
 		%feature("autodoc", "Return
 -------
@@ -1515,10 +1517,10 @@ Description
 -----------
 Returns the Geom_BSplineSurface conversion mode.
 ") GetBSplineMode;
-		Standard_Boolean GetBSplineMode();
+		bool GetBSplineMode();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::GetExtrusionMode ******/
-		/****** md5 signature: c1328d84d0f225ce0ca19830df42bf2d ******/
+		/****** md5 signature: 94ae4dc431cc1a431662501603f531a2 ******/
 		%feature("compactdefaultargs") GetExtrusionMode;
 		%feature("autodoc", "Return
 -------
@@ -1528,10 +1530,10 @@ Description
 -----------
 Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
 ") GetExtrusionMode;
-		Standard_Boolean GetExtrusionMode();
+		bool GetExtrusionMode();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::GetPlaneMode ******/
-		/****** md5 signature: e002328dc75c818cc5f5fc644f99eb71 ******/
+		/****** md5 signature: 8264445075738f80b3780bf5e3e0e6a8 ******/
 		%feature("compactdefaultargs") GetPlaneMode;
 		%feature("autodoc", "Return
 -------
@@ -1541,10 +1543,10 @@ Description
 -----------
 Returns the Geom_Pline conversion mode.
 ") GetPlaneMode;
-		Standard_Boolean GetPlaneMode();
+		bool GetPlaneMode();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::GetRevolutionMode ******/
-		/****** md5 signature: b5b2a1b09458b832cb591000bb1895f8 ******/
+		/****** md5 signature: b22e47ec2273bda9a4a867786134a33e ******/
 		%feature("compactdefaultargs") GetRevolutionMode;
 		%feature("autodoc", "Return
 -------
@@ -1554,7 +1556,7 @@ Description
 -----------
 Returns the Geom_SurfaceOfRevolution conversion mode.
 ") GetRevolutionMode;
-		Standard_Boolean GetRevolutionMode();
+		bool GetRevolutionMode();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::Segments ******/
 		/****** md5 signature: 7c26832c8c33dc497a694e7c7481b36c ******/
@@ -1570,7 +1572,7 @@ Returns the grid of bezier based surfaces correspondent to original surface.
 		opencascade::handle<ShapeExtend_CompositeSurface> Segments();
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::SetBSplineMode ******/
-		/****** md5 signature: 8915ede96f2f2df819bbfc5341c182e5 ******/
+		/****** md5 signature: 4c6c3552a4be98a640e978723086532c ******/
 		%feature("compactdefaultargs") SetBSplineMode;
 		%feature("autodoc", "
 Parameters
@@ -1585,10 +1587,10 @@ Description
 -----------
 Sets mode for conversion Geom_BSplineSurface to Bezier.
 ") SetBSplineMode;
-		void SetBSplineMode(const Standard_Boolean mode);
+		void SetBSplineMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::SetExtrusionMode ******/
-		/****** md5 signature: 30317d64af4395d2fcfa76f1103b77b8 ******/
+		/****** md5 signature: ecc813f3d08d3ec4e5329e21a138390a ******/
 		%feature("compactdefaultargs") SetExtrusionMode;
 		%feature("autodoc", "
 Parameters
@@ -1603,10 +1605,10 @@ Description
 -----------
 Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier.
 ") SetExtrusionMode;
-		void SetExtrusionMode(const Standard_Boolean mode);
+		void SetExtrusionMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::SetPlaneMode ******/
-		/****** md5 signature: 67bd74db69c3b2f3667d4e2bd7dac007 ******/
+		/****** md5 signature: 8dac37368585af47dc97948752ee7e48 ******/
 		%feature("compactdefaultargs") SetPlaneMode;
 		%feature("autodoc", "
 Parameters
@@ -1621,10 +1623,10 @@ Description
 -----------
 Sets mode for conversion Geom_Plane to Bezier.
 ") SetPlaneMode;
-		void SetPlaneMode(const Standard_Boolean mode);
+		void SetPlaneMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertSurfaceToBezierBasis::SetRevolutionMode ******/
-		/****** md5 signature: e7b14ba5099107b1926f3e2ddecfeda9 ******/
+		/****** md5 signature: 98f31edf581262e4e10e93788776bc69 ******/
 		%feature("compactdefaultargs") SetRevolutionMode;
 		%feature("autodoc", "
 Parameters
@@ -1639,7 +1641,7 @@ Description
 -----------
 Sets mode for conversion Geom_SurfaceOfRevolution to Bezier.
 ") SetRevolutionMode;
-		void SetRevolutionMode(const Standard_Boolean mode);
+		void SetRevolutionMode(const bool mode);
 
 };
 
@@ -1684,7 +1686,7 @@ No available documentation.
 		void Clear();
 
 		/****** ShapeUpgrade_EdgeDivide::Compute ******/
-		/****** md5 signature: 2595759290528a7a0fb9cd0a02a963bf ******/
+		/****** md5 signature: d0fc3cc9f04379e0ae750a89baa2a9c6 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -1699,7 +1701,7 @@ Description
 -----------
 No available documentation.
 ") Compute;
-		virtual Standard_Boolean Compute(const TopoDS_Edge & E);
+		virtual bool Compute(const TopoDS_Edge & E);
 
 		/****** ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool ******/
 		/****** md5 signature: df0872a46f4699f5bf3622b3f0426064 ******/
@@ -1728,7 +1730,7 @@ Returns the tool for splitting 3D curves.
 		virtual opencascade::handle<ShapeUpgrade_SplitCurve3d> GetSplitCurve3dTool();
 
 		/****** ShapeUpgrade_EdgeDivide::HasCurve2d ******/
-		/****** md5 signature: f46dd56e8163b51a179a6d6774d666ad ******/
+		/****** md5 signature: 6c8dc7397f39563d17aba0dade9b8f90 ******/
 		%feature("compactdefaultargs") HasCurve2d;
 		%feature("autodoc", "Return
 -------
@@ -1738,10 +1740,10 @@ Description
 -----------
 No available documentation.
 ") HasCurve2d;
-		Standard_Boolean HasCurve2d();
+		bool HasCurve2d();
 
 		/****** ShapeUpgrade_EdgeDivide::HasCurve3d ******/
-		/****** md5 signature: 7871add59a094621a2b45104c6c268e3 ******/
+		/****** md5 signature: 9593a15ff567041be0fecdbeeaf5f4a1 ******/
 		%feature("compactdefaultargs") HasCurve3d;
 		%feature("autodoc", "Return
 -------
@@ -1751,10 +1753,10 @@ Description
 -----------
 No available documentation.
 ") HasCurve3d;
-		Standard_Boolean HasCurve3d();
+		bool HasCurve3d();
 
 		/****** ShapeUpgrade_EdgeDivide::Knots2d ******/
-		/****** md5 signature: 70eb823785694d446339c5bce500639c ******/
+		/****** md5 signature: e22d90a0716e00ec28075620fbc70c0c ******/
 		%feature("compactdefaultargs") Knots2d;
 		%feature("autodoc", "Return
 -------
@@ -1767,7 +1769,7 @@ No available documentation.
 		opencascade::handle<TColStd_HSequenceOfReal> Knots2d();
 
 		/****** ShapeUpgrade_EdgeDivide::Knots3d ******/
-		/****** md5 signature: d2e8da421ccd373f00c73c642799bd62 ******/
+		/****** md5 signature: 906a3f46092f5bb3c53f6db47626e0b4 ******/
 		%feature("compactdefaultargs") Knots3d;
 		%feature("autodoc", "Return
 -------
@@ -1925,12 +1927,12 @@ Initialize by a Face.
 		void Init(const TopoDS_Face & F);
 
 		/****** ShapeUpgrade_FaceDivide::Perform ******/
-		/****** md5 signature: 20d0b6fc51636d29419d616b6aa42e30 ******/
+		/****** md5 signature: 299f517018f3ec0253609c1ba5a6ac5c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theArea: float (optional, default to 0)
+theArea: double (optional, default to 0)
 
 Return
 -------
@@ -1940,7 +1942,7 @@ Description
 -----------
 Performs splitting and computes the resulting shell The context is used to keep track of former splittings in order to keep sharings. It is updated according to modifications made. The optional argument <theArea> is used to initialize the tool for splitting surface in the case of splitting into N parts where N is user-defined.
 ") Perform;
-		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
+		virtual bool Perform(const double theArea = 0);
 
 		/****** ShapeUpgrade_FaceDivide::Result ******/
 		/****** md5 signature: e7d296a4a4a5995509cb67e3ee28f5dc ******/
@@ -1974,7 +1976,7 @@ Sets the tool for splitting surfaces.
 		void SetSplitSurfaceTool(const opencascade::handle<ShapeUpgrade_SplitSurface> & splitSurfaceTool);
 
 		/****** ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode ******/
-		/****** md5 signature: be112b9c06ada1bc38a6ffc5ac01085f ******/
+		/****** md5 signature: 97f5793106195949d6ea9b23bb7fd025 ******/
 		%feature("compactdefaultargs") SetSurfaceSegmentMode;
 		%feature("autodoc", "
 Parameters
@@ -1989,7 +1991,7 @@ Description
 -----------
 Purpose sets mode for trimming (segment) surface by wire UV bounds.
 ") SetSurfaceSegmentMode;
-		void SetSurfaceSegmentMode(const Standard_Boolean Segment);
+		void SetSurfaceSegmentMode(const bool Segment);
 
 		/****** ShapeUpgrade_FaceDivide::SetWireDivideTool ******/
 		/****** md5 signature: 978296ebc7c16202dd743b8678d22a22 ******/
@@ -2010,7 +2012,7 @@ Sets the tool for dividing edges on Face.
 		void SetWireDivideTool(const opencascade::handle<ShapeUpgrade_WireDivide> & wireDivideTool);
 
 		/****** ShapeUpgrade_FaceDivide::SplitCurves ******/
-		/****** md5 signature: 7aeae68c1730c10bd50d435f214ed2bf ******/
+		/****** md5 signature: 96ab6d6e89d2306f7c9d5a5abd20f64c ******/
 		%feature("compactdefaultargs") SplitCurves;
 		%feature("autodoc", "Return
 -------
@@ -2020,15 +2022,15 @@ Description
 -----------
 Performs splitting of curves of all the edges in the shape and divides these edges.
 ") SplitCurves;
-		virtual Standard_Boolean SplitCurves();
+		virtual bool SplitCurves();
 
 		/****** ShapeUpgrade_FaceDivide::SplitSurface ******/
-		/****** md5 signature: 7d0e8fbace163592ba259546db534b47 ******/
+		/****** md5 signature: 5fc45aabdd2964a1e765137f537d404b ******/
 		%feature("compactdefaultargs") SplitSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-theArea: float (optional, default to 0)
+theArea: double (optional, default to 0)
 
 Return
 -------
@@ -2038,10 +2040,10 @@ Description
 -----------
 Performs splitting of surface and computes the shell from source face. The optional argument <theArea> is used to initialize the tool for splitting surface in the case of splitting into N parts where N is user-defined.
 ") SplitSurface;
-		virtual Standard_Boolean SplitSurface(const Standard_Real theArea = 0);
+		virtual bool SplitSurface(const double theArea = 0);
 
 		/****** ShapeUpgrade_FaceDivide::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -2056,7 +2058,7 @@ Description
 -----------
 Queries the status of last call to Perform OK: no splitting was done (or no call to Perform) DONE1: some edges were split DONE2: surface was split DONE3: surface was modified without splitting FAIL1: some fails encountered during splitting wires FAIL2: face cannot be split.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -2088,7 +2090,7 @@ No available documentation.
 		 ShapeUpgrade_FixSmallCurves();
 
 		/****** ShapeUpgrade_FixSmallCurves::Approx ******/
-		/****** md5 signature: 6ca477a7dfb5cb93f2142dff1a7d5a1e ******/
+		/****** md5 signature: 6359139b072d0c3c8a325b7c68888c7c ******/
 		%feature("compactdefaultargs") Approx;
 		%feature("autodoc", "
 Parameters
@@ -2099,14 +2101,14 @@ Curve2dR: Geom2d_Curve
 
 Return
 -------
-First: float
-Last: float
+First: double
+Last: double
 
 Description
 -----------
 No available documentation.
 ") Approx;
-		virtual Standard_Boolean Approx(opencascade::handle<Geom_Curve> & Curve3d, opencascade::handle<Geom2d_Curve> & Curve2d, opencascade::handle<Geom2d_Curve> & Curve2dR, Standard_Real &OutValue, Standard_Real &OutValue);
+		virtual bool Approx(opencascade::handle<Geom_Curve> & Curve3d, opencascade::handle<Geom2d_Curve> & Curve2d, opencascade::handle<Geom2d_Curve> & Curve2dR, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****** ShapeUpgrade_FixSmallCurves::Init ******/
 		/****** md5 signature: 2a831d636c2c924d38adfdfa075e8336 ******/
@@ -2164,7 +2166,7 @@ Sets the tool for splitting 3D curves.
 		void SetSplitCurve3dTool(const opencascade::handle<ShapeUpgrade_SplitCurve3d> & splitCurve3dTool);
 
 		/****** ShapeUpgrade_FixSmallCurves::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -2179,7 +2181,7 @@ Description
 -----------
 Queries the status of last call to Perform OK: DONE1: DONE2: FAIL1:.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 };
 
@@ -2259,21 +2261,21 @@ Initialize by a Shape.
 ") Init;
 		void Init(const TopoDS_Shape & theShape);
 
+		/****** ShapeUpgrade_RemoveInternalWires::MinArea ******/
+		/****** md5 signature: a5bc313c7d754a096e9a16ac291563bc ******/
+		%feature("compactdefaultargs") MinArea;
+		%feature("autodoc", "Return
+-------
+double
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetMinArea() {
-            return (Standard_Real) $self->MinArea();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetMinArea(Standard_Real value) {
-            $self->MinArea()=value;
-            }
-        };
+Description
+-----------
+Set min area allowed for holes( all holes having area less than mi area will be removed).
+") MinArea;
+		double & MinArea();
+
 		/****** ShapeUpgrade_RemoveInternalWires::Perform ******/
-		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
+		/****** md5 signature: 836e5d294e107797e3a08ad4bfbbad29 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -2283,10 +2285,10 @@ Description
 -----------
 Removes all internal wires having area less than area specified as minimal allowed area.
 ") Perform;
-		Standard_Boolean Perform();
+		bool Perform();
 
 		/****** ShapeUpgrade_RemoveInternalWires::Perform ******/
-		/****** md5 signature: 020458eedd8e53259923eec2d81c85d6 ******/
+		/****** md5 signature: 530d0780cf67ddda3ec6baab155719b9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2301,23 +2303,23 @@ Description
 -----------
 If specified sequence of shape contains - 1.wires then these wires will be removed if they have area less than allowed min area. 2.faces than internal wires from these faces will be removed if they have area less than allowed min area.
 ") Perform;
-		Standard_Boolean Perform(const TopTools_SequenceOfShape & theSeqShapes);
+		bool Perform(const TopTools_SequenceOfShape & theSeqShapes);
 
+		/****** ShapeUpgrade_RemoveInternalWires::RemoveFaceMode ******/
+		/****** md5 signature: 25ae853bd11a468340feb0db72b8bd18 ******/
+		%feature("compactdefaultargs") RemoveFaceMode;
+		%feature("autodoc", "Return
+-------
+bool
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Boolean GetRemoveFaceMode() {
-            return (Standard_Boolean) $self->RemoveFaceMode();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetRemoveFaceMode(Standard_Boolean value) {
-            $self->RemoveFaceMode()=value;
-            }
-        };
+Description
+-----------
+Set mode which manage removing faces which have outer wires consisting only from edges belonginig to removed internal wires. By default it is equal to true.
+") RemoveFaceMode;
+		bool & RemoveFaceMode();
+
 		/****** ShapeUpgrade_RemoveInternalWires::RemovedFaces ******/
-		/****** md5 signature: 2c2419e60e332577e6df8a01d0e64e14 ******/
+		/****** md5 signature: 8bf84d8c87723b62ffd16dc8b601cdc9 ******/
 		%feature("compactdefaultargs") RemovedFaces;
 		%feature("autodoc", "Return
 -------
@@ -2330,7 +2332,7 @@ Returns sequence of removed faces.
 		const TopTools_SequenceOfShape & RemovedFaces();
 
 		/****** ShapeUpgrade_RemoveInternalWires::RemovedWires ******/
-		/****** md5 signature: 65e88289157ef6ea29e2b3bd3efeb167 ******/
+		/****** md5 signature: d9aaef20d2cfc684289bb98006c82520 ******/
 		%feature("compactdefaultargs") RemovedWires;
 		%feature("autodoc", "Return
 -------
@@ -2343,7 +2345,7 @@ Returns sequence of removed faces.
 		const TopTools_SequenceOfShape & RemovedWires();
 
 		/****** ShapeUpgrade_RemoveInternalWires::Status ******/
-		/****** md5 signature: 03f2df8a606eef2de1cd56a4ae73f0f0 ******/
+		/****** md5 signature: d63ad8907bf1b94ad0798cc51997fd9f ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -2358,8 +2360,16 @@ Description
 -----------
 Queries status of last call to Perform(): OK - nothing was done :DONE1 - internal wires were removed :DONE2 - small faces were removed. :FAIL1 - initial shape is not specified :FAIL2 - specified sub-shape is not belonged to inotial shape.
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status theStatus);
+		bool Status(const ShapeExtend_Status theStatus);
 
+		%extend{
+			double GetMinArea() { return self->MinArea(); }
+			void SetMinArea(double value) { self->MinArea() = value; }
+		};
+		%extend{
+			bool GetRemoveFaceMode() { return self->RemoveFaceMode(); }
+			void SetRemoveFaceMode(bool value) { self->RemoveFaceMode() = value; }
+		};
 };
 
 
@@ -2408,7 +2418,7 @@ Initialize by a Shape.
 		 ShapeUpgrade_ShapeConvertToBezier(const TopoDS_Shape & S);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Get2dConversion ******/
-		/****** md5 signature: 05e2dd3472e127850bf6a476e6469006 ******/
+		/****** md5 signature: 985c496f45efe3218eee1ab5e7761d84 ******/
 		%feature("compactdefaultargs") Get2dConversion;
 		%feature("autodoc", "Return
 -------
@@ -2418,10 +2428,10 @@ Description
 -----------
 Returns the 2D conversion mode.
 ") Get2dConversion;
-		Standard_Boolean Get2dConversion();
+		bool Get2dConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Get3dCircleConversion ******/
-		/****** md5 signature: 96650b18077eecf40992cc068903686f ******/
+		/****** md5 signature: c0d1eae54fe7eba0535798b58f990cde ******/
 		%feature("compactdefaultargs") Get3dCircleConversion;
 		%feature("autodoc", "Return
 -------
@@ -2431,10 +2441,10 @@ Description
 -----------
 Returns the Geom_Circle conversion mode.
 ") Get3dCircleConversion;
-		Standard_Boolean Get3dCircleConversion();
+		bool Get3dCircleConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Get3dConicConversion ******/
-		/****** md5 signature: 805214e0015ef5271c2361ab5e3a3cd0 ******/
+		/****** md5 signature: b3249a19f163191924865c56bfb35dc6 ******/
 		%feature("compactdefaultargs") Get3dConicConversion;
 		%feature("autodoc", "Return
 -------
@@ -2444,10 +2454,10 @@ Description
 -----------
 Returns the Geom_Conic conversion mode.
 ") Get3dConicConversion;
-		Standard_Boolean Get3dConicConversion();
+		bool Get3dConicConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Get3dConversion ******/
-		/****** md5 signature: 6601741030673e2c076e41107cdaf690 ******/
+		/****** md5 signature: 703f4e9a66b85036dfdc9c453f804fad ******/
 		%feature("compactdefaultargs") Get3dConversion;
 		%feature("autodoc", "Return
 -------
@@ -2457,10 +2467,10 @@ Description
 -----------
 Returns the 3D conversion mode.
 ") Get3dConversion;
-		Standard_Boolean Get3dConversion();
+		bool Get3dConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Get3dLineConversion ******/
-		/****** md5 signature: 19085c56c495be78de0ba85d219dec99 ******/
+		/****** md5 signature: a52b71a08f907960a104033a4e19c43e ******/
 		%feature("compactdefaultargs") Get3dLineConversion;
 		%feature("autodoc", "Return
 -------
@@ -2470,10 +2480,10 @@ Description
 -----------
 Returns the Geom_Line conversion mode.
 ") Get3dLineConversion;
-		Standard_Boolean Get3dLineConversion();
+		bool Get3dLineConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::GetBSplineMode ******/
-		/****** md5 signature: 52b8a0ea6784022c49c6df9e2a2479da ******/
+		/****** md5 signature: b2a124222d5fa04479fb1ae7ae326e74 ******/
 		%feature("compactdefaultargs") GetBSplineMode;
 		%feature("autodoc", "Return
 -------
@@ -2483,10 +2493,10 @@ Description
 -----------
 Returns the Geom_BSplineSurface conversion mode.
 ") GetBSplineMode;
-		Standard_Boolean GetBSplineMode();
+		bool GetBSplineMode();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::GetExtrusionMode ******/
-		/****** md5 signature: c1328d84d0f225ce0ca19830df42bf2d ******/
+		/****** md5 signature: 94ae4dc431cc1a431662501603f531a2 ******/
 		%feature("compactdefaultargs") GetExtrusionMode;
 		%feature("autodoc", "Return
 -------
@@ -2496,10 +2506,10 @@ Description
 -----------
 Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
 ") GetExtrusionMode;
-		Standard_Boolean GetExtrusionMode();
+		bool GetExtrusionMode();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::GetPlaneMode ******/
-		/****** md5 signature: e002328dc75c818cc5f5fc644f99eb71 ******/
+		/****** md5 signature: 8264445075738f80b3780bf5e3e0e6a8 ******/
 		%feature("compactdefaultargs") GetPlaneMode;
 		%feature("autodoc", "Return
 -------
@@ -2509,10 +2519,10 @@ Description
 -----------
 Returns the Geom_Pline conversion mode.
 ") GetPlaneMode;
-		Standard_Boolean GetPlaneMode();
+		bool GetPlaneMode();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::GetRevolutionMode ******/
-		/****** md5 signature: b5b2a1b09458b832cb591000bb1895f8 ******/
+		/****** md5 signature: b22e47ec2273bda9a4a867786134a33e ******/
 		%feature("compactdefaultargs") GetRevolutionMode;
 		%feature("autodoc", "Return
 -------
@@ -2522,10 +2532,10 @@ Description
 -----------
 Returns the Geom_SurfaceOfRevolution conversion mode.
 ") GetRevolutionMode;
-		Standard_Boolean GetRevolutionMode();
+		bool GetRevolutionMode();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::GetSurfaceConversion ******/
-		/****** md5 signature: b0670da3a6155b94cd41ef520e9d4331 ******/
+		/****** md5 signature: 3f013ac06f34a462f8cfccfc3d4f2252 ******/
 		%feature("compactdefaultargs") GetSurfaceConversion;
 		%feature("autodoc", "Return
 -------
@@ -2535,15 +2545,15 @@ Description
 -----------
 Returns the surface conversion mode.
 ") GetSurfaceConversion;
-		Standard_Boolean GetSurfaceConversion();
+		bool GetSurfaceConversion();
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Perform ******/
-		/****** md5 signature: a4edc0e6e110667a5f0645f0a0f665a9 ******/
+		/****** md5 signature: 5c61d991d265f0abbe9da42b65cf8218 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-newContext: bool (optional, default to Standard_True)
+newContext: bool (optional, default to true)
 
 Return
 -------
@@ -2553,10 +2563,10 @@ Description
 -----------
 Performs converting and computes the resulting shape.
 ") Perform;
-		virtual Standard_Boolean Perform(const Standard_Boolean newContext = Standard_True);
+		bool Perform(const bool newContext = true);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Set2dConversion ******/
-		/****** md5 signature: 003a26e33f9361a63757234bc52f94b4 ******/
+		/****** md5 signature: a28d2629e1b81552e60330a6cb2e385d ******/
 		%feature("compactdefaultargs") Set2dConversion;
 		%feature("autodoc", "
 Parameters
@@ -2571,10 +2581,10 @@ Description
 -----------
 Sets mode for conversion 2D curves to bezier.
 ") Set2dConversion;
-		void Set2dConversion(const Standard_Boolean mode);
+		void Set2dConversion(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Set3dCircleConversion ******/
-		/****** md5 signature: c2c710de294b8d1abf61e596fde2ee7d ******/
+		/****** md5 signature: 66b64f3c5344a2153257111e76648927 ******/
 		%feature("compactdefaultargs") Set3dCircleConversion;
 		%feature("autodoc", "
 Parameters
@@ -2589,10 +2599,10 @@ Description
 -----------
 Sets mode for conversion Geom_Circle to bezier.
 ") Set3dCircleConversion;
-		void Set3dCircleConversion(const Standard_Boolean mode);
+		void Set3dCircleConversion(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Set3dConicConversion ******/
-		/****** md5 signature: 36a02bcac20a4c3a38a2ca293f06f23c ******/
+		/****** md5 signature: 5046d495bf2b1398be8e2f6a97d47343 ******/
 		%feature("compactdefaultargs") Set3dConicConversion;
 		%feature("autodoc", "
 Parameters
@@ -2607,10 +2617,10 @@ Description
 -----------
 Sets mode for conversion Geom_Conic to bezier.
 ") Set3dConicConversion;
-		void Set3dConicConversion(const Standard_Boolean mode);
+		void Set3dConicConversion(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Set3dConversion ******/
-		/****** md5 signature: d188d5f844c7c5df4472a4e341585490 ******/
+		/****** md5 signature: e70fe3db20b06ae4c70457e18fe04f4a ******/
 		%feature("compactdefaultargs") Set3dConversion;
 		%feature("autodoc", "
 Parameters
@@ -2625,10 +2635,10 @@ Description
 -----------
 Sets mode for conversion 3d curves to bezier.
 ") Set3dConversion;
-		void Set3dConversion(const Standard_Boolean mode);
+		void Set3dConversion(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::Set3dLineConversion ******/
-		/****** md5 signature: 72178b277b8a1f16a93bfb54c3b8cb2c ******/
+		/****** md5 signature: 832bceec1ae8667d6185f4c6cbd4640a ******/
 		%feature("compactdefaultargs") Set3dLineConversion;
 		%feature("autodoc", "
 Parameters
@@ -2643,10 +2653,10 @@ Description
 -----------
 Sets mode for conversion Geom_Line to bezier.
 ") Set3dLineConversion;
-		void Set3dLineConversion(const Standard_Boolean mode);
+		void Set3dLineConversion(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::SetBSplineMode ******/
-		/****** md5 signature: 8915ede96f2f2df819bbfc5341c182e5 ******/
+		/****** md5 signature: 4c6c3552a4be98a640e978723086532c ******/
 		%feature("compactdefaultargs") SetBSplineMode;
 		%feature("autodoc", "
 Parameters
@@ -2661,10 +2671,10 @@ Description
 -----------
 Sets mode for conversion Geom_BSplineSurface to Bezier.
 ") SetBSplineMode;
-		void SetBSplineMode(const Standard_Boolean mode);
+		void SetBSplineMode(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::SetExtrusionMode ******/
-		/****** md5 signature: 30317d64af4395d2fcfa76f1103b77b8 ******/
+		/****** md5 signature: ecc813f3d08d3ec4e5329e21a138390a ******/
 		%feature("compactdefaultargs") SetExtrusionMode;
 		%feature("autodoc", "
 Parameters
@@ -2679,10 +2689,10 @@ Description
 -----------
 Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier.
 ") SetExtrusionMode;
-		void SetExtrusionMode(const Standard_Boolean mode);
+		void SetExtrusionMode(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::SetPlaneMode ******/
-		/****** md5 signature: 67bd74db69c3b2f3667d4e2bd7dac007 ******/
+		/****** md5 signature: 8dac37368585af47dc97948752ee7e48 ******/
 		%feature("compactdefaultargs") SetPlaneMode;
 		%feature("autodoc", "
 Parameters
@@ -2697,10 +2707,10 @@ Description
 -----------
 Sets mode for conversion Geom_Plane to Bezier.
 ") SetPlaneMode;
-		void SetPlaneMode(const Standard_Boolean mode);
+		void SetPlaneMode(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::SetRevolutionMode ******/
-		/****** md5 signature: e7b14ba5099107b1926f3e2ddecfeda9 ******/
+		/****** md5 signature: 98f31edf581262e4e10e93788776bc69 ******/
 		%feature("compactdefaultargs") SetRevolutionMode;
 		%feature("autodoc", "
 Parameters
@@ -2715,10 +2725,10 @@ Description
 -----------
 Sets mode for conversion Geom_SurfaceOfRevolution to Bezier.
 ") SetRevolutionMode;
-		void SetRevolutionMode(const Standard_Boolean mode);
+		void SetRevolutionMode(const bool mode);
 
 		/****** ShapeUpgrade_ShapeConvertToBezier::SetSurfaceConversion ******/
-		/****** md5 signature: 4e94944ff24b4cc747b5235c4dff3260 ******/
+		/****** md5 signature: c257556759ca7a5a943d6b81792b31d3 ******/
 		%feature("compactdefaultargs") SetSurfaceConversion;
 		%feature("autodoc", "
 Parameters
@@ -2733,7 +2743,7 @@ Description
 -----------
 Sets mode for conversion surfaces curves to bezier basis.
 ") SetSurfaceConversion;
-		void SetSurfaceConversion(const Standard_Boolean mode);
+		void SetSurfaceConversion(const bool mode);
 
 };
 
@@ -2750,12 +2760,12 @@ Sets mode for conversion surfaces curves to bezier basis.
 class ShapeUpgrade_ShapeDivideAngle : public ShapeUpgrade_ShapeDivide {
 	public:
 		/****** ShapeUpgrade_ShapeDivideAngle::ShapeUpgrade_ShapeDivideAngle ******/
-		/****** md5 signature: d08dc61e020b08076ffaee4a978d1436 ******/
+		/****** md5 signature: 312908d08a5bb380780473f196f9fc29 ******/
 		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 
 Return
 -------
@@ -2765,15 +2775,15 @@ Description
 -----------
 Empty constructor.
 ") ShapeUpgrade_ShapeDivideAngle;
-		 ShapeUpgrade_ShapeDivideAngle(const Standard_Real MaxAngle);
+		 ShapeUpgrade_ShapeDivideAngle(const double MaxAngle);
 
 		/****** ShapeUpgrade_ShapeDivideAngle::ShapeUpgrade_ShapeDivideAngle ******/
-		/****** md5 signature: e5b04d02e90700d989c84eb2d9fcfaa8 ******/
+		/****** md5 signature: 782d0450f14bbfb6c4fddf71bbf28cef ******/
 		%feature("compactdefaultargs") ShapeUpgrade_ShapeDivideAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 S: TopoDS_Shape
 
 Return
@@ -2784,15 +2794,15 @@ Description
 -----------
 Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivideAngle;
-		 ShapeUpgrade_ShapeDivideAngle(const Standard_Real MaxAngle, const TopoDS_Shape & S);
+		 ShapeUpgrade_ShapeDivideAngle(const double MaxAngle, const TopoDS_Shape & S);
 
 		/****** ShapeUpgrade_ShapeDivideAngle::InitTool ******/
-		/****** md5 signature: d9bcda32e897ff2650837d1e3131fc27 ******/
+		/****** md5 signature: c9aa0d4ddfe1c317c452cf273790bce4 ******/
 		%feature("compactdefaultargs") InitTool;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 
 Return
 -------
@@ -2802,28 +2812,28 @@ Description
 -----------
 Resets tool for splitting face with given angle.
 ") InitTool;
-		void InitTool(const Standard_Real MaxAngle);
+		void InitTool(const double MaxAngle);
 
 		/****** ShapeUpgrade_ShapeDivideAngle::MaxAngle ******/
-		/****** md5 signature: a2c1fbc84fc589001fe7837db122f5de ******/
+		/****** md5 signature: 34dc9498dc7b4df9232ab08839cc9a3b ******/
 		%feature("compactdefaultargs") MaxAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns maximal angle.
 ") MaxAngle;
-		Standard_Real MaxAngle();
+		double MaxAngle();
 
 		/****** ShapeUpgrade_ShapeDivideAngle::SetMaxAngle ******/
-		/****** md5 signature: 8758061d3d5ae96de58a6bc62c2e2fa5 ******/
+		/****** md5 signature: 4ed2ecae8e6bcf3e07e42dbeabdcbe1a ******/
 		%feature("compactdefaultargs") SetMaxAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 
 Return
 -------
@@ -2833,7 +2843,7 @@ Description
 -----------
 Set maximal angle (calls InitTool).
 ") SetMaxAngle;
-		void SetMaxAngle(const Standard_Real MaxAngle);
+		void SetMaxAngle(const double MaxAngle);
 
 };
 
@@ -2880,34 +2890,34 @@ Initialize by a Shape.
 ") ShapeUpgrade_ShapeDivideArea;
 		 ShapeUpgrade_ShapeDivideArea(const TopoDS_Shape & S);
 
+		/****** ShapeUpgrade_ShapeDivideArea::MaxArea ******/
+		/****** md5 signature: e21f11e6ebd97eacac4da57267700800 ******/
+		%feature("compactdefaultargs") MaxArea;
+		%feature("autodoc", "Return
+-------
+double
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetMaxArea() {
-            return (Standard_Real) $self->MaxArea();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetMaxArea(Standard_Real value) {
-            $self->MaxArea()=value;
-            }
-        };
+Description
+-----------
+Set max area allowed for faces.
+") MaxArea;
+		double & MaxArea();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNbParts() {
-            return (Standard_Integer) $self->NbParts();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNbParts(Standard_Integer value) {
-            $self->NbParts()=value;
-            }
-        };
+		/****** ShapeUpgrade_ShapeDivideArea::NbParts ******/
+		/****** md5 signature: a551c387f586155ac0b1bb86064b958e ******/
+		%feature("compactdefaultargs") NbParts;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Set number of parts expected for the case of splitting by number.
+") NbParts;
+		int & NbParts();
+
 		/****** ShapeUpgrade_ShapeDivideArea::SetNumbersUVSplits ******/
-		/****** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ******/
+		/****** md5 signature: 08f9e64820ad6d1a70ffbeb9464b5475 ******/
 		%feature("compactdefaultargs") SetNumbersUVSplits;
 		%feature("autodoc", "
 Parameters
@@ -2923,10 +2933,10 @@ Description
 -----------
 Set fixed numbers of splits in U and V directions. Only for 'Splitting By Numbers' mode.
 ") SetNumbersUVSplits;
-		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+		void SetNumbersUVSplits(const int theNbUsplits, const int theNbVsplits);
 
 		/****** ShapeUpgrade_ShapeDivideArea::SetSplittingByNumber ******/
-		/****** md5 signature: a51e94810d1031ba91234e4f5dfceec6 ******/
+		/****** md5 signature: bbe85d132bbae7329605bed84abe92ea ******/
 		%feature("compactdefaultargs") SetSplittingByNumber;
 		%feature("autodoc", "
 Parameters
@@ -2941,8 +2951,16 @@ Description
 -----------
 Set splitting mode If the mode is 'splitting by number', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingByNumber;
-		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
+		void SetSplittingByNumber(const bool theIsSplittingByNumber);
 
+		%extend{
+			double GetMaxArea() { return self->MaxArea(); }
+			void SetMaxArea(double value) { self->MaxArea() = value; }
+		};
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 
@@ -2976,7 +2994,7 @@ Initialises tool with shape and default parameter.
 		 ShapeUpgrade_ShapeDivideClosed(const TopoDS_Shape & S);
 
 		/****** ShapeUpgrade_ShapeDivideClosed::SetNbSplitPoints ******/
-		/****** md5 signature: 03dde7b4fa7d112ab39d0955ccf1da2e ******/
+		/****** md5 signature: 3f2b558b39da1c0dd08961119f102a35 ******/
 		%feature("compactdefaultargs") SetNbSplitPoints;
 		%feature("autodoc", "
 Parameters
@@ -2991,7 +3009,7 @@ Description
 -----------
 Sets the number of cuts applied to divide closed faces. The number of resulting faces will be num+1.
 ") SetNbSplitPoints;
-		void SetNbSplitPoints(const Standard_Integer num);
+		void SetNbSplitPoints(const int num);
 
 };
 
@@ -3026,7 +3044,7 @@ Initialises tool with shape and default parameter.
 		 ShapeUpgrade_ShapeDivideClosedEdges(const TopoDS_Shape & S);
 
 		/****** ShapeUpgrade_ShapeDivideClosedEdges::SetNbSplitPoints ******/
-		/****** md5 signature: 03dde7b4fa7d112ab39d0955ccf1da2e ******/
+		/****** md5 signature: 3f2b558b39da1c0dd08961119f102a35 ******/
 		%feature("compactdefaultargs") SetNbSplitPoints;
 		%feature("autodoc", "
 Parameters
@@ -3041,7 +3059,7 @@ Description
 -----------
 Sets the number of cuts applied to divide closed edges. The number of resulting faces will be num+1.
 ") SetNbSplitPoints;
-		void SetNbSplitPoints(const Standard_Integer num);
+		void SetNbSplitPoints(const int num);
 
 };
 
@@ -3143,12 +3161,12 @@ Defines a criterion of continuity for the boundary (all the Wires) //! The possi
 		void SetSurfaceCriterion(const GeomAbs_Shape Criterion = GeomAbs_C1);
 
 		/****** ShapeUpgrade_ShapeDivideContinuity::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -3158,15 +3176,15 @@ Description
 -----------
 Sets tolerance.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 		/****** ShapeUpgrade_ShapeDivideContinuity::SetTolerance2d ******/
-		/****** md5 signature: e950d764ef6a026f6b973bbf740c2a3f ******/
+		/****** md5 signature: 946de5ad5723f02ab6eb4e6b6adbf9e3 ******/
 		%feature("compactdefaultargs") SetTolerance2d;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -3176,7 +3194,7 @@ Description
 -----------
 Sets tolerance.
 ") SetTolerance2d;
-		void SetTolerance2d(const Standard_Real Tol);
+		void SetTolerance2d(const double Tol);
 
 };
 
@@ -3206,7 +3224,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitCurve2d();
 
 		/****** ShapeUpgrade_SplitCurve2d::Build ******/
-		/****** md5 signature: 711e3eb54e55e074aaa7b888776cf6b5 ******/
+		/****** md5 signature: 3f9df2556981aed4effef4769b3af71e ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -3221,10 +3239,10 @@ Description
 -----------
 If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		void Build(const bool Segment);
 
 		/****** ShapeUpgrade_SplitCurve2d::GetCurves ******/
-		/****** md5 signature: bbbc93557970e913adfc9168bd6266b1 ******/
+		/****** md5 signature: bc0597f0422fbf18e9e9fecac470edfe ******/
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "Return
 -------
@@ -3255,14 +3273,14 @@ Initializes with pcurve with its first and last parameters.
 		void Init(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****** ShapeUpgrade_SplitCurve2d::Init ******/
-		/****** md5 signature: 25f45d28d7963e02635c2894e4863933 ******/
+		/****** md5 signature: 53b166333221b4dab54e7b950ffc6438 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
-First: float
-Last: float
+First: double
+Last: double
 
 Return
 -------
@@ -3272,7 +3290,7 @@ Description
 -----------
 Initializes with pcurve with its parameters.
 ") Init;
-		void Init(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real First, const Standard_Real Last);
+		void Init(const opencascade::handle<Geom2d_Curve> & C, const double First, const double Last);
 
 };
 
@@ -3304,7 +3322,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitCurve3d();
 
 		/****** ShapeUpgrade_SplitCurve3d::Build ******/
-		/****** md5 signature: 711e3eb54e55e074aaa7b888776cf6b5 ******/
+		/****** md5 signature: 3f9df2556981aed4effef4769b3af71e ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -3319,10 +3337,10 @@ Description
 -----------
 If Segment is True, the result is composed with segments of the curve bounded by the SplitValues. If Segment is False, the result is composed with trimmed Curves all based on the same complete curve.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		void Build(const bool Segment);
 
 		/****** ShapeUpgrade_SplitCurve3d::GetCurves ******/
-		/****** md5 signature: a7b709be865cf9fcf7f7424d9de8925d ******/
+		/****** md5 signature: 8cac97146cc0327dd39ff4e9583b2766 ******/
 		%feature("compactdefaultargs") GetCurves;
 		%feature("autodoc", "Return
 -------
@@ -3353,14 +3371,14 @@ Initializes with curve with its first and last parameters.
 		void Init(const opencascade::handle<Geom_Curve> & C);
 
 		/****** ShapeUpgrade_SplitCurve3d::Init ******/
-		/****** md5 signature: a188de541f89919f3c9b90804c9dcf2e ******/
+		/****** md5 signature: 998d30dfdefe6d206575b437b25c41af ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
-First: float
-Last: float
+First: double
+Last: double
 
 Return
 -------
@@ -3370,7 +3388,7 @@ Description
 -----------
 Initializes with curve with its parameters.
 ") Init;
-		void Init(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last);
+		void Init(const opencascade::handle<Geom_Curve> & C, const double First, const double Last);
 
 };
 
@@ -3389,12 +3407,12 @@ Initializes with curve with its parameters.
 class ShapeUpgrade_SplitSurfaceAngle : public ShapeUpgrade_SplitSurface {
 	public:
 		/****** ShapeUpgrade_SplitSurfaceAngle::ShapeUpgrade_SplitSurfaceAngle ******/
-		/****** md5 signature: 9b9ea20fc44cadf061c63b407651674c ******/
+		/****** md5 signature: 834c64eb6de8345c00f49225e8495962 ******/
 		%feature("compactdefaultargs") ShapeUpgrade_SplitSurfaceAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 
 Return
 -------
@@ -3404,10 +3422,10 @@ Description
 -----------
 Empty constructor.
 ") ShapeUpgrade_SplitSurfaceAngle;
-		 ShapeUpgrade_SplitSurfaceAngle(const Standard_Real MaxAngle);
+		 ShapeUpgrade_SplitSurfaceAngle(const double MaxAngle);
 
 		/****** ShapeUpgrade_SplitSurfaceAngle::Compute ******/
-		/****** md5 signature: 3918f6756d95dedfd02ea39677789c2b ******/
+		/****** md5 signature: ac8eaf8d85b089f794dc508b4acb3645 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -3422,28 +3440,28 @@ Description
 -----------
 Performs splitting of the supporting surface(s). First defines splitting values, then calls inherited method.
 ") Compute;
-		virtual void Compute(const Standard_Boolean Segment);
+		void Compute(const bool Segment);
 
 		/****** ShapeUpgrade_SplitSurfaceAngle::MaxAngle ******/
-		/****** md5 signature: a2c1fbc84fc589001fe7837db122f5de ******/
+		/****** md5 signature: 34dc9498dc7b4df9232ab08839cc9a3b ******/
 		%feature("compactdefaultargs") MaxAngle;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns maximal angle.
 ") MaxAngle;
-		Standard_Real MaxAngle();
+		double MaxAngle();
 
 		/****** ShapeUpgrade_SplitSurfaceAngle::SetMaxAngle ******/
-		/****** md5 signature: 8758061d3d5ae96de58a6bc62c2e2fa5 ******/
+		/****** md5 signature: 4ed2ecae8e6bcf3e07e42dbeabdcbe1a ******/
 		%feature("compactdefaultargs") SetMaxAngle;
 		%feature("autodoc", "
 Parameters
 ----------
-MaxAngle: float
+MaxAngle: double
 
 Return
 -------
@@ -3453,7 +3471,7 @@ Description
 -----------
 Set maximal angle.
 ") SetMaxAngle;
-		void SetMaxAngle(const Standard_Real MaxAngle);
+		void SetMaxAngle(const double MaxAngle);
 
 };
 
@@ -3485,12 +3503,12 @@ Empty constructor.
 		 ShapeUpgrade_SplitSurfaceArea();
 
 		/****** ShapeUpgrade_SplitSurfaceArea::Compute ******/
-		/****** md5 signature: 99ac1864b005af9f09212a6eded7a0fa ******/
+		/****** md5 signature: 480aab96385d174643ab94f4cb9715f8 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
 ----------
-Segment: bool (optional, default to Standard_True)
+Segment: bool (optional, default to true)
 
 Return
 -------
@@ -3500,23 +3518,23 @@ Description
 -----------
 No available documentation.
 ") Compute;
-		virtual void Compute(const Standard_Boolean Segment = Standard_True);
+		void Compute(const bool Segment = true);
 
+		/****** ShapeUpgrade_SplitSurfaceArea::NbParts ******/
+		/****** md5 signature: a551c387f586155ac0b1bb86064b958e ******/
+		%feature("compactdefaultargs") NbParts;
+		%feature("autodoc", "Return
+-------
+int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNbParts() {
-            return (Standard_Integer) $self->NbParts();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNbParts(Standard_Integer value) {
-            $self->NbParts()=value;
-            }
-        };
+Description
+-----------
+Set number of split for surfaces.
+") NbParts;
+		int & NbParts();
+
 		/****** ShapeUpgrade_SplitSurfaceArea::SetNumbersUVSplits ******/
-		/****** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ******/
+		/****** md5 signature: 08f9e64820ad6d1a70ffbeb9464b5475 ******/
 		%feature("compactdefaultargs") SetNumbersUVSplits;
 		%feature("autodoc", "
 Parameters
@@ -3532,10 +3550,10 @@ Description
 -----------
 Set fixed numbers of splits in U and V directions. Only for 'Splitting Into Squares' mode.
 ") SetNumbersUVSplits;
-		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+		void SetNumbersUVSplits(const int theNbUsplits, const int theNbVsplits);
 
 		/****** ShapeUpgrade_SplitSurfaceArea::SetSplittingIntoSquares ******/
-		/****** md5 signature: c65f0f832a81aa16e23b9c29751ca885 ******/
+		/****** md5 signature: add9b1761cac3ceca2f2930e84590803 ******/
 		%feature("compactdefaultargs") SetSplittingIntoSquares;
 		%feature("autodoc", "
 Parameters
@@ -3550,8 +3568,12 @@ Description
 -----------
 Set splitting mode If the mode is 'splitting into squares', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingIntoSquares;
-		void SetSplittingIntoSquares(const Standard_Boolean theIsSplittingIntoSquares);
+		void SetSplittingIntoSquares(const bool theIsSplittingIntoSquares);
 
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 
@@ -3582,7 +3604,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitSurfaceContinuity();
 
 		/****** ShapeUpgrade_SplitSurfaceContinuity::Compute ******/
-		/****** md5 signature: 3918f6756d95dedfd02ea39677789c2b ******/
+		/****** md5 signature: ac8eaf8d85b089f794dc508b4acb3645 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -3597,7 +3619,7 @@ Description
 -----------
 No available documentation.
 ") Compute;
-		virtual void Compute(const Standard_Boolean Segment);
+		void Compute(const bool Segment);
 
 		/****** ShapeUpgrade_SplitSurfaceContinuity::SetCriterion ******/
 		/****** md5 signature: 8d6387c402a873b2b21a29ea9b405c1c ******/
@@ -3618,12 +3640,12 @@ Sets criterion for splitting.
 		void SetCriterion(const GeomAbs_Shape Criterion);
 
 		/****** ShapeUpgrade_SplitSurfaceContinuity::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -3633,7 +3655,7 @@ Description
 -----------
 Sets tolerance.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 };
 
@@ -3809,7 +3831,7 @@ Sets tool for splitting edge.
 		void SetEdgeDivideTool(const opencascade::handle<ShapeUpgrade_EdgeDivide> & edgeDivideTool);
 
 		/****** ShapeUpgrade_WireDivide::SetEdgeMode ******/
-		/****** md5 signature: 6d0ad7c5ec6e3bc5cca86ed357f7cf97 ******/
+		/****** md5 signature: eeaaf3737748da8df631237c2a89fe46 ******/
 		%feature("compactdefaultargs") SetEdgeMode;
 		%feature("autodoc", "
 Parameters
@@ -3824,7 +3846,7 @@ Description
 -----------
 Sets mode for splitting 3d curves from edges. 0 - only curve 3d from free edges. 1 - only curve 3d from shared edges. 2 - all curve 3d.
 ") SetEdgeMode;
-		void SetEdgeMode(const Standard_Integer EdgeMode);
+		void SetEdgeMode(const int EdgeMode);
 
 		/****** ShapeUpgrade_WireDivide::SetFace ******/
 		/****** md5 signature: 9e665fdaf60532a860d6b82abd61fc4e ******/
@@ -3954,7 +3976,7 @@ Sets the tool for Transfer parameters between curves and pcurves.
 		void SetTransferParamTool(const opencascade::handle<ShapeAnalysis_TransferParameters> & TransferParam);
 
 		/****** ShapeUpgrade_WireDivide::Status ******/
-		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
+		/****** md5 signature: a05ed6c88abfa8b368ed1faac2258e92 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -3969,7 +3991,7 @@ Description
 -----------
 Queries status of last call to Perform() OK - no edges were split, wire left untouched DONE1 - some edges were split FAIL1 - some edges have no 3d curve (skipped) FAIL2 - some edges have no pcurve (skipped).
 ") Status;
-		Standard_Boolean Status(const ShapeExtend_Status status);
+		bool Status(const ShapeExtend_Status status);
 
 		/****** ShapeUpgrade_WireDivide::Wire ******/
 		/****** md5 signature: 066765b94f5225dad05ab95ae3f8b503 ******/
@@ -4014,7 +4036,7 @@ Empty constructor.
 		 ShapeUpgrade_ClosedEdgeDivide();
 
 		/****** ShapeUpgrade_ClosedEdgeDivide::Compute ******/
-		/****** md5 signature: fb32bf54b41a87d285c77f723fb06d83 ******/
+		/****** md5 signature: 388a943d30de65a8d96332b7229363d9 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -4029,7 +4051,7 @@ Description
 -----------
 No available documentation.
 ") Compute;
-		virtual Standard_Boolean Compute(const TopoDS_Edge & anEdge);
+		bool Compute(const TopoDS_Edge & anEdge);
 
 };
 
@@ -4079,7 +4101,7 @@ Initialize by a Face.
 		 ShapeUpgrade_ClosedFaceDivide(const TopoDS_Face & F);
 
 		/****** ShapeUpgrade_ClosedFaceDivide::GetNbSplitPoints ******/
-		/****** md5 signature: a5d0bebd381ae2ac98e31f1aff9e382b ******/
+		/****** md5 signature: 48b4501662be1661c3c6e6cee2d86ad0 ******/
 		%feature("compactdefaultargs") GetNbSplitPoints;
 		%feature("autodoc", "Return
 -------
@@ -4089,10 +4111,10 @@ Description
 -----------
 Returns the number of splitting points.
 ") GetNbSplitPoints;
-		Standard_Integer GetNbSplitPoints();
+		int GetNbSplitPoints();
 
 		/****** ShapeUpgrade_ClosedFaceDivide::SetNbSplitPoints ******/
-		/****** md5 signature: 03dde7b4fa7d112ab39d0955ccf1da2e ******/
+		/****** md5 signature: 3f2b558b39da1c0dd08961119f102a35 ******/
 		%feature("compactdefaultargs") SetNbSplitPoints;
 		%feature("autodoc", "
 Parameters
@@ -4107,15 +4129,15 @@ Description
 -----------
 Sets the number of cutting lines by which closed face will be split. The resulting faces will be num+1.
 ") SetNbSplitPoints;
-		void SetNbSplitPoints(const Standard_Integer num);
+		void SetNbSplitPoints(const int num);
 
 		/****** ShapeUpgrade_ClosedFaceDivide::SplitSurface ******/
-		/****** md5 signature: 61ae21075e41f26658581719bb3a1c27 ******/
+		/****** md5 signature: 5bf371176e18a89738b509ae5b18d7a6 ******/
 		%feature("compactdefaultargs") SplitSurface;
 		%feature("autodoc", "
 Parameters
 ----------
-theArea: float (optional, default to 0)
+theArea: double (optional, default to 0)
 
 Return
 -------
@@ -4125,7 +4147,7 @@ Description
 -----------
 Performs splitting of surface and computes the shell from source face.
 ") SplitSurface;
-		virtual Standard_Boolean SplitSurface(const Standard_Real theArea = 0);
+		bool SplitSurface(const double theArea = 0);
 
 };
 
@@ -4157,7 +4179,7 @@ Empty constructor.
 		 ShapeUpgrade_ConvertCurve2dToBezier();
 
 		/****** ShapeUpgrade_ConvertCurve2dToBezier::Build ******/
-		/****** md5 signature: 711e3eb54e55e074aaa7b888776cf6b5 ******/
+		/****** md5 signature: 3f9df2556981aed4effef4769b3af71e ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -4172,10 +4194,10 @@ Description
 -----------
 Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		void Build(const bool Segment);
 
 		/****** ShapeUpgrade_ConvertCurve2dToBezier::Compute ******/
-		/****** md5 signature: e00c7761ecdbff16b5eaa284ed126d0e ******/
+		/****** md5 signature: 99c9e5bb8deeeb0450679c724c8f0175 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Return
 -------
@@ -4185,10 +4207,10 @@ Description
 -----------
 Converts curve into a list of beziers, and stores the splitting parameters on original curve.
 ") Compute;
-		virtual void Compute();
+		void Compute();
 
 		/****** ShapeUpgrade_ConvertCurve2dToBezier::SplitParams ******/
-		/****** md5 signature: 58b035673d8a2196e251a31275012623 ******/
+		/****** md5 signature: e912cfda5308fddafec462af6799ce9a ******/
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "Return
 -------
@@ -4230,7 +4252,7 @@ Empty constructor.
 		 ShapeUpgrade_ConvertCurve3dToBezier();
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::Build ******/
-		/****** md5 signature: 711e3eb54e55e074aaa7b888776cf6b5 ******/
+		/****** md5 signature: 3f9df2556981aed4effef4769b3af71e ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -4245,10 +4267,10 @@ Description
 -----------
 Splits a list of beziers computed by Compute method according the split values and splitting parameters.
 ") Build;
-		virtual void Build(const Standard_Boolean Segment);
+		void Build(const bool Segment);
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::Compute ******/
-		/****** md5 signature: e00c7761ecdbff16b5eaa284ed126d0e ******/
+		/****** md5 signature: 99c9e5bb8deeeb0450679c724c8f0175 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Return
 -------
@@ -4258,10 +4280,10 @@ Description
 -----------
 Converts curve into a list of beziers, and stores the splitting parameters on original curve.
 ") Compute;
-		virtual void Compute();
+		void Compute();
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::GetCircleMode ******/
-		/****** md5 signature: a6dda23bdfcc3da06a63ac22a2fe0f76 ******/
+		/****** md5 signature: 6b3c5951c4c693831934f2cbe24de026 ******/
 		%feature("compactdefaultargs") GetCircleMode;
 		%feature("autodoc", "Return
 -------
@@ -4271,10 +4293,10 @@ Description
 -----------
 Returns the Geom_Circle conversion mode.
 ") GetCircleMode;
-		Standard_Boolean GetCircleMode();
+		bool GetCircleMode();
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::GetConicMode ******/
-		/****** md5 signature: 63c38d8b2dfa3d1fc7b425c9f5f8b4d5 ******/
+		/****** md5 signature: 54f1eef343079e2c80e6c125a675c34a ******/
 		%feature("compactdefaultargs") GetConicMode;
 		%feature("autodoc", "Return
 -------
@@ -4284,10 +4306,10 @@ Description
 -----------
 Performs converting and computes the resulting shape.
 ") GetConicMode;
-		Standard_Boolean GetConicMode();
+		bool GetConicMode();
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::GetLineMode ******/
-		/****** md5 signature: 5ffcd5fe6aa5e839161f8f71b2913dc0 ******/
+		/****** md5 signature: 288eec26e01be7114d4fe0f305f53e6e ******/
 		%feature("compactdefaultargs") GetLineMode;
 		%feature("autodoc", "Return
 -------
@@ -4297,10 +4319,10 @@ Description
 -----------
 Returns the Geom_Line conversion mode.
 ") GetLineMode;
-		Standard_Boolean GetLineMode();
+		bool GetLineMode();
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::SetCircleMode ******/
-		/****** md5 signature: 1e5889b43d0e8219c5878ecbd6e098b1 ******/
+		/****** md5 signature: 8d034c7f754bf4874c64e25fad8ace76 ******/
 		%feature("compactdefaultargs") SetCircleMode;
 		%feature("autodoc", "
 Parameters
@@ -4315,10 +4337,10 @@ Description
 -----------
 Sets mode for conversion Geom_Circle to bezier.
 ") SetCircleMode;
-		void SetCircleMode(const Standard_Boolean mode);
+		void SetCircleMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::SetConicMode ******/
-		/****** md5 signature: 61d8d14ad1836318f287930873b26300 ******/
+		/****** md5 signature: 7d26ba700ab222620c7c3c35601b4d08 ******/
 		%feature("compactdefaultargs") SetConicMode;
 		%feature("autodoc", "
 Parameters
@@ -4333,10 +4355,10 @@ Description
 -----------
 Returns the Geom_Conic conversion mode.
 ") SetConicMode;
-		void SetConicMode(const Standard_Boolean mode);
+		void SetConicMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::SetLineMode ******/
-		/****** md5 signature: 29d1d64e92a62cccfa7059b01427f10c ******/
+		/****** md5 signature: 9149dcecc3162c407de8abed62c432f0 ******/
 		%feature("compactdefaultargs") SetLineMode;
 		%feature("autodoc", "
 Parameters
@@ -4351,10 +4373,10 @@ Description
 -----------
 Sets mode for conversion Geom_Line to bezier.
 ") SetLineMode;
-		void SetLineMode(const Standard_Boolean mode);
+		void SetLineMode(const bool mode);
 
 		/****** ShapeUpgrade_ConvertCurve3dToBezier::SplitParams ******/
-		/****** md5 signature: 58b035673d8a2196e251a31275012623 ******/
+		/****** md5 signature: e912cfda5308fddafec462af6799ce9a ******/
 		%feature("compactdefaultargs") SplitParams;
 		%feature("autodoc", "Return
 -------
@@ -4413,39 +4435,39 @@ No available documentation.
 ") ShapeUpgrade_FaceDivideArea;
 		 ShapeUpgrade_FaceDivideArea(const TopoDS_Face & F);
 
+		/****** ShapeUpgrade_FaceDivideArea::MaxArea ******/
+		/****** md5 signature: e21f11e6ebd97eacac4da57267700800 ******/
+		%feature("compactdefaultargs") MaxArea;
+		%feature("autodoc", "Return
+-------
+double
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetMaxArea() {
-            return (Standard_Real) $self->MaxArea();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetMaxArea(Standard_Real value) {
-            $self->MaxArea()=value;
-            }
-        };
+Description
+-----------
+Set max area allowed for faces.
+") MaxArea;
+		double & MaxArea();
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetNbParts() {
-            return (Standard_Integer) $self->NbParts();
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetNbParts(Standard_Integer value) {
-            $self->NbParts()=value;
-            }
-        };
+		/****** ShapeUpgrade_FaceDivideArea::NbParts ******/
+		/****** md5 signature: a551c387f586155ac0b1bb86064b958e ******/
+		%feature("compactdefaultargs") NbParts;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Set number of parts expected.
+") NbParts;
+		int & NbParts();
+
 		/****** ShapeUpgrade_FaceDivideArea::Perform ******/
-		/****** md5 signature: 0a9ce5707853083f8879f76d7deee39d ******/
+		/****** md5 signature: a39fc7ea3c1e96b690af6461cbdd0725 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-theArea: float (optional, default to 0)
+theArea: double (optional, default to 0)
 
 Return
 -------
@@ -4455,10 +4477,10 @@ Description
 -----------
 Performs splitting and computes the resulting shell The context is used to keep track of former splittings.
 ") Perform;
-		virtual Standard_Boolean Perform(const Standard_Real theArea = 0);
+		bool Perform(const double theArea = 0);
 
 		/****** ShapeUpgrade_FaceDivideArea::SetNumbersUVSplits ******/
-		/****** md5 signature: 5588ef3b7b0b00baa41cae130044c379 ******/
+		/****** md5 signature: 08f9e64820ad6d1a70ffbeb9464b5475 ******/
 		%feature("compactdefaultargs") SetNumbersUVSplits;
 		%feature("autodoc", "
 Parameters
@@ -4474,10 +4496,10 @@ Description
 -----------
 Set fixed numbers of splits in U and V directions. Only for 'Splitting By Numbers' mode.
 ") SetNumbersUVSplits;
-		void SetNumbersUVSplits(const Standard_Integer theNbUsplits, const Standard_Integer theNbVsplits);
+		void SetNumbersUVSplits(const int theNbUsplits, const int theNbVsplits);
 
 		/****** ShapeUpgrade_FaceDivideArea::SetSplittingByNumber ******/
-		/****** md5 signature: a51e94810d1031ba91234e4f5dfceec6 ******/
+		/****** md5 signature: bbe85d132bbae7329605bed84abe92ea ******/
 		%feature("compactdefaultargs") SetSplittingByNumber;
 		%feature("autodoc", "
 Parameters
@@ -4492,8 +4514,16 @@ Description
 -----------
 Set splitting mode If the mode is 'splitting by number', the face is splitted approximately into <myNbParts> parts, the parts are similar to squares in 2D.
 ") SetSplittingByNumber;
-		void SetSplittingByNumber(const Standard_Boolean theIsSplittingByNumber);
+		void SetSplittingByNumber(const bool theIsSplittingByNumber);
 
+		%extend{
+			double GetMaxArea() { return self->MaxArea(); }
+			void SetMaxArea(double value) { self->MaxArea() = value; }
+		};
+		%extend{
+			int GetNbParts() { return self->NbParts(); }
+			void SetNbParts(int value) { self->NbParts() = value; }
+		};
 };
 
 
@@ -4524,7 +4554,7 @@ No available documentation.
 		 ShapeUpgrade_FixSmallBezierCurves();
 
 		/****** ShapeUpgrade_FixSmallBezierCurves::Approx ******/
-		/****** md5 signature: f8c48097c289ca08fe208ce8d9dbf385 ******/
+		/****** md5 signature: 990797ae2221563a4a46182f4a51dda8 ******/
 		%feature("compactdefaultargs") Approx;
 		%feature("autodoc", "
 Parameters
@@ -4535,14 +4565,14 @@ Curve2dR: Geom2d_Curve
 
 Return
 -------
-First: float
-Last: float
+First: double
+Last: double
 
 Description
 -----------
 No available documentation.
 ") Approx;
-		virtual Standard_Boolean Approx(opencascade::handle<Geom_Curve> & Curve3d, opencascade::handle<Geom2d_Curve> & Curve2d, opencascade::handle<Geom2d_Curve> & Curve2dR, Standard_Real &OutValue, Standard_Real &OutValue);
+		bool Approx(opencascade::handle<Geom_Curve> & Curve3d, opencascade::handle<Geom2d_Curve> & Curve2d, opencascade::handle<Geom2d_Curve> & Curve2dR, Standard_Real &OutValue, Standard_Real &OutValue);
 
 };
 
@@ -4574,7 +4604,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitCurve2dContinuity();
 
 		/****** ShapeUpgrade_SplitCurve2dContinuity::Compute ******/
-		/****** md5 signature: e00c7761ecdbff16b5eaa284ed126d0e ******/
+		/****** md5 signature: 99c9e5bb8deeeb0450679c724c8f0175 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Return
 -------
@@ -4584,7 +4614,7 @@ Description
 -----------
 Calculates points for correction/splitting of the curve.
 ") Compute;
-		virtual void Compute();
+		void Compute();
 
 		/****** ShapeUpgrade_SplitCurve2dContinuity::SetCriterion ******/
 		/****** md5 signature: 8d6387c402a873b2b21a29ea9b405c1c ******/
@@ -4605,12 +4635,12 @@ Sets criterion for splitting.
 		void SetCriterion(const GeomAbs_Shape Criterion);
 
 		/****** ShapeUpgrade_SplitCurve2dContinuity::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4620,7 +4650,7 @@ Description
 -----------
 Sets tolerance.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 };
 
@@ -4652,7 +4682,7 @@ Empty constructor.
 		 ShapeUpgrade_SplitCurve3dContinuity();
 
 		/****** ShapeUpgrade_SplitCurve3dContinuity::Compute ******/
-		/****** md5 signature: e00c7761ecdbff16b5eaa284ed126d0e ******/
+		/****** md5 signature: 99c9e5bb8deeeb0450679c724c8f0175 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "Return
 -------
@@ -4662,7 +4692,7 @@ Description
 -----------
 Calculates points for correction/splitting of the curve.
 ") Compute;
-		virtual void Compute();
+		void Compute();
 
 		/****** ShapeUpgrade_SplitCurve3dContinuity::GetCurve ******/
 		/****** md5 signature: 47233261d5237642cfead20b7519a635 ******/
@@ -4696,12 +4726,12 @@ Sets criterion for splitting.
 		void SetCriterion(const GeomAbs_Shape Criterion);
 
 		/****** ShapeUpgrade_SplitCurve3dContinuity::SetTolerance ******/
-		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
+		/****** md5 signature: c426e858e7414d8f8908514d195da2fa ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
 ----------
-Tol: float
+Tol: double
 
 Return
 -------
@@ -4711,7 +4741,7 @@ Description
 -----------
 Sets tolerance.
 ") SetTolerance;
-		void SetTolerance(const Standard_Real Tol);
+		void SetTolerance(const double Tol);
 
 };
 

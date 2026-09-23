@@ -1,16 +1,18 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
+
 class GccEnt_Position(IntEnum):
-    GccEnt_unqualified: int = ...
-    GccEnt_enclosing: int = ...
-    GccEnt_enclosed: int = ...
-    GccEnt_outside: int = ...
-    GccEnt_noqualifier: int = ...
+    GccEnt_unqualified = 0
+    GccEnt_enclosing = 1
+    GccEnt_enclosed = 2
+    GccEnt_outside = 3
+    GccEnt_noqualifier = 4
 
 GccEnt_unqualified = GccEnt_Position.GccEnt_unqualified
 GccEnt_enclosing = GccEnt_Position.GccEnt_enclosing
@@ -70,3 +72,4 @@ class GccEnt_QualifiedLin:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

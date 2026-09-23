@@ -1,14 +1,16 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Units import *
 
+
 class UnitsAPI_SystemUnits(IntEnum):
-    UnitsAPI_DEFAULT: int = ...
-    UnitsAPI_SI: int = ...
-    UnitsAPI_MDTV: int = ...
+    UnitsAPI_DEFAULT = 0
+    UnitsAPI_SI = 1
+    UnitsAPI_MDTV = 2
 
 UnitsAPI_DEFAULT = UnitsAPI_SystemUnits.UnitsAPI_DEFAULT
 UnitsAPI_SI = UnitsAPI_SystemUnits.UnitsAPI_SI
@@ -84,10 +86,9 @@ class unitsapi:
     @staticmethod
     def SetCurrentUnit(aQuantity: str, aUnit: str) -> None: ...
     @staticmethod
-    def SetLocalSystem(
-        aSystemUnit: Optional[UnitsAPI_SystemUnits] = UnitsAPI_SI,
-    ) -> None: ...
+    def SetLocalSystem(aSystemUnit: Optional[UnitsAPI_SystemUnits] = UnitsAPI_SI) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

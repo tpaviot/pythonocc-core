@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmlxcafdrivers.ht
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -160,7 +161,7 @@ No available documentation.
 		 XmlXCAFDrivers_DocumentRetrievalDriver();
 
 		/****** XmlXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -175,7 +176,7 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
@@ -212,7 +213,7 @@ No available documentation.
 		 XmlXCAFDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****** XmlXCAFDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -227,7 +228,7 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 

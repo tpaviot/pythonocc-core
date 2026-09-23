@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -7,6 +8,7 @@ from OCC.Core.Message import *
 from OCC.Core.BinMDF import *
 from OCC.Core.TDocStd import *
 from OCC.Core.BinDrivers import *
+
 
 class binxcafdrivers:
     @staticmethod
@@ -18,16 +20,13 @@ class binxcafdrivers:
 
 class BinXCAFDrivers_DocumentRetrievalDriver(BinDrivers_DocumentRetrievalDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> BinMDF_ADriverTable: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> BinMDF_ADriverTable: ...
 
 class BinXCAFDrivers_DocumentStorageDriver(BinDrivers_DocumentStorageDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> BinMDF_ADriverTable: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> BinMDF_ADriverTable: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

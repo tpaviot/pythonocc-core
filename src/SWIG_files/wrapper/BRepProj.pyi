@@ -1,10 +1,12 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.gp import *
+
 
 class BRepProj_Projection:
     @overload
@@ -21,3 +23,4 @@ class BRepProj_Projection:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -27,7 +27,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NLPlate_HPG1Constraint.hxx>
 #include<NLPlate_HPG2Constraint.hxx>
 #include<NLPlate_HPG3Constraint.hxx>
-#include<NLPlate_ListIteratorOfStackOfPlate.hxx>
 #include<NLPlate_NLPlate.hxx>
 #include<NLPlate_SequenceOfHGPPConstraint.hxx>
 #include<NLPlate_StackOfPlate.hxx>

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -22,10 +22,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MoniTool_AttrList.hxx>
 #include<MoniTool_CaseData.hxx>
 #include<MoniTool_DataInfo.hxx>
-#include<MoniTool_DataMapIteratorOfDataMapOfShapeTransient.hxx>
-#include<MoniTool_DataMapIteratorOfDataMapOfTimer.hxx>
 #include<MoniTool_DataMapOfShapeTransient.hxx>
-#include<MoniTool_DataMapOfTimer.hxx>
 #include<MoniTool_Element.hxx>
 #include<MoniTool_HSequenceOfElement.hxx>
 #include<MoniTool_IndexedDataMapOfShapeTransient.hxx>

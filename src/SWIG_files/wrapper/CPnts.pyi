@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -8,38 +9,19 @@ from OCC.Core.Adaptor2d import *
 from OCC.Core.math import *
 from OCC.Core.gp import *
 
+
 class CPnts_AbscissaPoint:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self, C: Adaptor3d_Curve, Abscissa: float, U0: float, Resolution: float
-    ) -> None: ...
+    def __init__(self, C: Adaptor3d_Curve, Abscissa: float, U0: float, Resolution: float) -> None: ...
     @overload
-    def __init__(
-        self, C: Adaptor2d_Curve2d, Abscissa: float, U0: float, Resolution: float
-    ) -> None: ...
+    def __init__(self, C: Adaptor2d_Curve2d, Abscissa: float, U0: float, Resolution: float) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor3d_Curve,
-        Abscissa: float,
-        U0: float,
-        Ui: float,
-        Resolution: float,
-    ) -> None: ...
+    def __init__(self, C: Adaptor3d_Curve, Abscissa: float, U0: float, Ui: float, Resolution: float) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor2d_Curve2d,
-        Abscissa: float,
-        U0: float,
-        Ui: float,
-        Resolution: float,
-    ) -> None: ...
-    def AdvPerform(
-        self, Abscissa: float, U0: float, Ui: float, Resolution: float
-    ) -> None: ...
+    def __init__(self, C: Adaptor2d_Curve2d, Abscissa: float, U0: float, Ui: float, Resolution: float) -> None: ...
+    def AdvPerform(self, Abscissa: float, U0: float, Ui: float, Resolution: float) -> None: ...
     @overload
     def Init(self, C: Adaptor3d_Curve) -> None: ...
     @overload
@@ -85,9 +67,7 @@ class CPnts_AbscissaPoint:
     @overload
     def Perform(self, Abscissa: float, U0: float, Resolution: float) -> None: ...
     @overload
-    def Perform(
-        self, Abscissa: float, U0: float, Ui: float, Resolution: float
-    ) -> None: ...
+    def Perform(self, Abscissa: float, U0: float, Ui: float, Resolution: float) -> None: ...
     def SetParameter(self, P: float) -> None: ...
 
 class CPnts_MyGaussFunction(math_Function):
@@ -111,77 +91,21 @@ class CPnts_UniformDeflection:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor3d_Curve,
-        Deflection: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def __init__(self, C: Adaptor3d_Curve, Deflection: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor2d_Curve2d,
-        Deflection: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def __init__(self, C: Adaptor2d_Curve2d, Deflection: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor3d_Curve,
-        Deflection: float,
-        U1: float,
-        U2: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def __init__(self, C: Adaptor3d_Curve, Deflection: float, U1: float, U2: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def __init__(
-        self,
-        C: Adaptor2d_Curve2d,
-        Deflection: float,
-        U1: float,
-        U2: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def __init__(self, C: Adaptor2d_Curve2d, Deflection: float, U1: float, U2: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def Initialize(
-        self,
-        C: Adaptor3d_Curve,
-        Deflection: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def Initialize(self, C: Adaptor3d_Curve, Deflection: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def Initialize(
-        self,
-        C: Adaptor2d_Curve2d,
-        Deflection: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def Initialize(self, C: Adaptor2d_Curve2d, Deflection: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def Initialize(
-        self,
-        C: Adaptor3d_Curve,
-        Deflection: float,
-        U1: float,
-        U2: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def Initialize(self, C: Adaptor3d_Curve, Deflection: float, U1: float, U2: float, Resolution: float, WithControl: bool) -> None: ...
     @overload
-    def Initialize(
-        self,
-        C: Adaptor2d_Curve2d,
-        Deflection: float,
-        U1: float,
-        U2: float,
-        Resolution: float,
-        WithControl: bool,
-    ) -> None: ...
+    def Initialize(self, C: Adaptor2d_Curve2d, Deflection: float, U1: float, U2: float, Resolution: float, WithControl: bool) -> None: ...
     def IsAllDone(self) -> bool: ...
     def More(self) -> bool: ...
     def Next(self) -> None: ...
@@ -191,3 +115,4 @@ class CPnts_UniformDeflection:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

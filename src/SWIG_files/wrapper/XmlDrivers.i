@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -58,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_xmldrivers.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -180,7 +181,7 @@ No available documentation.
 		 XmlDrivers_DocumentRetrievalDriver();
 
 		/****** XmlDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -195,10 +196,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** XmlDrivers_DocumentRetrievalDriver::ReadShapeSection ******/
-		/****** md5 signature: e6c8d6b2639a12f4b1c8a6050a5f3163 ******/
+		/****** md5 signature: ad9da801be3ee7743d196356a80c487a ******/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -215,10 +216,10 @@ Description
 -----------
 No available documentation.
 ") ReadShapeSection;
-		virtual opencascade::handle<XmlMDF_ADriver> ReadShapeSection(const XmlObjMgt_Element & thePDoc, const opencascade::handle<Message_Messenger> & theMsgDriver, const Message_ProgressRange & theRange = Message_ProgressRange());
+		opencascade::handle<XmlMDF_ADriver> ReadShapeSection(const XmlObjMgt_Element & thePDoc, const opencascade::handle<Message_Messenger> & theMsgDriver, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****** XmlDrivers_DocumentRetrievalDriver::ShapeSetCleaning ******/
-		/****** md5 signature: 4932412d0f0136668a4280a7c86030ec ******/
+		/****** md5 signature: 94438f583459e1834906f3f06b35e6f0 ******/
 		%feature("compactdefaultargs") ShapeSetCleaning;
 		%feature("autodoc", "
 Parameters
@@ -233,7 +234,7 @@ Description
 -----------
 No available documentation.
 ") ShapeSetCleaning;
-		virtual void ShapeSetCleaning(const opencascade::handle<XmlMDF_ADriver> & theDriver);
+		void ShapeSetCleaning(const opencascade::handle<XmlMDF_ADriver> & theDriver);
 
 };
 
@@ -270,7 +271,7 @@ No available documentation.
 		 XmlDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
 		/****** XmlDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
+		/****** md5 signature: 4934fc31e5a0bd7ec8e719be5dac0be5 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -285,10 +286,10 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<XmlMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****** XmlDrivers_DocumentStorageDriver::WriteShapeSection ******/
-		/****** md5 signature: 4760c0c9885febf6a979848ca7454a48 ******/
+		/****** md5 signature: b29db9864aefbac7fdedb59728e61854 ******/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -305,7 +306,7 @@ Description
 -----------
 No available documentation.
 ") WriteShapeSection;
-		virtual Standard_Boolean WriteShapeSection(XmlObjMgt_Element & thePDoc, const TDocStd_FormatVersion theStorageFormatVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
+		bool WriteShapeSection(XmlObjMgt_Element & thePDoc, const TDocStd_FormatVersion theStorageFormatVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

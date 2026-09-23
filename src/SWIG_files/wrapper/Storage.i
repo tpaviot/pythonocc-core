@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_storage.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -148,15 +149,27 @@ Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 %template(Storage_ArrayOfCallBack) NCollection_Array1<opencascade::handle<Storage_CallBack>>;
 Array1ExtendIter(opencascade::handle<Storage_CallBack>)
 
-%template(Storage_ArrayOfSchema) NCollection_Array1<opencascade::handle<Storage_Schema>>;
-Array1ExtendIter(opencascade::handle<Storage_Schema>)
-
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_TypedCallBack>>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_TypedCallBack>>::KeyValues;
 %template(Storage_MapOfCallBack) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_TypedCallBack>>;
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>>::Items;
+%ignore NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>>::KeyValues;
 %template(Storage_MapOfPers) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>>;
-%template(Storage_PType) NCollection_IndexedDataMap<TCollection_AsciiString,Standard_Integer>;
+%ignore NCollection_IndexedDataMap<TCollection_AsciiString,int>::Items;
+%ignore NCollection_IndexedDataMap<TCollection_AsciiString,int>::KeyValues;
+%ignore NCollection_IndexedDataMap<TCollection_AsciiString,int>::IndexedItems;
+%ignore NCollection_IndexedDataMap<TCollection_AsciiString,int>::Contained;
+%template(Storage_PType) NCollection_IndexedDataMap<TCollection_AsciiString,int>;
 %template(Storage_SeqOfRoot) NCollection_Sequence<opencascade::handle<Storage_Root>>;
 
 %extend NCollection_Sequence<opencascade::handle<Storage_Root>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -166,12 +179,15 @@ Array1ExtendIter(opencascade::handle<Storage_Schema>)
 
 /* typedefs */
 typedef NCollection_Array1<opencascade::handle<Storage_CallBack>> Storage_ArrayOfCallBack;
-typedef NCollection_Array1<opencascade::handle<Storage_Schema>> Storage_ArrayOfSchema;
 typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>>::Iterator Storage_DataMapIteratorOfMapOfCallBack;
 typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>>::Iterator Storage_DataMapIteratorOfMapOfPers;
+typedef NCollection_HArray1<opencascade::handle<Storage_CallBack>> Storage_HArrayOfCallBack;
+typedef NCollection_HArray1<opencascade::handle<Storage_Schema>> Storage_HArrayOfSchema;
+typedef NCollection_HArray1<opencascade::handle<Standard_Persistent>> Storage_HPArray;
+typedef NCollection_HSequence<opencascade::handle<Storage_Root>> Storage_HSeqOfRoot;
 typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>> Storage_MapOfCallBack;
 typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>> Storage_MapOfPers;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> Storage_PType;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, int> Storage_PType;
 typedef long Storage_Position;
 typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoot;
 /* end typedefs declaration */
@@ -287,48 +303,48 @@ class Storage_TypedCallBack:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
+class Storage_HArrayOfCallBack : public NCollection_Array1<opencascade::handle<Storage_CallBack>>, public Standard_Transient {
   public:
     Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
-    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
-    const Storage_ArrayOfCallBack& Array1();
-    Storage_ArrayOfCallBack& ChangeArray1();
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Storage_CallBack>>::value_type& theValue);
+    Storage_HArrayOfCallBack(const NCollection_Array1<opencascade::handle<Storage_CallBack>>& theOther);
+    const NCollection_Array1<opencascade::handle<Storage_CallBack>>& Array1();
+    NCollection_Array1<opencascade::handle<Storage_CallBack>>& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfCallBack)
 
 
-class Storage_HArrayOfSchema : public Storage_ArrayOfSchema, public Standard_Transient {
+class Storage_HArrayOfSchema : public NCollection_Array1<opencascade::handle<Storage_Schema>>, public Standard_Transient {
   public:
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfSchema::value_type& theValue);
-    Storage_HArrayOfSchema(const Storage_ArrayOfSchema& theOther);
-    const Storage_ArrayOfSchema& Array1();
-    Storage_ArrayOfSchema& ChangeArray1();
+    Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Storage_Schema>>::value_type& theValue);
+    Storage_HArrayOfSchema(const NCollection_Array1<opencascade::handle<Storage_Schema>>& theOther);
+    const NCollection_Array1<opencascade::handle<Storage_Schema>>& Array1();
+    NCollection_Array1<opencascade::handle<Storage_Schema>>& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfSchema)
 
 
-class Storage_HPArray : public Storage_PArray, public Standard_Transient {
+class Storage_HPArray : public NCollection_Array1<opencascade::handle<Standard_Persistent>>, public Standard_Transient {
   public:
     Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_PArray::value_type& theValue);
-    Storage_HPArray(const Storage_PArray& theOther);
-    const Storage_PArray& Array1();
-    Storage_PArray& ChangeArray1();
+    Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Standard_Persistent>>::value_type& theValue);
+    Storage_HPArray(const NCollection_Array1<opencascade::handle<Standard_Persistent>>& theOther);
+    const NCollection_Array1<opencascade::handle<Standard_Persistent>>& Array1();
+    NCollection_Array1<opencascade::handle<Standard_Persistent>>& ChangeArray1();
 };
 %make_alias(Storage_HPArray)
 
 /* harray2 classes */
 /* hsequence classes */
-class Storage_HSeqOfRoot : public Storage_SeqOfRoot, public Standard_Transient {
+class Storage_HSeqOfRoot : public NCollection_Sequence<opencascade::handle<Storage_Root>>, public Standard_Transient {
   public:
     Storage_HSeqOfRoot();
-    Storage_HSeqOfRoot(const Storage_SeqOfRoot& theOther);
-    const Storage_SeqOfRoot& Sequence();
-    void Append (const Storage_SeqOfRoot::value_type& theItem);
-    void Append (Storage_SeqOfRoot& theSequence);
-    Storage_SeqOfRoot& ChangeSequence();
+    Storage_HSeqOfRoot(const NCollection_Sequence<opencascade::handle<Storage_Root>>& theOther);
+    const NCollection_Sequence<opencascade::handle<Storage_Root>>& Sequence();
+    void Append (const NCollection_Sequence<opencascade::handle<Storage_Root>>::value_type& theItem);
+    void Append (NCollection_Sequence<opencascade::handle<Storage_Root>>& theSequence);
+    NCollection_Sequence<opencascade::handle<Storage_Root>>& ChangeSequence();
 };
 %make_alias(Storage_HSeqOfRoot)
 

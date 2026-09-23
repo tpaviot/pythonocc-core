@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -36,8 +36,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRAlgo_Interference.hxx>
 #include<HLRAlgo_InterferenceList.hxx>
 #include<HLRAlgo_Intersection.hxx>
-#include<HLRAlgo_ListIteratorOfInterferenceList.hxx>
-#include<HLRAlgo_ListIteratorOfListOfBPoint.hxx>
 #include<HLRAlgo_ListOfBPoint.hxx>
 #include<HLRAlgo_PolyAlgo.hxx>
 #include<HLRAlgo_PolyData.hxx>

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Law_Interpolate.hxx>
 #include<Law_Laws.hxx>
 #include<Law_Linear.hxx>
-#include<Law_ListIteratorOfLaws.hxx>
 #include<Law_S.hxx>
 
 #endif // LAW_HXX

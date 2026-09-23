@@ -1,25 +1,21 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TCollection import *
 from OCC.Core.gp import *
 
-class XCAFView_ProjectionType(IntEnum):
-    XCAFView_ProjectionType_NoCamera: int = ...
-    XCAFView_ProjectionType_Parallel: int = ...
-    XCAFView_ProjectionType_Central: int = ...
 
-XCAFView_ProjectionType_NoCamera = (
-    XCAFView_ProjectionType.XCAFView_ProjectionType_NoCamera
-)
-XCAFView_ProjectionType_Parallel = (
-    XCAFView_ProjectionType.XCAFView_ProjectionType_Parallel
-)
-XCAFView_ProjectionType_Central = (
-    XCAFView_ProjectionType.XCAFView_ProjectionType_Central
-)
+class XCAFView_ProjectionType(IntEnum):
+    XCAFView_ProjectionType_NoCamera = 0
+    XCAFView_ProjectionType_Parallel = 1
+    XCAFView_ProjectionType_Central = 2
+
+XCAFView_ProjectionType_NoCamera = XCAFView_ProjectionType.XCAFView_ProjectionType_NoCamera
+XCAFView_ProjectionType_Parallel = XCAFView_ProjectionType.XCAFView_ProjectionType_Parallel
+XCAFView_ProjectionType_Central = XCAFView_ProjectionType.XCAFView_ProjectionType_Central
 
 class XCAFView_Object(Standard_Transient):
     @overload
@@ -39,9 +35,7 @@ class XCAFView_Object(Standard_Transient):
     def NbGDTPoints(self) -> int: ...
     def ProjectionPoint(self) -> gp_Pnt: ...
     def SetBackPlaneDistance(self, theDistance: float) -> None: ...
-    def SetClippingExpression(
-        self, theExpression: TCollection_HAsciiString
-    ) -> None: ...
+    def SetClippingExpression(self, theExpression: TCollection_HAsciiString) -> None: ...
     def SetFrontPlaneDistance(self, theDistance: float) -> None: ...
     def SetGDTPoint(self, theIndex: int, thePoint: gp_Pnt) -> None: ...
     def SetName(self, theName: TCollection_HAsciiString) -> None: ...
@@ -65,3 +59,4 @@ class XCAFView_Object(Standard_Transient):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

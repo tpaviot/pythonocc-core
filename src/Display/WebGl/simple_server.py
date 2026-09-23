@@ -17,10 +17,11 @@
 
 """A very simple webserver."""
 
+import errno
+import functools
 import os
 import socket
 import webbrowser
-import errno
 
 
 def get_available_port(port: int) -> int:
@@ -42,21 +43,20 @@ def get_available_port(port: int) -> int:
         int: An available port.
     """
     if port <= 1024:
-        raise AssertionError("port number should be > 1024")
-    # check this port is available
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.bind(("127.0.0.1", port))
-    except socket.error as e:
-        if e.errno == errno.EADDRINUSE:
-            print("\nPort %i is already in use. Picking another one." % port)
-            # take another one
-            s.bind(("", 0))
+        raise ValueError("port number should be > 1024")
+    # check this port is available. The check is not atomic: the port may be
+    # taken between the check and the start of the server, which is unlikely
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        try:
+            s.bind(("127.0.0.1", port))
+        except OSError as e:
+            if e.errno != errno.EADDRINUSE:
+                raise
+            print(f"\nPort {port} is already in use. Picking another one.")
+            # take any free one
+            s.bind(("127.0.0.1", 0))
             port = s.getsockname()[1]
-            print("Using port number %i" % port)
-        else:
-            print("Can't bind to port %i." % port)
-    s.close()
+            print(f"Using port number {port}")
     return port
 
 
@@ -104,7 +104,7 @@ def start_server(
         open_webbrowser (bool, optional): Whether to open a web browser.
     """
     if os.getenv("PYTHONOCC_SHUNT_WEB_SERVER") == "1":
-        return False
+        return
     # prefer using Flask, if installed
     try:
         from flask import Flask, send_from_directory
@@ -113,36 +113,42 @@ def start_server(
     except ImportError:
         HAVE_FLASK = False
     if not HAVE_FLASK:  # use simple http server
-        from http.server import SimpleHTTPRequestHandler, HTTPServer
+        from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
-        os.chdir(x3d_path)
+        # the browser requests the json/x3d files in parallel, serve them from
+        # x3d_path without changing the working directory of the process
+        handler = functools.partial(SimpleHTTPRequestHandler, directory=x3d_path)
         port = get_available_port(port)
-        httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
+        httpd = ThreadingHTTPServer((addr, port), handler)
         print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
-        display_hostname = "localhost"
-        if (
-            addr == "0.0.0.0"
-        ):  # Did not consider ipv6 `::` because httpd does not support it
+        # Did not consider ipv6 `::` because httpd does not support it
+        if addr == "0.0.0.0":
             display_hostname = get_interface_ip(socket.AF_INET)
             print(f"## Running on all addresses ({addr})")
-        print(
-            "## Open your webbrowser at the URL: http://%s:%i"
-            % (display_hostname, port)
-        )
+        elif addr in ("127.0.0.1", "localhost"):
+            display_hostname = "localhost"
+        else:
+            display_hostname = addr
+        url = f"http://{display_hostname}:{port}"
+        print(f"## Open your webbrowser at the URL: {url}")
         # open webbrowser
         if open_webbrowser:
-            webbrowser.open("http://%s:%i" % (display_hostname, port), new=2)
+            webbrowser.open(url, new=2)
         # starts the web_server
-        httpd.serve_forever()
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            print("\n## Server stopped")
+        finally:
+            httpd.server_close()
     else:  # use flask
         # set the project root directory as the static folder, you can set others.
         app = Flask(__name__)
 
         @app.route("/")
         def root():
-            with open(os.path.join(x3d_path, "index.html")) as fp:
-                html_content = fp.read()
-            return html_content
+            with open(os.path.join(x3d_path, "index.html"), encoding="utf-8") as fp:
+                return fp.read()
 
         @app.route("/<path:path>")
         def send_x3d_content(path):

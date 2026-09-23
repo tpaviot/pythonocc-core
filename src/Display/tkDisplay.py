@@ -15,25 +15,37 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""The 3D viewer as a tkinter widget."""
+
 import tkinter as tk
+from typing import Optional
 
 from OCC.Display import OCCViewer
+
+# zoom in/out factor of one mouse wheel step
+ZOOM_STEP = 1.2
 
 
 class tkViewer3d(tk.Frame):
     """
     A Tkinter widget for an OCC viewer.
+
+    The viewer is created when the widget is mapped, it is available as the
+    display property from then on.
     """
 
-    def __init__(self, parent: "tk.Widget", default: str = "") -> None:
+    def __init__(
+        self, parent: "tk.Widget", width: int = 1024, height: int = 768
+    ) -> None:
         """
         Initializes the tkViewer3d.
 
         Args:
             parent: The parent widget.
-            default (str, optional): The default value.
+            width (int, optional): The initial width of the widget, in pixels.
+            height (int, optional): The initial height of the widget, in pixels.
         """
-        tk.Frame.__init__(self, parent, width=1024, height=768)
+        tk.Frame.__init__(self, parent, width=width, height=height)
         self.bind("<Map>", self.Map)
         self.bind("<Configure>", self.Resize)
         self.bind("<B1-Motion>", self.Rotate)
@@ -41,14 +53,21 @@ class tkViewer3d(tk.Frame):
         self.bind("<B2-Motion>", self.Pan)
         self.bind("<Button-2>", self.LeftDown)
         # zoom
-        self.bind("<MouseWheel>", self.Zoom)  # windows
+        self.bind("<MouseWheel>", self.Zoom)  # windows, macOS
         self.bind("<Button-4>", self.Zoom)  # Linux
         self.bind("<Button-5>", self.Zoom)  # Linux
 
-        self._display = None
+        self._display: Optional[OCCViewer.Viewer3d] = None
         self._inited = False
 
         self.drag_pos_y = self.drag_pos_x = 0
+
+    @property
+    def display(self) -> OCCViewer.Viewer3d:
+        """The Viewer3d instance, created when the widget is first mapped."""
+        if self._display is None:
+            raise RuntimeError("the viewer is created once the widget is mapped")
+        return self._display
 
     def LeftDown(self, event: "tk.Event") -> None:
         """
@@ -56,13 +75,13 @@ class tkViewer3d(tk.Frame):
         """
         self.drag_pos_x = event.x
         self.drag_pos_y = event.y
-        self._display.StartRotation(self.drag_pos_x, self.drag_pos_y)
+        self.display.StartRotation(self.drag_pos_x, self.drag_pos_y)
 
     def Rotate(self, event: "tk.Event") -> None:
         """
         Called when the mouse is moved with the left button pressed.
         """
-        self._display.Rotation(event.x, event.y)
+        self.display.Rotation(event.x, event.y)
 
     def Pan(self, event: "tk.Event") -> None:
         """
@@ -72,34 +91,33 @@ class tkViewer3d(tk.Frame):
         dy = event.y - self.drag_pos_y
         self.drag_pos_x = event.x
         self.drag_pos_y = event.y
-        self._display.Pan(dx, -dy)
+        self.display.Pan(dx, -dy)
 
     def Zoom(self, event: "tk.Event") -> None:
         """
-        Called when the mouse wheel is scrolled.
+        Called when the mouse wheel is scrolled, zooms in or out.
         """
-        # Linux
-        if event.num == 4 or event.delta > 0:  # zoom in
-            zoom_factor = 2.0
-        elif event.num == 5 or event.delta < 0:  # zoom out
-            zoom_factor = 0.5
-        # Windows
-        if event.delta < 0:  # zoom out
-            zoom_factor = 1 / 1.2
-        elif event.delta > 0:  # zoom in
-            zoom_factor = 1.2
-        self._display.ZoomFactor(zoom_factor)
+        # X11 reports the wheel as buttons 4 and 5, Windows and macOS as the
+        # sign of delta
+        if event.num == 4 or event.delta > 0:
+            zoom_factor = ZOOM_STEP
+        elif event.num == 5 or event.delta < 0:
+            zoom_factor = 1.0 / ZOOM_STEP
+        else:
+            return
+        self.display.ZoomFactor(zoom_factor)
 
     def Resize(self, event: "tk.Event") -> None:
         """
         Called when the widget is resized.
         """
         if self._inited:
-            self._display.Repaint()
+            self.display.OnResize()
+            self.display.Repaint()
 
     def Map(self, event: "tk.Event") -> None:
         """
-        Called when the widget is mapped.
+        Called when the widget is mapped, creates the viewer.
         """
         if not self._inited:
             self._display = OCCViewer.Viewer3d()

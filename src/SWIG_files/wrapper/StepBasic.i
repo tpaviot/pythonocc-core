@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -59,6 +59,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepbasic.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -386,16 +387,6 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_SiUnitAndThermodynamicTemperatureUnit)
 %wrap_handle(StepBasic_SiUnitAndTimeUnit)
 %wrap_handle(StepBasic_SiUnitAndVolumeUnit)
-%wrap_handle(StepBasic_HArray1OfApproval)
-%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
-%wrap_handle(StepBasic_HArray1OfDocument)
-%wrap_handle(StepBasic_HArray1OfNamedUnit)
-%wrap_handle(StepBasic_HArray1OfOrganization)
-%wrap_handle(StepBasic_HArray1OfPerson)
-%wrap_handle(StepBasic_HArray1OfProduct)
-%wrap_handle(StepBasic_HArray1OfProductContext)
-%wrap_handle(StepBasic_HArray1OfProductDefinition)
-%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 /* end handles declaration */
 
 /* templates */
@@ -442,6 +433,16 @@ typedef NCollection_Array1<opencascade::handle<StepBasic_Product>> StepBasic_Arr
 typedef NCollection_Array1<opencascade::handle<StepBasic_ProductContext>> StepBasic_Array1OfProductContext;
 typedef NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>> StepBasic_Array1OfProductDefinition;
 typedef NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> StepBasic_Array1OfUncertaintyMeasureWithUnit;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Approval>> StepBasic_HArray1OfApproval;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> StepBasic_HArray1OfDerivedUnitElement;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Document>> StepBasic_HArray1OfDocument;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_NamedUnit>> StepBasic_HArray1OfNamedUnit;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Organization>> StepBasic_HArray1OfOrganization;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Person>> StepBasic_HArray1OfPerson;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_Product>> StepBasic_HArray1OfProduct;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> StepBasic_HArray1OfProductContext;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_ProductDefinition>> StepBasic_HArray1OfProductDefinition;
+typedef NCollection_HArray1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>> StepBasic_HArray1OfUncertaintyMeasureWithUnit;
 /* end typedefs declaration */
 
 /*************************
@@ -489,7 +490,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_Action::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -499,10 +500,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_Action::Init ******/
-		/****** md5 signature: 68546e92c23e6139629752e8bf66c3ac ******/
+		/****** md5 signature: 7e4e6d1352cf6453a3c92a56b9d55b3b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -520,7 +521,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ActionMethod> & aChosenMethod);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ActionMethod> & aChosenMethod);
 
 		/****** StepBasic_Action::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -723,7 +724,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_ActionMethod::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -733,10 +734,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_ActionMethod::Init ******/
-		/****** md5 signature: 7826d0779e7b9c060c9d197517aa0fb8 ******/
+		/****** md5 signature: c8ab91f8b2766fd83bec0127559acd97 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -755,7 +756,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<TCollection_HAsciiString> & aConsequence, const opencascade::handle<TCollection_HAsciiString> & aPurpose);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<TCollection_HAsciiString> & aConsequence, const opencascade::handle<TCollection_HAsciiString> & aPurpose);
 
 		/****** StepBasic_ActionMethod::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -1112,7 +1113,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> FacsimileNumber();
 
 		/****** StepBasic_Address::HasCountry ******/
-		/****** md5 signature: 1ce3e6bb4d08d96d27b0d819a8469d66 ******/
+		/****** md5 signature: 087c904da0c52dd6f4df00c4f408a410 ******/
 		%feature("compactdefaultargs") HasCountry;
 		%feature("autodoc", "Return
 -------
@@ -1122,10 +1123,10 @@ Description
 -----------
 No available documentation.
 ") HasCountry;
-		Standard_Boolean HasCountry();
+		bool HasCountry();
 
 		/****** StepBasic_Address::HasElectronicMailAddress ******/
-		/****** md5 signature: 81ea220ac941ef11b314f6dfc2d97e18 ******/
+		/****** md5 signature: 11f3fd0d53e9bd548a44a659151a42e4 ******/
 		%feature("compactdefaultargs") HasElectronicMailAddress;
 		%feature("autodoc", "Return
 -------
@@ -1135,10 +1136,10 @@ Description
 -----------
 No available documentation.
 ") HasElectronicMailAddress;
-		Standard_Boolean HasElectronicMailAddress();
+		bool HasElectronicMailAddress();
 
 		/****** StepBasic_Address::HasFacsimileNumber ******/
-		/****** md5 signature: 86526f58a0e19c0899c21bf1e300289c ******/
+		/****** md5 signature: 819baaec9a34e885826f358670a951b7 ******/
 		%feature("compactdefaultargs") HasFacsimileNumber;
 		%feature("autodoc", "Return
 -------
@@ -1148,10 +1149,10 @@ Description
 -----------
 No available documentation.
 ") HasFacsimileNumber;
-		Standard_Boolean HasFacsimileNumber();
+		bool HasFacsimileNumber();
 
 		/****** StepBasic_Address::HasInternalLocation ******/
-		/****** md5 signature: 4c456397b687eeae69e492d17beca559 ******/
+		/****** md5 signature: 06c9775dfaef97f6e03b0eace7952a76 ******/
 		%feature("compactdefaultargs") HasInternalLocation;
 		%feature("autodoc", "Return
 -------
@@ -1161,10 +1162,10 @@ Description
 -----------
 No available documentation.
 ") HasInternalLocation;
-		Standard_Boolean HasInternalLocation();
+		bool HasInternalLocation();
 
 		/****** StepBasic_Address::HasPostalBox ******/
-		/****** md5 signature: 95484921f02e1b869664c6a5535875a2 ******/
+		/****** md5 signature: f2d37f475a0082f0b2f716b1eb0f9ae4 ******/
 		%feature("compactdefaultargs") HasPostalBox;
 		%feature("autodoc", "Return
 -------
@@ -1174,10 +1175,10 @@ Description
 -----------
 No available documentation.
 ") HasPostalBox;
-		Standard_Boolean HasPostalBox();
+		bool HasPostalBox();
 
 		/****** StepBasic_Address::HasPostalCode ******/
-		/****** md5 signature: 2b47ef90632417adcacdc1e6ee31bd02 ******/
+		/****** md5 signature: bf6a4f15e284575b833d23990257657c ******/
 		%feature("compactdefaultargs") HasPostalCode;
 		%feature("autodoc", "Return
 -------
@@ -1187,10 +1188,10 @@ Description
 -----------
 No available documentation.
 ") HasPostalCode;
-		Standard_Boolean HasPostalCode();
+		bool HasPostalCode();
 
 		/****** StepBasic_Address::HasRegion ******/
-		/****** md5 signature: bc359b473bb445c68e51b7d204afcc83 ******/
+		/****** md5 signature: bc4103ee4d87b9c18758c855691eab29 ******/
 		%feature("compactdefaultargs") HasRegion;
 		%feature("autodoc", "Return
 -------
@@ -1200,10 +1201,10 @@ Description
 -----------
 No available documentation.
 ") HasRegion;
-		Standard_Boolean HasRegion();
+		bool HasRegion();
 
 		/****** StepBasic_Address::HasStreet ******/
-		/****** md5 signature: 86201ab6da114dc71231f2edd1d5f9c1 ******/
+		/****** md5 signature: 6b1e6234cdee9b8f306a1d9e59e2ad75 ******/
 		%feature("compactdefaultargs") HasStreet;
 		%feature("autodoc", "Return
 -------
@@ -1213,10 +1214,10 @@ Description
 -----------
 No available documentation.
 ") HasStreet;
-		Standard_Boolean HasStreet();
+		bool HasStreet();
 
 		/****** StepBasic_Address::HasStreetNumber ******/
-		/****** md5 signature: bb86e74296bea122870a329a33a78e89 ******/
+		/****** md5 signature: 56020bb7548ecaa3e6d1215e1af8b00e ******/
 		%feature("compactdefaultargs") HasStreetNumber;
 		%feature("autodoc", "Return
 -------
@@ -1226,10 +1227,10 @@ Description
 -----------
 No available documentation.
 ") HasStreetNumber;
-		Standard_Boolean HasStreetNumber();
+		bool HasStreetNumber();
 
 		/****** StepBasic_Address::HasTelephoneNumber ******/
-		/****** md5 signature: 8fd0ee2efbd368a0317d7f779fe85e48 ******/
+		/****** md5 signature: cc3954c3121a3ff0adf5a2c8713d36ac ******/
 		%feature("compactdefaultargs") HasTelephoneNumber;
 		%feature("autodoc", "Return
 -------
@@ -1239,10 +1240,10 @@ Description
 -----------
 No available documentation.
 ") HasTelephoneNumber;
-		Standard_Boolean HasTelephoneNumber();
+		bool HasTelephoneNumber();
 
 		/****** StepBasic_Address::HasTelexNumber ******/
-		/****** md5 signature: a844b4d42afc825f4de6ed3cf130da9f ******/
+		/****** md5 signature: 2b513b8ee89d99d622f44432ab47f48f ******/
 		%feature("compactdefaultargs") HasTelexNumber;
 		%feature("autodoc", "Return
 -------
@@ -1252,10 +1253,10 @@ Description
 -----------
 No available documentation.
 ") HasTelexNumber;
-		Standard_Boolean HasTelexNumber();
+		bool HasTelexNumber();
 
 		/****** StepBasic_Address::HasTown ******/
-		/****** md5 signature: fec9b80f36baf27abe1b4b42b8232b0e ******/
+		/****** md5 signature: 49ad005dfd43e992ee91532ce754a96e ******/
 		%feature("compactdefaultargs") HasTown;
 		%feature("autodoc", "Return
 -------
@@ -1265,10 +1266,10 @@ Description
 -----------
 No available documentation.
 ") HasTown;
-		Standard_Boolean HasTown();
+		bool HasTown();
 
 		/****** StepBasic_Address::Init ******/
-		/****** md5 signature: d33d8382600d0bbb12af0e0a5e446d64 ******/
+		/****** md5 signature: c11c9600e94582ff3bbc8ecf2d523e56 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1306,7 +1307,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const Standard_Boolean hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const Standard_Boolean hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const Standard_Boolean hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const Standard_Boolean hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const Standard_Boolean hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const Standard_Boolean hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const Standard_Boolean hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const Standard_Boolean hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const Standard_Boolean hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const Standard_Boolean hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const Standard_Boolean hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber);
+		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber);
 
 		/****** StepBasic_Address::InternalLocation ******/
 		/****** md5 signature: c116bb434e431f081d4736d9ccd73691 ******/
@@ -2041,7 +2042,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> ApplicationInterpretedModelSchemaName();
 
 		/****** StepBasic_ApplicationProtocolDefinition::ApplicationProtocolYear ******/
-		/****** md5 signature: 5aa340807edd3920f16ae0d5bb27012c ******/
+		/****** md5 signature: 04130d5a848b912de99715fc35334fa6 ******/
 		%feature("compactdefaultargs") ApplicationProtocolYear;
 		%feature("autodoc", "Return
 -------
@@ -2051,10 +2052,10 @@ Description
 -----------
 No available documentation.
 ") ApplicationProtocolYear;
-		Standard_Integer ApplicationProtocolYear();
+		int ApplicationProtocolYear();
 
 		/****** StepBasic_ApplicationProtocolDefinition::Init ******/
-		/****** md5 signature: 89821f113658df0d9df911aec896a97e ******/
+		/****** md5 signature: fb1f03f02f61ce835d37c12f4c214521 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2072,7 +2073,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aStatus, const opencascade::handle<TCollection_HAsciiString> & aApplicationInterpretedModelSchemaName, const Standard_Integer aApplicationProtocolYear, const opencascade::handle<StepBasic_ApplicationContext> & aApplication);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aStatus, const opencascade::handle<TCollection_HAsciiString> & aApplicationInterpretedModelSchemaName, const int aApplicationProtocolYear, const opencascade::handle<StepBasic_ApplicationContext> & aApplication);
 
 		/****** StepBasic_ApplicationProtocolDefinition::SetApplication ******/
 		/****** md5 signature: 5002ad95f5c2bb18905ea09de9225f67 ******/
@@ -2111,7 +2112,7 @@ No available documentation.
 		void SetApplicationInterpretedModelSchemaName(const opencascade::handle<TCollection_HAsciiString> & aApplicationInterpretedModelSchemaName);
 
 		/****** StepBasic_ApplicationProtocolDefinition::SetApplicationProtocolYear ******/
-		/****** md5 signature: 35614b2e37b5d58c89914240af851aa9 ******/
+		/****** md5 signature: 92aafb57acfc3fb2e20939f9960940f3 ******/
 		%feature("compactdefaultargs") SetApplicationProtocolYear;
 		%feature("autodoc", "
 Parameters
@@ -2126,7 +2127,7 @@ Description
 -----------
 No available documentation.
 ") SetApplicationProtocolYear;
-		void SetApplicationProtocolYear(const Standard_Integer aApplicationProtocolYear);
+		void SetApplicationProtocolYear(const int aApplicationProtocolYear);
 
 		/****** StepBasic_ApplicationProtocolDefinition::SetStatus ******/
 		/****** md5 signature: 107f0744649d6d334a46d8ec5fd375ca ******/
@@ -3257,7 +3258,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_CharacterizedObject::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -3267,10 +3268,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_CharacterizedObject::Init ******/
-		/****** md5 signature: f1e00464b915b5c43dbfec20d469b99a ******/
+		/****** md5 signature: 3c9c11b1a806b7fc6390d084d1def939 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3287,7 +3288,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_CharacterizedObject::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -3666,7 +3667,7 @@ Returns a CoordinatedUniversalTimeOffset.
 		 StepBasic_CoordinatedUniversalTimeOffset();
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::HasMinuteOffset ******/
-		/****** md5 signature: af3122b9f8906b004c5daa252eea1422 ******/
+		/****** md5 signature: e32adff01cf1d36cbc33a15f256354fd ******/
 		%feature("compactdefaultargs") HasMinuteOffset;
 		%feature("autodoc", "Return
 -------
@@ -3676,10 +3677,10 @@ Description
 -----------
 No available documentation.
 ") HasMinuteOffset;
-		Standard_Boolean HasMinuteOffset();
+		bool HasMinuteOffset();
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::HourOffset ******/
-		/****** md5 signature: 4c0dd37eb1ce532b818d36eb9dae7b81 ******/
+		/****** md5 signature: 99168fdcf1759b519ffa36956da27544 ******/
 		%feature("compactdefaultargs") HourOffset;
 		%feature("autodoc", "Return
 -------
@@ -3689,10 +3690,10 @@ Description
 -----------
 No available documentation.
 ") HourOffset;
-		Standard_Integer HourOffset();
+		int HourOffset();
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::Init ******/
-		/****** md5 signature: 6b061cfd44045f0c8993f60df4c4b7f5 ******/
+		/****** md5 signature: 5a40ea7d6e95344e166473becc8da01b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3710,10 +3711,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aHourOffset, const Standard_Boolean hasAminuteOffset, const Standard_Integer aMinuteOffset, const StepBasic_AheadOrBehind aSense);
+		void Init(const int aHourOffset, const bool hasAminuteOffset, const int aMinuteOffset, const StepBasic_AheadOrBehind aSense);
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::MinuteOffset ******/
-		/****** md5 signature: 30e1c95a127a1d0724954e859fbe2a43 ******/
+		/****** md5 signature: 7ea5806bfe87bdba9a2a1347a64632bd ******/
 		%feature("compactdefaultargs") MinuteOffset;
 		%feature("autodoc", "Return
 -------
@@ -3723,7 +3724,7 @@ Description
 -----------
 No available documentation.
 ") MinuteOffset;
-		Standard_Integer MinuteOffset();
+		int MinuteOffset();
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::Sense ******/
 		/****** md5 signature: ad939b311acf5e83551d25181ed31d53 ******/
@@ -3739,7 +3740,7 @@ No available documentation.
 		StepBasic_AheadOrBehind Sense();
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::SetHourOffset ******/
-		/****** md5 signature: 0441a5b80d27db5caa172436733a436c ******/
+		/****** md5 signature: e4c59aecaa074f07e80b9da3cc57491e ******/
 		%feature("compactdefaultargs") SetHourOffset;
 		%feature("autodoc", "
 Parameters
@@ -3754,10 +3755,10 @@ Description
 -----------
 No available documentation.
 ") SetHourOffset;
-		void SetHourOffset(const Standard_Integer aHourOffset);
+		void SetHourOffset(const int aHourOffset);
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::SetMinuteOffset ******/
-		/****** md5 signature: 4c70cd859d0d800333fddf3708b34dde ******/
+		/****** md5 signature: d6b4d723b12e575aacba57cba5f443b8 ******/
 		%feature("compactdefaultargs") SetMinuteOffset;
 		%feature("autodoc", "
 Parameters
@@ -3772,7 +3773,7 @@ Description
 -----------
 No available documentation.
 ") SetMinuteOffset;
-		void SetMinuteOffset(const Standard_Integer aMinuteOffset);
+		void SetMinuteOffset(const int aMinuteOffset);
 
 		/****** StepBasic_CoordinatedUniversalTimeOffset::SetSense ******/
 		/****** md5 signature: 45ba15dfd6ec7af96446c8dba03b8a25 ******/
@@ -3835,7 +3836,7 @@ Returns a Date.
 		 StepBasic_Date();
 
 		/****** StepBasic_Date::Init ******/
-		/****** md5 signature: ddbee21a52389de649c5017635aa5c9e ******/
+		/****** md5 signature: bbb090b343132e2514e106d3e4b729b7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3850,10 +3851,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aYearComponent);
+		void Init(const int aYearComponent);
 
 		/****** StepBasic_Date::SetYearComponent ******/
-		/****** md5 signature: 4959ea70854b0a273072b256155cbbde ******/
+		/****** md5 signature: e8ec059c29d392463d5f86654f24e6b4 ******/
 		%feature("compactdefaultargs") SetYearComponent;
 		%feature("autodoc", "
 Parameters
@@ -3868,10 +3869,10 @@ Description
 -----------
 No available documentation.
 ") SetYearComponent;
-		void SetYearComponent(const Standard_Integer aYearComponent);
+		void SetYearComponent(const int aYearComponent);
 
 		/****** StepBasic_Date::YearComponent ******/
-		/****** md5 signature: f48f5c06e36f7cd7e511889665e2e6aa ******/
+		/****** md5 signature: 43456b341a68b54453e53c615542ce25 ******/
 		%feature("compactdefaultargs") YearComponent;
 		%feature("autodoc", "Return
 -------
@@ -3881,7 +3882,7 @@ Description
 -----------
 No available documentation.
 ") YearComponent;
-		Standard_Integer YearComponent();
+		int YearComponent();
 
 };
 
@@ -4373,7 +4374,7 @@ Returns a DateTimeSelect SelectType.
 		 StepBasic_DateTimeSelect();
 
 		/****** StepBasic_DateTimeSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -4388,7 +4389,7 @@ Description
 -----------
 Recognizes a DateTimeSelect Kind Entity that is: 1 -> Date 2 -> LocalTime 3 -> DateAndTime 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_DateTimeSelect::Date ******/
 		/****** md5 signature: 532dbd3fde99bd0fbaabc8918d336136 ******/
@@ -4457,20 +4458,20 @@ No available documentation.
 		 StepBasic_DerivedUnit();
 
 		/****** StepBasic_DerivedUnit::Elements ******/
-		/****** md5 signature: 55f1b3af218d1103682ddbeb236bfa38 ******/
+		/****** md5 signature: 5dc844a3d298fbf9682b99f3c98e8ce6 ******/
 		%feature("compactdefaultargs") Elements;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfDerivedUnitElement>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>>
 
 Description
 -----------
 No available documentation.
 ") Elements;
-		opencascade::handle<StepBasic_HArray1OfDerivedUnitElement> Elements();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>>> Elements();
 
 		/****** StepBasic_DerivedUnit::ElementsValue ******/
-		/****** md5 signature: b7e8da591e76a59fef2fc5a006bc2a24 ******/
+		/****** md5 signature: edb166f34ae25f60e1e2701f5656d807 ******/
 		%feature("compactdefaultargs") ElementsValue;
 		%feature("autodoc", "
 Parameters
@@ -4485,15 +4486,15 @@ Description
 -----------
 No available documentation.
 ") ElementsValue;
-		opencascade::handle<StepBasic_DerivedUnitElement> ElementsValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_DerivedUnitElement> ElementsValue(const int num);
 
 		/****** StepBasic_DerivedUnit::Init ******/
-		/****** md5 signature: 69f11f12489d32b7c28195b96bd986da ******/
+		/****** md5 signature: 8356a58ded7d62b41483f674ae5df51d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-elements: StepBasic_HArray1OfDerivedUnitElement
+elements: NCollection_HArray1<
 
 Return
 -------
@@ -4503,10 +4504,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_HArray1OfDerivedUnitElement> & elements);
+		void Init(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> > & elements);
 
 		/****** StepBasic_DerivedUnit::NbElements ******/
-		/****** md5 signature: bda4abdd1e5bc28bcadae491494177fe ******/
+		/****** md5 signature: 936a04e4c43c96574b096e69196411e4 ******/
 		%feature("compactdefaultargs") NbElements;
 		%feature("autodoc", "Return
 -------
@@ -4516,15 +4517,15 @@ Description
 -----------
 No available documentation.
 ") NbElements;
-		Standard_Integer NbElements();
+		int NbElements();
 
 		/****** StepBasic_DerivedUnit::SetElements ******/
-		/****** md5 signature: 45e6a42e6afa9ed62cef46b581148f03 ******/
+		/****** md5 signature: 36e6501856f3a82a31ed375a9bc954a4 ******/
 		%feature("compactdefaultargs") SetElements;
 		%feature("autodoc", "
 Parameters
 ----------
-elements: StepBasic_HArray1OfDerivedUnitElement
+elements: NCollection_HArray1<
 
 Return
 -------
@@ -4534,7 +4535,7 @@ Description
 -----------
 No available documentation.
 ") SetElements;
-		void SetElements(const opencascade::handle<StepBasic_HArray1OfDerivedUnitElement> & elements);
+		void SetElements(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_DerivedUnitElement>> > & elements);
 
 };
 
@@ -4566,26 +4567,26 @@ No available documentation.
 		 StepBasic_DerivedUnitElement();
 
 		/****** StepBasic_DerivedUnitElement::Exponent ******/
-		/****** md5 signature: 2f3e41715663d96bea8311915e30d22f ******/
+		/****** md5 signature: e9dcb22a953e6317226b4dde65879f0e ******/
 		%feature("compactdefaultargs") Exponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") Exponent;
-		Standard_Real Exponent();
+		double Exponent();
 
 		/****** StepBasic_DerivedUnitElement::Init ******/
-		/****** md5 signature: 310fc4d94d29c6b471b2a5e8e6fdf327 ******/
+		/****** md5 signature: 6283feb962e5672c73a434e03099b93e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aUnit: StepBasic_NamedUnit
-aExponent: float
+aExponent: double
 
 Return
 -------
@@ -4595,15 +4596,15 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const Standard_Real aExponent);
+		void Init(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const double aExponent);
 
 		/****** StepBasic_DerivedUnitElement::SetExponent ******/
-		/****** md5 signature: ed29641a2d0f660cc634b523c1c08f8a ******/
+		/****** md5 signature: 150e08e68aa35bd92acf4293ec15ec05 ******/
 		%feature("compactdefaultargs") SetExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aExponent: float
+aExponent: double
 
 Return
 -------
@@ -4613,7 +4614,7 @@ Description
 -----------
 No available documentation.
 ") SetExponent;
-		void SetExponent(const Standard_Real aExponent);
+		void SetExponent(const double aExponent);
 
 		/****** StepBasic_DerivedUnitElement::SetUnit ******/
 		/****** md5 signature: 1e47c3fe49db6eeee227bdb3691a3780 ******/
@@ -4676,44 +4677,44 @@ Returns a DimensionalExponents.
 		 StepBasic_DimensionalExponents();
 
 		/****** StepBasic_DimensionalExponents::AmountOfSubstanceExponent ******/
-		/****** md5 signature: 28129e275c9898ea1d5eced63ce51194 ******/
+		/****** md5 signature: f776d714d62499d5485c0b81e0d543f1 ******/
 		%feature("compactdefaultargs") AmountOfSubstanceExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") AmountOfSubstanceExponent;
-		Standard_Real AmountOfSubstanceExponent();
+		double AmountOfSubstanceExponent();
 
 		/****** StepBasic_DimensionalExponents::ElectricCurrentExponent ******/
-		/****** md5 signature: 5cc2807c213364906af271b5a7f1f0b6 ******/
+		/****** md5 signature: c33f429a5254d90329dc3670b8c8fc07 ******/
 		%feature("compactdefaultargs") ElectricCurrentExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ElectricCurrentExponent;
-		Standard_Real ElectricCurrentExponent();
+		double ElectricCurrentExponent();
 
 		/****** StepBasic_DimensionalExponents::Init ******/
-		/****** md5 signature: f15be97bfcd8d7ec54485ae5c85f31ea ******/
+		/****** md5 signature: 8e997101b9d81bebfedadd988cfbe171 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-aLengthExponent: float
-aMassExponent: float
-aTimeExponent: float
-aElectricCurrentExponent: float
-aThermodynamicTemperatureExponent: float
-aAmountOfSubstanceExponent: float
-aLuminousIntensityExponent: float
+aLengthExponent: double
+aMassExponent: double
+aTimeExponent: double
+aElectricCurrentExponent: double
+aThermodynamicTemperatureExponent: double
+aAmountOfSubstanceExponent: double
+aLuminousIntensityExponent: double
 
 Return
 -------
@@ -4723,54 +4724,54 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Real aLengthExponent, const Standard_Real aMassExponent, const Standard_Real aTimeExponent, const Standard_Real aElectricCurrentExponent, const Standard_Real aThermodynamicTemperatureExponent, const Standard_Real aAmountOfSubstanceExponent, const Standard_Real aLuminousIntensityExponent);
+		void Init(const double aLengthExponent, const double aMassExponent, const double aTimeExponent, const double aElectricCurrentExponent, const double aThermodynamicTemperatureExponent, const double aAmountOfSubstanceExponent, const double aLuminousIntensityExponent);
 
 		/****** StepBasic_DimensionalExponents::LengthExponent ******/
-		/****** md5 signature: e7bb2081da7fc823e9d1e9e8bb41388f ******/
+		/****** md5 signature: ce2a2663b898e3e2844ff7e062fb21b9 ******/
 		%feature("compactdefaultargs") LengthExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LengthExponent;
-		Standard_Real LengthExponent();
+		double LengthExponent();
 
 		/****** StepBasic_DimensionalExponents::LuminousIntensityExponent ******/
-		/****** md5 signature: 1bd1a9702b74543578154da0625b04d6 ******/
+		/****** md5 signature: 6a964731796846aeabac07707e0df480 ******/
 		%feature("compactdefaultargs") LuminousIntensityExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") LuminousIntensityExponent;
-		Standard_Real LuminousIntensityExponent();
+		double LuminousIntensityExponent();
 
 		/****** StepBasic_DimensionalExponents::MassExponent ******/
-		/****** md5 signature: a2ebb474d42ec651db7c7e0d8b82c7de ******/
+		/****** md5 signature: 5e395632060401826ca73ff8ec4cd227 ******/
 		%feature("compactdefaultargs") MassExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MassExponent;
-		Standard_Real MassExponent();
+		double MassExponent();
 
 		/****** StepBasic_DimensionalExponents::SetAmountOfSubstanceExponent ******/
-		/****** md5 signature: 54962f68e14c48dd98d33f4386f404f4 ******/
+		/****** md5 signature: d35ef3949b4aae23711ac4c1743c44e1 ******/
 		%feature("compactdefaultargs") SetAmountOfSubstanceExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aAmountOfSubstanceExponent: float
+aAmountOfSubstanceExponent: double
 
 Return
 -------
@@ -4780,15 +4781,15 @@ Description
 -----------
 No available documentation.
 ") SetAmountOfSubstanceExponent;
-		void SetAmountOfSubstanceExponent(const Standard_Real aAmountOfSubstanceExponent);
+		void SetAmountOfSubstanceExponent(const double aAmountOfSubstanceExponent);
 
 		/****** StepBasic_DimensionalExponents::SetElectricCurrentExponent ******/
-		/****** md5 signature: 0a0ed9cbeafadeb16af479f678ab5fbf ******/
+		/****** md5 signature: c08e5c9f0a1c18a3f018733dae0e7a30 ******/
 		%feature("compactdefaultargs") SetElectricCurrentExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aElectricCurrentExponent: float
+aElectricCurrentExponent: double
 
 Return
 -------
@@ -4798,15 +4799,15 @@ Description
 -----------
 No available documentation.
 ") SetElectricCurrentExponent;
-		void SetElectricCurrentExponent(const Standard_Real aElectricCurrentExponent);
+		void SetElectricCurrentExponent(const double aElectricCurrentExponent);
 
 		/****** StepBasic_DimensionalExponents::SetLengthExponent ******/
-		/****** md5 signature: 3573dcd1688ee50f71daff3126fe104f ******/
+		/****** md5 signature: 4445864609c0d9b7af3d5c800d524578 ******/
 		%feature("compactdefaultargs") SetLengthExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aLengthExponent: float
+aLengthExponent: double
 
 Return
 -------
@@ -4816,15 +4817,15 @@ Description
 -----------
 No available documentation.
 ") SetLengthExponent;
-		void SetLengthExponent(const Standard_Real aLengthExponent);
+		void SetLengthExponent(const double aLengthExponent);
 
 		/****** StepBasic_DimensionalExponents::SetLuminousIntensityExponent ******/
-		/****** md5 signature: 0fd571315dc7a888e3cfa63f35606a73 ******/
+		/****** md5 signature: 6b6a36a108d26292bea1edeb4d944569 ******/
 		%feature("compactdefaultargs") SetLuminousIntensityExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aLuminousIntensityExponent: float
+aLuminousIntensityExponent: double
 
 Return
 -------
@@ -4834,15 +4835,15 @@ Description
 -----------
 No available documentation.
 ") SetLuminousIntensityExponent;
-		void SetLuminousIntensityExponent(const Standard_Real aLuminousIntensityExponent);
+		void SetLuminousIntensityExponent(const double aLuminousIntensityExponent);
 
 		/****** StepBasic_DimensionalExponents::SetMassExponent ******/
-		/****** md5 signature: 7a204f0ca2429266dad222f3dc3c6978 ******/
+		/****** md5 signature: ef199629720799ec81e724950a5fc53b ******/
 		%feature("compactdefaultargs") SetMassExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aMassExponent: float
+aMassExponent: double
 
 Return
 -------
@@ -4852,15 +4853,15 @@ Description
 -----------
 No available documentation.
 ") SetMassExponent;
-		void SetMassExponent(const Standard_Real aMassExponent);
+		void SetMassExponent(const double aMassExponent);
 
 		/****** StepBasic_DimensionalExponents::SetThermodynamicTemperatureExponent ******/
-		/****** md5 signature: 23b264f5a3db45e02cd5ec35796c343a ******/
+		/****** md5 signature: 1bbccba54b957f0cf52c6623a2837ff6 ******/
 		%feature("compactdefaultargs") SetThermodynamicTemperatureExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aThermodynamicTemperatureExponent: float
+aThermodynamicTemperatureExponent: double
 
 Return
 -------
@@ -4870,15 +4871,15 @@ Description
 -----------
 No available documentation.
 ") SetThermodynamicTemperatureExponent;
-		void SetThermodynamicTemperatureExponent(const Standard_Real aThermodynamicTemperatureExponent);
+		void SetThermodynamicTemperatureExponent(const double aThermodynamicTemperatureExponent);
 
 		/****** StepBasic_DimensionalExponents::SetTimeExponent ******/
-		/****** md5 signature: 573b6cf8a7162cc089b08fcb8a6fa31d ******/
+		/****** md5 signature: 75199b2d285f6907c2fe6cf3f30830cd ******/
 		%feature("compactdefaultargs") SetTimeExponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aTimeExponent: float
+aTimeExponent: double
 
 Return
 -------
@@ -4888,33 +4889,33 @@ Description
 -----------
 No available documentation.
 ") SetTimeExponent;
-		void SetTimeExponent(const Standard_Real aTimeExponent);
+		void SetTimeExponent(const double aTimeExponent);
 
 		/****** StepBasic_DimensionalExponents::ThermodynamicTemperatureExponent ******/
-		/****** md5 signature: 16ef32679b04270e12d44ee1dc1bb22a ******/
+		/****** md5 signature: cd9b24b18ebae6452f4a15bd903440f5 ******/
 		%feature("compactdefaultargs") ThermodynamicTemperatureExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ThermodynamicTemperatureExponent;
-		Standard_Real ThermodynamicTemperatureExponent();
+		double ThermodynamicTemperatureExponent();
 
 		/****** StepBasic_DimensionalExponents::TimeExponent ******/
-		/****** md5 signature: 7b9cb1fec879252c26baa7131befa399 ******/
+		/****** md5 signature: 02f72772cb5d5396f2541bff93f0e694 ******/
 		%feature("compactdefaultargs") TimeExponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") TimeExponent;
-		Standard_Real TimeExponent();
+		double TimeExponent();
 
 };
 
@@ -4959,7 +4960,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_Document::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -4969,7 +4970,7 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_Document::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -4985,7 +4986,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_Document::Init ******/
-		/****** md5 signature: 48a154076e286fe0eb54dfe10d25242b ******/
+		/****** md5 signature: ba19c15bfb5ebfcbe57cb65e64e301ef ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5004,7 +5005,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_DocumentType> & aKind);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_DocumentType> & aKind);
 
 		/****** StepBasic_Document::Kind ******/
 		/****** md5 signature: 968aa1c734b275b7a8fafad10cfc1d81 ******/
@@ -5147,7 +5148,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_DocumentProductAssociation::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -5157,10 +5158,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_DocumentProductAssociation::Init ******/
-		/****** md5 signature: a10cfec39ea27abec984b896951647d7 ******/
+		/****** md5 signature: 0252a9ce1691e97304ad64637fff234c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5179,7 +5180,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_Document> & aRelatingDocument, const StepBasic_ProductOrFormationOrDefinition & aRelatedProduct);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_Document> & aRelatingDocument, const StepBasic_ProductOrFormationOrDefinition & aRelatedProduct);
 
 		/****** StepBasic_DocumentProductAssociation::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -6079,7 +6080,7 @@ Empty constructor.
 		 StepBasic_EulerAngles();
 
 		/****** StepBasic_EulerAngles::Angles ******/
-		/****** md5 signature: 091a62348d572fb9656d813d6d85fa63 ******/
+		/****** md5 signature: 184ff5cce02ce408d53878f405598d9d ******/
 		%feature("compactdefaultargs") Angles;
 		%feature("autodoc", "Return
 -------
@@ -6092,7 +6093,7 @@ Returns field Angles.
 		opencascade::handle<TColStd_HArray1OfReal> Angles();
 
 		/****** StepBasic_EulerAngles::Init ******/
-		/****** md5 signature: d7ced06dd4c063a5af85bb59ba9774d3 ******/
+		/****** md5 signature: 1f761eb26924f0370ac36047fa98a74f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6110,7 +6111,7 @@ Initialize all fields (own and inherited).
 		void Init(const opencascade::handle<TColStd_HArray1OfReal> & aAngles);
 
 		/****** StepBasic_EulerAngles::SetAngles ******/
-		/****** md5 signature: 616c94a3390c69199eef71371c873578 ******/
+		/****** md5 signature: da398f8c5bac7f9e507e8821f7798046 ******/
 		%feature("compactdefaultargs") SetAngles;
 		%feature("autodoc", "
 Parameters
@@ -6358,7 +6359,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_GeneralProperty::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -6368,7 +6369,7 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_GeneralProperty::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -6384,7 +6385,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_GeneralProperty::Init ******/
-		/****** md5 signature: 3d1ce2e201e5b42400db6e78057f3e0f ******/
+		/****** md5 signature: 61c7952d1f765e6831815da10c879b04 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6402,7 +6403,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_GeneralProperty::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -6517,7 +6518,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_GeneralPropertyRelationship::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -6527,10 +6528,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_GeneralPropertyRelationship::Init ******/
-		/****** md5 signature: fdc1ee70eb7123ed6e55eaaf851d1d1b ******/
+		/****** md5 signature: 7cc1933c5b304915f63d147c8c26e8c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6549,7 +6550,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_GeneralProperty> & aRelatingGeneralProperty, const opencascade::handle<StepBasic_GeneralProperty> & aRelatedGeneralProperty);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_GeneralProperty> & aRelatingGeneralProperty, const opencascade::handle<StepBasic_GeneralProperty> & aRelatedGeneralProperty);
 
 		/****** StepBasic_GeneralPropertyRelationship::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -6705,7 +6706,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_Group::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -6715,10 +6716,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_Group::Init ******/
-		/****** md5 signature: f1e00464b915b5c43dbfec20d469b99a ******/
+		/****** md5 signature: 3c9c11b1a806b7fc6390d084d1def939 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6735,7 +6736,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_Group::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -6907,7 +6908,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_GroupRelationship::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -6917,10 +6918,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_GroupRelationship::Init ******/
-		/****** md5 signature: 895986aa020206d592bb0bc8af16ac69 ******/
+		/****** md5 signature: f5a08cc7c72daee057e0aa9341ed8b57 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6939,7 +6940,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_Group> & aRelatingGroup, const opencascade::handle<StepBasic_Group> & aRelatedGroup);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_Group> & aRelatingGroup, const opencascade::handle<StepBasic_Group> & aRelatedGroup);
 
 		/****** StepBasic_GroupRelationship::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -7205,7 +7206,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_IdentificationRole::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -7215,10 +7216,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_IdentificationRole::Init ******/
-		/****** md5 signature: f1e00464b915b5c43dbfec20d469b99a ******/
+		/****** md5 signature: 3c9c11b1a806b7fc6390d084d1def939 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7235,7 +7236,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_IdentificationRole::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -7316,7 +7317,7 @@ Returns a LocalTime.
 		 StepBasic_LocalTime();
 
 		/****** StepBasic_LocalTime::HasMinuteComponent ******/
-		/****** md5 signature: 0e1e485905a4775e8f40a8b3ef8dda33 ******/
+		/****** md5 signature: 4b39300e3eb0ffbee629ae32aad250e9 ******/
 		%feature("compactdefaultargs") HasMinuteComponent;
 		%feature("autodoc", "Return
 -------
@@ -7326,10 +7327,10 @@ Description
 -----------
 No available documentation.
 ") HasMinuteComponent;
-		Standard_Boolean HasMinuteComponent();
+		bool HasMinuteComponent();
 
 		/****** StepBasic_LocalTime::HasSecondComponent ******/
-		/****** md5 signature: 16096abd13fd9c7f7be70feb495c99c7 ******/
+		/****** md5 signature: e6e5a8913dedc4e213561dd788ddfa6a ******/
 		%feature("compactdefaultargs") HasSecondComponent;
 		%feature("autodoc", "Return
 -------
@@ -7339,10 +7340,10 @@ Description
 -----------
 No available documentation.
 ") HasSecondComponent;
-		Standard_Boolean HasSecondComponent();
+		bool HasSecondComponent();
 
 		/****** StepBasic_LocalTime::HourComponent ******/
-		/****** md5 signature: 0ae126454dff6778ff5a52ddbdf463a4 ******/
+		/****** md5 signature: b97ab633ad67554266c26e120b866d99 ******/
 		%feature("compactdefaultargs") HourComponent;
 		%feature("autodoc", "Return
 -------
@@ -7352,10 +7353,10 @@ Description
 -----------
 No available documentation.
 ") HourComponent;
-		Standard_Integer HourComponent();
+		int HourComponent();
 
 		/****** StepBasic_LocalTime::Init ******/
-		/****** md5 signature: 17fc466df19e47c9603308465f7ea9a7 ******/
+		/****** md5 signature: a5eed579532b992f50765b3b609284dc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7364,7 +7365,7 @@ aHourComponent: int
 hasAminuteComponent: bool
 aMinuteComponent: int
 hasAsecondComponent: bool
-aSecondComponent: float
+aSecondComponent: double
 aZone: StepBasic_CoordinatedUniversalTimeOffset
 
 Return
@@ -7375,10 +7376,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aHourComponent, const Standard_Boolean hasAminuteComponent, const Standard_Integer aMinuteComponent, const Standard_Boolean hasAsecondComponent, const Standard_Real aSecondComponent, const opencascade::handle<StepBasic_CoordinatedUniversalTimeOffset> & aZone);
+		void Init(const int aHourComponent, const bool hasAminuteComponent, const int aMinuteComponent, const bool hasAsecondComponent, const double aSecondComponent, const opencascade::handle<StepBasic_CoordinatedUniversalTimeOffset> & aZone);
 
 		/****** StepBasic_LocalTime::MinuteComponent ******/
-		/****** md5 signature: 50150043b4b796778bbfd29da1e492db ******/
+		/****** md5 signature: 1a0925b3c4a7b5d3697ff4c7ad79f648 ******/
 		%feature("compactdefaultargs") MinuteComponent;
 		%feature("autodoc", "Return
 -------
@@ -7388,23 +7389,23 @@ Description
 -----------
 No available documentation.
 ") MinuteComponent;
-		Standard_Integer MinuteComponent();
+		int MinuteComponent();
 
 		/****** StepBasic_LocalTime::SecondComponent ******/
-		/****** md5 signature: 14301560202178f1c24ca347a9df229e ******/
+		/****** md5 signature: a9bdfb9589be6512a229f882ba40defc ******/
 		%feature("compactdefaultargs") SecondComponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") SecondComponent;
-		Standard_Real SecondComponent();
+		double SecondComponent();
 
 		/****** StepBasic_LocalTime::SetHourComponent ******/
-		/****** md5 signature: 91ab2443588ab322ae433551dea13666 ******/
+		/****** md5 signature: 1da4cb5359b21182728bf3d0e1f4ccd0 ******/
 		%feature("compactdefaultargs") SetHourComponent;
 		%feature("autodoc", "
 Parameters
@@ -7419,10 +7420,10 @@ Description
 -----------
 No available documentation.
 ") SetHourComponent;
-		void SetHourComponent(const Standard_Integer aHourComponent);
+		void SetHourComponent(const int aHourComponent);
 
 		/****** StepBasic_LocalTime::SetMinuteComponent ******/
-		/****** md5 signature: 2fb0b71dc1a72ab36db26ded7c773946 ******/
+		/****** md5 signature: c0578d78d0e057bbe613b5eb61e043e9 ******/
 		%feature("compactdefaultargs") SetMinuteComponent;
 		%feature("autodoc", "
 Parameters
@@ -7437,15 +7438,15 @@ Description
 -----------
 No available documentation.
 ") SetMinuteComponent;
-		void SetMinuteComponent(const Standard_Integer aMinuteComponent);
+		void SetMinuteComponent(const int aMinuteComponent);
 
 		/****** StepBasic_LocalTime::SetSecondComponent ******/
-		/****** md5 signature: 77bd2e16d930a7aba083d43b922b7508 ******/
+		/****** md5 signature: c117800b69d2c8b9b9aa7942202015c9 ******/
 		%feature("compactdefaultargs") SetSecondComponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aSecondComponent: float
+aSecondComponent: double
 
 Return
 -------
@@ -7455,7 +7456,7 @@ Description
 -----------
 No available documentation.
 ") SetSecondComponent;
-		void SetSecondComponent(const Standard_Real aSecondComponent);
+		void SetSecondComponent(const double aSecondComponent);
 
 		/****** StepBasic_LocalTime::SetZone ******/
 		/****** md5 signature: 579c2bb84cfd392b8ed8780caf2f408c ******/
@@ -7544,7 +7545,7 @@ No available documentation.
 		 StepBasic_MeasureValueMember();
 
 		/****** StepBasic_MeasureValueMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -7554,28 +7555,28 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepBasic_MeasureValueMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepBasic_MeasureValueMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -7585,7 +7586,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 };
 
@@ -7654,12 +7655,12 @@ No available documentation.
 		void SetUnitComponent(const StepBasic_Unit & aUnitComponent);
 
 		/****** StepBasic_MeasureWithUnit::SetValueComponent ******/
-		/****** md5 signature: 013f0f5d58ef4ce8e8786002893dc682 ******/
+		/****** md5 signature: ef6730b2ce3ca469e387a66c732afce7 ******/
 		%feature("compactdefaultargs") SetValueComponent;
 		%feature("autodoc", "
 Parameters
 ----------
-aValueComponent: float
+aValueComponent: double
 
 Return
 -------
@@ -7669,7 +7670,7 @@ Description
 -----------
 No available documentation.
 ") SetValueComponent;
-		void SetValueComponent(const Standard_Real aValueComponent);
+		void SetValueComponent(const double aValueComponent);
 
 		/****** StepBasic_MeasureWithUnit::SetValueComponentMember ******/
 		/****** md5 signature: d70df46730cda4eaec8067615ba01cdf ******/
@@ -7703,17 +7704,17 @@ No available documentation.
 		StepBasic_Unit UnitComponent();
 
 		/****** StepBasic_MeasureWithUnit::ValueComponent ******/
-		/****** md5 signature: 416aa0800934d007f54f7d87fd170269 ******/
+		/****** md5 signature: cdf7616f70c89a974199005830cef397 ******/
 		%feature("compactdefaultargs") ValueComponent;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") ValueComponent;
-		Standard_Real ValueComponent();
+		double ValueComponent();
 
 		/****** StepBasic_MeasureWithUnit::ValueComponentMember ******/
 		/****** md5 signature: 017f07fb974a1b9678ec4ca8d2d8a914 ******/
@@ -7927,7 +7928,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_ObjectRole::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -7937,10 +7938,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_ObjectRole::Init ******/
-		/****** md5 signature: f1e00464b915b5c43dbfec20d469b99a ******/
+		/****** md5 signature: 3c9c11b1a806b7fc6390d084d1def939 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7957,7 +7958,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_ObjectRole::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -8051,7 +8052,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_Organization::HasId ******/
-		/****** md5 signature: 301df1980d81870493903e6eee5538df ******/
+		/****** md5 signature: b80c57008ebf1202ef4468a8865ad4fd ******/
 		%feature("compactdefaultargs") HasId;
 		%feature("autodoc", "Return
 -------
@@ -8061,7 +8062,7 @@ Description
 -----------
 No available documentation.
 ") HasId;
-		Standard_Boolean HasId();
+		bool HasId();
 
 		/****** StepBasic_Organization::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -8077,7 +8078,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_Organization::Init ******/
-		/****** md5 signature: b214cd7cc20055d3a8254b99a8885e29 ******/
+		/****** md5 signature: eb1e67bbc8911d3e19b58d3a9a68ac61 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8095,7 +8096,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAid, const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const bool hasAid, const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_Organization::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -8395,7 +8396,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> FirstName();
 
 		/****** StepBasic_Person::HasFirstName ******/
-		/****** md5 signature: d24b85099a07ae9aee440490e7247415 ******/
+		/****** md5 signature: 419a91be968af74c3cafb173d81dfbb0 ******/
 		%feature("compactdefaultargs") HasFirstName;
 		%feature("autodoc", "Return
 -------
@@ -8405,10 +8406,10 @@ Description
 -----------
 No available documentation.
 ") HasFirstName;
-		Standard_Boolean HasFirstName();
+		bool HasFirstName();
 
 		/****** StepBasic_Person::HasLastName ******/
-		/****** md5 signature: c6d88a30b099798c08786015f6c1910e ******/
+		/****** md5 signature: b44aeb699bf67eb75a3d8389293501aa ******/
 		%feature("compactdefaultargs") HasLastName;
 		%feature("autodoc", "Return
 -------
@@ -8418,10 +8419,10 @@ Description
 -----------
 No available documentation.
 ") HasLastName;
-		Standard_Boolean HasLastName();
+		bool HasLastName();
 
 		/****** StepBasic_Person::HasMiddleNames ******/
-		/****** md5 signature: c58eec2a3d3246124bc2467cb64a40b8 ******/
+		/****** md5 signature: acd78f167b042866b96f50082209f41e ******/
 		%feature("compactdefaultargs") HasMiddleNames;
 		%feature("autodoc", "Return
 -------
@@ -8431,10 +8432,10 @@ Description
 -----------
 No available documentation.
 ") HasMiddleNames;
-		Standard_Boolean HasMiddleNames();
+		bool HasMiddleNames();
 
 		/****** StepBasic_Person::HasPrefixTitles ******/
-		/****** md5 signature: 84bd178645d256bb0058a0d05032eecb ******/
+		/****** md5 signature: 7b804d6e5f7fe48b64e87c79e0434eae ******/
 		%feature("compactdefaultargs") HasPrefixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8444,10 +8445,10 @@ Description
 -----------
 No available documentation.
 ") HasPrefixTitles;
-		Standard_Boolean HasPrefixTitles();
+		bool HasPrefixTitles();
 
 		/****** StepBasic_Person::HasSuffixTitles ******/
-		/****** md5 signature: 80894eaf5201088accfea4bf987ae620 ******/
+		/****** md5 signature: 579ceb41e8761c421eec3a3115b89872 ******/
 		%feature("compactdefaultargs") HasSuffixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8457,7 +8458,7 @@ Description
 -----------
 No available documentation.
 ") HasSuffixTitles;
-		Standard_Boolean HasSuffixTitles();
+		bool HasSuffixTitles();
 
 		/****** StepBasic_Person::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -8473,7 +8474,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_Person::Init ******/
-		/****** md5 signature: a3e0571f7f776a0d94a8640cec6b78d9 ******/
+		/****** md5 signature: 2c03caf9d097a34a413ac2c4ede81428 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8498,7 +8499,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const Standard_Boolean hasAlastName, const opencascade::handle<TCollection_HAsciiString> & aLastName, const Standard_Boolean hasAfirstName, const opencascade::handle<TCollection_HAsciiString> & aFirstName, const Standard_Boolean hasAmiddleNames, const opencascade::handle<Interface_HArray1OfHAsciiString> & aMiddleNames, const Standard_Boolean hasAprefixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString> & aPrefixTitles, const Standard_Boolean hasAsuffixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString> & aSuffixTitles);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const bool hasAlastName, const opencascade::handle<TCollection_HAsciiString> & aLastName, const bool hasAfirstName, const opencascade::handle<TCollection_HAsciiString> & aFirstName, const bool hasAmiddleNames, const opencascade::handle<Interface_HArray1OfHAsciiString > & aMiddleNames, const bool hasAprefixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString > & aPrefixTitles, const bool hasAsuffixTitles, const opencascade::handle<Interface_HArray1OfHAsciiString > & aSuffixTitles);
 
 		/****** StepBasic_Person::LastName ******/
 		/****** md5 signature: de2911d8bac319b53e48cc2cfb8e5982 ******/
@@ -8514,7 +8515,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> LastName();
 
 		/****** StepBasic_Person::MiddleNames ******/
-		/****** md5 signature: d48e76a66a76924158f7353a745f954d ******/
+		/****** md5 signature: e7724e1b86be05459f18eee839dc74a9 ******/
 		%feature("compactdefaultargs") MiddleNames;
 		%feature("autodoc", "Return
 -------
@@ -8527,7 +8528,7 @@ No available documentation.
 		opencascade::handle<Interface_HArray1OfHAsciiString> MiddleNames();
 
 		/****** StepBasic_Person::MiddleNamesValue ******/
-		/****** md5 signature: 2ea74712db6746d8347888e5ad394fdc ******/
+		/****** md5 signature: 9d03a76ec4d24e8872bbf8a2b54ab8c9 ******/
 		%feature("compactdefaultargs") MiddleNamesValue;
 		%feature("autodoc", "
 Parameters
@@ -8542,10 +8543,10 @@ Description
 -----------
 No available documentation.
 ") MiddleNamesValue;
-		opencascade::handle<TCollection_HAsciiString> MiddleNamesValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> MiddleNamesValue(const int num);
 
 		/****** StepBasic_Person::NbMiddleNames ******/
-		/****** md5 signature: 16db45189f09a09589a79e0d5cb72d4a ******/
+		/****** md5 signature: e1658b97a19d7c961a4ce6ae5c64e7e8 ******/
 		%feature("compactdefaultargs") NbMiddleNames;
 		%feature("autodoc", "Return
 -------
@@ -8555,10 +8556,10 @@ Description
 -----------
 No available documentation.
 ") NbMiddleNames;
-		Standard_Integer NbMiddleNames();
+		int NbMiddleNames();
 
 		/****** StepBasic_Person::NbPrefixTitles ******/
-		/****** md5 signature: 291384cfaa66f835ccebb90c4852a2a2 ******/
+		/****** md5 signature: 9e655a2755a17d60b1027082ae171718 ******/
 		%feature("compactdefaultargs") NbPrefixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8568,10 +8569,10 @@ Description
 -----------
 No available documentation.
 ") NbPrefixTitles;
-		Standard_Integer NbPrefixTitles();
+		int NbPrefixTitles();
 
 		/****** StepBasic_Person::NbSuffixTitles ******/
-		/****** md5 signature: 3481c94a1965a1b7cd10c61ee9d35a97 ******/
+		/****** md5 signature: 9727dc56d221d069b419888ba79033ca ******/
 		%feature("compactdefaultargs") NbSuffixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8581,10 +8582,10 @@ Description
 -----------
 No available documentation.
 ") NbSuffixTitles;
-		Standard_Integer NbSuffixTitles();
+		int NbSuffixTitles();
 
 		/****** StepBasic_Person::PrefixTitles ******/
-		/****** md5 signature: 0ffcd8609c0a378d697a858ffbdae503 ******/
+		/****** md5 signature: 5bce03be177d446cad42c9698b0e027b ******/
 		%feature("compactdefaultargs") PrefixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8597,7 +8598,7 @@ No available documentation.
 		opencascade::handle<Interface_HArray1OfHAsciiString> PrefixTitles();
 
 		/****** StepBasic_Person::PrefixTitlesValue ******/
-		/****** md5 signature: 9b740ba78d8f259655a6337095124dfc ******/
+		/****** md5 signature: 76fbbe353ff6692d23f0940e00b7e0d2 ******/
 		%feature("compactdefaultargs") PrefixTitlesValue;
 		%feature("autodoc", "
 Parameters
@@ -8612,7 +8613,7 @@ Description
 -----------
 No available documentation.
 ") PrefixTitlesValue;
-		opencascade::handle<TCollection_HAsciiString> PrefixTitlesValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> PrefixTitlesValue(const int num);
 
 		/****** StepBasic_Person::SetFirstName ******/
 		/****** md5 signature: a8dd81e54774630044afa2058de7a789 ******/
@@ -8669,7 +8670,7 @@ No available documentation.
 		void SetLastName(const opencascade::handle<TCollection_HAsciiString> & aLastName);
 
 		/****** StepBasic_Person::SetMiddleNames ******/
-		/****** md5 signature: 36ecc716f6482798b54d3995ba849ed0 ******/
+		/****** md5 signature: 82c931248d782e16762a2eaf0e2aacb7 ******/
 		%feature("compactdefaultargs") SetMiddleNames;
 		%feature("autodoc", "
 Parameters
@@ -8684,10 +8685,10 @@ Description
 -----------
 No available documentation.
 ") SetMiddleNames;
-		void SetMiddleNames(const opencascade::handle<Interface_HArray1OfHAsciiString> & aMiddleNames);
+		void SetMiddleNames(const opencascade::handle<Interface_HArray1OfHAsciiString > & aMiddleNames);
 
 		/****** StepBasic_Person::SetPrefixTitles ******/
-		/****** md5 signature: ac80e7de0933cd63067fecf643ed5a95 ******/
+		/****** md5 signature: ecbdec1137f3eeb6e241348cf2fe2573 ******/
 		%feature("compactdefaultargs") SetPrefixTitles;
 		%feature("autodoc", "
 Parameters
@@ -8702,10 +8703,10 @@ Description
 -----------
 No available documentation.
 ") SetPrefixTitles;
-		void SetPrefixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString> & aPrefixTitles);
+		void SetPrefixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString > & aPrefixTitles);
 
 		/****** StepBasic_Person::SetSuffixTitles ******/
-		/****** md5 signature: b12961f49b33ef8d310da452eefc1e45 ******/
+		/****** md5 signature: 94cc2e7de62c14917d5c8142e660cf3c ******/
 		%feature("compactdefaultargs") SetSuffixTitles;
 		%feature("autodoc", "
 Parameters
@@ -8720,10 +8721,10 @@ Description
 -----------
 No available documentation.
 ") SetSuffixTitles;
-		void SetSuffixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString> & aSuffixTitles);
+		void SetSuffixTitles(const opencascade::handle<Interface_HArray1OfHAsciiString > & aSuffixTitles);
 
 		/****** StepBasic_Person::SuffixTitles ******/
-		/****** md5 signature: 5dc2c8a1bb8f86e997596134d0b25cfe ******/
+		/****** md5 signature: 270f6143cead775c16a5f9b5af7f4e89 ******/
 		%feature("compactdefaultargs") SuffixTitles;
 		%feature("autodoc", "Return
 -------
@@ -8736,7 +8737,7 @@ No available documentation.
 		opencascade::handle<Interface_HArray1OfHAsciiString> SuffixTitles();
 
 		/****** StepBasic_Person::SuffixTitlesValue ******/
-		/****** md5 signature: 4484fd20864fa7a998e2dde3c6bf2521 ******/
+		/****** md5 signature: dfb67cf978aa5afab6ca1f40b3b2bb9f ******/
 		%feature("compactdefaultargs") SuffixTitlesValue;
 		%feature("autodoc", "
 Parameters
@@ -8751,7 +8752,7 @@ Description
 -----------
 No available documentation.
 ") SuffixTitlesValue;
-		opencascade::handle<TCollection_HAsciiString> SuffixTitlesValue(const Standard_Integer num);
+		opencascade::handle<TCollection_HAsciiString> SuffixTitlesValue(const int num);
 
 		/****** StepBasic_Person::UnSetFirstName ******/
 		/****** md5 signature: 502887ddd0fd07cde6404487c4a930ef ******/
@@ -9133,7 +9134,7 @@ Returns a PersonOrganizationSelect SelectType.
 		 StepBasic_PersonOrganizationSelect();
 
 		/****** StepBasic_PersonOrganizationSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -9148,7 +9149,7 @@ Description
 -----------
 Recognizes a PersonOrganizationSelect Kind Entity that is: 1 -> Person 2 -> Organization 3 -> PersonAndOrganization 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_PersonOrganizationSelect::Organization ******/
 		/****** md5 signature: bc08f98b4bbc959f04b46794914bddbc ******/
@@ -9230,20 +9231,20 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_Product::FrameOfReference ******/
-		/****** md5 signature: 64961dd3939a5e6959b59f076812ec6d ******/
+		/****** md5 signature: 2870ea8b7eb59d6b5878b579e5b2e44c ******/
 		%feature("compactdefaultargs") FrameOfReference;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfProductContext>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>>
 
 Description
 -----------
 No available documentation.
 ") FrameOfReference;
-		opencascade::handle<StepBasic_HArray1OfProductContext> FrameOfReference();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>>> FrameOfReference();
 
 		/****** StepBasic_Product::FrameOfReferenceValue ******/
-		/****** md5 signature: 103a75a05d1aded825ec684fd082f3fa ******/
+		/****** md5 signature: 6c1a44cdd971c6f61b418e2272224b97 ******/
 		%feature("compactdefaultargs") FrameOfReferenceValue;
 		%feature("autodoc", "
 Parameters
@@ -9258,7 +9259,7 @@ Description
 -----------
 No available documentation.
 ") FrameOfReferenceValue;
-		opencascade::handle<StepBasic_ProductContext> FrameOfReferenceValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_ProductContext> FrameOfReferenceValue(const int num);
 
 		/****** StepBasic_Product::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -9274,7 +9275,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_Product::Init ******/
-		/****** md5 signature: 8a4b48b4c0d19bd9d5d62b5e2bdd1df1 ******/
+		/****** md5 signature: e9097d0fe66af5812795f9d1b4346c60 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9282,7 +9283,7 @@ Parameters
 aId: TCollection_HAsciiString
 aName: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
-aFrameOfReference: StepBasic_HArray1OfProductContext
+aFrameOfReference: NCollection_HArray1<
 
 Return
 -------
@@ -9292,7 +9293,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_HArray1OfProductContext> & aFrameOfReference);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> > & aFrameOfReference);
 
 		/****** StepBasic_Product::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -9308,7 +9309,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepBasic_Product::NbFrameOfReference ******/
-		/****** md5 signature: dabf8fc583d47eb3171cff76f427d413 ******/
+		/****** md5 signature: f8b9855dceeaa97f8a2918be1d9ca9bb ******/
 		%feature("compactdefaultargs") NbFrameOfReference;
 		%feature("autodoc", "Return
 -------
@@ -9318,7 +9319,7 @@ Description
 -----------
 No available documentation.
 ") NbFrameOfReference;
-		Standard_Integer NbFrameOfReference();
+		int NbFrameOfReference();
 
 		/****** StepBasic_Product::SetDescription ******/
 		/****** md5 signature: adddd13a906718df58a2eee683a382cf ******/
@@ -9339,12 +9340,12 @@ No available documentation.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_Product::SetFrameOfReference ******/
-		/****** md5 signature: bdfbb9aebfb7db53ca9c85459ccb2e14 ******/
+		/****** md5 signature: d4b710aef588b20f8f5c687ab618fbd5 ******/
 		%feature("compactdefaultargs") SetFrameOfReference;
 		%feature("autodoc", "
 Parameters
 ----------
-aFrameOfReference: StepBasic_HArray1OfProductContext
+aFrameOfReference: NCollection_HArray1<
 
 Return
 -------
@@ -9354,7 +9355,7 @@ Description
 -----------
 No available documentation.
 ") SetFrameOfReference;
-		void SetFrameOfReference(const opencascade::handle<StepBasic_HArray1OfProductContext> & aFrameOfReference);
+		void SetFrameOfReference(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_ProductContext>> > & aFrameOfReference);
 
 		/****** StepBasic_Product::SetId ******/
 		/****** md5 signature: a589ed4c1f87cc154c05276cfb60f4ea ******/
@@ -9435,7 +9436,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_ProductCategory::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -9445,10 +9446,10 @@ Description
 -----------
 No available documentation.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_ProductCategory::Init ******/
-		/****** md5 signature: c348b8308ac15c9a349fa924f1645a3e ******/
+		/****** md5 signature: 3216011b53f5ecb8253f62101b999560 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9465,7 +9466,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_ProductCategory::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -9585,7 +9586,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_ProductCategoryRelationship::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -9595,10 +9596,10 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_ProductCategoryRelationship::Init ******/
-		/****** md5 signature: 4faae5a600277d40cd473857a4db238d ******/
+		/****** md5 signature: f4867043a86f620e634fc0982c522614 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9617,7 +9618,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductCategory> & aCategory, const opencascade::handle<StepBasic_ProductCategory> & aSubCategory);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductCategory> & aCategory, const opencascade::handle<StepBasic_ProductCategory> & aSubCategory);
 
 		/****** StepBasic_ProductCategoryRelationship::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -10269,7 +10270,7 @@ Returns a ProductDefinitionOrReference SelectType.
 		 StepBasic_ProductDefinitionOrReference();
 
 		/****** StepBasic_ProductDefinitionOrReference::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -10284,7 +10285,7 @@ Description
 -----------
 Recognizes a ProductDefinitionOrReference Kind Entity that is: 1 -> ProductDefinition 2 -> ProductDefinitionReference 3 -> ProductDefinitionReferenceWithLocalPresentation 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_ProductDefinitionOrReference::ProductDefinition ******/
 		/****** md5 signature: d43b5ca42d8380c05af7f64fb041e89b ******/
@@ -10353,7 +10354,7 @@ Empty constructor.
 		 StepBasic_ProductDefinitionReference();
 
 		/****** StepBasic_ProductDefinitionReference::HasIdOwningOrganizationName ******/
-		/****** md5 signature: 66e52c77178fafbc4ad4e8a0bab1804c ******/
+		/****** md5 signature: 31ae1cef4c5336a52f58d07028c959af ******/
 		%feature("compactdefaultargs") HasIdOwningOrganizationName;
 		%feature("autodoc", "Return
 -------
@@ -10363,7 +10364,7 @@ Description
 -----------
 Returns true if IdOwningOrganizationName exists.
 ") HasIdOwningOrganizationName;
-		Standard_Boolean HasIdOwningOrganizationName();
+		bool HasIdOwningOrganizationName();
 
 		/****** StepBasic_ProductDefinitionReference::IdOwningOrganizationName ******/
 		/****** md5 signature: 7e5eed935bf1490b517cfdc2f860bc54 ******/
@@ -10606,7 +10607,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_ProductDefinitionRelationship::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -10616,7 +10617,7 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_ProductDefinitionRelationship::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -10632,7 +10633,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_ProductDefinitionRelationship::Init ******/
-		/****** md5 signature: 48f236f89e0f9f1b7e60c4a445879fb8 ******/
+		/****** md5 signature: 53f3df0d59d3611c915c4f77c7f721bd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10652,10 +10653,10 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinition> & aRelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aRelatedProductDefinition);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinition> & aRelatingProductDefinition, const opencascade::handle<StepBasic_ProductDefinition> & aRelatedProductDefinition);
 
 		/****** StepBasic_ProductDefinitionRelationship::Init ******/
-		/****** md5 signature: 2db6e2142f3da60ff4ac94ddb7fa12d1 ******/
+		/****** md5 signature: 06731c58c3b3c915623c639a29caf6af ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10675,7 +10676,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const StepBasic_ProductDefinitionOrReference & aRelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aRelatedProductDefinition);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const StepBasic_ProductDefinitionOrReference & aRelatingProductDefinition, const StepBasic_ProductDefinitionOrReference & aRelatedProductDefinition);
 
 		/****** StepBasic_ProductDefinitionRelationship::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -10898,7 +10899,7 @@ Empty constructor.
 		 StepBasic_ProductOrFormationOrDefinition();
 
 		/****** StepBasic_ProductOrFormationOrDefinition::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -10913,7 +10914,7 @@ Description
 -----------
 Recognizes a kind of ProductOrFormationOrDefinition select type 1 -> Product from StepBasic 2 -> ProductDefinitionFormation from StepBasic 3 -> ProductDefinition from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_ProductOrFormationOrDefinition::Product ******/
 		/****** md5 signature: e8c7e89afa6b95e852c44498904e61e4 ******/
@@ -11144,7 +11145,7 @@ Returns Value as ApprovalDateTime (or Null if another type).
 		opencascade::handle<StepBasic_ApprovalDateTime> ApprovalDateTime();
 
 		/****** StepBasic_RoleSelect::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -11159,7 +11160,7 @@ Description
 -----------
 Recognizes a kind of RoleSelect select type 1 -> ActionAssignment from StepBasic 2 -> ActionRequestAssignment from StepBasic 3 -> ApprovalAssignment from StepBasic 4 -> ApprovalDateTime from StepBasic 5 -> CertificationAssignment from StepBasic 6 -> ContractAssignment from StepBasic 7 -> DocumentReference from StepBasic 8 -> EffectivityAssignment from StepBasic 9 -> GroupAssignment from StepBasic 10 -> NameAssignment from StepBasic 11 -> SecurityClassificationAssignment from StepBasic 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_RoleSelect::CertificationAssignment ******/
 		/****** md5 signature: 831dbe663b31a28f1cfe11e06089ae51 ******/
@@ -11565,7 +11566,7 @@ No available documentation.
 		 StepBasic_SizeMember();
 
 		/****** StepBasic_SizeMember::HasName ******/
-		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
+		/****** md5 signature: 0fcc7580a7b0aa7df9ee626d148cd8f4 ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -11575,28 +11576,28 @@ Description
 -----------
 No available documentation.
 ") HasName;
-		virtual Standard_Boolean HasName();
+		bool HasName();
 
 		/****** StepBasic_SizeMember::Name ******/
-		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
+		/****** md5 signature: f81f5718972ea56a52cc674874d73fa6 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
-str
+char *
 
 Description
 -----------
 No available documentation.
 ") Name;
-		virtual Standard_CString Name();
+		const char * Name();
 
 		/****** StepBasic_SizeMember::SetName ******/
-		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
+		/****** md5 signature: 43a419e9da8ca16400e117289b098561 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
 ----------
-name: str
+name: char *
 
 Return
 -------
@@ -11606,7 +11607,7 @@ Description
 -----------
 No available documentation.
 ") SetName;
-		virtual Standard_Boolean SetName(Standard_CString name);
+		bool SetName(const char * const name);
 
 };
 
@@ -11638,7 +11639,7 @@ Returns a SizeSelect SelectType.
 		 StepBasic_SizeSelect();
 
 		/****** StepBasic_SizeSelect::CaseMem ******/
-		/****** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ******/
+		/****** md5 signature: 3996721cbe1f7f39efa83f015b4146fa ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -11653,10 +11654,10 @@ Description
 -----------
 Recognizes a SelectMember as Real, named as PARAMETER_VALUE 1 -> PositiveLengthMeasure i.e. Real 0 else (i.e. Entity).
 ") CaseMem;
-		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
+		int CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
 		/****** StepBasic_SizeSelect::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -11671,10 +11672,10 @@ Description
 -----------
 Recognizes a TrimmingSelect Kind Entity that is: 1 -> SizeMember 0 else (i.e. Real).
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_SizeSelect::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -11684,28 +11685,28 @@ Description
 -----------
 Returns a SizeMember (POSITIVE_LENGTH_MEASURE) as preferred.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 		/****** StepBasic_SizeSelect::RealValue ******/
-		/****** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ******/
+		/****** md5 signature: c2cf21cf42a875e7427474a09b5db0a4 ******/
 		%feature("compactdefaultargs") RealValue;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 returns Value as a Real (Null if another type).
 ") RealValue;
-		Standard_Real RealValue();
+		double RealValue();
 
 		/****** StepBasic_SizeSelect::SetRealValue ******/
-		/****** md5 signature: 2180c43020b4c001ad1a46ce769cb31c ******/
+		/****** md5 signature: f6e9605db9bef7407dc6734cdd74d43e ******/
 		%feature("compactdefaultargs") SetRealValue;
 		%feature("autodoc", "
 Parameters
 ----------
-aReal: float
+aReal: double
 
 Return
 -------
@@ -11715,7 +11716,7 @@ Description
 -----------
 No available documentation.
 ") SetRealValue;
-		void SetRealValue(const Standard_Real aReal);
+		void SetRealValue(const double aReal);
 
 };
 
@@ -11745,7 +11746,7 @@ Empty constructor.
 		 StepBasic_SourceItem();
 
 		/****** StepBasic_SourceItem::CaseNum ******/
-		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -11760,7 +11761,7 @@ Description
 -----------
 Recognizes a kind of SourceItem select type 1 -> HAsciiString from TCollection 0 else.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_SourceItem::Identifier ******/
 		/****** md5 signature: 386fefa275c40386efbae4b683607265 ******/
@@ -11776,7 +11777,7 @@ Returns Value as Identifier (or Null if another type).
 		opencascade::handle<TCollection_HAsciiString> Identifier();
 
 		/****** StepBasic_SourceItem::NewMember ******/
-		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
+		/****** md5 signature: 4dce57062553ca704dad3d58f4286daa ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -11786,7 +11787,7 @@ Description
 -----------
 No available documentation.
 ") NewMember;
-		virtual opencascade::handle<StepData_SelectMember> NewMember();
+		opencascade::handle<StepData_SelectMember> NewMember();
 
 };
 
@@ -11816,7 +11817,7 @@ Creates empty object.
 		 StepBasic_Unit();
 
 		/****** StepBasic_Unit::CaseNum ******/
-		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
+		/****** md5 signature: ef153e98615228b7740a3c1765b8d82b ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -11831,7 +11832,7 @@ Description
 -----------
 Recognizes a type of Unit Entity 1 -> NamedUnit 2 -> DerivedUnit.
 ") CaseNum;
-		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
+		int CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
 		/****** StepBasic_Unit::DerivedUnit ******/
 		/****** md5 signature: 26d48c35310c30ce58c9a7cb4905c600 ******/
@@ -11900,7 +11901,7 @@ Returns field Description.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_VersionedActionRequest::HasDescription ******/
-		/****** md5 signature: 819ef9a3dced474861e1980d901a2978 ******/
+		/****** md5 signature: 4aaaa98bb548ceebee233cd83b591499 ******/
 		%feature("compactdefaultargs") HasDescription;
 		%feature("autodoc", "Return
 -------
@@ -11910,7 +11911,7 @@ Description
 -----------
 Returns True if optional field Description is defined.
 ") HasDescription;
-		Standard_Boolean HasDescription();
+		bool HasDescription();
 
 		/****** StepBasic_VersionedActionRequest::Id ******/
 		/****** md5 signature: cad437aa1c6f9043742098c562124f9e ******/
@@ -11926,7 +11927,7 @@ Returns field Id.
 		opencascade::handle<TCollection_HAsciiString> Id();
 
 		/****** StepBasic_VersionedActionRequest::Init ******/
-		/****** md5 signature: 6adb277f595c7fd98a3237570c0e8859 ******/
+		/****** md5 signature: 3b0fe1673aded5aa7976c0d9e4cc1299 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11945,7 +11946,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aVersion, const opencascade::handle<TCollection_HAsciiString> & aPurpose, const Standard_Boolean hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aVersion, const opencascade::handle<TCollection_HAsciiString> & aPurpose, const bool hasDescription, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_VersionedActionRequest::Purpose ******/
 		/****** md5 signature: f96745f44705150c3273c06fb78fc3cb ******/
@@ -12104,7 +12105,7 @@ Returns a CalendarDate.
 		 StepBasic_CalendarDate();
 
 		/****** StepBasic_CalendarDate::DayComponent ******/
-		/****** md5 signature: 3ca7721e5937e191f94c2f5ecee1c9a8 ******/
+		/****** md5 signature: 9d86d32b09aa89d009d3ed1de89cbb39 ******/
 		%feature("compactdefaultargs") DayComponent;
 		%feature("autodoc", "Return
 -------
@@ -12114,10 +12115,10 @@ Description
 -----------
 No available documentation.
 ") DayComponent;
-		Standard_Integer DayComponent();
+		int DayComponent();
 
 		/****** StepBasic_CalendarDate::Init ******/
-		/****** md5 signature: 9c21fad5af3cafe03c6603d271eff489 ******/
+		/****** md5 signature: ef81d0733d0b5dd8cd23e663983ceb4d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12134,10 +12135,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aYearComponent, const Standard_Integer aDayComponent, const Standard_Integer aMonthComponent);
+		void Init(const int aYearComponent, const int aDayComponent, const int aMonthComponent);
 
 		/****** StepBasic_CalendarDate::MonthComponent ******/
-		/****** md5 signature: 84d95fc4a04da1f7f99166d277a9f9a1 ******/
+		/****** md5 signature: 66aa32bf545c17945acb58a8ca156bc7 ******/
 		%feature("compactdefaultargs") MonthComponent;
 		%feature("autodoc", "Return
 -------
@@ -12147,10 +12148,10 @@ Description
 -----------
 No available documentation.
 ") MonthComponent;
-		Standard_Integer MonthComponent();
+		int MonthComponent();
 
 		/****** StepBasic_CalendarDate::SetDayComponent ******/
-		/****** md5 signature: 599666a06025a8440c3915e142f8559a ******/
+		/****** md5 signature: ad716ae321a1366d7ad884b5fc6a424e ******/
 		%feature("compactdefaultargs") SetDayComponent;
 		%feature("autodoc", "
 Parameters
@@ -12165,10 +12166,10 @@ Description
 -----------
 No available documentation.
 ") SetDayComponent;
-		void SetDayComponent(const Standard_Integer aDayComponent);
+		void SetDayComponent(const int aDayComponent);
 
 		/****** StepBasic_CalendarDate::SetMonthComponent ******/
-		/****** md5 signature: 7bea07a1c9bd41350c031c723a522ac3 ******/
+		/****** md5 signature: 7e9fbeb91175c8f5a710b323c676de91 ******/
 		%feature("compactdefaultargs") SetMonthComponent;
 		%feature("autodoc", "
 Parameters
@@ -12183,7 +12184,7 @@ Description
 -----------
 No available documentation.
 ") SetMonthComponent;
-		void SetMonthComponent(const Standard_Integer aMonthComponent);
+		void SetMonthComponent(const int aMonthComponent);
 
 };
 
@@ -12215,27 +12216,27 @@ Returns a ConversionBasedUnit.
 		 StepBasic_ConversionBasedUnit();
 
 		/****** StepBasic_ConversionBasedUnit::ConversionFactor ******/
-		/****** md5 signature: 98733960524f2b12331326efed41b780 ******/
+		/****** md5 signature: 73c793e2f708daee8cd636f31d92daae ******/
 		%feature("compactdefaultargs") ConversionFactor;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_MeasureWithUnit>
+opencascade::handle<Standard_Transient>
 
 Description
 -----------
 No available documentation.
 ") ConversionFactor;
-		opencascade::handle<StepBasic_MeasureWithUnit> ConversionFactor();
+		opencascade::handle<Standard_Transient> ConversionFactor();
 
 		/****** StepBasic_ConversionBasedUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -12245,7 +12246,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnit::Name ******/
 		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
@@ -12261,12 +12262,12 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Name();
 
 		/****** StepBasic_ConversionBasedUnit::SetConversionFactor ******/
-		/****** md5 signature: 69bcf62438994c98276236b10dc73ad7 ******/
+		/****** md5 signature: 5b3b86a520ff6c5a4e9f8b09febd9530 ******/
 		%feature("compactdefaultargs") SetConversionFactor;
 		%feature("autodoc", "
 Parameters
 ----------
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -12276,7 +12277,7 @@ Description
 -----------
 No available documentation.
 ") SetConversionFactor;
-		void SetConversionFactor(const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void SetConversionFactor(const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnit::SetName ******/
 		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
@@ -12368,7 +12369,7 @@ Returns data for supertype CharacterizedObject.
 		opencascade::handle<StepBasic_CharacterizedObject> CharacterizedObject();
 
 		/****** StepBasic_DocumentFile::Init ******/
-		/****** md5 signature: e6130c458940e6c1bd73fd00044284ba ******/
+		/****** md5 signature: ee29e86ee7737b6fb5cc5e44e6fb2630 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12390,7 +12391,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aDocument_Id, const opencascade::handle<TCollection_HAsciiString> & aDocument_Name, const Standard_Boolean hasDocument_Description, const opencascade::handle<TCollection_HAsciiString> & aDocument_Description, const opencascade::handle<StepBasic_DocumentType> & aDocument_Kind, const opencascade::handle<TCollection_HAsciiString> & aCharacterizedObject_Name, const Standard_Boolean hasCharacterizedObject_Description, const opencascade::handle<TCollection_HAsciiString> & aCharacterizedObject_Description);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aDocument_Id, const opencascade::handle<TCollection_HAsciiString> & aDocument_Name, const bool hasDocument_Description, const opencascade::handle<TCollection_HAsciiString> & aDocument_Description, const opencascade::handle<StepBasic_DocumentType> & aDocument_Kind, const opencascade::handle<TCollection_HAsciiString> & aCharacterizedObject_Name, const bool hasCharacterizedObject_Description, const opencascade::handle<TCollection_HAsciiString> & aCharacterizedObject_Description);
 
 		/****** StepBasic_DocumentFile::SetCharacterizedObject ******/
 		/****** md5 signature: c032a3a7a6c2c39e4d00bb4dc86d97ab ******/
@@ -12665,7 +12666,7 @@ Returns a OrdinalDate.
 		 StepBasic_OrdinalDate();
 
 		/****** StepBasic_OrdinalDate::DayComponent ******/
-		/****** md5 signature: 3ca7721e5937e191f94c2f5ecee1c9a8 ******/
+		/****** md5 signature: 9d86d32b09aa89d009d3ed1de89cbb39 ******/
 		%feature("compactdefaultargs") DayComponent;
 		%feature("autodoc", "Return
 -------
@@ -12675,10 +12676,10 @@ Description
 -----------
 No available documentation.
 ") DayComponent;
-		Standard_Integer DayComponent();
+		int DayComponent();
 
 		/****** StepBasic_OrdinalDate::Init ******/
-		/****** md5 signature: c5517f379a9ce8be968e2b61c9fbc851 ******/
+		/****** md5 signature: a57a5b6689cd9f4f8dd8eaa62561c0aa ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12694,10 +12695,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aYearComponent, const Standard_Integer aDayComponent);
+		void Init(const int aYearComponent, const int aDayComponent);
 
 		/****** StepBasic_OrdinalDate::SetDayComponent ******/
-		/****** md5 signature: 599666a06025a8440c3915e142f8559a ******/
+		/****** md5 signature: ad716ae321a1366d7ad884b5fc6a424e ******/
 		%feature("compactdefaultargs") SetDayComponent;
 		%feature("autodoc", "
 Parameters
@@ -12712,7 +12713,7 @@ Description
 -----------
 No available documentation.
 ") SetDayComponent;
-		void SetDayComponent(const Standard_Integer aDayComponent);
+		void SetDayComponent(const int aDayComponent);
 
 };
 
@@ -12757,7 +12758,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_OrganizationalAddress::Init ******/
-		/****** md5 signature: ccaae03165ab1a12bdb7a1ace15ee396 ******/
+		/****** md5 signature: 679ce15307659146a74cb5956c9e8ea6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12786,7 +12787,7 @@ hasAelectronicMailAddress: bool
 aElectronicMailAddress: TCollection_HAsciiString
 hasAtelexNumber: bool
 aTelexNumber: TCollection_HAsciiString
-aOrganizations: StepBasic_HArray1OfOrganization
+aOrganizations: NCollection_HArray1<
 aDescription: TCollection_HAsciiString
 
 Return
@@ -12797,10 +12798,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const Standard_Boolean hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const Standard_Boolean hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const Standard_Boolean hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const Standard_Boolean hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const Standard_Boolean hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const Standard_Boolean hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const Standard_Boolean hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const Standard_Boolean hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const Standard_Boolean hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const Standard_Boolean hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const Standard_Boolean hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<StepBasic_HArray1OfOrganization> & aOrganizations, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>> > & aOrganizations, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_OrganizationalAddress::NbOrganizations ******/
-		/****** md5 signature: 58cca92ad0d9a651a9d655d52a18c36a ******/
+		/****** md5 signature: 93b9d6d6874fbb20eb20aaabc8e5d832 ******/
 		%feature("compactdefaultargs") NbOrganizations;
 		%feature("autodoc", "Return
 -------
@@ -12810,23 +12811,23 @@ Description
 -----------
 No available documentation.
 ") NbOrganizations;
-		Standard_Integer NbOrganizations();
+		int NbOrganizations();
 
 		/****** StepBasic_OrganizationalAddress::Organizations ******/
-		/****** md5 signature: 924e32ad252cd9d50fdb6040bc54a79c ******/
+		/****** md5 signature: d7918c37306363fedb257cf94fd5e404 ******/
 		%feature("compactdefaultargs") Organizations;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfOrganization>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>>
 
 Description
 -----------
 No available documentation.
 ") Organizations;
-		opencascade::handle<StepBasic_HArray1OfOrganization> Organizations();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>>> Organizations();
 
 		/****** StepBasic_OrganizationalAddress::OrganizationsValue ******/
-		/****** md5 signature: 4adae1500f1d8d1283591a940c62c887 ******/
+		/****** md5 signature: c09663cea8169b3af9d4ffcb18d6b534 ******/
 		%feature("compactdefaultargs") OrganizationsValue;
 		%feature("autodoc", "
 Parameters
@@ -12841,7 +12842,7 @@ Description
 -----------
 No available documentation.
 ") OrganizationsValue;
-		opencascade::handle<StepBasic_Organization> OrganizationsValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_Organization> OrganizationsValue(const int num);
 
 		/****** StepBasic_OrganizationalAddress::SetDescription ******/
 		/****** md5 signature: adddd13a906718df58a2eee683a382cf ******/
@@ -12862,12 +12863,12 @@ No available documentation.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_OrganizationalAddress::SetOrganizations ******/
-		/****** md5 signature: 18a3f0b32682ed1758b75b50c092ea7c ******/
+		/****** md5 signature: 510fd09a7a6b069f57c487594aed1877 ******/
 		%feature("compactdefaultargs") SetOrganizations;
 		%feature("autodoc", "
 Parameters
 ----------
-aOrganizations: StepBasic_HArray1OfOrganization
+aOrganizations: NCollection_HArray1<
 
 Return
 -------
@@ -12877,7 +12878,7 @@ Description
 -----------
 No available documentation.
 ") SetOrganizations;
-		void SetOrganizations(const opencascade::handle<StepBasic_HArray1OfOrganization> & aOrganizations);
+		void SetOrganizations(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Organization>> > & aOrganizations);
 
 };
 
@@ -12922,7 +12923,7 @@ No available documentation.
 		opencascade::handle<TCollection_HAsciiString> Description();
 
 		/****** StepBasic_PersonalAddress::Init ******/
-		/****** md5 signature: 687c1ee4d41ddbfa8eac972407b6a00d ******/
+		/****** md5 signature: 5feb68c7dff5e72f1f1815156cb4509d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12951,7 +12952,7 @@ hasAelectronicMailAddress: bool
 aElectronicMailAddress: TCollection_HAsciiString
 hasAtelexNumber: bool
 aTelexNumber: TCollection_HAsciiString
-aPeople: StepBasic_HArray1OfPerson
+aPeople: NCollection_HArray1<
 aDescription: TCollection_HAsciiString
 
 Return
@@ -12962,10 +12963,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const Standard_Boolean hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const Standard_Boolean hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const Standard_Boolean hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const Standard_Boolean hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const Standard_Boolean hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const Standard_Boolean hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const Standard_Boolean hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const Standard_Boolean hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const Standard_Boolean hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const Standard_Boolean hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const Standard_Boolean hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<StepBasic_HArray1OfPerson> & aPeople, const opencascade::handle<TCollection_HAsciiString> & aDescription);
+		void Init(const bool hasAinternalLocation, const opencascade::handle<TCollection_HAsciiString> & aInternalLocation, const bool hasAstreetNumber, const opencascade::handle<TCollection_HAsciiString> & aStreetNumber, const bool hasAstreet, const opencascade::handle<TCollection_HAsciiString> & aStreet, const bool hasApostalBox, const opencascade::handle<TCollection_HAsciiString> & aPostalBox, const bool hasAtown, const opencascade::handle<TCollection_HAsciiString> & aTown, const bool hasAregion, const opencascade::handle<TCollection_HAsciiString> & aRegion, const bool hasApostalCode, const opencascade::handle<TCollection_HAsciiString> & aPostalCode, const bool hasAcountry, const opencascade::handle<TCollection_HAsciiString> & aCountry, const bool hasAfacsimileNumber, const opencascade::handle<TCollection_HAsciiString> & aFacsimileNumber, const bool hasAtelephoneNumber, const opencascade::handle<TCollection_HAsciiString> & aTelephoneNumber, const bool hasAelectronicMailAddress, const opencascade::handle<TCollection_HAsciiString> & aElectronicMailAddress, const bool hasAtelexNumber, const opencascade::handle<TCollection_HAsciiString> & aTelexNumber, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>> > & aPeople, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_PersonalAddress::NbPeople ******/
-		/****** md5 signature: 076af9501e66b6b44666d05e1da08dc9 ******/
+		/****** md5 signature: 56087ab33789e01f9da97e647ef0524a ******/
 		%feature("compactdefaultargs") NbPeople;
 		%feature("autodoc", "Return
 -------
@@ -12975,23 +12976,23 @@ Description
 -----------
 No available documentation.
 ") NbPeople;
-		Standard_Integer NbPeople();
+		int NbPeople();
 
 		/****** StepBasic_PersonalAddress::People ******/
-		/****** md5 signature: 61214df2a5fb1a2d6db2a91252f3990a ******/
+		/****** md5 signature: 4c00a3e866349a639dd17cbb9f300971 ******/
 		%feature("compactdefaultargs") People;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfPerson>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>>
 
 Description
 -----------
 No available documentation.
 ") People;
-		opencascade::handle<StepBasic_HArray1OfPerson> People();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>>> People();
 
 		/****** StepBasic_PersonalAddress::PeopleValue ******/
-		/****** md5 signature: 93a18090eaba871d51c66c2a43c9e00e ******/
+		/****** md5 signature: f39a6c5f7ca53773cc1609f7555d16dc ******/
 		%feature("compactdefaultargs") PeopleValue;
 		%feature("autodoc", "
 Parameters
@@ -13006,7 +13007,7 @@ Description
 -----------
 No available documentation.
 ") PeopleValue;
-		opencascade::handle<StepBasic_Person> PeopleValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_Person> PeopleValue(const int num);
 
 		/****** StepBasic_PersonalAddress::SetDescription ******/
 		/****** md5 signature: adddd13a906718df58a2eee683a382cf ******/
@@ -13027,12 +13028,12 @@ No available documentation.
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
 		/****** StepBasic_PersonalAddress::SetPeople ******/
-		/****** md5 signature: 83d80afa04bc7dde575b6846eed3d8dd ******/
+		/****** md5 signature: 4c2045404182efd0deb98dbc65651363 ******/
 		%feature("compactdefaultargs") SetPeople;
 		%feature("autodoc", "
 Parameters
 ----------
-aPeople: StepBasic_HArray1OfPerson
+aPeople: NCollection_HArray1<
 
 Return
 -------
@@ -13042,7 +13043,7 @@ Description
 -----------
 No available documentation.
 ") SetPeople;
-		void SetPeople(const opencascade::handle<StepBasic_HArray1OfPerson> & aPeople);
+		void SetPeople(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Person>> > & aPeople);
 
 };
 
@@ -13643,20 +13644,20 @@ No available documentation.
 		 StepBasic_ProductDefinitionWithAssociatedDocuments();
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::DocIds ******/
-		/****** md5 signature: f99a89ab71d1f1345ebfac7db2976045 ******/
+		/****** md5 signature: da0709d33f0815832698ac358e9f0b74 ******/
 		%feature("compactdefaultargs") DocIds;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfDocument>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>>
 
 Description
 -----------
 No available documentation.
 ") DocIds;
-		opencascade::handle<StepBasic_HArray1OfDocument> DocIds();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>>> DocIds();
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::DocIdsValue ******/
-		/****** md5 signature: 289bae0af42e7afb9eeddb56ee56c8f5 ******/
+		/****** md5 signature: fed9bf70d9c2701cd99bea177de2c48d ******/
 		%feature("compactdefaultargs") DocIdsValue;
 		%feature("autodoc", "
 Parameters
@@ -13671,10 +13672,10 @@ Description
 -----------
 No available documentation.
 ") DocIdsValue;
-		opencascade::handle<StepBasic_Document> DocIdsValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_Document> DocIdsValue(const int num);
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::Init ******/
-		/****** md5 signature: ab6a828211fe18264927c2f513d4fa62 ******/
+		/****** md5 signature: 6f652f09d583eba9731ce5abeae2be1c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -13683,7 +13684,7 @@ aId: TCollection_HAsciiString
 aDescription: TCollection_HAsciiString
 aFormation: StepBasic_ProductDefinitionFormation
 aFrame: StepBasic_ProductDefinitionContext
-aDocIds: StepBasic_HArray1OfDocument
+aDocIds: NCollection_HArray1<
 
 Return
 -------
@@ -13693,10 +13694,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinitionFormation> & aFormation, const opencascade::handle<StepBasic_ProductDefinitionContext> & aFrame, const opencascade::handle<StepBasic_HArray1OfDocument> & aDocIds);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aId, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_ProductDefinitionFormation> & aFormation, const opencascade::handle<StepBasic_ProductDefinitionContext> & aFrame, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>> > & aDocIds);
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::NbDocIds ******/
-		/****** md5 signature: 44309351a282aab6be59435a9a2d0d58 ******/
+		/****** md5 signature: 7257c23bfa14edd9d0eff982e6526558 ******/
 		%feature("compactdefaultargs") NbDocIds;
 		%feature("autodoc", "Return
 -------
@@ -13706,15 +13707,15 @@ Description
 -----------
 No available documentation.
 ") NbDocIds;
-		Standard_Integer NbDocIds();
+		int NbDocIds();
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::SetDocIds ******/
-		/****** md5 signature: 9d5a6ec9fd4dffb06f4867ff750cf34a ******/
+		/****** md5 signature: 16450be169e171c993b5e71e0ba74d2c ******/
 		%feature("compactdefaultargs") SetDocIds;
 		%feature("autodoc", "
 Parameters
 ----------
-DocIds: StepBasic_HArray1OfDocument
+DocIds: NCollection_HArray1<
 
 Return
 -------
@@ -13724,10 +13725,10 @@ Description
 -----------
 No available documentation.
 ") SetDocIds;
-		void SetDocIds(const opencascade::handle<StepBasic_HArray1OfDocument> & DocIds);
+		void SetDocIds(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Document>> > & DocIds);
 
 		/****** StepBasic_ProductDefinitionWithAssociatedDocuments::SetDocIdsValue ******/
-		/****** md5 signature: 3f2cc15471c89394ba1fe90e381f98cc ******/
+		/****** md5 signature: a697ee50a5ca107f028279e812dcfbf4 ******/
 		%feature("compactdefaultargs") SetDocIdsValue;
 		%feature("autodoc", "
 Parameters
@@ -13743,7 +13744,7 @@ Description
 -----------
 No available documentation.
 ") SetDocIdsValue;
-		void SetDocIdsValue(const Standard_Integer num, const opencascade::handle<StepBasic_Document> & adoc);
+		void SetDocIdsValue(const int num, const opencascade::handle<StepBasic_Document> & adoc);
 
 };
 
@@ -13775,7 +13776,7 @@ Returns a ProductRelatedProductCategory.
 		 StepBasic_ProductRelatedProductCategory();
 
 		/****** StepBasic_ProductRelatedProductCategory::Init ******/
-		/****** md5 signature: ef699e40c29669615c48c9d4d2308a69 ******/
+		/****** md5 signature: cd5ec52f4386de05ed9e380ac402f822 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -13783,7 +13784,7 @@ Parameters
 aName: TCollection_HAsciiString
 hasAdescription: bool
 aDescription: TCollection_HAsciiString
-aProducts: StepBasic_HArray1OfProduct
+aProducts: NCollection_HArray1<
 
 Return
 -------
@@ -13793,10 +13794,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<StepBasic_HArray1OfProduct> & aProducts);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const bool hasAdescription, const opencascade::handle<TCollection_HAsciiString> & aDescription, const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>> > & aProducts);
 
 		/****** StepBasic_ProductRelatedProductCategory::NbProducts ******/
-		/****** md5 signature: d3fb3a11f25e6d22373886d209506c61 ******/
+		/****** md5 signature: 9650fef31042cd02acdc5e585fcaa6fc ******/
 		%feature("compactdefaultargs") NbProducts;
 		%feature("autodoc", "Return
 -------
@@ -13806,23 +13807,23 @@ Description
 -----------
 No available documentation.
 ") NbProducts;
-		Standard_Integer NbProducts();
+		int NbProducts();
 
 		/****** StepBasic_ProductRelatedProductCategory::Products ******/
-		/****** md5 signature: 9d0752ff7564c82fba7e6e8fcfc88dd3 ******/
+		/****** md5 signature: b96af5edd41054a95f435d8c024f1041 ******/
 		%feature("compactdefaultargs") Products;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<StepBasic_HArray1OfProduct>
+opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>>
 
 Description
 -----------
 No available documentation.
 ") Products;
-		opencascade::handle<StepBasic_HArray1OfProduct> Products();
+		opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>>> Products();
 
 		/****** StepBasic_ProductRelatedProductCategory::ProductsValue ******/
-		/****** md5 signature: 706ef44651e18050a8ef958e89f82f8e ******/
+		/****** md5 signature: 77c5cd1edd85af97a3f44ff330080262 ******/
 		%feature("compactdefaultargs") ProductsValue;
 		%feature("autodoc", "
 Parameters
@@ -13837,15 +13838,15 @@ Description
 -----------
 No available documentation.
 ") ProductsValue;
-		opencascade::handle<StepBasic_Product> ProductsValue(const Standard_Integer num);
+		opencascade::handle<StepBasic_Product> ProductsValue(const int num);
 
 		/****** StepBasic_ProductRelatedProductCategory::SetProducts ******/
-		/****** md5 signature: 46e0d45ba580b5cafb271a244155f877 ******/
+		/****** md5 signature: 7a7bd90b9f372126dcde07f4566a0006 ******/
 		%feature("compactdefaultargs") SetProducts;
 		%feature("autodoc", "
 Parameters
 ----------
-aProducts: StepBasic_HArray1OfProduct
+aProducts: NCollection_HArray1<
 
 Return
 -------
@@ -13855,7 +13856,7 @@ Description
 -----------
 No available documentation.
 ") SetProducts;
-		void SetProducts(const opencascade::handle<StepBasic_HArray1OfProduct> & aProducts);
+		void SetProducts(const opencascade::handle<NCollection_HArray1<opencascade::handle<StepBasic_Product>> > & aProducts);
 
 };
 
@@ -13945,7 +13946,7 @@ Returns a SiUnit.
 		 StepBasic_SiUnit();
 
 		/****** StepBasic_SiUnit::Dimensions ******/
-		/****** md5 signature: 4e66912481e9ff0b706e930a9ef87093 ******/
+		/****** md5 signature: be1fe1c2763f01223a9cb550d8e0940b ******/
 		%feature("compactdefaultargs") Dimensions;
 		%feature("autodoc", "Return
 -------
@@ -13955,10 +13956,10 @@ Description
 -----------
 No available documentation.
 ") Dimensions;
-		virtual opencascade::handle<StepBasic_DimensionalExponents> Dimensions();
+		opencascade::handle<StepBasic_DimensionalExponents> Dimensions();
 
 		/****** StepBasic_SiUnit::HasPrefix ******/
-		/****** md5 signature: c9fe6eeb510ee5d2c641117ebbb79772 ******/
+		/****** md5 signature: fcf00b8816b12cd5d66bb7e2f163aa5a ******/
 		%feature("compactdefaultargs") HasPrefix;
 		%feature("autodoc", "Return
 -------
@@ -13968,10 +13969,10 @@ Description
 -----------
 No available documentation.
 ") HasPrefix;
-		Standard_Boolean HasPrefix();
+		bool HasPrefix();
 
 		/****** StepBasic_SiUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -13988,7 +13989,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnit::Name ******/
 		/****** md5 signature: 7d79c683219f60de29d625692ad93378 ******/
@@ -14017,7 +14018,7 @@ No available documentation.
 		StepBasic_SiPrefix Prefix();
 
 		/****** StepBasic_SiUnit::SetDimensions ******/
-		/****** md5 signature: cf40ab4ee06b6cf12d35c11b1ac9d18f ******/
+		/****** md5 signature: 9abf55c1897d8b58f14f9490be556b56 ******/
 		%feature("compactdefaultargs") SetDimensions;
 		%feature("autodoc", "
 Parameters
@@ -14032,7 +14033,7 @@ Description
 -----------
 No available documentation.
 ") SetDimensions;
-		virtual void SetDimensions(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions);
+		void SetDimensions(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions);
 
 		/****** StepBasic_SiUnit::SetName ******/
 		/****** md5 signature: fa7a6bc42d81880bdb6a51fbe91d8571 ******/
@@ -14399,7 +14400,7 @@ Returns a WeekOfYearAndDayDate.
 		 StepBasic_WeekOfYearAndDayDate();
 
 		/****** StepBasic_WeekOfYearAndDayDate::DayComponent ******/
-		/****** md5 signature: 3ca7721e5937e191f94c2f5ecee1c9a8 ******/
+		/****** md5 signature: 9d86d32b09aa89d009d3ed1de89cbb39 ******/
 		%feature("compactdefaultargs") DayComponent;
 		%feature("autodoc", "Return
 -------
@@ -14409,10 +14410,10 @@ Description
 -----------
 No available documentation.
 ") DayComponent;
-		Standard_Integer DayComponent();
+		int DayComponent();
 
 		/****** StepBasic_WeekOfYearAndDayDate::HasDayComponent ******/
-		/****** md5 signature: 533707411dd29de84b7bcec81e4200ca ******/
+		/****** md5 signature: 4f1aa77bfd5cfb01fe9875996cbdd4a0 ******/
 		%feature("compactdefaultargs") HasDayComponent;
 		%feature("autodoc", "Return
 -------
@@ -14422,10 +14423,10 @@ Description
 -----------
 No available documentation.
 ") HasDayComponent;
-		Standard_Boolean HasDayComponent();
+		bool HasDayComponent();
 
 		/****** StepBasic_WeekOfYearAndDayDate::Init ******/
-		/****** md5 signature: d2eb3140c7e43ebfa84f6193d90beef8 ******/
+		/****** md5 signature: de26afbeb752e69be46301b1181ac35c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -14443,10 +14444,10 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Integer aYearComponent, const Standard_Integer aWeekComponent, const Standard_Boolean hasAdayComponent, const Standard_Integer aDayComponent);
+		void Init(const int aYearComponent, const int aWeekComponent, const bool hasAdayComponent, const int aDayComponent);
 
 		/****** StepBasic_WeekOfYearAndDayDate::SetDayComponent ******/
-		/****** md5 signature: 599666a06025a8440c3915e142f8559a ******/
+		/****** md5 signature: ad716ae321a1366d7ad884b5fc6a424e ******/
 		%feature("compactdefaultargs") SetDayComponent;
 		%feature("autodoc", "
 Parameters
@@ -14461,10 +14462,10 @@ Description
 -----------
 No available documentation.
 ") SetDayComponent;
-		void SetDayComponent(const Standard_Integer aDayComponent);
+		void SetDayComponent(const int aDayComponent);
 
 		/****** StepBasic_WeekOfYearAndDayDate::SetWeekComponent ******/
-		/****** md5 signature: 3bbdbe7ae3fa90362f414a9ecbed9ae2 ******/
+		/****** md5 signature: 40693757be806efd138770767c614125 ******/
 		%feature("compactdefaultargs") SetWeekComponent;
 		%feature("autodoc", "
 Parameters
@@ -14479,7 +14480,7 @@ Description
 -----------
 No available documentation.
 ") SetWeekComponent;
-		void SetWeekComponent(const Standard_Integer aWeekComponent);
+		void SetWeekComponent(const int aWeekComponent);
 
 		/****** StepBasic_WeekOfYearAndDayDate::UnSetDayComponent ******/
 		/****** md5 signature: 477eb6ed8099002592cc1ac15492f31f ******/
@@ -14495,7 +14496,7 @@ No available documentation.
 		void UnSetDayComponent();
 
 		/****** StepBasic_WeekOfYearAndDayDate::WeekComponent ******/
-		/****** md5 signature: c2fc4618a34dee968234360833c574fc ******/
+		/****** md5 signature: 7e325e34559a7bc5f04a46751a67f6a0 ******/
 		%feature("compactdefaultargs") WeekComponent;
 		%feature("autodoc", "Return
 -------
@@ -14505,7 +14506,7 @@ Description
 -----------
 No available documentation.
 ") WeekComponent;
-		Standard_Integer WeekComponent();
+		int WeekComponent();
 
 };
 
@@ -14597,14 +14598,14 @@ Returns a ConversionBasedUnitAndLengthUnit.
 		 StepBasic_ConversionBasedUnitAndLengthUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndLengthUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -14614,7 +14615,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndLengthUnit::LengthUnit ******/
 		/****** md5 signature: 2db2c3654e5bf9a37de3c8d0f7db7897 ******/
@@ -14677,14 +14678,14 @@ Returns a ConversionBasedUnitAndLengthUnit.
 		 StepBasic_ConversionBasedUnitAndMassUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndMassUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -14694,7 +14695,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndMassUnit::MassUnit ******/
 		/****** md5 signature: 8f52f5dd4adce065cde920b4bac228d3 ******/
@@ -14757,14 +14758,14 @@ Returns a ConversionBasedUnitAndPlaneAngleUnit.
 		 StepBasic_ConversionBasedUnitAndPlaneAngleUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndPlaneAngleUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -14774,7 +14775,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndPlaneAngleUnit::PlaneAngleUnit ******/
 		/****** md5 signature: c451c5e50d87ed7994edb7e363d54856 ******/
@@ -14837,14 +14838,14 @@ Returns a ConversionBasedUnitAndRatioUnit.
 		 StepBasic_ConversionBasedUnitAndRatioUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndRatioUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -14854,7 +14855,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndRatioUnit::RatioUnit ******/
 		/****** md5 signature: 65e9c38c2c1f03c50c41fb636fcbfb0d ******/
@@ -14917,14 +14918,14 @@ Returns a ConversionBasedUnitAndSolidAngleUnit.
 		 StepBasic_ConversionBasedUnitAndSolidAngleUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndSolidAngleUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -14934,7 +14935,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndSolidAngleUnit::SetSolidAngleUnit ******/
 		/****** md5 signature: 94c3a931d88e3ee135dcba816533aced ******/
@@ -14997,14 +14998,14 @@ Returns a ConversionBasedUnitAndTimeUnit.
 		 StepBasic_ConversionBasedUnitAndTimeUnit();
 
 		/****** StepBasic_ConversionBasedUnitAndTimeUnit::Init ******/
-		/****** md5 signature: 230b648890e9efa5eef6d2d214b37499 ******/
+		/****** md5 signature: b93487439348327991f293bb998321d6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 aDimensions: StepBasic_DimensionalExponents
 aName: TCollection_HAsciiString
-aConversionFactor: StepBasic_MeasureWithUnit
+aConversionFactor: Standard_Transient
 
 Return
 -------
@@ -15014,7 +15015,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_MeasureWithUnit> & aConversionFactor);
+		void Init(const opencascade::handle<StepBasic_DimensionalExponents> & aDimensions, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<Standard_Transient> & aConversionFactor);
 
 		/****** StepBasic_ConversionBasedUnitAndTimeUnit::SetTimeUnit ******/
 		/****** md5 signature: 41cd2c45dcbccffbdebbe64293606ffd ******/
@@ -15284,7 +15285,7 @@ Returns a SiUnitAndLengthUnit.
 		 StepBasic_SiUnitAndLengthUnit();
 
 		/****** StepBasic_SiUnitAndLengthUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15301,7 +15302,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndLengthUnit::LengthUnit ******/
 		/****** md5 signature: 2db2c3654e5bf9a37de3c8d0f7db7897 ******/
@@ -15364,7 +15365,7 @@ Returns a SiUnitAndMassUnit.
 		 StepBasic_SiUnitAndMassUnit();
 
 		/****** StepBasic_SiUnitAndMassUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15381,7 +15382,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndMassUnit::MassUnit ******/
 		/****** md5 signature: 8f52f5dd4adce065cde920b4bac228d3 ******/
@@ -15444,7 +15445,7 @@ Returns a SiUnitAndPlaneAngleUnit.
 		 StepBasic_SiUnitAndPlaneAngleUnit();
 
 		/****** StepBasic_SiUnitAndPlaneAngleUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15461,7 +15462,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndPlaneAngleUnit::PlaneAngleUnit ******/
 		/****** md5 signature: c451c5e50d87ed7994edb7e363d54856 ******/
@@ -15524,7 +15525,7 @@ Returns a SiUnitAndRatioUnit.
 		 StepBasic_SiUnitAndRatioUnit();
 
 		/****** StepBasic_SiUnitAndRatioUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15541,7 +15542,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndRatioUnit::RatioUnit ******/
 		/****** md5 signature: 65e9c38c2c1f03c50c41fb636fcbfb0d ******/
@@ -15604,7 +15605,7 @@ Returns a SiUnitAndSolidAngleUnit.
 		 StepBasic_SiUnitAndSolidAngleUnit();
 
 		/****** StepBasic_SiUnitAndSolidAngleUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15621,7 +15622,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndSolidAngleUnit::SetSolidAngleUnit ******/
 		/****** md5 signature: 94c3a931d88e3ee135dcba816533aced ******/
@@ -15684,7 +15685,7 @@ Returns a SiUnitAndThermodynamicTemperatureUnit.
 		 StepBasic_SiUnitAndThermodynamicTemperatureUnit();
 
 		/****** StepBasic_SiUnitAndThermodynamicTemperatureUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15701,7 +15702,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndThermodynamicTemperatureUnit::SetThermodynamicTemperatureUnit ******/
 		/****** md5 signature: 51cb78d655946e860407f20bb0bf1376 ******/
@@ -15764,7 +15765,7 @@ Returns a SiUnitAndTimeUnit.
 		 StepBasic_SiUnitAndTimeUnit();
 
 		/****** StepBasic_SiUnitAndTimeUnit::Init ******/
-		/****** md5 signature: ac991672766c61474098b23b82448a53 ******/
+		/****** md5 signature: 250c13b2a95d088161db3bdc337e6361 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -15781,7 +15782,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const Standard_Boolean hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
+		void Init(const bool hasAprefix, const StepBasic_SiPrefix aPrefix, const StepBasic_SiUnitName aName);
 
 		/****** StepBasic_SiUnitAndTimeUnit::SetTimeUnit ******/
 		/****** md5 signature: 41cd2c45dcbccffbdebbe64293606ffd ******/
@@ -15899,112 +15900,112 @@ class StepRepr_MakeFromUsageOption:
 /* end python proxy for excluded classes */
 /* harray1 classes */
 
-class StepBasic_HArray1OfApproval : public StepBasic_Array1OfApproval, public Standard_Transient {
+class StepBasic_HArray1OfApproval : public NCollection_Array1<opencascade::handle<StepBasic_Approval>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfApproval::value_type& theValue);
-    StepBasic_HArray1OfApproval(const StepBasic_Array1OfApproval& theOther);
-    const StepBasic_Array1OfApproval& Array1();
-    StepBasic_Array1OfApproval& ChangeArray1();
+    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Approval>>::value_type& theValue);
+    StepBasic_HArray1OfApproval(const NCollection_Array1<opencascade::handle<StepBasic_Approval>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_Approval>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_Approval>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfApproval)
 
 
-class StepBasic_HArray1OfDerivedUnitElement : public StepBasic_Array1OfDerivedUnitElement, public Standard_Transient {
+class StepBasic_HArray1OfDerivedUnitElement : public NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfDerivedUnitElement::value_type& theValue);
-    StepBasic_HArray1OfDerivedUnitElement(const StepBasic_Array1OfDerivedUnitElement& theOther);
-    const StepBasic_Array1OfDerivedUnitElement& Array1();
-    StepBasic_Array1OfDerivedUnitElement& ChangeArray1();
+    StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>::value_type& theValue);
+    StepBasic_HArray1OfDerivedUnitElement(const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfDerivedUnitElement)
 
 
-class StepBasic_HArray1OfDocument : public StepBasic_Array1OfDocument, public Standard_Transient {
+class StepBasic_HArray1OfDocument : public NCollection_Array1<opencascade::handle<StepBasic_Document>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfDocument::value_type& theValue);
-    StepBasic_HArray1OfDocument(const StepBasic_Array1OfDocument& theOther);
-    const StepBasic_Array1OfDocument& Array1();
-    StepBasic_Array1OfDocument& ChangeArray1();
+    StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Document>>::value_type& theValue);
+    StepBasic_HArray1OfDocument(const NCollection_Array1<opencascade::handle<StepBasic_Document>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_Document>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_Document>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfDocument)
 
 
-class StepBasic_HArray1OfNamedUnit : public StepBasic_Array1OfNamedUnit, public Standard_Transient {
+class StepBasic_HArray1OfNamedUnit : public NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfNamedUnit::value_type& theValue);
-    StepBasic_HArray1OfNamedUnit(const StepBasic_Array1OfNamedUnit& theOther);
-    const StepBasic_Array1OfNamedUnit& Array1();
-    StepBasic_Array1OfNamedUnit& ChangeArray1();
+    StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>::value_type& theValue);
+    StepBasic_HArray1OfNamedUnit(const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfNamedUnit)
 
 
-class StepBasic_HArray1OfOrganization : public StepBasic_Array1OfOrganization, public Standard_Transient {
+class StepBasic_HArray1OfOrganization : public NCollection_Array1<opencascade::handle<StepBasic_Organization>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfOrganization::value_type& theValue);
-    StepBasic_HArray1OfOrganization(const StepBasic_Array1OfOrganization& theOther);
-    const StepBasic_Array1OfOrganization& Array1();
-    StepBasic_Array1OfOrganization& ChangeArray1();
+    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Organization>>::value_type& theValue);
+    StepBasic_HArray1OfOrganization(const NCollection_Array1<opencascade::handle<StepBasic_Organization>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_Organization>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_Organization>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfOrganization)
 
 
-class StepBasic_HArray1OfPerson : public StepBasic_Array1OfPerson, public Standard_Transient {
+class StepBasic_HArray1OfPerson : public NCollection_Array1<opencascade::handle<StepBasic_Person>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfPerson::value_type& theValue);
-    StepBasic_HArray1OfPerson(const StepBasic_Array1OfPerson& theOther);
-    const StepBasic_Array1OfPerson& Array1();
-    StepBasic_Array1OfPerson& ChangeArray1();
+    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Person>>::value_type& theValue);
+    StepBasic_HArray1OfPerson(const NCollection_Array1<opencascade::handle<StepBasic_Person>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_Person>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_Person>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfPerson)
 
 
-class StepBasic_HArray1OfProduct : public StepBasic_Array1OfProduct, public Standard_Transient {
+class StepBasic_HArray1OfProduct : public NCollection_Array1<opencascade::handle<StepBasic_Product>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProduct::value_type& theValue);
-    StepBasic_HArray1OfProduct(const StepBasic_Array1OfProduct& theOther);
-    const StepBasic_Array1OfProduct& Array1();
-    StepBasic_Array1OfProduct& ChangeArray1();
+    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Product>>::value_type& theValue);
+    StepBasic_HArray1OfProduct(const NCollection_Array1<opencascade::handle<StepBasic_Product>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_Product>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_Product>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProduct)
 
 
-class StepBasic_HArray1OfProductContext : public StepBasic_Array1OfProductContext, public Standard_Transient {
+class StepBasic_HArray1OfProductContext : public NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProductContext::value_type& theValue);
-    StepBasic_HArray1OfProductContext(const StepBasic_Array1OfProductContext& theOther);
-    const StepBasic_Array1OfProductContext& Array1();
-    StepBasic_Array1OfProductContext& ChangeArray1();
+    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>::value_type& theValue);
+    StepBasic_HArray1OfProductContext(const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProductContext)
 
 
-class StepBasic_HArray1OfProductDefinition : public StepBasic_Array1OfProductDefinition, public Standard_Transient {
+class StepBasic_HArray1OfProductDefinition : public NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProductDefinition::value_type& theValue);
-    StepBasic_HArray1OfProductDefinition(const StepBasic_Array1OfProductDefinition& theOther);
-    const StepBasic_Array1OfProductDefinition& Array1();
-    StepBasic_Array1OfProductDefinition& ChangeArray1();
+    StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>::value_type& theValue);
+    StepBasic_HArray1OfProductDefinition(const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProductDefinition)
 
 
-class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public StepBasic_Array1OfUncertaintyMeasureWithUnit, public Standard_Transient {
+class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>, public Standard_Transient {
   public:
     StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfUncertaintyMeasureWithUnit::value_type& theValue);
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const StepBasic_Array1OfUncertaintyMeasureWithUnit& theOther);
-    const StepBasic_Array1OfUncertaintyMeasureWithUnit& Array1();
-    StepBasic_Array1OfUncertaintyMeasureWithUnit& ChangeArray1();
+    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>::value_type& theValue);
+    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& theOther);
+    const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& Array1();
+    NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 

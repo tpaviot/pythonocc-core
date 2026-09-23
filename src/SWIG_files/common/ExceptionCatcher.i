@@ -36,12 +36,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include <Standard_Overflow.hxx>
 #include <Standard_RangeError.hxx>
 #include <Standard_Underflow.hxx>
+#include <cstring>
 #include <sstream>
 #include <iostream>
 #include <typeinfo>
 %}
 
-%inline %{
+// Helper functions, not wrapped (%{ %} rather than %inline %{ %}): they are
+// defined in every module and must not be exported to python
+%{
 
 // Configuration for debugging (can be enabled/disabled)
 #ifndef PYTHONOCC_DEBUG_EXCEPTIONS
@@ -49,25 +52,24 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #endif
 
 // Utility function to get a readable class name
-std::string get_readable_class_name(const std::string& class_name) {
-    if (class_name.empty() || class_name == "$parentclassname") {
+static std::string get_readable_class_name(const char* class_name) {
+    if (!class_name || !*class_name || std::strcmp(class_name, "$parentclassname") == 0) {
         return "Unknown";
     }
     return class_name;
 }
 
 // Utility function to get a readable method name
-std::string get_readable_method_name(const std::string& method_name) {
-    if (method_name.empty() || method_name == "$name") {
+static std::string get_readable_method_name(const char* method_name) {
+    if (!method_name || !*method_name || std::strcmp(method_name, "$name") == 0) {
         return "Unknown";
     }
     return method_name;
 }
 
 // Mapping OpenCASCADE exceptions to appropriate Python exceptions
-PyObject* get_exception_type(const Standard_Failure& error) {
-    const Handle(Standard_Type)& error_type = error.DynamicType();
-    const std::string type_name = error_type->Name();
+static PyObject* get_exception_type(const Standard_Failure& error) {
+    const std::string type_name = error.ExceptionType();
     
     // Specific error type mapping
     if (type_name.find("OutOfRange") != std::string::npos || 
@@ -107,15 +109,17 @@ PyObject* get_exception_type(const Standard_Failure& error) {
     return PyExc_RuntimeError;
 }
 
-// Main function for processing OpenCASCADE exceptions
-void process_opencascade_exception(const Standard_Failure& error, 
-                                  const std::string& method_name, 
-                                  const std::string& class_name) {
+// Main function for processing OpenCASCADE exceptions. The names are C strings:
+// with std::string parameters, every wrapper built two std::string in its catch
+// block, which made the modules several MB larger
+static void process_opencascade_exception(const Standard_Failure& error,
+                                  const char* method_name,
+                                  const char* class_name) {
     std::ostringstream oss;
     
     // Basic error information
-    const std::string error_type = error.DynamicType()->Name();
-    const std::string error_message = error.GetMessageString();
+    const std::string error_type = error.ExceptionType();
+    const std::string error_message = error.what();
     const std::string readable_class = get_readable_class_name(class_name);
     const std::string readable_method = get_readable_method_name(method_name);
     

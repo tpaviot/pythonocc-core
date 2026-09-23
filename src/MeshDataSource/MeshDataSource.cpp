@@ -1,418 +1,431 @@
 #include "MeshDataSource.h"
 
+#include <Precision.hxx>
+#include <Standard_ConstructionError.hxx>
+#include <Standard_DimensionMismatch.hxx>
+#include <Standard_OutOfRange.hxx>
 
 IMPLEMENT_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
 
-MeshDS_DataSource::MeshDS_DataSource(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData)
+namespace
 {
-	InitializeFromData(CoordData, Ele2NodeData);
+//! Unit normal of the triangle (P1, P2, P3), null vector when degenerated.
+gp_Vec triangleNormal(const gp_Pnt& theP1, const gp_Pnt& theP2, const gp_Pnt& theP3)
+{
+  gp_Vec aNormal = gp_Vec(theP1, theP2).Crossed(gp_Vec(theP2, theP3));
+  if (aNormal.SquareMagnitude() > Precision::SquareConfusion())
+  {
+    aNormal.Normalize();
+  }
+  else
+  {
+    aNormal.SetCoord(0.0, 0.0, 0.0);
+  }
+  return aNormal;
 }
 
-
-MeshDS_DataSource::MeshDS_DataSource(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2)
+//! Normalizes a vector, null vector when degenerated.
+void normalize(gp_Vec& theVec)
 {
-	/*
-	if (nVerts2 != 3 || nFaces2 != 3) {
-		throw std::invalid_argument("Nx3 array must be provided");
-	}
-
-	std::vector<gp_Pnt> CoordData;
-	CoordData.resize(nVerts1);
-	size_t vertIDX = 0;
-
-	for (size_t vertID = 0; vertID < nVerts1; vertID++)
-	{
-		CoordData[vertID] = gp_Pnt(Vertices[vertIDX], Vertices[vertIDX + 1], Vertices[vertIDX + 2]);
-		vertIDX += 3;
-	}
-
-	std::vector<std::vector<int>> FVec;
-	FVec.resize(nFaces1);
-	size_t faceIDX = 0;
-
-	for (size_t faceID = 0; faceID < nFaces1; faceID++)
-	{
-		FVec[faceID] = std::vector<int>{ Faces[faceIDX], Faces[faceIDX + 1] ,Faces[faceIDX + 2] };
-		faceIDX += 3;
-	}
-
-	InitializeFromData(CoordData, FVec);
-	*/
-
-	InitializeFromData(Vertices, nVerts1, nVerts2, Faces, nFaces1, nFaces2);
+  if (theVec.SquareMagnitude() > Precision::SquareConfusion())
+  {
+    theVec.Normalize();
+  }
+  else
+  {
+    theVec.SetCoord(0.0, 0.0, 0.0);
+  }
 }
 
-
-MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
+//! Writes X, Y, Z of theVec at theCoords[theIndex..theIndex+2].
+void setCoords(std::vector<double>& theCoords, const size_t theIndex, const gp_Vec& theVec)
 {
-	// initialize arrays
-	std::vector<gp_Pnt> CoordData;
-	std::vector<std::vector<int>> Ele2NodeData;
-	CoordData.resize(polyTri->NbNodes());
-	Ele2NodeData.resize(polyTri->NbTriangles());
-
-	for (Standard_Integer nodeId=1;nodeId <= polyTri->NbNodes(); nodeId++) {
-		const gp_Pnt& node = polyTri->Node(nodeId).XYZ();
-		CoordData[nodeId - 1] = node;
-	}
-
-	// convert triangle data
-	const Poly_Array1OfTriangle& triangles = polyTri->Triangles();
-	for (Standard_Integer ElementID = triangles.Lower(); ElementID <= triangles.Upper(); ElementID++) {
-		const Poly_Triangle& tri = triangles.Value(ElementID);
-		Ele2NodeData[ElementID - triangles.Lower()] = std::vector<int>{ tri(1) - 1, tri(2) - 1, tri(3) - 1 };
-	}
-	InitializeFromData(CoordData, Ele2NodeData);
+  theCoords[theIndex]     = theVec.X();
+  theCoords[theIndex + 1] = theVec.Y();
+  theCoords[theIndex + 2] = theVec.Z();
 }
-//================================================================
-// Function : SetElemNormals
-// Purpose  :
-//================================================================
-void MeshDS_DataSource::SetElemNormals
-(const std::vector<gp_Vec>& ElemNormalsData)
-{
-	for (size_t ElementId = 1; ElementId <= ElemNormalsData.size(); ElementId++)
-	{
-		myElemNormals->SetValue(ElementId, 1, ElemNormalsData[ElementId - 1].X());
-		myElemNormals->SetValue(ElementId, 2, ElemNormalsData[ElementId - 1].Y());
-		myElemNormals->SetValue(ElementId, 3, ElemNormalsData[ElementId - 1].Z());
-	}
-}
+} // namespace
 
-//================================================================
-// Function : SetNodeNormals
-// Purpose  :
-//================================================================
-void MeshDS_DataSource::SetNodeNormals
-(const std::vector<std::vector<gp_Vec>>& NodeNormalsData)
+//=================================================================================================
+
+MeshDS_DataSource::MeshDS_DataSource(const std::vector<gp_Pnt>&           theNodes,
+                                     const std::vector<std::vector<int>>& theElements)
 {
-	for (size_t ElementId = 1; ElementId <= myElemNodes->NbRows(); ElementId++)
-	{
-		for (Standard_Integer rankNode = 1; rankNode <= myElemNumberNodes->Value(ElementId); rankNode++) {
-			myNodeNormals->SetValue(ElementId, 3 * (rankNode - 1) + 1, NodeNormalsData[ElementId - 1][rankNode - 1].X());
-			myNodeNormals->SetValue(ElementId, 3 * (rankNode - 1) + 2, NodeNormalsData[ElementId - 1][rankNode - 1].Y());
-			myNodeNormals->SetValue(ElementId, 3 * (rankNode - 1) + 3, NodeNormalsData[ElementId - 1][rankNode - 1].Z());
-		}
-	}
+  const int aNbNodes    = static_cast<int>(theNodes.size());
+  const int aNbElements = static_cast<int>(theElements.size());
+
+  // flatten the input: the element connectivity is padded to
+  // MaxNodesPerElement, the coordinates copied contiguously
+  std::vector<double> aCoords(3 * static_cast<size_t>(aNbNodes));
+  for (int aNode = 0; aNode < aNbNodes; ++aNode)
+  {
+    theNodes[aNode].Coord(aCoords[3 * aNode], aCoords[3 * aNode + 1], aCoords[3 * aNode + 2]);
+  }
+
+  std::vector<int> anElemNodes(static_cast<size_t>(MaxNodesPerElement) * aNbElements, 0);
+  std::vector<int> anElemNbNodes(aNbElements);
+  for (int anElem = 0; anElem < aNbElements; ++anElem)
+  {
+    const std::vector<int>& aNodes = theElements[anElem];
+    if (aNodes.size() < 3 || aNodes.size() > static_cast<size_t>(MaxNodesPerElement))
+    {
+      throw Standard_ConstructionError(
+        "MeshDS_DataSource: an element must have 3 or 4 nodes");
+    }
+    anElemNbNodes[anElem] = static_cast<int>(aNodes.size());
+    std::copy(aNodes.begin(), aNodes.end(), anElemNodes.begin() + MaxNodesPerElement * anElem);
+  }
+
+  Initialize(aNbNodes,
+             aCoords.data(),
+             aNbElements,
+             anElemNodes.data(),
+             anElemNbNodes.data(),
+             MaxNodesPerElement);
 }
 
-//================================================================
-// Function : GetGeom
-// Purpose  :
-//================================================================
-Standard_Boolean MeshDS_DataSource::GetGeom
-(const Standard_Integer ID, const Standard_Boolean IsElement,
-	TColStd_Array1OfReal& Coords, Standard_Integer& NbNodes,
-	MeshVS_EntityType& Type) const
+//=================================================================================================
+
+MeshDS_DataSource::MeshDS_DataSource(double* theVertices,
+                                     int     theNbVertices,
+                                     int     theNbCoords,
+                                     int*    theFaces,
+                                     int     theNbFaces,
+                                     int     theNbFaceNodes)
 {
-	if (IsElement)
-	{
-		if (ID >= 1 && ID <= myElements.Extent())
-		{
-			Type = MeshVS_ET_Face;
-			NbNodes = myElemNumberNodes->Value(ID);
-			for (Standard_Integer i = 1, k = 1; i <= NbNodes; i++)
-			{
-				Standard_Integer IdxNode = myElemNodes->Value(ID, i);
-				for (Standard_Integer j = 1; j <= 3; j++, k++)
-					Coords(k) = myNodeCoords->Value(IdxNode, j);
-			}
-			return Standard_True;
-		}
-		else
-			return Standard_False;
-	}
-	else
-		if (ID >= 1 && ID <= myNodes.Extent())
-		{
-			Type = MeshVS_ET_Node;
-			NbNodes = 1;
-			Coords(1) = myNodeCoords->Value(ID, 1);
-			Coords(2) = myNodeCoords->Value(ID, 2);
-			Coords(3) = myNodeCoords->Value(ID, 3);
-			return Standard_True;
-		}
-		else
-			return Standard_False;
+  if (theNbCoords != 3)
+  {
+    throw Standard_DimensionMismatch(
+      "MeshDS_DataSource: the vertices array must have 3 columns (X, Y, Z)");
+  }
+  if (theNbFaceNodes != 3 && theNbFaceNodes != MaxNodesPerElement)
+  {
+    throw Standard_DimensionMismatch(
+      "MeshDS_DataSource: the faces array must have 3 (triangles) or 4 (quadrangles) columns");
+  }
+  Initialize(theNbVertices, theVertices, theNbFaces, theFaces, nullptr, theNbFaceNodes);
 }
 
-//================================================================
-// Function : GetGeomType
-// Purpose  :
-//================================================================
-Standard_Boolean MeshDS_DataSource::GetGeomType
-(const Standard_Integer,
-	const Standard_Boolean IsElement,
-	MeshVS_EntityType& Type) const
+//=================================================================================================
+
+MeshDS_DataSource::MeshDS_DataSource(const occ::handle<Poly_Triangulation>& theTriangulation)
 {
-	if (IsElement)
-	{
-		Type = MeshVS_ET_Face;
-		return Standard_True;
-	}
-	else
-	{
-		Type = MeshVS_ET_Node;
-		return Standard_True;
-	}
+  if (theTriangulation.IsNull())
+  {
+    throw Standard_ConstructionError("MeshDS_DataSource: null triangulation");
+  }
+  const int aNbNodes     = theTriangulation->NbNodes();
+  const int aNbTriangles = theTriangulation->NbTriangles();
+
+  std::vector<double> aCoords(3 * static_cast<size_t>(aNbNodes));
+  for (int aNode = 1; aNode <= aNbNodes; ++aNode)
+  {
+    const size_t anIndex = 3 * static_cast<size_t>(aNode - 1);
+    theTriangulation->Node(aNode).Coord(aCoords[anIndex], aCoords[anIndex + 1], aCoords[anIndex + 2]);
+  }
+
+  // Poly_Triangle node indices are 1-based, the connectivity is 0-based
+  std::vector<int> aTriangles(3 * static_cast<size_t>(aNbTriangles));
+  for (int aTri = 1; aTri <= aNbTriangles; ++aTri)
+  {
+    const size_t anIndex = 3 * static_cast<size_t>(aTri - 1);
+    theTriangulation->Triangle(aTri).Get(aTriangles[anIndex], aTriangles[anIndex + 1], aTriangles[anIndex + 2]);
+    for (size_t i = anIndex; i < anIndex + 3; ++i)
+    {
+      --aTriangles[i];
+    }
+  }
+
+  Initialize(aNbNodes, aCoords.data(), aNbTriangles, aTriangles.data(), nullptr, 3);
+
+  // the triangulation normals are better than the averaged element normals
+  if (theTriangulation->HasNormals())
+  {
+    for (int aTri = 0; aTri < aNbTriangles; ++aTri)
+    {
+      for (int aRank = 0; aRank < 3; ++aRank)
+      {
+        const int aNodeId = aTriangles[3 * static_cast<size_t>(aTri) + aRank] + 1;
+        setCoords(myNodeNormals,
+                  3 * (static_cast<size_t>(MaxNodesPerElement) * aTri + aRank),
+                  gp_Vec(theTriangulation->Normal(aNodeId)));
+      }
+    }
+  }
 }
 
-//================================================================
-// Function : GetAddr
-// Purpose  :
-//================================================================
-Standard_Address MeshDS_DataSource::GetAddr
-(const Standard_Integer, const Standard_Boolean) const
+//=================================================================================================
+
+void MeshDS_DataSource::Initialize(int           theNbNodes,
+                                   const double* theCoords,
+                                   int           theNbElements,
+                                   const int*    theElemNodes,
+                                   const int*    theElemNbNodes,
+                                   int           theStride)
 {
-	return NULL;
+  if (theNbNodes < 0 || theNbElements < 0)
+  {
+    throw Standard_ConstructionError("MeshDS_DataSource: negative number of nodes or elements");
+  }
+
+  myNodeCoords.assign(theCoords, theCoords + 3 * static_cast<size_t>(theNbNodes));
+  for (int aNode = 1; aNode <= theNbNodes; ++aNode)
+  {
+    myNodes.Add(aNode);
+  }
+
+  myElemNodes.assign(static_cast<size_t>(MaxNodesPerElement) * theNbElements, 0);
+  myElemNbNodes.resize(theNbElements);
+  for (int anElem = 0; anElem < theNbElements; ++anElem)
+  {
+    myElements.Add(anElem + 1);
+    const int  aNbElemNodes = theElemNbNodes != nullptr ? theElemNbNodes[anElem] : theStride;
+    const int* anInput      = theElemNodes + static_cast<size_t>(theStride) * anElem;
+    int*       anOutput     = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * anElem;
+    myElemNbNodes[anElem]   = aNbElemNodes;
+    for (int aRank = 0; aRank < aNbElemNodes; ++aRank)
+    {
+      const int aNodeIndex = anInput[aRank];
+      if (aNodeIndex < 0 || aNodeIndex >= theNbNodes)
+      {
+        throw Standard_OutOfRange("MeshDS_DataSource: element node index out of range");
+      }
+      anOutput[aRank] = aNodeIndex + 1;
+    }
+  }
+
+  ComputeNormals();
 }
 
-//================================================================
-// Function : GetNodesByElement
-// Purpose  :
-//================================================================
-Standard_Boolean MeshDS_DataSource::GetNodesByElement
-(const Standard_Integer ID,
-	TColStd_Array1OfInteger& theNodeIDs,
-	Standard_Integer& theNbNodes) const
+//=================================================================================================
+
+void MeshDS_DataSource::ComputeNormals()
 {
-	if (ID >= 1 && ID <= myElements.Extent() && theNodeIDs.Length() >= 3)
-	{
-		Standard_Integer aLow = theNodeIDs.Lower();
-		theNbNodes = myElemNumberNodes->Value(ID);
-		for (Standard_Integer j = 1; j <= theNbNodes; j++)
-		{
-			theNodeIDs(aLow + j - 1) = myElemNodes->Value(ID, j);
-		}
-		return Standard_True;
-	}
-	return Standard_False;
+  const int aNbNodes    = NbNodes();
+  const int aNbElements = NbElements();
+
+  // element normals, from the three first nodes
+  myElemNormals.resize(3 * static_cast<size_t>(aNbElements));
+  for (int anElem = 0; anElem < aNbElements; ++anElem)
+  {
+    const int* aNodeIds = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * anElem;
+    gp_Pnt     aPnts[3];
+    for (int aRank = 0; aRank < 3; ++aRank)
+    {
+      const double* aCoord = myNodeCoords.data() + 3 * static_cast<size_t>(aNodeIds[aRank] - 1);
+      aPnts[aRank].SetCoord(aCoord[0], aCoord[1], aCoord[2]);
+    }
+    setCoords(myElemNormals, 3 * static_cast<size_t>(anElem), triangleNormal(aPnts[0], aPnts[1], aPnts[2]));
+  }
+
+  // node normals: average of the normals of the elements sharing the node
+  std::vector<gp_Vec> aNodeNormals(aNbNodes, gp_Vec(0.0, 0.0, 0.0));
+  for (int anElem = 0; anElem < aNbElements; ++anElem)
+  {
+    const int*    aNodeIds = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * anElem;
+    const double* aNormal  = myElemNormals.data() + 3 * static_cast<size_t>(anElem);
+    const gp_Vec  anElemNormal(aNormal[0], aNormal[1], aNormal[2]);
+    for (int aRank = 0; aRank < myElemNbNodes[anElem]; ++aRank)
+    {
+      aNodeNormals[aNodeIds[aRank] - 1] += anElemNormal;
+    }
+  }
+  for (gp_Vec& aNormal : aNodeNormals)
+  {
+    normalize(aNormal);
+  }
+
+  // stored per element node, as queried by GetNodeNormal
+  myNodeNormals.assign(3 * static_cast<size_t>(MaxNodesPerElement) * aNbElements, 0.0);
+  for (int anElem = 0; anElem < aNbElements; ++anElem)
+  {
+    const int* aNodeIds = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * anElem;
+    for (int aRank = 0; aRank < myElemNbNodes[anElem]; ++aRank)
+    {
+      setCoords(myNodeNormals,
+                3 * (static_cast<size_t>(MaxNodesPerElement) * anElem + aRank),
+                aNodeNormals[aNodeIds[aRank] - 1]);
+    }
+  }
 }
 
-//================================================================
-// Function : GetAllNodes
-// Purpose  :
-//================================================================
+//=================================================================================================
+
+void MeshDS_DataSource::SetElemNormals(const std::vector<gp_Vec>& theElemNormals)
+{
+  if (theElemNormals.size() != static_cast<size_t>(NbElements()))
+  {
+    throw Standard_DimensionMismatch("MeshDS_DataSource: one normal per element is expected");
+  }
+  for (size_t anElem = 0; anElem < theElemNormals.size(); ++anElem)
+  {
+    setCoords(myElemNormals, 3 * anElem, theElemNormals[anElem]);
+  }
+}
+
+//=================================================================================================
+
+void MeshDS_DataSource::SetNodeNormals(const std::vector<std::vector<gp_Vec>>& theNodeNormals)
+{
+  if (theNodeNormals.size() != static_cast<size_t>(NbElements()))
+  {
+    throw Standard_DimensionMismatch(
+      "MeshDS_DataSource: one list of node normals per element is expected");
+  }
+  for (size_t anElem = 0; anElem < theNodeNormals.size(); ++anElem)
+  {
+    if (theNodeNormals[anElem].size() != static_cast<size_t>(myElemNbNodes[anElem]))
+    {
+      throw Standard_DimensionMismatch(
+        "MeshDS_DataSource: one normal per node of the element is expected");
+    }
+  }
+  for (size_t anElem = 0; anElem < theNodeNormals.size(); ++anElem)
+  {
+    for (size_t aRank = 0; aRank < theNodeNormals[anElem].size(); ++aRank)
+    {
+      setCoords(myNodeNormals,
+                3 * (static_cast<size_t>(MaxNodesPerElement) * anElem + aRank),
+                theNodeNormals[anElem][aRank]);
+    }
+  }
+}
+
+//=================================================================================================
+
+bool MeshDS_DataSource::GetGeom(const int                   ID,
+                                const bool                  IsElement,
+                                NCollection_Array1<double>& Coords,
+                                int&                        NbNodes,
+                                MeshVS_EntityType&          Type) const
+{
+  if (IsElement)
+  {
+    if (!IsValidElement(ID))
+    {
+      return false;
+    }
+    NbNodes = myElemNbNodes[ID - 1];
+    if (Coords.Length() < 3 * NbNodes)
+    {
+      return false;
+    }
+    Type = MeshVS_ET_Face;
+    const int* aNodeIds = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * (ID - 1);
+    int        k        = Coords.Lower();
+    for (int aRank = 0; aRank < NbNodes; ++aRank)
+    {
+      const double* aCoord = myNodeCoords.data() + 3 * static_cast<size_t>(aNodeIds[aRank] - 1);
+      Coords(k++)          = aCoord[0];
+      Coords(k++)          = aCoord[1];
+      Coords(k++)          = aCoord[2];
+    }
+    return true;
+  }
+
+  if (ID < 1 || ID > this->NbNodes() || Coords.Length() < 3)
+  {
+    return false;
+  }
+  Type                 = MeshVS_ET_Node;
+  NbNodes              = 1;
+  const double* aCoord = myNodeCoords.data() + 3 * static_cast<size_t>(ID - 1);
+  const int     aLower = Coords.Lower();
+  Coords(aLower)       = aCoord[0];
+  Coords(aLower + 1)   = aCoord[1];
+  Coords(aLower + 2)   = aCoord[2];
+  return true;
+}
+
+//=================================================================================================
+
+bool MeshDS_DataSource::GetGeomType(const int, const bool IsElement, MeshVS_EntityType& Type) const
+{
+  Type = IsElement ? MeshVS_ET_Face : MeshVS_ET_Node;
+  return true;
+}
+
+//=================================================================================================
+
+void* MeshDS_DataSource::GetAddr(const int, const bool) const
+{
+  return nullptr;
+}
+
+//=================================================================================================
+
+bool MeshDS_DataSource::GetNodesByElement(const int                ID,
+                                          NCollection_Array1<int>& NodeIDs,
+                                          int&                     NbNodes) const
+{
+  if (!IsValidElement(ID))
+  {
+    return false;
+  }
+  NbNodes = myElemNbNodes[ID - 1];
+  if (NodeIDs.Length() < NbNodes)
+  {
+    return false;
+  }
+  const int* aNodeIds = myElemNodes.data() + static_cast<size_t>(MaxNodesPerElement) * (ID - 1);
+  const int  aLower   = NodeIDs.Lower();
+  for (int aRank = 0; aRank < NbNodes; ++aRank)
+  {
+    NodeIDs(aLower + aRank) = aNodeIds[aRank];
+  }
+  return true;
+}
+
+//=================================================================================================
+
 const TColStd_PackedMapOfInteger& MeshDS_DataSource::GetAllNodes() const
 {
-	return myNodes;
+  return myNodes;
 }
 
-//================================================================
-// Function : GetAllElements
-// Purpose  :
-//================================================================
+//=================================================================================================
+
 const TColStd_PackedMapOfInteger& MeshDS_DataSource::GetAllElements() const
 {
-	return myElements;
+  return myElements;
 }
 
-//================================================================
-// Function : GetNormal
-// Purpose  :
-//================================================================
-Standard_Boolean MeshDS_DataSource::GetNormal
-(const Standard_Integer Id, const Standard_Integer Max,
-	Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const
+//=================================================================================================
+
+bool MeshDS_DataSource::GetNormal(const int Id,
+                                  const int Max,
+                                  double&   nx,
+                                  double&   ny,
+                                  double&   nz) const
 {
-	if (Id >= 1 && Id <= myElements.Extent() && Max >= 3)
-	{
-		nx = myElemNormals->Value(Id, 1);
-		ny = myElemNormals->Value(Id, 2);
-		nz = myElemNormals->Value(Id, 3);
-		return Standard_True;
-	}
-	else
-		return Standard_False;
+  if (!IsValidElement(Id) || Max < 3)
+  {
+    return false;
+  }
+  const double* aNormal = myElemNormals.data() + 3 * static_cast<size_t>(Id - 1);
+  nx                    = aNormal[0];
+  ny                    = aNormal[1];
+  nz                    = aNormal[2];
+  return true;
 }
 
-//================================================================
-// Function : GetNodeNormal
-// Purpose  :
-//================================================================
-Standard_Boolean MeshDS_DataSource::GetNodeNormal
-(const Standard_Integer rankNode, const Standard_Integer ElementId,
-	Standard_Real& nx, Standard_Real& ny, Standard_Real& nz) const
+//=================================================================================================
+
+bool MeshDS_DataSource::GetNodeNormal(const int rankNode,
+                                      const int ElementId,
+                                      double&   nx,
+                                      double&   ny,
+                                      double&   nz) const
 {
-	if (ElementId >= 1 && ElementId <= myElements.Extent())
-	{
-		nx = myNodeNormals->Value(ElementId, 3 * (rankNode - 1) + 1);
-		ny = myNodeNormals->Value(ElementId, 3 * (rankNode - 1) + 2);
-		nz = myNodeNormals->Value(ElementId, 3 * (rankNode - 1) + 3);
-		return Standard_True;
-	}
-	else
-		return Standard_False;
-}
-
-//================================================================
-// Function : InitializeFromData
-// Purpose  :
-//================================================================
-void MeshDS_DataSource::InitializeFromData
-(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData)
-{
-	//initialize arrays
-	myNodeCoords = new TColStd_HArray2OfReal(1, CoordData.size(), 1, 3);
-	myElemNodes = new TColStd_HArray2OfInteger(1, Ele2NodeData.size(), 1, 4);
-	myElemNumberNodes = new TColStd_HArray1OfInteger(1, Ele2NodeData.size());
-	myElemNormals = new TColStd_HArray2OfReal(1, Ele2NodeData.size(), 1, 3);
-	myNodeNormals = new TColStd_HArray2OfReal(1, Ele2NodeData.size(), 1, 12);
-	// fill node ids and coordinates
-	for (size_t nodeId = 1; nodeId <= CoordData.size(); nodeId++)
-	{
-		myNodes.Add(nodeId);
-		myNodeCoords->SetValue(nodeId, 1, CoordData[nodeId - 1].X());
-		myNodeCoords->SetValue(nodeId, 2, CoordData[nodeId - 1].Y());
-		myNodeCoords->SetValue(nodeId, 3, CoordData[nodeId - 1].Z());
-	}
-	// fill element ids, number of nodes, associated node ids and normals
-	for (size_t ElementId = 1; ElementId <= Ele2NodeData.size(); ElementId++)
-	{
-		myElements.Add(ElementId);
-		myElemNumberNodes->SetValue(ElementId, std::min((size_t)4, Ele2NodeData[ElementId - 1].size()));
-		for (Standard_Integer rankNode = 1; rankNode <= myElemNumberNodes->Value(ElementId); rankNode++)
-		{
-			Standard_Integer nodeId = Ele2NodeData[ElementId - 1][rankNode - 1] + 1;
-			myElemNodes->SetValue(ElementId, rankNode, nodeId);
-		}
-		// compute face normal
-		const gp_Pnt aP1 = gp_Pnt(CoordData[Ele2NodeData[ElementId - 1][0]]);
-		const gp_Pnt aP2 = gp_Pnt(CoordData[Ele2NodeData[ElementId - 1][1]]);
-		const gp_Pnt aP3 = gp_Pnt(CoordData[Ele2NodeData[ElementId - 1][2]]);
-		gp_Vec aV1(aP1, aP2);
-		gp_Vec aV2(aP2, aP3);
-		gp_Vec aN = aV1.Crossed(aV2);
-		if (aN.SquareMagnitude() > Precision::SquareConfusion())
-			aN.Normalize();
-		else
-			aN.SetCoord(0.0, 0.0, 0.0);
-		myElemNormals->SetValue(ElementId, 1, aN.X());
-		myElemNormals->SetValue(ElementId, 2, aN.Y());
-		myElemNormals->SetValue(ElementId, 3, aN.Z());
-	}
-	// compute node normal
-	std::vector<std::vector<int>> Node2EleData;
-	Node2EleData.resize(CoordData.size());
-	for (size_t ElementId = 0; ElementId < Ele2NodeData.size(); ElementId++) {
-		for (size_t rankNode = 0; rankNode < Ele2NodeData[ElementId].size(); rankNode++) {
-			int nodeId = Ele2NodeData[ElementId][rankNode];
-			Node2EleData[nodeId].push_back(ElementId);
-		}
-	}
-	std::vector<gp_Vec> nodeNormals;
-	nodeNormals.resize(CoordData.size());
-	for (size_t nodeId = 0; nodeId < Node2EleData.size(); nodeId++) {
-		gp_Vec aN = gp_Vec(0, 0, 0);
-		for (size_t rankEle = 0; rankEle < Node2EleData[nodeId].size(); rankEle++) {
-			int ElementId = Node2EleData[nodeId][rankEle] + 1;
-			aN += gp_Vec(myElemNormals->Value(ElementId, 1), myElemNormals->Value(ElementId, 2), myElemNormals->Value(ElementId, 3));
-		}
-		if (aN.SquareMagnitude() > Precision::SquareConfusion())
-			aN.Normalize();
-		else
-			aN.SetCoord(0.0, 0.0, 0.0);
-		nodeNormals[nodeId] = aN;
-	}
-	for (size_t ElementId = 0; ElementId < Ele2NodeData.size(); ElementId++)
-	{
-		for (size_t rankNode = 0; rankNode < Ele2NodeData[ElementId].size(); rankNode++)
-		{
-			int nodeId = Ele2NodeData[ElementId][rankNode];
-			gp_Vec aN = nodeNormals[nodeId];
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 1, aN.X());
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 2, aN.Y());
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 3, aN.Z());
-		}
-	}
-}
-
-//================================================================
-// Function : InitializeFromData
-// Purpose  : Initialize from 2D Pointer Arrays, for numpy compatibility
-//================================================================
-void MeshDS_DataSource::InitializeFromData
-(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2)
-{
-	//initialize arrays
-	myNodeCoords = new TColStd_HArray2OfReal(1, nVerts1, 1, 3);
-	myElemNodes = new TColStd_HArray2OfInteger(1, nFaces1, 1, 4);
-	myElemNumberNodes = new TColStd_HArray1OfInteger(1, nFaces1);
-	myElemNormals = new TColStd_HArray2OfReal(1, nFaces1, 1, 3);
-	myNodeNormals = new TColStd_HArray2OfReal(1, nFaces1, 1, 12);
-
-	// fill node ids and coordinates
-	for (size_t nodeId = 1; nodeId <= nVerts1; nodeId++)
-	{
-		size_t vertIdx = (nodeId-1) * 3;
-		myNodes.Add(nodeId);
-		myNodeCoords->SetValue(nodeId, 1, Vertices[vertIdx + 0]);
-		myNodeCoords->SetValue(nodeId, 2, Vertices[vertIdx + 1]);
-		myNodeCoords->SetValue(nodeId, 3, Vertices[vertIdx + 2]);
-	}
-
-	// fill element ids, number of nodes, associated node ids and normals
-	for (size_t ElementId = 1; ElementId <= nFaces1; ElementId++)
-	{
-		size_t faceIdx = (ElementId-1) * 3;
-		int nNodes = std::min(4, nFaces2);
-		myElements.Add(ElementId);
-		myElemNumberNodes->SetValue(ElementId, nNodes);
-		for (Standard_Integer rankNode = 1; rankNode <= nNodes; rankNode++)
-		{
-			Standard_Integer nodeId = Faces[faceIdx + rankNode - 1] + 1;
-			myElemNodes->SetValue(ElementId, rankNode, nodeId);
-		}
-		// compute face normal
-		size_t p1Idx = Faces[faceIdx + 0] * 3;
-		size_t p2Idx = Faces[faceIdx + 1] * 3;
-		size_t p3Idx = Faces[faceIdx + 2] * 3;
-		const gp_Pnt aP1 = gp_Pnt(Vertices[p1Idx], Vertices[p1Idx + 1], Vertices[p1Idx + 2]);
-		const gp_Pnt aP2 = gp_Pnt(Vertices[p2Idx], Vertices[p2Idx + 1], Vertices[p2Idx + 2]);
-		const gp_Pnt aP3 = gp_Pnt(Vertices[p3Idx], Vertices[p3Idx + 1], Vertices[p3Idx + 2]);
-		gp_Vec aV1(aP1, aP2);
-		gp_Vec aV2(aP2, aP3);
-		gp_Vec aN = aV1.Crossed(aV2);
-		if (aN.SquareMagnitude() > Precision::SquareConfusion())
-			aN.Normalize();
-		else
-			aN.SetCoord(0.0, 0.0, 0.0);
-		myElemNormals->SetValue(ElementId, 1, aN.X());
-		myElemNormals->SetValue(ElementId, 2, aN.Y());
-		myElemNormals->SetValue(ElementId, 3, aN.Z());
-	}
-	// compute node normal
-	std::vector<std::vector<int>> Node2EleData;
-	Node2EleData.resize(nVerts1);
-	for (size_t ElementId = 0; ElementId < nFaces1; ElementId++) {
-		for (size_t rankNode = 0; rankNode < nFaces2; rankNode++) {
-			int nodeId = Faces[ElementId * 3 + rankNode];
-			Node2EleData[nodeId].push_back(ElementId);
-		}
-	}
-	std::vector<gp_Vec> nodeNormals;
-	nodeNormals.resize(nVerts1);
-	for (size_t nodeId = 0; nodeId < Node2EleData.size(); nodeId++) {
-		gp_Vec aN = gp_Vec(0, 0, 0);
-		for (size_t rankEle = 0; rankEle < Node2EleData[nodeId].size(); rankEle++) {
-			int ElementId = Node2EleData[nodeId][rankEle] + 1;
-			aN += gp_Vec(myElemNormals->Value(ElementId, 1), myElemNormals->Value(ElementId, 2), myElemNormals->Value(ElementId, 3));
-		}
-		if (aN.SquareMagnitude() > Precision::SquareConfusion())
-			aN.Normalize();
-		else
-			aN.SetCoord(0.0, 0.0, 0.0);
-		nodeNormals[nodeId] = aN;
-	}
-	for (size_t ElementId = 0; ElementId < nFaces1; ElementId++)
-	{
-		for (size_t rankNode = 0; rankNode < nFaces2; rankNode++)
-		{
-			int nodeId = Faces[ElementId * 3 + rankNode];
-			gp_Vec aN = nodeNormals[nodeId];
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 1, aN.X());
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 2, aN.Y());
-			myNodeNormals->SetValue(ElementId + 1, 3 * rankNode + 3, aN.Z());
-		}
-	}
+  if (!IsValidElement(ElementId) || rankNode < 1 || rankNode > myElemNbNodes[ElementId - 1])
+  {
+    return false;
+  }
+  const double* aNormal =
+    myNodeNormals.data()
+    + 3 * (static_cast<size_t>(MaxNodesPerElement) * (ElementId - 1) + (rankNode - 1));
+  nx = aNormal[0];
+  ny = aNormal[1];
+  nz = aNormal[2];
+  return true;
 }

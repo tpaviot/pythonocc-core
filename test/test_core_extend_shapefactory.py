@@ -24,7 +24,10 @@ from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeSphere,
     BRepPrimAPI_MakeTorus,
 )
+from OCC.Core.BRep import BRep_Tool
+from OCC.Core.Geom import Geom_BezierCurve
 from OCC.Core.gp import gp_Pnt, gp_Vec
+from OCC.Core.TColgp import TColgp_Array1OfPnt
 
 from OCC.Extend.ShapeFactory import (
     midpoint,
@@ -33,6 +36,11 @@ from OCC.Extend.ShapeFactory import (
     translate_shp,
     measure_shape_mass_center_of_gravity,
     edge_to_bezier,
+    get_boundingbox,
+    make_edge,
+    make_extrusion,
+    make_face,
+    make_wire,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -95,3 +103,40 @@ def test_edge_to_bezier():
             assert bezier_curve is None
         else:
             assert isinstance(degree, int)
+
+
+def test_edge_to_bezier_detects_bezier_curves():
+    poles = TColgp_Array1OfPnt(1, 3)
+    poles.SetValue(1, gp_Pnt(0, 0, 0))
+    poles.SetValue(2, gp_Pnt(1, 2, 0))
+    poles.SetValue(3, gp_Pnt(3, 0, 0))
+    bezier_edge = make_edge(Geom_BezierCurve(poles))
+    is_bezier, bezier_curve, degree = edge_to_bezier(bezier_edge)
+    assert is_bezier
+    assert degree == 2
+    assert bezier_curve.NbPoles() == 3
+    line_edge = make_edge(gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0))
+    assert edge_to_bezier(line_edge) == (False, None, None)
+
+
+def test_make_extrusion_keeps_vector():
+    edges = [
+        make_edge(gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0)),
+        make_edge(gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0)),
+        make_edge(gp_Pnt(1, 1, 0), gp_Pnt(0, 0, 0)),
+    ]
+    face = make_face(make_wire(edges))
+    vector = gp_Vec(0, 0, 2)
+    solid = make_extrusion(face, 5.0, vector)
+    # the vector passed by the caller is not modified
+    assert vector.Z() == 2
+    assert measure_shape_volume(solid) == pytest.approx(0.5 * 5.0)
+
+
+def test_get_boundingbox_does_not_mesh_the_shape():
+    box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
+    xmin, ymin, zmin, xmax, ymax, zmax = get_boundingbox(box)
+    assert (xmin, ymin, zmin) == pytest.approx((0.0, 0.0, 0.0), abs=1e-5)
+    assert (xmax, ymax, zmax) == pytest.approx((10.0, 20.0, 30.0), abs=1e-5)
+    for face in TopologyExplorer(box).faces():
+        assert BRep_Tool.Triangulation(face, face.Location()) is None

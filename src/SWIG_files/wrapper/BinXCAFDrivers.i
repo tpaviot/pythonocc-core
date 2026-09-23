@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_binxcafdrivers.ht
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -177,7 +178,7 @@ Constructor.
 		 BinXCAFDrivers_DocumentRetrievalDriver();
 
 		/****** BinXCAFDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -192,7 +193,7 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 
@@ -224,7 +225,7 @@ Constructor.
 		 BinXCAFDrivers_DocumentStorageDriver();
 
 		/****** BinXCAFDrivers_DocumentStorageDriver::AttributeDrivers ******/
-		/****** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ******/
+		/****** md5 signature: 853906140084c3b7e755413ade2e920e ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -239,7 +240,7 @@ Description
 -----------
 No available documentation.
 ") AttributeDrivers;
-		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
+		opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 };
 

@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -9,18 +10,15 @@ from OCC.Core.gp import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.TopoDS import *
 
-class IMeshTools_MeshAlgoType(IntEnum):
-    IMeshTools_MeshAlgoType_DEFAULT: int = ...
-    IMeshTools_MeshAlgoType_Watson: int = ...
-    IMeshTools_MeshAlgoType_Delabella: int = ...
 
-IMeshTools_MeshAlgoType_DEFAULT = (
-    IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_DEFAULT
-)
+class IMeshTools_MeshAlgoType(IntEnum):
+    IMeshTools_MeshAlgoType_DEFAULT = ...
+    IMeshTools_MeshAlgoType_Watson = 0
+    IMeshTools_MeshAlgoType_Delabella = 1
+
+IMeshTools_MeshAlgoType_DEFAULT = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_DEFAULT
 IMeshTools_MeshAlgoType_Watson = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Watson
-IMeshTools_MeshAlgoType_Delabella = (
-    IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Delabella
-)
+IMeshTools_MeshAlgoType_Delabella = IMeshTools_MeshAlgoType.IMeshTools_MeshAlgoType_Delabella
 
 class IMeshTools_Context(IMeshData_Shape):
     def __init__(self) -> None: ...
@@ -52,12 +50,10 @@ class IMeshTools_CurveTessellator(Standard_Transient):
     def Value(self, theIndex: int, thePoint: gp_Pnt) -> Tuple[bool, float]: ...
 
 class IMeshTools_MeshAlgo(Standard_Transient):
-    pass
+    def Perform(self, theDFace: Any, theParameters: IMeshTools_Parameters, theRange: Message_ProgressRange) -> None: ...
 
 class IMeshTools_MeshAlgoFactory(Standard_Transient):
-    def GetAlgo(
-        self, theSurfaceType: GeomAbs_SurfaceType, theParameters: IMeshTools_Parameters
-    ) -> IMeshTools_MeshAlgo: ...
+    def GetAlgo(self, theSurfaceType: GeomAbs_SurfaceType, theParameters: IMeshTools_Parameters) -> IMeshTools_MeshAlgo: ...
 
 class IMeshTools_MeshBuilder(Message_Algorithm):
     @overload
@@ -69,17 +65,10 @@ class IMeshTools_MeshBuilder(Message_Algorithm):
     def SetContext(self, theContext: IMeshTools_Context) -> None: ...
 
 class IMeshTools_ModelAlgo(Standard_Transient):
-    def Perform(
-        self,
-        theModel: IMeshData_Model,
-        theParameters: IMeshTools_Parameters,
-        theRange: Message_ProgressRange,
-    ) -> bool: ...
+    def Perform(self, theModel: IMeshData_Model, theParameters: IMeshTools_Parameters, theRange: Message_ProgressRange) -> bool: ...
 
 class IMeshTools_ModelBuilder(Message_Algorithm):
-    def Perform(
-        self, theShape: TopoDS_Shape, theParameters: IMeshTools_Parameters
-    ) -> IMeshData_Model: ...
+    def Perform(self, theShape: TopoDS_Shape, theParameters: IMeshTools_Parameters) -> IMeshData_Model: ...
 
 class IMeshTools_Parameters:
     def __init__(self) -> None: ...
@@ -99,3 +88,4 @@ class IMeshTools_ShapeVisitor(Standard_Transient):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

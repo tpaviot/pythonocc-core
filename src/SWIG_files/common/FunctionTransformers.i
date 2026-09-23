@@ -32,16 +32,29 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 Standard_CString parameter transformation
 */
 
+/*
+The string typemaps raise a TypeError if the argument is not a str (or, for
+TCollection_ExtendedString/AsciiString, a wrapped object of that class): OCCT
+must never get a NULL pointer. It throws Standard_NullObject outside of the
+wrapper try/catch, which terminates the interpreter (issue #1494)
+*/
 %typemap(in) Standard_CString
 {
     $1 = PyUnicode_AsUTF8($input);
+    if (!$1) {
+        SWIG_fail;
+    }
 }
 
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) Standard_CString {
     $1 = PyUnicode_Check($input) ? 1 : 0;
 }
 %typemap(out) Standard_CString {
-    $result = PyUnicode_FromString($1);
+    if ($1) {
+        $result = PyUnicode_FromString($1);
+    } else {
+        $result = SWIG_Py_Void();
+    }
 }
 
 /*
@@ -50,14 +63,31 @@ TCollection_ExtendedString parameter transformation
 
 %typemap(in) TCollection_ExtendedString
 {
-    $1 = TCollection_ExtendedString(PyUnicode_AsUTF8($input), true);
+    if (PyUnicode_Check($input)) {
+        const char* utf8_string = PyUnicode_AsUTF8($input);
+        if (!utf8_string) {
+            SWIG_fail;
+        }
+        $1 = TCollection_ExtendedString(utf8_string, true);
+    } else {
+        void* argp = 0;
+        if (!SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_ExtendedString *), 0)) || !argp) {
+            PyErr_SetString(PyExc_TypeError, "expected a str or a TCollection_ExtendedString");
+            SWIG_fail;
+        }
+        $1 = *reinterpret_cast<TCollection_ExtendedString*>(argp);
+    }
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_ExtendedString {
-    $1 = PyUnicode_Check($input) ? 1 : 0;
+    void* argp = 0;
+    $1 = (PyUnicode_Check($input) ||
+          SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_ExtendedString *), SWIG_POINTER_NO_NULL))) ? 1 : 0;
 }
 %typemap(out) TCollection_ExtendedString {
-    // convert the TCollection_ExtendedString to TCollection_AsciiString
-    $result = PyUnicode_FromString(TCollection_AsciiString($1).ToCString());
+    // decode the UTF-16 data, without an intermediate UTF-8 TCollection_AsciiString
+    int byte_order = 0;  // native
+    $result = PyUnicode_DecodeUTF16(reinterpret_cast<const char*>($1.ToExtString()),
+                                    static_cast<Py_ssize_t>($1.Length()) * 2, "replace", &byte_order);
 }
 
 /*
@@ -66,13 +96,29 @@ TCollection_AsciiString parameter transformation
 
 %typemap(in) TCollection_AsciiString
 {
-    $1 = TCollection_AsciiString(PyUnicode_AsUTF8($input));
+    if (PyUnicode_Check($input)) {
+        Py_ssize_t utf8_length = 0;
+        const char* utf8_string = PyUnicode_AsUTF8AndSize($input, &utf8_length);
+        if (!utf8_string) {
+            SWIG_fail;
+        }
+        $1 = TCollection_AsciiString(utf8_string, static_cast<int>(utf8_length));
+    } else {
+        void* argp = 0;
+        if (!SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_AsciiString *), 0)) || !argp) {
+            PyErr_SetString(PyExc_TypeError, "expected a str or a TCollection_AsciiString");
+            SWIG_fail;
+        }
+        $1 = *reinterpret_cast<TCollection_AsciiString*>(argp);
+    }
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_AsciiString {
-    $1 = PyUnicode_Check($input) ? 1 : 0;
+    void* argp = 0;
+    $1 = (PyUnicode_Check($input) ||
+          SWIG_IsOK(SWIG_ConvertPtr($input, &argp, $descriptor(TCollection_AsciiString *), SWIG_POINTER_NO_NULL))) ? 1 : 0;
 }
 %typemap(out) TCollection_AsciiString {
-    $result = PyUnicode_FromString($1.ToCString());
+    $result = PyUnicode_FromStringAndSize($1.ToCString(), $1.Length());
 }
 
 /*
@@ -135,132 +181,88 @@ Standard_Boolean & function transformation
     $1 = &temp;
 }
 
-%typemap(out) TopoDS_Shape {
-    TopoDS_Shape* sh = &$1;
-    if (!sh || sh->IsNull()) {
-        // Use $result instead of Py_RETURN_NONE to allow SWIG cleanup code to run
-        $result = Py_None;
-        Py_INCREF(Py_None);
+/*
+TopoDS_Shape returned as its actual subclass (TopoDS_Solid, TopoDS_Face...),
+None for a null shape. The conversion is a function, rather than a typemap
+body inlined in each of the ~600 wrappers returning a shape. A shape returned
+by value is moved into the new object; a shape returned by reference is
+copied, as we could get lifetime errors
+*/
+%fragment("pythonocc_shape_to_python", "header") {
+template <typename ShapeType>
+static PyObject* pythonocc_new_shape_object(TopoDS_Shape&& shape, swig_type_info* type_info) {
+    ShapeType* ptr = new ShapeType();
+    static_cast<TopoDS_Shape&>(*ptr) = std::move(shape);
+    PyObject* obj = SWIG_NewPointerObj(SWIG_as_voidptr(ptr), type_info, SWIG_POINTER_OWN);
+    if (!obj) {
+        delete ptr;
     }
-    else {
-        switch (sh->ShapeType())
-        {
-          case TopAbs_COMPOUND: {
-            TopoDS_Compound* ptr = new TopoDS_Compound(TopoDS::Compound(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_COMPSOLID: {
-            TopoDS_CompSolid* ptr = new TopoDS_CompSolid(TopoDS::CompSolid(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_SOLID: {
-            TopoDS_Solid* ptr = new TopoDS_Solid(TopoDS::Solid(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_SHELL: {
-            TopoDS_Shell* ptr = new TopoDS_Shell(TopoDS::Shell(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_FACE: {
-            TopoDS_Face* ptr = new TopoDS_Face(TopoDS::Face(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_WIRE: {
-            TopoDS_Wire* ptr = new TopoDS_Wire(TopoDS::Wire(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_EDGE: {
-            TopoDS_Edge* ptr = new TopoDS_Edge(TopoDS::Edge(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_VERTEX: {
-            TopoDS_Vertex* ptr = new TopoDS_Vertex(TopoDS::Vertex(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          default:
-            break;
-        }
+    return obj;
+}
+
+static PyObject* pythonocc_shape_to_python(TopoDS_Shape&& shape) {
+    if (shape.IsNull()) {
+        return SWIG_Py_Void();
+    }
+    switch (shape.ShapeType()) {
+        case TopAbs_COMPOUND:
+            return pythonocc_new_shape_object<TopoDS_Compound>(std::move(shape), SWIGTYPE_p_TopoDS_Compound);
+        case TopAbs_COMPSOLID:
+            return pythonocc_new_shape_object<TopoDS_CompSolid>(std::move(shape), SWIGTYPE_p_TopoDS_CompSolid);
+        case TopAbs_SOLID:
+            return pythonocc_new_shape_object<TopoDS_Solid>(std::move(shape), SWIGTYPE_p_TopoDS_Solid);
+        case TopAbs_SHELL:
+            return pythonocc_new_shape_object<TopoDS_Shell>(std::move(shape), SWIGTYPE_p_TopoDS_Shell);
+        case TopAbs_FACE:
+            return pythonocc_new_shape_object<TopoDS_Face>(std::move(shape), SWIGTYPE_p_TopoDS_Face);
+        case TopAbs_WIRE:
+            return pythonocc_new_shape_object<TopoDS_Wire>(std::move(shape), SWIGTYPE_p_TopoDS_Wire);
+        case TopAbs_EDGE:
+            return pythonocc_new_shape_object<TopoDS_Edge>(std::move(shape), SWIGTYPE_p_TopoDS_Edge);
+        case TopAbs_VERTEX:
+            return pythonocc_new_shape_object<TopoDS_Vertex>(std::move(shape), SWIGTYPE_p_TopoDS_Vertex);
+        default:
+            PyErr_SetString(PyExc_TypeError, "Unknown TopoDS_Shape type");
+            return nullptr;
+    }
+}
+}
+
+%typemap(out, fragment="pythonocc_shape_to_python") TopoDS_Shape {
+    $result = pythonocc_shape_to_python(std::move($1));
+    if (!$result) {
+        SWIG_fail;
     }
 }
 
-// Return TopoDS_Shapes by copy, as we could get lifetimes errors
-%typemap(out) const TopoDS_Shape& {
-    TopoDS_Shape* sh = $1;
-    if (!sh || sh->IsNull()) {
-        // Use $result instead of Py_RETURN_NONE to allow SWIG cleanup code to run
-        $result = Py_None;
-        Py_INCREF(Py_None);
+%typemap(out, fragment="pythonocc_shape_to_python") const TopoDS_Shape& {
+    $result = pythonocc_shape_to_python(TopoDS_Shape(*$1));
+    if (!$result) {
+        SWIG_fail;
     }
-    else {
-        switch (sh->ShapeType())
-        {
-          case TopAbs_COMPOUND: {
-            TopoDS_Compound* ptr = new TopoDS_Compound(TopoDS::Compound(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_COMPSOLID: {
-            TopoDS_CompSolid* ptr = new TopoDS_CompSolid(TopoDS::CompSolid(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_SOLID: {
-            TopoDS_Solid* ptr = new TopoDS_Solid(TopoDS::Solid(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_SHELL: {
-            TopoDS_Shell* ptr = new TopoDS_Shell(TopoDS::Shell(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_FACE: {
-            TopoDS_Face* ptr = new TopoDS_Face(TopoDS::Face(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_WIRE: {
-            TopoDS_Wire* ptr = new TopoDS_Wire(TopoDS::Wire(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_EDGE: {
-            TopoDS_Edge* ptr = new TopoDS_Edge(TopoDS::Edge(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          case TopAbs_VERTEX: {
-            TopoDS_Vertex* ptr = new TopoDS_Vertex(TopoDS::Vertex(*sh));
-            $result = SWIG_NewPointerObj(ptr, SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
-            if (!$result) delete ptr;
-            break;
-          }
-          default:
-            break;
-        }
+}
+
+/*
+Return by copy the objects returned by const reference by the accessors of the
+NCollection containers (NCollection_Array1::Value, NCollection_Sequence::First,
+NCollection_DataMap::Find, ...), of their iterators and of the __getitem__
+method added by ArrayMacros.i. By default the python
+object points into the container storage and is invalid once the container is
+deleted or resized (issue #1482). The more specific typemaps take precedence:
+handles and Standard_Transient subclasses (reference counted), TopoDS_Shape
+(already copied above), numbers and strings. The Change* accessors still
+return a reference, to modify the container in place.
+*/
+%typemap(out) const SWIGTYPE & Value, const SWIGTYPE & First, const SWIGTYPE & Last,
+              const SWIGTYPE & Find, const SWIGTYPE & Find1, const SWIGTYPE & Find2,
+              const SWIGTYPE & FindKey, const SWIGTYPE & FindFromIndex,
+              const SWIGTYPE & FindFromKey, const SWIGTYPE & Key,
+              const SWIGTYPE & __getitem__ {
+    $*1_ltype* copy = new $*1_ltype(*$1);
+    $result = SWIG_NewPointerObj(SWIG_as_voidptr(copy), $descriptor, SWIG_POINTER_OWN);
+    if (!$result) {
+        delete copy;
+        SWIG_fail;
     }
 }
 

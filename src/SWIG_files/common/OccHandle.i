@@ -352,50 +352,21 @@ WRAP_OCC_TRANSIENT(const, TYPE)
   }
 %}
 
-%inline %{
-    opencascade::handle<TYPE> Handle_ ## TYPE ## _Create() {
-        return opencascade::handle<TYPE>();
-    }
-
-    opencascade::handle<TYPE> Handle_ ## TYPE ## _DownCast(const opencascade::handle<Standard_Transient>& t) {
-        if (t.IsNull()) {
-            return opencascade::handle<TYPE>();
-        }
-
-        opencascade::handle<TYPE> downcasted_handle = opencascade::handle<TYPE>::DownCast(t);
-        if (downcasted_handle.IsNull()) {
-            // Plus d'information dans l'erreur
-            PyErr_Format(PyExc_TypeError,
-                        "Failed to downcast %s to %s",
-                        t->DynamicType()->Name(),
-                        #TYPE);
-            return opencascade::handle<TYPE>();
-        }
-        return downcasted_handle;
-    }
-
-    bool Handle_ ## TYPE ## _IsNull(const opencascade::handle<TYPE> & t) {
-        return t.IsNull();
-    }
-
-    void Handle_ ## TYPE ## _ForceRelease(opencascade::handle<TYPE> & t) {
-        t.Nullify();
-    }
-
-    int Handle_ ## TYPE ## _GetRefCount(const opencascade::handle<TYPE> & t) {
-        if (t.IsNull()) return 0;
-        return t->GetRefCount();
-    }
-%}
-
-// These two functions are just for backwards compatibility
+// TYPE.DownCast(t) is a static method wrapped directly, without a python
+// function in between. It returns None for None, and raises TypeError if t is
+// not a TYPE. The Handle_TYPE_Create/_DownCast/_IsNull/_ForceRelease/
+// _GetRefCount functions were removed: 5 wrappers for each of the 2106
+// transient classes (5 MB of code) for functions almost never used (None is
+// a null handle)
 %extend TYPE {
-  %pythoncode {
-
-    @staticmethod
-    def DownCast(t):
-      return Handle_ ## TYPE ## _DownCast(t)
-   }
+  static opencascade::handle<TYPE> DownCast(const opencascade::handle<Standard_Transient>& t) {
+    opencascade::handle<TYPE> downcasted_handle = opencascade::handle<TYPE>::DownCast(t);
+    if (downcasted_handle.IsNull() && !t.IsNull()) {
+      const std::string message = std::string("Failed to downcast ") + t->DynamicType()->Name() + " to " #TYPE;
+      throw Standard_TypeMismatch(message.c_str());
+    }
+    return downcasted_handle;
+  }
 }
 
 %enddef
@@ -403,3 +374,28 @@ WRAP_OCC_TRANSIENT(const, TYPE)
 %define %make_alias(TYPE)
 using Handle_ ## TYPE = opencascade::handle<TYPE>;
 %enddef
+
+// TDF_Label::FindAttribute / TDF_Attribute::FindAttribute (issue #1487)
+// ----------------------------------------------------------------------
+// The generic argout typemap above returns the handle<TDF_Attribute>& argument
+// in place of the bool result: when the attribute is not found, the function
+// returned the object passed as argument, and the found attribute had to be
+// downcast. Return None when the attribute is not found, else the attribute
+// wrapped with its dynamic type (e.g. TDataStd_NamedData) if that type is
+// wrapped by a loaded module, TDF_Attribute otherwise.
+%typemap(argout) opencascade::handle<TDF_Attribute> & anAttribute {
+  Py_XDECREF($result);
+  if (result && $1 && !$1->IsNull()) {
+    TDF_Attribute* presult = $1->get();
+    presult->IncrementRefCounter();
+    const std::string type_name = std::string(presult->DynamicType()->Name()) + " *";
+    swig_type_info* type_info = SWIG_TypeQuery(type_name.c_str());
+    if (!type_info) {
+      type_info = $descriptor(TDF_Attribute *);
+    }
+    $result = SWIG_NewPointerObj(SWIG_as_voidptr(presult), type_info, SWIG_POINTER_OWN);
+  } else {
+    Py_INCREF(Py_None);
+    $result = Py_None;
+  }
+}

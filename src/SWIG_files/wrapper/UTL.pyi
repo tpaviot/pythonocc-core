@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -7,6 +8,7 @@ from OCC.Core.Storage import *
 from OCC.Core.TCollection import *
 from OCC.Core.OSD import *
 from OCC.Core.Resource import *
+
 
 class utl:
     @staticmethod
@@ -38,9 +40,7 @@ class utl:
     @staticmethod
     def Name(aPath: OSD_Path) -> str: ...
     @staticmethod
-    def OpenFile(
-        aFile: Storage_BaseDriver, aName: str, aMode: Storage_OpenMode
-    ) -> Storage_Error: ...
+    def OpenFile(aFile: Storage_BaseDriver, aName: str, aMode: Storage_OpenMode) -> Storage_Error: ...
     @staticmethod
     def Path(aFileName: str) -> OSD_Path: ...
     @staticmethod
@@ -53,3 +53,4 @@ class utl:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

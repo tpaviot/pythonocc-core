@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepBuild_BuilderON.hxx>
 #include<TopOpeBRepBuild_CompositeClassifier.hxx>
 #include<TopOpeBRepBuild_CorrectFace2d.hxx>
-#include<TopOpeBRepBuild_DataMapIteratorOfDataMapOfShapeListOfShapeListOfShape.hxx>
 #include<TopOpeBRepBuild_DataMapOfShapeListOfShapeListOfShape.hxx>
 #include<TopOpeBRepBuild_EdgeBuilder.hxx>
 #include<TopOpeBRepBuild_FaceAreaBuilder.hxx>
@@ -41,10 +40,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopOpeBRepBuild_GTopo.hxx>
 #include<TopOpeBRepBuild_HBuilder.hxx>
 #include<TopOpeBRepBuild_IndexedDataMapOfShapeVertexInfo.hxx>
-#include<TopOpeBRepBuild_ListIteratorOfListOfListOfLoop.hxx>
-#include<TopOpeBRepBuild_ListIteratorOfListOfLoop.hxx>
-#include<TopOpeBRepBuild_ListIteratorOfListOfPave.hxx>
-#include<TopOpeBRepBuild_ListIteratorOfListOfShapeListOfShape.hxx>
 #include<TopOpeBRepBuild_ListOfListOfLoop.hxx>
 #include<TopOpeBRepBuild_ListOfLoop.hxx>
 #include<TopOpeBRepBuild_ListOfPave.hxx>

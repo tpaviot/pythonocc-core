@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -7,6 +8,7 @@ from OCC.Core.StepData import *
 from OCC.Core.IFSelect import *
 from OCC.Core.Interface import *
 from OCC.Core.TCollection import *
+
 
 class stepedit:
     @staticmethod
@@ -24,44 +26,21 @@ class stepedit:
 
 class STEPEdit_EditContext(IFSelect_Editor):
     def __init__(self) -> None: ...
-    def Apply(
-        self,
-        form: IFSelect_EditForm,
-        ent: Standard_Transient,
-        model: Interface_InterfaceModel,
-    ) -> bool: ...
+    def Apply(self, form: IFSelect_EditForm, ent: Standard_Transient, model: Interface_InterfaceModel) -> bool: ...
     def Label(self) -> str: ...
-    def Load(
-        self,
-        form: IFSelect_EditForm,
-        ent: Standard_Transient,
-        model: Interface_InterfaceModel,
-    ) -> bool: ...
+    def Load(self, form: IFSelect_EditForm, ent: Standard_Transient, model: Interface_InterfaceModel) -> bool: ...
     def Recognize(self, form: IFSelect_EditForm) -> bool: ...
-    def StringValue(
-        self, form: IFSelect_EditForm, num: int
-    ) -> TCollection_HAsciiString: ...
+    def StringValue(self, form: IFSelect_EditForm, num: int) -> TCollection_HAsciiString: ...
 
 class STEPEdit_EditSDR(IFSelect_Editor):
     def __init__(self) -> None: ...
-    def Apply(
-        self,
-        form: IFSelect_EditForm,
-        ent: Standard_Transient,
-        model: Interface_InterfaceModel,
-    ) -> bool: ...
+    def Apply(self, form: IFSelect_EditForm, ent: Standard_Transient, model: Interface_InterfaceModel) -> bool: ...
     def Label(self) -> str: ...
-    def Load(
-        self,
-        form: IFSelect_EditForm,
-        ent: Standard_Transient,
-        model: Interface_InterfaceModel,
-    ) -> bool: ...
+    def Load(self, form: IFSelect_EditForm, ent: Standard_Transient, model: Interface_InterfaceModel) -> bool: ...
     def Recognize(self, form: IFSelect_EditForm) -> bool: ...
-    def StringValue(
-        self, form: IFSelect_EditForm, num: int
-    ) -> TCollection_HAsciiString: ...
+    def StringValue(self, form: IFSelect_EditForm, num: int) -> TCollection_HAsciiString: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

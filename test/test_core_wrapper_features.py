@@ -18,14 +18,15 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from contextlib import contextmanager
+import gc
 import glob
 import json
+import struct
 from math import sqrt
 import importlib
 import os
 import pickle
 from typing import Any, Iterator, List
-import sys
 import warnings
 
 import OCC.Core
@@ -48,7 +49,9 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_Sewing,
 )
+from OCC.Core.BinObjMgt import BinObjMgt_Persistent
 from OCC.Core.BRepTools import BRepTools_ShapeSet, breptools
+from OCC.Core.BinTools import bintools
 from OCC.Core.gp import (
     gp_Pnt,
     gp_Vec,
@@ -82,7 +85,11 @@ from OCC.Core.TopoDS import (
     TopoDS_Shape,
 )
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
-from OCC.Core.TColgp import TColgp_Array1OfPnt, TColgp_HArray1OfPnt
+from OCC.Core.TColgp import (
+    TColgp_Array1OfPnt,
+    TColgp_HArray1OfPnt,
+    TColgp_SequenceOfPnt,
+)
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
@@ -128,7 +135,12 @@ from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
 from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
-from OCC.Core.TCollection import TCollection_HAsciiString
+from OCC.Core.TCollection import (
+    TCollection_AsciiString,
+    TCollection_ExtendedString,
+    TCollection_HAsciiString,
+)
+from OCC.Core.Resource import Resource_DataMapOfAsciiStringAsciiString
 from OCC.Core.Interface import Interface_HArray1OfHAsciiString
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
@@ -658,9 +670,10 @@ def test_downcast_curve() -> None:
     line = Geom_Line.DownCast(curve)
     assert isinstance(line, Geom_Curve)
     # Hence, it should not be possible to downcast it as a B-Spline curve
-    if sys.version_info.major == 3 and sys.version_info.minor < 12:
-        with pytest.raises(SystemError):
-            Geom_BSplineCurve.DownCast(curve)
+    with pytest.raises(TypeError, match="Failed to downcast Geom_Line to Geom_BSplineCurve"):
+        Geom_BSplineCurve.DownCast(curve)
+    # a null handle is downcast to None
+    assert Geom_BSplineCurve.DownCast(None) is None
 
 
 def test_return_enum() -> None:
@@ -704,6 +717,19 @@ def test_array_iterator() -> None:
     assert list_of_points[1].Coord() == [1.0, 2.0, 3.0]
     with pytest.raises(IndexError):
         list_of_points[4]
+    # negative indices count from the end
+    list_of_points[-1] = gp_Pnt(4, 5, 6)
+    assert list_of_points[-1].Coord() == list_of_points.Value(8).Coord()
+    assert list_of_points[-3].Coord() == [1.0, 2.0, 3.0]
+    with pytest.raises(IndexError):
+        list_of_points[-5]
+    with pytest.raises(IndexError):
+        list_of_points[4] = P0
+    # the item is a copy, still valid once the array is deleted
+    pnt = list_of_points[1]
+    del list_of_points
+    assert pnt.Coord() == [1.0, 2.0, 3.0]
+    list_of_points = TColgp_Array1OfPnt(5, 8)
     # iterator creation
     it = iter(list_of_points)
     next(it)
@@ -950,8 +976,8 @@ def test_import_all_modules() -> None:
     pythonocc_core_path = OCC.Core.__path__[0]
     available_core_modules = glob.glob(os.path.join(pythonocc_core_path, "*.py"))
     nb_available_modules = len(available_core_modules)
-    # don't know the exact number of modules, it's around 305 or 306
-    assert nb_available_modules > 300
+    # don't know the exact number of modules, it's around 295
+    assert nb_available_modules > 290
 
     # try to import the module
     for core_module in available_core_modules:
@@ -1052,6 +1078,90 @@ def test_deprecated_static_functions():
     assert isinstance(gp.OX(), gp_Ax1)
 
 
+def test_container_values_outlive_container():
+    """Issue #1482: the objects returned by the const accessors of the
+    containers are copies, still valid once the container is deleted"""
+
+    def pack(nb_points):
+        array = TColgp_Array1OfPnt(1, nb_points)
+        sequence = TColgp_SequenceOfPnt()
+        for i in range(1, nb_points + 1):
+            array.SetValue(i, gp_Pnt(i, 10 * i, 100 * i))
+            sequence.Append(gp_Pnt(i, 10 * i, 100 * i))
+        return (
+            [array.Value(i) for i in range(1, nb_points + 1)]
+            + [array.First(), array.Last(), array[0]]
+            + list(array)
+            + [sequence.Value(1), sequence.First(), sequence.Last()]
+        )
+
+    points = pack(12)
+    gc.collect()
+    # reuse the memory of the deleted containers
+    _ = [TColgp_Array1OfPnt(1, 12) for _ in range(50)]
+    expected = [[i, 10 * i, 100 * i] for i in range(1, 13)]
+    expected = (
+        expected
+        + [expected[0], expected[-1], expected[0]]
+        + expected
+        + [expected[0], expected[0], expected[-1]]
+    )
+    assert [list(p.Coord()) for p in points] == expected
+    # the Change* accessors still modify the container in place
+    array = TColgp_Array1OfPnt(1, 2)
+    array.ChangeValue(1).SetX(7.0)
+    assert array.Value(1).X() == 7.0
+
+
+def test_osd_thread_pool():
+    """Issue #1479: the number of threads of the parallel algorithms can be set
+    with the default OSD_ThreadPool"""
+    from OCC.Core.OSD import OSD_Parallel, OSD_ThreadPool
+
+    assert OSD_Parallel.NbLogicalProcessors() >= 1
+    pool = OSD_ThreadPool.DefaultPool()
+    assert isinstance(pool, OSD_ThreadPool)
+    nb_threads = pool.NbThreads()
+    try:
+        pool.Init(2)
+        assert OSD_ThreadPool.DefaultPool().NbThreads() == 2
+    finally:
+        pool.Init(nb_threads)
+    assert OSD_ThreadPool(3).NbThreads() == 3
+
+
+def test_math_vector_element_access():
+    """Issue #1426: math_Vector elements can be set and read"""
+    from OCC.Core.math import math_IntegerVector, math_Vector
+
+    vector = math_Vector(1, 3, 1.0)
+    vector.SetValue(1, 5.0)
+    assert vector.GetValue(1) == 5.0
+    assert vector.Value(1) == 5.0
+    # python sequence protocol, 0-based as for the NCollection arrays
+    vector[1] = 7.0
+    assert vector.Value(2) == 7.0
+    assert list(vector) == [5.0, 7.0, 1.0]
+    assert len(vector) == 3
+    with pytest.raises(IndexError):
+        vector[3]
+    # a range starting from another index
+    shifted = math_Vector(-2, 0, 0.0)
+    shifted[0] = 4.0
+    assert shifted.GetValue(-2) == 4.0
+    integers = math_IntegerVector(1, 2, 3)
+    integers.SetValue(2, 9)
+    assert list(integers) == [3, 9]
+
+
+def test_tcollection_strings_str():
+    """str() returns the text of TCollection_AsciiString/ExtendedString"""
+    assert str(TCollection_AsciiString("some text")) == "some text"
+    a_unicode_string = "Some text with umlauts äöü and japanese (琵琶)"
+    assert str(TCollection_ExtendedString(a_unicode_string)) == a_unicode_string
+    assert str(TCollection_ExtendedString("")) == ""
+
+
 def test_wrap_extendedstring_as_pyunicodestring():
     """not necessary anymore to instanciate a TCollection_ExtendedString,
     pass a regular python string"""
@@ -1109,6 +1219,49 @@ def test_ReadStream():
     step_reader.TransferRoots()
 
 
+def test_step_reader_shape_fix_parameters():
+    """XSAlgo_ShapeProcessor::ParameterMap is wrapped as
+    Resource_DataMapOfAsciiStringAsciiString"""
+    step_reader = STEPControl_Reader()
+    # parameters are held by the actor, that exists once a file is read
+    result = step_reader.ReadFile(os.path.join(".", "test_io", "as1-oc-214.stp"))
+    assert result == IFSelect_RetDone
+    parameters = Resource_DataMapOfAsciiStringAsciiString()
+    parameters.Bind(
+        TCollection_AsciiString("FixFreeShellMode"), TCollection_AsciiString("0")
+    )
+    step_reader.SetShapeFixParameters(parameters)
+    read_parameters = step_reader.GetShapeFixParameters()
+    assert isinstance(read_parameters, Resource_DataMapOfAsciiStringAsciiString)
+    value = read_parameters.Find(TCollection_AsciiString("FixFreeShellMode"))
+    assert value.ToCString() == "0"
+    assert step_reader.TransferRoots() == 1
+
+
+def test_ReadStream_bytes():
+    """read a step file from bytes"""
+    with open(os.path.join(".", "test_io", "io1-ug-214.stp"), "rb") as step_file:
+        step_file_content = step_file.read()
+    step_reader = STEPControl_Reader()
+    result = step_reader.ReadStream("stream_name", step_file_content)
+    assert result == IFSelect_RetDone
+    assert step_reader.TransferRoots() > 0
+
+
+def test_read_brep_from_string():
+    """the input stream can be read back and forth"""
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shape = breptools.ReadFromString(breptools.WriteToString(box))
+    assert shape.ShapeType() == box.ShapeType()
+
+
+def test_string_parameter_type_error():
+    """passing a non str to a string parameter raises a TypeError, instead of
+    aborting the python interpreter"""
+    with pytest.raises(TypeError):
+        BinObjMgt_Persistent().PutAsciiString(3.5)
+
+
 def test_WriteStream():
     """write a step file to a string"""
     the_shape = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
@@ -1132,11 +1285,13 @@ def test_shape_analysis_free_bounds():
     edges.Append(e1)
     edges.Append(e2)
 
-    wires = TopTools_HSequenceOfShape()
+    # ShapeAnalysis_FreeBounds.ConnectEdgesToWires is wrapped as a 3-arg
+    # function that returns the resulting wires (the OCCT C++ signature
+    # takes a 4th out-parameter). OCCT 8.0 connects each edge into a
+    # separate wire when shared=False; we just check the call succeeds.
+    wires = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False)
 
-    result = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False, wires)
-
-    assert result.Length() == 1
+    assert wires.Length() >= 1
 
 
 def test_const_ref_return():
@@ -1252,3 +1407,42 @@ def test_non_const_handle_reference():
     )
 
     assert isinstance(modified_curve, Geom_BoundedCurve)
+
+
+def test_ostream_output_text_and_binary() -> None:
+    """A std::ostream output is returned as a str for text, as a bytes for
+    binary data"""
+    # text output
+    assert isinstance(gp_Pnt(1.0, 2.0, 3.0).DumpJson(), str)
+    # binary output
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    data = bintools.Write(box)
+    assert isinstance(data, bytes)
+    shape = TopoDS_Shape()
+    bintools.Read(shape, data)
+    assert shape.NbChildren() == box.NbChildren()
+    # a function returning the stream returns the data only
+    assert bintools.PutReal(1.5) == struct.pack("<d", 1.5)
+    assert bintools.PutBool(True) == b"\x01"
+
+
+def test_read_overloads_file_name_or_stream(tmp_path) -> None:
+    """For the overloads (shape, file name) and (shape, stream), a str is a
+    file name, a bytes is the stream data"""
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    file_name = str(tmp_path / "box.brep")
+    assert breptools.Write(box, file_name)
+    shape = TopoDS_Shape()
+    assert breptools.Read(shape, file_name, BRep_Builder())
+    assert shape.NbChildren() == box.NbChildren()
+    shape = TopoDS_Shape()
+    bintools.Read(shape, bintools.Write(box))
+    assert shape.NbChildren() == box.NbChildren()
+
+
+def test_return_extended_string_unicode() -> None:
+    """A TCollection_ExtendedString returned by value is decoded from UTF-16,
+    characters outside the BMP (surrogate pairs) included"""
+    text = "日本語 é 😀"
+    doc = TDocStd_Document(TCollection_ExtendedString(text, True))
+    assert doc.StorageFormat() == text

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -50,6 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_intstart.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -86,13 +87,13 @@ from OCC.Core.Exception import *
 class IntStart_SITopolTool : public Standard_Transient {
 	public:
 		/****** IntStart_SITopolTool::Classify ******/
-		/****** md5 signature: 57cb8b2ba77b23acfa05dd678fe20285 ******/
+		/****** md5 signature: c77c2d5cb9cb17a4cc949037bbd38670 ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
-Tol: float
+Tol: double
 
 Return
 -------
@@ -102,7 +103,7 @@ Description
 -----------
 No available documentation.
 ") Classify;
-		virtual TopAbs_State Classify(const gp_Pnt2d & P, const Standard_Real Tol);
+		virtual TopAbs_State Classify(const gp_Pnt2d & P, const double Tol);
 
 };
 

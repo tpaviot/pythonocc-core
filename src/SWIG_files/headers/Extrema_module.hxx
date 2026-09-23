@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -61,10 +61,19 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Extrema_FuncExtSS.hxx>
 #include<Extrema_FuncPSDist.hxx>
 #include<Extrema_FuncPSNorm.hxx>
+#include<Extrema_GCurveLocator.hxx>
+#include<Extrema_GFuncExtCC.hxx>
+#include<Extrema_GFuncExtPC.hxx>
+#include<Extrema_GGExtPC.hxx>
+#include<Extrema_GGenExtCC.hxx>
+#include<Extrema_GGenExtPC.hxx>
+#include<Extrema_GLocateExtPC.hxx>
 #include<Extrema_GenExtCS.hxx>
 #include<Extrema_GenExtPS.hxx>
 #include<Extrema_GenExtSS.hxx>
+#include<Extrema_GenLocateExtCC.hxx>
 #include<Extrema_GenLocateExtCS.hxx>
+#include<Extrema_GenLocateExtPC.hxx>
 #include<Extrema_GenLocateExtPS.hxx>
 #include<Extrema_GenLocateExtSS.hxx>
 #include<Extrema_GlobOptFuncCC.hxx>

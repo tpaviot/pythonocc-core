@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -16,25 +17,28 @@ from OCC.Core.TPrsStd import *
 from OCC.Core.Image import *
 
 # the following typedef cannot be wrapped as is
-XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle = NewType(
-    "XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle", Any
-)
-XCAFPrs_DocumentExplorerFlags = NewType(
-    "XCAFPrs_DocumentExplorerFlags", Standard_Integer
-)
-# the following typedef cannot be wrapped as is
-XCAFPrs_IndexedDataMapOfShapeStyle = NewType("XCAFPrs_IndexedDataMapOfShapeStyle", Any)
+XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle = NewType("XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle", Any)
+XCAFPrs_DocumentExplorerFlags = NewType("XCAFPrs_DocumentExplorerFlags", int)
+
+class XCAFPrs_DataMapOfStyleShape:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class XCAFPrs_DataMapOfStyleTransient:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+
+class XCAFPrs_IndexedDataMapOfShapeStyle:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
+XCAFPrs_DocumentExplorerFlags_None: int
+XCAFPrs_DocumentExplorerFlags_OnlyLeafNodes: int
+XCAFPrs_DocumentExplorerFlags_NoStyle: int
+
 
 class xcafprs:
     @staticmethod
-    def CollectStyleSettings(
-        L: TDF_Label,
-        loc: TopLoc_Location,
-        settings: XCAFPrs_IndexedDataMapOfShapeStyle,
-        theLayerColor: Optional[Quantity_ColorRGBA] = Quantity_ColorRGBA(
-            Quantity_NOC_WHITE
-        ),
-    ) -> None: ...
+    def CollectStyleSettings(L: TDF_Label, loc: TopLoc_Location, settings: Any, theLayerColor: Optional[Quantity_ColorRGBA] = Quantity_ColorRGBA(Quantity_NOC_WHITE)) -> None: ...
     @staticmethod
     def GetViewNameMode() -> bool: ...
     @staticmethod
@@ -51,20 +55,9 @@ class XCAFPrs_DocumentExplorer:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        theDocument: TDocStd_Document,
-        theFlags: int,
-        theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style(),
-    ) -> None: ...
+    def __init__(self, theDocument: TDocStd_Document, theFlags: int, theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style()) -> None: ...
     @overload
-    def __init__(
-        self,
-        theDocument: TDocStd_Document,
-        theRoots: TDF_LabelSequence,
-        theFlags: int,
-        theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style(),
-    ) -> None: ...
+    def __init__(self, theDocument: TDocStd_Document, theRoots: TDF_LabelSequence, theFlags: int, theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style()) -> None: ...
     def ChangeCurrent(self) -> XCAFPrs_DocumentNode: ...
     def ColorTool(self) -> XCAFDoc_ColorTool: ...
     @overload
@@ -76,37 +69,16 @@ class XCAFPrs_DocumentExplorer:
     def DefineChildId(theLabel: TDF_Label, theParentId: str) -> str: ...
     @overload
     @staticmethod
-    def FindLabelFromPathId(
-        theDocument: TDocStd_Document,
-        theId: str,
-        theParentLocation: TopLoc_Location,
-        theLocation: TopLoc_Location,
-    ) -> TDF_Label: ...
+    def FindLabelFromPathId(theDocument: TDocStd_Document, theId: str, theParentLocation: TopLoc_Location, theLocation: TopLoc_Location) -> TDF_Label: ...
     @overload
     @staticmethod
-    def FindLabelFromPathId(
-        theDocument: TDocStd_Document, theId: str, theLocation: TopLoc_Location
-    ) -> TDF_Label: ...
+    def FindLabelFromPathId(theDocument: TDocStd_Document, theId: str, theLocation: TopLoc_Location) -> TDF_Label: ...
     @staticmethod
-    def FindShapeFromPathId(
-        theDocument: TDocStd_Document, theId: str
-    ) -> TopoDS_Shape: ...
+    def FindShapeFromPathId(theDocument: TDocStd_Document, theId: str) -> TopoDS_Shape: ...
     @overload
-    def Init(
-        self,
-        theDocument: TDocStd_Document,
-        theRoot: TDF_Label,
-        theFlags: int,
-        theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style(),
-    ) -> None: ...
+    def Init(self, theDocument: TDocStd_Document, theRoot: TDF_Label, theFlags: int, theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style()) -> None: ...
     @overload
-    def Init(
-        self,
-        theDocument: TDocStd_Document,
-        theRoots: TDF_LabelSequence,
-        theFlags: int,
-        theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style(),
-    ) -> None: ...
+    def Init(self, theDocument: TDocStd_Document, theRoots: TDF_LabelSequence, theFlags: int, theDefStyle: Optional[XCAFPrs_Style] = XCAFPrs_Style()) -> None: ...
     def More(self) -> bool: ...
     def Next(self) -> None: ...
     def VisMaterialTool(self) -> XCAFDoc_VisMaterialTool: ...
@@ -128,7 +100,7 @@ class XCAFPrs_Driver(TPrsStd_Driver):
 class XCAFPrs_Style:
     def __init__(self) -> None: ...
     def BaseColorTexture(self) -> Image_Texture: ...
-    def DumpJson(self, depth: Optional[int] = -1) -> str: ...
+    def DumpJson(self, depth: Optional[int]=-1) -> str: ...
     def GetColorCurv(self) -> Quantity_Color: ...
     def GetColorSurf(self) -> Quantity_Color: ...
     def GetColorSurfRGBA(self) -> Quantity_ColorRGBA: ...
@@ -149,15 +121,12 @@ class XCAFPrs_Style:
     def UnSetColorSurf(self) -> None: ...
 
 class XCAFPrs_Texture(Graphic3d_Texture2D):
-    def __init__(
-        self, theImageSource: Image_Texture, theUnit: Graphic3d_TextureUnit
-    ) -> None: ...
-    def GetCompressedImage(
-        self, theSupported: Image_SupportedFormats
-    ) -> Image_CompressedPixMap: ...
+    def __init__(self, theImageSource: Image_Texture, theUnit: Graphic3d_TextureUnit) -> None: ...
+    def GetCompressedImage(self, theSupported: Image_SupportedFormats) -> Image_CompressedPixMap: ...
     def GetImage(self, theSupported: Image_SupportedFormats) -> Image_PixMap: ...
     def GetImageSource(self) -> Image_Texture: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Vrml_AsciiTextJustification.hxx>
 #include<Vrml_Cone.hxx>
 #include<Vrml_ConeParts.hxx>
-#include<Vrml_ConfigurationNode.hxx>
 #include<Vrml_Coordinate3.hxx>
 #include<Vrml_Cube.hxx>
 #include<Vrml_Cylinder.hxx>
@@ -50,7 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Vrml_PerspectiveCamera.hxx>
 #include<Vrml_PointLight.hxx>
 #include<Vrml_PointSet.hxx>
-#include<Vrml_Provider.hxx>
 #include<Vrml_Rotation.hxx>
 #include<Vrml_SFImage.hxx>
 #include<Vrml_SFImageNumber.hxx>

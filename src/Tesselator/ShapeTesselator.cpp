@@ -27,8 +27,16 @@
 #include <string>
 #include <utility>
 
-#ifdef _OPENMP
-#include <omp.h>
+// std::to_chars for floating point numbers is not available with older macOS
+// SDKs (requires macOS 13.3+): snprintf is used instead on Apple platforms
+#if defined(__has_include)
+#if __has_include(<version>)
+#include <version>
+#endif
+#endif
+#if defined(__cpp_lib_to_chars) && !defined(__APPLE__)
+#define PYTHONOCC_USE_TO_CHARS
+#include <charconv>
 #endif
 
 // OpenCASCADE includes
@@ -36,6 +44,7 @@
 #include <Bnd_Box.hxx>
 #include <BRepGProp_Face.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
+#include <OSD_Parallel.hxx>
 #include <TopoDS.hxx>
 #include <Poly_Triangulation.hxx>
 #include <Poly_PolygonOnTriangulation.hxx>
@@ -58,11 +67,17 @@
 // ========================================================================
 
 namespace {
-    //! Append a float to a string using snprintf (portable across all platforms)
+    //! Append a float to a string, formatted as printf "%g" does
     inline void appendFloat(std::string& out, float f) {
         char buf[32];
+#ifdef PYTHONOCC_USE_TO_CHARS
+        // same output as "%g", without the locale and format string overhead
+        const auto result = std::to_chars(buf, buf + sizeof(buf), f, std::chars_format::general, 6);
+        out.append(buf, static_cast<size_t>(result.ptr - buf));
+#else
         int len = std::snprintf(buf, sizeof(buf), "%g", f);
         out.append(buf, static_cast<size_t>(len));
+#endif
     }
 
     //! Append a float with epsilon clamping (for X3D export compatibility)
@@ -153,55 +168,25 @@ void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool pa
 }
 
 void ShapeTesselator::ProcessFaces(const std::vector<TopoDS_Face>& faces) {
-    const auto num_faces = static_cast<Standard_Integer>(faces.size());
+    const auto num_faces = static_cast<int>(faces.size());
 
-#ifdef _OPENMP
-    if (use_parallel && num_faces > 1) {
-        // Parallel processing: create face data in parallel, then collect results
-        std::vector<Face> local_results(num_faces);
-
-        #pragma omp parallel for schedule(dynamic)
-        for (Standard_Integer i = 0; i < num_faces; ++i) {
-            TopLoc_Location location;
-            const auto& face = faces[i];
-            auto triangulation = BRep_Tool::Triangulation(face, location);
-
-            if (triangulation.IsNull()) {
-                continue;
-            }
-
-            Face face_data;
-            ProcessSingleFace(face, triangulation, location, face_data);
-
-            if (face_data.number_of_triangles > 0) {
-                local_results[i] = std::move(face_data);
-            }
+    // Each face is processed independently, in its own slot, so that the
+    // faces order does not depend on the threads scheduling
+    std::vector<Face> results(faces.size());
+    const auto process_face = [&](int i) {
+        TopLoc_Location location;
+        const auto& face = faces[i];
+        const auto triangulation = BRep_Tool::Triangulation(face, location);
+        if (!triangulation.IsNull()) {
+            ProcessSingleFace(face, triangulation, location, results[i]);
         }
+    };
+    OSD_Parallel::For(0, num_faces, process_face, !use_parallel);
 
-        // Collect non-empty results
-        for (auto& result : local_results) {
-            if (result.number_of_triangles > 0) {
-                face_list.push_back(std::move(result));
-            }
-        }
-    } else
-#endif
-    {
-        // Sequential processing
-        for (const auto& face : faces) {
-            TopLoc_Location location;
-            auto triangulation = BRep_Tool::Triangulation(face, location);
-
-            if (triangulation.IsNull()) {
-                continue;
-            }
-
-            Face face_data;
-            ProcessSingleFace(face, triangulation, location, face_data);
-
-            if (face_data.number_of_triangles > 0) {
-                face_list.push_back(std::move(face_data));
-            }
+    // Collect non-empty results
+    for (auto& result : results) {
+        if (result.number_of_triangles > 0) {
+            face_list.push_back(std::move(result));
         }
     }
 }
@@ -237,51 +222,38 @@ void ShapeTesselator::ProcessSingleFace(const TopoDS_Face& face,
         }
     }
 
-    // Process normals - prefer pre-computed normals, fallback to UV computation
-    if (triangulation->HasNormals() || triangulation->HasUVNodes()) {
-        ProcessNormals(face, triangulation, face_data);
-    } else {
-        ++face_data.number_of_invalid_normals;
-    }
+    // Process normals
+    const auto nb_null_normals = ProcessNormals(face, triangulation, face_data);
 
     // Process triangles
     ProcessTriangles(face, triangulation, face_data);
+
+    if (nb_null_normals > 0) {
+        FixNullNormals(face_data);
+    }
 }
 
-void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
+Standard_Integer ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
                    const Handle(Poly_Triangulation)& triangulation,
                    Face& face_data) {
 
     const auto nb_nodes = triangulation->NbNodes();
-    face_data.normal_coords.resize(nb_nodes * 3);
+    // one normal per vertex, null if it can't be computed, so that the
+    // normals and vertices arrays stay aligned
+    face_data.normal_coords.assign(nb_nodes * 3, 0.0f);
     face_data.number_of_normals = nb_nodes;
 
     const bool reverse_orientation = (face.Orientation() == TopAbs_INTERNAL);
 
-    // Use pre-computed normals from triangulation when available (OCC 7.6+)
-    // This is much faster than recomputing via BRepGProp_Face::Normal()
-    if (triangulation->HasNormals()) {
-        for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
-            auto normal = triangulation->Normal(i);
-
-            if (reverse_orientation) {
-                normal.Reverse();
-            }
-
-            const auto idx = (i - 1) * 3;
-            face_data.normal_coords[idx] = static_cast<float>(normal.X());
-            face_data.normal_coords[idx + 1] = static_cast<float>(normal.Y());
-            face_data.normal_coords[idx + 2] = static_cast<float>(normal.Z());
-        }
-        return;
-    }
-
-    // Fallback: compute normals from UV coordinates (slower path)
+    // The triangulation was just computed by BRepMesh, without normals: they
+    // are computed from the surface, at the UV coordinates of the nodes.
+    // BRepGProp_Face takes the face orientation into account.
     if (!triangulation->HasUVNodes()) {
         ++face_data.number_of_invalid_normals;
-        return;
+        return nb_nodes;
     }
 
+    Standard_Integer nb_null_normals = 0;
     BRepGProp_Face prop(face);
 
     for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
@@ -297,7 +269,9 @@ void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
                 normal.Reverse();
             }
         } else {
+            // singular point of the surface (e.g. the pole of a sphere)
             normal.SetCoord(0., 0., 0.);
+            ++nb_null_normals;
         }
 
         const auto idx = (i - 1) * 3;
@@ -305,6 +279,7 @@ void ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
         face_data.normal_coords[idx + 1] = static_cast<float>(normal.Y());
         face_data.normal_coords[idx + 2] = static_cast<float>(normal.Z());
     }
+    return nb_null_normals;
 }
 
 void ShapeTesselator::ProcessTriangles(const TopoDS_Face& face,
@@ -330,6 +305,86 @@ void ShapeTesselator::ProcessTriangles(const TopoDS_Face& face,
         face_data.triangle_indices[base_idx + 1] = n2;
         face_data.triangle_indices[base_idx + 2] = n3;
     }
+}
+
+void ShapeTesselator::FixNullNormals(Face& face_data) {
+    // The normal can't be computed from the surface at its singular points,
+    // e.g. the apex of a cone or the pole of a sphere. Such a node is shared by
+    // a fan of triangles, and no single normal is right for all of them (issue
+    // #1470): the node is duplicated for each triangle, with the normal of the
+    // triangle side of the surface, i.e. the average normal of the two other
+    // vertices of the triangle, or the triangle normal if they are singular
+    // too. The triangles winding already takes the face orientation into
+    // account.
+    auto& coords = face_data.vertex_coords;
+    auto& normals = face_data.normal_coords;
+    auto& indices = face_data.triangle_indices;
+    const auto nb_nodes = coords.size() / 3;
+
+    std::vector<bool> is_null(nb_nodes);
+    for (size_t i = 0; i < nb_nodes; ++i) {
+        is_null[i] = normals[3 * i] == 0.0f && normals[3 * i + 1] == 0.0f && normals[3 * i + 2] == 0.0f;
+    }
+    const auto node_xyz = [&coords](size_t node) {
+        return gp_XYZ(coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]);
+    };
+    const auto normal_xyz = [&normals](size_t node) {
+        return gp_XYZ(normals[3 * node], normals[3 * node + 1], normals[3 * node + 2]);
+    };
+
+    // sum of the normals of the copies of each singular node
+    std::vector<gp_XYZ> sums(nb_nodes, gp_XYZ(0., 0., 0.));
+
+    for (size_t t = 0; t + 2 < indices.size(); t += 3) {
+        // 1-based per-face indices
+        const size_t n[3] = {static_cast<size_t>(indices[t] - 1),
+                             static_cast<size_t>(indices[t + 1] - 1),
+                             static_cast<size_t>(indices[t + 2] - 1)};
+        if (!is_null[n[0]] && !is_null[n[1]] && !is_null[n[2]]) {
+            continue;
+        }
+        const gp_XYZ triangle_normal =
+            (node_xyz(n[1]) - node_xyz(n[0])).Crossed(node_xyz(n[2]) - node_xyz(n[0]));
+        for (int c = 0; c < 3; ++c) {
+            if (!is_null[n[c]]) {
+                continue;
+            }
+            gp_XYZ normal(0., 0., 0.);
+            for (int other = 0; other < 3; ++other) {
+                if (other != c && !is_null[n[other]]) {
+                    normal += normal_xyz(n[other]);
+                }
+            }
+            if (normal.Modulus() <= Precision::Confusion()) {
+                normal = triangle_normal;
+            }
+            const auto modulus = normal.Modulus();
+            if (modulus <= Precision::Confusion()) {
+                continue;  // degenerated triangle
+            }
+            normal /= modulus;
+            // the vertex of this triangle corner, with its own normal
+            const auto node = n[c];
+            sums[node] += normal;
+            coords.insert(coords.end(), {coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]});
+            normals.insert(normals.end(), {static_cast<float>(normal.X()),
+                                           static_cast<float>(normal.Y()),
+                                           static_cast<float>(normal.Z())});
+            indices[t + c] = static_cast<Standard_Integer>(coords.size() / 3);  // 1-based
+        }
+    }
+    // the singular nodes are no longer used by the triangles: they get the
+    // average normal of their copies, so that no normal is null
+    for (size_t i = 0; i < nb_nodes; ++i) {
+        const auto modulus = sums[i].Modulus();
+        if (is_null[i] && modulus > Precision::Confusion()) {
+            const gp_XYZ normal = sums[i] / modulus;
+            normals[3 * i] = static_cast<float>(normal.X());
+            normals[3 * i + 1] = static_cast<float>(normal.Y());
+            normals[3 * i + 2] = static_cast<float>(normal.Z());
+        }
+    }
+    face_data.number_of_normals = static_cast<Standard_Integer>(normals.size() / 3);
 }
 
 void ShapeTesselator::JoinPrimitives() {
@@ -397,13 +452,10 @@ void ShapeTesselator::JoinPrimitives() {
 void ShapeTesselator::ComputeEdges() {
     edge_list.clear();
 
-    TopTools_IndexedMapOfShape edge_map;
-    TopExp::MapShapes(myShape, TopAbs_EDGE, edge_map);
-
     TopTools_IndexedDataMapOfShapeListOfShape edge_face_map;
     TopExp::MapShapesAndAncestors(myShape, TopAbs_EDGE, TopAbs_FACE, edge_face_map);
 
-    edge_list.reserve(edge_map.Extent());
+    edge_list.reserve(edge_face_map.Extent());
 
     for (Standard_Integer i = 1; i <= edge_face_map.Extent(); ++i) {
         const auto& face_list_for_edge = edge_face_map.FindFromIndex(i);
@@ -412,7 +464,7 @@ void ShapeTesselator::ComputeEdges() {
             continue;  // Skip free edges
         }
 
-        const auto& edge = TopoDS::Edge(edge_map(i));
+        const auto& edge = TopoDS::Edge(edge_face_map.FindKey(i));
         Edge edge_data;
 
         if (ProcessSingleEdge(edge, edge_face_map, i, edge_data)) {

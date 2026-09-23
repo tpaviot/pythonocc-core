@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -49,8 +49,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRBRep_InternalAlgo.hxx>
 #include<HLRBRep_Intersector.hxx>
 #include<HLRBRep_LineTool.hxx>
-#include<HLRBRep_ListIteratorOfListOfBPnt2D.hxx>
-#include<HLRBRep_ListIteratorOfListOfBPoint.hxx>
 #include<HLRBRep_ListOfBPnt2D.hxx>
 #include<HLRBRep_ListOfBPoint.hxx>
 #include<HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx>
@@ -81,6 +79,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRBRep_TheProjPCurOfCInter.hxx>
 #include<HLRBRep_TheQuadCurvExactInterCSurf.hxx>
 #include<HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx>
+#include<HLRBRep_TypeDef.hxx>
 #include<HLRBRep_TypeOfResultingEdge.hxx>
 #include<HLRBRep_VertexList.hxx>
 

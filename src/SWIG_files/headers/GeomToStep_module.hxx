@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -29,6 +29,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<GeomToStep_MakeBoundedCurve.hxx>
 #include<GeomToStep_MakeBoundedSurface.hxx>
 #include<GeomToStep_MakeCartesianPoint.hxx>
+#include<GeomToStep_MakeCartesianTransformationOperator.hxx>
 #include<GeomToStep_MakeCircle.hxx>
 #include<GeomToStep_MakeConic.hxx>
 #include<GeomToStep_MakeConicalSurface.hxx>

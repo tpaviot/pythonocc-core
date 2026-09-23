@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,14 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<STEPCAFControl_ActorWrite.hxx>
-#include<STEPCAFControl_ConfigurationNode.hxx>
 #include<STEPCAFControl_Controller.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfShapePD.hxx>
-#include<STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR.hxx>
 #include<STEPCAFControl_DataMapOfLabelExternFile.hxx>
 #include<STEPCAFControl_DataMapOfLabelShape.hxx>
 #include<STEPCAFControl_DataMapOfPDExternFile.hxx>
@@ -36,7 +29,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<STEPCAFControl_DataMapOfShapeSDR.hxx>
 #include<STEPCAFControl_ExternFile.hxx>
 #include<STEPCAFControl_GDTProperty.hxx>
-#include<STEPCAFControl_Provider.hxx>
 #include<STEPCAFControl_Reader.hxx>
 #include<STEPCAFControl_Writer.hxx>
 

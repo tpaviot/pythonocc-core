@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -25,7 +25,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<LocOpe_CSIntersector.hxx>
 #include<LocOpe_CurveShapeIntersector.hxx>
 #include<LocOpe_DPrism.hxx>
-#include<LocOpe_DataMapIteratorOfDataMapOfShapePnt.hxx>
 #include<LocOpe_DataMapOfShapePnt.hxx>
 #include<LocOpe_FindEdges.hxx>
 #include<LocOpe_FindEdgesInFace.hxx>

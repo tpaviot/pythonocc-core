@@ -1,34 +1,22 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.TopAbs import *
 
+
 class Sweep_NumShape:
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        Index: int,
-        Type: TopAbs_ShapeEnum,
-        Closed: Optional[bool] = False,
-        BegInf: Optional[bool] = False,
-        EndInf: Optional[bool] = False,
-    ) -> None: ...
+    def __init__(self, Index: int, Type: TopAbs_ShapeEnum, Closed: Optional[bool] = False, BegInf: Optional[bool] = False, EndInf: Optional[bool] = False) -> None: ...
     def BegInfinite(self) -> bool: ...
     def Closed(self) -> bool: ...
     def EndInfinite(self) -> bool: ...
     def Index(self) -> int: ...
-    def Init(
-        self,
-        Index: int,
-        Type: TopAbs_ShapeEnum,
-        Closed: Optional[bool] = False,
-        BegInf: Optional[bool] = False,
-        EndInf: Optional[bool] = False,
-    ) -> None: ...
+    def Init(self, Index: int, Type: TopAbs_ShapeEnum, Closed: Optional[bool] = False, BegInf: Optional[bool] = False, EndInf: Optional[bool] = False) -> None: ...
     def Orientation(self) -> TopAbs_Orientation: ...
     def Type(self) -> TopAbs_ShapeEnum: ...
 
@@ -55,3 +43,4 @@ class Sweep_NumShapeTool:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

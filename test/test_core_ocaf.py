@@ -22,6 +22,8 @@ import os
 from typing import Any, Iterator
 import warnings
 
+import pytest
+
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorGen
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
@@ -31,6 +33,10 @@ from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.XSControl import XSControl_WorkSession
 from OCC.Core.STEPControl import STEPControl_AsIs
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Core.TCollection import TCollection_ExtendedString
+from OCC.Core.TDataStd import TDataStd_Integer, TDataStd_Name, TDataStd_NamedData
+from OCC.Core.TDF import TDF_Attribute
+from OCC.Core.XCAFDoc import XCAFDoc_ShapeTool
 
 
 @contextmanager
@@ -50,6 +56,42 @@ def test_create_doc() -> None:
     # create an handle to a document
     doc = TDocStd_Document("MDTV-CAF")
     assert doc is not None
+
+
+def test_create_doc_from_extended_string() -> None:
+    """Issue #1494: a TCollection_ExtendedString argument aborted the interpreter"""
+    doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
+    assert doc.StorageFormat() == "MDTV-CAF"
+    with pytest.raises(TypeError):
+        TDocStd_Document(None)
+
+
+def test_find_attribute() -> None:
+    """Issue #1487: FindAttribute returns None when the attribute is not found,
+    else the attribute with its dynamic type"""
+    doc = TDocStd_Document("pythonocc-doc")
+    label = doc.Main().FindChild(1, True)
+    assert label.FindAttribute(TDataStd_Name.GetID(), TDataStd_Name()) is None
+    TDataStd_Name.Set(label, "a name")
+    TDataStd_Integer.Set(label, 42)
+    name = label.FindAttribute(TDataStd_Name.GetID(), TDataStd_Name())
+    assert isinstance(name, TDataStd_Name)
+    assert str(name.Get()) == "a name"
+    integer = label.FindAttribute(TDataStd_Integer.GetID(), 0, TDataStd_Integer())
+    assert isinstance(integer, TDataStd_Integer)
+    assert integer.Get() == 42
+    # TDF_Attribute.FindAttribute looks for an attribute on the same label
+    assert isinstance(
+        integer.FindAttribute(TDataStd_Name.GetID(), TDataStd_Name()), TDataStd_Name
+    )
+    assert integer.FindAttribute(TDataStd_NamedData.GetID(), TDataStd_NamedData()) is None
+
+
+def test_attribute_inheritance() -> None:
+    """TDataStd_GenericExtString and TDataStd_GenericEmpty are wrapped: their
+    subclasses are TDF_Attribute"""
+    assert issubclass(TDataStd_Name, TDF_Attribute)
+    assert issubclass(XCAFDoc_ShapeTool, TDF_Attribute)
 
 
 def test_write_step_file() -> None:

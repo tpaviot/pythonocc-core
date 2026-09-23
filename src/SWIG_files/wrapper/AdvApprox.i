@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -53,6 +53,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_advapprox.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -89,7 +90,7 @@ from OCC.Core.Exception import *
 class AdvApprox_ApproxAFunction {
 	public:
 		/****** AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction ******/
-		/****** md5 signature: 52698dd73ba5a2e229f763f1eeaa3916 ******/
+		/****** md5 signature: 57f7105626d3065ff0fe81000dc45c05 ******/
 		%feature("compactdefaultargs") AdvApprox_ApproxAFunction;
 		%feature("autodoc", "
 Parameters
@@ -100,8 +101,8 @@ Num3DSS: int
 OneDTol: TColStd_HArray1OfReal
 TwoDTol: TColStd_HArray1OfReal
 ThreeDTol: TColStd_HArray1OfReal
-First: float
-Last: float
+First: double
+Last: double
 Continuity: GeomAbs_Shape
 MaxDeg: int
 MaxSeg: int
@@ -115,10 +116,10 @@ Description
 -----------
 Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool; //! the result should be formatted in the following way: <--Num1DSS--> <--2 * Num2DSS--> <--3 * Num3DSS--> R[0] .... R[Num1DSS].....  R[Dimension-1] //! the order in which each Subspace appears should be consistent with the tolerances given in the create function and the results will be given in that order as well that is: Curve2d(n) will correspond to the nth entry described by Num2DSS, Curve(n) will correspond to the nth entry described by Num3DSS The same type of schema applies to the Poles1d, Poles2d and Poles.
 ") AdvApprox_ApproxAFunction;
-		 AdvApprox_ApproxAFunction(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const Standard_Real First, const Standard_Real Last, const GeomAbs_Shape Continuity, const Standard_Integer MaxDeg, const Standard_Integer MaxSeg, const AdvApprox_EvaluatorFunction & Func);
+		 AdvApprox_ApproxAFunction(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const double First, const double Last, const GeomAbs_Shape Continuity, const int MaxDeg, const int MaxSeg, const AdvApprox_EvaluatorFunction & Func);
 
 		/****** AdvApprox_ApproxAFunction::AdvApprox_ApproxAFunction ******/
-		/****** md5 signature: 3c7b9b1840e5ed63d1e5cf800bb06df4 ******/
+		/****** md5 signature: 42344e44c59ef1acfb438986c5a99bcb ******/
 		%feature("compactdefaultargs") AdvApprox_ApproxAFunction;
 		%feature("autodoc", "
 Parameters
@@ -129,8 +130,8 @@ Num3DSS: int
 OneDTol: TColStd_HArray1OfReal
 TwoDTol: TColStd_HArray1OfReal
 ThreeDTol: TColStd_HArray1OfReal
-First: float
-Last: float
+First: double
+Last: double
 Continuity: GeomAbs_Shape
 MaxDeg: int
 MaxSeg: int
@@ -143,12 +144,12 @@ None
 
 Description
 -----------
-Approximation with user methode of cutting.
+Approximation with user method of cutting.
 ") AdvApprox_ApproxAFunction;
-		 AdvApprox_ApproxAFunction(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const Standard_Real First, const Standard_Real Last, const GeomAbs_Shape Continuity, const Standard_Integer MaxDeg, const Standard_Integer MaxSeg, const AdvApprox_EvaluatorFunction & Func, const AdvApprox_Cutting & CutTool);
+		 AdvApprox_ApproxAFunction(const int Num1DSS, const int Num2DSS, const int Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const double First, const double Last, const GeomAbs_Shape Continuity, const int MaxDeg, const int MaxSeg, const AdvApprox_EvaluatorFunction & Func, const AdvApprox_Cutting & CutTool);
 
 		/****** AdvApprox_ApproxAFunction::Approximation ******/
-		/****** md5 signature: 9f78b3fd0d68a0fda47d9a3558a9335b ******/
+		/****** md5 signature: 1eb56da86856c22be13126881f77cc64 ******/
 		%feature("compactdefaultargs") Approximation;
 		%feature("autodoc", "
 Parameters
@@ -156,8 +157,8 @@ Parameters
 TotalDimension: int
 TotalNumSS: int
 LocalDimension: TColStd_Array1OfInteger
-First: float
-Last: float
+First: double
+Last: double
 Evaluator: AdvApprox_EvaluatorFunction
 CutTool: AdvApprox_Cutting
 ContinuityOrder: int
@@ -180,10 +181,10 @@ Description
 -----------
 No available documentation.
 ") Approximation;
-		static void Approximation(const Standard_Integer TotalDimension, const Standard_Integer TotalNumSS, const TColStd_Array1OfInteger & LocalDimension, const Standard_Real First, const Standard_Real Last, AdvApprox_EvaluatorFunction & Evaluator, const AdvApprox_Cutting & CutTool, const Standard_Integer ContinuityOrder, const Standard_Integer NumMaxCoeffs, const Standard_Integer MaxSegments, const TColStd_Array1OfReal & TolerancesArray, const Standard_Integer code_precis, Standard_Integer &OutValue, TColStd_Array1OfInteger & NumCoeffPerCurveArray, TColStd_Array1OfReal & LocalCoefficientArray, TColStd_Array1OfReal & IntervalsArray, TColStd_Array1OfReal & ErrorMaxArray, TColStd_Array1OfReal & AverageErrorArray, Standard_Integer &OutValue);
+		static void Approximation(const int TotalDimension, const int TotalNumSS, const TColStd_Array1OfInteger & LocalDimension, const double First, const double Last, AdvApprox_EvaluatorFunction & Evaluator, const AdvApprox_Cutting & CutTool, const int ContinuityOrder, const int NumMaxCoeffs, const int MaxSegments, const TColStd_Array1OfReal & TolerancesArray, const int code_precis, Standard_Integer &OutValue, TColStd_Array1OfInteger & NumCoeffPerCurveArray, TColStd_Array1OfReal & LocalCoefficientArray, TColStd_Array1OfReal & IntervalsArray, TColStd_Array1OfReal & ErrorMaxArray, TColStd_Array1OfReal & AverageErrorArray, Standard_Integer &OutValue);
 
 		/****** AdvApprox_ApproxAFunction::AverageError ******/
-		/****** md5 signature: d3a5b5e32b36bc7e79202cfa1abaedbe ******/
+		/****** md5 signature: 2f6bf7ea0e0cfb3b392f43df654829e3 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -198,10 +199,10 @@ Description
 -----------
 returns the error as is in the algorithms.
 ") AverageError;
-		opencascade::handle<TColStd_HArray1OfReal> AverageError(const Standard_Integer Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> AverageError(const int Dimension);
 
 		/****** AdvApprox_ApproxAFunction::AverageError ******/
-		/****** md5 signature: b46c820432bcb3498c5c88e842dca097 ******/
+		/****** md5 signature: ed4d67908b569de9e3571c9f53547394 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -211,16 +212,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") AverageError;
-		Standard_Real AverageError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double AverageError(const int Dimension, const int Index);
 
 		/****** AdvApprox_ApproxAFunction::Degree ******/
-		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
+		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -230,7 +231,7 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** AdvApprox_ApproxAFunction::Dump ******/
 		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
@@ -250,7 +251,7 @@ display information on approximation.
 		void Dump(std::ostream &OutValue);
 
 		/****** AdvApprox_ApproxAFunction::HasResult ******/
-		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
+		/****** md5 signature: 708adea9b732f6b7393066c26f957b86 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -260,10 +261,10 @@ Description
 -----------
 No available documentation.
 ") HasResult;
-		Standard_Boolean HasResult();
+		bool HasResult();
 
 		/****** AdvApprox_ApproxAFunction::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -273,10 +274,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AdvApprox_ApproxAFunction::Knots ******/
-		/****** md5 signature: e3036b1d0b355a749bda4aabdce1e25e ******/
+		/****** md5 signature: b13c1fe2b119dff6f267e3e7c76fc339 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
@@ -289,7 +290,7 @@ No available documentation.
 		opencascade::handle<TColStd_HArray1OfReal> Knots();
 
 		/****** AdvApprox_ApproxAFunction::MaxError ******/
-		/****** md5 signature: 65f67ba992f5651ddbda653be6688fd1 ******/
+		/****** md5 signature: ab9966d45e8ce7fa710ffb9f899f7a08 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -304,10 +305,10 @@ Description
 -----------
 returns the error as is in the algorithms.
 ") MaxError;
-		opencascade::handle<TColStd_HArray1OfReal> MaxError(const Standard_Integer Dimension);
+		opencascade::handle<TColStd_HArray1OfReal> MaxError(const int Dimension);
 
 		/****** AdvApprox_ApproxAFunction::MaxError ******/
-		/****** md5 signature: 5025e53abdc4b5b4ec15e940b792a6ea ******/
+		/****** md5 signature: 61a4677e31f18ea56a128d2bb9e750a6 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -317,16 +318,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MaxError;
-		Standard_Real MaxError(const Standard_Integer Dimension, const Standard_Integer Index);
+		double MaxError(const int Dimension, const int Index);
 
 		/****** AdvApprox_ApproxAFunction::Multiplicities ******/
-		/****** md5 signature: 9e49a3a1189f16bd9a66f6044bdea111 ******/
+		/****** md5 signature: 1dd4e249ecb56e6ea985b02f7dfe7500 ******/
 		%feature("compactdefaultargs") Multiplicities;
 		%feature("autodoc", "Return
 -------
@@ -339,7 +340,7 @@ No available documentation.
 		opencascade::handle<TColStd_HArray1OfInteger> Multiplicities();
 
 		/****** AdvApprox_ApproxAFunction::NbKnots ******/
-		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
+		/****** md5 signature: 1d7f6bb61170b57fc8534832d22fab99 ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -349,10 +350,10 @@ Description
 -----------
 No available documentation.
 ") NbKnots;
-		Standard_Integer NbKnots();
+		int NbKnots();
 
 		/****** AdvApprox_ApproxAFunction::NbPoles ******/
-		/****** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ******/
+		/****** md5 signature: ec44b31f908a8be9d45ab84543b6e8d5 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -362,10 +363,10 @@ Description
 -----------
 as the name says.
 ") NbPoles;
-		Standard_Integer NbPoles();
+		int NbPoles();
 
 		/****** AdvApprox_ApproxAFunction::NumSubSpaces ******/
-		/****** md5 signature: 1f04f546c1efa091a0725c4b06bc8324 ******/
+		/****** md5 signature: 1c9032115985612a399c1ddcdf11e7ff ******/
 		%feature("compactdefaultargs") NumSubSpaces;
 		%feature("autodoc", "
 Parameters
@@ -380,10 +381,10 @@ Description
 -----------
 No available documentation.
 ") NumSubSpaces;
-		Standard_Integer NumSubSpaces(const Standard_Integer Dimension);
+		int NumSubSpaces(const int Dimension);
 
 		/****** AdvApprox_ApproxAFunction::Poles ******/
-		/****** md5 signature: 8cc6feb688f8fc6866490bd3dec45155 ******/
+		/****** md5 signature: 987331e5eabfae357b972aa80d023723 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
@@ -396,7 +397,7 @@ Description
 		opencascade::handle<TColgp_HArray2OfPnt> Poles();
 
 		/****** AdvApprox_ApproxAFunction::Poles ******/
-		/****** md5 signature: 70f7f2780ee5277810f623af82eaa942 ******/
+		/****** md5 signature: 41839908c3607d3b024c2489b7c285fb ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
@@ -412,10 +413,10 @@ Description
 -----------
 returns the poles at Index from the 3d subspace.
 ") Poles;
-		void Poles(const Standard_Integer Index, TColgp_Array1OfPnt & P);
+		void Poles(const int Index, TColgp_Array1OfPnt & P);
 
 		/****** AdvApprox_ApproxAFunction::Poles1d ******/
-		/****** md5 signature: 50dedda33d16f0863543f211d9c672d7 ******/
+		/****** md5 signature: fe896e14900c09862915d9fedc5d4efd ******/
 		%feature("compactdefaultargs") Poles1d;
 		%feature("autodoc", "Return
 -------
@@ -428,7 +429,7 @@ returns the poles from the algorithms as is.
 		opencascade::handle<TColStd_HArray2OfReal> Poles1d();
 
 		/****** AdvApprox_ApproxAFunction::Poles1d ******/
-		/****** md5 signature: bbe028eb84e30d7d276f2dfbcdab8d94 ******/
+		/****** md5 signature: 7a7828e9b26128507eda408e7222867c ******/
 		%feature("compactdefaultargs") Poles1d;
 		%feature("autodoc", "
 Parameters
@@ -444,10 +445,10 @@ Description
 -----------
 returns the poles at Index from the 1d subspace.
 ") Poles1d;
-		void Poles1d(const Standard_Integer Index, TColStd_Array1OfReal & P);
+		void Poles1d(const int Index, TColStd_Array1OfReal & P);
 
 		/****** AdvApprox_ApproxAFunction::Poles2d ******/
-		/****** md5 signature: 17feefc22dc950f494bdca290d69c41c ******/
+		/****** md5 signature: d41bc009da873234c2117e23225ed286 ******/
 		%feature("compactdefaultargs") Poles2d;
 		%feature("autodoc", "Return
 -------
@@ -460,7 +461,7 @@ returns the poles from the algorithms as is.
 		opencascade::handle<TColgp_HArray2OfPnt2d> Poles2d();
 
 		/****** AdvApprox_ApproxAFunction::Poles2d ******/
-		/****** md5 signature: eb553b876b593ca686aaad8a47bbee13 ******/
+		/****** md5 signature: 2240c5a5f0c0792d13c451e349ab7444 ******/
 		%feature("compactdefaultargs") Poles2d;
 		%feature("autodoc", "
 Parameters
@@ -476,7 +477,7 @@ Description
 -----------
 returns the poles at Index from the 2d subspace.
 ") Poles2d;
-		void Poles2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & P);
+		void Poles2d(const int Index, TColgp_Array1OfPnt2d & P);
 
 };
 
@@ -494,23 +495,23 @@ returns the poles at Index from the 2d subspace.
 class AdvApprox_Cutting {
 	public:
 		/****** AdvApprox_Cutting::Value ******/
-		/****** md5 signature: 2a55932822e40a99ef4fb0b17db08278 ******/
+		/****** md5 signature: f9f896e306b47df93671981042a6b15c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-a: float
-b: float
+a: double
+b: double
 
 Return
 -------
-cuttingvalue: float
+cuttingvalue: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real a, const Standard_Real b, Standard_Real &OutValue);
+		virtual bool Value(const double a, const double b, Standard_Real &OutValue);
 
 };
 
@@ -530,7 +531,7 @@ No available documentation.
 class AdvApprox_SimpleApprox {
 	public:
 		/****** AdvApprox_SimpleApprox::AdvApprox_SimpleApprox ******/
-		/****** md5 signature: 270cf65a533da8c6af961ac48b19228b ******/
+		/****** md5 signature: edb57a1b549070815b8f477aa6b00864 ******/
 		%feature("compactdefaultargs") AdvApprox_SimpleApprox;
 		%feature("autodoc", "
 Parameters
@@ -551,10 +552,10 @@ Description
 -----------
 No available documentation.
 ") AdvApprox_SimpleApprox;
-		 AdvApprox_SimpleApprox(const Standard_Integer TotalDimension, const Standard_Integer TotalNumSS, const GeomAbs_Shape Continuity, const Standard_Integer WorkDegree, const Standard_Integer NbGaussPoints, const opencascade::handle<PLib_JacobiPolynomial> & JacobiBase, const AdvApprox_EvaluatorFunction & Func);
+		 AdvApprox_SimpleApprox(const int TotalDimension, const int TotalNumSS, const GeomAbs_Shape Continuity, const int WorkDegree, const int NbGaussPoints, const PLib_JacobiPolynomial & JacobiBase, const AdvApprox_EvaluatorFunction & Func);
 
 		/****** AdvApprox_SimpleApprox::AverageError ******/
-		/****** md5 signature: 7406f4cb057b3ba4d255eeb1dcbafe20 ******/
+		/****** md5 signature: 2ac84a9254f174cfe85f43498a456997 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -563,16 +564,16 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") AverageError;
-		Standard_Real AverageError(const Standard_Integer Index);
+		double AverageError(const int Index);
 
 		/****** AdvApprox_SimpleApprox::Coefficients ******/
-		/****** md5 signature: f8d98a88294910b80f034293241aa939 ******/
+		/****** md5 signature: d211a3ee274167c2f1978def8d85f415 ******/
 		%feature("compactdefaultargs") Coefficients;
 		%feature("autodoc", "Return
 -------
@@ -585,7 +586,7 @@ returns the coefficients in the Jacobi Base.
 		opencascade::handle<TColStd_HArray1OfReal> Coefficients();
 
 		/****** AdvApprox_SimpleApprox::Degree ******/
-		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
+		/****** md5 signature: 41ab768385e3189d3d3bc517c9606dbb ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -595,10 +596,10 @@ Description
 -----------
 No available documentation.
 ") Degree;
-		Standard_Integer Degree();
+		int Degree();
 
 		/****** AdvApprox_SimpleApprox::DifTab ******/
-		/****** md5 signature: cd3f00845ed7985681a4ecca4468e0f3 ******/
+		/****** md5 signature: dc602f097981ff346ad091b16b7818b4 ******/
 		%feature("compactdefaultargs") DifTab;
 		%feature("autodoc", "Return
 -------
@@ -628,7 +629,7 @@ display information on approximation.
 		void Dump(std::ostream &OutValue);
 
 		/****** AdvApprox_SimpleApprox::FirstConstr ******/
-		/****** md5 signature: f7818f8b2283dc680ce2b42c85a59f9d ******/
+		/****** md5 signature: 0b49edb668bebd19776e9dea09f8be68 ******/
 		%feature("compactdefaultargs") FirstConstr;
 		%feature("autodoc", "Return
 -------
@@ -641,7 +642,7 @@ returns the constraints at First.
 		opencascade::handle<TColStd_HArray2OfReal> FirstConstr();
 
 		/****** AdvApprox_SimpleApprox::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -651,10 +652,10 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** AdvApprox_SimpleApprox::LastConstr ******/
-		/****** md5 signature: 740c220072c2649ff64a4ddf79211099 ******/
+		/****** md5 signature: d6c738d496704293651a45708e967b5b ******/
 		%feature("compactdefaultargs") LastConstr;
 		%feature("autodoc", "Return
 -------
@@ -667,7 +668,7 @@ returns the constraints at Last.
 		opencascade::handle<TColStd_HArray2OfReal> LastConstr();
 
 		/****** AdvApprox_SimpleApprox::MaxError ******/
-		/****** md5 signature: cce0b3a0574e15581306a5273b015a12 ******/
+		/****** md5 signature: ce54a0bc8bce0f03a7e5d85bc81e29bf ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -676,24 +677,24 @@ Index: int
 
 Return
 -------
-float
+double
 
 Description
 -----------
 No available documentation.
 ") MaxError;
-		Standard_Real MaxError(const Standard_Integer Index);
+		double MaxError(const int Index);
 
 		/****** AdvApprox_SimpleApprox::Perform ******/
-		/****** md5 signature: fa12ac6af76871c60787c6e7b0bbb5a6 ******/
+		/****** md5 signature: 7ed562e5709f6b09cc936d0443d59b44 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 LocalDimension: TColStd_Array1OfInteger
 LocalTolerancesArray: TColStd_Array1OfReal
-First: float
-Last: float
+First: double
+Last: double
 MaxDegree: int
 
 Return
@@ -704,10 +705,10 @@ Description
 -----------
 Constructs approximator tool. //! Warning: the Func should be valid reference to object of type inherited from class EvaluatorFunction from Approx with life time longer than that of the approximator tool;.
 ") Perform;
-		void Perform(const TColStd_Array1OfInteger & LocalDimension, const TColStd_Array1OfReal & LocalTolerancesArray, const Standard_Real First, const Standard_Real Last, const Standard_Integer MaxDegree);
+		void Perform(const TColStd_Array1OfInteger & LocalDimension, const TColStd_Array1OfReal & LocalTolerancesArray, const double First, const double Last, const int MaxDegree);
 
 		/****** AdvApprox_SimpleApprox::SomTab ******/
-		/****** md5 signature: e2354e299b61e673e6368c628fdcb464 ******/
+		/****** md5 signature: a4ad48128c7504b324d05ebc59ad3b45 ******/
 		%feature("compactdefaultargs") SomTab;
 		%feature("autodoc", "Return
 -------
@@ -747,23 +748,23 @@ No available documentation.
 		 AdvApprox_DichoCutting();
 
 		/****** AdvApprox_DichoCutting::Value ******/
-		/****** md5 signature: faed359aa12110072e7334faf44a2938 ******/
+		/****** md5 signature: 93c0717eea62660d28edc79ee86328f9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-a: float
-b: float
+a: double
+b: double
 
 Return
 -------
-cuttingvalue: float
+cuttingvalue: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real a, const Standard_Real b, Standard_Real &OutValue);
+		bool Value(const double a, const double b, Standard_Real &OutValue);
 
 };
 
@@ -780,14 +781,14 @@ No available documentation.
 class AdvApprox_PrefAndRec : public AdvApprox_Cutting {
 	public:
 		/****** AdvApprox_PrefAndRec::AdvApprox_PrefAndRec ******/
-		/****** md5 signature: d90754cbbe32adec40449bbd37bb798f ******/
+		/****** md5 signature: 082b1136bed172c5ffc4d4f9a4c0b8bf ******/
 		%feature("compactdefaultargs") AdvApprox_PrefAndRec;
 		%feature("autodoc", "
 Parameters
 ----------
 RecomendedCut: TColStd_Array1OfReal
 PrefferedCut: TColStd_Array1OfReal
-Weight: float (optional, default to 5)
+Weight: double (optional, default to 5)
 
 Return
 -------
@@ -797,26 +798,26 @@ Description
 -----------
 No available documentation.
 ") AdvApprox_PrefAndRec;
-		 AdvApprox_PrefAndRec(const TColStd_Array1OfReal & RecomendedCut, const TColStd_Array1OfReal & PrefferedCut, const Standard_Real Weight = 5);
+		 AdvApprox_PrefAndRec(const TColStd_Array1OfReal & RecomendedCut, const TColStd_Array1OfReal & PrefferedCut, const double Weight = 5);
 
 		/****** AdvApprox_PrefAndRec::Value ******/
-		/****** md5 signature: faed359aa12110072e7334faf44a2938 ******/
+		/****** md5 signature: 93c0717eea62660d28edc79ee86328f9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-a: float
-b: float
+a: double
+b: double
 
 Return
 -------
-cuttingvalue: float
+cuttingvalue: double
 
 Description
 -----------
 cuting value is - the recommended point nerest of (a+b)/2 if pi is in ]a,b[ or else - the preferential point nearest of (a+b) / 2 if pi is in ](r*a+b)/(r+1) , (a+r*b)/(r+1)[ where r = Weight - or (a+b)/2 else.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real a, const Standard_Real b, Standard_Real &OutValue);
+		bool Value(const double a, const double b, Standard_Real &OutValue);
 
 };
 
@@ -833,7 +834,7 @@ cuting value is - the recommended point nerest of (a+b)/2 if pi is in ]a,b[ or e
 class AdvApprox_PrefCutting : public AdvApprox_Cutting {
 	public:
 		/****** AdvApprox_PrefCutting::AdvApprox_PrefCutting ******/
-		/****** md5 signature: e4caf40ab49131f92edfd3f3c93d31fa ******/
+		/****** md5 signature: 2a6fc8064b15f2110eca5ee39c64799b ******/
 		%feature("compactdefaultargs") AdvApprox_PrefCutting;
 		%feature("autodoc", "
 Parameters
@@ -851,23 +852,23 @@ No available documentation.
 		 AdvApprox_PrefCutting(const TColStd_Array1OfReal & CutPnts);
 
 		/****** AdvApprox_PrefCutting::Value ******/
-		/****** md5 signature: faed359aa12110072e7334faf44a2938 ******/
+		/****** md5 signature: 93c0717eea62660d28edc79ee86328f9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
 ----------
-a: float
-b: float
+a: double
+b: double
 
 Return
 -------
-cuttingvalue: float
+cuttingvalue: double
 
 Description
 -----------
 No available documentation.
 ") Value;
-		virtual Standard_Boolean Value(const Standard_Real a, const Standard_Real b, Standard_Real &OutValue);
+		bool Value(const double a, const double b, Standard_Real &OutValue);
 
 };
 

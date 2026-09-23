@@ -3,9 +3,9 @@ from pathlib import Path
 import platform
 
 # Version number
-PYTHONOCC_VERSION_MAJOR = 7
-PYTHONOCC_VERSION_MINOR = 9
-PYTHONOCC_VERSION_PATCH = 3
+PYTHONOCC_VERSION_MAJOR = 8
+PYTHONOCC_VERSION_MINOR = 0
+PYTHONOCC_VERSION_PATCH = 1
 
 # Empty for official releases, set to -dev, -rc1, etc for development releases
 PYTHONOCC_VERSION_DEVEL = ""

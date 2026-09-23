@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -56,6 +56,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -85,11 +86,17 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(MAT2d_DataMapOfBiIntInteger) NCollection_DataMap<MAT2d_BiInt,Standard_Integer>;
+%ignore NCollection_DataMap<MAT2d_BiInt,int>::Items;
+%ignore NCollection_DataMap<MAT2d_BiInt,int>::KeyValues;
+%template(MAT2d_DataMapOfBiIntInteger) NCollection_DataMap<MAT2d_BiInt,int>;
+%ignore NCollection_DataMap<MAT2d_BiInt,TColStd_SequenceOfInteger>::Items;
+%ignore NCollection_DataMap<MAT2d_BiInt,TColStd_SequenceOfInteger>::KeyValues;
 %template(MAT2d_DataMapOfBiIntSequenceOfInteger) NCollection_DataMap<MAT2d_BiInt,TColStd_SequenceOfInteger>;
-%template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap<Standard_Integer,Bisector_Bisec>;
+%ignore NCollection_DataMap<int,Bisector_Bisec>::Items;
+%ignore NCollection_DataMap<int,Bisector_Bisec>::KeyValues;
+%template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap<int,Bisector_Bisec>;
 
-%extend NCollection_DataMap<Standard_Integer,Bisector_Bisec> {
+%extend NCollection_DataMap<int,Bisector_Bisec> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerBisec::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -100,9 +107,11 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>>;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>::Items;
+%ignore NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>::KeyValues;
+%template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>> {
+%extend NCollection_DataMap<int,opencascade::handle<MAT2d_Connexion>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -113,9 +122,11 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap<Standard_Integer,gp_Pnt2d>;
+%ignore NCollection_DataMap<int,gp_Pnt2d>::Items;
+%ignore NCollection_DataMap<int,gp_Pnt2d>::KeyValues;
+%template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap<int,gp_Pnt2d>;
 
-%extend NCollection_DataMap<Standard_Integer,gp_Pnt2d> {
+%extend NCollection_DataMap<int,gp_Pnt2d> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerPnt2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -126,22 +137,11 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion>;
+%ignore NCollection_DataMap<int,gp_Vec2d>::Items;
+%ignore NCollection_DataMap<int,gp_Vec2d>::KeyValues;
+%template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<int,gp_Vec2d>;
 
-%extend NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion> {
-    PyObject* Keys() {
-        PyObject *l=PyList_New(0);
-        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
-          PyObject *o = PyLong_FromLong(anIt1.Key());
-          PyList_Append(l, o);
-          Py_DECREF(o);
-        }
-    return l;
-    }
-};
-%template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<Standard_Integer,gp_Vec2d>;
-
-%extend NCollection_DataMap<Standard_Integer,gp_Vec2d> {
+%extend NCollection_DataMap<int,gp_Vec2d> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerVec2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -155,6 +155,13 @@ from OCC.Core.Exception import *
 %template(MAT2d_SequenceOfConnexion) NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>;
 
 %extend NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -163,6 +170,13 @@ from OCC.Core.Exception import *
 %template(MAT2d_SequenceOfSequenceOfCurve) NCollection_Sequence<TColGeom2d_SequenceOfCurve>;
 
 %extend NCollection_Sequence<TColGeom2d_SequenceOfCurve> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
@@ -171,29 +185,51 @@ from OCC.Core.Exception import *
 %template(MAT2d_SequenceOfSequenceOfGeometry) NCollection_Sequence<TColGeom2d_SequenceOfGeometry>;
 
 %extend NCollection_Sequence<TColGeom2d_SequenceOfGeometry> {
+    // occt-800: NCollection_BaseSequence methods are not wrapped through
+    // SWIG (its inner SeqNode has private new/delete). Re-export them per
+    // instantiation so Python code can call .Size(), .Length(), .IsEmpty()
+    // and use len() on every NCollection_Sequence<...>.
+    size_t Size() const noexcept { return $self->Size(); }
+    int Length() const noexcept { return $self->Length(); }
+    bool IsEmpty() const noexcept { return $self->IsEmpty(); }
     %pythoncode {
     def __len__(self):
         return self.Size()
+    }
+};
+%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::Items;
+%ignore NCollection_DataMap<int,MAT2d_SequenceOfConnexion>::KeyValues;
+%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<int,MAT2d_SequenceOfConnexion>;
+
+%extend NCollection_DataMap<int,MAT2d_SequenceOfConnexion> {
+    PyObject* Keys() {
+        PyObject *l=PyList_New(0);
+        for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
+          PyObject *o = PyLong_FromLong(anIt1.Key());
+          PyList_Append(l, o);
+          Py_DECREF(o);
+        }
+    return l;
     }
 };
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array2<opencascade::handle<MAT2d_Connexion>> MAT2d_Array2OfConnexion;
-typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
+typedef NCollection_DataMap<MAT2d_BiInt, int>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
 typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d;
-typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d;
-typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer> MAT2d_DataMapOfBiIntInteger;
+typedef NCollection_DataMap<int, Bisector_Bisec>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
+typedef NCollection_DataMap<int, opencascade::handle<MAT2d_Connexion>>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
+typedef NCollection_DataMap<int, gp_Pnt2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d;
+typedef NCollection_DataMap<int, MAT2d_SequenceOfConnexion>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
+typedef NCollection_DataMap<int, gp_Vec2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d;
+typedef NCollection_DataMap<MAT2d_BiInt, int> MAT2d_DataMapOfBiIntInteger;
 typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger> MAT2d_DataMapOfBiIntSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec> MAT2d_DataMapOfIntegerBisec;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>> MAT2d_DataMapOfIntegerConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d> MAT2d_DataMapOfIntegerPnt2d;
-typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion> MAT2d_DataMapOfIntegerSequenceOfConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec2d> MAT2d_DataMapOfIntegerVec2d;
+typedef NCollection_DataMap<int, Bisector_Bisec> MAT2d_DataMapOfIntegerBisec;
+typedef NCollection_DataMap<int, opencascade::handle<MAT2d_Connexion>> MAT2d_DataMapOfIntegerConnexion;
+typedef NCollection_DataMap<int, gp_Pnt2d> MAT2d_DataMapOfIntegerPnt2d;
+typedef NCollection_DataMap<int, MAT2d_SequenceOfConnexion> MAT2d_DataMapOfIntegerSequenceOfConnexion;
+typedef NCollection_DataMap<int, gp_Vec2d> MAT2d_DataMapOfIntegerVec2d;
 typedef NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> MAT2d_SequenceOfConnexion;
 typedef NCollection_Sequence<TColGeom2d_SequenceOfCurve> MAT2d_SequenceOfSequenceOfCurve;
 typedef NCollection_Sequence<TColGeom2d_SequenceOfGeometry> MAT2d_SequenceOfSequenceOfGeometry;
@@ -205,7 +241,7 @@ typedef NCollection_Sequence<TColGeom2d_SequenceOfGeometry> MAT2d_SequenceOfSequ
 class MAT2d_BiInt {
 	public:
 		/****** MAT2d_BiInt::MAT2d_BiInt ******/
-		/****** md5 signature: 78ab96464b0d583cf551a2b9faedb8d9 ******/
+		/****** md5 signature: 1cbb581b673b39b548ea7b70d8243ace ******/
 		%feature("compactdefaultargs") MAT2d_BiInt;
 		%feature("autodoc", "
 Parameters
@@ -221,10 +257,10 @@ Description
 -----------
 No available documentation.
 ") MAT2d_BiInt;
-		 MAT2d_BiInt(const Standard_Integer I1, const Standard_Integer I2);
+		 MAT2d_BiInt(const int I1, const int I2);
 
 		/****** MAT2d_BiInt::FirstIndex ******/
-		/****** md5 signature: d46869d30abf824c62a68bd55acf0cb1 ******/
+		/****** md5 signature: c2b7b4d6b4f0ddb59b0587df9e596c4e ******/
 		%feature("compactdefaultargs") FirstIndex;
 		%feature("autodoc", "Return
 -------
@@ -234,10 +270,10 @@ Description
 -----------
 No available documentation.
 ") FirstIndex;
-		Standard_Integer FirstIndex();
+		int FirstIndex();
 
 		/****** MAT2d_BiInt::FirstIndex ******/
-		/****** md5 signature: 17918e8ddbf3e2e971bdf84b0112a1fd ******/
+		/****** md5 signature: f98c1a2e064d8ebf96dd9c59a57334e2 ******/
 		%feature("compactdefaultargs") FirstIndex;
 		%feature("autodoc", "
 Parameters
@@ -252,10 +288,10 @@ Description
 -----------
 No available documentation.
 ") FirstIndex;
-		void FirstIndex(const Standard_Integer I1);
+		void FirstIndex(const int I1);
 
 		/****** MAT2d_BiInt::IsEqual ******/
-		/****** md5 signature: b7f23e99a6a59778d6a351f9dbeadc3c ******/
+		/****** md5 signature: ae454d5d97a7cc37345e7c65a4189e8f ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -270,10 +306,10 @@ Description
 -----------
 No available documentation.
 ") IsEqual;
-		Standard_Boolean IsEqual(const MAT2d_BiInt & B);
+		bool IsEqual(const MAT2d_BiInt & B);
 
 		/****** MAT2d_BiInt::SecondIndex ******/
-		/****** md5 signature: 10d01ee45fc32a68b77d02ef99308fa9 ******/
+		/****** md5 signature: 431cb9ad8256a1ede42d510fad3f52b3 ******/
 		%feature("compactdefaultargs") SecondIndex;
 		%feature("autodoc", "Return
 -------
@@ -283,10 +319,10 @@ Description
 -----------
 No available documentation.
 ") SecondIndex;
-		Standard_Integer SecondIndex();
+		int SecondIndex();
 
 		/****** MAT2d_BiInt::SecondIndex ******/
-		/****** md5 signature: 2d51f4e6989ca684356bd87abf2c6f3d ******/
+		/****** md5 signature: 857ae16753f236f81e40733e46354559 ******/
 		%feature("compactdefaultargs") SecondIndex;
 		%feature("autodoc", "
 Parameters
@@ -301,7 +337,7 @@ Description
 -----------
 No available documentation.
 ") SecondIndex;
-		void SecondIndex(const Standard_Integer I2);
+		void SecondIndex(const int I2);
 
 
 %extend{
@@ -332,13 +368,13 @@ def __eq__(self, right):
 class MAT2d_Circuit : public Standard_Transient {
 	public:
 		/****** MAT2d_Circuit::MAT2d_Circuit ******/
-		/****** md5 signature: 3d83ae3a1ddee5ab13cec53a08223b5d ******/
+		/****** md5 signature: 2c41fd20290af559362f32d3056b3762 ******/
 		%feature("compactdefaultargs") MAT2d_Circuit;
 		%feature("autodoc", "
 Parameters
 ----------
 aJoinType: GeomAbs_JoinType (optional, default to GeomAbs_Arc)
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -348,10 +384,10 @@ Description
 -----------
 No available documentation.
 ") MAT2d_Circuit;
-		 MAT2d_Circuit(const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
+		 MAT2d_Circuit(const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const bool IsOpenResult = false);
 
 		/****** MAT2d_Circuit::Connexion ******/
-		/****** md5 signature: 326ba50670f9d4c1c46bce1f115c59e3 ******/
+		/****** md5 signature: b88d26be5064c3638e01f1cbcb1abc21 ******/
 		%feature("compactdefaultargs") Connexion;
 		%feature("autodoc", "
 Parameters
@@ -366,10 +402,10 @@ Description
 -----------
 Returns the Connexion on the item <Index> in me.
 ") Connexion;
-		opencascade::handle<MAT2d_Connexion> Connexion(const Standard_Integer Index);
+		opencascade::handle<MAT2d_Connexion> Connexion(const int Index);
 
 		/****** MAT2d_Circuit::ConnexionOn ******/
-		/****** md5 signature: 99421e4e4a56e2a09bb778c89f4ec2dc ******/
+		/****** md5 signature: c32b8e5291c9fea745450407fdcb8a5d ******/
 		%feature("compactdefaultargs") ConnexionOn;
 		%feature("autodoc", "
 Parameters
@@ -384,10 +420,10 @@ Description
 -----------
 Returns <True> is there is a connexion on the item <Index> in <self>.
 ") ConnexionOn;
-		Standard_Boolean ConnexionOn(const Standard_Integer Index);
+		bool ConnexionOn(const int Index);
 
 		/****** MAT2d_Circuit::LineLength ******/
-		/****** md5 signature: 469351f47df074eb89a0c7e8bfc384ef ******/
+		/****** md5 signature: 177459723a221e97869f5201b5fa9b9a ******/
 		%feature("compactdefaultargs") LineLength;
 		%feature("autodoc", "
 Parameters
@@ -402,10 +438,10 @@ Description
 -----------
 Returns the number of items on the line <IndexLine>.
 ") LineLength;
-		Standard_Integer LineLength(const Standard_Integer IndexLine);
+		int LineLength(const int IndexLine);
 
 		/****** MAT2d_Circuit::NumberOfItems ******/
-		/****** md5 signature: 6320550c1d233b98551d924e74a6ceb4 ******/
+		/****** md5 signature: 73d110ccea72b5d023475507d3e849af ******/
 		%feature("compactdefaultargs") NumberOfItems;
 		%feature("autodoc", "Return
 -------
@@ -415,15 +451,15 @@ Description
 -----------
 Returns the Number of Items .
 ") NumberOfItems;
-		Standard_Integer NumberOfItems();
+		int NumberOfItems();
 
 		/****** MAT2d_Circuit::Perform ******/
-		/****** md5 signature: 9f56ef9060926bd1e36ee0efe117b1f7 ******/
+		/****** md5 signature: 998aade1985a18b25950ca87349c5c1f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-aFigure: MAT2d_SequenceOfSequenceOfGeometry
+aFigure: NCollection_Sequence<TColGeom2d_SequenceOfGeometry >
 IsClosed: TColStd_SequenceOfBoolean
 IndRefLine: int
 Trigo: bool
@@ -436,10 +472,10 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		void Perform(MAT2d_SequenceOfSequenceOfGeometry & aFigure, const TColStd_SequenceOfBoolean & IsClosed, const Standard_Integer IndRefLine, const Standard_Boolean Trigo);
+		void Perform(NCollection_Sequence<TColGeom2d_SequenceOfGeometry > & aFigure, const TColStd_SequenceOfBoolean & IsClosed, const int IndRefLine, const bool Trigo);
 
 		/****** MAT2d_Circuit::RefToEqui ******/
-		/****** md5 signature: d22a10fa0d9d9576992fd9ec8dc805bb ******/
+		/****** md5 signature: 772616c2e19b113067904e5ba8af6988 ******/
 		%feature("compactdefaultargs") RefToEqui;
 		%feature("autodoc", "
 Parameters
@@ -455,10 +491,10 @@ Description
 -----------
 Returns the set of index of the items in <self>corresponding to the curve <IndCurve> on the line <IndLine> from the initial figure.
 ") RefToEqui;
-		const TColStd_SequenceOfInteger & RefToEqui(const Standard_Integer IndLine, const Standard_Integer IndCurve);
+		const TColStd_SequenceOfInteger & RefToEqui(const int IndLine, const int IndCurve);
 
 		/****** MAT2d_Circuit::Value ******/
-		/****** md5 signature: 46459dc52092fe0b601c69e4b3658782 ******/
+		/****** md5 signature: 4ba4404f3282d32f220058a0d13e6c74 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -473,7 +509,7 @@ Description
 -----------
 Returns the item at position <Index> in <self>.
 ") Value;
-		opencascade::handle<Geom2d_Geometry> Value(const Standard_Integer Index);
+		opencascade::handle<Geom2d_Geometry> Value(const int Index);
 
 };
 
@@ -505,7 +541,7 @@ No available documentation.
 		 MAT2d_Connexion();
 
 		/****** MAT2d_Connexion::MAT2d_Connexion ******/
-		/****** md5 signature: 62cffa59d7c45597a0042e456300fe54 ******/
+		/****** md5 signature: ce7bd3159c0854d24bf22203c0c77b08 ******/
 		%feature("compactdefaultargs") MAT2d_Connexion;
 		%feature("autodoc", "
 Parameters
@@ -514,9 +550,9 @@ LineA: int
 LineB: int
 ItemA: int
 ItemB: int
-Distance: float
-ParameterOnA: float
-ParameterOnB: float
+Distance: double
+ParameterOnA: double
+ParameterOnB: double
 PointA: gp_Pnt2d
 PointB: gp_Pnt2d
 
@@ -528,28 +564,28 @@ Description
 -----------
 No available documentation.
 ") MAT2d_Connexion;
-		 MAT2d_Connexion(const Standard_Integer LineA, const Standard_Integer LineB, const Standard_Integer ItemA, const Standard_Integer ItemB, const Standard_Real Distance, const Standard_Real ParameterOnA, const Standard_Real ParameterOnB, const gp_Pnt2d & PointA, const gp_Pnt2d & PointB);
+		 MAT2d_Connexion(const int LineA, const int LineB, const int ItemA, const int ItemB, const double Distance, const double ParameterOnA, const double ParameterOnB, const gp_Pnt2d & PointA, const gp_Pnt2d & PointB);
 
 		/****** MAT2d_Connexion::Distance ******/
-		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
+		/****** md5 signature: 4132595ec8b1977b3cfc8920d72365c4 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the distance between the two points.
 ") Distance;
-		Standard_Real Distance();
+		double Distance();
 
 		/****** MAT2d_Connexion::Distance ******/
-		/****** md5 signature: 3ae0b9dfb95cca74bdd17827ec43670b ******/
+		/****** md5 signature: 88a0a76023cc524d009e464c5cbb8f6b ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
 ----------
-aDistance: float
+aDistance: double
 
 Return
 -------
@@ -559,10 +595,10 @@ Description
 -----------
 No available documentation.
 ") Distance;
-		void Distance(const Standard_Real aDistance);
+		void Distance(const double aDistance);
 
 		/****** MAT2d_Connexion::Dump ******/
-		/****** md5 signature: 23c1db28cacdaffb331052739c78df8b ******/
+		/****** md5 signature: 80020b5ebb73e4528ffd0899ab5418e2 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -578,10 +614,10 @@ Description
 -----------
 Print <self>.
 ") Dump;
-		void Dump(const Standard_Integer Deep = 0, const Standard_Integer Offset = 0);
+		void Dump(const int Deep = 0, const int Offset = 0);
 
 		/****** MAT2d_Connexion::IndexFirstLine ******/
-		/****** md5 signature: 663d6504efd1a156fa9a482d62bc3dbb ******/
+		/****** md5 signature: 4ba399481837ae0fcad56ddbf52ffc95 ******/
 		%feature("compactdefaultargs") IndexFirstLine;
 		%feature("autodoc", "Return
 -------
@@ -591,10 +627,10 @@ Description
 -----------
 Returns the Index on the first line.
 ") IndexFirstLine;
-		Standard_Integer IndexFirstLine();
+		int IndexFirstLine();
 
 		/****** MAT2d_Connexion::IndexFirstLine ******/
-		/****** md5 signature: e9ddfb6ae51bf8eb16c92d7b42609bca ******/
+		/****** md5 signature: 915874b37f9e7bca6a0f5d7d027a7f34 ******/
 		%feature("compactdefaultargs") IndexFirstLine;
 		%feature("autodoc", "
 Parameters
@@ -609,10 +645,10 @@ Description
 -----------
 No available documentation.
 ") IndexFirstLine;
-		void IndexFirstLine(const Standard_Integer anIndex);
+		void IndexFirstLine(const int anIndex);
 
 		/****** MAT2d_Connexion::IndexItemOnFirst ******/
-		/****** md5 signature: 3ac29bd3c9804e66c2a315f62a355304 ******/
+		/****** md5 signature: 8bfce618e9258056c30d6ff373323570 ******/
 		%feature("compactdefaultargs") IndexItemOnFirst;
 		%feature("autodoc", "Return
 -------
@@ -622,10 +658,10 @@ Description
 -----------
 Returns the Index of the item on the first line.
 ") IndexItemOnFirst;
-		Standard_Integer IndexItemOnFirst();
+		int IndexItemOnFirst();
 
 		/****** MAT2d_Connexion::IndexItemOnFirst ******/
-		/****** md5 signature: c6e9546b347dc7af06ccb4f85f109de1 ******/
+		/****** md5 signature: 8432d8b893955a4dc97fc03f27e3f872 ******/
 		%feature("compactdefaultargs") IndexItemOnFirst;
 		%feature("autodoc", "
 Parameters
@@ -640,10 +676,10 @@ Description
 -----------
 No available documentation.
 ") IndexItemOnFirst;
-		void IndexItemOnFirst(const Standard_Integer anIndex);
+		void IndexItemOnFirst(const int anIndex);
 
 		/****** MAT2d_Connexion::IndexItemOnSecond ******/
-		/****** md5 signature: 9be18043761a97c465053e66cab18002 ******/
+		/****** md5 signature: 9f2c32bb0140017744c1a81ffffe899c ******/
 		%feature("compactdefaultargs") IndexItemOnSecond;
 		%feature("autodoc", "Return
 -------
@@ -653,10 +689,10 @@ Description
 -----------
 Returns the Index of the item on the second line.
 ") IndexItemOnSecond;
-		Standard_Integer IndexItemOnSecond();
+		int IndexItemOnSecond();
 
 		/****** MAT2d_Connexion::IndexItemOnSecond ******/
-		/****** md5 signature: 20b450ff2c151e3735c3ccf7d96e2aab ******/
+		/****** md5 signature: 5f3f291170c8a0ae989567a1334c92a1 ******/
 		%feature("compactdefaultargs") IndexItemOnSecond;
 		%feature("autodoc", "
 Parameters
@@ -671,10 +707,10 @@ Description
 -----------
 No available documentation.
 ") IndexItemOnSecond;
-		void IndexItemOnSecond(const Standard_Integer anIndex);
+		void IndexItemOnSecond(const int anIndex);
 
 		/****** MAT2d_Connexion::IndexSecondLine ******/
-		/****** md5 signature: 743690301073ae235797f67f19862988 ******/
+		/****** md5 signature: f844fef6eee01f557100bad6c42fdf1e ******/
 		%feature("compactdefaultargs") IndexSecondLine;
 		%feature("autodoc", "Return
 -------
@@ -684,10 +720,10 @@ Description
 -----------
 Returns the Index on the Second line.
 ") IndexSecondLine;
-		Standard_Integer IndexSecondLine();
+		int IndexSecondLine();
 
 		/****** MAT2d_Connexion::IndexSecondLine ******/
-		/****** md5 signature: 85add49d77c865a820812ca36a4f15d4 ******/
+		/****** md5 signature: ed5b8622d06188683728acc0d8bbd810 ******/
 		%feature("compactdefaultargs") IndexSecondLine;
 		%feature("autodoc", "
 Parameters
@@ -702,16 +738,16 @@ Description
 -----------
 No available documentation.
 ") IndexSecondLine;
-		void IndexSecondLine(const Standard_Integer anIndex);
+		void IndexSecondLine(const int anIndex);
 
 		/****** MAT2d_Connexion::IsAfter ******/
-		/****** md5 signature: b21a8f4e2e039eabad6ae1e4f9672a7c ******/
+		/****** md5 signature: 216ff8eee2d461999120fb61c683c201 ******/
 		%feature("compactdefaultargs") IsAfter;
 		%feature("autodoc", "
 Parameters
 ----------
 aConnexion: MAT2d_Connexion
-aSense: float
+aSense: double
 
 Return
 -------
@@ -721,28 +757,28 @@ Description
 -----------
 Returns <True> if my firstPoint is on the same line than the firstpoint of <aConnexion> and my firstpoint is after the firstpoint of <aConnexion> on the line. <aSense> = 1 if <aConnexion> is on the Left of its firstline, else <aSense> = -1.
 ") IsAfter;
-		Standard_Boolean IsAfter(const opencascade::handle<MAT2d_Connexion> & aConnexion, const Standard_Real aSense);
+		bool IsAfter(const opencascade::handle<MAT2d_Connexion> & aConnexion, const double aSense);
 
 		/****** MAT2d_Connexion::ParameterOnFirst ******/
-		/****** md5 signature: e945fc6b92a0d895f5e2c28fd811543c ******/
+		/****** md5 signature: 3cf218c78795997e9d73f5784af37809 ******/
 		%feature("compactdefaultargs") ParameterOnFirst;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the point on the firstline.
 ") ParameterOnFirst;
-		Standard_Real ParameterOnFirst();
+		double ParameterOnFirst();
 
 		/****** MAT2d_Connexion::ParameterOnFirst ******/
-		/****** md5 signature: 40eb40758621a9e79b96eda54b924eed ******/
+		/****** md5 signature: 3035bffcb63a9540dbbd957949658dac ******/
 		%feature("compactdefaultargs") ParameterOnFirst;
 		%feature("autodoc", "
 Parameters
 ----------
-aParameter: float
+aParameter: double
 
 Return
 -------
@@ -752,28 +788,28 @@ Description
 -----------
 No available documentation.
 ") ParameterOnFirst;
-		void ParameterOnFirst(const Standard_Real aParameter);
+		void ParameterOnFirst(const double aParameter);
 
 		/****** MAT2d_Connexion::ParameterOnSecond ******/
-		/****** md5 signature: 370f2ccf1ecbaea4fffac99aaa7fd27f ******/
+		/****** md5 signature: bdd5fb511ef7223a92419113d5a18e8f ******/
 		%feature("compactdefaultargs") ParameterOnSecond;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns the parameter of the point on the secondline.
 ") ParameterOnSecond;
-		Standard_Real ParameterOnSecond();
+		double ParameterOnSecond();
 
 		/****** MAT2d_Connexion::ParameterOnSecond ******/
-		/****** md5 signature: cdd43381e112f28bae0990926bc372c0 ******/
+		/****** md5 signature: 7477a66107d0203cc1758e919e75d196 ******/
 		%feature("compactdefaultargs") ParameterOnSecond;
 		%feature("autodoc", "
 Parameters
 ----------
-aParameter: float
+aParameter: double
 
 Return
 -------
@@ -783,7 +819,7 @@ Description
 -----------
 No available documentation.
 ") ParameterOnSecond;
-		void ParameterOnSecond(const Standard_Real aParameter);
+		void ParameterOnSecond(const double aParameter);
 
 		/****** MAT2d_Connexion::PointOnFirst ******/
 		/****** md5 signature: 54421f5c73f6ba0c74b5afa285990e5b ******/
@@ -880,12 +916,12 @@ Returns the reverse connexion of <self>. the firstpoint is the secondpoint. the 
 class MAT2d_Mat2d {
 	public:
 		/****** MAT2d_Mat2d::MAT2d_Mat2d ******/
-		/****** md5 signature: f439b4b585960a22c06e7ea738efcbf9 ******/
+		/****** md5 signature: b71c5c682f4f6bef6714372a15c57b85 ******/
 		%feature("compactdefaultargs") MAT2d_Mat2d;
 		%feature("autodoc", "
 Parameters
 ----------
-IsOpenResult: bool (optional, default to Standard_False)
+IsOpenResult: bool (optional, default to false)
 
 Return
 -------
@@ -895,7 +931,7 @@ Description
 -----------
 Empty constructor.
 ") MAT2d_Mat2d;
-		 MAT2d_Mat2d(const Standard_Boolean IsOpenResult = Standard_False);
+		 MAT2d_Mat2d(const bool IsOpenResult = false);
 
 		/****** MAT2d_Mat2d::Bisector ******/
 		/****** md5 signature: 67b6ad5e7794a47e193cacc71d0ac1c6 ******/
@@ -960,7 +996,7 @@ Initialize an iterator on the set of the roots of the trees of bisectors.
 		void Init();
 
 		/****** MAT2d_Mat2d::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -970,10 +1006,10 @@ Description
 -----------
 Returns <True> if CreateMat has succeeded.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 		/****** MAT2d_Mat2d::More ******/
-		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
+		/****** md5 signature: 922f3b0d43975d648336ba28bdfd0416 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -983,7 +1019,7 @@ Description
 -----------
 Return False if there is no more roots.
 ") More;
-		Standard_Boolean More();
+		bool More();
 
 		/****** MAT2d_Mat2d::Next ******/
 		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
@@ -999,7 +1035,7 @@ Move to the next root.
 		void Next();
 
 		/****** MAT2d_Mat2d::NumberOfBisectors ******/
-		/****** md5 signature: e52804b83739b49416ec49fd614e427c ******/
+		/****** md5 signature: a00da309aa566b0aa7cc3688ed59e15c ******/
 		%feature("compactdefaultargs") NumberOfBisectors;
 		%feature("autodoc", "Return
 -------
@@ -1009,10 +1045,10 @@ Description
 -----------
 Returns the total number of bisectors.
 ") NumberOfBisectors;
-		Standard_Integer NumberOfBisectors();
+		int NumberOfBisectors();
 
 		/****** MAT2d_Mat2d::SemiInfinite ******/
-		/****** md5 signature: 6c8f4adc9ba1520b1d74688cb6aff3fd ******/
+		/****** md5 signature: ca4dd20816814c9aab6d400acb45d265 ******/
 		%feature("compactdefaultargs") SemiInfinite;
 		%feature("autodoc", "Return
 -------
@@ -1022,7 +1058,7 @@ Description
 -----------
 Returns True if there are semi_infinite bisectors. So there is a tree for each semi_infinte bisector.
 ") SemiInfinite;
-		Standard_Boolean SemiInfinite();
+		bool SemiInfinite();
 
 };
 
@@ -1052,7 +1088,7 @@ No available documentation.
 		 MAT2d_MiniPath();
 
 		/****** MAT2d_MiniPath::ConnexionsFrom ******/
-		/****** md5 signature: f1a567b01e2a9822ac854464cf7cb35b ******/
+		/****** md5 signature: 675f070bcee2dbfd9199c8e0f155c6e2 ******/
 		%feature("compactdefaultargs") ConnexionsFrom;
 		%feature("autodoc", "
 Parameters
@@ -1061,16 +1097,16 @@ Index: int
 
 Return
 -------
-MAT2d_SequenceOfConnexion
+NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>
 
 Description
 -----------
 Returns the connexions which start on line designed by <Index>.
 ") ConnexionsFrom;
-		MAT2d_SequenceOfConnexion & ConnexionsFrom(const Standard_Integer Index);
+		NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> & ConnexionsFrom(const int Index);
 
 		/****** MAT2d_MiniPath::Father ******/
-		/****** md5 signature: 05be18adc3333f3c132390d37e3dc45d ******/
+		/****** md5 signature: 633c15c87c8dccc6301bcdb349bbb19e ******/
 		%feature("compactdefaultargs") Father;
 		%feature("autodoc", "
 Parameters
@@ -1085,10 +1121,10 @@ Description
 -----------
 Returns the connexion which ends on line designed by <Index>.
 ") Father;
-		opencascade::handle<MAT2d_Connexion> Father(const Standard_Integer Index);
+		opencascade::handle<MAT2d_Connexion> Father(const int Index);
 
 		/****** MAT2d_MiniPath::IsConnexionsFrom ******/
-		/****** md5 signature: a3d643449bb4c30a5216154cc969d2aa ******/
+		/****** md5 signature: 7c5a7eb4361392967f006e86c13e2f8f ******/
 		%feature("compactdefaultargs") IsConnexionsFrom;
 		%feature("autodoc", "
 Parameters
@@ -1103,10 +1139,10 @@ Description
 -----------
 Returns <True> if there is one Connexion which starts on line designed by <Index>.
 ") IsConnexionsFrom;
-		Standard_Boolean IsConnexionsFrom(const Standard_Integer Index);
+		bool IsConnexionsFrom(const int Index);
 
 		/****** MAT2d_MiniPath::IsRoot ******/
-		/****** md5 signature: e2b828672c99106ed633e881d7c63192 ******/
+		/****** md5 signature: c0e979ec1f11138b66c654d30fdf2013 ******/
 		%feature("compactdefaultargs") IsRoot;
 		%feature("autodoc", "
 Parameters
@@ -1121,28 +1157,28 @@ Description
 -----------
 Returns <True> if the line designed by <Index> is the root.
 ") IsRoot;
-		Standard_Boolean IsRoot(const Standard_Integer Index);
+		bool IsRoot(const int Index);
 
 		/****** MAT2d_MiniPath::Path ******/
-		/****** md5 signature: 28cbfa9e39501e27ab452cbdcdad0adb ******/
+		/****** md5 signature: a0886d0ba47ef84348d31422cdd60151 ******/
 		%feature("compactdefaultargs") Path;
 		%feature("autodoc", "Return
 -------
-MAT2d_SequenceOfConnexion
+NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>
 
 Description
 -----------
 Returns the sequence of connexions corresponding to the path.
 ") Path;
-		const MAT2d_SequenceOfConnexion & Path();
+		const NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> & Path();
 
 		/****** MAT2d_MiniPath::Perform ******/
-		/****** md5 signature: c6cf1a0b596162a4c426828ee0aee684 ******/
+		/****** md5 signature: 506fb229bfd92d2f6f8a52658c8c610c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
-Figure: MAT2d_SequenceOfSequenceOfGeometry
+Figure: NCollection_Sequence<TColGeom2d_SequenceOfGeometry >
 IndStart: int
 Sense: bool
 
@@ -1154,7 +1190,7 @@ Description
 -----------
 Computes the path to link the lines in <Figure>. the path starts on the line of index <IndStart> <Sense> = True if the Circuit turns in the trigonometric sense.
 ") Perform;
-		void Perform(const MAT2d_SequenceOfSequenceOfGeometry & Figure, const Standard_Integer IndStart, const Standard_Boolean Sense);
+		void Perform(const NCollection_Sequence<TColGeom2d_SequenceOfGeometry > & Figure, const int IndStart, const bool Sense);
 
 		/****** MAT2d_MiniPath::RunOnConnexions ******/
 		/****** md5 signature: ee2ac7d20b87c24fc63fb1334502d079 ******/
@@ -1197,7 +1233,7 @@ Empty Constructor.
 		 MAT2d_Tool2d();
 
 		/****** MAT2d_Tool2d::BisecFusion ******/
-		/****** md5 signature: b36ebe72707aecc8364523c4845ce15b ******/
+		/****** md5 signature: 00c28f02af9478a6238874fa66b8cf27 ******/
 		%feature("compactdefaultargs") BisecFusion;
 		%feature("autodoc", "
 Parameters
@@ -1213,10 +1249,10 @@ Description
 -----------
 No available documentation.
 ") BisecFusion;
-		void BisecFusion(const Standard_Integer Index1, const Standard_Integer Index2);
+		void BisecFusion(const int Index1, const int Index2);
 
 		/****** MAT2d_Tool2d::ChangeGeomBis ******/
-		/****** md5 signature: 55a028194238717752a04f3fd4cce5e3 ******/
+		/****** md5 signature: e853b99ad990055ab9ae74e770ebd657 ******/
 		%feature("compactdefaultargs") ChangeGeomBis;
 		%feature("autodoc", "
 Parameters
@@ -1231,7 +1267,7 @@ Description
 -----------
 Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 ") ChangeGeomBis;
-		Bisector_Bisec & ChangeGeomBis(const Standard_Integer Index);
+		Bisector_Bisec & ChangeGeomBis(const int Index);
 
 		/****** MAT2d_Tool2d::Circuit ******/
 		/****** md5 signature: 1e2ccb6c6c69d007d1b82b258a079b2c ******/
@@ -1265,27 +1301,27 @@ Creates the geometric bisector defined by <abisector>.
 		void CreateBisector(const opencascade::handle<MAT_Bisector> & abisector);
 
 		/****** MAT2d_Tool2d::Distance ******/
-		/****** md5 signature: c4f9e7dff727fbcecb68acd556aec01c ******/
+		/****** md5 signature: 984eca4731c33e2c059ef10410b09c4a ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
 ----------
 abisector: MAT_Bisector
-param1: float
-param2: float
+param1: double
+param2: double
 
 Return
 -------
-float
+double
 
 Description
 -----------
 Returns the distance between the two points designed by their parameters on <abisector>.
 ") Distance;
-		Standard_Real Distance(const opencascade::handle<MAT_Bisector> & abisector, const Standard_Real param1, const Standard_Real param2);
+		double Distance(const opencascade::handle<MAT_Bisector> & abisector, const double param1, const double param2);
 
 		/****** MAT2d_Tool2d::Dump ******/
-		/****** md5 signature: ed8af339d2cda3e0556fbccf04ebaaea ******/
+		/****** md5 signature: 48e17d9b3d9a825ff7206b5336acc6bb ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1301,10 +1337,10 @@ Description
 -----------
 displays information about the bisector defined by <bisector>.
 ") Dump;
-		void Dump(const Standard_Integer bisector, const Standard_Integer erease);
+		void Dump(const int bisector, const int erease);
 
 		/****** MAT2d_Tool2d::FirstPoint ******/
-		/****** md5 signature: af53facaedcf1602dca2af134e2a1e26 ******/
+		/****** md5 signature: 4734049c6ae92915a643aeaa0e9d5d8d ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "
 Parameters
@@ -1313,16 +1349,16 @@ anitem: int
 
 Return
 -------
-dist: float
+dist: double
 
 Description
 -----------
 Creates the point at the origin of the bisector between anitem and the previous item. dist is the distance from the FirstPoint to <anitem>. Returns the index of this point in <theGeomPnts>.
 ") FirstPoint;
-		Standard_Integer FirstPoint(const Standard_Integer anitem, Standard_Real &OutValue);
+		int FirstPoint(const int anitem, Standard_Real &OutValue);
 
 		/****** MAT2d_Tool2d::GeomBis ******/
-		/****** md5 signature: 2669ea1ceaf32dffb2c030ef117a0c36 ******/
+		/****** md5 signature: 55773b584e84e40c28518ab890e4257c ******/
 		%feature("compactdefaultargs") GeomBis;
 		%feature("autodoc", "
 Parameters
@@ -1337,10 +1373,10 @@ Description
 -----------
 Returns the <Bisec> of index <Index> in <theGeomBisectors>.
 ") GeomBis;
-		const Bisector_Bisec & GeomBis(const Standard_Integer Index);
+		const Bisector_Bisec & GeomBis(const int Index);
 
 		/****** MAT2d_Tool2d::GeomElt ******/
-		/****** md5 signature: 1527f25e2caa069ccf56038ebf14fb6f ******/
+		/****** md5 signature: fb56d0b494081b4bdb38291d615b40a3 ******/
 		%feature("compactdefaultargs") GeomElt;
 		%feature("autodoc", "
 Parameters
@@ -1355,10 +1391,10 @@ Description
 -----------
 Returns the Geometry of index <Index> in <theGeomElts>.
 ") GeomElt;
-		opencascade::handle<Geom2d_Geometry> GeomElt(const Standard_Integer Index);
+		opencascade::handle<Geom2d_Geometry> GeomElt(const int Index);
 
 		/****** MAT2d_Tool2d::GeomPnt ******/
-		/****** md5 signature: eb6a4e9d73821fe2a124ecb7dd200dd9 ******/
+		/****** md5 signature: 2d51e0ce334287ee44f46141a3728548 ******/
 		%feature("compactdefaultargs") GeomPnt;
 		%feature("autodoc", "
 Parameters
@@ -1373,10 +1409,10 @@ Description
 -----------
 Returns the point of index <Index> in the <theGeomPnts>.
 ") GeomPnt;
-		const gp_Pnt2d GeomPnt(const Standard_Integer Index);
+		const gp_Pnt2d GeomPnt(const int Index);
 
 		/****** MAT2d_Tool2d::GeomVec ******/
-		/****** md5 signature: fb4c975539824a5e046043581866e0a7 ******/
+		/****** md5 signature: e1b72deb278fead7465235157cb487ee ******/
 		%feature("compactdefaultargs") GeomVec;
 		%feature("autodoc", "
 Parameters
@@ -1391,7 +1427,7 @@ Description
 -----------
 Returns the vector of index <Index> in the <theGeomVecs>.
 ") GeomVec;
-		const gp_Vec2d GeomVec(const Standard_Integer Index);
+		const gp_Vec2d GeomVec(const int Index);
 
 		/****** MAT2d_Tool2d::InitItems ******/
 		/****** md5 signature: 710fae1c32a164ce6272271d003ecbb2 ******/
@@ -1412,7 +1448,7 @@ InitItems cuts the line in Items. this Items are the geometrics representations 
 		void InitItems(const opencascade::handle<MAT2d_Circuit> & aCircuit);
 
 		/****** MAT2d_Tool2d::IntersectBisector ******/
-		/****** md5 signature: 7c49aa3c8064249c2de081b0f6df8114 ******/
+		/****** md5 signature: 7054d6471c98e395b6028b9849d243d9 ******/
 		%feature("compactdefaultargs") IntersectBisector;
 		%feature("autodoc", "
 Parameters
@@ -1428,10 +1464,10 @@ Description
 -----------
 Computes the point of intersection between the bisectors defined by <bisectorone> and <bisectortwo> . If this point exists, <intpnt> is its index in <theGeomPnts> and Return the distance of the point from the bisector else Return <RealLast>.
 ") IntersectBisector;
-		Standard_Real IntersectBisector(const opencascade::handle<MAT_Bisector> & bisectorone, const opencascade::handle<MAT_Bisector> & bisectortwo, Standard_Integer &OutValue);
+		double IntersectBisector(const opencascade::handle<MAT_Bisector> & bisectorone, const opencascade::handle<MAT_Bisector> & bisectortwo, Standard_Integer &OutValue);
 
 		/****** MAT2d_Tool2d::NumberOfItems ******/
-		/****** md5 signature: 6320550c1d233b98551d924e74a6ceb4 ******/
+		/****** md5 signature: 73d110ccea72b5d023475507d3e849af ******/
 		%feature("compactdefaultargs") NumberOfItems;
 		%feature("autodoc", "Return
 -------
@@ -1441,7 +1477,7 @@ Description
 -----------
 Returns the Number of Items .
 ") NumberOfItems;
-		Standard_Integer NumberOfItems();
+		int NumberOfItems();
 
 		/****** MAT2d_Tool2d::Sense ******/
 		/****** md5 signature: 1a0b245e555341dbcd06115c68217691 ******/
@@ -1480,7 +1516,7 @@ No available documentation.
 		void SetJoinType(const GeomAbs_JoinType aJoinType);
 
 		/****** MAT2d_Tool2d::Tangent ******/
-		/****** md5 signature: ab662854e61125c88be73685fae8988e ******/
+		/****** md5 signature: c9c729531ecfa4ea7474bfbc3374286f ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -1495,10 +1531,10 @@ Description
 -----------
 Creates the Tangent at the end of the bisector defined by <bisector>. Returns the index of this vector in <theGeomVecs>.
 ") Tangent;
-		Standard_Integer Tangent(const Standard_Integer bisector);
+		int Tangent(const int bisector);
 
 		/****** MAT2d_Tool2d::TangentAfter ******/
-		/****** md5 signature: 18070da22791e48f1a9aa2ab9345bacf ******/
+		/****** md5 signature: 79f67e253d8e0403cebee3a94efa5951 ******/
 		%feature("compactdefaultargs") TangentAfter;
 		%feature("autodoc", "
 Parameters
@@ -1514,10 +1550,10 @@ Description
 -----------
 Creates the Reversed Tangent at the origin of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>.
 ") TangentAfter;
-		Standard_Integer TangentAfter(const Standard_Integer anitem, const Standard_Boolean IsOpenResult);
+		int TangentAfter(const int anitem, const bool IsOpenResult);
 
 		/****** MAT2d_Tool2d::TangentBefore ******/
-		/****** md5 signature: b181f50d015bb15af38052be8e4c2ce5 ******/
+		/****** md5 signature: 473e9cab317ea086702bba3a83b1baf7 ******/
 		%feature("compactdefaultargs") TangentBefore;
 		%feature("autodoc", "
 Parameters
@@ -1533,23 +1569,23 @@ Description
 -----------
 Creates the Tangent at the end of the Item defined by <anitem>. Returns the index of this vector in <theGeomVecs>.
 ") TangentBefore;
-		Standard_Integer TangentBefore(const Standard_Integer anitem, const Standard_Boolean IsOpenResult);
+		int TangentBefore(const int anitem, const bool IsOpenResult);
 
 		/****** MAT2d_Tool2d::ToleranceOfConfusion ******/
-		/****** md5 signature: 120f891c1d5a826cad7d45027f612828 ******/
+		/****** md5 signature: 4a195a452b5f0d3448f5dc9b0af0b975 ******/
 		%feature("compactdefaultargs") ToleranceOfConfusion;
 		%feature("autodoc", "Return
 -------
-float
+double
 
 Description
 -----------
 Returns tolerance to test the confusion of two points.
 ") ToleranceOfConfusion;
-		Standard_Real ToleranceOfConfusion();
+		double ToleranceOfConfusion();
 
 		/****** MAT2d_Tool2d::TrimBisector ******/
-		/****** md5 signature: 6c697b82711f48eb2a48c1a462be3bba ******/
+		/****** md5 signature: 0649fce80e7b9083f62b33209345e133 ******/
 		%feature("compactdefaultargs") TrimBisector;
 		%feature("autodoc", "
 Parameters
@@ -1564,10 +1600,10 @@ Description
 -----------
 Trims the geometric bisector by the <firstparameter> of <abisector>. If the parameter is out of the bisector, Return False. else Return True.
 ") TrimBisector;
-		Standard_Boolean TrimBisector(const opencascade::handle<MAT_Bisector> & abisector);
+		bool TrimBisector(const opencascade::handle<MAT_Bisector> & abisector);
 
 		/****** MAT2d_Tool2d::TrimBisector ******/
-		/****** md5 signature: ca420d516c26d6ab4100ae3c0e87448b ******/
+		/****** md5 signature: 0b4ce2595fcb4571e610bc1951ee9a85 ******/
 		%feature("compactdefaultargs") TrimBisector;
 		%feature("autodoc", "
 Parameters
@@ -1583,7 +1619,7 @@ Description
 -----------
 Trims the geometric bisector by the point of index <apoint> in <theGeomPnts>. If the point is out of the bisector, Return False. else Return True.
 ") TrimBisector;
-		Standard_Boolean TrimBisector(const opencascade::handle<MAT_Bisector> & abisector, const Standard_Integer apoint);
+		bool TrimBisector(const opencascade::handle<MAT_Bisector> & abisector, const int apoint);
 
 };
 

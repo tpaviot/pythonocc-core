@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -30,8 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopoDS_FrozenShape.hxx>
 #include<TopoDS_HShape.hxx>
 #include<TopoDS_Iterator.hxx>
-#include<TopoDS_ListIteratorOfListOfShape.hxx>
-#include<TopoDS_ListOfShape.hxx>
 #include<TopoDS_LockedShape.hxx>
 #include<TopoDS_Shape.hxx>
 #include<TopoDS_Shell.hxx>

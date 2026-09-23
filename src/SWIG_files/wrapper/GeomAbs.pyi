@@ -1,14 +1,16 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
+
 class GeomAbs_BSplKnotDistribution(IntEnum):
-    GeomAbs_NonUniform: int = ...
-    GeomAbs_Uniform: int = ...
-    GeomAbs_QuasiUniform: int = ...
-    GeomAbs_PiecewiseBezier: int = ...
+    GeomAbs_NonUniform = 0
+    GeomAbs_Uniform = 1
+    GeomAbs_QuasiUniform = 2
+    GeomAbs_PiecewiseBezier = 3
 
 GeomAbs_NonUniform = GeomAbs_BSplKnotDistribution.GeomAbs_NonUniform
 GeomAbs_Uniform = GeomAbs_BSplKnotDistribution.GeomAbs_Uniform
@@ -16,15 +18,15 @@ GeomAbs_QuasiUniform = GeomAbs_BSplKnotDistribution.GeomAbs_QuasiUniform
 GeomAbs_PiecewiseBezier = GeomAbs_BSplKnotDistribution.GeomAbs_PiecewiseBezier
 
 class GeomAbs_CurveType(IntEnum):
-    GeomAbs_Line: int = ...
-    GeomAbs_Circle: int = ...
-    GeomAbs_Ellipse: int = ...
-    GeomAbs_Hyperbola: int = ...
-    GeomAbs_Parabola: int = ...
-    GeomAbs_BezierCurve: int = ...
-    GeomAbs_BSplineCurve: int = ...
-    GeomAbs_OffsetCurve: int = ...
-    GeomAbs_OtherCurve: int = ...
+    GeomAbs_Line = 0
+    GeomAbs_Circle = 1
+    GeomAbs_Ellipse = 2
+    GeomAbs_Hyperbola = 3
+    GeomAbs_Parabola = 4
+    GeomAbs_BezierCurve = 5
+    GeomAbs_BSplineCurve = 6
+    GeomAbs_OffsetCurve = 7
+    GeomAbs_OtherCurve = 8
 
 GeomAbs_Line = GeomAbs_CurveType.GeomAbs_Line
 GeomAbs_Circle = GeomAbs_CurveType.GeomAbs_Circle
@@ -37,31 +39,31 @@ GeomAbs_OffsetCurve = GeomAbs_CurveType.GeomAbs_OffsetCurve
 GeomAbs_OtherCurve = GeomAbs_CurveType.GeomAbs_OtherCurve
 
 class GeomAbs_IsoType(IntEnum):
-    GeomAbs_IsoU: int = ...
-    GeomAbs_IsoV: int = ...
-    GeomAbs_NoneIso: int = ...
+    GeomAbs_IsoU = 0
+    GeomAbs_IsoV = 1
+    GeomAbs_NoneIso = 2
 
 GeomAbs_IsoU = GeomAbs_IsoType.GeomAbs_IsoU
 GeomAbs_IsoV = GeomAbs_IsoType.GeomAbs_IsoV
 GeomAbs_NoneIso = GeomAbs_IsoType.GeomAbs_NoneIso
 
 class GeomAbs_JoinType(IntEnum):
-    GeomAbs_Arc: int = ...
-    GeomAbs_Tangent: int = ...
-    GeomAbs_Intersection: int = ...
+    GeomAbs_Arc = 0
+    GeomAbs_Tangent = 1
+    GeomAbs_Intersection = 2
 
 GeomAbs_Arc = GeomAbs_JoinType.GeomAbs_Arc
 GeomAbs_Tangent = GeomAbs_JoinType.GeomAbs_Tangent
 GeomAbs_Intersection = GeomAbs_JoinType.GeomAbs_Intersection
 
 class GeomAbs_Shape(IntEnum):
-    GeomAbs_C0: int = ...
-    GeomAbs_G1: int = ...
-    GeomAbs_C1: int = ...
-    GeomAbs_G2: int = ...
-    GeomAbs_C2: int = ...
-    GeomAbs_C3: int = ...
-    GeomAbs_CN: int = ...
+    GeomAbs_C0 = 0
+    GeomAbs_G1 = 1
+    GeomAbs_C1 = 2
+    GeomAbs_G2 = 3
+    GeomAbs_C2 = 4
+    GeomAbs_C3 = 5
+    GeomAbs_CN = 6
 
 GeomAbs_C0 = GeomAbs_Shape.GeomAbs_C0
 GeomAbs_G1 = GeomAbs_Shape.GeomAbs_G1
@@ -72,17 +74,17 @@ GeomAbs_C3 = GeomAbs_Shape.GeomAbs_C3
 GeomAbs_CN = GeomAbs_Shape.GeomAbs_CN
 
 class GeomAbs_SurfaceType(IntEnum):
-    GeomAbs_Plane: int = ...
-    GeomAbs_Cylinder: int = ...
-    GeomAbs_Cone: int = ...
-    GeomAbs_Sphere: int = ...
-    GeomAbs_Torus: int = ...
-    GeomAbs_BezierSurface: int = ...
-    GeomAbs_BSplineSurface: int = ...
-    GeomAbs_SurfaceOfRevolution: int = ...
-    GeomAbs_SurfaceOfExtrusion: int = ...
-    GeomAbs_OffsetSurface: int = ...
-    GeomAbs_OtherSurface: int = ...
+    GeomAbs_Plane = 0
+    GeomAbs_Cylinder = 1
+    GeomAbs_Cone = 2
+    GeomAbs_Sphere = 3
+    GeomAbs_Torus = 4
+    GeomAbs_BezierSurface = 5
+    GeomAbs_BSplineSurface = 6
+    GeomAbs_SurfaceOfRevolution = 7
+    GeomAbs_SurfaceOfExtrusion = 8
+    GeomAbs_OffsetSurface = 9
+    GeomAbs_OtherSurface = 10
 
 GeomAbs_Plane = GeomAbs_SurfaceType.GeomAbs_Plane
 GeomAbs_Cylinder = GeomAbs_SurfaceType.GeomAbs_Cylinder
@@ -99,3 +101,4 @@ GeomAbs_OtherSurface = GeomAbs_SurfaceType.GeomAbs_OtherSurface
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

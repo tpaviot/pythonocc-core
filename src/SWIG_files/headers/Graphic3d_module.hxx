@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -63,6 +63,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_DataStructureManager.hxx>
 #include<Graphic3d_DiagnosticInfo.hxx>
 #include<Graphic3d_DisplayPriority.hxx>
+#include<Graphic3d_Flipper.hxx>
 #include<Graphic3d_FrameStats.hxx>
 #include<Graphic3d_FrameStatsCounter.hxx>
 #include<Graphic3d_FrameStatsData.hxx>
@@ -79,10 +80,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_Layer.hxx>
 #include<Graphic3d_LevelOfTextureAnisotropy.hxx>
 #include<Graphic3d_LightSet.hxx>
-#include<Graphic3d_MapIteratorOfMapOfStructure.hxx>
-#include<Graphic3d_MapOfAspectsToAspects.hxx>
 #include<Graphic3d_MapOfObject.hxx>
-#include<Graphic3d_MapOfStructure.hxx>
 #include<Graphic3d_MarkerImage.hxx>
 #include<Graphic3d_Mat4.hxx>
 #include<Graphic3d_Mat4d.hxx>
@@ -123,7 +121,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_Texture1Dmanual.hxx>
 #include<Graphic3d_Texture1Dsegment.hxx>
 #include<Graphic3d_Texture2D.hxx>
-#include<Graphic3d_Texture2Dmanual.hxx>
 #include<Graphic3d_Texture2Dplane.hxx>
 #include<Graphic3d_Texture3D.hxx>
 #include<Graphic3d_TextureEnv.hxx>
@@ -154,7 +151,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Graphic3d_TypeOfTextureFilter.hxx>
 #include<Graphic3d_TypeOfTextureMode.hxx>
 #include<Graphic3d_TypeOfVisualization.hxx>
-#include<Graphic3d_Vec.hxx>
 #include<Graphic3d_Vec2.hxx>
 #include<Graphic3d_Vec3.hxx>
 #include<Graphic3d_Vec4.hxx>

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -24,7 +24,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TPrsStd_AxisDriver.hxx>
 #include<TPrsStd_ConstraintDriver.hxx>
 #include<TPrsStd_ConstraintTools.hxx>
-#include<TPrsStd_DataMapIteratorOfDataMapOfGUIDDriver.hxx>
 #include<TPrsStd_DataMapOfGUIDDriver.hxx>
 #include<TPrsStd_Driver.hxx>
 #include<TPrsStd_DriverTable.hxx>

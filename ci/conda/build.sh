@@ -3,7 +3,7 @@
 # Configure step
 EXTRA_CMAKE_ARGS=""
 if [ "$(uname)" == "Darwin" ]; then
-  EXTRA_CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=10.13"
+  EXTRA_CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET=11.0"
 fi
 
 cmake -G Ninja \

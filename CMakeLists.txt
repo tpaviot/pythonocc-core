@@ -20,19 +20,26 @@ cmake_minimum_required(VERSION 3.18)
 project(PYTHONOCC)
 
 # set pythonOCC version
-set(PYTHONOCC_VERSION_MAJOR 7)
-set(PYTHONOCC_VERSION_MINOR 9)
-set(PYTHONOCC_VERSION_PATCH 3)
+set(PYTHONOCC_VERSION_MAJOR 8)
+set(PYTHONOCC_VERSION_MINOR 0)
+set(PYTHONOCC_VERSION_PATCH 1)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL )
 
 # set OCCT version
-set(OCCT_VERSION_MAJOR 7)
-set(OCCT_VERSION_MINOR 9)
-set(OCCT_VERSION_PATCH 3)
+set(OCCT_VERSION_MAJOR 8)
+set(OCCT_VERSION_MINOR 0)
+set(OCCT_VERSION_PATCH 1)
 
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+# Default to a Release build: without a build type, the modules would be
+# compiled without any optimization flag
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Debug Release RelWithDebInfo MinSizeRel)
+endif()
 
 ## cmake policies
 # CMP0078: UseSWIG generates standard target names.
@@ -60,48 +67,43 @@ if(APPLE)
   set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 endif(APPLE)
 
-#############################
-# Option_With_Default macro #
-#############################
-macro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
-  option(${OPTION_NAME} ${OPTION_STRING} ${OPTION_DEFAULT})
-endmacro(option_with_default OPTION_NAME OPTION_STRING OPTION_DEFAULT)
-
 #####################################################################
 # OpenGL. If available, enable compilation for Visualization module #
 #####################################################################
 find_package(OpenGL)
-include_directories(${OPENGL_INCLUDE_DIR})
 
 #################
 # Build options #
 #################
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/OCCT_Modules.cmake)
 # add an option to choose toolkits to compile
-if(OPENGL_FOUND)
-  option_with_default(PYTHONOCC_WRAP_VISU "Compile Visualisation" ON)
-else(OPENGL_FOUND)
-  message(WARNING "OpenGL library not found, Visualization compilation is turned OFF")
-  set(PYTHONOCC_WRAP_VISU "Compile Visualisation" OFF)
-endif(OPENGL_FOUND)
-option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
-option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
-option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
-option_with_default(OCCT_HIDE_DEPRECATED "Check this option to disable deprecation warnings for OCCT." ON)
-option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays (requires numpy dev libraries and headers)." OFF)
+# ON by default if OpenGL is found, the user choice (-D, cache) is kept
+option(PYTHONOCC_WRAP_VISU "Compile Visualisation" ${OPENGL_FOUND})
+if(PYTHONOCC_WRAP_VISU AND NOT OPENGL_FOUND)
+  message(FATAL_ERROR "PYTHONOCC_WRAP_VISU requires OpenGL, not found: install "
+                      "the OpenGL development files or pass -DPYTHONOCC_WRAP_VISU=OFF")
+endif()
+if(NOT PYTHONOCC_WRAP_VISU)
+  message(STATUS "Visualization wrapper disabled")
+endif()
+option(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
+option(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
+option(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
+option(OCCT_HIDE_DEPRECATED "Check this option to disable deprecation warnings for OCCT." ON)
+option(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays." OFF)
 
 ############
 # Python 3 #
 ############
 set(Python3_FIND_STRATEGY LOCATION)
 set(Python3_FIND_FRAMEWORK NEVER)
+# numpy is required: the Geom, Geom2d, Poly, TColStd, TColgp and TShort modules
+# use its C API. PYTHONOCC_MESHDS_NUMPY only enables the numpy arrays of MeshDS
+find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+include_directories(${Python3_NumPy_INCLUDE_DIRS})
+message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
 if(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
-    include_directories(${Python3_NumPy_INCLUDE_DIRS})
-    message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
     set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DBUILD_MESHDS_NUMPY)
-else(PYTHONOCC_MESHDS_NUMPY)
-    find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 endif(PYTHONOCC_MESHDS_NUMPY)
 message(STATUS "Python3 interpreter:" ${Python3_EXECUTABLE})
 message(STATUS "Python include directory: ${Python3_INCLUDE_DIRS}")
@@ -110,40 +112,21 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 4.2.1...4.4.1 REQUIRED)
+find_package(SWIG 4.2.1...4.5.1 REQUIRED)
 message(STATUS "SWIG version found: ${SWIG_VERSION}")
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
-set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual)
+# -fastproxy: the proxy methods are the wrapper functions themselves, rather
+# than python functions calling them: faster calls, smaller .py modules
+set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual -fastproxy)
 if(SWIG_HIDE_WARNINGS)
   message(STATUS "Disabled SWIG warnings")
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -w302,303,401,402,412,314,509,512,504,325,503,520,350,351,383,389,394,395,404,476)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
   add_definitions(-DSWIG_PYTHON_SILENT_MEMLEAK)
 endif(CMAKE_BUILD_TYPE STREQUAL "Release")
-
-#########################
-# On Windows, see #1347 #
-#########################
-if(WIN32 AND OCCT_ESSENTIALS_ROOT)
-  # Générer le fichier config.py.in
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/config.py.in
-  "# Configuration file generated by CMake
-
-OCCT_ESSENTIALS_ROOT = \"@OCCT_ESSENTIALS_ROOT@\"
-  ")
-  configure_file(
-      ${CMAKE_CURRENT_BINARY_DIR}/config.py.in
-      ${CMAKE_CURRENT_BINARY_DIR}/config.py
-      @ONLY
-  )
-  set(OCCT_ESSENTIALS_PATH ${OCCT_ESSENTIALS_ROOT})
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.py
-          DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}
-  )
-endif()
 
 ################################
 # OCE include and lib location #
@@ -162,20 +145,13 @@ if(DEFINED OCCT_INCLUDE_DIR)
   include_directories(${OCCT_INCLUDE_DIR})
   link_directories(${OCCT_LIBRARY_DIR})
 # if OCCT_INCLUDE_DIR is not passed at command line,
-# find OCE automatically
+# find OpenCASCADE automatically through its cmake package config
 else(OCCT_INCLUDE_DIR)
   find_package(OpenCASCADE ${OCCT_VERSION_MAJOR}.${OCCT_VERSION_MINOR}.${OCCT_VERSION_PATCH} EXACT REQUIRED)
-  if(OpenCASCADE_FOUND)
-    message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
-    message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
-    message(STATUS "OpenCASCADE binary directory: " ${OpenCASCADE_BINARY_DIR})
-    include_directories(${OpenCASCADE_INCLUDE_DIR})
-  else(OpenCASCADE_FOUND)  # set default paths
-    set(OCCT_INCLUDE_DIR /usr/local/include/opencascade CACHE PATH "OpenCASCADE include path")
-    set(OCCT_LIBRARY_DIR /usr/local/lib CACHE PATH "OpenCASCADE lib path")
-    include_directories(${OCCT_INCLUDE_DIR})
-    link_directories(${OCCT_LIBRARY_DIR})
-  endif(OpenCASCADE_FOUND)
+  message(STATUS "OpenCASCADE version found: " ${OpenCASCADE_MAJOR_VERSION} "." ${OpenCASCADE_MINOR_VERSION} "." ${OpenCASCADE_MAINTENANCE_VERSION})
+  message(STATUS "OpenCASCADE include directory: " ${OpenCASCADE_INCLUDE_DIR})
+  message(STATUS "OpenCASCADE binary directory: " ${OpenCASCADE_BINARY_DIR})
+  include_directories(${OpenCASCADE_INCLUDE_DIR})
 endif(DEFINED OCCT_INCLUDE_DIR)
 
 # After the OCC paths are properly set up,
@@ -205,6 +181,28 @@ if(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
 endif(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
 
 message(STATUS "pythonocc modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
+
+#########################
+# On Windows, see #1347 #
+#########################
+# Generate a config.py file recording the OCCT_ESSENTIALS_ROOT path, imported
+# at runtime by OCC/__init__.py. Must come after PYTHONOCC_INSTALL_DIRECTORY
+# is set, otherwise the file is installed to the prefix root.
+if(WIN32 AND OCCT_ESSENTIALS_ROOT)
+  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/config.py.in
+  "# Configuration file generated by CMake
+
+OCCT_ESSENTIALS_ROOT = \"@OCCT_ESSENTIALS_ROOT@\"
+  ")
+  configure_file(
+      ${CMAKE_CURRENT_BINARY_DIR}/config.py.in
+      ${CMAKE_CURRENT_BINARY_DIR}/config.py
+      @ONLY
+  )
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/config.py
+          DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}
+  )
+endif()
 
 #############################################
 # List of OCE shared libraries to link with #
@@ -249,13 +247,13 @@ if(UNIX)
     ######### Unix/Linux ###########
     set(PLATFORM Unix)
   endif(APPLE)
-  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H -DSWIG_PYTHON_SILENT_MEMLEAK)
+  set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DHAVE_CONFIG_H)
   add_definitions(-DHAVE_CONFIG_H -DCSFDB)
 else(UNIX)
   if(WIN32)
     ######### Windows ###########
     add_definitions(-DWNT -DWIN32 -D_WINDOWS -DCSFDB -DHAVE_CONFIG_H)
-    set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DWIN32 -D_WINDOWS -DSWIG_PYTHON_SILENT_MEMLEAK)
+    set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -DCSFDB -DWIN32 -D_WINDOWS)
     set(PLATFORM win)
   else(WIN32)
     message(STATUS "Unknown platform")
@@ -266,9 +264,7 @@ endif(UNIX)
 # Define output path for generated libraries:  #
 # platform/compiler-build_type-bits            #
 # for instance:                                #
-#     ./win32/bin/vc7.1-release-64             #
-#     ./win32/bin/vc9-debug-32                 #
-#     ./Unix/i386-debug-64                     #
+#     ./Unix/x86_64-Release                   #
 ################################################
 if(WIN32)
   if(MSVC) # The compiler used is MSVC
@@ -277,20 +273,19 @@ if(WIN32)
     # prevent bigobj fatal error C1148 issue, and remove C4244 verbose warning
     add_definitions("/bigobj /wd4244 /wd4251 /wd4275 /wd4290")
   elseif (BORLAND) # The compiler used is BORLAND
-    set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
+    set(LIBRARY_OUTPUT_PATH win/bin/${CMAKE_BUILD_TYPE})
   else()
-    set(LIBRARY_OUTPUT_PATH win${BIT}/bin/${CMAKE_BUILD_TYPE})
+    set(LIBRARY_OUTPUT_PATH win/bin/${CMAKE_BUILD_TYPE})
   endif()
   set(EXECUTABLE_OUTPUT_PATH ${LIBRARY_OUTPUT_PATH})
 else(WIN32)
-  set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE}-${BIT})
+  set(LIBRARY_OUTPUT_PATH ${PLATFORM}/${CMAKE_SYSTEM_PROCESSOR}-${CMAKE_BUILD_TYPE})
 endif(WIN32)
 set(CMAKE_SWIG_OUTDIR ${LIBRARY_OUTPUT_PATH})
 
 ##################
 # MODEL Toolkits #
 ##################
-file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${SWIG_FILES_PATH})
 foreach(OCCT_MODULE ${OCCT_TOOLKIT_MODEL})
     set(FILE ${SWIG_FILES_PATH}/${OCCT_MODULE}.i)
     set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
@@ -301,7 +296,6 @@ endforeach(OCCT_MODULE)
 ###############
 # Tessellator #
 ###############
-execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Tesselator)
 set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselator.i PROPERTIES CPLUSPLUS ON)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator)
 set(TESSELATOR_SOURCE_FILES
@@ -315,10 +309,7 @@ target_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
 # Visualisation #
 #################
 if(PYTHONOCC_WRAP_VISU)
-    find_package(OpenGL REQUIRED)
-    if(OPENGL_FOUND)
-      message(STATUS "OpenGL found; Visualization support enabled")
-    endif()
+    message(STATUS "OpenGL found; Visualization support enabled")
     include_directories(${OPENGL_INCLUDE_DIR})
 
     foreach(OCCT_MODULE ${OCCT_TOOLKIT_VISUALIZATION})
@@ -329,8 +320,6 @@ if(PYTHONOCC_WRAP_VISU)
     endforeach(OCCT_MODULE)
 
   # Build third part modules
-  # TODO : the following line is strange but necessary
-  execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Visualization)
   set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization/Visualization.i PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Visualization)
   set(VISUALIZATION_SOURCE_FILES
@@ -349,7 +338,6 @@ if(PYTHONOCC_WRAP_VISU)
   ##########################
   # MeshDS module addition #
   ##########################
-  execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/MeshDataSource)
   set(FILE ${SWIG_FILES_PATH}/MeshDS.i)
   set_source_files_properties(${FILE} PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/MeshDataSource)
@@ -390,7 +378,6 @@ endif(PYTHONOCC_WRAP_OCAF)
 # Addons #
 ##########
 if(PYTHONOCC_WRAP_VISU)
-  execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory src/Addons)
   set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons/Addons.i PROPERTIES CPLUSPLUS ON)
   include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Addons)
   set(ADDONS_SOURCE_FILES

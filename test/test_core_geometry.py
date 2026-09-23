@@ -17,10 +17,17 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+import gc
+import math
+
+import pytest
+
 from OCC.Core.gp import (
     gp,
     gp_Pnt,
     gp_Pnt2d,
+    gp_Ax2,
+    gp_Ax2d,
     gp_Ax3,
     gp_Vec,
     gp_Pln,
@@ -47,6 +54,7 @@ from OCC.Core.Geom import (
     Geom_RectangularTrimmedSurface,
     Geom_BSplineCurve,
     Geom_Ellipse,
+    Geom_Curve,
 )
 from OCC.Core.GeomAPI import (
     GeomAPI_PointsToBSpline,
@@ -92,7 +100,20 @@ from OCC.Core.GeomFill import (
     GeomFill_IsGuidePlanWithContact,
 )
 from OCC.Core.Convert import Convert_TgtThetaOver2
-from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
+from OCC.Core.BRepLProp import BRepLProp_SLProps
+from OCC.Core.GeomLProp import GeomLProp_CLProps, GeomLProp_SLProps
+from OCC.Core.Extrema import Extrema_ExtPC
+from OCC.Core.Bnd import Bnd_B3d
+from OCC.Core.math import math_IntegerVector
+from OCC.Core.GeomEval import (
+    GeomEval_CircularHelixCurve,
+    GeomEval_EllipsoidSurface,
+    GeomEval_HyperboloidSurface,
+)
+from OCC.Core.Geom2dEval import Geom2dEval_ArchimedeanSpiralCurve
+from OCC.Core.GeomAdaptor import GeomAdaptor_Curve, GeomAdaptor_Surface
+from OCC.Core.GeomBndLib import GeomBndLib_Curve, GeomBndLib_Surface
 
 #
 # Utility functions
@@ -709,3 +730,99 @@ def test_curve_adaptor():
     #     assert
     #         isinstance(BRepAdaptor_Curve(ed1).Curve().Curve(), Geom_Curve)
     #     )
+
+
+def test_geom_eval_curves_and_surfaces():
+    # GeomEval/Geom2dEval packages, new in occt 8.0
+    helix = GeomEval_CircularHelixCurve(gp_Ax2(), 10.0, 5.0)
+    assert isinstance(helix, Geom_Curve)
+    # after one turn, back on the circle, one pitch higher
+    assert helix.Value(2 * math.pi).IsEqual(gp_Pnt(10.0, 0.0, 5.0), 1e-9)
+    ellipsoid = GeomEval_EllipsoidSurface(gp_Ax3(), 3.0, 2.0, 1.0)
+    assert ellipsoid.Value(0.0, 0.0).IsEqual(gp_Pnt(3.0, 0.0, 0.0), 1e-9)
+    two_sheets = GeomEval_HyperboloidSurface.SheetMode.TwoSheets
+    hyperboloid = GeomEval_HyperboloidSurface(gp_Ax3(), 1.0, 1.0, two_sheets)
+    assert hyperboloid.Mode() == two_sheets
+    # r = r0 + growth_rate * theta
+    spiral = Geom2dEval_ArchimedeanSpiralCurve(
+        gp_Ax2d(gp_Pnt2d(0.0, 0.0), gp_Dir2d(1.0, 0.0)), 1.0, 2.0
+    )
+    assert spiral.Value(math.pi).IsEqual(gp_Pnt2d(-1.0 - 2.0 * math.pi, 0.0), 1e-9)
+
+
+def test_geom_bnd_lib():
+    # GeomBndLib package, new in occt 8.0
+    circle = Geom_Circle(gp_Ax2(), 10.0)
+    box = GeomBndLib_Curve(circle).Box(0.0)
+    assert box.Get() == pytest.approx((-10.0, -10.0, 0.0, 10.0, 10.0, 0.0))
+    sphere = Geom_SphericalSurface(gp_Ax3(), 2.0)
+    box = GeomBndLib_Surface(sphere).Box(0.0)
+    assert box.Get() == pytest.approx((-2.0, -2.0, -2.0, 2.0, 2.0, 2.0))
+
+
+def test_geom_bnd_lib_keeps_adaptor_alive():
+    # GeomBndLib_Curve only stores a pointer to the adaptor, which must not
+    # be garbage collected while the GeomBndLib_Curve is used
+    bnd_curve = GeomBndLib_Curve(GeomAdaptor_Curve(Geom_Circle(gp_Ax2(), 10.0)))
+    bnd_surface = GeomBndLib_Surface(
+        GeomAdaptor_Surface(Geom_SphericalSurface(gp_Ax3(), 2.0))
+    )
+    gc.collect()
+    box = bnd_curve.BoxOptimal(0.0)
+    assert box.Get() == pytest.approx((-10.0, -10.0, 0.0, 10.0, 10.0, 0.0))
+    box = bnd_surface.BoxOptimal(0.0)
+    assert box.Get() == pytest.approx((-2.0, -2.0, -2.0, 2.0, 2.0, 2.0))
+
+
+def test_surface_local_properties():
+    # BRepLProp_SLProps and GeomLProp_SLProps are aliases of the
+    # GeomLProp_SLPropsBase template since occt 8.0
+    sphere = Geom_SphericalSurface(gp_Ax3(), 2.0)
+    props = GeomLProp_SLProps(sphere, 0.3, 0.4, 2, 1e-6)
+    # occt 8.0.1: the curvature getters are written
+    # RequireCurvature(*this, myGausCurv), so the stored value is passed by
+    # value before IsCurvatureDefined() computes it. The first getter called
+    # on fresh parameters returns 0.0 unless IsCurvatureDefined() is called
+    # first, which is the documented way to use these classes anyway.
+    assert props.IsCurvatureDefined()
+    assert props.GaussianCurvature() == pytest.approx(0.25)
+    assert abs(props.MeanCurvature()) == pytest.approx(0.5)
+    assert props.Value().Distance(gp_Pnt()) == pytest.approx(2.0)
+    # the same, on a face
+    face = BRepBuilderAPI_MakeFace(sphere, 1e-6).Face()
+    props = BRepLProp_SLProps(BRepAdaptor_Surface(face), 2, 1e-6)
+    props.SetParameters(1.0, -0.5)
+    assert props.IsCurvatureDefined()
+    assert props.GaussianCurvature() == pytest.approx(0.25)
+    assert props.MinCurvature() == pytest.approx(props.MaxCurvature())
+    assert props.IsNormalDefined()
+    assert props.Normal().IsParallel(gp_Dir(gp_Vec(gp_Pnt(), props.Value())), 1e-9)
+
+
+@pytest.mark.xfail(
+    strict=False,
+    reason="occt 8.0.1 evaluates the curvature value before computing it",
+)
+def test_surface_local_properties_first_getter():
+    # documents the occt 8.0.1 bug worked around in
+    # test_surface_local_properties: passes once fixed upstream
+    props = GeomLProp_SLProps(Geom_SphericalSurface(gp_Ax3(), 2.0), 0.3, 0.4, 2, 1e-6)
+    assert props.GaussianCurvature() == pytest.approx(0.25)
+
+
+def test_occt8_template_aliases():
+    # classes that occt 8.0 turned into aliases of class templates, wrapped
+    # as %template instantiations
+    circle = Geom_Circle(gp_Ax2(), 3.0)
+    assert GeomLProp_CLProps(circle, 0.5, 2, 1e-6).Curvature() == pytest.approx(1 / 3)
+    extrema = Extrema_ExtPC(gp_Pnt(10.0, 0.0, 0.0), GeomAdaptor_Curve(circle))
+    assert extrema.IsDone() and extrema.NbExt() == 2
+    assert min(
+        extrema.SquareDistance(i) for i in range(1, extrema.NbExt() + 1)
+    ) == pytest.approx(49.0)
+    box = Bnd_B3d()
+    box.Add(gp_Pnt(0.0, 0.0, 0.0).XYZ())
+    box.Add(gp_Pnt(1.0, 2.0, 3.0).XYZ())
+    assert not box.IsVoid()
+    assert box.CornerMax().Z() == pytest.approx(3.0)
+    assert math_IntegerVector(1, 3, 7).Length() == 3

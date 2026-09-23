@@ -1,185 +1,162 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
-NCollection_String = NewType("NCollection_String", NCollection_Utf8String)
-# the following typedef cannot be wrapped as is
-NCollection_Utf16Iter = NewType("NCollection_Utf16Iter", Any)
-# the following typedef cannot be wrapped as is
-NCollection_Utf16String = NewType("NCollection_Utf16String", Any)
-# the following typedef cannot be wrapped as is
-NCollection_Utf32Iter = NewType("NCollection_Utf32Iter", Any)
-# the following typedef cannot be wrapped as is
-NCollection_Utf32String = NewType("NCollection_Utf32String", Any)
-# the following typedef cannot be wrapped as is
-NCollection_Utf8Iter = NewType("NCollection_Utf8Iter", Any)
-# the following typedef cannot be wrapped as is
-NCollection_Utf8String = NewType("NCollection_Utf8String", Any)
-# the following typedef cannot be wrapped as is
-NCollection_UtfWideIter = NewType("NCollection_UtfWideIter", Any)
-# the following typedef cannot be wrapped as is
-NCollection_UtfWideString = NewType("NCollection_UtfWideString", Any)
-Standard_Size = NewType("Standard_Size", int)
+
+
+class NCollection_String:
+    def __init__(self, *args: Any, **kwargs: Any) -> None: ...
+    def __getattr__(self, name: str) -> Any: ...
 
 class NCollection_CellFilter_Action(IntEnum):
-    CellFilter_Keep: int = ...
-    CellFilter_Purge: int = ...
+    CellFilter_Keep = 0
+    CellFilter_Purge = 1
 
 CellFilter_Keep = NCollection_CellFilter_Action.CellFilter_Keep
 CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AccAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AliasedArray: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AlignedAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Allocator: ...
 
-# classnotwrapped
-class NCollection_Array1: ...
-
-# classnotwrapped
-class NCollection_Array2: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseAllocator: ...
 
-# classnotwrapped
-class NCollection_BaseList: ...
-
-# classnotwrapped
-class NCollection_BaseMap: ...
-
-# classnotwrapped
-class NCollection_BasePointerVector: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_SeqNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseSequence: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Buffer: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_CellFilter: ...
 
-# classnotwrapped
-class NCollection_CellFilter_InspectorXYZ: ...
-
-# classnotwrapped
-class NCollection_CellFilter_InspectorXY: ...
-
-# classnotwrapped
-class NCollection_DataMap: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_DefaultHasher: ...
 
-# classnotwrapped
-class NCollection_DoubleMap: ...
-
-# classnotwrapped
-class NCollection_DynamicArray: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_EBTree: ...
 
-# classnotwrapped
+#classnotwrapped
+class NCollection_FlatDataMap: ...
+
+#classnotwrapped
+class NCollection_FlatMap: ...
+
+#classnotwrapped
 class NCollection_Handle: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_HeapAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_IncAllocator: ...
 
-# classnotwrapped
-class NCollection_IndexedDataMap: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_IndexedIterator: ...
 
-# classnotwrapped
-class NCollection_IndexedMap: ...
+#classnotwrapped
+class KeyValueRef: ...
 
-# classnotwrapped
+#classnotwrapped
+class KeyValueIndexRef: ...
+
+#classnotwrapped
+class KeyIndexRef: ...
+
+#classnotwrapped
+class Iterator: ...
+
+#classnotwrapped
+class View: ...
+
+#classnotwrapped
+class tuple_size: ...
+
+#classnotwrapped
+class tuple_element: ...
+
+#classnotwrapped
 class NCollection_Iterator: ...
 
-# classnotwrapped
+#classnotwrapped
+class NCollection_KDTree: ...
+
+#classnotwrapped
 class NCollection_Lerp: ...
 
-# classnotwrapped
-class NCollection_List: ...
+#classnotwrapped
+class NCollection_LinearVector: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_ListNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_LocalArray: ...
 
-# classnotwrapped
-class NCollection_Map: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_Mat3: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Mat4: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_OccAllocator: ...
 
-# classnotwrapped
-class NCollection_Sequence: ...
+#classnotwrapped
+class NCollection_OrderedDataMap: ...
 
-# classnotwrapped
+#classnotwrapped
+class NCollection_OrderedMap: ...
+
+#classnotwrapped
+class NCollection_PackedMap: ...
+
+#classnotwrapped
 class NCollection_Shared: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_SparseArray: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_SparseArrayBase: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_StlIterator: ...
 
-# classnotwrapped
-class NCollection_TListIterator: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_TListNode: ...
 
-# classnotwrapped
-class NCollection_UBTree: ...
-
-# classnotwrapped
-class NCollection_UBTreeFiller: ...
-
-# classnotwrapped
+#classnotwrapped
 class NCollection_UtfIterator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_UtfString: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec2: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec3: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec4: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_WinHeapAllocator: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

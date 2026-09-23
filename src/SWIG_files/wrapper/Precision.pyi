@@ -1,14 +1,18 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
+
 
 class precision:
     @staticmethod
     def Angular() -> float: ...
     @staticmethod
     def Approximation() -> float: ...
+    @staticmethod
+    def Computational() -> float: ...
     @staticmethod
     def Confusion() -> float: ...
     @staticmethod
@@ -46,6 +50,8 @@ class precision:
     @staticmethod
     def Parametric(P: float) -> float: ...
     @staticmethod
+    def SquareComputational() -> float: ...
+    @staticmethod
     def SquareConfusion() -> float: ...
     @staticmethod
     def SquarePConfusion() -> float: ...
@@ -53,3 +59,4 @@ class precision:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

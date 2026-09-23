@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -47,6 +47,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_ncollection.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 
 %pythoncode {
@@ -58,12 +59,10 @@ from OCC.Core.Exception import *
 %include "Standard_Macro.hxx";
 %include "Standard_DefineAlloc.hxx";
 %include "NCollection_DefineAlloc.hxx";
-%include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";
 %include "NCollection_Array2.hxx";
 %include "NCollection_BaseList.hxx";
 %include "NCollection_BaseMap.hxx";
-%include "NCollection_BasePointerVector.hxx";
 %include "NCollection_Map.hxx";
 %include "NCollection_List.hxx";
 %include "NCollection_Sequence.hxx";
@@ -71,11 +70,116 @@ from OCC.Core.Exception import *
 %include "NCollection_IndexedMap.hxx";
 %include "NCollection_IndexedDataMap.hxx";
 %include "NCollection_DoubleMap.hxx";
+// occt-800: HArray1/HArray2/HSequence are now plain template classes
+// (the DEFINE_HARRAY1 / DEFINE_HSEQUENCE macros were removed). Declare
+// SWIG-visible templates inheriting only from Standard_Transient so that
+// %wrap_handle / %make_alias keep working without dragging the
+// NCollection_Array1<T> base (which would force T to be a complete type
+// in every translation unit that references the template instantiation).
+template <typename TheItemType>
+class NCollection_HArray1 : public Standard_Transient
+{
+public:
+  NCollection_HArray1();
+  NCollection_HArray1(const int theLower, const int theUpper);
+  NCollection_HArray1(const int theLower, const int theUpper, const TheItemType& theValue);
+  int Lower() const;
+  int Upper() const;
+  int Length() const;
+  int Size() const;
+  bool IsEmpty() const;
+  void SetValue(const int theIndex, const TheItemType& theItem);
+  const TheItemType& Value(const int theIndex) const;
+  TheItemType& ChangeValue(const int theIndex);
+  const TheItemType& First() const;
+  const TheItemType& Last() const;
+  void Init(const TheItemType& theValue);
+};
+
+template <typename TheItemType>
+class NCollection_HArray2 : public Standard_Transient
+{
+public:
+  NCollection_HArray2(const int theRowLower, const int theRowUpper,
+                      const int theColLower, const int theColUpper);
+  NCollection_HArray2(const int theRowLower, const int theRowUpper,
+                      const int theColLower, const int theColUpper,
+                      const TheItemType& theValue);
+  int LowerRow() const;
+  int UpperRow() const;
+  int LowerCol() const;
+  int UpperCol() const;
+  int NbRows() const;
+  int NbColumns() const;
+  void SetValue(const int theRow, const int theCol, const TheItemType& theItem);
+  const TheItemType& Value(const int theRow, const int theCol) const;
+  TheItemType& ChangeValue(const int theRow, const int theCol);
+  void Init(const TheItemType& theValue);
+};
+
+// occt-800: NCollection_PackedMap is a heavily-templated class with
+// constexpr/std::conditional that SWIG cannot fully parse. Declare a
+// minimal SWIG-visible shim so %template instantiations like
+// `TColStd_PackedMapOfInteger = NCollection_PackedMap<int>` link and
+// expose the small surface that pythonocc users actually need.
+template <typename IntType>
+class NCollection_PackedMap
+{
+public:
+  NCollection_PackedMap();
+  size_t Size() const;
+  size_t Extent() const;
+  size_t NbBuckets() const;
+  bool IsEmpty() const;
+  void Clear();
+  bool Add(IntType theValue);
+  bool Contains(IntType theValue) const;
+  bool Remove(IntType theValue);
+};
+
+template <typename TheItemType>
+class NCollection_HSequence : public Standard_Transient
+{
+public:
+  NCollection_HSequence();
+  int Size() const;
+  int Length() const;
+  bool IsEmpty() const;
+  void Clear();
+  void Append(const TheItemType& theItem);
+  void Prepend(const TheItemType& theItem);
+  void Reverse();
+  const TheItemType& First() const;
+  const TheItemType& Last() const;
+  const TheItemType& Value(const int theIndex) const;
+  void SetValue(const int theIndex, const TheItemType& theItem);
+  void Remove(const int theIndex);
+};
 %include "NCollection_DefineAlloc.hxx";
 %include "NCollection_UBTree.hxx";
 %include "NCollection_UBTreeFiller.hxx";
 %include "NCollection_Lerp.hxx";
 %include "NCollection_Vector.hxx";
+// occt-800: NCollection_DynamicArray is a header-only template (built on
+// NCollection_LinearVector since 8.0.0). Forward-declare a minimal wrapper so
+// %template instantiations like NCollection_DynamicArray<X> link.
+template <class TheItemType>
+class NCollection_DynamicArray
+{
+public:
+  NCollection_DynamicArray();
+  NCollection_DynamicArray(const size_t theIncrement);
+  size_t Length() const;
+  size_t Size() const;
+  bool IsEmpty() const;
+  void Clear();
+  const TheItemType& Value(const size_t theIndex) const;
+  const TheItemType& First() const;
+  const TheItemType& Last() const;
+  TheItemType& ChangeValue(const size_t theIndex);
+  void Append(const TheItemType& theValue);
+  void SetValue(const size_t theIndex, const TheItemType& theValue);
+};
 %include "NCollection_Vec2.hxx";
 %include "NCollection_Vec3.hxx";
 %include "NCollection_Vec4.hxx";
@@ -112,29 +216,22 @@ CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge
 /* end python proxy for enums */
 
 /* templates */
-%template(NCollection_Utf16Iter) NCollection_UtfIterator<Standard_Utf16Char>;
-%template(NCollection_Utf16String) NCollection_UtfString<Standard_Utf16Char>;
-%template(NCollection_Utf32Iter) NCollection_UtfIterator<Standard_Utf32Char>;
-%template(NCollection_Utf32String) NCollection_UtfString<Standard_Utf32Char>;
-%template(NCollection_Utf8Iter) NCollection_UtfIterator<Standard_Utf8Char>;
-%template(NCollection_Utf8String) NCollection_UtfString<Standard_Utf8Char>;
-%template(NCollection_UtfWideIter) NCollection_UtfIterator<Standard_WideChar>;
-%template(NCollection_UtfWideString) NCollection_UtfString<Standard_WideChar>;
+%template(NCollection_String) NCollection_UtfString<char>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_Utf8String NCollection_String;
-typedef NCollection_UtfIterator<Standard_Utf16Char> NCollection_Utf16Iter;
-typedef NCollection_UtfString<Standard_Utf16Char> NCollection_Utf16String;
-typedef NCollection_UtfIterator<Standard_Utf32Char> NCollection_Utf32Iter;
-typedef NCollection_UtfString<Standard_Utf32Char> NCollection_Utf32String;
-typedef NCollection_UtfIterator<Standard_Utf8Char> NCollection_Utf8Iter;
-typedef NCollection_UtfString<Standard_Utf8Char> NCollection_Utf8String;
-typedef NCollection_UtfIterator<Standard_WideChar> NCollection_UtfWideIter;
-typedef NCollection_UtfString<Standard_WideChar> NCollection_UtfWideString;
-typedef size_t Standard_Size;
+typedef NCollection_UtfString<char> NCollection_String;
 /* end typedefs declaration */
 
+/********************
+* class KeyIndexRef *
+********************/
+/*************************
+* class KeyValueIndexRef *
+*************************/
+/********************
+* class KeyValueRef *
+********************/
 /*********************************
 * class NCollection_AliasedArray *
 *********************************/
@@ -153,9 +250,6 @@ typedef size_t Standard_Size;
 /****************************
 * class NCollection_BaseMap *
 ****************************/
-/**************************************
-* class NCollection_BasePointerVector *
-**************************************/
 /*********************************
 * class NCollection_BaseSequence *
 *********************************/
@@ -165,18 +259,18 @@ typedef size_t Standard_Size;
 /*******************************
 * class NCollection_CellFilter *
 *******************************/
-/*******************************************
-* class NCollection_CellFilter_InspectorXY *
-*******************************************/
-/********************************************
-* class NCollection_CellFilter_InspectorXYZ *
-********************************************/
 /**********************************
 * class NCollection_DefaultHasher *
 **********************************/
 /*********************************
 * class NCollection_DynamicArray *
 *********************************/
+/********************************
+* class NCollection_FlatDataMap *
+********************************/
+/****************************
+* class NCollection_FlatMap *
+****************************/
 /***************************
 * class NCollection_Handle *
 ***************************/
@@ -186,9 +280,15 @@ typedef size_t Standard_Size;
 /*****************************
 * class NCollection_Iterator *
 *****************************/
+/***************************
+* class NCollection_KDTree *
+***************************/
 /*************************
 * class NCollection_Lerp *
 *************************/
+/*********************************
+* class NCollection_LinearVector *
+*********************************/
 /*****************************
 * class NCollection_ListNode *
 *****************************/
@@ -204,6 +304,9 @@ typedef size_t Standard_Size;
 /*********************************
 * class NCollection_OccAllocator *
 *********************************/
+/******************************
+* class NCollection_PackedMap *
+******************************/
 /****************************
 * class NCollection_SeqNode *
 ****************************/
@@ -234,6 +337,42 @@ typedef size_t Standard_Size;
 /*************************
 * class NCollection_Vec4 *
 *************************/
+/*************
+* class View *
+*************/
+/************************************************************************
+* class tuple_element<0,NCollection_ItemsView::KeyIndexRef<TheKeyType>> *
+************************************************************************/
+/**************************************************************************************************
+* class tuple_element<0,NCollection_ItemsView::KeyValueIndexRef<TheKeyType,TheValueType,IsConst>> *
+**************************************************************************************************/
+/*********************************************************************************************
+* class tuple_element<0,NCollection_ItemsView::KeyValueRef<TheKeyType,TheValueType,IsConst>> *
+*********************************************************************************************/
+/************************************************************************
+* class tuple_element<1,NCollection_ItemsView::KeyIndexRef<TheKeyType>> *
+************************************************************************/
+/**************************************************************************************************
+* class tuple_element<1,NCollection_ItemsView::KeyValueIndexRef<TheKeyType,TheValueType,IsConst>> *
+**************************************************************************************************/
+/*********************************************************************************************
+* class tuple_element<1,NCollection_ItemsView::KeyValueRef<TheKeyType,TheValueType,IsConst>> *
+*********************************************************************************************/
+/**************************************************************************************************
+* class tuple_element<2,NCollection_ItemsView::KeyValueIndexRef<TheKeyType,TheValueType,IsConst>> *
+**************************************************************************************************/
+/*******************************************************************
+* class tuple_size<NCollection_ItemsView::KeyIndexRef<TheKeyType>> *
+*******************************************************************/
+/*********************************************************************************************
+* class tuple_size<NCollection_ItemsView::KeyValueIndexRef<TheKeyType,TheValueType,IsConst>> *
+*********************************************************************************************/
+/****************************************************************************************
+* class tuple_size<NCollection_ItemsView::KeyValueRef<TheKeyType,TheValueType,IsConst>> *
+****************************************************************************************/
+/*****************
+* class Iterator *
+*****************/
 /*********************************
 * class NCollection_AccAllocator *
 *********************************/
@@ -252,6 +391,15 @@ typedef size_t Standard_Size;
 /***************************
 * class NCollection_EBTree *
 ***************************/
+/****************************
+* class NCollection_HArray1 *
+****************************/
+/****************************
+* class NCollection_HArray2 *
+****************************/
+/******************************
+* class NCollection_HSequence *
+******************************/
 /**********************************
 * class NCollection_HeapAllocator *
 **********************************/
@@ -270,6 +418,12 @@ typedef size_t Standard_Size;
 /************************
 * class NCollection_Map *
 ************************/
+/***********************************
+* class NCollection_OrderedDataMap *
+***********************************/
+/*******************************
+* class NCollection_OrderedMap *
+*******************************/
 /*****************************
 * class NCollection_Sequence *
 *****************************/
@@ -307,27 +461,7 @@ class NCollection_Allocator:
 	pass
 
 @classnotwrapped
-class NCollection_Array1:
-	pass
-
-@classnotwrapped
-class NCollection_Array2:
-	pass
-
-@classnotwrapped
 class NCollection_BaseAllocator:
-	pass
-
-@classnotwrapped
-class NCollection_BaseList:
-	pass
-
-@classnotwrapped
-class NCollection_BaseMap:
-	pass
-
-@classnotwrapped
-class NCollection_BasePointerVector:
 	pass
 
 @classnotwrapped
@@ -347,31 +481,19 @@ class NCollection_CellFilter:
 	pass
 
 @classnotwrapped
-class NCollection_CellFilter_InspectorXYZ:
-	pass
-
-@classnotwrapped
-class NCollection_CellFilter_InspectorXY:
-	pass
-
-@classnotwrapped
-class NCollection_DataMap:
-	pass
-
-@classnotwrapped
 class NCollection_DefaultHasher:
 	pass
 
 @classnotwrapped
-class NCollection_DoubleMap:
-	pass
-
-@classnotwrapped
-class NCollection_DynamicArray:
-	pass
-
-@classnotwrapped
 class NCollection_EBTree:
+	pass
+
+@classnotwrapped
+class NCollection_FlatDataMap:
+	pass
+
+@classnotwrapped
+class NCollection_FlatMap:
 	pass
 
 @classnotwrapped
@@ -387,15 +509,35 @@ class NCollection_IncAllocator:
 	pass
 
 @classnotwrapped
-class NCollection_IndexedDataMap:
-	pass
-
-@classnotwrapped
 class NCollection_IndexedIterator:
 	pass
 
 @classnotwrapped
-class NCollection_IndexedMap:
+class KeyValueRef:
+	pass
+
+@classnotwrapped
+class KeyValueIndexRef:
+	pass
+
+@classnotwrapped
+class KeyIndexRef:
+	pass
+
+@classnotwrapped
+class Iterator:
+	pass
+
+@classnotwrapped
+class View:
+	pass
+
+@classnotwrapped
+class tuple_size:
+	pass
+
+@classnotwrapped
+class tuple_element:
 	pass
 
 @classnotwrapped
@@ -403,11 +545,15 @@ class NCollection_Iterator:
 	pass
 
 @classnotwrapped
+class NCollection_KDTree:
+	pass
+
+@classnotwrapped
 class NCollection_Lerp:
 	pass
 
 @classnotwrapped
-class NCollection_List:
+class NCollection_LinearVector:
 	pass
 
 @classnotwrapped
@@ -416,10 +562,6 @@ class NCollection_ListNode:
 
 @classnotwrapped
 class NCollection_LocalArray:
-	pass
-
-@classnotwrapped
-class NCollection_Map:
 	pass
 
 @classnotwrapped
@@ -435,7 +577,15 @@ class NCollection_OccAllocator:
 	pass
 
 @classnotwrapped
-class NCollection_Sequence:
+class NCollection_OrderedDataMap:
+	pass
+
+@classnotwrapped
+class NCollection_OrderedMap:
+	pass
+
+@classnotwrapped
+class NCollection_PackedMap:
 	pass
 
 @classnotwrapped
@@ -455,19 +605,7 @@ class NCollection_StlIterator:
 	pass
 
 @classnotwrapped
-class NCollection_TListIterator:
-	pass
-
-@classnotwrapped
 class NCollection_TListNode:
-	pass
-
-@classnotwrapped
-class NCollection_UBTree:
-	pass
-
-@classnotwrapped
-class NCollection_UBTreeFiller:
 	pass
 
 @classnotwrapped
@@ -501,5 +639,4 @@ class NCollection_WinHeapAllocator:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-NCollection_String=NCollection_Utf8String
 }

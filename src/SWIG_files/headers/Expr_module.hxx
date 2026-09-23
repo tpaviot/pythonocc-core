@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -28,7 +28,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Expr_ArgSinh.hxx>
 #include<Expr_ArgTanh.hxx>
 #include<Expr_Array1OfGeneralExpression.hxx>
-#include<Expr_Array1OfNamedUnknown.hxx>
 #include<Expr_Array1OfSingleRelation.hxx>
 #include<Expr_BinaryExpression.hxx>
 #include<Expr_BinaryFunction.hxx>

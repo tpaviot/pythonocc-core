@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,9 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<SelectBasics.hxx>
-#include<SelectBasics_EntityOwner.hxx>
 #include<SelectBasics_PickResult.hxx>
 #include<SelectBasics_SelectingVolumeManager.hxx>
-#include<SelectBasics_SensitiveEntity.hxx>
 
 #endif // SELECTBASICS_HXX

@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -9,13 +10,12 @@ from OCC.Core.gp import *
 from OCC.Core.IntCurveSurface import *
 from OCC.Core.TopAbs import *
 
+
 class BRepIntCurveSurface_Inter:
     def __init__(self) -> None: ...
     def Face(self) -> TopoDS_Face: ...
     @overload
-    def Init(
-        self, theShape: TopoDS_Shape, theCurve: GeomAdaptor_Curve, theTol: float
-    ) -> None: ...
+    def Init(self, theShape: TopoDS_Shape, theCurve: GeomAdaptor_Curve, theTol: float) -> None: ...
     @overload
     def Init(self, theShape: TopoDS_Shape, theLine: gp_Lin, theTol: float) -> None: ...
     @overload
@@ -34,3 +34,4 @@ class BRepIntCurveSurface_Inter:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

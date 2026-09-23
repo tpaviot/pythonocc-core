@@ -1,10 +1,12 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 from OCC.Core.TopoDS import *
+
 
 class XCAFNoteObjects_NoteObject(Standard_Transient):
     @overload
@@ -27,3 +29,4 @@ class XCAFNoteObjects_NoteObject(Standard_Transient):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

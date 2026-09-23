@@ -1,4 +1,4 @@
-{% set version = "7.9.3" %}
+{% set version = "8.0.1" %}
 
 package:
   name: pythonocc-core
@@ -22,18 +22,18 @@ requirements:
     - {{ cdt('libxi-devel') }}          # [linux]
     - ninja
     - cmake
-    - swig ==4.4.1
+    - swig ==4.5.1
     - sysroot_linux-64 >=2.28  # [linux]
 
   host:
     - python {{ python }}
     - python_abi * *_cp313  [py==313]
     - python_abi * *_cp314  [py==314]
-    - occt ==7.9.3
+    - occt ==8.0.1
     - numpy >=1.17
 
   run:
-    - occt ==7.9.3
+    - occt ==8.0.1
     - numpy >=1.17
     - python_abi * *_cp313  [py==313]
     - python_abi * *_cp314  [py==314]

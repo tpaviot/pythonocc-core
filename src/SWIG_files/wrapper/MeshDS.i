@@ -1,5 +1,5 @@
 /*
-##Copyright 2021 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2021-2026 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -27,6 +27,7 @@
 %include ../SWIG_files/common/CommonIncludes.i
 %include ../SWIG_files/common/ExceptionCatcher.i
 %include ../SWIG_files/common/FunctionTransformers.i
+%include ../SWIG_files/common/EnumTemplates.i
 %include ../SWIG_files/common/Operators.i
 %include ../SWIG_files/common/OccHandle.i
 
@@ -58,6 +59,9 @@
 #include<TCollection_module.hxx>
 #include<Prs3d_module.hxx>
 #include<Select3D_module.hxx>
+#include<Quantity_module.hxx>
+#include<TopTools_module.hxx>
+#include<OSD_module.hxx>
 %};
 
 %import Standard.i
@@ -77,7 +81,13 @@ from OCC.Core.Exception import *
 %include ../SWIG_files/common/numpy.i
 
 %init %{
+/* the init code is in SWIG_mod_exec, returning an int, since SWIG 4.4:
+   import_array() returns NULL, i.e. success, if numpy can't be imported */
+#if SWIG_VERSION >= 0x040400
+   import_array1(-1);
+#else
    import_array();
+#endif
 %}
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* Vertices, int nVerts1, int nVerts2) };
 %apply (int* IN_ARRAY2, int DIM1, int DIM2) { (int* Faces, int nFaces1, int nFaces2) };
@@ -97,16 +107,18 @@ class MeshDS_DataSource : public MeshVS_DataSource {
         MeshDS_DataSource(const std::vector<gp_Pnt> CoordData, const std::vector<std::vector<int>> Ele2NodeData);
         MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
         MeshDS_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
+        int NbNodes();
+        int NbElements();
         void SetElemNormals(const std::vector<gp_Vec> ElemNormalsData);
         void SetNodeNormals(const std::vector<std::vector<gp_Vec>> NodeNormalsData);
-        Standard_Boolean GetGeom(Standard_Integer ID, Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer &OutValue, MeshVS_EntityType& Type);
-     	Standard_Boolean GetGeomType(Standard_Integer ID, Standard_Boolean IsElement, MeshVS_EntityType& Type);
-		Standard_Address GetAddr(Standard_Integer ID, Standard_Boolean IsElement);
-		Standard_Boolean GetNodesByElement(Standard_Integer ID, TColStd_Array1OfInteger& NodeIDs, Standard_Integer &OutValue);
-        const TColStd_PackedMapOfInteger& GetAllNodes();
-        const TColStd_PackedMapOfInteger& GetAllElements();
-        Standard_Boolean GetNormal(Standard_Integer Id, const Standard_Integer Max, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
-		Standard_Boolean GetNodeNormal(Standard_Integer rankNode, Standard_Integer ElementId, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+        bool GetGeom(const int ID, const bool IsElement, TColStd_Array1OfReal & Coords, Standard_Integer &OutValue, MeshVS_EntityType &OutValue);
+        bool GetGeomType(const int ID, const bool IsElement, MeshVS_EntityType &OutValue);
+        void * GetAddr(const int ID, const bool IsElement);
+        bool GetNodesByElement(const int ID, TColStd_Array1OfInteger & NodeIDs, Standard_Integer &OutValue);
+        const TColStd_PackedMapOfInteger & GetAllNodes();
+        const TColStd_PackedMapOfInteger & GetAllElements();
+        bool GetNormal(const int Id, const int Max, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
+        bool GetNodeNormal(const int rankNode, const int ElementId, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 };
 
 %make_alias(MeshDS_DataSource)

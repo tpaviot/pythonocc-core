@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<Geom2dHatch_Classifier.hxx>
-#include<Geom2dHatch_DataMapIteratorOfHatchings.hxx>
-#include<Geom2dHatch_DataMapIteratorOfMapOfElements.hxx>
 #include<Geom2dHatch_Element.hxx>
 #include<Geom2dHatch_Elements.hxx>
 #include<Geom2dHatch_FClass2dOfClassifier.hxx>

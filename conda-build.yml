@@ -24,8 +24,15 @@ jobs:
         source $HOME/miniconda/bin/activate
         conda init bash
       displayName: 'Add conda to PATH'
+  # conda is preinstalled in the ubuntu images, but not in ubuntu-26.04
   - ${{ if contains(parameters.vmImage, 'ubuntu') }}:
-    - bash: echo "##vso[task.prependpath]$CONDA/bin"
+    - bash: |
+        if [ -z "$CONDA" ] || [ ! -x "$CONDA/bin/conda" ]; then
+          curl -sSL -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+          bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+          CONDA=$HOME/miniconda
+        fi
+        echo "##vso[task.prependpath]$CONDA/bin"
       displayName: 'Add conda to PATH'
   - ${{ if contains(parameters.vmImage, 'win') }}:
     - powershell: Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
@@ -46,7 +53,7 @@ jobs:
     displayName: 'Conda config and info'
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=3.12 anaconda-client
     displayName: 'Create Anaconda environment'
-  - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
+  - ${{ if contains(parameters.vmImage, 'win') }}:
     - script: |
         call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
         echo "PATH=%PATH%"

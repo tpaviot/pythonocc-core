@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -11,14 +12,9 @@ from OCC.Core.Adaptor3d import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.IntCurveSurface import *
 
+
 class IntCurvesFace_Intersector(Standard_Transient):
-    def __init__(
-        self,
-        F: TopoDS_Face,
-        aTol: float,
-        aRestr: Optional[bool] = True,
-        UseBToler: Optional[bool] = True,
-    ) -> None: ...
+    def __init__(self, F: TopoDS_Face, aTol: float, aRestr: Optional[bool] = True, UseBToler: Optional[bool] = True) -> None: ...
     def Bounding(self) -> Bnd_Box: ...
     def ClassifyUVPoint(self, Puv: gp_Pnt2d) -> TopAbs_State: ...
     def Face(self) -> TopoDS_Face: ...
@@ -61,3 +57,4 @@ class IntCurvesFace_ShapeIntersector:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

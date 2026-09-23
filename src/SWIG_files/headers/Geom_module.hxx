@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -43,7 +43,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Geom_Line.hxx>
 #include<Geom_OffsetCurve.hxx>
 #include<Geom_OffsetSurface.hxx>
-#include<Geom_OsculatingSurface.hxx>
 #include<Geom_Parabola.hxx>
 #include<Geom_Plane.hxx>
 #include<Geom_Point.hxx>

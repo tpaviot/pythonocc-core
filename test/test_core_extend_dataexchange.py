@@ -18,8 +18,13 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import subprocess
+import sys
+
+import pytest
 
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
+from OCC.Core.Interface import Interface_Static
 from OCC.Core.TopoDS import TopoDS_Compound
 
 from OCC.Extend.DataExchange import (
@@ -185,3 +190,49 @@ def test_write_gltf_ascii():
     write_gltf_file(A_TOPODS_SHAPE, gltf_filename, binary=False)
     check_is_file(gltf_filename)
     check_is_file(get_test_fullname("sample_ascii.bin"))
+
+
+def test_write_step_file_restores_schema():
+    schema = Interface_Static.CVal("write.step.schema")
+    write_step_file(
+        A_TOPODS_SHAPE,
+        get_test_fullname("sample_242.stp"),
+        application_protocol="AP242DIS",
+    )
+    assert Interface_Static.CVal("write.step.schema") == schema
+
+
+def test_write_step_file_protocol_at_first_call(tmp_path):
+    """the application protocol is used by the first write_step_file call of
+    a python session, before any STEP writer defines the write.step.schema
+    parameter"""
+    filename = tmp_path / "first.stp"
+    code = (
+        "from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox\n"
+        "from OCC.Extend.DataExchange import write_step_file\n"
+        "write_step_file(BRepPrimAPI_MakeBox(1, 1, 1).Shape(), "
+        f"{str(filename)!r}, application_protocol='AP203')\n"
+    )
+    subprocess.run([sys.executable, "-c", code], check=True, capture_output=True)
+    assert "CONFIG_CONTROL_DESIGN" in filename.read_text()
+
+
+def test_write_step_file_mesh_faces(tmp_path):
+    """issue #1476: faces without surface, read from a mesh file, can only be
+    exported in AP242, as tessellated geometry"""
+    gltf_filename = str(tmp_path / "torus.gltf")
+    write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
+    mesh_shape = read_gltf_file(gltf_filename)[0]
+    nb_faces = TopologyExplorer(mesh_shape).number_of_faces()
+    with pytest.warns(UserWarning, match="AP242DIS"):
+        write_step_file(mesh_shape, str(tmp_path / "mesh_203.stp"))
+    step_filename = str(tmp_path / "mesh_242.stp")
+    write_step_file(mesh_shape, step_filename, application_protocol="AP242DIS")
+    assert TopologyExplorer(read_step_file(step_filename)).number_of_faces() == nb_faces
+
+
+def test_read_step_file_names_colors_invalid_file(tmp_path):
+    invalid_step_file = tmp_path / "invalid.stp"
+    invalid_step_file.write_text("not a step file")
+    with pytest.raises(IOError):
+        read_step_file_with_names_colors(str(invalid_step_file))

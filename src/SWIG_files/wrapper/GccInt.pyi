@@ -1,17 +1,19 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
 
+
 class GccInt_IType(IntEnum):
-    GccInt_Lin: int = ...
-    GccInt_Cir: int = ...
-    GccInt_Ell: int = ...
-    GccInt_Par: int = ...
-    GccInt_Hpr: int = ...
-    GccInt_Pnt: int = ...
+    GccInt_Lin = 0
+    GccInt_Cir = 1
+    GccInt_Ell = 2
+    GccInt_Par = 3
+    GccInt_Hpr = 4
+    GccInt_Pnt = 5
 
 GccInt_Lin = GccInt_IType.GccInt_Lin
 GccInt_Cir = GccInt_IType.GccInt_Cir
@@ -62,3 +64,4 @@ class GccInt_BPoint(GccInt_Bisec):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

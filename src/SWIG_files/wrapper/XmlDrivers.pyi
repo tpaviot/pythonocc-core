@@ -1,5 +1,6 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
@@ -9,6 +10,7 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XmlLDrivers import *
 from OCC.Core.XmlObjMgt import *
 from OCC.Core.TCollection import *
+
 
 class xmldrivers:
     @staticmethod
@@ -20,29 +22,16 @@ class xmldrivers:
 
 class XmlDrivers_DocumentRetrievalDriver(XmlLDrivers_DocumentRetrievalDriver):
     def __init__(self) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> XmlMDF_ADriverTable: ...
-    def ReadShapeSection(
-        self,
-        thePDoc: XmlObjMgt_Element,
-        theMsgDriver: Message_Messenger,
-        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
-    ) -> XmlMDF_ADriver: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+    def ReadShapeSection(self, thePDoc: XmlObjMgt_Element, theMsgDriver: Message_Messenger, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> XmlMDF_ADriver: ...
     def ShapeSetCleaning(self, theDriver: XmlMDF_ADriver) -> None: ...
 
 class XmlDrivers_DocumentStorageDriver(XmlLDrivers_DocumentStorageDriver):
     def __init__(self, theCopyright: str) -> None: ...
-    def AttributeDrivers(
-        self, theMsgDriver: Message_Messenger
-    ) -> XmlMDF_ADriverTable: ...
-    def WriteShapeSection(
-        self,
-        thePDoc: XmlObjMgt_Element,
-        theStorageFormatVersion: TDocStd_FormatVersion,
-        theRange: Optional[Message_ProgressRange] = Message_ProgressRange(),
-    ) -> bool: ...
+    def AttributeDrivers(self, theMsgDriver: Message_Messenger) -> XmlMDF_ADriverTable: ...
+    def WriteShapeSection(self, thePDoc: XmlObjMgt_Element, theStorageFormatVersion: TDocStd_FormatVersion, theRange: Optional[Message_ProgressRange] = Message_ProgressRange()) -> bool: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

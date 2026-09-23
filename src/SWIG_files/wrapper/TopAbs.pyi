@@ -1,14 +1,16 @@
 from enum import IntEnum
-from typing import overload, NewType, Optional, Tuple
+import typing
+from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
+
 class TopAbs_Orientation(IntEnum):
-    TopAbs_FORWARD: int = ...
-    TopAbs_REVERSED: int = ...
-    TopAbs_INTERNAL: int = ...
-    TopAbs_EXTERNAL: int = ...
+    TopAbs_FORWARD = 0
+    TopAbs_REVERSED = 1
+    TopAbs_INTERNAL = 2
+    TopAbs_EXTERNAL = 3
 
 TopAbs_FORWARD = TopAbs_Orientation.TopAbs_FORWARD
 TopAbs_REVERSED = TopAbs_Orientation.TopAbs_REVERSED
@@ -16,15 +18,15 @@ TopAbs_INTERNAL = TopAbs_Orientation.TopAbs_INTERNAL
 TopAbs_EXTERNAL = TopAbs_Orientation.TopAbs_EXTERNAL
 
 class TopAbs_ShapeEnum(IntEnum):
-    TopAbs_COMPOUND: int = ...
-    TopAbs_COMPSOLID: int = ...
-    TopAbs_SOLID: int = ...
-    TopAbs_SHELL: int = ...
-    TopAbs_FACE: int = ...
-    TopAbs_WIRE: int = ...
-    TopAbs_EDGE: int = ...
-    TopAbs_VERTEX: int = ...
-    TopAbs_SHAPE: int = ...
+    TopAbs_COMPOUND = 0
+    TopAbs_COMPSOLID = 1
+    TopAbs_SOLID = 2
+    TopAbs_SHELL = 3
+    TopAbs_FACE = 4
+    TopAbs_WIRE = 5
+    TopAbs_EDGE = 6
+    TopAbs_VERTEX = 7
+    TopAbs_SHAPE = 8
 
 TopAbs_COMPOUND = TopAbs_ShapeEnum.TopAbs_COMPOUND
 TopAbs_COMPSOLID = TopAbs_ShapeEnum.TopAbs_COMPSOLID
@@ -37,10 +39,10 @@ TopAbs_VERTEX = TopAbs_ShapeEnum.TopAbs_VERTEX
 TopAbs_SHAPE = TopAbs_ShapeEnum.TopAbs_SHAPE
 
 class TopAbs_State(IntEnum):
-    TopAbs_IN: int = ...
-    TopAbs_OUT: int = ...
-    TopAbs_ON: int = ...
-    TopAbs_UNKNOWN: int = ...
+    TopAbs_IN = 0
+    TopAbs_OUT = 1
+    TopAbs_ON = 2
+    TopAbs_UNKNOWN = 3
 
 TopAbs_IN = TopAbs_State.TopAbs_IN
 TopAbs_OUT = TopAbs_State.TopAbs_OUT
@@ -51,9 +53,7 @@ class topabs:
     @staticmethod
     def Complement(Or: TopAbs_Orientation) -> TopAbs_Orientation: ...
     @staticmethod
-    def Compose(
-        Or1: TopAbs_Orientation, Or2: TopAbs_Orientation
-    ) -> TopAbs_Orientation: ...
+    def Compose(Or1: TopAbs_Orientation, Or2: TopAbs_Orientation) -> TopAbs_Orientation: ...
     @overload
     @staticmethod
     def Print(theShapeType: TopAbs_ShapeEnum) -> Tuple[Standard_OStream, str]: ...
@@ -70,9 +70,7 @@ class topabs:
     def ShapeOrientationFromString(theOrientationString: str) -> TopAbs_Orientation: ...
     @overload
     @staticmethod
-    def ShapeOrientationFromString(
-        theOrientationString: str,
-    ) -> Tuple[bool, TopAbs_Orientation]: ...
+    def ShapeOrientationFromString(theOrientationString: str) -> Tuple[bool, TopAbs_Orientation]: ...
     @staticmethod
     def ShapeOrientationToString(theOrientation: TopAbs_Orientation) -> str: ...
     @overload
@@ -87,3 +85,4 @@ class topabs:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

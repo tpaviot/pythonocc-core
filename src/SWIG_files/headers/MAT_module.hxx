@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -22,10 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MAT_Arc.hxx>
 #include<MAT_BasicElt.hxx>
 #include<MAT_Bisector.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerArc.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerBasicElt.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerBisector.hxx>
-#include<MAT_DataMapIteratorOfDataMapOfIntegerNode.hxx>
 #include<MAT_DataMapOfIntegerArc.hxx>
 #include<MAT_DataMapOfIntegerBasicElt.hxx>
 #include<MAT_DataMapOfIntegerBisector.hxx>

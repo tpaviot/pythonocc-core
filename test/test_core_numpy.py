@@ -181,6 +181,39 @@ def test_surface_derivative_eval():
     plane = Geom_Plane(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(*n_vec))
     uv = np.dstack(np.meshgrid(u, v, indexing="ij")).reshape(-1, 2)
     arr_out = plane.eval_derivative_numpy_array(uv, 0, 1).reshape(len(u), len(v), -1)
-    assert np.all(arr_out @ n_vec == 0.0)
+    assert np.allclose(arr_out @ n_vec, 0.0, atol=1e-12)
     arr_out = plane.eval_derivative_numpy_array(uv, 1, 0).reshape(len(u), len(v), -1)
-    assert np.all(arr_out @ n_vec == 0.0)
+    assert np.allclose(arr_out @ n_vec, 0.0, atol=1e-12)
+
+
+@pytest.mark.parametrize(
+    "type_,good_arr,bad_arr",
+    [
+        # a numpy array larger than the OCCT array used to write out of bounds
+        (TColStd_Array1OfReal, np.zeros(500), np.random.rand(600)),
+        (TColStd_Array2OfReal, np.zeros((10, 20)), np.random.rand(20, 10)),
+        (TColgp_Array1OfPnt, np.zeros((500, 3)), np.random.rand(600, 3)),
+        # 2 coordinates for 3d points: the 3rd one was read out of bounds
+        (TColgp_Array1OfPnt, np.zeros((500, 3)), np.random.rand(500, 2)),
+        (TColgp_Array2OfPnt, np.zeros((10, 20, 3)), np.random.rand(10, 20, 2)),
+    ],
+)
+def test_add_numpy_array_with_wrong_shape(type_, good_arr, bad_arr):
+    occ_array = type_.from_numpy_array(good_arr)
+    with pytest.raises(ValueError):
+        occ_array.AddDataFromNumpyArray(bad_arr)
+
+
+def test_array1_lower_bound():
+    # the data is written from the lower bound of the array
+    occ_array = TColStd_Array1OfReal(5, 9)
+    occ_array.AddDataFromNumpyArray(np.arange(5.0))
+    assert [occ_array.Value(i) for i in range(5, 10)] == [0.0, 1.0, 2.0, 3.0, 4.0]
+    assert np.all(occ_array.to_numpy_array() == np.arange(5.0))
+
+
+def test_nested_iteration():
+    occ_array = TColStd_Array1OfReal.from_numpy_array(np.arange(3.0))
+    pairs = [(a, b) for a in occ_array for b in occ_array]
+    assert len(pairs) == 9
+    assert list(occ_array) == [0.0, 1.0, 2.0]

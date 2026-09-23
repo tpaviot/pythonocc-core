@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -68,6 +68,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geomtostep.html"
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
+#include<OSD_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -106,7 +107,7 @@ from OCC.Core.Exception import *
 class GeomToStep_Root {
 	public:
 		/****** GeomToStep_Root::IsDone ******/
-		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
+		/****** md5 signature: 1e1ad145af7d8c16b253ee9a4b0d6a43 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -116,7 +117,7 @@ Description
 -----------
 No available documentation.
 ") IsDone;
-		Standard_Boolean IsDone();
+		bool IsDone();
 
 };
 
@@ -755,13 +756,13 @@ No available documentation.
 class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 	public:
 		/****** GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint ******/
-		/****** md5 signature: 74e9f5cbf9842287ca51dc34abbad5b6 ******/
+		/****** md5 signature: 1ab5c9d3c939b6effa30740b448f9661 ******/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
-aFactor: float
+aFactor: double
 
 Return
 -------
@@ -771,16 +772,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const gp_Pnt & P, const Standard_Real aFactor);
+		 GeomToStep_MakeCartesianPoint(const gp_Pnt & P, const double aFactor);
 
 		/****** GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint ******/
-		/****** md5 signature: 46436d2765f98b7fe67cf41815e72b94 ******/
+		/****** md5 signature: 96691013573a000298cc0a9e4f153c0e ******/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
-aFactor: float
+aFactor: double
 
 Return
 -------
@@ -790,16 +791,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const gp_Pnt2d & P, const Standard_Real aFactor);
+		 GeomToStep_MakeCartesianPoint(const gp_Pnt2d & P, const double aFactor);
 
 		/****** GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint ******/
-		/****** md5 signature: c518b49d4336bfbe94bf5b60e7979eaf ******/
+		/****** md5 signature: 8eb8ea1be4a088f29e7aac41fe9f66c6 ******/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_CartesianPoint
-aFactor: float
+aFactor: double
 
 Return
 -------
@@ -809,7 +810,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const opencascade::handle<Geom_CartesianPoint> & P, const Standard_Real aFactor);
+		 GeomToStep_MakeCartesianPoint(const opencascade::handle<Geom_CartesianPoint> & P, const double aFactor);
 
 		/****** GeomToStep_MakeCartesianPoint::GeomToStep_MakeCartesianPoint ******/
 		/****** md5 signature: b0da04ef2617163db5aa8dbb8c5d5fb6 ******/
@@ -846,6 +847,55 @@ No available documentation.
 
 
 %extend GeomToStep_MakeCartesianPoint {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************************************
+* class GeomToStep_MakeCartesianTransformationOperator *
+*******************************************************/
+class GeomToStep_MakeCartesianTransformationOperator : public GeomToStep_Root {
+	public:
+		/****** GeomToStep_MakeCartesianTransformationOperator::GeomToStep_MakeCartesianTransformationOperator ******/
+		/****** md5 signature: 7b25b0285d2b9183db40447a302e0494 ******/
+		%feature("compactdefaultargs") GeomToStep_MakeCartesianTransformationOperator;
+		%feature("autodoc", "
+Parameters
+----------
+theTrsf: gp_Trsf
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
+
+Return
+-------
+None
+
+Description
+-----------
+Main constructor. 
+Input parameter: theTrsf Transformation to create the operator from it. 
+Input parameter: theLocalFactors Unit scale factors.
+") GeomToStep_MakeCartesianTransformationOperator;
+		 GeomToStep_MakeCartesianTransformationOperator(const gp_Trsf & theTrsf, const StepData_Factors & theLocalFactors = StepData_Factors());
+
+		/****** GeomToStep_MakeCartesianTransformationOperator::Value ******/
+		/****** md5 signature: a50b4f04a8a48254d583f71e29c9adf0 ******/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<StepGeom_CartesianTransformationOperator3d>
+
+Description
+-----------
+Returns the created entity. 
+Return: The created value.
+") Value;
+		const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & Value();
+
+};
+
+
+%extend GeomToStep_MakeCartesianTransformationOperator {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1690,7 +1740,7 @@ No available documentation.
 class GeomToStep_MakePolyline : public GeomToStep_Root {
 	public:
 		/****** GeomToStep_MakePolyline::GeomToStep_MakePolyline ******/
-		/****** md5 signature: 4fc6bd3235b58a324d5570e003efeb35 ******/
+		/****** md5 signature: 037f5179014b4c70a15efe9090532c1b ******/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
 		%feature("autodoc", "
 Parameters
@@ -1709,7 +1759,7 @@ No available documentation.
 		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt & P, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** GeomToStep_MakePolyline::GeomToStep_MakePolyline ******/
-		/****** md5 signature: a8abc6d3291638c3a85be200f55fe2d7 ******/
+		/****** md5 signature: 09fb5f8f2838c03e39da50ed9ff23dc4 ******/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
 		%feature("autodoc", "
 Parameters

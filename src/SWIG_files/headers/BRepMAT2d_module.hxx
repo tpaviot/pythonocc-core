@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,8 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<BRepMAT2d_BisectingLocus.hxx>
-#include<BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape.hxx>
-#include<BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt.hxx>
 #include<BRepMAT2d_DataMapOfBasicEltShape.hxx>
 #include<BRepMAT2d_DataMapOfShapeSequenceOfBasicElt.hxx>
 #include<BRepMAT2d_Explorer.hxx>

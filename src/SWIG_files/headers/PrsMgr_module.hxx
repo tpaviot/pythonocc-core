@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -24,10 +24,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<PrsMgr_ListOfPresentations.hxx>
 #include<PrsMgr_PresentableObject.hxx>
 #include<PrsMgr_Presentation.hxx>
-#include<PrsMgr_Presentation3d.hxx>
 #include<PrsMgr_PresentationManager.hxx>
-#include<PrsMgr_PresentationManager3d.hxx>
-#include<PrsMgr_Presentations.hxx>
 #include<PrsMgr_TypeOfPresentation3d.hxx>
 
 #endif // PRSMGR_HXX

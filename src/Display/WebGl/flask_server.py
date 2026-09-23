@@ -2,25 +2,27 @@
 
 import sys
 import uuid
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Optional
 
-from threejs_renderer import (
-    ThreejsRenderer,
-    OCC_VERSION,
-    THREEJS_RELEASE,
-    color_to_hex,
-    export_edgedata_to_json,
-)
-from OCC.Extend.TopologyUtils import is_edge, is_wire, discretize_edge, discretize_wire
-from OCC.Core.Tesselator import ShapeTesselator
+from flask import Flask, render_template
+from OCC import VERSION as OCC_VERSION
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
 
 # Import following for building vertex (or point cloud) in WebGL
 from OCC.Core.gp import gp_Pnt
-from OCC.Core.BRep import BRep_Builder
+from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Core.TopoDS import TopoDS_Compound
-from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeVertex
+from OCC.Display.WebGl.threejs_renderer import (
+    ThreejsRenderer,
+    color_to_hex,
+    export_edgedata_to_json,
+)
+from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
 
-from flask import Flask, render_template
+# the three.js release loaded by templates/index.html, the last one shipping
+# the examples/js scripts (TrackballControls, stats) the template relies on
+THREEJS_RELEASE = "r147"
 
 
 def format_color(r: int, g: int, b: int) -> str:
@@ -35,7 +37,7 @@ def format_color(r: int, g: int, b: int) -> str:
     Returns:
         str: The color as a hex string.
     """
-    return "0x%02x%02x%02x" % (r, g, b)
+    return f"0x{r:02x}{g:02x}{b:02x}"
 
 
 class RenderWraper(ThreejsRenderer):
@@ -60,7 +62,7 @@ class RenderWraper(ThreejsRenderer):
             default_vertex_color (str, optional): The default color for vertices.
         """
         super().__init__(path)
-        self._3js_vertex: Dict[str, Any] = {}
+        self._3js_vertex: dict[str, Any] = {}
         self._default_shape_color = default_shape_color
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
@@ -69,15 +71,15 @@ class RenderWraper(ThreejsRenderer):
         self,
         shape: Any,
         export_edges: bool = False,
-        color: Tuple[float, float, float] = (0.65, 0.65, 0.7),
-        specular_color: Tuple[float, float, float] = (0.2, 0.2, 0.2),
+        color: tuple[float, float, float] = (0.65, 0.65, 0.7),
+        specular_color: tuple[float, float, float] = (0.2, 0.2, 0.2),
         shininess: float = 0.9,
         transparency: float = 0.0,
-        line_color: Tuple[float, float, float] = (0, 0.0, 0.0),
+        line_color: tuple[float, float, float] = (0, 0.0, 0.0),
         line_width: float = 1.0,
         point_size: float = 1.0,
         mesh_quality: float = 1.0,
-    ) -> Tuple[Dict[str, Any], Dict[str, Any], Dict[str, Any]]:
+    ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
         """
         Converts a shape to a format that can be rendered by Three.js.
 
@@ -107,7 +109,7 @@ class RenderWraper(ThreejsRenderer):
             # store this edge hash
             self._3js_edges[edge_hash] = [color, line_width, shape_content]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
-        elif is_wire(shape):
+        if is_wire(shape):
             print("discretize a wire")
             pnts = discretize_wire(shape)
             wire_hash = f"wir{uuid.uuid4().hex}"
@@ -115,7 +117,7 @@ class RenderWraper(ThreejsRenderer):
             # store this edge hash
             self._3js_edges[wire_hash] = [color, line_width, shape_content]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
-        elif isinstance(shape, list) and isinstance(shape[0], gp_Pnt):
+        if isinstance(shape, list) and shape and isinstance(shape[0], gp_Pnt):
             print("storage points")
             vertices_list = []  # will be passed to javascript
             BB = BRep_Builder()
@@ -193,7 +195,7 @@ class RenderConfig:
         bg_gradient_color2: str = "#808080",
         vertex_shader: Optional[str] = None,
         fragment_shader: Optional[str] = None,
-        uniforms: Optional[Dict[str, Any]] = None,
+        uniforms: Optional[dict[str, Any]] = None,
     ) -> None:
         """
         Initializes the RenderConfig.
@@ -231,11 +233,12 @@ if __name__ == "__main__":
         my_ren._3js_vertex = {}
 
         # import additional modules for building a box and a torus.
-        from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
+        import time
+
         from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
+        from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
         from OCC.Core.gp import gp_Trsf, gp_Vec
         from OCC.Core.TopoDS import TopoDS_Shape
-        import time
 
         def translate_shp(
             shp: TopoDS_Shape, vec: gp_Vec, copy: bool = False
@@ -254,7 +257,7 @@ if __name__ == "__main__":
         my_ren.convert_shape(box, export_edges=True)
         my_ren.convert_shape(t_torus, export_edges=True)
         final_time = time.time()
-        print("\nTotal meshing time : {:.2f}s".format(final_time - init_time))
+        print(f"\nTotal meshing time : {final_time - init_time:.2f}s")
 
         return render_template(
             "index.html",

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2025 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2026 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -26,8 +26,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_BucketOfPersistent.hxx>
 #include<Storage_CallBack.hxx>
 #include<Storage_Data.hxx>
-#include<Storage_DataMapIteratorOfMapOfCallBack.hxx>
-#include<Storage_DataMapIteratorOfMapOfPers.hxx>
 #include<Storage_DefaultCallBack.hxx>
 #include<Storage_Error.hxx>
 #include<Storage_HArrayOfCallBack.hxx>
@@ -53,6 +51,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Storage_StreamModeError.hxx>
 #include<Storage_StreamReadError.hxx>
 #include<Storage_StreamTypeMismatchError.hxx>
+#include<Storage_StreamUnknownTypeError.hxx>
 #include<Storage_StreamWriteError.hxx>
 #include<Storage_TypeData.hxx>
 #include<Storage_TypedCallBack.hxx>
