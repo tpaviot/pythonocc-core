@@ -991,7 +991,10 @@ class JupyterRenderer:
             quality (float, optional): The quality of the mesh.
             transparency (bool, optional): Whether the shape is transparent.
             opacity (float, optional): The opacity of the shape.
-            topo_level (str, optional): The topological level to display.
+            topo_level (str, optional): The topological level to display,
+                "default" displays the shape as a whole, "Solid", "Face",
+                "Shell", "Compound" or "Compsolid" display each subshape
+                of this type as a separate selectable object.
             update (bool, optional): Whether to update the renderer.
             selectable (bool, optional): Whether the shape is selectable.
         """
@@ -1020,6 +1023,11 @@ class JupyterRenderer:
                 "Compound": t.compounds,
                 "Compsolid": t.comp_solids,
             }
+            if topo_level not in map_type_and_methods:
+                raise ValueError(
+                    f"topo_level must be 'default' or one of "
+                    f"{', '.join(map_type_and_methods)}, got '{topo_level}'"
+                )
             for subshape in map_type_and_methods[topo_level]():
                 result = self.AddShapeToScene(
                     subshape,
@@ -1277,14 +1285,18 @@ class JupyterRenderer:
     def Display(
         self,
         position: Optional[tuple[float, float, float]] = None,
-        rotation: Optional[tuple[float, float, float]] = None,
+        rotation: Optional[tuple[float, float, float, str]] = None,
     ) -> None:
         """
         Displays the renderer.
 
         Args:
-            position (tuple, optional): The position of the camera.
-            rotation (tuple, optional): The rotation of the camera.
+            position (tuple, optional): The direction from the center of the
+                scene to the camera, (1, 1, 1) by default. The distance of the
+                camera is computed from the size of the scene.
+            rotation (tuple, optional): The rotation of the camera, as Euler
+                angles in radians followed by their order, e.g.
+                (0.0, 0.0, 0.0, "XYZ").
         """
         # Get the overall bounding box
         if self._shapes:
@@ -1298,7 +1310,7 @@ class JupyterRenderer:
         camera_target = self._bb.center
         camera_position = _add(
             self._bb.center,
-            self._scale([1, 1, 1] if position is None else self._scale(position)),
+            self._scale([1, 1, 1] if position is None else position),
         )
         camera_zoom = self._camera_initial_zoom
 
@@ -1394,6 +1406,8 @@ class JupyterRenderer:
         Args:
             filename (str): The name of the file to export to.
         """
+        if self._renderer is None:
+            raise RuntimeError("Display() must be called before ExportToHTML()")
         embed.embed_minimal_html(filename, views=self._renderer, title="pythonocc")
 
     def _reset(self, *kargs: Any) -> None:
