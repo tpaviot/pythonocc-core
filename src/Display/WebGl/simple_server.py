@@ -23,6 +23,7 @@ import os
 import socket
 import threading
 import webbrowser
+from typing import Any
 
 
 def get_available_port(port: int) -> int:
@@ -162,12 +163,12 @@ def start_server(
         app = Flask(__name__)
 
         @app.route("/")
-        def root():
+        def root() -> str:
             with open(os.path.join(x3d_path, "index.html"), encoding="utf-8") as fp:
                 return fp.read()
 
         @app.route("/<path:path>")
-        def send_x3d_content(path):
+        def send_x3d_content(path: str) -> Any:
             return send_from_directory(x3d_path, path)
 
         print(f"\n## Serving {x3d_path} using Flask")

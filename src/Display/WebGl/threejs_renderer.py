@@ -22,7 +22,7 @@ import os
 import sys
 import tempfile
 import uuid
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from string import Template
 from typing import Any, Optional
 
@@ -60,7 +60,9 @@ def color_to_hex(rgb_color: tuple[float, float, float]) -> str:
     return f"0x{int(r * 255.0):02x}{int(g * 255.0):02x}{int(b * 255.0):02x}"
 
 
-def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str:
+def export_edgedata_to_json(
+    edge_hash: str, point_set: Sequence[Sequence[float]]
+) -> str:
     """
     Exports a set of points to a LineSegment buffergeometry.
 
@@ -74,7 +76,7 @@ def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str
     # first build the array of point coordinates
     # edges are built as follows:
     # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
-    points_coordinates = []
+    points_coordinates: list[float] = []
     for point in point_set:
         points_coordinates.extend(iter(point))
     # then build the dictionary exported to json
@@ -612,7 +614,7 @@ class ThreejsRenderer:
             )
             shape_string_list.append("\t\t\t});\n\n")
         # Process edges
-        edge_string_list = []
+        edge_string_list: list[str] = []
         for edge_hash, (color, line_width) in self._3js_edges.items():
             edge_string_list.extend(
                 (

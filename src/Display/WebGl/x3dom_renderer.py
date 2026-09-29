@@ -22,7 +22,7 @@ import shutil
 import sys
 import tempfile
 import uuid
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from string import Template
 from typing import Any, Optional, Union
 from xml.etree import ElementTree
@@ -176,7 +176,7 @@ BODY_TEMPLATE = Template("""
 """)
 
 
-def export_edge_to_indexed_lineset(edge_point_set: list[list[float]]) -> str:
+def export_edge_to_indexed_lineset(edge_point_set: Sequence[Sequence[float]]) -> str:
     """
     Exports an edge to an IndexedLineSet string.
 
