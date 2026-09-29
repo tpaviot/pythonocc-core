@@ -447,9 +447,12 @@ class ThreejsRenderer:
         Args:
             path (str, optional): The path to the directory where the HTML
                 and JavaScript files will be created. If not specified, a
-                temporary directory will be created.
+                temporary directory is created, and removed with the renderer.
         """
-        self._path = path if path else tempfile.mkdtemp()
+        if not path:
+            self._tmp_dir = tempfile.TemporaryDirectory(prefix="pythonocc_threejs_")
+            path = self._tmp_dir.name
+        self._path = path
         self._html_filename = os.path.join(self._path, "index.html")
         self._main_js_filename = os.path.join(self._path, "main.js")
         self._3js_shapes: dict[str, Any] = {}

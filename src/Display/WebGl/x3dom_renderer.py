@@ -16,6 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import shutil
 import sys
 import tempfile
 import uuid
@@ -28,6 +29,13 @@ from OCC import VERSION
 from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Display.WebGl.simple_server import start_server
 from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
+
+# the x3dom release loaded by the html page
+X3DOM_VERSION = "1.8.3"
+
+# the x3d files of the axes and the plane, from the x3dom component-editor
+AXES_PLANE_FILES = ("plane.x3d", "axesSmall.x3d", "axes.x3d")
+X3D_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "x3d")
 
 
 def spinning_cursor() -> Generator[str, None, None]:
@@ -56,8 +64,8 @@ HEADER_TEMPLATE = Template("""
     <meta name='Author' content='Thomas Paviot - tpaviot@gmail.com'>
     <meta name='Keywords' content='WebGl,pythonOCC'>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="https://x3dom.org/release/x3dom.css">
-    <script src="https://x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://x3dom.org/download/$X3DOM_VERSION/x3dom.css">
+    <script src="https://x3dom.org/download/$X3DOM_VERSION/x3dom.js"></script>
     <style>
         body {
             background: linear-gradient($bg_gradient_color1, $bg_gradient_color2);
@@ -259,6 +267,7 @@ class HTMLHeader:
                 "bg_gradient_color1": f"{self._bg_gradient_color1}",
                 "bg_gradient_color2": f"{self._bg_gradient_color2}",
                 "VERSION": f"{VERSION}",
+                "X3DOM_VERSION": X3DOM_VERSION,
             }
         )
 
@@ -298,10 +307,10 @@ class HTMLBody:
             x3dcontent += f"""
             <transform scale='{self._axis_plane_zoom_factor} {self._axis_plane_zoom_factor} {self._axis_plane_zoom_factor}'>
             <transform id='plane_small_axe_Id' rotation='1 0 0 -1.57079632679'>
-                <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/plane.x3d" mapDEFToID="true" namespaceName="plane"></inline>
-                <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axesSmall.x3d" mapDEFToID="true" namespaceName="axesSmall"></inline>
+                <inline url="plane.x3d" mapDEFToID="true" namespaceName="plane"></inline>
+                <inline url="axesSmall.x3d" mapDEFToID="true" namespaceName="axesSmall"></inline>
             </transform>
-            <inline url="https://rawcdn.githack.com/x3dom/component-editor/master/static/x3d/axes.x3d" mapDEFToID="true" namespaceName="axes"></inline>
+            <inline url="axes.x3d" mapDEFToID="true" namespaceName="axes"></inline>
             </transform>
             """
             # global rotate so that z is properly aligned
@@ -493,11 +502,14 @@ class X3DomRenderer:
         Args:
             path (str, optional): The path to the directory where the HTML
                 and JavaScript files will be created. If not specified, a
-                temporary directory will be created.
+                temporary directory is created, and removed with the renderer.
             display_axes_plane (bool, optional): Whether to display the axes plane.
             axes_plane_zoom_factor (float, optional): The zoom factor for the axes plane.
         """
-        self._path = path if path else tempfile.mkdtemp()
+        if not path:
+            self._tmp_dir = tempfile.TemporaryDirectory(prefix="pythonocc_x3dom_")
+            path = self._tmp_dir.name
+        self._path = path
         self._html_filename = os.path.join(self._path, "index.html")
         self._x3d_shapes: dict[str, Any] = {}
         self._x3d_edges: dict[str, Any] = {}
@@ -632,6 +644,10 @@ class X3DomRenderer:
             axes_plane (bool): Whether to display the axes plane.
             axes_plane_zoom_factor (float): The zoom factor for the axes plane.
         """
+        if axes_plane:
+            # the axes and the plane are served along with the shapes
+            for filename in AXES_PLANE_FILES:
+                shutil.copy(os.path.join(X3D_DIR, filename), self._path)
         with open(self._html_filename, "w", encoding="utf-8") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")
             html_file.write('<html lang="en">')

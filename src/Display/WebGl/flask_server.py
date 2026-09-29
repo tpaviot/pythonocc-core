@@ -213,12 +213,10 @@ class RenderConfig:
         self._uniforms = uniforms
 
 
-app = Flask(__name__)
-my_ren = RenderWraper()
-render_cfg = RenderConfig()
-
-
 if __name__ == "__main__":
+    app = Flask(__name__)
+    my_ren = RenderWraper()
+    render_cfg = RenderConfig()
 
     @app.route("/")
     @app.route("/index")

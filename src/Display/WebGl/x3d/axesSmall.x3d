@@ -1,0 +1,86 @@
+<!-- from https://github.com/x3dom/component-editor (static/x3d/axesSmall.x3d), dual licensed under the MIT and GPL licenses -->
+<X3D>
+	<scene>
+		<group>
+
+			<!-- X arrow and label -->
+            <Shape isPickable="false" DEF="AXIS_LINE_X">
+                <IndexedLineSet index="0 1 -1">
+                    <Coordinate point="0 0 0.001, 1 0 0.001" color="1 0 0, 1 0 0"></Coordinate>
+                </IndexedLineSet>
+                <Appearance DEF='Red'><Material diffuseColor="0 0 0" emissiveColor='1 0 0'></Material></Appearance>
+            </Shape>
+            <Transform translation='1 0 0'>
+                <Transform rotation='0 0 1 -1.57079632679'>
+                    <Shape isPickable="false" DEF="AXIS_ARROW_X">
+                        <Cone DEF='ArrowCone' bottomRadius='.10' height='0.5' subdivision="16"></Cone>
+                        <Appearance USE='Red'></Appearance>
+                    </Shape>
+                </Transform>
+                <Transform rotation='1 0 0 1.57079632679'>
+                    <Billboard>
+                        <Shape isPickable="false" DEF="AXIS_LABEL_X">
+                            <Text string="X" solid="false">
+                                <FontStyle size="0.6"></FontStyle>
+                            </Text>
+                            <Appearance USE='Red'></Appearance>
+                        </Shape>
+                    </Billboard>
+                </Transform>
+            </Transform>
+
+			
+			<!-- Y arrow and label -->                            
+            <Shape isPickable="false" DEF="AXIS_LINE_Y">
+            	<IndexedLineSet index="0 1 -1">
+            	    <Coordinate point="0 0 0.001, 0 1 0.001" color="0 1 0, 0 1 0"></Coordinate>
+            	</IndexedLineSet>
+
+            	<Appearance DEF='Green'><Material diffuseColor="0 0 0" emissiveColor='0 1 0'></Material></Appearance>
+			</Shape>
+            <Transform translation='0 1 0'>
+                <Shape isPickable="false" DEF="AXIS_ARROW_Y">
+                    <Cone USE='ArrowCone'></Cone>
+                    <Appearance USE='Green'></Appearance>
+                </Shape>
+                <Transform rotation='1 0 0 1.57079632679'>
+                    <Billboard>
+                        <Shape isPickable="false" DEF="AXIS_LABEL_Y">
+                            <Text string="Y" solid="false">
+                                <FontStyle size="0.6"></FontStyle>
+                            </Text>
+                            <Appearance USE='Green'></Appearance>
+                        </Shape>
+                    </Billboard>
+                </Transform>
+            </Transform>
+
+
+			<!-- Z arrow and label -->
+            <Shape isPickable="false" DEF="AXIS_LINE_Z">
+                <IndexedLineSet index="0 1 -1">
+                    <Coordinate point="0 0 0.001, 0 0 1" color="0 0 1, 0 0 1"></Coordinate>
+                </IndexedLineSet>
+
+                <Appearance DEF='Blue'><Material diffuseColor="0 0 0" emissiveColor='0 0 1'></Material></Appearance>
+            </Shape>
+            <Transform translation='0 0 1'>
+                <Transform rotation='1 0 0 1.57079632679'>
+                	<Shape isPickable="false" DEF="AXIS_ARROW_Z">
+                    	<Cone USE='ArrowCone'></Cone>
+                        <Appearance USE='Blue'></Appearance>
+                    </Shape>
+                    <Billboard>
+                        <Shape isPickable="false" DEF="AXIS_LABEL_Z">
+                            <Text string="Z" solid="false">
+                                <FontStyle size="0.6"></FontStyle>
+                            </Text>
+                            <Appearance USE='Blue'></Appearance>
+                        </Shape>
+                    </Billboard>
+                </Transform>
+			</Transform>
+
+		</group>
+	</scene>
+</X3D>

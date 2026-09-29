@@ -1264,15 +1264,15 @@ class JupyterRenderer:
         """
         Erases all shapes from the renderer.
         """
+        self._deselect()
+        self.clicked_obj = None
+        self.html.value = ""
         self._shapes = {}
         self._mesh_edges = {}
-        self._displayed_pickable_objects = Group()
-        self._displayed_non_pickable_objects = Group()
-        self._current_shape_selection = None
-        self._current_mesh_selection = None
-        self._current_selection_material_state = {}
-        if self._renderer is not None:
-            self._renderer.scene = Scene(children=[])
+        # the groups are emptied, the scene keeps its lights, camera and helpers
+        # and the picker keeps working on the pickable group
+        self._displayed_pickable_objects.children = ()
+        self._displayed_non_pickable_objects.children = ()
 
     def Display(
         self,
