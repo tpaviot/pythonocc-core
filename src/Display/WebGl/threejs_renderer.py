@@ -15,6 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""A three.js renderer, the shapes are displayed in a web browser."""
+
 import json
 import os
 import sys
@@ -595,8 +597,8 @@ class ThreejsRenderer:
             if transparency > 0.0:
                 # three.js opacity is the opposite of the transparency
                 shape_string_list.append(
-                    "transparent: true, premultipliedAlpha: true, opacity:%g,"
-                    % (1.0 - transparency)
+                    "transparent: true, premultipliedAlpha: true, "
+                    f"opacity:{1.0 - transparency:g},"
                 )
             shape_string_list.extend(
                 (
@@ -615,7 +617,10 @@ class ThreejsRenderer:
             edge_string_list.extend(
                 (
                     f"\tloader.load('{edge_hash}.json', function(geometry) {{\n",
-                    f"\tvar line_material = new THREE.LineBasicMaterial({{color: {color_to_hex(color)}, linewidth: {line_width}}});\n",
+                    (
+                        "\tvar line_material = new THREE.LineBasicMaterial("
+                        f"{{color: {color_to_hex(color)}, linewidth: {line_width}}});\n"
+                    ),
                     "\tvar line = new THREE.Line(geometry, line_material);\n",
                     "\tscene.add(line);\n",
                     "\t});\n",

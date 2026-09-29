@@ -144,7 +144,8 @@ class RenderWraper(ThreejsRenderer):
         )
         # update spinning cursor
         sys.stdout.write(
-            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, {tess.ObjGetTriangleCount()} triangles     "
+            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, "
+            f"{tess.ObjGetTriangleCount()} triangles     "
         )
         sys.stdout.flush()
         # export to 3JS

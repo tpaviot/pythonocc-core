@@ -15,6 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""A pythreejs based renderer for the Jupyter notebooks."""
+
 import copy
 import enum
 import itertools
@@ -135,6 +137,14 @@ def _shift(v: list[float], offset: list[float]) -> list[float]:
 
 
 # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
+def _html_values(title: str, labels: Any, values: Any) -> str:
+    """Formats a titled list of values to html, e.g. the X, Y, Z of a point."""
+    rows = "".join(
+        f"<b>{label}=</b>{value:.3f}<br>" for label, value in zip(labels, values)
+    )
+    return f"<u><b>{title}</b></u>:<br>{rows}"
+
+
 def _nice_number(value: float, round_: bool = False) -> float:
     """
     Returns a "nice" number approximately equal to value.
@@ -146,7 +156,7 @@ def _nice_number(value: float, round_: bool = False) -> float:
     Returns:
         float: The nice number.
     """
-    exponent = math.floor(math.log(value, 10))
+    exponent = math.floor(math.log10(value))
     fraction = value / 10**exponent
 
     if round_:
@@ -476,7 +486,7 @@ class CustomMaterial(ShaderMaterial):
             key: The key of the uniform to update.
             value: The value to set.
         """
-        uniforms = dict(**self.uniforms)
+        uniforms = {**self.uniforms}
         if self.types.get(key) is None:
             uniforms[key] = {"value": value}
         else:
@@ -541,7 +551,7 @@ class BoundingBox:
             )
         )
 
-    def _bounding_box(self, obj: Any, tol: float = 1e-5) -> tuple[float, ...]:
+    def _bounding_box(self, obj: Any) -> tuple[float, ...]:
         """
         Computes the bounding box of an object.
         """
@@ -558,10 +568,16 @@ class BoundingBox:
         return reduce(_opt, [self._bounding_box(obj) for obj in objects])
 
     def __repr__(self) -> str:
-        return f"[x({self.xmin:f} .. {self.xmax:f}), y({self.ymin:f} .. {self.ymax:f}), z({self.zmin:f} .. {self.zmax:f})]"
+        return (
+            f"[x({self.xmin:f} .. {self.xmax:f}), "
+            f"y({self.ymin:f} .. {self.ymax:f}), "
+            f"z({self.zmin:f} .. {self.zmax:f})]"
+        )
 
 
 class NORMAL(enum.Enum):
+    """Where the normals of the meshes are computed."""
+
     SERVER_SIDE = 1
     CLIENT_SIDE = 2
 
@@ -638,6 +654,12 @@ class JupyterRenderer:
         self._current_selection_material_state: dict[str, Any] = {}
         self.clicked_obj: Optional[Any] = None
         self._savestate: Optional[tuple[Any, Any]] = None
+
+        # the helpers and the camera controller, created by Display()
+        self.axes: Optional[Axes] = None
+        self.horizontal_grid: Optional[Grid] = None
+        self.vertical_grid: Optional[Grid] = None
+        self._controller: Optional[OrbitControls] = None
 
         self._selection_color = pick_color
 
@@ -726,7 +748,7 @@ class JupyterRenderer:
         checkbox.add_class(f"view_{kind}")
         return checkbox
 
-    def remove_shape(self, *kargs: Any) -> None:
+    def remove_shape(self, *_args: Any) -> None:
         """
         Removes the selected shape.
         """
@@ -758,7 +780,11 @@ class JupyterRenderer:
             )
             # display this point (type gp_Pnt)
             self.DisplayShape([cog])
-            output += f"<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>{cog.X():.3f}<br><b>Ycog=</b>{cog.Y():.3f}<br><b>Zcog=</b>{cog.Z():.3f}<br>"
+            output += _html_values(
+                "Center of Gravity",
+                ("Xcog", "Ycog", "Zcog"),
+                (cog.X(), cog.Y(), cog.Z()),
+            )
             output += f"<u><b>{mass_property}=</b></u>:<b>{mass:.3f}</b><br>"
         elif "Oriented" in selection:
             center, dim, oobb_shp = get_oriented_boundingbox(
@@ -771,11 +797,11 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += f"<u><b>OOBB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
-            output += f"<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
-            output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                dim[0] * dim[1] * dim[2]
+            output += _html_values(
+                "OOBB center", "XYZ", (center.X(), center.Y(), center.Z())
             )
+            output += _html_values("OOBB dimensions", ("dX", "dY", "dZ"), dim)
+            output += _html_values("OOBB volume", "V", [dim[0] * dim[1] * dim[2]])
         elif "Aligned" in selection:
             center, dim, albb_shp = get_aligned_boundingbox(
                 self._current_shape_selection
@@ -787,28 +813,30 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += f"<u><b>ABB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
-            output += f"<u><b>ABB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
-            output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                dim[0] * dim[1] * dim[2]
+            output += _html_values(
+                "ABB center", "XYZ", (center.X(), center.Y(), center.Z())
             )
+            output += _html_values("ABB dimensions", ("dX", "dY", "dZ"), dim)
+            output += _html_values("ABB volume", "V", [dim[0] * dim[1] * dim[2]])
         elif "Recognize" in selection:
-            # try featrue recognition
+            # try feature recognition
             kind, pnt, vec = recognize_face(self._current_shape_selection)
             output += f"<u><b>Type</b></u>: {kind}<br>"
             if kind == "Plane":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += f"<u><b>Point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
-                output += f"<u><b>Normal</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
+                output += _html_values("Point", "XYZ", (pnt.X(), pnt.Y(), pnt.Z()))
+                output += _html_values("Normal", "uvw", (vec.X(), vec.Y(), vec.Z()))
             elif kind == "Cylinder":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += f"<u><b>Axis point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
-                output += f"<u><b>Axis direction</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
+                output += _html_values("Axis point", "XYZ", (pnt.X(), pnt.Y(), pnt.Z()))
+                output += _html_values(
+                    "Axis direction", "uvw", (vec.X(), vec.Y(), vec.Z())
+                )
         self.html.value = output
 
-    def toggle_shape_visibility(self, *kargs: Any) -> None:
+    def toggle_shape_visibility(self, *_args: Any) -> None:
         """
         Toggles the visibility of the selected shape.
         """
@@ -1410,7 +1438,7 @@ class JupyterRenderer:
             raise RuntimeError("Display() must be called before ExportToHTML()")
         embed.embed_minimal_html(filename, views=self._renderer, title="pythonocc")
 
-    def _reset(self, *kargs: Any) -> None:
+    def _reset(self, *_args: Any) -> None:
         """
         Resets the camera.
         """

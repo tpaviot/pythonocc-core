@@ -15,6 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""An x3dom renderer, the shapes are displayed in a web browser."""
+
 import os
 import shutil
 import sys
@@ -301,7 +303,10 @@ class HTMLBody:
         Returns the HTML body as a string.
         """
         # get the location where pythonocc is running from
-        x3dcontent = "\n\t<x3d id='pythonocc-x3d-scene' style='width:100%;height:100%;border:none' >\n\t\t<Scene>\n"
+        x3dcontent = (
+            "\n\t<x3d id='pythonocc-x3d-scene' "
+            "style='width:100%;height:100%;border:none' >\n\t\t<Scene>\n"
+        )
         nb_shape = len(self._x3d_shapes)
         if self._display_axes_plane:
             x3dcontent += f"""
@@ -427,7 +432,10 @@ class X3DExporter:
         x3dfile_str = X3DFILE_HEADER_TEMPLATE.substitute({"VERSION": f"{VERSION}"})
         for triangle_set in self._triangle_sets:
             x3dfile_str += "<Switch whichChoice='0' id='swBRP'>"
-            x3dfile_str += f"<Transform scale='1 1 1'>\n<Shape DEF='shape{shape_id}' onclick='select(this);'>\n"
+            x3dfile_str += (
+                "<Transform scale='1 1 1'>\n"
+                f"<Shape DEF='shape{shape_id}' onclick='select(this);'>\n"
+            )
             x3dfile_str += "<Appearance>\n"
             #
             # set Material or shader
@@ -436,7 +444,8 @@ class X3DExporter:
                 x3dfile_str += f"<Material id='material_{shape_id}' diffuseColor="
                 x3dfile_str += f"'{self._color[0]} {self._color[1]} {self._color[2]}' "
                 x3dfile_str += f"shininess='{self._shininess}' "
-                x3dfile_str += f"specularColor='{self._specular_color[0]} {self._specular_color[1]} {self._specular_color[2]}' "
+                specular_color = " ".join(map(str, self._specular_color))
+                x3dfile_str += f"specularColor='{specular_color}' "
                 x3dfile_str += f"transparency='{self._transparency}'/>\n"
             else:  # set shaders
                 x3dfile_str += (
@@ -519,7 +528,8 @@ class X3DomRenderer:
         self._axes_plane_zoom_factor = axes_plane_zoom_factor
 
         print(
-            f"## x3dom webgl renderer - render axes/planes : {self._axes_plane} - axes/plane zoom factor : {self._axes_plane_zoom_factor}"
+            f"## x3dom webgl renderer - render axes/planes : {self._axes_plane} "
+            f"- axes/plane zoom factor : {self._axes_plane_zoom_factor}"
         )
 
     def DisplayShape(
