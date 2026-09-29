@@ -503,7 +503,7 @@ class BoundingBox:
         """
         self.tol = tol
 
-        bbox = reduce(_opt, [self._bbox(obj) for obj in objects])
+        bbox = self._bbox(objects)
         self.xmin, self.xmax, self.ymin, self.ymax, self.zmin, self.zmax = bbox
         self.xsize = self.xmax - self.xmin
         self.ysize = self.ymax - self.ymin
