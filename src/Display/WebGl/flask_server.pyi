@@ -1,6 +1,6 @@
 from typing import Any
 
-from threejs_renderer import ThreejsRenderer
+from OCC.Display.WebGl.threejs_renderer import ThreejsRenderer
 
 def format_color(r: int, g: int, b: int) -> str: ...
 
@@ -10,7 +10,7 @@ class RenderWraper(ThreejsRenderer):
         path: str | None = None,
         default_shape_color: str = "0xa6a6a6",
         default_edge_color: str = "0x202020",
-        default_vertex_color: str = "0x80808",
+        default_vertex_color: str = "0x080808",
     ) -> None: ...
     def convert_shape(
         self,

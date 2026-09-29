@@ -132,32 +132,29 @@ BODY_TEMPLATE = Template("""
     {
         // restore color for previous selected shape
         if (current_mat) {
-            current_mat.diffuseColor = selected_target_color;
+            current_mat.setAttribute("diffuseColor", selected_target_color);
         }
         // store the shape for future process
         current_selected_shape = the_shape;
         console.log(the_shape);
-        // store color, to be restored later
-        appear = current_selected_shape.getElementsByTagName("Appearance")[0];
-        mat = appear.getElementsByTagName("Material")[0];
+        // store color, to be restored later. A shape rendered with
+        // shaders has no Material, it is not highlighted
+        var mat = the_shape.getElementsByTagName("Material")[0];
         current_mat = mat;
-        console.log(mat);
-        selected_target_color = mat.diffuseColor;
-        mat.diffuseColor = "1. 0.65 0.";
-        //console.log(the_shape.getElementsByTagName("Appearance"));//.getAttribute('diffuseColor'));
+        if (!mat) {
+            return;
+        }
+        selected_target_color = mat.getAttribute("diffuseColor");
+        mat.setAttribute("diffuseColor", "1. 0.65 0.");
     }
     function onDocumentKeyPress(event) {
       event.preventDefault();
       if (event.key=="t") {  // t key
          if (current_selected_shape) {
-           if (current_selected_shape.render == "true") {
-              current_selected_shape.render = "false";
-              console.log("hide ", current_selected_shape);
-           }
-           else {
-              current_selected_shape.render = "true";
-              console.log("show ", current_selected_shape)
-           }
+           // the render field is true by default
+           var visible = current_selected_shape.getAttribute("render") !== "false";
+           current_selected_shape.setAttribute("render", visible ? "false" : "true");
+           console.log(visible ? "hide " : "show ", current_selected_shape);
          }
       }
 

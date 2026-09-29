@@ -596,7 +596,6 @@ class JupyterRenderer:
         self._default_shape_color = default_shape_color
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
-        self._pick_color = pick_color
 
         self._background = background_color
         self._background_opacity = 1
@@ -617,6 +616,9 @@ class JupyterRenderer:
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes: dict[str, Any] = {}
+        # the edges rendered along with a mesh, 'mesh_id:edges', so that they
+        # are hidden or removed with it
+        self._mesh_edges: dict[str, Any] = {}
 
         # we save the renderer so that is can be accessed
         self._renderer: Optional[Renderer] = None
@@ -632,9 +634,12 @@ class JupyterRenderer:
 
         self._current_shape_selection: Optional[Any] = None
         self._current_mesh_selection: Optional[Mesh] = None
+        # the material properties of the selected mesh, restored on deselection
+        self._current_selection_material_state: dict[str, Any] = {}
+        self.clicked_obj: Optional[Any] = None
         self._savestate: Optional[tuple[Any, Any]] = None
 
-        self._selection_color = format_color(232, 176, 36)
+        self._selection_color = pick_color
 
         self._select_callbacks: list[Callable] = (
             []
@@ -725,11 +730,19 @@ class JupyterRenderer:
         """
         Removes the selected shape.
         """
-        self.clicked_obj.visible = not self.clicked_obj.visible
+        obj = self.clicked_obj
+        self._deselect()
+        self.clicked_obj = None
+        # the mesh is removed from the groups, otherwise it could still be picked
+        removed = (obj, self._mesh_edges.pop(obj.name, None))
+        for group in (
+            self._displayed_pickable_objects,
+            self._displayed_non_pickable_objects,
+        ):
+            group.children = tuple(c for c in group.children if c not in removed)
         # remove shape from the mapping dict
-        cur_id = self.clicked_obj.name
-        del self._shapes[cur_id]
-        self._remove_shp_button.disabled = True
+        self._shapes.pop(obj.name, None)
+        self.html.value = ""
 
     def on_compute_change(self, change: dict[str, Any]) -> None:
         """
@@ -799,7 +812,11 @@ class JupyterRenderer:
         """
         Toggles the visibility of the selected shape.
         """
-        self.clicked_obj.visible = not self.clicked_obj.visible
+        visible = not self.clicked_obj.visible
+        self.clicked_obj.visible = visible
+        edges = self._mesh_edges.get(self.clicked_obj.name)
+        if edges is not None:
+            edges.visible = visible
 
     def toggle_axes_visibility(self, change: dict[str, Any]) -> None:
         """
@@ -825,28 +842,14 @@ class JupyterRenderer:
         self.clicked_obj = obj
         if self._current_mesh_selection != obj:
             if self._current_mesh_selection is not None:
-                self._current_mesh_selection.material.color = (
-                    self._current_selection_material_color
-                )
-                self._current_mesh_selection.material.transparent = False
-                self._current_mesh_selection = None
-                self._current_selection_material_color = None
-                self._shp_properties_button.value = "Compute"
-                self._shp_properties_button.disabled = True
-                self._toggle_shp_visibility_button.disabled = True
-                self._remove_shp_button.disabled = True
-                self._current_shape_selection = None
+                self._deselect()
             if obj is not None:
                 self._shp_properties_button.disabled = False
                 self._toggle_shp_visibility_button.disabled = False
                 self._remove_shp_button.disabled = False
                 id_clicked = obj.name  # the mesh id clicked
                 self._current_mesh_selection = obj
-                self._current_selection_material_color = obj.material.color
-                obj.material.color = self._selection_color
-                # selected part becomes transparent
-                obj.material.transparent = True
-                obj.material.opacity = 0.5
+                self._highlight(obj)
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
                 html_value = (
@@ -860,6 +863,40 @@ class JupyterRenderer:
             # then execute calbacks
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
+
+    def _highlight(self, obj: Any) -> None:
+        """
+        Highlights the selected object, its material state is saved to be
+        restored on deselection.
+        """
+        material = obj.material
+        self._current_selection_material_state = {
+            key: getattr(material, key) for key in ("color", "transparent", "opacity")
+        }
+        if isinstance(material, CustomMaterial):
+            # the transparency of the custom shader is set by the alpha uniform
+            self._current_selection_material_state["alpha"] = material.alpha
+            material.alpha = 0.5
+        material.color = self._selection_color
+        # selected part becomes transparent
+        material.transparent = True
+        material.opacity = 0.5
+
+    def _deselect(self) -> None:
+        """
+        Restores the material of the selected object and resets the selection.
+        """
+        if self._current_mesh_selection is not None:
+            material = self._current_mesh_selection.material
+            for key, value in self._current_selection_material_state.items():
+                setattr(material, key, value)
+        self._current_mesh_selection = None
+        self._current_selection_material_state = {}
+        self._shp_properties_button.value = "Compute"
+        self._shp_properties_button.disabled = True
+        self._toggle_shp_visibility_button.disabled = True
+        self._remove_shp_button.disabled = True
+        self._current_shape_selection = None
 
     def register_select_callback(self, callback: Callable) -> None:
         """
@@ -1190,6 +1227,7 @@ class JupyterRenderer:
             mat = LineMaterial(linewidth=1, color=edge_color)
             edge_lines = LineSegments2(lines, mat)
             self._displayed_non_pickable_objects.add(edge_lines)
+            self._mesh_edges[mesh_id] = edge_lines
 
         return shape_mesh
 
@@ -1227,11 +1265,12 @@ class JupyterRenderer:
         Erases all shapes from the renderer.
         """
         self._shapes = {}
+        self._mesh_edges = {}
         self._displayed_pickable_objects = Group()
         self._displayed_non_pickable_objects = Group()
         self._current_shape_selection = None
         self._current_mesh_selection = None
-        self._current_selection_material_color = None
+        self._current_selection_material_state = {}
         if self._renderer is not None:
             self._renderer.scene = Scene(children=[])
 

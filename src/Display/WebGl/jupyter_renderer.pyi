@@ -1,3 +1,4 @@
+import enum
 from typing import Any, Callable
 
 from OCC.Core.gp import gp_Dir, gp_Pnt
@@ -73,15 +74,15 @@ class BoundingBox:
     def _bbox(self, objects: list[Any]) -> tuple[float, ...]: ...
     def __repr__(self) -> str: ...
 
-class NORMAL:
-    SERVER_SIDE: int
-    CLIENT_SIDE: int
+class NORMAL(enum.Enum):
+    SERVER_SIDE = 1
+    CLIENT_SIDE = 2
 
 class JupyterRenderer:
     def __init__(
         self,
         size: tuple[int, int] = (640, 480),
-        compute_normals_mode: int = ...,
+        compute_normals_mode: NORMAL = ...,
         default_shape_color: str = ...,
         default_edge_color: str = ...,
         default_vertex_color: str = ...,

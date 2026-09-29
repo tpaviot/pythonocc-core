@@ -101,6 +101,7 @@ class RenderWraper(ThreejsRenderer):
         # if the shape is an edge or a wire, use the related functions
         color = color_to_hex(color)
         specular_color = color_to_hex(specular_color)
+        line_color = color_to_hex(line_color)
         if is_edge(shape):
             print("discretize an edge")
             pnts = discretize_edge(shape)
@@ -175,12 +176,8 @@ class RenderWraper(ThreejsRenderer):
                 # write to file
                 edge_hash = f"edg{uuid.uuid4().hex}"
                 edge_content += export_edgedata_to_json(edge_hash, edge_point_set)
-                # store this edge hash, with black color
-                self._3js_edges[edge_hash] = [
-                    color_to_hex((0, 0, 0)),
-                    line_width,
-                    edge_content,
-                ]
+                # store this edge hash
+                self._3js_edges[edge_hash] = [line_color, line_width, edge_content]
         return self._3js_shapes, self._3js_edges, self._3js_vertex
 
 

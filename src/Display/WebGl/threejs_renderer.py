@@ -29,6 +29,10 @@ from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Display.WebGl.simple_server import start_server
 from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
 
+# the three.js release loaded by the importmap, pinned so that the rendering
+# (lights intensities, color management) does not change with new releases
+THREEJS_VERSION = "0.186.1"
+
 
 def spinning_cursor() -> Generator[str, None, None]:
     """
@@ -166,8 +170,8 @@ BODY_TEMPLATE = Template("""
     <script type="importmap">
       {
         "imports": {
-          "three": "https://unpkg.com/three/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three/examples/jsm/"
+          "three": "https://unpkg.com/three@$THREEJS_VERSION/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@$THREEJS_VERSION/examples/jsm/"
         }
       }
     </script>
@@ -202,6 +206,8 @@ var selected_target_color_r = 0;
 var selected_target_color_g = 0;
 var selected_target_color_b = 0;
 var selected_target = null;
+// the pointer position on button press, to tell a click from a drag
+var pointer_down = new THREE.Vector2();
 init();
 animate();
 
@@ -253,6 +259,7 @@ function init() {
     controls = new TrackballControls(camera, renderer.domElement);
 
     document.addEventListener('keypress', onDocumentKeyPress, false);
+    document.addEventListener('pointerdown', onDocumentPointerDown, true);
     document.addEventListener('click', onDocumentMouseClick, false);
     window.addEventListener('resize', onWindowResize, false);
 }
@@ -295,8 +302,15 @@ function onDocumentKeyPress(event) {
   }
 }
 
+function onDocumentPointerDown(event) {
+    pointer_down.set(event.clientX, event.clientY);
+}
+
 function onDocumentMouseClick(event) {
-    event.preventDefault();
+    // the end of a rotation/pan with the trackball does not change the selection
+    if (pointer_down.distanceTo(new THREE.Vector2(event.clientX, event.clientY)) > 3) {
+        return;
+    }
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
     // restore previous selected target color
@@ -307,7 +321,9 @@ function onDocumentMouseClick(event) {
     }
     // perform selection
     raycaster.setFromCamera(mouse, camera);
-    var intersects = raycaster.intersectObjects(scene.children);
+    // the grid and the axis are not selectable
+    var intersects = raycaster.intersectObjects(scene.children).filter(
+        (intersect) => intersect.object !== gridHelper && intersect.object !== axisHelper);
     if (intersects.length > 0) {
         var target = intersects[0].object;
         selected_target_color_r = target.material.color.r;
@@ -339,7 +355,7 @@ function fit_to_scene() {
     });
 
     if (radiuses.length > 0) {
-        center.divideScalar(radiuses.length*0.7);
+        center.divideScalar(radiuses.length);
     }
 
     var maxRad = 1.;
@@ -624,6 +640,7 @@ class ThreejsRenderer:
             body = BODY_TEMPLATE.substitute(
                 {
                     "VERSION": VERSION,
+                    "THREEJS_VERSION": THREEJS_VERSION,
                     "VertexShaderDefinition": "",
                     "FragmentShaderDefinition": "",
                 }
