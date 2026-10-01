@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : cb4d500
+git revision : 4e6f13a
 
-operating system : Linux 64bit 7.0.0-31-generic
+operating system : Linux 64bit 7.0.0-34-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-09-22 18:25:59.088387
+date : 2026-10-01 19:12:47.224744
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -11204,7 +11204,7 @@ date : 2026-09-22 18:25:59.088387
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.38s
+SWIG interface file generation completed in 23.91s
 #################################################
 
 [INFO ]  Number of classes: 4099

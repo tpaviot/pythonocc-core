@@ -2364,24 +2364,20 @@ Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires r
 
 
 %extend ShapeAnalysis_FreeBounds {
-    static Handle(TopTools_HSequenceOfShape) ConnectEdgesToWires(opencascade::handle<TopTools_HSequenceOfShape> & edges,
+    static Handle(TopTools_HSequenceOfShape) ConnectEdgesToWires(const opencascade::handle<TopTools_HSequenceOfShape> & edges,
               const Standard_Real toler,
               const Standard_Boolean shared)
         {
-            Handle(TopTools_HSequenceOfShape) owires = new TopTools_HSequenceOfShape;
-            ShapeAnalysis_FreeBounds::ConnectEdgesToWires(edges, toler, shared, owires);
-            return owires;
+            return ShapeAnalysis_FreeBounds::ConnectEdgesToWires(edges, toler, shared);
         }
     };
 
 %extend ShapeAnalysis_FreeBounds {
-    static Handle(TopTools_HSequenceOfShape) ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires,
+    static Handle(TopTools_HSequenceOfShape) ConnectWiresToWires(const opencascade::handle<TopTools_HSequenceOfShape> & iwires,
               const Standard_Real toler,
               const Standard_Boolean shared)
         {
-            Handle(TopTools_HSequenceOfShape) owires = new TopTools_HSequenceOfShape;
-            ShapeAnalysis_FreeBounds::ConnectWiresToWires(iwires, toler, shared, owires);
-            return owires;
+            return ShapeAnalysis_FreeBounds::ConnectWiresToWires(iwires, toler, shared);
         }
     };
 %extend ShapeAnalysis_FreeBounds {

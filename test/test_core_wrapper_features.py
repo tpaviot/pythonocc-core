@@ -47,6 +47,7 @@ from OCC.Core.BRepPrimAPI import (
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeWire,
     BRepBuilderAPI_Sewing,
 )
 from OCC.Core.BinObjMgt import BinObjMgt_Persistent
@@ -92,7 +93,7 @@ from OCC.Core.TColgp import (
 )
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
-from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_Orientation
+from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_WIRE, TopAbs_Orientation
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.BRepClass import BRepClass_FaceClassifier
@@ -1272,26 +1273,42 @@ def test_WriteStream():
     assert len(step_str) > 15000  # TODO: length depends on architecture?
 
 
+def _square_edges():
+    # consecutive edges share their vertices, so that both shared=False
+    # (geometric connection) and shared=True (topological connection) work
+    pts = [gp_Pnt(0, 0, 0), gp_Pnt(1, 0, 0), gp_Pnt(1, 1, 0), gp_Pnt(0, 1, 0)]
+    vertices = [BRepBuilderAPI_MakeVertex(p).Vertex() for p in pts]
+    return [
+        BRepBuilderAPI_MakeEdge(vertices[i], vertices[(i + 1) % 4]).Edge()
+        for i in range(4)
+    ]
+
+
 def test_shape_analysis_free_bounds():
     """test special wrapper for ShapeAnalysis::ConnectEdgesToWires"""
-    p1 = gp_Pnt()
-    p2 = gp_Pnt(1, 0, 0)
-    e1 = BRepBuilderAPI_MakeEdge(p1, p2).Edge()
-
-    p3 = gp_Pnt(1, 1, 0)
-    e2 = BRepBuilderAPI_MakeEdge(p2, p3).Edge()
-
     edges = TopTools_HSequenceOfShape()
-    edges.Append(e1)
-    edges.Append(e2)
+    for edge in _square_edges():
+        edges.Append(edge)
 
     # ShapeAnalysis_FreeBounds.ConnectEdgesToWires is wrapped as a 3-arg
-    # function that returns the resulting wires (the OCCT C++ signature
-    # takes a 4th out-parameter). OCCT 8.0 connects each edge into a
-    # separate wire when shared=False; we just check the call succeeds.
-    wires = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False)
+    # function that returns the resulting wires. The input sequence must
+    # not be returned in place of the result, see issue #1497
+    for shared in (False, True):
+        wires = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, shared)
+        assert wires.Length() == 1
+        assert wires.Value(1).ShapeType() == TopAbs_WIRE
 
-    assert wires.Length() >= 1
+
+def test_shape_analysis_free_bounds_connect_wires():
+    """test special wrapper for ShapeAnalysis::ConnectWiresToWires, see #1497"""
+    iwires = TopTools_HSequenceOfShape()
+    for edge in _square_edges():
+        iwires.Append(BRepBuilderAPI_MakeWire(edge).Wire())
+
+    owires = ShapeAnalysis_FreeBounds.ConnectWiresToWires(iwires, 1.0e-7, False)
+    assert iwires.Length() == 4
+    assert owires.Length() == 1
+    assert owires.Value(1).ShapeType() == TopAbs_WIRE
 
 
 def test_const_ref_return():
