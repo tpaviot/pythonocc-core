@@ -260,8 +260,11 @@ template <typename T> class handle{};
 // NON-CONST REFERENCE TYPEMAP - Return the modified handle
 // ---------------------------------------------------------
 // Non-const references can be modified by the function. This typemap
-// extracts the modified handle and returns it to Python, replacing
-// the default void return value.
+// extracts the modified handle and appends it to the Python result, as
+// for the other output parameters:
+//   - void function, single handle: the handle alone is returned
+//   - several handles and/or other outputs: a list, in parameter order
+//   - non-void function: [result, handle, ...]
 %typemap(argout) opencascade::handle<TYPE> & {
   TYPE * presult = nullptr;
 
@@ -285,15 +288,13 @@ template <typename T> class handle{};
     }
   }
 
-  // Replace the default void return value with our handle
-  // Py_XDECREF safely decrements the reference count of the old result (if any)
-  Py_XDECREF($result);
-
   // Create a new Python object wrapping the modified handle
   // SWIGTYPE_p_##TYPE is the SWIG type descriptor for this specific type
   // SWIG_POINTER_OWN tells SWIG that Python owns this object and should
   // decrement its reference count when the Python object is garbage collected
-  $result = SWIG_NewPointerObj(SWIG_as_voidptr(presult), SWIGTYPE_p_ ## TYPE, SWIG_POINTER_OWN);
+  // Append it to the result instead of replacing it, so that neither the
+  // function result nor the previous outputs are discarded
+  $result = SWIG_AppendOutput($result, SWIG_NewPointerObj(SWIG_as_voidptr(presult), SWIGTYPE_p_ ## TYPE, SWIG_POINTER_OWN));
 }
 
 // Note: Similar typemaps should be added for Handle_TYPE & syntax if needed
