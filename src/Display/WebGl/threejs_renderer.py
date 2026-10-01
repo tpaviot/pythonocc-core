@@ -15,12 +15,14 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""A three.js renderer, the shapes are displayed in a web browser."""
+
 import json
 import os
 import sys
 import tempfile
 import uuid
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from string import Template
 from typing import Any, Optional
 
@@ -28,6 +30,10 @@ from OCC import VERSION
 from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Display.WebGl.simple_server import start_server
 from OCC.Extend.TopologyUtils import discretize_edge, discretize_wire, is_edge, is_wire
+
+# the three.js release loaded by the importmap, pinned so that the rendering
+# (lights intensities, color management) does not change with new releases
+THREEJS_VERSION = "0.186.1"
 
 
 def spinning_cursor() -> Generator[str, None, None]:
@@ -54,7 +60,9 @@ def color_to_hex(rgb_color: tuple[float, float, float]) -> str:
     return f"0x{int(r * 255.0):02x}{int(g * 255.0):02x}{int(b * 255.0):02x}"
 
 
-def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str:
+def export_edgedata_to_json(
+    edge_hash: str, point_set: Sequence[Sequence[float]]
+) -> str:
     """
     Exports a set of points to a LineSegment buffergeometry.
 
@@ -68,7 +76,7 @@ def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str
     # first build the array of point coordinates
     # edges are built as follows:
     # points_coordinates  =[P0x, P0y, P0z, P1x, P1y, P1z, P2x, P2y, etc.]
-    points_coordinates = []
+    points_coordinates: list[float] = []
     for point in point_set:
         points_coordinates.extend(iter(point))
     # then build the dictionary exported to json
@@ -166,8 +174,8 @@ BODY_TEMPLATE = Template("""
     <script type="importmap">
       {
         "imports": {
-          "three": "https://unpkg.com/three/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three/examples/jsm/"
+          "three": "https://unpkg.com/three@$THREEJS_VERSION/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@$THREEJS_VERSION/examples/jsm/"
         }
       }
     </script>
@@ -202,6 +210,8 @@ var selected_target_color_r = 0;
 var selected_target_color_g = 0;
 var selected_target_color_b = 0;
 var selected_target = null;
+// the pointer position on button press, to tell a click from a drag
+var pointer_down = new THREE.Vector2();
 init();
 animate();
 
@@ -253,6 +263,7 @@ function init() {
     controls = new TrackballControls(camera, renderer.domElement);
 
     document.addEventListener('keypress', onDocumentKeyPress, false);
+    document.addEventListener('pointerdown', onDocumentPointerDown, true);
     document.addEventListener('click', onDocumentMouseClick, false);
     window.addEventListener('resize', onWindowResize, false);
 }
@@ -295,8 +306,15 @@ function onDocumentKeyPress(event) {
   }
 }
 
+function onDocumentPointerDown(event) {
+    pointer_down.set(event.clientX, event.clientY);
+}
+
 function onDocumentMouseClick(event) {
-    event.preventDefault();
+    // the end of a rotation/pan with the trackball does not change the selection
+    if (pointer_down.distanceTo(new THREE.Vector2(event.clientX, event.clientY)) > 3) {
+        return;
+    }
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
     // restore previous selected target color
@@ -307,7 +325,9 @@ function onDocumentMouseClick(event) {
     }
     // perform selection
     raycaster.setFromCamera(mouse, camera);
-    var intersects = raycaster.intersectObjects(scene.children);
+    // the grid and the axis are not selectable
+    var intersects = raycaster.intersectObjects(scene.children).filter(
+        (intersect) => intersect.object !== gridHelper && intersect.object !== axisHelper);
     if (intersects.length > 0) {
         var target = intersects[0].object;
         selected_target_color_r = target.material.color.r;
@@ -339,7 +359,7 @@ function fit_to_scene() {
     });
 
     if (radiuses.length > 0) {
-        center.divideScalar(radiuses.length*0.7);
+        center.divideScalar(radiuses.length);
     }
 
     var maxRad = 1.;
@@ -431,9 +451,12 @@ class ThreejsRenderer:
         Args:
             path (str, optional): The path to the directory where the HTML
                 and JavaScript files will be created. If not specified, a
-                temporary directory will be created.
+                temporary directory is created, and removed with the renderer.
         """
-        self._path = path if path else tempfile.mkdtemp()
+        if not path:
+            self._tmp_dir = tempfile.TemporaryDirectory(prefix="pythonocc_threejs_")
+            path = self._tmp_dir.name
+        self._path = path
         self._html_filename = os.path.join(self._path, "index.html")
         self._main_js_filename = os.path.join(self._path, "main.js")
         self._3js_shapes: dict[str, Any] = {}
@@ -576,8 +599,8 @@ class ThreejsRenderer:
             if transparency > 0.0:
                 # three.js opacity is the opposite of the transparency
                 shape_string_list.append(
-                    "transparent: true, premultipliedAlpha: true, opacity:%g,"
-                    % (1.0 - transparency)
+                    "transparent: true, premultipliedAlpha: true, "
+                    f"opacity:{1.0 - transparency:g},"
                 )
             shape_string_list.extend(
                 (
@@ -591,12 +614,15 @@ class ThreejsRenderer:
             )
             shape_string_list.append("\t\t\t});\n\n")
         # Process edges
-        edge_string_list = []
+        edge_string_list: list[str] = []
         for edge_hash, (color, line_width) in self._3js_edges.items():
             edge_string_list.extend(
                 (
                     f"\tloader.load('{edge_hash}.json', function(geometry) {{\n",
-                    f"\tvar line_material = new THREE.LineBasicMaterial({{color: {color_to_hex(color)}, linewidth: {line_width}}});\n",
+                    (
+                        "\tvar line_material = new THREE.LineBasicMaterial("
+                        f"{{color: {color_to_hex(color)}, linewidth: {line_width}}});\n"
+                    ),
                     "\tvar line = new THREE.Line(geometry, line_material);\n",
                     "\tscene.add(line);\n",
                     "\t});\n",
@@ -624,6 +650,7 @@ class ThreejsRenderer:
             body = BODY_TEMPLATE.substitute(
                 {
                     "VERSION": VERSION,
+                    "THREEJS_VERSION": THREEJS_VERSION,
                     "VertexShaderDefinition": "",
                     "FragmentShaderDefinition": "",
                 }

@@ -99,15 +99,17 @@ class RenderWraper(ThreejsRenderer):
             A tuple containing the shapes, edges, and vertices.
         """
         # if the shape is an edge or a wire, use the related functions
-        color = color_to_hex(color)
-        specular_color = color_to_hex(specular_color)
+        # the colors are passed to three.js as hex strings
+        color_hex = color_to_hex(color)
+        specular_color_hex = color_to_hex(specular_color)
+        line_color_hex = color_to_hex(line_color)
         if is_edge(shape):
             print("discretize an edge")
             pnts = discretize_edge(shape)
             edge_hash = f"edg{uuid.uuid4().hex}"
             shape_content = export_edgedata_to_json(edge_hash, pnts)
             # store this edge hash
-            self._3js_edges[edge_hash] = [color, line_width, shape_content]
+            self._3js_edges[edge_hash] = [color_hex, line_width, shape_content]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
         if is_wire(shape):
             print("discretize a wire")
@@ -115,7 +117,7 @@ class RenderWraper(ThreejsRenderer):
             wire_hash = f"wir{uuid.uuid4().hex}"
             shape_content = export_edgedata_to_json(wire_hash, pnts)
             # store this edge hash
-            self._3js_edges[wire_hash] = [color, line_width, shape_content]
+            self._3js_edges[wire_hash] = [color_hex, line_width, shape_content]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
         if isinstance(shape, list) and shape and isinstance(shape[0], gp_Pnt):
             print("storage points")
@@ -130,7 +132,7 @@ class RenderWraper(ThreejsRenderer):
                 vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
             points_hash = f"pnt{uuid.uuid4().hex}"
             # store this vertex hash. Note: TopoDS_Compound did not save now
-            self._3js_vertex[points_hash] = [color, point_size, vertices_list]
+            self._3js_vertex[points_hash] = [color_hex, point_size, vertices_list]
             return self._3js_shapes, self._3js_edges, self._3js_vertex
 
         # convert as TopoDS_Shape
@@ -143,7 +145,8 @@ class RenderWraper(ThreejsRenderer):
         )
         # update spinning cursor
         sys.stdout.write(
-            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, {tess.ObjGetTriangleCount()} triangles     "
+            f"\r{next(self.spinning_cursor)} mesh shape {shape_hash}, "
+            f"{tess.ObjGetTriangleCount()} triangles     "
         )
         sys.stdout.flush()
         # export to 3JS
@@ -152,11 +155,11 @@ class RenderWraper(ThreejsRenderer):
         # add this shape to the shape dict, sotres everything related to it
         self._3js_shapes[shape_hash] = [
             export_edges,
-            color,
-            specular_color,
+            color_hex,
+            specular_color_hex,
             shininess,
             transparency,
-            line_color,
+            line_color_hex,
             line_width,
             shape_content,
         ]
@@ -175,12 +178,8 @@ class RenderWraper(ThreejsRenderer):
                 # write to file
                 edge_hash = f"edg{uuid.uuid4().hex}"
                 edge_content += export_edgedata_to_json(edge_hash, edge_point_set)
-                # store this edge hash, with black color
-                self._3js_edges[edge_hash] = [
-                    color_to_hex((0, 0, 0)),
-                    line_width,
-                    edge_content,
-                ]
+                # store this edge hash
+                self._3js_edges[edge_hash] = [line_color_hex, line_width, edge_content]
         return self._3js_shapes, self._3js_edges, self._3js_vertex
 
 
@@ -216,12 +215,10 @@ class RenderConfig:
         self._uniforms = uniforms
 
 
-app = Flask(__name__)
-my_ren = RenderWraper()
-render_cfg = RenderConfig()
-
-
 if __name__ == "__main__":
+    app = Flask(__name__)
+    my_ren = RenderWraper()
+    render_cfg = RenderConfig()
 
     @app.route("/")
     @app.route("/index")

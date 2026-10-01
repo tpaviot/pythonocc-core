@@ -1,8 +1,14 @@
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from typing import Any
 
-def spinning_cursor() -> Generator[str, None, None]: ...
-def export_edge_to_indexed_lineset(edge_point_set: list[list[float]]) -> str: ...
+X3DOM_VERSION: str
+AXES_PLANE_FILES: tuple[str, ...]
+X3D_DIR: str
+
+def spinning_cursor() -> Generator[str]: ...
+def export_edge_to_indexed_lineset(
+    edge_point_set: Sequence[Sequence[float]],
+) -> str: ...
 def indexed_lineset_to_x3d_string(
     str_linesets: list[str],
     header: bool = True,

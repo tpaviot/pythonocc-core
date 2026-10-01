@@ -1,0 +1,22 @@
+<!-- from https://github.com/x3dom/component-editor (static/x3d/plane.x3d), dual licensed under the MIT and GPL licenses -->
+<X3D>
+    <scene>
+        <Shape id="plane" isPickable="false">
+            <Appearance DEF="GRID_APPEARANCE" sortKey="-1">
+                <Material diffuseColor='0.0 0.0 0.0' specularColor='0.0 0.0 0.0' emissiveColor='0.3 0.3 0.3'></Material>
+                <DepthMode id="depthMode" readOnly="false"></DepthMode>
+            </Appearance>
+            <Plane id="gridPlane" solid="false" size='10 10' primType='LINES' subdivision='20 20'>
+            </Plane>
+        </Shape>
+        <Shape id="planeBorder" isPickable="false">
+            <Appearance >
+                <Material diffuseColor='0.0 0.0 0.0' specularColor='0.0 0.0 0.0'  emissiveColor='0.3 0.3 0.3'></Material>
+                <DepthMode  readOnly="false"></DepthMode>
+            </Appearance>
+            <IndexedLineSet coordIndex="0 1 2 3 0 -1" colorPerVertex="false" lit="false">
+                <Coordinate id="gridBordersCoordNode" point="-10.0 -10.0 0.0 , -10.0 10.0 0.0 , 10.0 10.0 0.0, 10.0 -10.0 0.0"/>
+            </IndexedLineSet>
+        </Shape>
+    </scene>
+</X3D>

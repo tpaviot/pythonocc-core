@@ -71,14 +71,17 @@
 
 
     {% if render_cfg._vertex_shader %}
-    <script type="x-shader/x-vertex" id="vertexShader">{{ render_cfg._vertex_shader }}</script>
+    <script type="x-shader/x-vertex" id="vertexShader">{{ render_cfg._vertex_shader | safe }}</script>
     {% endif %}
     {% if render_cfg._fragment_shader %}
-    <script type="x-shader/x-fragment" id="fragmentShader">{{ render_cfg._fragment_shader }}</script>
+    <script type="x-shader/x-fragment" id="fragmentShader">{{ render_cfg._fragment_shader | safe }}</script>
     {% endif %}
 
     <script type="text/javascript">
         var camera, scene, renderer, object, stats, container, shape_material;
+        var gridHelper, axisHelper;
+        // the pointer position on button press, to tell a click from a drag
+        var pointer_down = new THREE.Vector2();
         var mouseX = 0;
         var mouseXOnMouseDown = 0;
         var mouseY = 0;
@@ -121,7 +124,7 @@
             scene.add(light1);
 
             {% if render_cfg._uniforms %}
-            uniforms = render_cfg._uniforms
+            uniforms = {{ render_cfg._uniforms | tojson }};
             {% else %}
             uniforms = {};
             {% endif %}
@@ -148,11 +151,17 @@
             transparency = {{ value[4] }};
             line_color = {{ value[5] }};
             line_width = {{ value[6] }};
-            {{ shape_hash}}_phong_material = new THREE.MeshPhongMaterial(
-                {color:color,specular:specular_color,shininess:shininess,side: THREE.DoubleSide,});
+            {% if (render_cfg._vertex_shader is not none) and (render_cfg._fragment_shader is not none) %}
+            {{ shape_hash }}_material = shader_material;
+            {% else %}
+            // three.js opacity is the opposite of the transparency
+            {{ shape_hash }}_material = new THREE.MeshPhongMaterial(
+                {color:color,specular:specular_color,shininess:shininess,side: THREE.DoubleSide,
+                 transparent: transparency > 0, opacity: 1 - transparency});
+            {% endif %}
             json_shape = JSON.parse({{ value[-1] | tojson }})
             var geometry = loader.parse(json_shape);
-            mesh = new THREE.Mesh(geometry, {{ shape_hash }}_phong_material);
+            mesh = new THREE.Mesh(geometry, {{ shape_hash }}_material);
             mesh.castShadow = true;
             mesh.receiveShadow = true;
             scene.add(mesh);
@@ -210,6 +219,7 @@
             container.appendChild(stats.domElement);
             // add events
             document.addEventListener('keypress', onDocumentKeyPress, false);
+            document.addEventListener('pointerdown', onDocumentPointerDown, true);
             document.addEventListener('click', onDocumentMouseClick, false);
             window.addEventListener('resize', onWindowResize, false);
             fit_to_scene();
@@ -252,8 +262,14 @@
                fit_to_scene();
           }
         }
+        function onDocumentPointerDown(event) {
+            pointer_down.set(event.clientX, event.clientY);
+        }
         function onDocumentMouseClick(event) {
-            event.preventDefault();
+            // the end of a rotation/pan with the trackball does not change the selection
+            if (pointer_down.distanceTo(new THREE.Vector2(event.clientX, event.clientY)) > 3) {
+                return;
+            }
             mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
             mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
             // restore previous selected target color
@@ -264,7 +280,9 @@
             }
             // perform selection
             raycaster.setFromCamera(mouse, camera);
-            var intersects = raycaster.intersectObjects(scene.children);
+            // the grid and the axis are not selectable
+            var intersects = raycaster.intersectObjects(scene.children).filter(
+                function(intersect) { return intersect.object !== gridHelper && intersect.object !== axisHelper; });
             if (intersects.length > 0) {
                 var target = intersects[0].object;
                 selected_target_color_r = target.material.color.r;
@@ -293,7 +311,7 @@
                 }
             });
             if (radiuses.length > 0) {
-                center.divideScalar(radiuses.length*0.7);
+                center.divideScalar(radiuses.length);
             }
             var maxRad = 1.;
             // compute bounding radius
@@ -322,7 +340,11 @@
             camera.updateProjectionMatrix();
             controls.target = center;
             controls.update();
-            // adds and adjust a grid helper if needed
+            // adds and adjust a grid helper if needed, replacing the previous one
+            if (gridHelper) {
+                scene.remove(gridHelper);
+                scene.remove(axisHelper);
+            }
             gridHelper = new THREE.GridHelper(maxRad*4, 10)
             scene.add(gridHelper);
             // axisHelper

@@ -15,11 +15,14 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+"""A pythreejs based renderer for the Jupyter notebooks."""
+
 import copy
 import enum
 import itertools
 import math
 import uuid
+from collections.abc import Iterable, Sequence
 from functools import reduce
 from typing import Any, Callable, Optional, Union
 
@@ -87,19 +90,21 @@ from OCC.Extend.TopologyUtils import (
 #
 # Util mathematical functions
 #
-def _add(vec1: list[float], vec2: list[float]) -> list[float]:
+def _add(vec1: Sequence[float], vec2: Sequence[float]) -> list[float]:
     """Adds two vectors."""
     return [v1 + v2 for v1, v2 in zip(vec1, vec2)]
 
 
-def _explode(edge_list: list[list[float]]) -> list[list[list[float]]]:
+def _explode(
+    edge_list: Sequence[Sequence[float]],
+) -> list[list[Sequence[float]]]:
     """Explodes a list of edges into a list of segments."""
     return [[edge_list[i], edge_list[i + 1]] for i in range(len(edge_list) - 1)]
 
 
-def _flatten(nested_dict: dict[Any, Any]) -> list[Any]:
-    """Flattens a nested dictionary."""
-    return [y for x in nested_dict for y in x]
+def _flatten(nested_list: Iterable[Iterable[Any]]) -> list[Any]:
+    """Flattens a list of lists."""
+    return [y for x in nested_list for y in x]
 
 
 def format_color(r: int, g: int, b: int) -> str:
@@ -107,9 +112,9 @@ def format_color(r: int, g: int, b: int) -> str:
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
-def _distance(v1: list[float], v2: list[float]) -> float:
+def _distance(v1: Sequence[float], v2: Sequence[float]) -> float:
     """Computes the distance between two vectors."""
-    return np.linalg.norm([x - y for x, y in zip(v1, v2)])
+    return float(np.linalg.norm([x - y for x, y in zip(v1, v2)]))
 
 
 def _bool_or_new(val: Union[bool, dict[str, Any]]) -> bool:
@@ -129,12 +134,20 @@ def _opt(b1: tuple[float, ...], b2: tuple[float, ...]) -> tuple[float, ...]:
     )
 
 
-def _shift(v: list[float], offset: list[float]) -> list[float]:
+def _shift(v: Sequence[float], offset: Sequence[float]) -> list[float]:
     """Shifts a vector by an offset."""
     return [x + o for x, o in zip(v, offset)]
 
 
 # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
+def _html_values(title: str, labels: Any, values: Any) -> str:
+    """Formats a titled list of values to html, e.g. the X, Y, Z of a point."""
+    rows = "".join(
+        f"<b>{label}=</b>{value:.3f}<br>" for label, value in zip(labels, values)
+    )
+    return f"<u><b>{title}</b></u>:<br>{rows}"
+
+
 def _nice_number(value: float, round_: bool = False) -> float:
     """
     Returns a "nice" number approximately equal to value.
@@ -146,7 +159,7 @@ def _nice_number(value: float, round_: bool = False) -> float:
     Returns:
         float: The nice number.
     """
-    exponent = math.floor(math.log(value, 10))
+    exponent = math.floor(math.log10(value))
     fraction = value / 10**exponent
 
     if round_:
@@ -167,7 +180,7 @@ def _nice_number(value: float, round_: bool = False) -> float:
     else:
         nice_fraction = 10.0
 
-    return nice_fraction * 10**exponent
+    return nice_fraction * 10.0**exponent
 
 
 def _nice_bounds(
@@ -186,7 +199,7 @@ def _nice_bounds(
     """
     axis_width = axis_end - axis_start
     if axis_width == 0:
-        nice_tick = 0
+        nice_tick = 0.0
     else:
         nice_range = _nice_number(axis_width)
         nice_tick = _nice_number(nice_range / (num_ticks - 1), round_=True)
@@ -264,8 +277,8 @@ class Grid(Helpers):
 
     def __init__(
         self,
-        bb_center: Optional[tuple[float, float, float]] = None,
-        maximum: int = 5,
+        bb_center: tuple[float, float, float] = (0.0, 0.0, 0.0),
+        maximum: float = 5,
         ticks: int = 10,
         colorCenterLine: str = "#aaa",
         colorGrid: str = "#ddd",
@@ -337,7 +350,7 @@ class Axes(Helpers):
     def __init__(
         self,
         bb_center: tuple[float, float, float],
-        length: int = 1,
+        length: float = 1,
         width: int = 3,
         display_labels: bool = False,
     ) -> None:
@@ -403,6 +416,8 @@ class CustomMaterial(ShaderMaterial):
     """
     A custom material helper.
     """
+
+    uniforms: dict[str, Any]
 
     def __init__(self, typ: str) -> None:
         """
@@ -476,7 +491,7 @@ class CustomMaterial(ShaderMaterial):
             key: The key of the uniform to update.
             value: The value to set.
         """
-        uniforms = dict(**self.uniforms)
+        uniforms = {**self.uniforms}
         if self.types.get(key) is None:
             uniforms[key] = {"value": value}
         else:
@@ -503,7 +518,7 @@ class BoundingBox:
         """
         self.tol = tol
 
-        bbox = reduce(_opt, [self._bbox(obj) for obj in objects])
+        bbox = self._bbox(objects)
         self.xmin, self.xmax, self.ymin, self.ymax, self.zmin, self.zmax = bbox
         self.xsize = self.xmax - self.xmin
         self.ysize = self.ymax - self.ymin
@@ -533,7 +548,7 @@ class BoundingBox:
         Returns the maximum distance from the origin.
         """
         return max(
-            np.linalg.norm(v)
+            float(np.linalg.norm(v))
             for v in itertools.product(
                 (self.xmin, self.xmax),
                 (self.ymin, self.ymax),
@@ -541,7 +556,7 @@ class BoundingBox:
             )
         )
 
-    def _bounding_box(self, obj: Any, tol: float = 1e-5) -> tuple[float, ...]:
+    def _bounding_box(self, obj: Any) -> tuple[float, ...]:
         """
         Computes the bounding box of an object.
         """
@@ -558,10 +573,16 @@ class BoundingBox:
         return reduce(_opt, [self._bounding_box(obj) for obj in objects])
 
     def __repr__(self) -> str:
-        return f"[x({self.xmin:f} .. {self.xmax:f}), y({self.ymin:f} .. {self.ymax:f}), z({self.zmin:f} .. {self.zmax:f})]"
+        return (
+            f"[x({self.xmin:f} .. {self.xmax:f}), "
+            f"y({self.ymin:f} .. {self.ymax:f}), "
+            f"z({self.zmin:f} .. {self.zmax:f})]"
+        )
 
 
 class NORMAL(enum.Enum):
+    """Where the normals of the meshes are computed."""
+
     SERVER_SIDE = 1
     CLIENT_SIDE = 2
 
@@ -596,7 +617,6 @@ class JupyterRenderer:
         self._default_shape_color = default_shape_color
         self._default_edge_color = default_edge_color
         self._default_vertex_color = default_vertex_color
-        self._pick_color = pick_color
 
         self._background = background_color
         self._background_opacity = 1
@@ -608,15 +628,20 @@ class JupyterRenderer:
         )
 
         # the default camera object
-        self._camera_target = [0.0, 0.0, 0.0]  # the point to look at
-        self._camera_position = [0, 0.0, 100.0]  # the camera initial position
-        self._camera = None
+        # the point to look at
+        self._camera_target: Sequence[float] = (0.0, 0.0, 0.0)
+        # the camera initial position
+        self._camera_position: Sequence[float] = (0.0, 0.0, 100.0)
+        self._camera: Optional[CombinedCamera] = None
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
         # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes: dict[str, Any] = {}
+        # the edges rendered along with a mesh, 'mesh_id:edges', so that they
+        # are hidden or removed with it
+        self._mesh_edges: dict[str, Any] = {}
 
         # we save the renderer so that is can be accessed
         self._renderer: Optional[Renderer] = None
@@ -632,11 +657,20 @@ class JupyterRenderer:
 
         self._current_shape_selection: Optional[Any] = None
         self._current_mesh_selection: Optional[Mesh] = None
+        # the material properties of the selected mesh, restored on deselection
+        self._current_selection_material_state: dict[str, Any] = {}
+        self.clicked_obj: Optional[Any] = None
         self._savestate: Optional[tuple[Any, Any]] = None
 
-        self._selection_color = format_color(232, 176, 36)
+        # the helpers and the camera controller, created by Display()
+        self.axes: Optional[Axes] = None
+        self.horizontal_grid: Optional[Grid] = None
+        self.vertical_grid: Optional[Grid] = None
+        self._controller: Optional[OrbitControls] = None
 
-        self._select_callbacks: list[Callable] = (
+        self._selection_color = pick_color
+
+        self._select_callbacks: list[Callable[[Any], None]] = (
             []
         )  # a list of all functions called after an object is selected
 
@@ -678,7 +712,11 @@ class JupyterRenderer:
         self.html = HTML("")
 
     def create_button(
-        self, description: str, tooltip: str, disabled: bool, handler: Callable
+        self,
+        description: str,
+        tooltip: str,
+        disabled: bool,
+        handler: Callable[..., None],
     ) -> Button:
         """
         Creates a button.
@@ -702,7 +740,7 @@ class JupyterRenderer:
         return button
 
     def create_checkbox(
-        self, kind: str, description: str, value: bool, handler: Callable
+        self, kind: str, description: str, value: bool, handler: Callable[..., None]
     ) -> Checkbox:
         """
         Creates a checkbox.
@@ -721,15 +759,25 @@ class JupyterRenderer:
         checkbox.add_class(f"view_{kind}")
         return checkbox
 
-    def remove_shape(self, *kargs: Any) -> None:
+    def remove_shape(self, *_args: Any) -> None:
         """
         Removes the selected shape.
         """
-        self.clicked_obj.visible = not self.clicked_obj.visible
+        obj = self.clicked_obj
+        if obj is None:
+            return
+        self._deselect()
+        self.clicked_obj = None
+        # the mesh is removed from the groups, otherwise it could still be picked
+        removed = (obj, self._mesh_edges.pop(obj.name, None))
+        for group in (
+            self._displayed_pickable_objects,
+            self._displayed_non_pickable_objects,
+        ):
+            group.children = tuple(c for c in group.children if c not in removed)
         # remove shape from the mapping dict
-        cur_id = self.clicked_obj.name
-        del self._shapes[cur_id]
-        self._remove_shp_button.disabled = True
+        self._shapes.pop(obj.name, None)
+        self.html.value = ""
 
     def on_compute_change(self, change: dict[str, Any]) -> None:
         """
@@ -738,19 +786,22 @@ class JupyterRenderer:
         if change["type"] != "change" or change["name"] != "value":
             return
         selection = change["new"]
+        shape = self._current_shape_selection
+        if shape is None:
+            return
         output = ""
         if "Inertia" in selection:
-            cog, mass, mass_property = measure_shape_mass_center_of_gravity(
-                self._current_shape_selection
-            )
+            cog, mass, mass_property = measure_shape_mass_center_of_gravity(shape)
             # display this point (type gp_Pnt)
             self.DisplayShape([cog])
-            output += f"<u><b>Center of Gravity</b></u>:<br><b>Xcog=</b>{cog.X():.3f}<br><b>Ycog=</b>{cog.Y():.3f}<br><b>Zcog=</b>{cog.Z():.3f}<br>"
+            output += _html_values(
+                "Center of Gravity",
+                ("Xcog", "Ycog", "Zcog"),
+                (cog.X(), cog.Y(), cog.Z()),
+            )
             output += f"<u><b>{mass_property}=</b></u>:<b>{mass:.3f}</b><br>"
         elif "Oriented" in selection:
-            center, dim, oobb_shp = get_oriented_boundingbox(
-                self._current_shape_selection
-            )
+            center, dim, oobb_shp = get_oriented_boundingbox(shape)
             self.DisplayShape(
                 oobb_shp,
                 render_edges=True,
@@ -758,15 +809,13 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += f"<u><b>OOBB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
-            output += f"<u><b>OOBB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
-            output += "<u><b>OOBB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                dim[0] * dim[1] * dim[2]
+            output += _html_values(
+                "OOBB center", "XYZ", (center.X(), center.Y(), center.Z())
             )
+            output += _html_values("OOBB dimensions", ("dX", "dY", "dZ"), dim)
+            output += _html_values("OOBB volume", "V", [dim[0] * dim[1] * dim[2]])
         elif "Aligned" in selection:
-            center, dim, albb_shp = get_aligned_boundingbox(
-                self._current_shape_selection
-            )
+            center, dim, albb_shp = get_aligned_boundingbox(shape)
             self.DisplayShape(
                 albb_shp,
                 render_edges=True,
@@ -774,45 +823,56 @@ class JupyterRenderer:
                 opacity=0.2,
                 selectable=False,
             )
-            output += f"<u><b>ABB center</b></u>:<br><b>X=</b>{center.X():.3f}<br><b>Y=</b>{center.Y():.3f}<br><b>Z=</b>{center.Z():.3f}<br>"
-            output += f"<u><b>ABB dimensions</b></u>:<br><b>dX=</b>{dim[0]:.3f}<br><b>dY=</b>{dim[1]:.3f}<br><b>dZ=</b>{dim[2]:.3f}<br>"
-            output += "<u><b>ABB volume</b></u>:<br><b>V=</b>%.3f<br>" % (
-                dim[0] * dim[1] * dim[2]
+            output += _html_values(
+                "ABB center", "XYZ", (center.X(), center.Y(), center.Z())
             )
+            output += _html_values("ABB dimensions", ("dX", "dY", "dZ"), dim)
+            output += _html_values("ABB volume", "V", [dim[0] * dim[1] * dim[2]])
         elif "Recognize" in selection:
-            # try featrue recognition
-            kind, pnt, vec = recognize_face(self._current_shape_selection)
+            # try feature recognition
+            kind, pnt, vec = recognize_face(shape)
             output += f"<u><b>Type</b></u>: {kind}<br>"
             if kind == "Plane":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += f"<u><b>Point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
-                output += f"<u><b>Normal</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
+                output += _html_values("Point", "XYZ", (pnt.X(), pnt.Y(), pnt.Z()))
+                output += _html_values("Normal", "uvw", (vec.X(), vec.Y(), vec.Z()))
             elif kind == "Cylinder":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
-                output += f"<u><b>Axis point</b></u>:<br><b>X=</b>{pnt.X():.3f}<br><b>Y=</b>{pnt.Y():.3f}<br><b>Z=</b>{pnt.Z():.3f}<br>"
-                output += f"<u><b>Axis direction</b></u>:<br><b>u=</b>{vec.X():.3f}<br><b>v=</b>{vec.Y():.3f}<br><b>w=</b>{vec.Z():.3f}<br>"
+                output += _html_values("Axis point", "XYZ", (pnt.X(), pnt.Y(), pnt.Z()))
+                output += _html_values(
+                    "Axis direction", "uvw", (vec.X(), vec.Y(), vec.Z())
+                )
         self.html.value = output
 
-    def toggle_shape_visibility(self, *kargs: Any) -> None:
+    def toggle_shape_visibility(self, *_args: Any) -> None:
         """
         Toggles the visibility of the selected shape.
         """
-        self.clicked_obj.visible = not self.clicked_obj.visible
+        obj = self.clicked_obj
+        if obj is None:
+            return
+        visible = not obj.visible
+        obj.visible = visible
+        edges = self._mesh_edges.get(obj.name)
+        if edges is not None:
+            edges.visible = visible
 
     def toggle_axes_visibility(self, change: dict[str, Any]) -> None:
         """
         Toggles the visibility of the axes.
         """
-        self.axes.set_visibility(_bool_or_new(change))
+        if self.axes is not None:
+            self.axes.set_visibility(_bool_or_new(change))
 
     def toggle_grid_visibility(self, change: dict[str, Any]) -> None:
         """
         Toggles the visibility of the grid.
         """
-        self.horizontal_grid.set_visibility(_bool_or_new(change))
-        self.vertical_grid.set_visibility(_bool_or_new(change))
+        for grid in (self.horizontal_grid, self.vertical_grid):
+            if grid is not None:
+                grid.set_visibility(_bool_or_new(change))
 
     def click(self, value: Any) -> None:
         """
@@ -825,28 +885,14 @@ class JupyterRenderer:
         self.clicked_obj = obj
         if self._current_mesh_selection != obj:
             if self._current_mesh_selection is not None:
-                self._current_mesh_selection.material.color = (
-                    self._current_selection_material_color
-                )
-                self._current_mesh_selection.material.transparent = False
-                self._current_mesh_selection = None
-                self._current_selection_material_color = None
-                self._shp_properties_button.value = "Compute"
-                self._shp_properties_button.disabled = True
-                self._toggle_shp_visibility_button.disabled = True
-                self._remove_shp_button.disabled = True
-                self._current_shape_selection = None
+                self._deselect()
             if obj is not None:
                 self._shp_properties_button.disabled = False
                 self._toggle_shp_visibility_button.disabled = False
                 self._remove_shp_button.disabled = False
                 id_clicked = obj.name  # the mesh id clicked
                 self._current_mesh_selection = obj
-                self._current_selection_material_color = obj.material.color
-                obj.material.color = self._selection_color
-                # selected part becomes transparent
-                obj.material.transparent = True
-                obj.material.opacity = 0.5
+                self._highlight(obj)
                 # get the shape from this mesh id
                 selected_shape = self._shapes[id_clicked]
                 html_value = (
@@ -861,7 +907,41 @@ class JupyterRenderer:
             for callback in self._select_callbacks:
                 callback(self._current_shape_selection)
 
-    def register_select_callback(self, callback: Callable) -> None:
+    def _highlight(self, obj: Any) -> None:
+        """
+        Highlights the selected object, its material state is saved to be
+        restored on deselection.
+        """
+        material = obj.material
+        self._current_selection_material_state = {
+            key: getattr(material, key) for key in ("color", "transparent", "opacity")
+        }
+        if isinstance(material, CustomMaterial):
+            # the transparency of the custom shader is set by the alpha uniform
+            self._current_selection_material_state["alpha"] = material.alpha
+            material.alpha = 0.5
+        material.color = self._selection_color
+        # selected part becomes transparent
+        material.transparent = True
+        material.opacity = 0.5
+
+    def _deselect(self) -> None:
+        """
+        Restores the material of the selected object and resets the selection.
+        """
+        if self._current_mesh_selection is not None:
+            material = self._current_mesh_selection.material
+            for key, value in self._current_selection_material_state.items():
+                setattr(material, key, value)
+        self._current_mesh_selection = None
+        self._current_selection_material_state = {}
+        self._shp_properties_button.value = "Compute"
+        self._shp_properties_button.disabled = True
+        self._toggle_shp_visibility_button.disabled = True
+        self._remove_shp_button.disabled = True
+        self._current_shape_selection = None
+
+    def register_select_callback(self, callback: Callable[[Any], None]) -> None:
         """
         Adds a callback that will be called each time a shape is selected.
 
@@ -872,7 +952,7 @@ class JupyterRenderer:
             raise TypeError("You must provide a callable to register the callback")
         self._select_callbacks.append(callback)
 
-    def unregister_callback(self, callback: Callable) -> None:
+    def unregister_callback(self, callback: Callable[[Any], None]) -> None:
         """
         Removes a callback from the callback list.
 
@@ -919,7 +999,7 @@ class JupyterRenderer:
             location=location,
             direction=direction,
             color=color,
-            line_width=line_width,
+            line_width=str(line_width),
             margin_left=0,
             margin_top=0,
         )
@@ -954,7 +1034,10 @@ class JupyterRenderer:
             quality (float, optional): The quality of the mesh.
             transparency (bool, optional): Whether the shape is transparent.
             opacity (float, optional): The opacity of the shape.
-            topo_level (str, optional): The topological level to display.
+            topo_level (str, optional): The topological level to display,
+                "default" displays the shape as a whole, "Solid", "Face",
+                "Shell", "Compound" or "Compsolid" display each subshape
+                of this type as a separate selectable object.
             update (bool, optional): Whether to update the renderer.
             selectable (bool, optional): Whether the shape is selectable.
         """
@@ -983,6 +1066,11 @@ class JupyterRenderer:
                 "Compound": t.compounds,
                 "Compsolid": t.comp_solids,
             }
+            if topo_level not in map_type_and_methods:
+                raise ValueError(
+                    f"topo_level must be 'default' or one of "
+                    f"{', '.join(map_type_and_methods)}, got '{topo_level}'"
+                )
             for subshape in map_type_and_methods[topo_level]():
                 result = self.AddShapeToScene(
                     subshape,
@@ -1118,6 +1206,10 @@ class JupyterRenderer:
         Returns:
             The created Mesh object.
         """
+        if shape_color is None:
+            shape_color = self._default_shape_color
+        if edge_color is None:
+            edge_color = self._default_edge_color
         # first, compute the tessellation
         tess = ShapeTesselator(shp)
         tess.Compute(compute_edges=render_edges, mesh_quality=quality, parallel=True)
@@ -1190,15 +1282,18 @@ class JupyterRenderer:
             mat = LineMaterial(linewidth=1, color=edge_color)
             edge_lines = LineSegments2(lines, mat)
             self._displayed_non_pickable_objects.add(edge_lines)
+            self._mesh_edges[mesh_id] = edge_lines
 
         return shape_mesh
 
-    def _scale(self, vec: list[float]) -> list[float]:
+    def _scale(self, vec: Sequence[float]) -> list[float]:
         """
-        Scales a vector.
+        Scales a vector to the camera distance, computed from the bounding box.
         """
+        if self._bb is None:
+            raise RuntimeError("the bounding box is computed by Display()")
         r = self._bb._max_dist_from_center() * self._camera_distance_factor
-        n = np.linalg.norm(vec)
+        n = float(np.linalg.norm(vec))
         return [v / n * r for v in vec]
 
     def _material(
@@ -1226,26 +1321,31 @@ class JupyterRenderer:
         """
         Erases all shapes from the renderer.
         """
+        self._deselect()
+        self.clicked_obj = None
+        self.html.value = ""
         self._shapes = {}
-        self._displayed_pickable_objects = Group()
-        self._displayed_non_pickable_objects = Group()
-        self._current_shape_selection = None
-        self._current_mesh_selection = None
-        self._current_selection_material_color = None
-        if self._renderer is not None:
-            self._renderer.scene = Scene(children=[])
+        self._mesh_edges = {}
+        # the groups are emptied, the scene keeps its lights, camera and helpers
+        # and the picker keeps working on the pickable group
+        self._displayed_pickable_objects.children = ()
+        self._displayed_non_pickable_objects.children = ()
 
     def Display(
         self,
         position: Optional[tuple[float, float, float]] = None,
-        rotation: Optional[tuple[float, float, float]] = None,
+        rotation: Optional[tuple[float, float, float, str]] = None,
     ) -> None:
         """
         Displays the renderer.
 
         Args:
-            position (tuple, optional): The position of the camera.
-            rotation (tuple, optional): The rotation of the camera.
+            position (tuple, optional): The direction from the center of the
+                scene to the camera, (1, 1, 1) by default. The distance of the
+                camera is computed from the size of the scene.
+            rotation (tuple, optional): The rotation of the camera, as Euler
+                angles in radians followed by their order, e.g.
+                (0.0, 0.0, 0.0, "XYZ").
         """
         # Get the overall bounding box
         if self._shapes:
@@ -1259,7 +1359,7 @@ class JupyterRenderer:
         camera_target = self._bb.center
         camera_position = _add(
             self._bb.center,
-            self._scale([1, 1, 1] if position is None else self._scale(position)),
+            self._scale([1, 1, 1] if position is None else position),
         )
         camera_zoom = self._camera_initial_zoom
 
@@ -1355,13 +1455,18 @@ class JupyterRenderer:
         Args:
             filename (str): The name of the file to export to.
         """
+        if self._renderer is None:
+            raise RuntimeError("Display() must be called before ExportToHTML()")
         embed.embed_minimal_html(filename, views=self._renderer, title="pythonocc")
 
-    def _reset(self, *kargs: Any) -> None:
+    def _reset(self, *_args: Any) -> None:
         """
         Resets the camera.
         """
-        self._camera.rotation, self._controller.target = self._savestate
+        if self._camera is None or self._controller is None or self._bb is None:
+            return
+        if self._savestate is not None:
+            self._camera.rotation, self._controller.target = self._savestate
         self._camera.position = _add(self._bb.center, self._scale((1, 1, 1)))
         self._camera.zoom = self._camera_initial_zoom
         self._update()
@@ -1370,7 +1475,8 @@ class JupyterRenderer:
         """
         Updates the controller.
         """
-        self._controller.exec_three_obj_method("update")
+        if self._controller is not None:
+            self._controller.exec_three_obj_method("update")
 
     def __repr__(self) -> str:
         self.Display()

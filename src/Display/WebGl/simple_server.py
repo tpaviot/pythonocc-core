@@ -21,7 +21,9 @@ import errno
 import functools
 import os
 import socket
+import threading
 import webbrowser
+from typing import Any
 
 
 def get_available_port(port: int) -> int:
@@ -85,6 +87,30 @@ def get_interface_ip(family: socket.AddressFamily) -> str:
         return s.getsockname()[0]  # type: ignore
 
 
+def get_server_url(addr: str, port: int) -> str:
+    """
+    Returns the URL to open in the web browser to reach the server.
+
+    Args:
+        addr (str): The address the server is bound to.
+        port (int): The port the server listens to.
+
+    Returns:
+        str: The URL of the server.
+    """
+    # Did not consider ipv6 `::` because httpd does not support it
+    if addr == "0.0.0.0":
+        display_hostname = get_interface_ip(socket.AF_INET)
+        print(f"## Running on all addresses ({addr})")
+    elif addr in ("127.0.0.1", "localhost"):
+        display_hostname = "localhost"
+    else:
+        display_hostname = addr
+    url = f"http://{display_hostname}:{port}"
+    print(f"## Open your webbrowser at the URL: {url}")
+    return url
+
+
 def start_server(
     addr: str = "127.0.0.1",
     port: int = 8080,
@@ -121,16 +147,7 @@ def start_server(
         port = get_available_port(port)
         httpd = ThreadingHTTPServer((addr, port), handler)
         print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
-        # Did not consider ipv6 `::` because httpd does not support it
-        if addr == "0.0.0.0":
-            display_hostname = get_interface_ip(socket.AF_INET)
-            print(f"## Running on all addresses ({addr})")
-        elif addr in ("127.0.0.1", "localhost"):
-            display_hostname = "localhost"
-        else:
-            display_hostname = addr
-        url = f"http://{display_hostname}:{port}"
-        print(f"## Open your webbrowser at the URL: {url}")
+        url = get_server_url(addr, port)
         # open webbrowser
         if open_webbrowser:
             webbrowser.open(url, new=2)
@@ -146,17 +163,21 @@ def start_server(
         app = Flask(__name__)
 
         @app.route("/")
-        def root():
+        def root() -> str:
             with open(os.path.join(x3d_path, "index.html"), encoding="utf-8") as fp:
                 return fp.read()
 
         @app.route("/<path:path>")
-        def send_x3d_content(path):
+        def send_x3d_content(path: str) -> Any:
             return send_from_directory(x3d_path, path)
 
         print(f"\n## Serving {x3d_path} using Flask")
 
         port = get_available_port(port)
+        url = get_server_url(addr, port)
+        if open_webbrowser:
+            # app.run blocks, the browser is opened once the server is started
+            threading.Timer(1.0, webbrowser.open, (url,), {"new": 2}).start()
         app.run(host=addr, port=port)
 
 

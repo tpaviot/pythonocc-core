@@ -1,9 +1,13 @@
-from collections.abc import Generator
+from collections.abc import Generator, Sequence
 from typing import Any
 
-def spinning_cursor() -> Generator[str, None, None]: ...
+THREEJS_VERSION: str
+
+def spinning_cursor() -> Generator[str]: ...
 def color_to_hex(rgb_color: tuple[float, float, float]) -> str: ...
-def export_edgedata_to_json(edge_hash: str, point_set: list[list[float]]) -> str: ...
+def export_edgedata_to_json(
+    edge_hash: str, point_set: Sequence[Sequence[float]]
+) -> str: ...
 
 class HTMLHeader:
     def __init__(
