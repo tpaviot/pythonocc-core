@@ -54,18 +54,14 @@ jobs:
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=3.12 anaconda-client
     displayName: 'Create Anaconda environment'
   - ${{ if contains(parameters.vmImage, 'win') }}:
+    # the compiler is activated by the vs2022_win-64 conda package (see
+    # ci/conda/conda_build_config.yaml), a previous vcvars64.bat call makes
+    # this second activation fail
     - script: |
-        call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
-        echo "PATH=%PATH%"
-        where cl.exe
-        set CC=cl.exe
-        set CXX=cl.exe
         call activate build_env
         conda-build --python ${{ parameters.py_maj }}.${{ parameters.py_min }} --no-remove-work-dir --dirty ci/conda
       displayName: 'Set Windows environment and build'
       env:
-        CXX: "cl.exe"
-        CC: "cl.exe"
         PYTHONBUFFERED: 1
         PYTHON_VERSION: ${{ parameters.py_maj }}.${{ parameters.py_min }}
         PACKAGE_VERSION: $(Build.SourceBranchName)
