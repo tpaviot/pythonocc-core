@@ -1,0 +1,7 @@
+# MSVC 2022 is the compiler actually used on the Windows runners. Pin it
+# explicitly rather than relying on the conda-build default (vs2017 until
+# conda-build 26.9.0, vs2022 since).
+c_compiler:
+  - vs2022  # [win]
+cxx_compiler:
+  - vs2022  # [win]

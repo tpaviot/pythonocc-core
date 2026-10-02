@@ -4,10 +4,10 @@ from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.Extrema import *
-from OCC.Core.gp import *
 from OCC.Core.GeomLProp import *
 from OCC.Core.LProp import *
+from OCC.Core.Extrema import *
+from OCC.Core.gp import *
 from OCC.Core.TopoDS import *
 from OCC.Core.HLRAlgo import *
 from OCC.Core.TopAbs import *
@@ -972,7 +972,7 @@ class HLRBRep_LineTool:
     def SamplePars(C: gp_Lin, U0: float, U1: float, Defl: float, NbMin: int) -> TColStd_HArray1OfReal: ...
     @overload
     @staticmethod
-    def SamplePars(C: gp_Lin, U0: float, U1: float, Defl: float, NbMin: int, Pars: TColStd_HArray1OfReal) -> None: ...
+    def SamplePars(C: gp_Lin, U0: float, U1: float, Defl: float, NbMin: int, Pars: Optional[TColStd_HArray1OfReal]) -> Optional[TColStd_HArray1OfReal]: ...
     @staticmethod
     def Value(C: gp_Lin, U: float) -> gp_Pnt: ...
 

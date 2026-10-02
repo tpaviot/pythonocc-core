@@ -30,7 +30,7 @@ from typing import Any, Iterator, List
 import warnings
 
 import OCC.Core
-from OCC.Core.AIS import AIS_Manipulator
+from OCC.Core.AIS import AIS_Line, AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
@@ -84,6 +84,7 @@ from OCC.Core.TopoDS import (
     TopoDS_Edge,
     TopoDS_Vertex,
     TopoDS_Shape,
+    topods,
 )
 from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
 from OCC.Core.TColgp import (
@@ -93,7 +94,7 @@ from OCC.Core.TColgp import (
 )
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TopExp import TopExp_Explorer
-from OCC.Core.TopAbs import TopAbs_FACE, TopAbs_WIRE, TopAbs_Orientation
+from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE, TopAbs_Orientation
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.BRepClass import BRepClass_FaceClassifier
@@ -107,7 +108,17 @@ from OCC.Core.BRepCheck import (
     BRepCheck_Multiple3DCurve,
     BRepCheck_EmptyWire,
 )
-from OCC.Core.Geom import Geom_Curve, Geom_Line, Geom_BSplineCurve, Geom_BoundedCurve
+from OCC.Core.Geom import (
+    Geom_Curve,
+    Geom_Line,
+    Geom_BSplineCurve,
+    Geom_BoundedCurve,
+    Geom_CartesianPoint,
+    Geom_Surface,
+)
+from OCC.Core.Geom2d import Geom2d_Curve
+from OCC.Core.TopLoc import TopLoc_Location
+from OCC.Core.UnitsAPI import unitsapi
 from OCC.Core.GeomAPI import GeomAPI_Interpolate
 from OCC.Core.GeomLib import geomlib
 from OCC.Core.BRep import BRep_Tool
@@ -671,7 +682,9 @@ def test_downcast_curve() -> None:
     line = Geom_Line.DownCast(curve)
     assert isinstance(line, Geom_Curve)
     # Hence, it should not be possible to downcast it as a B-Spline curve
-    with pytest.raises(TypeError, match="Failed to downcast Geom_Line to Geom_BSplineCurve"):
+    with pytest.raises(
+        TypeError, match="Failed to downcast Geom_Line to Geom_BSplineCurve"
+    ):
         Geom_BSplineCurve.DownCast(curve)
     # a null handle is downcast to None
     assert Geom_BSplineCurve.DownCast(None) is None
@@ -1309,6 +1322,46 @@ def test_shape_analysis_free_bounds_connect_wires():
     assert iwires.Length() == 4
     assert owires.Length() == 1
     assert owires.Value(1).ShapeType() == TopAbs_WIRE
+
+
+def test_handle_ref_outputs_are_appended():
+    """non-const handle references are appended to the returned values,
+    neither the function result nor the other outputs are discarded"""
+    # several handle outputs (void function)
+    line = AIS_Line(
+        Geom_CartesianPoint(gp_Pnt(0, 0, 0)), Geom_CartesianPoint(gp_Pnt(1, 2, 3))
+    )
+    p_start, p_end = line.Points(None, None)
+    assert (p_start.X(), p_start.Y(), p_start.Z()) == (0.0, 0.0, 0.0)
+    assert (p_end.X(), p_end.Y(), p_end.Z()) == (1.0, 2.0, 3.0)
+
+    # handle outputs followed by float outputs
+    box = BRepPrimAPI_MakeBox(1.0, 1.0, 1.0).Shape()
+    edge = topods.Edge(TopExp_Explorer(box, TopAbs_EDGE).Current())
+    pcurve, surface, first, last = BRep_Tool.CurveOnSurface(
+        edge, None, None, TopLoc_Location(), 1
+    )
+    assert isinstance(pcurve, Geom2d_Curve)
+    assert isinstance(surface, Geom_Surface)
+    assert (first, last) == (0.0, 1.0)
+
+    # non-void function: the result comes first
+    value, dimensions = unitsapi.AnyToLS(1.0, "in", None)
+    assert value == pytest.approx(0.0254)  # SI local system, in meters
+    assert dimensions is not None
+
+    # the two output sequences are returned
+    edges = _square_edges()
+    wire_builder = BRepBuilderAPI_MakeWire()
+    for edge in edges:
+        wire_builder.Add(edge)
+    wires = TopTools_HSequenceOfShape()
+    wires.Append(wire_builder.Wire())
+    closed, opened = ShapeAnalysis_FreeBounds.SplitWires(
+        wires, 1.0e-7, False, None, None
+    )
+    assert closed.Length() == 1
+    assert opened.Length() == 0
 
 
 def test_const_ref_return():
