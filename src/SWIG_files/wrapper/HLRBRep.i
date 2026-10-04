@@ -44,10 +44,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<Extrema_module.hxx>
-#include<gp_module.hxx>
 #include<GeomLProp_module.hxx>
+#include<gp_module.hxx>
 #include<LProp_module.hxx>
+#include<Extrema_module.hxx>
 #include<TopoDS_module.hxx>
 #include<HLRAlgo_module.hxx>
 #include<TopAbs_module.hxx>
@@ -82,10 +82,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_hlrbrep.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import Extrema.i
-%import gp.i
 %import GeomLProp.i
+%import gp.i
 %import LProp.i
+%import Extrema.i
 %import TopoDS.i
 %import HLRAlgo.i
 %import TopAbs.i

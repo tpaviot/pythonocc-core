@@ -5,9 +5,9 @@ from typing import Any, overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.GeomLProp import *
+from OCC.Core.gp import *
 from OCC.Core.LProp import *
 from OCC.Core.Extrema import *
-from OCC.Core.gp import *
 from OCC.Core.TopoDS import *
 from OCC.Core.HLRAlgo import *
 from OCC.Core.TopAbs import *
