@@ -24,7 +24,8 @@ import warnings
 
 import pytest
 
-from OCC.Core.TDocStd import TDocStd_Document
+from OCC.Core.BinDrivers import bindrivers
+from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorGen
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
 from OCC.Core.IFSelect import IFSelect_RetDone
@@ -58,6 +59,18 @@ def test_create_doc() -> None:
     assert doc is not None
 
 
+def test_new_document_returns_tdocstd_document() -> None:
+    """NewDocument has two overloads, with a CDM_Document and a
+    TDocStd_Document handle output: the derived one must be tried first by
+    SWIG, otherwise a CDM_Document without Main() is returned"""
+    app = TDocStd_Application()
+    bindrivers.DefineFormat(app)
+    doc = app.NewDocument("BinOcaf", None)
+    assert isinstance(doc, TDocStd_Document)
+    assert doc.StorageFormat() == "BinOcaf"
+    assert not doc.Main().IsNull()
+
+
 def test_create_doc_from_extended_string() -> None:
     """Issue #1494: a TCollection_ExtendedString argument aborted the interpreter"""
     doc = TDocStd_Document(TCollection_ExtendedString("MDTV-CAF"))
@@ -84,7 +97,9 @@ def test_find_attribute() -> None:
     assert isinstance(
         integer.FindAttribute(TDataStd_Name.GetID(), TDataStd_Name()), TDataStd_Name
     )
-    assert integer.FindAttribute(TDataStd_NamedData.GetID(), TDataStd_NamedData()) is None
+    assert (
+        integer.FindAttribute(TDataStd_NamedData.GetID(), TDataStd_NamedData()) is None
+    )
 
 
 def test_attribute_inheritance() -> None:

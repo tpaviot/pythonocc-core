@@ -402,25 +402,6 @@ returns the number of documents handled by the current applicative session.
 		int NbDocuments();
 
 		/****** TDocStd_Application::NewDocument ******/
-		/****** md5 signature: 4e6d1e005ee65d0d4ad298781036f3d9 ******/
-		%feature("compactdefaultargs") NewDocument;
-		%feature("autodoc", "
-Parameters
-----------
-format: str
-aDoc: CDM_Document
-
-Return
--------
-None
-
-Description
------------
-Constructs the empty new document aDoc. This document will have the format format. If InitDocument is redefined for a specific application, the new document is handled by the applicative session.
-") NewDocument;
-		void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
-
-		/****** TDocStd_Application::NewDocument ******/
 		/****** md5 signature: 304cba09d9f9b321dcbffa19f8ee14a3 ******/
 		%feature("compactdefaultargs") NewDocument;
 		%feature("autodoc", "
@@ -438,6 +419,25 @@ Description
 A non-virtual method taking a TDocStd_Documment object as an input. Internally it calls a virtual method NewDocument() with CDM_Document object.
 ") NewDocument;
 		void NewDocument(TCollection_ExtendedString format, opencascade::handle<TDocStd_Document> & aDoc);
+
+		/****** TDocStd_Application::NewDocument ******/
+		/****** md5 signature: 4e6d1e005ee65d0d4ad298781036f3d9 ******/
+		%feature("compactdefaultargs") NewDocument;
+		%feature("autodoc", "
+Parameters
+----------
+format: str
+aDoc: CDM_Document
+
+Return
+-------
+None
+
+Description
+-----------
+Constructs the empty new document aDoc. This document will have the format format. If InitDocument is redefined for a specific application, the new document is handled by the applicative session.
+") NewDocument;
+		void NewDocument(TCollection_ExtendedString format, opencascade::handle<CDM_Document> & aDoc);
 
 		/****** TDocStd_Application::OnAbortTransaction ******/
 		/****** md5 signature: 307f163969480bb723f66d714329e2ba ******/
