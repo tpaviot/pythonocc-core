@@ -1,3 +1,16 @@
+Current
+=======
+
+* wrapper: non-const references to scalars are returned by value, e.g.
+  TColStd_ListOfInteger.Append and the ChangeValue accessors of the scalar
+  containers returned an opaque SWIG 'int *' object
+
+* wrapper: TDocStd_Application.NewDocument returns a TDocStd_Document, the
+  CDM_Document overload was always chosen
+
+* wrapper: type stubs: HSequence Append(theItem) overload, Sequence Append and
+  Prepend return None, scalar reference returns typed int or float
+
 Version 8.0.1.1 - October 2026
 ==============================
 
