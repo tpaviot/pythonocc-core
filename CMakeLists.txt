@@ -25,7 +25,7 @@ set(PYTHONOCC_VERSION_MINOR 0)
 set(PYTHONOCC_VERSION_PATCH 1)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
-set(PYTHONOCC_VERSION_DEVEL )
+set(PYTHONOCC_VERSION_DEVEL .1)
 
 # set OCCT version
 set(OCCT_VERSION_MAJOR 8)

@@ -1,8 +1,10 @@
 [tool.bumpversion]
-current_version = "8.0.1"
+current_version = "8.0.1.1"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(\\.(?P<build>\\d+))?"
+serialize = ["{major}.{minor}.{patch}.{build}", "{major}.{minor}.{patch}"]
 commit = true
 tag = false
-tag_name = "{new_major}.{new_minor}.{new_patch}"
+tag_name = "{new_version}"
 
 [[tool.bumpversion.files]]
 filename = "README.md"
@@ -13,8 +15,8 @@ replace = "pythonocc-binderhub/{new_version}"
 [[tool.bumpversion.files]]
 filename = "README.md"
 regex = true
-search = "Latest release: \\[pythonocc-core {current_version} \\(\\d{{4}}-\\d{{2}}-\\d{{2}}\\)\\]\\(https://github\\.com/tpaviot/pythonocc-core/releases/tag/{current_version}\\)"
-replace = "Latest release: [pythonocc-core {new_version} ({now:%Y-%m-%d})](https://github.com/tpaviot/pythonocc-core/releases/tag/{new_version})"
+search = "\\[pythonocc-core {current_version}\\]\\(https://github\\.com/tpaviot/pythonocc-core/releases/tag/{current_version}\\) \\(\\d{{4}}-\\d{{2}}-\\d{{2}}\\)"
+replace = "[pythonocc-core {new_version}](https://github.com/tpaviot/pythonocc-core/releases/tag/{new_version}) ({now:%Y-%m-%d})"
 
 [[tool.bumpversion.files]]
 filename = "README.md"

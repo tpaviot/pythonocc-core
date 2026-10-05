@@ -1,3 +1,29 @@
+Version 8.0.1.1 - October 2026
+==============================
+
+Bugfix release. This release requires opencascade-8.0.1
+
+* wrapper: non-const handle references are appended to the returned values
+  instead of replacing them. Breaking change for the non-void functions with
+  a handle output, e.g. TDocStd_Application.Open now returns [status, doc]
+
+* wrapper: ShapeAnalysis_FreeBounds.ConnectEdgesToWires returns the wires, #1497
+
+* wrapper: regenerate the SWIG files with a stable dependency order
+
+* wrapper: type stubs regenerated
+
+* display: WebGl renderers review and bug fixes (shape removal, selection,
+  pick color, edges visibility, fit to scene, shaders and transparency)
+
+* display: JupyterRenderer BoundingBox, Display, topo_level and ExportToHTML fixes
+
+* display: pin the three.js and x3dom releases, ship the x3dom axes files
+
+* ci: Azure Windows builds use the MSVC 2022 conda activation
+
+* test: tests runnable from any directory, add test_optimized_tesselator
+
 Version 8.0.1 - September 2026
 ==============================
 

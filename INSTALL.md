@@ -1,4 +1,4 @@
-# Building pythonOCC 8.0.1 - Complete Guide for Linux and Windows
+# Building pythonOCC 8.0.1.1 - Complete Guide for Linux and Windows
 
 ## Table of Contents
 - [Linux Build Guide](#linux-build-guide)
@@ -35,7 +35,7 @@ Before starting the build process, ensure your system meets these requirements:
 
 ## System Requirements (Linux)
 
-pythonOCC 8.0.1 requires the following components:
+pythonOCC 8.0.1.1 requires the following components:
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
