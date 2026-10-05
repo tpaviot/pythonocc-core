@@ -33,6 +33,7 @@ import OCC.Core
 from OCC.Core.AIS import AIS_Line, AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
+from OCC.Core.BOPAlgo import BOPAlgo_ArgumentAnalyzer
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
 from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
@@ -86,7 +87,13 @@ from OCC.Core.TopoDS import (
     TopoDS_Shape,
     topods,
 )
-from OCC.Core.TColStd import TColStd_Array1OfReal, TColStd_Array1OfInteger
+from OCC.Core.TColStd import (
+    TColStd_Array1OfReal,
+    TColStd_Array1OfInteger,
+    TColStd_ListOfInteger,
+    TColStd_ListOfReal,
+    TColStd_SequenceOfInteger,
+)
 from OCC.Core.TColgp import (
     TColgp_Array1OfPnt,
     TColgp_HArray1OfPnt,
@@ -1310,6 +1317,25 @@ def test_shape_analysis_free_bounds():
         wires = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, shared)
         assert wires.Length() == 1
         assert wires.Value(1).ShapeType() == TopAbs_WIRE
+
+
+def test_scalar_reference_returned_by_value():
+    """a non-const reference to a scalar (int &, double &, bool &) is
+    returned by value, not as an opaque SWIG pointer, see the
+    FunctionTransformers.i out typemaps"""
+    integers = TColStd_ListOfInteger()
+    assert integers.Append(3) == 3
+    assert integers.Prepend(2) == 2
+    assert TColStd_ListOfReal().Append(2.5) == 2.5
+    sequence = TColStd_SequenceOfInteger()
+    sequence.Append(7)
+    assert sequence.ChangeValue(1) == 7
+    array = TColStd_Array1OfInteger(1, 2)
+    array.SetValue(1, 11)
+    assert array.ChangeValue(1) == 11
+    assert TColStd_Array1OfReal(1, 1).ChangeValue(1).__class__ is float
+    mode = BOPAlgo_ArgumentAnalyzer().ArgumentTypeMode()
+    assert mode is True or mode is False
 
 
 def test_shape_analysis_free_bounds_connect_wires():

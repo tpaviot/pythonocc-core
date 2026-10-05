@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : d54d04e
+git revision : d30cd1c
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-05 04:07:45.928733+02:00
+date : 2026-10-05 04:17:01.176327+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -268,7 +268,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      explicitly excluded method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
 [INFO ]  Class: Standard_OutOfMemory
 [INFO ]  Class: Standard_Persistent
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: Standard_Type
 [WARNI]      [TypeHint] Skip type std::type_info, because of trailing :
 [INFO ]      operand << cannot be wrapped
@@ -731,7 +730,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Poly_Triangle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Poly_Triangulation
@@ -819,12 +817,10 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Mat
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_Mat2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_Parab
@@ -860,11 +856,9 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: gp_XY
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: gp_XYZ
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type const double *, should contain _
 [INFO ]      operand ^ cannot be wrapped
 [INFO ]      operand ^= cannot be wrapped
@@ -887,7 +881,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_DoubleTab
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand = cannot be wrapped
@@ -929,7 +922,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand = cannot be wrapped
@@ -2652,7 +2644,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_HArray1<AppParCurves_ConstraintCouple, seems to be a template
 [INFO ]  Class: AppDef_LinearCriteria
 [WARNI]      [TypeHint] Skip type NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger, because of trailing :
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skip type NCollection_HArray2<opencascade::handle<TColStd_HArray1OfInteger, because of trailing :
 [INFO ]  ## Processing module AppParCurves
 [INFO ]  Enum: AppParCurves_Constraint
@@ -4137,7 +4128,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: BlendFunc_Ruled
 [INFO ]  Class: BlendFunc_RuledInv
 [INFO ]  Class: BlendFunc_Tensor
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: BlendFunc_ChamfInv
@@ -4605,7 +4595,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: GeomFill_Sweep
 [INFO ]  Class: GeomFill_SweepFunction
 [INFO ]  Class: GeomFill_Tensor
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
 [INFO ]  Class: GeomFill_TgtField
@@ -5327,8 +5316,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  ## Processing module TopBas
 [INFO ]  Class: TopBas_TestInterference
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  ## Processing module TopCnx
 [INFO ]  Class: TopCnx_EdgeFaceTransition
 [INFO ]  Processing toolkit TKMesh ===
@@ -5502,7 +5489,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: BRepMeshData_Curve
 [INFO ]      explicitly excluded method BRepMeshData_Curve::3400d342462a83fb8edde25d0019ec46
 [INFO ]      explicitly excluded method BRepMeshData_Curve::24d158a1f740289facd24a604d8688f6
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: BRepMeshData_Edge
 [INFO ]      explicitly excluded method BRepMeshData_Edge::8234b86b2de24c0618311b92bc00a86b
 [INFO ]      explicitly excluded method BRepMeshData_Edge::5e1d4bb8f2c6c9863a302f9ff529d050
@@ -5532,8 +5518,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: BRepMeshData_PCurve
 [INFO ]      explicitly excluded method BRepMeshData_PCurve::225c206ddf4364460b2dd46045572a74
 [INFO ]      explicitly excluded method BRepMeshData_PCurve::7ecf9e8760dfeefc68483e328a5ac723
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: BRepMeshData_Wire
 [INFO ]      explicitly excluded method BRepMeshData_Wire::838138573c6ccae3a23b6ecb03bba2d9
 [INFO ]      explicitly excluded method BRepMeshData_Wire::4bc7f09cd0a01b4ece4d999e343905fd
@@ -5691,7 +5675,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Draft_Modification
 [INFO ]  Class: Draft_VertexInfo
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Processing toolkit TKPrim ===
 [INFO ]  ## Processing module BRepPrim
 [INFO ]  Enum: BRepPrim_Direction
@@ -5823,7 +5806,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: ShapeConstruct_MakeTriangulation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeConstruct_ProjectCurveOnSurface
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  ## Processing module ShapeCustom
 [INFO ]  Class: ShapeCustom
 [INFO ]      explicitly excluded method ShapeCustom::164cadefaae990dc275d0177d2e6d826
@@ -5832,8 +5814,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: ShapeCustom_Curve2d
 [INFO ]  Class: ShapeCustom_Modification
 [INFO ]  Class: ShapeCustom_RestrictionParameters
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeCustom_Surface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeCustom_TrsfModification
@@ -5880,63 +5860,17 @@ date : 2026-10-05 04:07:45.928733+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<ShapeFix_WireSegment>, seems to be a template
 [INFO ]  Class: ShapeFix_Face
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeFix_FixSmallFace
 [INFO ]  Class: ShapeFix_FixSmallSolid
 [INFO ]  Class: ShapeFix_Shape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeFix_Shell
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeFix_Solid
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeFix_SplitCommonVertex
 [INFO ]  Class: ShapeFix_Wire
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeFix_Wireframe
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module ShapeProcess
@@ -5976,15 +5910,12 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: ShapeUpgrade_FixSmallCurves
 [INFO ]  Class: ShapeUpgrade_RemoveInternalWires
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: ShapeUpgrade_ShapeConvertToBezier
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeUpgrade_ShapeDivideAngle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeUpgrade_ShapeDivideArea
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeUpgrade_ShapeDivideClosed
 [INFO ]  Class: ShapeUpgrade_ShapeDivideClosedEdges
 [INFO ]  Class: ShapeUpgrade_ShapeDivideContinuity
@@ -5993,7 +5924,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: ShapeUpgrade_SplitCurve3d
 [INFO ]  Class: ShapeUpgrade_SplitSurfaceAngle
 [INFO ]  Class: ShapeUpgrade_SplitSurfaceArea
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeUpgrade_SplitSurfaceContinuity
 [INFO ]  Class: ShapeUpgrade_WireDivide
 [INFO ]  Class: ShapeUpgrade_ClosedEdgeDivide
@@ -6003,8 +5933,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: ShapeUpgrade_ConvertCurve3dToBezier
 [INFO ]  Class: ShapeUpgrade_FaceDivideArea
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: ShapeUpgrade_FixSmallBezierCurves
 [INFO ]  Class: ShapeUpgrade_SplitCurve2dContinuity
 [INFO ]  Class: ShapeUpgrade_SplitCurve3dContinuity
@@ -6769,9 +6697,7 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: Graphic3d_FrameStats
 [INFO ]      Class Graphic3d_FrameStats is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class Graphic3d_FrameStats
-[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<Graphic3d_FrameStatsData>, seems to be a template
 [INFO ]  Class: Graphic3d_FrameStatsData
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -6932,8 +6858,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: Graphic3d_ViewAffinity
 [INFO ]  Class: Graphic3d_WorldViewProjState
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
-[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: Graphic3d_ZLayerSettings
 [INFO ]      MatrixType skipped because it is a class template
 [INFO ]      MatrixType<double> skipped because it is a class template
@@ -6988,12 +6912,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_CView>>, because of trailing :
 [INFO ]  Class: Graphic3d_FrameStatsDataTmp
-[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
@@ -7826,7 +7744,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      explicitly excluded method IGESData_IGESWriter::54f24415f8fed6da601139a5a471b407
 [INFO ]      explicitly excluded method IGESData_IGESWriter::f448a83aaba93961554144bc00673627
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: IGESData_NodeOfSpecificLib
 [INFO ]  Class: IGESData_NodeOfWriterLib
 [INFO ]  Class: IGESData_ParamCursor
@@ -7992,7 +7909,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      Wrap nested class RWMesh_TriangulationReader::LoadingStatistic
 [INFO ]      Constructor skipped for abstract class RWMesh_TriangulationReader
 [INFO ]  Class: RWMesh_TriangulationSource
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: RWMesh_EdgeIterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: RWMesh_FaceIterator
@@ -8393,7 +8309,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: TopoDSToStep
 [INFO ]  Class: TopoDSToStep_FacetedTool
 [INFO ]  Class: TopoDSToStep_Root
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: TopoDSToStep_Tool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
@@ -10271,7 +10186,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: Interface_IntList
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Interface_IntVal
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: Interface_InterfaceModel
 [INFO ]      Class Interface_InterfaceModel is abstract, using %nodefaultctor.
 [INFO ]  Class: Interface_LineBuffer
@@ -10330,9 +10244,7 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      Class MoniTool_Element is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class MoniTool_Element
 [INFO ]  Class: MoniTool_IntVal
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: MoniTool_RealVal
-[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: MoniTool_SignText
 [INFO ]      Class MoniTool_SignText is abstract, using %nodefaultctor.
 [INFO ]  Class: MoniTool_Stat
@@ -10393,8 +10305,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Enum passed by reference: StepData_Logical & flag changed to StepData_Logical &OutValue
 [INFO ]  Class: StepData_StepReaderTool
 [INFO ]  Class: StepData_StepWriter
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: StepData_WriterLib
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: StepData_DefaultGeneral
@@ -10448,7 +10358,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: Transfer_ActorOfFinderProcess
 [INFO ]      explicitly excluded method Transfer_ActorOfFinderProcess::e895be254466ec0dab7446ab439d8103
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: Transfer_ActorOfTransientProcess
 [INFO ]      explicitly excluded method Transfer_ActorOfTransientProcess::e895be254466ec0dab7446ab439d8103
@@ -10484,14 +10393,6 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TransferBRep_ShapeMapper
 [INFO ]  Class: TransferBRep_TransferResultInfo
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
-[WARNI]      [TypeHint] Skipping type int &, should contain _
 [INFO ]  Class: TransferBRep_ShapeBinder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module XSControl
@@ -11204,7 +11105,7 @@ date : 2026-10-05 04:07:45.928733+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.37s
+SWIG interface file generation completed in 11.88s
 #################################################
 
 [INFO ]  Number of classes: 4099

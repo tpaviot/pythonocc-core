@@ -267,6 +267,27 @@ return a reference, to modify the container in place.
 }
 
 
+/*
+Non-const references to scalars returned by value. By default SWIG wraps a
+returned int&, double& or bool& as an opaque pointer object (the reference is
+an lvalue in C++), e.g. NCollection_List<int>::Append, the ChangeValue
+accessors of the scalar containers or the bool& mode accessors of
+BOPAlgo_ArgumentAnalyzer. The lvalue cannot be used from python anyway: return
+the pointed value, as done for the const references.
+*/
+%typemap(out) int &, long &, short & {
+    $result = PyLong_FromLong(*$1);
+}
+%typemap(out) unsigned int &, unsigned long &, size_t & {
+    $result = PyLong_FromSize_t(*$1);
+}
+%typemap(out) double &, float & {
+    $result = PyFloat_FromDouble(*$1);
+}
+%typemap(out) bool & {
+    $result = PyBool_FromLong(*$1);
+}
+
 %define ENUM_OUTPUT_TYPEMAPS(TYPE)
 
 %typemap(in,numinputs=0) TYPE &OutValue(TYPE temp) {
