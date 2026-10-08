@@ -783,6 +783,11 @@ Forgets the Attribute of GUID <aguid> associated to the label of <self>. Be care
 ") ForgetAttribute;
 		bool ForgetAttribute(const Standard_GUID & aguid);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_Attribute::ID ******/
 		/****** md5 signature: e94b659c9e9f7b7f43797fc28e2b97f9 ******/
 		%feature("compactdefaultargs") ID;
@@ -1223,6 +1228,11 @@ No available documentation.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PtrValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_AttributeIterator::PtrValue ******/
 		/****** md5 signature: 58a90bcec8f9fb96b5106cadf930b4d8 ******/
 		%feature("compactdefaultargs") PtrValue;
@@ -2167,6 +2177,11 @@ returns modification mode.
 ") IsModificationAllowed;
 		bool IsModificationAllowed();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LabelNodeAllocator %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_Data::LabelNodeAllocator ******/
 		/****** md5 signature: 51616b0b91fcc4a24241ddee1ed9e63f ******/
 		%feature("compactdefaultargs") LabelNodeAllocator;
@@ -2370,6 +2385,11 @@ Adds a root label to <myRootLabels>.
 ") AddRoot;
 		void AddRoot(const TDF_Label & aLabel);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Attributes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_DataSet::Attributes ******/
 		/****** md5 signature: a4ea08d012bfa3c75cb23fa41e150e9e ******/
 		%feature("compactdefaultargs") Attributes;
@@ -2462,6 +2482,11 @@ Returns true if there is at least one label or one attribute.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Labels %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_DataSet::Labels ******/
 		/****** md5 signature: d67a3d9ab302ae589c87b4f6aedd9ac5 ******/
 		%feature("compactdefaultargs") Labels;
@@ -2475,6 +2500,11 @@ Returns the map of labels in this data set. This map can be used directly, or up
 ") Labels;
 		TDF_LabelMap & Labels();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Roots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_DataSet::Roots ******/
 		/****** md5 signature: 906e66c6d8282dd194d4af3c3b221503 ******/
 		%feature("compactdefaultargs") Roots;
@@ -2517,6 +2547,11 @@ Creates a delta.
 ") TDF_Delta;
 		 TDF_Delta();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AttributeDeltas %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_Delta::AttributeDeltas ******/
 		/****** md5 signature: cf552525636f38336f24810eeae5ce2c ******/
 		%feature("compactdefaultargs") AttributeDeltas;
@@ -3640,6 +3675,11 @@ Returns <myAfterRelocate>.
 ") AfterRelocate;
 		bool AfterRelocate();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AttributeTable %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_RelocationTable::AttributeTable ******/
 		/****** md5 signature: 3caf2216b05a0bd684b9aeb57b3a56ec ******/
 		%feature("compactdefaultargs") AttributeTable;
@@ -3743,6 +3783,11 @@ Finds the relocation value of <aSourceTransient> and returns it into <aTargetTra
 ") HasTransientRelocation;
 		bool HasTransientRelocation(const opencascade::handle<Standard_Transient> & aSourceTransient, opencascade::handle<Standard_Transient> & aTargetTransient);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LabelTable %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_RelocationTable::LabelTable ******/
 		/****** md5 signature: a0ae07d23b570b61310b39e572f5acb4 ******/
 		%feature("compactdefaultargs") LabelTable;
@@ -3880,6 +3925,11 @@ Fills <aLabelMap> with target relocation labels. <aLabelMap> is not cleared befo
 ") TargetLabelMap;
 		void TargetLabelMap(TDF_LabelMap & aLabelMap);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransientTable %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_RelocationTable::TransientTable ******/
 		/****** md5 signature: 6d4496b49f010df17e7cef670da702cf ******/
 		%feature("compactdefaultargs") TransientTable;
@@ -4482,6 +4532,11 @@ Returns true if the transaction is open.
 ") IsOpen;
 		bool IsOpen();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_Transaction::Name ******/
 		/****** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ******/
 		%feature("compactdefaultargs") Name;
@@ -4821,6 +4876,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_Reference::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -5015,6 +5075,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDF_TagSource::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -5282,7 +5347,13 @@ class TDF_HAttributeArray1 : public NCollection_Array1<opencascade::handle<TDF_A
     TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
     TDF_HAttributeArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<TDF_Attribute>>::value_type& theValue);
     TDF_HAttributeArray1(const NCollection_Array1<opencascade::handle<TDF_Attribute>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<TDF_Attribute>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<TDF_Attribute>>& ChangeArray1();
 };
 %make_alias(TDF_HAttributeArray1)

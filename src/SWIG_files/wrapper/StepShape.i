@@ -9741,7 +9741,13 @@ class StepShape_HArray1OfConnectedEdgeSet : public NCollection_Array1<opencascad
     StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfConnectedEdgeSet(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>::value_type& theValue);
     StepShape_HArray1OfConnectedEdgeSet(const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_ConnectedEdgeSet>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfConnectedEdgeSet)
@@ -9752,7 +9758,13 @@ class StepShape_HArray1OfConnectedFaceSet : public NCollection_Array1<opencascad
     StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfConnectedFaceSet(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>::value_type& theValue);
     StepShape_HArray1OfConnectedFaceSet(const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_ConnectedFaceSet>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfConnectedFaceSet)
@@ -9763,7 +9775,13 @@ class StepShape_HArray1OfEdge : public NCollection_Array1<opencascade::handle<St
     StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_Edge>>::value_type& theValue);
     StepShape_HArray1OfEdge(const NCollection_Array1<opencascade::handle<StepShape_Edge>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_Edge>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_Edge>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfEdge)
@@ -9774,7 +9792,13 @@ class StepShape_HArray1OfFace : public NCollection_Array1<opencascade::handle<St
     StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfFace(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_Face>>::value_type& theValue);
     StepShape_HArray1OfFace(const NCollection_Array1<opencascade::handle<StepShape_Face>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_Face>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_Face>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfFace)
@@ -9785,7 +9809,13 @@ class StepShape_HArray1OfFaceBound : public NCollection_Array1<opencascade::hand
     StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfFaceBound(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>::value_type& theValue);
     StepShape_HArray1OfFaceBound(const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_FaceBound>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfFaceBound)
@@ -9796,7 +9826,13 @@ class StepShape_HArray1OfGeometricSetSelect : public NCollection_Array1<StepShap
     StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfGeometricSetSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_GeometricSetSelect>::value_type& theValue);
     StepShape_HArray1OfGeometricSetSelect(const NCollection_Array1<StepShape_GeometricSetSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepShape_GeometricSetSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepShape_GeometricSetSelect>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfGeometricSetSelect)
@@ -9807,7 +9843,13 @@ class StepShape_HArray1OfOrientedClosedShell : public NCollection_Array1<opencas
     StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfOrientedClosedShell(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>::value_type& theValue);
     StepShape_HArray1OfOrientedClosedShell(const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_OrientedClosedShell>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedClosedShell)
@@ -9818,7 +9860,13 @@ class StepShape_HArray1OfOrientedEdge : public NCollection_Array1<opencascade::h
     StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfOrientedEdge(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>::value_type& theValue);
     StepShape_HArray1OfOrientedEdge(const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepShape_OrientedEdge>>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfOrientedEdge)
@@ -9829,7 +9877,13 @@ class StepShape_HArray1OfShapeDimensionRepresentationItem : public NCollection_A
     StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfShapeDimensionRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>::value_type& theValue);
     StepShape_HArray1OfShapeDimensionRepresentationItem(const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepShape_ShapeDimensionRepresentationItem>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfShapeDimensionRepresentationItem)
@@ -9840,7 +9894,13 @@ class StepShape_HArray1OfShell : public NCollection_Array1<StepShape_Shell>, pub
     StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfShell(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_Shell>::value_type& theValue);
     StepShape_HArray1OfShell(const NCollection_Array1<StepShape_Shell>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepShape_Shell>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepShape_Shell>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfShell)
@@ -9851,7 +9911,13 @@ class StepShape_HArray1OfValueQualifier : public NCollection_Array1<StepShape_Va
     StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepShape_HArray1OfValueQualifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepShape_ValueQualifier>::value_type& theValue);
     StepShape_HArray1OfValueQualifier(const NCollection_Array1<StepShape_ValueQualifier>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepShape_ValueQualifier>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepShape_ValueQualifier>& ChangeArray1();
 };
 %make_alias(StepShape_HArray1OfValueQualifier)

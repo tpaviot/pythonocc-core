@@ -223,6 +223,11 @@ Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity
 ") As;
 		virtual opencascade::handle<StepData_Simple> As(const char * const steptype);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Described::CField ******/
 		/****** md5 signature: 93c0036e39f9878a4e0d32dd3c774487 ******/
 		%feature("compactdefaultargs") CField;
@@ -272,6 +277,11 @@ Returns the Description used to define this entity.
 ") Description;
 		opencascade::handle<StepData_EDescr> Description();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Described::Field ******/
 		/****** md5 signature: 30bf6b6c6096e21073c7685b4218c746 ******/
 		%feature("compactdefaultargs") Field;
@@ -566,6 +576,11 @@ Sets or Unsets the EnumTool to accept undefined value (for optional field). Igno
 ") Optional;
 		void Optional(const bool mode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Text %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_EnumTool::Text ******/
 		/****** md5 signature: bd6fa8b893f97a4046f037d1ecff2989 ******/
 		%feature("compactdefaultargs") Text;
@@ -1574,6 +1589,11 @@ Creates a FieldList of 0 Field.
 ") StepData_FieldList;
 		 StepData_FieldList();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldList::CField ******/
 		/****** md5 signature: eae1537bc1d31c79540bfe93203fc536 ******/
 		%feature("compactdefaultargs") CField;
@@ -1592,6 +1612,11 @@ Returns the field n0 <num> between 1 and NbFields, in order to modify its conten
 ") CField;
 		virtual StepData_Field & CField(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldList::Field ******/
 		/****** md5 signature: c260bd5af0c97e74e35b47fb8a9a9afc ******/
 		%feature("compactdefaultargs") Field;
@@ -4073,6 +4098,11 @@ Works as Dump with a Transient, but directly takes the entity designated by its 
 ") Dump;
 		bool Dump(std::ostream &OutValue, const int num, const int level);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StepWriter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_StepDumper::StepWriter ******/
 		/****** md5 signature: 96c8201dd445aa612be97bdda77742fe ******/
 		%feature("compactdefaultargs") StepWriter;
@@ -5130,6 +5160,11 @@ Returns record identifier (Positive number) If returned ident is not positive: S
 ") RecordIdent;
 		int RecordIdent(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RecordType %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_StepReaderData::RecordType ******/
 		/****** md5 signature: 9002cf266c5eabd55940d8892d9e7136 ******/
 		%feature("compactdefaultargs") RecordType;
@@ -5542,6 +5577,11 @@ sets end of section; to be done before passing to next one.
 ") EndSec;
 		void EndSec();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FloatWriter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_StepWriter::FloatWriter ******/
 		/****** md5 signature: 861009c9fe600b2a8fc50cd628967a67 ******/
 		%feature("compactdefaultargs") FloatWriter;
@@ -6921,6 +6961,11 @@ Sets an ESDescr as 'super-type'. Applies an a base (non derived) ESDescr.
 ") SetSuper;
 		void SetSuper(const opencascade::handle<StepData_ESDescr> & super);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StepType %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_ESDescr::StepType ******/
 		/****** md5 signature: 1cc7b85b5264351a7b2b25f30c5b661d ******/
 		%feature("compactdefaultargs") StepType;
@@ -6989,6 +7034,11 @@ Creates a FieldList of 1 Field.
 ") StepData_FieldList1;
 		 StepData_FieldList1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldList1::CField ******/
 		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
@@ -7007,6 +7057,11 @@ Returns the field n0 <num> between 1 and NbFields, in order to modify its conten
 ") CField;
 		StepData_Field & CField(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldList1::Field ******/
 		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
@@ -7070,6 +7125,11 @@ Creates a FieldListD of <nb> Fields.
 ") StepData_FieldListD;
 		 StepData_FieldListD(const int nb);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldListD::CField ******/
 		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
@@ -7088,6 +7148,11 @@ Returns the field n0 <num> between 1 and NbFields, in order to modify its conten
 ") CField;
 		StepData_Field & CField(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldListD::Field ******/
 		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
@@ -7169,6 +7234,11 @@ Creates a FieldListN of <nb> Fields.
 ") StepData_FieldListN;
 		 StepData_FieldListN(const int nb);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldListN::CField ******/
 		/****** md5 signature: 4ef3385dce19daa758b4e5ddb109faaa ******/
 		%feature("compactdefaultargs") CField;
@@ -7187,6 +7257,11 @@ Returns the field n0 <num> between 1 and NbFields, in order to modify its conten
 ") CField;
 		StepData_Field & CField(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_FieldListN::Field ******/
 		/****** md5 signature: bd416719b5d6d6b0ccbaf13ae88f421e ******/
 		%feature("compactdefaultargs") Field;
@@ -7419,6 +7494,11 @@ Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity
 ") As;
 		opencascade::handle<StepData_Simple> As(const char * const steptype);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Plex::CField ******/
 		/****** md5 signature: f6994a884b9f5b25dc4f812aa66f0aa2 ******/
 		%feature("compactdefaultargs") CField;
@@ -7468,6 +7548,11 @@ Returns the Description as for a Plex.
 ") ECDescr;
 		opencascade::handle<StepData_ECDescr> ECDescr();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Plex::Field ******/
 		/****** md5 signature: 2227bc84d41c10d79aa93fd5fc3dddab ******/
 		%feature("compactdefaultargs") Field;
@@ -7717,6 +7802,11 @@ No available documentation.
 ") StepData_SelectNamed;
 		 StepData_SelectNamed();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_SelectNamed::CField ******/
 		/****** md5 signature: 41479025df2fccc852073319e7b17235 ******/
 		%feature("compactdefaultargs") CField;
@@ -7730,6 +7820,11 @@ No available documentation.
 ") CField;
 		StepData_Field & CField();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_SelectNamed::Field ******/
 		/****** md5 signature: 7529d55b5b7df4ca4246175b9d436a91 ******/
 		%feature("compactdefaultargs") Field;
@@ -8036,6 +8131,11 @@ Returns a Simple Entity which matches with a Type in <self>: For a Simple Entity
 ") As;
 		opencascade::handle<StepData_Simple> As(const char * const steptype);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CField %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::CField ******/
 		/****** md5 signature: f6994a884b9f5b25dc4f812aa66f0aa2 ******/
 		%feature("compactdefaultargs") CField;
@@ -8054,6 +8154,11 @@ Returns a Field from its name; read or write.
 ") CField;
 		StepData_Field & CField(const char * const name);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CFieldNum %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::CFieldNum ******/
 		/****** md5 signature: 8b89e286679687951dd20ca13209e409 ******/
 		%feature("compactdefaultargs") CFieldNum;
@@ -8072,6 +8177,11 @@ Returns a field from its rank, in order to modify it.
 ") CFieldNum;
 		StepData_Field & CFieldNum(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CFields %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::CFields ******/
 		/****** md5 signature: f5599bdac48411c5f4a346515f0306c0 ******/
 		%feature("compactdefaultargs") CFields;
@@ -8116,6 +8226,11 @@ Returns description, as for simple.
 ") ESDescr;
 		opencascade::handle<StepData_ESDescr> ESDescr();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Field %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::Field ******/
 		/****** md5 signature: 2227bc84d41c10d79aa93fd5fc3dddab ******/
 		%feature("compactdefaultargs") Field;
@@ -8134,6 +8249,11 @@ Returns a Field from its name; read-only.
 ") Field;
 		const StepData_Field & Field(const char * const name);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FieldNum %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::FieldNum ******/
 		/****** md5 signature: fb2193d063ab022afcdc98cbd28a7a8b ******/
 		%feature("compactdefaultargs") FieldNum;
@@ -8152,6 +8272,11 @@ Returns a field from its rank, for read-only use.
 ") FieldNum;
 		const StepData_Field & FieldNum(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Fields %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepData_Simple::Fields ******/
 		/****** md5 signature: 21f22355e99961c86e183f991e523ec8 ******/
 		%feature("compactdefaultargs") Fields;
@@ -8361,7 +8486,13 @@ class StepData_HArray1OfField : public NCollection_Array1<StepData_Field>, publi
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepData_HArray1OfField(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepData_Field>::value_type& theValue);
     StepData_HArray1OfField(const NCollection_Array1<StepData_Field>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepData_Field>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepData_Field>& ChangeArray1();
 };
 %make_alias(StepData_HArray1OfField)

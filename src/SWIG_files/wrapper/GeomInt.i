@@ -267,6 +267,11 @@ returns the MultiBSpCurve approximating the set after computing the value F or G
 ") CurveValue;
 		AppParCurves_MultiBSpCurve CurveValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -318,6 +323,11 @@ No available documentation.
 ") FirstConstraint;
 		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -350,6 +360,11 @@ returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		bool Gradient(const math_Vector & X, math_Vector & G);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Index %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::Index ******/
 		/****** md5 signature: c11a6982042d7a2c5bf9fb50324ac971 ******/
 		%feature("compactdefaultargs") Index;
@@ -421,6 +436,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -645,6 +665,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -658,6 +683,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -723,6 +753,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -749,6 +784,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -859,6 +899,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -872,6 +917,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -2297,6 +2347,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -2512,6 +2567,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -2700,6 +2760,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -2713,6 +2778,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -2778,6 +2848,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -2804,6 +2879,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -2914,6 +2994,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -2927,6 +3012,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -3078,6 +3168,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -3091,6 +3186,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -3156,6 +3256,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -3182,6 +3287,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -3292,6 +3402,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -3305,6 +3420,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -3479,6 +3599,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox;
 		 GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintDerivative ******/
 		/****** md5 signature: 855ddd04145278d0e8f361d24afbc420 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -3500,6 +3625,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const GeomInt_TheMultiLineOfWLApprox & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -3513,6 +3643,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -3526,6 +3661,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -3595,6 +3735,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox;
 		 GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox(const GeomInt_TheMultiLineOfWLApprox & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintDerivative ******/
 		/****** md5 signature: 855ddd04145278d0e8f361d24afbc420 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -3616,6 +3761,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const GeomInt_TheMultiLineOfWLApprox & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -3629,6 +3779,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -3642,6 +3797,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -3788,6 +3948,11 @@ Initializes the fields of the algorithm.
 ") GeomInt_TheComputeLineBezierOfWLApprox;
 		 GeomInt_TheComputeLineBezierOfWLApprox(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheComputeLineBezierOfWLApprox::ChangeValue ******/
 		/****** md5 signature: f3fa0af427f9f8c0bbdc2e7a6b2416fb ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -3889,6 +4054,11 @@ Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		int NbMultiCurves();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheComputeLineBezierOfWLApprox::Parameters ******/
 		/****** md5 signature: 5292a6899dfaa94242ecae6a511c8cc3 ******/
 		%feature("compactdefaultargs") Parameters;
@@ -4142,6 +4312,11 @@ Initializes the fields of the algorithm.
 ") GeomInt_TheComputeLineOfWLApprox;
 		 GeomInt_TheComputeLineOfWLApprox(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheComputeLineOfWLApprox::ChangeValue ******/
 		/****** md5 signature: afc5e23129509014348d63bb72db41ec ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -4242,6 +4417,11 @@ returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		bool IsToleranceReached();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheComputeLineOfWLApprox::Parameters ******/
 		/****** md5 signature: 5c6424b3748c0fbf869b54f8e752f065 ******/
 		%feature("compactdefaultargs") Parameters;
@@ -4930,6 +5110,11 @@ initialize the parameters to compute the solution point it 's possible to write 
 ") GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox;
 		 GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::ChangePoint ******/
 		/****** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ******/
 		%feature("compactdefaultargs") ChangePoint;
@@ -4982,6 +5167,11 @@ Returns the tangent at the intersection line in the parametric space of the seco
 ") DirectionOnS2;
 		const gp_Dir2d DirectionOnS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Function %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Function ******/
 		/****** md5 signature: 43bb8650e368bc791dc8eaaa177bb74e ******/
 		%feature("compactdefaultargs") Function;
@@ -5073,6 +5263,11 @@ returns the best constant isoparametric to find the next intersection's point +s
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheInt2SOfThePrmPrmSvSurfacesOfWLApprox::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/
 		%feature("compactdefaultargs") Point;
@@ -6039,6 +6234,11 @@ No available documentation.
 ") Direction3d;
 		const gp_Vec Direction3d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ISurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox::ISurface ******/
 		/****** md5 signature: 0401f703cbd4484a6014535602bb165f ******/
 		%feature("compactdefaultargs") ISurface;

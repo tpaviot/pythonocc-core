@@ -938,6 +938,11 @@ Returns the index of <L>.
 ") Index;
 		int Index(const TopLoc_Location & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinTools_LocationSet::Location ******/
 		/****** md5 signature: 2ce5408eb7d2eeaacf7f0ac26a1b8a72 ******/
 		%feature("compactdefaultargs") Location;
@@ -1442,6 +1447,11 @@ Reads the shape from stream using previously restored shapes and objects by refe
 ") Read;
 		void Read(std::istream & theStream, TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ReadLocation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinTools_ShapeReader::ReadLocation ******/
 		/****** md5 signature: bd5aa45e9ea119dbeec11eb219039ce0 ******/
 		%feature("compactdefaultargs") ReadLocation;
@@ -1543,6 +1553,11 @@ Inserts the shape <S2> in the shape <S1>.
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeLocations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinTools_ShapeSet::ChangeLocations ******/
 		/****** md5 signature: 647c90bf8c4ec50f4f4adabd19dff9ef ******/
 		%feature("compactdefaultargs") ChangeLocations;
@@ -1587,6 +1602,11 @@ Returns the index of <S>.
 ") Index;
 		int Index(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Locations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinTools_ShapeSet::Locations ******/
 		/****** md5 signature: 1891bed2b7331683f81d8635ed2a6f3e ******/
 		%feature("compactdefaultargs") Locations;

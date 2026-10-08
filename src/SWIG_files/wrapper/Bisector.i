@@ -958,6 +958,11 @@ No available documentation.
 ") Append;
 		void Append(const Bisector_PointOnBis & Point);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend First %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Bisector_PolyBis::First ******/
 		/****** md5 signature: 8a04854f4bd43f8bd98db514b401eb6e ******/
 		%feature("compactdefaultargs") First;
@@ -1002,6 +1007,11 @@ No available documentation.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Last %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Bisector_PolyBis::Last ******/
 		/****** md5 signature: 5e27620ceac300d8b92d02d6453ba01a ******/
 		%feature("compactdefaultargs") Last;
@@ -1046,6 +1056,11 @@ No available documentation.
 ") Transform;
 		void Transform(const gp_Trsf2d & T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Bisector_PolyBis::Value ******/
 		/****** md5 signature: dcc03978ae4229c6d4e5dbb94d6d25ba ******/
 		%feature("compactdefaultargs") Value;
@@ -2101,6 +2116,11 @@ Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Sid
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const double Side1, const double Side2, const gp_Pnt2d & Origin, const double DistMax = 500);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Polygon %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Bisector_BisecCC::Polygon ******/
 		/****** md5 signature: 0adc7dc97a83bfc84693e7af983e76d4 ******/
 		%feature("compactdefaultargs") Polygon;

@@ -411,6 +411,11 @@ No available documentation.
 ") Perform;
 		void Perform(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Result %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_BuildWires::Result ******/
 		/****** md5 signature: 83e504274481e6f00be7aae49621d422 ******/
 		%feature("compactdefaultargs") Result;
@@ -673,6 +678,11 @@ No available documentation.
 ") Perform;
 		void Perform(const TColGeom_SequenceOfCurve & Scur);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_CSIntersector::Point ******/
 		/****** md5 signature: 0c3c4b16e4f7e34feeb2fba0e382aa8c ******/
 		%feature("compactdefaultargs") Point;
@@ -901,6 +911,11 @@ Returns the number of intersection point.
 ") NbPoints;
 		int NbPoints();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_CurveShapeIntersector::Point ******/
 		/****** md5 signature: b44b09d8da413116ab464799b694acda ******/
 		%feature("compactdefaultargs") Point;
@@ -1070,6 +1085,11 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_DPrism::Shapes ******/
 		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
@@ -1399,6 +1419,11 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 ") Generated;
 		virtual TopoDS_Face Generated(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratingEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_GeneratedShape::GeneratingEdges ******/
 		/****** md5 signature: 0e2250d836aeae0c114d38878fef969c ******/
 		%feature("compactdefaultargs") GeneratingEdges;
@@ -1412,6 +1437,11 @@ No available documentation.
 ") GeneratingEdges;
 		virtual const TopTools_ListOfShape & GeneratingEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OrientedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_GeneratedShape::OrientedFaces ******/
 		/****** md5 signature: 2f0ad793faf07fd02ee98c37edc09272 ******/
 		%feature("compactdefaultargs") OrientedFaces;
@@ -1472,6 +1502,11 @@ Creates the algorithm on the shape <S>.
 ") LocOpe_Generator;
 		 LocOpe_Generator(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DescendantFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Generator::DescendantFace ******/
 		/****** md5 signature: 373f05d6b05045666ad08a7970186a95 ******/
 		%feature("compactdefaultargs") DescendantFace;
@@ -1662,6 +1697,11 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Edge & Enew, const TopoDS_Edge & Ebase);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DescendantFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Gluer::DescendantFaces ******/
 		/****** md5 signature: 8fcd4f80b33f6d7adf5d907cbaf76ef2 ******/
 		%feature("compactdefaultargs") DescendantFaces;
@@ -1680,6 +1720,11 @@ No available documentation.
 ") DescendantFaces;
 		const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Gluer::Edges ******/
 		/****** md5 signature: 037aaf7464b521eb3427cc0fdaf891f0 ******/
 		%feature("compactdefaultargs") Edges;
@@ -1777,6 +1822,11 @@ No available documentation.
 ") ResultingShape;
 		const TopoDS_Shape ResultingShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TgtEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Gluer::TgtEdges ******/
 		/****** md5 signature: 4625c2d2cf027a1f9f8defe365dcab16 ******/
 		%feature("compactdefaultargs") TgtEdges;
@@ -1942,6 +1992,11 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_LinearForm::Shapes ******/
 		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
@@ -2076,6 +2131,11 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Pipe::Shapes ******/
 		/****** md5 signature: 7b68a8263b90c81c34dd91561aad6dca ******/
 		%feature("compactdefaultargs") Shapes;
@@ -2423,6 +2483,11 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Prism::Shapes ******/
 		/****** md5 signature: 6893c0a8043f0c4a7bec2afcb318259f ******/
 		%feature("compactdefaultargs") Shapes;
@@ -2598,6 +2663,11 @@ Returns the modified shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapesFromShape %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_SplitDrafts::ShapesFromShape ******/
 		/****** md5 signature: 83b8c3a5e0b21a7b31cde09d7ad2951a ******/
 		%feature("compactdefaultargs") ShapesFromShape;
@@ -2737,6 +2807,11 @@ Tests if it is possible to split the edge <E>.
 ") CanSplit;
 		bool CanSplit(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DescendantShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_SplitShape::DescendantShapes ******/
 		/****** md5 signature: 872d543240621103e615d2c61b0a9a17 ******/
 		%feature("compactdefaultargs") DescendantShapes;
@@ -2773,6 +2848,11 @@ Initializes the process on the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LeftOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_SplitShape::LeftOf ******/
 		/****** md5 signature: 71fdc2dfd84f74fced44bb442394da2e ******/
 		%feature("compactdefaultargs") LeftOf;
@@ -2850,6 +2930,11 @@ Creates the algorithm on the shape <S>.
 ") LocOpe_Spliter;
 		 LocOpe_Spliter(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DescendantShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Spliter::DescendantShapes ******/
 		/****** md5 signature: 872d543240621103e615d2c61b0a9a17 ******/
 		%feature("compactdefaultargs") DescendantShapes;
@@ -2868,6 +2953,11 @@ Returns the list of descendant shapes of <S>.
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DirectLeft %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Spliter::DirectLeft ******/
 		/****** md5 signature: 0dcdbf098f12ae717ee8e5124bb48c8d ******/
 		%feature("compactdefaultargs") DirectLeft;
@@ -2912,6 +3002,11 @@ No available documentation.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Left %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_Spliter::Left ******/
 		/****** md5 signature: be2f18492c53905055a91ad1bc70753b ******/
 		%feature("compactdefaultargs") Left;
@@ -3399,6 +3494,11 @@ Returns the face created by the edge <E>. If none, must return a null shape.
 ") Generated;
 		TopoDS_Face Generated(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratingEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_GluedShape::GeneratingEdges ******/
 		/****** md5 signature: fd6282804c49e2c2ad55082d4ce91edb ******/
 		%feature("compactdefaultargs") GeneratingEdges;
@@ -3448,6 +3548,11 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OrientedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** LocOpe_GluedShape::OrientedFaces ******/
 		/****** md5 signature: e1789da10d12eef7b0a79f259570d8e4 ******/
 		%feature("compactdefaultargs") OrientedFaces;

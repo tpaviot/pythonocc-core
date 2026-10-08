@@ -265,6 +265,11 @@ Parameter theToSyncStyles flag indicating if method ::Compute() should call this
 ") DispatchStyles;
 		virtual void DispatchStyles(const bool theToSyncStyles = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLabel %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_AISObject::GetLabel ******/
 		/****** md5 signature: cc78125194d6893ebcb2c586f4ec4787 ******/
 		%feature("compactdefaultargs") GetLabel;
@@ -391,6 +396,11 @@ Parameter theDefStyle default style for nodes with undefined style.
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurrent %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_DocumentExplorer::ChangeCurrent ******/
 		/****** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ******/
 		%feature("compactdefaultargs") ChangeCurrent;
@@ -417,6 +427,11 @@ Return color tool.
 ") ColorTool;
 		const opencascade::handle<XCAFDoc_ColorTool> & ColorTool();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_DocumentExplorer::Current ******/
 		/****** md5 signature: 222ab8031f0a08f42b668a2b614cea4d ******/
 		%feature("compactdefaultargs") Current;
@@ -692,6 +707,11 @@ Find the next value.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_DocumentIdIterator::Value ******/
 		/****** md5 signature: 984f9d59b062e7ebff353351a4b04ca9 ******/
 		%feature("compactdefaultargs") Value;
@@ -855,6 +875,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColorCurv %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_Style::GetColorCurv ******/
 		/****** md5 signature: 94dac84988e85c1a6c1fff8156adc1a0 ******/
 		%feature("compactdefaultargs") GetColorCurv;
@@ -868,6 +893,11 @@ Return curve color.
 ") GetColorCurv;
 		const Quantity_Color & GetColorCurv();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColorSurf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_Style::GetColorSurf ******/
 		/****** md5 signature: a374a5c5f178aeaf928cc98a510eb507 ******/
 		%feature("compactdefaultargs") GetColorSurf;
@@ -881,6 +911,11 @@ Return surface color.
 ") GetColorSurf;
 		const Quantity_Color & GetColorSurf();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColorSurfRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFPrs_Style::GetColorSurfRGBA ******/
 		/****** md5 signature: 3160a42dbee284647420257ee6038479 ******/
 		%feature("compactdefaultargs") GetColorSurfRGBA;

@@ -1601,6 +1601,11 @@ No available documentation.
 ") HLRAlgo_Interference;
 		 HLRAlgo_Interference(const HLRAlgo_Intersection & Inters, const HLRAlgo_Coincidence & Bound, const TopAbs_Orientation Orient, const TopAbs_Orientation Trans, const TopAbs_Orientation BTrans);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Boundary %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_Interference::Boundary ******/
 		/****** md5 signature: 6ca36eab7e6bee88933efbc7e34b06b7 ******/
 		%feature("compactdefaultargs") Boundary;
@@ -1663,6 +1668,11 @@ No available documentation.
 ") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBoundary %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_Interference::ChangeBoundary ******/
 		/****** md5 signature: fe43e764cb5ec1f639a5f072c221ae07 ******/
 		%feature("compactdefaultargs") ChangeBoundary;
@@ -1676,6 +1686,11 @@ No available documentation.
 ") ChangeBoundary;
 		HLRAlgo_Coincidence & ChangeBoundary();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeIntersection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_Interference::ChangeIntersection ******/
 		/****** md5 signature: cba888b946477402b772f2b6fb39852d ******/
 		%feature("compactdefaultargs") ChangeIntersection;
@@ -1689,6 +1704,11 @@ No available documentation.
 ") ChangeIntersection;
 		HLRAlgo_Intersection & ChangeIntersection();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_Interference::Intersection ******/
 		/****** md5 signature: e8313e0293d76e53d43c706c92569b48 ******/
 		%feature("compactdefaultargs") Intersection;
@@ -2077,6 +2097,11 @@ No available documentation.
 ") HLRAlgo_PolyAlgo;
 		 HLRAlgo_PolyAlgo();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePolyShell %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyAlgo::ChangePolyShell ******/
 		/****** md5 signature: f8b52f4813ca4e760c91710a23a4a32e ******/
 		%feature("compactdefaultargs") ChangePolyShell;
@@ -2103,6 +2128,11 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Hide %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyAlgo::Hide ******/
 		/****** md5 signature: 3f2ba13cf204b919f9bd203b04422ae1 ******/
 		%feature("compactdefaultargs") Hide;
@@ -2221,6 +2251,11 @@ No available documentation.
 ") NextShow;
 		void NextShow();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PolyShell %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyAlgo::PolyShell ******/
 		/****** md5 signature: 8fa2b2862bf6f2793a727c50d438f4fc ******/
 		%feature("compactdefaultargs") PolyShell;
@@ -2234,6 +2269,11 @@ No available documentation.
 ") PolyShell;
 		const NCollection_Array1<opencascade::handle<HLRAlgo_PolyShellData>> & PolyShell();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Show %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyAlgo::Show ******/
 		/****** md5 signature: 4a3ac2af0902e9ef8d96b4c5e8c0a7d6 ******/
 		%feature("compactdefaultargs") Show;
@@ -2397,6 +2437,11 @@ No available documentation.
 ") Hiding;
 		bool Hiding();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyData::Nodes ******/
 		/****** md5 signature: 741b03c10a2bfd7b83a86b9cc1df986f ******/
 		%feature("compactdefaultargs") Nodes;
@@ -2410,6 +2455,11 @@ No available documentation.
 ") Nodes;
 		TColgp_Array1OfXYZ & Nodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PHDat %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyData::PHDat ******/
 		/****** md5 signature: 9f59ebc4007ceaf4a2c3717d66bcfa38 ******/
 		%feature("compactdefaultargs") PHDat;
@@ -2423,6 +2473,11 @@ No available documentation.
 ") PHDat;
 		NCollection_Array1<HLRAlgo_PolyHidingData> & PHDat();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyData::TData ******/
 		/****** md5 signature: 575c003ec7645c6f29de58fdbf9ad6b3 ******/
 		%feature("compactdefaultargs") TData;
@@ -2690,6 +2745,11 @@ No available documentation.
 ") NbTData;
 		int NbTData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PINod %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyInternalData::PINod ******/
 		/****** md5 signature: 0d3e2bbf673dfbf2e1a6ccd6cc38b646 ******/
 		%feature("compactdefaultargs") PINod;
@@ -2703,6 +2763,11 @@ No available documentation.
 ") PINod;
 		NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>> & PINod();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PISeg %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyInternalData::PISeg ******/
 		/****** md5 signature: 0eb5a4d7c5cc4d8808b7862615347c1d ******/
 		%feature("compactdefaultargs") PISeg;
@@ -2747,6 +2812,11 @@ No available documentation.
 ") Planar;
 		void Planar(const bool B);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyInternalData::TData ******/
 		/****** md5 signature: 575c003ec7645c6f29de58fdbf9ad6b3 ******/
 		%feature("compactdefaultargs") TData;
@@ -2883,6 +2953,11 @@ No available documentation.
 ") HLRAlgo_PolyShellData;
 		 HLRAlgo_PolyShellData(const int nbFace);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyShellData::Edges ******/
 		/****** md5 signature: a560831d1ad3546dff68467a7a8896af ******/
 		%feature("compactdefaultargs") Edges;
@@ -2909,6 +2984,11 @@ No available documentation.
 ") Hiding;
 		bool Hiding();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend HidingPolyData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyShellData::HidingPolyData ******/
 		/****** md5 signature: 1677904005cfe756ecd5ae731539a322 ******/
 		%feature("compactdefaultargs") HidingPolyData;
@@ -2922,6 +3002,11 @@ No available documentation.
 ") HidingPolyData;
 		NCollection_Array1<opencascade::handle<HLRAlgo_PolyData>> & HidingPolyData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PolyData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_PolyShellData::PolyData ******/
 		/****** md5 signature: c0ab2919646d9484965293aecdaa1af1 ******/
 		%feature("compactdefaultargs") PolyData;
@@ -3357,6 +3442,11 @@ Create a Block of Blocks.
 ") HLRAlgo_WiresBlock;
 		 HLRAlgo_WiresBlock(const int NbWires);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MinMax %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRAlgo_WiresBlock::MinMax ******/
 		/****** md5 signature: b360e6f636632e8d4f24d53763098bae ******/
 		%feature("compactdefaultargs") MinMax;
@@ -3472,7 +3562,13 @@ class HLRAlgo_HArray1OfPHDat : public NCollection_Array1<HLRAlgo_PolyHidingData>
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper);
     HLRAlgo_HArray1OfPHDat(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_PolyHidingData>::value_type& theValue);
     HLRAlgo_HArray1OfPHDat(const NCollection_Array1<HLRAlgo_PolyHidingData>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<HLRAlgo_PolyHidingData>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<HLRAlgo_PolyHidingData>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPHDat)
@@ -3483,7 +3579,13 @@ class HLRAlgo_HArray1OfPINod : public NCollection_Array1<opencascade::handle<HLR
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper);
     HLRAlgo_HArray1OfPINod(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>::value_type& theValue);
     HLRAlgo_HArray1OfPINod(const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<HLRAlgo_PolyInternalNode>>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPINod)
@@ -3494,7 +3596,13 @@ class HLRAlgo_HArray1OfPISeg : public NCollection_Array1<HLRAlgo_PolyInternalSeg
     HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper);
     HLRAlgo_HArray1OfPISeg(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_PolyInternalSegment>::value_type& theValue);
     HLRAlgo_HArray1OfPISeg(const NCollection_Array1<HLRAlgo_PolyInternalSegment>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<HLRAlgo_PolyInternalSegment>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<HLRAlgo_PolyInternalSegment>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfPISeg)
@@ -3505,7 +3613,13 @@ class HLRAlgo_HArray1OfTData : public NCollection_Array1<HLRAlgo_TriangleData>, 
     HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper);
     HLRAlgo_HArray1OfTData(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<HLRAlgo_TriangleData>::value_type& theValue);
     HLRAlgo_HArray1OfTData(const NCollection_Array1<HLRAlgo_TriangleData>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<HLRAlgo_TriangleData>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<HLRAlgo_TriangleData>& ChangeArray1();
 };
 %make_alias(HLRAlgo_HArray1OfTData)

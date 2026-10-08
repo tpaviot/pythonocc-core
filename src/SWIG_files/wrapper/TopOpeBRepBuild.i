@@ -891,6 +891,11 @@ update the DS by creating new geometries. create shapes from the new geometries.
 ") BuildEdges;
 		void BuildEdges(const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BuildTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::BuildTool ******/
 		/****** md5 signature: 8f00b58c6dc4bbbf0701f98004c469fd ******/
 		%feature("compactdefaultargs") BuildTool;
@@ -922,6 +927,11 @@ update the DS by creating new geometries. create vertices on DS points.
 ") BuildVertices;
 		void BuildVertices(const opencascade::handle<TopOpeBRepDS_HDataStructure> & DS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBuildTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::ChangeBuildTool ******/
 		/****** md5 signature: f18366a59aef2f912961e1fc0d178930 ******/
 		%feature("compactdefaultargs") ChangeBuildTool;
@@ -971,6 +981,11 @@ No available documentation.
 ") ChangeMSplit;
 		NCollection_DataMap<TopoDS_Shape, TopOpeBRepDS_ListOfShapeOn1State, TopTools_ShapeMapHasher> ChangeMSplit(const TopAbs_State s);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSplit %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::ChangeSplit ******/
 		/****** md5 signature: 2eb63da324e7d202ce2271e4945cc0b3 ******/
 		%feature("compactdefaultargs") ChangeSplit;
@@ -3683,6 +3698,11 @@ Merges the two solids <S1> and <S2> keeping the parts in each solid of states <T
 ") MergeSolids;
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Merged %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::Merged ******/
 		/****** md5 signature: 4724ee301d458253fdc2b556d484d458 ******/
 		%feature("compactdefaultargs") Merged;
@@ -3702,6 +3722,11 @@ Returns the merged parts <TB> of shape <S>.
 ") Merged;
 		const TopTools_ListOfShape & Merged(const TopoDS_Shape & S, const TopAbs_State TB);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::NewEdges ******/
 		/****** md5 signature: 9ec982f5f3014b1590bdac140184735d ******/
 		%feature("compactdefaultargs") NewEdges;
@@ -3720,6 +3745,11 @@ Returns the edges created on curve <I>.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::NewFaces ******/
 		/****** md5 signature: 96a08f871c044c95bf0a5b942b6f1d59 ******/
 		%feature("compactdefaultargs") NewFaces;
@@ -4054,6 +4084,11 @@ No available documentation.
 ") Reverse;
 		static bool Reverse(const TopAbs_State T1, const TopAbs_State T2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Section %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::Section ******/
 		/****** md5 signature: dbcc312fba60937e8cc4963c696181f6 ******/
 		%feature("compactdefaultargs") Section;
@@ -4202,6 +4237,11 @@ create parts ON solid of section edges.
 ") SplitSectionEdges;
 		void SplitSectionEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Splits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Builder::Splits ******/
 		/****** md5 signature: 90cf6ed590c619273895a6aee9ef33a8 ******/
 		%feature("compactdefaultargs") Splits;
@@ -4563,6 +4603,11 @@ No available documentation.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MapOfTrans2dInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_CorrectFace2d::MapOfTrans2dInfo ******/
 		/****** md5 signature: 002163a1ebd643630c42b8e336a05b3f ******/
 		%feature("compactdefaultargs") MapOfTrans2dInfo;
@@ -5068,6 +5113,11 @@ No available documentation.
 ") IsModified;
 		bool IsModified();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LExternEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LExternEdge ******/
 		/****** md5 signature: 4c1d1ca0012b714f19dbc317460c895f ******/
 		%feature("compactdefaultargs") LExternEdge;
@@ -5081,6 +5131,11 @@ No available documentation.
 ") LExternEdge;
 		const TopTools_ListOfShape & LExternEdge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LExternVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LExternVertex ******/
 		/****** md5 signature: 0c9f7455ca685895891c450fff11602e ******/
 		%feature("compactdefaultargs") LExternVertex;
@@ -5094,6 +5149,11 @@ No available documentation.
 ") LExternVertex;
 		const TopTools_ListOfShape & LExternVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LFuseFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LFuseFace ******/
 		/****** md5 signature: 3eb68dd307149c6bd448b037f0024d74 ******/
 		%feature("compactdefaultargs") LFuseFace;
@@ -5107,6 +5167,11 @@ No available documentation.
 ") LFuseFace;
 		const TopTools_ListOfShape & LFuseFace();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LInternEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LInternEdge ******/
 		/****** md5 signature: dbe1d71948e9f57352799e61f50dea4f ******/
 		%feature("compactdefaultargs") LInternEdge;
@@ -5120,6 +5185,11 @@ No available documentation.
 ") LInternEdge;
 		const TopTools_ListOfShape & LInternEdge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LInternVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LInternVertex ******/
 		/****** md5 signature: 813a5d739524bb9a98c7045d3e785872 ******/
 		%feature("compactdefaultargs") LInternVertex;
@@ -5133,6 +5203,11 @@ No available documentation.
 ") LInternVertex;
 		const TopTools_ListOfShape & LInternVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LModifEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LModifEdge ******/
 		/****** md5 signature: 762cfcc06dbf4c28175c40a7624b3c64 ******/
 		%feature("compactdefaultargs") LModifEdge;
@@ -5146,6 +5221,11 @@ No available documentation.
 ") LModifEdge;
 		const TopTools_ListOfShape & LModifEdge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LModifVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_FuseFace::LModifVertex ******/
 		/****** md5 signature: 799e4c6e1d4c7d567547656463a23410 ******/
 		%feature("compactdefaultargs") LModifVertex;
@@ -6047,6 +6127,11 @@ No available documentation.
 ") TopOpeBRepBuild_HBuilder;
 		 TopOpeBRepBuild_HBuilder(const TopOpeBRepDS_BuildTool & BT);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BuildTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::BuildTool ******/
 		/****** md5 signature: 8f00b58c6dc4bbbf0701f98004c469fd ******/
 		%feature("compactdefaultargs") BuildTool;
@@ -6060,6 +6145,11 @@ No available documentation.
 ") BuildTool;
 		const TopOpeBRepDS_BuildTool & BuildTool();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBuildTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::ChangeBuildTool ******/
 		/****** md5 signature: f18366a59aef2f912961e1fc0d178930 ******/
 		%feature("compactdefaultargs") ChangeBuildTool;
@@ -6073,6 +6163,11 @@ No available documentation.
 ") ChangeBuildTool;
 		TopOpeBRepDS_BuildTool & ChangeBuildTool();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBuilder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::ChangeBuilder ******/
 		/****** md5 signature: 2dacea8f27fdff55fc1de9cf82466ce4 ******/
 		%feature("compactdefaultargs") ChangeBuilder;
@@ -6086,6 +6181,11 @@ No available documentation.
 ") ChangeBuilder;
 		TopOpeBRepBuild_Builder & ChangeBuilder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::ChangeNewEdges ******/
 		/****** md5 signature: 7f4303b5367efe135b0647b5c62b25b0 ******/
 		%feature("compactdefaultargs") ChangeNewEdges;
@@ -6241,6 +6341,11 @@ No available documentation.
 ") GetDSFaceFromDSCurve;
 		int GetDSFaceFromDSCurve(const int indexCur, const int rank);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDSFaceFromDSEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::GetDSFaceFromDSEdge ******/
 		/****** md5 signature: a962da98d2a4a7b207c8849c157ebbb1 ******/
 		%feature("compactdefaultargs") GetDSFaceFromDSEdge;
@@ -6445,6 +6550,11 @@ Merges the two solids <S1> and <S2> keeping the parts in each solid of states <T
 ") MergeSolids;
 		void MergeSolids(const TopoDS_Shape & S1, const TopAbs_State TB1, const TopoDS_Shape & S2, const TopAbs_State TB2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Merged %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::Merged ******/
 		/****** md5 signature: 1864c8ae010bb2078b42410bdf1d2bc1 ******/
 		%feature("compactdefaultargs") Merged;
@@ -6477,6 +6587,11 @@ No available documentation.
 ") MoreSection;
 		bool MoreSection();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::NewEdges ******/
 		/****** md5 signature: 9ec982f5f3014b1590bdac140184735d ******/
 		%feature("compactdefaultargs") NewEdges;
@@ -6495,6 +6610,11 @@ Returns the edges created on curve <I>.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::NewFaces ******/
 		/****** md5 signature: 96a08f871c044c95bf0a5b942b6f1d59 ******/
 		%feature("compactdefaultargs") NewFaces;
@@ -6582,6 +6702,11 @@ Same as previous + evaluates if an operation performed on shapes S1,S2 is a part
 ") Perform;
 		void Perform(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Section %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::Section ******/
 		/****** md5 signature: de29fcbd54cc3d269c973a6e4f3c1c51 ******/
 		%feature("compactdefaultargs") Section;
@@ -6595,6 +6720,11 @@ No available documentation.
 ") Section;
 		const TopTools_ListOfShape & Section();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Splits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_HBuilder::Splits ******/
 		/****** md5 signature: ecea27f245d698e307a1abbd0f220221 ******/
 		%feature("compactdefaultargs") Splits;
@@ -6666,6 +6796,11 @@ No available documentation.
 ") TopOpeBRepBuild_Loop;
 		 TopOpeBRepBuild_Loop(const TopOpeBRepBuild_BlockIterator & BI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BlockIterator %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Loop::BlockIterator ******/
 		/****** md5 signature: dacd603fbd6db0513733493b9c4a223e ******/
 		%feature("compactdefaultargs") BlockIterator;
@@ -6781,6 +6916,11 @@ No available documentation.
 ") TopOpeBRepBuild_LoopSet;
 		 TopOpeBRepBuild_LoopSet();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeListOfLoop %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_LoopSet::ChangeListOfLoop ******/
 		/****** md5 signature: 5aa9b460b50ff2b9db4092df61e6905f ******/
 		%feature("compactdefaultargs") ChangeListOfLoop;
@@ -6910,6 +7050,11 @@ No available documentation.
 ") TopOpeBRepBuild_ShapeListOfShape;
 		 TopOpeBRepBuild_ShapeListOfShape(const TopoDS_Shape & S, const TopTools_ListOfShape & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeList %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeListOfShape::ChangeList ******/
 		/****** md5 signature: cbc513114dab617d234a66c2a7a0e9f1 ******/
 		%feature("compactdefaultargs") ChangeList;
@@ -6936,6 +7081,11 @@ No available documentation.
 ") ChangeShape;
 		TopoDS_Shape ChangeShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeListOfShape::List ******/
 		/****** md5 signature: 25c7d72b52d4ce0a2cf693b3dde1f6ac ******/
 		%feature("compactdefaultargs") List;
@@ -7049,6 +7199,11 @@ Description
 ") AddStartElement;
 		virtual void AddStartElement(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeStartShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeSet::ChangeStartShapes ******/
 		/****** md5 signature: ee94f0d1072abc13f19e14ddca9e8839 ******/
 		%feature("compactdefaultargs") ChangeStartShapes;
@@ -7112,6 +7267,11 @@ No available documentation.
 ") CheckShape;
 		bool CheckShape(const TopoDS_Shape & S, const bool checkgeom = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DEBName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeSet::DEBName ******/
 		/****** md5 signature: 5e2926cd2a4caba9b436420af088c28e ******/
 		%feature("compactdefaultargs") DEBName;
@@ -7295,6 +7455,11 @@ No available documentation.
 ") InitStartElements;
 		void InitStartElements();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MakeNeighboursList %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeSet::MakeNeighboursList ******/
 		/****** md5 signature: f595d6ca3f7965749f70022ca0ea583a ******/
 		%feature("compactdefaultargs") MakeNeighboursList;
@@ -7529,6 +7694,11 @@ No available documentation.
 ") StartElement;
 		const TopoDS_Shape StartElement();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StartElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_ShapeSet::StartElements ******/
 		/****** md5 signature: 8affdda449171035a3b1e1ddba936aa5 ******/
 		%feature("compactdefaultargs") StartElements;
@@ -8451,6 +8621,11 @@ No available documentation.
 ") AppendPassed;
 		void AppendPassed(const TopoDS_Edge & anE);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeEdgesOut %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_VertexInfo::ChangeEdgesOut ******/
 		/****** md5 signature: b0f51d4b5bccafbe61393919b8c349e7 ******/
 		%feature("compactdefaultargs") ChangeEdgesOut;
@@ -8490,6 +8665,11 @@ No available documentation.
 ") Dump;
 		void Dump();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgesIn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_VertexInfo::EdgesIn ******/
 		/****** md5 signature: d7957d65971892e7449e4387a97ff8df ******/
 		%feature("compactdefaultargs") EdgesIn;
@@ -8503,6 +8683,11 @@ No available documentation.
 ") EdgesIn;
 		const TopTools_IndexedMapOfOrientedShape & EdgesIn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgesOut %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_VertexInfo::EdgesOut ******/
 		/****** md5 signature: 10364abf525dfd7c3568b9e6e4fe498a ******/
 		%feature("compactdefaultargs") EdgesOut;
@@ -8529,6 +8714,11 @@ No available documentation.
 ") FoundOut;
 		int FoundOut();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ListPassed %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_VertexInfo::ListPassed ******/
 		/****** md5 signature: dbe91a313833122c2f4a0cb637ab7f0c ******/
 		%feature("compactdefaultargs") ListPassed;
@@ -9708,6 +9898,11 @@ No available documentation.
 ") HasSameDomain;
 		bool HasSameDomain();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterferenceType %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_Pave::InterferenceType ******/
 		/****** md5 signature: 6af8508bed73354b450a7f29fd330a6e ******/
 		%feature("compactdefaultargs") InterferenceType;
@@ -10494,6 +10689,11 @@ No available documentation.
 ") IsUVISO;
 		static void IsUVISO(const TopoDS_Edge & E, const TopoDS_Face & F, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MakeNeighboursList %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepBuild_WireEdgeSet::MakeNeighboursList ******/
 		/****** md5 signature: 81130c096d40dcebb1574255e33feb9d ******/
 		%feature("compactdefaultargs") MakeNeighboursList;

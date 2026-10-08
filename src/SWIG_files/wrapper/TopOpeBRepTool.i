@@ -490,6 +490,11 @@ No available documentation.
 ") AddBoxesMakeCOB;
 		void AddBoxesMakeCOB(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA = TopAbs_SHAPE);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Box %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_BoxSort::Box ******/
 		/****** md5 signature: 37e6d08d3ed2136fa02c2d0d74d16b61 ******/
 		%feature("compactdefaultargs") Box;
@@ -521,6 +526,11 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Compare %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_BoxSort::Compare ******/
 		/****** md5 signature: b112ba28a9fc68e902326323f30e7b47 ******/
 		%feature("compactdefaultargs") Compare;
@@ -1191,6 +1201,11 @@ No available documentation.
 ") EdgesWithFaultyUV;
 		bool EdgesWithFaultyUV(const TopTools_ListOfShape & EdsToCheck, const int nfybounds, TopTools_DataMapOfOrientedShapeInteger & FyEds, const bool stopatfirst = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Eds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_CORRISO::Eds ******/
 		/****** md5 signature: ec7306d78c8c1dd8206f2997acdd821f ******/
 		%feature("compactdefaultargs") Eds;
@@ -1506,6 +1521,11 @@ No available documentation.
 ") TopOpeBRepTool_CurveTool;
 		 TopOpeBRepTool_CurveTool(const TopOpeBRepTool_GeomTool & GT);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeGeomTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_CurveTool::ChangeGeomTool ******/
 		/****** md5 signature: ec177d99f76bb4ed7e436f53436adf03 ******/
 		%feature("compactdefaultargs") ChangeGeomTool;
@@ -1519,6 +1539,11 @@ No available documentation.
 ") ChangeGeomTool;
 		TopOpeBRepTool_GeomTool & ChangeGeomTool();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGeomTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_CurveTool::GetGeomTool ******/
 		/****** md5 signature: 6b33ef83138f718a68f748ea1ea7a345 ******/
 		%feature("compactdefaultargs") GetGeomTool;
@@ -2129,6 +2154,11 @@ No available documentation.
 ") AddBoxes;
 		void AddBoxes(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA = TopAbs_SHAPE);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Box %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_HBoxTool::Box ******/
 		/****** md5 signature: af249e0e9bb7d1be028515317ec98922 ******/
 		%feature("compactdefaultargs") Box;
@@ -3094,6 +3124,11 @@ SRef is the reference shape. StateShapeShape(S) calls will classify S with SRef.
 ") TopOpeBRepTool_ShapeClassifier;
 		 TopOpeBRepTool_ShapeClassifier(const TopoDS_Shape & SRef);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSolidClassifier %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_ShapeClassifier::ChangeSolidClassifier ******/
 		/****** md5 signature: 8c12af5c190e314233212ab057f4d330 ******/
 		%feature("compactdefaultargs") ChangeSolidClassifier;
@@ -5231,6 +5266,11 @@ No available documentation.
 ") AllItems;
 		int AllItems(TopTools_ListOfShape & Item);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeItem %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepTool_connexity::ChangeItem ******/
 		/****** md5 signature: ed1f147f206c674efed247e82c97c0ce ******/
 		%feature("compactdefaultargs") ChangeItem;

@@ -184,6 +184,11 @@ Sets the flag for quick part of the document access: shapes are stored in the at
 ") EnableQuickPart;
 		void EnableQuickPart(const bool theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapesLocations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinMNaming_NamedShapeDriver::GetShapesLocations ******/
 		/****** md5 signature: 9cd92ab397d1145dc380f0edef6fc008 ******/
 		%feature("compactdefaultargs") GetShapesLocations;
@@ -344,6 +349,11 @@ set whether to store triangulation.
 ") SetWithTriangles;
 		void SetWithTriangles(const bool isWithTriangles);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapeSet %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinMNaming_NamedShapeDriver::ShapeSet ******/
 		/****** md5 signature: 0ed32d25c76a8e76b5ff3ece21168b74 ******/
 		%feature("compactdefaultargs") ShapeSet;

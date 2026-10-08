@@ -308,7 +308,13 @@ class Storage_HArrayOfCallBack : public NCollection_Array1<opencascade::handle<S
     Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
     Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Storage_CallBack>>::value_type& theValue);
     Storage_HArrayOfCallBack(const NCollection_Array1<opencascade::handle<Storage_CallBack>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Storage_CallBack>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Storage_CallBack>>& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfCallBack)
@@ -319,7 +325,13 @@ class Storage_HArrayOfSchema : public NCollection_Array1<opencascade::handle<Sto
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper);
     Storage_HArrayOfSchema(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Storage_Schema>>::value_type& theValue);
     Storage_HArrayOfSchema(const NCollection_Array1<opencascade::handle<Storage_Schema>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Storage_Schema>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Storage_Schema>>& ChangeArray1();
 };
 %make_alias(Storage_HArrayOfSchema)
@@ -330,7 +342,13 @@ class Storage_HPArray : public NCollection_Array1<opencascade::handle<Standard_P
     Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper);
     Storage_HPArray(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Standard_Persistent>>::value_type& theValue);
     Storage_HPArray(const NCollection_Array1<opencascade::handle<Standard_Persistent>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Standard_Persistent>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Standard_Persistent>>& ChangeArray1();
 };
 %make_alias(Storage_HPArray)
@@ -341,9 +359,15 @@ class Storage_HSeqOfRoot : public NCollection_Sequence<opencascade::handle<Stora
   public:
     Storage_HSeqOfRoot();
     Storage_HSeqOfRoot(const NCollection_Sequence<opencascade::handle<Storage_Root>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Storage_Root>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Storage_Root>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Storage_Root>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Storage_Root>>& ChangeSequence();
 };
 %make_alias(Storage_HSeqOfRoot)

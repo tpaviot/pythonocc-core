@@ -648,6 +648,11 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -679,6 +684,11 @@ No available documentation.
 ") Curves2dDegree;
 		int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::Curves2dKnots ******/
 		/****** md5 signature: a44b03ca53ab6993c2a4d58ca6826417 ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -692,6 +702,11 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -901,6 +916,11 @@ Define the type of parametrization used in the approximation.
 ") SetParType;
 		void SetParType(const Approx_ParametrizationType ParType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfPoles ******/
 		/****** md5 signature: fa6137cc7cb8eb6c7f47a5bbea62ce4a ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -936,6 +956,11 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfUKnots ******/
 		/****** md5 signature: 1027553c6b1dff236a0b8cb4928edc43 ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -949,6 +974,11 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -962,6 +992,11 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -975,6 +1010,11 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -988,6 +1028,11 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurf::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
@@ -1147,6 +1192,11 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -1178,6 +1228,11 @@ No available documentation.
 ") Curves2dDegree;
 		int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::Curves2dKnots ******/
 		/****** md5 signature: a44b03ca53ab6993c2a4d58ca6826417 ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -1191,6 +1246,11 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -1297,6 +1357,11 @@ No available documentation.
 ") NbCurves2d;
 		int NbCurves2d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfPoles ******/
 		/****** md5 signature: fa6137cc7cb8eb6c7f47a5bbea62ce4a ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -1332,6 +1397,11 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfUKnots ******/
 		/****** md5 signature: 1027553c6b1dff236a0b8cb4928edc43 ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -1345,6 +1415,11 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -1358,6 +1433,11 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -1371,6 +1451,11 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -1384,6 +1469,11 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_AppSurface::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
@@ -2110,6 +2200,11 @@ This method returns the parameters of the point on the concerned surface.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnRst %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Extremity::PointOnRst ******/
 		/****** md5 signature: 4f5592b38ba1f2d4a58520b2330a85f7 ******/
 		%feature("compactdefaultargs") PointOnRst;
@@ -3278,6 +3373,11 @@ Clears the content of the line.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EndPointOnFirst %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Line::EndPointOnFirst ******/
 		/****** md5 signature: c529fd184b9e50e1b6ee45bff61b3c9b ******/
 		%feature("compactdefaultargs") EndPointOnFirst;
@@ -3291,6 +3391,11 @@ Returns the end point on S1.
 ") EndPointOnFirst;
 		const BRepBlend_Extremity & EndPointOnFirst();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EndPointOnSecond %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Line::EndPointOnSecond ******/
 		/****** md5 signature: f1a00edceae5b932c1068ab023d5ec57 ******/
 		%feature("compactdefaultargs") EndPointOnSecond;
@@ -3336,6 +3441,11 @@ Returns the number of points in the line.
 ") NbPoints;
 		int NbPoints();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Line::Point ******/
 		/****** md5 signature: c537341306dbd850c3a4dd9034b56567 ******/
 		%feature("compactdefaultargs") Point;
@@ -3466,6 +3576,11 @@ Sets the values of the start points for the line.
 ") SetStartPoints;
 		void SetStartPoints(const BRepBlend_Extremity & StartPt1, const BRepBlend_Extremity & StartPt2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StartPointOnFirst %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Line::StartPointOnFirst ******/
 		/****** md5 signature: eb6cbb694252afa50c3045ff6839418c ******/
 		%feature("compactdefaultargs") StartPointOnFirst;
@@ -3479,6 +3594,11 @@ Returns the start point on S1.
 ") StartPointOnFirst;
 		const BRepBlend_Extremity & StartPointOnFirst();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StartPointOnSecond %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_Line::StartPointOnSecond ******/
 		/****** md5 signature: 152e6eaee5b76910bd5605ccb0d2a63a ******/
 		%feature("compactdefaultargs") StartPointOnSecond;
@@ -3628,6 +3748,11 @@ Sets the values of a point which is on the arc A, at parameter Param.
 ") SetArc;
 		void SetArc(const opencascade::handle<Adaptor2d_Curve2d> & A, const double Param, const IntSurf_Transition & TLine, const IntSurf_Transition & TArc);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnArc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_PointOnRst::TransitionOnArc ******/
 		/****** md5 signature: adc9ee508ec8cbe59ce8b05248cd454a ******/
 		%feature("compactdefaultargs") TransitionOnArc;
@@ -3641,6 +3766,11 @@ Returns the transition of the point on the arc returned by Arc().
 ") TransitionOnArc;
 		const IntSurf_Transition & TransitionOnArc();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBlend_PointOnRst::TransitionOnLine ******/
 		/****** md5 signature: 1ffbcf064eb110daaac7ceebff0fcde5 ******/
 		%feature("compactdefaultargs") TransitionOnLine;

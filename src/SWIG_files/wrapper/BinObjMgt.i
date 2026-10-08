@@ -119,6 +119,11 @@ Frees the allocated memory; This object can be reused after call to Init.
 ") Destroy;
 		void Destroy();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAsciiString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetAsciiString ******/
 		/****** md5 signature: 82220a6a62466250ff21132a496ecb41 ******/
 		%feature("compactdefaultargs") GetAsciiString;
@@ -137,6 +142,11 @@ No available documentation.
 ") GetAsciiString;
 		const BinObjMgt_Persistent & GetAsciiString(TCollection_AsciiString & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoolean %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetBoolean ******/
 		/****** md5 signature: 8236e2b3d1d2e81d79bbf15c1b96e283 ******/
 		%feature("compactdefaultargs") GetBoolean;
@@ -154,6 +164,11 @@ No available documentation.
 ") GetBoolean;
 		const BinObjMgt_Persistent & GetBoolean(Standard_Boolean &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetByte %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetByte ******/
 		/****** md5 signature: 72ef5329a5337e823cf7e46417083d94 ******/
 		%feature("compactdefaultargs") GetByte;
@@ -172,6 +187,11 @@ No available documentation.
 ") GetByte;
 		const BinObjMgt_Persistent & GetByte(uint8_t & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetByteArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetByteArray ******/
 		/****** md5 signature: a7caf59e0a6ca8ea4eb65c93959eee39 ******/
 		%feature("compactdefaultargs") GetByteArray;
@@ -191,6 +211,11 @@ Get C array of unsigned chars, theLength is the number of elements; theArray mus
 ") GetByteArray;
 		const BinObjMgt_Persistent & GetByteArray(const BinObjMgt_PByte theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetCharArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetCharArray ******/
 		/****** md5 signature: fb8d143e8ace61b7e4447d85ad54eb5e ******/
 		%feature("compactdefaultargs") GetCharArray;
@@ -210,6 +235,11 @@ Get C array of char, theLength is the number of elements; theArray must point to
 ") GetCharArray;
 		const BinObjMgt_Persistent & GetCharArray(const BinObjMgt_PChar theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetCharacter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetCharacter ******/
 		/****** md5 signature: 18078172f0898bc37a8ee924f75c737c ******/
 		%feature("compactdefaultargs") GetCharacter;
@@ -228,6 +258,11 @@ No available documentation.
 ") GetCharacter;
 		const BinObjMgt_Persistent & GetCharacter(char & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetExtCharArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetExtCharArray ******/
 		/****** md5 signature: 36dd01eca0c8f6479f59b02e17474e92 ******/
 		%feature("compactdefaultargs") GetExtCharArray;
@@ -247,6 +282,11 @@ Get C array of ExtCharacter, theLength is the number of elements; theArray must 
 ") GetExtCharArray;
 		const BinObjMgt_Persistent & GetExtCharArray(const BinObjMgt_PExtChar theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetExtCharacter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetExtCharacter ******/
 		/****** md5 signature: fa4065b9331bd79baef79ae3e534cf87 ******/
 		%feature("compactdefaultargs") GetExtCharacter;
@@ -265,6 +305,11 @@ No available documentation.
 ") GetExtCharacter;
 		const BinObjMgt_Persistent & GetExtCharacter(char16_t & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetExtendedString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetExtendedString ******/
 		/****** md5 signature: 0049c3c4fd7726b41c30e549da54cd2b ******/
 		%feature("compactdefaultargs") GetExtendedString;
@@ -283,6 +328,11 @@ No available documentation.
 ") GetExtendedString;
 		const BinObjMgt_Persistent & GetExtendedString(TCollection_ExtendedString & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGUID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetGUID ******/
 		/****** md5 signature: eb1fec3cbfc0a0855014089ef38daae9 ******/
 		%feature("compactdefaultargs") GetGUID;
@@ -314,6 +364,11 @@ Gets the stream for and enables direct reading.
 ") GetIStream;
 		Standard_IStream * GetIStream();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetIntArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetIntArray ******/
 		/****** md5 signature: 8306cc0459d3f6e9203afb3abc4e3cf4 ******/
 		%feature("compactdefaultargs") GetIntArray;
@@ -333,6 +388,11 @@ Get C array of int, theLength is the number of elements; theArray must point to 
 ") GetIntArray;
 		const BinObjMgt_Persistent & GetIntArray(const BinObjMgt_PInteger theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetInteger %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetInteger ******/
 		/****** md5 signature: 7430d05ed48c63aa41fb232c0aea4ecf ******/
 		%feature("compactdefaultargs") GetInteger;
@@ -350,6 +410,11 @@ No available documentation.
 ") GetInteger;
 		const BinObjMgt_Persistent & GetInteger(Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLabel %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetLabel ******/
 		/****** md5 signature: 6c1f51afade11fd797510d21a1757b06 ******/
 		%feature("compactdefaultargs") GetLabel;
@@ -382,6 +447,11 @@ Gets the stream for and enables direct writing.
 ") GetOStream;
 		Standard_OStream * GetOStream();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetReal %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetReal ******/
 		/****** md5 signature: 1406765206c23bfe257ca43ee6a85bfd ******/
 		%feature("compactdefaultargs") GetReal;
@@ -399,6 +469,11 @@ No available documentation.
 ") GetReal;
 		const BinObjMgt_Persistent & GetReal(Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRealArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetRealArray ******/
 		/****** md5 signature: ed96bbd878625bd971681f34413039d3 ******/
 		%feature("compactdefaultargs") GetRealArray;
@@ -418,6 +493,11 @@ Get C array of double, theLength is the number of elements; theArray must point 
 ") GetRealArray;
 		const BinObjMgt_Persistent & GetRealArray(const BinObjMgt_PReal theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShortReal %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetShortReal ******/
 		/****** md5 signature: ffb70a068ade41495ae68829a4038be8 ******/
 		%feature("compactdefaultargs") GetShortReal;
@@ -435,6 +515,11 @@ No available documentation.
 ") GetShortReal;
 		const BinObjMgt_Persistent & GetShortReal(Standard_ShortReal &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShortRealArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::GetShortRealArray ******/
 		/****** md5 signature: 3a9247a5932a1251805f00f93ae0c1a8 ******/
 		%feature("compactdefaultargs") GetShortRealArray;
@@ -545,6 +630,11 @@ Tells the current position for get/put.
 ") Position;
 		int Position();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutAsciiString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutAsciiString ******/
 		/****** md5 signature: b82776b3ea812baa2246aaec57fef89a ******/
 		%feature("compactdefaultargs") PutAsciiString;
@@ -563,6 +653,11 @@ Offset in output buffer is word-aligned.
 ") PutAsciiString;
 		BinObjMgt_Persistent & PutAsciiString(TCollection_AsciiString theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutBoolean %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutBoolean ******/
 		/****** md5 signature: 21e97feee684b6aaa48daf15b05af5f5 ******/
 		%feature("compactdefaultargs") PutBoolean;
@@ -581,6 +676,11 @@ No available documentation.
 ") PutBoolean;
 		BinObjMgt_Persistent & PutBoolean(const bool theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutByte %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutByte ******/
 		/****** md5 signature: c61a322469384272291aeaf7143c37cb ******/
 		%feature("compactdefaultargs") PutByte;
@@ -599,6 +699,11 @@ No available documentation.
 ") PutByte;
 		BinObjMgt_Persistent & PutByte(const uint8_t theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutByteArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutByteArray ******/
 		/****** md5 signature: 758f3a8776718a1f8606581636303a81 ******/
 		%feature("compactdefaultargs") PutByteArray;
@@ -618,6 +723,11 @@ Put C array of unsigned chars, theLength is the number of elements.
 ") PutByteArray;
 		BinObjMgt_Persistent & PutByteArray(const BinObjMgt_PByte theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutCString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutCString ******/
 		/****** md5 signature: be87f289b67ccd623fb68b5b03eaa6c7 ******/
 		%feature("compactdefaultargs") PutCString;
@@ -636,6 +746,11 @@ Offset in output buffer is not aligned.
 ") PutCString;
 		BinObjMgt_Persistent & PutCString(const char * const theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutCharArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutCharArray ******/
 		/****** md5 signature: 36938522b45286adb391c65ead022fc2 ******/
 		%feature("compactdefaultargs") PutCharArray;
@@ -655,6 +770,11 @@ Put C array of char, theLength is the number of elements.
 ") PutCharArray;
 		BinObjMgt_Persistent & PutCharArray(const BinObjMgt_PChar theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutCharacter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutCharacter ******/
 		/****** md5 signature: fd19c36ebb77350ba45543f2a0637330 ******/
 		%feature("compactdefaultargs") PutCharacter;
@@ -673,6 +793,11 @@ No available documentation.
 ") PutCharacter;
 		BinObjMgt_Persistent & PutCharacter(const char theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutExtCharArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutExtCharArray ******/
 		/****** md5 signature: 72a95297108d9b3ced630dc087d8301a ******/
 		%feature("compactdefaultargs") PutExtCharArray;
@@ -692,6 +817,11 @@ Put C array of ExtCharacter, theLength is the number of elements.
 ") PutExtCharArray;
 		BinObjMgt_Persistent & PutExtCharArray(const BinObjMgt_PExtChar theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutExtCharacter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutExtCharacter ******/
 		/****** md5 signature: 0e507d6f0b8515338d22d138e3d2cac4 ******/
 		%feature("compactdefaultargs") PutExtCharacter;
@@ -710,6 +840,11 @@ No available documentation.
 ") PutExtCharacter;
 		BinObjMgt_Persistent & PutExtCharacter(const char16_t theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutExtendedString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutExtendedString ******/
 		/****** md5 signature: 23edf3a9eab8036e38f9dcdd343911fd ******/
 		%feature("compactdefaultargs") PutExtendedString;
@@ -728,6 +863,11 @@ Offset in output buffer is word-aligned.
 ") PutExtendedString;
 		BinObjMgt_Persistent & PutExtendedString(TCollection_ExtendedString theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutGUID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutGUID ******/
 		/****** md5 signature: edc522528f33629d369a8c0ba78bee3d ******/
 		%feature("compactdefaultargs") PutGUID;
@@ -746,6 +886,11 @@ No available documentation.
 ") PutGUID;
 		BinObjMgt_Persistent & PutGUID(const Standard_GUID & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutIntArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutIntArray ******/
 		/****** md5 signature: 69d5b788e1bbed5ad8536b1572503e41 ******/
 		%feature("compactdefaultargs") PutIntArray;
@@ -765,6 +910,11 @@ Put C array of int, theLength is the number of elements.
 ") PutIntArray;
 		BinObjMgt_Persistent & PutIntArray(const BinObjMgt_PInteger theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutInteger %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutInteger ******/
 		/****** md5 signature: 0f2378a1a45e38bfcb41fa02bec08d44 ******/
 		%feature("compactdefaultargs") PutInteger;
@@ -783,6 +933,11 @@ No available documentation.
 ") PutInteger;
 		BinObjMgt_Persistent & PutInteger(const int theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutLabel %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutLabel ******/
 		/****** md5 signature: 517ef015d653478deb80807e77fe2dfd ******/
 		%feature("compactdefaultargs") PutLabel;
@@ -801,6 +956,11 @@ No available documentation.
 ") PutLabel;
 		BinObjMgt_Persistent & PutLabel(const TDF_Label & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutReal %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutReal ******/
 		/****** md5 signature: 8fffafce1fca79c2b7fe3df95a1020d0 ******/
 		%feature("compactdefaultargs") PutReal;
@@ -819,6 +979,11 @@ No available documentation.
 ") PutReal;
 		BinObjMgt_Persistent & PutReal(const double theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutRealArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutRealArray ******/
 		/****** md5 signature: d2e2693586fced41f0de5bf0d64b9d34 ******/
 		%feature("compactdefaultargs") PutRealArray;
@@ -838,6 +1003,11 @@ Put C array of double, theLength is the number of elements.
 ") PutRealArray;
 		BinObjMgt_Persistent & PutRealArray(const BinObjMgt_PReal theArray, const int theLength);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutShortReal %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutShortReal ******/
 		/****** md5 signature: 92980e0b4c3a3fa8faa7a59bcd3277af ******/
 		%feature("compactdefaultargs") PutShortReal;
@@ -856,6 +1026,11 @@ No available documentation.
 ") PutShortReal;
 		BinObjMgt_Persistent & PutShortReal(const float theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PutShortRealArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinObjMgt_Persistent::PutShortRealArray ******/
 		/****** md5 signature: 38c5ab76fa387dc5375941a05b904320 ******/
 		%feature("compactdefaultargs") PutShortRealArray;

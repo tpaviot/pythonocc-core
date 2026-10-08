@@ -474,6 +474,11 @@ No available documentation.
 ") Perform;
 		void Perform(NCollection_Sequence<TColGeom2d_SequenceOfGeometry > & aFigure, const TColStd_SequenceOfBoolean & IsClosed, const int IndRefLine, const bool Trigo);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RefToEqui %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MAT2d_Circuit::RefToEqui ******/
 		/****** md5 signature: 772616c2e19b113067904e5ba8af6988 ******/
 		%feature("compactdefaultargs") RefToEqui;
@@ -1087,6 +1092,11 @@ No available documentation.
 ") MAT2d_MiniPath;
 		 MAT2d_MiniPath();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConnexionsFrom %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MAT2d_MiniPath::ConnexionsFrom ******/
 		/****** md5 signature: 675f070bcee2dbfd9199c8e0f155c6e2 ******/
 		%feature("compactdefaultargs") ConnexionsFrom;
@@ -1159,6 +1169,11 @@ Returns <True> if the line designed by <Index> is the root.
 ") IsRoot;
 		bool IsRoot(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Path %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MAT2d_MiniPath::Path ******/
 		/****** md5 signature: a0886d0ba47ef84348d31422cdd60151 ******/
 		%feature("compactdefaultargs") Path;
@@ -1251,6 +1266,11 @@ No available documentation.
 ") BisecFusion;
 		void BisecFusion(const int Index1, const int Index2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeGeomBis %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MAT2d_Tool2d::ChangeGeomBis ******/
 		/****** md5 signature: e853b99ad990055ab9ae74e770ebd657 ******/
 		%feature("compactdefaultargs") ChangeGeomBis;
@@ -1357,6 +1377,11 @@ Creates the point at the origin of the bisector between anitem and the previous 
 ") FirstPoint;
 		int FirstPoint(const int anitem, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeomBis %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MAT2d_Tool2d::GeomBis ******/
 		/****** md5 signature: 55773b584e84e40c28518ab890e4257c ******/
 		%feature("compactdefaultargs") GeomBis;

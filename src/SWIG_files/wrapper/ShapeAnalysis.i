@@ -3942,6 +3942,11 @@ Returns 3D distance found by one of the following methods. IsDegenerated, Degene
 ") Gap;
 		double Gap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoxUF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeAnalysis_Surface::GetBoxUF ******/
 		/****** md5 signature: c9dc3f4e9f51cd84d29c0f0f9a257ab0 ******/
 		%feature("compactdefaultargs") GetBoxUF;
@@ -3955,6 +3960,11 @@ No available documentation.
 ") GetBoxUF;
 		const Bnd_Box & GetBoxUF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoxUL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeAnalysis_Surface::GetBoxUL ******/
 		/****** md5 signature: d318da69dd8f77566946e59fbbc6953c ******/
 		%feature("compactdefaultargs") GetBoxUL;
@@ -3968,6 +3978,11 @@ No available documentation.
 ") GetBoxUL;
 		const Bnd_Box & GetBoxUL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoxVF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeAnalysis_Surface::GetBoxVF ******/
 		/****** md5 signature: ca11982da2a9d9bf73b8fa28c6b275c7 ******/
 		%feature("compactdefaultargs") GetBoxVF;
@@ -3981,6 +3996,11 @@ No available documentation.
 ") GetBoxVF;
 		const Bnd_Box & GetBoxVF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoxVL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeAnalysis_Surface::GetBoxVL ******/
 		/****** md5 signature: d91c1f96f4c164c0878a8c290feb374d ******/
 		%feature("compactdefaultargs") GetBoxVL;
@@ -6961,9 +6981,15 @@ class ShapeAnalysis_HSequenceOfFreeBounds : public NCollection_Sequence<opencasc
   public:
     ShapeAnalysis_HSequenceOfFreeBounds();
     ShapeAnalysis_HSequenceOfFreeBounds(const NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>>& ChangeSequence();
 };
 %make_alias(ShapeAnalysis_HSequenceOfFreeBounds)

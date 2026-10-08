@@ -1002,6 +1002,11 @@ Returns the G2 criterion at the parametric point U on the curve. This is the gre
 ") G2Criterion;
 		double G2Criterion(const double U);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LPropSurf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomPlate_CurveConstraint::LPropSurf ******/
 		/****** md5 signature: b6386d58ad556eba1b2ece4170cff95d ******/
 		%feature("compactdefaultargs") LPropSurf;
@@ -1634,6 +1639,11 @@ No available documentation.
 ") HasPnt2dOnSurf;
 		bool HasPnt2dOnSurf();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LPropSurf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomPlate_PointConstraint::LPropSurf ******/
 		/****** md5 signature: ad4b23341cdf9a128c1f8dc8f59255c5 ******/
 		%feature("compactdefaultargs") LPropSurf;
@@ -2298,7 +2308,13 @@ class GeomPlate_HArray1OfHCurve : public NCollection_Array1<opencascade::handle<
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     GeomPlate_HArray1OfHCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>::value_type& theValue);
     GeomPlate_HArray1OfHCurve(const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Adaptor3d_Curve>>& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfHCurve)
@@ -2309,7 +2325,13 @@ class GeomPlate_HArray1OfSequenceOfReal : public NCollection_Array1<TColStd_Sequ
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
     GeomPlate_HArray1OfSequenceOfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_SequenceOfReal>::value_type& theValue);
     GeomPlate_HArray1OfSequenceOfReal(const NCollection_Array1<TColStd_SequenceOfReal>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TColStd_SequenceOfReal>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TColStd_SequenceOfReal>& ChangeArray1();
 };
 %make_alias(GeomPlate_HArray1OfSequenceOfReal)
@@ -2320,9 +2342,15 @@ class GeomPlate_HSequenceOfCurveConstraint : public NCollection_Sequence<opencas
   public:
     GeomPlate_HSequenceOfCurveConstraint();
     GeomPlate_HSequenceOfCurveConstraint(const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<GeomPlate_CurveConstraint>>& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfCurveConstraint)
@@ -2332,9 +2360,15 @@ class GeomPlate_HSequenceOfPointConstraint : public NCollection_Sequence<opencas
   public:
     GeomPlate_HSequenceOfPointConstraint();
     GeomPlate_HSequenceOfPointConstraint(const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<GeomPlate_PointConstraint>>& ChangeSequence();
 };
 %make_alias(GeomPlate_HSequenceOfPointConstraint)

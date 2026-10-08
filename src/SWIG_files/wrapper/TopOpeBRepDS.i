@@ -744,6 +744,11 @@ No available documentation.
 ") Associate;
 		void Associate(const opencascade::handle<TopOpeBRepDS_Interference> & I, const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & LI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Associated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_Association::Associated ******/
 		/****** md5 signature: 55026c3b148b0eccddd3d57c0a65730e ******/
 		%feature("compactdefaultargs") Associated;
@@ -993,6 +998,11 @@ No available documentation.
 ") Approximation;
 		bool Approximation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeGeomTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_BuildTool::ChangeGeomTool ******/
 		/****** md5 signature: ec177d99f76bb4ed7e436f53436adf03 ******/
 		%feature("compactdefaultargs") ChangeGeomTool;
@@ -1106,6 +1116,11 @@ Sets the curve <C> for the edge <E>.
 ") Curve3D;
 		void Curve3D(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const double Tol);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGeomTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_BuildTool::GetGeomTool ******/
 		/****** md5 signature: 6b33ef83138f718a68f748ea1ea7a345 ******/
 		%feature("compactdefaultargs") GetGeomTool;
@@ -2847,6 +2862,11 @@ No available documentation.
 ") AncestorRank;
 		void AncestorRank(const TopoDS_Shape & S, const int Ianc);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeCurve ******/
 		/****** md5 signature: 67f619e5c16674515b5d9329aed3580d ******/
 		%feature("compactdefaultargs") ChangeCurve;
@@ -2865,6 +2885,11 @@ Returns the Curve of index <I>.
 ") ChangeCurve;
 		TopOpeBRepDS_Curve & ChangeCurve(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurveInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeCurveInterferences ******/
 		/****** md5 signature: 41201d2021326a72d1abeb07a66df49c ******/
 		%feature("compactdefaultargs") ChangeCurveInterferences;
@@ -3035,6 +3060,11 @@ No available documentation.
 ") ChangeKeepSurface;
 		void ChangeKeepSurface(TopOpeBRepDS_Surface & S, const bool FindKeep);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMapOfRejectedShapesObj %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfRejectedShapesObj ******/
 		/****** md5 signature: b69cd706f987a407d81642ede677c56b ******/
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesObj;
@@ -3048,6 +3078,11 @@ No available documentation.
 ") ChangeMapOfRejectedShapesObj;
 		TopTools_IndexedMapOfShape & ChangeMapOfRejectedShapesObj();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMapOfRejectedShapesTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeMapOfRejectedShapesTool ******/
 		/****** md5 signature: 02b8b591bfa01669279e263b523cffbb ******/
 		%feature("compactdefaultargs") ChangeMapOfRejectedShapesTool;
@@ -3123,6 +3158,11 @@ No available documentation.
 ") ChangeNbCurves;
 		void ChangeNbCurves(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangePoint ******/
 		/****** md5 signature: 0358c1015ded19b4de0f0ff3abaa67b8 ******/
 		%feature("compactdefaultargs") ChangePoint;
@@ -3141,6 +3181,11 @@ Returns the point of index <I>.
 ") ChangePoint;
 		TopOpeBRepDS_Point & ChangePoint(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePointInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangePointInterferences ******/
 		/****** md5 signature: bb6514324cc018b0cc762d59cd43e9c7 ******/
 		%feature("compactdefaultargs") ChangePointInterferences;
@@ -3159,6 +3204,11 @@ No available documentation.
 ") ChangePointInterferences;
 		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangePointInterferences(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapeInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeInterferences ******/
 		/****** md5 signature: 75e4af12b91e5b6174f8ea6204df8dce ******/
 		%feature("compactdefaultargs") ChangeShapeInterferences;
@@ -3195,6 +3245,11 @@ No available documentation.
 ") ChangeShapeInterferences;
 		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeShapeInterferences(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapeSameDomain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeShapeSameDomain ******/
 		/****** md5 signature: bf729ce1c599dd55f07b035922d8ee31 ******/
 		%feature("compactdefaultargs") ChangeShapeSameDomain;
@@ -3244,6 +3299,11 @@ No available documentation.
 ") ChangeShapes;
 		NCollection_IndexedDataMap<TopoDS_Shape, TopOpeBRepDS_ShapeData, TopTools_ShapeMapHasher> ChangeShapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeSurface ******/
 		/****** md5 signature: 498ee817d8826b59ce9050fb36380aa8 ******/
 		%feature("compactdefaultargs") ChangeSurface;
@@ -3262,6 +3322,11 @@ Returns the surface of index <I>.
 ") ChangeSurface;
 		TopOpeBRepDS_Surface & ChangeSurface(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSurfaceInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ChangeSurfaceInterferences ******/
 		/****** md5 signature: 2a4be9d0351ee56d7a895119cd3b24d6 ******/
 		%feature("compactdefaultargs") ChangeSurfaceInterferences;
@@ -3298,6 +3363,11 @@ Returns the Curve of index <I>.
 ") Curve;
 		TopOpeBRepDS_Curve Curve(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CurveInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::CurveInterferences ******/
 		/****** md5 signature: f6e70023f1bda541e93dd59ae8d550b2 ******/
 		%feature("compactdefaultargs") CurveInterferences;
@@ -3358,6 +3428,11 @@ No available documentation.
 ") FillShapesSameDomain;
 		void FillShapesSameDomain(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopOpeBRepDS_Config c1, const TopOpeBRepDS_Config c2, const bool refFirst = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeWithState %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::GetShapeWithState ******/
 		/****** md5 signature: a6f2b4fcd0e7a847188e96d6fa4347ba ******/
 		%feature("compactdefaultargs") GetShapeWithState;
@@ -3736,6 +3811,11 @@ No available documentation.
 ") NewSurface;
 		const opencascade::handle<Geom_Surface> & NewSurface(const TopoDS_Shape & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::Point ******/
 		/****** md5 signature: 46867378e1165b64904da8b83e56d84c ******/
 		%feature("compactdefaultargs") Point;
@@ -3754,6 +3834,11 @@ Returns the point of index <I>.
 ") Point;
 		const TopOpeBRepDS_Point & Point(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::PointInterferences ******/
 		/****** md5 signature: 9dd2cc827c54a6d96a6c96a9a2be720a ******/
 		%feature("compactdefaultargs") PointInterferences;
@@ -4181,6 +4266,11 @@ returns the index of shape <S> stored in the map myShapes, accessing a list of i
 ") Shape;
 		int Shape(const TopoDS_Shape & S, const bool FindKeep = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapeInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ShapeInterferences ******/
 		/****** md5 signature: 6cb9b033e68e587823d6c80d083b1630 ******/
 		%feature("compactdefaultargs") ShapeInterferences;
@@ -4219,6 +4309,11 @@ No available documentation.
 ") ShapeInterferences;
 		const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ShapeInterferences(const int I, const bool FindKeep = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapeSameDomain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::ShapeSameDomain ******/
 		/****** md5 signature: 6a217a8a98f70554b4b23c567aeaafb7 ******/
 		%feature("compactdefaultargs") ShapeSameDomain;
@@ -4273,6 +4368,11 @@ Returns the surface of index <I>.
 ") Surface;
 		TopOpeBRepDS_Surface Surface(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfaceInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_DataStructure::SurfaceInterferences ******/
 		/****** md5 signature: a1798d4f44ccf32b2ad8e35fabdaf007 ******/
 		%feature("compactdefaultargs") SurfaceInterferences;
@@ -5571,6 +5671,11 @@ No available documentation.
 ") TopOpeBRepDS_GapTool;
 		 TopOpeBRepDS_GapTool(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSameInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_GapTool::ChangeSameInterferences ******/
 		/****** md5 signature: 42c6a5e2d0218832a7e4cd0110146ca2 ******/
 		%feature("compactdefaultargs") ChangeSameInterferences;
@@ -5665,6 +5770,11 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_GapTool::Interferences ******/
 		/****** md5 signature: 035d6298ac8221bf668baf25fc1baa47 ******/
 		%feature("compactdefaultargs") Interferences;
@@ -5702,6 +5812,11 @@ No available documentation.
 ") ParameterOnEdge;
 		bool ParameterOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Shape & E, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SameInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_GapTool::SameInterferences ******/
 		/****** md5 signature: 06df1ea106756c2ec9ddfc51953a3ea6 ******/
 		%feature("compactdefaultargs") SameInterferences;
@@ -5842,6 +5957,11 @@ No available documentation.
 ") Assign;
 		void Assign(const TopOpeBRepDS_GeometryData & Other);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_GeometryData::ChangeInterferences ******/
 		/****** md5 signature: 49be78cb30ff54b8097d34def094ca37 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
@@ -5855,6 +5975,11 @@ No available documentation.
 ") ChangeInterferences;
 		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeInterferences();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_GeometryData::Interferences ******/
 		/****** md5 signature: 1ad49ef4c8f0239686b904a9bb96ba95 ******/
 		%feature("compactdefaultargs") Interferences;
@@ -5938,6 +6063,11 @@ No available documentation.
 ") TopOpeBRepDS_Interference;
 		 TopOpeBRepDS_Interference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTransition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_Interference::ChangeTransition ******/
 		/****** md5 signature: 1011287ae55d0acc146aae0c7dd5b16e ******/
 		%feature("compactdefaultargs") ChangeTransition;
@@ -6149,6 +6279,11 @@ No available documentation.
 ") SupportType;
 		void SupportType(const TopOpeBRepDS_Kind ST);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Transition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_Interference::Transition ******/
 		/****** md5 signature: b5272cce68efc51cec1c0feca2f97771 ******/
 		%feature("compactdefaultargs") Transition;
@@ -6227,6 +6362,11 @@ Creates an iterator on the Interference of list <L>.
 ") TopOpeBRepDS_InterferenceIterator;
 		 TopOpeBRepDS_InterferenceIterator(const NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeIterator %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_InterferenceIterator::ChangeIterator ******/
 		/****** md5 signature: 4a5d38d3105b0250e1a523cf855144dd ******/
 		%feature("compactdefaultargs") ChangeIterator;
@@ -6628,6 +6768,11 @@ No available documentation.
 ") TopOpeBRepDS_ListOfShapeOn1State;
 		 TopOpeBRepDS_ListOfShapeOn1State();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeListOnState %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_ListOfShapeOn1State::ChangeListOnState ******/
 		/****** md5 signature: 6fe75ea6d75884eac3157e92c141a851 ******/
 		%feature("compactdefaultargs") ChangeListOnState;
@@ -6667,6 +6812,11 @@ No available documentation.
 ") IsSplit;
 		bool IsSplit();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ListOnState %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_ListOfShapeOn1State::ListOnState ******/
 		/****** md5 signature: 98fe40f45e68151f93b2bf1aef8fea20 ******/
 		%feature("compactdefaultargs") ListOnState;
@@ -7138,6 +7288,11 @@ No available documentation.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_PointExplorer::Point ******/
 		/****** md5 signature: b78584a0e22a5b86a67814fa9f99e5f7 ******/
 		%feature("compactdefaultargs") Point;
@@ -7259,6 +7414,11 @@ No available documentation.
 ") TopOpeBRepDS_ShapeData;
 		 TopOpeBRepDS_ShapeData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_ShapeData::ChangeInterferences ******/
 		/****** md5 signature: 49be78cb30ff54b8097d34def094ca37 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
@@ -7290,6 +7450,11 @@ No available documentation.
 ") ChangeKeep;
 		void ChangeKeep(const bool B);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_ShapeData::Interferences ******/
 		/****** md5 signature: 1ad49ef4c8f0239686b904a9bb96ba95 ******/
 		%feature("compactdefaultargs") Interferences;
@@ -7394,6 +7559,11 @@ No available documentation.
 ") IsSplitted;
 		bool IsSplitted();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Part %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_ShapeWithState::Part ******/
 		/****** md5 signature: 53af8c662bc6c0dc895f85acee5a80e5 ******/
 		%feature("compactdefaultargs") Part;
@@ -7868,6 +8038,11 @@ No available documentation.
 ") Add;
 		void Add(const TopOpeBRepDS_Kind K, const int G, const opencascade::handle<TopOpeBRepDS_Interference> & HI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_TKI::ChangeInterferences ******/
 		/****** md5 signature: 0a27ddf8f185c2de76810a6d836e2096 ******/
 		%feature("compactdefaultargs") ChangeInterferences;
@@ -7887,6 +8062,11 @@ No available documentation.
 ") ChangeInterferences;
 		NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>> & ChangeInterferences(const TopOpeBRepDS_Kind K, const int G);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_TKI::ChangeValue ******/
 		/****** md5 signature: 5a31b1e81d645df9c0401f4ca30e86b3 ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -8005,6 +8185,11 @@ No available documentation.
 ") Init;
 		void Init();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_TKI::Interferences ******/
 		/****** md5 signature: c66e0f11d47c027ac42447e89847ab7b ******/
 		%feature("compactdefaultargs") Interferences;
@@ -8069,6 +8254,11 @@ No available documentation.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRepDS_TKI::Value ******/
 		/****** md5 signature: 8046cf73f8f49114b619eae590dcb947 ******/
 		%feature("compactdefaultargs") Value;
@@ -9596,7 +9786,13 @@ class TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference : public NCollect
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper);
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>::value_type& theValue);
     TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference(const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TopOpeBRepDS_DataMapOfIntegerListOfInterference>& ChangeArray1();
 };
 %make_alias(TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference)

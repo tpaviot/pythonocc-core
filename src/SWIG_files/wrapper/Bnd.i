@@ -153,6 +153,11 @@ Parameter theIndex The index of the bounding box in the internal array where the
 ") Add;
 		void Add(const Bnd_Box & theBox, const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Compare %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Bnd_BoundSortBox::Compare ******/
 		/****** md5 signature: f58ca215fce34659c68be73c76ddd79a ******/
 		%feature("compactdefaultargs") Compare;
@@ -3464,7 +3469,13 @@ class Bnd_HArray1OfBox : public NCollection_Array1<Bnd_Box>, public Standard_Tra
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper);
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Bnd_Box>::value_type& theValue);
     Bnd_HArray1OfBox(const NCollection_Array1<Bnd_Box>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Bnd_Box>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Bnd_Box>& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox)
@@ -3475,7 +3486,13 @@ class Bnd_HArray1OfBox2d : public NCollection_Array1<Bnd_Box2d>, public Standard
     Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Bnd_Box2d>::value_type& theValue);
     Bnd_HArray1OfBox2d(const NCollection_Array1<Bnd_Box2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Bnd_Box2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Bnd_Box2d>& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox2d)
@@ -3486,7 +3503,13 @@ class Bnd_HArray1OfSphere : public NCollection_Array1<Bnd_Sphere>, public Standa
     Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper);
     Bnd_HArray1OfSphere(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Bnd_Sphere>::value_type& theValue);
     Bnd_HArray1OfSphere(const NCollection_Array1<Bnd_Sphere>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Bnd_Sphere>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Bnd_Sphere>& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfSphere)

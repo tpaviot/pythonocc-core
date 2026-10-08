@@ -618,6 +618,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Area::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -753,6 +758,11 @@ Description
 ") XCAFDoc_AssemblyGraph;
 		 XCAFDoc_AssemblyGraph(const TDF_Label & theLabel);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetChildren %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyGraph::GetChildren ******/
 		/****** md5 signature: ab4bc1e2b9838eb165b321c886d314e1 ******/
 		%feature("compactdefaultargs") GetChildren;
@@ -771,6 +781,11 @@ Description
 ") GetChildren;
 		const TColStd_PackedMapOfInteger & GetChildren(const int theNode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLinks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyGraph::GetLinks ******/
 		/****** md5 signature: 71d026ba70bb50b3fb1f61585b29c8cb ******/
 		%feature("compactdefaultargs") GetLinks;
@@ -784,6 +799,11 @@ Description
 ") GetLinks;
 		const AdjacencyMap & GetLinks();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetNode %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyGraph::GetNode ******/
 		/****** md5 signature: 661da74285fa1f86b527a95aeab5b268 ******/
 		%feature("compactdefaultargs") GetNode;
@@ -820,6 +840,11 @@ Description
 ") GetNodeType;
 		XCAFDoc_AssemblyGraph::NodeType GetNodeType(const int theNode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyGraph::GetNodes ******/
 		/****** md5 signature: 82aef061a407fe0b7cc370a1bc4e8e0e ******/
 		%feature("compactdefaultargs") GetNodes;
@@ -833,6 +858,11 @@ Description
 ") GetNodes;
 		const TDF_LabelIndexedMap & GetNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRoots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyGraph::GetRoots ******/
 		/****** md5 signature: a9e5a8c4207210773dc54e4bb1aa3b34 ******/
 		%feature("compactdefaultargs") GetRoots;
@@ -1026,6 +1056,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPath %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyItemId::GetPath ******/
 		/****** md5 signature: 7bfc472a254346fcd5192598bd9b2b80 ******/
 		%feature("compactdefaultargs") GetPath;
@@ -1304,6 +1339,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetItem %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyItemRef::GetItem ******/
 		/****** md5 signature: b6a222a305b35c43f5b5bf5c092a486c ******/
 		%feature("compactdefaultargs") GetItem;
@@ -1343,6 +1383,11 @@ Checks if the reference points on an item's shapeindex or attribute.
 ") HasExtraRef;
 		bool HasExtraRef();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_AssemblyItemRef::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1813,6 +1858,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Centroid::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2140,6 +2190,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ClippingPlaneTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2309,6 +2364,11 @@ No available documentation.
 ") GetAlpha;
 		float GetAlpha();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Color::GetColor ******/
 		/****** md5 signature: d4c30997bc0976f42c148c7003c6321b ******/
 		%feature("compactdefaultargs") GetColor;
@@ -2322,6 +2382,11 @@ No available documentation.
 ") GetColor;
 		const Quantity_Color & GetColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Color::GetColorRGBA ******/
 		/****** md5 signature: 246f8061881801800ffaa798bf268100 ******/
 		%feature("compactdefaultargs") GetColorRGBA;
@@ -2380,6 +2445,11 @@ No available documentation.
 ") GetRGB;
 		void GetRGB(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Color::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3012,6 +3082,11 @@ Gets the color of component that styled with SHUO structure Returns False if no 
 ") GetInstanceColor;
 		bool GetInstanceColor(const TopoDS_Shape & theShape, const XCAFDoc_ColorType type, Quantity_ColorRGBA & color);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ColorTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3568,6 +3643,11 @@ Returns dimension object data taken from the paren's label and its sub-labels.
 ") GetObject;
 		opencascade::handle<XCAFDimTolObjects_DatumObject> GetObject();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Datum::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3823,6 +3903,11 @@ No available documentation.
 ") GetVal;
 		opencascade::handle<TColStd_HArray1OfReal> GetVal();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_DimTol::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -4414,6 +4499,11 @@ Returns all GeomToleranses labels defined for theDatumL label.
 ") GetTolerOfDatumLabels;
 		bool GetTolerOfDatumLabels(const TDF_Label & theDatumL, TDF_LabelSequence & theTols);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_DimTolTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -4876,6 +4966,11 @@ Returns dimension object data taken from the parent's label and its sub-labels.
 ") GetObject;
 		opencascade::handle<XCAFDimTolObjects_DimensionObject> GetObject();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Dimension::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -5310,6 +5405,11 @@ Returns value of current internal unit for the document in meter.
 ") GetLengthUnit;
 		static bool GetLengthUnit(const opencascade::handle<TDocStd_Document> & theDoc, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_DocumentTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -6068,6 +6168,11 @@ Return GraphNode by index from GraphNodeSequence.
 ") GetFather;
 		opencascade::handle<XCAFDoc_GraphNode> GetFather(const int Findex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_GraphNode::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -6694,6 +6799,11 @@ Return sequanese of shape labels that assigned with layers to <ShLabels>.
 ") GetShapesOfLayer;
 		static void GetShapesOfLayer(const TDF_Label & theLayerL, TDF_LabelSequence & theShLabels);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_LayerTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7159,6 +7269,11 @@ Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetUnitName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_LengthUnit::GetUnitName ******/
 		/****** md5 signature: 16cdd69f7f38a7fd849d2d4de7b40582 ******/
 		%feature("compactdefaultargs") GetUnitName;
@@ -7185,6 +7300,11 @@ Returns length unit scale factor to meter.
 ") GetUnitValue;
 		double GetUnitValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_LengthUnit::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7384,6 +7504,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Location::Get ******/
 		/****** md5 signature: 359bc64c03f84420a1380939ba1ece6c ******/
 		%feature("compactdefaultargs") Get;
@@ -7410,6 +7535,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Location::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7638,6 +7768,11 @@ No available documentation.
 ") GetName;
 		opencascade::handle<TCollection_HAsciiString> GetName();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Material::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7902,6 +8037,11 @@ Returns a sequence of materials currently stored in the material table.
 ") GetMaterialLabels;
 		void GetMaterialLabels(TDF_LabelSequence & Labels);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_MaterialTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -8197,6 +8337,11 @@ Updates auxiliary data.
 ") SetObject;
 		void SetObject(const opencascade::handle<XCAFNoteObjects_NoteObject> & theObject);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TimeStamp %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Note::TimeStamp ******/
 		/****** md5 signature: da74f049fea064226fb35bba315df859 ******/
 		%feature("compactdefaultargs") TimeStamp;
@@ -8210,6 +8355,11 @@ Returns the timestamp of the note.
 ") TimeStamp;
 		const TCollection_ExtendedString & TimeStamp();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UserName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Note::UserName ******/
 		/****** md5 signature: 9adfab6768c9cf07c019afd496692827 ******/
 		%feature("compactdefaultargs") UserName;
@@ -8836,6 +8986,11 @@ Gets all note labels of the annotated item. Notes linked to the item itself or t
 ") GetSubshapeNotes;
 		int GetSubshapeNotes(const XCAFDoc_AssemblyItemId & theItemId, int theSubshapeIndex, TDF_LabelSequence & theNoteLabels);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NotesTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -9227,6 +9382,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ShapeMapTool::GetMap ******/
 		/****** md5 signature: 70fc35ebfad459e21d549e8b4a954f53 ******/
 		%feature("compactdefaultargs") GetMap;
@@ -9240,6 +9400,11 @@ No available documentation.
 ") GetMap;
 		const TopTools_IndexedMapOfShape & GetMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ShapeMapTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10161,6 +10326,11 @@ Returns list of labels which refer shape L as component Returns number of users 
 ") GetUsers;
 		static int GetUsers(const TDF_Label & L, TDF_LabelSequence & Labels, const bool getsubchilds = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ShapeTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10736,6 +10906,11 @@ Returns view object data taken from the paren's label and its sub-labels.
 ") GetObject;
 		opencascade::handle<XCAFView_Object> GetObject();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_View::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -11061,6 +11236,11 @@ Returns all View labels defined for label ShapeL.
 ") GetViewLabelsForShape;
 		bool GetViewLabelsForShape(const TDF_Label & theShapeL, TDF_LabelSequence & theViews);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_ViewTool::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -11333,6 +11513,11 @@ Return base color.
 ") BaseColor;
 		Quantity_ColorRGBA BaseColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommonMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_VisMaterial::CommonMaterial ******/
 		/****** md5 signature: 703dc4550b60da27a28ba4b2bb54d11e ******/
 		%feature("compactdefaultargs") CommonMaterial;
@@ -11482,6 +11667,11 @@ Return True if metal-roughness PBR material is defined; False by default.
 ") HasPbrMaterial;
 		bool HasPbrMaterial();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_VisMaterial::ID ******/
 		/****** md5 signature: ed9a004ce9c4cfa8dc3750240047c0ab ******/
 		%feature("compactdefaultargs") ID;
@@ -11573,6 +11763,11 @@ Input parameter: theRelTable relocation table.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & theInto, const opencascade::handle<TDF_RelocationTable> & theRelTable);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PbrMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_VisMaterial::PbrMaterial ******/
 		/****** md5 signature: 70e2786d099bf6b93bcc9776e47c8653 ******/
 		%feature("compactdefaultargs") PbrMaterial;
@@ -12092,6 +12287,11 @@ Returns material assigned to shape or NULL if not assigned.
 ") GetShapeMaterial;
 		opencascade::handle<XCAFDoc_VisMaterial> GetShapeMaterial(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_VisMaterialTool::ID ******/
 		/****** md5 signature: ed9a004ce9c4cfa8dc3750240047c0ab ******/
 		%feature("compactdefaultargs") ID;
@@ -12447,6 +12647,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_Volume::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -12590,6 +12795,11 @@ Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteBinData::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -12603,6 +12813,11 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MIMEtype %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteBinData::MIMEtype ******/
 		/****** md5 signature: fe48efd490314a06c0046b11090ff48d ******/
 		%feature("compactdefaultargs") MIMEtype;
@@ -12765,6 +12980,11 @@ Size of data in bytes.
 ") Size;
 		int Size();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Title %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteBinData::Title ******/
 		/****** md5 signature: f6908c94b14b08bda1ee947ff0d8b2f6 ******/
 		%feature("compactdefaultargs") Title;
@@ -12807,6 +13027,11 @@ Creates an empty comment note.
 ") XCAFDoc_NoteComment;
 		 XCAFDoc_NoteComment();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Comment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteComment::Comment ******/
 		/****** md5 signature: f7f4e583b1edea4beb0abba514dedde0 ******/
 		%feature("compactdefaultargs") Comment;
@@ -12868,6 +13093,11 @@ Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteComment::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -13030,6 +13260,11 @@ Returns default attribute GUID.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XCAFDoc_NoteBalloon::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;

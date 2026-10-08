@@ -891,6 +891,11 @@ Get NonManifold flag.
 ") IsNonManifold;
 		bool IsNonManifold();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeProcess_ShapeContext::Map ******/
 		/****** md5 signature: b34ea465b2355c04a32cf93b0f47fc3f ******/
 		%feature("compactdefaultargs") Map;

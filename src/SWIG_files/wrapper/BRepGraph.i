@@ -294,6 +294,11 @@ Return the current allocator.
 ") Allocator;
 		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CacheRegistry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::CacheRegistry ******/
 		/****** md5 signature: 011b51df99b0a51e4efe74c9982c805f ******/
 		%feature("compactdefaultargs") CacheRegistry;
@@ -335,6 +340,11 @@ Reset the graph to an empty state. Increments generation and regenerates the gra
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Editor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::Editor ******/
 		/****** md5 signature: 50db99220d7992703437cd2224cc199f ******/
 		%feature("compactdefaultargs") Editor;
@@ -400,6 +410,11 @@ Return true when this wrapper references graph data.
 ") IsValid;
 		bool IsValid();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LayerRegistry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::LayerRegistry ******/
 		/****** md5 signature: 8b9cce2a7d93157a478c73c73917362a ******/
 		%feature("compactdefaultargs") LayerRegistry;
@@ -428,6 +443,11 @@ Return: layer registry for managing attribute layers.
 ") LayerRegistry;
 		const BRepGraph_LayerRegistry & LayerRegistry();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Mesh %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::Mesh ******/
 		/****** md5 signature: f76c2cd8c228be0eccb42d560c674156 ******/
 		%feature("compactdefaultargs") Mesh;
@@ -456,6 +476,11 @@ Return: mutable mesh view.
 ") Mesh;
 		BRepGraph_MeshView & Mesh();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Refs %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::Refs ******/
 		/****** md5 signature: fc7c248b33353e981eec6816b75e32ed ******/
 		%feature("compactdefaultargs") Refs;
@@ -469,6 +494,11 @@ Access reference entries and their UIDs.
 ") Refs;
 		const BRepGraph_RefsView & Refs();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RootProductIds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::RootProductIds ******/
 		/****** md5 signature: 308af27805bb4b7b039fcb63bbb41fa0 ******/
 		%feature("compactdefaultargs") RootProductIds;
@@ -482,6 +512,11 @@ Return root product identifiers (products not referenced by any active occurrenc
 ") RootProductIds;
 		const NCollection_LinearVector<BRepGraph_ProductId> & RootProductIds();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::Shapes ******/
 		/****** md5 signature: fe943296c359ca0edb823474ec717ef6 ******/
 		%feature("compactdefaultargs") Shapes;
@@ -508,6 +543,11 @@ Access shape ingestion, cached shape reconstruction and fresh shape reconstructi
 ") Shapes;
 		const BRepGraph_ShapesView & Shapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Topo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::Topo ******/
 		/****** md5 signature: 5203ac42f657d5abaa5af2695a36e79a ******/
 		%feature("compactdefaultargs") Topo;
@@ -521,6 +561,11 @@ Access topology definitions, representation access, adjacency queries, raw Produ
 ") Topo;
 		const BRepGraph_TopoView & Topo();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UIDs %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph::UIDs ******/
 		/****** md5 signature: 4ce09f545b0ba98491d7ec42f1766f1a ******/
 		%feature("compactdefaultargs") UIDs;
@@ -594,6 +639,11 @@ Copy fresh, remappable cache data into the target graph described by the remap. 
 ") CopyFreshTo;
 		virtual void CopyFreshTo(const BRepGraph_CopyRemap & theCopy);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_Cache::ID ******/
 		/****** md5 signature: e94b659c9e9f7b7f43797fc28e2b97f9 ******/
 		%feature("compactdefaultargs") ID;
@@ -607,6 +657,11 @@ Cache service identity, unique within a graph registry.
 ") ID;
 		virtual const Standard_GUID & ID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_Cache::Name ******/
 		/****** md5 signature: 5fd48d13d17a8de0cb1f2b03a41c32b1 ******/
 		%feature("compactdefaultargs") Name;
@@ -1456,6 +1511,11 @@ Number of valid ancestor frames currently on the stack (excluding the sentinel b
 ") Depth;
 		int Depth();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetConfig %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_ChildExplorer::GetConfig ******/
 		/****** md5 signature: 4fd244f59b28336c2db6aa049f5f1c3e ******/
 		%feature("compactdefaultargs") GetConfig;
@@ -3014,6 +3074,11 @@ True if this is a compaction migration (not a full copy).
 ") IsCompact;
 		bool IsCompact();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Items %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CopyRemap::Items ******/
 		/****** md5 signature: 45d499bf065ac41af22250852f0f621e ******/
 		%feature("compactdefaultargs") Items;
@@ -3027,6 +3092,11 @@ Source item id -> target item id map for copied definitions, refs, and reps.
 ") Items;
 		const NCollection_FlatDataMap<BRepGraph_ItemId, BRepGraph_ItemId > & Items();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SourceGraph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CopyRemap::SourceGraph ******/
 		/****** md5 signature: 7b8ab824afca617df2eb044998dfaf8e ******/
 		%feature("compactdefaultargs") SourceGraph;
@@ -3058,6 +3128,11 @@ Return source UID for a source item.
 ") SourceUID;
 		BRepGraph_ItemUID SourceUID(const BRepGraph_ItemId theSourceItem);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TargetGraph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CopyRemap::TargetGraph ******/
 		/****** md5 signature: bf8f0640a7b993adb9c9b4c77dc4a2bb ******/
 		%feature("compactdefaultargs") TargetGraph;
@@ -3071,6 +3146,11 @@ Target graph whose structural contents have already been copied.
 ") TargetGraph;
 		BRepGraph & TargetGraph();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TargetGraphConst %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CopyRemap::TargetGraphConst ******/
 		/****** md5 signature: 5030100530d1318ebabd7cb87795c485 ******/
 		%feature("compactdefaultargs") TargetGraphConst;
@@ -3594,6 +3674,11 @@ Begin deferred invalidation mode. While active, markModified() only increments O
 ") BeginDeferredInvalidation;
 		void BeginDeferredInvalidation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::CoEdges ******/
 		/****** md5 signature: 803664c09b60324b561c1f3f8bff47fc ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -3620,6 +3705,11 @@ Finalize a batch of mutations. Validates relation consistency and asserts active
 ") CommitMutation;
 		void CommitMutation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CompSolids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::CompSolids ******/
 		/****** md5 signature: b76b2a8621734a9a4abafb08d0274217 ******/
 		%feature("compactdefaultargs") CompSolids;
@@ -3633,6 +3723,11 @@ Return compsolid creation and editing operations.
 ") CompSolids;
 		BRepGraph_EditorView_CompSolidOps & CompSolids();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Compounds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Compounds ******/
 		/****** md5 signature: f18ddc4d1d11251e5e0e1af5fbb6ddf6 ******/
 		%feature("compactdefaultargs") Compounds;
@@ -3646,6 +3741,11 @@ Return compound creation and editing operations.
 ") Compounds;
 		BRepGraph_EditorView_CompoundOps & Compounds();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Edges ******/
 		/****** md5 signature: a37c07cff8f86d953e0c59c7db39016d ******/
 		%feature("compactdefaultargs") Edges;
@@ -3672,6 +3772,11 @@ End deferred invalidation mode and batch-flush: propagates SubtreeGen upward for
 ") EndDeferredInvalidation;
 		void EndDeferredInvalidation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Faces ******/
 		/****** md5 signature: 6c8c47fadeb2a3b6bd24a20584a4e537 ******/
 		%feature("compactdefaultargs") Faces;
@@ -3685,6 +3790,11 @@ Return face creation and editing operations.
 ") Faces;
 		BRepGraph_EditorView_FaceOps & Faces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gen %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Gen ******/
 		/****** md5 signature: ffad28982aa1aaa9998a7d8ee0fd5b09 ******/
 		%feature("compactdefaultargs") Gen;
@@ -3711,6 +3821,11 @@ Check if deferred invalidation mode is currently active. @note This is a state f
 ") IsDeferredMode;
 		bool IsDeferredMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Occurrences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Occurrences ******/
 		/****** md5 signature: bd041d773d4e53909a487ba33309547f ******/
 		%feature("compactdefaultargs") Occurrences;
@@ -3724,6 +3839,11 @@ Return occurrence mutation operations.
 ") Occurrences;
 		BRepGraph_EditorView_OccurrenceOps & Occurrences();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Products %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Products ******/
 		/****** md5 signature: 72c7a66b26c0cd2841b26302d4c8634d ******/
 		%feature("compactdefaultargs") Products;
@@ -3737,6 +3857,11 @@ Return product and assembly creation and editing operations.
 ") Products;
 		BRepGraph_EditorView_ProductOps & Products();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shells %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Shells ******/
 		/****** md5 signature: adaf5c133152781c9b368abb9ccba869 ******/
 		%feature("compactdefaultargs") Shells;
@@ -3750,6 +3875,11 @@ Return shell creation and editing operations.
 ") Shells;
 		BRepGraph_EditorView_ShellOps & Shells();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Solids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Solids ******/
 		/****** md5 signature: d0bb5ac2e41ee9eb056847cedfaad11e ******/
 		%feature("compactdefaultargs") Solids;
@@ -3795,6 +3925,11 @@ Return: true if no issues were found.
 ") ValidateMutationBoundary;
 		bool ValidateMutationBoundary(NCollection_LinearVector<BRepGraph_EditorView_BoundaryIssue> * const theIssues = nullptr);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Vertices ******/
 		/****** md5 signature: 2cb470a0f5ba253d7f96a08bd80e699a ******/
 		%feature("compactdefaultargs") Vertices;
@@ -3808,6 +3943,11 @@ Return vertex creation operations.
 ") Vertices;
 		BRepGraph_EditorView_VertexOps & Vertices();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_EditorView::Wires ******/
 		/****** md5 signature: 7d1213ea85a7ee4f08642a4b893d1ff1 ******/
 		%feature("compactdefaultargs") Wires;
@@ -7716,6 +7856,11 @@ Input parameter: theCopy source graph, target graph, and source item id -> targe
 ") CopyTo;
 		virtual void CopyTo(const BRepGraph_CopyRemap & theCopy);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_Layer::ID ******/
 		/****** md5 signature: e94b659c9e9f7b7f43797fc28e2b97f9 ******/
 		%feature("compactdefaultargs") ID;
@@ -7760,6 +7905,11 @@ Convenience: return bitmask bit for a given Kind.
 ") KindBit;
 		static int KindBit(const BRepGraph_NodeId::Kind theKind);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_Layer::Name ******/
 		/****** md5 signature: 5fd48d13d17a8de0cb1f2b03a41c32b1 ******/
 		%feature("compactdefaultargs") Name;
@@ -8657,6 +8807,11 @@ Remove a layer by GUID.
 %nodefaultctor BRepGraph_MeshView;
 class BRepGraph_MeshView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Cache %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView::Cache ******/
 		/****** md5 signature: 7fc497eee302c0d3a6ed3693d3640886 ******/
 		%feature("compactdefaultargs") Cache;
@@ -8670,6 +8825,11 @@ Cache-only reads.
 ") Cache;
 		const BRepGraph_MeshView_CacheView & Cache();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Editor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView::Editor ******/
 		/****** md5 signature: d30c21799bc9da92102246f1d2c7eb79 ******/
 		%feature("compactdefaultargs") Editor;
@@ -8683,6 +8843,11 @@ Cache mutations.
 ") Editor;
 		BRepGraph_MeshView_EditorView & Editor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Effective %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView::Effective ******/
 		/****** md5 signature: c5b15df5141927149d0261d48755b491 ******/
 		%feature("compactdefaultargs") Effective;
@@ -8696,6 +8861,11 @@ Effective reads - cache first, persistent fallback. Use when source is irrelevan
 ") Effective;
 		const BRepGraph_MeshView_EffectiveView & Effective();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Persistent %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView::Persistent ******/
 		/****** md5 signature: 24d69924d15c990f281938ec591dbb6e ******/
 		%feature("compactdefaultargs") Persistent;
@@ -8709,6 +8879,11 @@ Persistent (definition-resident) reads.
 ") Persistent;
 		const BRepGraph_MeshView_PersistentView & Persistent();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poly %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView::Poly ******/
 		/****** md5 signature: 21494cb557eff5527b4f24fec3bf96e6 ******/
 		%feature("compactdefaultargs") Poly;
@@ -8737,6 +8912,11 @@ Polygon/triangulation count queries.
 %nodefaultctor BRepGraph_MeshView_CacheView;
 class BRepGraph_MeshView_CacheView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView::CoEdges ******/
 		/****** md5 signature: 615cf507a3ebd1d5e448efcb5cb4662d ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -8750,6 +8930,11 @@ Grouped coedge cache queries.
 ") CoEdges;
 		const BRepGraph_MeshView_CacheView::CoEdgeOps & CoEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView::Edges ******/
 		/****** md5 signature: e1651e4a997aa76df732fadd190c604f ******/
 		%feature("compactdefaultargs") Edges;
@@ -8763,6 +8948,11 @@ Grouped edge cache queries.
 ") Edges;
 		const BRepGraph_MeshView_CacheView::EdgeOps & Edges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView::Faces ******/
 		/****** md5 signature: b3511b1f1fbc70cbaabdb4e5fb6aba05 ******/
 		%feature("compactdefaultargs") Faces;
@@ -8791,6 +8981,11 @@ Grouped face cache queries.
 %nodefaultctor BRepGraph_MeshView_CacheView_CoEdgeOps;
 class BRepGraph_MeshView_CacheView_CoEdgeOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindPolygon2D %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView_CoEdgeOps::FindPolygon2D ******/
 		/****** md5 signature: abdc20e766c7f6d3cdb791fbf90b8af9 ******/
 		%feature("compactdefaultargs") FindPolygon2D;
@@ -8811,6 +9006,11 @@ Return: cache entry pointer, or nullptr.
 ") FindPolygon2D;
 		const BRepGraph_CacheMesh_CoEdgeMeshEntry * FindPolygon2D(const BRepGraph_CoEdgeId theCoEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindPolygonOnTri %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView_CoEdgeOps::FindPolygonOnTri ******/
 		/****** md5 signature: 8159cbd6e82680dfc98e7638f1522217 ******/
 		%feature("compactdefaultargs") FindPolygonOnTri;
@@ -8831,6 +9031,11 @@ Return: cache entry pointer, or nullptr.
 ") FindPolygonOnTri;
 		const BRepGraph_CacheMesh_CoEdgeMeshEntry * FindPolygonOnTri(const BRepGraph_CoEdgeId theCoEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindRaw %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView_CoEdgeOps::FindRaw ******/
 		/****** md5 signature: a0a631cab3ba9b80ee274199cb1f79a5 ******/
 		%feature("compactdefaultargs") FindRaw;
@@ -8886,6 +9091,11 @@ Return: true if a fresh cache entry exists.
 %nodefaultctor BRepGraph_MeshView_CacheView_EdgeOps;
 class BRepGraph_MeshView_CacheView_EdgeOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView_EdgeOps::Entry ******/
 		/****** md5 signature: 2141ccb60f510bcdc594a147866763d7 ******/
 		%feature("compactdefaultargs") Entry;
@@ -8961,6 +9171,11 @@ Return: polygon-3D handle, or null handle if absent.
 %nodefaultctor BRepGraph_MeshView_CacheView_FaceOps;
 class BRepGraph_MeshView_CacheView_FaceOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_CacheView_FaceOps::Entry ******/
 		/****** md5 signature: 6a57d4effe95ef268d58db7ee045d824 ******/
 		%feature("compactdefaultargs") Entry;
@@ -9036,6 +9251,11 @@ Return: triangulation handle, or null handle if absent.
 %nodefaultctor BRepGraph_MeshView_EditorView;
 class BRepGraph_MeshView_EditorView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EditorView::CoEdges ******/
 		/****** md5 signature: 803664c09b60324b561c1f3f8bff47fc ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -9049,6 +9269,11 @@ Grouped coedge cache mutations.
 ") CoEdges;
 		BRepGraph_MeshView_EditorView::CoEdgeOps & CoEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EditorView::Edges ******/
 		/****** md5 signature: a37c07cff8f86d953e0c59c7db39016d ******/
 		%feature("compactdefaultargs") Edges;
@@ -9062,6 +9287,11 @@ Grouped edge cache mutations.
 ") Edges;
 		BRepGraph_MeshView_EditorView::EdgeOps & Edges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EditorView::Faces ******/
 		/****** md5 signature: 6c8c47fadeb2a3b6bd24a20584a4e537 ******/
 		%feature("compactdefaultargs") Faces;
@@ -9289,6 +9519,11 @@ Input parameter: theTriangulation triangulation to store (null clears).
 %nodefaultctor BRepGraph_MeshView_EffectiveView;
 class BRepGraph_MeshView_EffectiveView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EffectiveView::CoEdges ******/
 		/****** md5 signature: 615cf507a3ebd1d5e448efcb5cb4662d ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -9302,6 +9537,11 @@ Grouped coedge effective queries.
 ") CoEdges;
 		const BRepGraph_MeshView_EffectiveView::CoEdgeOps & CoEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EffectiveView::Edges ******/
 		/****** md5 signature: e1651e4a997aa76df732fadd190c604f ******/
 		%feature("compactdefaultargs") Edges;
@@ -9315,6 +9555,11 @@ Grouped edge effective queries.
 ") Edges;
 		const BRepGraph_MeshView_EffectiveView::EdgeOps & Edges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_EffectiveView::Faces ******/
 		/****** md5 signature: b3511b1f1fbc70cbaabdb4e5fb6aba05 ******/
 		%feature("compactdefaultargs") Faces;
@@ -9568,6 +9813,11 @@ Return: triangulation handle, or null handle if absent.
 %nodefaultctor BRepGraph_MeshView_PersistentView;
 class BRepGraph_MeshView_PersistentView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_PersistentView::CoEdges ******/
 		/****** md5 signature: 615cf507a3ebd1d5e448efcb5cb4662d ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -9581,6 +9831,11 @@ Grouped coedge persistent queries.
 ") CoEdges;
 		const BRepGraph_MeshView_PersistentView::CoEdgeOps & CoEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_PersistentView::Edges ******/
 		/****** md5 signature: e1651e4a997aa76df732fadd190c604f ******/
 		%feature("compactdefaultargs") Edges;
@@ -9594,6 +9849,11 @@ Grouped edge persistent queries.
 ") Edges;
 		const BRepGraph_MeshView_PersistentView::EdgeOps & Edges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_MeshView_PersistentView::Faces ******/
 		/****** md5 signature: b3511b1f1fbc70cbaabdb4e5fb6aba05 ******/
 		%feature("compactdefaultargs") Faces;
@@ -11209,6 +11469,11 @@ Returns the exact parent-owned RefId linking Current() to CurrentChild(), when t
 ") CurrentRef;
 		BRepGraph_RefId CurrentRef();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetConfig %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_ParentExplorer::GetConfig ******/
 		/****** md5 signature: 4fd244f59b28336c2db6aa049f5f1c3e ******/
 		%feature("compactdefaultargs") GetConfig;
@@ -11235,6 +11500,11 @@ True if Current() is the explicit root node of the current branch.
 ") IsCurrentBranchRoot;
 		bool IsCurrentBranchRoot();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LeafLocation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_ParentExplorer::LeafLocation ******/
 		/****** md5 signature: efb751ad32299e67ba0c783a58b77189 ******/
 		%feature("compactdefaultargs") LeafLocation;
@@ -11987,6 +12257,11 @@ True if this UID has a valid kind and a non-zero counter.
 %nodefaultctor BRepGraph_RefsView;
 class BRepGraph_RefsView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Children %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Children ******/
 		/****** md5 signature: 1c8b707beb18f6695e717501c36eb1c3 ******/
 		%feature("compactdefaultargs") Children;
@@ -12000,6 +12275,11 @@ Grouped child reference queries.
 ") Children;
 		const BRepGraph_RefsView_ChildOps & Children();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Faces ******/
 		/****** md5 signature: b3511b1f1fbc70cbaabdb4e5fb6aba05 ******/
 		%feature("compactdefaultargs") Faces;
@@ -12013,6 +12293,11 @@ Grouped face reference queries.
 ") Faces;
 		const BRepGraph_RefsView_FaceOps & Faces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gen %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Gen ******/
 		/****** md5 signature: f10768ed4aba6ab5556e0fcc85f11f36 ******/
 		%feature("compactdefaultargs") Gen;
@@ -12026,6 +12311,11 @@ Grouped generic reference id queries.
 ") Gen;
 		const BRepGraph_RefsView_GenOps & Gen();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Occurrences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Occurrences ******/
 		/****** md5 signature: b3400ceb8029d4fa05c13b024cb4b1a3 ******/
 		%feature("compactdefaultargs") Occurrences;
@@ -12039,6 +12329,11 @@ Grouped occurrence reference queries.
 ") Occurrences;
 		const BRepGraph_RefsView_OccurrenceOps & Occurrences();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shells %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Shells ******/
 		/****** md5 signature: 6796a82939d43df0aa022a584750940b ******/
 		%feature("compactdefaultargs") Shells;
@@ -12052,6 +12347,11 @@ Grouped shell reference queries.
 ") Shells;
 		const BRepGraph_RefsView_ShellOps & Shells();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Solids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Solids ******/
 		/****** md5 signature: 0e55fa047f97547a9d76be76ee856325 ******/
 		%feature("compactdefaultargs") Solids;
@@ -12065,6 +12365,11 @@ Grouped solid reference queries.
 ") Solids;
 		const BRepGraph_RefsView_SolidOps & Solids();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Vertices ******/
 		/****** md5 signature: d564532d5dc1edbbff3f722d756cd59b ******/
 		%feature("compactdefaultargs") Vertices;
@@ -12078,6 +12383,11 @@ Grouped vertex reference queries.
 ") Vertices;
 		const BRepGraph_RefsView_VertexOps & Vertices();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView::Wires ******/
 		/****** md5 signature: 5404ab711462d792f17e2cb9b4f36bdb ******/
 		%feature("compactdefaultargs") Wires;
@@ -12119,6 +12429,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_ChildRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_ChildOps::Entry ******/
 		/****** md5 signature: 5dcaf9c281211f55fd2d85b19012c4d8 ******/
 		%feature("compactdefaultargs") Entry;
@@ -12137,6 +12452,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::ChildRef & Entry(const BRepGraph_ChildRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_ChildOps::IdsOf ******/
 		/****** md5 signature: b418c4c001d2dc3acd0efd1cae217f05 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -12155,6 +12475,11 @@ No available documentation.
 ") IdsOf;
 		const NCollection_LinearVector<BRepGraph_ChildRefId> & IdsOf(const BRepGraph_CompoundId theCompound);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsReferencing %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_ChildOps::IdsReferencing ******/
 		/****** md5 signature: dfff646117706e1a11a51debb773973a ******/
 		%feature("compactdefaultargs") IdsReferencing;
@@ -12240,6 +12565,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_FaceRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_FaceOps::Entry ******/
 		/****** md5 signature: 0139369f15126d26312319e19deaf638 ******/
 		%feature("compactdefaultargs") Entry;
@@ -12258,6 +12588,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::FaceRef & Entry(const BRepGraph_FaceRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_FaceOps::IdsOf ******/
 		/****** md5 signature: 4b217b12f0af517a4ee356d99af81fd0 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -12503,6 +12838,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_OccurrenceRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_OccurrenceOps::Entry ******/
 		/****** md5 signature: d7f63f029c90b1199e2921e1126e43cd ******/
 		%feature("compactdefaultargs") Entry;
@@ -12521,6 +12861,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::OccurrenceRef & Entry(const BRepGraph_OccurrenceRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_OccurrenceOps::IdsOf ******/
 		/****** md5 signature: 3208081be752756a54733f34953c7880 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -12539,6 +12884,11 @@ No available documentation.
 ") IdsOf;
 		const NCollection_LinearVector<BRepGraph_OccurrenceRefId> & IdsOf(const BRepGraph_ProductId theProduct);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsReferencing %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_OccurrenceOps::IdsReferencing ******/
 		/****** md5 signature: 331078c0cab39b5e2284fcce1361773c ******/
 		%feature("compactdefaultargs") IdsReferencing;
@@ -12624,6 +12974,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_ShellRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_ShellOps::Entry ******/
 		/****** md5 signature: 7768e7a8c684fb3f36eabcb03e5bb593 ******/
 		%feature("compactdefaultargs") Entry;
@@ -12642,6 +12997,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::ShellRef & Entry(const BRepGraph_ShellRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_ShellOps::IdsOf ******/
 		/****** md5 signature: 33d7613190de604e5eebbb7db902ecf2 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -12727,6 +13087,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_SolidRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_SolidOps::Entry ******/
 		/****** md5 signature: 9f4fe8bbe86697dd0e8d3dc296fafad8 ******/
 		%feature("compactdefaultargs") Entry;
@@ -12745,6 +13110,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::SolidRef & Entry(const BRepGraph_SolidRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_SolidOps::IdsOf ******/
 		/****** md5 signature: c9c5746253c1c83db5d3b21b96f974f5 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -12830,6 +13200,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_VertexRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_VertexOps::Entry ******/
 		/****** md5 signature: 05f3ed3300c33f15f0f32d4f99e0cae0 ******/
 		%feature("compactdefaultargs") Entry;
@@ -12915,6 +13290,11 @@ No available documentation.
 ") EndId;
 		BRepGraph_WireRefId EndId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_WireOps::Entry ******/
 		/****** md5 signature: 76401b43f39cf9d4b1b24fb14e30412c ******/
 		%feature("compactdefaultargs") Entry;
@@ -12933,6 +13313,11 @@ No available documentation.
 ") Entry;
 		const BRepGraphInc::WireRef & Entry(const BRepGraph_WireRefId theRefId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IdsOf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RefsView_WireOps::IdsOf ******/
 		/****** md5 signature: 021f6de57c7bb948988d30e9e9967f36 ******/
 		%feature("compactdefaultargs") IdsOf;
@@ -13085,6 +13470,11 @@ Input parameter: theNode source node whose relations are iterated.
 ") BRepGraph_RelatedIterator;
 		 BRepGraph_RelatedIterator(const BRepGraph & theGraph, const BRepGraph_NodeId theNode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RelatedIterator::Current ******/
 		/****** md5 signature: e5d8ae302fe34965a77552ca5d5583be ******/
 		%feature("compactdefaultargs") Current;
@@ -13195,6 +13585,11 @@ No available documentation.
 ") BRepGraph_RootProductIterator;
 		 BRepGraph_RootProductIterator(const BRepGraph & theGraph);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_RootProductIterator::Current ******/
 		/****** md5 signature: c21cbcaad5a2f6201a271e2611436d0c ******/
 		%feature("compactdefaultargs") Current;
@@ -15101,6 +15496,11 @@ Description
 ") Uid;
 		uint64_t Uid();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_SupplementIterator::Value ******/
 		/****** md5 signature: 2eb5cf024735df3a564b91432f4029de ******/
 		%feature("compactdefaultargs") Value;
@@ -16937,6 +17337,11 @@ Return: wire usage, or invalid usage if the reference is invalid or removed.
 %nodefaultctor BRepGraph_TopoView;
 class BRepGraph_TopoView {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::CoEdges ******/
 		/****** md5 signature: 615cf507a3ebd1d5e448efcb5cb4662d ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -16950,6 +17355,11 @@ Grouped coedge-oriented queries.
 ") CoEdges;
 		const BRepGraph_TopoView_CoEdgeOps & CoEdges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CompSolids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::CompSolids ******/
 		/****** md5 signature: 2f4dc293a1dae3049bcea508dfe592ce ******/
 		%feature("compactdefaultargs") CompSolids;
@@ -16963,6 +17373,11 @@ Grouped comp-solid oriented queries.
 ") CompSolids;
 		const BRepGraph_TopoView_CompSolidOps & CompSolids();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Compounds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Compounds ******/
 		/****** md5 signature: 3b0e08a1705b919b116b97ec2afd1ecc ******/
 		%feature("compactdefaultargs") Compounds;
@@ -16976,6 +17391,11 @@ Grouped compound-oriented queries.
 ") Compounds;
 		const BRepGraph_TopoView_CompoundOps & Compounds();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Edges ******/
 		/****** md5 signature: e1651e4a997aa76df732fadd190c604f ******/
 		%feature("compactdefaultargs") Edges;
@@ -16989,6 +17409,11 @@ Grouped edge-oriented queries.
 ") Edges;
 		const BRepGraph_TopoView_EdgeOps & Edges();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Faces ******/
 		/****** md5 signature: b3511b1f1fbc70cbaabdb4e5fb6aba05 ******/
 		%feature("compactdefaultargs") Faces;
@@ -17002,6 +17427,11 @@ Grouped face-oriented queries.
 ") Faces;
 		const BRepGraph_TopoView_FaceOps & Faces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gen %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Gen ******/
 		/****** md5 signature: f10768ed4aba6ab5556e0fcc85f11f36 ******/
 		%feature("compactdefaultargs") Gen;
@@ -17015,6 +17445,11 @@ Grouped generic topology and assembly counts / meta queries.
 ") Gen;
 		const BRepGraph_TopoView_GenOps & Gen();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Geometry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Geometry ******/
 		/****** md5 signature: 436b63396dd1ee98b9e6384d116d53e0 ******/
 		%feature("compactdefaultargs") Geometry;
@@ -17028,6 +17463,11 @@ Grouped analytic geometry representation queries.
 ") Geometry;
 		const BRepGraph_TopoView_GeometryOps & Geometry();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Occurrences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Occurrences ******/
 		/****** md5 signature: b3400ceb8029d4fa05c13b024cb4b1a3 ******/
 		%feature("compactdefaultargs") Occurrences;
@@ -17041,6 +17481,11 @@ Grouped occurrence-oriented queries.
 ") Occurrences;
 		const BRepGraph_TopoView_OccurrenceOps & Occurrences();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Products %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Products ******/
 		/****** md5 signature: f8c90e530261cf59498364de60022a01 ******/
 		%feature("compactdefaultargs") Products;
@@ -17054,6 +17499,11 @@ Grouped product-oriented queries.
 ") Products;
 		const BRepGraph_TopoView_ProductOps & Products();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shells %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Shells ******/
 		/****** md5 signature: 6796a82939d43df0aa022a584750940b ******/
 		%feature("compactdefaultargs") Shells;
@@ -17067,6 +17517,11 @@ Grouped shell-oriented queries.
 ") Shells;
 		const BRepGraph_TopoView_ShellOps & Shells();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Solids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Solids ******/
 		/****** md5 signature: 0e55fa047f97547a9d76be76ee856325 ******/
 		%feature("compactdefaultargs") Solids;
@@ -17080,6 +17535,11 @@ Grouped solid-oriented queries.
 ") Solids;
 		const BRepGraph_TopoView_SolidOps & Solids();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Vertices ******/
 		/****** md5 signature: d564532d5dc1edbbff3f722d756cd59b ******/
 		%feature("compactdefaultargs") Vertices;
@@ -17093,6 +17553,11 @@ Grouped vertex-oriented queries.
 ") Vertices;
 		const BRepGraph_TopoView_VertexOps & Vertices();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView::Wires ******/
 		/****** md5 signature: 5404ab711462d792f17e2cb9b4f36bdb ******/
 		%feature("compactdefaultargs") Wires;
@@ -17140,6 +17605,11 @@ Input parameter: theCoEdge typed coedge identifier.
 ") Curve2D;
 		opencascade::handle<Geom2d_Curve> Curve2D(const BRepGraph_CoEdgeId theCoEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_CoEdgeOps::Definition ******/
 		/****** md5 signature: 278526d7008ecb234fd9c3061cc3bedd ******/
 		%feature("compactdefaultargs") Definition;
@@ -17283,6 +17753,11 @@ Input parameter: theCoEdge typed coedge identifier.
 %nodefaultctor BRepGraph_TopoView_CompSolidOps;
 class BRepGraph_TopoView_CompSolidOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_CompSolidOps::Definition ******/
 		/****** md5 signature: dca5084ebf37fd98ac1946d02a92031a ******/
 		%feature("compactdefaultargs") Definition;
@@ -17341,6 +17816,11 @@ Return the number of active (non-soft-removed) comp-solid definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_CompSolidOps::Relations ******/
 		/****** md5 signature: a5256012b68304079add79b4ecac2154 ******/
 		%feature("compactdefaultargs") Relations;
@@ -17388,6 +17868,11 @@ Return the first valid comp-solid identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_CompoundOps;
 class BRepGraph_TopoView_CompoundOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_CompoundOps::Definition ******/
 		/****** md5 signature: b2407166d7dd209a17ce4efdcbcae05d ******/
 		%feature("compactdefaultargs") Definition;
@@ -17446,6 +17931,11 @@ Return the number of active (non-soft-removed) compound definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_CompoundOps::Relations ******/
 		/****** md5 signature: 79c399bc14ad4dbf76b2a6914c39e5d9 ******/
 		%feature("compactdefaultargs") Relations;
@@ -17493,6 +17983,11 @@ Return the first valid compound identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_EdgeOps;
 class BRepGraph_TopoView_EdgeOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_EdgeOps::CoEdges ******/
 		/****** md5 signature: 1093f38d3d30b6daf4f9da8d86a6a08e ******/
 		%feature("compactdefaultargs") CoEdges;
@@ -17531,6 +18026,11 @@ Input parameter: theEdge typed edge identifier.
 ") Curve3D;
 		opencascade::handle<Geom_Curve> Curve3D(const BRepGraph_EdgeId theEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_EdgeOps::Definition ******/
 		/****** md5 signature: ed1770c192506abaa64ba55564e56653 ******/
 		%feature("compactdefaultargs") Definition;
@@ -17609,6 +18109,11 @@ Return: active adjacent face count.
 ") NbFaces;
 		uint32_t NbFaces(const BRepGraph_EdgeId theEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_EdgeOps::Relations ******/
 		/****** md5 signature: f06f0392886885b3dcc9fe2640e8cb0b ******/
 		%feature("compactdefaultargs") Relations;
@@ -17675,6 +18180,11 @@ Input parameter: theFace typed face identifier.
 ") ActiveTriangulation;
 		opencascade::handle<Poly_Triangulation> ActiveTriangulation(const BRepGraph_FaceId theFace);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_FaceOps::Definition ******/
 		/****** md5 signature: e0d52850c6ae530c1ef4cf25d50ee0d3 ******/
 		%feature("compactdefaultargs") Definition;
@@ -17733,6 +18243,11 @@ Return the number of active (non-soft-removed) face definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_FaceOps::Relations ******/
 		/****** md5 signature: 7d007a16d70ee6a6052e624b7c7c9eff ******/
 		%feature("compactdefaultargs") Relations;
@@ -17799,6 +18314,11 @@ Input parameter: theFace typed face identifier.
 %nodefaultctor BRepGraph_TopoView_GenOps;
 class BRepGraph_TopoView_GenOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CompoundRefIds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_GenOps::CompoundRefIds ******/
 		/****** md5 signature: 9322ef40627b81851170ef0876ff637a ******/
 		%feature("compactdefaultargs") CompoundRefIds;
@@ -17942,6 +18462,11 @@ Return the total number of nodes across all topology kinds (including soft-remov
 ") NbNodes;
 		uint32_t NbNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OccurrenceRefIds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_GenOps::OccurrenceRefIds ******/
 		/****** md5 signature: 54b6ec1d5a17f5da09035f956ceba5e1 ******/
 		%feature("compactdefaultargs") OccurrenceRefIds;
@@ -17961,6 +18486,11 @@ Input parameter: theChild node identifier.
 ") OccurrenceRefIds;
 		const NCollection_LinearVector<BRepGraph_OccurrenceRefId> & OccurrenceRefIds(const BRepGraph_NodeId theChild);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TopoEntity %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_GenOps::TopoEntity ******/
 		/****** md5 signature: 70cdf7b10c61b317d4ca4b4c6cd632a9 ******/
 		%feature("compactdefaultargs") TopoEntity;
@@ -18088,6 +18618,11 @@ Return the total number of face surface representations (including soft-removed)
 %nodefaultctor BRepGraph_TopoView_OccurrenceOps;
 class BRepGraph_TopoView_OccurrenceOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_OccurrenceOps::Definition ******/
 		/****** md5 signature: 9c147465f6397c40a9b6cff24659332b ******/
 		%feature("compactdefaultargs") Definition;
@@ -18204,6 +18739,11 @@ Input parameter: theOccurrence typed occurrence identifier.
 ") Product;
 		BRepGraph_ProductId Product(const BRepGraph_OccurrenceId theOccurrence);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_OccurrenceOps::Relations ******/
 		/****** md5 signature: 59a4a11b2f96106920884440a88e48a1 ******/
 		%feature("compactdefaultargs") Relations;
@@ -18272,6 +18812,11 @@ Input parameter: theComponentIdx zero-based active occurrence index within the p
 ") Component;
 		BRepGraph_OccurrenceId Component(const BRepGraph_ProductId theProduct, const int theComponentIdx);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_ProductOps::Definition ******/
 		/****** md5 signature: d00a902169b3cc6f30d51d3d8fc1eb4e ******/
 		%feature("compactdefaultargs") Definition;
@@ -18387,6 +18932,11 @@ Input parameter: theProduct typed product definition identifier.
 ") NbComponents;
 		uint32_t NbComponents(const BRepGraph_ProductId theProduct);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_ProductOps::Relations ******/
 		/****** md5 signature: 89451bc2ff43c00da0f6f5655d23a501 ******/
 		%feature("compactdefaultargs") Relations;
@@ -18472,6 +19022,11 @@ Return the first valid product identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_ShellOps;
 class BRepGraph_TopoView_ShellOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_ShellOps::Definition ******/
 		/****** md5 signature: 0592ca34c3eb241613ca514bd329001d ******/
 		%feature("compactdefaultargs") Definition;
@@ -18530,6 +19085,11 @@ Return the number of active (non-soft-removed) shell definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_ShellOps::Relations ******/
 		/****** md5 signature: 3a806b959e9821aa0a539ced8ab5c721 ******/
 		%feature("compactdefaultargs") Relations;
@@ -18577,6 +19137,11 @@ Return the first valid shell identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_SolidOps;
 class BRepGraph_TopoView_SolidOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_SolidOps::Definition ******/
 		/****** md5 signature: b5ddd03fc2b38f6ad31aed31f3af16a8 ******/
 		%feature("compactdefaultargs") Definition;
@@ -18635,6 +19200,11 @@ Return the number of active (non-soft-removed) solid definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_SolidOps::Relations ******/
 		/****** md5 signature: 0aa46f1895f4a9faff2f3ad5ad2aefa4 ******/
 		%feature("compactdefaultargs") Relations;
@@ -18682,6 +19252,11 @@ Return the first valid solid identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_VertexOps;
 class BRepGraph_TopoView_VertexOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_VertexOps::Definition ******/
 		/****** md5 signature: 6354ce923642bffd493e2cde0dd20073 ******/
 		%feature("compactdefaultargs") Definition;
@@ -18701,6 +19276,11 @@ Input parameter: theVertex typed vertex identifier.
 ") Definition;
 		const BRepGraphInc::VertexDef & Definition(const BRepGraph_VertexId theVertex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_VertexOps::Edges ******/
 		/****** md5 signature: 464269c088954b09ec736fe69cba0086 ******/
 		%feature("compactdefaultargs") Edges;
@@ -18759,6 +19339,11 @@ Return the number of active (non-soft-removed) vertex definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_VertexOps::Relations ******/
 		/****** md5 signature: e8e473229de2b24adeeefb33dbb1a9bf ******/
 		%feature("compactdefaultargs") Relations;
@@ -18806,6 +19391,11 @@ Return the first valid vertex identifier for iteration.
 %nodefaultctor BRepGraph_TopoView_WireOps;
 class BRepGraph_TopoView_WireOps {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Definition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_WireOps::Definition ******/
 		/****** md5 signature: 833a94b5ab8b70f14f7f194cc3295250 ******/
 		%feature("compactdefaultargs") Definition;
@@ -18864,6 +19454,11 @@ Return the number of active (non-soft-removed) wire definitions.
 ") NbActive;
 		uint32_t NbActive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Relations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_TopoView_WireOps::Relations ******/
 		/****** md5 signature: 3b930cbe3a63654f135277dde77b2217 ******/
 		%feature("compactdefaultargs") Relations;
@@ -19154,6 +19749,11 @@ Return: graph generation number.
 ") Generation;
 		uint32_t Generation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GraphGUID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_UIDsView::GraphGUID ******/
 		/****** md5 signature: b6a6a5d32e5e515d1a496c2efbdfe5a7 ******/
 		%feature("compactdefaultargs") GraphGUID;
@@ -19522,6 +20122,11 @@ Removes all steps from the path.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend First %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_UsagePath::First ******/
 		/****** md5 signature: 6cef7f869b52fd246b65921f9535be80 ******/
 		%feature("compactdefaultargs") First;
@@ -19569,6 +20174,11 @@ Returns true if the path has no steps.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Last %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_UsagePath::Last ******/
 		/****** md5 signature: 75c87fdb6d04453fc8c72bfaa3e30949 ******/
 		%feature("compactdefaultargs") Last;
@@ -19595,6 +20205,11 @@ Returns the number of steps in the path.
 ") Size;
 		size_t Size();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_UsagePath::Value ******/
 		/****** md5 signature: c4549e25042dc4060a56e720a26592a3 ******/
 		%feature("compactdefaultargs") Value;
@@ -21521,6 +22136,11 @@ Return: true if computation succeeded.
 ") GetWireIsClosed;
 		bool GetWireIsClosed(BRepGraph_WireId theWire, Standard_Boolean &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CacheDerivedState::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -21594,6 +22214,11 @@ Return: true if the shell is closed.
 ") IsShellClosed;
 		bool IsShellClosed(BRepGraph_ShellId theShell);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_CacheDerivedState::Name ******/
 		/****** md5 signature: 8a990d6f3d119e50e810cdbe935c270c ******/
 		%feature("compactdefaultargs") Name;
@@ -21810,6 +22435,11 @@ Copy history records whose source items have copied target items.
 ") CopyTo;
 		void CopyTo(const BRepGraph_CopyRemap & theCopy);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DeletedItemUids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::DeletedItemUids ******/
 		/****** md5 signature: d0b2ab91794b4fb7e4709b7c28b1e167 ******/
 		%feature("compactdefaultargs") DeletedItemUids;
@@ -21823,6 +22453,11 @@ ItemUID-keyed deleted set stored directly in this history.
 ") DeletedItemUids;
 		const NCollection_FlatMap<BRepGraph_ItemUID> & DeletedItemUids();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DeletedNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::DeletedNodes ******/
 		/****** md5 signature: 135fcec5bbbb1e829b37fbb056d86deb ******/
 		%feature("compactdefaultargs") DeletedNodes;
@@ -21837,6 +22472,11 @@ Return: reference to the deleted-node set.
 ") DeletedNodes;
 		const NCollection_FlatMap<BRepGraph_NodeId> & DeletedNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DeletedUids %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::DeletedUids ******/
 		/****** md5 signature: ec3728fe735940fb6c736d7d420ebb19 ******/
 		%feature("compactdefaultargs") DeletedUids;
@@ -21890,6 +22530,11 @@ Return: all transitively derived node ids in breadth-first order.
 ") FindDerived;
 		NCollection_LinearVector<BRepGraph_NodeId > FindDerived(const BRepGraph_NodeId theOriginal);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindGenerated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::FindGenerated ******/
 		/****** md5 signature: eb1bb9615e48ed35d6a02df7bb0b14e1 ******/
 		%feature("compactdefaultargs") FindGenerated;
@@ -21968,6 +22613,11 @@ Return: UIDs of the generated images (in record-insertion order).
 ") FindGenerated;
 		NCollection_LinearVector<BRepGraph_UID > FindGenerated(const BRepGraph & theGraph, const BRepGraph_UID & theUID);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindModified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::FindModified ******/
 		/****** md5 signature: b74c9d903196a7654f66227ff147fd1f ******/
 		%feature("compactdefaultargs") FindModified;
@@ -22066,6 +22716,11 @@ Return: the root original node id, or theModified itself if not found.
 ") FindOriginal;
 		BRepGraph_NodeId FindOriginal(const BRepGraph_NodeId theModified);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindOriginals %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::FindOriginals ******/
 		/****** md5 signature: fcdf3c5d3a378753e38504c91685ba26 ******/
 		%feature("compactdefaultargs") FindOriginals;
@@ -22133,6 +22788,11 @@ Test whether @p theUID was registered as an operation input.
 ") HasKnownInput;
 		bool HasKnownInput(const BRepGraph_ItemUID & theUID);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -22251,6 +22911,11 @@ Return: true if recording is active.
 ") IsEnabled;
 		bool IsEnabled();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::Name ******/
 		/****** md5 signature: 8a990d6f3d119e50e810cdbe935c270c ******/
 		%feature("compactdefaultargs") Name;
@@ -22296,6 +22961,11 @@ Layer removal callback. Records pure graph deletions when enabled.
 ") OnNodeRemoved;
 		void OnNodeRemoved(const BRepGraph_NodeId theNode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Record %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerHistory::Record ******/
 		/****** md5 signature: e7487c54b7afb3d4468a68fe3bd8f168 ******/
 		%feature("compactdefaultargs") Record;
@@ -22727,6 +23397,11 @@ Return true if at least one root entry exists.
 ") HasOwners;
 		bool HasOwners();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerLock::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -22753,6 +23428,11 @@ No available documentation.
 ") InvalidateAll;
 		void InvalidateAll();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepGraph_LayerLock::Name ******/
 		/****** md5 signature: 8a990d6f3d119e50e810cdbe935c270c ******/
 		%feature("compactdefaultargs") Name;

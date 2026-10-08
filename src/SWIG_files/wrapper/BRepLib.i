@@ -1819,6 +1819,11 @@ This is called by Shape(). It does nothing but may be redefined.
 ") Build;
 		void Build();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DescendantFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepLib_MakeShape::DescendantFaces ******/
 		/****** md5 signature: aa40cd3f62c88531cb176b0bd70535db ******/
 		%feature("compactdefaultargs") DescendantFaces;
@@ -1855,6 +1860,11 @@ returns the status of the Face after the shape creation.
 ") FaceStatus;
 		virtual BRepLib_ShapeModification FaceStatus(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FacesFromEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepLib_MakeShape::FacesFromEdges ******/
 		/****** md5 signature: 9f022964a5614d17de41931c8c96499d ******/
 		%feature("compactdefaultargs") FacesFromEdges;
@@ -1904,6 +1914,11 @@ returns the number of surfaces after the shape creation.
 ") NbSurfaces;
 		virtual int NbSurfaces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepLib_MakeShape::NewFaces ******/
 		/****** md5 signature: 6bec6d356ff84edae7e7f3df1bf57418 ******/
 		%feature("compactdefaultargs") NewFaces;

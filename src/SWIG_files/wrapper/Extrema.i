@@ -3775,6 +3775,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Pnt & P, const gp_Parab & C, const double Tol, const double Uinf, const double Usup);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPElC::Point ******/
 		/****** md5 signature: 958d48738e82612b04072d79f68ca66f ******/
 		%feature("compactdefaultargs") Point;
@@ -4102,6 +4107,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Pnt2d & P, const gp_Parab2d & C, const double Tol, const double Uinf, const double Usup);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPElC2d::Point ******/
 		/****** md5 signature: e5ed9824585db5a84b974c877f2f3707 ******/
 		%feature("compactdefaultargs") Point;
@@ -4391,6 +4401,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Pnt & P, const gp_Sphere & S, const double Tol);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPElS::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -4568,6 +4583,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPExtS::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -4747,6 +4767,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPRevS::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -4930,6 +4955,11 @@ Computes the distances. An exception is raised if the fields have not been initi
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_ExtPS::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -5362,6 +5392,11 @@ No available documentation.
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtCS::PointOnCurve ******/
 		/****** md5 signature: 369ffccbfa48b2ce26cd888f6dcbc746 ******/
 		%feature("compactdefaultargs") PointOnCurve;
@@ -5380,6 +5415,11 @@ Returns the Nth extremum on C.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnSurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtCS::PointOnSurface ******/
 		/****** md5 signature: 93d630f93efa87211a309b812e634d11 ******/
 		%feature("compactdefaultargs") PointOnSurface;
@@ -5398,6 +5438,11 @@ Return the Nth extremum on S.
 ") PointOnSurface;
 		const Extrema_POnSurf & PointOnSurface(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointsOnCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtCS::PointsOnCurve ******/
 		/****** md5 signature: 6d2b7a55792d917a01eed7309e2845ea ******/
 		%feature("compactdefaultargs") PointsOnCurve;
@@ -5411,6 +5456,11 @@ Change Sequence of PointOnCurv.
 ") PointsOnCurve;
 		NCollection_Sequence<Extrema_POnCurv> & PointsOnCurve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointsOnSurf %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtCS::PointsOnSurf ******/
 		/****** md5 signature: 731da2aad90a662fb460aa51031f0e89 ******/
 		%feature("compactdefaultargs") PointsOnSurf;
@@ -5442,6 +5492,11 @@ Return the value of the Nth distance.
 ") SquareDistance;
 		double SquareDistance(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SquareDistances %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtCS::SquareDistances ******/
 		/****** md5 signature: d1db598d8ee069246c782256e9baaf0b ******/
 		%feature("compactdefaultargs") SquareDistances;
@@ -5630,6 +5685,11 @@ No available documentation.
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtSS::PointOnS1 ******/
 		/****** md5 signature: e15f4e253a9976810994c9aced22480d ******/
 		%feature("compactdefaultargs") PointOnS1;
@@ -5648,6 +5708,11 @@ Return the Nth extremum on S1.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncExtSS::PointOnS2 ******/
 		/****** md5 signature: ecac6963ff2ed6aa5a624f032a59f066 ******/
 		%feature("compactdefaultargs") PointOnS2;
@@ -5930,6 +5995,11 @@ No available documentation.
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_FuncPSNorm::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -6373,6 +6443,11 @@ the algorithm is done with C An exception is raised if the fields have not been 
 ") Perform;
 		void Perform(const Adaptor3d_Curve & C, const int NbT, const double tmin, const double tsup, const double Tol1);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenExtCS::PointOnCurve ******/
 		/****** md5 signature: 369ffccbfa48b2ce26cd888f6dcbc746 ******/
 		%feature("compactdefaultargs") PointOnCurve;
@@ -6391,6 +6466,11 @@ Returns the point of the Nth resulting distance.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnSurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenExtCS::PointOnSurface ******/
 		/****** md5 signature: 93d630f93efa87211a309b812e634d11 ******/
 		%feature("compactdefaultargs") PointOnSurface;
@@ -6600,6 +6680,11 @@ the algorithm is done with the point P. An exception is raised if the fields hav
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenExtPS::Point ******/
 		/****** md5 signature: f90c70e4810d2139f235cbb9454c37ac ******/
 		%feature("compactdefaultargs") Point;
@@ -6867,6 +6952,11 @@ the algorithm is done withS1 An exception is raised if the fields have not been 
 ") Perform;
 		void Perform(const Adaptor3d_Surface & S1, const double U1min, const double U1sup, const double V1min, const double V1sup, const double Tol1);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenExtSS::PointOnS1 ******/
 		/****** md5 signature: e15f4e253a9976810994c9aced22480d ******/
 		%feature("compactdefaultargs") PointOnS1;
@@ -6885,6 +6975,11 @@ Returns the point of the Nth resulting distance.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenExtSS::PointOnS2 ******/
 		/****** md5 signature: ecac6963ff2ed6aa5a624f032a59f066 ******/
 		%feature("compactdefaultargs") PointOnS2;
@@ -7012,6 +7107,11 @@ No available documentation.
 ") Perform;
 		void Perform(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const double T, const double U, const double V, const double Tol1, const double Tol2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenLocateExtCS::PointOnCurve ******/
 		/****** md5 signature: 12e75a03d4a94b00a001654daac03f2b ******/
 		%feature("compactdefaultargs") PointOnCurve;
@@ -7025,6 +7125,11 @@ Returns the point of the extremum distance on C.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnSurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenLocateExtCS::PointOnSurface ******/
 		/****** md5 signature: 93e63de442d026d56322abfcd73004ce ******/
 		%feature("compactdefaultargs") PointOnSurface;
@@ -7143,6 +7248,11 @@ Calculates the extrema between the point and the surface using a close point. Th
 ") Perform;
 		void Perform(const gp_Pnt & theP, const double theU0, const double theV0, const bool isDistanceCriteria = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenLocateExtPS::Point ******/
 		/****** md5 signature: 495077ccedcb1863c9951b01a84a4bd1 ******/
 		%feature("compactdefaultargs") Point;
@@ -7259,6 +7369,11 @@ No available documentation.
 ") Perform;
 		void Perform(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const double U1, const double V1, const double U2, const double V2, const double Tol1, const double Tol2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenLocateExtSS::PointOnS1 ******/
 		/****** md5 signature: a968c7bd12e452b2a800b3175543fbbd ******/
 		%feature("compactdefaultargs") PointOnS1;
@@ -7272,6 +7387,11 @@ Returns the point of the extremum distance on S1.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PointOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Extrema_GenLocateExtSS::PointOnS2 ******/
 		/****** md5 signature: 158037b8ed7d0d3eff38e68c16d54d08 ******/
 		%feature("compactdefaultargs") PointOnS2;
@@ -8652,7 +8772,13 @@ class Extrema_HArray1OfPOnCurv : public NCollection_Array1<Extrema_POnCurv>, pub
     Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper);
     Extrema_HArray1OfPOnCurv(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnCurv>::value_type& theValue);
     Extrema_HArray1OfPOnCurv(const NCollection_Array1<Extrema_POnCurv>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Extrema_POnCurv>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Extrema_POnCurv>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnCurv)
@@ -8663,7 +8789,13 @@ class Extrema_HArray1OfPOnCurv2d : public NCollection_Array1<Extrema_POnCurv2d>,
     Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnCurv2d>::value_type& theValue);
     Extrema_HArray1OfPOnCurv2d(const NCollection_Array1<Extrema_POnCurv2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Extrema_POnCurv2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Extrema_POnCurv2d>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnCurv2d)
@@ -8674,7 +8806,13 @@ class Extrema_HArray1OfPOnSurf : public NCollection_Array1<Extrema_POnSurf>, pub
     Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
     Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Extrema_POnSurf>::value_type& theValue);
     Extrema_HArray1OfPOnSurf(const NCollection_Array1<Extrema_POnSurf>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Extrema_POnSurf>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Extrema_POnSurf>& ChangeArray1();
 };
 %make_alias(Extrema_HArray1OfPOnSurf)
@@ -8687,7 +8825,13 @@ class Extrema_HArray2OfPOnCurv : public NCollection_Array2<Extrema_POnCurv>, pub
     Extrema_HArray2OfPOnCurv(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnCurv>::value_type& theValue);
     Extrema_HArray2OfPOnCurv(const NCollection_Array2<Extrema_POnCurv>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<Extrema_POnCurv>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<Extrema_POnCurv>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnCurv)
@@ -8700,7 +8844,13 @@ class Extrema_HArray2OfPOnCurv2d : public NCollection_Array2<Extrema_POnCurv2d>,
     Extrema_HArray2OfPOnCurv2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnCurv2d>::value_type& theValue);
     Extrema_HArray2OfPOnCurv2d(const NCollection_Array2<Extrema_POnCurv2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<Extrema_POnCurv2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<Extrema_POnCurv2d>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnCurv2d)
@@ -8713,7 +8863,13 @@ class Extrema_HArray2OfPOnSurf : public NCollection_Array2<Extrema_POnSurf>, pub
     Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<Extrema_POnSurf>::value_type& theValue);
     Extrema_HArray2OfPOnSurf(const NCollection_Array2<Extrema_POnSurf>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<Extrema_POnSurf>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<Extrema_POnSurf>& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnSurf)

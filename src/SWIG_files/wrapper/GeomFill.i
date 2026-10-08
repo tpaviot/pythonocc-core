@@ -594,6 +594,11 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -625,6 +630,11 @@ No available documentation.
 ") Curves2dDegree;
 		int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::Curves2dKnots ******/
 		/****** md5 signature: a44b03ca53ab6993c2a4d58ca6826417 ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -638,6 +648,11 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -847,6 +862,11 @@ Define the type of parametrization used in the approximation.
 ") SetParType;
 		void SetParType(const Approx_ParametrizationType ParType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfPoles ******/
 		/****** md5 signature: fa6137cc7cb8eb6c7f47a5bbea62ce4a ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -882,6 +902,11 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfUKnots ******/
 		/****** md5 signature: 1027553c6b1dff236a0b8cb4928edc43 ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -895,6 +920,11 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -908,6 +938,11 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -921,6 +956,11 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -934,6 +974,11 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSurf::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
@@ -1135,6 +1180,11 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::Curve2dPoles ******/
 		/****** md5 signature: fc2138bbb0ece5a2ec367b33ec9b43ac ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -1166,6 +1216,11 @@ No available documentation.
 ") Curves2dDegree;
 		int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::Curves2dKnots ******/
 		/****** md5 signature: a44b03ca53ab6993c2a4d58ca6826417 ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -1179,6 +1234,11 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::Curves2dMults ******/
 		/****** md5 signature: d1414d8ce95849a2164808aafd909e37 ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -1388,6 +1448,11 @@ Define the type of parametrization used in the approximation.
 ") SetParType;
 		void SetParType(const Approx_ParametrizationType ParType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfPoles ******/
 		/****** md5 signature: fa6137cc7cb8eb6c7f47a5bbea62ce4a ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -1423,6 +1488,11 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfUKnots ******/
 		/****** md5 signature: 1027553c6b1dff236a0b8cb4928edc43 ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -1436,6 +1506,11 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfUMults ******/
 		/****** md5 signature: 13e6afb95c6bae07d119ada538cec8a0 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -1449,6 +1524,11 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfVKnots ******/
 		/****** md5 signature: be8d511b070808100553277d9e3d961f ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -1462,6 +1542,11 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfVMults ******/
 		/****** md5 signature: febf015332f02c022aa8c2a8f833c985 ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -1475,6 +1560,11 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomFill_AppSweep::SurfWeights ******/
 		/****** md5 signature: 9ff1463ad6c8f0f062b0c068aeda1043 ******/
 		%feature("compactdefaultargs") SurfWeights;
@@ -13967,7 +14057,13 @@ class GeomFill_HArray1OfLocationLaw : public NCollection_Array1<opencascade::han
     GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
     GeomFill_HArray1OfLocationLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<GeomFill_LocationLaw>>::value_type& theValue);
     GeomFill_HArray1OfLocationLaw(const NCollection_Array1<opencascade::handle<GeomFill_LocationLaw>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<GeomFill_LocationLaw>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<GeomFill_LocationLaw>>& ChangeArray1();
 };
 %make_alias(GeomFill_HArray1OfLocationLaw)
@@ -13978,7 +14074,13 @@ class GeomFill_HArray1OfSectionLaw : public NCollection_Array1<opencascade::hand
     GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper);
     GeomFill_HArray1OfSectionLaw(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<GeomFill_SectionLaw>>::value_type& theValue);
     GeomFill_HArray1OfSectionLaw(const NCollection_Array1<opencascade::handle<GeomFill_SectionLaw>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<GeomFill_SectionLaw>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<GeomFill_SectionLaw>>& ChangeArray1();
 };
 %make_alias(GeomFill_HArray1OfSectionLaw)
@@ -13989,9 +14091,15 @@ class GeomFill_HSequenceOfAx2 : public NCollection_Sequence<gp_Ax2>, public Stan
   public:
     GeomFill_HSequenceOfAx2();
     GeomFill_HSequenceOfAx2(const NCollection_Sequence<gp_Ax2>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Ax2>& Sequence();
     void Append (const NCollection_Sequence<gp_Ax2>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Ax2>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Ax2>& ChangeSequence();
 };
 %make_alias(GeomFill_HSequenceOfAx2)

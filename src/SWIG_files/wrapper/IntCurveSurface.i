@@ -804,6 +804,11 @@ initialize the parameters to compute the solution.
 ") IntCurveSurface_TheExactHInter;
 		 IntCurveSurface_TheExactHInter(const IntCurveSurface_TheCSFunctionOfHInter & F, const double TolTangency);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Function %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntCurveSurface_TheExactHInter::Function ******/
 		/****** md5 signature: 87817a81458dd7b55e723924632b4ea1 ******/
 		%feature("compactdefaultargs") Function;
@@ -1844,6 +1849,11 @@ Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		const gp_Pnt BeginOfSeg(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Bounding %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntCurveSurface_ThePolygonOfHInter::Bounding ******/
 		/****** md5 signature: 54ccbf8f63f02bb43c2fc9c718922d78 ******/
 		%feature("compactdefaultargs") Bounding;

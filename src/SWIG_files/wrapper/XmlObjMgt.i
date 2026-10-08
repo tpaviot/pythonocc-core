@@ -387,6 +387,11 @@ Create DOM_Element representing the array, under 'theParent'.
 ") CreateArrayElement;
 		void CreateArrayElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Element %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlObjMgt_Array1::Element ******/
 		/****** md5 signature: b048e740461d546184db9889ca335c27 ******/
 		%feature("compactdefaultargs") Element;
@@ -685,6 +690,11 @@ myElement := <theType id='theID'/>.
 ") CreateElement;
 		void CreateElement(XmlObjMgt_Element & theParent, const XmlObjMgt_DOMString & theType, const int theID);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Element %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlObjMgt_Persistent::Element ******/
 		/****** md5 signature: b048e740461d546184db9889ca335c27 ******/
 		%feature("compactdefaultargs") Element;

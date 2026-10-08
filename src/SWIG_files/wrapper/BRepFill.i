@@ -680,6 +680,11 @@ No available documentation.
 ") BRepFill_CompatibleWires;
 		 BRepFill_CompatibleWires(const TopTools_SequenceOfShape & Sections);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_CompatibleWires::Generated ******/
 		/****** md5 signature: 87cd0ad47838d627e7014b5b7da796f5 ******/
 		%feature("compactdefaultargs") Generated;
@@ -693,6 +698,11 @@ No available documentation.
 ") Generated;
 		const TopTools_DataMapOfShapeListOfShape & Generated();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratedShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_CompatibleWires::GeneratedShapes ******/
 		/****** md5 signature: f9873580f955f2d90bec3ded127c8041 ******/
 		%feature("compactdefaultargs") GeneratedShapes;
@@ -817,6 +827,11 @@ No available documentation.
 ") SetPercent;
 		void SetPercent(const double percent = 0.01);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shape %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_CompatibleWires::Shape ******/
 		/****** md5 signature: a3171706debefe3cfa76eb1712baddb4 ******/
 		%feature("compactdefaultargs") Shape;
@@ -1211,6 +1226,11 @@ No available documentation.
 ") BRepFill_Draft;
 		 BRepFill_Draft(const TopoDS_Shape & Shape, const gp_Dir & Dir, const double Angle);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_Draft::Generated ******/
 		/****** md5 signature: 27cd51cd947cf33bd793ebb871476400 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1493,6 +1513,11 @@ Return the face Bottom if <Solid> is True in the constructor.
 ") Bottom;
 		const TopoDS_Shape Bottom();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratedShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_Evolved::GeneratedShapes ******/
 		/****** md5 signature: 7e5aec1b811d413bca252b1fc93ab87c ******/
 		%feature("compactdefaultargs") GeneratedShapes;
@@ -1913,6 +1938,11 @@ No available documentation.
 ") G2Error;
 		double G2Error(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_Filling::Generated ******/
 		/****** md5 signature: 27cd51cd947cf33bd793ebb871476400 ******/
 		%feature("compactdefaultargs") Generated;
@@ -2068,6 +2098,11 @@ No available documentation.
 ") AddWire;
 		void AddWire(const TopoDS_Wire & Wire);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_Generator::Generated ******/
 		/****** md5 signature: 87cd0ad47838d627e7014b5b7da796f5 ******/
 		%feature("compactdefaultargs") Generated;
@@ -2081,6 +2116,11 @@ Returns all the shapes created.
 ") Generated;
 		const TopTools_DataMapOfShapeListOfShape & Generated();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratedShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_Generator::GeneratedShapes ******/
 		/****** md5 signature: 3f65f2b0742c196a65daa7ca44522117 ******/
 		%feature("compactdefaultargs") GeneratedShapes;
@@ -2904,6 +2944,11 @@ No available documentation.
 ") BRepFill_OffsetWire;
 		 BRepFill_OffsetWire(const TopoDS_Face & Spine, const GeomAbs_JoinType Join = GeomAbs_Arc, const bool IsOpenResult = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratedShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFill_OffsetWire::GeneratedShapes ******/
 		/****** md5 signature: 4c2f38470b65bf769881e771f87afcdc ******/
 		%feature("compactdefaultargs") GeneratedShapes;

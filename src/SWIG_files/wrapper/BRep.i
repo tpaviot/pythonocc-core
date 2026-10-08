@@ -1540,6 +1540,11 @@ Is it a regularity between <S1> and <S2> with location <L1> and <L2>.
 ") IsRegularity;
 		virtual bool IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_CurveRepresentation::Location ******/
 		/****** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ******/
 		%feature("compactdefaultargs") Location;
@@ -1571,6 +1576,11 @@ No available documentation.
 ") Location;
 		void Location(const TopLoc_Location & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_CurveRepresentation::Location2 ******/
 		/****** md5 signature: a1ad6449a6ecb57b13b1f729a62f966c ******/
 		%feature("compactdefaultargs") Location2;
@@ -2006,6 +2016,11 @@ A point on the surface <S>.
 ") IsPointOnSurface;
 		virtual bool IsPointOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_PointRepresentation::Location ******/
 		/****** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ******/
 		%feature("compactdefaultargs") Location;
@@ -2190,6 +2205,11 @@ Creates an empty TEdge.
 ") BRep_TEdge;
 		 BRep_TEdge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TEdge::ChangeCurves ******/
 		/****** md5 signature: e7c81265ef15459b47c22d0dbf86b685 ******/
 		%feature("compactdefaultargs") ChangeCurves;
@@ -2203,6 +2223,11 @@ No available documentation.
 ") ChangeCurves;
 		NCollection_List<opencascade::handle<BRep_CurveRepresentation>> & ChangeCurves();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TEdge::Curves ******/
 		/****** md5 signature: 90c2bd8c5072fe6a040ad0cf47b2c009 ******/
 		%feature("compactdefaultargs") Curves;
@@ -2468,6 +2493,11 @@ Returns a copy of the TShape with no sub-shapes. The new Face has no triangulati
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TFace::Location ******/
 		/****** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ******/
 		%feature("compactdefaultargs") Location;
@@ -2646,6 +2676,11 @@ Input parameter: theToReset flag to reset triangulations list to new list with o
 ") Triangulation;
 		void Triangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const bool theToReset = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Triangulations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TFace::Triangulations ******/
 		/****** md5 signature: 9dd26dda9be48d5596c30f2c08e5a3a7 ******/
 		%feature("compactdefaultargs") Triangulations;
@@ -2707,6 +2742,11 @@ No available documentation.
 ") BRep_TVertex;
 		 BRep_TVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoints %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TVertex::ChangePoints ******/
 		/****** md5 signature: efa68fa421958b630b091451278ac77e ******/
 		%feature("compactdefaultargs") ChangePoints;
@@ -2785,6 +2825,11 @@ No available documentation.
 ") Pnt;
 		void Pnt(const gp_Pnt & P);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_TVertex::Points ******/
 		/****** md5 signature: 2607ea33f5db0d4130048ea3cb337595 ******/
 		%feature("compactdefaultargs") Points;
@@ -4053,6 +4098,11 @@ A curve on two surfaces (continuity).
 ") IsRegularity;
 		bool IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_CurveOn2Surfaces::Location2 ******/
 		/****** md5 signature: 03931fb650206a9013acdd64f9693ef0 ******/
 		%feature("compactdefaultargs") Location2;
@@ -5805,6 +5855,11 @@ A curve on two surfaces (continuity).
 ") IsRegularity;
 		bool IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRep_CurveOnClosedSurface::Location2 ******/
 		/****** md5 signature: 03931fb650206a9013acdd64f9693ef0 ******/
 		%feature("compactdefaultargs") Location2;

@@ -2063,6 +2063,11 @@ Returns the elementary function of the composite used to compute at parameter W.
 ") ChangeElementaryLaw;
 		opencascade::handle<Law_Function> & ChangeElementaryLaw(const double W);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeLaws %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Law_Composite::ChangeLaws ******/
 		/****** md5 signature: 398d0cf7ab6491c305beca068c42718a ******/
 		%feature("compactdefaultargs") ChangeLaws;

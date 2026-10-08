@@ -477,6 +477,11 @@ Returns true if the execution failed.
 ") Failed;
 		bool Failed();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDriverGUID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Function::GetDriverGUID ******/
 		/****** md5 signature: 0e0689f6b2e27ee70a70496d12a69015 ******/
 		%feature("compactdefaultargs") GetDriverGUID;
@@ -516,6 +521,11 @@ Returns the GUID for functions. Returns a function found on the label. Instance 
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Function::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -801,6 +811,11 @@ Returns the GUID for GraphNode attribute. Instant methods =============== Constr
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetNext %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_GraphNode::GetNext ******/
 		/****** md5 signature: 064c8214b7c2f99686b52413f2c2d422 ******/
 		%feature("compactdefaultargs") GetNext;
@@ -814,6 +829,11 @@ Returns a map of next functions.
 ") GetNext;
 		const TColStd_MapOfInteger & GetNext();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPrevious %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_GraphNode::GetPrevious ******/
 		/****** md5 signature: e8fc0dd31ecb307c2cbdb750b0547616 ******/
 		%feature("compactdefaultargs") GetPrevious;
@@ -840,6 +860,11 @@ Returns the execution status of the function.
 ") GetStatus;
 		TFunction_ExecutionStatus GetStatus();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_GraphNode::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1138,6 +1163,11 @@ Deletes a function attached to a label <L>. It deletes a TFunction_Function attr
 ") DeleteFunction;
 		static bool DeleteFunction(const TDF_Label & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAllFunctions %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_IFunction::GetAllFunctions ******/
 		/****** md5 signature: b54154477e422cdd44a5227fb54df6c8 ******/
 		%feature("compactdefaultargs") GetAllFunctions;
@@ -1262,6 +1292,11 @@ Initializes the interface by the label of function.
 ") Init;
 		void Init(const TDF_Label & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Label %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_IFunction::Label ******/
 		/****** md5 signature: eb9fb194262b05b6572e359c88345eec ******/
 		%feature("compactdefaultargs") Label;
@@ -1406,6 +1441,11 @@ A constructor. Initializes the iterator.
 ") TFunction_Iterator;
 		 TFunction_Iterator(const TDF_Label & Access);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Iterator::Current ******/
 		/****** md5 signature: f40d90a321d7f011798c0a026d3daff0 ******/
 		%feature("compactdefaultargs") Current;
@@ -1649,6 +1689,11 @@ Returns the GUID for logbook attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetImpacted %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Logbook::GetImpacted ******/
 		/****** md5 signature: 3222059aa515913d410d544665b71bdd ******/
 		%feature("compactdefaultargs") GetImpacted;
@@ -1662,6 +1707,11 @@ Returns the map of impacted labels contained in this logbook.
 ") GetImpacted;
 		const TDF_LabelMap & GetImpacted();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTouched %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Logbook::GetTouched ******/
 		/****** md5 signature: fa58d459f40f64a3917f5956e50c84db ******/
 		%feature("compactdefaultargs") GetTouched;
@@ -1675,6 +1725,11 @@ Returns the map of touched labels in this logbook. A touched label is the one mo
 ") GetTouched;
 		const TDF_LabelMap & GetTouched();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetValid %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Logbook::GetValid ******/
 		/****** md5 signature: e544ee87bdeef2f9f564bf6e738a5f18 ******/
 		%feature("compactdefaultargs") GetValid;
@@ -1706,6 +1761,11 @@ No available documentation.
 ") GetValid;
 		void GetValid(TDF_LabelMap & Ls);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Logbook::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1953,6 +2013,11 @@ Adds a function to the scope of functions.
 ") AddFunction;
 		bool AddFunction(const TDF_Label & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFunctions %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Scope::ChangeFunctions ******/
 		/****** md5 signature: 042d80331f538f46e64cbc438d1860f1 ******/
 		%feature("compactdefaultargs") ChangeFunctions;
@@ -1996,6 +2061,11 @@ No available documentation.
 ") GetFreeID;
 		int GetFreeID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFunction %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Scope::GetFunction ******/
 		/****** md5 signature: bbe55ce15dbeb1b399470fcd6644c395 ******/
 		%feature("compactdefaultargs") GetFunction;
@@ -2032,6 +2102,11 @@ Returns the label of the function with this ID.
 ") GetFunction;
 		const TDF_Label & GetFunction(const int ID);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFunctions %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Scope::GetFunctions ******/
 		/****** md5 signature: 731347d280a2efc699841947c3a3edf6 ******/
 		%feature("compactdefaultargs") GetFunctions;
@@ -2107,6 +2182,11 @@ Returns true if the label contains a function of this scope.
 ") HasFunction;
 		bool HasFunction(const TDF_Label & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TFunction_Scope::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2273,7 +2353,13 @@ class TFunction_HArray1OfDataMapOfGUIDDriver : public NCollection_Array1<TFuncti
     TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper);
     TFunction_HArray1OfDataMapOfGUIDDriver(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TFunction_DataMapOfGUIDDriver>::value_type& theValue);
     TFunction_HArray1OfDataMapOfGUIDDriver(const NCollection_Array1<TFunction_DataMapOfGUIDDriver>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TFunction_DataMapOfGUIDDriver>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TFunction_DataMapOfGUIDDriver>& ChangeArray1();
 };
 %make_alias(TFunction_HArray1OfDataMapOfGUIDDriver)

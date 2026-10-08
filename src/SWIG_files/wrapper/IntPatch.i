@@ -497,6 +497,11 @@ No available documentation.
 ") NbSamples;
 		int NbSamples();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Quadric %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ArcFunction::Quadric ******/
 		/****** md5 signature: 412540fe449bd77bf89b8085f1fe1701 ******/
 		%feature("compactdefaultargs") Quadric;
@@ -695,6 +700,11 @@ Clears the collected pairs.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pairs %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_BVHTraversal::Pairs ******/
 		/****** md5 signature: 75dbd8310ba74eb76bf5f6b741a3985a ******/
 		%feature("compactdefaultargs") Pairs;
@@ -984,6 +994,11 @@ initialize the parameters to compute the solution.
 ") IntPatch_CurvIntSurf;
 		 IntPatch_CurvIntSurf(const IntPatch_CSFunction & F, const double TolTangency);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Function %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_CurvIntSurf::Function ******/
 		/****** md5 signature: 14b4caa41fcc22a8994bca1ef859d9cb ******/
 		%feature("compactdefaultargs") Function;
@@ -2185,6 +2200,11 @@ Flag theIsReqToKeepRLine has been entered only for compatibility with TopOpeBRep
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const bool theIsReqToKeepRLine = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ImpImpIntersection::Point ******/
 		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
@@ -2367,6 +2387,11 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const opencascade::handle<Adaptor3d_Surface> & Surf2, const opencascade::handle<Adaptor3d_TopolTool> & D2, const double TolArc, const double TolTang, const double Fleche, const double Pas);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ImpPrmIntersection::Point ******/
 		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
@@ -2823,6 +2848,11 @@ Uses for finding self-intersected surfaces.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_TopolTool> & D1, const double TolArc, const double TolTang);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Intersection::Point ******/
 		/****** md5 signature: d44a90010f7d4526516418bc03e31bcc ******/
 		%feature("compactdefaultargs") Point;
@@ -2865,6 +2895,11 @@ Prepares surfaces for intersection.
 ") PrepareSurfaces;
 		static void PrepareSurfaces(const opencascade::handle<Adaptor3d_Surface> & theS1, const opencascade::handle<Adaptor3d_TopolTool> & theD1, const opencascade::handle<Adaptor3d_Surface> & theS2, const opencascade::handle<Adaptor3d_TopolTool> & theD2, const double Tol, NCollection_DynamicArray<opencascade::handle<Adaptor3d_Surface>> & theSeqHS1, NCollection_DynamicArray<opencascade::handle<Adaptor3d_Surface>> & theSeqHS2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SequenceOfLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Intersection::SequenceOfLine ******/
 		/****** md5 signature: 61088f9b1aab32b1f92e7fdcd44022ac ******/
 		%feature("compactdefaultargs") SequenceOfLine;
@@ -3406,6 +3441,11 @@ Returns the parameters on the second surface of the point.
 ") ParametersOnS2;
 		void ParametersOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PntOn2S %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Point::PntOn2S ******/
 		/****** md5 signature: 2088ec360d33e9af1c8275f7d5a12197 ******/
 		%feature("compactdefaultargs") PntOn2S;
@@ -3617,6 +3657,11 @@ This method returns the fuzziness on the point.
 ") Tolerance;
 		double Tolerance();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionLineArc1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Point::TransitionLineArc1 ******/
 		/****** md5 signature: 3c2f51f861994ac2130670399f843948 ******/
 		%feature("compactdefaultargs") TransitionLineArc1;
@@ -3630,6 +3675,11 @@ Returns the transition of the point on the intersection line with the arc on S1.
 ") TransitionLineArc1;
 		const IntSurf_Transition & TransitionLineArc1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionLineArc2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Point::TransitionLineArc2 ******/
 		/****** md5 signature: f951568f311bcb1309847a661eb86a91 ******/
 		%feature("compactdefaultargs") TransitionLineArc2;
@@ -3643,6 +3693,11 @@ Returns the transition of the point on the intersection line with the arc on S2.
 ") TransitionLineArc2;
 		const IntSurf_Transition & TransitionLineArc2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Point::TransitionOnS1 ******/
 		/****** md5 signature: 8cb3d24c0def4cc671eb54590466ee5c ******/
 		%feature("compactdefaultargs") TransitionOnS1;
@@ -3656,6 +3711,11 @@ Returns the transition between the intersection line returned by the method Line
 ") TransitionOnS1;
 		const IntSurf_Transition & TransitionOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_Point::TransitionOnS2 ******/
 		/****** md5 signature: a2716413c981c4ee8338310413d27dd3 ******/
 		%feature("compactdefaultargs") TransitionOnS2;
@@ -5141,6 +5201,11 @@ Cut the line at the point of rank Index.
 ") Cut;
 		void Cut(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheIWLineOfTheIWalking::FirstPoint ******/
 		/****** md5 signature: e0c1dbe8c28165db2dbe2ecf721fcc02 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -5232,6 +5297,11 @@ No available documentation.
 ") IsTangentAtEnd;
 		bool IsTangentAtEnd();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheIWLineOfTheIWalking::LastPoint ******/
 		/****** md5 signature: 7876841b5cf564c633cdd87a1ac1e722 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -5401,6 +5471,11 @@ No available documentation.
 ") TangentVector;
 		const gp_Vec TangentVector(Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheIWLineOfTheIWalking::Value ******/
 		/****** md5 signature: 344ab61d440fab1850713aee8091a920 ******/
 		%feature("compactdefaultargs") Value;
@@ -5558,6 +5633,11 @@ Deflection is the maximum deflection admitted between two consecutive points on 
 ") SetTolerance;
 		void SetTolerance(const double Epsilon, const double Deflection, const double Step);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SinglePnt %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheIWalking::SinglePnt ******/
 		/****** md5 signature: 0c2543cf594dde763111a0259b3536b6 ******/
 		%feature("compactdefaultargs") SinglePnt;
@@ -5886,6 +5966,11 @@ Algorithm to find the points and parts of curves of Domain (domain of of restric
 ") Perform;
 		void Perform(IntPatch_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const double TolBoundary, const double TolTangency, const bool RecheckOnRegularity = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSOnBounds::Point ******/
 		/****** md5 signature: e607756e209a929844054ac7e9597198 ******/
 		%feature("compactdefaultargs") Point;
@@ -5904,6 +5989,11 @@ Returns the resulting point of range Index. The exception NotDone is raised if I
 ") Point;
 		const IntPatch_ThePathPointOfTheSOnBounds & Point(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Segment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSOnBounds::Segment ******/
 		/****** md5 signature: cb1722479c05c35afce657e5329b3ca3 ******/
 		%feature("compactdefaultargs") Segment;
@@ -6038,6 +6128,11 @@ No available documentation.
 ") Perform;
 		void Perform(IntPatch_TheSurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const double UStart, const double VStart);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSearchInside::Value ******/
 		/****** md5 signature: 53957a7cef022ac96aca4f6ccc589f73 ******/
 		%feature("compactdefaultargs") Value;
@@ -6096,6 +6191,11 @@ Returns the geometric curve on the surface 's domain which is solution.
 ") Curve;
 		const opencascade::handle<Adaptor2d_Curve2d> & Curve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSegmentOfTheSOnBounds::FirstPoint ******/
 		/****** md5 signature: 04ae1a5baa94ab3c05537203f1b7c1f4 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -6135,6 +6235,11 @@ Returns True if there is a vertex (ThePathPoint) defining the greatest valid par
 ") HasLastPoint;
 		bool HasLastPoint();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSegmentOfTheSOnBounds::LastPoint ******/
 		/****** md5 signature: 8b2eedd3d014003b00e96501ee48e8db ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -6294,6 +6399,11 @@ No available documentation.
 ") Direction3d;
 		const gp_Vec Direction3d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ISurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_TheSurfFunction::ISurface ******/
 		/****** md5 signature: 0401f703cbd4484a6014535602bb165f ******/
 		%feature("compactdefaultargs") ISurface;
@@ -6667,6 +6777,11 @@ To add a vertex in the list.
 ") AddVertex;
 		void AddVertex(const IntPatch_Point & Pnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ALine::ChangeVertex ******/
 		/****** md5 signature: 7dd2afa58b42c6d558643dc3b3d3b385 ******/
 		%feature("compactdefaultargs") ChangeVertex;
@@ -6772,6 +6887,11 @@ Returns the first parameter on the intersection line. If IsIncluded returns True
 ") FirstParameter;
 		double FirstParameter(Standard_Boolean &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ALine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -6828,6 +6948,11 @@ Returns the last parameter on the intersection line. If IsIncluded returns True,
 ") LastParameter;
 		double LastParameter(Standard_Boolean &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ALine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -6927,6 +7052,11 @@ Returns the point of parameter U on the analytic intersection line.
 ") Value;
 		gp_Pnt Value(const double U);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_ALine::Vertex ******/
 		/****** md5 signature: 26780f23202c4ac23d80e88630aa27c5 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -7328,6 +7458,11 @@ Returns the Elips from gp corresponding to the intersection when ArcType returns
 ") Ellipse;
 		gp_Elips Ellipse();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_GLine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -7380,6 +7515,11 @@ Returns the Hypr from gp corresponding to the intersection when ArcType returns 
 ") Hyperbola;
 		gp_Hypr Hyperbola();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_GLine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -7487,6 +7627,11 @@ No available documentation.
 ") SetLastPoint;
 		void SetLastPoint(const int IndLast);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_GLine::Vertex ******/
 		/****** md5 signature: 26780f23202c4ac23d80e88630aa27c5 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -7541,6 +7686,11 @@ Adds a vertex in the list. If theIsPrepend == True the new vertex will be added 
 ") AddVertex;
 		virtual void AddVertex(const IntPatch_Point & Pnt, const bool theIsPrepend = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_PointLine::ChangeVertex ******/
 		/****** md5 signature: 11806fd6581533a58d5da63d5976e98e ******/
 		%feature("compactdefaultargs") ChangeVertex;
@@ -7685,6 +7835,11 @@ Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
 		virtual int NbVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_PointLine::Point ******/
 		/****** md5 signature: 1b21342e542238a173288d6c6b5b9741 ******/
 		%feature("compactdefaultargs") Point;
@@ -7721,6 +7876,11 @@ Removes single vertex from the line.
 ") RemoveVertex;
 		virtual void RemoveVertex(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_PointLine::Vertex ******/
 		/****** md5 signature: 9f34ceb2b217e5bc5d2eaa75302c8c22 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -8120,6 +8280,11 @@ Returns the concerned arc.
 ") ArcOnS2;
 		const opencascade::handle<Adaptor2d_Curve2d> & ArcOnS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_RLine::ChangeVertex ******/
 		/****** md5 signature: 0a372acda9ebb235078c62b62070dd28 ******/
 		%feature("compactdefaultargs") ChangeVertex;
@@ -8200,6 +8365,11 @@ if (theMode == 0) then prints the information about WLine if (theMode == 1) then
 ") Dump;
 		void Dump(const int theMode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_RLine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -8332,6 +8502,11 @@ Returns True if theP is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		bool IsOutSurf2Box(const gp_Pnt2d & theP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_RLine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -8407,6 +8582,11 @@ No available documentation.
 ") ParamOnS2;
 		void ParamOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_RLine::Point ******/
 		/****** md5 signature: 3d2f6976d96d2bce360f4ef7869804d0 ******/
 		%feature("compactdefaultargs") Point;
@@ -8571,6 +8751,11 @@ Set the Point of index <Index> in the LineOn2S.
 ") SetPoint;
 		void SetPoint(const int Index, const IntPatch_Point & Pnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_RLine::Vertex ******/
 		/****** md5 signature: 6502a3e2a1998540a1e04f53605ba32d ******/
 		%feature("compactdefaultargs") Vertex;
@@ -8718,6 +8903,11 @@ Adds a vertex in the list. If theIsPrepend == True the new vertex will be added 
 ") AddVertex;
 		void AddVertex(const IntPatch_Point & Pnt, const bool theIsPrepend = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_WLine::ChangeVertex ******/
 		/****** md5 signature: 0a372acda9ebb235078c62b62070dd28 ******/
 		%feature("compactdefaultargs") ChangeVertex;
@@ -8816,6 +9006,11 @@ Allows or forbids purging of existing WLine.
 ") EnablePurging;
 		void EnablePurging(const bool theIsEnabled);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_WLine::FirstPoint ******/
 		/****** md5 signature: a9cf472622afe53ffedbf93049e1ae87 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -9023,6 +9218,11 @@ Returns True if purging is allowed or forbidden for existing WLine.
 ") IsPurgingAllowed;
 		bool IsPurgingAllowed();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_WLine::LastPoint ******/
 		/****** md5 signature: f1c788d8502e367e84924ee37d5745d2 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -9079,6 +9279,11 @@ Returns number of vertices (IntPatch_Point) of the line.
 ") NbVertex;
 		int NbVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_WLine::Point ******/
 		/****** md5 signature: 3d2f6976d96d2bce360f4ef7869804d0 ******/
 		%feature("compactdefaultargs") Point;
@@ -9316,6 +9521,11 @@ No available documentation.
 ") V2Period;
 		double V2Period();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPatch_WLine::Vertex ******/
 		/****** md5 signature: 6502a3e2a1998540a1e04f53605ba32d ******/
 		%feature("compactdefaultargs") Vertex;

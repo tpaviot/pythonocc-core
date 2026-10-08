@@ -227,6 +227,11 @@ Computes the distance between the end points of the extremum of index Index comp
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAPI_ExtremaCurveCurve::Extrema ******/
 		/****** md5 signature: d20597ca5df7eb3eb3c7b2cc10a25ce9 ******/
 		%feature("compactdefaultargs") Extrema;
@@ -536,6 +541,11 @@ Computes the distance between the end points of the extremum of index Index comp
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAPI_ExtremaCurveSurface::Extrema ******/
 		/****** md5 signature: adcf7d7d93c740fa26f7543ee94e20ec ******/
 		%feature("compactdefaultargs") Extrema;
@@ -801,6 +811,11 @@ Computes the distance between the end points of the extremum of index Index comp
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAPI_ExtremaSurfaceSurface::Extrema ******/
 		/****** md5 signature: 4e9266c25801d466046033a02435b14c ******/
 		%feature("compactdefaultargs") Extrema;
@@ -2036,6 +2051,11 @@ Computes the distance between the point and its orthogonal projection on the cur
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAPI_ProjectPointOnCurve::Extrema ******/
 		/****** md5 signature: 2a2c7c9268b8bc0a62547ade486fcb4b ******/
 		%feature("compactdefaultargs") Extrema;
@@ -2368,6 +2388,11 @@ Computes the distance between the point and its orthogonal projection on the sur
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAPI_ProjectPointOnSurf::Extrema ******/
 		/****** md5 signature: 5d88f4e1c84a05757ee93d4ab14118bb ******/
 		%feature("compactdefaultargs") Extrema;

@@ -953,6 +953,11 @@ class Transfer_FindHasher {
 %nodefaultctor Transfer_Finder;
 class Transfer_Finder : public Standard_Transient {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AttrList %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_Finder::AttrList ******/
 		/****** md5 signature: 91acc7815878cd2f4a493ea7669a3fe0 ******/
 		%feature("compactdefaultargs") AttrList;
@@ -1349,6 +1354,11 @@ No available documentation.
 ") Transfer_MapContainer;
 		 Transfer_MapContainer();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetMapObjects %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_MapContainer::GetMapObjects ******/
 		/****** md5 signature: 4deb4e9ec9fd9258317ac070a2f289cf ******/
 		%feature("compactdefaultargs") GetMapObjects;
@@ -3880,6 +3890,11 @@ No available documentation.
 ") Transfer_ActorOfFinderProcess;
 		 Transfer_ActorOfFinderProcess();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_ActorOfFinderProcess::GetShapeFixParameters ******/
 		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -3894,6 +3909,11 @@ Return: the parameters for shape processing. Empty map if no parameters were set
 ") GetShapeFixParameters;
 		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_ActorOfFinderProcess::GetShapeProcessFlags ******/
 		/****** md5 signature: 9a36ef61377dc7b1e6932eb1cc2f212e ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;
@@ -4071,6 +4091,11 @@ No available documentation.
 ") Transfer_ActorOfTransientProcess;
 		 Transfer_ActorOfTransientProcess();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetProcessingFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_ActorOfTransientProcess::GetProcessingFlags ******/
 		/****** md5 signature: 028e3c39463d40f9b67ea5e4eef4392b ******/
 		%feature("compactdefaultargs") GetProcessingFlags;
@@ -4085,6 +4110,11 @@ Return: Pair: the flags defining operations to be performed on shapes and a bool
 ") GetProcessingFlags;
 		const XSAlgo_ShapeProcessor::ProcessingFlags & GetProcessingFlags();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_ActorOfTransientProcess::GetShapeFixParameters ******/
 		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -5146,6 +5176,11 @@ Specific number of a starting object for check-list: Number in model.
 ") CheckNum;
 		int CheckNum(const opencascade::handle<Standard_Transient> & ent);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Context %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_TransientProcess::Context ******/
 		/****** md5 signature: b81edf1d9ad3c29d489a2eda3dedcb1f ******/
 		%feature("compactdefaultargs") Context;
@@ -5179,6 +5214,11 @@ Returns the Context attached to a name, if set and if it is Kind of the type, el
 ") GetContext;
 		bool GetContext(const char * const name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & ctx);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_TransientProcess::Graph ******/
 		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
@@ -5555,6 +5595,11 @@ Specific action: it calls the method Transfer from CopyTool i.e. the general ser
 ") Transfer;
 		opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransferDispatch %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Transfer_ActorDispatch::TransferDispatch ******/
 		/****** md5 signature: d8c37ebfb4344c5658d80d5678e6d3a2 ******/
 		%feature("compactdefaultargs") TransferDispatch;
@@ -5654,9 +5699,15 @@ class Transfer_HSequenceOfBinder : public NCollection_Sequence<opencascade::hand
   public:
     Transfer_HSequenceOfBinder();
     Transfer_HSequenceOfBinder(const NCollection_Sequence<opencascade::handle<Transfer_Binder>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Transfer_Binder>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Transfer_Binder>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Transfer_Binder>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Transfer_Binder>>& ChangeSequence();
 };
 %make_alias(Transfer_HSequenceOfBinder)
@@ -5666,9 +5717,15 @@ class Transfer_HSequenceOfFinder : public NCollection_Sequence<opencascade::hand
   public:
     Transfer_HSequenceOfFinder();
     Transfer_HSequenceOfFinder(const NCollection_Sequence<opencascade::handle<Transfer_Finder>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Transfer_Finder>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Transfer_Finder>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Transfer_Finder>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Transfer_Finder>>& ChangeSequence();
 };
 %make_alias(Transfer_HSequenceOfFinder)

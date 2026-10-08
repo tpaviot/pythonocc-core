@@ -406,6 +406,11 @@ Add in <CO> the faces of the shell containing <Face> where all the connex edges 
 ") AddFaces;
 		void AddFaces(const TopoDS_Face & theFace, TopoDS_Compound & theCo, TopTools_MapOfShape & theMap, const ChFiDS_TypeOfConcavity theType1, const ChFiDS_TypeOfConcavity theType2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Ancestors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Analyse::Ancestors ******/
 		/****** md5 signature: e95e7e9134c33a93931a8ce35c9931c8 ******/
 		%feature("compactdefaultargs") Ancestors;
@@ -437,6 +442,11 @@ Clears the content of the algorithm.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Descendants %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Analyse::Descendants ******/
 		/****** md5 signature: a0970ec4dc035c29c261073f4ba91874 ******/
 		%feature("compactdefaultargs") Descendants;
@@ -621,6 +631,11 @@ Returns status of the algorithm.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Analyse::NewFaces ******/
 		/****** md5 signature: a528527b910aca5ee367eb9c0f9e1c9a ******/
 		%feature("compactdefaultargs") NewFaces;
@@ -710,6 +725,11 @@ set in <Edges> all the Edges of <Shape> which are tangent to <Edge> at the verte
 ") TangentEdges;
 		void TangentEdges(const TopoDS_Edge & theEdge, const TopoDS_Vertex & theVertex, TopTools_ListOfShape & theEdges);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Type %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Analyse::Type ******/
 		/****** md5 signature: f54512eb56610eb7b28eb0b9f6009b4a ******/
 		%feature("compactdefaultargs") Type;
@@ -1066,6 +1086,11 @@ Checks if the pair of faces has already been treated.
 ") IsDone;
 		bool IsDone(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Inter3d::NewEdges ******/
 		/****** md5 signature: b5866922d31a4e5fb645260744c2c3d0 ******/
 		%feature("compactdefaultargs") NewEdges;
@@ -1098,6 +1123,11 @@ Marks the pair of faces as already intersected.
 ") SetDone;
 		void SetDone(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TouchedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_Inter3d::TouchedFaces ******/
 		/****** md5 signature: 0f1aa657dc6f2d601aab5b95cd0c1915 ******/
 		%feature("compactdefaultargs") TouchedFaces;
@@ -1466,6 +1496,11 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ClosingFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_MakeOffset::ClosingFaces ******/
 		/****** md5 signature: d58ab44b96f71200275e5fa9ba65f1ea ******/
 		%feature("compactdefaultargs") ClosingFaces;
@@ -1492,6 +1527,11 @@ returns information about offset state.
 ") Error;
 		BRepOffset_Error Error();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_MakeOffset::Generated ******/
 		/****** md5 signature: c7e739d35dfc51aa359d492d3adef485 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1642,6 +1682,11 @@ No available documentation.
 ") MakeThickSolid;
 		void MakeThickSolid(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_MakeOffset::Modified ******/
 		/****** md5 signature: 6cd66ea5e5f80e028bbe64f6b442570b ******/
 		%feature("compactdefaultargs") Modified;
@@ -1660,6 +1705,11 @@ Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OffsetEdgesFromShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_MakeOffset::OffsetEdgesFromShapes ******/
 		/****** md5 signature: 68926d492e1e9d71593e4c5da8672674 ******/
 		%feature("compactdefaultargs") OffsetEdgesFromShapes;
@@ -1673,6 +1723,11 @@ Returns <Image> containing links between initials shapes and offset edges.
 ") OffsetEdgesFromShapes;
 		const BRepAlgo_Image & OffsetEdgesFromShapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OffsetFacesFromShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffset_MakeOffset::OffsetFacesFromShapes ******/
 		/****** md5 signature: 29688b3f620832bbca96a758804ee150 ******/
 		%feature("compactdefaultargs") OffsetFacesFromShapes;

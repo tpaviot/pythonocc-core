@@ -1325,6 +1325,11 @@ Returns true if this is an instance of TypeName or an instance of any class that
 ") IsKind;
 		bool IsKind(const char * const theTypeName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend This %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Standard_Transient::This ******/
 		/****** md5 signature: 369ed7e5c72c58d7742ea0f5afa5efdd ******/
 		%feature("compactdefaultargs") This;

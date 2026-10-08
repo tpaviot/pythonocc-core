@@ -945,6 +945,11 @@ No available documentation.
 ") CleanDuplicateEntities;
 		void CleanDuplicateEntities();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPControl_Writer::GetShapeFixParameters ******/
 		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -959,6 +964,11 @@ Return: the parameters for shape processing. Empty map if no parameters were set
 ") GetShapeFixParameters;
 		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPControl_Writer::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;

@@ -6914,7 +6914,13 @@ class StepRepr_HArray1OfMaterialPropertyRepresentation : public NCollection_Arra
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepRepr_HArray1OfMaterialPropertyRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>::value_type& theValue);
     StepRepr_HArray1OfMaterialPropertyRepresentation(const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfMaterialPropertyRepresentation)
@@ -6925,7 +6931,13 @@ class StepRepr_HArray1OfPropertyDefinitionRepresentation : public NCollection_Ar
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>::value_type& theValue);
     StepRepr_HArray1OfPropertyDefinitionRepresentation(const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepRepr_PropertyDefinitionRepresentation>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfPropertyDefinitionRepresentation)
@@ -6936,7 +6948,13 @@ class StepRepr_HArray1OfRepresentationItem : public NCollection_Array1<opencasca
     StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepRepr_HArray1OfRepresentationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>::value_type& theValue);
     StepRepr_HArray1OfRepresentationItem(const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepRepr_RepresentationItem>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfRepresentationItem)
@@ -6947,7 +6965,13 @@ class StepRepr_HArray1OfShapeAspect : public NCollection_Array1<opencascade::han
     StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepRepr_HArray1OfShapeAspect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>::value_type& theValue);
     StepRepr_HArray1OfShapeAspect(const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepRepr_ShapeAspect>>& ChangeArray1();
 };
 %make_alias(StepRepr_HArray1OfShapeAspect)
@@ -6958,9 +6982,15 @@ class StepRepr_HSequenceOfMaterialPropertyRepresentation : public NCollection_Se
   public:
     StepRepr_HSequenceOfMaterialPropertyRepresentation();
     StepRepr_HSequenceOfMaterialPropertyRepresentation(const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepRepr_MaterialPropertyRepresentation>>& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfMaterialPropertyRepresentation)
@@ -6970,9 +7000,15 @@ class StepRepr_HSequenceOfRepresentationItem : public NCollection_Sequence<openc
   public:
     StepRepr_HSequenceOfRepresentationItem();
     StepRepr_HSequenceOfRepresentationItem(const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>& ChangeSequence();
 };
 %make_alias(StepRepr_HSequenceOfRepresentationItem)

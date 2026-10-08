@@ -395,6 +395,11 @@ No available documentation.
 ") Plate_FreeGtoCConstraint;
 		 Plate_FreeGtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const Plate_D3 & D3S, const Plate_D3 & D3T, const double IncrementalLoad = 1.0, const int orientation = 0);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPPC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_FreeGtoCConstraint::GetPPC ******/
 		/****** md5 signature: d93fcac6ad18e9533d00a9c224468a56 ******/
 		%feature("compactdefaultargs") GetPPC;
@@ -413,6 +418,11 @@ No available documentation.
 ") GetPPC;
 		const Plate_PinpointConstraint & GetPPC(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LSC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_FreeGtoCConstraint::LSC ******/
 		/****** md5 signature: dcde6ddf64e39780f2c4469061371716 ******/
 		%feature("compactdefaultargs") LSC;
@@ -489,6 +499,11 @@ No available documentation.
 ") Plate_GlobalTranslationConstraint;
 		 Plate_GlobalTranslationConstraint(const TColgp_SequenceOfXY & SOfXY);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LXYZC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_GlobalTranslationConstraint::LXYZC ******/
 		/****** md5 signature: 422f3ddc3fa5aee73e09010319f27198 ******/
 		%feature("compactdefaultargs") LXYZC;
@@ -669,6 +684,11 @@ No available documentation.
 ") Plate_GtoCConstraint;
 		 Plate_GtoCConstraint(const gp_XY & point2d, const Plate_D1 & D1S, const Plate_D1 & D1T, const Plate_D2 & D2S, const Plate_D2 & D2T, const Plate_D3 & D3S, const Plate_D3 & D3T, const gp_XYZ & nP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend D1SurfInit %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_GtoCConstraint::D1SurfInit ******/
 		/****** md5 signature: 84c53d131c2997fe4d377ab566a230e2 ******/
 		%feature("compactdefaultargs") D1SurfInit;
@@ -682,6 +702,11 @@ No available documentation.
 ") D1SurfInit;
 		const Plate_D1 & D1SurfInit();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPPC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_GtoCConstraint::GetPPC ******/
 		/****** md5 signature: d93fcac6ad18e9533d00a9c224468a56 ******/
 		%feature("compactdefaultargs") GetPPC;
@@ -748,6 +773,11 @@ No available documentation.
 ") Plate_LineConstraint;
 		 Plate_LineConstraint(const gp_XY & point2d, const gp_Lin & lin, const int iu = 0, const int iv = 0);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LSC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_LineConstraint::LSC ******/
 		/****** md5 signature: 38e8ce4a9a7d5c615d696ae043b116ea ******/
 		%feature("compactdefaultargs") LSC;
@@ -864,6 +894,11 @@ No available documentation.
 ") Plate_LinearScalarConstraint;
 		 Plate_LinearScalarConstraint(const int ColLen, const int RowLen);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Coeff %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_LinearScalarConstraint::Coeff ******/
 		/****** md5 signature: 8d1cb0d1ad1b3625c0a33d653ae5d3af ******/
 		%feature("compactdefaultargs") Coeff;
@@ -877,6 +912,11 @@ No available documentation.
 ") Coeff;
 		const TColgp_Array2OfXYZ & Coeff();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPPC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_LinearScalarConstraint::GetPPC ******/
 		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
 		%feature("compactdefaultargs") GetPPC;
@@ -1013,6 +1053,11 @@ No available documentation.
 ") Plate_LinearXYZConstraint;
 		 Plate_LinearXYZConstraint(const int ColLen, const int RowLen);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Coeff %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_LinearXYZConstraint::Coeff ******/
 		/****** md5 signature: b330b1c43923bf461fde9f83d40e0738 ******/
 		%feature("compactdefaultargs") Coeff;
@@ -1026,6 +1071,11 @@ No available documentation.
 ") Coeff;
 		const TColStd_Array2OfReal & Coeff();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPPC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_LinearXYZConstraint::GetPPC ******/
 		/****** md5 signature: 802b611378a639fca7268b56438b0fab ******/
 		%feature("compactdefaultargs") GetPPC;
@@ -1213,6 +1263,11 @@ No available documentation.
 ") Plate_PlaneConstraint;
 		 Plate_PlaneConstraint(const gp_XY & point2d, const gp_Pln & pln, const int iu = 0, const int iv = 0);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LSC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_PlaneConstraint::LSC ******/
 		/****** md5 signature: 38e8ce4a9a7d5c615d696ae043b116ea ******/
 		%feature("compactdefaultargs") LSC;
@@ -1316,6 +1371,11 @@ No available documentation.
 ") Continuity;
 		int Continuity();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Copy %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_Plate::Copy ******/
 		/****** md5 signature: 11161ac3ed152899e6cd888fd0156816 ******/
 		%feature("compactdefaultargs") Copy;
@@ -1682,6 +1742,11 @@ No available documentation.
 ") Plate_SampledCurveConstraint;
 		 Plate_SampledCurveConstraint(const NCollection_Sequence<Plate_PinpointConstraint> & SOPPC, const int n);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LXYZC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Plate_SampledCurveConstraint::LXYZC ******/
 		/****** md5 signature: 422f3ddc3fa5aee73e09010319f27198 ******/
 		%feature("compactdefaultargs") LXYZC;
@@ -1711,7 +1776,13 @@ class Plate_HArray1OfPinpointConstraint : public NCollection_Array1<Plate_Pinpoi
     Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
     Plate_HArray1OfPinpointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Plate_PinpointConstraint>::value_type& theValue);
     Plate_HArray1OfPinpointConstraint(const NCollection_Array1<Plate_PinpointConstraint>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Plate_PinpointConstraint>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Plate_PinpointConstraint>& ChangeArray1();
 };
 %make_alias(Plate_HArray1OfPinpointConstraint)

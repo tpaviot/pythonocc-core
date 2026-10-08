@@ -1432,6 +1432,11 @@ search the Index of the first Iso not approximated, if all Isos are approximated
 ") FirstNotApprox;
 		opencascade::handle<AdvApp2Var_Iso> FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IsoU %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AdvApp2Var_Framework::IsoU ******/
 		/****** md5 signature: d7c3ced749c23f9d465df94ec07f5edc ******/
 		%feature("compactdefaultargs") IsoU;
@@ -1452,6 +1457,11 @@ No available documentation.
 ") IsoU;
 		const AdvApp2Var_Iso & IsoU(const double U, const double V0, const double V1);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend IsoV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AdvApp2Var_Framework::IsoV ******/
 		/****** md5 signature: bd1ccf356d1409bc9024ab4cbc2bb7b0 ******/
 		%feature("compactdefaultargs") IsoV;
@@ -2554,6 +2564,11 @@ No available documentation.
 ") AdvApp2Var_Network;
 		 AdvApp2Var_Network(const NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> & Net, const TColStd_SequenceOfReal & TheU, const TColStd_SequenceOfReal & TheV);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePatch %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AdvApp2Var_Network::ChangePatch ******/
 		/****** md5 signature: 8777869a74e6cc79cfda0879af40109a ******/
 		%feature("compactdefaultargs") ChangePatch;
@@ -2628,6 +2643,11 @@ No available documentation.
 ") NbPatchInV;
 		int NbPatchInV();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Patch %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AdvApp2Var_Network::Patch ******/
 		/****** md5 signature: a1b9839e0f55e33f99ccfe66d2a475ec ******/
 		%feature("compactdefaultargs") Patch;

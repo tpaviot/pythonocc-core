@@ -287,6 +287,11 @@ Returns bounding box of object correspondingly to its current display mode. This
 ") BoundingBox;
 		virtual void BoundingBox(Bnd_Box & theBndBox);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Children %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsMgr_PresentableObject::Children ******/
 		/****** md5 signature: d66182f2538dc4b34e838e891cb2be5a ******/
 		%feature("compactdefaultargs") Children;
@@ -657,6 +662,11 @@ Returns the current material setting as enumeration value.
 ") Material;
 		virtual Graphic3d_NameOfMaterial Material();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parent %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsMgr_PresentableObject::Parent ******/
 		/****** md5 signature: b281c508616907c678ce34cfa2fc8478 ******/
 		%feature("compactdefaultargs") Parent;
@@ -689,6 +699,11 @@ Retrieves current polygon offsets settings from <myDrawer>.
 ") PolygonOffsets;
 		virtual void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Presentations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsMgr_PresentableObject::Presentations ******/
 		/****** md5 signature: 63d2d7cbc1af52c85561918c0cfe1293 ******/
 		%feature("compactdefaultargs") Presentations;
@@ -1643,6 +1658,11 @@ No available documentation.
 ") MustBeUpdated;
 		bool MustBeUpdated();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Presentation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsMgr_Presentation::Presentation ******/
 		/****** md5 signature: b7e1666dbf5d4a095a7ae27febdcee77 ******/
 		%feature("compactdefaultargs") Presentation;

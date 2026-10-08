@@ -924,6 +924,11 @@ Creates a reader tool and attaches it to an already existing Session Clears the 
 ") STEPCAFControl_Reader;
 		 STEPCAFControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const bool scratch = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeReader %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Reader::ChangeReader ******/
 		/****** md5 signature: e5175f7e2460ff7f3db947662febd54a ******/
 		%feature("compactdefaultargs") ChangeReader;
@@ -956,6 +961,11 @@ Returns data on external file by its name Returns False if no external file with
 ") ExternFile;
 		bool ExternFile(const char * const name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExternFiles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Reader::ExternFiles ******/
 		/****** md5 signature: 1154c88bc3253c7291077317c11363ab ******/
 		%feature("compactdefaultargs") ExternFiles;
@@ -1107,6 +1117,11 @@ No available documentation.
 ") GetSHUOMode;
 		bool GetSHUOMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Reader::GetShapeFixParameters ******/
 		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -1134,6 +1149,11 @@ No available documentation.
 ") GetShapeLabelMap;
 		const NCollection_DataMap<TopoDS_Shape, TDF_Label, TopTools_ShapeMapHasher> GetShapeLabelMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Reader::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;
@@ -1339,6 +1359,11 @@ Return: read status.
 ") ReadStream;
 		IFSelect_ReturnStatus ReadStream(const char * const theName, std::istream & theIStream);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Reader %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Reader::Reader ******/
 		/****** md5 signature: c54201c04d6a5ca89c65eb2fb14b8396 ******/
 		%feature("compactdefaultargs") Reader;
@@ -1695,6 +1720,11 @@ Creates a reader tool and attaches it to an already existing Session Clears the 
 ") STEPCAFControl_Writer;
 		 STEPCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & theWS, const bool theScratch = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeWriter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Writer::ChangeWriter ******/
 		/****** md5 signature: acee09144e4dec42ed602fde52975129 ******/
 		%feature("compactdefaultargs") ChangeWriter;
@@ -1746,6 +1776,11 @@ Returns data on external file by its name Returns False if no external file with
 ") ExternFile;
 		bool ExternFile(const char * const theName, opencascade::handle<STEPCAFControl_ExternFile> & theExtFile);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExternFiles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Writer::ExternFiles ******/
 		/****** md5 signature: 08a0b41df731275c7119f8910e47970c ******/
 		%feature("compactdefaultargs") ExternFiles;
@@ -1877,6 +1912,11 @@ No available documentation.
 ") GetSHUOMode;
 		bool GetSHUOMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Writer::GetShapeFixParameters ******/
 		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -1891,6 +1931,11 @@ Return: the parameters for shape processing. Empty map if no parameters were set
 ") GetShapeFixParameters;
 		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Writer::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;
@@ -2425,6 +2470,11 @@ Writes all the produced models into the stream. Provided for use like single-fil
 ") WriteStream;
 		IFSelect_ReturnStatus WriteStream(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Writer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPCAFControl_Writer::Writer ******/
 		/****** md5 signature: 056d4f3221d283b7d58d92ddd5c40dd7 ******/
 		%feature("compactdefaultargs") Writer;

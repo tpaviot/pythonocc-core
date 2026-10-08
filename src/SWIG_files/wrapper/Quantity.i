@@ -2455,6 +2455,11 @@ Returns the Red component (quantity of red) of the color within range [0.0; 1.0]
 ") Red;
 		double Red();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Rgb %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Quantity_Color::Rgb ******/
 		/****** md5 signature: ee575dd4e83971ddd2d2db2204b4fa95 ******/
 		%feature("compactdefaultargs") Rgb;
@@ -2778,6 +2783,11 @@ Return alpha value (1.0 means opaque, 0.0 means fully transparent).
 ") Alpha;
 		float Alpha();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeRGB %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Quantity_ColorRGBA::ChangeRGB ******/
 		/****** md5 signature: d0a8336ba1f1e7424a5fca39c1dd472b ******/
 		%feature("compactdefaultargs") ChangeRGB;
@@ -2913,6 +2923,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRGB %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Quantity_ColorRGBA::GetRGB ******/
 		/****** md5 signature: fc8b9546bc48b02d440b799dc79ad00c ******/
 		%feature("compactdefaultargs") GetRGB;
@@ -3870,7 +3885,13 @@ class Quantity_HArray1OfColor : public NCollection_Array1<Quantity_Color>, publi
     Quantity_HArray1OfColor(const Standard_Integer theLower, const Standard_Integer theUpper);
     Quantity_HArray1OfColor(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Quantity_Color>::value_type& theValue);
     Quantity_HArray1OfColor(const NCollection_Array1<Quantity_Color>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Quantity_Color>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Quantity_Color>& ChangeArray1();
 };
 %make_alias(Quantity_HArray1OfColor)

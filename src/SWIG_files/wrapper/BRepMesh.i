@@ -369,6 +369,11 @@ Parameter theCircle circle to be added.
 ") Bind;
 		void Bind(const int theIndex, const BRepMesh_Circle & theCircle);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Circle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_CircleInspector::Circle ******/
 		/****** md5 signature: 7dd1c40fd1f62b13f9dc0370b4519992 ******/
 		%feature("compactdefaultargs") Circle;
@@ -389,6 +394,11 @@ Return: circle with the given index.
 ") Circle;
 		BRepMesh_Circle & Circle(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Circles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_CircleInspector::Circles ******/
 		/****** md5 signature: 5715a9c41d841e4058a32bbf582cd2f3 ******/
 		%feature("compactdefaultargs") Circles;
@@ -421,6 +431,11 @@ No available documentation.
 ") Coord;
 		static double Coord(int i, const Point & thePnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShotCircles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_CircleInspector::GetShotCircles ******/
 		/****** md5 signature: c1409009f8ad619775420c881c945c8f ******/
 		%feature("compactdefaultargs") GetShotCircles;
@@ -707,6 +722,11 @@ Parameter theIndex index a zero circle should be bound with.
 ") MocBind;
 		void MocBind(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Select %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_CircleTool::Select ******/
 		/****** md5 signature: 42d7f08c8f789406b882043c70333ebd ******/
 		%feature("compactdefaultargs") Select;
@@ -1181,6 +1201,11 @@ Parameter theElement element which nodes should be retrieved. @param[out] theNod
 ") ElementNodes;
 		void ElementNodes(const BRepMesh_Triangle & theElement, int ( & theNodes )[3]);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ElementsConnectedTo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::ElementsConnectedTo ******/
 		/****** md5 signature: c0b1229b5a3bab9e70b56e8cba8c0a75 ******/
 		%feature("compactdefaultargs") ElementsConnectedTo;
@@ -1201,6 +1226,11 @@ Return: indices of elements connected to the link.
 ") ElementsConnectedTo;
 		const BRepMesh_PairOfIndex & ElementsConnectedTo(const int theLinkIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ElementsOfDomain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::ElementsOfDomain ******/
 		/****** md5 signature: 69b3fc4ed234e9f90fe6024d34e76746 ******/
 		%feature("compactdefaultargs") ElementsOfDomain;
@@ -1214,6 +1244,11 @@ Returns map of indices of elements registered in mesh.
 ") ElementsOfDomain;
 		const IMeshData::MapOfInteger & ElementsOfDomain();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetElement %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::GetElement ******/
 		/****** md5 signature: d4a052a27e671f7350a62922db2c7c26 ******/
 		%feature("compactdefaultargs") GetElement;
@@ -1234,6 +1269,11 @@ Return: element with the given index.
 ") GetElement;
 		const BRepMesh_Triangle & GetElement(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLink %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::GetLink ******/
 		/****** md5 signature: 9ac5252ee326a7e771fe912295ff7053 ******/
 		%feature("compactdefaultargs") GetLink;
@@ -1254,6 +1294,11 @@ Return: link with the given index.
 ") GetLink;
 		const BRepMesh_Edge & GetLink(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetNode %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::GetNode ******/
 		/****** md5 signature: 893dfab6d9d6306db50ac7e0ac274341 ******/
 		%feature("compactdefaultargs") GetNode;
@@ -1314,6 +1359,11 @@ Return: index of the given element of zero if link is not in the mesh.
 ") IndexOf;
 		int IndexOf(const BRepMesh_Edge & theLink);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LinksConnectedTo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::LinksConnectedTo ******/
 		/****** md5 signature: 48e97084398ab557645d9247012fb26f ******/
 		%feature("compactdefaultargs") LinksConnectedTo;
@@ -1334,6 +1384,11 @@ Return: list of links attached to the node.
 ") LinksConnectedTo;
 		const IMeshData::ListOfInteger & LinksConnectedTo(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LinksOfDomain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DataStructureOfDelaun::LinksOfDomain ******/
 		/****** md5 signature: 912b45a268b81eb750fcd0b09b5744a5 ******/
 		%feature("compactdefaultargs") LinksOfDomain;
@@ -1573,6 +1628,11 @@ Updates discrete range of surface according to its geometric range.
 ") AdjustRange;
 		virtual void AdjustRange();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DefaultRangeSplitter::GetDFace ******/
 		/****** md5 signature: 66ba0efe4a5555cea366f7d6aabb3193 ******/
 		%feature("compactdefaultargs") GetDFace;
@@ -1586,6 +1646,11 @@ Returns face model.
 ") GetDFace;
 		const IMeshData::IFaceHandle & GetDFace();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDelta %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DefaultRangeSplitter::GetDelta ******/
 		/****** md5 signature: 5e1aacaf8255ec8e33949bde50a5a3c5 ******/
 		%feature("compactdefaultargs") GetDelta;
@@ -1599,6 +1664,11 @@ Returns delta.
 ") GetDelta;
 		const std::pair<double, double> & GetDelta();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRangeU %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DefaultRangeSplitter::GetRangeU ******/
 		/****** md5 signature: fd4b16fb478ff3bd674ea23273de4ddf ******/
 		%feature("compactdefaultargs") GetRangeU;
@@ -1612,6 +1682,11 @@ Returns U range.
 ") GetRangeU;
 		const std::pair<double, double> & GetRangeU();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRangeV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DefaultRangeSplitter::GetRangeV ******/
 		/****** md5 signature: f7b80dd32384711e09197c7847afdf3a ******/
 		%feature("compactdefaultargs") GetRangeV;
@@ -1638,6 +1713,11 @@ Returns surface.
 ") GetSurface;
 		const opencascade::handle<BRepAdaptor_Surface> & GetSurface();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetToleranceUV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DefaultRangeSplitter::GetToleranceUV ******/
 		/****** md5 signature: d9c83ef060afc1e15a6572d2846671b3 ******/
 		%feature("compactdefaultargs") GetToleranceUV;
@@ -2025,6 +2105,11 @@ Adds some vertices into the triangulation.
 ") AddVertices;
 		void AddVertices(IMeshData::VectorOfInteger & theVerticesIndices, const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Circles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_Delaun::Circles ******/
 		/****** md5 signature: 33d52e752207c405b226546e9af83859 ******/
 		%feature("compactdefaultargs") Circles;
@@ -2060,6 +2145,11 @@ Parameter theEdgeOn If it is != 0 the vertex lies onto the edge index returned t
 ") Contains;
 		bool Contains(const int theTriangleId, const BRepMesh_Vertex & theVertex, const double theSqTolerance, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_Delaun::GetEdge ******/
 		/****** md5 signature: cd9c34785e78fa92eb807ad4641fba69 ******/
 		%feature("compactdefaultargs") GetEdge;
@@ -2078,6 +2168,11 @@ Gives edge with the given index.
 ") GetEdge;
 		const BRepMesh_Edge & GetEdge(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTriangle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_Delaun::GetTriangle ******/
 		/****** md5 signature: 68f14f1b10b37bf3fb917db0b5a44795 ******/
 		%feature("compactdefaultargs") GetTriangle;
@@ -2096,6 +2191,11 @@ Gives triangle with the given index.
 ") GetTriangle;
 		const BRepMesh_Triangle & GetTriangle(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_Delaun::GetVertex ******/
 		/****** md5 signature: 76ada6c0fe2c5b7bc884f8f76fd16b2b ******/
 		%feature("compactdefaultargs") GetVertex;
@@ -2334,6 +2434,11 @@ Return: factory handle, or NULL if not found.
 ") FindFactory;
 		static opencascade::handle<BRepMesh_DiscretAlgoFactory> FindFactory(TCollection_AsciiString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DiscretAlgoFactory::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -2404,6 +2509,11 @@ Input parameter: theName name of the factory to unregister.
 %nodefaultctor BRepMesh_DiscretFactory;
 class BRepMesh_DiscretFactory {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_DiscretFactory::DefaultName ******/
 		/****** md5 signature: 9098ac4c9fc2d3e09ad2b84fe3c2e228 ******/
 		%feature("compactdefaultargs") DefaultName;
@@ -3757,6 +3867,11 @@ Adds a level of neighbours by edge the selector.
 ") AddNeighbours;
 		void AddNeighbours();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Elements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_SelectorOfDataStructureOfDelaun::Elements ******/
 		/****** md5 signature: f292154361efe8cff70b7224e0dd92bc ******/
 		%feature("compactdefaultargs") Elements;
@@ -3770,6 +3885,11 @@ Returns selected elements.
 ") Elements;
 		const IMeshData::MapOfInteger & Elements();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FrontierLinks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_SelectorOfDataStructureOfDelaun::FrontierLinks ******/
 		/****** md5 signature: e9fc3775f2eaeb5f9f3fb50a11ef1575 ******/
 		%feature("compactdefaultargs") FrontierLinks;
@@ -3801,6 +3921,11 @@ Initializes selector by the mesh.
 ") Initialize;
 		void Initialize(const opencascade::handle<BRepMesh_DataStructureOfDelaun> & theMesh);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Links %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_SelectorOfDataStructureOfDelaun::Links ******/
 		/****** md5 signature: 444dc2c6e495f4e680bd1e7ea076ff0b ******/
 		%feature("compactdefaultargs") Links;
@@ -3958,6 +4083,11 @@ Selects all neighboring elements of node with the given index.
 ") NeighboursOfNode;
 		void NeighboursOfNode(const int theNodeIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_SelectorOfDataStructureOfDelaun::Nodes ******/
 		/****** md5 signature: cc6f002fa70de151d7f5a1decc5ae05a ******/
 		%feature("compactdefaultargs") Nodes;
@@ -4923,6 +5053,11 @@ Returns index of point coinciding with regerence one.
 ") GetCoincidentPoint;
 		int GetCoincidentPoint();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetListOfDelPoints %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_VertexInspector::GetListOfDelPoints ******/
 		/****** md5 signature: 9164fa1026581bd683bb92f8b029f619 ******/
 		%feature("compactdefaultargs") GetListOfDelPoints;
@@ -4936,6 +5071,11 @@ Returns list with indexes of vertices that have movability attribute equal to BR
 ") GetListOfDelPoints;
 		const IMeshData::ListOfInteger & GetListOfDelPoints();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_VertexInspector::GetVertex ******/
 		/****** md5 signature: a60cc41aeebfb4392125ce0ea5ed2b2d ******/
 		%feature("compactdefaultargs") GetVertex;
@@ -5186,6 +5326,11 @@ Returns index of the given vertex.
 ") FindIndex;
 		int FindIndex(const BRepMesh_Vertex & theVertex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindKey %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_VertexTool::FindKey ******/
 		/****** md5 signature: 74ee41303ebd354cfed8afd08d135a6f ******/
 		%feature("compactdefaultargs") FindKey;
@@ -5204,6 +5349,11 @@ Returns vertex by the given index.
 ") FindKey;
 		const BRepMesh_Vertex & FindKey(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetListOfDelNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_VertexTool::GetListOfDelNodes ******/
 		/****** md5 signature: 2052380f0276c30f6b6945ebb21ced96 ******/
 		%feature("compactdefaultargs") GetListOfDelNodes;
@@ -5670,6 +5820,11 @@ Parameter theParameters - parameters of meshing.
 ") BRepMesh_IncrementalMesh;
 		 BRepMesh_IncrementalMesh(const TopoDS_Shape & theShape, const IMeshTools_Parameters & theParameters, const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_IncrementalMesh::ChangeParameters ******/
 		/****** md5 signature: 7d357d2d707ea7c6e435ce7944cdbaeb ******/
 		%feature("compactdefaultargs") ChangeParameters;
@@ -5746,6 +5901,11 @@ Returns multi-threading usage flag set by default in Discret() static method (th
 ") IsParallelDefault;
 		static bool IsParallelDefault();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_IncrementalMesh::Parameters ******/
 		/****** md5 signature: 80bd17a03936a7214968019ed0fbca90 ******/
 		%feature("compactdefaultargs") Parameters;
@@ -5923,6 +6083,11 @@ Constructor.
 ") BRepMesh_UVParamRangeSplitter;
 		 BRepMesh_UVParamRangeSplitter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetParametersU %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_UVParamRangeSplitter::GetParametersU ******/
 		/****** md5 signature: 5ee87ca295b7089622b34597ba0fa7dc ******/
 		%feature("compactdefaultargs") GetParametersU;
@@ -5949,6 +6114,11 @@ Returns U parameters.
 ") GetParametersU;
 		IMeshData::IMapOfReal & GetParametersU();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetParametersV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMesh_UVParamRangeSplitter::GetParametersV ******/
 		/****** md5 signature: 307ff0c2c9d7f6c020220dd1bb3fafcb ******/
 		%feature("compactdefaultargs") GetParametersV;

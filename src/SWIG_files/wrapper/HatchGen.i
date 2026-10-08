@@ -238,6 +238,11 @@ Dump of the domain.
 ") Dump;
 		void Dump(const int Index = 0);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HatchGen_Domain::FirstPoint ******/
 		/****** md5 signature: be005e1bb3197123a3b75f67921aaeca ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -277,6 +282,11 @@ Returns True if the domain has a second point.
 ") HasSecondPoint;
 		bool HasSecondPoint();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SecondPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HatchGen_Domain::SecondPoint ******/
 		/****** md5 signature: 63b2b16d6a3a3cea84f761a97c9e1c18 ******/
 		%feature("compactdefaultargs") SecondPoint;
@@ -932,6 +942,11 @@ Returns the number of elements intersecting the hatching at this point.
 ") NbPoints;
 		int NbPoints();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HatchGen_PointOnHatching::Point ******/
 		/****** md5 signature: b2a24b7a9a49b9868b905f1f24e4aecf ******/
 		%feature("compactdefaultargs") Point;

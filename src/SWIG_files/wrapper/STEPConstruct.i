@@ -916,6 +916,11 @@ No available documentation.
 ") STEPConstruct_ContextTool;
 		 STEPConstruct_ContextTool(const opencascade::handle<StepData_StepModel> & aStepModel);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AP203Context %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPConstruct_ContextTool::AP203Context ******/
 		/****** md5 signature: 8779001f2e80b0238c76a70e8433d9cb ******/
 		%feature("compactdefaultargs") AP203Context;
@@ -2687,6 +2692,11 @@ Returns FinderProcess (writing; Null if not loaded).
 ") FinderProcess;
 		const opencascade::handle<Transfer_FinderProcess> & FinderProcess();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** STEPConstruct_Tool::Graph ******/
 		/****** md5 signature: af6e4a9812f6c4fed3a23f335378b72e ******/
 		%feature("compactdefaultargs") Graph;

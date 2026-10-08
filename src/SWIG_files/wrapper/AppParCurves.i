@@ -1274,6 +1274,11 @@ Prints on the stream o information on the current state of the object. Is used t
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Knots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppParCurves_MultiBSpCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
@@ -1287,6 +1292,11 @@ Returns an array of Reals containing the multiplicities of curves resulting from
 ") Knots;
 		const TColStd_Array1OfReal & Knots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Multiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppParCurves_MultiBSpCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
@@ -1392,7 +1402,13 @@ class AppParCurves_HArray1OfConstraintCouple : public NCollection_Array1<AppParC
     AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper);
     AppParCurves_HArray1OfConstraintCouple(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppParCurves_ConstraintCouple>::value_type& theValue);
     AppParCurves_HArray1OfConstraintCouple(const NCollection_Array1<AppParCurves_ConstraintCouple>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<AppParCurves_ConstraintCouple>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<AppParCurves_ConstraintCouple>& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfConstraintCouple)
@@ -1403,7 +1419,13 @@ class AppParCurves_HArray1OfMultiBSpCurve : public NCollection_Array1<AppParCurv
     AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     AppParCurves_HArray1OfMultiBSpCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppParCurves_MultiBSpCurve>::value_type& theValue);
     AppParCurves_HArray1OfMultiBSpCurve(const NCollection_Array1<AppParCurves_MultiBSpCurve>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<AppParCurves_MultiBSpCurve>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<AppParCurves_MultiBSpCurve>& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiBSpCurve)
@@ -1414,7 +1436,13 @@ class AppParCurves_HArray1OfMultiCurve : public NCollection_Array1<AppParCurves_
     AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     AppParCurves_HArray1OfMultiCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppParCurves_MultiCurve>::value_type& theValue);
     AppParCurves_HArray1OfMultiCurve(const NCollection_Array1<AppParCurves_MultiCurve>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<AppParCurves_MultiCurve>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<AppParCurves_MultiCurve>& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiCurve)
@@ -1425,7 +1453,13 @@ class AppParCurves_HArray1OfMultiPoint : public NCollection_Array1<AppParCurves_
     AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
     AppParCurves_HArray1OfMultiPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppParCurves_MultiPoint>::value_type& theValue);
     AppParCurves_HArray1OfMultiPoint(const NCollection_Array1<AppParCurves_MultiPoint>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<AppParCurves_MultiPoint>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<AppParCurves_MultiPoint>& ChangeArray1();
 };
 %make_alias(AppParCurves_HArray1OfMultiPoint)

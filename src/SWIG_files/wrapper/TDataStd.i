@@ -319,6 +319,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_AsciiString::Get ******/
 		/****** md5 signature: 94caccb04996b56934ce7de2990ed44f ******/
 		%feature("compactdefaultargs") Get;
@@ -345,6 +350,11 @@ class methods ============= Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_AsciiString::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -589,6 +599,11 @@ Static methods ============== Returns an ID for array.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_BooleanArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -987,6 +1002,11 @@ Static methods ============== Returns the ID of the list of booleans attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_BooleanList::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1064,6 +1084,11 @@ No available documentation.
 ") Last;
 		bool Last();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_BooleanList::List ******/
 		/****** md5 signature: de436db6056d31c6f6f74de2e77bf87a ******/
 		%feature("compactdefaultargs") List;
@@ -1361,6 +1386,11 @@ Static methods ============== Returns an ID for array.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ByteArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1870,6 +1900,11 @@ returns True if a current label is managed in <acces> Framework. class methods =
 ") Has;
 		static bool Has(const TDF_Label & acces);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Current::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2271,6 +2306,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetExpression %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Expression::GetExpression ******/
 		/****** md5 signature: fdf0cd52b1c54e1dcbcfca5ccc5ef545 ******/
 		%feature("compactdefaultargs") GetExpression;
@@ -2297,6 +2337,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetVariables %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Expression::GetVariables ******/
 		/****** md5 signature: bf9d30ce9cc8c37e15f30e0bd7a60bdf ******/
 		%feature("compactdefaultargs") GetVariables;
@@ -2310,6 +2355,11 @@ No available documentation.
 ") GetVariables;
 		TDF_AttributeList & GetVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Expression::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2565,6 +2615,11 @@ class methods ============= Returns the GUID for the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2797,6 +2852,11 @@ Return the upper bound.
 ") Upper;
 		int Upper();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringArray::Value ******/
 		/****** md5 signature: 82c9525e923f83a69b50a33747c0aea0 ******/
 		%feature("compactdefaultargs") Value;
@@ -2926,6 +2986,11 @@ No available documentation.
 ") Extent;
 		int Extent();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend First %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringList::First ******/
 		/****** md5 signature: 3f1d3d89a785e40474e1a5651c9efbec ******/
 		%feature("compactdefaultargs") First;
@@ -2952,6 +3017,11 @@ Static methods ============== Returns the ID of the list of strings attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringList::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3054,6 +3124,11 @@ No available documentation.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Last %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringList::Last ******/
 		/****** md5 signature: bbe7512cc0b24fd20ee696e0517ad9d2 ******/
 		%feature("compactdefaultargs") Last;
@@ -3067,6 +3142,11 @@ No available documentation.
 ") Last;
 		const TCollection_ExtendedString & Last();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ExtStringList::List ******/
 		/****** md5 signature: 382533ae060729c41c05beadf9be0cfd ******/
 		%feature("compactdefaultargs") List;
@@ -3365,6 +3445,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_GenericExtString::Get ******/
 		/****** md5 signature: 6726215b59dbe05bdd2f7d1863007996 ******/
 		%feature("compactdefaultargs") Get;
@@ -3378,6 +3463,11 @@ Returns the name contained in this name attribute.
 ") Get;
 		virtual const TCollection_ExtendedString & Get();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_GenericExtString::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3516,6 +3606,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringByte;
 		 TDataStd_HDataMapOfStringByte(const TDataStd_DataMapOfStringByte & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringByte::ChangeMap ******/
 		/****** md5 signature: f25d2fa3a6be2c71ea4bb6a4b353bbcc ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3529,6 +3624,11 @@ No available documentation.
 ") ChangeMap;
 		TDataStd_DataMapOfStringByte & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringByte::Map ******/
 		/****** md5 signature: 5e6a1284ff530878fb79a84804e5fd36 ******/
 		%feature("compactdefaultargs") Map;
@@ -3594,6 +3694,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfInteger;
 		 TDataStd_HDataMapOfStringHArray1OfInteger(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger> > & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::ChangeMap ******/
 		/****** md5 signature: 7b884a7f6270351f39baeb1630165358 ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3607,6 +3712,11 @@ No available documentation.
 ") ChangeMap;
 		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringHArray1OfInteger::Map ******/
 		/****** md5 signature: e71d4bf5539a22163368464c550ac4d0 ******/
 		%feature("compactdefaultargs") Map;
@@ -3672,6 +3782,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringHArray1OfReal;
 		 TDataStd_HDataMapOfStringHArray1OfReal(const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal> > & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::ChangeMap ******/
 		/****** md5 signature: 2299b3cdec329e77bd0cdecc056632d2 ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3685,6 +3800,11 @@ No available documentation.
 ") ChangeMap;
 		NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringHArray1OfReal::Map ******/
 		/****** md5 signature: d0990736972c1d8354f84f1a4ed0e974 ******/
 		%feature("compactdefaultargs") Map;
@@ -3750,6 +3870,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringInteger;
 		 TDataStd_HDataMapOfStringInteger(const TColStd_DataMapOfStringInteger & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringInteger::ChangeMap ******/
 		/****** md5 signature: bbc64500a252b5d1177543f20cf828cd ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3763,6 +3888,11 @@ No available documentation.
 ") ChangeMap;
 		TColStd_DataMapOfStringInteger & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringInteger::Map ******/
 		/****** md5 signature: ea6f9bd2903ee4e7de326f59f5f7fe0b ******/
 		%feature("compactdefaultargs") Map;
@@ -3828,6 +3958,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringReal;
 		 TDataStd_HDataMapOfStringReal(const TDataStd_DataMapOfStringReal & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringReal::ChangeMap ******/
 		/****** md5 signature: 62dbc4dc76d69ed8d81e7b8ce6e53760 ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3841,6 +3976,11 @@ No available documentation.
 ") ChangeMap;
 		TDataStd_DataMapOfStringReal & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringReal::Map ******/
 		/****** md5 signature: c06e389766508e1ad1efbf382f7c67a5 ******/
 		%feature("compactdefaultargs") Map;
@@ -3906,6 +4046,11 @@ No available documentation.
 ") TDataStd_HDataMapOfStringString;
 		 TDataStd_HDataMapOfStringString(const TDataStd_DataMapOfStringString & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringString::ChangeMap ******/
 		/****** md5 signature: 04004d52a8d232412fb2730b8d63f1ea ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3919,6 +4064,11 @@ No available documentation.
 ") ChangeMap;
 		TDataStd_DataMapOfStringString & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_HDataMapOfStringString::Map ******/
 		/****** md5 signature: ac2be5d3f36be6a3b1a4b00bcfd8048a ******/
 		%feature("compactdefaultargs") Map;
@@ -4154,6 +4304,11 @@ class methods ============= Returns the GUID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_IntPackedMap::GetMap ******/
 		/****** md5 signature: a9371f625855767a17c749d635a51f1e ******/
 		%feature("compactdefaultargs") GetMap;
@@ -4167,6 +4322,11 @@ No available documentation.
 ") GetMap;
 		const TColStd_PackedMapOfInteger & GetMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_IntPackedMap::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -4391,6 +4551,11 @@ class methods ============= Returns the GUID for integers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Integer::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -4698,6 +4863,11 @@ class methods ============= Returns the GUID for arrays of integers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_IntegerArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -5085,6 +5255,11 @@ Static methods ============== Returns the ID of the list of integer attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_IntegerList::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -5200,6 +5375,11 @@ No available documentation.
 ") Last;
 		int Last();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_IntegerList::List ******/
 		/****** md5 signature: ad47c2b9326a15179c03efbac077ad1d ******/
 		%feature("compactdefaultargs") List;
@@ -5609,6 +5789,11 @@ Returns the named array of real values. It returns a NULL Handle if there is no 
 ") GetArrayOfReals;
 		const opencascade::handle<TColStd_HArray1OfReal> & GetArrayOfReals(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetArraysOfIntegersContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetArraysOfIntegersContainer ******/
 		/****** md5 signature: cf977acc7f469d36984569613d43db4a ******/
 		%feature("compactdefaultargs") GetArraysOfIntegersContainer;
@@ -5622,6 +5807,11 @@ Returns the internal container of named arrays of integer values.
 ") GetArraysOfIntegersContainer;
 		const NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> & GetArraysOfIntegersContainer();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetArraysOfRealsContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetArraysOfRealsContainer ******/
 		/****** md5 signature: 61ebbbc5b18d4639a6832102c99db856 ******/
 		%feature("compactdefaultargs") GetArraysOfRealsContainer;
@@ -5653,6 +5843,11 @@ Returns the named byte. It returns 0 if there is no such a named byte (use HasBy
 ") GetByte;
 		uint8_t GetByte(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBytesContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetBytesContainer ******/
 		/****** md5 signature: af46b7287dafb3f2965c413cf4ffb0c7 ******/
 		%feature("compactdefaultargs") GetBytesContainer;
@@ -5697,6 +5892,11 @@ Returns the integer value specified by the Name. It returns 0 if internal map do
 ") GetInteger;
 		int GetInteger(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetIntegersContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetIntegersContainer ******/
 		/****** md5 signature: 05369bbd458091ec5769292fd92ff0fd ******/
 		%feature("compactdefaultargs") GetIntegersContainer;
@@ -5728,6 +5928,11 @@ Returns the named real. It returns 0.0 if there is no such a named real (use Has
 ") GetReal;
 		double GetReal(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRealsContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetRealsContainer ******/
 		/****** md5 signature: 959506b3399d93d6ff47d9ffff7a92d4 ******/
 		%feature("compactdefaultargs") GetRealsContainer;
@@ -5741,6 +5946,11 @@ Returns the internal container of named reals.
 ") GetRealsContainer;
 		const TDataStd_DataMapOfStringReal & GetRealsContainer();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetString ******/
 		/****** md5 signature: 431d366e9e5181ba3f9d7b2cb04484f9 ******/
 		%feature("compactdefaultargs") GetString;
@@ -5759,6 +5969,11 @@ Returns the named string. It returns an empty string if there is no such a named
 ") GetString;
 		const TCollection_ExtendedString & GetString(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetStringsContainer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::GetStringsContainer ******/
 		/****** md5 signature: 802a49ca0d08caca9ed096b9786ff325 ******/
 		%feature("compactdefaultargs") GetStringsContainer;
@@ -5971,6 +6186,11 @@ Returns true if there are some named strings in the attribute.
 ") HasStrings;
 		bool HasStrings();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NamedData::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -6437,6 +6657,11 @@ class methods ============= Returns the default GUID for real numbers.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Real::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -6762,6 +6987,11 @@ class methods ============= Returns the GUID for arrays of reals.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_RealArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7149,6 +7379,11 @@ Static methods ============== Returns the ID of the list of doubles attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_RealList::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7264,6 +7499,11 @@ No available documentation.
 ") Last;
 		double Last();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_RealList::List ******/
 		/****** md5 signature: 600c8dc236df1b669c8ec10ec605286e ******/
 		%feature("compactdefaultargs") List;
@@ -7529,6 +7769,11 @@ Static methods ============== Returns the ID of the array of references (labels)
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ReferenceArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -7920,6 +8165,11 @@ No available documentation.
 ") Extent;
 		int Extent();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend First %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ReferenceList::First ******/
 		/****** md5 signature: fc0dfb1b8118d546191271893de453b4 ******/
 		%feature("compactdefaultargs") First;
@@ -7946,6 +8196,11 @@ Static methods ============== Returns the ID of the list of references (labels) 
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ReferenceList::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -8048,6 +8303,11 @@ No available documentation.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Last %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ReferenceList::Last ******/
 		/****** md5 signature: af545a63ea1ddbfde05f358f8ed64bbf ******/
 		%feature("compactdefaultargs") Last;
@@ -8061,6 +8321,11 @@ No available documentation.
 ") Last;
 		const TDF_Label & Last();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend List %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_ReferenceList::List ******/
 		/****** md5 signature: 16efd318043eba5da1394db415346b14 ******/
 		%feature("compactdefaultargs") List;
@@ -8575,6 +8840,11 @@ Returns true if this tree node attribute has a previous tree node.
 ") HasPrevious;
 		bool HasPrevious();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_TreeNode::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -9090,6 +9360,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_UAttribute::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -9358,6 +9633,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Variable::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -9423,6 +9703,11 @@ returns True if a Real attribute is associated.
 ") IsValued;
 		bool IsValued();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Variable::Name ******/
 		/****** md5 signature: b8987714305e6d22bbd8f16f26c9c23b ******/
 		%feature("compactdefaultargs") Name;
@@ -9590,6 +9875,11 @@ No available documentation.
 ") Set;
 		void Set(const double value, const TDataStd_RealEnum dimension);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Unit %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Variable::Unit ******/
 		/****** md5 signature: ff494f2fc5727fcec0378c41ef16d7cb ******/
 		%feature("compactdefaultargs") Unit;
@@ -9862,6 +10152,11 @@ Directory methods ===============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Directory::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10174,6 +10469,11 @@ NoteBook methods ===============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_NoteBook::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10285,6 +10585,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRelation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Relation::GetRelation ******/
 		/****** md5 signature: 9a760a60866ee882febabe61f33bef73 ******/
 		%feature("compactdefaultargs") GetRelation;
@@ -10298,6 +10603,11 @@ No available documentation.
 ") GetRelation;
 		const TCollection_ExtendedString & GetRelation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Relation::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10406,6 +10716,11 @@ Static methods ==============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataStd_Tick::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -10455,7 +10770,13 @@ class TDataStd_HLabelArray1 : public NCollection_Array1<TDF_Label>, public Stand
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
     TDataStd_HLabelArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TDF_Label>::value_type& theValue);
     TDataStd_HLabelArray1(const NCollection_Array1<TDF_Label>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TDF_Label>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TDF_Label>& ChangeArray1();
 };
 %make_alias(TDataStd_HLabelArray1)

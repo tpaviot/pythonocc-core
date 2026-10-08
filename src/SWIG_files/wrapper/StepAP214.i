@@ -1225,6 +1225,11 @@ No available documentation.
 ") Items;
 		opencascade::handle<NCollection_HArray1<StepAP214_SecurityClassificationItem>> Items();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ItemsValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepAP214_AppliedSecurityClassificationAssignment::ItemsValue ******/
 		/****** md5 signature: 2608293d193da5a5163d34b04b63c3a2 ******/
 		%feature("compactdefaultargs") ItemsValue;
@@ -5763,7 +5768,13 @@ class StepAP214_HArray1OfApprovalItem : public NCollection_Array1<StepAP214_Appr
     StepAP214_HArray1OfApprovalItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfApprovalItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_ApprovalItem>::value_type& theValue);
     StepAP214_HArray1OfApprovalItem(const NCollection_Array1<StepAP214_ApprovalItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_ApprovalItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_ApprovalItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfApprovalItem)
@@ -5774,7 +5785,13 @@ class StepAP214_HArray1OfAutoDesignDateAndPersonItem : public NCollection_Array1
     StepAP214_HArray1OfAutoDesignDateAndPersonItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignDateAndPersonItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignDateAndPersonItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignDateAndPersonItem(const NCollection_Array1<StepAP214_AutoDesignDateAndPersonItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignDateAndPersonItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignDateAndPersonItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndPersonItem)
@@ -5785,7 +5802,13 @@ class StepAP214_HArray1OfAutoDesignDateAndTimeItem : public NCollection_Array1<S
     StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignDateAndTimeItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignDateAndTimeItem(const NCollection_Array1<StepAP214_AutoDesignDateAndTimeItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignDateAndTimeItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignDateAndTimeItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDateAndTimeItem)
@@ -5796,7 +5819,13 @@ class StepAP214_HArray1OfAutoDesignDatedItem : public NCollection_Array1<StepAP2
     StepAP214_HArray1OfAutoDesignDatedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignDatedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignDatedItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignDatedItem(const NCollection_Array1<StepAP214_AutoDesignDatedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignDatedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignDatedItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignDatedItem)
@@ -5807,7 +5836,13 @@ class StepAP214_HArray1OfAutoDesignGeneralOrgItem : public NCollection_Array1<St
     StepAP214_HArray1OfAutoDesignGeneralOrgItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignGeneralOrgItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignGeneralOrgItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignGeneralOrgItem(const NCollection_Array1<StepAP214_AutoDesignGeneralOrgItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignGeneralOrgItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignGeneralOrgItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignGeneralOrgItem)
@@ -5818,7 +5853,13 @@ class StepAP214_HArray1OfAutoDesignGroupedItem : public NCollection_Array1<StepA
     StepAP214_HArray1OfAutoDesignGroupedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignGroupedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignGroupedItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignGroupedItem(const NCollection_Array1<StepAP214_AutoDesignGroupedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignGroupedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignGroupedItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignGroupedItem)
@@ -5829,7 +5870,13 @@ class StepAP214_HArray1OfAutoDesignPresentedItemSelect : public NCollection_Arra
     StepAP214_HArray1OfAutoDesignPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignPresentedItemSelect>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignPresentedItemSelect(const NCollection_Array1<StepAP214_AutoDesignPresentedItemSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignPresentedItemSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignPresentedItemSelect>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignPresentedItemSelect)
@@ -5840,7 +5887,13 @@ class StepAP214_HArray1OfAutoDesignReferencingItem : public NCollection_Array1<S
     StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfAutoDesignReferencingItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_AutoDesignReferencingItem>::value_type& theValue);
     StepAP214_HArray1OfAutoDesignReferencingItem(const NCollection_Array1<StepAP214_AutoDesignReferencingItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_AutoDesignReferencingItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_AutoDesignReferencingItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfAutoDesignReferencingItem)
@@ -5851,7 +5904,13 @@ class StepAP214_HArray1OfDateAndTimeItem : public NCollection_Array1<StepAP214_D
     StepAP214_HArray1OfDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfDateAndTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_DateAndTimeItem>::value_type& theValue);
     StepAP214_HArray1OfDateAndTimeItem(const NCollection_Array1<StepAP214_DateAndTimeItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_DateAndTimeItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_DateAndTimeItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDateAndTimeItem)
@@ -5862,7 +5921,13 @@ class StepAP214_HArray1OfDateItem : public NCollection_Array1<StepAP214_DateItem
     StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfDateItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_DateItem>::value_type& theValue);
     StepAP214_HArray1OfDateItem(const NCollection_Array1<StepAP214_DateItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_DateItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_DateItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDateItem)
@@ -5873,7 +5938,13 @@ class StepAP214_HArray1OfDocumentReferenceItem : public NCollection_Array1<StepA
     StepAP214_HArray1OfDocumentReferenceItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfDocumentReferenceItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_DocumentReferenceItem>::value_type& theValue);
     StepAP214_HArray1OfDocumentReferenceItem(const NCollection_Array1<StepAP214_DocumentReferenceItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_DocumentReferenceItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_DocumentReferenceItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfDocumentReferenceItem)
@@ -5884,7 +5955,13 @@ class StepAP214_HArray1OfExternalIdentificationItem : public NCollection_Array1<
     StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfExternalIdentificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_ExternalIdentificationItem>::value_type& theValue);
     StepAP214_HArray1OfExternalIdentificationItem(const NCollection_Array1<StepAP214_ExternalIdentificationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_ExternalIdentificationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_ExternalIdentificationItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfExternalIdentificationItem)
@@ -5895,7 +5972,13 @@ class StepAP214_HArray1OfGroupItem : public NCollection_Array1<StepAP214_GroupIt
     StepAP214_HArray1OfGroupItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfGroupItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_GroupItem>::value_type& theValue);
     StepAP214_HArray1OfGroupItem(const NCollection_Array1<StepAP214_GroupItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_GroupItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_GroupItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfGroupItem)
@@ -5906,7 +5989,13 @@ class StepAP214_HArray1OfOrganizationItem : public NCollection_Array1<StepAP214_
     StepAP214_HArray1OfOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_OrganizationItem>::value_type& theValue);
     StepAP214_HArray1OfOrganizationItem(const NCollection_Array1<StepAP214_OrganizationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_OrganizationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_OrganizationItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfOrganizationItem)
@@ -5917,7 +6006,13 @@ class StepAP214_HArray1OfPersonAndOrganizationItem : public NCollection_Array1<S
     StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfPersonAndOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_PersonAndOrganizationItem>::value_type& theValue);
     StepAP214_HArray1OfPersonAndOrganizationItem(const NCollection_Array1<StepAP214_PersonAndOrganizationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_PersonAndOrganizationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_PersonAndOrganizationItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfPersonAndOrganizationItem)
@@ -5928,7 +6023,13 @@ class StepAP214_HArray1OfPresentedItemSelect : public NCollection_Array1<StepAP2
     StepAP214_HArray1OfPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfPresentedItemSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_PresentedItemSelect>::value_type& theValue);
     StepAP214_HArray1OfPresentedItemSelect(const NCollection_Array1<StepAP214_PresentedItemSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_PresentedItemSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_PresentedItemSelect>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfPresentedItemSelect)
@@ -5939,7 +6040,13 @@ class StepAP214_HArray1OfSecurityClassificationItem : public NCollection_Array1<
     StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP214_HArray1OfSecurityClassificationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP214_SecurityClassificationItem>::value_type& theValue);
     StepAP214_HArray1OfSecurityClassificationItem(const NCollection_Array1<StepAP214_SecurityClassificationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP214_SecurityClassificationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP214_SecurityClassificationItem>& ChangeArray1();
 };
 %make_alias(StepAP214_HArray1OfSecurityClassificationItem)

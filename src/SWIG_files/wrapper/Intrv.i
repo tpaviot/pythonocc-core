@@ -810,6 +810,11 @@ No available documentation.
 ") Unite;
 		void Unite(const Intrv_Intervals & Tool);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intrv_Intervals::Value ******/
 		/****** md5 signature: 3c8c1bb6f7513efff984f47eced98da8 ******/
 		%feature("compactdefaultargs") Value;

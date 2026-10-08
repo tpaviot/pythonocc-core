@@ -1915,9 +1915,15 @@ class TransferBRep_HSequenceOfTransferResultInfo : public NCollection_Sequence<o
   public:
     TransferBRep_HSequenceOfTransferResultInfo();
     TransferBRep_HSequenceOfTransferResultInfo(const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo>>& ChangeSequence();
 };
 %make_alias(TransferBRep_HSequenceOfTransferResultInfo)

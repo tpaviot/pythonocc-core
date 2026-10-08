@@ -1664,6 +1664,11 @@ No available documentation.
 ") Bezier;
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomAdaptor_TransformedCurve::ChangeCurve ******/
 		/****** md5 signature: b118739e4660ff86c2bcb1f9857a6112 ******/
 		%feature("compactdefaultargs") ChangeCurve;

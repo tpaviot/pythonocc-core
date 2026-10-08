@@ -1056,7 +1056,13 @@ class BRepAdaptor_HArray1OfCurve : public NCollection_Array1<BRepAdaptor_Curve>,
     BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     BRepAdaptor_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<BRepAdaptor_Curve>::value_type& theValue);
     BRepAdaptor_HArray1OfCurve(const NCollection_Array1<BRepAdaptor_Curve>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<BRepAdaptor_Curve>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<BRepAdaptor_Curve>& ChangeArray1();
 };
 %make_alias(BRepAdaptor_HArray1OfCurve)

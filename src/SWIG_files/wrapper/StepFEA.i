@@ -5768,7 +5768,13 @@ class StepFEA_HArray1OfCurveElementEndOffset : public NCollection_Array1<opencas
     StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfCurveElementEndOffset(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>::value_type& theValue);
     StepFEA_HArray1OfCurveElementEndOffset(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndOffset>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementEndOffset)
@@ -5779,7 +5785,13 @@ class StepFEA_HArray1OfCurveElementEndRelease : public NCollection_Array1<openca
     StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfCurveElementEndRelease(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>::value_type& theValue);
     StepFEA_HArray1OfCurveElementEndRelease(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepFEA_CurveElementEndRelease>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementEndRelease)
@@ -5790,7 +5802,13 @@ class StepFEA_HArray1OfCurveElementInterval : public NCollection_Array1<opencasc
     StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>::value_type& theValue);
     StepFEA_HArray1OfCurveElementInterval(const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepFEA_CurveElementInterval>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfCurveElementInterval)
@@ -5801,7 +5819,13 @@ class StepFEA_HArray1OfDegreeOfFreedom : public NCollection_Array1<StepFEA_Degre
     StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepFEA_DegreeOfFreedom>::value_type& theValue);
     StepFEA_HArray1OfDegreeOfFreedom(const NCollection_Array1<StepFEA_DegreeOfFreedom>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepFEA_DegreeOfFreedom>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepFEA_DegreeOfFreedom>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfDegreeOfFreedom)
@@ -5812,7 +5836,13 @@ class StepFEA_HArray1OfElementRepresentation : public NCollection_Array1<opencas
     StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfElementRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>::value_type& theValue);
     StepFEA_HArray1OfElementRepresentation(const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepFEA_ElementRepresentation>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfElementRepresentation)
@@ -5823,7 +5853,13 @@ class StepFEA_HArray1OfNodeRepresentation : public NCollection_Array1<opencascad
     StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>::value_type& theValue);
     StepFEA_HArray1OfNodeRepresentation(const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepFEA_NodeRepresentation>>& ChangeArray1();
 };
 %make_alias(StepFEA_HArray1OfNodeRepresentation)
@@ -5834,9 +5870,15 @@ class StepFEA_HSequenceOfCurve3dElementProperty : public NCollection_Sequence<op
   public:
     StepFEA_HSequenceOfCurve3dElementProperty();
     StepFEA_HSequenceOfCurve3dElementProperty(const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepFEA_Curve3dElementProperty>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfCurve3dElementProperty)
@@ -5846,9 +5888,15 @@ class StepFEA_HSequenceOfElementGeometricRelationship : public NCollection_Seque
   public:
     StepFEA_HSequenceOfElementGeometricRelationship();
     StepFEA_HSequenceOfElementGeometricRelationship(const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepFEA_ElementGeometricRelationship>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfElementGeometricRelationship)
@@ -5858,9 +5906,15 @@ class StepFEA_HSequenceOfElementRepresentation : public NCollection_Sequence<ope
   public:
     StepFEA_HSequenceOfElementRepresentation();
     StepFEA_HSequenceOfElementRepresentation(const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepFEA_ElementRepresentation>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfElementRepresentation)
@@ -5870,9 +5924,15 @@ class StepFEA_HSequenceOfNodeRepresentation : public NCollection_Sequence<openca
   public:
     StepFEA_HSequenceOfNodeRepresentation();
     StepFEA_HSequenceOfNodeRepresentation(const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepFEA_NodeRepresentation>>& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfNodeRepresentation)

@@ -341,6 +341,11 @@ class methods ============= Returns the GUID for an axis.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Axis::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -539,6 +544,11 @@ Returns the value of a dimension. This value is a reference to a TDataStd_Real a
 ") GetValue;
 		const opencascade::handle<TDataStd_Real> & GetValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Constraint::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1149,6 +1159,11 @@ Returns the type of geometric construction.
 ") GetType;
 		TDataXtd_GeometryEnum GetType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Geometry::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1446,6 +1461,11 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Pattern::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1472,6 +1492,11 @@ Give the number of transformation.
 ") NbTrsfs;
 		virtual int NbTrsfs();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PatternID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Pattern::PatternID ******/
 		/****** md5 signature: c7631383b69a6428ee1765b5abfe7cbf ******/
 		%feature("compactdefaultargs") PatternID;
@@ -1544,6 +1569,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Placement::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1634,6 +1664,11 @@ class methods ============= //! Returns the GUID for plane attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Plane::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1743,6 +1778,11 @@ class methods ============= //! Returns the GUID for point attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Point::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1867,6 +1907,11 @@ No available documentation.
 ") GetPosition;
 		const gp_Pnt GetPosition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Position::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2176,6 +2221,11 @@ No available documentation.
 ") HasOwnWidth;
 		bool HasOwnWidth();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Presentation::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2714,6 +2764,11 @@ Shape methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Shape::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2911,6 +2966,11 @@ Return: true if 2D nodes are associated with 3D nodes for this triangulation.
 ") HasUVNodes;
 		bool HasUVNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_Triangulation::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3555,6 +3615,11 @@ No available documentation.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PatternID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDataXtd_PatternStd::PatternID ******/
 		/****** md5 signature: d676497da949f06e76fa720cda1e529b ******/
 		%feature("compactdefaultargs") PatternID;
@@ -3733,7 +3798,13 @@ class TDataXtd_HArray1OfTrsf : public NCollection_Array1<gp_Trsf>, public Standa
     TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper);
     TDataXtd_HArray1OfTrsf(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Trsf>::value_type& theValue);
     TDataXtd_HArray1OfTrsf(const NCollection_Array1<gp_Trsf>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Trsf>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Trsf>& ChangeArray1();
 };
 %make_alias(TDataXtd_HArray1OfTrsf)

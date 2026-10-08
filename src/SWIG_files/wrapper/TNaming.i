@@ -1451,6 +1451,11 @@ No available documentation.
 ") TNaming_Localizer;
 		 TNaming_Localizer();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Ancestors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Localizer::Ancestors ******/
 		/****** md5 signature: d73e37d81752a22b53fef721c9d59b0c ******/
 		%feature("compactdefaultargs") Ancestors;
@@ -1631,6 +1636,11 @@ No available documentation.
 ") IsNew;
 		static bool IsNew(const TopoDS_Shape & S, const opencascade::handle<TNaming_NamedShape> & NS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Localizer::SubShapes ******/
 		/****** md5 signature: 550e2e29cd5b376642bb0d90572e9d2b ******/
 		%feature("compactdefaultargs") SubShapes;
@@ -1695,6 +1705,11 @@ No available documentation.
 ") Append;
 		void Append(const opencascade::handle<TNaming_NamedShape> & arg);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Name::Arguments ******/
 		/****** md5 signature: 75a6f03cd05bc2183fbc6eb2dea2d713 ******/
 		%feature("compactdefaultargs") Arguments;
@@ -1708,6 +1723,11 @@ No available documentation.
 ") Arguments;
 		const NCollection_List<opencascade::handle<TNaming_NamedShape>> & Arguments();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ContextLabel %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Name::ContextLabel ******/
 		/****** md5 signature: 9967b59a06d78957ec944381f315be12 ******/
 		%feature("compactdefaultargs") ContextLabel;
@@ -2214,6 +2234,11 @@ class method ============ Returns the GUID for named shapes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_NamedShape::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2368,6 +2393,11 @@ No available documentation.
 ") TNaming_Naming;
 		 TNaming_Naming();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Naming::ChangeName ******/
 		/****** md5 signature: f56a3dc2deefccbd731e242fd2faf15e ******/
 		%feature("compactdefaultargs") ChangeName;
@@ -2451,6 +2481,11 @@ following code from TDesignStd ==============================.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Naming::GetName ******/
 		/****** md5 signature: 797bac9ab1006319502b53ff025b7618 ******/
 		%feature("compactdefaultargs") GetName;
@@ -2464,6 +2499,11 @@ No available documentation.
 ") GetName;
 		const TNaming_Name & GetName();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Naming::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3336,6 +3376,11 @@ create a scope with a map. WithValid = True.
 ") TNaming_Scope;
 		 TNaming_Scope(TDF_LabelMap & valid);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValid %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Scope::ChangeValid ******/
 		/****** md5 signature: 63cd0badcf9e22af17402287a49925aa ******/
 		%feature("compactdefaultargs") ChangeValid;
@@ -3380,6 +3425,11 @@ Returns the current value of <NS> according to the Valid Scope.
 ") CurrentShape;
 		TopoDS_Shape CurrentShape(const opencascade::handle<TNaming_NamedShape> & NS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetValid %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Scope::GetValid ******/
 		/****** md5 signature: e544ee87bdeef2f9f564bf6e738a5f18 ******/
 		%feature("compactdefaultargs") GetValid;
@@ -3741,6 +3791,11 @@ Adds the shapes contained in <Shapes>.
 ") Add;
 		void Add(const TNaming_ShapesSet & Shapes);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_ShapesSet::ChangeMap ******/
 		/****** md5 signature: da61d145f7ca956cf9c91df5ae50d141 ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -3816,6 +3871,11 @@ No available documentation.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_ShapesSet::Map ******/
 		/****** md5 signature: 3415c6178bd13c963cd19f403eb65231 ******/
 		%feature("compactdefaultargs") Map;
@@ -4461,6 +4521,11 @@ No available documentation.
 ") Add;
 		void Add(const TopoDS_Shape & aShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Copied %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_Translator::Copied ******/
 		/****** md5 signature: e5699ddbbe3da727a49d616c89f9eac1 ******/
 		%feature("compactdefaultargs") Copied;
@@ -4686,6 +4751,11 @@ Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TNaming_UsedShapes::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;

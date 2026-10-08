@@ -729,6 +729,11 @@ Sets the parallel execution flag for sub-algorithms.
 ") SetParallel;
 		void SetParallel(const bool theIsParallel);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Status %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepCheck_Result::Status ******/
 		/****** md5 signature: 1152eb1652fc374cdee2fe6c9ce0f2e3 ******/
 		%feature("compactdefaultargs") Status;
@@ -742,6 +747,11 @@ No available documentation.
 ") Status;
 		const NCollection_List<BRepCheck_Status> & Status();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StatusOnShape %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepCheck_Result::StatusOnShape ******/
 		/****** md5 signature: 29c48b84f4ddc2a773281be9c481cda3 ******/
 		%feature("compactdefaultargs") StatusOnShape;

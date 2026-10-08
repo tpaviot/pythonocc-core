@@ -11,6 +11,11 @@ Current
 * wrapper: type stubs: HSequence Append(theItem) overload, Sequence Append and
   Prepend return None, scalar reference returns typed int or float
 
+* wrapper: an object returned by reference keeps its owner alive:
+  triangulation.MapNormalArray().Array1() or
+  GeomAPI_PointsToBSpline(points).Curve().Poles() read freed memory once
+  the temporary owner was collected (#1499)
+
 Version 8.0.1.1 - October 2026
 ==============================
 

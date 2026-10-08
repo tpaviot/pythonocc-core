@@ -255,6 +255,11 @@ Read name attribute from label.
 class RWMesh_CafReader : public Standard_Transient {
 	public:
 		class CafDocumentTools {};
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_CafReader::CoordinateSystemConverter ******/
 		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
@@ -281,6 +286,11 @@ Return target document.
 ") Document;
 		const opencascade::handle<TDocStd_Document> & Document();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExternalFiles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_CafReader::ExternalFiles ******/
 		/****** md5 signature: 1100efdc16f5df4da63f3649f3bae2f1 ******/
 		%feature("compactdefaultargs") ExternalFiles;
@@ -373,6 +383,11 @@ Return memory usage limit in MiB, -1 by default which means no limit.
 ") MemoryLimitMiB;
 		int MemoryLimitMiB();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Metadata %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_CafReader::Metadata ******/
 		/****** md5 signature: 6d5e574915076e887d2a87077e35b33a ******/
 		%feature("compactdefaultargs") Metadata;
@@ -464,6 +479,11 @@ Read the header data from specified file without reading entire model. The main 
 ") ProbeHeader;
 		bool ProbeHeader(std::istream & theStream, TCollection_AsciiString theFile = "", const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RootPrefix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_CafReader::RootPrefix ******/
 		/****** md5 signature: 23690698ed70038f8be604f633be3713 ******/
 		%feature("compactdefaultargs") RootPrefix;
@@ -1117,6 +1137,11 @@ Create texture folder 'modelName/textures'; for example: MODEL: Path/ModelName.g
 ") CreateTextureFolder;
 		virtual bool CreateTextureFolder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultStyle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_MaterialMap::DefaultStyle ******/
 		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;
@@ -1230,6 +1255,11 @@ class RWMesh_NodeAttributes {
 %nodefaultctor RWMesh_ShapeIterator;
 class RWMesh_ShapeIterator {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_ShapeIterator::Color ******/
 		/****** md5 signature: 3dcb129093b0c22e4d1f5785248243fd ******/
 		%feature("compactdefaultargs") Color;
@@ -1404,6 +1434,11 @@ Return shape.
 ") Shape;
 		virtual const TopoDS_Shape Shape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Style %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_ShapeIterator::Style ******/
 		/****** md5 signature: f129121eac5f5881a96faa4e8b3ae71b ******/
 		%feature("compactdefaultargs") Style;
@@ -1433,6 +1468,11 @@ Return shape material.
 class RWMesh_TriangulationReader : public Standard_Transient {
 	public:
 		class LoadingStatistic {};
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_TriangulationReader::CoordinateSystemConverter ******/
 		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
@@ -1446,6 +1486,11 @@ Returns coordinate system converter using for correct data loading.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FileName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_TriangulationReader::FileName ******/
 		/****** md5 signature: dcea16627fbfa6bf9869d62bc863af8e ******/
 		%feature("compactdefaultargs") FileName;
@@ -1735,6 +1780,11 @@ Returns True if triangulation has some geometry.
 ") HasGeometry;
 		bool HasGeometry();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InternalEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_TriangulationSource::InternalEdges ******/
 		/****** md5 signature: 9699902a5f783debb73f33d1d3df6436 ******/
 		%feature("compactdefaultargs") InternalEdges;
@@ -2222,6 +2272,11 @@ Return current face.
 ") Face;
 		const TopoDS_Face Face();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_FaceIterator::FaceColor ******/
 		/****** md5 signature: 0f3ba9ec202ff58cbc6c3f9b79597b2e ******/
 		%feature("compactdefaultargs") FaceColor;
@@ -2235,6 +2290,11 @@ Return face color.
 ") FaceColor;
 		const Quantity_ColorRGBA & FaceColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceStyle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWMesh_FaceIterator::FaceStyle ******/
 		/****** md5 signature: d9c862b92cd1be596d93564678cbc76c ******/
 		%feature("compactdefaultargs") FaceStyle;

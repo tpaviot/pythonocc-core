@@ -1464,6 +1464,11 @@ Clears the results between two translation operations.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESToBRep_Reader::GetShapeFixParameters ******/
 		/****** md5 signature: a0fc3d423114840977f6d586006cd67d ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -1478,6 +1483,11 @@ Return: the parameters for shape processing. Empty map if no parameters were set
 ") GetShapeFixParameters;
 		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESToBRep_Reader::GetShapeProcessFlags ******/
 		/****** md5 signature: 154ac0ed4a5b957edb90a1bb81c83699 ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;

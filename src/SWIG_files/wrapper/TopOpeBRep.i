@@ -352,6 +352,11 @@ No available documentation.
 ") TopOpeBRep_DSFiller;
 		 TopOpeBRep_DSFiller();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeEdgesFiller %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_DSFiller::ChangeEdgesFiller ******/
 		/****** md5 signature: 42f528f137a884825f37c45c5ef2914d ******/
 		%feature("compactdefaultargs") ChangeEdgesFiller;
@@ -365,6 +370,11 @@ No available documentation.
 ") ChangeEdgesFiller;
 		TopOpeBRep_EdgesFiller & ChangeEdgesFiller();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFaceEdgeFiller %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_DSFiller::ChangeFaceEdgeFiller ******/
 		/****** md5 signature: 7e75719b2c1ecc11d8c6aae1c01c49b5 ******/
 		%feature("compactdefaultargs") ChangeFaceEdgeFiller;
@@ -378,6 +388,11 @@ No available documentation.
 ") ChangeFaceEdgeFiller;
 		TopOpeBRep_FaceEdgeFiller & ChangeFaceEdgeFiller();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFacesFiller %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_DSFiller::ChangeFacesFiller ******/
 		/****** md5 signature: 0eb68d8005f2ae63fdbc569576b1f1fd ******/
 		%feature("compactdefaultargs") ChangeFacesFiller;
@@ -391,6 +406,11 @@ No available documentation.
 ") ChangeFacesFiller;
 		TopOpeBRep_FacesFiller & ChangeFacesFiller();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapeIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_DSFiller::ChangeShapeIntersector ******/
 		/****** md5 signature: 373fa58a8d6b9fee7bf9640d5ccf9f06 ******/
 		%feature("compactdefaultargs") ChangeShapeIntersector;
@@ -404,6 +424,11 @@ No available documentation.
 ") ChangeShapeIntersector;
 		TopOpeBRep_ShapeIntersector & ChangeShapeIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapeIntersector2d %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_DSFiller::ChangeShapeIntersector2d ******/
 		/****** md5 signature: ccba574a2ff15e1350384beb726a2f67 ******/
 		%feature("compactdefaultargs") ChangeShapeIntersector2d;
@@ -1080,6 +1105,11 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & E1, const TopoDS_Shape & E2, const bool ReduceSegments = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_EdgesIntersector::Point ******/
 		/****** md5 signature: ae4590a19e23c5058b49e8da638135ff ******/
 		%feature("compactdefaultargs") Point;
@@ -1111,6 +1141,11 @@ No available documentation.
 ") Point;
 		const TopOpeBRep_Point2d & Point(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_EdgesIntersector::Points ******/
 		/****** md5 signature: 142bec2c993180ee8ddaaeda0e91e541 ******/
 		%feature("compactdefaultargs") Points;
@@ -1946,6 +1981,11 @@ compute 3d curve, pcurves and face/curve interferences for current NDSC. Add the
 ") AddShapesLine;
 		void AddShapesLine();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeDataStructure %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesFiller::ChangeDataStructure ******/
 		/****** md5 signature: 9c5ca6f9698b7c15bd242e59302c821d ******/
 		%feature("compactdefaultargs") ChangeDataStructure;
@@ -1959,6 +1999,11 @@ No available documentation.
 ") ChangeDataStructure;
 		TopOpeBRepDS_DataStructure & ChangeDataStructure();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFacesIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesFiller::ChangeFacesIntersector ******/
 		/****** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ******/
 		%feature("compactdefaultargs") ChangeFacesIntersector;
@@ -1972,6 +2017,11 @@ No available documentation.
 ") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePointClassifier %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesFiller::ChangePointClassifier ******/
 		/****** md5 signature: 2caf5c2eeb9288d67ac51161e7d46d1a ******/
 		%feature("compactdefaultargs") ChangePointClassifier;
@@ -2041,6 +2091,11 @@ No available documentation.
 ") Face;
 		const TopoDS_Face Face(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceFaceTransition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesFiller::FaceFaceTransition ******/
 		/****** md5 signature: 786e8d3736459713e3834dd45a44b0ac ******/
 		%feature("compactdefaultargs") FaceFaceTransition;
@@ -2796,6 +2851,11 @@ No available documentation.
 ") TopOpeBRep_FacesIntersector;
 		 TopOpeBRep_FacesIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesIntersector::ChangeLine ******/
 		/****** md5 signature: 22f19a846320d79b20d970c5a9118c02 ******/
 		%feature("compactdefaultargs") ChangeLine;
@@ -2814,6 +2874,11 @@ No available documentation.
 ") ChangeLine;
 		TopOpeBRep_LineInter & ChangeLine(const int IL);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CurrentLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesIntersector::CurrentLine ******/
 		/****** md5 signature: 22ad0f2ab8e9c56998e748e35926a0d7 ******/
 		%feature("compactdefaultargs") CurrentLine;
@@ -3057,6 +3122,11 @@ No available documentation.
 ") PrepareLines;
 		void PrepareLines();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Restrictions %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_FacesIntersector::Restrictions ******/
 		/****** md5 signature: c506ffa69575e5a8a2ba25760e950a87 ******/
 		%feature("compactdefaultargs") Restrictions;
@@ -3242,6 +3312,11 @@ No available documentation.
 ") Curve;
 		Geom2dAdaptor_Curve Curve(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Domain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_Hctxee2d::Domain ******/
 		/****** md5 signature: 5ab49a1203c013d636c26598cf5e2b07 ******/
 		%feature("compactdefaultargs") Domain;
@@ -3574,6 +3649,11 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_LineInter::ChangeVPoint ******/
 		/****** md5 signature: 6eea930191930c2b3d31e2bc5c3f30ff ******/
 		%feature("compactdefaultargs") ChangeVPoint;
@@ -3707,6 +3787,11 @@ No available documentation.
 ") DumpVPoint;
 		void DumpVPoint(const int I, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceFaceTransition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_LineInter::FaceFaceTransition ******/
 		/****** md5 signature: 024b19b9b2dd5afe107c0e447e57a454 ******/
 		%feature("compactdefaultargs") FaceFaceTransition;
@@ -4168,6 +4253,11 @@ No available documentation.
 ") VPBounds;
 		void VPBounds(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_LineInter::VPoint ******/
 		/****** md5 signature: b9d3a281b50fcc1ef4f346aaf5c775c7 ******/
 		%feature("compactdefaultargs") VPoint;
@@ -4186,6 +4276,11 @@ No available documentation.
 ") VPoint;
 		const TopOpeBRep_VPointInter & VPoint(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_LineInter::WPoint ******/
 		/****** md5 signature: b50ef8ee84072c6fb25d7275ef8895b3 ******/
 		%feature("compactdefaultargs") WPoint;
@@ -4231,6 +4326,11 @@ No available documentation.
 ") TopOpeBRep_Point2d;
 		 TopOpeBRep_Point2d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTransition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_Point2d::ChangeTransition ******/
 		/****** md5 signature: 8ba54eb374c08b1cfa8bec8ebb9330be ******/
 		%feature("compactdefaultargs") ChangeTransition;
@@ -4395,6 +4495,11 @@ No available documentation.
 ") Parameter;
 		double Parameter(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_Point2d::Pint ******/
 		/****** md5 signature: 72d1656dc63f7ec33684d937246a1ad3 ******/
 		%feature("compactdefaultargs") Pint;
@@ -4745,6 +4850,11 @@ No available documentation.
 ") Tolerance;
 		double Tolerance();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Transition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_Point2d::Transition ******/
 		/****** md5 signature: 3e99ec6b3826a81752b12f9955114f46 ******/
 		%feature("compactdefaultargs") Transition;
@@ -5030,6 +5140,11 @@ No available documentation.
 ") TopOpeBRep_ShapeIntersector;
 		 TopOpeBRep_ShapeIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeEdgesIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeIntersector::ChangeEdgesIntersector ******/
 		/****** md5 signature: 1235fc3fd7575db65944b280b25330c7 ******/
 		%feature("compactdefaultargs") ChangeEdgesIntersector;
@@ -5043,6 +5158,11 @@ return the current intersection of two Edges.
 ") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFaceEdgeIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeIntersector::ChangeFaceEdgeIntersector ******/
 		/****** md5 signature: 252968b36ec37bf07721105462c97f04 ******/
 		%feature("compactdefaultargs") ChangeFaceEdgeIntersector;
@@ -5056,6 +5176,11 @@ return the current intersection of a Face and an Edge.
 ") ChangeFaceEdgeIntersector;
 		TopOpeBRep_FaceEdgeIntersector & ChangeFaceEdgeIntersector();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFacesIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeIntersector::ChangeFacesIntersector ******/
 		/****** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ******/
 		%feature("compactdefaultargs") ChangeFacesIntersector;
@@ -5272,6 +5397,11 @@ No available documentation.
 ") TopOpeBRep_ShapeIntersector2d;
 		 TopOpeBRep_ShapeIntersector2d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeEdgesIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeIntersector2d::ChangeEdgesIntersector ******/
 		/****** md5 signature: 1235fc3fd7575db65944b280b25330c7 ******/
 		%feature("compactdefaultargs") ChangeEdgesIntersector;
@@ -5449,6 +5579,11 @@ No available documentation.
 ") AddBoxesMakeCOB;
 		void AddBoxesMakeCOB(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA = TopAbs_SHAPE);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoxSort %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeScanner::BoxSort ******/
 		/****** md5 signature: d84fbab6e90b588ace21537275d98770 ******/
 		%feature("compactdefaultargs") BoxSort;
@@ -5462,6 +5597,11 @@ No available documentation.
 ") BoxSort;
 		const TopOpeBRepTool_BoxSort & BoxSort();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBoxSort %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_ShapeScanner::ChangeBoxSort ******/
 		/****** md5 signature: 26d224aa25e39745d650f44f9742cf04 ******/
 		%feature("compactdefaultargs") ChangeBoxSort;
@@ -6455,6 +6595,11 @@ No available documentation.
 ") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator(const TopOpeBRep_LineInter & LI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurrentVP %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_VPointInterIterator::ChangeCurrentVP ******/
 		/****** md5 signature: 496148d05b3616d904bc44b4aaa992c9 ******/
 		%feature("compactdefaultargs") ChangeCurrentVP;
@@ -6468,6 +6613,11 @@ No available documentation.
 ") ChangeCurrentVP;
 		TopOpeBRep_VPointInter & ChangeCurrentVP();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CurrentVP %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_VPointInterIterator::CurrentVP ******/
 		/****** md5 signature: 260aa53e61b4d197c4be3891e211d125 ******/
 		%feature("compactdefaultargs") CurrentVP;
@@ -6763,6 +6913,11 @@ No available documentation.
 ") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator(const TopOpeBRep_LineInter & LI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CurrentWP %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopOpeBRep_WPointInterIterator::CurrentWP ******/
 		/****** md5 signature: e2d815e0c2e2b5af7abb4585291aa49f ******/
 		%feature("compactdefaultargs") CurrentWP;
@@ -6873,7 +7028,13 @@ class TopOpeBRep_HArray1OfLineInter : public NCollection_Array1<TopOpeBRep_LineI
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper);
     TopOpeBRep_HArray1OfLineInter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopOpeBRep_LineInter>::value_type& theValue);
     TopOpeBRep_HArray1OfLineInter(const NCollection_Array1<TopOpeBRep_LineInter>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TopOpeBRep_LineInter>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TopOpeBRep_LineInter>& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfLineInter)
@@ -6884,7 +7045,13 @@ class TopOpeBRep_HArray1OfVPointInter : public NCollection_Array1<TopOpeBRep_VPo
     TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper);
     TopOpeBRep_HArray1OfVPointInter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopOpeBRep_VPointInter>::value_type& theValue);
     TopOpeBRep_HArray1OfVPointInter(const NCollection_Array1<TopOpeBRep_VPointInter>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TopOpeBRep_VPointInter>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TopOpeBRep_VPointInter>& ChangeArray1();
 };
 %make_alias(TopOpeBRep_HArray1OfVPointInter)

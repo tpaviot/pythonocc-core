@@ -249,6 +249,11 @@ Returns true if the conversion was successful.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Knots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_CompPolynomialToPoles::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
@@ -280,6 +285,11 @@ No available documentation.
 ") Knots;
 		void Knots(opencascade::handle<TColStd_HArray1OfReal> & theKnots);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Multiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_CompPolynomialToPoles::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
@@ -337,6 +347,11 @@ Returns the number of poles of the n-dimensional BSpline.
 ") NbPoles;
 		int NbPoles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_CompPolynomialToPoles::Poles ******/
 		/****** md5 signature: 1f17048a14e21e75f8e40b07f53ad40e ******/
 		%feature("compactdefaultargs") Poles;
@@ -475,6 +490,11 @@ No available documentation.
 ") Knot;
 		double Knot(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Knots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ConicToBSplineCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
@@ -488,6 +508,11 @@ Returns the knots of the BSpline curve.
 ") Knots;
 		const TColStd_Array1OfReal & Knots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Multiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ConicToBSplineCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
@@ -563,6 +588,11 @@ No available documentation.
 ") Pole;
 		gp_Pnt2d Pole(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ConicToBSplineCurve::Poles ******/
 		/****** md5 signature: 8afae95fa5301d98d2ab229e2b82ae7d ******/
 		%feature("compactdefaultargs") Poles;
@@ -594,6 +624,11 @@ No available documentation.
 ") Weight;
 		double Weight(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ConicToBSplineCurve::Weights ******/
 		/****** md5 signature: 75fed9e302ad46e4cac4d74daae13ea5 ******/
 		%feature("compactdefaultargs") Weights;
@@ -719,6 +754,11 @@ No available documentation.
 ") Pole;
 		gp_Pnt Pole(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::Poles ******/
 		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
@@ -763,6 +803,11 @@ No available documentation.
 ") UKnot;
 		double UKnot(const int UIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::UKnots ******/
 		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
@@ -776,6 +821,11 @@ Returns the U-knots of the BSpline surface.
 ") UKnots;
 		const TColStd_Array1OfReal & UKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
@@ -838,6 +888,11 @@ No available documentation.
 ") VKnot;
 		double VKnot(const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::VKnots ******/
 		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
@@ -851,6 +906,11 @@ Returns the V-knots of the BSpline surface.
 ") VKnots;
 		const TColStd_Array1OfReal & VKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
@@ -901,6 +961,11 @@ No available documentation.
 ") Weight;
 		double Weight(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_ElementarySurfaceToBSplineSurface::Weights ******/
 		/****** md5 signature: 7f881df6c273a11e54472a6e9569e510 ******/
 		%feature("compactdefaultargs") Weights;
@@ -1097,6 +1162,11 @@ Returns the number of poles in the V parametric direction.
 ") NbVPoles;
 		int NbVPoles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_GridPolynomialToPoles::Poles ******/
 		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
@@ -1123,6 +1193,11 @@ Returns the degree in the U parametric direction.
 ") UDegree;
 		int UDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_GridPolynomialToPoles::UKnots ******/
 		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
@@ -1136,6 +1211,11 @@ Returns the knots in the U direction.
 ") UKnots;
 		const TColStd_Array1OfReal & UKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_GridPolynomialToPoles::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
@@ -1162,6 +1242,11 @@ Returns the degree in the V parametric direction.
 ") VDegree;
 		int VDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_GridPolynomialToPoles::VKnots ******/
 		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
@@ -1175,6 +1260,11 @@ Returns the knots in the V direction.
 ") VKnots;
 		const TColStd_Array1OfReal & VKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Convert_GridPolynomialToPoles::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;

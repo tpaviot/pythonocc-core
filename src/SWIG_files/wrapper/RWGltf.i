@@ -717,6 +717,11 @@ Input parameter: theIsBinary flag to write into binary glTF format (.glb).
 ") RWGltf_CafWriter;
 		 RWGltf_CafWriter(TCollection_AsciiString theFile, bool theIsBinary);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_CafWriter::ChangeCoordinateSystemConverter ******/
 		/****** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ******/
 		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
@@ -730,6 +735,11 @@ Return transformation from OCCT to glTF coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CompressionParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_CafWriter::CompressionParameters ******/
 		/****** md5 signature: 9fe18683c5b8a0eebc3a8d3b41d20c50 ******/
 		%feature("compactdefaultargs") CompressionParameters;
@@ -743,6 +753,11 @@ Return Draco parameters.
 ") CompressionParameters;
 		const RWGltf_DracoParameters & CompressionParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_CafWriter::CoordinateSystemConverter ******/
 		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
@@ -756,6 +771,11 @@ Return transformation from OCCT to glTF coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultStyle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_CafWriter::DefaultStyle ******/
 		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;
@@ -1281,6 +1301,11 @@ Constructor.
 ") RWGltf_GltfLatePrimitiveArray;
 		 RWGltf_GltfLatePrimitiveArray(TCollection_AsciiString theId, TCollection_AsciiString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddPrimArrayData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_GltfLatePrimitiveArray::AddPrimArrayData ******/
 		/****** md5 signature: 6b00508c9622c6f7b8308c0e8ee7efd5 ******/
 		%feature("compactdefaultargs") AddPrimArrayData;
@@ -1312,6 +1337,11 @@ Return base color.
 ") BaseColor;
 		Quantity_ColorRGBA BaseColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Data %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_GltfLatePrimitiveArray::Data ******/
 		/****** md5 signature: 671d99c5b4ce7f7e5b939e40427e52b5 ******/
 		%feature("compactdefaultargs") Data;
@@ -1351,6 +1381,11 @@ Return true if primitive array has assigned material.
 ") HasStyle;
 		bool HasStyle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Id %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_GltfLatePrimitiveArray::Id ******/
 		/****** md5 signature: 932272b78b9184cc2485436a72cc2df4 ******/
 		%feature("compactdefaultargs") Id;
@@ -1403,6 +1438,11 @@ Return PBR material definition.
 ") MaterialPbr;
 		const opencascade::handle<RWGltf_MaterialMetallicRoughness> & MaterialPbr();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWGltf_GltfLatePrimitiveArray::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;

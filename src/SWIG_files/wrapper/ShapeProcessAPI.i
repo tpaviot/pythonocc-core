@@ -150,6 +150,11 @@ Returns object for managing resource file and sequence of operators.
 ") Context;
 		opencascade::handle<ShapeProcess_ShapeContext> & Context();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeProcessAPI_ApplySequence::Map ******/
 		/****** md5 signature: b34ea465b2355c04a32cf93b0f47fc3f ******/
 		%feature("compactdefaultargs") Map;

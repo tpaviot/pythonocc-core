@@ -2371,6 +2371,11 @@ Returns a Direction.
 ") StepGeom_Direction;
 		 StepGeom_Direction();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DirectionRatios %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepGeom_Direction::DirectionRatios ******/
 		/****** md5 signature: b07fc59ef1d89da3985fb97621b9ba59 ******/
 		%feature("compactdefaultargs") DirectionRatios;
@@ -3564,6 +3569,11 @@ Returns a CartesianPoint.
 ") StepGeom_CartesianPoint;
 		 StepGeom_CartesianPoint();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Coordinates %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepGeom_CartesianPoint::Coordinates ******/
 		/****** md5 signature: 4b4e79ae0a20721f633a985c3fd6d45b ******/
 		%feature("compactdefaultargs") Coordinates;
@@ -11628,7 +11638,13 @@ class StepGeom_HArray1OfBoundaryCurve : public NCollection_Array1<opencascade::h
     StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfBoundaryCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepGeom_BoundaryCurve>>::value_type& theValue);
     StepGeom_HArray1OfBoundaryCurve(const NCollection_Array1<opencascade::handle<StepGeom_BoundaryCurve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepGeom_BoundaryCurve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepGeom_BoundaryCurve>>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfBoundaryCurve)
@@ -11639,7 +11655,13 @@ class StepGeom_HArray1OfCartesianPoint : public NCollection_Array1<opencascade::
     StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfCartesianPoint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepGeom_CartesianPoint>>::value_type& theValue);
     StepGeom_HArray1OfCartesianPoint(const NCollection_Array1<opencascade::handle<StepGeom_CartesianPoint>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepGeom_CartesianPoint>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepGeom_CartesianPoint>>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCartesianPoint)
@@ -11650,7 +11672,13 @@ class StepGeom_HArray1OfCompositeCurveSegment : public NCollection_Array1<openca
     StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfCompositeCurveSegment(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepGeom_CompositeCurveSegment>>::value_type& theValue);
     StepGeom_HArray1OfCompositeCurveSegment(const NCollection_Array1<opencascade::handle<StepGeom_CompositeCurveSegment>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepGeom_CompositeCurveSegment>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepGeom_CompositeCurveSegment>>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCompositeCurveSegment)
@@ -11661,7 +11689,13 @@ class StepGeom_HArray1OfCurve : public NCollection_Array1<opencascade::handle<St
     StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepGeom_Curve>>::value_type& theValue);
     StepGeom_HArray1OfCurve(const NCollection_Array1<opencascade::handle<StepGeom_Curve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepGeom_Curve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepGeom_Curve>>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfCurve)
@@ -11672,7 +11706,13 @@ class StepGeom_HArray1OfPcurveOrSurface : public NCollection_Array1<StepGeom_Pcu
     StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfPcurveOrSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepGeom_PcurveOrSurface>::value_type& theValue);
     StepGeom_HArray1OfPcurveOrSurface(const NCollection_Array1<StepGeom_PcurveOrSurface>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepGeom_PcurveOrSurface>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepGeom_PcurveOrSurface>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfPcurveOrSurface)
@@ -11683,7 +11723,13 @@ class StepGeom_HArray1OfSurfaceBoundary : public NCollection_Array1<StepGeom_Sur
     StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfSurfaceBoundary(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepGeom_SurfaceBoundary>::value_type& theValue);
     StepGeom_HArray1OfSurfaceBoundary(const NCollection_Array1<StepGeom_SurfaceBoundary>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepGeom_SurfaceBoundary>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepGeom_SurfaceBoundary>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfSurfaceBoundary)
@@ -11694,7 +11740,13 @@ class StepGeom_HArray1OfTrimmingSelect : public NCollection_Array1<StepGeom_Trim
     StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepGeom_HArray1OfTrimmingSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepGeom_TrimmingSelect>::value_type& theValue);
     StepGeom_HArray1OfTrimmingSelect(const NCollection_Array1<StepGeom_TrimmingSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepGeom_TrimmingSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepGeom_TrimmingSelect>& ChangeArray1();
 };
 %make_alias(StepGeom_HArray1OfTrimmingSelect)
@@ -11707,7 +11759,13 @@ class StepGeom_HArray2OfCartesianPoint : public NCollection_Array2<opencascade::
     StepGeom_HArray2OfCartesianPoint(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<StepGeom_CartesianPoint>>::value_type& theValue);
     StepGeom_HArray2OfCartesianPoint(const NCollection_Array2<opencascade::handle<StepGeom_CartesianPoint>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<StepGeom_CartesianPoint>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<StepGeom_CartesianPoint>>& ChangeArray2 (); 
 };
 %make_alias(StepGeom_HArray2OfCartesianPoint)
@@ -11720,7 +11778,13 @@ class StepGeom_HArray2OfSurfacePatch : public NCollection_Array2<opencascade::ha
     StepGeom_HArray2OfSurfacePatch(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>>::value_type& theValue);
     StepGeom_HArray2OfSurfacePatch(const NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>>& ChangeArray2 (); 
 };
 %make_alias(StepGeom_HArray2OfSurfacePatch)

@@ -293,6 +293,11 @@ Insert a new segment of intersection in the current list of polylines of interse
 ") Insert;
 		void Insert(const Intf_SectionPoint & pdeb, const Intf_SectionPoint & pfin);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LineValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_Interference::LineValue ******/
 		/****** md5 signature: ffbda651b20d7a3a14b07d8a2bbe6bae ******/
 		%feature("compactdefaultargs") LineValue;
@@ -350,6 +355,11 @@ Gives the number of zones of tangence in the interference.
 ") NbTangentZones;
 		int NbTangentZones();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PntValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_Interference::PntValue ******/
 		/****** md5 signature: fc7044c17da4696c2d0059a82f38f55e ******/
 		%feature("compactdefaultargs") PntValue;
@@ -368,6 +378,11 @@ Gives the point of intersection of address Index in the interference.
 ") PntValue;
 		const Intf_SectionPoint & PntValue(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ZoneValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_Interference::ZoneValue ******/
 		/****** md5 signature: 7f58c2b7df999129ed02600377b92542 ******/
 		%feature("compactdefaultargs") ZoneValue;
@@ -401,6 +416,11 @@ Gives the zone of tangence at address Index in the interference.
 %nodefaultctor Intf_Polygon2d;
 class Intf_Polygon2d {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Bounding %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_Polygon2d::Bounding ******/
 		/****** md5 signature: 6bf984a05bf369fbbd8dca3c8e28fe3d ******/
 		%feature("compactdefaultargs") Bounding;
@@ -603,6 +623,11 @@ No available documentation.
 ") Dump;
 		void Dump(const int Indent);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_SectionLine::GetPoint ******/
 		/****** md5 signature: 48c5e57e1f8102dd176d40f541ab402f ******/
 		%feature("compactdefaultargs") GetPoint;
@@ -1166,6 +1191,11 @@ No available documentation.
 ") Dump;
 		void Dump(const int Indent);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Intf_TangentZone::GetPoint ******/
 		/****** md5 signature: 48c5e57e1f8102dd176d40f541ab402f ******/
 		%feature("compactdefaultargs") GetPoint;

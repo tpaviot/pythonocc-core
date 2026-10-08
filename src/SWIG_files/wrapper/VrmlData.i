@@ -420,6 +420,11 @@ Description
 ") ReadString;
 		static VrmlData_ErrorStatus ReadString(VrmlData_InBuffer & theBuffer, TCollection_AsciiString & theRes);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Scene %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Node::Scene ******/
 		/****** md5 signature: 7cd55fa14ff98139c875d8a22b2dae83 ******/
 		%feature("compactdefaultargs") Scene;
@@ -1385,6 +1390,11 @@ Description
 ") AddNode;
 		opencascade::handle<VrmlData_Node> & AddNode(const opencascade::handle<VrmlData_Node> & theNode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Box %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Group::Box ******/
 		/****** md5 signature: 79505dc9b66a5350ccdc24c305c2610f ******/
 		%feature("compactdefaultargs") Box;
@@ -1637,6 +1647,11 @@ Description
 ") VrmlData_Material;
 		 VrmlData_Material(const VrmlData_Scene & theScene, const char * theName, const double theAmbientIntensity = -1, const double theShininess = -1, const double theTransparency = -1);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AmbientColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Material::AmbientColor ******/
 		/****** md5 signature: 5fbe476d31e03b68b11845a1f91d2082 ******/
 		%feature("compactdefaultargs") AmbientColor;
@@ -1681,6 +1696,11 @@ Description
 ") Clone;
 		opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DiffuseColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Material::DiffuseColor ******/
 		/****** md5 signature: 9c49a8c7f3b34d6fad0a422398d823cc ******/
 		%feature("compactdefaultargs") DiffuseColor;
@@ -1694,6 +1714,11 @@ Description
 ") DiffuseColor;
 		const Quantity_Color & DiffuseColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EmissiveColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Material::EmissiveColor ******/
 		/****** md5 signature: a81902b710d4283046e2074f8c68f238 ******/
 		%feature("compactdefaultargs") EmissiveColor;
@@ -1877,6 +1902,11 @@ Description
 ") Shininess;
 		double Shininess();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SpecularColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_Material::SpecularColor ******/
 		/****** md5 signature: be13421d5a460089944a56fa84b44f51 ******/
 		%feature("compactdefaultargs") SpecularColor;
@@ -2201,6 +2231,11 @@ Description
 ") Length;
 		size_t Length();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_TextureCoordinate::Points ******/
 		/****** md5 signature: fba12d84b09cea75d6adf0416f8768aa ******/
 		%feature("compactdefaultargs") Points;
@@ -2303,6 +2338,11 @@ Description
 ") VrmlData_UnknownNode;
 		 VrmlData_UnknownNode(const VrmlData_Scene & theScene, const char * theName = nullptr, const char * theTitle = nullptr);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTitle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_UnknownNode::GetTitle ******/
 		/****** md5 signature: fd792bcd35ddb15e7f5160d6ea5f7ec0 ******/
 		%feature("compactdefaultargs") GetTitle;
@@ -2432,6 +2472,11 @@ Description
 ") Clone;
 		opencascade::handle<VrmlData_Node> Clone(const opencascade::handle<VrmlData_Node> & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InfoIterator %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_WorldInfo::InfoIterator ******/
 		/****** md5 signature: b8a6257f9e0a11b87294100742e9b5b8 ******/
 		%feature("compactdefaultargs") InfoIterator;
@@ -3493,6 +3538,11 @@ Description
 ") Read;
 		VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend URL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** VrmlData_ImageTexture::URL ******/
 		/****** md5 signature: b69bf89decd854d8adc42703c3682ea2 ******/
 		%feature("compactdefaultargs") URL;

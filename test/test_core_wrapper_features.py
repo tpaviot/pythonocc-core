@@ -89,6 +89,7 @@ from OCC.Core.TopoDS import (
 )
 from OCC.Core.TColStd import (
     TColStd_Array1OfReal,
+    TColStd_HArray1OfReal,
     TColStd_Array1OfInteger,
     TColStd_ListOfInteger,
     TColStd_ListOfReal,
@@ -126,7 +127,7 @@ from OCC.Core.Geom import (
 from OCC.Core.Geom2d import Geom2d_Curve
 from OCC.Core.TopLoc import TopLoc_Location
 from OCC.Core.UnitsAPI import unitsapi
-from OCC.Core.GeomAPI import GeomAPI_Interpolate
+from OCC.Core.GeomAPI import GeomAPI_Interpolate, GeomAPI_PointsToBSpline
 from OCC.Core.GeomLib import geomlib
 from OCC.Core.BRep import BRep_Tool
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
@@ -1132,6 +1133,30 @@ def test_container_values_outlive_container():
     array = TColgp_Array1OfPnt(1, 2)
     array.ChangeValue(1).SetX(7.0)
     assert array.Value(1).X() == 7.0
+
+
+def test_returned_reference_keeps_owner_alive():
+    """Issue #1499: a reference returned by a method keeps the instance
+    alive, the instance may be a temporary"""
+    harray = TColStd_HArray1OfReal(1, 3, 2.5)
+    array = harray.Array1()
+    assert array._owner is harray
+    assert harray.ChangeArray1()._owner is harray
+
+    def chained():
+        points = TColgp_Array1OfPnt(1, 4)
+        for i in range(1, 5):
+            points.SetValue(i, gp_Pnt(i, i * i, 0))
+        # the curve handle is a temporary, only owned by its proxy
+        return GeomAPI_PointsToBSpline(points).Curve().Poles()
+
+    poles = chained()
+    gc.collect()
+    # reuse the memory of the deleted curve
+    _ = [TColgp_Array1OfPnt(1, 4) for _ in range(50)]
+    assert [poles.Value(i).X() for i in (1, 4)] == [1.0, 4.0]
+    # the methods returning numbers are unchanged
+    assert TColStd_HArray1OfReal(1, 3, 2.5).Array1().Value(2) == 2.5
 
 
 def test_osd_thread_pool():

@@ -1988,7 +1988,13 @@ class StepAP203_HArray1OfApprovedItem : public NCollection_Array1<StepAP203_Appr
     StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ApprovedItem>::value_type& theValue);
     StepAP203_HArray1OfApprovedItem(const NCollection_Array1<StepAP203_ApprovedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_ApprovedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_ApprovedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfApprovedItem)
@@ -1999,7 +2005,13 @@ class StepAP203_HArray1OfCertifiedItem : public NCollection_Array1<StepAP203_Cer
     StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_CertifiedItem>::value_type& theValue);
     StepAP203_HArray1OfCertifiedItem(const NCollection_Array1<StepAP203_CertifiedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_CertifiedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_CertifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfCertifiedItem)
@@ -2010,7 +2022,13 @@ class StepAP203_HArray1OfChangeRequestItem : public NCollection_Array1<StepAP203
     StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ChangeRequestItem>::value_type& theValue);
     StepAP203_HArray1OfChangeRequestItem(const NCollection_Array1<StepAP203_ChangeRequestItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_ChangeRequestItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_ChangeRequestItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfChangeRequestItem)
@@ -2021,7 +2039,13 @@ class StepAP203_HArray1OfClassifiedItem : public NCollection_Array1<StepAP203_Cl
     StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ClassifiedItem>::value_type& theValue);
     StepAP203_HArray1OfClassifiedItem(const NCollection_Array1<StepAP203_ClassifiedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_ClassifiedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_ClassifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfClassifiedItem)
@@ -2032,7 +2056,13 @@ class StepAP203_HArray1OfContractedItem : public NCollection_Array1<StepAP203_Co
     StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_ContractedItem>::value_type& theValue);
     StepAP203_HArray1OfContractedItem(const NCollection_Array1<StepAP203_ContractedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_ContractedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_ContractedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfContractedItem)
@@ -2043,7 +2073,13 @@ class StepAP203_HArray1OfDateTimeItem : public NCollection_Array1<StepAP203_Date
     StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_DateTimeItem>::value_type& theValue);
     StepAP203_HArray1OfDateTimeItem(const NCollection_Array1<StepAP203_DateTimeItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_DateTimeItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_DateTimeItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfDateTimeItem)
@@ -2054,7 +2090,13 @@ class StepAP203_HArray1OfPersonOrganizationItem : public NCollection_Array1<Step
     StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_PersonOrganizationItem>::value_type& theValue);
     StepAP203_HArray1OfPersonOrganizationItem(const NCollection_Array1<StepAP203_PersonOrganizationItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_PersonOrganizationItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_PersonOrganizationItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfPersonOrganizationItem)
@@ -2065,7 +2107,13 @@ class StepAP203_HArray1OfSpecifiedItem : public NCollection_Array1<StepAP203_Spe
     StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfSpecifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_SpecifiedItem>::value_type& theValue);
     StepAP203_HArray1OfSpecifiedItem(const NCollection_Array1<StepAP203_SpecifiedItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_SpecifiedItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_SpecifiedItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfSpecifiedItem)
@@ -2076,7 +2124,13 @@ class StepAP203_HArray1OfStartRequestItem : public NCollection_Array1<StepAP203_
     StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfStartRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_StartRequestItem>::value_type& theValue);
     StepAP203_HArray1OfStartRequestItem(const NCollection_Array1<StepAP203_StartRequestItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_StartRequestItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_StartRequestItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfStartRequestItem)
@@ -2087,7 +2141,13 @@ class StepAP203_HArray1OfWorkItem : public NCollection_Array1<StepAP203_WorkItem
     StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepAP203_WorkItem>::value_type& theValue);
     StepAP203_HArray1OfWorkItem(const NCollection_Array1<StepAP203_WorkItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepAP203_WorkItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepAP203_WorkItem>& ChangeArray1();
 };
 %make_alias(StepAP203_HArray1OfWorkItem)

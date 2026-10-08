@@ -402,6 +402,11 @@ Returns ZMax face.
 ") TopFace;
 		const TopoDS_Face TopFace();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wedge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeBox::Wedge ******/
 		/****** md5 signature: 27912d8fac61b3f9abbc5a460ec7e7da ******/
 		%feature("compactdefaultargs") Wedge;
@@ -756,6 +761,11 @@ Returns the constructed box in the form of a solid.
 ") Solid;
 		const TopoDS_Solid Solid();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wedge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeWedge::Wedge ******/
 		/****** md5 signature: 27912d8fac61b3f9abbc5a460ec7e7da ******/
 		%feature("compactdefaultargs") Wedge;
@@ -878,6 +888,11 @@ Make a cone of height H radius R1 in the plane z = 0, R2 in the plane Z = H. R1 
 ") BRepPrimAPI_MakeCone;
 		 BRepPrimAPI_MakeCone(const gp_Ax2 & Axes, const double R1, const double R2, const double H, const double angle);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Cone %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeCone::Cone ******/
 		/****** md5 signature: 546b626030aea6b11418d33ecb7d5201 ******/
 		%feature("compactdefaultargs") Cone;
@@ -1006,6 +1021,11 @@ Make a cylinder of radius R and length H with angle H. Constructs - a cylinder o
 ") BRepPrimAPI_MakeCylinder;
 		 BRepPrimAPI_MakeCylinder(const gp_Ax2 & Axes, const double R, const double H, const double Angle);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Cylinder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeCylinder::Cylinder ******/
 		/****** md5 signature: 066e4a931618d7beab7894f68725e17d ******/
 		%feature("compactdefaultargs") Cylinder;
@@ -1138,6 +1158,11 @@ Returns the TopoDS Shape of the bottom of the prism. generated with theShape (su
 ") FirstShape;
 		TopoDS_Shape FirstShape(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakePrism::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1205,6 +1230,11 @@ Returns the TopoDS Shape of the top of the prism. generated with theShape (subSh
 ") LastShape;
 		TopoDS_Shape LastShape(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Prism %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakePrism::Prism ******/
 		/****** md5 signature: 4299163a83304e02517765adca48c409 ******/
 		%feature("compactdefaultargs") Prism;
@@ -1291,6 +1321,11 @@ Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Degenerated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeRevol::Degenerated ******/
 		/****** md5 signature: 5a6ca09f6a1bae598183796d234dad3c ******/
 		%feature("compactdefaultargs") Degenerated;
@@ -1335,6 +1370,11 @@ Returns the TopoDS Shape of the beginning of the revolution, generated with theS
 ") FirstShape;
 		TopoDS_Shape FirstShape(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeRevol::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1415,6 +1455,11 @@ Returns the TopoDS Shape of the end of the revolution, generated with theShape (
 ") LastShape;
 		TopoDS_Shape LastShape(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Revol %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeRevol::Revol ******/
 		/****** md5 signature: ee6c1e3b25f5684921520da6a7d86148 ******/
 		%feature("compactdefaultargs") Revol;
@@ -1615,6 +1660,11 @@ Returns the algorithm.
 ") OneAxis;
 		void * OneAxis();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Revolution %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeRevolution::Revolution ******/
 		/****** md5 signature: 363c8f0934cae14058e70d26a327ed54 ******/
 		%feature("compactdefaultargs") Revolution;
@@ -1930,6 +1980,11 @@ Returns the algorithm.
 ") OneAxis;
 		void * OneAxis();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Sphere %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeSphere::Sphere ******/
 		/****** md5 signature: 6fc1b49d1b0dedbf3c2ae88e9d6c37ca ******/
 		%feature("compactdefaultargs") Sphere;
@@ -2164,6 +2219,11 @@ Returns the algorithm.
 ") OneAxis;
 		void * OneAxis();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Torus %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrimAPI_MakeTorus::Torus ******/
 		/****** md5 signature: fc0c24da1353d28a38727c5a9e0d1470 ******/
 		%feature("compactdefaultargs") Torus;

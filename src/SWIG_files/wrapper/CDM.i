@@ -238,6 +238,11 @@ Returns default messenger;.
 ") MessageDriver;
 		virtual opencascade::handle<Message_Messenger> MessageDriver();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MetaDataLookUpTable %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** CDM_Application::MetaDataLookUpTable ******/
 		/****** md5 signature: 38fcb6e191227b09af475a372e62f90e ******/
 		%feature("compactdefaultargs") MetaDataLookUpTable;
@@ -421,6 +426,11 @@ A referenced document may update its internal data structure when {aDocument} wh
 ") CloseReference;
 		virtual void CloseReference(const opencascade::handle<CDM_Document> & aDocument, const int aReferenceIdentifier);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Comment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** CDM_Document::Comment ******/
 		/****** md5 signature: 7e29debb2d4de6d214a4a1ecae6866d0 ******/
 		%feature("compactdefaultargs") Comment;

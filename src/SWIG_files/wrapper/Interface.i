@@ -3700,6 +3700,11 @@ Returns the entity bound to a record, set by SetEntities.
 ") BoundEntity;
 		const opencascade::handle<Standard_Transient> & BoundEntity(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParam %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_FileReaderData::ChangeParam ******/
 		/****** md5 signature: f2c6964fa415665c8e4c96de64f2132f ******/
 		%feature("compactdefaultargs") ChangeParam;
@@ -3862,6 +3867,11 @@ Returns the count of registered records That is, value given for Initialization 
 ") NbRecords;
 		virtual int NbRecords();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Param %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_FileReaderData::Param ******/
 		/****** md5 signature: bd5cf474707fd49c7517603bbb7ad56c ******/
 		%feature("compactdefaultargs") Param;
@@ -4671,6 +4681,11 @@ Clears the maps which record, for each already recorded entity its Module and Ca
 ") ClearEntities;
 		void ClearEntities();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Lib %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_GTool::Lib ******/
 		/****** md5 signature: 18692df48b34b8e9f55d362fa00f1cf8 ******/
 		%feature("compactdefaultargs") Lib;
@@ -5619,6 +5634,11 @@ Creates a Graph from another one, getting all its data Remark that status are co
 ") Interface_Graph;
 		 Interface_Graph(const Interface_Graph & agraph, const bool copied = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BitMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_Graph::BitMap ******/
 		/****** md5 signature: 6afca68ff9833e671b4be2be9243cbd9 ******/
 		%feature("compactdefaultargs") BitMap;
@@ -5632,6 +5652,11 @@ Returns the Bit Map in order to read or edit flag values.
 ") BitMap;
 		const Interface_BitMap & BitMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CBitMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_Graph::CBitMap ******/
 		/****** md5 signature: 15f5051286ba99cc042d93116415aa43 ******/
 		%feature("compactdefaultargs") CBitMap;
@@ -6283,6 +6308,11 @@ Same a above, but works with the GTool in the model.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const bool theModeStats = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CGraph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_HGraph::CGraph ******/
 		/****** md5 signature: bec710075a9272715539ab2d07af5ab2 ******/
 		%feature("compactdefaultargs") CGraph;
@@ -6296,6 +6326,11 @@ Same as above, but for Read-Write Operations Then, The Graph will be modified in
 ") CGraph;
 		Interface_Graph & CGraph();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_HGraph::Graph ******/
 		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
@@ -8761,6 +8796,11 @@ Creates an vector with size of memory block equal to theIncrement.
 ") Interface_ParamList;
 		 Interface_ParamList(const int theIncrement = 256);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_ParamList::ChangeValue ******/
 		/****** md5 signature: a1c2966ea06f6ca8b744cc8f9b3a13cd ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -8850,6 +8890,11 @@ Returns the upper bound. Warning.
 ") Upper;
 		int Upper();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_ParamList::Value ******/
 		/****** md5 signature: bb231808bea0e6a7e339d10f530d809f ******/
 		%feature("compactdefaultargs") Value;
@@ -8942,6 +8987,11 @@ Adds a parameter at the end of the ParamSet (transparent about reservation and '
 ") Append;
 		int Append(const Interface_FileParameter & FP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParam %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_ParamSet::ChangeParam ******/
 		/****** md5 signature: dd08d256a3986f7376c7a7e426fc1080 ******/
 		%feature("compactdefaultargs") ChangeParam;
@@ -8986,6 +9036,11 @@ Returns the total count of parameters (including nexts).
 ") NbParams;
 		int NbParams();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Param %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_ParamSet::Param ******/
 		/****** md5 signature: 40013c4e370177c4a0affd4efb12a816 ******/
 		%feature("compactdefaultargs") Param;
@@ -10423,6 +10478,11 @@ Returns the complete list of entities shared by <ent> at any level, including <e
 ") All;
 		Interface_EntityIterator All(const opencascade::handle<Standard_Transient> & ent, const bool rootlast = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Interface_ShareTool::Graph ******/
 		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
@@ -11853,7 +11913,13 @@ class Interface_HArray1OfHAsciiString : public NCollection_Array1<opencascade::h
     Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
     Interface_HArray1OfHAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<TCollection_HAsciiString>>::value_type& theValue);
     Interface_HArray1OfHAsciiString(const NCollection_Array1<opencascade::handle<TCollection_HAsciiString>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<TCollection_HAsciiString>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<TCollection_HAsciiString>>& ChangeArray1();
 };
 %make_alias(Interface_HArray1OfHAsciiString)
@@ -11864,9 +11930,15 @@ class Interface_HSequenceOfCheck : public NCollection_Sequence<opencascade::hand
   public:
     Interface_HSequenceOfCheck();
     Interface_HSequenceOfCheck(const NCollection_Sequence<opencascade::handle<Interface_Check>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Interface_Check>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Interface_Check>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Interface_Check>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Interface_Check>>& ChangeSequence();
 };
 %make_alias(Interface_HSequenceOfCheck)

@@ -147,6 +147,11 @@ Return: True on success, False elsewhere.
 ") BuildModel;
 		virtual bool BuildModel();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshTools_Context::ChangeParameters ******/
 		/****** md5 signature: 7d357d2d707ea7c6e435ce7944cdbaeb ******/
 		%feature("compactdefaultargs") ChangeParameters;
@@ -271,6 +276,11 @@ Gets instance of a tool to be used to heal discrete model.
 ") GetModelHealer;
 		const opencascade::handle<IMeshTools_ModelAlgo> & GetModelHealer();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshTools_Context::GetParameters ******/
 		/****** md5 signature: 931d70f744696a19117df768eb22fb5f ******/
 		%feature("compactdefaultargs") GetParameters;

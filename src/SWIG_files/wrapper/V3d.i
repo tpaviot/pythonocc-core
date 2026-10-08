@@ -1132,6 +1132,11 @@ Return True if wireframe presentation is set; False by default.
 ") IsWireframe;
 		bool IsWireframe();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Label %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Trihedron::Label ******/
 		/****** md5 signature: 3839a51c4a82f97b7a3db502d3596fa5 ******/
 		%feature("compactdefaultargs") Label;
@@ -1503,6 +1508,11 @@ Return iterator for defined lights.
 ") ActiveLightIterator;
 		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator ActiveLightIterator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveLights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::ActiveLights ******/
 		/****** md5 signature: a72d01c82d08918d30c496c97d18284d ******/
 		%feature("compactdefaultargs") ActiveLights;
@@ -1696,6 +1706,11 @@ Returns the Background color object of the view.
 ") BackgroundColor;
 		Quantity_Color BackgroundColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BackgroundSkydome %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::BackgroundSkydome ******/
 		/****** md5 signature: d7cf91d14be3f61f07eadf45a044328f ******/
 		%feature("compactdefaultargs") BackgroundSkydome;
@@ -1723,6 +1738,11 @@ Return:: handle to camera object, or NULL if 3D view does not use the camera app
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeRenderingParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::ChangeRenderingParams ******/
 		/****** md5 signature: 0689d00d2ba998c88be3fbe15202695d ******/
 		%feature("compactdefaultargs") ChangeRenderingParams;
@@ -2292,6 +2312,11 @@ Activates IBL from background cubemap.
 ") GeneratePBREnvironment;
 		void GeneratePBREnvironment(bool theToUpdate = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGraduatedTrihedron %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::GetGraduatedTrihedron ******/
 		/****** md5 signature: 794e42c6b2c8242dbf3d37d05f637325 ******/
 		%feature("compactdefaultargs") GetGraduatedTrihedron;
@@ -2782,6 +2807,11 @@ Input parameter: theToStart pass True when starting panning to remember view sta
 ") Panning;
 		void Panning(const double theDXv, const double theDYv, const double theZoomFactor = 1, const bool theToStart = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ParentView %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::ParentView ******/
 		/****** md5 signature: 1fedb0f310727ce611da19aaba5cb0df ******/
 		%feature("compactdefaultargs") ParentView;
@@ -3008,6 +3038,11 @@ Remove subview from the list.
 ") RemoveSubview;
 		bool RemoveSubview(const V3d_View * theView);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RenderingParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::RenderingParams ******/
 		/****** md5 signature: d19e1c94557ee6d68fe1c775b8ab94f6 ******/
 		%feature("compactdefaultargs") RenderingParams;
@@ -4211,6 +4246,11 @@ Fills in the dictionary with statistic performance info.
 ") StatisticInformation;
 		void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Subviews %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_View::Subviews ******/
 		/****** md5 signature: d3114f4bfa64a1d5149acdd6e8abd3a2 ******/
 		%feature("compactdefaultargs") Subviews;
@@ -4812,6 +4852,11 @@ Return an iterator for defined lights.
 ") ActiveLightIterator;
 		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator ActiveLightIterator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveLights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::ActiveLights ******/
 		/****** md5 signature: a72d01c82d08918d30c496c97d18284d ******/
 		%feature("compactdefaultargs") ActiveLights;
@@ -4851,6 +4896,11 @@ Return an iterator for active views.
 ") ActiveViewIterator;
 		NCollection_List<opencascade::handle<V3d_View>>::Iterator ActiveViewIterator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveViews %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::ActiveViews ******/
 		/****** md5 signature: 717c14564982e1cf62ef71db7a89b1a3 ******/
 		%feature("compactdefaultargs") ActiveViews;
@@ -5026,6 +5076,11 @@ returns true if by default the computed mode must be used.
 ") DefaultComputedMode;
 		bool DefaultComputedMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultRenderingParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::DefaultRenderingParams ******/
 		/****** md5 signature: 0d628909940f0fcdf3653e8e75ccea5c ******/
 		%feature("compactdefaultargs") DefaultRenderingParams;
@@ -5130,6 +5185,11 @@ Return an iterator for defined lights.
 ") DefinedLightIterator;
 		NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator DefinedLightIterator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefinedLights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::DefinedLights ******/
 		/****** md5 signature: 71633e6922f040aad3b80db3ae3f4607 ******/
 		%feature("compactdefaultargs") DefinedLights;
@@ -5169,6 +5229,11 @@ Return an iterator for defined views.
 ") DefinedViewIterator;
 		NCollection_List<opencascade::handle<V3d_View>>::Iterator DefinedViewIterator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefinedViews %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::DefinedViews ******/
 		/****** md5 signature: d21c5b54623091b0464798bcf6cceac1 ******/
 		%feature("compactdefaultargs") DefinedViews;
@@ -5284,6 +5349,11 @@ Return all Z layer ids in sequence ordered by overlay level from lowest layer to
 ") GetAllZLayers;
 		void GetAllZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGradientBackground %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::GetGradientBackground ******/
 		/****** md5 signature: 0f4e8e838a0ee15372af6735b7472134 ******/
 		%feature("compactdefaultargs") GetGradientBackground;
@@ -6355,6 +6425,11 @@ Updates the lights of all the views of a viewer.
 ") UpdateLights;
 		void UpdateLights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ZLayerSettings %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** V3d_Viewer::ZLayerSettings ******/
 		/****** md5 signature: 9c0de646b59df9fdf459d78e51b824ee ******/
 		%feature("compactdefaultargs") ZLayerSettings;

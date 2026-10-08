@@ -992,6 +992,11 @@ Add statuses to this algorithm from other algorithm, but only those items are mo
 ") AddStatus;
 		void AddStatus(const Message_ExecStatus & theStatus, const opencascade::handle<Message_Algorithm> & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeStatus %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Algorithm::ChangeStatus ******/
 		/****** md5 signature: 583e8574056630c34fa6f25a0f2b96ed ******/
 		%feature("compactdefaultargs") ChangeStatus;
@@ -1067,6 +1072,11 @@ Returns messenger of algorithm. The returned handle is always non-null and can b
 ") GetMessenger;
 		opencascade::handle<Message_Messenger> GetMessenger();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetStatus %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Algorithm::GetStatus ******/
 		/****** md5 signature: 1c5d4227b70baf0287080bbbca1cccdd ******/
 		%feature("compactdefaultargs") GetStatus;
@@ -1399,6 +1409,11 @@ Return a C string to be used as a key for generating text user messages describi
 ") GetMessageKey;
 		virtual const char * GetMessageKey();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Attribute::GetName ******/
 		/****** md5 signature: 03f303d315214c418f43c2b4c12c386a ******/
 		%feature("compactdefaultargs") GetName;
@@ -1483,6 +1498,11 @@ Return: true if the alert is added or merged.
 ") AddAlert;
 		bool AddAlert(Message_Gravity theGravity, const opencascade::handle<Message_Alert> & theAlert);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Alerts %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_CompositeAlerts::Alerts ******/
 		/****** md5 signature: 3c01638b0dfae2a78bd10f9138a20453 ******/
 		%feature("compactdefaultargs") Alerts;
@@ -2192,6 +2212,11 @@ Add a printer to the messenger. The printer will be added only if it is not yet 
 ") AddPrinter;
 		bool AddPrinter(const opencascade::handle<Message_Printer> & thePrinter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePrinters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Messenger::ChangePrinters ******/
 		/****** md5 signature: 448481e321ace473c7e28e5de9ae7261 ******/
 		%feature("compactdefaultargs") ChangePrinters;
@@ -2226,6 +2251,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Printers %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Messenger::Printers ******/
 		/****** md5 signature: c911588734b7061a508898c9b27627c1 ******/
 		%feature("compactdefaultargs") Printers;
@@ -2382,6 +2412,11 @@ Create a message using a corresponding entry in Message_MsgFile.
 ") Message_Msg;
 		 Message_Msg(TCollection_ExtendedString theKey);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arg %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Msg::Arg ******/
 		/****** md5 signature: daf5669240750ca197603fe438a588cb ******/
 		%feature("compactdefaultargs") Arg;
@@ -2508,6 +2543,11 @@ Set a value for %..f, %..e, %..E, %..g or %..G conversion.
 ") Arg;
 		Message_Msg & Arg(const double theReal);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Msg::Get ******/
 		/****** md5 signature: f8c88c41af24fcef115a47458b797652 ******/
 		%feature("compactdefaultargs") Get;
@@ -2534,6 +2574,11 @@ Tells if Value differs from Original.
 ") IsEdited;
 		bool IsEdited();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Original %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Msg::Original ******/
 		/****** md5 signature: e23e7a271ddf85e9db1a3ab6e18b109b ******/
 		%feature("compactdefaultargs") Original;
@@ -2583,6 +2628,11 @@ Set a message body text -- can be used as alternative to using messages from res
 ") Set;
 		void Set(TCollection_ExtendedString theMsg);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Msg::Value ******/
 		/****** md5 signature: f2f68aad6ed0ed6d591de9948ef0a3f6 ******/
 		%feature("compactdefaultargs") Value;
@@ -3114,6 +3164,11 @@ Parameter theMessenger the messenger. If it's NULL, the default messenger is use
 ") ActivateInMessenger;
 		void ActivateInMessenger(const bool toActivate, const opencascade::handle<Message_Messenger> & theMessenger = nullptr);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveMetrics %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Report::ActiveMetrics ******/
 		/****** md5 signature: 69fbfa35c1d07de4faca23e67c2982b0 ******/
 		%feature("compactdefaultargs") ActiveMetrics;
@@ -3284,6 +3339,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAlerts %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Message_Report::GetAlerts ******/
 		/****** md5 signature: d2058eda79dba0bf1ff3041b7d6fe141 ******/
 		%feature("compactdefaultargs") GetAlerts;

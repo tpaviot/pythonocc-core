@@ -297,6 +297,11 @@ Input parameter: theIsVerbose print verbose messages.
 ") Resource_Manager;
 		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const bool theIsVerbose = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExtValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Resource_Manager::ExtValue ******/
 		/****** md5 signature: 1cf9f8324a00f078533bf5a84368f3a7 ******/
 		%feature("compactdefaultargs") ExtValue;
@@ -352,6 +357,11 @@ returns True if the Resource does exist.
 ") Find;
 		bool Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Resource_Manager::GetMap ******/
 		/****** md5 signature: 4c2222c68101ee6b91f36d953c513ad1 ******/
 		%feature("compactdefaultargs") GetMap;

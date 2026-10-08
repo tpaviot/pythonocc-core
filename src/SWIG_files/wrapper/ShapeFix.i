@@ -1730,6 +1730,11 @@ No available documentation.
 ") ShapeFix_WireVertex;
 		 ShapeFix_WireVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Analyzer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeFix_WireVertex::Analyzer ******/
 		/****** md5 signature: 5e1625a1025a731a5fee17af33e388ff ******/
 		%feature("compactdefaultargs") Analyzer;

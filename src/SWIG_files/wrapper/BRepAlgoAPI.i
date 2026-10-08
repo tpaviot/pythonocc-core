@@ -217,6 +217,11 @@ Performs the check.
 ") Perform;
 		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Result %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_Check::Result ******/
 		/****** md5 signature: 8d26033858e0a1825ae93927c067d61d ******/
 		%feature("compactdefaultargs") Result;
@@ -354,6 +359,11 @@ Constructor with prepared Filler object.
 ") BRepAlgoAPI_BuilderAlgo;
 		 BRepAlgoAPI_BuilderAlgo(const BOPAlgo_PaveFiller & thePF);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::Arguments ******/
 		/****** md5 signature: 7729dc5bed49818f4be5c095d2e3edec ******/
 		%feature("compactdefaultargs") Arguments;
@@ -385,6 +395,11 @@ Performs the algorithm.
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Builder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::Builder ******/
 		/****** md5 signature: 8b185d6cf1a66c51174428861a33b6c7 ******/
 		%feature("compactdefaultargs") Builder;
@@ -411,6 +426,11 @@ Returns the flag defining whether the check for input solids on inverted status 
 ") CheckInverted;
 		bool CheckInverted();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DSFiller %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::DSFiller ******/
 		/****** md5 signature: eacda80fa3f8437b06bd46026236195a ******/
 		%feature("compactdefaultargs") DSFiller;
@@ -424,6 +444,11 @@ Returns the Intersection tool.
 ") DSFiller;
 		const BOPAlgo_PPaveFiller & DSFiller();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::Generated ******/
 		/****** md5 signature: 9b9a05fc05596bf1aae965197e0fcaf8 ******/
 		%feature("compactdefaultargs") Generated;
@@ -538,6 +563,11 @@ Checks if the shape <theS> has been completely removed from the result, i.e. the
 ") IsDeleted;
 		bool IsDeleted(const TopoDS_Shape & aS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::Modified ******/
 		/****** md5 signature: fe07e72bf2ba9abb3cc72857d221a523 ******/
 		%feature("compactdefaultargs") Modified;
@@ -569,6 +599,11 @@ Returns the flag that defines the mode of treatment. In non-destructive mode the
 ") NonDestructive;
 		bool NonDestructive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SectionEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BuilderAlgo::SectionEdges ******/
 		/****** md5 signature: a6fa9a85398d20392969c848eac3c4fc ******/
 		%feature("compactdefaultargs") SectionEdges;
@@ -778,6 +813,11 @@ Performs the operation.
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FacesToRemove %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_Defeaturing::FacesToRemove ******/
 		/****** md5 signature: 2265923b20d3cdfe0e4bc1cba758c7d2 ******/
 		%feature("compactdefaultargs") FacesToRemove;
@@ -791,6 +831,11 @@ Returns the list of faces which have been requested for removal from the input s
 ") FacesToRemove;
 		const TopTools_ListOfShape & FacesToRemove();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_Defeaturing::Generated ******/
 		/****** md5 signature: 9b9a05fc05596bf1aae965197e0fcaf8 ******/
 		%feature("compactdefaultargs") Generated;
@@ -905,6 +950,11 @@ Returns true if the shape <theS> has been deleted during the operation. It means
 ") IsDeleted;
 		bool IsDeleted(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_Defeaturing::Modified ******/
 		/****** md5 signature: fe07e72bf2ba9abb3cc72857d221a523 ******/
 		%feature("compactdefaultargs") Modified;
@@ -1098,6 +1148,11 @@ Returns the second argument involved in this Boolean operation. Obsolete.
 ") Shape2;
 		const TopoDS_Shape Shape2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tools %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_BooleanOperation::Tools ******/
 		/****** md5 signature: f354d26768926e996d17ca393c56586f ******/
 		%feature("compactdefaultargs") Tools;
@@ -1192,6 +1247,11 @@ Sets the Tool arguments.
 ") SetTools;
 		void SetTools(const TopTools_ListOfShape & theLS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tools %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgoAPI_Splitter::Tools ******/
 		/****** md5 signature: f354d26768926e996d17ca393c56586f ******/
 		%feature("compactdefaultargs") Tools;

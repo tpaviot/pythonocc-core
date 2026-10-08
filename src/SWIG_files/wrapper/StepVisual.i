@@ -9835,6 +9835,11 @@ Returns field Items.
 ") Items;
 		opencascade::handle<NCollection_HArray1<StepVisual_TessellatedEdgeOrVertex>> Items();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ItemsValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** StepVisual_TessellatedWire::ItemsValue ******/
 		/****** md5 signature: ce669d7fe45e564adda3273db8d5b493 ******/
 		%feature("compactdefaultargs") ItemsValue;
@@ -12679,7 +12684,13 @@ class StepVisual_HArray1OfAnnotationPlaneElement : public NCollection_Array1<Ste
     StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_AnnotationPlaneElement>::value_type& theValue);
     StepVisual_HArray1OfAnnotationPlaneElement(const NCollection_Array1<StepVisual_AnnotationPlaneElement>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_AnnotationPlaneElement>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_AnnotationPlaneElement>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfAnnotationPlaneElement)
@@ -12690,7 +12701,13 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public NCollection_Array1<St
     StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfBoxCharacteristicSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_BoxCharacteristicSelect>::value_type& theValue);
     StepVisual_HArray1OfBoxCharacteristicSelect(const NCollection_Array1<StepVisual_BoxCharacteristicSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_BoxCharacteristicSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_BoxCharacteristicSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
@@ -12701,7 +12718,13 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public N
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>::value_type& theValue);
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_CameraModelD3MultiClippingInterectionSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
@@ -12712,7 +12735,13 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public NCollec
     StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>::value_type& theValue);
     StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect(const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_CameraModelD3MultiClippingUnionSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
@@ -12723,7 +12752,13 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public NCollection_Array1<open
     StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>::value_type& theValue);
     StepVisual_HArray1OfCurveStyleFontPattern(const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepVisual_CurveStyleFontPattern>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
@@ -12734,7 +12769,13 @@ class StepVisual_HArray1OfDirectionCountSelect : public NCollection_Array1<StepV
     StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_DirectionCountSelect>::value_type& theValue);
     StepVisual_HArray1OfDirectionCountSelect(const NCollection_Array1<StepVisual_DirectionCountSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_DirectionCountSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_DirectionCountSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfDirectionCountSelect)
@@ -12745,7 +12786,13 @@ class StepVisual_HArray1OfDraughtingCalloutElement : public NCollection_Array1<S
     StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_DraughtingCalloutElement>::value_type& theValue);
     StepVisual_HArray1OfDraughtingCalloutElement(const NCollection_Array1<StepVisual_DraughtingCalloutElement>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_DraughtingCalloutElement>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_DraughtingCalloutElement>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
@@ -12756,7 +12803,13 @@ class StepVisual_HArray1OfFillStyleSelect : public NCollection_Array1<StepVisual
     StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_FillStyleSelect>::value_type& theValue);
     StepVisual_HArray1OfFillStyleSelect(const NCollection_Array1<StepVisual_FillStyleSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_FillStyleSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_FillStyleSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfFillStyleSelect)
@@ -12767,7 +12820,13 @@ class StepVisual_HArray1OfInvisibleItem : public NCollection_Array1<StepVisual_I
     StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfInvisibleItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_InvisibleItem>::value_type& theValue);
     StepVisual_HArray1OfInvisibleItem(const NCollection_Array1<StepVisual_InvisibleItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_InvisibleItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_InvisibleItem>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfInvisibleItem)
@@ -12778,7 +12837,13 @@ class StepVisual_HArray1OfLayeredItem : public NCollection_Array1<StepVisual_Lay
     StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfLayeredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_LayeredItem>::value_type& theValue);
     StepVisual_HArray1OfLayeredItem(const NCollection_Array1<StepVisual_LayeredItem>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_LayeredItem>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_LayeredItem>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfLayeredItem)
@@ -12789,7 +12854,13 @@ class StepVisual_HArray1OfPresentationStyleAssignment : public NCollection_Array
     StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>::value_type& theValue);
     StepVisual_HArray1OfPresentationStyleAssignment(const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepVisual_PresentationStyleAssignment>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
@@ -12800,7 +12871,13 @@ class StepVisual_HArray1OfPresentationStyleSelect : public NCollection_Array1<St
     StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_PresentationStyleSelect>::value_type& theValue);
     StepVisual_HArray1OfPresentationStyleSelect(const NCollection_Array1<StepVisual_PresentationStyleSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_PresentationStyleSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_PresentationStyleSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfPresentationStyleSelect)
@@ -12811,7 +12888,13 @@ class StepVisual_HArray1OfRenderingPropertiesSelect : public NCollection_Array1<
     StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_RenderingPropertiesSelect>::value_type& theValue);
     StepVisual_HArray1OfRenderingPropertiesSelect(const NCollection_Array1<StepVisual_RenderingPropertiesSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_RenderingPropertiesSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_RenderingPropertiesSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfRenderingPropertiesSelect)
@@ -12822,7 +12905,13 @@ class StepVisual_HArray1OfStyleContextSelect : public NCollection_Array1<StepVis
     StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_StyleContextSelect>::value_type& theValue);
     StepVisual_HArray1OfStyleContextSelect(const NCollection_Array1<StepVisual_StyleContextSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_StyleContextSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_StyleContextSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfStyleContextSelect)
@@ -12833,7 +12922,13 @@ class StepVisual_HArray1OfSurfaceStyleElementSelect : public NCollection_Array1<
     StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>::value_type& theValue);
     StepVisual_HArray1OfSurfaceStyleElementSelect(const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_SurfaceStyleElementSelect>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
@@ -12844,7 +12939,13 @@ class StepVisual_HArray1OfTessellatedEdgeOrVertex : public NCollection_Array1<St
     StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>::value_type& theValue);
     StepVisual_HArray1OfTessellatedEdgeOrVertex(const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_TessellatedEdgeOrVertex>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTessellatedEdgeOrVertex)
@@ -12855,7 +12956,13 @@ class StepVisual_HArray1OfTessellatedStructuredItem : public NCollection_Array1<
     StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>::value_type& theValue);
     StepVisual_HArray1OfTessellatedStructuredItem(const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepVisual_TessellatedStructuredItem>>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTessellatedStructuredItem)
@@ -12866,7 +12973,13 @@ class StepVisual_HArray1OfTextOrCharacter : public NCollection_Array1<StepVisual
     StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepVisual_TextOrCharacter>::value_type& theValue);
     StepVisual_HArray1OfTextOrCharacter(const NCollection_Array1<StepVisual_TextOrCharacter>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepVisual_TextOrCharacter>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepVisual_TextOrCharacter>& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfTextOrCharacter)

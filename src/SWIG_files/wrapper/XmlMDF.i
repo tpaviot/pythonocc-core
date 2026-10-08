@@ -197,6 +197,11 @@ Returns the current message driver of this driver.
 ") MessageDriver;
 		const opencascade::handle<Message_Messenger> & MessageDriver();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Namespace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlMDF_ADriver::Namespace ******/
 		/****** md5 signature: ed4e20f1f838f6275fc120673f93975a ******/
 		%feature("compactdefaultargs") Namespace;
@@ -276,6 +281,11 @@ Returns the type of source object, inheriting from Attribute from TDF.
 ") SourceType;
 		virtual opencascade::handle<Standard_Type> SourceType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TypeName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlMDF_ADriver::TypeName ******/
 		/****** md5 signature: 191a1aa753fb8d39d56bcfd7505ea0e7 ******/
 		%feature("compactdefaultargs") TypeName;
@@ -514,6 +524,11 @@ Reuses the base driver to store the base fields.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TypeName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlMDF_DerivedDriver::TypeName ******/
 		/****** md5 signature: 33bd6dc5f76c10259f99124470e7cb5c ******/
 		%feature("compactdefaultargs") TypeName;

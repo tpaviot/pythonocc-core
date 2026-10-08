@@ -394,6 +394,11 @@ Stops threads.
 ") StopThreads;
 		void StopThreads();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Threads %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_BVHThreadPool::Threads ******/
 		/****** md5 signature: 94f882b6bc1c488f6ee23d7bf072e378 ******/
 		%feature("compactdefaultargs") Threads;
@@ -2248,6 +2253,11 @@ Returns the selection having specified selection mode or NULL.
 ") Selection;
 		const opencascade::handle<SelectMgr_Selection> & Selection(const int theMode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Selections %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_SelectableObject::Selections ******/
 		/****** md5 signature: 857f6fda3d774e3442cc2fe4ac5c1663 ******/
 		%feature("compactdefaultargs") Selections;
@@ -2906,6 +2916,11 @@ Stores plane equation coefficients (in the following form: Ax + By + Cz + D = 0)
 ") GetPlanes;
 		void GetPlanes(NCollection_DynamicArray<NCollection_Vec4<double>> & thePlaneEquations);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetVertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_SelectingVolumeManager::GetVertices ******/
 		/****** md5 signature: 97f9768e715df9214ec06c43990766fc ******/
 		%feature("compactdefaultargs") GetVertices;
@@ -3484,6 +3499,11 @@ Updates window size in all selecting volumes Note: this method should be called 
 ") SetWindowSize;
 		void SetWindowSize(const int theWidth, const int theHeight);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ViewClipRanges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_SelectingVolumeManager::ViewClipRanges ******/
 		/****** md5 signature: 4220e845cb705bc0e9750141f885c41f ******/
 		%feature("compactdefaultargs") ViewClipRanges;
@@ -3591,6 +3611,11 @@ No available documentation.
 ") BVHUpdateStatus;
 		SelectMgr_TypeOfBVHUpdate BVHUpdateStatus();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeEntities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_Selection::ChangeEntities ******/
 		/****** md5 signature: 3efdb0b04ad44e3cd93b876ba03906f5 ******/
 		%feature("compactdefaultargs") ChangeEntities;
@@ -3651,6 +3676,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_Selection::Entities ******/
 		/****** md5 signature: 7449fce2abe99b6f771a1a875aa42c3c ******/
 		%feature("compactdefaultargs") Entities;
@@ -4439,6 +4469,11 @@ Returns map of entities.
 ") HasEntityWithPersistence;
 		bool HasEntityWithPersistence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Owners %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_SensitiveEntitySet::Owners ******/
 		/****** md5 signature: a3cf4fc8a1eba2fad744cc7f4de2dcdd ******/
 		%feature("compactdefaultargs") Owners;
@@ -4470,6 +4505,11 @@ Removes every entity of selection theSelection from the set and marks BVH tree f
 ") Remove;
 		void Remove(const opencascade::handle<SelectMgr_Selection> & theSelection);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Sensitives %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_SensitiveEntitySet::Sensitives ******/
 		/****** md5 signature: fd0385fed6214863cadcb96ed616c61e ******/
 		%feature("compactdefaultargs") Sensitives;
@@ -4777,6 +4817,11 @@ Add clipping planes. Planes and picking ray should be defined in the same coordi
 ") AddClippingPlanes;
 		void AddClippingPlanes(const Graphic3d_SequenceOfHClipPlane & thePlanes, const gp_Ax1 & thePickRay);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeUnclipRange %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_ViewClipRange::ChangeUnclipRange ******/
 		/****** md5 signature: 58b75e3eeaf4dd4dbdda4bc0bfa4ec3e ******/
 		%feature("compactdefaultargs") ChangeUnclipRange;
@@ -5134,6 +5179,11 @@ Returns the default builder used to construct BVH of entity set.
 ") EntitySetBuilder;
 		const opencascade::handle<Select3D_BVHBuilder3d> EntitySetBuilder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetManager %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_ViewerSelector::GetManager ******/
 		/****** md5 signature: 1e3e7e7901c4a711a6a7b92a70014822 ******/
 		%feature("compactdefaultargs") GetManager;
@@ -5348,6 +5398,11 @@ Parameter theRank rank of detected object within range 1...NbPicked().
 ") Picked;
 		opencascade::handle<SelectMgr_EntityOwner> Picked(const int theRank);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PickedData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_ViewerSelector::PickedData ******/
 		/****** md5 signature: 845a92e27d664a89ed080258efae96d7 ******/
 		%feature("compactdefaultargs") PickedData;
@@ -5541,6 +5596,11 @@ Marks all added sensitive entities of all objects as non-selectable.
 ") ResetSelectionActivationStatus;
 		void ResetSelectionActivationStatus();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SelectableObjects %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_ViewerSelector::SelectableObjects ******/
 		/****** md5 signature: 3e067502f3452297d930a8e90567e3d9 ******/
 		%feature("compactdefaultargs") SelectableObjects;
@@ -6371,6 +6431,11 @@ Removes the filter aFilter from this framework.
 ") Remove;
 		void Remove(const opencascade::handle<SelectMgr_Filter> & aFilter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StoredFilters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectMgr_CompositionFilter::StoredFilters ******/
 		/****** md5 signature: 5332af65b6ffd8b0c56e27c85fa447e0 ******/
 		%feature("compactdefaultargs") StoredFilters;

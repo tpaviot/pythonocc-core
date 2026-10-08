@@ -405,7 +405,13 @@ class TColgp_HArray1OfCirc2d : public NCollection_Array1<gp_Circ2d>, public Stan
     TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Circ2d>::value_type& theValue);
     TColgp_HArray1OfCirc2d(const NCollection_Array1<gp_Circ2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Circ2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Circ2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfCirc2d)
@@ -416,7 +422,13 @@ class TColgp_HArray1OfDir : public NCollection_Array1<gp_Dir>, public Standard_T
     TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfDir(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir>::value_type& theValue);
     TColgp_HArray1OfDir(const NCollection_Array1<gp_Dir>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Dir>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Dir>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfDir)
@@ -427,7 +439,13 @@ class TColgp_HArray1OfDir2d : public NCollection_Array1<gp_Dir2d>, public Standa
     TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Dir2d>::value_type& theValue);
     TColgp_HArray1OfDir2d(const NCollection_Array1<gp_Dir2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Dir2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Dir2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfDir2d)
@@ -438,7 +456,13 @@ class TColgp_HArray1OfLin2d : public NCollection_Array1<gp_Lin2d>, public Standa
     TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Lin2d>::value_type& theValue);
     TColgp_HArray1OfLin2d(const NCollection_Array1<gp_Lin2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Lin2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Lin2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfLin2d)
@@ -449,7 +473,13 @@ class TColgp_HArray1OfPnt : public NCollection_Array1<gp_Pnt>, public Standard_T
     TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt>::value_type& theValue);
     TColgp_HArray1OfPnt(const NCollection_Array1<gp_Pnt>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Pnt>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Pnt>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfPnt)
@@ -460,7 +490,13 @@ class TColgp_HArray1OfPnt2d : public NCollection_Array1<gp_Pnt2d>, public Standa
     TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Pnt2d>::value_type& theValue);
     TColgp_HArray1OfPnt2d(const NCollection_Array1<gp_Pnt2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Pnt2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Pnt2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfPnt2d)
@@ -471,7 +507,13 @@ class TColgp_HArray1OfVec : public NCollection_Array1<gp_Vec>, public Standard_T
     TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Vec>::value_type& theValue);
     TColgp_HArray1OfVec(const NCollection_Array1<gp_Vec>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Vec>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Vec>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfVec)
@@ -482,7 +524,13 @@ class TColgp_HArray1OfVec2d : public NCollection_Array1<gp_Vec2d>, public Standa
     TColgp_HArray1OfVec2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfVec2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_Vec2d>::value_type& theValue);
     TColgp_HArray1OfVec2d(const NCollection_Array1<gp_Vec2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_Vec2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_Vec2d>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfVec2d)
@@ -493,7 +541,13 @@ class TColgp_HArray1OfXY : public NCollection_Array1<gp_XY>, public Standard_Tra
     TColgp_HArray1OfXY(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfXY(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_XY>::value_type& theValue);
     TColgp_HArray1OfXY(const NCollection_Array1<gp_XY>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_XY>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_XY>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfXY)
@@ -504,7 +558,13 @@ class TColgp_HArray1OfXYZ : public NCollection_Array1<gp_XYZ>, public Standard_T
     TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_XYZ>::value_type& theValue);
     TColgp_HArray1OfXYZ(const NCollection_Array1<gp_XYZ>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_XYZ>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_XYZ>& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfXYZ)
@@ -517,7 +577,13 @@ class TColgp_HArray2OfCirc2d : public NCollection_Array2<gp_Circ2d>, public Stan
     TColgp_HArray2OfCirc2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Circ2d>::value_type& theValue);
     TColgp_HArray2OfCirc2d(const NCollection_Array2<gp_Circ2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Circ2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Circ2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfCirc2d)
@@ -530,7 +596,13 @@ class TColgp_HArray2OfDir : public NCollection_Array2<gp_Dir>, public Standard_T
     TColgp_HArray2OfDir(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Dir>::value_type& theValue);
     TColgp_HArray2OfDir(const NCollection_Array2<gp_Dir>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Dir>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Dir>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfDir)
@@ -543,7 +615,13 @@ class TColgp_HArray2OfDir2d : public NCollection_Array2<gp_Dir2d>, public Standa
     TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Dir2d>::value_type& theValue);
     TColgp_HArray2OfDir2d(const NCollection_Array2<gp_Dir2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Dir2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Dir2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfDir2d)
@@ -556,7 +634,13 @@ class TColgp_HArray2OfLin2d : public NCollection_Array2<gp_Lin2d>, public Standa
     TColgp_HArray2OfLin2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Lin2d>::value_type& theValue);
     TColgp_HArray2OfLin2d(const NCollection_Array2<gp_Lin2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Lin2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Lin2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfLin2d)
@@ -569,7 +653,13 @@ class TColgp_HArray2OfPnt : public NCollection_Array2<gp_Pnt>, public Standard_T
     TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt>::value_type& theValue);
     TColgp_HArray2OfPnt(const NCollection_Array2<gp_Pnt>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Pnt>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Pnt>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfPnt)
@@ -582,7 +672,13 @@ class TColgp_HArray2OfPnt2d : public NCollection_Array2<gp_Pnt2d>, public Standa
     TColgp_HArray2OfPnt2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Pnt2d>::value_type& theValue);
     TColgp_HArray2OfPnt2d(const NCollection_Array2<gp_Pnt2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Pnt2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Pnt2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfPnt2d)
@@ -595,7 +691,13 @@ class TColgp_HArray2OfVec : public NCollection_Array2<gp_Vec>, public Standard_T
     TColgp_HArray2OfVec(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Vec>::value_type& theValue);
     TColgp_HArray2OfVec(const NCollection_Array2<gp_Vec>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Vec>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Vec>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfVec)
@@ -608,7 +710,13 @@ class TColgp_HArray2OfVec2d : public NCollection_Array2<gp_Vec2d>, public Standa
     TColgp_HArray2OfVec2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_Vec2d>::value_type& theValue);
     TColgp_HArray2OfVec2d(const NCollection_Array2<gp_Vec2d>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_Vec2d>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_Vec2d>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfVec2d)
@@ -621,7 +729,13 @@ class TColgp_HArray2OfXY : public NCollection_Array2<gp_XY>, public Standard_Tra
     TColgp_HArray2OfXY(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_XY>::value_type& theValue);
     TColgp_HArray2OfXY(const NCollection_Array2<gp_XY>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_XY>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_XY>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfXY)
@@ -634,7 +748,13 @@ class TColgp_HArray2OfXYZ : public NCollection_Array2<gp_XYZ>, public Standard_T
     TColgp_HArray2OfXYZ(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<gp_XYZ>::value_type& theValue);
     TColgp_HArray2OfXYZ(const NCollection_Array2<gp_XYZ>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<gp_XYZ>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<gp_XYZ>& ChangeArray2 (); 
 };
 %make_alias(TColgp_HArray2OfXYZ)
@@ -645,9 +765,15 @@ class TColgp_HSequenceOfDir : public NCollection_Sequence<gp_Dir>, public Standa
   public:
     TColgp_HSequenceOfDir();
     TColgp_HSequenceOfDir(const NCollection_Sequence<gp_Dir>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Dir>& Sequence();
     void Append (const NCollection_Sequence<gp_Dir>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Dir>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Dir>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfDir)
@@ -657,9 +783,15 @@ class TColgp_HSequenceOfDir2d : public NCollection_Sequence<gp_Dir2d>, public St
   public:
     TColgp_HSequenceOfDir2d();
     TColgp_HSequenceOfDir2d(const NCollection_Sequence<gp_Dir2d>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Dir2d>& Sequence();
     void Append (const NCollection_Sequence<gp_Dir2d>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Dir2d>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Dir2d>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfDir2d)
@@ -669,9 +801,15 @@ class TColgp_HSequenceOfPnt : public NCollection_Sequence<gp_Pnt>, public Standa
   public:
     TColgp_HSequenceOfPnt();
     TColgp_HSequenceOfPnt(const NCollection_Sequence<gp_Pnt>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Pnt>& Sequence();
     void Append (const NCollection_Sequence<gp_Pnt>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Pnt>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Pnt>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfPnt)
@@ -681,9 +819,15 @@ class TColgp_HSequenceOfPnt2d : public NCollection_Sequence<gp_Pnt2d>, public St
   public:
     TColgp_HSequenceOfPnt2d();
     TColgp_HSequenceOfPnt2d(const NCollection_Sequence<gp_Pnt2d>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Pnt2d>& Sequence();
     void Append (const NCollection_Sequence<gp_Pnt2d>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Pnt2d>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Pnt2d>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfPnt2d)
@@ -693,9 +837,15 @@ class TColgp_HSequenceOfVec : public NCollection_Sequence<gp_Vec>, public Standa
   public:
     TColgp_HSequenceOfVec();
     TColgp_HSequenceOfVec(const NCollection_Sequence<gp_Vec>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Vec>& Sequence();
     void Append (const NCollection_Sequence<gp_Vec>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Vec>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Vec>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfVec)
@@ -705,9 +855,15 @@ class TColgp_HSequenceOfVec2d : public NCollection_Sequence<gp_Vec2d>, public St
   public:
     TColgp_HSequenceOfVec2d();
     TColgp_HSequenceOfVec2d(const NCollection_Sequence<gp_Vec2d>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_Vec2d>& Sequence();
     void Append (const NCollection_Sequence<gp_Vec2d>::value_type& theItem);
     void Append (NCollection_Sequence<gp_Vec2d>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_Vec2d>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfVec2d)
@@ -717,9 +873,15 @@ class TColgp_HSequenceOfXY : public NCollection_Sequence<gp_XY>, public Standard
   public:
     TColgp_HSequenceOfXY();
     TColgp_HSequenceOfXY(const NCollection_Sequence<gp_XY>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_XY>& Sequence();
     void Append (const NCollection_Sequence<gp_XY>::value_type& theItem);
     void Append (NCollection_Sequence<gp_XY>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_XY>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfXY)
@@ -729,9 +891,15 @@ class TColgp_HSequenceOfXYZ : public NCollection_Sequence<gp_XYZ>, public Standa
   public:
     TColgp_HSequenceOfXYZ();
     TColgp_HSequenceOfXYZ(const NCollection_Sequence<gp_XYZ>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<gp_XYZ>& Sequence();
     void Append (const NCollection_Sequence<gp_XYZ>::value_type& theItem);
     void Append (NCollection_Sequence<gp_XYZ>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<gp_XYZ>& ChangeSequence();
 };
 %make_alias(TColgp_HSequenceOfXYZ)

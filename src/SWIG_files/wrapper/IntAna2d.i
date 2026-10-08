@@ -464,6 +464,11 @@ Intersection between an hyperbola and another conic.
 ") Perform;
 		void Perform(const gp_Hypr2d & H, const IntAna2d_Conic & C);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntAna2d_AnaIntersection::Point ******/
 		/****** md5 signature: 22aab88373074b7cecbed0f295b0b7d5 ******/
 		%feature("compactdefaultargs") Point;

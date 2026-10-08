@@ -372,6 +372,11 @@ Returns pcurve with the given index.
 ") GetPCurve;
 		IMeshData::IPCurveHandle GetPCurve(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPCurves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Edge::GetPCurves ******/
 		/****** md5 signature: 491c9fe0639e2760c1b01b2974df445b ******/
 		%feature("compactdefaultargs") GetPCurves;
@@ -488,6 +493,11 @@ Returns number of pcurves assigned to current edge.
 %nodefaultctor BRepMeshData_Face;
 class BRepMeshData_Face : public IMeshData_Face {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddWire %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Face::AddWire ******/
 		/****** md5 signature: da6383228b6811d9b2e53917e314db4c ******/
 		%feature("compactdefaultargs") AddWire;
@@ -507,6 +517,11 @@ Adds wire to discrete model of face.
 ") AddWire;
 		const IMeshData::IWireHandle & AddWire(const TopoDS_Wire & theWire, const int theEdgeNb = 0);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetWire %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Face::GetWire ******/
 		/****** md5 signature: 3e289414d2c00bf902051ece2205a4f6 ******/
 		%feature("compactdefaultargs") GetWire;
@@ -640,6 +655,11 @@ Constructor. Initializes empty model.
 ") BRepMeshData_Model;
 		 BRepMeshData_Model(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Model::AddEdge ******/
 		/****** md5 signature: bbdf5246f49115b5073f1184599756c3 ******/
 		%feature("compactdefaultargs") AddEdge;
@@ -658,6 +678,11 @@ Adds new edge to shape model.
 ") AddEdge;
 		const IMeshData::IEdgeHandle & AddEdge(const TopoDS_Edge & theEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Model::AddFace ******/
 		/****** md5 signature: cbe3e3287395d683281ce086f245f2d8 ******/
 		%feature("compactdefaultargs") AddFace;
@@ -702,6 +727,11 @@ Returns number of faces in discrete model.
 ") FacesNb;
 		int FacesNb();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Model::GetEdge ******/
 		/****** md5 signature: ddaff6ad7cb928e4030ef3825c90a50e ******/
 		%feature("compactdefaultargs") GetEdge;
@@ -720,6 +750,11 @@ Gets model's edge with the given index.
 ") GetEdge;
 		const IMeshData::IEdgeHandle & GetEdge(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Model::GetFace ******/
 		/****** md5 signature: 173a5ffac5e8612c1a36d0c1960c1e2d ******/
 		%feature("compactdefaultargs") GetFace;
@@ -1054,6 +1089,11 @@ Gets number of children.
 ") EdgesNb;
 		int EdgesNb();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMeshData_Wire::GetEdge ******/
 		/****** md5 signature: 3f65b77383c174358c7254a610d4738b ******/
 		%feature("compactdefaultargs") GetEdge;
