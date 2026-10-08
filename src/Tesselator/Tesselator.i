@@ -75,7 +75,10 @@ class ShapeTesselator {
         %feature("autodoc", "1");
         ~ShapeTesselator();
         %feature("kwargs") Compute;
-        void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false);
+        %feature("docstring") Compute "Compute once. Lower mesh_quality gives a finer mesh.
+reuse_mesh=True preserves sufficiently fine OCCT triangulations; an existing
+finer mesh is not coarsened. The default rebuilds at the requested quality.";
+        void Compute(bool compute_edges=false, float mesh_quality=1.0, bool parallel=false, bool reuse_mesh=false);
         void GetVertex(int ivert, float& x, float& y, float& z);
         void GetNormal(int inorm, float& x, float& y, float& z);
         void GetTriangleIndex(int triangleIdx, int& v1, int& v2, int& v3);
@@ -118,14 +121,16 @@ TopologyExplorer order, which is TopExp::MapShapes order minus one:
 - VertexPositions(): float32 array (V, 3), one row per vertex.
 
 The shape is meshed by Compute(mesh_quality=1.0, parallel=True), with the
-deflections of ShapeTesselator, and the triangulation is stored on it.";
+deflections of ShapeTesselator, and the triangulation is stored on it.
+Pass reuse_mesh=True to preserve sufficiently fine existing triangulations;
+an existing finer mesh is not coarsened. The default rebuilds the mesh.";
 
 class TopologyTesselator {
     public:
         TopologyTesselator(const TopoDS_Shape& aShape);
         %feature("kwargs") Compute;
         %thread Compute;
-        void Compute(double mesh_quality=1.0, bool parallel=true);
+        void Compute(double mesh_quality=1.0, bool parallel=true, bool reuse_mesh=false);
         void SetDeviation(double aDeviation);
         double GetDeviation();
         int FaceCount();

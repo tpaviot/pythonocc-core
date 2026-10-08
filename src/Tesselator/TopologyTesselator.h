@@ -60,8 +60,10 @@ public:
     //! triangulation is stored on the shape, as BRepMesh does. A shape whose
     //! deviation is 0, an empty one, is not meshed.
     //! @param mesh_quality Scales the deflections (lower = finer), > 0
-    //! @param parallel Whether BRepMesh meshes the faces in parallel
-    void Compute(Standard_Real mesh_quality = 1.0, bool parallel = true);
+    //! @param parallel Whether to mesh and extract faces in parallel
+    //! @param reuse_mesh Keep sufficiently fine OCCT triangulations instead of
+    //! rebuilding. Existing finer triangulations will not be coarsened.
+    void Compute(Standard_Real mesh_quality = 1.0, bool parallel = true, bool reuse_mesh = false);
 
     //! The deviation: by default 2% of the largest side of the shape's
     //! bounding box, as for ShapeTesselator

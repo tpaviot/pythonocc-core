@@ -23,6 +23,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -58,6 +59,9 @@
 #include <BRep_Tool.hxx>
 #include <TopoDS_Face.hxx>
 #include <Precision.hxx>
+#include <Standard_DomainError.hxx>
+#include <Standard_Overflow.hxx>
+#include <BRepAdaptor_Surface.hxx>
 #include <Poly_Polygon3D.hxx>
 #include <gp_Trsf.hxx>
 #include <TColStd_Array1OfInteger.hxx>
@@ -89,6 +93,39 @@ namespace {
             appendFloat(out, f);
         }
     }
+
+    // Triangle soups reference each node several times. Format each indexed
+    // node once, then copy its text for every corner (no per-node allocation).
+    void appendIndexedCoordinates(std::string& out, const std::vector<float>& values,
+                                  const std::vector<Standard_Integer>& indices,
+                                  char separator, bool clamp) {
+        const auto append_node = [&](std::string& destination, size_t offset) {
+            for (size_t c = 0; c < 3; ++c) {
+                if (clamp) appendFloatWithEpsilon(destination, values[offset + c]);
+                else appendFloat(destination, values[offset + c]);
+                destination.push_back(separator);
+            }
+        };
+        const size_t nodes = values.size() / 3;
+        if (indices.size() > nodes * 2 && nodes > 128) {
+            std::string formatted;
+            formatted.reserve(nodes * 27);
+            std::vector<size_t> offsets;
+            offsets.reserve(nodes + 1);
+            offsets.push_back(0);
+            for (size_t node = 0; node < nodes; ++node) {
+                append_node(formatted, node * 3);
+                offsets.push_back(formatted.size());
+            }
+            for (const auto index : indices) {
+                out.append(formatted.data() + offsets[index], offsets[index + 1] - offsets[index]);
+            }
+        } else {
+            for (const auto index : indices) append_node(out, static_cast<size_t>(index) * 3);
+        }
+        if (separator == ',' && !indices.empty()) out.pop_back();
+    }
+
 }
 
 // ========================================================================
@@ -108,9 +145,9 @@ ShapeTesselator::ShapeTesselator(const TopoDS_Shape& aShape)
     ComputeDefaultDeviation();
 }
 
-void ShapeTesselator::Compute(bool compute_edges, float mesh_quality, bool parallel) {
+void ShapeTesselator::Compute(bool compute_edges, float mesh_quality, bool parallel, bool reuse_mesh) {
     if (!computed) {
-        Tessellate(compute_edges, mesh_quality, parallel);
+        Tessellate(compute_edges, mesh_quality, parallel, reuse_mesh);
         computed = true;
     }
 }
@@ -138,18 +175,20 @@ void ShapeTesselator::ComputeDefaultDeviation() {
     myDeviation = max_dimension * 2e-2;
 }
 
-void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool parallel) {
-    if (myDeviation <= 0) {
-        throw std::invalid_argument("The deviation must be greater than 0");
+void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool parallel, bool reuse_mesh) {
+    if (!(myDeviation > 0) || !std::isfinite(myDeviation)) {
+        throw Standard_DomainError("The deviation must be greater than 0");
     }
-    if (mesh_quality <= 0) {
-        throw std::invalid_argument("The mesh quality must be greater than 0");
+    if (!(mesh_quality > 0) || !std::isfinite(mesh_quality)) {
+        throw Standard_DomainError("The mesh quality must be greater than 0");
     }
 
     use_parallel = parallel;
 
-    // Clean and tessellate the shape
-    BRepTools::Clean(myShape);
+    // Rebuilding remains the default, so coarser requests still coarsen.
+    if (!reuse_mesh) {
+        BRepTools::Clean(myShape);
+    }
     BRepMesh_IncrementalMesh(myShape, myDeviation * mesh_quality, false, 0.5f * mesh_quality, parallel);
 
     // Collect faces for processing
@@ -157,10 +196,7 @@ void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool pa
     for (TopExp_Explorer exp(myShape, TopAbs_FACE); exp.More(); exp.Next()) {
         faces.push_back(TopoDS::Face(exp.Current()));
     }
-    face_list.reserve(faces.size());
-
     ProcessFaces(faces);
-    JoinPrimitives();
 
     if (compute_edges) {
         ComputeEdges();
@@ -168,26 +204,67 @@ void ShapeTesselator::Tessellate(bool compute_edges, float mesh_quality, bool pa
 }
 
 void ShapeTesselator::ProcessFaces(const std::vector<TopoDS_Face>& faces) {
-    const auto num_faces = static_cast<int>(faces.size());
-
-    // Each face is processed independently, in its own slot, so that the
-    // faces order does not depend on the threads scheduling
-    std::vector<Face> results(faces.size());
-    const auto process_face = [&](int i) {
+    // Size the final buffers before extraction. Temporary face buffers are
+    // bounded by a batch, rather than another copy of the entire mesh.
+    size_t nodes = 0, triangles = 0;
+    std::vector<size_t> sizes;
+    sizes.reserve(faces.size());
+    for (const auto& face : faces) {
         TopLoc_Location location;
-        const auto& face = faces[i];
-        const auto triangulation = BRep_Tool::Triangulation(face, location);
-        if (!triangulation.IsNull()) {
-            ProcessSingleFace(face, triangulation, location, results[i]);
-        }
-    };
-    OSD_Parallel::For(0, num_faces, process_face, !use_parallel);
+        const auto tri = BRep_Tool::Triangulation(face, location);
+        const size_t n = tri.IsNull() ? 0 : tri->NbNodes();
+        const size_t t = tri.IsNull() ? 0 : tri->NbTriangles();
+        nodes += n;
+        triangles += t;
+        sizes.push_back(n * 6 * sizeof(float) + t * 3 * sizeof(Standard_Integer));
+    }
+    if (nodes > static_cast<size_t>(std::numeric_limits<Standard_Integer>::max()) ||
+        triangles > static_cast<size_t>(std::numeric_limits<Standard_Integer>::max())) {
+        throw Standard_Overflow("Tessellation exceeds the index range");
+    }
+    tot_triangle_count = tot_invalid_triangle_count = tot_vertex_count = 0;
+    tot_normal_count = tot_invalid_normal_count = 0;
+    consolidated_vertices.clear();
+    consolidated_normals.clear();
+    consolidated_triangle_indices.clear();
+    // A single face can transfer ownership of its arrays without a copy.
+    if (faces.size() > 1) {
+        consolidated_vertices.reserve(nodes * 3);
+        consolidated_normals.reserve(nodes * 3);
+        consolidated_triangle_indices.reserve(triangles * 3);
+    }
 
-    // Collect non-empty results
-    for (auto& result : results) {
-        if (result.number_of_triangles > 0) {
-            face_list.push_back(std::move(result));
+    constexpr size_t batch_bytes = 8 * 1024 * 1024;
+    std::vector<Face> results;
+    for (size_t begin = 0; begin < faces.size();) {
+        size_t end = begin, bytes = 0;
+        do {
+            bytes += sizes[end++];
+        } while (end < faces.size() && end - begin < 256 && bytes < batch_bytes);
+        results.resize(end - begin);
+        const auto process_face = [&](int slot) {
+            Face& result = results[slot];
+            result.vertex_coords.clear();
+            result.normal_coords.clear();
+            result.triangle_indices.clear();
+            result.number_of_triangles = result.number_of_invalid_triangles = 0;
+            result.number_of_normals = result.number_of_invalid_normals = 0;
+            TopLoc_Location location;
+            const auto& face = faces[begin + slot];
+            const auto tri = BRep_Tool::Triangulation(face, location);
+            if (!tri.IsNull() && tri->NbTriangles() > 0) {
+                ProcessSingleFace(face, tri, location, result);
+            }
+        };
+        OSD_Parallel::For(0, static_cast<int>(results.size()), process_face, !use_parallel);
+        for (auto& result : results) {
+            if (result.number_of_triangles > 0) {
+                AppendFace(result);
+            }
         }
+        // Do not retain a previous batch's large faces alongside the next one.
+        results.clear();
+        begin = end;
     }
 }
 
@@ -197,10 +274,8 @@ void ShapeTesselator::ProcessSingleFace(const TopoDS_Face& face,
                       Face& face_data) {
 
     const auto nb_nodes = triangulation->NbNodes();
-    const auto nb_triangles = triangulation->NbTriangles();
-
     // Process vertices - skip transform when location is identity
-    face_data.vertex_coords.resize(nb_nodes * 3);
+    face_data.vertex_coords.resize(static_cast<size_t>(nb_nodes) * 3);
 
     if (location.IsIdentity()) {
         for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
@@ -240,7 +315,7 @@ Standard_Integer ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
     const auto nb_nodes = triangulation->NbNodes();
     // one normal per vertex, null if it can't be computed, so that the
     // normals and vertices arrays stay aligned
-    face_data.normal_coords.assign(nb_nodes * 3, 0.0f);
+    face_data.normal_coords.resize(static_cast<size_t>(nb_nodes) * 3);
     face_data.number_of_normals = nb_nodes;
 
     const bool reverse_orientation = (face.Orientation() == TopAbs_INTERNAL);
@@ -255,6 +330,25 @@ Standard_Integer ShapeTesselator::ProcessNormals(const TopoDS_Face& face,
 
     Standard_Integer nb_null_normals = 0;
     BRepGProp_Face prop(face);
+
+    // Planar faces have a constant normal, even under a location. Evaluate
+    // the same oriented surface normal once instead of once per mesh node.
+    if (nb_nodes > 0 && BRepAdaptor_Surface(face).GetType() == GeomAbs_Plane) {
+        const auto uv = triangulation->UVNode(1);
+        gp_Pnt point;
+        gp_Vec normal;
+        prop.Normal(uv.X(), uv.Y(), point, normal);
+        if (normal.SquareMagnitude() > Precision::SquareConfusion()) {
+            normal.Normalize();
+            if (reverse_orientation) normal.Reverse();
+            for (size_t i = 0; i < face_data.normal_coords.size(); i += 3) {
+                face_data.normal_coords[i] = static_cast<float>(normal.X());
+                face_data.normal_coords[i + 1] = static_cast<float>(normal.Y());
+                face_data.normal_coords[i + 2] = static_cast<float>(normal.Z());
+            }
+            return 0;
+        }
+    }
 
     for (Standard_Integer i = 1; i <= nb_nodes; ++i) {
         const auto& uv_point = triangulation->UVNode(i);
@@ -289,7 +383,7 @@ void ShapeTesselator::ProcessTriangles(const TopoDS_Face& face,
     const auto nb_triangles = triangulation->NbTriangles();
     const auto is_reversed = (face.Orientation() == TopAbs_REVERSED);
 
-    face_data.triangle_indices.resize(nb_triangles * 3);
+    face_data.triangle_indices.resize(static_cast<size_t>(nb_triangles) * 3);
     face_data.number_of_triangles = nb_triangles;
 
     for (Standard_Integer i = 1; i <= nb_triangles; ++i) {
@@ -321,9 +415,13 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
     auto& indices = face_data.triangle_indices;
     const auto nb_nodes = coords.size() / 3;
 
-    std::vector<bool> is_null(nb_nodes);
+    std::vector<Standard_Integer> null_index(nb_nodes, -1);
+    std::vector<gp_XYZ> sums;
     for (size_t i = 0; i < nb_nodes; ++i) {
-        is_null[i] = normals[3 * i] == 0.0f && normals[3 * i + 1] == 0.0f && normals[3 * i + 2] == 0.0f;
+        if (normals[3 * i] == 0.0f && normals[3 * i + 1] == 0.0f && normals[3 * i + 2] == 0.0f) {
+            null_index[i] = static_cast<Standard_Integer>(sums.size());
+            sums.emplace_back(0., 0., 0.);
+        }
     }
     const auto node_xyz = [&coords](size_t node) {
         return gp_XYZ(coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]);
@@ -332,26 +430,33 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
         return gp_XYZ(normals[3 * node], normals[3 * node + 1], normals[3 * node + 2]);
     };
 
-    // sum of the normals of the copies of each singular node
-    std::vector<gp_XYZ> sums(nb_nodes, gp_XYZ(0., 0., 0.));
+    size_t copies = 0;
+    for (const auto index : indices) {
+        copies += null_index[index - 1] >= 0;
+    }
+    if (nb_nodes + copies > static_cast<size_t>(std::numeric_limits<Standard_Integer>::max())) {
+        throw Standard_Overflow("Tessellation exceeds the index range");
+    }
+    coords.reserve((nb_nodes + copies) * 3);
+    normals.reserve((nb_nodes + copies) * 3);
 
     for (size_t t = 0; t + 2 < indices.size(); t += 3) {
         // 1-based per-face indices
         const size_t n[3] = {static_cast<size_t>(indices[t] - 1),
                              static_cast<size_t>(indices[t + 1] - 1),
                              static_cast<size_t>(indices[t + 2] - 1)};
-        if (!is_null[n[0]] && !is_null[n[1]] && !is_null[n[2]]) {
+        if (null_index[n[0]] < 0 && null_index[n[1]] < 0 && null_index[n[2]] < 0) {
             continue;
         }
         const gp_XYZ triangle_normal =
             (node_xyz(n[1]) - node_xyz(n[0])).Crossed(node_xyz(n[2]) - node_xyz(n[0]));
         for (int c = 0; c < 3; ++c) {
-            if (!is_null[n[c]]) {
+            if (null_index[n[c]] < 0) {
                 continue;
             }
             gp_XYZ normal(0., 0., 0.);
             for (int other = 0; other < 3; ++other) {
-                if (other != c && !is_null[n[other]]) {
+                if (other != c && null_index[n[other]] < 0) {
                     normal += normal_xyz(n[other]);
                 }
             }
@@ -365,7 +470,7 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
             normal /= modulus;
             // the vertex of this triangle corner, with its own normal
             const auto node = n[c];
-            sums[node] += normal;
+            sums[null_index[node]] += normal;
             coords.insert(coords.end(), {coords[3 * node], coords[3 * node + 1], coords[3 * node + 2]});
             normals.insert(normals.end(), {static_cast<float>(normal.X()),
                                            static_cast<float>(normal.Y()),
@@ -376,9 +481,11 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
     // the singular nodes are no longer used by the triangles: they get the
     // average normal of their copies, so that no normal is null
     for (size_t i = 0; i < nb_nodes; ++i) {
-        const auto modulus = sums[i].Modulus();
-        if (is_null[i] && modulus > Precision::Confusion()) {
-            const gp_XYZ normal = sums[i] / modulus;
+        if (null_index[i] < 0) continue;
+        const auto& sum = sums[null_index[i]];
+        const auto modulus = sum.Modulus();
+        if (modulus > Precision::Confusion()) {
+            const gp_XYZ normal = sum / modulus;
             normals[3 * i] = static_cast<float>(normal.X());
             normals[3 * i + 1] = static_cast<float>(normal.Y());
             normals[3 * i + 2] = static_cast<float>(normal.Z());
@@ -387,66 +494,31 @@ void ShapeTesselator::FixNullNormals(Face& face_data) {
     face_data.number_of_normals = static_cast<Standard_Integer>(normals.size() / 3);
 }
 
-void ShapeTesselator::JoinPrimitives() {
-    // Calculate totals in a single pass
-    tot_triangle_count = 0;
-    tot_invalid_triangle_count = 0;
-    tot_vertex_count = 0;
-    tot_normal_count = 0;
-    tot_invalid_normal_count = 0;
-
-    for (const auto& face : face_list) {
-        tot_triangle_count += face.number_of_triangles;
-        tot_invalid_triangle_count += face.number_of_invalid_triangles;
-        tot_vertex_count += static_cast<Standard_Integer>(face.vertex_coords.size() / 3);
-        tot_normal_count += static_cast<Standard_Integer>(face.normal_coords.size() / 3);
-        tot_invalid_normal_count += face.number_of_invalid_normals;
+void ShapeTesselator::AppendFace(Face& face) {
+    const size_t nodes = face.vertex_coords.size() / 3;
+    if (nodes + static_cast<size_t>(tot_vertex_count) >
+        static_cast<size_t>(std::numeric_limits<Standard_Integer>::max())) {
+        throw Standard_Overflow("Tessellation exceeds the index range");
     }
-
-    // Single allocation of consolidated arrays (resize, not reserve, for memcpy)
-    consolidated_vertices.resize(tot_vertex_count * 3);
-    consolidated_normals.resize(tot_normal_count * 3);
-    consolidated_triangle_indices.resize(tot_triangle_count * 3);
-
-    // Consolidate using memcpy for contiguous POD data
-    size_t vertex_offset = 0;
-    size_t normal_offset = 0;
-    size_t tri_offset = 0;
-    Standard_Integer index_offset = 0;
-
-    for (auto& face : face_list) {
-        // Bulk-copy vertex coordinates
-        const auto vert_count = face.vertex_coords.size();
-        if (vert_count > 0) {
-            std::memcpy(consolidated_vertices.data() + vertex_offset,
-                        face.vertex_coords.data(),
-                        vert_count * sizeof(float));
-        }
-
-        // Bulk-copy normal coordinates
-        const auto norm_count = face.normal_coords.size();
-        if (norm_count > 0) {
-            std::memcpy(consolidated_normals.data() + normal_offset,
-                        face.normal_coords.data(),
-                        norm_count * sizeof(float));
-        }
-
-        // Adjust triangle indices (1-based per-face → 0-based global)
-        const auto tri_count = face.triangle_indices.size();
-        for (size_t k = 0; k < tri_count; ++k) {
-            consolidated_triangle_indices[tri_offset + k] =
-                face.triangle_indices[k] + index_offset - 1;
-        }
-
-        vertex_offset += vert_count;
-        normal_offset += norm_count;
-        tri_offset += tri_count;
-        index_offset += static_cast<Standard_Integer>(vert_count / 3);
+    // Convert in place, then bulk append. The first/only face can be moved.
+    for (auto& index : face.triangle_indices) {
+        index = (index - 1) + tot_vertex_count;
     }
-
-    // Release memory from individual faces
-    face_list.clear();
-    face_list.shrink_to_fit();
+    const auto append = [](auto& destination, auto& source) {
+        if (destination.capacity() == 0) {
+            destination = std::move(source);
+        } else {
+            destination.insert(destination.end(), source.begin(), source.end());
+        }
+    };
+    tot_triangle_count += face.number_of_triangles;
+    tot_invalid_triangle_count += face.number_of_invalid_triangles;
+    tot_vertex_count += static_cast<Standard_Integer>(nodes);
+    tot_normal_count += static_cast<Standard_Integer>(face.normal_coords.size() / 3);
+    tot_invalid_normal_count += face.number_of_invalid_normals;
+    append(consolidated_vertices, face.vertex_coords);
+    append(consolidated_normals, face.normal_coords);
+    append(consolidated_triangle_indices, face.triangle_indices);
 }
 
 void ShapeTesselator::ComputeEdges() {
@@ -596,7 +668,7 @@ const float* ShapeTesselator::NormalsList() const {
 std::vector<float> ShapeTesselator::GetVerticesPositionAsTuple() const {
     if (!computed) return {};
 
-    const auto total_floats = tot_triangle_count * 9;  // 3 vertices * 3 coords
+    const auto total_floats = static_cast<size_t>(tot_triangle_count) * 9;  // 3 vertices * 3 coords
     std::vector<float> result(total_floats);
 
     float* out = result.data();
@@ -615,7 +687,7 @@ std::vector<float> ShapeTesselator::GetVerticesPositionAsTuple() const {
 std::vector<float> ShapeTesselator::GetNormalsAsTuple() const {
     if (!computed) return {};
 
-    const auto total_floats = tot_triangle_count * 9;
+    const auto total_floats = static_cast<size_t>(tot_triangle_count) * 9;
     std::vector<float> result(total_floats);
 
     float* out = result.data();
@@ -721,38 +793,12 @@ std::string ShapeTesselator::ExportShapeToThreejsJSONString(const char* shape_fu
                 "\t\t\t\"position\": {\n\t\t\t\t\"itemSize\": 3,\n\t\t\t\t\"type\": \"Float32Array\",\n"
                 "\t\t\t\t\"array\": [");
 
-    // Export vertices using fast to_chars
-    for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
-        const auto base_idx = i * 3;
-        for (int j = 0; j < 3; ++j) {
-            if (i > 0 || j > 0) json.push_back(',');
-
-            const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
-            appendFloat(json, consolidated_vertices[vertex_idx]);
-            json.push_back(',');
-            appendFloat(json, consolidated_vertices[vertex_idx + 1]);
-            json.push_back(',');
-            appendFloat(json, consolidated_vertices[vertex_idx + 2]);
-        }
-    }
+    appendIndexedCoordinates(json, consolidated_vertices, consolidated_triangle_indices, ',', false);
 
     json.append("]\n\t\t\t},\n\t\t\t\"normal\": {\n\t\t\t\t\"itemSize\": 3,\n"
                 "\t\t\t\t\"type\": \"Float32Array\",\n\t\t\t\t\"array\": [");
 
-    // Export normals using fast to_chars
-    for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
-        const auto base_idx = i * 3;
-        for (int j = 0; j < 3; ++j) {
-            if (i > 0 || j > 0) json.push_back(',');
-
-            const auto normal_idx = consolidated_triangle_indices[base_idx + j] * 3;
-            appendFloat(json, consolidated_normals[normal_idx]);
-            json.push_back(',');
-            appendFloat(json, consolidated_normals[normal_idx + 1]);
-            json.push_back(',');
-            appendFloat(json, consolidated_normals[normal_idx + 2]);
-        }
-    }
+    appendIndexedCoordinates(json, consolidated_normals, consolidated_triangle_indices, ',', false);
 
     json.append("]\n\t\t\t}\n\t\t}\n\t}\n}");
 
@@ -762,42 +808,12 @@ std::string ShapeTesselator::ExportShapeToThreejsJSONString(const char* shape_fu
 std::string ShapeTesselator::ExportShapeToX3DTriangleSet() const {
     if (!computed) return "";
 
-    // Pre-allocate: ~12 chars per float, 9 floats per triangle, x2 for verts+normals
-    const size_t estimated_floats = static_cast<size_t>(tot_triangle_count) * 9;
-    const size_t estimated_per_string = estimated_floats * 12;
-
-    std::string str_vertices, str_normals;
-    str_vertices.reserve(estimated_per_string);
-    str_normals.reserve(estimated_per_string);
-
-    for (Standard_Integer i = 0; i < tot_triangle_count; ++i) {
-        const auto base_idx = i * 3;
-
-        for (int j = 0; j < 3; ++j) {
-            const auto vertex_idx = consolidated_triangle_indices[base_idx + j] * 3;
-
-            appendFloatWithEpsilon(str_vertices, consolidated_vertices[vertex_idx]);
-            str_vertices.push_back(' ');
-            appendFloatWithEpsilon(str_vertices, consolidated_vertices[vertex_idx + 1]);
-            str_vertices.push_back(' ');
-            appendFloatWithEpsilon(str_vertices, consolidated_vertices[vertex_idx + 2]);
-            str_vertices.push_back(' ');
-
-            appendFloatWithEpsilon(str_normals, consolidated_normals[vertex_idx]);
-            str_normals.push_back(' ');
-            appendFloatWithEpsilon(str_normals, consolidated_normals[vertex_idx + 1]);
-            str_normals.push_back(' ');
-            appendFloatWithEpsilon(str_normals, consolidated_normals[vertex_idx + 2]);
-            str_normals.push_back(' ');
-        }
-    }
-
     std::string result;
-    result.reserve(str_vertices.size() + str_normals.size() + 128);
+    result.reserve(128 + static_cast<size_t>(tot_triangle_count) * 9 * 12 * 2);
     result.append("<TriangleSet solid='false'>\n<Coordinate point='");
-    result.append(str_vertices);
+    appendIndexedCoordinates(result, consolidated_vertices, consolidated_triangle_indices, ' ', true);
     result.append("'></Coordinate>\n<Normal vector='");
-    result.append(str_normals);
+    appendIndexedCoordinates(result, consolidated_normals, consolidated_triangle_indices, ' ', true);
     result.append("'></Normal>\n</TriangleSet>\n");
 
     return result;

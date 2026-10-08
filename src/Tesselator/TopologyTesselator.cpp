@@ -19,6 +19,8 @@
 
 #include <algorithm>
 #include <cmath>
+#include <limits>
+#include <OSD_Parallel.hxx>
 
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepBndLib.hxx>
@@ -58,7 +60,7 @@ constexpr Standard_Real DEFAULT_DEVIATION_RATIO = 2e-2;
 // Where a location puts points and normals
 struct Placement {
     bool identity = true;
-    gp_Trsf trsf;
+    Standard_Real matrix[3][4] = {};
     // The linear part divided by the magnitude of the scale: gp_Trsf scales
     // uniformly, so that normals stay unit vectors
     Standard_Real rotation[3][3] = {{1., 0., 0.}, {0., 1., 0.}, {0., 0., 1.}};
@@ -70,11 +72,12 @@ struct Placement {
             return;
         }
         identity = false;
-        trsf = location.Transformation();
+        const gp_Trsf& trsf = location.Transformation();
         const Standard_Real scale = std::abs(trsf.ScaleFactor());
         for (int row = 0; row < 3; ++row) {
-            for (int column = 0; column < 3; ++column) {
-                rotation[row][column] = trsf.Value(row + 1, column + 1) / scale;
+            for (int column = 0; column < 4; ++column) {
+                matrix[row][column] = trsf.Value(row + 1, column + 1);
+                if (column < 3) rotation[row][column] = matrix[row][column] / scale;
             }
         }
         mirrored = trsf.IsNegative();
@@ -89,8 +92,8 @@ struct Placement {
             return;
         }
         for (int row = 0; row < 3; ++row) {
-            out[row] = point.X() * trsf.Value(row + 1, 1) + point.Y() * trsf.Value(row + 1, 2)
-                       + point.Z() * trsf.Value(row + 1, 3) + trsf.Value(row + 1, 4);
+            out[row] = point.X() * matrix[row][0] + point.Y() * matrix[row][1]
+                       + point.Z() * matrix[row][2] + matrix[row][3];
         }
     }
 
@@ -115,10 +118,10 @@ void append_point(std::vector<float>& out, const Standard_Real point[3]) {
     out.push_back(static_cast<float>(point[2]));
 }
 
-// A meshed face's nodes, placed, and its triangulation and location, for
-// the polygons of the edges on it
+// Face offsets refer directly to the final float buffers, also used by edges.
 struct PlacedFace {
-    std::vector<Standard_Real> nodes;  // x, y, z per node
+    size_t first_node = 0;
+    size_t first_triangle = 0;
     Handle(Poly_Triangulation) triangulation;
     TopLoc_Location location;
 };
@@ -151,9 +154,12 @@ Standard_Real TopologyTesselator::GetDeviation() const noexcept {
     return myDeviation;
 }
 
-void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel) {
-    if (!(mesh_quality > 0)) {
+void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel, bool reuse_mesh) {
+    if (!(mesh_quality > 0) || !std::isfinite(mesh_quality)) {
         throw Standard_DomainError("The mesh quality must be greater than 0");
+    }
+    if (!std::isfinite(myDeviation)) {
+        throw Standard_DomainError("The deviation must be finite");
     }
     myPositions.clear();
     myNormals.clear();
@@ -165,7 +171,9 @@ void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel) {
 
     const Standard_Real linear = myDeviation * mesh_quality;
     if (linear > 0) {
-        BRepTools::Clean(myShape);
+        if (!reuse_mesh) {
+            BRepTools::Clean(myShape);
+        }
         BRepMesh_IncrementalMesh(myShape, linear, false, ANGULAR_DEFLECTION * mesh_quality, parallel);
     }
 
@@ -173,72 +181,82 @@ void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel) {
     TopTools_IndexedMapOfShape faces;
     TopExp::MapShapes(myShape, TopAbs_FACE, faces);
     std::vector<PlacedFace> placed(faces.Extent());
-    myFaceRanges.reserve(2 * faces.Extent());
-    size_t triangles_so_far = 0;
+    myFaceRanges.reserve(2 * static_cast<size_t>(faces.Extent()));
+    size_t node_count = 0, triangle_count = 0;
     for (int index = 1; index <= faces.Extent(); ++index) {
         const TopoDS_Face& face = TopoDS::Face(faces.FindKey(index));
-        TopLoc_Location location;
-        const Handle(Poly_Triangulation)& triangulation = BRep_Tool::Triangulation(face, location);
-        if (triangulation.IsNull() || triangulation->NbTriangles() == 0) {
-            myFaceRanges.push_back(to_index(triangles_so_far));
-            myFaceRanges.push_back(0);
+        PlacedFace& data = placed[index - 1];
+        data.first_node = node_count;
+        data.first_triangle = triangle_count;
+        data.triangulation = BRep_Tool::Triangulation(face, data.location);
+        const auto& tri = data.triangulation;
+        const size_t count = tri.IsNull() ? 0 : tri->NbTriangles();
+        myFaceRanges.push_back(to_index(triangle_count));
+        myFaceRanges.push_back(to_index(count));
+        if (count == 0) {
+            data.triangulation.Nullify();
             continue;
         }
-        if (!triangulation->HasNormals()) {
-            BRepLib_ToolTriangulatedShape::ComputeNormals(face, triangulation);
+        node_count += tri->NbNodes();
+        triangle_count += count;
+        // Different located instances can share a triangulation. Compute
+        // its normals before parallel extraction to avoid concurrent writes.
+        if (!tri->HasNormals()) {
+            BRepLib_ToolTriangulatedShape::ComputeNormals(face, tri);
         }
-        const Placement placement(location);
+    }
+    // Public counts (and the Python array sizes) use signed int.
+    const size_t max_count = static_cast<size_t>(std::numeric_limits<int>::max());
+    if (node_count > max_count || triangle_count > max_count) {
+        throw Standard_Overflow("The mesh exceeds the supported index range");
+    }
+    myPositions.resize(3 * node_count);
+    myNormals.resize(3 * node_count);
+    myTriangleIndices.resize(3 * triangle_count);
+    const auto extract_face = [&](int index) {
+        const PlacedFace& data = placed[index];
+        const auto& triangulation = data.triangulation;
+        if (triangulation.IsNull()) return;
+        const TopoDS_Face& face = TopoDS::Face(faces.FindKey(index + 1));
+        const Placement placement(data.location);
         const bool reversed = face.Orientation() == TopAbs_REVERSED;
         const bool inside_out = placement.mirrored != reversed;
-        const size_t first_node = myPositions.size() / 3;
-        const int nb_nodes = triangulation->NbNodes();
-
-        PlacedFace& placed_face = placed[index - 1];
-        placed_face.nodes.resize(3 * static_cast<size_t>(nb_nodes));
-        placed_face.triangulation = triangulation;
-        placed_face.location = location;
-        for (int node = 1; node <= nb_nodes; ++node) {
-            Standard_Real* point = &placed_face.nodes[3 * static_cast<size_t>(node - 1)];
+        float* positions = myPositions.data() + 3 * data.first_node;
+        float* normals = myNormals.data() + 3 * data.first_node;
+        for (int node = 1; node <= triangulation->NbNodes(); ++node) {
+            Standard_Real point[3];
             placement.place(triangulation->Node(node), point);
-            append_point(myPositions, point);
-
-            // The stored float values, as they are: the gp_Dir overload
-            // normalizes them again
+            // The gp_Dir overload renormalizes stored normals. Keep their
+            // float values and the original signed-zero behavior instead.
             NCollection_Vec3<float> stored;
             triangulation->Normal(node, stored);
             const Standard_Real normal[3] = {stored.x(), stored.y(), stored.z()};
             Standard_Real placed_normal[3];
             placement.rotate(normal, placed_normal);
-            if (reversed) {
-                for (auto& coordinate : placed_normal) {
-                    coordinate = -coordinate;
-                }
+            for (int c = 0; c < 3; ++c) {
+                *positions++ = static_cast<float>(point[c]);
+                *normals++ = static_cast<float>(reversed ? -placed_normal[c] : placed_normal[c]);
             }
-            append_point(myNormals, placed_normal);
         }
-
-        const int nb_triangles = triangulation->NbTriangles();
-        for (int triangle = 1; triangle <= nb_triangles; ++triangle) {
+        auto* indices = myTriangleIndices.data() + 3 * data.first_triangle;
+        const auto first = static_cast<std::uint32_t>(data.first_node);
+        for (int triangle = 1; triangle <= triangulation->NbTriangles(); ++triangle) {
             Standard_Integer n1, n2, n3;
             triangulation->Triangle(triangle).Get(n1, n2, n3);
-            if (inside_out) {
-                std::swap(n2, n3);
-            }
-            for (const Standard_Integer node : {n1, n2, n3}) {
-                myTriangleIndices.push_back(to_index(first_node + static_cast<size_t>(node - 1)));
-            }
+            if (inside_out) std::swap(n2, n3);
+            *indices++ = first + static_cast<std::uint32_t>(n1 - 1);
+            *indices++ = first + static_cast<std::uint32_t>(n2 - 1);
+            *indices++ = first + static_cast<std::uint32_t>(n3 - 1);
         }
-        myFaceRanges.push_back(to_index(triangles_so_far));
-        myFaceRanges.push_back(to_index(static_cast<size_t>(nb_triangles)));
-        triangles_so_far += static_cast<size_t>(nb_triangles);
-    }
+    };
+    OSD_Parallel::For(0, faces.Extent(), extract_face, !parallel);
 
     // Edges
     TopTools_IndexedMapOfShape edges;
     TopExp::MapShapes(myShape, TopAbs_EDGE, edges);
     TopTools_IndexedDataMapOfShapeListOfShape edge_faces;
     TopExp::MapShapesAndAncestors(myShape, TopAbs_EDGE, TopAbs_FACE, edge_faces);
-    myEdgeRanges.reserve(2 * edges.Extent());
+    myEdgeRanges.reserve(2 * static_cast<size_t>(edges.Extent()));
     for (int index = 1; index <= edges.Extent(); ++index) {
         const TopoDS_Edge& edge = TopoDS::Edge(edges.FindKey(index));
         const size_t first = myEdgePositions.size() / 3;
@@ -270,9 +288,11 @@ void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel) {
                     }
                     const NCollection_Array1<int>& nodes = on_triangulation->Nodes();
                     for (int node = nodes.Lower(); node <= nodes.Upper(); ++node) {
-                        const Standard_Real* placed_point =
-                            &placed_face.nodes[3 * static_cast<size_t>(nodes(node) - 1)];
-                        append_point(myEdgePositions, placed_point);
+                        const size_t offset = 3 * (placed_face.first_node +
+                                                     static_cast<size_t>(nodes(node) - 1));
+                        myEdgePositions.insert(myEdgePositions.end(),
+                                               myPositions.data() + offset,
+                                               myPositions.data() + offset + 3);
                     }
                     done = true;
                     break;
@@ -299,7 +319,7 @@ void TopologyTesselator::Compute(Standard_Real mesh_quality, bool parallel) {
     // Vertices
     TopTools_IndexedMapOfShape vertices;
     TopExp::MapShapes(myShape, TopAbs_VERTEX, vertices);
-    myVertexPositions.reserve(3 * vertices.Extent());
+    myVertexPositions.reserve(3 * static_cast<size_t>(vertices.Extent()));
     for (int index = 1; index <= vertices.Extent(); ++index) {
         const gp_Pnt vertex = BRep_Tool::Pnt(TopoDS::Vertex(vertices.FindKey(index)));
         const Standard_Real coordinates[3] = {vertex.X(), vertex.Y(), vertex.Z()};

@@ -60,8 +60,7 @@ private:
     TopoDS_Shape myShape;            //!< The shape to tessellate
     Standard_Real myDeviation;       //!< Tessellation deviation parameter
     
-    // Face and edge collections stored by value (no heap indirection)
-    std::vector<Face> face_list;  //!< Collection of tessellated faces
+    // Edge collection stored by value (no heap indirection)
     std::vector<Edge> edge_list;  //!< Collection of tessellated edges
     
     // Consolidated mesh data for efficient access
@@ -97,9 +96,12 @@ public:
 
     //! Compute the tessellation
     //! @param compute_edges Whether to compute edge tessellation
-    //! @param mesh_quality Mesh quality factor (higher = finer mesh)
+    //! @param mesh_quality Deflection multiplier (lower = finer mesh)
     //! @param parallel Whether to use parallel computation
-    void Compute(bool compute_edges = true, float mesh_quality = 1.0f, bool parallel = false);
+    //! @param reuse_mesh Keep an existing OCCT mesh if sufficiently fine. A
+    //! finer existing mesh is not coarsened; false rebuilds at the requested quality.
+    void Compute(bool compute_edges = true, float mesh_quality = 1.0f,
+                 bool parallel = false, bool reuse_mesh = false);
 
     //! Set the deviation parameter for tessellation
     //! @param aDeviation The deviation value (must be > 0)
@@ -182,7 +184,7 @@ private:
     //! @param compute_edges Whether to compute edges
     //! @param mesh_quality Quality factor
     //! @param parallel Use parallel computation
-    void Tessellate(bool compute_edges, float mesh_quality, bool parallel);
+    void Tessellate(bool compute_edges, float mesh_quality, bool parallel, bool reuse_mesh);
 
     //! Process all faces in the shape
     //! @param faces Vector of faces to process
@@ -220,8 +222,8 @@ private:
                          const Handle(Poly_Triangulation)& triangulation,
                          Face& face_data);
 
-    //! Join all face primitives into consolidated arrays
-    void JoinPrimitives();
+    //! Append one processed face, releasing its buffers after consolidation
+    void AppendFace(Face& face);
 
     //! Compute edge tessellation
     void ComputeEdges();
