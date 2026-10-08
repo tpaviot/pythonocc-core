@@ -6660,6 +6660,11 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 ") KnotDistribution;
 		GeomAbs_BSplKnotDistribution KnotDistribution();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::KnotSequence ******/
 		/****** md5 signature: 1b7301fa6b31d7a4f5ea6086e2fd0bec ******/
 		%feature("compactdefaultargs") KnotSequence;
@@ -6691,6 +6696,11 @@ returns the knots of the B-spline curve. Knots with multiplicit greater than 1 a
 ") KnotSequence;
 		const TColStd_Array1OfReal & KnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Knots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::Knots ******/
 		/****** md5 signature: 28e846af74f6d8e9d9bca42676b511f9 ******/
 		%feature("compactdefaultargs") Knots;
@@ -6958,6 +6968,11 @@ Move a point with parameter U to P. and makes it tangent at U be Tangent. Starti
 ") MovePointAndTangent;
 		void MovePointAndTangent(const double U, const gp_Pnt & P, const gp_Vec & Tangent, const double Tolerance, const int StartingCondition, const int EndingCondition, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Multiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::Multiplicities ******/
 		/****** md5 signature: 1415188431c1974d7791a9ca90b50607 ******/
 		%feature("compactdefaultargs") Multiplicities;
@@ -7068,6 +7083,11 @@ Returns the pole of range Index. Raised if Index < 1 or Index > NbPoles.
 ") Pole;
 		const gp_Pnt Pole(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::Poles ******/
 		/****** md5 signature: 25bf8c7a4834c7c94ffb834d7fe32e93 ******/
 		%feature("compactdefaultargs") Poles;
@@ -7415,6 +7435,11 @@ Returns the weight of the pole of range Index . Raised if Index < 1 or Index > N
 ") Weight;
 		double Weight(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::Weights ******/
 		/****** md5 signature: 75a527ca0732a5a4c79c4c170bad065d ******/
 		%feature("compactdefaultargs") Weights;
@@ -7446,6 +7471,11 @@ Returns the weights of the B-spline curve;.
 ") Weights;
 		const TColStd_Array1OfReal * Weights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WeightsArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
@@ -8499,6 +8529,11 @@ Returns the pole of range (UIndex, VIndex). //! Raised if UIndex < 1 or UIndex >
 ") Pole;
 		const gp_Pnt Pole(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::Poles ******/
 		/****** md5 signature: e0523208080f5a97aa048d6c860b619a ******/
 		%feature("compactdefaultargs") Poles;
@@ -9090,6 +9125,11 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 ") UKnotDistribution;
 		GeomAbs_BSplKnotDistribution UKnotDistribution();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::UKnotSequence ******/
 		/****** md5 signature: 5d11e979ce3a9fbedb9e4df956f158aa ******/
 		%feature("compactdefaultargs") UKnotSequence;
@@ -9121,6 +9161,11 @@ Returns the uknots sequence. In this sequence the knots with a multiplicity grea
 ") UKnotSequence;
 		const TColStd_Array1OfReal & UKnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::UKnots ******/
 		/****** md5 signature: 1378264acef76f8707b7640daa96fe6e ******/
 		%feature("compactdefaultargs") UKnots;
@@ -9152,6 +9197,11 @@ Returns the knots in the U direction.
 ") UKnots;
 		const TColStd_Array1OfReal & UKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::UMultiplicities ******/
 		/****** md5 signature: fa7961ef7f03eb2b596d741e54730ffa ******/
 		%feature("compactdefaultargs") UMultiplicities;
@@ -9313,6 +9363,11 @@ Returns NonUniform or Uniform or QuasiUniform or PiecewiseBezier. If all the kno
 ") VKnotDistribution;
 		GeomAbs_BSplKnotDistribution VKnotDistribution();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::VKnotSequence ******/
 		/****** md5 signature: 4823b0cab4e42d44ef37c4ddc9586db2 ******/
 		%feature("compactdefaultargs") VKnotSequence;
@@ -9344,6 +9399,11 @@ Returns the vknots sequence. In this sequence the knots with a multiplicity grea
 ") VKnotSequence;
 		const TColStd_Array1OfReal & VKnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::VKnots ******/
 		/****** md5 signature: c831589eb77a9bd10bbd73a7de246003 ******/
 		%feature("compactdefaultargs") VKnots;
@@ -9375,6 +9435,11 @@ Returns the knots in the V direction.
 ") VKnots;
 		const TColStd_Array1OfReal & VKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::VMultiplicities ******/
 		/****** md5 signature: 31ea5bd1155e0480c8b41e229bebf68e ******/
 		%feature("compactdefaultargs") VMultiplicities;
@@ -9474,6 +9539,11 @@ Returns the weight value of range UIndex, VIndex. //! Raised if UIndex < 1 or UI
 ") Weight;
 		double Weight(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::Weights ******/
 		/****** md5 signature: 239cb12bc795fa3c4057ce031f56f6eb ******/
 		%feature("compactdefaultargs") Weights;
@@ -9505,6 +9575,11 @@ Returns the weights of the B-spline surface. value and derivatives computation.
 ") Weights;
 		const TColStd_Array2OfReal * Weights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WeightsArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BSplineSurface::WeightsArray ******/
 		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
 		%feature("compactdefaultargs") WeightsArray;
@@ -9954,6 +10029,11 @@ Returns false if all the weights are identical. The tolerance criterion is Resol
 ") IsRational;
 		bool IsRational();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::KnotSequence ******/
 		/****** md5 signature: 13e41dae8bd546a82617e7927f39c7c2 ******/
 		%feature("compactdefaultargs") KnotSequence;
@@ -9967,6 +10047,11 @@ Returns Bezier flat knots for the current degree.
 ") KnotSequence;
 		const TColStd_Array1OfReal & KnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Knots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::Knots ******/
 		/****** md5 signature: 40e5d7863b64333908f7ebce7f29fffe ******/
 		%feature("compactdefaultargs") Knots;
@@ -10006,6 +10091,11 @@ Returns the value of the maximum polynomial degree of any Geom_BezierCurve curve
 ") MaxDegree;
 		static int MaxDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Multiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::Multiplicities ******/
 		/****** md5 signature: abbd7cb742db6e8534100ea895e298c9 ******/
 		%feature("compactdefaultargs") Multiplicities;
@@ -10050,6 +10140,11 @@ Returns the pole of range Index. Raised if Index is not in the range [1, NbPoles
 ") Pole;
 		const gp_Pnt Pole(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::Poles ******/
 		/****** md5 signature: 25bf8c7a4834c7c94ffb834d7fe32e93 ******/
 		%feature("compactdefaultargs") Poles;
@@ -10274,6 +10369,11 @@ Returns the weight of range Index. Raised if Index is not in the range [1, NbPol
 ") Weight;
 		double Weight(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::Weights ******/
 		/****** md5 signature: 75a527ca0732a5a4c79c4c170bad065d ******/
 		%feature("compactdefaultargs") Weights;
@@ -10305,6 +10405,11 @@ Returns all the weights of the curve.
 ") Weights;
 		const TColStd_Array1OfReal * Weights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WeightsArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierCurve::WeightsArray ******/
 		/****** md5 signature: 11d54b7f26ac2ed2bce7e0eb76165f25 ******/
 		%feature("compactdefaultargs") WeightsArray;
@@ -10948,6 +11053,11 @@ Returns the pole of range UIndex, VIndex Raised if UIndex < 1 or UIndex > NbUPol
 ") Pole;
 		const gp_Pnt Pole(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::Poles ******/
 		/****** md5 signature: e0523208080f5a97aa048d6c860b619a ******/
 		%feature("compactdefaultargs") Poles;
@@ -11281,6 +11391,11 @@ Computes the U isoparametric curve. For a Bezier surface the UIso curve is a Bez
 ") UIso;
 		opencascade::handle<Geom_Curve> UIso(const double U);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::UKnotSequence ******/
 		/****** md5 signature: c70f9f860680de4062cf6c4db5527f02 ******/
 		%feature("compactdefaultargs") UKnotSequence;
@@ -11294,6 +11409,11 @@ Returns Bezier flat knots for the U degree.
 ") UKnotSequence;
 		const TColStd_Array1OfReal & UKnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::UKnots ******/
 		/****** md5 signature: 6ecfa59fde3ec7a93d4fab6d03e9d808 ******/
 		%feature("compactdefaultargs") UKnots;
@@ -11307,6 +11427,11 @@ Returns Bezier knots {0.0, 1.0} as a static array.
 ") UKnots;
 		const TColStd_Array1OfReal & UKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend UMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::UMultiplicities ******/
 		/****** md5 signature: f91dc895c87c8659e5d59a6c9ef08414 ******/
 		%feature("compactdefaultargs") UMultiplicities;
@@ -11382,6 +11507,11 @@ Computes the V isoparametric curve. For a Bezier surface the VIso curve is a Bez
 ") VIso;
 		opencascade::handle<Geom_Curve> VIso(const double V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnotSequence %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::VKnotSequence ******/
 		/****** md5 signature: 8e70c5e3318ec19a065584c30e956cfa ******/
 		%feature("compactdefaultargs") VKnotSequence;
@@ -11395,6 +11525,11 @@ Returns Bezier flat knots for the V degree.
 ") VKnotSequence;
 		const TColStd_Array1OfReal & VKnotSequence();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::VKnots ******/
 		/****** md5 signature: 6c058920a211da67a7dff7af61adb682 ******/
 		%feature("compactdefaultargs") VKnots;
@@ -11408,6 +11543,11 @@ Returns Bezier knots {0.0, 1.0} as a static array.
 ") VKnots;
 		const TColStd_Array1OfReal & VKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VMultiplicities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::VMultiplicities ******/
 		/****** md5 signature: f3771e3659943e959f4851e67f385973 ******/
 		%feature("compactdefaultargs") VMultiplicities;
@@ -11471,6 +11611,11 @@ Returns the weight of range UIndex, VIndex //! Raised if UIndex < 1 or UIndex > 
 ") Weight;
 		double Weight(const int UIndex, const int VIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::Weights ******/
 		/****** md5 signature: 239cb12bc795fa3c4057ce031f56f6eb ******/
 		%feature("compactdefaultargs") Weights;
@@ -11502,6 +11647,11 @@ Returns the weights of the Bezier surface.
 ") Weights;
 		const TColStd_Array2OfReal * Weights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WeightsArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom_BezierSurface::WeightsArray ******/
 		/****** md5 signature: a6f8eebdea79810cd82d23b8cbaafd83 ******/
 		%feature("compactdefaultargs") WeightsArray;
@@ -17752,9 +17902,15 @@ class Geom_HSequenceOfBSplineSurface : public NCollection_Sequence<opencascade::
   public:
     Geom_HSequenceOfBSplineSurface();
     Geom_HSequenceOfBSplineSurface(const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Geom_BSplineSurface>>& ChangeSequence();
 };
 %make_alias(Geom_HSequenceOfBSplineSurface)

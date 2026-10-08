@@ -816,6 +816,11 @@ No available documentation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDocuments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_ApplicationDelta::GetDocuments ******/
 		/****** md5 signature: 9e22518b220abc419b8c2a6b79b25ae3 ******/
 		%feature("compactdefaultargs") GetDocuments;
@@ -829,6 +834,11 @@ No available documentation.
 ") GetDocuments;
 		NCollection_Sequence<opencascade::handle<TDocStd_Document>> & GetDocuments();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_ApplicationDelta::GetName ******/
 		/****** md5 signature: 3c50eb9eaf9ae32c5f28a54596fff8d5 ******/
 		%feature("compactdefaultargs") GetName;
@@ -1186,6 +1196,11 @@ No available documentation.
 ") GetData;
 		opencascade::handle<TDF_Data> GetData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_Document::GetModified ******/
 		/****** md5 signature: f3847d1e108476e2883e984cdd777f7f ******/
 		%feature("compactdefaultargs") GetModified;
@@ -1225,6 +1240,11 @@ returns the OS path of the file, in which one <self> is saved. Raise an exceptio
 ") GetPath;
 		TCollection_ExtendedString GetPath();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetRedos %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_Document::GetRedos ******/
 		/****** md5 signature: ac751514b78e86d321d4f77d0a7bc2ad ******/
 		%feature("compactdefaultargs") GetRedos;
@@ -1264,6 +1284,11 @@ The current limit on the number of undos.
 ") GetUndoLimit;
 		int GetUndoLimit();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetUndos %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_Document::GetUndos ******/
 		/****** md5 signature: 477773c64b86fe283fe948e806d1945e ******/
 		%feature("compactdefaultargs") GetUndos;
@@ -1876,6 +1901,11 @@ Modified methods ================.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_Modified::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2123,6 +2153,11 @@ Makes the same steps as the previous function but defines the name for transacti
 ") CommitCommand;
 		bool CommitCommand(TCollection_ExtendedString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Documents %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_MultiTransactionManager::Documents ******/
 		/****** md5 signature: 7764ac0e899d0acd6e882356adbb0ffa ******/
 		%feature("compactdefaultargs") Documents;
@@ -2153,6 +2188,11 @@ Dumps transactions in undos and redos.
 ") DumpTransaction;
 		void DumpTransaction(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAvailableRedos %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_MultiTransactionManager::GetAvailableRedos ******/
 		/****** md5 signature: c89d2c9982f0cf1b3bd6ea3a5160f41a ******/
 		%feature("compactdefaultargs") GetAvailableRedos;
@@ -2166,6 +2206,11 @@ Returns available manager redos.
 ") GetAvailableRedos;
 		const NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> & GetAvailableRedos();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAvailableUndos %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_MultiTransactionManager::GetAvailableUndos ******/
 		/****** md5 signature: 752fa4ce44a3fd3e509ce3c512ba2a2d ******/
 		%feature("compactdefaultargs") GetAvailableUndos;
@@ -2466,6 +2511,11 @@ class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_Owner::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2819,6 +2869,11 @@ Something to do before applying <anAttDelta>.
 ") BeforeUndo;
 		bool BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const bool forceIt = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DocumentEntry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_XLink::DocumentEntry ******/
 		/****** md5 signature: aed3c77da0189600f213269241abb1a9 ******/
 		%feature("compactdefaultargs") DocumentEntry;
@@ -2880,6 +2935,11 @@ Returns the GUID for external links.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_XLink::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2893,6 +2953,11 @@ Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LabelEntry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_XLink::LabelEntry ******/
 		/****** md5 signature: 6242bd2f6f23f032bd2a986b8970d960 ******/
 		%feature("compactdefaultargs") LabelEntry;
@@ -3185,6 +3250,11 @@ Returns the ID: 2a96b61d-ec8b-11d0-bee7-080009dc3333.
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TDocStd_XLinkRoot::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;

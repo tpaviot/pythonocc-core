@@ -187,6 +187,11 @@ Return: false if parameter is not defined or has a wrong type.
 ") GetInteger;
 		bool GetInteger(TCollection_AsciiString theParam, Standard_Integer &OutValue, TCollection_AsciiString theScope = "");
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetInternalMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** DE_ConfigurationContext::GetInternalMap ******/
 		/****** md5 signature: ec33cc9099c151853aa172a22e287290 ******/
 		%feature("compactdefaultargs") GetInternalMap;
@@ -1423,6 +1428,11 @@ Return: true if theResource has loaded correctly.
 ") Load;
 		bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource, const bool theIsRecursive = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** DE_Wrapper::Nodes ******/
 		/****** md5 signature: 4eea0a5d549731d87befbdd02bb34f6c ******/
 		%feature("compactdefaultargs") Nodes;

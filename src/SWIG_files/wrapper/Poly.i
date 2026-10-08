@@ -565,6 +565,11 @@ Move constructor.
 ") Poly_ArrayOfNodes;
 		 Poly_ArrayOfNodes(Poly_ArrayOfNodes & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_ArrayOfNodes::Assign ******/
 		/****** md5 signature: 702830dcb95dd43aecf671cba8d7bfdb ******/
 		%feature("compactdefaultargs") Assign;
@@ -596,6 +601,11 @@ Returns True if array defines nodes with double precision.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Move %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_ArrayOfNodes::Move ******/
 		/****** md5 signature: 20553a602539ccce80fca1871695acaa ******/
 		%feature("compactdefaultargs") Move;
@@ -825,6 +835,11 @@ Move constructor.
 ") Poly_ArrayOfUVNodes;
 		 Poly_ArrayOfUVNodes(Poly_ArrayOfUVNodes & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_ArrayOfUVNodes::Assign ******/
 		/****** md5 signature: 0bd9a842cd074feea2878a80c6c59e05 ******/
 		%feature("compactdefaultargs") Assign;
@@ -856,6 +871,11 @@ Returns True if array defines nodes with double precision.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Move %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_ArrayOfUVNodes::Move ******/
 		/****** md5 signature: 540403cdd9a8016019da7b6bbf0e77a2 ******/
 		%feature("compactdefaultargs") Move;
@@ -1478,6 +1498,11 @@ Description
 ") GetConnectedNode;
 		int GetConnectedNode(const int iConn);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetConnectedTri %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangle::GetConnectedTri ******/
 		/****** md5 signature: 1455bc5a736d5a97652b5e97ef057cbc ******/
 		%feature("compactdefaultargs") GetConnectedTri;
@@ -1496,6 +1521,11 @@ Description
 ") GetConnectedTri;
 		const Poly_CoherentTriangle * GetConnectedTri(const int iConn);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLink %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangle::GetLink ******/
 		/****** md5 signature: cab78f87c01ae0189b7c0c340acb3ae2 ******/
 		%feature("compactdefaultargs") GetLink;
@@ -1693,6 +1723,11 @@ Description
 ") Poly_CoherentTriangulation;
 		 Poly_CoherentTriangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<NCollection_BaseAllocator> & theAlloc = nullptr);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddLink %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangulation::AddLink ******/
 		/****** md5 signature: 8706031fa483af3be6eed40723d2860b ******/
 		%feature("compactdefaultargs") AddLink;
@@ -1714,6 +1749,11 @@ Parameter theConn * Index of the side (i.e., 0, 1 0r 2) defining the added link.
 ") AddLink;
 		Poly_CoherentLink * AddLink(const Poly_CoherentTriangle & theTri, const int theConn);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddTriangle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangulation::AddTriangle ******/
 		/****** md5 signature: 657bdfad45c52cde9262a0af14b58c8a ******/
 		%feature("compactdefaultargs") AddTriangle;
@@ -1748,6 +1788,11 @@ Description
 ") Allocator;
 		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNode %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangulation::ChangeNode ******/
 		/****** md5 signature: b3c566fa74f54a2d6177b49742975171 ******/
 		%feature("compactdefaultargs") ChangeNode;
@@ -1959,6 +2004,11 @@ Description
 ") NTriangles;
 		int NTriangles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Node %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangulation::Node ******/
 		/****** md5 signature: b5ce190172afe5cadff5e77ee28431ca ******/
 		%feature("compactdefaultargs") Node;
@@ -2096,6 +2146,11 @@ Return: * Index of the added node. */.
 ") SetNode;
 		int SetNode(const gp_XYZ & thePnt, const int iN = -1);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Triangle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_CoherentTriangulation::Triangle ******/
 		/****** md5 signature: 0420ca0b7aef815f2cbe3a1ba6466bdc ******/
 		%feature("compactdefaultargs") Triangle;
@@ -2859,6 +2914,11 @@ Constructs a 2D polygon defined by the table of points, <Nodes>.
 ") Poly_Polygon2D;
 		 Poly_Polygon2D(const TColgp_Array1OfPnt2d & Nodes);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon2D::ChangeNodes ******/
 		/****** md5 signature: cf4e71e657cc130190ff7a58f24430a5 ******/
 		%feature("compactdefaultargs") ChangeNodes;
@@ -2950,6 +3010,11 @@ Returns the number of nodes in this polygon. Note: If the polygon is closed, the
 ") NbNodes;
 		int NbNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon2D::Nodes ******/
 		/****** md5 signature: ace95c9f288af1764af17344077764df ******/
 		%feature("compactdefaultargs") Nodes;
@@ -3035,6 +3100,11 @@ Constructs a 3D polygon defined by the table of points, Nodes, and the parallel 
 ") Poly_Polygon3D;
 		 Poly_Polygon3D(const TColgp_Array1OfPnt & Nodes, const TColStd_Array1OfReal & Parameters);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon3D::ChangeNodes ******/
 		/****** md5 signature: 82eb403458650aed5504bb75ce1ae847 ******/
 		%feature("compactdefaultargs") ChangeNodes;
@@ -3048,6 +3118,11 @@ Returns the table of nodes for this polygon.
 ") ChangeNodes;
 		TColgp_Array1OfPnt & ChangeNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon3D::ChangeParameters ******/
 		/****** md5 signature: 04cca62058e5ad073771bd6b0b8e76fc ******/
 		%feature("compactdefaultargs") ChangeParameters;
@@ -3152,6 +3227,11 @@ Returns the number of nodes in this polygon. Note: If the polygon is closed, the
 ") NbNodes;
 		int NbNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon3D::Nodes ******/
 		/****** md5 signature: 0572606e46cf19717d5e029468e62b37 ******/
 		%feature("compactdefaultargs") Nodes;
@@ -3165,6 +3245,11 @@ Returns the table of nodes for this polygon.
 ") Nodes;
 		const TColgp_Array1OfPnt & Nodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Polygon3D::Parameters ******/
 		/****** md5 signature: ba47d047693cd65b2f17a6992fba866d ******/
 		%feature("compactdefaultargs") Parameters;
@@ -3250,6 +3335,11 @@ Constructs a 3D polygon on the triangulation of a shape, defined by: - the table
 ") Poly_PolygonOnTriangulation;
 		 Poly_PolygonOnTriangulation(const TColStd_Array1OfInteger & Nodes, const TColStd_Array1OfReal & Parameters);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNodeArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_PolygonOnTriangulation::ChangeNodeArray ******/
 		/****** md5 signature: bff5ee2d09f5d12b0416ce2a9591a4fa ******/
 		%feature("compactdefaultargs") ChangeNodeArray;
@@ -3263,6 +3353,11 @@ Returns mutable node-index array.
 ") ChangeNodeArray;
 		TColStd_Array1OfInteger & ChangeNodeArray();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_PolygonOnTriangulation::ChangeNodes ******/
 		/****** md5 signature: 46f5466dd3cf38fa96c2aeb99fab937e ******/
 		%feature("compactdefaultargs") ChangeNodes;
@@ -3276,6 +3371,11 @@ No available documentation.
 ") ChangeNodes;
 		TColStd_Array1OfInteger & ChangeNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParameterArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_PolygonOnTriangulation::ChangeParameterArray ******/
 		/****** md5 signature: aa877638dd381168fab45cb6dc139184 ******/
 		%feature("compactdefaultargs") ChangeParameterArray;
@@ -3289,6 +3389,11 @@ Returns mutable parameter array.
 ") ChangeParameterArray;
 		TColStd_Array1OfReal & ChangeParameterArray();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_PolygonOnTriangulation::ChangeParameters ******/
 		/****** md5 signature: ff00f0571a955a8781d9d3b3207a3826 ******/
 		%feature("compactdefaultargs") ChangeParameters;
@@ -3411,6 +3516,11 @@ Returns node at the given index.
 ") Node;
 		int Node(int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Nodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_PolygonOnTriangulation::Nodes ******/
 		/****** md5 signature: 2391e906d62a697613ecd7592a725bea ******/
 		%feature("compactdefaultargs") Nodes;
@@ -3789,6 +3899,11 @@ If an array for UV coordinates is not allocated yet, do it now.
 ") AddUVNodes;
 		void AddUVNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CachedMinMax %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::CachedMinMax ******/
 		/****** md5 signature: 860f1473de4c867bdd1263481bff6a31 ******/
 		%feature("compactdefaultargs") CachedMinMax;
@@ -3802,6 +3917,11 @@ Returns cached min - max range of triangulation data, which is VOID by default (
 ") CachedMinMax;
 		const Bnd_Box & CachedMinMax();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTriangle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::ChangeTriangle ******/
 		/****** md5 signature: 29b7f5b1bb2743f920133012b51134f1 ******/
 		%feature("compactdefaultargs") ChangeTriangle;
@@ -3820,6 +3940,11 @@ No available documentation.
 ") ChangeTriangle;
 		Poly_Triangle & ChangeTriangle(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTriangles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::ChangeTriangles ******/
 		/****** md5 signature: 219e0745e4b1f4ed285a3e2d4f3b05d7 ******/
 		%feature("compactdefaultargs") ChangeTriangles;
@@ -4007,6 +4132,11 @@ Returns true if 2D nodes are associated with 3D nodes for this triangulation.
 ") HasUVNodes;
 		bool HasUVNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InternalNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::InternalNodes ******/
 		/****** md5 signature: 403a5fe5cb6597f76bbee32dd2e0bec6 ******/
 		%feature("compactdefaultargs") InternalNodes;
@@ -4020,6 +4150,11 @@ Returns an internal array of nodes. Node()/SetNode() should be used instead in p
 ") InternalNodes;
 		Poly_ArrayOfNodes & InternalNodes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InternalNormals %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::InternalNormals ******/
 		/****** md5 signature: ccf888e070beadeadb064f2e2869e518 ******/
 		%feature("compactdefaultargs") InternalNormals;
@@ -4033,6 +4168,11 @@ Return an internal array of normals. Normal()/SetNormal() should be used instead
 ") InternalNormals;
 		NCollection_Array1<NCollection_Vec3<float>> & InternalNormals();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InternalTriangles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::InternalTriangles ******/
 		/****** md5 signature: 879ee42d1b41a8ce2fbe155a540df3cf ******/
 		%feature("compactdefaultargs") InternalTriangles;
@@ -4046,6 +4186,11 @@ Returns an internal array of triangles. Triangle()/SetTriangle() should be used 
 ") InternalTriangles;
 		Poly_Array1OfTriangle & InternalTriangles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InternalUVNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::InternalUVNodes ******/
 		/****** md5 signature: 59cea86b8917085f807b814917ebbb4e ******/
 		%feature("compactdefaultargs") InternalUVNodes;
@@ -4567,6 +4712,11 @@ Input parameter: thePnt UV coordinates.
 ") SetUVNode;
 		void SetUVNode(int theIndex, const gp_Pnt2d & thePnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Triangle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::Triangle ******/
 		/****** md5 signature: e4c2669a5b2207877fe82e4d4a8d9e30 ******/
 		%feature("compactdefaultargs") Triangle;
@@ -4587,6 +4737,11 @@ Return: triangle node indices, with each node defined within [1, NbNodes()] rang
 ") Triangle;
 		const Poly_Triangle & Triangle(int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Triangles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Poly_Triangulation::Triangles ******/
 		/****** md5 signature: 73ca1d9344607b1d6f600b098907efbc ******/
 		%feature("compactdefaultargs") Triangles;
@@ -4826,7 +4981,13 @@ class Poly_HArray1OfTriangle : public NCollection_Array1<Poly_Triangle>, public 
     Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper);
     Poly_HArray1OfTriangle(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<Poly_Triangle>::value_type& theValue);
     Poly_HArray1OfTriangle(const NCollection_Array1<Poly_Triangle>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<Poly_Triangle>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<Poly_Triangle>& ChangeArray1();
 };
 %make_alias(Poly_HArray1OfTriangle)

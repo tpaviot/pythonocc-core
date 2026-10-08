@@ -5027,6 +5027,11 @@ Exchange the data of two strings (without reallocating memory). @param[in,out] t
 ") Swap;
 		void Swap(TCollection_ExtendedString & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ToExtString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TCollection_ExtendedString::ToExtString ******/
 		/****** md5 signature: dea88946ba2f286795d88eea98b4ccf5 ******/
 		%feature("compactdefaultargs") ToExtString;
@@ -6378,6 +6383,11 @@ Splits a HAsciiString into two sub-strings. Example: aString contains 'abcdefg' 
 ") Split;
 		opencascade::handle<TCollection_HAsciiString> Split(const int where);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend String %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TCollection_HAsciiString::String ******/
 		/****** md5 signature: 3d3a11f081a90fcd0e6ea30e33b34432 ******/
 		%feature("compactdefaultargs") String;
@@ -7023,6 +7033,11 @@ Splits a ExtendedString into two sub-strings. Example: aString contains 'abcdefg
 ") Split;
 		opencascade::handle<TCollection_HExtendedString> Split(const int where);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend String %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TCollection_HExtendedString::String ******/
 		/****** md5 signature: 6292e02513881910490f8602aa6e4a72 ******/
 		%feature("compactdefaultargs") String;
@@ -7036,6 +7051,11 @@ Returns the field myString.
 ") String;
 		const TCollection_ExtendedString & String();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ToExtString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TCollection_HExtendedString::ToExtString ******/
 		/****** md5 signature: a7e266db6795f9de95e2053ebdb5e433 ******/
 		%feature("compactdefaultargs") ToExtString;

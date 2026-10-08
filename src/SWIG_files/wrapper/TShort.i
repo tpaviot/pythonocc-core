@@ -143,7 +143,13 @@ class TShort_HArray1OfShortReal : public NCollection_Array1<float>, public Stand
     TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper);
     TShort_HArray1OfShortReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<float>::value_type& theValue);
     TShort_HArray1OfShortReal(const NCollection_Array1<float>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<float>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<float>& ChangeArray1();
 };
 %make_alias(TShort_HArray1OfShortReal)
@@ -156,7 +162,13 @@ class TShort_HArray2OfShortReal : public NCollection_Array2<float>, public Stand
     TShort_HArray2OfShortReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<float>::value_type& theValue);
     TShort_HArray2OfShortReal(const NCollection_Array2<float>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<float>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<float>& ChangeArray2 (); 
 };
 %make_alias(TShort_HArray2OfShortReal)
@@ -167,9 +179,15 @@ class TShort_HSequenceOfShortReal : public NCollection_Sequence<float>, public S
   public:
     TShort_HSequenceOfShortReal();
     TShort_HSequenceOfShortReal(const NCollection_Sequence<float>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<float>& Sequence();
     void Append (const NCollection_Sequence<float>::value_type& theItem);
     void Append (NCollection_Sequence<float>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<float>& ChangeSequence();
 };
 %make_alias(TShort_HSequenceOfShortReal)

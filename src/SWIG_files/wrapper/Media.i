@@ -122,6 +122,11 @@ Return buffer size within the pool.
 ") BufferSize;
 		int BufferSize();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBuffer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_BufferPool::GetBuffer ******/
 		/****** md5 signature: c6b8a68f85ed63b3323f23a260f0a2ab ******/
 		%feature("compactdefaultargs") GetBuffer;
@@ -226,6 +231,11 @@ Close input.
 ") Close;
 		void Close();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Context %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_CodecContext::Context ******/
 		/****** md5 signature: 3aa4ee2db34bb5d3a1962e5f1ef82df0 ******/
 		%feature("compactdefaultargs") Context;
@@ -417,6 +427,11 @@ Close input.
 ") Close;
 		void Close();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Context %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_FormatContext::Context ******/
 		/****** md5 signature: 7bdf08d584080f0e41398b3e34fbde34 ******/
 		%feature("compactdefaultargs") Context;
@@ -661,6 +676,11 @@ Seek stream to specified position.
 ") SeekStream;
 		bool SeekStream(unsigned int theStreamId, double theSeekPts, bool toSeekBack);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Stream %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_FormatContext::Stream ******/
 		/****** md5 signature: c4142ad229d3af2830e9c605d2a8db1a ******/
 		%feature("compactdefaultargs") Stream;
@@ -806,6 +826,11 @@ Return: frame timestamp estimated using various heuristics, in stream time base.
 ") BestEffortTimestamp;
 		int64_t BestEffortTimestamp();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFrame %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Frame::ChangeFrame ******/
 		/****** md5 signature: e581f2307b7696dcd12a5e4a6dc5954c ******/
 		%feature("compactdefaultargs") ChangeFrame;
@@ -868,6 +893,11 @@ Convert pixel format from OCCT to FFmpeg (AVPixelFormat). Returns -1 (AV_PIX_FMT
 ") FormatOcct2FFmpeg;
 		static int FormatOcct2FFmpeg(Image_Format theFormat);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Frame %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Frame::Frame ******/
 		/****** md5 signature: da955104c4dbd4e1ab21d6e30ba7f6d7 ******/
 		%feature("compactdefaultargs") Frame;
@@ -969,6 +999,11 @@ Return PAR.
 ") PixelAspectRatio;
 		float PixelAspectRatio();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Plane %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Frame::Plane ******/
 		/****** md5 signature: 298a3ed4b4a4d60a373db19e4cbaa87f ******/
 		%feature("compactdefaultargs") Plane;
@@ -1200,6 +1235,11 @@ Empty constructor.
 ") Media_Packet;
 		 Media_Packet();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Packet::ChangeData ******/
 		/****** md5 signature: c33789445db4c3c2e8f062262ca4a368 ******/
 		%feature("compactdefaultargs") ChangeData;
@@ -1213,6 +1253,11 @@ Return data.
 ") ChangeData;
 		uint8_t * ChangeData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePacket %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Packet::ChangePacket ******/
 		/****** md5 signature: a18ba4bd3b558febb825d40a1d101ff9 ******/
 		%feature("compactdefaultargs") ChangePacket;
@@ -1226,6 +1271,11 @@ Return packet.
 ") ChangePacket;
 		AVPacket * ChangePacket();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Data %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Packet::Data ******/
 		/****** md5 signature: 022377391b4ffbbe639530737addffe2 ******/
 		%feature("compactdefaultargs") Data;
@@ -1291,6 +1341,11 @@ Return True for a key frame.
 ") IsKeyFrame;
 		bool IsKeyFrame();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Packet %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Media_Packet::Packet ******/
 		/****** md5 signature: 6c896d6462955b46aa756fbddaaee45e ******/
 		%feature("compactdefaultargs") Packet;

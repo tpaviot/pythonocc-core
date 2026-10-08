@@ -541,6 +541,11 @@ Returns <self> * <Other>, the elementary datums are concatenated.
 ") Multiplied;
 		TopLoc_Location Multiplied(const TopLoc_Location & Other);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NextLocation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_Location::NextLocation ******/
 		/****** md5 signature: 4f43a28215f9c657f15c65e6ea8d59ca ******/
 		%feature("compactdefaultargs") NextLocation;
@@ -730,6 +735,11 @@ No available documentation.
 ") TopLoc_SListNodeOfItemLocation;
 		 TopLoc_SListNodeOfItemLocation(const TopLoc_ItemLocation & I, const TopLoc_SListOfItemLocation & aTail);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tail %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_SListNodeOfItemLocation::Tail ******/
 		/****** md5 signature: 57acbb7d348b766166feca29e69c216b ******/
 		%feature("compactdefaultargs") Tail;
@@ -743,6 +753,11 @@ No available documentation.
 ") Tail;
 		TopLoc_SListOfItemLocation & Tail();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_SListNodeOfItemLocation::Value ******/
 		/****** md5 signature: 8f7ce7cfd62ffb5a331e9ddc65a15b75 ******/
 		%feature("compactdefaultargs") Value;
@@ -844,6 +859,11 @@ Move constructor.
 ") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation(TopLoc_SListOfItemLocation & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_SListOfItemLocation::Assign ******/
 		/****** md5 signature: b5735fdd3d6cb7b6ceb4cfc062cd319b ******/
 		%feature("compactdefaultargs") Assign;
@@ -932,6 +952,11 @@ Moves the iterator to the next object in the list. If the iterator is empty it w
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tail %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_SListOfItemLocation::Tail ******/
 		/****** md5 signature: 50fc348679ec04a9cc73c1820554ab0d ******/
 		%feature("compactdefaultargs") Tail;
@@ -958,6 +983,11 @@ Replaces the list <self> by its tail.
 ") ToTail;
 		void ToTail();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopLoc_SListOfItemLocation::Value ******/
 		/****** md5 signature: c837b1119fc0a458b644c6dd6374aa3c ******/
 		%feature("compactdefaultargs") Value;

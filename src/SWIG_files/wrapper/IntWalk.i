@@ -411,6 +411,11 @@ initialize the parameters to compute the solution point it 's possible to write 
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const double TolTangency);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntWalk_TheInt2S::ChangePoint ******/
 		/****** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ******/
 		%feature("compactdefaultargs") ChangePoint;
@@ -463,6 +468,11 @@ Returns the tangent at the intersection line in the parametric space of the seco
 ") DirectionOnS2;
 		const gp_Dir2d DirectionOnS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Function %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntWalk_TheInt2S::Function ******/
 		/****** md5 signature: 9898950ac008c9766278e0ad6ed48528 ******/
 		%feature("compactdefaultargs") Function;
@@ -554,6 +564,11 @@ returns the best constant isoparametric to find the next intersection's point +s
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntWalk_TheInt2S::Point ******/
 		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/
 		%feature("compactdefaultargs") Point;

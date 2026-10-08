@@ -168,6 +168,11 @@ Clear myShapeSet.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapesLocations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlMNaming_NamedShapeDriver::GetShapesLocations ******/
 		/****** md5 signature: 822d6ca7fbf300e31ea29679fc02745e ******/
 		%feature("compactdefaultargs") GetShapesLocations;
@@ -412,6 +417,11 @@ No available documentation.
 ") XmlMNaming_Shape1;
 		 XmlMNaming_Shape1(const XmlObjMgt_Element & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Element %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlMNaming_Shape1::Element ******/
 		/****** md5 signature: b048e740461d546184db9889ca335c27 ******/
 		%feature("compactdefaultargs") Element;

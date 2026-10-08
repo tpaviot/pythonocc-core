@@ -192,7 +192,13 @@ class FEmTool_HAssemblyTable : public NCollection_Array2<opencascade::handle<TCo
     FEmTool_HAssemblyTable(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>::value_type& theValue);
     FEmTool_HAssemblyTable(const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<TColStd_HArray1OfInteger>>& ChangeArray2 (); 
 };
 %make_alias(FEmTool_HAssemblyTable)

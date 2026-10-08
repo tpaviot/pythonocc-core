@@ -2309,6 +2309,11 @@ Returns a Map of shapes and message list.
 ") MapShape;
 		const NCollection_DataMap<TopoDS_Shape, NCollection_List<Message_Msg>, TopTools_ShapeMapHasher> MapShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MapTransient %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeExtend_MsgRegistrator::MapTransient ******/
 		/****** md5 signature: 8011bc2c05e1d084c7c29a468a1320db ******/
 		%feature("compactdefaultargs") MapTransient;

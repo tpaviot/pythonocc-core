@@ -2398,6 +2398,11 @@ Returns true if the value with the given ID is present.
 ") HasValue;
 		bool HasValue(const size_t theId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TIntSparseArray::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2607,6 +2612,11 @@ This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TModel::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -2743,6 +2753,11 @@ Remove all names registered in container.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TNameContainer::Get ******/
 		/****** md5 signature: af3fc34a3cffcb1ef4a3207661eb4801 ******/
 		%feature("compactdefaultargs") Get;
@@ -2769,6 +2784,11 @@ This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TNameContainer::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3010,6 +3030,11 @@ This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TObject::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3273,6 +3298,11 @@ Returns the Label of master object.
 ") GetMasterLabel;
 		TDF_Label GetMasterLabel();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TReference::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3466,6 +3496,11 @@ This method is used in implementation of ID().
 ") GetID;
 		static const Standard_GUID & GetID();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_TXYZ::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -3583,6 +3618,11 @@ Sets the XYZ.
 %nodefaultctor TObj_LabelIterator;
 class TObj_LabelIterator : public TObj_ObjectIterator {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LabelValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TObj_LabelIterator::LabelValue ******/
 		/****** md5 signature: 153861477678a3ae19ebb1219bf531c1 ******/
 		%feature("compactdefaultargs") LabelValue;

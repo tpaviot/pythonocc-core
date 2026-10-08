@@ -3999,6 +3999,11 @@ Sets some of the Global section parameters with the values defined by the transl
 ") ApplyStatic;
 		bool ApplyStatic(const char * const param = "");
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeGlobalSection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESData_IGESModel::ChangeGlobalSection ******/
 		/****** md5 signature: 040968795059a2599255a0b8e187d384 ******/
 		%feature("compactdefaultargs") ChangeGlobalSection;
@@ -4123,6 +4128,11 @@ gets Header (GlobalSection) from another Model.
 ") GetFromAnother;
 		void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GlobalSection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESData_IGESModel::GlobalSection ******/
 		/****** md5 signature: 2d5bb9cb8fa84f49edbd79893e642aa1 ******/
 		%feature("compactdefaultargs") GlobalSection;
@@ -4423,6 +4433,11 @@ Returns the recorded Default Line Weight, if there is (else, returns 0).
 ") DefaultLineWeight;
 		double DefaultLineWeight();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DirPart %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESData_IGESReaderData::DirPart ******/
 		/****** md5 signature: 921bb580f06445d5d442b31c12e06162 ******/
 		%feature("compactdefaultargs") DirPart;
@@ -4528,6 +4543,11 @@ Returns the recorded Global Check.
 ") GlobalCheck;
 		opencascade::handle<Interface_Check> GlobalCheck();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GlobalSection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESData_IGESReaderData::GlobalSection ******/
 		/****** md5 signature: 9251755b31e2dbc4bc4c014b68758586 ******/
 		%feature("compactdefaultargs") GlobalSection;
@@ -5089,6 +5109,11 @@ declares end of sending an entity (ends param list by ';').
 ") EndEntity;
 		void EndEntity();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FloatWriter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IGESData_IGESWriter::FloatWriter ******/
 		/****** md5 signature: 861009c9fe600b2a8fc50cd628967a67 ******/
 		%feature("compactdefaultargs") FloatWriter;
@@ -8935,7 +8960,13 @@ class IGESData_HArray1OfIGESEntity : public NCollection_Array1<opencascade::hand
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper);
     IGESData_HArray1OfIGESEntity(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>::value_type& theValue);
     IGESData_HArray1OfIGESEntity(const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<IGESData_IGESEntity>>& ChangeArray1();
 };
 %make_alias(IGESData_HArray1OfIGESEntity)

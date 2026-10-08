@@ -202,6 +202,11 @@ returns the MultiBSpCurve approximating the set after computing the value F or G
 ") CurveValue;
 		AppParCurves_MultiBSpCurve CurveValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -253,6 +258,11 @@ No available documentation.
 ") FirstConstraint;
 		AppParCurves_Constraint FirstConstraint(const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & TheConstraints, const int FirstPoint);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -285,6 +295,11 @@ returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		bool Gradient(const math_Vector & X, math_Vector & G);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Index %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::Index ******/
 		/****** md5 signature: c11a6982042d7a2c5bf9fb50324ac971 ******/
 		%feature("compactdefaultargs") Index;
@@ -356,6 +371,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -580,6 +600,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -593,6 +618,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -658,6 +688,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -684,6 +719,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -794,6 +834,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -807,6 +852,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -936,6 +986,11 @@ Initializes the fields of the algorithm.
 ") AppDef_BSplineCompute;
 		 AppDef_BSplineCompute(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSplineCompute::ChangeValue ******/
 		/****** md5 signature: afc5e23129509014348d63bb72db41ec ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -1036,6 +1091,11 @@ returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		bool IsToleranceReached();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_BSplineCompute::Parameters ******/
 		/****** md5 signature: 5c6424b3748c0fbf869b54f8e752f065 ******/
 		%feature("compactdefaultargs") Parameters;
@@ -1344,6 +1404,11 @@ Initializes the fields of the algorithm.
 ") AppDef_Compute;
 		 AppDef_Compute(const int degreemin = 4, const int degreemax = 8, const double Tolerance3d = 1.0e-03, const double Tolerance2d = 1.0e-06, const int NbIterations = 5, const bool cutting = true, const Approx_ParametrizationType parametrization = Approx_ChordLength, const bool Squares = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_Compute::ChangeValue ******/
 		/****** md5 signature: f3fa0af427f9f8c0bbdc2e7a6b2416fb ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -1445,6 +1510,11 @@ Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		int NbMultiCurves();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Parameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_Compute::Parameters ******/
 		/****** md5 signature: 5292a6899dfaa94242ecae6a511c8cc3 ******/
 		%feature("compactdefaultargs") Parameters;
@@ -3242,6 +3312,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParFunctionOfMyGradientOfCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -3457,6 +3532,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -3672,6 +3752,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParFunctionOfTheGradient::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -3860,6 +3945,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -3873,6 +3963,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -3938,6 +4033,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -3964,6 +4064,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -4074,6 +4179,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -4087,6 +4197,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientOfCompute::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -4238,6 +4353,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -4251,6 +4371,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -4316,6 +4441,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -4342,6 +4472,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -4452,6 +4587,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -4465,6 +4605,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -4616,6 +4761,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -4629,6 +4779,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -4694,6 +4849,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -4720,6 +4880,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -4830,6 +4995,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -4843,6 +5013,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ParLeastSquareOfTheGradient::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -4895,6 +5070,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") AppDef_ResConstraintOfMyGradientOfCompute;
 		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -4916,6 +5096,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -4929,6 +5114,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -4942,6 +5132,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientOfCompute::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -5011,6 +5206,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -5032,6 +5232,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -5045,6 +5250,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -5058,6 +5268,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -5127,6 +5342,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") AppDef_ResConstraintOfTheGradient;
 		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfTheGradient::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -5148,6 +5368,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfTheGradient::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -5161,6 +5386,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfTheGradient::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -5174,6 +5404,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_ResConstraintOfTheGradient::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -5695,6 +5930,11 @@ returns the number of variables of the function. It corresponds to the number of
 ") NbVariables;
 		int NbVariables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheFunction::NewParameters ******/
 		/****** md5 signature: 1d606e7b2aa9813a84f6984ebdf52bb7 ******/
 		%feature("compactdefaultargs") NewParameters;
@@ -6006,6 +6246,11 @@ returns the result of the approximation, i.e. all the Curves. An exception is ra
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DerivativeFunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::DerivativeFunctionMatrix ******/
 		/****** md5 signature: c2dbca1da1c1c1aaf2ff7895be813eaf ******/
 		%feature("compactdefaultargs") DerivativeFunctionMatrix;
@@ -6019,6 +6264,11 @@ returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Distance %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::Distance ******/
 		/****** md5 signature: 608fad06f540e822f2b9f4d329c097b6 ******/
 		%feature("compactdefaultargs") Distance;
@@ -6084,6 +6334,11 @@ returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		double FirstLambda();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::FunctionMatrix ******/
 		/****** md5 signature: aec90dd003c289db9092eb79712677e1 ******/
 		%feature("compactdefaultargs") FunctionMatrix;
@@ -6110,6 +6365,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::KIndex ******/
 		/****** md5 signature: 2821052a9bfe72ec4f531ccb52a80ffb ******/
 		%feature("compactdefaultargs") KIndex;
@@ -6220,6 +6480,11 @@ Is used after having initialized the fields. <V1t> is the tangent vector at the 
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const double l1, const double l2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::Points ******/
 		/****** md5 signature: 8a77545526c5096bca80b9c07f882412 ******/
 		%feature("compactdefaultargs") Points;
@@ -6233,6 +6498,11 @@ returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheLeastSquares::Poles ******/
 		/****** md5 signature: 1437a652beb857bd22c16de65cb18857 ******/
 		%feature("compactdefaultargs") Poles;
@@ -6285,6 +6555,11 @@ Given a MultiLine SSP with constraints points, this algorithm finds the best cur
 ") AppDef_TheResol;
 		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const int FirstPoint, const int LastPoint, const opencascade::handle<NCollection_HArray1<AppParCurves_ConstraintCouple>> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const double Tolerance = 1.0e-10);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintDerivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheResol::ConstraintDerivative ******/
 		/****** md5 signature: 6624b247eb3c133ce83158af9b1d85f5 ******/
 		%feature("compactdefaultargs") ConstraintDerivative;
@@ -6306,6 +6581,11 @@ Returns the derivative of the constraint matrix.
 ") ConstraintDerivative;
 		const math_Matrix & ConstraintDerivative(const AppDef_MultiLine & SSP, const math_Vector & Parameters, const int Deg, const math_Matrix & DA);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConstraintMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheResol::ConstraintMatrix ******/
 		/****** md5 signature: 22481357cd3fa297d87302ab5bf68ab7 ******/
 		%feature("compactdefaultargs") ConstraintMatrix;
@@ -6319,6 +6599,11 @@ No available documentation.
 ") ConstraintMatrix;
 		const math_Matrix & ConstraintMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Duale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheResol::Duale ******/
 		/****** md5 signature: fa2d61bba97045a52b936ca097de9f1b ******/
 		%feature("compactdefaultargs") Duale;
@@ -6332,6 +6617,11 @@ returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppDef_TheResol::InverseMatrix ******/
 		/****** md5 signature: 6c593c2bc8580243a5ff315f7f6a1f0e ******/
 		%feature("compactdefaultargs") InverseMatrix;
@@ -7277,7 +7567,13 @@ class AppDef_HArray1OfMultiPointConstraint : public NCollection_Array1<AppDef_Mu
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper);
     AppDef_HArray1OfMultiPointConstraint(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<AppDef_MultiPointConstraint>::value_type& theValue);
     AppDef_HArray1OfMultiPointConstraint(const NCollection_Array1<AppDef_MultiPointConstraint>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<AppDef_MultiPointConstraint>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<AppDef_MultiPointConstraint>& ChangeArray1();
 };
 %make_alias(AppDef_HArray1OfMultiPointConstraint)

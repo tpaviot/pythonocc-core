@@ -287,6 +287,11 @@ No available documentation.
 ") NbSamples;
 		int NbSamples();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Quadric %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_ArcFunction::Quadric ******/
 		/****** md5 signature: 412540fe449bd77bf89b8085f1fe1701 ******/
 		%feature("compactdefaultargs") Quadric;
@@ -973,6 +978,11 @@ Returns true if the is no line.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Line %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Contour::Line ******/
 		/****** md5 signature: 4bc62d88197df62197964787a684cb0a ******/
 		%feature("compactdefaultargs") Line;
@@ -1084,6 +1094,11 @@ Creates the contour for a perspective view.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Surface> & Surf, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const gp_Pnt & Eye);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfaceFunction %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Contour::SurfaceFunction ******/
 		/****** md5 signature: 4a38b2f929c85d9d66c55cb5e593a36b ******/
 		%feature("compactdefaultargs") SurfaceFunction;
@@ -2077,6 +2092,11 @@ No available documentation.
 ") NbVertex;
 		int NbVertex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Line::Point ******/
 		/****** md5 signature: 79474cc503988bcfaa8e9986524c5706 ******/
 		%feature("compactdefaultargs") Point;
@@ -2224,6 +2244,11 @@ Returns Contap_Lin for a line, Contap_Circle for a circle, and Contap_Walking fo
 ") TypeContour;
 		Contap_IType TypeContour();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Line::Vertex ******/
 		/****** md5 signature: 3fc3876b09a9adb8e4dc14f8b0bae679 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -2501,6 +2526,11 @@ Sets the values of a point which is a vertex on the initial facet of restriction
 ") SetVertex;
 		void SetVertex(const opencascade::handle<Adaptor3d_HVertex> & V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnArc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Point::TransitionOnArc ******/
 		/****** md5 signature: adc9ee508ec8cbe59ce8b05248cd454a ******/
 		%feature("compactdefaultargs") TransitionOnArc;
@@ -2514,6 +2544,11 @@ Returns the transition of the point on the arc.
 ") TransitionOnArc;
 		const IntSurf_Transition & TransitionOnArc();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOnLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_Point::TransitionOnLine ******/
 		/****** md5 signature: 1ffbcf064eb110daaac7ceebff0fcde5 ******/
 		%feature("compactdefaultargs") TransitionOnLine;
@@ -3198,6 +3233,11 @@ Cut the line at the point of rank Index.
 ") Cut;
 		void Cut(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheIWLineOfTheIWalking::FirstPoint ******/
 		/****** md5 signature: e0c1dbe8c28165db2dbe2ecf721fcc02 ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -3289,6 +3329,11 @@ No available documentation.
 ") IsTangentAtEnd;
 		bool IsTangentAtEnd();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheIWLineOfTheIWalking::LastPoint ******/
 		/****** md5 signature: 7876841b5cf564c633cdd87a1ac1e722 ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -3458,6 +3503,11 @@ No available documentation.
 ") TangentVector;
 		const gp_Vec TangentVector(Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheIWLineOfTheIWalking::Value ******/
 		/****** md5 signature: 344ab61d440fab1850713aee8091a920 ******/
 		%feature("compactdefaultargs") Value;
@@ -3615,6 +3665,11 @@ Deflection is the maximum deflection admitted between two consecutive points on 
 ") SetTolerance;
 		void SetTolerance(const double Epsilon, const double Deflection, const double Step);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SinglePnt %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheIWalking::SinglePnt ******/
 		/****** md5 signature: 0c2543cf594dde763111a0259b3536b6 ******/
 		%feature("compactdefaultargs") SinglePnt;
@@ -3943,6 +3998,11 @@ Algorithm to find the points and parts of curves of Domain (domain of of restric
 ") Perform;
 		void Perform(Contap_ArcFunction & F, const opencascade::handle<Adaptor3d_TopolTool> & Domain, const double TolBoundary, const double TolTangency, const bool RecheckOnRegularity = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheSearch::Point ******/
 		/****** md5 signature: 3c1fd8a9d74a72b5dfdc977dfd469c2d ******/
 		%feature("compactdefaultargs") Point;
@@ -3961,6 +4021,11 @@ Returns the resulting point of range Index. The exception NotDone is raised if I
 ") Point;
 		const Contap_ThePathPointOfTheSearch & Point(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Segment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheSearch::Segment ******/
 		/****** md5 signature: 32fc1b50533f19cee98c7868bf06ec22 ******/
 		%feature("compactdefaultargs") Segment;
@@ -4095,6 +4160,11 @@ No available documentation.
 ") Perform;
 		void Perform(Contap_SurfFunction & F, const opencascade::handle<Adaptor3d_Surface> & Surf, const double UStart, const double VStart);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheSearchInside::Value ******/
 		/****** md5 signature: 53957a7cef022ac96aca4f6ccc589f73 ******/
 		%feature("compactdefaultargs") Value;
@@ -4153,6 +4223,11 @@ Returns the geometric curve on the surface 's domain which is solution.
 ") Curve;
 		const opencascade::handle<Adaptor2d_Curve2d> & Curve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheSegmentOfTheSearch::FirstPoint ******/
 		/****** md5 signature: e40c5283a03725d6ebc8922755a1d1ca ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -4192,6 +4267,11 @@ Returns True if there is a vertex (ThePathPoint) defining the greatest valid par
 ") HasLastPoint;
 		bool HasLastPoint();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Contap_TheSegmentOfTheSearch::LastPoint ******/
 		/****** md5 signature: 7278121f151ef35144b484648f11d70b ******/
 		%feature("compactdefaultargs") LastPoint;
@@ -4258,9 +4338,15 @@ class Contap_TheHSequenceOfPoint : public NCollection_Sequence<Contap_Point>, pu
   public:
     Contap_TheHSequenceOfPoint();
     Contap_TheHSequenceOfPoint(const NCollection_Sequence<Contap_Point>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<Contap_Point>& Sequence();
     void Append (const NCollection_Sequence<Contap_Point>::value_type& theItem);
     void Append (NCollection_Sequence<Contap_Point>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<Contap_Point>& ChangeSequence();
 };
 %make_alias(Contap_TheHSequenceOfPoint)

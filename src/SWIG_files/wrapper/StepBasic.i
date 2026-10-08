@@ -15905,7 +15905,13 @@ class StepBasic_HArray1OfApproval : public NCollection_Array1<opencascade::handl
     StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Approval>>::value_type& theValue);
     StepBasic_HArray1OfApproval(const NCollection_Array1<opencascade::handle<StepBasic_Approval>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_Approval>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_Approval>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfApproval)
@@ -15916,7 +15922,13 @@ class StepBasic_HArray1OfDerivedUnitElement : public NCollection_Array1<opencasc
     StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfDerivedUnitElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>::value_type& theValue);
     StepBasic_HArray1OfDerivedUnitElement(const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_DerivedUnitElement>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfDerivedUnitElement)
@@ -15927,7 +15939,13 @@ class StepBasic_HArray1OfDocument : public NCollection_Array1<opencascade::handl
     StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfDocument(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Document>>::value_type& theValue);
     StepBasic_HArray1OfDocument(const NCollection_Array1<opencascade::handle<StepBasic_Document>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_Document>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_Document>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfDocument)
@@ -15938,7 +15956,13 @@ class StepBasic_HArray1OfNamedUnit : public NCollection_Array1<opencascade::hand
     StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfNamedUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>::value_type& theValue);
     StepBasic_HArray1OfNamedUnit(const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_NamedUnit>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfNamedUnit)
@@ -15949,7 +15973,13 @@ class StepBasic_HArray1OfOrganization : public NCollection_Array1<opencascade::h
     StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Organization>>::value_type& theValue);
     StepBasic_HArray1OfOrganization(const NCollection_Array1<opencascade::handle<StepBasic_Organization>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_Organization>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_Organization>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfOrganization)
@@ -15960,7 +15990,13 @@ class StepBasic_HArray1OfPerson : public NCollection_Array1<opencascade::handle<
     StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Person>>::value_type& theValue);
     StepBasic_HArray1OfPerson(const NCollection_Array1<opencascade::handle<StepBasic_Person>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_Person>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_Person>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfPerson)
@@ -15971,7 +16007,13 @@ class StepBasic_HArray1OfProduct : public NCollection_Array1<opencascade::handle
     StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_Product>>::value_type& theValue);
     StepBasic_HArray1OfProduct(const NCollection_Array1<opencascade::handle<StepBasic_Product>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_Product>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_Product>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProduct)
@@ -15982,7 +16024,13 @@ class StepBasic_HArray1OfProductContext : public NCollection_Array1<opencascade:
     StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>::value_type& theValue);
     StepBasic_HArray1OfProductContext(const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_ProductContext>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProductContext)
@@ -15993,7 +16041,13 @@ class StepBasic_HArray1OfProductDefinition : public NCollection_Array1<opencasca
     StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>::value_type& theValue);
     StepBasic_HArray1OfProductDefinition(const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_ProductDefinition>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfProductDefinition)
@@ -16004,7 +16058,13 @@ class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public NCollection_Array1<
     StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>::value_type& theValue);
     StepBasic_HArray1OfUncertaintyMeasureWithUnit(const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepBasic_UncertaintyMeasureWithUnit>>& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)

@@ -440,6 +440,11 @@ Returns the parent edge of <E> Warning: If <E>is a basis edge, the returned edge
 ") BasisEdge;
 		const TopoDS_Edge BasisEdge(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChamferEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFi2d_Builder::ChamferEdges ******/
 		/****** md5 signature: d035805a204108c266e9c5c5713d7853 ******/
 		%feature("compactdefaultargs") ChamferEdges;
@@ -471,6 +476,11 @@ returns the modified edge if <E> has descendant or <E> in the other case.
 ") DescendantEdge;
 		const TopoDS_Edge DescendantEdge(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FilletEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFi2d_Builder::FilletEdges ******/
 		/****** md5 signature: f48bb40e20f062fc2aa9d6328b83b716 ******/
 		%feature("compactdefaultargs") FilletEdges;

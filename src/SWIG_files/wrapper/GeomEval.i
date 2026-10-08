@@ -457,6 +457,11 @@ Returns the number of poles.
 ") NbPoles;
 		int NbPoles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_AHTBezierCurve::Poles ******/
 		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
@@ -532,6 +537,11 @@ Transformation is not supported for this eval geometry. @throw Standard_NotImple
 ") Transform;
 		void Transform(const gp_Trsf & T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_AHTBezierCurve::Weights ******/
 		/****** md5 signature: 75fed9e302ad46e4cac4d74daae13ea5 ******/
 		%feature("compactdefaultargs") Weights;
@@ -1012,6 +1022,11 @@ Returns the number of poles in V direction.
 ") NbPolesV;
 		int NbPolesV();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_AHTBezierSurface::Poles ******/
 		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
@@ -1141,6 +1156,11 @@ Reversal is not supported for this eval surface. @throw Standard_NotImplemented.
 ") VReversedParameter;
 		double VReversedParameter(const double V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_AHTBezierSurface::Weights ******/
 		/****** md5 signature: 7f881df6c273a11e54472a6e9569e510 ******/
 		%feature("compactdefaultargs") Weights;
@@ -4431,6 +4451,11 @@ Returns the trigonometric order n (NbPoles = 2*n + 1).
 ") Order;
 		int Order();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_TBezierCurve::Poles ******/
 		/****** md5 signature: 663bb42f249a1a7e08feff11d136eca9 ******/
 		%feature("compactdefaultargs") Poles;
@@ -4506,6 +4531,11 @@ Transformation is not supported for this eval geometry. @throw Standard_NotImple
 ") Transform;
 		void Transform(const gp_Trsf & T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_TBezierCurve::Weights ******/
 		/****** md5 signature: 75fed9e302ad46e4cac4d74daae13ea5 ******/
 		%feature("compactdefaultargs") Weights;
@@ -4931,6 +4961,11 @@ Returns the trigonometric order in V (NbVPoles = 2*nV + 1).
 ") OrderV;
 		int OrderV();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_TBezierSurface::Poles ******/
 		/****** md5 signature: 14016e5d40bac5fa096e746e935d87cd ******/
 		%feature("compactdefaultargs") Poles;
@@ -5060,6 +5095,11 @@ Reversal is not supported for this eval surface. @throw Standard_NotImplemented.
 ") VReversedParameter;
 		double VReversedParameter(const double V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** GeomEval_TBezierSurface::Weights ******/
 		/****** md5 signature: 7f881df6c273a11e54472a6e9569e510 ******/
 		%feature("compactdefaultargs") Weights;

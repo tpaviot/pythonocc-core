@@ -326,6 +326,11 @@ Returns the Actor for Write attached to the pair (norm,appli) Read from field. C
 ") ActorWrite;
 		virtual opencascade::handle<Transfer_ActorOfFinderProcess> ActorWrite();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AdaptorSession %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Controller::AdaptorSession ******/
 		/****** md5 signature: 14068c1209fa349deea9cc714481bec9 ******/
 		%feature("compactdefaultargs") AdaptorSession;
@@ -875,6 +880,11 @@ Clears the list of shapes that may have accumulated in calls to TransferOne or T
 ") ClearShapes;
 		void ClearShapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeFixParameters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Reader::GetShapeFixParameters ******/
 		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
 		%feature("compactdefaultargs") GetShapeFixParameters;
@@ -889,6 +899,11 @@ Return: the parameters for shape processing. Empty map if no parameters were set
 ") GetShapeFixParameters;
 		const Resource_DataMapOfAsciiStringAsciiString & GetShapeFixParameters();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetShapeProcessFlags %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Reader::GetShapeProcessFlags ******/
 		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
 		%feature("compactdefaultargs") GetShapeProcessFlags;
@@ -1800,6 +1815,11 @@ Clears recorded result for an entity, according mode <mode> = -1: true, complete
 ") ClearResult;
 		bool ClearResult(const opencascade::handle<Standard_Transient> & theEnt, const int theMode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Context %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_TransferReader::Context ******/
 		/****** md5 signature: 2192f10621cbd30af6762c51d01c4896 ******/
 		%feature("compactdefaultargs") Context;
@@ -2898,6 +2918,11 @@ No available documentation.
 ") ArrToSeq;
 		opencascade::handle<Standard_Transient> ArrToSeq(const opencascade::handle<Standard_Transient> & arr);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AsciiToExtended %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Utils::AsciiToExtended ******/
 		/****** md5 signature: 4d893affeb2439b869a7fa9f448c7f8e ******/
 		%feature("compactdefaultargs") AsciiToExtended;
@@ -3017,6 +3042,11 @@ No available documentation.
 ") DateValues;
 		void DateValues(const char * const text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EStrValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Utils::EStrValue ******/
 		/****** md5 signature: 536b73919a09c6e9b8196598bea21601 ******/
 		%feature("compactdefaultargs") EStrValue;
@@ -3331,6 +3361,11 @@ No available documentation.
 ") ToCString;
 		const char * ToCString(TCollection_AsciiString strval);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ToEString %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XSControl_Utils::ToEString ******/
 		/****** md5 signature: 5803a40476baa6ebefced5e9dca8d4bc ******/
 		%feature("compactdefaultargs") ToEString;

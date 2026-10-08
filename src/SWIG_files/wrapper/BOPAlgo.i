@@ -284,6 +284,11 @@ gets status of faulty.
 ") GetCheckStatus;
 		BOPAlgo_CheckStatus GetCheckStatus();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFaultyShapes1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_CheckResult::GetFaultyShapes1 ******/
 		/****** md5 signature: 02555cebc1acd7cb0f265e842acd1dae ******/
 		%feature("compactdefaultargs") GetFaultyShapes1;
@@ -297,6 +302,11 @@ returns list of faulty shapes for object.
 ") GetFaultyShapes1;
 		const TopTools_ListOfShape & GetFaultyShapes1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFaultyShapes2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_CheckResult::GetFaultyShapes2 ******/
 		/****** md5 signature: 9a9729e1f37c2dc45ee3798cb0dea0c7 ******/
 		%feature("compactdefaultargs") GetFaultyShapes2;
@@ -899,6 +909,11 @@ Constructor.
 ") BOPAlgo_PISteps;
 		 BOPAlgo_PISteps(const int theNbOp);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSteps %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_PISteps::ChangeSteps ******/
 		/****** md5 signature: bcd411c793ecc8deb30061f124b3589a ******/
 		%feature("compactdefaultargs") ChangeSteps;
@@ -949,6 +964,11 @@ Assign the value theStep to theOperation.
 ") SetStep;
 		void SetStep(const int theOperation, const double theStep);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Steps %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_PISteps::Steps ******/
 		/****** md5 signature: 5a98b5d001a425d7f92cf169baf2c34e ******/
 		%feature("compactdefaultargs") Steps;
@@ -1453,6 +1473,11 @@ No available documentation.
 ") SetFace;
 		void SetFace(const TopoDS_Face & aF);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_WireEdgeSet::Shapes ******/
 		/****** md5 signature: b37feba128ad5bc2a13f1af1768cea33 ******/
 		%feature("compactdefaultargs") Shapes;
@@ -1466,6 +1491,11 @@ No available documentation.
 ") Shapes;
 		const TopTools_ListOfShape & Shapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StartElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_WireEdgeSet::StartElements ******/
 		/****** md5 signature: 8affdda449171035a3b1e1ddba936aa5 ******/
 		%feature("compactdefaultargs") StartElements;
@@ -1559,6 +1589,11 @@ Input parameter: theS One of the argument shapes.
 ") AddArgument;
 		void AddArgument(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::Arguments ******/
 		/****** md5 signature: 7729dc5bed49818f4be5c095d2e3edec ******/
 		%feature("compactdefaultargs") Arguments;
@@ -1598,6 +1633,11 @@ Clears the repetitions performed on the periodic shape, keeping the shape period
 ") ClearRepetitions;
 		void ClearRepetitions();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::GetModified ******/
 		/****** md5 signature: 21b232ef2fa4dc6833102d7e8f837e25 ******/
 		%feature("compactdefaultargs") GetModified;
@@ -1617,6 +1657,11 @@ Input parameter: theS The shape for which the modified shapes are necessary.
 ") GetModified;
 		const TopTools_ListOfShape & GetModified(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetOrigins %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::GetOrigins ******/
 		/****** md5 signature: 0fadeaddb54df7987bbd7a0b4ec0031e ******/
 		%feature("compactdefaultargs") GetOrigins;
@@ -1668,6 +1713,11 @@ Input parameter: theParams Periodic options.
 ") MakePeriodic;
 		void MakePeriodic(const BOPAlgo_MakePeriodic::PeriodicityParams & theParams);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MaterialsOnNegativeSide %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::MaterialsOnNegativeSide ******/
 		/****** md5 signature: 3334f0118e7cce3ca31010d7af4e8348 ******/
 		%feature("compactdefaultargs") MaterialsOnNegativeSide;
@@ -1687,6 +1737,11 @@ Input parameter: theS The shape for which the materials are necessary.
 ") MaterialsOnNegativeSide;
 		const TopTools_ListOfShape & MaterialsOnNegativeSide(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MaterialsOnPositiveSide %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::MaterialsOnPositiveSide ******/
 		/****** md5 signature: 3fb20dab960ae2784ef2e2fdc3b8a3bc ******/
 		%feature("compactdefaultargs") MaterialsOnPositiveSide;
@@ -1732,6 +1787,11 @@ Returns the resulting periodic & repeated shape.
 ") PeriodicShape;
 		const TopoDS_Shape PeriodicShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PeriodicityTool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakeConnected::PeriodicityTool ******/
 		/****** md5 signature: 73b35be00edb65bd2ce0a4bea38ba204 ******/
 		%feature("compactdefaultargs") PeriodicityTool;
@@ -1852,6 +1912,11 @@ Clears all performed repetitions. The next repetition will be performed on the b
 ") ClearRepetitions;
 		void ClearRepetitions();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTwins %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakePeriodic::GetTwins ******/
 		/****** md5 signature: 68c1b8674f58a8f4959de5898cc753a0 ******/
 		%feature("compactdefaultargs") GetTwins;
@@ -2540,6 +2605,11 @@ Returns (modifiable) mode that means checking of problem of invalid curve on sur
 ") CurveOnSurfaceMode;
 		bool & CurveOnSurfaceMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetCheckResult %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_ArgumentAnalyzer::GetCheckResult ******/
 		/****** md5 signature: a30b57cb97db17acd5914dd7d078c5b9 ******/
 		%feature("compactdefaultargs") GetCheckResult;
@@ -2806,6 +2876,11 @@ Returns (modifiable) mode that means checking of tangency between subshapes.
 %ignore BOPAlgo_BuilderArea::~BOPAlgo_BuilderArea();
 class BOPAlgo_BuilderArea : public BOPAlgo_Algo {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Areas %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderArea::Areas ******/
 		/****** md5 signature: 391511284b58a222dae1f3143775e8b2 ******/
 		%feature("compactdefaultargs") Areas;
@@ -2832,6 +2907,11 @@ Returns the AvoidInternalShapes flag.
 ") IsAvoidInternalShapes;
 		bool IsAvoidInternalShapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Loops %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderArea::Loops ******/
 		/****** md5 signature: 906348aee354bcba6262f302d6f94b85 ******/
 		%feature("compactdefaultargs") Loops;
@@ -2899,6 +2979,11 @@ Sets the shapes for building areas.
 ") SetShapes;
 		void SetShapes(const TopTools_ListOfShape & theLS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderArea::Shapes ******/
 		/****** md5 signature: dcc9fb3797b3fd8183a75c7bc6f77ab4 ******/
 		%feature("compactdefaultargs") Shapes;
@@ -2927,6 +3012,11 @@ Returns the input shapes.
 %nodefaultctor BOPAlgo_BuilderShape;
 class BOPAlgo_BuilderShape : public BOPAlgo_Algo {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderShape::Generated ******/
 		/****** md5 signature: 4c6dbd89dd2ca8c5e32b51a147ff88b7 ******/
 		%feature("compactdefaultargs") Generated;
@@ -3028,6 +3118,11 @@ Returns true if the shape theS has been deleted. In this case the shape will hav
 ") IsDeleted;
 		bool IsDeleted(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderShape::Modified ******/
 		/****** md5 signature: d69798cce41be6f29c490bf606d02d57 ******/
 		%feature("compactdefaultargs") Modified;
@@ -3178,6 +3273,11 @@ Adds the argument for operation.
 ") AddArgument;
 		void AddArgument(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_PaveFiller::Arguments ******/
 		/****** md5 signature: 7729dc5bed49818f4be5c095d2e3edec ******/
 		%feature("compactdefaultargs") Arguments;
@@ -3204,6 +3304,11 @@ No available documentation.
 ") Context;
 		const opencascade::handle<IntTools_Context> & Context();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DS %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_PaveFiller::DS ******/
 		/****** md5 signature: 87987374a37a857a957303627823fdb1 ******/
 		%feature("compactdefaultargs") DS;
@@ -3480,6 +3585,11 @@ performs the algorithm.
 ") Perform;
 		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shells %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_ShellSplitter::Shells ******/
 		/****** md5 signature: 530065fb92e5193f66e168b681feaa40 ******/
 		%feature("compactdefaultargs") Shells;
@@ -3511,6 +3621,11 @@ No available documentation.
 ") SplitBlock;
 		static void SplitBlock(BOPTools_ConnexityBlock & theCB);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StartElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_ShellSplitter::StartElements ******/
 		/****** md5 signature: 8affdda449171035a3b1e1ddba936aa5 ******/
 		%feature("compactdefaultargs") StartElements;
@@ -3675,6 +3790,11 @@ No available documentation.
 ") SplitBlock;
 		static void SplitBlock(const TopoDS_Face & theF, BOPTools_ConnexityBlock & theCB, const opencascade::handle<IntTools_Context> & theContext);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WES %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_WireSplitter::WES ******/
 		/****** md5 signature: 58e5fd1cf4257111802b170e6fd95635 ******/
 		%feature("compactdefaultargs") WES;
@@ -3752,6 +3872,11 @@ Adds the argument to the operation.
 ") AddArgument;
 		virtual void AddArgument(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_Builder::Arguments ******/
 		/****** md5 signature: 7729dc5bed49818f4be5c095d2e3edec ******/
 		%feature("compactdefaultargs") Arguments;
@@ -3872,6 +3997,11 @@ Returns the glue option of the algorithm.
 ") Glue;
 		BOPAlgo_GlueEnum Glue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Images %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_Builder::Images ******/
 		/****** md5 signature: bb8a73337bb6d0cfd7c39eb8191b7241 ******/
 		%feature("compactdefaultargs") Images;
@@ -3898,6 +4028,11 @@ Returns the flag that defines the mode of treatment. In non-destructive mode the
 ") NonDestructive;
 		bool NonDestructive();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Origins %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_Builder::Origins ******/
 		/****** md5 signature: 9f99bce58c765fa174392333e652b14f ******/
 		%feature("compactdefaultargs") Origins;
@@ -4046,6 +4181,11 @@ Sets the flag that defines the mode of treatment. In non-destructive mode the ar
 ") SetNonDestructive;
 		void SetNonDestructive(const bool theFlag);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapesSD %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_Builder::ShapesSD ******/
 		/****** md5 signature: 097ae07dc34f29a17b47f6ff512e0074 ******/
 		%feature("compactdefaultargs") ShapesSD;
@@ -4211,6 +4351,11 @@ Constructor with allocator.
 ") BOPAlgo_BuilderSolid;
 		 BOPAlgo_BuilderSolid(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBoxesMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_BuilderSolid::GetBoxesMap ******/
 		/****** md5 signature: c4c90bd362e588b34a4d708ac60b40dd ******/
 		%feature("compactdefaultargs") GetBoxesMap;
@@ -4383,6 +4528,11 @@ Clears the contents of the algorithm from previous run, allowing reusing it for 
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FacesToRemove %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_RemoveFeatures::FacesToRemove ******/
 		/****** md5 signature: 2265923b20d3cdfe0e4bc1cba758c7d2 ******/
 		%feature("compactdefaultargs") FacesToRemove;
@@ -4686,6 +4836,11 @@ Clears the data.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_MakerVolume::Faces ******/
 		/****** md5 signature: aab441ace6b14fe44acdb7650b6002bd ******/
 		%feature("compactdefaultargs") Faces;
@@ -4918,6 +5073,11 @@ Adds the Tool arguments of the operation.
 ") SetTools;
 		virtual void SetTools(const TopTools_ListOfShape & theShapes);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tools %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPAlgo_ToolsProvider::Tools ******/
 		/****** md5 signature: f354d26768926e996d17ca393c56586f ******/
 		%feature("compactdefaultargs") Tools;

@@ -2169,6 +2169,11 @@ No available documentation.
 ") BOPTools_ConnexityBlock;
 		 BOPTools_ConnexityBlock(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeLoops %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPTools_ConnexityBlock::ChangeLoops ******/
 		/****** md5 signature: 14f52ac998b9cf2202c0e2916c7924cd ******/
 		%feature("compactdefaultargs") ChangeLoops;
@@ -2182,6 +2187,11 @@ No available documentation.
 ") ChangeLoops;
 		TopTools_ListOfShape & ChangeLoops();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPTools_ConnexityBlock::ChangeShapes ******/
 		/****** md5 signature: ef78ffba6b513d0f6d6595cfd3a278c4 ******/
 		%feature("compactdefaultargs") ChangeShapes;
@@ -2208,6 +2218,11 @@ No available documentation.
 ") IsRegular;
 		bool IsRegular();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Loops %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPTools_ConnexityBlock::Loops ******/
 		/****** md5 signature: 906348aee354bcba6262f302d6f94b85 ******/
 		%feature("compactdefaultargs") Loops;
@@ -2239,6 +2254,11 @@ No available documentation.
 ") SetRegular;
 		void SetRegular(const bool theFlag);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Shapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPTools_ConnexityBlock::Shapes ******/
 		/****** md5 signature: dcc9fb3797b3fd8183a75c7bc6f77ab4 ******/
 		%feature("compactdefaultargs") Shapes;
@@ -2429,6 +2449,11 @@ No available documentation.
 ") Add;
 		void Add(const TopoDS_Shape & theS, const TopAbs_ShapeEnum theType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPTools_Set::Assign ******/
 		/****** md5 signature: 928626bc3ceb859906184486d169fe7b ******/
 		%feature("compactdefaultargs") Assign;

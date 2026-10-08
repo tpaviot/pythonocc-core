@@ -495,6 +495,11 @@ This function returns the number of intersection segments between the two curves
 ") NbSegments;
 		int NbSegments();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_Intersection::Point ******/
 		/****** md5 signature: 2f59b4f0a1ef7de78ab232b1e95a2ce4 ******/
 		%feature("compactdefaultargs") Point;
@@ -513,6 +518,11 @@ This function returns the intersection point of range N; The exception NotDone i
 ") Point;
 		const IntRes2d_IntersectionPoint & Point(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Segment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_Intersection::Segment ******/
 		/****** md5 signature: b1d4b7b120ed513838a14f8fe26feb70 ******/
 		%feature("compactdefaultargs") Segment;
@@ -648,6 +658,11 @@ Sets the values for an existing intersection point. The meaning of the parameter
 ") SetValues;
 		void SetValues(const gp_Pnt2d & P, const double Uc1, const double Uc2, const IntRes2d_Transition & Trans1, const IntRes2d_Transition & Trans2, const bool ReversedFlag);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOfFirst %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_IntersectionPoint::TransitionOfFirst ******/
 		/****** md5 signature: 3cce10625695ef9b8b7369bebb0aff66 ******/
 		%feature("compactdefaultargs") TransitionOfFirst;
@@ -661,6 +676,11 @@ Returns the transition of the 1st curve compared to the 2nd one.
 ") TransitionOfFirst;
 		const IntRes2d_Transition & TransitionOfFirst();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TransitionOfSecond %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_IntersectionPoint::TransitionOfSecond ******/
 		/****** md5 signature: db58cbb906991e3313f149a6858825fd ******/
 		%feature("compactdefaultargs") TransitionOfSecond;
@@ -774,6 +794,11 @@ Creates an infinite segment of intersection.
 ") IntRes2d_IntersectionSegment;
 		 IntRes2d_IntersectionSegment(const bool Oppos);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FirstPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_IntersectionSegment::FirstPoint ******/
 		/****** md5 signature: d49a4467c5a878587db115e95010563f ******/
 		%feature("compactdefaultargs") FirstPoint;
@@ -826,6 +851,11 @@ Returns False if the intersection segment has got the same orientation on both c
 ") IsOpposite;
 		bool IsOpposite();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastPoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntRes2d_IntersectionSegment::LastPoint ******/
 		/****** md5 signature: 0b0d0759492f07d553c471992b8ffa02 ******/
 		%feature("compactdefaultargs") LastPoint;

@@ -145,6 +145,11 @@ Computes the distance between the end points of the extremum of index Index comp
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dAPI_ExtremaCurveCurve::Extrema ******/
 		/****** md5 signature: b1d6dfe7a95af8a82b7106fd7bcb56f9 ******/
 		%feature("compactdefaultargs") Extrema;
@@ -365,6 +370,11 @@ Initializes an algorithm with the given arguments and computes the self-intersec
 ") Init;
 		void Init(const opencascade::handle<Geom2d_Curve> & C1, const double Tol = 1.0e-6);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dAPI_InterCurveCurve::Intersector ******/
 		/****** md5 signature: 4ebbf59c42ad801a63e34dfa17e19ef4 ******/
 		%feature("compactdefaultargs") Intersector;
@@ -950,6 +960,11 @@ Computes the distance between the point and its computed orthogonal projection o
 ") Distance;
 		double Distance(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Extrema %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dAPI_ProjectPointOnCurve::Extrema ******/
 		/****** md5 signature: 37af5c9efb51737c22aa348e6a3ceb1b ******/
 		%feature("compactdefaultargs") Extrema;

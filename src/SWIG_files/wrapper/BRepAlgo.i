@@ -314,6 +314,11 @@ Stores <SS> as futurs SubShapes of <S>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const TopTools_ListOfShape & SS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Ascendant %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_AsDes::Ascendant ******/
 		/****** md5 signature: a060de1b6e354a6ab597faef913355c5 ******/
 		%feature("compactdefaultargs") Ascendant;
@@ -332,6 +337,11 @@ Returns the Shape containing <S>.
 ") Ascendant;
 		const TopTools_ListOfShape & Ascendant(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeDescendant %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_AsDes::ChangeDescendant ******/
 		/****** md5 signature: a246523e7944d52771230bb1d503eef7 ******/
 		%feature("compactdefaultargs") ChangeDescendant;
@@ -363,6 +373,11 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Descendant %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_AsDes::Descendant ******/
 		/****** md5 signature: 747b90717e0b93ebe17b5475970b7d9c ******/
 		%feature("compactdefaultargs") Descendant;
@@ -785,6 +800,11 @@ No available documentation.
 ") HasImage;
 		bool HasImage(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Image %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_Image::Image ******/
 		/****** md5 signature: 83d2de8388889ac5fbf226aee43273e9 ******/
 		%feature("compactdefaultargs") Image;
@@ -931,6 +951,11 @@ Returns the upper generator of <S>.
 ") Root;
 		const TopoDS_Shape Root(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Roots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_Image::Roots ******/
 		/****** md5 signature: 2987b25cbd639c39e404ae22a5b11d86 ******/
 		%feature("compactdefaultargs") Roots;
@@ -1113,6 +1138,11 @@ Init with <F> the set of edges must have pcurves on <F>.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_Loop::NewEdges ******/
 		/****** md5 signature: 106cbee623aa22b94703b7d2ce479a1b ******/
 		%feature("compactdefaultargs") NewEdges;
@@ -1131,6 +1161,11 @@ Returns the list of new edges built from an edge <E> it can be an empty list.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_Loop::NewFaces ******/
 		/****** md5 signature: 622f2c4b34e58c0e41f678dc9e8f0afe ******/
 		%feature("compactdefaultargs") NewFaces;
@@ -1144,6 +1179,11 @@ Returns the list of faces. Warning: The method <WiresToFaces> as to be called be
 ") NewFaces;
 		const TopTools_ListOfShape & NewFaces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewWires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_Loop::NewWires ******/
 		/****** md5 signature: 59af415d459f9ad3abed970f07bfc029 ******/
 		%feature("compactdefaultargs") NewWires;
@@ -1403,6 +1443,11 @@ For a projected edge, returns the corresponding initial face.
 ") Couple;
 		const TopoDS_Shape Couple(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepAlgo_NormalProjection::Generated ******/
 		/****** md5 signature: 27cd51cd947cf33bd793ebb871476400 ******/
 		%feature("compactdefaultargs") Generated;

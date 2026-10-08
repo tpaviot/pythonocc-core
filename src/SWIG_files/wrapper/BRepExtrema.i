@@ -683,6 +683,11 @@ Returns true if the distance has been computed, false otherwise.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Seq1Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_DistanceSS::Seq1Value ******/
 		/****** md5 signature: 6bdee6a94c8f1f387b4b4371e0d0421f ******/
 		%feature("compactdefaultargs") Seq1Value;
@@ -696,6 +701,11 @@ Returns the list of solutions on the first shape.
 ") Seq1Value;
 		const NCollection_Sequence<BRepExtrema_SolutionElem> & Seq1Value();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Seq2Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_DistanceSS::Seq2Value ******/
 		/****** md5 signature: aef75d29e93edd04bb0318a5a1892971 ******/
 		%feature("compactdefaultargs") Seq2Value;
@@ -2291,6 +2301,11 @@ Loads 2nd shape into proximity tool.
 ") LoadShape2;
 		bool LoadShape2(const TopoDS_Shape & theShape2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OverlapSubShapes1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_ShapeProximity::OverlapSubShapes1 ******/
 		/****** md5 signature: ddfa995c82a5309bbbdd3797b8941327 ******/
 		%feature("compactdefaultargs") OverlapSubShapes1;
@@ -2304,6 +2319,11 @@ Returns set of IDs of overlapped faces of 1st shape (started from 0).
 ") OverlapSubShapes1;
 		const NCollection_DataMap<int, TColStd_PackedMapOfInteger> & OverlapSubShapes1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OverlapSubShapes2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_ShapeProximity::OverlapSubShapes2 ******/
 		/****** md5 signature: b65acab9a7109f5acf0a6ff3b5f91e05 ******/
 		%feature("compactdefaultargs") OverlapSubShapes2;
@@ -2832,6 +2852,11 @@ Returns triangle index (before swapping) in tringulation of the shape, which tri
 ") GetTrgIdxInShape;
 		int GetTrgIdxInShape(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetVertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_TriangleSet::GetVertices ******/
 		/****** md5 signature: 6895166cb2c145e3ff7ace9664551209 ******/
 		%feature("compactdefaultargs") GetVertices;
@@ -3068,6 +3093,11 @@ Loads shape for detection of self-intersections.
 ") LoadShape;
 		bool LoadShape(const TopoDS_Shape & theShape);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OverlapElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepExtrema_SelfIntersection::OverlapElements ******/
 		/****** md5 signature: abc4498b816796b12d5a869c2bc96e34 ******/
 		%feature("compactdefaultargs") OverlapElements;

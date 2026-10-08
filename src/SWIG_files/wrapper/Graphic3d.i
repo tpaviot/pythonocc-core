@@ -3409,6 +3409,11 @@ No available documentation.
 ") BackFace;
 		bool BackFace();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BackInteriorColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::BackInteriorColor ******/
 		/****** md5 signature: e43c9444d80ba6362541272eb09b8d61 ******/
 		%feature("compactdefaultargs") BackInteriorColor;
@@ -3422,6 +3427,11 @@ Return back interior color.
 ") BackInteriorColor;
 		const Quantity_Color & BackInteriorColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BackInteriorColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::BackInteriorColorRGBA ******/
 		/****** md5 signature: fd87b0cbfd66e53bad2724623161e871 ******/
 		%feature("compactdefaultargs") BackInteriorColorRGBA;
@@ -3435,6 +3445,11 @@ Return back interior color.
 ") BackInteriorColorRGBA;
 		const Quantity_ColorRGBA & BackInteriorColorRGBA();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BackMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::BackMaterial ******/
 		/****** md5 signature: d61ddc63820fda6c18f961c1b8f4fac2 ******/
 		%feature("compactdefaultargs") BackMaterial;
@@ -3448,6 +3463,11 @@ Returns the surface material of internal faces.
 ") BackMaterial;
 		const Graphic3d_MaterialAspect & BackMaterial();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBackMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::ChangeBackMaterial ******/
 		/****** md5 signature: bf42bcce6fb2c7cbca5951a18913d8b2 ******/
 		%feature("compactdefaultargs") ChangeBackMaterial;
@@ -3461,6 +3481,11 @@ Returns the surface material of internal faces.
 ") ChangeBackMaterial;
 		Graphic3d_MaterialAspect & ChangeBackMaterial();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFrontMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::ChangeFrontMaterial ******/
 		/****** md5 signature: 896bb6b9197226375817929795f577c8 ******/
 		%feature("compactdefaultargs") ChangeFrontMaterial;
@@ -3474,6 +3499,11 @@ Returns the surface material of external faces.
 ") ChangeFrontMaterial;
 		Graphic3d_MaterialAspect & ChangeFrontMaterial();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -3487,6 +3517,11 @@ Return the color.
 ") Color;
 		const Quantity_Color & Color();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::ColorRGBA ******/
 		/****** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ******/
 		%feature("compactdefaultargs") ColorRGBA;
@@ -3500,6 +3535,11 @@ Return color.
 ") ColorRGBA;
 		const Quantity_ColorRGBA & ColorRGBA();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ColorSubTitle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::ColorSubTitle ******/
 		/****** md5 signature: ec9fb7d73de227b76a49a632255940a1 ******/
 		%feature("compactdefaultargs") ColorSubTitle;
@@ -3513,6 +3553,11 @@ Return text background/shadow color; equals to EdgeColor() property.
 ") ColorSubTitle;
 		const Quantity_Color & ColorSubTitle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ColorSubTitleRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::ColorSubTitleRGBA ******/
 		/****** md5 signature: 19c99bba7072d8a37082e5e5db18e02f ******/
 		%feature("compactdefaultargs") ColorSubTitleRGBA;
@@ -3596,6 +3641,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgeColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::EdgeColor ******/
 		/****** md5 signature: e3bf049881e7a42425197782f2de2754 ******/
 		%feature("compactdefaultargs") EdgeColor;
@@ -3609,6 +3659,11 @@ Return color of edges.
 ") EdgeColor;
 		const Quantity_Color & EdgeColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgeColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::EdgeColorRGBA ******/
 		/****** md5 signature: 7f6e351360a662eeb14730bdbc180102 ******/
 		%feature("compactdefaultargs") EdgeColorRGBA;
@@ -3661,6 +3716,11 @@ Return face culling mode; Graphic3d_FaceCulling_BackClosed by default. A back-fa
 ") FaceCulling;
 		Graphic3d_TypeOfBackfacingModel FaceCulling();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FrontMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::FrontMaterial ******/
 		/****** md5 signature: 41b8cfff159c56853a21e11111805499 ******/
 		%feature("compactdefaultargs") FrontMaterial;
@@ -3687,6 +3747,11 @@ Returns the hatch type used when InteriorStyle is IS_HATCH.
 ") HatchStyle;
 		const opencascade::handle<Graphic3d_HatchStyle> & HatchStyle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InteriorColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::InteriorColor ******/
 		/****** md5 signature: 257c7e47a9943279e873d8c441621100 ******/
 		%feature("compactdefaultargs") InteriorColor;
@@ -3700,6 +3765,11 @@ Return interior color.
 ") InteriorColor;
 		const Quantity_Color & InteriorColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InteriorColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::InteriorColorRGBA ******/
 		/****** md5 signature: 384d675ce829aa2e285b913e4365eb79 ******/
 		%feature("compactdefaultargs") InteriorColorRGBA;
@@ -3861,6 +3931,11 @@ No available documentation.
 ") MarkerType;
 		Aspect_TypeOfMarker MarkerType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PolygonOffset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Aspects::PolygonOffset ******/
 		/****** md5 signature: 5bc0db1ff0ef7eec07c4eb78b80f6cca ******/
 		%feature("compactdefaultargs") PolygonOffset;
@@ -5467,6 +5542,11 @@ Returns total number of structures.
 ") Size;
 		int Size();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Structures %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_BvhCStructureSet::Structures ******/
 		/****** md5 signature: 0247b44b3928398f253d7072dc172188 ******/
 		%feature("compactdefaultargs") Structures;
@@ -5587,6 +5667,11 @@ Returns the attenuation factors.
 ") Attenuation;
 		void Attenuation(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -5710,6 +5795,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::GetId ******/
 		/****** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ******/
 		%feature("compactdefaultargs") GetId;
@@ -5801,6 +5891,11 @@ Returns linear attenuation factor of positional/spot light source; 0.0 by defaul
 ") LinearAttenuation;
 		float LinearAttenuation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -5814,6 +5909,11 @@ Returns light source name; empty string by default.
 ") Name;
 		const TCollection_AsciiString & Name();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PackedColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::PackedColor ******/
 		/****** md5 signature: 0ade2a8759ee360771786d9745f9bc09 ******/
 		%feature("compactdefaultargs") PackedColor;
@@ -5840,6 +5940,11 @@ Returns direction of directional/spot light.
 ") PackedDirection;
 		NCollection_Vec3<float > PackedDirection();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PackedDirectionRange %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::PackedDirectionRange ******/
 		/****** md5 signature: 70808d779dc090549acf8d80b3525a84 ******/
 		%feature("compactdefaultargs") PackedDirectionRange;
@@ -5853,6 +5958,11 @@ Returns direction of directional/spot light and range for positional/spot light 
 ") PackedDirectionRange;
 		const NCollection_Vec4<float> & PackedDirectionRange();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PackedParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CLight::PackedParams ******/
 		/****** md5 signature: a33fc351f465ee0be00bce0edac0d245 ******/
 		%feature("compactdefaultargs") PackedParams;
@@ -6315,6 +6425,11 @@ Returns whether check of object's bounding box clipping is enabled before drawin
 ") BndBoxClipCheck;
 		bool BndBoxClipCheck();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CStructure::BoundingBox ******/
 		/****** md5 signature: ec5ef849abfa47e8ebee30a0057dc18a ******/
 		%feature("compactdefaultargs") BoundingBox;
@@ -6328,6 +6443,11 @@ Return: bounding box of this presentation.
 ") BoundingBox;
 		const Graphic3d_BndBox3d & BoundingBox();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CStructure::ChangeBoundingBox ******/
 		/****** md5 signature: 2730d3d1929f140f237adc334ee1f48d ******/
 		%feature("compactdefaultargs") ChangeBoundingBox;
@@ -6468,6 +6588,11 @@ Unhighlights the structure and invalidates pointer to structure's highlight styl
 ") GraphicUnhighlight;
 		virtual void GraphicUnhighlight();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Groups %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CStructure::Groups ******/
 		/****** md5 signature: bfc11242543f04a1a53467f4dd227ab1 ******/
 		%feature("compactdefaultargs") Groups;
@@ -7586,6 +7711,11 @@ Return offset to the view corner in NDC space within dimension X for 2d on-scree
 ") NDC2dOffsetY;
 		double NDC2dOffsetY();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OrientationMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::OrientationMatrix ******/
 		/****** md5 signature: 442b476c696ad0700d22860f92a851c2 ******/
 		%feature("compactdefaultargs") OrientationMatrix;
@@ -7599,6 +7729,11 @@ No available documentation.
 ") OrientationMatrix;
 		const NCollection_Mat4<double> & OrientationMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OrientationMatrixF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::OrientationMatrixF ******/
 		/****** md5 signature: b0ce81a4c6bccbf83cca60041d1541e6 ******/
 		%feature("compactdefaultargs") OrientationMatrixF;
@@ -7657,6 +7792,11 @@ No available documentation.
 ") Project;
 		gp_Pnt Project(const gp_Pnt & thePnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionMatrix ******/
 		/****** md5 signature: c1910cd92bb407bcab8c7c4fdeb6ecab ******/
 		%feature("compactdefaultargs") ProjectionMatrix;
@@ -7671,6 +7811,11 @@ Return: monographic projection matrix.
 ") ProjectionMatrix;
 		const NCollection_Mat4<double> & ProjectionMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionMatrixF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionMatrixF ******/
 		/****** md5 signature: f5dd6048457761ed557b423c374b518b ******/
 		%feature("compactdefaultargs") ProjectionMatrixF;
@@ -7698,6 +7843,11 @@ Returns modification state of camera projection matrix.
 ") ProjectionState;
 		size_t ProjectionState();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionStereoLeft %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionStereoLeft ******/
 		/****** md5 signature: 8ad92d3c57d3d5710aa687d245914e96 ******/
 		%feature("compactdefaultargs") ProjectionStereoLeft;
@@ -7711,6 +7861,11 @@ Return: stereographic matrix computed for left eye. Please note that this method
 ") ProjectionStereoLeft;
 		const NCollection_Mat4<double> & ProjectionStereoLeft();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionStereoLeftF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionStereoLeftF ******/
 		/****** md5 signature: 9993cba8d303b58cb42b5d54f240a08f ******/
 		%feature("compactdefaultargs") ProjectionStereoLeftF;
@@ -7724,6 +7879,11 @@ Return: stereographic matrix of float precision computed for left eye. Please no
 ") ProjectionStereoLeftF;
 		const NCollection_Mat4<float> & ProjectionStereoLeftF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionStereoRight %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionStereoRight ******/
 		/****** md5 signature: 7d64f1ff32f2d7e4498a6eaebd40abfa ******/
 		%feature("compactdefaultargs") ProjectionStereoRight;
@@ -7737,6 +7897,11 @@ Return: stereographic matrix computed for right eye. Please note that this metho
 ") ProjectionStereoRight;
 		const NCollection_Mat4<double> & ProjectionStereoRight();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionStereoRightF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::ProjectionStereoRightF ******/
 		/****** md5 signature: 7bae2856037fad77a5eb162a3e8cd25f ******/
 		%feature("compactdefaultargs") ProjectionStereoRightF;
@@ -8270,6 +8435,11 @@ Get stereo projection matrices. @param[out] theProjL left eye projection matrix 
 ") StereoProjectionF;
 		void StereoProjectionF(NCollection_Mat4<float> & theProjL, NCollection_Mat4<float> & theHeadToEyeL, NCollection_Mat4<float> & theProjR, NCollection_Mat4<float> & theHeadToEyeR);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Tile %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::Tile ******/
 		/****** md5 signature: 0a39fc9b82eb1069228eaa7fbe821f43 ******/
 		%feature("compactdefaultargs") Tile;
@@ -8369,6 +8539,11 @@ Return: values in form of gp_Pnt (Width, Height, Depth).
 ") ViewDimensions;
 		gp_XYZ ViewDimensions(const double theZValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WorldViewProjState %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Camera::WorldViewProjState ******/
 		/****** md5 signature: 84fd216afc4c582ff7d76c1c302180f8 ******/
 		%feature("compactdefaultargs") WorldViewProjState;
@@ -8737,6 +8912,11 @@ Return: hatching style.
 ") CappingHatch;
 		Aspect_HatchStyle CappingHatch();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CappingMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ClipPlane::CappingMaterial ******/
 		/****** md5 signature: ec7378d4d0978973feaf4727f2ab39ab ******/
 		%feature("compactdefaultargs") CappingMaterial;
@@ -8824,6 +9004,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEquation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ClipPlane::GetEquation ******/
 		/****** md5 signature: dcbb1ba5e6415e8c1983d31253e132ea ******/
 		%feature("compactdefaultargs") GetEquation;
@@ -8838,6 +9023,11 @@ Return: clipping plane equation vector.
 ") GetEquation;
 		const NCollection_Vec4<double> & GetEquation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ClipPlane::GetId ******/
 		/****** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ******/
 		%feature("compactdefaultargs") GetId;
@@ -9107,6 +9297,11 @@ Check if the given point is outside of the half-space (e.g. should be discarded 
 ") ProbePointHalfspace;
 		Graphic3d_ClipState ProbePointHalfspace(const NCollection_Vec4<double> & thePoint);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ReversedEquation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ClipPlane::ReversedEquation ******/
 		/****** md5 signature: f7013c15394d7037e547ba5a0bc639e0 ******/
 		%feature("compactdefaultargs") ReversedEquation;
@@ -9533,6 +9728,11 @@ Return the camera definition.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CameraDirection %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CullingTool::CameraDirection ******/
 		/****** md5 signature: 188e27abd2862aff1688f6403c04368c ******/
 		%feature("compactdefaultargs") CameraDirection;
@@ -9546,6 +9746,11 @@ Returns camera direction.
 ") CameraDirection;
 		const NCollection_Vec3<double> & CameraDirection();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CameraEye %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CullingTool::CameraEye ******/
 		/****** md5 signature: c4a03dbba4cdbd24f2bd36920eac0df0 ******/
 		%feature("compactdefaultargs") CameraEye;
@@ -9652,6 +9857,11 @@ Returns True if given AABB should be discarded by size culling criterion.
 ") IsTooSmall;
 		bool IsTooSmall(CullingContext theCtx, const NCollection_Vec3<double> & theMinPnt, const NCollection_Vec3<double> & theMaxPnt);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CullingTool::ProjectionMatrix ******/
 		/****** md5 signature: c3ee9d28899747ee4a1a7ec1fc69c76f ******/
 		%feature("compactdefaultargs") ProjectionMatrix;
@@ -9753,6 +9963,11 @@ No available documentation.
 ") ViewportWidth;
 		int ViewportWidth();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WorldViewMatrix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CullingTool::WorldViewMatrix ******/
 		/****** md5 signature: e6534c4da3771de858be7e8f34818517 ******/
 		%feature("compactdefaultargs") WorldViewMatrix;
@@ -9766,6 +9981,11 @@ Returns current world view transformation matrix.
 ") WorldViewMatrix;
 		const NCollection_Mat4<double> & WorldViewMatrix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend WorldViewProjState %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CullingTool::WorldViewProjState ******/
 		/****** md5 signature: 84fd216afc4c582ff7d76c1c302180f8 ******/
 		%feature("compactdefaultargs") WorldViewProjState;
@@ -9905,6 +10125,11 @@ Set reference plane used for flipping.
 %nodefaultctor Graphic3d_FrameStats;
 class Graphic3d_FrameStats : public Standard_Transient {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveDataFrame %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_FrameStats::ActiveDataFrame ******/
 		/****** md5 signature: e89e1c4808bb7032e3058fd748c2ba1e ******/
 		%feature("compactdefaultargs") ActiveDataFrame;
@@ -9936,6 +10161,11 @@ Returns value of specified counter for modification, should be called between ::
 ") ChangeCounter;
 		size_t & ChangeCounter(Graphic3d_FrameStatsCounter theCounter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeDataFrames %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_FrameStats::ChangeDataFrames ******/
 		/****** md5 signature: 9486d6288d46f6501e052e63e78363a5 ******/
 		%feature("compactdefaultargs") ChangeDataFrames;
@@ -9985,6 +10215,11 @@ Returns value of specified counter, cached between stats updates. Should NOT be 
 ") CounterValue;
 		size_t CounterValue(Graphic3d_FrameStatsCounter theCounter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DataFrames %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_FrameStats::DataFrames ******/
 		/****** md5 signature: 00192e1420bc8aaf54d99dc695bc8868 ******/
 		%feature("compactdefaultargs") DataFrames;
@@ -10151,6 +10386,11 @@ Prefer longer lines over more greater of lines.
 ") IsLongLineFormat;
 		bool IsLongLineFormat();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastDataFrame %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_FrameStats::LastDataFrame ******/
 		/****** md5 signature: 43a5ae643ec463959ba072b87a1e8878 ******/
 		%feature("compactdefaultargs") LastDataFrame;
@@ -10756,6 +10996,11 @@ No available documentation.
 ") CubicAxesCallback;
 		bool CubicAxesCallback(Graphic3d_CView * theView);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GridColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_GraduatedTrihedron::GridColor ******/
 		/****** md5 signature: 0a94080e9f8d07e2f072c1b5c94f2339 ******/
 		%feature("compactdefaultargs") GridColor;
@@ -10769,6 +11014,11 @@ No available documentation.
 ") GridColor;
 		const Quantity_Color & GridColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NamesFont %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_GraduatedTrihedron::NamesFont ******/
 		/****** md5 signature: fff09ee152b933c30f0bd84d05698758 ******/
 		%feature("compactdefaultargs") NamesFont;
@@ -11014,6 +11264,11 @@ No available documentation.
 ") ToDrawGrid;
 		bool ToDrawGrid();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ValuesFont %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_GraduatedTrihedron::ValuesFont ******/
 		/****** md5 signature: fb3c190dc717e90b8fb6d2d17f5e867a ******/
 		%feature("compactdefaultargs") ValuesFont;
@@ -11510,6 +11765,11 @@ Returns view associated with the window if it is exists and is activated. Return
 ") ViewExists;
 		virtual bool ViewExists(const opencascade::handle<Aspect_Window> & theWindow, opencascade::handle<Graphic3d_CView> & theView);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ZLayerSettings %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_GraphicDriver::ZLayerSettings ******/
 		/****** md5 signature: e38c9e174f323fbe425dc9e1a52d5a50 ******/
 		%feature("compactdefaultargs") ZLayerSettings;
@@ -11611,6 +11871,11 @@ Return the global map of registered driver factories.
 ") DriverFactories;
 		static const NCollection_List<opencascade::handle<Graphic3d_GraphicDriverFactory>> & DriverFactories();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_GraphicDriverFactory::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -11753,6 +12018,11 @@ Return fill area aspect.
 ") Aspects;
 		virtual opencascade::handle<Graphic3d_Aspects> Aspects();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Group::BoundingBox ******/
 		/****** md5 signature: e41af9b36a07039d2315bd8651dda9c4 ******/
 		%feature("compactdefaultargs") BoundingBox;
@@ -11766,6 +12036,11 @@ Returns boundary box of the group <self> without transformation applied,.
 ") BoundingBox;
 		const Graphic3d_BndBox4f & BoundingBox();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Group::ChangeBoundingBox ******/
 		/****** md5 signature: cc4a360d34add196038ff35d6beec779 ******/
 		%feature("compactdefaultargs") ChangeBoundingBox;
@@ -12360,6 +12635,11 @@ In case if predefined OCCT style is used, returns index in Aspect_HatchStyle enu
 ") HatchType;
 		int HatchType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pattern %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_HatchStyle::Pattern ******/
 		/****** md5 signature: 7333c36002b73de6149b68a8b0065229 ******/
 		%feature("compactdefaultargs") Pattern;
@@ -12428,6 +12708,11 @@ Append layer of acceptable type (with similar number of priorities or less). Ret
 ") Append;
 		bool Append(const Graphic3d_Layer & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ArrayOfStructures %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::ArrayOfStructures ******/
 		/****** md5 signature: ef8aba76a7ca6f293f49290963a7477e ******/
 		%feature("compactdefaultargs") ArrayOfStructures;
@@ -12469,6 +12754,11 @@ Return: computed bounding box.
 ") BoundingBox;
 		Bnd_Box BoundingBox(int theViewId, const opencascade::handle<Graphic3d_Camera> & theCamera, int theWindowWidth, int theWindowHeight, bool theToIncludeAuxiliary);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CullableStructuresBVH %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::CullableStructuresBVH ******/
 		/****** md5 signature: 60ec6c782e60ccf43b3cc5b479341c0e ******/
 		%feature("compactdefaultargs") CullableStructuresBVH;
@@ -12482,6 +12772,11 @@ Returns set of Graphic3d_CStructures structures for building BVH tree.
 ") CullableStructuresBVH;
 		const Graphic3d_BvhCStructureSet & CullableStructuresBVH();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CullableTrsfPersStructuresBVH %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::CullableTrsfPersStructuresBVH ******/
 		/****** md5 signature: 5e076cad1e27fea5cee8db2320d707c1 ******/
 		%feature("compactdefaultargs") CullableTrsfPersStructuresBVH;
@@ -12581,6 +12876,11 @@ Return layer id.
 ") LayerId;
 		Graphic3d_ZLayerId LayerId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LayerSettings %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::LayerSettings ******/
 		/****** md5 signature: 77eff82582831e6aef7199e37c0feb22 ******/
 		%feature("compactdefaultargs") LayerSettings;
@@ -12646,6 +12946,11 @@ Number of NOT culled structures in the layer.
 ") NbStructuresNotCulled;
 		int NbStructuresNotCulled();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NonCullableStructures %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::NonCullableStructures ******/
 		/****** md5 signature: 38e7d008dfded361055484ef1e53d42e ******/
 		%feature("compactdefaultargs") NonCullableStructures;
@@ -12696,6 +13001,11 @@ Sets settings of the layer object.
 ") SetLayerSettings;
 		void SetLayerSettings(const Graphic3d_ZLayerSettings & theSettings);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Structures %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Layer::Structures ******/
 		/****** md5 signature: d812fd497207a891f829877dc6b77a6e ******/
 		%feature("compactdefaultargs") Structures;
@@ -12846,6 +13156,11 @@ Append new light source.
 ") Add;
 		bool Add(const opencascade::handle<Graphic3d_CLight> & theLight);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AmbientColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_LightSet::AmbientColor ******/
 		/****** md5 signature: 085d64a17f775904bcf072bfa30e94d6 ******/
 		%feature("compactdefaultargs") AmbientColor;
@@ -12904,6 +13219,11 @@ Return True if lights list is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KeyEnabledLong %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_LightSet::KeyEnabledLong ******/
 		/****** md5 signature: daad6128aa16c8c7ca6093b32c70f88e ******/
 		%feature("compactdefaultargs") KeyEnabledLong;
@@ -12918,6 +13238,11 @@ See also: UpdateRevision().
 ") KeyEnabledLong;
 		const TCollection_AsciiString & KeyEnabledLong();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend KeyEnabledShort %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_LightSet::KeyEnabledShort ******/
 		/****** md5 signature: 60cb0cca9e6d8d2f31105c94dbfdcfda ******/
 		%feature("compactdefaultargs") KeyEnabledShort;
@@ -13193,6 +13518,11 @@ Return image alpha as grayscale image. Note that if an instance of the class has
 ") GetImageAlpha;
 		const opencascade::handle<Image_PixMap> & GetImageAlpha();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetImageAlphaId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MarkerImage::GetImageAlphaId ******/
 		/****** md5 signature: 7b5ae989b5c104ce2610c4c118e2ae01 ******/
 		%feature("compactdefaultargs") GetImageAlphaId;
@@ -13206,6 +13536,11 @@ Return an unique ID. This ID will be used to manage resource in graphic driver.
 ") GetImageAlphaId;
 		const TCollection_AsciiString & GetImageAlphaId();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetImageId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MarkerImage::GetImageId ******/
 		/****** md5 signature: 602256488e6c98131d81feb766841aac ******/
 		%feature("compactdefaultargs") GetImageId;
@@ -13330,6 +13665,11 @@ Returns the alpha coefficient of the surface (1.0 - Transparency); 1.0 means opa
 ") Alpha;
 		float Alpha();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AmbientColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::AmbientColor ******/
 		/****** md5 signature: e4a244c2e5729c893bef272554a0e36f ******/
 		%feature("compactdefaultargs") AmbientColor;
@@ -13343,6 +13683,11 @@ Returns the ambient color of the surface.
 ") AmbientColor;
 		const Quantity_Color & AmbientColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BSDF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::BSDF ******/
 		/****** md5 signature: 0e4f43101c28e33adbb6ee92a6718d50 ******/
 		%feature("compactdefaultargs") BSDF;
@@ -13356,6 +13701,11 @@ Returns BSDF (bidirectional scattering distribution function).
 ") BSDF;
 		const Graphic3d_BSDF & BSDF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -13369,6 +13719,11 @@ Returns the diffuse color of the surface. WARNING! This method does NOT return c
 ") Color;
 		const Quantity_Color & Color();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DiffuseColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::DiffuseColor ******/
 		/****** md5 signature: 446509545f5afda1c3e3353ec03d6c00 ******/
 		%feature("compactdefaultargs") DiffuseColor;
@@ -13403,6 +13758,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EmissiveColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::EmissiveColor ******/
 		/****** md5 signature: 8e2c00d43bcbb308aeca1ba33f04a139 ******/
 		%feature("compactdefaultargs") EmissiveColor;
@@ -13615,6 +13975,11 @@ Returns the number of predefined textures.
 ") NumberOfMaterials;
 		static int NumberOfMaterials();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PBRMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::PBRMaterial ******/
 		/****** md5 signature: 11b0baa2ee2b4c812546a5f61cfead63 ******/
 		%feature("compactdefaultargs") PBRMaterial;
@@ -13950,6 +14315,11 @@ Returns the luminosity of the surface.
 ") Shininess;
 		float Shininess();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SpecularColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::SpecularColor ******/
 		/****** md5 signature: 8248d955c130699f6669657101e22663 ******/
 		%feature("compactdefaultargs") SpecularColor;
@@ -13963,6 +14333,11 @@ Returns the specular color of the surface.
 ") SpecularColor;
 		const Quantity_Color & SpecularColor();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend StringName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MaterialAspect::StringName ******/
 		/****** md5 signature: 8107033bd84a45ab4a9514a887a7886e ******/
 		%feature("compactdefaultargs") StringName;
@@ -14075,6 +14450,11 @@ Returns alpha component in range [0, 1].
 ") Alpha;
 		float Alpha();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_PBRMaterial::Color ******/
 		/****** md5 signature: 3dcb129093b0c22e4d1f5785248243fd ******/
 		%feature("compactdefaultargs") Color;
@@ -14552,6 +14932,11 @@ Return basic presentation fill area aspect, NULL by default. When set, might be 
 ") BasicFillAreaAspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & BasicFillAreaAspect();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_PresentationAttributes::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -14565,6 +14950,11 @@ Returns basic presentation color, Quantity_NOC_WHITE by default.
 ") Color;
 		const Quantity_Color & Color();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_PresentationAttributes::ColorRGBA ******/
 		/****** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ******/
 		%feature("compactdefaultargs") ColorRGBA;
@@ -15186,6 +15576,11 @@ Returns attribute location to be bound on GLSL program linkage stage.
 ") Location;
 		int Location();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderAttribute::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -15498,6 +15893,11 @@ Creates new shader object from specified source.
 ") CreateFromSource;
 		static opencascade::handle<Graphic3d_ShaderObject> CreateFromSource(const Graphic3d_TypeOfShaderObject theType, TCollection_AsciiString theSource);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderObject::GetId ******/
 		/****** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ******/
 		%feature("compactdefaultargs") GetId;
@@ -15524,6 +15924,11 @@ Checks if the shader object is valid or not.
 ") IsDone;
 		virtual bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Path %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderObject::Path ******/
 		/****** md5 signature: 9d11d277fbcc37203e7dc39c30ea2e54 ******/
 		%feature("compactdefaultargs") Path;
@@ -15537,6 +15942,11 @@ Returns the full path to the shader source.
 ") Path;
 		const OSD_Path & Path();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Source %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderObject::Source ******/
 		/****** md5 signature: d9259fdeceadf330dfe57a7ddd24a1da ******/
 		%feature("compactdefaultargs") Source;
@@ -15659,6 +16069,11 @@ Detaches shader object from the program object.
 ") DetachShader;
 		bool DetachShader(const opencascade::handle<Graphic3d_ShaderObject> & theShader);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderProgram::GetId ******/
 		/****** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ******/
 		%feature("compactdefaultargs") GetId;
@@ -15698,6 +16113,11 @@ Return True if standard program header should define default texture sampler occ
 ") HasDefaultSampler;
 		bool HasDefaultSampler();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Header %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderProgram::Header ******/
 		/****** md5 signature: f88fb6c2e88340b6cea1c010e1447033 ******/
 		%feature("compactdefaultargs") Header;
@@ -16208,6 +16628,11 @@ Assign the list of custom vertex attributes. Should be done before GLSL program 
 ") SetVertexAttributes;
 		void SetVertexAttributes(const NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>> & theAttributes);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShaderObjects %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderProgram::ShaderObjects ******/
 		/****** md5 signature: 8de5f9ac4609f61e61349d5bd257e012 ******/
 		%feature("compactdefaultargs") ShaderObjects;
@@ -16249,6 +16674,11 @@ See also: Graphic3d_TextureSetBits.
 ") TextureSetBits;
 		int TextureSetBits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Variables %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderProgram::Variables ******/
 		/****** md5 signature: 35c1335216b43bc40340f6412170e4c3 ******/
 		%feature("compactdefaultargs") Variables;
@@ -16262,6 +16692,11 @@ The list of currently pushed but not applied custom uniform variables. This list
 ") Variables;
 		const NCollection_Sequence<opencascade::handle<Graphic3d_ShaderVariable>> & Variables();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VertexAttributes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderProgram::VertexAttributes ******/
 		/****** md5 signature: 10f9fe38cc97d73f1f072d5b87ca31d2 ******/
 		%feature("compactdefaultargs") VertexAttributes;
@@ -16309,6 +16744,11 @@ Checks if the shader variable is valid or not.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderVariable::Name ******/
 		/****** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ******/
 		%feature("compactdefaultargs") Name;
@@ -16322,6 +16762,11 @@ Returns name of shader variable.
 ") Name;
 		const TCollection_AsciiString & Name();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ShaderVariable::Value ******/
 		/****** md5 signature: b5672bd7d1d1e292ec75e023c5063098 ******/
 		%feature("compactdefaultargs") Value;
@@ -16748,6 +17193,11 @@ Internal method which sets new transformation without calling graphic manager ca
 ") GraphicTransform;
 		void GraphicTransform(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Groups %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Structure::Groups ******/
 		/****** md5 signature: bfc11242543f04a1a53467f4dd227ab1 ******/
 		%feature("compactdefaultargs") Groups;
@@ -17600,6 +18050,11 @@ Connects the structures.
 ") Connect;
 		virtual void Connect(const Graphic3d_Structure * theMother, const Graphic3d_Structure * theDaughter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefinedViews %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_StructureManager::DefinedViews ******/
 		/****** md5 signature: 9b3580196c904eb04fa1101de46d9bb2 ******/
 		%feature("compactdefaultargs") DefinedViews;
@@ -18371,6 +18826,11 @@ Sets vertical alignment of text.
 ") SetVerticalAlignment;
 		void SetVerticalAlignment(const Graphic3d_VerticalTextAlignment theJustification);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Text %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_Text::Text ******/
 		/****** md5 signature: 5bba17eb833e5c94c8648407a843b411 ******/
 		%feature("compactdefaultargs") Text;
@@ -18491,6 +18951,11 @@ Return: texture coordinates generation mode. Default value is Graphic3d_TOTM_MAN
 ") GenMode;
 		Graphic3d_TypeOfTextureMode GenMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GenPlaneS %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureParams::GenPlaneS ******/
 		/****** md5 signature: 1431f2d7f55dc5f3b14b83bffd272ba9 ******/
 		%feature("compactdefaultargs") GenPlaneS;
@@ -18504,6 +18969,11 @@ Return: texture coordinates generation plane S.
 ") GenPlaneS;
 		const NCollection_Vec4<float> & GenPlaneS();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GenPlaneT %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureParams::GenPlaneT ******/
 		/****** md5 signature: f66ae7213e287ef21a5db836178acf29 ******/
 		%feature("compactdefaultargs") GenPlaneT;
@@ -18582,6 +19052,11 @@ Return modification counter of parameters related to sampler state.
 ") SamplerRevision;
 		unsigned int SamplerRevision();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Scale %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureParams::Scale ******/
 		/****** md5 signature: 2b98662a5e1d71c257ddc6c992026fa6 ******/
 		%feature("compactdefaultargs") Scale;
@@ -18791,6 +19266,11 @@ Default texture unit to be used, default is Graphic3d_TextureUnit_BaseColor.
 ") TextureUnit;
 		Graphic3d_TextureUnit TextureUnit();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Translation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureParams::Translation ******/
 		/****** md5 signature: 5f2c0a012d7007d3bb71142dad98c023 ******/
 		%feature("compactdefaultargs") Translation;
@@ -18841,6 +19321,11 @@ Return: compressed pixmap or NULL if image is not in supported compressed format
 ") GetCompressedImage;
 		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetId %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureRoot::GetId ******/
 		/****** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ******/
 		%feature("compactdefaultargs") GetId;
@@ -18940,6 +19425,11 @@ Returns whether row's memory layout is top-down.
 ") IsTopDown;
 		bool IsTopDown();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Path %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_TextureRoot::Path ******/
 		/****** md5 signature: 9d11d277fbcc37203e7dc39c30ea2e54 ******/
 		%feature("compactdefaultargs") Path;
@@ -20196,6 +20686,11 @@ Default settings.
 ") Graphic3d_ZLayerSettings;
 		 Graphic3d_ZLayerSettings();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePolygonOffset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ZLayerSettings::ChangePolygonOffset ******/
 		/****** md5 signature: 41fd26be43fe21937e5010441b302f14 ******/
 		%feature("compactdefaultargs") ChangePolygonOffset;
@@ -20323,6 +20818,11 @@ Return lights list to be used for rendering presentations within this Z-Layer; N
 ") Lights;
 		const opencascade::handle<Graphic3d_LightSet> & Lights();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ZLayerSettings::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -20362,6 +20862,11 @@ Return the transformation to the origin.
 ") OriginTransformation;
 		const opencascade::handle<TopLoc_Datum3D> & OriginTransformation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PolygonOffset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_ZLayerSettings::PolygonOffset ******/
 		/****** md5 signature: 5bc0db1ff0ef7eec07c4eb78b80f6cca ******/
 		%feature("compactdefaultargs") PolygonOffset;
@@ -21771,6 +22276,11 @@ Input parameter: theDisplayType display mode.
 ") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d(const Quantity_Color & theColor, const char * theFont, double theExpansionFactor, double theSpace, Aspect_TypeOfStyleText theStyle = Aspect_TOST_NORMAL, Aspect_TypeOfDisplayText theDisplayType = Aspect_TODT_NORMAL);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_AspectText3d::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -21784,6 +22294,11 @@ Return the text color.
 ") Color;
 		const Quantity_Color & Color();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ColorRGBA %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_AspectText3d::ColorRGBA ******/
 		/****** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ******/
 		%feature("compactdefaultargs") ColorRGBA;
@@ -21831,6 +22346,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Font %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_AspectText3d::Font ******/
 		/****** md5 signature: 246154ff4659a4acf077229295e5855e ******/
 		%feature("compactdefaultargs") Font;
@@ -22384,6 +22904,11 @@ Returns background image fill style.
 ") BackgroundImageStyle;
 		virtual Aspect_FillMethod BackgroundImageStyle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BackgroundSkydome %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::BackgroundSkydome ******/
 		/****** md5 signature: d7cf91d14be3f61f07eadf45a044328f ******/
 		%feature("compactdefaultargs") BackgroundSkydome;
@@ -22455,6 +22980,11 @@ Returns camera object of the view.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeRenderingParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::ChangeRenderingParams ******/
 		/****** md5 signature: 2930edc0d67ff31509e235f7390593e4 ******/
 		%feature("compactdefaultargs") ChangeRenderingParams;
@@ -22738,6 +23268,11 @@ Remove offscreen FBO from the graphic library.
 ") FBORelease;
 		virtual void FBORelease(opencascade::handle<Standard_Transient> & theFbo);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetGraduatedTrihedron %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::GetGraduatedTrihedron ******/
 		/****** md5 signature: f68dfc8ae14469bea2db4aa0eff51178 ******/
 		%feature("compactdefaultargs") GetGraduatedTrihedron;
@@ -23125,6 +23660,11 @@ Returns layer with given ID or NULL if undefined.
 ") Layer;
 		virtual opencascade::handle<Graphic3d_Layer> Layer(int theLayerId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Layers %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::Layers ******/
 		/****** md5 signature: 1e44473170da77295f9e9d0552ecdd21 ******/
 		%feature("compactdefaultargs") Layers;
@@ -23203,6 +23743,11 @@ Returns number of displayed structures in the view.
 ") NumberOfDisplayedStructures;
 		virtual int NumberOfDisplayedStructures();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ParentView %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::ParentView ******/
 		/****** md5 signature: 3277b1d4697d1e5bf1050aa6b3b068c0 ******/
 		%feature("compactdefaultargs") ParentView;
@@ -23368,6 +23913,11 @@ Remove Z layer from the specified view. All structures displayed at the moment i
 ") RemoveZLayer;
 		virtual void RemoveZLayer(int theLayerId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RenderingParams %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::RenderingParams ******/
 		/****** md5 signature: 09614d1dcd3a2492545d199d3739d373 ******/
 		%feature("compactdefaultargs") RenderingParams;
@@ -24128,6 +24678,11 @@ Return subview position within parent view; Aspect_TOTP_LEFT_UPPER by default.
 ") SubviewCorner;
 		Aspect_TypeOfTriedronPosition SubviewCorner();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubviewMargins %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::SubviewMargins ******/
 		/****** md5 signature: 3bc1b11015e57d75659d2c15b6866c0d ******/
 		%feature("compactdefaultargs") SubviewMargins;
@@ -24141,6 +24696,11 @@ Return subview margins in pixels; (0,0) by default.
 ") SubviewMargins;
 		const NCollection_Vec2<int> & SubviewMargins();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubviewOffset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::SubviewOffset ******/
 		/****** md5 signature: 167d5d54ba67365ba50f36ca87f39575 ******/
 		%feature("compactdefaultargs") SubviewOffset;
@@ -24172,6 +24732,11 @@ Update subview position and dimensions.
 ") SubviewResized;
 		void SubviewResized(const opencascade::handle<Aspect_NeutralWindow> & theWindow);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubviewSize %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::SubviewSize ******/
 		/****** md5 signature: cdbb288d2d9c87b7a4eb931ad52a8d97 ******/
 		%feature("compactdefaultargs") SubviewSize;
@@ -24185,6 +24750,11 @@ Return subview dimensions; (1.0, 1.0) by default. Values >= 2 define size in pix
 ") SubviewSize;
 		const NCollection_Vec2<double> & SubviewSize();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubviewTopLeft %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::SubviewTopLeft ******/
 		/****** md5 signature: 2d8f18bdc2a7de2f8d6e6463d7c51b5a ******/
 		%feature("compactdefaultargs") SubviewTopLeft;
@@ -24198,6 +24768,11 @@ Return subview top-left position relative to parent view in pixels.
 ") SubviewTopLeft;
 		const NCollection_Vec2<int> & SubviewTopLeft();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Subviews %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CView::Subviews ******/
 		/****** md5 signature: efad4d5ad0d94cfbce25117f22a13570 ******/
 		%feature("compactdefaultargs") Subviews;
@@ -24540,6 +25115,11 @@ Returns CPU FPS for immediate redraws.
 ") ChangeImmediateFrameRateCpu;
 		double & ChangeImmediateFrameRateCpu();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTimer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_FrameStatsDataTmp::ChangeTimer ******/
 		/****** md5 signature: 338985f32bc00db9d3129a5133cf5dcb ******/
 		%feature("compactdefaultargs") ChangeTimer;
@@ -24680,6 +25260,11 @@ Return front frame dimensions.
 ") FrameSize;
 		NCollection_Vec2<int > FrameSize();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Input %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_MediaTextureSet::Input ******/
 		/****** md5 signature: f6133f739797d33668dfa0592653ea45 ******/
 		%feature("compactdefaultargs") Input;
@@ -25234,6 +25819,11 @@ Moves iterator to the next cubemap side. Uses OpenGL cubemap sides order +X -> -
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Reset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Graphic3d_CubeMap::Reset ******/
 		/****** md5 signature: 1730adde2bf4f51544d37f5915605dd4 ******/
 		%feature("compactdefaultargs") Reset;

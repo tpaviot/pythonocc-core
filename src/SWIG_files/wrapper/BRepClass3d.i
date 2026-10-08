@@ -676,6 +676,11 @@ Returns the index of face for which last segment is calculated.
 ") GetFaceSegmentIndex;
 		int GetFaceSegmentIndex();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetMapEV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass3d_SolidExplorer::GetMapEV ******/
 		/****** md5 signature: 890c66ca86a3edb9ce58171c10158a4c ******/
 		%feature("compactdefaultargs") GetMapEV;
@@ -702,6 +707,11 @@ No available documentation.
 ") GetShape;
 		const TopoDS_Shape GetShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTree %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass3d_SolidExplorer::GetTree ******/
 		/****** md5 signature: c8bb8433ad31e60de7793ddeebdcc546 ******/
 		%feature("compactdefaultargs") GetTree;
@@ -759,6 +769,11 @@ Starts an exploration of the shells.
 ") InitShell;
 		void InitShell();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass3d_SolidExplorer::Intersector ******/
 		/****** md5 signature: 4031f4a71f4a73a8fa5ed1228f085e89 ******/
 		%feature("compactdefaultargs") Intersector;
@@ -1058,6 +1073,11 @@ Returns True if an intersection is computed.
 ") HasIntersection;
 		bool HasIntersection();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass3d_SolidPassiveClassifier::Intersector ******/
 		/****** md5 signature: b339e86a1f3b2bdef697aa467bca345d ******/
 		%feature("compactdefaultargs") Intersector;

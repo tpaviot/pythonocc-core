@@ -155,6 +155,11 @@ Adds the Shape 1 in the Shape 2.
 ") Add;
 		void Add(TopoDS_Shape & aShape1, const TopoDS_Shape & aShape2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Builder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepSweep_Builder::Builder ******/
 		/****** md5 signature: 0e400544facfe2a99c354fd61331d22b ******/
 		%feature("compactdefaultargs") Builder;

@@ -1996,6 +1996,11 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::Curve2dPoles ******/
 		/****** md5 signature: a94b7da160d08553423b9884961ce57f ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -2027,6 +2032,11 @@ No available documentation.
 ") Curves2dDegree;
 		int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::Curves2dKnots ******/
 		/****** md5 signature: e5526430bc9b03b7f833d3aaa9213d05 ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -2040,6 +2050,11 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::Curves2dMults ******/
 		/****** md5 signature: 741234b571aed45d97ebf38ae8a2aae0 ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -2193,6 +2208,11 @@ Perform the Approximation [First, Last]: Approx_SweepApproximation.cdl Tol3d: To
 ") Perform;
 		void Perform(const double First, const double Last, const double Tol3d, const double BoundTol, const double Tol2d, const double TolAngular, const GeomAbs_Shape Continuity = GeomAbs_C0, const int Degmax = 11, const int Segmax = 50);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfPoles ******/
 		/****** md5 signature: 901b69a7e611035a6e05a71b9dd4147b ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -2228,6 +2248,11 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfUKnots ******/
 		/****** md5 signature: 32ff4a565003cc39ee69e13d0a022d4d ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -2241,6 +2266,11 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfUMults ******/
 		/****** md5 signature: b97af4fe33c7407a8824ab6ffcd000f4 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -2254,6 +2284,11 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfVKnots ******/
 		/****** md5 signature: 44e1d2dd44feea0b504b7d583d36f2b4 ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -2267,6 +2302,11 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfVMults ******/
 		/****** md5 signature: 29d551b5820d4a88f391a2e1f6b715d0 ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -2280,6 +2320,11 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Approx_SweepApproximation::SurfWeights ******/
 		/****** md5 signature: eb6194e3a7c74d6cf9b4d2592e87c67a ******/
 		%feature("compactdefaultargs") SurfWeights;
@@ -2712,7 +2757,13 @@ class Approx_HArray1OfAdHSurface : public NCollection_Array1<opencascade::handle
     Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
     Approx_HArray1OfAdHSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>::value_type& theValue);
     Approx_HArray1OfAdHSurface(const NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Adaptor3d_Surface>>& ChangeArray1();
 };
 %make_alias(Approx_HArray1OfAdHSurface)
@@ -2723,7 +2774,13 @@ class Approx_HArray1OfGTrsf2d : public NCollection_Array1<gp_GTrsf2d>, public St
     Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper);
     Approx_HArray1OfGTrsf2d(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<gp_GTrsf2d>::value_type& theValue);
     Approx_HArray1OfGTrsf2d(const NCollection_Array1<gp_GTrsf2d>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<gp_GTrsf2d>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<gp_GTrsf2d>& ChangeArray1();
 };
 %make_alias(Approx_HArray1OfGTrsf2d)

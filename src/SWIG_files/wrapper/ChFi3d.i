@@ -483,6 +483,11 @@ returns the First vertex V of the contour of index IC.
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex(const int IC);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFi3d_Builder::Generated ******/
 		/****** md5 signature: f6d26e10a473d7146d97bf9bd4b93825 ******/
 		%feature("compactdefaultargs") Generated;

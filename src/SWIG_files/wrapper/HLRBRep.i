@@ -569,6 +569,11 @@ No available documentation.
 ") StateBefore;
 		TopAbs_State StateBefore();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_AreaLimit::Vertex ******/
 		/****** md5 signature: 5a55d0d2629ab986a101be038db1f931 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -2203,6 +2208,11 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Curve::Curve ******/
 		/****** md5 signature: ad1240d56a791b18da85f7b9f3ee14ae ******/
 		%feature("compactdefaultargs") Curve;
@@ -3562,6 +3572,11 @@ No available documentation.
 ") Destroy;
 		void Destroy();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EDataArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::EDataArray ******/
 		/****** md5 signature: 3967fd7fa4611f0a451224ebca623643 ******/
 		%feature("compactdefaultargs") EDataArray;
@@ -3588,6 +3603,11 @@ Returns the current Edge.
 ") Edge;
 		int Edge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::EdgeMap ******/
 		/****** md5 signature: d6b5be9f774da77b92680157a4c86616 ******/
 		%feature("compactdefaultargs") EdgeMap;
@@ -3640,6 +3660,11 @@ Returns the local 3D state of the intersection between the current edge and the 
 ") EdgeState;
 		void EdgeState(const double p1, const double p2, TopAbs_State &OutValue, TopAbs_State &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FDataArray %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::FDataArray ******/
 		/****** md5 signature: c4085eed8f6ba41ff924ad535f4b713a ******/
 		%feature("compactdefaultargs") FDataArray;
@@ -3653,6 +3678,11 @@ No available documentation.
 ") FDataArray;
 		NCollection_Array1<HLRBRep_FaceData> & FDataArray();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::FaceMap ******/
 		/****** md5 signature: 718d1cb996bc5d91553f48bd6252bde5 ******/
 		%feature("compactdefaultargs") FaceMap;
@@ -3751,6 +3781,11 @@ Intersect the current Edge with the boundary of the hiding face. The interferenc
 ") InitInterference;
 		void InitInterference();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interference %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::Interference ******/
 		/****** md5 signature: f2ea5be2885d51223258b68485612698 ******/
 		%feature("compactdefaultargs") Interference;
@@ -3914,6 +3949,11 @@ No available documentation.
 ") NextInterference;
 		void NextInterference();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Projector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Data::Projector ******/
 		/****** md5 signature: d7f508ab183a1a90d9ac0ead0aeb116c ******/
 		%feature("compactdefaultargs") Projector;
@@ -4123,6 +4163,11 @@ Reinitialize the results iteration to the parts with State <ToBuild>. If this me
 ") Builds;
 		void Builds(const TopAbs_State ToBuild);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeBuilder::Current ******/
 		/****** md5 signature: 0e36ea5e4e93af9d6e97cff42aa74163 ******/
 		%feature("compactdefaultargs") Current;
@@ -4376,6 +4421,11 @@ No available documentation.
 ") AutoIntersectionDone;
 		void AutoIntersectionDone(const bool B);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeGeometry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeData::ChangeGeometry ******/
 		/****** md5 signature: 03555c45150a77119c9d706a589819de ******/
 		%feature("compactdefaultargs") ChangeGeometry;
@@ -4389,6 +4439,11 @@ No available documentation.
 ") ChangeGeometry;
 		HLRBRep_Curve & ChangeGeometry();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeData::Curve ******/
 		/****** md5 signature: 3d2c0bba3adc9b188e9b5d7d9b519bde ******/
 		%feature("compactdefaultargs") Curve;
@@ -4508,6 +4563,11 @@ No available documentation.
 ") HideCount;
 		void HideCount(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MinMax %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeData::MinMax ******/
 		/****** md5 signature: b360e6f636632e8d4f24d53763098bae ******/
 		%feature("compactdefaultargs") MinMax;
@@ -4737,6 +4797,11 @@ No available documentation.
 ") Simple;
 		void Simple(const bool B);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Status %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeData::Status ******/
 		/****** md5 signature: ea65a70412c80527ab2445f2a836ebe7 ******/
 		%feature("compactdefaultargs") Status;
@@ -5134,6 +5199,11 @@ No available documentation.
 ") CurrentParameter;
 		double CurrentParameter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CurrentVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_EdgeInterferenceTool::CurrentVertex ******/
 		/****** md5 signature: adc69eba4081a42553cc0035dbebe4fc ******/
 		%feature("compactdefaultargs") CurrentVertex;
@@ -5612,6 +5682,11 @@ No available documentation.
 ") Cylinder;
 		void Cylinder(const bool B);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Geometry %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_FaceData::Geometry ******/
 		/****** md5 signature: e80782a494064d296da9e48aa7b2075d ******/
 		%feature("compactdefaultargs") Geometry;
@@ -7344,6 +7419,11 @@ own hiding of all the shapes of the DataStructure without hiding by each other.
 ") PartialHide;
 		void PartialHide();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Projector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_InternalAlgo::Projector ******/
 		/****** md5 signature: 1b358691806af1ecbf38ab72a35ea356 ******/
 		%feature("compactdefaultargs") Projector;
@@ -7460,6 +7540,11 @@ select only the faces of the Shape <S>.
 ") SelectFace;
 		void SelectFace(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SeqOfShapeBounds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_InternalAlgo::SeqOfShapeBounds ******/
 		/****** md5 signature: d266c0f5077f9481a7e30c30072c56ca ******/
 		%feature("compactdefaultargs") SeqOfShapeBounds;
@@ -7473,6 +7558,11 @@ No available documentation.
 ") SeqOfShapeBounds;
 		NCollection_Sequence<HLRBRep_ShapeBounds> & SeqOfShapeBounds();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapeBounds %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_InternalAlgo::ShapeBounds ******/
 		/****** md5 signature: 52c41f6dab6cee4fb3c3b1511de0ee60 ******/
 		%feature("compactdefaultargs") ShapeBounds;
@@ -7754,6 +7844,11 @@ No available documentation.
 ") Perform;
 		void Perform(const gp_Lin & theL, const double theP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Intersector::Point ******/
 		/****** md5 signature: 2f59b4f0a1ef7de78ab232b1e95a2ce4 ******/
 		%feature("compactdefaultargs") Point;
@@ -7772,6 +7867,11 @@ No available documentation.
 ") Point;
 		const IntRes2d_IntersectionPoint & Point(const int N);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Segment %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_Intersector::Segment ******/
 		/****** md5 signature: b1d4b7b120ed513838a14f8fe26feb70 ******/
 		%feature("compactdefaultargs") Segment;
@@ -8711,6 +8811,11 @@ No available documentation.
 ") Debug;
 		void Debug(const bool theDebug);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Hide %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_PolyAlgo::Hide ******/
 		/****** md5 signature: 7b1a2dae0f3e5c57d145029c52818bd0 ******/
 		%feature("compactdefaultargs") Hide;
@@ -8878,6 +8983,11 @@ Make a shape with the internal outlines in each face.
 ") OutLinedShape;
 		TopoDS_Shape OutLinedShape(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Projector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_PolyAlgo::Projector ******/
 		/****** md5 signature: bc8b1b600cbb38fc2f006052292ba737 ******/
 		%feature("compactdefaultargs") Projector;
@@ -8945,6 +9055,11 @@ No available documentation.
 ") Shape;
 		TopoDS_Shape Shape(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Show %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_PolyAlgo::Show ******/
 		/****** md5 signature: d8b1c6828eede079f772743b3ebff1ca ******/
 		%feature("compactdefaultargs") Show;
@@ -9607,6 +9722,11 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MinMax %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_ShapeBounds::MinMax ******/
 		/****** md5 signature: b360e6f636632e8d4f24d53763098bae ******/
 		%feature("compactdefaultargs") MinMax;
@@ -10658,6 +10778,11 @@ No available documentation.
 ") AuxillarCurve;
 		const gp_Lin AuxillarCurve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AuxillarSurface %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface ******/
 		/****** md5 signature: 7c3292da60dfabaf50510bc580abac5f ******/
 		%feature("compactdefaultargs") AuxillarSurface;
@@ -10954,6 +11079,11 @@ initialize the parameters to compute the solution.
 ") HLRBRep_TheExactInterCSurf;
 		 HLRBRep_TheExactInterCSurf(const HLRBRep_TheCSFunctionOfInterCSurf & F, const double TolTangency);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Function %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_TheExactInterCSurf::Function ******/
 		/****** md5 signature: 42b19a18bcf6551f209a8f79f49f3a6e ******/
 		%feature("compactdefaultargs") Function;
@@ -12221,6 +12351,11 @@ Give the point of range Index in the Polygon.
 ") BeginOfSeg;
 		const gp_Pnt BeginOfSeg(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Bounding %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_ThePolygonOfInterCSurf::Bounding ******/
 		/****** md5 signature: 54ccbf8f63f02bb43c2fc9c718922d78 ******/
 		%feature("compactdefaultargs") Bounding;
@@ -13014,6 +13149,11 @@ Returns the transition of the current vertex relative to the boundary if it is a
 ") BoundaryTransition;
 		TopAbs_Orientation BoundaryTransition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Current %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRBRep_VertexList::Current ******/
 		/****** md5 signature: 0e36ea5e4e93af9d6e97cff42aa74163 ******/
 		%feature("compactdefaultargs") Current;

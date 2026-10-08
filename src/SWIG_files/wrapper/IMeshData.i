@@ -495,6 +495,11 @@ Removes point with the given index.
 %nodefaultctor IMeshData_Model;
 class IMeshData_Model : public IMeshData_Shape {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Model::AddEdge ******/
 		/****** md5 signature: 01920c37eaec6db67cac2acfa67136aa ******/
 		%feature("compactdefaultargs") AddEdge;
@@ -513,6 +518,11 @@ Adds new edge to shape model.
 ") AddEdge;
 		virtual const IMeshData::IEdgeHandle & AddEdge(const TopoDS_Edge & theEdge);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Model::AddFace ******/
 		/****** md5 signature: c4be613059cf41461e95669f2be9d90b ******/
 		%feature("compactdefaultargs") AddFace;
@@ -557,6 +567,11 @@ Returns number of faces in discrete model.
 ") FacesNb;
 		virtual int FacesNb();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Model::GetEdge ******/
 		/****** md5 signature: bfd0027c41a630fd5552fd0b901dc201 ******/
 		%feature("compactdefaultargs") GetEdge;
@@ -575,6 +590,11 @@ Gets model's edge with the given index.
 ") GetEdge;
 		virtual const IMeshData::IEdgeHandle & GetEdge(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Model::GetFace ******/
 		/****** md5 signature: 5b865bc207c6f83963bc1c569a253130 ******/
 		%feature("compactdefaultargs") GetFace;
@@ -642,6 +662,11 @@ Adds new discretization point to pcurve.
 ") AddPoint;
 		virtual void AddPoint(const gp_Pnt2d & thePoint, const double theParamOnPCurve);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFace %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_PCurve::GetFace ******/
 		/****** md5 signature: 4f1b350bd99a4402f45b2e057307925d ******/
 		%feature("compactdefaultargs") GetFace;
@@ -959,6 +984,11 @@ Returns pcurve with the given index.
 ") GetPCurve;
 		virtual IMeshData::IPCurveHandle GetPCurve(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetPCurves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Edge::GetPCurves ******/
 		/****** md5 signature: 13f44a6377148db15f21a05eb7df9ecd ******/
 		%feature("compactdefaultargs") GetPCurves;
@@ -1136,6 +1166,11 @@ Updates same range flag.
 %nodefaultctor IMeshData_Face;
 class IMeshData_Face : public IMeshData_TessellatedShape, public IMeshData_StatusOwner {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddWire %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Face::AddWire ******/
 		/****** md5 signature: 8d67b4812493dac234aa05e20b14ed17 ******/
 		%feature("compactdefaultargs") AddWire;
@@ -1181,6 +1216,11 @@ Returns face's surface.
 ") GetSurface;
 		const opencascade::handle<BRepAdaptor_Surface> & GetSurface();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetWire %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Face::GetWire ******/
 		/****** md5 signature: 7f9c6e2cd391e07ce3b9c777e707c8b1 ******/
 		%feature("compactdefaultargs") GetWire;
@@ -1275,6 +1315,11 @@ Returns number of edges.
 ") EdgesNb;
 		virtual int EdgesNb();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IMeshData_Wire::GetEdge ******/
 		/****** md5 signature: ff1af0e17629e9acd95279f9d492ff77 ******/
 		%feature("compactdefaultargs") GetEdge;

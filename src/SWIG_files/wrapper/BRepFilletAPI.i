@@ -591,6 +591,11 @@ Update the result and set the Done flag.
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChamferEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet2d::ChamferEdges ******/
 		/****** md5 signature: d035805a204108c266e9c5c5713d7853 ******/
 		%feature("compactdefaultargs") ChamferEdges;
@@ -622,6 +627,11 @@ Returns the chamfered or filleted edge built from the edge E on the face modifie
 ") DescendantEdge;
 		const TopoDS_Edge DescendantEdge(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FilletEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet2d::FilletEdges ******/
 		/****** md5 signature: f48bb40e20f062fc2aa9d6328b83b716 ******/
 		%feature("compactdefaultargs") FilletEdges;
@@ -708,6 +718,11 @@ Returns true if the edge E on the face modified by this algorithm is chamfered o
 ") IsModified;
 		bool IsModified(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet2d::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -827,6 +842,11 @@ Returns the number of fillets on the face modified by this algorithm.
 ") NbFillet;
 		int NbFillet();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet2d::NewEdges ******/
 		/****** md5 signature: ee299d8062fe9e6fdbe28c030e621659 ******/
 		%feature("compactdefaultargs") NewEdges;
@@ -1165,6 +1185,11 @@ Returns the first vertex of the contour of index IC in the internal data structu
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex(const int IC);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeChamfer::Generated ******/
 		/****** md5 signature: 599bb367b0d27bf0fb771e9bddf88254 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1328,6 +1353,11 @@ Returns the length of the contour of index IC in the internal data structure of 
 ") Length;
 		double Length(const int IC);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeChamfer::Modified ******/
 		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
@@ -1917,6 +1947,11 @@ Returns the first vertex of the contour of index IC in the internal data structu
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex(const int IC);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet::Generated ******/
 		/****** md5 signature: 599bb367b0d27bf0fb771e9bddf88254 ******/
 		%feature("compactdefaultargs") Generated;
@@ -2091,6 +2126,11 @@ Returns the length of the contour of index IC in the internal data structure of 
 ") Length;
 		double Length(const int IC);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet::Modified ******/
 		/****** md5 signature: 95d5c065993c1070bee9fdb9225954e4 ******/
 		%feature("compactdefaultargs") Modified;
@@ -2215,6 +2255,11 @@ returns the number of surfaces after the shape creation.
 ") NbSurfaces;
 		int NbSurfaces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend NewFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepFilletAPI_MakeFillet::NewFaces ******/
 		/****** md5 signature: dd60552bf40848ddb2fe32db4e76e4a2 ******/
 		%feature("compactdefaultargs") NewFaces;

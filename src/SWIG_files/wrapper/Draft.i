@@ -707,6 +707,11 @@ Resets on the same shape.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConnectedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Draft_Modification::ConnectedFaces ******/
 		/****** md5 signature: 4545b32be256b18f0c21e98bbde793d1 ******/
 		%feature("compactdefaultargs") ConnectedFaces;
@@ -792,6 +797,11 @@ Returns True if Perform has been successfully called. Otherwise more information
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ModifiedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Draft_Modification::ModifiedFaces ******/
 		/****** md5 signature: c65c58b1235c22a691a0f94a0a0fa280 ******/
 		%feature("compactdefaultargs") ModifiedFaces;

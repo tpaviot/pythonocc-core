@@ -331,6 +331,11 @@ Query the length of the section in the persistent file.
 ") Length;
 		uint64_t Length();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinLDrivers_DocumentSection::Name ******/
 		/****** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ******/
 		%feature("compactdefaultargs") Name;

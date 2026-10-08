@@ -351,6 +351,11 @@ Set surface normal at picked point.
 ") SetSurfaceNormal;
 		void SetSurfaceNormal(const gp_Vec & theNormal);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfaceNormal %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** SelectBasics_PickResult::SurfaceNormal ******/
 		/****** md5 signature: 2a41a55d2fef560c0c85bc0c696120ab ******/
 		%feature("compactdefaultargs") SurfaceNormal;

@@ -3433,9 +3433,15 @@ class Units_QuantitiesSequence : public NCollection_Sequence<opencascade::handle
   public:
     Units_QuantitiesSequence();
     Units_QuantitiesSequence(const NCollection_Sequence<opencascade::handle<Units_Quantity>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Units_Quantity>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Units_Quantity>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Units_Quantity>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Units_Quantity>>& ChangeSequence();
 };
 %make_alias(Units_QuantitiesSequence)
@@ -3445,9 +3451,15 @@ class Units_TokensSequence : public NCollection_Sequence<opencascade::handle<Uni
   public:
     Units_TokensSequence();
     Units_TokensSequence(const NCollection_Sequence<opencascade::handle<Units_Token>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Units_Token>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Units_Token>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Units_Token>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Units_Token>>& ChangeSequence();
 };
 %make_alias(Units_TokensSequence)
@@ -3457,9 +3469,15 @@ class Units_UnitsSequence : public NCollection_Sequence<opencascade::handle<Unit
   public:
     Units_UnitsSequence();
     Units_UnitsSequence(const NCollection_Sequence<opencascade::handle<Units_Unit>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Units_Unit>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Units_Unit>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Units_Unit>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Units_Unit>>& ChangeSequence();
 };
 %make_alias(Units_UnitsSequence)

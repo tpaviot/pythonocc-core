@@ -962,6 +962,11 @@ Return: dimension special symbol display options.
 ") DisplaySpecialSymbol;
 		PrsDim_DisplaySpecialSymbol DisplaySpecialSymbol();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetCustomValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_Dimension::GetCustomValue ******/
 		/****** md5 signature: 95e7dac6d1f2c02c95cf021ebebacfed ******/
 		%feature("compactdefaultargs") GetCustomValue;
@@ -976,6 +981,11 @@ Return: dimension value string.
 ") GetCustomValue;
 		const TCollection_ExtendedString & GetCustomValue();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_Dimension::GetDisplayUnits ******/
 		/****** md5 signature: ddc04b9c02a93ab070d76d081dd932f4 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
@@ -1016,6 +1026,11 @@ Return: type of geometry on which the dimension will be built.
 ") GetGeometryType;
 		int GetGeometryType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_Dimension::GetModelUnits ******/
 		/****** md5 signature: 930ae9f0d86096fd7617e48776d468ed ******/
 		%feature("compactdefaultargs") GetModelUnits;
@@ -1886,6 +1901,11 @@ Returns the value of the symbol presentation. This will be one of: - AS_NONE - n
 ") SymbolPrs;
 		DsgPrs_ArrowSide SymbolPrs();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Text %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_Relation::Text ******/
 		/****** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ******/
 		%feature("compactdefaultargs") Text;
@@ -2149,6 +2169,11 @@ Return: the type of visibility of arrows.
 ") GetArrowsVisibility;
 		PrsDim_TypeOfAngleArrowVisibility GetArrowsVisibility();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_AngleDimension::GetDisplayUnits ******/
 		/****** md5 signature: 8b84fb2d1286b7e4e7cc70b01fd71348 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
@@ -2162,6 +2187,11 @@ Return: the display units string.
 ") GetDisplayUnits;
 		const TCollection_AsciiString & GetDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_AngleDimension::GetModelUnits ******/
 		/****** md5 signature: ede5e45d8486543ff167a1a676a02b83 ******/
 		%feature("compactdefaultargs") GetModelUnits;
@@ -2792,6 +2822,11 @@ Return: measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_DiameterDimension::GetDisplayUnits ******/
 		/****** md5 signature: 8b84fb2d1286b7e4e7cc70b01fd71348 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
@@ -2805,6 +2840,11 @@ Return: the display units string.
 ") GetDisplayUnits;
 		const TCollection_AsciiString & GetDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_DiameterDimension::GetModelUnits ******/
 		/****** md5 signature: ede5e45d8486543ff167a1a676a02b83 ******/
 		%feature("compactdefaultargs") GetModelUnits;
@@ -3457,6 +3497,11 @@ Returns true if the interactive object is movable.
 ") IsMovable;
 		bool IsMovable();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Users %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_IdenticRelation::Users ******/
 		/****** md5 signature: 63e05de9b16cb072133851f386848767 ******/
 		%feature("compactdefaultargs") Users;
@@ -3635,6 +3680,11 @@ Return: first attachment shape.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_LengthDimension::GetDisplayUnits ******/
 		/****** md5 signature: 8b84fb2d1286b7e4e7cc70b01fd71348 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
@@ -3648,6 +3698,11 @@ Return: the display units string.
 ") GetDisplayUnits;
 		const TCollection_AsciiString & GetDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_LengthDimension::GetModelUnits ******/
 		/****** md5 signature: ede5e45d8486543ff167a1a676a02b83 ******/
 		%feature("compactdefaultargs") GetModelUnits;
@@ -4272,6 +4327,11 @@ Return: measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_RadiusDimension::GetDisplayUnits ******/
 		/****** md5 signature: 8b84fb2d1286b7e4e7cc70b01fd71348 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
@@ -4285,6 +4345,11 @@ Return: the display units string.
 ") GetDisplayUnits;
 		const TCollection_AsciiString & GetDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** PrsDim_RadiusDimension::GetModelUnits ******/
 		/****** md5 signature: ede5e45d8486543ff167a1a676a02b83 ******/
 		%feature("compactdefaultargs") GetModelUnits;

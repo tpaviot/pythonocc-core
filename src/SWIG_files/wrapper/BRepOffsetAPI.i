@@ -281,6 +281,11 @@ Cancels the results of all taper-adding transformations performed by this algori
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ConnectedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_DraftAngle::ConnectedFaces ******/
 		/****** md5 signature: 426f435c07d208b52b12dced85cda9d7 ******/
 		%feature("compactdefaultargs") ConnectedFaces;
@@ -312,6 +317,11 @@ No available documentation.
 ") CorrectWires;
 		void CorrectWires();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_DraftAngle::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -348,6 +358,11 @@ Initializes, or reinitializes this taper-adding algorithm with the shape S. S wi
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_DraftAngle::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -366,6 +381,11 @@ Returns the list of shapes modified from the shape <S>.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ModifiedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_DraftAngle::ModifiedFaces ******/
 		/****** md5 signature: 04d53bdf9425df173667a3e8bed63dfa ******/
 		%feature("compactdefaultargs") ModifiedFaces;
@@ -510,6 +530,11 @@ Returns the contiguous edge of index index found by the function Perform on the 
 ") ContigousEdge;
 		const TopoDS_Edge ContigousEdge(const int index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ContigousEdgeCouple %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_FindContigousEdges::ContigousEdgeCouple ******/
 		/****** md5 signature: c0e1c71ff5e3c5d2b6dc04865f2b2ea9 ******/
 		%feature("compactdefaultargs") ContigousEdgeCouple;
@@ -727,6 +752,11 @@ Constructs the draft surface object defined by the shape Shape, the direction Di
 ") BRepOffsetAPI_MakeDraft;
 		 BRepOffsetAPI_MakeDraft(const TopoDS_Shape & Shape, const gp_Dir & Dir, const double Angle);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeDraft::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -936,6 +966,11 @@ Builds the resulting shape (redefined from MakeShape).
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Evolved %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeEvolved::Evolved ******/
 		/****** md5 signature: 9cd16375e762072934864900214c9cab ******/
 		%feature("compactdefaultargs") Evolved;
@@ -949,6 +984,11 @@ No available documentation.
 ") Evolved;
 		const BRepFill_Evolved & Evolved();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GeneratedShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeEvolved::GeneratedShapes ******/
 		/****** md5 signature: 7e5aec1b811d413bca252b1fc93ab87c ******/
 		%feature("compactdefaultargs") GeneratedShapes;
@@ -1232,6 +1272,11 @@ Returns the greatest difference in curvature found between the result and the co
 ") G2Error;
 		double G2Error(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeFilling::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1464,6 +1509,11 @@ Converts each wire of the face into contour consisting only of arcs and segments
 ") ConvertFace;
 		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const double theAngleTolerance);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeOffset::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1603,6 +1653,11 @@ Does nothing.
 ") Build;
 		void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeOffsetShape::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1652,6 +1707,11 @@ Returns true if the shape has been removed from the result.
 ") IsDeleted;
 		bool IsDeleted(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MakeOffset %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeOffsetShape::MakeOffset ******/
 		/****** md5 signature: 3130f0edba2681c2d8feeda712784d5d ******/
 		%feature("compactdefaultargs") MakeOffset;
@@ -1665,6 +1725,11 @@ Returns instance of the underlying intersection / arc algorithm.
 ") MakeOffset;
 		virtual const BRepOffset_MakeOffset & MakeOffset();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeOffsetShape::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -1826,6 +1891,11 @@ Returns the TopoDS Shape of the bottom of the prism.
 ") FirstShape;
 		TopoDS_Shape FirstShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakePipe::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -1876,6 +1946,11 @@ Returns the TopoDS Shape of the top of the prism.
 ") LastShape;
 		TopoDS_Shape LastShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pipe %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakePipe::Pipe ******/
 		/****** md5 signature: 976ad7a0864ead36b17759e50cc7cebd ******/
 		%feature("compactdefaultargs") Pipe;
@@ -2024,6 +2099,11 @@ Returns the TopoDS Shape of the bottom of the sweep.
 ") FirstShape;
 		TopoDS_Shape FirstShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakePipeShell::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -2620,6 +2700,11 @@ Returns the initial face corresponding to the projected edge E. Exceptions StdFa
 ") Couple;
 		const TopoDS_Shape Couple(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_NormalProjection::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -2891,6 +2976,11 @@ Returns the TopoDS Shape of the bottom of the loft if solid.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_ThruSections::Generated ******/
 		/****** md5 signature: afef05048bf0a3f20f9295499d9e5555 ******/
 		%feature("compactdefaultargs") Generated;
@@ -3135,6 +3225,11 @@ Define the approximation algorithm.
 ") UseSmoothing;
 		bool UseSmoothing();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Wires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_ThruSections::Wires ******/
 		/****** md5 signature: 86907142f570a5e90f84956a3323ee3e ******/
 		%feature("compactdefaultargs") Wires;
@@ -3239,6 +3334,11 @@ Constructs solid using simple algorithm. According to its nature it is not possi
 ") MakeThickSolidBySimple;
 		void MakeThickSolidBySimple(const TopoDS_Shape & theS, const double theOffsetValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepOffsetAPI_MakeThickSolid::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;

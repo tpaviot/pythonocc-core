@@ -1314,6 +1314,11 @@ Return: native Window FB config (GLXFBConfig on Xlib).
 ") GetDefaultFBConfig;
 		Aspect_FBConfig GetDefaultFBConfig();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDefaultVisualInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_DisplayConnection::GetDefaultVisualInfo ******/
 		/****** md5 signature: dde27c64c5cbb24e80531c18197370c1 ******/
 		%feature("compactdefaultargs") GetDefaultVisualInfo;
@@ -1327,6 +1332,11 @@ Return default window visual or NULL when undefined.
 ") GetDefaultVisualInfo;
 		Aspect_XVisualInfo * GetDefaultVisualInfo();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetDisplayAspect %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_DisplayConnection::GetDisplayAspect ******/
 		/****** md5 signature: b7c859e60cde1d6a2d363b0c0841abb9 ******/
 		%feature("compactdefaultargs") GetDisplayAspect;
@@ -1966,6 +1976,11 @@ Return accent overlay angular scale for circular-grid spokes. Zero disables the 
 ") AccentAngularScale;
 		double AccentAngularScale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AccentColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_GridParams::AccentColor ******/
 		/****** md5 signature: a578ac25c0075154130387981f557625 ******/
 		%feature("compactdefaultargs") AccentColor;
@@ -2044,6 +2059,11 @@ Return the angular subdivision count of the half-circle for circular grids. Zero
 ") AngularDivisions;
 		int AngularDivisions();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_GridParams::Color ******/
 		/****** md5 signature: 7cec116411eb20e52d1fabf3015346da ******/
 		%feature("compactdefaultargs") Color;
@@ -3801,6 +3821,11 @@ Parameter theClearBefore if True previously registered touches will be removed.
 ") AddTouchPoint;
 		virtual void AddTouchPoint(size_t theId, const NCollection_Vec2<double> & thePnt, bool theClearBefore = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Change3dMouseIsNoRotate %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::Change3dMouseIsNoRotate ******/
 		/****** md5 signature: b2ff1af628a01e66606ed582c146ef69 ******/
 		%feature("compactdefaultargs") Change3dMouseIsNoRotate;
@@ -3814,6 +3839,11 @@ Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (False, False, False
 ") Change3dMouseIsNoRotate;
 		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Change3dMouseToReverse %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::Change3dMouseToReverse ******/
 		/****** md5 signature: 74994d53f8199fd2049bc1854acbcdb2 ******/
 		%feature("compactdefaultargs") Change3dMouseToReverse;
@@ -3827,6 +3857,11 @@ Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (True, False, False
 ") Change3dMouseToReverse;
 		NCollection_Vec3<bool> & Change3dMouseToReverse();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeKeys %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::ChangeKeys ******/
 		/****** md5 signature: 5ba331e57bcd00b6539ab5d9145324ac ******/
 		%feature("compactdefaultargs") ChangeKeys;
@@ -3853,6 +3888,11 @@ Return event time (e.g. current time).
 ") EventTime;
 		double EventTime();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get3dMouseIsNoRotate %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::Get3dMouseIsNoRotate ******/
 		/****** md5 signature: ae14b65261c4d2a6b12679cc1f5c5ed4 ******/
 		%feature("compactdefaultargs") Get3dMouseIsNoRotate;
@@ -3879,6 +3919,11 @@ Return acceleration ratio for rotation event; 4.0 by default.
 ") Get3dMouseRotationScale;
 		float Get3dMouseRotationScale();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Get3dMouseToReverse %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::Get3dMouseToReverse ******/
 		/****** md5 signature: a365f1e9e4397aece1eb44aa7383f6d5 ******/
 		%feature("compactdefaultargs") Get3dMouseToReverse;
@@ -3982,6 +4027,11 @@ Parameter theTime event timestamp.
 ") KeyUp;
 		virtual void KeyUp(Aspect_VKey theKey, double theTime);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Keys %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::Keys ******/
 		/****** md5 signature: 71088904ae13bced99cf6e1155c58478 ******/
 		%feature("compactdefaultargs") Keys;
@@ -4008,6 +4058,11 @@ Return active key modifiers passed with last mouse event.
 ") LastMouseFlags;
 		Aspect_VKeyFlags LastMouseFlags();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LastMousePosition %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::LastMousePosition ******/
 		/****** md5 signature: 26b43d763605c89dafe56ba3b5e32657 ******/
 		%feature("compactdefaultargs") LastMousePosition;
@@ -4250,6 +4305,11 @@ Return quadric acceleration flag; True by default.
 ") To3dMousePreciseInput;
 		bool To3dMousePreciseInput();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TouchPoints %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_WindowInputListener::TouchPoints ******/
 		/****** md5 signature: 9c5538e5b3858f7cf469ea1977bbbe6c ******/
 		%feature("compactdefaultargs") TouchPoints;
@@ -4461,6 +4521,11 @@ Main constructor.
 ") Aspect_XRAction;
 		 Aspect_XRAction(TCollection_AsciiString theId, const Aspect_XRActionType theType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Id %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_XRAction::Id ******/
 		/****** md5 signature: 932272b78b9184cc2485436a72cc2df4 ******/
 		%feature("compactdefaultargs") Id;
@@ -4565,6 +4630,11 @@ Main constructor.
 ") Aspect_XRActionSet;
 		 Aspect_XRActionSet(TCollection_AsciiString theId);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Actions %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_XRActionSet::Actions ******/
 		/****** md5 signature: 0cfefadc2d3cf0e21c5c43050f0aade9 ******/
 		%feature("compactdefaultargs") Actions;
@@ -4596,6 +4666,11 @@ Add action.
 ") AddAction;
 		void AddAction(const opencascade::handle<Aspect_XRAction> & theAction);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Id %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_XRActionSet::Id ******/
 		/****** md5 signature: 932272b78b9184cc2485436a72cc2df4 ******/
 		%feature("compactdefaultargs") Id;
@@ -5156,6 +5231,11 @@ Receive XR events.
 ") ProcessEvents;
 		virtual void ProcessEvents();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjectionFrustum %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_XRSession::ProjectionFrustum ******/
 		/****** md5 signature: 9dc4ecde0b8d7e55944cdeade4e5bbf9 ******/
 		%feature("compactdefaultargs") ProjectionFrustum;
@@ -5283,6 +5363,11 @@ Return: False on error.
 ") SubmitEye;
 		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TrackedPoses %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Aspect_XRSession::TrackedPoses ******/
 		/****** md5 signature: b7402454210035c9f19d19ea9f722aab ******/
 		%feature("compactdefaultargs") TrackedPoses;

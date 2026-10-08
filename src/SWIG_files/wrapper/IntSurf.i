@@ -805,6 +805,11 @@ Keeps in <self> the points 1 to Index-1, and returns the items Index to the end.
 ") Split;
 		opencascade::handle<IntSurf_LineOn2S> Split(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntSurf_LineOn2S::Value ******/
 		/****** md5 signature: 344ab61d440fab1850713aee8091a920 ******/
 		%feature("compactdefaultargs") Value;

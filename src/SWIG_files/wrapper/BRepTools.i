@@ -1123,6 +1123,11 @@ A method to dump a history Prints the brief description of the history into a st
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepTools_History::Generated ******/
 		/****** md5 signature: e6ffa8f4968359627a4d4f067cf4fefa ******/
 		%feature("compactdefaultargs") Generated;
@@ -1252,6 +1257,11 @@ Merges the next history to this history.
 ") Merge;
 		void Merge(const BRepTools_History & theHistory23);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepTools_History::Modified ******/
 		/****** md5 signature: 78a1552e9e70162647e283416502ee8a ******/
 		%feature("compactdefaultargs") Modified;
@@ -2717,6 +2727,11 @@ Reset all the fields.
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Copy %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepTools_Substitution::Copy ******/
 		/****** md5 signature: 8ed752ccb541e7b3d64fc024e80a6bee ******/
 		%feature("compactdefaultargs") Copy;
@@ -3722,6 +3737,11 @@ Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the 
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetUpdatedEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepTools_NurbsConvertModification::GetUpdatedEdges ******/
 		/****** md5 signature: 4174b2fb7120a1debb23a7d4ae152931 ******/
 		%feature("compactdefaultargs") GetUpdatedEdges;

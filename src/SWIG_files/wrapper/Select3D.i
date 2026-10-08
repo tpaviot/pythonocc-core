@@ -322,6 +322,11 @@ No available documentation.
 ") Select3D_PointData;
 		 Select3D_PointData(const int theNbPoints);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pnt %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Select3D_PointData::Pnt ******/
 		/****** md5 signature: 1bd012a932f5d28fa3cf9a7092bea194 ******/
 		%feature("compactdefaultargs") Pnt;
@@ -2092,6 +2097,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Entities %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Select3D_SensitiveGroup::Entities ******/
 		/****** md5 signature: 7574b8d9635f72b26d3debcfbf9dc622 ******/
 		%feature("compactdefaultargs") Entities;
@@ -3539,6 +3549,11 @@ No available documentation.
 ") GetConnected;
 		opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetEdges %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Select3D_SensitiveWire::GetEdges ******/
 		/****** md5 signature: 2ca7f36f885fcca948e7c0b7f4fcbdb0 ******/
 		%feature("compactdefaultargs") GetEdges;

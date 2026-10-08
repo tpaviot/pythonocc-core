@@ -740,6 +740,11 @@ Parameter theAnimation input animation.
 ") Add;
 		void Add(const opencascade::handle<AIS_Animation> & theAnimation);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Children %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_Animation::Children ******/
 		/****** md5 signature: 4d291cae5d0ccc80f46be7cb0940bb81 ******/
 		%feature("compactdefaultargs") Children;
@@ -855,6 +860,11 @@ Return: True if it is stopped of finished.
 ") IsStopped;
 		bool IsStopped();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_Animation::Name ******/
 		/****** md5 signature: efed61b92683387cd746fb27e0376505 ******/
 		%feature("compactdefaultargs") Name;
@@ -2151,6 +2161,11 @@ Remove selection mode.
 ") RemoveSelectionMode;
 		bool RemoveSelectionMode(const int theMode);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SelectionModes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_GlobalStatus::SelectionModes ******/
 		/****** md5 signature: 2132a8895ae0782915c7441237f1bf3c ******/
 		%feature("compactdefaultargs") SelectionModes;
@@ -3445,6 +3460,11 @@ Return: the context selection filter type.
 ") FilterType;
 		SelectMgr_FilterType FilterType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Filters %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_InteractiveContext::Filters ******/
 		/****** md5 signature: 952ec326fbdc2c7b93e91359d0cc739a ******/
 		%feature("compactdefaultargs") Filters;
@@ -5980,6 +6000,11 @@ No available documentation.
 ") ShiftSelect;
 		AIS_StatusOfPick ShiftSelect(const int theXPMin, const int theYPMin, const int theXPMax, const int theYPMax, const opencascade::handle<V3d_View> & theView, const bool theToUpdateViewer);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubIntensityColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_InteractiveContext::SubIntensityColor ******/
 		/****** md5 signature: e1332d593cf25efd90cc06d78287a52b ******/
 		%feature("compactdefaultargs") SubIntensityColor;
@@ -6433,6 +6458,11 @@ Returns True when this object has a presentation in the current DisplayMode().
 ") HasPresentation;
 		bool HasPresentation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InteractiveContext %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_InteractiveObject::InteractiveContext ******/
 		/****** md5 signature: 9383f882f57497c320cdfadce7894acb ******/
 		%feature("compactdefaultargs") InteractiveContext;
@@ -7094,6 +7124,11 @@ Continue iteration through selected objects.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Objects %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_Selection::Objects ******/
 		/****** md5 signature: 3cc847338c9dcee386e723f1f9175ffd ******/
 		%feature("compactdefaultargs") Objects;
@@ -7395,6 +7430,11 @@ Parameter theClearBefore if True previously registered touches will be removed.
 ") AddTouchPoint;
 		void AddTouchPoint(size_t theId, const NCollection_Vec2<double> & thePnt, bool theClearBefore = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInputBuffer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::ChangeInputBuffer ******/
 		/****** md5 signature: c617c43bf721a07d3495c85c386656be ******/
 		%feature("compactdefaultargs") ChangeInputBuffer;
@@ -7413,6 +7453,11 @@ Return input buffer.
 ") ChangeInputBuffer;
 		AIS_ViewInputBuffer & ChangeInputBuffer(AIS_ViewInputBufferType theType);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMouseGestureMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::ChangeMouseGestureMap ******/
 		/****** md5 signature: 58f282fc720499d059aeb939a3f6e3d2 ******/
 		%feature("compactdefaultargs") ChangeMouseGestureMap;
@@ -7426,6 +7471,11 @@ Return map defining mouse gestures.
 ") ChangeMouseGestureMap;
 		NCollection_DataMap<unsigned int, AIS_MouseGesture> & ChangeMouseGestureMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMouseSelectionSchemes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::ChangeMouseSelectionSchemes ******/
 		/****** md5 signature: ad82e907bd4f3215cb04700f12bb0682 ******/
 		%feature("compactdefaultargs") ChangeMouseSelectionSchemes;
@@ -7551,6 +7601,11 @@ Return True if previous position of MoveTo has been defined.
 ") HasPreviousMoveTo;
 		bool HasPreviousMoveTo();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InputBuffer %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::InputBuffer ******/
 		/****** md5 signature: 0e66b64ea2254057a38ac6990d92e49f ******/
 		%feature("compactdefaultargs") InputBuffer;
@@ -7685,6 +7740,11 @@ Return double click interval in seconds; 0.4 by default.
 ") MouseDoubleClickInterval;
 		double MouseDoubleClickInterval();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MouseGestureMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::MouseGestureMap ******/
 		/****** md5 signature: e0030eba5573c7e60957cd3f29db3726 ******/
 		%feature("compactdefaultargs") MouseGestureMap;
@@ -7698,6 +7758,11 @@ Return map defining mouse gestures.
 ") MouseGestureMap;
 		const NCollection_DataMap<unsigned int, AIS_MouseGesture> & MouseGestureMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend MouseSelectionSchemes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::MouseSelectionSchemes ******/
 		/****** md5 signature: 403234e1fc2d2963bfc1b0340f6a20d8 ******/
 		%feature("compactdefaultargs") MouseSelectionSchemes;
@@ -7861,6 +7926,11 @@ Return: True if result has been found.
 ") PickPoint;
 		virtual bool PickPoint(gp_Pnt & thePnt, const opencascade::handle<AIS_InteractiveContext> & theCtx, const opencascade::handle<V3d_View> & theView, const NCollection_Vec2<int> & theCursor, bool theToStickToPickRay);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PreviousMoveTo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewController::PreviousMoveTo ******/
 		/****** md5 signature: 943061652fab5d658d424e771ba9c319 ******/
 		%feature("compactdefaultargs") PreviousMoveTo;
@@ -10973,6 +11043,11 @@ Calculate color according passed value; returns true if value is in range or fal
 ") FindColor;
 		bool FindColor(const double theValue, Quantity_Color & theColor);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Format %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ColorScale::Format ******/
 		/****** md5 signature: e9d46855e7e702fd9247d888cb57d283 ******/
 		%feature("compactdefaultargs") Format;
@@ -11012,6 +11087,11 @@ Returns the type of colors, Aspect_TOCSD_AUTO by default. Aspect_TOCSD_AUTO - va
 ") GetColorType;
 		Aspect_TypeOfColorScaleData GetColorType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ColorScale::GetColors ******/
 		/****** md5 signature: 45936fedae345f23618524abb2e9c5b4 ******/
 		%feature("compactdefaultargs") GetColors;
@@ -11043,6 +11123,11 @@ Returns the user specified colors.
 ") GetColors;
 		const NCollection_Sequence<Quantity_Color> & GetColors();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetFormat %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ColorScale::GetFormat ******/
 		/****** md5 signature: 54c7ef0bc14e2d3ab1ecb4d4d0c39e35 ******/
 		%feature("compactdefaultargs") GetFormat;
@@ -11255,6 +11340,11 @@ Returns the font height of text labels, 20 by default.
 ") GetTextHeight;
 		int GetTextHeight();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTitle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ColorScale::GetTitle ******/
 		/****** md5 signature: a72936ae7a819e87d6c110c7a97925c7 ******/
 		%feature("compactdefaultargs") GetTitle;
@@ -11403,6 +11493,11 @@ Return True if color transition between neighbor intervals should be linearly in
 ") IsSmoothTransition;
 		bool IsSmoothTransition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Labels %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ColorScale::Labels ******/
 		/****** md5 signature: 49c4f79a7c7977a36a91af50b5215558 ******/
 		%feature("compactdefaultargs") Labels;
@@ -15483,6 +15578,11 @@ Return: width of lines.
 ") LineWidth;
 		double LineWidth();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_RubberBand::Points ******/
 		/****** md5 signature: 7147b2d1cbaab5befa049f5523c3fbd7 ******/
 		%feature("compactdefaultargs") Points;
@@ -15744,6 +15844,11 @@ Returns true if the Interactive Object accepts shape decomposition.
 ") AcceptShapeDecomposition;
 		bool AcceptShapeDecomposition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_Shape::BoundingBox ******/
 		/****** md5 signature: c5ba355b93437b89fc95a23246eabd6a ******/
 		%feature("compactdefaultargs") BoundingBox;
@@ -16444,6 +16549,11 @@ Returns the font aspect of the label text.
 ") FontAspect;
 		Font_FontAspect FontAspect();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FontName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_TextLabel::FontName ******/
 		/****** md5 signature: 2c67f4ccf190033bd2df359b02c80019 ******/
 		%feature("compactdefaultargs") FontName;
@@ -16846,6 +16956,11 @@ Setup zoomable property.
 ") SetZoomable;
 		void SetZoomable(const bool theIsZoomable);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Text %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_TextLabel::Text ******/
 		/****** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ******/
 		%feature("compactdefaultargs") Text;
@@ -17238,6 +17353,11 @@ Method which draws selected owners (for fast presentation draw).
 ") HilightSelected;
 		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theOwners);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Label %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_Trihedron::Label ******/
 		/****** md5 signature: cd3b87f754f01f91f4db0b402e5a6620 ******/
 		%feature("compactdefaultargs") Label;
@@ -17775,6 +17895,11 @@ Return axes labels or empty string if undefined. Default labels: X, Y, Z.
 ") AxisLabel;
 		TCollection_AsciiString AxisLabel(Prs3d_DatumParts theAxis);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoxColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewCube::BoxColor ******/
 		/****** md5 signature: 50e147884653441e4200c687eaac0698 ******/
 		%feature("compactdefaultargs") BoxColor;
@@ -17980,6 +18105,11 @@ Return duration of animation in seconds; 0.5 sec by default.
 ") Duration;
 		double Duration();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Font %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewCube::Font ******/
 		/****** md5 signature: 246154ff4659a4acf077229295e5855e ******/
 		%feature("compactdefaultargs") Font;
@@ -18092,6 +18222,11 @@ Method which draws selected owners.
 ") HilightSelected;
 		void HilightSelected(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>> & theSeq);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InnerColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewCube::InnerColor ******/
 		/****** md5 signature: 14a7d761b72d032118329dab4a717cc8 ******/
 		%feature("compactdefaultargs") InnerColor;
@@ -18825,6 +18960,11 @@ Input parameter: theOwner detected owner.
 ") StartAnimation;
 		virtual void StartAnimation(const opencascade::handle<AIS_ViewCubeOwner> & theOwner);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TextColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_ViewCube::TextColor ******/
 		/****** md5 signature: 92b8584a07bd8f0e0e3839a819e74e79 ******/
 		%feature("compactdefaultargs") TextColor;
@@ -19062,6 +19202,11 @@ Empty constructor.
 ") AIS_XRTrackedDevice;
 		 AIS_XRTrackedDevice();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend LaserColor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AIS_XRTrackedDevice::LaserColor ******/
 		/****** md5 signature: 3764f0787105c7ac66e6b31a8f2890b8 ******/
 		%feature("compactdefaultargs") LaserColor;

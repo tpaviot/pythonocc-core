@@ -106,6 +106,11 @@ No available documentation.
 ") Curve2d;
 		virtual void Curve2d(const int Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curve2dPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::Curve2dPoles ******/
 		/****** md5 signature: ee57003ff0c5712eaa866dc33525e5bd ******/
 		%feature("compactdefaultargs") Curve2dPoles;
@@ -137,6 +142,11 @@ No available documentation.
 ") Curves2dDegree;
 		virtual int Curves2dDegree();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::Curves2dKnots ******/
 		/****** md5 signature: 004dbd5d154c8ff27540649a0e4c547a ******/
 		%feature("compactdefaultargs") Curves2dKnots;
@@ -150,6 +160,11 @@ No available documentation.
 ") Curves2dKnots;
 		virtual const TColStd_Array1OfReal & Curves2dKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Curves2dMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::Curves2dMults ******/
 		/****** md5 signature: 3a4ca2b3e696c9c5f6ffff1e1fe5597d ******/
 		%feature("compactdefaultargs") Curves2dMults;
@@ -208,6 +223,11 @@ No available documentation.
 ") NbCurves2d;
 		virtual int NbCurves2d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfPoles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfPoles ******/
 		/****** md5 signature: b4a08936611973b53ddb90f908c55e90 ******/
 		%feature("compactdefaultargs") SurfPoles;
@@ -243,6 +263,11 @@ No available documentation.
 ") SurfShape;
 		virtual void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfUKnots ******/
 		/****** md5 signature: 3bf796b01a621a11f3c5efb753999f21 ******/
 		%feature("compactdefaultargs") SurfUKnots;
@@ -256,6 +281,11 @@ No available documentation.
 ") SurfUKnots;
 		virtual const TColStd_Array1OfReal & SurfUKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfUMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfUMults ******/
 		/****** md5 signature: b8253c0fc96341f6d905ef1c8ec8fef8 ******/
 		%feature("compactdefaultargs") SurfUMults;
@@ -269,6 +299,11 @@ No available documentation.
 ") SurfUMults;
 		virtual const TColStd_Array1OfInteger & SurfUMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVKnots %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfVKnots ******/
 		/****** md5 signature: 36f4a91bde1263a302488b17387c702b ******/
 		%feature("compactdefaultargs") SurfVKnots;
@@ -282,6 +317,11 @@ No available documentation.
 ") SurfVKnots;
 		virtual const TColStd_Array1OfReal & SurfVKnots();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfVMults %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfVMults ******/
 		/****** md5 signature: 905fac2cd44d34b91213e1fad3e5065c ******/
 		%feature("compactdefaultargs") SurfVMults;
@@ -295,6 +335,11 @@ No available documentation.
 ") SurfVMults;
 		virtual const TColStd_Array1OfInteger & SurfVMults();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfWeights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** AppBlend_Approx::SurfWeights ******/
 		/****** md5 signature: eb7c4872394cba0783fa64de049bcff7 ******/
 		%feature("compactdefaultargs") SurfWeights;

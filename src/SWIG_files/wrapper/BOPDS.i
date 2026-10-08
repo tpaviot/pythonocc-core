@@ -371,6 +371,11 @@ Selector Returns the index of the edge of all pave blocks of the common block.
 ") Edge;
 		int Edge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Faces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_CommonBlock::Faces ******/
 		/****** md5 signature: d007e435f64c696b2f689c0a336e57b2 ******/
 		%feature("compactdefaultargs") Faces;
@@ -451,6 +456,11 @@ Selector Returns the pave block that belongs to the edge with index <theIx>.
 ") PaveBlockOnEdge;
 		opencascade::handle<BOPDS_PaveBlock> & PaveBlockOnEdge(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_CommonBlock::PaveBlocks ******/
 		/****** md5 signature: 770f52828ce980217a9dd084b6a5a2c7 ******/
 		%feature("compactdefaultargs") PaveBlocks;
@@ -868,6 +878,11 @@ Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_Curve;
 		 BOPDS_Curve(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Box %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::Box ******/
 		/****** md5 signature: 7c4ea237507e51916495e768089f878e ******/
 		%feature("compactdefaultargs") Box;
@@ -881,6 +896,11 @@ Selector Returns the bounding box of the curve.
 ") Box;
 		const Bnd_Box & Box();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::ChangeBox ******/
 		/****** md5 signature: 5631b4e4d9ba9acf6c3e62a29ae5b2c2 ******/
 		%feature("compactdefaultargs") ChangeBox;
@@ -907,6 +927,11 @@ Selector/Modifier Returns initial pave block of the curve.
 ") ChangePaveBlock1;
 		opencascade::handle<BOPDS_PaveBlock> & ChangePaveBlock1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::ChangePaveBlocks ******/
 		/****** md5 signature: 983f0690def33098969090807810f4f9 ******/
 		%feature("compactdefaultargs") ChangePaveBlocks;
@@ -920,6 +945,11 @@ Selector/Modifier Returns the list of pave blocks of the curve.
 ") ChangePaveBlocks;
 		NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocks();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeTechnoVertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::ChangeTechnoVertices ******/
 		/****** md5 signature: fa94b655a13f9bb7ec6e430633cc4e21 ******/
 		%feature("compactdefaultargs") ChangeTechnoVertices;
@@ -972,6 +1002,11 @@ Creates initial pave block of the curve.
 ") InitPaveBlock1;
 		void InitPaveBlock1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::PaveBlocks ******/
 		/****** md5 signature: 770f52828ce980217a9dd084b6a5a2c7 ******/
 		%feature("compactdefaultargs") PaveBlocks;
@@ -1070,6 +1105,11 @@ Returns the tangential tolerance of the curve.
 ") TangentialTolerance;
 		double TangentialTolerance();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TechnoVertices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Curve::TechnoVertices ******/
 		/****** md5 signature: 02c88a8239566f9bc92dfda5184f4be5 ******/
 		%feature("compactdefaultargs") TechnoVertices;
@@ -1248,6 +1288,11 @@ Modifier Appends the default information about the shape [theS] to the data stru
 ") Append;
 		int Append(const TopoDS_Shape & theS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Arguments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::Arguments ******/
 		/****** md5 signature: b869ff9ffc90f441ebb6a2f7f843ce6a ******/
 		%feature("compactdefaultargs") Arguments;
@@ -1281,6 +1326,11 @@ Computes bounding box <theBox> for the solid with DS-index <theIndex>. The flag 
 ") BuildBndBoxSolid;
 		void BuildBndBoxSolid(const int theIndex, Bnd_Box & theBox, const bool theCheckInverted = true);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFaceInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ChangeFaceInfo ******/
 		/****** md5 signature: 0c36b93f93aa85091a5447c21a303f44 ******/
 		%feature("compactdefaultargs") ChangeFaceInfo;
@@ -1299,6 +1349,11 @@ Selector/Modifier Returns the state of face with index theIndex.
 ") ChangeFaceInfo;
 		BOPDS_FaceInfo & ChangeFaceInfo(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ChangePaveBlocks ******/
 		/****** md5 signature: ce2705f4c845d162e43a31439b7138e4 ******/
 		%feature("compactdefaultargs") ChangePaveBlocks;
@@ -1317,6 +1372,11 @@ Selector/Modifier Returns the pave blocks for the shape with index theIndex.
 ") ChangePaveBlocks;
 		NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocks(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocksPool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ChangePaveBlocksPool ******/
 		/****** md5 signature: 97b39ee777fbbf0aae9a8416d2d02daf ******/
 		%feature("compactdefaultargs") ChangePaveBlocksPool;
@@ -1330,6 +1390,11 @@ Selector/Modifier Returns the information about pave blocks on source edges.
 ") ChangePaveBlocksPool;
 		NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>> & ChangePaveBlocksPool();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeShapeInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ChangeShapeInfo ******/
 		/****** md5 signature: cc6f62809d6e81d4621028ac8240dc36 ******/
 		%feature("compactdefaultargs") ChangeShapeInfo;
@@ -1392,6 +1457,11 @@ No available documentation.
 ") Dump;
 		void Dump();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::FaceInfo ******/
 		/****** md5 signature: 9b8f8c046cc9fab776a1732fd9043988 ******/
 		%feature("compactdefaultargs") FaceInfo;
@@ -1450,6 +1520,11 @@ Selector Returns the state On [theMPB,theMVP] of face with index theIndex.
 ") FaceInfoOn;
 		void FaceInfoOn(const int theIndex, NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & theMPB, TColStd_MapOfInteger & theMVP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceInfoPool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::FaceInfoPool ******/
 		/****** md5 signature: d112e6b704fee4761a5287a8ddfc87d5 ******/
 		%feature("compactdefaultargs") FaceInfoPool;
@@ -1665,6 +1740,11 @@ No available documentation.
 ") InitPaveBlocksForVertex;
 		void InitPaveBlocksForVertex(const int theNV);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfEE %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfEE ******/
 		/****** md5 signature: 651ba59807224abb63c084efeb9c96fe ******/
 		%feature("compactdefaultargs") InterfEE;
@@ -1678,6 +1758,11 @@ Selector/Modifier Returns the collection of interferences Edge/Edge.
 ") InterfEE;
 		NCollection_DynamicArray<BOPDS_InterfEE> & InterfEE();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfEF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfEF ******/
 		/****** md5 signature: 3143af825731697bf392f4bca52cc701 ******/
 		%feature("compactdefaultargs") InterfEF;
@@ -1691,6 +1776,11 @@ Selector/Modifier Returns the collection of interferences Edge/Face.
 ") InterfEF;
 		NCollection_DynamicArray<BOPDS_InterfEF> & InterfEF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfEZ %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfEZ ******/
 		/****** md5 signature: c6033d06e7bc0fe9f2008e97208e97d2 ******/
 		%feature("compactdefaultargs") InterfEZ;
@@ -1704,6 +1794,11 @@ Selector/Modifier Returns the collection of interferences Edge/Solid.
 ") InterfEZ;
 		NCollection_DynamicArray<BOPDS_InterfEZ> & InterfEZ();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfFF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfFF ******/
 		/****** md5 signature: efc9cd895f2035ffcc0112546da2fe20 ******/
 		%feature("compactdefaultargs") InterfFF;
@@ -1717,6 +1812,11 @@ Selector/Modifier Returns the collection of interferences Face/Face.
 ") InterfFF;
 		NCollection_DynamicArray<BOPDS_InterfFF> & InterfFF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfFZ %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfFZ ******/
 		/****** md5 signature: 131716e6c152520b6b52546e71a84fb9 ******/
 		%feature("compactdefaultargs") InterfFZ;
@@ -1730,6 +1830,11 @@ Selector/Modifier Returns the collection of interferences Face/Solid.
 ") InterfFZ;
 		NCollection_DynamicArray<BOPDS_InterfFZ> & InterfFZ();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfVE %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfVE ******/
 		/****** md5 signature: b7e46c6790f7b9b198f0693f66dde86b ******/
 		%feature("compactdefaultargs") InterfVE;
@@ -1743,6 +1848,11 @@ Selector/Modifier Returns the collection of interferences Vertex/Edge.
 ") InterfVE;
 		NCollection_DynamicArray<BOPDS_InterfVE> & InterfVE();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfVF %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfVF ******/
 		/****** md5 signature: bd1784aaa5491a1cffeb8813cf7f7255 ******/
 		%feature("compactdefaultargs") InterfVF;
@@ -1756,6 +1866,11 @@ Selector/Modifier Returns the collection of interferences Vertex/Face.
 ") InterfVF;
 		NCollection_DynamicArray<BOPDS_InterfVF> & InterfVF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfVV %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfVV ******/
 		/****** md5 signature: a99c27178135645f17ddccf43e361a68 ******/
 		%feature("compactdefaultargs") InterfVV;
@@ -1769,6 +1884,11 @@ Selector/Modifier Returns the collection of interferences Vertex/Vertex.
 ") InterfVV;
 		NCollection_DynamicArray<BOPDS_InterfVV> & InterfVV();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfVZ %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfVZ ******/
 		/****** md5 signature: 8ee7c01ed2d4fd9aa38fd35dbb2e6b06 ******/
 		%feature("compactdefaultargs") InterfVZ;
@@ -1782,6 +1902,11 @@ Selector/Modifier Returns the collection of interferences Vertex/Solid.
 ") InterfVZ;
 		NCollection_DynamicArray<BOPDS_InterfVZ> & InterfVZ();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterfZZ %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::InterfZZ ******/
 		/****** md5 signature: d60ace4a79aec470695dd7ae87d2b539 ******/
 		%feature("compactdefaultargs") InterfZZ;
@@ -1795,6 +1920,11 @@ Selector/Modifier Returns the collection of interferences Solid/Solid.
 ") InterfZZ;
 		NCollection_DynamicArray<BOPDS_InterfZZ> & InterfZZ();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interferences %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::Interferences ******/
 		/****** md5 signature: b3cf058c3fe2c6b826585598c99df3c2 ******/
 		%feature("compactdefaultargs") Interferences;
@@ -1951,6 +2081,11 @@ Selector Returns the total number of source shapes stored.
 ") NbSourceShapes;
 		int NbSourceShapes();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocks %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::PaveBlocks ******/
 		/****** md5 signature: 421206bb093a75e472e81bcfdc5fc589 ******/
 		%feature("compactdefaultargs") PaveBlocks;
@@ -1969,6 +2104,11 @@ Selector Returns the pave blocks for the shape with index theIndex.
 ") PaveBlocks;
 		const NCollection_List<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocks(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocksPool %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::PaveBlocksPool ******/
 		/****** md5 signature: e61ed297db698fbfc593441dc7b6857d ******/
 		%feature("compactdefaultargs") PaveBlocksPool;
@@ -2001,6 +2141,11 @@ Fills theLP with sorted paves of the shape with index theIndex.
 ") Paves;
 		void Paves(const int theIndex, NCollection_List<BOPDS_Pave> & theLP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Range %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::Range ******/
 		/****** md5 signature: 157dcdbeea8a40a7d3dedb92a52078bc ******/
 		%feature("compactdefaultargs") Range;
@@ -2149,6 +2294,11 @@ Selector Returns the shape with index theIndex.
 ") Shape;
 		const TopoDS_Shape Shape(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapeInfo %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ShapeInfo ******/
 		/****** md5 signature: 3cc791a0774c5e3b72ffb984bf44865e ******/
 		%feature("compactdefaultargs") ShapeInfo;
@@ -2167,6 +2317,11 @@ Selector Returns the information about the shape with index theIndex.
 ") ShapeInfo;
 		const BOPDS_ShapeInfo & ShapeInfo(const int theIndex);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ShapesSD %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_DS::ShapesSD ******/
 		/****** md5 signature: b699ea98c38928d791791e3cd2350d59 ******/
 		%feature("compactdefaultargs") ShapesSD;
@@ -2447,6 +2602,11 @@ Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_FaceInfo;
 		 BOPDS_FaceInfo(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocksIn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangePaveBlocksIn ******/
 		/****** md5 signature: f80779465e98c5968b176b61d5b96262 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksIn;
@@ -2460,6 +2620,11 @@ Selector/Modifier Returns the pave blocks of the face that have state In.
 ") ChangePaveBlocksIn;
 		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksIn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocksOn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangePaveBlocksOn ******/
 		/****** md5 signature: a06d141a19c8caf5161671dbfc2563e0 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksOn;
@@ -2473,6 +2638,11 @@ Selector/Modifier Returns the pave blocks of the face that have state On.
 ") ChangePaveBlocksOn;
 		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksOn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePaveBlocksSc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangePaveBlocksSc ******/
 		/****** md5 signature: e9107dd7828655637f4bc116ba552428 ******/
 		%feature("compactdefaultargs") ChangePaveBlocksSc;
@@ -2486,6 +2656,11 @@ No available documentation.
 ") ChangePaveBlocksSc;
 		NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & ChangePaveBlocksSc();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVerticesIn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangeVerticesIn ******/
 		/****** md5 signature: fafa8103e916e13ae94702436c0036f9 ******/
 		%feature("compactdefaultargs") ChangeVerticesIn;
@@ -2499,6 +2674,11 @@ Selector/Modifier Returns the list of indices for vertices of the face that have
 ") ChangeVerticesIn;
 		TColStd_MapOfInteger & ChangeVerticesIn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVerticesOn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangeVerticesOn ******/
 		/****** md5 signature: d18d42185703288808272f8539de979c ******/
 		%feature("compactdefaultargs") ChangeVerticesOn;
@@ -2512,6 +2692,11 @@ Selector/Modifier Returns the list of indices for vertices of the face that have
 ") ChangeVerticesOn;
 		TColStd_MapOfInteger & ChangeVerticesOn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVerticesSc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::ChangeVerticesSc ******/
 		/****** md5 signature: 51d23f5bfc67d6d521e0f699312004d3 ******/
 		%feature("compactdefaultargs") ChangeVerticesSc;
@@ -2551,6 +2736,11 @@ Selector Returns the index of the face //! In.
 ") Index;
 		int Index();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocksIn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::PaveBlocksIn ******/
 		/****** md5 signature: 572a2c09e6a3bd1c62e5e6383ac4000c ******/
 		%feature("compactdefaultargs") PaveBlocksIn;
@@ -2564,6 +2754,11 @@ Selector Returns the pave blocks of the face that have state In.
 ") PaveBlocksIn;
 		const NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocksIn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocksOn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::PaveBlocksOn ******/
 		/****** md5 signature: 119e0a08dcbd347389586e1d28271f54 ******/
 		%feature("compactdefaultargs") PaveBlocksOn;
@@ -2577,6 +2772,11 @@ Selector Returns the pave blocks of the face that have state On.
 ") PaveBlocksOn;
 		const NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> & PaveBlocksOn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend PaveBlocksSc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::PaveBlocksSc ******/
 		/****** md5 signature: 9c9e9a14cb8c589c5217878001716702 ******/
 		%feature("compactdefaultargs") PaveBlocksSc;
@@ -2608,6 +2808,11 @@ Modifier Sets the index of the face <theI>.
 ") SetIndex;
 		void SetIndex(const int theI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VerticesIn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::VerticesIn ******/
 		/****** md5 signature: a60b4b23fe17312c3dc5b90ece53bb01 ******/
 		%feature("compactdefaultargs") VerticesIn;
@@ -2621,6 +2826,11 @@ Selector Returns the list of indices for vertices of the face that have state In
 ") VerticesIn;
 		const TColStd_MapOfInteger & VerticesIn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VerticesOn %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::VerticesOn ******/
 		/****** md5 signature: 706bcf9d4be328e966bb07d12f3b8b75 ******/
 		%feature("compactdefaultargs") VerticesOn;
@@ -2634,6 +2844,11 @@ Selector Returns the list of indices for vertices of the face that have state On
 ") VerticesOn;
 		const TColStd_MapOfInteger & VerticesOn();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VerticesSc %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_FaceInfo::VerticesSc ******/
 		/****** md5 signature: 271d7354ad4f592f1d72e9dbbc01e100 ******/
 		%feature("compactdefaultargs") VerticesSc;
@@ -2885,6 +3100,11 @@ Returns the block length.
 ") BlockLength;
 		int BlockLength();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DS %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_Iterator::DS ******/
 		/****** md5 signature: 276afbb7db8ff236fa734c0f56c3dcb8 ******/
 		%feature("compactdefaultargs") DS;
@@ -3460,6 +3680,11 @@ Modifier Appends extra pave <thePave>.
 ") AppendExtPave1;
 		void AppendExtPave1(const BOPDS_Pave & thePave);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeExtPaves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_PaveBlock::ChangeExtPaves ******/
 		/****** md5 signature: 1e5091f64869840217c9b08e75b40db1 ******/
 		%feature("compactdefaultargs") ChangeExtPaves;
@@ -3518,6 +3743,11 @@ Selector Returns the index of edge of pave block.
 ") Edge;
 		int Edge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExtPaves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_PaveBlock::ExtPaves ******/
 		/****** md5 signature: 54194bcd3880fb5f984ce73cb0cc8217 ******/
 		%feature("compactdefaultargs") ExtPaves;
@@ -3662,6 +3892,11 @@ Selector Returns the index of original edge of pave block.
 ") OriginalEdge;
 		int OriginalEdge();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pave1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_PaveBlock::Pave1 ******/
 		/****** md5 signature: c069a811d2db1154789a8c26ef94db8d ******/
 		%feature("compactdefaultargs") Pave1;
@@ -3675,6 +3910,11 @@ Selector Returns the first pave.
 ") Pave1;
 		const BOPDS_Pave & Pave1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Pave2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_PaveBlock::Pave2 ******/
 		/****** md5 signature: 5cb0f045be87975a3e4e0fb36f4561b0 ******/
 		%feature("compactdefaultargs") Pave2;
@@ -4055,6 +4295,11 @@ Parameter theAllocator the allocator to manage the memory.
 ") BOPDS_ShapeInfo;
 		 BOPDS_ShapeInfo(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Box %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_ShapeInfo::Box ******/
 		/****** md5 signature: 7c4ea237507e51916495e768089f878e ******/
 		%feature("compactdefaultargs") Box;
@@ -4068,6 +4313,11 @@ Selector Returns the boundung box of the shape.
 ") Box;
 		const Bnd_Box & Box();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_ShapeInfo::ChangeBox ******/
 		/****** md5 signature: 5631b4e4d9ba9acf6c3e62a29ae5b2c2 ******/
 		%feature("compactdefaultargs") ChangeBox;
@@ -4081,6 +4331,11 @@ Selector/Modifier Returns the boundung box of the shape.
 ") ChangeBox;
 		Bnd_Box & ChangeBox();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeSubShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_ShapeInfo::ChangeSubShapes ******/
 		/****** md5 signature: 010eeac626d28cc1835dbd11f902f045 ******/
 		%feature("compactdefaultargs") ChangeSubShapes;
@@ -4336,6 +4591,11 @@ Selector Returns the type of shape.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubShapes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_ShapeInfo::SubShapes ******/
 		/****** md5 signature: f4e327b938249f1131c923d9a1fadfd7 ******/
 		%feature("compactdefaultargs") SubShapes;
@@ -4394,6 +4654,11 @@ Constructor theAllocator - the allocator to manage the memory.
 ") BOPDS_SubIterator;
 		 BOPDS_SubIterator(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DS %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_SubIterator::DS ******/
 		/****** md5 signature: e2b7a95332d83a907322867b207b5f91 ******/
 		%feature("compactdefaultargs") DS;
@@ -4526,6 +4791,11 @@ Sets the second set of indices <theLI> to process.
 ") SetSubSet2;
 		void SetSubSet2(const TColStd_ListOfInteger & theLI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubSet1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_SubIterator::SubSet1 ******/
 		/****** md5 signature: 97915776bc92a1f5dd0a804c9e63bcf9 ******/
 		%feature("compactdefaultargs") SubSet1;
@@ -4539,6 +4809,11 @@ Returns the first set of indices to process.
 ") SubSet1;
 		const TColStd_ListOfInteger & SubSet1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SubSet2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_SubIterator::SubSet2 ******/
 		/****** md5 signature: d6cdd8f53e14b0c5efcc1f9459cd451a ******/
 		%feature("compactdefaultargs") SubSet2;
@@ -4709,6 +4984,11 @@ Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfEE;
 		 BOPDS_InterfEE(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommonPart %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_InterfEE::CommonPart ******/
 		/****** md5 signature: 158eea49db3781300d62b63a4c3d0e83 ******/
 		%feature("compactdefaultargs") CommonPart;
@@ -4788,6 +5068,11 @@ Parameter theAllocator * allocator to manage the memory */.
 ") BOPDS_InterfEF;
 		 BOPDS_InterfEF(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommonPart %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_InterfEF::CommonPart ******/
 		/****** md5 signature: 158eea49db3781300d62b63a4c3d0e83 ******/
 		%feature("compactdefaultargs") CommonPart;
@@ -4894,6 +5179,11 @@ Description
 ") BOPDS_InterfFF;
 		 BOPDS_InterfFF();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurves %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_InterfFF::ChangeCurves ******/
 		/****** md5 signature: 4c57192d10cc86a40d7d1087b35f53fd ******/
 		%feature("compactdefaultargs") ChangeCurves;
@@ -4908,6 +5198,11 @@ Return: * intersection curves */.
 ") ChangeCurves;
 		NCollection_DynamicArray<BOPDS_Curve> & ChangeCurves();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoints %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_InterfFF::ChangePoints ******/
 		/****** md5 signature: aac9c1b42a70af3e6bff10eda7281e4f ******/
 		%feature("compactdefaultargs") ChangePoints;
@@ -4955,6 +5250,11 @@ No available documentation.
 ") Init;
 		void Init(const int theNbCurves, const int theNbPoints);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BOPDS_InterfFF::Points ******/
 		/****** md5 signature: 1eabb4d6b34db38732a6cd2c930d8626 ******/
 		%feature("compactdefaultargs") Points;

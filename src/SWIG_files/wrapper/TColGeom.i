@@ -166,7 +166,13 @@ class TColGeom_HArray1OfBSplineCurve : public NCollection_Array1<opencascade::ha
     TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>::value_type& theValue);
     TColGeom_HArray1OfBSplineCurve(const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom_BSplineCurve>>& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfBSplineCurve)
@@ -177,7 +183,13 @@ class TColGeom_HArray1OfBezierCurve : public NCollection_Array1<opencascade::han
     TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_BezierCurve>>::value_type& theValue);
     TColGeom_HArray1OfBezierCurve(const NCollection_Array1<opencascade::handle<Geom_BezierCurve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom_BezierCurve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom_BezierCurve>>& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfBezierCurve)
@@ -188,7 +200,13 @@ class TColGeom_HArray1OfCurve : public NCollection_Array1<opencascade::handle<Ge
     TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_Curve>>::value_type& theValue);
     TColGeom_HArray1OfCurve(const NCollection_Array1<opencascade::handle<Geom_Curve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom_Curve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom_Curve>>& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfCurve)
@@ -199,7 +217,13 @@ class TColGeom_HArray1OfSurface : public NCollection_Array1<opencascade::handle<
     TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom_HArray1OfSurface(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom_Surface>>::value_type& theValue);
     TColGeom_HArray1OfSurface(const NCollection_Array1<opencascade::handle<Geom_Surface>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom_Surface>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom_Surface>>& ChangeArray1();
 };
 %make_alias(TColGeom_HArray1OfSurface)
@@ -212,7 +236,13 @@ class TColGeom_HArray2OfSurface : public NCollection_Array2<opencascade::handle<
     TColGeom_HArray2OfSurface(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Geom_Surface>>::value_type& theValue);
     TColGeom_HArray2OfSurface(const NCollection_Array2<opencascade::handle<Geom_Surface>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<Geom_Surface>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<Geom_Surface>>& ChangeArray2 (); 
 };
 %make_alias(TColGeom_HArray2OfSurface)
@@ -223,9 +253,15 @@ class TColGeom_HSequenceOfBoundedCurve : public NCollection_Sequence<opencascade
   public:
     TColGeom_HSequenceOfBoundedCurve();
     TColGeom_HSequenceOfBoundedCurve(const NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>& ChangeSequence();
 };
 %make_alias(TColGeom_HSequenceOfBoundedCurve)
@@ -235,9 +271,15 @@ class TColGeom_HSequenceOfCurve : public NCollection_Sequence<opencascade::handl
   public:
     TColGeom_HSequenceOfCurve();
     TColGeom_HSequenceOfCurve(const NCollection_Sequence<opencascade::handle<Geom_Curve>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Geom_Curve>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Geom_Curve>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Geom_Curve>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Geom_Curve>>& ChangeSequence();
 };
 %make_alias(TColGeom_HSequenceOfCurve)

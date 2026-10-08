@@ -215,6 +215,11 @@ Empty constructor.
 ") ShapeUpgrade_RemoveLocations;
 		 ShapeUpgrade_RemoveLocations();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetModifiedShapesMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeUpgrade_RemoveLocations::GetModifiedShapesMap ******/
 		/****** md5 signature: 496329fe3b13180d82d92739572c8840 ******/
 		%feature("compactdefaultargs") GetModifiedShapesMap;
@@ -2318,6 +2323,11 @@ Set mode which manage removing faces which have outer wires consisting only from
 ") RemoveFaceMode;
 		bool & RemoveFaceMode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RemovedFaces %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeUpgrade_RemoveInternalWires::RemovedFaces ******/
 		/****** md5 signature: 8bf84d8c87723b62ffd16dc8b601cdc9 ******/
 		%feature("compactdefaultargs") RemovedFaces;
@@ -2331,6 +2341,11 @@ Returns sequence of removed faces.
 ") RemovedFaces;
 		const TopTools_SequenceOfShape & RemovedFaces();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend RemovedWires %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ShapeUpgrade_RemoveInternalWires::RemovedWires ******/
 		/****** md5 signature: d9aaef20d2cfc684289bb98006c82520 ******/
 		%feature("compactdefaultargs") RemovedWires;

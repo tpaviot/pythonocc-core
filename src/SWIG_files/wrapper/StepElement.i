@@ -3962,7 +3962,13 @@ class StepElement_HArray1OfCurveElementEndReleasePacket : public NCollection_Arr
     StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>::value_type& theValue);
     StepElement_HArray1OfCurveElementEndReleasePacket(const NCollection_Array1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepElement_CurveElementEndReleasePacket>>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfCurveElementEndReleasePacket)
@@ -3973,7 +3979,13 @@ class StepElement_HArray1OfCurveElementSectionDefinition : public NCollection_Ar
     StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepElement_CurveElementSectionDefinition>>::value_type& theValue);
     StepElement_HArray1OfCurveElementSectionDefinition(const NCollection_Array1<opencascade::handle<StepElement_CurveElementSectionDefinition>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepElement_CurveElementSectionDefinition>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepElement_CurveElementSectionDefinition>>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfCurveElementSectionDefinition)
@@ -3984,7 +3996,13 @@ class StepElement_HArray1OfMeasureOrUnspecifiedValue : public NCollection_Array1
     StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepElement_MeasureOrUnspecifiedValue>::value_type& theValue);
     StepElement_HArray1OfMeasureOrUnspecifiedValue(const NCollection_Array1<StepElement_MeasureOrUnspecifiedValue>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepElement_MeasureOrUnspecifiedValue>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepElement_MeasureOrUnspecifiedValue>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfMeasureOrUnspecifiedValue)
@@ -3995,7 +4013,13 @@ class StepElement_HArray1OfSurfaceSection : public NCollection_Array1<opencascad
     StepElement_HArray1OfSurfaceSection(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfSurfaceSection(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepElement_SurfaceSection>>::value_type& theValue);
     StepElement_HArray1OfSurfaceSection(const NCollection_Array1<opencascade::handle<StepElement_SurfaceSection>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepElement_SurfaceSection>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepElement_SurfaceSection>>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfSurfaceSection)
@@ -4006,7 +4030,13 @@ class StepElement_HArray1OfVolumeElementPurpose : public NCollection_Array1<Step
     StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfVolumeElementPurpose(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepElement_VolumeElementPurpose>::value_type& theValue);
     StepElement_HArray1OfVolumeElementPurpose(const NCollection_Array1<StepElement_VolumeElementPurpose>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepElement_VolumeElementPurpose>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepElement_VolumeElementPurpose>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfVolumeElementPurpose)
@@ -4017,7 +4047,13 @@ class StepElement_HArray1OfVolumeElementPurposeMember : public NCollection_Array
     StepElement_HArray1OfVolumeElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepElement_HArray1OfVolumeElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepElement_VolumeElementPurposeMember>>::value_type& theValue);
     StepElement_HArray1OfVolumeElementPurposeMember(const NCollection_Array1<opencascade::handle<StepElement_VolumeElementPurposeMember>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepElement_VolumeElementPurposeMember>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepElement_VolumeElementPurposeMember>>& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfVolumeElementPurposeMember)
@@ -4030,7 +4066,13 @@ class StepElement_HArray2OfCurveElementPurposeMember : public NCollection_Array2
     StepElement_HArray2OfCurveElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<StepElement_CurveElementPurposeMember>>::value_type& theValue);
     StepElement_HArray2OfCurveElementPurposeMember(const NCollection_Array2<opencascade::handle<StepElement_CurveElementPurposeMember>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<StepElement_CurveElementPurposeMember>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<StepElement_CurveElementPurposeMember>>& ChangeArray2 (); 
 };
 %make_alias(StepElement_HArray2OfCurveElementPurposeMember)
@@ -4043,7 +4085,13 @@ class StepElement_HArray2OfSurfaceElementPurpose : public NCollection_Array2<Ste
     StepElement_HArray2OfSurfaceElementPurpose(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<StepElement_SurfaceElementPurpose>::value_type& theValue);
     StepElement_HArray2OfSurfaceElementPurpose(const NCollection_Array2<StepElement_SurfaceElementPurpose>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<StepElement_SurfaceElementPurpose>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<StepElement_SurfaceElementPurpose>& ChangeArray2 (); 
 };
 %make_alias(StepElement_HArray2OfSurfaceElementPurpose)
@@ -4056,7 +4104,13 @@ class StepElement_HArray2OfSurfaceElementPurposeMember : public NCollection_Arra
     StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>::value_type& theValue);
     StepElement_HArray2OfSurfaceElementPurposeMember(const NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& ChangeArray2 (); 
 };
 %make_alias(StepElement_HArray2OfSurfaceElementPurposeMember)
@@ -4067,9 +4121,15 @@ class StepElement_HSequenceOfCurveElementPurposeMember : public NCollection_Sequ
   public:
     StepElement_HSequenceOfCurveElementPurposeMember();
     StepElement_HSequenceOfCurveElementPurposeMember(const NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>& ChangeSequence();
 };
 %make_alias(StepElement_HSequenceOfCurveElementPurposeMember)
@@ -4079,9 +4139,15 @@ class StepElement_HSequenceOfCurveElementSectionDefinition : public NCollection_
   public:
     StepElement_HSequenceOfCurveElementSectionDefinition();
     StepElement_HSequenceOfCurveElementSectionDefinition(const NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>& ChangeSequence();
 };
 %make_alias(StepElement_HSequenceOfCurveElementSectionDefinition)
@@ -4091,9 +4157,15 @@ class StepElement_HSequenceOfElementMaterial : public NCollection_Sequence<openc
   public:
     StepElement_HSequenceOfElementMaterial();
     StepElement_HSequenceOfElementMaterial(const NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>& ChangeSequence();
 };
 %make_alias(StepElement_HSequenceOfElementMaterial)
@@ -4103,9 +4175,15 @@ class StepElement_HSequenceOfSurfaceElementPurposeMember : public NCollection_Se
   public:
     StepElement_HSequenceOfSurfaceElementPurposeMember();
     StepElement_HSequenceOfSurfaceElementPurposeMember(const NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>& ChangeSequence();
 };
 %make_alias(StepElement_HSequenceOfSurfaceElementPurposeMember)

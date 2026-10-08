@@ -441,6 +441,11 @@ Returns the index of <L>.
 ") Index;
 		int Index(const TopLoc_Location & L);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopTools_LocationSet::Location ******/
 		/****** md5 signature: 2ce5408eb7d2eeaacf7f0ac26a1b8a72 ******/
 		%feature("compactdefaultargs") Location;
@@ -592,6 +597,11 @@ Inserts the shape <S2> in the shape <S1>. This method must be redefined to use t
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeLocations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopTools_ShapeSet::ChangeLocations ******/
 		/****** md5 signature: 30f61a461f3fc1bda3bafd1089a88635 ******/
 		%feature("compactdefaultargs") ChangeLocations;
@@ -773,6 +783,11 @@ Returns the index of <S>.
 ") Index;
 		int Index(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Locations %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopTools_ShapeSet::Locations ******/
 		/****** md5 signature: 24a4ea3b7fee823f5a1c0a3fbabad43e ******/
 		%feature("compactdefaultargs") Locations;
@@ -1000,7 +1015,13 @@ class TopTools_HArray1OfListOfShape : public NCollection_Array1<TopTools_ListOfS
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopTools_ListOfShape>::value_type& theValue);
     TopTools_HArray1OfListOfShape(const NCollection_Array1<TopTools_ListOfShape>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TopTools_ListOfShape>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TopTools_ListOfShape>& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfListOfShape)
@@ -1011,7 +1032,13 @@ class TopTools_HArray1OfShape : public NCollection_Array1<TopoDS_Shape>, public 
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
     TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TopoDS_Shape>::value_type& theValue);
     TopTools_HArray1OfShape(const NCollection_Array1<TopoDS_Shape>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TopoDS_Shape>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TopoDS_Shape>& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfShape)
@@ -1024,7 +1051,13 @@ class TopTools_HArray2OfShape : public NCollection_Array2<TopoDS_Shape>, public 
     TopTools_HArray2OfShape(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<TopoDS_Shape>::value_type& theValue);
     TopTools_HArray2OfShape(const NCollection_Array2<TopoDS_Shape>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<TopoDS_Shape>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<TopoDS_Shape>& ChangeArray2 (); 
 };
 %make_alias(TopTools_HArray2OfShape)
@@ -1035,9 +1068,15 @@ class TopTools_HSequenceOfShape : public NCollection_Sequence<TopoDS_Shape>, pub
   public:
     TopTools_HSequenceOfShape();
     TopTools_HSequenceOfShape(const NCollection_Sequence<TopoDS_Shape>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<TopoDS_Shape>& Sequence();
     void Append (const NCollection_Sequence<TopoDS_Shape>::value_type& theItem);
     void Append (NCollection_Sequence<TopoDS_Shape>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<TopoDS_Shape>& ChangeSequence();
 };
 %make_alias(TopTools_HSequenceOfShape)

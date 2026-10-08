@@ -1051,6 +1051,11 @@ Advances the iteration.
 ") Next;
 		void Next();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OriginalGraph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_ContextModif::OriginalGraph ******/
 		/****** md5 signature: f8f354cd345a1b8cfc915fa6323c1dbe ******/
 		%feature("compactdefaultargs") OriginalGraph;
@@ -1446,6 +1451,11 @@ Returns the File Name.
 ") FileName;
 		const char * FileName();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_ContextWrite::Graph ******/
 		/****** md5 signature: 85b94047fc558166dc241ea6e5d26215 ******/
 		%feature("compactdefaultargs") Graph;
@@ -4836,6 +4846,11 @@ Returns a Parameter as an Item. Returns a Null Handle if the Parameter is a Text
 ") ItemValue;
 		opencascade::handle<Standard_Transient> ItemValue(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Line %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SessionFile::Line ******/
 		/****** md5 signature: e198fe7605db42aeb3c97ca3833e15c5 ******/
 		%feature("compactdefaultargs") Line;
@@ -4899,6 +4914,11 @@ At beginning of writing an Item, writes its basics: - either its name in the ses
 ") NewItem;
 		void NewItem(const int ident, const opencascade::handle<Standard_Transient> & par);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ParamValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SessionFile::ParamValue ******/
 		/****** md5 signature: 174156047042fd27a12ef5fd22e7376e ******/
 		%feature("compactdefaultargs") ParamValue;
@@ -5972,6 +5992,11 @@ Returns the File Name which corresponds to current Packet (computed by ShareOut)
 ") FileName;
 		TCollection_AsciiString FileName();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_ShareOutResult::Graph ******/
 		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
@@ -7797,6 +7822,11 @@ Returns a Selection from a Name: - the name of a Selection: this Selection - the
 ") GiveSelection;
 		opencascade::handle<IFSelect_Selection> GiveSelection(const char * const selname);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Graph %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_WorkSession::Graph ******/
 		/****** md5 signature: 85b94047fc558166dc241ea6e5d26215 ******/
 		%feature("compactdefaultargs") Graph;
@@ -11307,6 +11337,11 @@ Clears the recorded information (commands, objects).
 ") Clear;
 		void Clear();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Command %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SessionPilot::Command ******/
 		/****** md5 signature: e83b9c3ab29e2b389618c3f5030f4564 ******/
 		%feature("compactdefaultargs") Command;
@@ -11325,6 +11360,11 @@ Returns a recorded Command, given its rank (from 1).
 ") Command;
 		const TCollection_AsciiString & Command(const int num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommandLine %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SessionPilot::CommandLine ******/
 		/****** md5 signature: 6bddf17df28ae73fcb4b88ac7337c0af ******/
 		%feature("compactdefaultargs") CommandLine;
@@ -11684,6 +11724,11 @@ Sets a WorkSession to be worked on.
 ") SetSession;
 		void SetSession(const opencascade::handle<IFSelect_WorkSession> & WS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Word %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SessionPilot::Word ******/
 		/****** md5 signature: 919db32098500b1250192d05237200b2 ******/
 		%feature("compactdefaultargs") Word;
@@ -15347,6 +15392,11 @@ Returns the used Signature, then it is possible to access it, modify it as requi
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SignatureText %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SelectSignature::SignatureText ******/
 		/****** md5 signature: 735b1192a9e9f73fe8fca4fcf887bd17 ******/
 		%feature("compactdefaultargs") SignatureText;
@@ -15497,6 +15547,11 @@ Returns the used Signature, then it is possible to access it, modify it as requi
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SignatureText %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SelectSignedShared::SignatureText ******/
 		/****** md5 signature: 735b1192a9e9f73fe8fca4fcf887bd17 ******/
 		%feature("compactdefaultargs") SignatureText;
@@ -15607,6 +15662,11 @@ Returns the used Signature, then it is possible to access it, modify it as requi
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SignatureText %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IFSelect_SelectSignedSharing::SignatureText ******/
 		/****** md5 signature: 735b1192a9e9f73fe8fca4fcf887bd17 ******/
 		%feature("compactdefaultargs") SignatureText;
@@ -15820,9 +15880,15 @@ class IFSelect_HSeqOfSelection : public NCollection_Sequence<opencascade::handle
   public:
     IFSelect_HSeqOfSelection();
     IFSelect_HSeqOfSelection(const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<IFSelect_Selection>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<IFSelect_Selection>>& ChangeSequence();
 };
 %make_alias(IFSelect_HSeqOfSelection)

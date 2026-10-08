@@ -1141,9 +1141,15 @@ class STEPSelections_HSequenceOfAssemblyLink : public NCollection_Sequence<openc
   public:
     STEPSelections_HSequenceOfAssemblyLink();
     STEPSelections_HSequenceOfAssemblyLink(const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<STEPSelections_AssemblyLink>>& ChangeSequence();
 };
 %make_alias(STEPSelections_HSequenceOfAssemblyLink)

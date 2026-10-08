@@ -368,6 +368,11 @@ No available documentation.
 ") Contour;
 		TColGeom2d_SequenceOfCurve Contour(const int IndexContour);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetIsClosed %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepMAT2d_Explorer::GetIsClosed ******/
 		/****** md5 signature: 62aa08df54af4b680b7d41bcaac9b956 ******/
 		%feature("compactdefaultargs") GetIsClosed;

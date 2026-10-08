@@ -301,6 +301,11 @@ Returns the orientation of the current sub-shape.
 ") Orientation;
 		TopAbs_Orientation Orientation();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Sweep_NumShapeIterator::Value ******/
 		/****** md5 signature: d1e49624503396926cc40230ed2dfbe3 ******/
 		%feature("compactdefaultargs") Value;

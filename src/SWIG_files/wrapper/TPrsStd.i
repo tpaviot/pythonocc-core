@@ -475,6 +475,11 @@ Returns true if this presentation attribute already has a width setting.
 ") HasOwnWidth;
 		bool HasOwnWidth();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TPrsStd_AISPresentation::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;
@@ -1063,6 +1068,11 @@ returns True if there is an AISViewer attribute in <acces> Data Framework.
 ") Has;
 		static bool Has(const TDF_Label & acces);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ID %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TPrsStd_AISViewer::ID ******/
 		/****** md5 signature: 90e2a7836a98c0274891df8231c5ae76 ******/
 		%feature("compactdefaultargs") ID;

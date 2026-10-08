@@ -337,6 +337,11 @@ Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass_FClass2dOfFClassifier::Intersector ******/
 		/****** md5 signature: c86a3ec7832b4ef30f6476784410c038 ******/
 		%feature("compactdefaultargs") Intersector;
@@ -456,6 +461,11 @@ Creates an algorithm to classify the Point P with Tolerance <T> on the face desc
 ") BRepClass_FClassifier;
 		 BRepClass_FClassifier(BRepClass_FaceExplorer & F, const gp_Pnt2d & P, const double Tol);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Edge %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass_FClassifier::Edge ******/
 		/****** md5 signature: bd52887a3e64f99d6944617c67174745 ******/
 		%feature("compactdefaultargs") Edge;
@@ -915,6 +925,11 @@ Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const BRepClass_Edge & E, const TopAbs_Orientation Or);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepClass_FacePassiveClassifier::Intersector ******/
 		/****** md5 signature: c86a3ec7832b4ef30f6476784410c038 ******/
 		%feature("compactdefaultargs") Intersector;

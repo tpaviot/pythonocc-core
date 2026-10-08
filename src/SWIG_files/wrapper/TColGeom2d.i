@@ -155,7 +155,13 @@ class TColGeom2d_HArray1OfBSplineCurve : public NCollection_Array1<opencascade::
     TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>>::value_type& theValue);
     TColGeom2d_HArray1OfBSplineCurve(const NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom2d_BSplineCurve>>& ChangeArray1();
 };
 %make_alias(TColGeom2d_HArray1OfBSplineCurve)
@@ -166,7 +172,13 @@ class TColGeom2d_HArray1OfBezierCurve : public NCollection_Array1<opencascade::h
     TColGeom2d_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom2d_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>>::value_type& theValue);
     TColGeom2d_HArray1OfBezierCurve(const NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom2d_BezierCurve>>& ChangeArray1();
 };
 %make_alias(TColGeom2d_HArray1OfBezierCurve)
@@ -177,7 +189,13 @@ class TColGeom2d_HArray1OfCurve : public NCollection_Array1<opencascade::handle<
     TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColGeom2d_HArray1OfCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Geom2d_Curve>>::value_type& theValue);
     TColGeom2d_HArray1OfCurve(const NCollection_Array1<opencascade::handle<Geom2d_Curve>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Geom2d_Curve>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Geom2d_Curve>>& ChangeArray1();
 };
 %make_alias(TColGeom2d_HArray1OfCurve)
@@ -188,9 +206,15 @@ class TColGeom2d_HSequenceOfBoundedCurve : public NCollection_Sequence<opencasca
   public:
     TColGeom2d_HSequenceOfBoundedCurve();
     TColGeom2d_HSequenceOfBoundedCurve(const NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Geom2d_BoundedCurve>>& ChangeSequence();
 };
 %make_alias(TColGeom2d_HSequenceOfBoundedCurve)
@@ -200,9 +224,15 @@ class TColGeom2d_HSequenceOfCurve : public NCollection_Sequence<opencascade::han
   public:
     TColGeom2d_HSequenceOfCurve();
     TColGeom2d_HSequenceOfCurve(const NCollection_Sequence<opencascade::handle<Geom2d_Curve>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Geom2d_Curve>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Geom2d_Curve>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Geom2d_Curve>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Geom2d_Curve>>& ChangeSequence();
 };
 %make_alias(TColGeom2d_HSequenceOfCurve)

@@ -4670,9 +4670,15 @@ class ProjLib_HSequenceOfHSequenceOfPnt : public NCollection_Sequence<opencascad
   public:
     ProjLib_HSequenceOfHSequenceOfPnt();
     ProjLib_HSequenceOfHSequenceOfPnt(const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<TColgp_HSequenceOfPnt>>& ChangeSequence();
 };
 %make_alias(ProjLib_HSequenceOfHSequenceOfPnt)

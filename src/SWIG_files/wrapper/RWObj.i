@@ -210,6 +210,11 @@ Input parameter: theFile path to output OBJ file.
 ") RWObj_CafWriter;
 		 RWObj_CafWriter(TCollection_AsciiString theFile);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_CafWriter::ChangeCoordinateSystemConverter ******/
 		/****** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ******/
 		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
@@ -223,6 +228,11 @@ Return transformation from OCCT to OBJ coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_CafWriter::CoordinateSystemConverter ******/
 		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
@@ -236,6 +246,11 @@ Return transformation from OCCT to OBJ coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultStyle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_CafWriter::DefaultStyle ******/
 		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;
@@ -512,6 +527,11 @@ Main constructor.
 ") RWObj_ObjWriterContext;
 		 RWObj_ObjWriterContext(TCollection_AsciiString theName);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ActiveMaterial %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_ObjWriterContext::ActiveMaterial ******/
 		/****** md5 signature: 5863ab1f6ab96ae1abb4503ebc57e2c2 ******/
 		%feature("compactdefaultargs") ActiveMaterial;
@@ -795,6 +815,11 @@ class RWObj_Reader : public Standard_Transient {
 	public:
 		class ObjVec3iHasher {};
 		class VectorOfVertices {};
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ExternalFiles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_Reader::ExternalFiles ******/
 		/****** md5 signature: 1100efdc16f5df4da63f3649f3bae2f1 ******/
 		%feature("compactdefaultargs") ExternalFiles;
@@ -808,6 +833,11 @@ Return the list of external file references.
 ") ExternalFiles;
 		const Interface_IndexedMapOfAsciiString & ExternalFiles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FileComments %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_Reader::FileComments ******/
 		/****** md5 signature: 5907111e18d42fb1ae04fda50f8a0338 ******/
 		%feature("compactdefaultargs") FileComments;
@@ -1014,6 +1044,11 @@ Setup transformation from one coordinate system to another. OBJ file might be ex
 ") SetTransformation;
 		void SetTransformation(const RWMesh_CoordinateSystemConverter & theCSConverter);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Transformation %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWObj_Reader::Transformation ******/
 		/****** md5 signature: 71feef5f1946dae77a000bd50a820aec ******/
 		%feature("compactdefaultargs") Transformation;

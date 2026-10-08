@@ -198,6 +198,11 @@ Creates an AttrList from another one, definitions are shared (calls SameAttribut
 ") MoniTool_AttrList;
 		 MoniTool_AttrList(const MoniTool_AttrList & other);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AttrList %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MoniTool_AttrList::AttrList ******/
 		/****** md5 signature: 7e1fb43f6aa6b3324760286668f16a94 ******/
 		%feature("compactdefaultargs") AttrList;
@@ -999,6 +1004,11 @@ Returns a Msg from a CaseData: it is build from DefMsg, which gives the message 
 ") Msg;
 		Message_Msg Msg();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Name %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MoniTool_CaseData::Name ******/
 		/****** md5 signature: c01515d64eb8c383d620d861376d0837 ******/
 		%feature("compactdefaultargs") Name;
@@ -1419,6 +1429,11 @@ Returns Type Name (string) Allows to name type of non-handled objects.
 %nodefaultctor MoniTool_Element;
 class MoniTool_Element : public Standard_Transient {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeAttr %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MoniTool_Element::ChangeAttr ******/
 		/****** md5 signature: 37f068e8d5573c47945d4a10825eef1d ******/
 		%feature("compactdefaultargs") ChangeAttr;
@@ -1463,6 +1478,11 @@ Returns the HashCode which has been stored by SetHashCode (remark that HashCode 
 ") GetHashCode;
 		size_t GetHashCode();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ListAttr %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MoniTool_Element::ListAttr ******/
 		/****** md5 signature: 89db2371bd1b9507aadc1fc2ccd6a47b ******/
 		%feature("compactdefaultargs") ListAttr;
@@ -3334,9 +3354,15 @@ class MoniTool_HSequenceOfElement : public NCollection_Sequence<opencascade::han
   public:
     MoniTool_HSequenceOfElement();
     MoniTool_HSequenceOfElement(const NCollection_Sequence<opencascade::handle<MoniTool_Element>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<MoniTool_Element>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<MoniTool_Element>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<MoniTool_Element>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<MoniTool_Element>>& ChangeSequence();
 };
 %make_alias(MoniTool_HSequenceOfElement)

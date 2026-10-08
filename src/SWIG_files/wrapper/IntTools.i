@@ -736,6 +736,11 @@ Launches the algorithm.
 ") Perform;
 		void Perform();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Result %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_BeanFaceIntersector::Result ******/
 		/****** md5 signature: ec7c049695c9dc7d8137cd30824b1627 ******/
 		%feature("compactdefaultargs") Result;
@@ -920,6 +925,11 @@ Appends the range of second edge.
 ") AppendRange2;
 		void AppendRange2(const double tf, const double tl);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_CommonPrt::Assign ******/
 		/****** md5 signature: d342dcb5dbafbbae0c09bb3b1dd5f817 ******/
 		%feature("compactdefaultargs") Assign;
@@ -957,6 +967,11 @@ Selector.
 ") BoundingPoints;
 		void BoundingPoints(gp_Pnt & aP1, gp_Pnt & aP2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeRanges2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_CommonPrt::ChangeRanges2 ******/
 		/****** md5 signature: c6b989f58fe0fd326c5eb87f2c89ee97 ******/
 		%feature("compactdefaultargs") ChangeRanges2;
@@ -1014,6 +1029,11 @@ Returns the second edge.
 ") Edge2;
 		const TopoDS_Edge Edge2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Range1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_CommonPrt::Range1 ******/
 		/****** md5 signature: 661e98a7d85147b7d3a4f3bd5a54c295 ******/
 		%feature("compactdefaultargs") Range1;
@@ -1045,6 +1065,11 @@ Returns the range of first edge.
 ") Range1;
 		void Range1(Standard_Real &OutValue, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Ranges2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_CommonPrt::Ranges2 ******/
 		/****** md5 signature: 512e59c4964c98da2a6e14763c6e192e ******/
 		%feature("compactdefaultargs") Ranges2;
@@ -1306,6 +1331,11 @@ No available documentation.
 ") IntTools_Context;
 		 IntTools_Context(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BndBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::BndBox ******/
 		/****** md5 signature: b665f86cc78f1726c03e804fc38d0b73 ******/
 		%feature("compactdefaultargs") BndBox;
@@ -1388,6 +1418,11 @@ Computes UV parameters of the vertex aV on face aF and correct tolerance value f
 ") ComputeVF;
 		int ComputeVF(const TopoDS_Vertex & theVertex, const TopoDS_Face & theFace, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const double theFuzz = Precision::Confusion());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FClass2d %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::FClass2d ******/
 		/****** md5 signature: b1c2f6895ff38359f51ae392b469a3e5 ******/
 		%feature("compactdefaultargs") FClass2d;
@@ -1406,6 +1441,11 @@ Returns a reference to point classifier for given face.
 ") FClass2d;
 		IntTools_FClass2d & FClass2d(const TopoDS_Face & aF);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Hatcher %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::Hatcher ******/
 		/****** md5 signature: eafd4ba666fa66dd0acd6b30451e32b7 ******/
 		%feature("compactdefaultargs") Hatcher;
@@ -1627,6 +1667,11 @@ Computes parameter of the vertex aV on the curve aIC. Returns true if the distan
 ") IsVertexOnLine;
 		bool IsVertexOnLine(const TopoDS_Vertex & aV, const double aTolV, const IntTools_Curve & aIC, const double aTolC, Standard_Real &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend OBB %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::OBB ******/
 		/****** md5 signature: b004abd64629777acd01f52a1f255113 ******/
 		%feature("compactdefaultargs") OBB;
@@ -1646,6 +1691,11 @@ Builds and stores an Oriented Bounding Box for the shape. Returns a reference to
 ") OBB;
 		Bnd_OBB & OBB(const TopoDS_Shape & theShape, const double theFuzzyValue = Precision::Confusion());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjPC %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::ProjPC ******/
 		/****** md5 signature: 80777d0414fefd358cdb191eb228dd85 ******/
 		%feature("compactdefaultargs") ProjPC;
@@ -1664,6 +1714,11 @@ Returns a reference to point projector for given edge.
 ") ProjPC;
 		GeomAPI_ProjectPointOnCurve & ProjPC(const TopoDS_Edge & aE);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjPS %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::ProjPS ******/
 		/****** md5 signature: 438fda98b0efafe0ae8ce6560c616a59 ******/
 		%feature("compactdefaultargs") ProjPS;
@@ -1682,6 +1737,11 @@ Returns a reference to point projector for given face.
 ") ProjPS;
 		GeomAPI_ProjectPointOnSurf & ProjPS(const TopoDS_Face & aF);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ProjPT %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::ProjPT ******/
 		/****** md5 signature: aba2bd758e4199242c7964213c263db8 ******/
 		%feature("compactdefaultargs") ProjPT;
@@ -1737,6 +1797,11 @@ Sets tolerance to be used for projection of point on surface. Clears map of alre
 ") SetPOnSProjectionTolerance;
 		void SetPOnSProjectionTolerance(const double theValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SolidClassifier %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::SolidClassifier ******/
 		/****** md5 signature: 0cbf16c1445d0ca00ad0f27f6ae63d0a ******/
 		%feature("compactdefaultargs") SolidClassifier;
@@ -1774,6 +1839,11 @@ Returns the state of the point aP2D relative to face aF.
 ") StatePointFace;
 		TopAbs_State StatePointFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfaceAdaptor %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::SurfaceAdaptor ******/
 		/****** md5 signature: 20b00b48b9d70640e64ccf30711ff36f ******/
 		%feature("compactdefaultargs") SurfaceAdaptor;
@@ -1792,6 +1862,11 @@ Returns a reference to surface adaptor for given face.
 ") SurfaceAdaptor;
 		BRepAdaptor_Surface & SurfaceAdaptor(const TopoDS_Face & theFace);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend SurfaceData %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_Context::SurfaceData ******/
 		/****** md5 signature: 7cc75d022ff217235e007983741d5277 ******/
 		%feature("compactdefaultargs") SurfaceData;
@@ -2342,6 +2417,11 @@ Constructor.
 ") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge(const TopoDS_Edge & theEdge1, const double aT11, const double aT12, const TopoDS_Edge & theEdge2, const double aT21, const double aT22);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommonParts %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_EdgeEdge::CommonParts ******/
 		/****** md5 signature: 3ef915957da076d92ffa319b13c69aa9 ******/
 		%feature("compactdefaultargs") CommonParts;
@@ -2620,6 +2700,11 @@ Empty Constructor.
 ") IntTools_EdgeFace;
 		 IntTools_EdgeFace();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CommonParts %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_EdgeFace::CommonParts ******/
 		/****** md5 signature: c1f414d4c0b6bc8b03325b981029ec08 ******/
 		%feature("compactdefaultargs") CommonParts;
@@ -2750,6 +2835,11 @@ Launches the process.
 ") Perform;
 		void Perform();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Range %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_EdgeFace::Range ******/
 		/****** md5 signature: 1c00b6a66baae86f89ee003b9c965318 ******/
 		%feature("compactdefaultargs") Range;
@@ -3145,6 +3235,11 @@ Intersects underliing surfaces of F1 and F2 Use sum of tolerance of F1 and F2 as
 ") Perform;
 		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2, const bool theToRunParallel = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Points %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_FaceFace::Points ******/
 		/****** md5 signature: f512c226876de648583cc2c964c4f205 ******/
 		%feature("compactdefaultargs") Points;
@@ -3386,6 +3481,11 @@ Returns index of range which contains theValue If theValue do not belong any ran
 ") GetIndex;
 		int GetIndex(const double theValue, const bool UseLower);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetIndices %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_MarkedRangeSet::GetIndices ******/
 		/****** md5 signature: b445f876a0c4486fa7238915cdd5789f ******/
 		%feature("compactdefaultargs") GetIndices;
@@ -3632,6 +3732,11 @@ Selector.
 ") IsValid;
 		bool IsValid();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend P1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_PntOn2Faces::P1 ******/
 		/****** md5 signature: f057dd4658f8319bab9d06497b601c43 ******/
 		%feature("compactdefaultargs") P1;
@@ -3645,6 +3750,11 @@ Selector.
 ") P1;
 		const IntTools_PntOnFace & P1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend P2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_PntOn2Faces::P2 ******/
 		/****** md5 signature: d03b398a4a4515fff13f3bbb63105f04 ******/
 		%feature("compactdefaultargs") P2;
@@ -4302,6 +4412,11 @@ No available documentation.
 ") IntTools_ShrunkRange;
 		 IntTools_ShrunkRange();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BndBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_ShrunkRange::BndBox ******/
 		/****** md5 signature: 9dc09300173f027acf300663c3825bb1 ******/
 		%feature("compactdefaultargs") BndBox;
@@ -4573,6 +4688,11 @@ No available documentation.
 ") AddOutRange;
 		void AddOutRange(const IntTools_SurfaceRangeSample & theRange);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_SurfaceRangeLocalizeData::Assign ******/
 		/****** md5 signature: 575be6410612719126135385b1cd425e ******/
 		%feature("compactdefaultargs") Assign;
@@ -5117,6 +5237,11 @@ No available documentation.
 ") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample(const IntTools_SurfaceRangeSample & Other);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Assign %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntTools_SurfaceRangeSample::Assign ******/
 		/****** md5 signature: 4e0bcda96fd80097916b7a4e25b36492 ******/
 		%feature("compactdefaultargs") Assign;

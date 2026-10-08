@@ -1715,6 +1715,11 @@ Fills the map with the subshapes of type T1 as keys and the list of ancestors of
 ") Fill;
 		void Fill(const TopoDS_Shape & S, const TopAbs_ShapeEnum T1, const TopAbs_ShapeEnum T2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindFromIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_Map::FindFromIndex ******/
 		/****** md5 signature: 03f0408e7296dd7493e34944d2e1a5e5 ******/
 		%feature("compactdefaultargs") FindFromIndex;
@@ -1733,6 +1738,11 @@ No available documentation.
 ") FindFromIndex;
 		const TopTools_ListOfShape & FindFromIndex(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindFromKey %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_Map::FindFromKey ******/
 		/****** md5 signature: 4ed5dc4ed7b3f32ad3e73446a96f35ad ******/
 		%feature("compactdefaultargs") FindFromKey;
@@ -2035,6 +2045,11 @@ No available documentation.
 ") AppendOffsetElSpine;
 		virtual void AppendOffsetElSpine(const opencascade::handle<ChFiDS_ElSpine> & Els);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeElSpines %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_Spine::ChangeElSpines ******/
 		/****** md5 signature: 0a5e0f3c49192fd0462ade762556c25e ******/
 		%feature("compactdefaultargs") ChangeElSpines;
@@ -2048,6 +2063,11 @@ No available documentation.
 ") ChangeElSpines;
 		NCollection_List<opencascade::handle<ChFiDS_ElSpine>> & ChangeElSpines();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeOffsetElSpines %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_Spine::ChangeOffsetElSpines ******/
 		/****** md5 signature: 3849b96b1fb6924aea5ad26c9a2d95e4 ******/
 		%feature("compactdefaultargs") ChangeOffsetElSpines;
@@ -4002,6 +4022,11 @@ No available documentation.
 ") Extent;
 		int Extent();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindFromIndex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_StripeMap::FindFromIndex ******/
 		/****** md5 signature: 6b0310d29845174cf9dc06bb275ef011 ******/
 		%feature("compactdefaultargs") FindFromIndex;
@@ -4020,6 +4045,11 @@ No available documentation.
 ") FindFromIndex;
 		const NCollection_List<opencascade::handle<ChFiDS_Stripe>> & FindFromIndex(const int I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FindFromKey %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_StripeMap::FindFromKey ******/
 		/****** md5 signature: 7f6b9008eede8d7e67f2a1172629fc5d ******/
 		%feature("compactdefaultargs") FindFromKey;
@@ -4119,6 +4149,11 @@ No available documentation.
 ") ChangeIndexOfS2;
 		void ChangeIndexOfS2(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterference %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeInterference ******/
 		/****** md5 signature: 36d14e4e084257d7b4db489595508239 ******/
 		%feature("compactdefaultargs") ChangeInterference;
@@ -4137,6 +4172,11 @@ No available documentation.
 ") ChangeInterference;
 		ChFiDS_FaceInterference & ChangeInterference(const int OnS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterferenceOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeInterferenceOnS1 ******/
 		/****** md5 signature: f0413a5ac7c0de69a5d4a3d529a10583 ******/
 		%feature("compactdefaultargs") ChangeInterferenceOnS1;
@@ -4150,6 +4190,11 @@ No available documentation.
 ") ChangeInterferenceOnS1;
 		ChFiDS_FaceInterference & ChangeInterferenceOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeInterferenceOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeInterferenceOnS2 ******/
 		/****** md5 signature: 81ec062a7aad7e9b8aa3621e75ff7ee2 ******/
 		%feature("compactdefaultargs") ChangeInterferenceOnS2;
@@ -4194,6 +4239,11 @@ No available documentation.
 ") ChangeSurf;
 		void ChangeSurf(const int Index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeVertex ******/
 		/****** md5 signature: e3c554114ad1c885d9f2a9b2b59a91c3 ******/
 		%feature("compactdefaultargs") ChangeVertex;
@@ -4213,6 +4263,11 @@ returns one of the four vertices whether First is true or wrong and OnS equals 1
 ") ChangeVertex;
 		ChFiDS_CommonPoint & ChangeVertex(const bool First, const int OnS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertexFirstOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeVertexFirstOnS1 ******/
 		/****** md5 signature: 3108659a3a5bf4019308c76481ef6d62 ******/
 		%feature("compactdefaultargs") ChangeVertexFirstOnS1;
@@ -4226,6 +4281,11 @@ No available documentation.
 ") ChangeVertexFirstOnS1;
 		ChFiDS_CommonPoint & ChangeVertexFirstOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertexFirstOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeVertexFirstOnS2 ******/
 		/****** md5 signature: 06d669b9caf772c897d0582d11b7c013 ******/
 		%feature("compactdefaultargs") ChangeVertexFirstOnS2;
@@ -4239,6 +4299,11 @@ No available documentation.
 ") ChangeVertexFirstOnS2;
 		ChFiDS_CommonPoint & ChangeVertexFirstOnS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertexLastOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeVertexLastOnS1 ******/
 		/****** md5 signature: eeeb7d2961ba36134fb72bc84375907f ******/
 		%feature("compactdefaultargs") ChangeVertexLastOnS1;
@@ -4252,6 +4317,11 @@ No available documentation.
 ") ChangeVertexLastOnS1;
 		ChFiDS_CommonPoint & ChangeVertexLastOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeVertexLastOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::ChangeVertexLastOnS2 ******/
 		/****** md5 signature: c449ad55b0517485ef3ee2434c55704f ******/
 		%feature("compactdefaultargs") ChangeVertexLastOnS2;
@@ -4473,6 +4543,11 @@ No available documentation.
 ") IndexOfS2;
 		int IndexOfS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Interference %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::Interference ******/
 		/****** md5 signature: 53c241186e4dfbe0dfc65a481319b8aa ******/
 		%feature("compactdefaultargs") Interference;
@@ -4491,6 +4566,11 @@ No available documentation.
 ") Interference;
 		const ChFiDS_FaceInterference & Interference(const int OnS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterferenceOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::InterferenceOnS1 ******/
 		/****** md5 signature: 84de26124a5e0740b80f38705ca471b3 ******/
 		%feature("compactdefaultargs") InterferenceOnS1;
@@ -4504,6 +4584,11 @@ No available documentation.
 ") InterferenceOnS1;
 		const ChFiDS_FaceInterference & InterferenceOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InterferenceOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::InterferenceOnS2 ******/
 		/****** md5 signature: f749302ca0babe17f787eff908650488 ******/
 		%feature("compactdefaultargs") InterferenceOnS2;
@@ -4812,6 +4897,11 @@ No available documentation.
 ") TwistOnS2;
 		void TwistOnS2(const bool T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vertex %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::Vertex ******/
 		/****** md5 signature: cec1750e21135bf25c0ce71693137297 ******/
 		%feature("compactdefaultargs") Vertex;
@@ -4831,6 +4921,11 @@ returns one of the four vertices whether First is true or wrong and OnS equals 1
 ") Vertex;
 		const ChFiDS_CommonPoint & Vertex(const bool First, const int OnS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VertexFirstOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::VertexFirstOnS1 ******/
 		/****** md5 signature: fbdcb24d9af55411ab7405474d1a35b9 ******/
 		%feature("compactdefaultargs") VertexFirstOnS1;
@@ -4844,6 +4939,11 @@ No available documentation.
 ") VertexFirstOnS1;
 		const ChFiDS_CommonPoint & VertexFirstOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VertexFirstOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::VertexFirstOnS2 ******/
 		/****** md5 signature: 7c85c07345dd8348e664b3ab7bf9f189 ******/
 		%feature("compactdefaultargs") VertexFirstOnS2;
@@ -4857,6 +4957,11 @@ No available documentation.
 ") VertexFirstOnS2;
 		const ChFiDS_CommonPoint & VertexFirstOnS2();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VertexLastOnS1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::VertexLastOnS1 ******/
 		/****** md5 signature: 6427caa61f0bf9234fd05e296984ac27 ******/
 		%feature("compactdefaultargs") VertexLastOnS1;
@@ -4870,6 +4975,11 @@ No available documentation.
 ") VertexLastOnS1;
 		const ChFiDS_CommonPoint & VertexLastOnS1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend VertexLastOnS2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** ChFiDS_SurfData::VertexLastOnS2 ******/
 		/****** md5 signature: c890925b005a346f489bb09d9ca4839f ******/
 		%feature("compactdefaultargs") VertexLastOnS2;
@@ -5430,7 +5540,13 @@ class ChFiDS_SecHArray1 : public NCollection_Array1<ChFiDS_CircSection>, public 
     ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper);
     ChFiDS_SecHArray1(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<ChFiDS_CircSection>::value_type& theValue);
     ChFiDS_SecHArray1(const NCollection_Array1<ChFiDS_CircSection>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<ChFiDS_CircSection>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<ChFiDS_CircSection>& ChangeArray1();
 };
 %make_alias(ChFiDS_SecHArray1)
@@ -5441,9 +5557,15 @@ class ChFiDS_HData : public NCollection_Sequence<opencascade::handle<ChFiDS_Surf
   public:
     ChFiDS_HData();
     ChFiDS_HData(const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<ChFiDS_SurfData>>& ChangeSequence();
 };
 %make_alias(ChFiDS_HData)

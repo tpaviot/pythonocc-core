@@ -236,6 +236,11 @@ removes the document of the current session directory and closes the document;.
 ") Close;
 		void Close(const opencascade::handle<CDM_Document> & aDocument);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultFolder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** CDF_Application::DefaultFolder ******/
 		/****** md5 signature: 79f3e3ec3d0aa5a07828380abcca7dbe ******/
 		%feature("compactdefaultargs") DefaultFolder;
@@ -986,6 +991,11 @@ creates a store list from the document of the current selection.
 ") CDF_Store;
 		 CDF_Store(const opencascade::handle<CDM_Document> & aDocument);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AssociatedStatusText %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** CDF_Store::AssociatedStatusText ******/
 		/****** md5 signature: eef46b9b25f3fd92ef166290dad3691b ******/
 		%feature("compactdefaultargs") AssociatedStatusText;
@@ -1142,6 +1152,11 @@ returns the name under which the current document will be stored.
 ") Name;
 		opencascade::handle<TCollection_HExtendedString> Name();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Path %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** CDF_Store::Path ******/
 		/****** md5 signature: ad181787794f1961316622cedcc4215c ******/
 		%feature("compactdefaultargs") Path;

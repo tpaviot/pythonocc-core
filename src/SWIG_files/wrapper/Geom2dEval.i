@@ -449,6 +449,11 @@ Returns the number of poles.
 ") NbPoles;
 		int NbPoles();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dEval_AHTBezierCurve::Poles ******/
 		/****** md5 signature: 8afae95fa5301d98d2ab229e2b82ae7d ******/
 		%feature("compactdefaultargs") Poles;
@@ -524,6 +529,11 @@ Transformation is not supported for this eval geometry. @throw Standard_NotImple
 ") Transform;
 		void Transform(const gp_Trsf2d & T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dEval_AHTBezierCurve::Weights ******/
 		/****** md5 signature: 75fed9e302ad46e4cac4d74daae13ea5 ******/
 		%feature("compactdefaultargs") Weights;
@@ -2213,6 +2223,11 @@ Returns the trigonometric order n (NbPoles = 2*n + 1).
 ") Order;
 		int Order();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Poles %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dEval_TBezierCurve::Poles ******/
 		/****** md5 signature: 8afae95fa5301d98d2ab229e2b82ae7d ******/
 		%feature("compactdefaultargs") Poles;
@@ -2288,6 +2303,11 @@ Transformation is not supported for this eval geometry. @throw Standard_NotImple
 ") Transform;
 		void Transform(const gp_Trsf2d & T);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Weights %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dEval_TBezierCurve::Weights ******/
 		/****** md5 signature: 75fed9e302ad46e4cac4d74daae13ea5 ******/
 		%feature("compactdefaultargs") Weights;

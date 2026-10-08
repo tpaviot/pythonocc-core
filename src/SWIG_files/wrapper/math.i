@@ -300,6 +300,11 @@ Prints on the stream o information on the current state of the object. Is used t
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gradient %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_BFGS::Gradient ******/
 		/****** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ******/
 		%feature("compactdefaultargs") Gradient;
@@ -362,6 +367,11 @@ This method is called at the end of each iteration to check if the solution is f
 ") IsSolutionReached;
 		virtual bool IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_BFGS::Location ******/
 		/****** md5 signature: 5a88ac2c95c5682bdeb613bd0a6c6d51 ******/
 		%feature("compactdefaultargs") Location;
@@ -1385,6 +1395,11 @@ Prints on the stream o information on the current state of the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Inverse %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Crout::Inverse ******/
 		/****** md5 signature: 3ac969006d2d462bc1e6ea2d7d8929e6 ******/
 		%feature("compactdefaultargs") Inverse;
@@ -2080,6 +2095,11 @@ Prints on the stream o information on the current state of the object. Is used t
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gradient %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_FRPR::Gradient ******/
 		/****** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ******/
 		%feature("compactdefaultargs") Gradient;
@@ -2142,6 +2162,11 @@ The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) 
 ") IsSolutionReached;
 		virtual bool IsSolutionReached(math_MultipleVarFunctionWithGradient & theFunction);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_FRPR::Location ******/
 		/****** md5 signature: 5a88ac2c95c5682bdeb613bd0a6c6d51 ******/
 		%feature("compactdefaultargs") Location;
@@ -2910,6 +2935,11 @@ is used in a sub-class to initialize correctly all the fields of this class. The
 ") math_FunctionSetRoot;
 		 math_FunctionSetRoot(math_FunctionSetWithDerivatives & F, const int NbIterations = 100);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Derivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_FunctionSetRoot::Derivative ******/
 		/****** md5 signature: fcd9ef2e33cbc01b115f3add2846c468 ******/
 		%feature("compactdefaultargs") Derivative;
@@ -2958,6 +2988,11 @@ Prints on the stream o information on the current state of the object. Is used t
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionSetErrors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_FunctionSetRoot::FunctionSetErrors ******/
 		/****** md5 signature: 5c3b5fe11df662477290ea4121b545af ******/
 		%feature("compactdefaultargs") FunctionSetErrors;
@@ -3088,6 +3123,11 @@ Improves the root of function from the initial guess point. The infinum and supr
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const math_Vector & theInfBound, const math_Vector & theSupBound, const bool theStopOnDivergent = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Root %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_FunctionSetRoot::Root ******/
 		/****** md5 signature: 467f474c854f954a53bf30f3d82b793e ******/
 		%feature("compactdefaultargs") Root;
@@ -3507,6 +3547,11 @@ returns True if all has been correctly done.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_GaussSetIntegration::Value ******/
 		/****** md5 signature: da451945ce62c2e97eedc01217c3028f ******/
 		%feature("compactdefaultargs") Value;
@@ -4014,6 +4059,11 @@ Given an input matrix A with n>= m, given an input vector B this constructor per
 ") math_Householder;
 		 math_Householder(const math_Matrix & A, const math_Vector & B, const double EPS = 1.0e-20);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AllValues %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Householder::AllValues ******/
 		/****** md5 signature: 85ad23fce3cb1532a0b9d97b8d567ff9 ******/
 		%feature("compactdefaultargs") AllValues;
@@ -4156,6 +4206,11 @@ returns the eigenvalue number Num. Eigenvalues are in the range (1..n). Exceptio
 ") Value;
 		double Value(const int Num);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Values %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Jacobi::Values ******/
 		/****** md5 signature: 1f3e7a703e9049ee2a39cf978bc23008 ******/
 		%feature("compactdefaultargs") Values;
@@ -4188,6 +4243,11 @@ Returns the eigenvector V of number Num. Eigenvectors are in the range (1..n). E
 ") Vector;
 		void Vector(const int Num, math_Vector & V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Vectors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Jacobi::Vectors ******/
 		/****** md5 signature: bc7346809ab0765e767d728f947796ab ******/
 		%feature("compactdefaultargs") Vectors;
@@ -4704,6 +4764,11 @@ Initialize all the elements of a matrix to InitialValue.
 ") Init;
 		void Init(const double InitialValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Initialized %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Matrix::Initialized ******/
 		/****** md5 signature: 61b594241c6f91f9a44e2a038695bdfe ******/
 		%feature("compactdefaultargs") Initialized;
@@ -5739,6 +5804,11 @@ This constructor should be used in a sub-class to initialize correctly all the f
 ") math_NewtonFunctionSetRoot;
 		 math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives & theFunction, const double theFTolerance, const int theNbIterations = 100);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Derivative %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_NewtonFunctionSetRoot::Derivative ******/
 		/****** md5 signature: 3dcf53e070495d3f965a044124317010 ******/
 		%feature("compactdefaultargs") Derivative;
@@ -5787,6 +5857,11 @@ Prints information on the current state of the object. Is used to redefine the o
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FunctionSetErrors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_NewtonFunctionSetRoot::FunctionSetErrors ******/
 		/****** md5 signature: f60cf743c92edccf04b38617ec21af42 ******/
 		%feature("compactdefaultargs") FunctionSetErrors;
@@ -5902,6 +5977,11 @@ The Newton method is done to improve the root of the function from the initial g
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const math_Vector & theInfBound, const math_Vector & theSupBound);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Root %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_NewtonFunctionSetRoot::Root ******/
 		/****** md5 signature: 877a7a2963433958443904730046ad0c ******/
 		%feature("compactdefaultargs") Root;
@@ -6021,6 +6101,11 @@ Returns the Status of computation. The exception NotDone is raised if an error h
 ") GetStatus;
 		math_Status GetStatus();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Gradient %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_NewtonMinimum::Gradient ******/
 		/****** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ******/
 		%feature("compactdefaultargs") Gradient;
@@ -6078,6 +6163,11 @@ Tests if an error has occurred.
 ") IsDone;
 		bool IsDone();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_NewtonMinimum::Location ******/
 		/****** md5 signature: 5a88ac2c95c5682bdeb613bd0a6c6d51 ******/
 		%feature("compactdefaultargs") Location;
@@ -6294,6 +6384,11 @@ No available documentation.
 ") math_PSOParticlesPool;
 		 math_PSOParticlesPool(const int theParticlesCount, const int theDimensionCount);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetBestParticle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_PSOParticlesPool::GetBestParticle ******/
 		/****** md5 signature: c1ad171b33359090f394624dee5690f1 ******/
 		%feature("compactdefaultargs") GetBestParticle;
@@ -6307,6 +6402,11 @@ No available documentation.
 ") GetBestParticle;
 		PSO_Particle * GetBestParticle();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetParticle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_PSOParticlesPool::GetParticle ******/
 		/****** md5 signature: e4809651cf2ac0d587ba30321674769f ******/
 		%feature("compactdefaultargs") GetParticle;
@@ -6325,6 +6425,11 @@ No available documentation.
 ") GetParticle;
 		PSO_Particle * GetParticle(const int theIdx);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetWorstParticle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_PSOParticlesPool::GetWorstParticle ******/
 		/****** md5 signature: ab984308bec609f60880b6017559c01b ******/
 		%feature("compactdefaultargs") GetWorstParticle;
@@ -6421,6 +6526,11 @@ Solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + ab
 ") IsSolutionReached;
 		virtual bool IsSolutionReached(math_MultipleVarFunction & theFunction);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Powell::Location ******/
 		/****** md5 signature: 5a88ac2c95c5682bdeb613bd0a6c6d51 ******/
 		%feature("compactdefaultargs") Location;
@@ -6851,6 +6961,11 @@ Prints information on the current state of the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Error %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Uzawa::Error ******/
 		/****** md5 signature: b1e838c6dcbfa6a1bf16d1bc7e40df88 ******/
 		%feature("compactdefaultargs") Error;
@@ -6864,6 +6979,11 @@ Returns the difference between X solution and the StartingPoint. An exception is
 ") Error;
 		const math_Vector & Error();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InitialError %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Uzawa::InitialError ******/
 		/****** md5 signature: 19b0771443c6d4e606e07be01091d26b ******/
 		%feature("compactdefaultargs") InitialError;
@@ -6877,6 +6997,11 @@ Returns the initial error Cont*StartingPoint-Secont. An exception is raised if N
 ") InitialError;
 		const math_Vector & InitialError();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend InverseCont %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Uzawa::InverseCont ******/
 		/****** md5 signature: 5332e8442d4899802d6f96b564a47a7e ******/
 		%feature("compactdefaultargs") InverseCont;
@@ -6916,6 +7041,11 @@ returns the number of iterations really done. An exception is raised if NotDone.
 ") NbIterations;
 		int NbIterations();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** math_Uzawa::Value ******/
 		/****** md5 signature: da451945ce62c2e97eedc01217c3028f ******/
 		%feature("compactdefaultargs") Value;

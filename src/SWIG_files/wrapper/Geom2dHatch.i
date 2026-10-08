@@ -314,6 +314,11 @@ Creates an element.
 ") Geom2dHatch_Element;
 		 Geom2dHatch_Element(const Geom2dAdaptor_Curve & Curve, const TopAbs_Orientation Orientation = TopAbs_FORWARD);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Element::ChangeCurve ******/
 		/****** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ******/
 		%feature("compactdefaultargs") ChangeCurve;
@@ -435,6 +440,11 @@ No available documentation.
 ") Bind;
 		bool Bind(const int K, const Geom2dHatch_Element & I);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeFind %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Elements::ChangeFind ******/
 		/****** md5 signature: 1718b6616978140c1c891c631472dfc9 ******/
 		%feature("compactdefaultargs") ChangeFind;
@@ -502,6 +512,11 @@ No available documentation.
 ") CurrentEdge;
 		void CurrentEdge(Geom2dAdaptor_Curve & E, TopAbs_Orientation &OutValue);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Find %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Elements::Find ******/
 		/****** md5 signature: b5acdf661794f45ae8f091ecbab54f2e ******/
 		%feature("compactdefaultargs") Find;
@@ -787,6 +802,11 @@ Updates the classification process with the edge <E> from the boundary.
 ") Compare;
 		void Compare(const Geom2dAdaptor_Curve & E, const TopAbs_Orientation Or);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_FClass2dOfClassifier::Intersector ******/
 		/****** md5 signature: 3dca4c3d4666f9ccdcc1548d79506347 ******/
 		%feature("compactdefaultargs") Intersector;
@@ -951,6 +971,11 @@ Adds a hatching to the hatcher and returns its index.
 ") AddHatching;
 		int AddHatching(const Geom2dAdaptor_Curve & Curve);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeIntersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatcher::ChangeIntersector ******/
 		/****** md5 signature: 1ee41f0166a88d5c0b6b493b6da60d02 ******/
 		%feature("compactdefaultargs") ChangeIntersector;
@@ -1096,6 +1121,11 @@ Returns the 3d confusion tolerance, i.e. the value under which two points are co
 ") Confusion3d;
 		double Confusion3d();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Domain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatcher::Domain ******/
 		/****** md5 signature: 30583ab62e8444bfd1c6329a0732d03f ******/
 		%feature("compactdefaultargs") Domain;
@@ -1164,6 +1194,11 @@ Returns the curve associated to the IndH-th hatching.
 ") HatchingCurve;
 		Geom2dAdaptor_Curve HatchingCurve(const int IndH);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Intersector %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatcher::Intersector ******/
 		/****** md5 signature: d4ab1df6bb73c74fdc4de0978582e354 ******/
 		%feature("compactdefaultargs") Intersector;
@@ -1293,6 +1328,11 @@ Returns the number of intersection points of the IndH-th hatching.
 ") NbPoints;
 		int NbPoints(const int IndH);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatcher::Point ******/
 		/****** md5 signature: 2a3c4c3f4a8ca87561f2ca5b12ce110b ******/
 		%feature("compactdefaultargs") Point;
@@ -1537,6 +1577,11 @@ Adds an intersection point to the hatching.
 ") AddPoint;
 		void AddPoint(const HatchGen_PointOnHatching & Point, const double Confusion);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCurve %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatching::ChangeCurve ******/
 		/****** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ******/
 		%feature("compactdefaultargs") ChangeCurve;
@@ -1550,6 +1595,11 @@ Returns the curve associated to the hatching.
 ") ChangeCurve;
 		Geom2dAdaptor_Curve & ChangeCurve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangePoint %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatching::ChangePoint ******/
 		/****** md5 signature: d67d170655ffe23e026e09b6d7789e7a ******/
 		%feature("compactdefaultargs") ChangePoint;
@@ -1620,6 +1670,11 @@ Returns the curve associated to the hatching.
 ") Curve;
 		Geom2dAdaptor_Curve Curve();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Domain %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatching::Domain ******/
 		/****** md5 signature: 93a73134b91a61baaf8bd1d4f28b4d4e ******/
 		%feature("compactdefaultargs") Domain;
@@ -1695,6 +1750,11 @@ Returns the number of intersection points of the hatching.
 ") NbPoints;
 		int NbPoints();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Point %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Geom2dHatch_Hatching::Point ******/
 		/****** md5 signature: 6d7e6e43af74adeb9d1fb6a8e730a7d1 ******/
 		%feature("compactdefaultargs") Point;

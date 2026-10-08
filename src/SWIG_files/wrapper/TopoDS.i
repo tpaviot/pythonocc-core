@@ -1036,6 +1036,11 @@ Return: the located shape.
 ") Located;
 		TopoDS_Shape Located(const TopLoc_Location & theLoc, const bool theRaiseExc = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Location %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TopoDS_Shape::Location ******/
 		/****** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ******/
 		%feature("compactdefaultargs") Location;

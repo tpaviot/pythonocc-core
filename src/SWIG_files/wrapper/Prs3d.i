@@ -749,6 +749,11 @@ No available documentation.
 ") Prs3d_DimensionUnits;
 		 Prs3d_DimensionUnits(const Prs3d_DimensionUnits & theUnits);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAngleUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_DimensionUnits::GetAngleUnits ******/
 		/****** md5 signature: 066d6d8ffa1db4056e804ec281802558 ******/
 		%feature("compactdefaultargs") GetAngleUnits;
@@ -762,6 +767,11 @@ Return: angle units.
 ") GetAngleUnits;
 		const TCollection_AsciiString & GetAngleUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetLengthUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_DimensionUnits::GetLengthUnits ******/
 		/****** md5 signature: 6fb395b3afc4def0ac554d84a6be28f9 ******/
 		%feature("compactdefaultargs") GetLengthUnits;
@@ -903,6 +913,11 @@ Returns the deviation coefficient. Drawings of curves or patches are made with r
 ") DeviationCoefficient;
 		double DeviationCoefficient();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DimAngleDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_Drawer::DimAngleDisplayUnits ******/
 		/****** md5 signature: f9adb2def91c97371f22f83b1b241154 ******/
 		%feature("compactdefaultargs") DimAngleDisplayUnits;
@@ -916,6 +931,11 @@ Returns angle units in which dimension presentation is displayed.
 ") DimAngleDisplayUnits;
 		const TCollection_AsciiString & DimAngleDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DimAngleModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_Drawer::DimAngleModelUnits ******/
 		/****** md5 signature: 05c1180b2f776fd7d8ff7737daaa7956 ******/
 		%feature("compactdefaultargs") DimAngleModelUnits;
@@ -929,6 +949,11 @@ Returns angle model units for the dimension presentation.
 ") DimAngleModelUnits;
 		const TCollection_AsciiString & DimAngleModelUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DimLengthDisplayUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_Drawer::DimLengthDisplayUnits ******/
 		/****** md5 signature: 0c6e550f454a7c3462ea332ad4a3114d ******/
 		%feature("compactdefaultargs") DimLengthDisplayUnits;
@@ -942,6 +967,11 @@ Returns length units in which dimension presentation is displayed.
 ") DimLengthDisplayUnits;
 		const TCollection_AsciiString & DimLengthDisplayUnits();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DimLengthModelUnits %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_Drawer::DimLengthModelUnits ******/
 		/****** md5 signature: 8bc83424763676a3c91810d4679e2b18 ******/
 		%feature("compactdefaultargs") DimLengthModelUnits;
@@ -4897,6 +4927,11 @@ Gets vertical text alignment for text label.
 ") TextVerticalPosition;
 		Prs3d_DimensionTextVerticalPosition TextVerticalPosition();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ValueStringFormat %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_DimensionAspect::ValueStringFormat ******/
 		/****** md5 signature: e4551f0184a1e112744cdfd42e8ebf52 ******/
 		%feature("compactdefaultargs") ValueStringFormat;
@@ -5724,6 +5759,11 @@ Returns the polygons aspect properties.
 ") Aspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & Aspect();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Color %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_ShadingAspect::Color ******/
 		/****** md5 signature: 26e5db46bf56238619ef2f5db63c0374 ******/
 		%feature("compactdefaultargs") Color;
@@ -5763,6 +5803,11 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Material %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** Prs3d_ShadingAspect::Material ******/
 		/****** md5 signature: 5931f39cda36847ef31b8a02dd06c896 ******/
 		%feature("compactdefaultargs") Material;

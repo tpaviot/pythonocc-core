@@ -381,6 +381,11 @@ Return: True if the bounding box does not intersect with the current.
 ") Reject;
 		bool Reject(const Bnd_Box & theBox);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ResInd %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_BndBoxTreeSelector::ResInd ******/
 		/****** md5 signature: 2798e0540cc54537ec2a06cdea13b269 ******/
 		%feature("compactdefaultargs") ResInd;
@@ -514,6 +519,11 @@ No available documentation.
 ") Filter;
 		void Filter(const TopoDS_Shape & SF);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_Collect::Generated ******/
 		/****** md5 signature: 87cd0ad47838d627e7014b5b7da796f5 ******/
 		%feature("compactdefaultargs") Generated;
@@ -527,6 +537,11 @@ No available documentation.
 ") Generated;
 		const TopTools_DataMapOfShapeListOfShape & Generated();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modification %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_Collect::Modification ******/
 		/****** md5 signature: d4cc580187e1ad64b3a2dd513daf9b8b ******/
 		%feature("compactdefaultargs") Modification;
@@ -920,6 +935,11 @@ Gives each contiguous edge.
 ") ContigousEdge;
 		const TopoDS_Edge ContigousEdge(const int index);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ContigousEdgeCouple %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_Sewing::ContigousEdgeCouple ******/
 		/****** md5 signature: c0e1c71ff5e3c5d2b6dc04865f2b2ea9 ******/
 		%feature("compactdefaultargs") ContigousEdgeCouple;
@@ -1687,6 +1707,11 @@ Implementation of inspection method.
 ") Inspect;
 		NCollection_CellFilter_Action Inspect(const int theTarget);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ResInd %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_VertexInspector::ResInd ******/
 		/****** md5 signature: 2798e0540cc54537ec2a06cdea13b269 ******/
 		%feature("compactdefaultargs") ResInd;
@@ -1770,6 +1795,11 @@ This is called by Shape(). It does nothing but may be redefined.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Generated %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_MakeShape::Generated ******/
 		/****** md5 signature: 00a6a24538f2798a6c33c570c011366c ******/
 		%feature("compactdefaultargs") Generated;
@@ -1806,6 +1836,11 @@ Returns true if the shape S has been deleted.
 ") IsDeleted;
 		virtual bool IsDeleted(const TopoDS_Shape & S);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_MakeShape::Modified ******/
 		/****** md5 signature: 52a18dc50782d8cad76adc3689cd1b44 ******/
 		%feature("compactdefaultargs") Modified;
@@ -5153,6 +5188,11 @@ Returns the constructed wire; or the part of the wire under construction already
 %nodefaultctor BRepBuilderAPI_ModifyShape;
 class BRepBuilderAPI_ModifyShape : public BRepBuilderAPI_MakeShape {
 	public:
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_ModifyShape::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -5308,6 +5348,11 @@ Constructs a framework for applying the geometric transformation T to a shape, a
 ") BRepBuilderAPI_GTransform;
 		 BRepBuilderAPI_GTransform(const TopoDS_Shape & S, const gp_GTrsf & T, const bool Copy = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_GTransform::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -5409,6 +5454,11 @@ Builds a new shape by converting the geometry of the shape S into NURBS geometry
 ") BRepBuilderAPI_NurbsConvert;
 		 BRepBuilderAPI_NurbsConvert(const TopoDS_Shape & S, const bool Copy = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_NurbsConvert::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;
@@ -5517,6 +5567,11 @@ Creates a transformation from the gp_Trsf <theTrsf>, and applies it to the shape
 ") BRepBuilderAPI_Transform;
 		 BRepBuilderAPI_Transform(const TopoDS_Shape & theShape, const gp_Trsf & theTrsf, const bool theCopyGeom = false, const bool theCopyMesh = false);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Modified %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepBuilderAPI_Transform::Modified ******/
 		/****** md5 signature: 097d00d6fefea57adcabdba041cb44ee ******/
 		%feature("compactdefaultargs") Modified;

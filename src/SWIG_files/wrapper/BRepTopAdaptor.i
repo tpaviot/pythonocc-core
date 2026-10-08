@@ -124,6 +124,11 @@ No available documentation.
 ") BRepTopAdaptor_FClass2d;
 		 BRepTopAdaptor_FClass2d(const TopoDS_Face & F, const double Tol);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Copy %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepTopAdaptor_FClass2d::Copy ******/
 		/****** md5 signature: efc7d008bfae308e21078aca0811254c ******/
 		%feature("compactdefaultargs") Copy;

@@ -413,6 +413,11 @@ No available documentation.
 ") XmlLDrivers_NamespaceDef;
 		 XmlLDrivers_NamespaceDef(TCollection_AsciiString thePrefix, TCollection_AsciiString theURI);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Prefix %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlLDrivers_NamespaceDef::Prefix ******/
 		/****** md5 signature: 3891509b09d4df1a141a4efe34da89ee ******/
 		%feature("compactdefaultargs") Prefix;
@@ -426,6 +431,11 @@ No available documentation.
 ") Prefix;
 		const TCollection_AsciiString & Prefix();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend URI %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** XmlLDrivers_NamespaceDef::URI ******/
 		/****** md5 signature: cc974bf2bbf82049cc50012b0e0c123a ******/
 		%feature("compactdefaultargs") URI;

@@ -1368,6 +1368,11 @@ No available documentation.
 ") IntPolyh_SectionLine;
 		 IntPolyh_SectionLine(const IntPolyh_SectionLine & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeValue %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPolyh_SectionLine::ChangeValue ******/
 		/****** md5 signature: 66aab7400b4dd1bb3a76ac95ff3fe87d ******/
 		%feature("compactdefaultargs") ChangeValue;
@@ -1386,6 +1391,11 @@ No available documentation.
 ") ChangeValue;
 		IntPolyh_StartPoint & ChangeValue(const int nn);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Copy %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPolyh_SectionLine::Copy ******/
 		/****** md5 signature: b67c5399d470327d03c3fb0ba898503e ******/
 		%feature("compactdefaultargs") Copy;
@@ -1505,6 +1515,11 @@ No available documentation.
 ") Prepend;
 		void Prepend(const IntPolyh_StartPoint & SP);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Value %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPolyh_SectionLine::Value ******/
 		/****** md5 signature: b3f0888f1e28d2cb3cddec70842930fe ******/
 		%feature("compactdefaultargs") Value;
@@ -2174,6 +2189,11 @@ Constructor.
 ") IntPolyh_Triangle;
 		 IntPolyh_Triangle(const int thePoint1, const int thePoint2, const int thePoint3);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend BoundingBox %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** IntPolyh_Triangle::BoundingBox ******/
 		/****** md5 signature: ee96b168b7ff96a0829f7b13933d22c1 ******/
 		%feature("compactdefaultargs") BoundingBox;

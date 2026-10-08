@@ -793,6 +793,11 @@ This method returns pointer which represents element or node data structure. Thi
 ") GetAddr;
 		virtual void * GetAddr(const int ID, const bool IsElement);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAllElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_DataSource::GetAllElements ******/
 		/****** md5 signature: f85e71abd796a5398a1de8f5fade7da2 ******/
 		%feature("compactdefaultargs") GetAllElements;
@@ -824,6 +829,11 @@ This method returns map of all groups the object contains.
 ") GetAllGroups;
 		virtual void GetAllGroups(TColStd_PackedMapOfInteger & Ids);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAllNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_DataSource::GetAllNodes ******/
 		/****** md5 signature: d9ec1f37bed757ebe7b546ba878e8230 ******/
 		%feature("compactdefaultargs") GetAllNodes;
@@ -1936,6 +1946,11 @@ Returns set mesh selection method (see MeshVS.cdl).
 ") GetMeshSelMethod;
 		MeshVS_MeshSelectionMethod GetMeshSelMethod();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetOwnerMaps %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_Mesh::GetOwnerMaps ******/
 		/****** md5 signature: 1c3c6832975009131f8a56af1b67b24c ******/
 		%feature("compactdefaultargs") GetOwnerMaps;
@@ -3770,6 +3785,11 @@ No available documentation.
 ") GetAddr;
 		void * GetAddr(const int ID, const bool IsElement);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAllElements %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_DeformedDataSource::GetAllElements ******/
 		/****** md5 signature: bb7af67958ccc7697ce27326d25721dd ******/
 		%feature("compactdefaultargs") GetAllElements;
@@ -3783,6 +3803,11 @@ No available documentation.
 ") GetAllElements;
 		const TColStd_PackedMapOfInteger & GetAllElements();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetAllNodes %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_DeformedDataSource::GetAllNodes ******/
 		/****** md5 signature: 1709940198124d699883d414761376bd ******/
 		%feature("compactdefaultargs") GetAllNodes;
@@ -4104,6 +4129,11 @@ Returns colors assigned with element number ID theColor1 is the front element co
 ") GetColor2;
 		bool GetColor2(const int ID, Quantity_Color & theColor1, Quantity_Color & theColor2);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColors1 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_ElementalColorPrsBuilder::GetColors1 ******/
 		/****** md5 signature: c8a19712dae2b896d31d191d5decfbce ******/
 		%feature("compactdefaultargs") GetColors1;
@@ -4117,6 +4147,11 @@ Returns map of colors same for front and back side of face.
 ") GetColors1;
 		const NCollection_DataMap<int, Quantity_Color> & GetColors1();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColors2 %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_ElementalColorPrsBuilder::GetColors2 ******/
 		/****** md5 signature: d24f832bc6d2ccab93d0678c6ca69ff4 ******/
 		%feature("compactdefaultargs") GetColors2;
@@ -4523,6 +4558,11 @@ Returns color assigned to single node.
 ") GetColor;
 		bool GetColor(const int ID, Quantity_Color & theColor);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColorMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_NodalColorPrsBuilder::GetColorMap ******/
 		/****** md5 signature: f362fa91b53da2c1c6b0f0727d0e1c52 ******/
 		%feature("compactdefaultargs") GetColorMap;
@@ -4536,6 +4576,11 @@ Return colors used for texrture presentation.
 ") GetColorMap;
 		const NCollection_Sequence<Quantity_Color> & GetColorMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetColors %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_NodalColorPrsBuilder::GetColors ******/
 		/****** md5 signature: eea6e0ced65465faa91a6ac8cc97ce56 ******/
 		%feature("compactdefaultargs") GetColors;
@@ -4580,6 +4625,11 @@ Return correspondence between node IDs and texture coordinate (range [0, 1]).
 ") GetTextureCoord;
 		double GetTextureCoord(const int theID);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTextureCoords %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_NodalColorPrsBuilder::GetTextureCoords ******/
 		/****** md5 signature: efa1bec09e9e136954a95f13759321ec ******/
 		%feature("compactdefaultargs") GetTextureCoords;
@@ -4829,6 +4879,11 @@ Returns text assigned with single node or element.
 ") GetText;
 		bool GetText(const bool IsElement, const int ID, TCollection_AsciiString & Text);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend GetTexts %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** MeshVS_TextPrsBuilder::GetTexts ******/
 		/****** md5 signature: d2f6f88958f57b161135df23e3eb50b6 ******/
 		%feature("compactdefaultargs") GetTexts;
@@ -5181,7 +5236,13 @@ class MeshVS_HArray1OfSequenceOfInteger : public NCollection_Array1<TColStd_Sequ
     MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
     MeshVS_HArray1OfSequenceOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_SequenceOfInteger>::value_type& theValue);
     MeshVS_HArray1OfSequenceOfInteger(const NCollection_Array1<TColStd_SequenceOfInteger>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TColStd_SequenceOfInteger>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TColStd_SequenceOfInteger>& ChangeArray1();
 };
 %make_alias(MeshVS_HArray1OfSequenceOfInteger)

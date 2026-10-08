@@ -187,6 +187,11 @@ No available documentation.
 ") HLRTopoBRep_Data;
 		 HLRTopoBRep_Data();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddIntL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::AddIntL ******/
 		/****** md5 signature: 117fa0e798f34918db31b4fb35dd551a ******/
 		%feature("compactdefaultargs") AddIntL;
@@ -223,6 +228,11 @@ No available documentation.
 ") AddIntV;
 		void AddIntV(const TopoDS_Vertex & V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddIsoL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::AddIsoL ******/
 		/****** md5 signature: 27d1a6615124f4f946a02523ff27e9a6 ******/
 		%feature("compactdefaultargs") AddIsoL;
@@ -260,6 +270,11 @@ No available documentation.
 ") AddOldS;
 		void AddOldS(const TopoDS_Shape & NewS, const TopoDS_Shape & OldS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddOutL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::AddOutL ******/
 		/****** md5 signature: 69adbe1b3b72c0e8d1c3505237acf4b7 ******/
 		%feature("compactdefaultargs") AddOutL;
@@ -296,6 +311,11 @@ No available documentation.
 ") AddOutV;
 		void AddOutV(const TopoDS_Vertex & V);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddSplE %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::AddSplE ******/
 		/****** md5 signature: afe4ecb8b04ed31c849436a7afb7c5d6 ******/
 		%feature("compactdefaultargs") AddSplE;
@@ -390,6 +410,11 @@ Returns True if the Edge is split.
 ") EdgeHasSplE;
 		bool EdgeHasSplE(const TopoDS_Edge & E);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend EdgeSplE %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::EdgeSplE ******/
 		/****** md5 signature: d974f386c17d3f75ab7f9fb101344fc2 ******/
 		%feature("compactdefaultargs") EdgeSplE;
@@ -462,6 +487,11 @@ Returns True if the Face has outlines on restriction.
 ") FaceHasOutL;
 		bool FaceHasOutL(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceIntL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::FaceIntL ******/
 		/****** md5 signature: 680c77f08734f23b56cc39c96bc1cf1e ******/
 		%feature("compactdefaultargs") FaceIntL;
@@ -480,6 +510,11 @@ Returns the list of the internal OutLines.
 ") FaceIntL;
 		const TopTools_ListOfShape & FaceIntL(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceIsoL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::FaceIsoL ******/
 		/****** md5 signature: 1e21e035c66d29438c1c72cca2804285 ******/
 		%feature("compactdefaultargs") FaceIsoL;
@@ -498,6 +533,11 @@ Returns the list of the IsoLines.
 ") FaceIsoL;
 		const TopTools_ListOfShape & FaceIsoL(const TopoDS_Face & F);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceOutL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_Data::FaceOutL ******/
 		/****** md5 signature: 44fa904040e95a2cc6a2c84cfa883869 ******/
 		%feature("compactdefaultargs") FaceOutL;
@@ -801,6 +841,11 @@ No available documentation.
 ") HLRTopoBRep_FaceData;
 		 HLRTopoBRep_FaceData();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddIntL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::AddIntL ******/
 		/****** md5 signature: 53589e462157dbc594977bce9c465a43 ******/
 		%feature("compactdefaultargs") AddIntL;
@@ -814,6 +859,11 @@ No available documentation.
 ") AddIntL;
 		TopTools_ListOfShape & AddIntL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddIsoL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::AddIsoL ******/
 		/****** md5 signature: ce5e7b86b3df29bdb876a740cdf989e5 ******/
 		%feature("compactdefaultargs") AddIsoL;
@@ -827,6 +877,11 @@ No available documentation.
 ") AddIsoL;
 		TopTools_ListOfShape & AddIsoL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend AddOutL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::AddOutL ******/
 		/****** md5 signature: 4149b6951ab812961ff5fd8a3b7e3023 ******/
 		%feature("compactdefaultargs") AddOutL;
@@ -840,6 +895,11 @@ No available documentation.
 ") AddOutL;
 		TopTools_ListOfShape & AddOutL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceIntL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::FaceIntL ******/
 		/****** md5 signature: 76e3332fb465028cdb9c0bb01e717eb6 ******/
 		%feature("compactdefaultargs") FaceIntL;
@@ -853,6 +913,11 @@ No available documentation.
 ") FaceIntL;
 		const TopTools_ListOfShape & FaceIntL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceIsoL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::FaceIsoL ******/
 		/****** md5 signature: 3e948e1d73dfd44abb5b12dcdf7ec82d ******/
 		%feature("compactdefaultargs") FaceIsoL;
@@ -866,6 +931,11 @@ No available documentation.
 ") FaceIsoL;
 		const TopTools_ListOfShape & FaceIsoL();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend FaceOutL %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_FaceData::FaceOutL ******/
 		/****** md5 signature: 207b5955a63dd20f0f9c99fe89293504 ******/
 		%feature("compactdefaultargs") FaceOutL;
@@ -1025,6 +1095,11 @@ No available documentation.
 ") HLRTopoBRep_OutLiner;
 		 HLRTopoBRep_OutLiner(const TopoDS_Shape & OriS, const TopoDS_Shape & OutS);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DataStructure %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** HLRTopoBRep_OutLiner::DataStructure ******/
 		/****** md5 signature: b254132ad26d4f0e7e5d04ebeaa6f7fe ******/
 		%feature("compactdefaultargs") DataStructure;

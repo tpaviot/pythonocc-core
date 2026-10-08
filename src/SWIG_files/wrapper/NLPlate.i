@@ -187,6 +187,11 @@ No available documentation.
 ") G1Criterion;
 		virtual double G1Criterion();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G1Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HGPPConstraint::G1Target ******/
 		/****** md5 signature: 369f87a65440b83b1ee1c3335e2c3883 ******/
 		%feature("compactdefaultargs") G1Target;
@@ -213,6 +218,11 @@ No available documentation.
 ") G2Criterion;
 		virtual double G2Criterion();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G2Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HGPPConstraint::G2Target ******/
 		/****** md5 signature: a3b5c84a57d4b1f8e190d9162b5d317a ******/
 		%feature("compactdefaultargs") G2Target;
@@ -239,6 +249,11 @@ No available documentation.
 ") G3Criterion;
 		virtual double G3Criterion();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G3Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HGPPConstraint::G3Target ******/
 		/****** md5 signature: e60232ada2a52449bfff96c4ceccfb36 ******/
 		%feature("compactdefaultargs") G3Target;
@@ -893,6 +908,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G1Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG1Constraint::G1Target ******/
 		/****** md5 signature: 613d23044b830e66b22f88dc095ae4ee ******/
 		%feature("compactdefaultargs") G1Target;
@@ -1030,6 +1050,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G1Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG0G1Constraint::G1Target ******/
 		/****** md5 signature: 613d23044b830e66b22f88dc095ae4ee ******/
 		%feature("compactdefaultargs") G1Target;
@@ -1123,6 +1148,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G2Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG2Constraint::G2Target ******/
 		/****** md5 signature: fd1ff1d45be133168457d4f43801f036 ******/
 		%feature("compactdefaultargs") G2Target;
@@ -1186,6 +1216,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G2Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG0G2Constraint::G2Target ******/
 		/****** md5 signature: fd1ff1d45be133168457d4f43801f036 ******/
 		%feature("compactdefaultargs") G2Target;
@@ -1249,6 +1284,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G3Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG3Constraint::G3Target ******/
 		/****** md5 signature: e0b61a98b120b6a2eae150e4e45e1e55 ******/
 		%feature("compactdefaultargs") G3Target;
@@ -1313,6 +1353,11 @@ No available documentation.
 ") ActiveOrder;
 		int ActiveOrder();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend G3Target %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** NLPlate_HPG0G3Constraint::G3Target ******/
 		/****** md5 signature: e0b61a98b120b6a2eae150e4e45e1e55 ******/
 		%feature("compactdefaultargs") G3Target;

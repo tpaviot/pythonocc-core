@@ -622,6 +622,11 @@ Parameter theOther the map to copy.
 ") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger(TColStd_PackedMapOfInteger & theOther);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeMap %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TColStd_HPackedMapOfInteger::ChangeMap ******/
 		/****** md5 signature: 5891dee29ebed8da861b59f02b08a9cc ******/
 		%feature("compactdefaultargs") ChangeMap;
@@ -635,6 +640,11 @@ Returns mutable reference to the underlying map.
 ") ChangeMap;
 		TColStd_PackedMapOfInteger & ChangeMap();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Map %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** TColStd_HPackedMapOfInteger::Map ******/
 		/****** md5 signature: 5d0a9f66293aaa0a8a3903c0b90ee49a ******/
 		%feature("compactdefaultargs") Map;
@@ -666,7 +676,13 @@ class TColStd_HArray1OfAsciiString : public NCollection_Array1<TCollection_Ascii
     TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfAsciiString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_AsciiString>::value_type& theValue);
     TColStd_HArray1OfAsciiString(const NCollection_Array1<TCollection_AsciiString>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TCollection_AsciiString>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TCollection_AsciiString>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfAsciiString)
@@ -677,7 +693,13 @@ class TColStd_HArray1OfBoolean : public NCollection_Array1<bool>, public Standar
     TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfBoolean(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<bool>::value_type& theValue);
     TColStd_HArray1OfBoolean(const NCollection_Array1<bool>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<bool>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<bool>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfBoolean)
@@ -688,7 +710,13 @@ class TColStd_HArray1OfByte : public NCollection_Array1<uint8_t>, public Standar
     TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfByte(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<uint8_t>::value_type& theValue);
     TColStd_HArray1OfByte(const NCollection_Array1<uint8_t>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<uint8_t>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<uint8_t>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfByte)
@@ -699,7 +727,13 @@ class TColStd_HArray1OfCharacter : public NCollection_Array1<char>, public Stand
     TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<char>::value_type& theValue);
     TColStd_HArray1OfCharacter(const NCollection_Array1<char>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<char>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<char>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfCharacter)
@@ -710,7 +744,13 @@ class TColStd_HArray1OfExtendedString : public NCollection_Array1<TCollection_Ex
     TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfExtendedString(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TCollection_ExtendedString>::value_type& theValue);
     TColStd_HArray1OfExtendedString(const NCollection_Array1<TCollection_ExtendedString>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TCollection_ExtendedString>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TCollection_ExtendedString>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfExtendedString)
@@ -721,7 +761,13 @@ class TColStd_HArray1OfInteger : public NCollection_Array1<int>, public Standard
     TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<int>::value_type& theValue);
     TColStd_HArray1OfInteger(const NCollection_Array1<int>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<int>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<int>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfInteger)
@@ -732,7 +778,13 @@ class TColStd_HArray1OfListOfInteger : public NCollection_Array1<TColStd_ListOfI
     TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfListOfInteger(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<TColStd_ListOfInteger>::value_type& theValue);
     TColStd_HArray1OfListOfInteger(const NCollection_Array1<TColStd_ListOfInteger>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<TColStd_ListOfInteger>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<TColStd_ListOfInteger>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfListOfInteger)
@@ -743,7 +795,13 @@ class TColStd_HArray1OfReal : public NCollection_Array1<double>, public Standard
     TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfReal(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<double>::value_type& theValue);
     TColStd_HArray1OfReal(const NCollection_Array1<double>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<double>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<double>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfReal)
@@ -754,7 +812,13 @@ class TColStd_HArray1OfTransient : public NCollection_Array1<opencascade::handle
     TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper);
     TColStd_HArray1OfTransient(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<Standard_Transient>>::value_type& theValue);
     TColStd_HArray1OfTransient(const NCollection_Array1<opencascade::handle<Standard_Transient>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<Standard_Transient>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<Standard_Transient>>& ChangeArray1();
 };
 %make_alias(TColStd_HArray1OfTransient)
@@ -767,7 +831,13 @@ class TColStd_HArray2OfBoolean : public NCollection_Array2<bool>, public Standar
     TColStd_HArray2OfBoolean(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<bool>::value_type& theValue);
     TColStd_HArray2OfBoolean(const NCollection_Array2<bool>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<bool>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<bool>& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfBoolean)
@@ -780,7 +850,13 @@ class TColStd_HArray2OfCharacter : public NCollection_Array2<char>, public Stand
     TColStd_HArray2OfCharacter(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<char>::value_type& theValue);
     TColStd_HArray2OfCharacter(const NCollection_Array2<char>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<char>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<char>& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfCharacter)
@@ -793,7 +869,13 @@ class TColStd_HArray2OfInteger : public NCollection_Array2<int>, public Standard
     TColStd_HArray2OfInteger(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<int>::value_type& theValue);
     TColStd_HArray2OfInteger(const NCollection_Array2<int>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<int>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<int>& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfInteger)
@@ -806,7 +888,13 @@ class TColStd_HArray2OfReal : public NCollection_Array2<double>, public Standard
     TColStd_HArray2OfReal(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<double>::value_type& theValue);
     TColStd_HArray2OfReal(const NCollection_Array2<double>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<double>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<double>& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfReal)
@@ -819,7 +907,13 @@ class TColStd_HArray2OfTransient : public NCollection_Array2<opencascade::handle
     TColStd_HArray2OfTransient(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                const Standard_Integer theColUpp, const NCollection_Array2<opencascade::handle<Standard_Transient>>::value_type& theValue);
     TColStd_HArray2OfTransient(const NCollection_Array2<opencascade::handle<Standard_Transient>>& theOther);
+    %pythonappend Array2 %{
+    val._owner = self
+    %}
     const NCollection_Array2<opencascade::handle<Standard_Transient>>& Array2 ();
+    %pythonappend ChangeArray2 %{
+    val._owner = self
+    %}
     NCollection_Array2<opencascade::handle<Standard_Transient>>& ChangeArray2 (); 
 };
 %make_alias(TColStd_HArray2OfTransient)
@@ -830,9 +924,15 @@ class TColStd_HSequenceOfAsciiString : public NCollection_Sequence<TCollection_A
   public:
     TColStd_HSequenceOfAsciiString();
     TColStd_HSequenceOfAsciiString(const NCollection_Sequence<TCollection_AsciiString>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<TCollection_AsciiString>& Sequence();
     void Append (const NCollection_Sequence<TCollection_AsciiString>::value_type& theItem);
     void Append (NCollection_Sequence<TCollection_AsciiString>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<TCollection_AsciiString>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfAsciiString)
@@ -842,9 +942,15 @@ class TColStd_HSequenceOfExtendedString : public NCollection_Sequence<TCollectio
   public:
     TColStd_HSequenceOfExtendedString();
     TColStd_HSequenceOfExtendedString(const NCollection_Sequence<TCollection_ExtendedString>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<TCollection_ExtendedString>& Sequence();
     void Append (const NCollection_Sequence<TCollection_ExtendedString>::value_type& theItem);
     void Append (NCollection_Sequence<TCollection_ExtendedString>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<TCollection_ExtendedString>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfExtendedString)
@@ -854,9 +960,15 @@ class TColStd_HSequenceOfHAsciiString : public NCollection_Sequence<opencascade:
   public:
     TColStd_HSequenceOfHAsciiString();
     TColStd_HSequenceOfHAsciiString(const NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfHAsciiString)
@@ -866,9 +978,15 @@ class TColStd_HSequenceOfHExtendedString : public NCollection_Sequence<opencasca
   public:
     TColStd_HSequenceOfHExtendedString();
     TColStd_HSequenceOfHExtendedString(const NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfHExtendedString)
@@ -878,9 +996,15 @@ class TColStd_HSequenceOfInteger : public NCollection_Sequence<int>, public Stan
   public:
     TColStd_HSequenceOfInteger();
     TColStd_HSequenceOfInteger(const NCollection_Sequence<int>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<int>& Sequence();
     void Append (const NCollection_Sequence<int>::value_type& theItem);
     void Append (NCollection_Sequence<int>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<int>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfInteger)
@@ -890,9 +1014,15 @@ class TColStd_HSequenceOfReal : public NCollection_Sequence<double>, public Stan
   public:
     TColStd_HSequenceOfReal();
     TColStd_HSequenceOfReal(const NCollection_Sequence<double>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<double>& Sequence();
     void Append (const NCollection_Sequence<double>::value_type& theItem);
     void Append (NCollection_Sequence<double>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<double>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfReal)
@@ -902,9 +1032,15 @@ class TColStd_HSequenceOfTransient : public NCollection_Sequence<opencascade::ha
   public:
     TColStd_HSequenceOfTransient();
     TColStd_HSequenceOfTransient(const NCollection_Sequence<opencascade::handle<Standard_Transient>>& theOther);
+    %pythonappend Sequence %{
+    val._owner = self
+    %}
     const NCollection_Sequence<opencascade::handle<Standard_Transient>>& Sequence();
     void Append (const NCollection_Sequence<opencascade::handle<Standard_Transient>>::value_type& theItem);
     void Append (NCollection_Sequence<opencascade::handle<Standard_Transient>>& theSequence);
+    %pythonappend ChangeSequence %{
+    val._owner = self
+    %}
     NCollection_Sequence<opencascade::handle<Standard_Transient>>& ChangeSequence();
 };
 %make_alias(TColStd_HSequenceOfTransient)

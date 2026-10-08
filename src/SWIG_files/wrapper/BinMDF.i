@@ -223,6 +223,11 @@ Returns the type of source object, inheriting from Attribute from TDF.
 ") SourceType;
 		virtual const opencascade::handle<Standard_Type> & SourceType();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend TypeName %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BinMDF_ADriver::TypeName ******/
 		/****** md5 signature: 191a1aa753fb8d39d56bcfd7505ea0e7 ******/
 		%feature("compactdefaultargs") TypeName;

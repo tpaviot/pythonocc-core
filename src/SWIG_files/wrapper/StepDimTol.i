@@ -5151,7 +5151,13 @@ class StepDimTol_HArray1OfDatumReference : public NCollection_Array1<opencascade
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>::value_type& theValue);
     StepDimTol_HArray1OfDatumReference(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepDimTol_DatumReference>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReference)
@@ -5162,7 +5168,13 @@ class StepDimTol_HArray1OfDatumReferenceCompartment : public NCollection_Array1<
     StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>::value_type& theValue);
     StepDimTol_HArray1OfDatumReferenceCompartment(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceCompartment>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
@@ -5173,7 +5185,13 @@ class StepDimTol_HArray1OfDatumReferenceElement : public NCollection_Array1<open
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfDatumReferenceElement(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>::value_type& theValue);
     StepDimTol_HArray1OfDatumReferenceElement(const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<opencascade::handle<StepDimTol_DatumReferenceElement>>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceElement)
@@ -5184,7 +5202,13 @@ class StepDimTol_HArray1OfDatumReferenceModifier : public NCollection_Array1<Ste
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfDatumReferenceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_DatumReferenceModifier>::value_type& theValue);
     StepDimTol_HArray1OfDatumReferenceModifier(const NCollection_Array1<StepDimTol_DatumReferenceModifier>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepDimTol_DatumReferenceModifier>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepDimTol_DatumReferenceModifier>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumReferenceModifier)
@@ -5195,7 +5219,13 @@ class StepDimTol_HArray1OfDatumSystemOrReference : public NCollection_Array1<Ste
     StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfDatumSystemOrReference(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_DatumSystemOrReference>::value_type& theValue);
     StepDimTol_HArray1OfDatumSystemOrReference(const NCollection_Array1<StepDimTol_DatumSystemOrReference>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepDimTol_DatumSystemOrReference>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepDimTol_DatumSystemOrReference>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
@@ -5206,7 +5236,13 @@ class StepDimTol_HArray1OfGeometricToleranceModifier : public NCollection_Array1
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_GeometricToleranceModifier>::value_type& theValue);
     StepDimTol_HArray1OfGeometricToleranceModifier(const NCollection_Array1<StepDimTol_GeometricToleranceModifier>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepDimTol_GeometricToleranceModifier>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepDimTol_GeometricToleranceModifier>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
@@ -5217,7 +5253,13 @@ class StepDimTol_HArray1OfToleranceZoneTarget : public NCollection_Array1<StepDi
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
     StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const NCollection_Array1<StepDimTol_ToleranceZoneTarget>::value_type& theValue);
     StepDimTol_HArray1OfToleranceZoneTarget(const NCollection_Array1<StepDimTol_ToleranceZoneTarget>& theOther);
+    %pythonappend Array1 %{
+    val._owner = self
+    %}
     const NCollection_Array1<StepDimTol_ToleranceZoneTarget>& Array1();
+    %pythonappend ChangeArray1 %{
+    val._owner = self
+    %}
     NCollection_Array1<StepDimTol_ToleranceZoneTarget>& ChangeArray1();
 };
 %make_alias(StepDimTol_HArray1OfToleranceZoneTarget)

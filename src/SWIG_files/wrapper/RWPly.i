@@ -153,6 +153,11 @@ Input parameter: theFile path to output PLY file.
 ") RWPly_CafWriter;
 		 RWPly_CafWriter(TCollection_AsciiString theFile);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend ChangeCoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWPly_CafWriter::ChangeCoordinateSystemConverter ******/
 		/****** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ******/
 		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
@@ -166,6 +171,11 @@ Return transformation from OCCT to PLY coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend CoordinateSystemConverter %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWPly_CafWriter::CoordinateSystemConverter ******/
 		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
@@ -179,6 +189,11 @@ Return transformation from OCCT to PLY coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend DefaultStyle %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** RWPly_CafWriter::DefaultStyle ******/
 		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;

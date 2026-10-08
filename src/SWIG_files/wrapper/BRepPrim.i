@@ -249,6 +249,11 @@ Adds the Edge <E> in the Wire <W>, if direct is False the Edge is reversed.
 ") AddWireEdge;
 		void AddWireEdge(TopoDS_Wire & W, const TopoDS_Edge & E, const bool direct);
 
+		/* the returned reference keeps the instance alive (issue #1499) */
+		%pythonappend Builder %{
+		if hasattr(val, "this"):
+		    val._owner = self
+		%}
 		/****** BRepPrim_Builder::Builder ******/
 		/****** md5 signature: 0e400544facfe2a99c354fd61331d22b ******/
 		%feature("compactdefaultargs") Builder;
