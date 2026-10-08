@@ -1,6 +1,11 @@
 Current
 =======
 
+* Tesselator: TopologyTesselator, a mesh that keeps the topology. Face i,
+  edge i and vertex i are the sub-shapes of index i in TopologyExplorer
+  order, with the range of the triangles of each face and of the polyline
+  nodes of each edge, as numpy arrays. Compute releases the GIL
+
 * wrapper: non-const references to scalars are returned by value, e.g.
   TColStd_ListOfInteger.Append and the ChangeValue accessors of the scalar
   containers returned an opaque SWIG 'int *' object

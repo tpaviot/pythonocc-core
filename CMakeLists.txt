@@ -300,7 +300,8 @@ set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselato
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator)
 set(TESSELATOR_SOURCE_FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/Tesselator.i
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/ShapeTesselator.cpp)
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/ShapeTesselator.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/Tesselator/TopologyTesselator.cpp)
 
 swig_add_library(Tesselator LANGUAGE python SOURCES ${TESSELATOR_SOURCE_FILES} TYPE MODULE)
 target_link_libraries(Tesselator ${OCCT_MODEL_LIBRARIES} Python3::Module)
