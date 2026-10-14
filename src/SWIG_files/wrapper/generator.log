@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 7dba7ec
+git revision : c4d2e98
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 06:03:56.943239+02:00
+date : 2026-10-14 06:13:13.678154+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -551,7 +551,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      explicitly excluded method BSplCLib::2c7d79052b67209fc64fdff592fc9a63
 [INFO ]      explicitly excluded method BSplCLib::e10efbf7362b8ef1cf87bb5b0e5e6029
 [INFO ]      explicitly excluded method BSplCLib::13a56a07589ef6bb208eaeeeb77fd5e3
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<double, seems to be a template
 [WARNI]      [TypeHint] Skipping type static const double *, should contain _
 [INFO ]  Class: BSplCLib_Cache
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -563,7 +562,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      operand () cannot be wrapped
 [INFO ]  ## Processing module BSplSLib
 [INFO ]  Class: BSplSLib
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<double, seems to be a template
 [INFO ]  Class: BSplSLib_Cache
 [INFO ]  Class: BSplSLib_EvaluatorFunction
 [INFO ]      Class BSplSLib_EvaluatorFunction is abstract, using %nodefaultctor.
@@ -2050,76 +2048,56 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  ## Processing module Geom2dGridEval
 [INFO ]  Class: Geom2dGridEval_BSplineCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_BezierCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Circle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Ellipse
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Hyperbola
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_OffsetCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_OtherCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
 [WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  Class: Geom2dGridEval_Parabola
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  ## Processing module LProp
 [INFO ]  Enum: LProp_CIType
 [INFO ]  Enum: LProp_Status
@@ -2450,169 +2428,125 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  ## Processing module GeomGridEval
 [INFO ]  Class: GeomGridEval_BSplineCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_BSplineSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_BezierCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_BezierSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Circle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Cone
 [INFO ]      Wrap nested class GeomGridEval_Cone::Data
 [INFO ]      Wrap nested class GeomGridEval_Cone::UContext
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Cylinder
 [INFO ]      Wrap nested class GeomGridEval_Cylinder::Data
 [INFO ]      Wrap nested class GeomGridEval_Cylinder::UContext
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Ellipse
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Hyperbola
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_OffsetCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_OffsetSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_OtherCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]  const Adaptor3d_Curve & wrapped as a copy
 [WARNI]  const Adaptor3d_Curve & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_OtherSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Parabola
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Plane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Sphere
 [INFO ]      Wrap nested class GeomGridEval_Sphere::Data
 [INFO ]      Wrap nested class GeomGridEval_Sphere::UContext
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Surface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [WARNI]      [TypeHint] Skip type std::optional<gp_Trsf>, because of trailing :
 [INFO ]  Class: GeomGridEval_SurfaceOfExtrusion
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_SurfaceOfRevolution
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  Class: GeomGridEval_Torus
 [INFO ]      Wrap nested class GeomGridEval_Torus::Data
 [INFO ]      Wrap nested class GeomGridEval_Torus::UContext
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  ## Processing module GeomLProp
 [WARNI]      [TypeHint] Skip type gp_Pnt,gp_Vec,gp_Dir,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type gp_Pnt2d,gp_Vec2d,gp_Dir2d,opencascade::handle, because of trailing :
@@ -2823,7 +2757,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: AppDef_MultiLine
 [INFO ]      explicitly excluded method AppDef_MultiLine::17b39904247f683e6051012d2dbf3f90
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<AppDef_MultiPointConstraint>, seems to be a template
 [INFO ]  Class: AppDef_MultiPointConstraint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppDef_MyBSplGradientOfBSplineCompute
@@ -2907,14 +2840,12 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppParCurves_MultiCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<AppParCurves_MultiPoint>, seems to be a template
 [WARNI]  const AppParCurves_MultiPoint & wrapped as a copy
 [WARNI]  const AppParCurves_MultiPoint & wrapped as a copy
 [INFO ]  Class: AppParCurves_MultiPoint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppParCurves_MultiBSpCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<AppParCurves_MultiPoint>, seems to be a template
 [INFO ]  ## Processing module Approx
 [INFO ]  Enum: Approx_ParametrizationType
 [INFO ]  Enum: Approx_Status
@@ -2936,7 +2867,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Approx_MCurvesToBSpCurve
 [WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<AppParCurves_MultiCurve>, seems to be a template
 [WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: Approx_SameParameter
@@ -3003,7 +2933,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Extrema_FuncPSDist
 [INFO ]      explicitly excluded method Extrema_FuncPSDist::5a8a1d40b699db9ffadb1f48516992a9
 [INFO ]      explicitly excluded method Extrema_FuncPSDist::1d2f2dc1f7e41d65377516e5baf52f6e
-[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
 [INFO ]  Class: Extrema_FuncPSNorm
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Extrema_GCurveLocator skipped because it is a class template
@@ -3475,7 +3404,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skip type BOPAlgo_MakePeriodic::PeriodicityParams, because of trailing :
 [WARNI]      [TypeHint] Skipping type PeriodicityParams, should contain _
 [INFO ]  Class: BOPAlgo_ArgumentAnalyzer
-[WARNI]      [TypeHint] Skipping type NCollection_List<BOPAlgo_CheckResult>, seems to be a template
 [INFO ]  Class: BOPAlgo_BuilderArea
 [INFO ]      Class BOPAlgo_BuilderArea is abstract, using %nodefaultctor.
 [INFO ]  Class: BOPAlgo_BuilderShape
@@ -3541,7 +3469,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skip type NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_FaceInfo>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfEE>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfEF>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfEZ>, seems to be a template
@@ -3552,7 +3479,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfVV>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfVZ>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_InterfZZ>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Map<BOPDS_Pair>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<BOPDS_PaveBlock>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_DynamicArray<NCollection_List<opencascade::handle<BOPDS_PaveBlock>>>, because of trailing :
 [WARNI]      [TypeHint] Skipping type NCollection_List<BOPDS_Pave>, seems to be a template
@@ -3579,7 +3505,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: BOPDS_PaveBlock
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_List<BOPDS_Pave>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_List<BOPDS_Pave>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<BOPDS_PaveBlock>>, because of trailing :
 [INFO ]  Class: BOPDS_Point
 [INFO ]  Class: BOPDS_ShapeInfo
@@ -3600,8 +3525,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_Point>, seems to be a template
 [WARNI]  const NCollection_DynamicArray<BOPDS_Curve> & wrapped as a copy
 [WARNI]  const NCollection_DynamicArray<BOPDS_Curve> & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_Curve>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<BOPDS_Point>, seems to be a template
 [INFO ]  Class: BOPDS_InterfFZ
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_InterfVE
@@ -3632,7 +3555,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  ## Processing module BRepAlgoAPI
 [INFO ]  Class: BRepAlgoAPI_Check
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_List<BOPAlgo_CheckResult>, seems to be a template
 [INFO ]  Class: BRepAlgoAPI_Algo
 [INFO ]  Class: BRepAlgoAPI_BuilderAlgo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3659,10 +3581,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: IntTools_BeanFaceIntersector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Range>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Range>, seems to be a template
 [INFO ]  Class: IntTools_CommonPrt
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Range>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Range>, seems to be a template
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_Context
@@ -3673,16 +3593,12 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_List<IntTools_CurveRangeSample>, seems to be a template
 [INFO ]  Class: IntTools_EdgeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_CommonPrt>, seems to be a template
 [INFO ]  Class: IntTools_EdgeFace
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_CommonPrt>, seems to be a template
 [INFO ]  Class: IntTools_FClass2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_FaceFace
 [WARNI]  const NCollection_Sequence<IntTools_Curve> & wrapped as a copy
 [WARNI]  const NCollection_Sequence<IntTools_Curve> & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Curve>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_PntOn2Faces>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_List<IntSurf_PntOn2S>, seems to be a template
 [INFO ]  Class: IntTools_MarkedRangeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3707,7 +3623,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]  const IntTools_CurveRangeSample & wrapped as a copy
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_Tools
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Curve>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Curve>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntTools_Curve>, seems to be a template
 [INFO ]  Class: IntTools_TopolTool
@@ -3810,7 +3725,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TopOpeBRep_EdgesIntersector
 [WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<TopOpeBRep_Point2d>, seems to be a template
 [WARNI]  const BRepAdaptor_Surface & wrapped as a copy
 [WARNI]  const BRepAdaptor_Surface & wrapped as a copy
 [INFO ]  Class: TopOpeBRep_FFDumper
@@ -3931,7 +3845,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepBuild_Tools2d
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepBuild_VertexInfo
 [INFO ]  Class: TopOpeBRepBuild_WireToFace
 [INFO ]  Class: TopOpeBRepBuild_Area1dBuilder
@@ -4001,13 +3914,9 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
 [INFO ]  Class: TopOpeBRepDS_DataStructure
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
 [WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
@@ -4025,12 +3934,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TopOpeBRepDS_Explorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_FIR
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepDS_FaceInterferenceTool
 [INFO ]  Class: TopOpeBRepDS_Filter
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepDS_GapFiller
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
@@ -4070,7 +3975,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TopOpeBRepDS_PointExplorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_Reducer
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepDS_ShapeData
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
@@ -4098,8 +4002,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TopOpeBRepDS_Interference>>, because of trailing :
 [INFO ]  Enum passed by reference: TopOpeBRepDS_Kind & K changed to TopOpeBRepDS_Kind &OutValue
 [INFO ]  Class: TopOpeBRepDS_TOOL
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepDS_Transition
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_CurveData
@@ -4147,8 +4049,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TopOpeBRepTool_FuseEdges
 [INFO ]  Class: TopOpeBRepTool_GeomTool
 [INFO ]  Class: TopOpeBRepTool_HBoxTool
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: TopOpeBRepTool_PurgeInternalEdges
 [INFO ]  Class: TopOpeBRepTool_REGUS
 [INFO ]  Class: TopOpeBRepTool_REGUW
@@ -4240,8 +4140,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: TopAbs_Orientation &Or changed to TopAbs_Orientation &OutValue
 [INFO ]  Enum passed by reference: TopAbs_Orientation & Or changed to TopAbs_Orientation &OutValue
 [INFO ]  Enum passed by reference: TopAbs_Orientation & Or changed to TopAbs_Orientation &OutValue
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<gp_Lin>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<gp_Circ>, seems to be a template
 [INFO ]  Class: LocOpe_CurveShapeIntersector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: TopAbs_Orientation &Or changed to TopAbs_Orientation &OutValue
@@ -4877,7 +4775,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: GeomFill_LocationGuide
 [INFO ]  Class: GeomFill_NSections
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<gp_Trsf>, seems to be a template
 [INFO ]  Class: GeomFill_SectionGenerator
 [INFO ]  Class: GeomFill_SimpleBound
 [INFO ]  Class: GeomFill_Stretch
@@ -5111,10 +5008,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: IntPatch_PrmPrmIntersection_T3Bits
 [INFO ]  Class: IntPatch_RstInt
 [INFO ]  Class: IntPatch_SpecialPoints
-[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
-[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
-[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
-[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
 [INFO ]  Class: IntPatch_TheIWLineOfTheIWalking
 [INFO ]  Class: IntPatch_TheIWalking
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntSurf_PathPoint>, seems to be a template
@@ -5300,14 +5193,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Plate_LineConstraint
 [INFO ]  Class: Plate_LinearScalarConstraint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
 [INFO ]  Class: Plate_LinearXYZConstraint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<Plate_PinpointConstraint>, seems to be a template
 [INFO ]  Class: Plate_PinpointConstraint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Plate_PlaneConstraint
@@ -5315,7 +5202,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Plate_SampledCurveConstraint
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Plate_PinpointConstraint>, seems to be a template
 [INFO ]  ## Processing module TopTrans
 [INFO ]  Class: TopTrans_CurveTransition
 [INFO ]  Class: TopTrans_SurfaceTransition
@@ -5337,9 +5223,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Contap_SurfProps
 [INFO ]  Class: Contap_TheIWLineOfTheIWalking
 [INFO ]  Class: Contap_TheIWalking
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntSurf_PathPoint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntSurf_InteriorPoint>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<IntSurf_PathPoint>, seems to be a template
 [INFO ]  Class: Contap_ThePathPointOfTheSearch
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Contap_TheSearch
@@ -5475,7 +5358,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: TopAbs_State & stbef changed to TopAbs_State &OutValue
 [INFO ]  Enum passed by reference: TopAbs_State & staf changed to TopAbs_State &OutValue
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<HLRBRep_FaceData>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_List<HLRAlgo_Interference>, seems to be a template
 [WARNI]      [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: HLRBRep_EdgeBuilder
@@ -5532,10 +5414,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: HLRBRep_TheIntPCurvePCurveOfCInter
 [INFO ]  Class: HLRBRep_TheInterferenceOfInterCSurf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Lin>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Lin>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Lin>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Lin>, seems to be a template
 [INFO ]  Class: HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter
@@ -5859,11 +5737,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: BRepOffset_Status & theStatus changed to BRepOffset_Status &OutValue
 [INFO ]  Class: BRepOffset_Analyse
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_List<BRepOffset_Interval>, seems to be a template
 [INFO ]  Class: BRepOffset_Inter2d
 [INFO ]  Class: BRepOffset_Inter3d
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Class: BRepOffset_Interval
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepOffset_MakeLoops
@@ -6354,9 +6229,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: BRepCheck_Analyzer
 [INFO ]  Class: BRepCheck_Result
 [INFO ]      Class BRepCheck_Result is abstract, using %nodefaultctor.
-[WARNI]      [TypeHint] Skipping type NCollection_List<BRepCheck_Status>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_List<BRepCheck_Status>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_List<BRepCheck_Status>, seems to be a template
 [INFO ]  Class: BRepCheck_Edge
 [INFO ]  Class: BRepCheck_Face
 [INFO ]  Class: BRepCheck_Shell
@@ -6394,8 +6266,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: BRepExtrema_DistShapeShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepExtrema_DistanceSS
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<BRepExtrema_SolutionElem>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<BRepExtrema_SolutionElem>, seems to be a template
 [INFO ]  Class: BRepExtrema_ElementFilter
 [INFO ]  Enum: FilterResult
 [WARNI]      [TypeHint] param name missing or '&', generic name used
@@ -6426,8 +6296,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_ShapeProximity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
 [WARNI]      [TypeHint] Skipping unknown type ProxPnt_Status, ProxPnt not in module list
 [INFO ]  Class: BRepExtrema_SolutionElem
@@ -6440,7 +6308,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: BRepExtrema_SelfIntersection
 [INFO ]      explicitly excluded method BRepExtrema_SelfIntersection::0c68ae9e4f2a1503208f51fabe6bb919
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  ## Processing module BRepGProp
 [INFO ]  Class: BRepGProp
 [INFO ]  Class: BRepGProp_Cinert
@@ -6611,7 +6478,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: MAT2d_MiniPath
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<MAT2d_Connexion>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<TColGeom2d_SequenceOfGeometry, seems to be a template
 [INFO ]  Class: MAT2d_Tool2d
 [INFO ]      hash<MAT2d_BiInt> skipped because it is a class template
 [INFO ]  Processing toolkit TKXMesh ===
@@ -6735,7 +6601,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_IndexedDataMap<size_t,, seems to be a template
 [WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
@@ -6845,12 +6710,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type char, should contain _
 [WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
 [INFO ]  Class: Graphic3d_ArrayOfPrimitives
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<uint8_t>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<uint8_t>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec4<uint8_t>, seems to be a template
 [INFO ]  Class: Graphic3d_Aspects
 [WARNI]      [TypeHint] Skipping unknown type uint16_t, uint16 not in module list
@@ -6863,18 +6722,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping unknown type Font_FontAspect, Font not in module list
 [INFO ]  Class: Graphic3d_Attribute
 [INFO ]  Class: Graphic3d_BSDF
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [INFO ]  Class: Graphic3d_BoundBuffer
 [WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
 [INFO ]  Class: Graphic3d_BufferRange
@@ -6887,10 +6734,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      explicitly excluded method Graphic3d_BvhCStructureSet::5e00121a1bf30aeead8303241f8c15a6
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<const, seems to be a template
 [INFO ]  Class: Graphic3d_CLight
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
 [INFO ]  Class: Graphic3d_CStructure
 [INFO ]      Class Graphic3d_CStructure is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class Graphic3d_CStructure::SubclassStructIterator
@@ -6904,22 +6747,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum: 
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<NCollection_Vec3<double>>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type Aspect_FrustumLRBT<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type Aspect_FrustumLRBT<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type IODType, should contain _
 [WARNI]      [TypeHint] Skipping type Projection, should contain _
 [WARNI]      [TypeHint] Skipping type FocusType, should contain _
@@ -6935,39 +6764,16 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]  Wrong type in class property : NCollection_Vec2
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int, seems to be a template
 [INFO ]  Class: Graphic3d_ClipPlane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
 [INFO ]  Class: Graphic3d_CullingTool
 [INFO ]      Wrap nested class Graphic3d_CullingTool::CullingContext
 [INFO ]      Wrap nested class Graphic3d_CullingTool::Plane
 [INFO ]      explicitly excluded method Graphic3d_CullingTool::4f6991f9320128ed2bffd84a52b59821
 [INFO ]      explicitly excluded method Graphic3d_CullingTool::26a77417d357776285dc2ae7b9c22aad
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double>, seems to be a template
 [INFO ]  Class: Graphic3d_DataStructureManager
 [INFO ]      Class Graphic3d_DataStructureManager is abstract, using %nodefaultctor.
 [INFO ]  Class: Graphic3d_Flipper
@@ -6983,10 +6789,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      operand [] cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Graphic3d_Fresnel
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
 [INFO ]  Class: Graphic3d_GraduatedTrihedron
 [INFO ]      Wrap nested class Graphic3d_GraduatedTrihedron::AxisAspect
 [INFO ]      explicitly excluded method Graphic3d_GraduatedTrihedron::a47aecdc1dcee52c062797d9fccb2aab
@@ -7030,10 +6832,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Graphic3d_LightSet
 [INFO ]      Wrap nested class Graphic3d_LightSet::Iterator
 [INFO ]  Enum: IterationFilter
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
 [INFO ]  Class: Graphic3d_MarkerImage
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
 [INFO ]  Class: Graphic3d_MaterialAspect
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: Graphic3d_NameOfMaterial &theMat changed to Graphic3d_NameOfMaterial &OutValue
@@ -7041,8 +6841,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: Graphic3d_NameOfMaterial & theMat changed to Graphic3d_NameOfMaterial &OutValue
 [INFO ]  Class: Graphic3d_PBRMaterial
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [INFO ]  Class: Graphic3d_PolygonOffset
 [INFO ]  Class: Graphic3d_PresentationAttributes
 [INFO ]  Class: Graphic3d_RenderingParams
@@ -7052,8 +6850,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping unknown type Font_Hinting, Font not in module list
 [WARNI]      [TypeHint] Skipping type FrustumCulling, should contain _
 [WARNI]      [TypeHint] Skipping type Anaglyph, should contain _
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float, seems to be a template
 [WARNI]  Wrong type in class property : NCollection_Vec2
 [WARNI]      [TypeHint] Skipping type PerfCounters, should contain _
 [INFO ]  Class: Graphic3d_SequenceOfHClipPlane
@@ -7068,13 +6864,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: Graphic3d_ShaderProgram
 [INFO ]      explicitly excluded method Graphic3d_ShaderProgram::6ede0e2276d66e9b385f9e42b0370fcb
 [WARNI]      [TypeHint] Skipping type NCollection_Mat3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<int>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_ShaderAttribute>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_ShaderObject>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_ShaderVariable>>, because of trailing :
@@ -7095,24 +6884,11 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
 [WARNI]      [TypeHint] Skipping unknown type Font_TextFormatter, Font not in module list
 [INFO ]  Class: Graphic3d_TextureParams
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
 [INFO ]  Class: Graphic3d_TextureRoot
 [INFO ]  Class: Graphic3d_TransformPers
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams3d
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Mat4<double, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Mat3<double, seems to be a template
 [INFO ]      Graphic3d_UniformValueTypeID<NCollection_Mat3<float>> skipped because it is a class template
 [INFO ]      Graphic3d_UniformValueTypeID<NCollection_Mat4<float>> skipped because it is a class template
@@ -7175,18 +6951,9 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      Class Graphic3d_CView is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class Graphic3d_CView
 [WARNI]      [TypeHint] Skip type NCollection_Map<opencascade::handle<Graphic3d_Structure>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_Layer>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Map<opencascade::handle<Graphic3d_Structure>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
 [WARNI]      [TypeHint] param name missing or '&', generic name used
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Graphic3d_CView>>, because of trailing :
 [INFO ]  Class: Graphic3d_FrameStatsDataTmp
 [INFO ]      operand = cannot be wrapped
@@ -7194,7 +6961,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Graphic3d_MediaTextureSet
 [INFO ]      explicitly excluded method Graphic3d_MediaTextureSet::6cd54bd353308339998409ead11d6658
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int, seems to be a template
 [INFO ]  Class: Graphic3d_TextureEnv
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Graphic3d_TextureMap
@@ -7336,14 +7102,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<AIS_InteractiveObject>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<AIS_InteractiveObject>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Array1<opencascade::handle<SelectMgr_EntityOwner>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: AIS_InteractiveObject
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: AIS_LightSourceOwner
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: AIS_ManipulatorOwner
 [INFO ]  Class: AIS_PointCloudOwner
 [INFO ]  Class: AIS_Selection
@@ -7352,25 +7112,13 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: AIS_TrihedronOwner
 [INFO ]  Class: AIS_TypeFilter
 [INFO ]  Class: AIS_ViewController
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<unsigned, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<unsigned, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<unsigned, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<unsigned, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<NCollection_Vec2<int>>, seems to be a template
 [WARNI]      [TypeHint] Skipping unknown type WNT_HIDSpaceMouse, WNT not in module list
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
 [INFO ]  Class: AIS_ViewCubeOwner
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: AIS_ViewCubeSensitive
 [INFO ]  Class: AIS_ViewInputBuffer
 [INFO ]      Wrap nested class AIS_ViewInputBuffer::_orientation
@@ -7398,11 +7146,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: AIS_ColorScale
 [WARNI]      [TypeHint] param name missing or '&', generic name used
 [WARNI]      [TypeHint] param name missing or '&', generic name used
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color>, seems to be a template
 [INFO ]  Class: AIS_ConnectedInteractive
 [INFO ]  Class: AIS_LightSource
@@ -7427,12 +7170,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type OptionsForAttach, should contain _
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<SelectMgr_EntityOwner>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_HSequence<opencascade::handle<AIS_InteractiveObject, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type ManipulatorSkin, should contain _
 [INFO ]  Class: AIS_MediaPlayer
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skip type Graphic3d_MediaTextureSet::CallbackOnUpdate_t, because of trailing :
 [INFO ]  Class: AIS_MultipleConnectedInteractive
 [INFO ]  Class: AIS_Plane
@@ -7444,7 +7183,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum: SelectionMode
 [INFO ]  Class: AIS_RubberBand
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<NCollection_Vec2<int>>, seems to be a template
 [INFO ]  Class: AIS_Shape
 [INFO ]  Class: AIS_SignatureFilter
@@ -7489,8 +7227,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: Prs3d
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<TColgp_HSequenceOfPnt>, because of trailing :
 [INFO ]  Class: Prs3d_Arrow
 [INFO ]  Class: Prs3d_BasicAspect
@@ -7639,20 +7375,10 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: SelectBasics
 [INFO ]  Class: SelectBasics_PickResult
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [INFO ]  Class: SelectBasics_SelectingVolumeManager
 [INFO ]      Class SelectBasics_SelectingVolumeManager is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class SelectBasics_SelectingVolumeManager
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<NCollection_Vec4<double>>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [INFO ]  ## Processing module SelectMgr
 [INFO ]  Enum: SelectMgr_FilterType
 [INFO ]  Enum: SelectMgr_PickingStrategy
@@ -7676,19 +7402,12 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      Class SelectMgr_BaseIntersector is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class SelectMgr_BaseIntersector
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<NCollection_Vec4<double>>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [INFO ]  Class: SelectMgr_EntityOwner
 [INFO ]      explicitly excluded method SelectMgr_EntityOwner::d609398d701e140c09d1bf60fb35689d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: SelectMgr_Filter
 [INFO ]      Class SelectMgr_Filter is abstract, using %nodefaultctor.
 [INFO ]  Class: SelectMgr_FrustumBuilder
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [INFO ]  Class: SelectMgr_SelectableObject
 [INFO ]      Class SelectMgr_SelectableObject is abstract, using %nodefaultctor.
 [WARNI]      [TypeHint] Skip type NCollection_Shared<NCollection_IndexedMap<opencascade::handle<SelectMgr_EntityOwner, because of trailing :
@@ -7701,13 +7420,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [INFO ]  Class: SelectMgr_SelectingVolumeManager
 [WARNI]      [TypeHint] Skipping type NCollection_DynamicArray<NCollection_Vec4<double>>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [INFO ]  Class: SelectMgr_Selection
 [WARNI]      [TypeHint] Skip type NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_DynamicArray<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
@@ -7727,10 +7441,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      explicitly excluded method SelectMgr_ViewerSelector::8223934b55bc6855cd7e4923f8e176c4
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<SelectMgr_EntityOwner>>, because of trailing :
 [INFO ]  Class: SelectMgr_AxisIntersector
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<double>, seems to be a template
 [INFO ]  Class: SelectMgr_CompositionFilter
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<SelectMgr_Filter>>, because of trailing :
 [INFO ]  Class: SelectMgr_AndFilter
@@ -7829,10 +7539,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_CLight>>, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<double>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<int>, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<V3d_View>>, because of trailing :
 [INFO ]  Class: V3d_Viewer
 [WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<Graphic3d_CLight>>::Iterator, because of trailing :
@@ -7923,28 +7629,14 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: MeshVS_EntityType &Type changed to MeshVS_EntityType &OutValue
 [INFO ]  Enum passed by reference: MeshVS_EntityType & Type changed to MeshVS_EntityType &OutValue
 [INFO ]  Enum passed by reference: MeshVS_EntityType & Type changed to MeshVS_EntityType &OutValue
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  Class: MeshVS_ElementalColorPrsBuilder
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  Class: MeshVS_MeshPrsBuilder
 [WARNI]      [TypeHint] Skipping type NCollection_HArray1<TColStd_SequenceOfInteger, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_HArray1<TColStd_SequenceOfInteger, seems to be a template
 [INFO ]  Class: MeshVS_NodalColorPrsBuilder
 [WARNI]      [TypeHint] Skipping type NCollection_HArray1<TColStd_SequenceOfInteger, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<Quantity_Color>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  Class: MeshVS_TextPrsBuilder
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  Class: MeshVS_VectorPrsBuilder
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<int,, seems to be a template
 [INFO ]  Processing toolkit TKBinXCAF ===
 [INFO ]  ## Processing module BinMXCAFDoc
 [INFO ]  Class: BinMXCAFDoc
@@ -8202,11 +7894,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: RWObj_Material
 [INFO ]  Class: RWObj_ObjMaterialMap
 [INFO ]  Class: RWObj_ObjWriterContext
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
 [INFO ]  Class: RWObj_Reader
 [INFO ]      Class RWObj_Reader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWObj_Reader::ObjVec3iHasher
@@ -8219,11 +7906,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: RWPly_CafWriter
 [INFO ]  Class: RWPly_PlyWriterContext
 [INFO ]      explicitly excluded method RWPly_PlyWriterContext::8602e84f6acfb0cc325e9d67eb1ded24
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<int>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec3<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Vec4<uint8_t>, seems to be a template
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Class: GeomToStep_Root
@@ -8547,9 +8229,7 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: StepToTopoDS_NMTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type NCollection_DataMap<opencascade::handle<StepRepr_RepresentationItem>,, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [WARNI]      [TypeHint] Skip type NCollection_DataMap<opencascade::handle<StepRepr_RepresentationItem>,, because of trailing :
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Class: StepToTopoDS_PointPair
 [INFO ]  Class: StepToTopoDS_Root
 [INFO ]  Class: StepToTopoDS_Tool
@@ -10106,8 +9786,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumModifWithValue &theModifier changed to XCAFDimTolObjects_DatumModifWithValue &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumModifWithValue & theModifier changed to XCAFDimTolObjects_DatumModifWithValue &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumModifWithValue & theModifier changed to XCAFDimTolObjects_DatumModifWithValue &OutValue
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif>, seems to be a template
 [INFO ]  Class: XCAFDimTolObjects_DimensionObject
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DimensionFormVariance &theFormVariance changed to XCAFDimTolObjects_DimensionFormVariance &OutValue
@@ -10116,12 +9794,8 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DimensionGrade & theGrade changed to XCAFDimTolObjects_DimensionGrade &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DimensionFormVariance & theFormVariance changed to XCAFDimTolObjects_DimensionFormVariance &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DimensionGrade & theGrade changed to XCAFDimTolObjects_DimensionGrade &OutValue
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_DimensionModif, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_DimensionModif>, seems to be a template
 [INFO ]  Class: XCAFDimTolObjects_GeomToleranceObject
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif>, seems to be a template
 [INFO ]  Class: XCAFDimTolObjects_Tool
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DimensionObject>>, because of trailing :
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>>, because of trailing :
@@ -10229,7 +9903,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: STEPCAFControl_ExternFile
 [INFO ]  Class: STEPCAFControl_GDTProperty
 [WARNI]      [TypeHint] Skipping type NCollection_HArray1<StepDimTol_DatumReferenceModifier, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif>, seems to be a template
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumTargetType &theType changed to XCAFDimTolObjects_DatumTargetType &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumTargetType & theType changed to XCAFDimTolObjects_DatumTargetType &OutValue
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_DatumTargetType & theType changed to XCAFDimTolObjects_DatumTargetType &OutValue
@@ -10252,8 +9925,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: STEPCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
@@ -10734,15 +10405,12 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  ## Processing module DE
 [INFO ]      DE_ShapeFixConfigurationNode is abstract, it does not override ['BuildProvider', 'Copy', 'GetExtensions', 'GetFormat', 'GetVendor']
 [INFO ]  Class: DE_ConfigurationContext
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Class: DE_ConfigurationNode
 [INFO ]      Class DE_ConfigurationNode is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class DE_ConfigurationNode::DE_SectionGlobal
 [INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
 [INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
-[WARNI]      [TypeHint] Skipping type NCollection_List<TCollection_AsciiString, seems to be a template
 [WARNI]      [TypeHint] param name missing or '&', generic name used
-[WARNI]      [TypeHint] Skipping type NCollection_List<TCollection_AsciiString, seems to be a template
 [INFO ]  Class: DE_Provider
 [INFO ]      Class DE_Provider is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class DE_Provider::WriteStreamNode
@@ -10974,7 +10642,6 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TNaming_TranslateTool
 [INFO ]  Class: TNaming_Translator
 [INFO ]  Class: TNaming_UsedShapes
-[WARNI]      [TypeHint] Skipping type NCollection_DataMap<TopoDS_Shape,, seems to be a template
 [INFO ]  Processing toolkit TKCDF ===
 [INFO ]  ## Processing module CDF
 [INFO ]  Enum: CDF_StoreSetNameStatus
@@ -11229,12 +10896,10 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: TFunction_GraphNode
 [INFO ]  Class: TFunction_IFunction
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type NCollection_DoubleMap<int,, seems to be a template
 [INFO ]  Class: TFunction_Iterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TFunction_Logbook
 [INFO ]  Class: TFunction_Scope
-[WARNI]      [TypeHint] Skipping type NCollection_DoubleMap<int,, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_DoubleMap<int,, seems to be a template
 [INFO ]  Processing toolkit TKTObj ===
 [INFO ]  ## Processing module TObj
@@ -11382,7 +11047,7 @@ date : 2026-10-14 06:03:56.943239+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 12.07s
+SWIG interface file generation completed in 12.14s
 #################################################
 
 [INFO ]  Number of classes: 4139
