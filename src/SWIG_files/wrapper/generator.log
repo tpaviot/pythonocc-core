@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 2658143
+git revision : 9579f6a
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 06:31:14.267178+02:00
+date : 2026-10-14 09:13:52.881758+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -7956,6 +7956,20 @@ date : 2026-10-14 06:31:14.267178+02:00
 [INFO ]  Enum: WriteMode_Assembly
 [INFO ]  Enum: WriteMode_StepSchema
 [INFO ]  Enum: WriteMode_VertexMode
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_BSplineContinuity, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_Precision, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_MaxPrecision, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_SurfaceCurve, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping type AngleUnitMode, should contain _
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_ProductContext, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_ShapeRepr, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type RWMode_Tessellated, RWMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_AssemblyLevel, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_PrecisionMode, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_Assembly, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_StepSchema, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type RWMode_Tessellated, RWMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_VertexMode, WriteMode not in module list
 [WARNI]      [TypeHint] Skipping unknown type ReadMode_ProductContext, ReadMode not in module list
 [INFO ]  Class: DESTEP_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -11123,7 +11137,7 @@ date : 2026-10-14 06:31:14.267178+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 38.20s
+SWIG interface file generation completed in 12.21s
 #################################################
 
 [INFO ]  Number of classes: 4161

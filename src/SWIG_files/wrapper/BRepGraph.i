@@ -3978,7 +3978,13 @@ Return wire creation and editing operations.
 class BRepGraph_EditorView_BoundaryIssue {
 	public:
 		BRepGraph_NodeId NodeId;
-		TCollection_AsciiString Description;
+		%extend {
+			TCollection_AsciiString _get_Description() { return $self->Description; }
+			void _set_Description(TCollection_AsciiString theValue) { $self->Description = theValue; }
+		}
+		%pythoncode {
+			Description = property(_get_Description, _set_Description)
+		}
 };
 
 
@@ -8180,10 +8186,22 @@ Return a bitmask of BRepGraph_RefId::Kind values this layer subscribes to. Only 
 *************************************/
 class BRepGraph_LayerHistory_Event {
 	public:
-		TCollection_AsciiString OperationName;
+		%extend {
+			TCollection_AsciiString _get_OperationName() { return $self->OperationName; }
+			void _set_OperationName(TCollection_AsciiString theValue) { $self->OperationName = theValue; }
+		}
+		%pythoncode {
+			OperationName = property(_get_OperationName, _set_OperationName)
+		}
 		size_t SequenceNumber;
 		BRepGraph_LayerHistory::Kind RecordKind;
-		TCollection_AsciiString ExtraInfo;
+		%extend {
+			TCollection_AsciiString _get_ExtraInfo() { return $self->ExtraInfo; }
+			void _set_ExtraInfo(TCollection_AsciiString theValue) { $self->ExtraInfo = theValue; }
+		}
+		%pythoncode {
+			ExtraInfo = property(_get_ExtraInfo, _set_ExtraInfo)
+		}
 		/****** BRepGraph_LayerHistory_Event::BRepGraph_LayerHistory_Event ******/
 		/****** md5 signature: 3ae1c65d40232f0437cba8addbec5c14 ******/
 		%feature("compactdefaultargs") BRepGraph_LayerHistory_Event;
@@ -20395,7 +20413,13 @@ class BRepGraph_Validate_Issue {
 	public:
 		BRepGraph_Validate::Severity Sev;
 		BRepGraph_NodeId NodeId;
-		TCollection_AsciiString Description;
+		%extend {
+			TCollection_AsciiString _get_Description() { return $self->Description; }
+			void _set_Description(TCollection_AsciiString theValue) { $self->Description = theValue; }
+		}
+		%pythoncode {
+			Description = property(_get_Description, _set_Description)
+		}
 };
 
 

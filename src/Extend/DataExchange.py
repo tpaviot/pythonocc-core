@@ -31,6 +31,7 @@ from OCC.Core.BRepBuilderAPI import (
 )
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepTools import breptools
+from OCC.Core.DESTEP import DESTEP_Parameters
 from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Pnt2d
 from OCC.Core.IFSelect import IFSelect_ItemsByEntity, IFSelect_RetDone
 from OCC.Core.IGESControl import (
@@ -38,7 +39,6 @@ from OCC.Core.IGESControl import (
     IGESControl_Reader,
     IGESControl_Writer,
 )
-from OCC.Core.Interface import Interface_Static
 from OCC.Core.Message import Message_ProgressRange
 from OCC.Core.Quantity import Quantity_Color, Quantity_TOC_RGB
 from OCC.Core.RWGltf import RWGltf_CafReader, RWGltf_CafWriter
@@ -159,6 +159,13 @@ def read_step_file(
     return shapes
 
 
+_STEP_SCHEMAS = {
+    "AP203": DESTEP_Parameters.WriteMode_StepSchema_AP203,
+    "AP214IS": DESTEP_Parameters.WriteMode_StepSchema_AP214IS,
+    "AP242DIS": DESTEP_Parameters.WriteMode_StepSchema_AP242DIS,
+}
+
+
 def write_step_file(
     shape: TopoDS_Shape, filename: str, application_protocol: str = "AP203"
 ) -> None:
@@ -180,7 +187,7 @@ def write_step_file(
     if shape.IsNull():
         raise AssertionError("Shape is null.")
 
-    if application_protocol not in ["AP203", "AP214IS", "AP242DIS"]:
+    if application_protocol not in _STEP_SCHEMAS:
         raise AssertionError(
             "application_protocol must be either AP203, AP214IS or AP242DIS. "
             f"You passed {application_protocol}."
@@ -206,17 +213,15 @@ def write_step_file(
             )
 
     # the writer defines the write.step.* parameters: create it first, else
-    # the schema is not set at the first call
+    # they are not initialized at the first call
     writer = STEPControl_Writer()
-    # the schema is a global parameter: restore it once the file is written
-    previous_schema = Interface_Static.CVal("write.step.schema")
-    Interface_Static.SetCVal("write.step.schema", application_protocol)
-    try:
-        # Convert and write shape
-        writer.Transfer(shape, STEPControl_AsIs)
-        status = writer.Write(filename)
-    finally:
-        Interface_Static.SetCVal("write.step.schema", previous_schema)
+    # the global parameters, except the schema, which is not changed globally
+    params = DESTEP_Parameters()
+    params.InitFromStatic()
+    params.WriteSchema = _STEP_SCHEMAS[application_protocol]
+    # Convert and write shape
+    writer.Transfer(shape, STEPControl_AsIs, params)
+    status = writer.Write(filename)
 
     if status != IFSelect_RetDone:
         raise OSError("Error while writing shape to STEP file.")

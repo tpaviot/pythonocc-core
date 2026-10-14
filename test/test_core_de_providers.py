@@ -24,11 +24,14 @@ import pytest
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.DE import DE_Wrapper
-from OCC.Core.DESTEP import DESTEP_ConfigurationNode
+from OCC.Core.DESTEP import DESTEP_ConfigurationNode, DESTEP_Parameters
+from OCC.Core.Interface import Interface_Static
+from OCC.Core.STEPControl import STEPControl_AsIs, STEPControl_Writer
 from OCC.Core.TDF import TDF_LabelSequence
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.TopAbs import TopAbs_COMPOUND, TopAbs_FACE, TopAbs_SOLID
 from OCC.Core.TopoDS import TopoDS_Shape
+from OCC.Core.UnitsMethods import UnitsMethods_LengthUnit_Meter
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
 
 # module, file extension, format, type of the shape read back (None: export
@@ -100,3 +103,31 @@ def test_de_wrapper_dispatch(tmp_path: Path, meshed_box) -> None:
     shape = TopoDS_Shape()
     assert wrapper.Read(file_name, shape)
     assert shape.ShapeType() == TopAbs_SOLID
+
+
+def test_step_parameters_fields(tmp_path: Path, meshed_box) -> None:
+    # the parameters are passed to the writer, the global ones are unchanged
+    params = DESTEP_Parameters()
+    assert params.WriteSchema == DESTEP_Parameters.WriteMode_StepSchema_AP214IS
+    params.WriteSchema = DESTEP_Parameters.WriteMode_StepSchema_AP242DIS
+    params.WriteProductName = "box"
+    assert params.WriteProductName == "box"
+    params.WriteUnit = UnitsMethods_LengthUnit_Meter
+    assert params.WriteUnit == UnitsMethods_LengthUnit_Meter
+    schema = Interface_Static.CVal("write.step.schema")
+    writer = STEPControl_Writer()
+    writer.Transfer(meshed_box, STEPControl_AsIs, params)
+    file_name = tmp_path / "box.step"
+    writer.Write(str(file_name))
+    assert Interface_Static.CVal("write.step.schema") == schema
+    content = file_name.read_text()
+    assert "AP242_MANAGED_MODEL_BASED_3D_ENGINEERING" in content
+    assert "PRODUCT('box" in content
+    assert ".METRE." in content
+    # the parameters of a configuration node
+    node = DESTEP_ConfigurationNode()
+    node.InternalParameters.WriteSchema = DESTEP_Parameters.WriteMode_StepSchema_AP203
+    assert (
+        node.InternalParameters.WriteSchema
+        == DESTEP_Parameters.WriteMode_StepSchema_AP203
+    )

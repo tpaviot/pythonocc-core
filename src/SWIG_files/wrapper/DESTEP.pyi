@@ -10,10 +10,14 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.Resource import *
+from OCC.Core.STEPControl import *
 from OCC.Core.TColStd import *
+from OCC.Core.UnitsMethods import *
 
 
 class DESTEP_ConfigurationNode(DE_ShapeFixConfigurationNode):
+    InternalParameters: DESTEP_Parameters
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -167,6 +171,56 @@ class DESTEP_Parameters:
 
     WriteMode_VertexMode_OneCompound = WriteMode_VertexMode.WriteMode_VertexMode_OneCompound
     WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_SingleVertex
+    ReadBSplineContinuity: Any
+    ReadPrecisionMode: Any
+    ReadPrecisionVal: float
+    ReadMaxPrecisionMode: Any
+    ReadMaxPrecisionVal: float
+    ReadSameParamMode: bool
+    ReadSurfaceCurveMode: Any
+    EncodeRegAngle: float
+    AngleUnit: Any
+    ReadProductMode: bool
+    ReadProductContext: Any
+    ReadShapeRepr: Any
+    ReadTessellated: Any
+    ReadAssemblyLevel: Any
+    ReadRelationship: bool
+    ReadShapeAspect: bool
+    ReadConstrRelation: bool
+    ReadSubshapeNames: bool
+    ReadCodePage: Resource_FormatType
+    ReadNonmanifold: bool
+    ReadIdeas: bool
+    ReadAllShapes: bool
+    ReadRootTransformation: bool
+    ReadColor: bool
+    ReadName: bool
+    ReadLayer: bool
+    ReadProps: bool
+    ReadMetadata: bool
+    ReadProductMetadata: bool
+    WritePrecisionMode: Any
+    WritePrecisionVal: float
+    WriteAssembly: Any
+    WriteSchema: Any
+    WriteTessellated: Any
+    WriteProductName: str
+    WriteSurfaceCurMode: bool
+    WriteUnit: UnitsMethods_LengthUnit
+    WriteVertexMode: Any
+    WriteSubshapeNames: bool
+    WriteColor: bool
+    WriteNonmanifold: bool
+    WriteName: bool
+    WriteLayer: bool
+    WriteProps: bool
+    WriteMetadata: bool
+    WriteMaterial: bool
+    WriteVisMaterial: bool
+    WriteModelType: STEPControl_StepModelType
+    CleanDuplicates: bool
+    WriteScalingTrsf: bool
     def __init__(self) -> None: ...
     @staticmethod
     def GetDefaultShapeFixParameters() -> DE_ShapeFixParameters: ...

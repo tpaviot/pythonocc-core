@@ -107,6 +107,7 @@ from OCC.Core.Exception import *
 *********************************/
 class DESTEP_ConfigurationNode : public DE_ShapeFixConfigurationNode {
 	public:
+		DESTEP_Parameters InternalParameters;
 		/****** DESTEP_ConfigurationNode::DESTEP_ConfigurationNode ******/
 		/****** md5 signature: b06d4e4af1e28f7f8fb9dc743e281d60 ******/
 		%feature("compactdefaultargs") DESTEP_ConfigurationNode;
@@ -532,6 +533,65 @@ WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_Si
 };
 /* end python proxy for enums */
 
+		ReadMode_BSplineContinuity ReadBSplineContinuity;
+		ReadMode_Precision ReadPrecisionMode;
+		double ReadPrecisionVal;
+		ReadMode_MaxPrecision ReadMaxPrecisionMode;
+		double ReadMaxPrecisionVal;
+		bool ReadSameParamMode;
+		ReadMode_SurfaceCurve ReadSurfaceCurveMode;
+		double EncodeRegAngle;
+		AngleUnitMode AngleUnit;
+		bool ReadProductMode;
+		ReadMode_ProductContext ReadProductContext;
+		ReadMode_ShapeRepr ReadShapeRepr;
+		RWMode_Tessellated ReadTessellated;
+		ReadMode_AssemblyLevel ReadAssemblyLevel;
+		bool ReadRelationship;
+		bool ReadShapeAspect;
+		bool ReadConstrRelation;
+		bool ReadSubshapeNames;
+		%apply int { Resource_FormatType };
+		Resource_FormatType ReadCodePage;
+		bool ReadNonmanifold;
+		bool ReadIdeas;
+		bool ReadAllShapes;
+		bool ReadRootTransformation;
+		bool ReadColor;
+		bool ReadName;
+		bool ReadLayer;
+		bool ReadProps;
+		bool ReadMetadata;
+		bool ReadProductMetadata;
+		WriteMode_PrecisionMode WritePrecisionMode;
+		double WritePrecisionVal;
+		WriteMode_Assembly WriteAssembly;
+		WriteMode_StepSchema WriteSchema;
+		RWMode_Tessellated WriteTessellated;
+		%extend {
+			TCollection_AsciiString _get_WriteProductName() { return $self->WriteProductName; }
+			void _set_WriteProductName(TCollection_AsciiString theValue) { $self->WriteProductName = theValue; }
+		}
+		%pythoncode {
+			WriteProductName = property(_get_WriteProductName, _set_WriteProductName)
+		}
+		bool WriteSurfaceCurMode;
+		%apply int { UnitsMethods_LengthUnit };
+		UnitsMethods_LengthUnit WriteUnit;
+		WriteMode_VertexMode WriteVertexMode;
+		bool WriteSubshapeNames;
+		bool WriteColor;
+		bool WriteNonmanifold;
+		bool WriteName;
+		bool WriteLayer;
+		bool WriteProps;
+		bool WriteMetadata;
+		bool WriteMaterial;
+		bool WriteVisMaterial;
+		%apply int { STEPControl_StepModelType };
+		STEPControl_StepModelType WriteModelType;
+		bool CleanDuplicates;
+		bool WriteScalingTrsf;
 		/****** DESTEP_Parameters::DESTEP_Parameters ******/
 		/****** md5 signature: b88464b97e49d1923ede59964e649635 ******/
 		%feature("compactdefaultargs") DESTEP_Parameters;
