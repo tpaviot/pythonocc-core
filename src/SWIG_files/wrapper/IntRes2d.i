@@ -132,6 +132,10 @@ IntRes2d_Undecided = IntRes2d_TypeTrans.IntRes2d_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntRes2d_SequenceOfIntersectionSegment) NCollection_Sequence<IntRes2d_IntersectionSegment>;
@@ -147,6 +151,10 @@ IntRes2d_Undecided = IntRes2d_TypeTrans.IntRes2d_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

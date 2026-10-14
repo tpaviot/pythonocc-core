@@ -510,6 +510,10 @@ Array1ExtendIter(TColStd_SequenceOfInteger)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %ignore NCollection_DataMap<int,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::Items;

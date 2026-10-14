@@ -167,6 +167,10 @@ MAT_Right = MAT_Side.MAT_Right
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(MAT_SequenceOfBasicElt) NCollection_Sequence<opencascade::handle<MAT_BasicElt>>;
@@ -182,6 +186,10 @@ MAT_Right = MAT_Side.MAT_Right
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

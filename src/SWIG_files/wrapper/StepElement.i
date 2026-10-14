@@ -289,6 +289,10 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(StepElement_SequenceOfCurveElementSectionDefinition) NCollection_Sequence<opencascade::handle<StepElement_CurveElementSectionDefinition>>;
@@ -304,6 +308,10 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(StepElement_SequenceOfElementMaterial) NCollection_Sequence<opencascade::handle<StepElement_ElementMaterial>>;
@@ -319,6 +327,10 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(StepElement_SequenceOfSurfaceElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_SurfaceElementPurposeMember>>;
@@ -334,6 +346,10 @@ Array1ExtendIter(opencascade::handle<StepElement_VolumeElementPurposeMember>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

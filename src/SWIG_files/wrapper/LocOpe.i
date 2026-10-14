@@ -134,6 +134,10 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(LocOpe_SequenceOfLin) NCollection_Sequence<gp_Lin>;
@@ -149,6 +153,10 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(LocOpe_SequenceOfPntFace) NCollection_Sequence<LocOpe_PntFace>;
@@ -164,6 +172,10 @@ LocOpe_INVALID = LocOpe_Operation.LocOpe_INVALID
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

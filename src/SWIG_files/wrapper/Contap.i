@@ -141,6 +141,10 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Contap_SequenceOfPathPointOfTheSearch) NCollection_Sequence<Contap_ThePathPointOfTheSearch>;
@@ -156,6 +160,10 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Contap_SequenceOfSegmentOfTheSearch) NCollection_Sequence<Contap_TheSegmentOfTheSearch>;
@@ -171,6 +179,10 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Contap_TheSequenceOfLine) NCollection_Sequence<Contap_Line>;
@@ -186,6 +198,10 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Contap_TheSequenceOfPoint) NCollection_Sequence<Contap_Point>;
@@ -201,6 +217,10 @@ Contap_DraftPrs = Contap_TFunction.Contap_DraftPrs
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

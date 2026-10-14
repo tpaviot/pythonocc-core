@@ -120,6 +120,10 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntCurveSurface_SequenceOfSeg) NCollection_Sequence<IntCurveSurface_IntersectionSegment>;
@@ -135,6 +139,10 @@ IntCurveSurface_Out = IntCurveSurface_TransitionOnCurve.IntCurveSurface_Out
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

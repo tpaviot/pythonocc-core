@@ -161,6 +161,10 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TDF_DeltaList) NCollection_List<opencascade::handle<TDF_Delta>>;
@@ -252,6 +256,10 @@ Array1ExtendIter(opencascade::handle<TDF_Attribute>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TDF_ListIteratorOfAttributeDeltaList) NCollection_TListIterator<opencascade::handle<TDF_AttributeDelta>>;

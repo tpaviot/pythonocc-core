@@ -101,6 +101,10 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Hatch_SequenceOfParameter) NCollection_Sequence<Hatch_Parameter>;
@@ -116,6 +120,10 @@ Hatch_ANYLINE = Hatch_LineForm.Hatch_ANYLINE
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

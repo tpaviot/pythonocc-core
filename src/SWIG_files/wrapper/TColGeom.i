@@ -108,6 +108,10 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColGeom_SequenceOfCurve) NCollection_Sequence<opencascade::handle<Geom_Curve>>;
@@ -123,6 +127,10 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColGeom_SequenceOfSurface) NCollection_Sequence<opencascade::handle<Geom_Surface>>;
@@ -138,6 +146,10 @@ Array1ExtendIter(opencascade::handle<Geom_Surface>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

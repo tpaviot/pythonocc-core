@@ -757,6 +757,10 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(XCAFDimTolObjects_DimensionModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DimensionModif>;
@@ -772,6 +776,10 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(XCAFDimTolObjects_GeomToleranceModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_GeomToleranceModif>;
@@ -787,6 +795,10 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

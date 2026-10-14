@@ -220,6 +220,10 @@ Array1ExtendIter(HLRBRep_FaceData)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %include "Extrema_GCurveLocator.hxx";

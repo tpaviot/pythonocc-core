@@ -120,6 +120,10 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Convert_SequenceOfArray1OfPoles2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
@@ -135,6 +139,10 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

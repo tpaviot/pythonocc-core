@@ -202,6 +202,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfDir) NCollection_Sequence<gp_Dir>;
@@ -217,6 +221,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfDir2d) NCollection_Sequence<gp_Dir2d>;
@@ -232,6 +240,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfPnt) NCollection_Sequence<gp_Pnt>;
@@ -247,6 +259,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfPnt2d) NCollection_Sequence<gp_Pnt2d>;
@@ -262,6 +278,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfVec) NCollection_Sequence<gp_Vec>;
@@ -277,6 +297,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfVec2d) NCollection_Sequence<gp_Vec2d>;
@@ -292,6 +316,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfXY) NCollection_Sequence<gp_XY>;
@@ -307,6 +335,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfXYZ) NCollection_Sequence<gp_XYZ>;
@@ -322,6 +354,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColgp_SequenceOfArray1OfPnt2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
@@ -337,6 +373,10 @@ Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

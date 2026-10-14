@@ -170,6 +170,10 @@ Array1ExtendIter(Extrema_POnSurf)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Extrema_SequenceOfPOnCurv2d) NCollection_Sequence<Extrema_POnCurv2d>;
@@ -185,6 +189,10 @@ Array1ExtendIter(Extrema_POnSurf)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Extrema_SequenceOfPOnSurf) NCollection_Sequence<Extrema_POnSurf>;
@@ -200,6 +208,10 @@ Array1ExtendIter(Extrema_POnSurf)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<int,Bnd_Sphere>;

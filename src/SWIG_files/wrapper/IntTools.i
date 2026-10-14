@@ -218,6 +218,10 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntTools_SequenceOfCurves) NCollection_Sequence<IntTools_Curve>;
@@ -233,6 +237,10 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntTools_SequenceOfPntOn2Faces) NCollection_Sequence<IntTools_PntOn2Faces>;
@@ -248,6 +256,10 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntTools_SequenceOfRanges) NCollection_Sequence<IntTools_Range>;
@@ -263,6 +275,10 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntTools_SequenceOfRoots) NCollection_Sequence<IntTools_Root>;
@@ -278,6 +294,10 @@ Array1ExtendIter(IntTools_Root)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

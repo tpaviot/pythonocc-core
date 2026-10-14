@@ -246,6 +246,10 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(BRepFill_SequenceOfFaceAndOrder) NCollection_Sequence<BRepFill_FaceAndOrder>;
@@ -261,6 +265,10 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(BRepFill_SequenceOfSection) NCollection_Sequence<BRepFill_Section>;
@@ -276,6 +284,10 @@ BRepFill_ContactOnBorder = BRepFill_TypeOfContact.BRepFill_ContactOnBorder
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

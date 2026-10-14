@@ -109,6 +109,10 @@ Array1ExtendIter(gp_Lin)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Intf_SeqOfSectionPoint) NCollection_Sequence<Intf_SectionPoint>;
@@ -124,6 +128,10 @@ Array1ExtendIter(gp_Lin)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(Intf_SeqOfTangentZone) NCollection_Sequence<Intf_TangentZone>;
@@ -139,6 +147,10 @@ Array1ExtendIter(gp_Lin)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

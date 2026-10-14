@@ -171,6 +171,10 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntPatch_SequenceOfLine) NCollection_Sequence<opencascade::handle<IntPatch_Line>>;
@@ -186,6 +190,10 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntPatch_SequenceOfPathPointOfTheSOnBounds) NCollection_Sequence<IntPatch_ThePathPointOfTheSOnBounds>;
@@ -201,6 +209,10 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntPatch_SequenceOfPoint) NCollection_Sequence<IntPatch_Point>;
@@ -216,6 +228,10 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntPatch_SequenceOfSegmentOfTheSOnBounds) NCollection_Sequence<IntPatch_TheSegmentOfTheSOnBounds>;
@@ -231,6 +247,10 @@ IntPatch_SPntPole = IntPatch_SpecPntType.IntPatch_SPntPole
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

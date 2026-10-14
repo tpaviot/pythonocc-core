@@ -340,6 +340,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfAsciiString) NCollection_Sequence<TCollection_AsciiString>;
@@ -355,6 +359,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfBoolean) NCollection_Sequence<bool>;
@@ -370,6 +378,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfExtendedString) NCollection_Sequence<TCollection_ExtendedString>;
@@ -385,6 +397,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfHAsciiString) NCollection_Sequence<opencascade::handle<TCollection_HAsciiString>>;
@@ -400,6 +416,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfHExtendedString) NCollection_Sequence<opencascade::handle<TCollection_HExtendedString>>;
@@ -415,6 +435,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfInteger) NCollection_Sequence<int>;
@@ -430,6 +454,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfReal) NCollection_Sequence<double>;
@@ -445,6 +473,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(TColStd_SequenceOfTransient) NCollection_Sequence<opencascade::handle<Standard_Transient>>;
@@ -460,6 +492,10 @@ Array2NumpyTemplate(TColStd_Array2OfReal, double, double)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %ignore NCollection_DataMap<int,TColStd_ListOfInteger>::Items;

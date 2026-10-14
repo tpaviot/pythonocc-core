@@ -723,6 +723,18 @@ def test_ncollection_list_iterator() -> None:
     assert list(los1) == [BRepCheck_Multiple3DCurve, BRepCheck_EmptyWire]
 
 
+def test_ncollection_sequence_iterator() -> None:
+    # the items, from index 1 to Length()
+    integers = TColStd_SequenceOfInteger()
+    for value in (3, 1, 2):
+        integers.Append(value)
+    assert list(integers) == [3, 1, 2]
+    points = TColgp_SequenceOfPnt()
+    points.Append(gp_Pnt(1, 2, 3))
+    assert [pnt.Coord() for pnt in points] == [[1.0, 2.0, 3.0]]
+    assert list(TDF_LabelSequence()) == []
+
+
 def test_array_iterator() -> None:
     P0 = gp_Pnt(1, 2, 3)
     list_of_points = TColgp_Array1OfPnt(5, 8)

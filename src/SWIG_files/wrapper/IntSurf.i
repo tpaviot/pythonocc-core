@@ -149,6 +149,10 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntSurf_SequenceOfInteriorPoint) NCollection_Sequence<IntSurf_InteriorPoint>;
@@ -164,6 +168,10 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntSurf_SequenceOfPathPoint) NCollection_Sequence<IntSurf_PathPoint>;
@@ -179,6 +187,10 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(IntSurf_SequenceOfPntOn2S) NCollection_Sequence<IntSurf_PntOn2S>;
@@ -194,6 +206,10 @@ IntSurf_Undecided = IntSurf_TypeTrans.IntSurf_Undecided
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */

@@ -191,6 +191,10 @@ Array1ExtendIter(opencascade::handle<StepRepr_ShapeAspect>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 %template(StepRepr_SequenceOfRepresentationItem) NCollection_Sequence<opencascade::handle<StepRepr_RepresentationItem>>;
@@ -206,6 +210,10 @@ Array1ExtendIter(opencascade::handle<StepRepr_ShapeAspect>)
     %pythoncode {
     def __len__(self):
         return self.Size()
+
+    def __iter__(self):
+        for i in range(1, self.Length() + 1):
+            yield self.Value(i)
     }
 };
 /* end templates declaration */
