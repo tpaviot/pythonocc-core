@@ -8,18 +8,18 @@ from OCC.Core.BRepTopAdaptor import *
 from OCC.Core.TopOpeBRepDS import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TopOpeBRepTool import *
+from OCC.Core.Geom2dAdaptor import *
 from OCC.Core.TCollection import *
 from OCC.Core.Bnd import *
+from OCC.Core.BRepAdaptor import *
 from OCC.Core.TopAbs import *
 from OCC.Core.gp import *
 from OCC.Core.TopTools import *
 from OCC.Core.Geom2d import *
 from OCC.Core.Geom import *
 from OCC.Core.IntRes2d import *
-from OCC.Core.BRepAdaptor import *
 from OCC.Core.IntPatch import *
 from OCC.Core.IntSurf import *
-from OCC.Core.Geom2dAdaptor import *
 
 
 class TopOpeBRep_Array1OfLineInter:

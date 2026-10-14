@@ -5,11 +5,11 @@ from typing import Any, overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.GeomAbs import *
+from OCC.Core.TColGeom import *
 from OCC.Core.Adaptor3d import *
 from OCC.Core.gp import *
 from OCC.Core.Geom import *
 from OCC.Core.TColStd import *
-from OCC.Core.TColGeom import *
 
 
 class HelixGeom_BuilderApproxCurve:

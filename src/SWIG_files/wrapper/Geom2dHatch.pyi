@@ -5,9 +5,9 @@ from typing import Any, overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.gp import *
+from OCC.Core.Geom2dAdaptor import *
 from OCC.Core.IntRes2d import *
 from OCC.Core.TopAbs import *
-from OCC.Core.Geom2dAdaptor import *
 from OCC.Core.Geom2d import *
 from OCC.Core.HatchGen import *
 from OCC.Core.Geom2dInt import *

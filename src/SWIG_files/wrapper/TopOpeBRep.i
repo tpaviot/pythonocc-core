@@ -48,15 +48,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrep.html"
 #include<TopOpeBRepDS_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopOpeBRepTool_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
 #include<TCollection_module.hxx>
 #include<Bnd_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
 #include<IntRes2d_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<IntPatch_module.hxx>
 #include<IntSurf_module.hxx>
 #include<TColStd_module.hxx>
@@ -88,15 +89,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebrep.html"
 %import TopOpeBRepDS.i
 %import TopoDS.i
 %import TopOpeBRepTool.i
+%import Geom2dAdaptor.i
 %import TCollection.i
 %import Bnd.i
+%import BRepAdaptor.i
 %import TopAbs.i
 %import gp.i
 %import TopTools.i
 %import Geom2d.i
 %import Geom.i
 %import IntRes2d.i
-%import BRepAdaptor.i
 %import IntPatch.i
 %import IntSurf.i
 

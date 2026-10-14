@@ -9,12 +9,12 @@ from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
 from OCC.Core.Bnd import *
 from OCC.Core.Geom2d import *
+from OCC.Core.GeomAdaptor import *
 from OCC.Core.Geom import *
 from OCC.Core.TColgp import *
 from OCC.Core.gp import *
 from OCC.Core.TopExp import *
 from OCC.Core.BRepAdaptor import *
-from OCC.Core.GeomAdaptor import *
 
 
 class TopOpeBRepTool_ListOfC2DF:

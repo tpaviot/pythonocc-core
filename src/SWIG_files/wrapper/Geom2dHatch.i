@@ -45,9 +45,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dhatch.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
 #include<IntRes2d_module.hxx>
 #include<TopAbs_module.hxx>
-#include<Geom2dAdaptor_module.hxx>
 #include<Geom2d_module.hxx>
 #include<HatchGen_module.hxx>
 #include<Geom2dInt_module.hxx>
@@ -71,9 +71,9 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_geom2dhatch.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import Geom2dAdaptor.i
 %import IntRes2d.i
 %import TopAbs.i
-%import Geom2dAdaptor.i
 %import Geom2d.i
 %import HatchGen.i
 %import Geom2dInt.i

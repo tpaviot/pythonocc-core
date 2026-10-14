@@ -45,6 +45,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_helixgeom.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<GeomAbs_module.hxx>
+#include<TColGeom_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<gp_module.hxx>
 #include<Geom_module.hxx>
@@ -64,6 +65,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_helixgeom.html"
 %import Standard.i
 %import NCollection.i
 %import GeomAbs.i
+%import TColGeom.i
 %import Adaptor3d.i
 %import gp.i
 %import Geom.i

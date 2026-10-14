@@ -50,6 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
+#include<TColGeom2d_module.hxx>
 #include<TColStd_module.hxx>
 #include<TopTools_module.hxx>
 #include<TopLoc_module.hxx>
@@ -72,6 +73,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepmat2d.html"
 %import Geom2d.i
 %import gp.i
 %import TopoDS.i
+%import TColGeom2d.i
 %import TColStd.i
 %import TopTools.i
 

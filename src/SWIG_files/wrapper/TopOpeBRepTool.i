@@ -49,6 +49,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebreptool.ht
 #include<TopAbs_module.hxx>
 #include<Bnd_module.hxx>
 #include<Geom2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
 #include<Geom_module.hxx>
 #include<TColgp_module.hxx>
 #include<gp_module.hxx>
@@ -84,6 +85,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topopebreptool.ht
 %import TopAbs.i
 %import Bnd.i
 %import Geom2d.i
+%import GeomAdaptor.i
 %import Geom.i
 %import TColgp.i
 %import gp.i

@@ -46,11 +46,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepapprox.html"
 #include<NCollection_module.hxx>
 #include<Approx_module.hxx>
 #include<math_module.hxx>
+#include<AppParCurves_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<IntSurf_module.hxx>
 #include<TColStd_module.hxx>
-#include<AppParCurves_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<gp_module.hxx>
 #include<Adaptor3d_module.hxx>
@@ -80,11 +80,11 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepapprox.html"
 %import NCollection.i
 %import Approx.i
 %import math.i
+%import AppParCurves.i
 %import Geom.i
 %import Geom2d.i
 %import IntSurf.i
 %import TColStd.i
-%import AppParCurves.i
 %import BRepAdaptor.i
 %import gp.i
 %import Adaptor3d.i

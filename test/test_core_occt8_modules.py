@@ -30,6 +30,8 @@ from OCC.Core.GeomGridEval import GeomGridEval_Curve
 from OCC.Core.gp import gp_Ax2, gp_Ax2d, gp_Ax3, gp_Circ, gp_Circ2d, gp_Pnt
 from OCC.Core.GProp import GProp_GProps
 from OCC.Core.HelixBRep import HelixBRep_BuilderHelix
+from OCC.Core.HelixGeom import HelixGeom_BuilderHelix
+from OCC.Core.TColGeom import TColGeom_SequenceOfCurve
 from OCC.Core.TColStd import TColStd_Array1OfBoolean, TColStd_Array1OfReal
 from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Face, TopoDS_Solid, TopoDS_Wire
 
@@ -75,6 +77,19 @@ def test_helix_brep_builder() -> None:
     brepgprop.LinearProperties(helix, props)
     expected_length = 5 * math.hypot(2 * math.pi * 2.5, 2.0)
     assert props.Mass() == pytest.approx(expected_length, rel=1e-4)
+
+
+def test_helix_geom_builder() -> None:
+    # the curves are returned as a sequence, not an opaque pointer
+    builder = HelixGeom_BuilderHelix()
+    builder.SetCurveParameters(0.0, 4 * 2 * math.pi, 4.0, 10.0, 0.0, False)
+    builder.Perform()
+    assert builder.ErrorStatus() == 0
+    curves = builder.Curves()
+    assert isinstance(curves, TColGeom_SequenceOfCurve)
+    assert curves.Length() > 0
+    first_point = curves.Value(1).Value(curves.Value(1).FirstParameter())
+    assert first_point.Distance(gp_Pnt(10, 0, 0)) < 1e-6
 
 
 @pytest.mark.parametrize(

@@ -6,11 +6,11 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Approx import *
 from OCC.Core.math import *
+from OCC.Core.AppParCurves import *
 from OCC.Core.Geom import *
 from OCC.Core.Geom2d import *
 from OCC.Core.IntSurf import *
 from OCC.Core.TColStd import *
-from OCC.Core.AppParCurves import *
 from OCC.Core.BRepAdaptor import *
 from OCC.Core.gp import *
 from OCC.Core.Adaptor3d import *
