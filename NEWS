@@ -1,5 +1,7 @@
-Current
-=======
+Version 8.0.1.2 - October 2026
+==============================
+
+This release requires opencascade-8.0.1
 
 * Tesselator: TopologyTesselator, a mesh that keeps the topology. Face i,
   edge i and vertex i are the sub-shapes of index i in TopologyExplorer
