@@ -1,11 +1,12 @@
 from OCC.Core.AIS import AIS_Shape
 from OCC.Core.gp import gp_Trsf
 from OCC.Core.Graphic3d import Graphic3d_NameOfMaterial
+from OCC.Core.Quantity import Quantity_Color
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Display.OCCViewer import Viewer3d
 
 class Layer:
-    color: int
+    color: str | int | Quantity_Color
     display: Viewer3d
     transparency: float
     material: Graphic3d_NameOfMaterial
@@ -16,7 +17,7 @@ class Layer:
         self,
         from_display: Viewer3d,
         shape: TopoDS_Shape | None = None,
-        color: int = 0,
+        color: str | int | Quantity_Color = 0,
         transparency: float = 0.0,
         material: Graphic3d_NameOfMaterial = ...,
     ) -> None: ...

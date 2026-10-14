@@ -834,7 +834,9 @@ class JupyterRenderer:
             # try feature recognition
             kind, pnt, vec = recognize_face(shape)
             output += f"<u><b>Type</b></u>: {kind}<br>"
-            if kind == "Plane":
+            if pnt is None or vec is None:
+                pass  # no location nor axis for this kind of surface
+            elif kind == "Plane":
                 self.DisplayShape([pnt])
                 output += "<u><b>Properties</b></u>:<br>"
                 output += _html_values("Point", "XYZ", (pnt.X(), pnt.Y(), pnt.Z()))

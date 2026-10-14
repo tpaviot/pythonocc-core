@@ -111,7 +111,6 @@ class BRepGraph_WireIterator:
 
 
 class brepgraph:
-    @overload
     def __init__(self) -> None: ...
     def Allocator(self) -> NCollection_BaseAllocator: ...
     @overload
@@ -149,6 +148,12 @@ class BRepGraph_Cache(Standard_Transient):
     def CopyFreshTo(self, theCopy: BRepGraph_CopyRemap) -> None: ...
     def ID(self) -> Standard_GUID: ...
     def Name(self) -> str: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_Cache: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class BRepGraph_CacheIterator:
     def __init__(self, theRegistry: BRepGraph_CacheRegistry) -> None: ...
@@ -161,7 +166,6 @@ class BRepGraph_CacheIterator:
     def end(self) -> NCollection_ForwardRangeSentinel: ...
 
 class BRepGraph_CacheRegistry:
-    @overload
     def __init__(self) -> None: ...
     def Cache(self, theSlot: int) -> BRepGraph_Cache: ...
     def CacheIter(self) -> BRepGraph_CacheIterator: ...
@@ -171,7 +175,6 @@ class BRepGraph_CacheRegistry:
     def CopyFreshCachesTo(self, theTargetGraph: Any, theItemRemap: Any, theMode: BRepGraph_CopyRemap.Mode) -> None: ...
     @overload
     def CopyFreshCachesTo(self, theTargetGraph: Any, theMappingKind: BRepGraph_CopyRemap.MappingKind, theMode: BRepGraph_CopyRemap.Mode) -> None: ...
-    @overload
     def FindCache(self, theGUID: Standard_GUID) -> BRepGraph_Cache: ...
     @overload
     def FindSlot(self, theGUID: Standard_GUID, theSlot: Any) -> bool: ...
@@ -191,6 +194,9 @@ class BRepGraph_ChildExplorer:
     None_ = LinkKind.None_
     Reference = LinkKind.Reference
     Structural = LinkKind.Structural
+    LinkKind__None = LinkKind.None_
+    LinkKind_Reference = LinkKind.Reference
+    LinkKind_Structural = LinkKind.Structural
 
     class TraversalMode(IntEnum):
         Recursive = 0
@@ -198,6 +204,8 @@ class BRepGraph_ChildExplorer:
 
     Recursive = TraversalMode.Recursive
     DirectChildren = TraversalMode.DirectChildren
+    TraversalMode_Recursive = TraversalMode.Recursive
+    TraversalMode_DirectChildren = TraversalMode.DirectChildren
     @overload
     def __init__(self, theGraph: brepgraph, theRoot: BRepGraph_NodeId, theConfig: BRepGraph_ChildExplorer_Config) -> None: ...
     @overload
@@ -266,6 +274,8 @@ class BRepGraph_ChildRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_ChildRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_ChildRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_ChildRefId: ...
 
 class BRepGraph_CoEdgeId:
     Index: int
@@ -287,6 +297,8 @@ class BRepGraph_CoEdgeId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_CoEdgeId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_CoEdgeId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_CoEdgeId: ...
 
 class BRepGraph_CompSolidId:
     Index: int
@@ -308,6 +320,8 @@ class BRepGraph_CompSolidId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_CompSolidId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_CompSolidId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_CompSolidId: ...
 
 class BRepGraph_Compact:
     @overload
@@ -324,6 +338,8 @@ class BRepGraph_Compact_Options:
 
     Drop = CachePolicy.Drop
     CopyFresh = CachePolicy.CopyFresh
+    CachePolicy_Drop = CachePolicy.Drop
+    CachePolicy_CopyFresh = CachePolicy.CopyFresh
     HistoryMode: bool
     CacheMode: Any
 
@@ -362,6 +378,8 @@ class BRepGraph_CompoundId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_CompoundId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_CompoundId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_CompoundId: ...
 
 class BRepGraph_Copy:
     class GeomPolicy(IntEnum):
@@ -372,6 +390,9 @@ class BRepGraph_Copy:
     Copy = GeomPolicy.Copy
     Share = GeomPolicy.Share
     Drop = GeomPolicy.Drop
+    GeomPolicy_Copy = GeomPolicy.Copy
+    GeomPolicy_Share = GeomPolicy.Share
+    GeomPolicy_Drop = GeomPolicy.Drop
 
     class MeshPolicy(IntEnum):
         Copy = 0
@@ -381,6 +402,9 @@ class BRepGraph_Copy:
     Copy = MeshPolicy.Copy
     Share = MeshPolicy.Share
     Drop = MeshPolicy.Drop
+    MeshPolicy_Copy = MeshPolicy.Copy
+    MeshPolicy_Share = MeshPolicy.Share
+    MeshPolicy_Drop = MeshPolicy.Drop
 
     class CachePolicy(IntEnum):
         Drop = 0
@@ -388,6 +412,8 @@ class BRepGraph_Copy:
 
     Drop = CachePolicy.Drop
     CopyFresh = CachePolicy.CopyFresh
+    CachePolicy_Drop = CachePolicy.Drop
+    CachePolicy_CopyFresh = CachePolicy.CopyFresh
     @staticmethod
     def CopyNode(theSourceGraph: brepgraph, theTargetGraph: Any, theNodeId: BRepGraph_NodeId, theGeomPolicy: Optional[Any] = ..., theMeshPolicy: Optional[Any] = ..., theCachePolicy: Optional[Any] = ...) -> BRepGraph_NodeId: ...
     @staticmethod
@@ -400,6 +426,8 @@ class BRepGraph_CopyRemap:
 
     Copy = Mode.Copy
     Compact = Mode.Compact
+    Mode_Copy = Mode.Copy
+    Mode_Compact = Mode.Compact
 
     class MappingKind(IntEnum):
         Explicit = 0
@@ -407,6 +435,8 @@ class BRepGraph_CopyRemap:
 
     Explicit = MappingKind.Explicit
     Identity = MappingKind.Identity
+    MappingKind_Explicit = MappingKind.Explicit
+    MappingKind_Identity = MappingKind.Identity
     def CopyMode(self) -> BRepGraph_CopyRemap.Mode: ...
     def HasTargetItem(self, theSourceItem: BRepGraph_ItemId) -> bool: ...
     def IsCompact(self) -> bool: ...
@@ -453,7 +483,6 @@ class BRepGraph_Deduplicate_Result:
     NbPartialOrderedWires: int
 
 class BRepGraph_DeferredScope:
-    @overload
     def __init__(self, theGraph: Any) -> None: ...
 
 class BRepGraph_EdgeId:
@@ -476,6 +505,8 @@ class BRepGraph_EdgeId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_EdgeId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_EdgeId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_EdgeId: ...
 
 class BRepGraph_EditorView:
     def BeginDeferredInvalidation(self) -> None: ...
@@ -734,6 +765,19 @@ class BRepGraph_EditorView_WireOps:
     CoEdgeNotOwnedByWire = CoEdgeOrderStatus.CoEdgeNotOwnedByWire
     NotPermutation = CoEdgeOrderStatus.NotPermutation
     Disconnected = CoEdgeOrderStatus.Disconnected
+    CoEdgeOrderStatus_Ready = CoEdgeOrderStatus.Ready
+    CoEdgeOrderStatus_Reordered = CoEdgeOrderStatus.Reordered
+    CoEdgeOrderStatus_AlreadyCurrent = CoEdgeOrderStatus.AlreadyCurrent
+    CoEdgeOrderStatus_AlreadyContained = CoEdgeOrderStatus.AlreadyContained
+    CoEdgeOrderStatus_Empty = CoEdgeOrderStatus.Empty
+    CoEdgeOrderStatus_InvalidWire = CoEdgeOrderStatus.InvalidWire
+    CoEdgeOrderStatus_SizeMismatch = CoEdgeOrderStatus.SizeMismatch
+    CoEdgeOrderStatus_DuplicateCoEdge = CoEdgeOrderStatus.DuplicateCoEdge
+    CoEdgeOrderStatus_InvalidCoEdge = CoEdgeOrderStatus.InvalidCoEdge
+    CoEdgeOrderStatus_CoEdgeAlreadyBound = CoEdgeOrderStatus.CoEdgeAlreadyBound
+    CoEdgeOrderStatus_CoEdgeNotOwnedByWire = CoEdgeOrderStatus.CoEdgeNotOwnedByWire
+    CoEdgeOrderStatus_NotPermutation = CoEdgeOrderStatus.NotPermutation
+    CoEdgeOrderStatus_Disconnected = CoEdgeOrderStatus.Disconnected
 
     class ReplaceEdgeStatus(IntEnum):
         Ready = 0
@@ -749,6 +793,12 @@ class BRepGraph_EditorView_WireOps:
     InvalidOldEdge = ReplaceEdgeStatus.InvalidOldEdge
     InvalidNewEdge = ReplaceEdgeStatus.InvalidNewEdge
     Disconnected = ReplaceEdgeStatus.Disconnected
+    ReplaceEdgeStatus_Ready = ReplaceEdgeStatus.Ready
+    ReplaceEdgeStatus_AlreadyCurrent = ReplaceEdgeStatus.AlreadyCurrent
+    ReplaceEdgeStatus_InvalidWire = ReplaceEdgeStatus.InvalidWire
+    ReplaceEdgeStatus_InvalidOldEdge = ReplaceEdgeStatus.InvalidOldEdge
+    ReplaceEdgeStatus_InvalidNewEdge = ReplaceEdgeStatus.InvalidNewEdge
+    ReplaceEdgeStatus_Disconnected = ReplaceEdgeStatus.Disconnected
     def Add(self, theCoEdgeIds: Any) -> BRepGraph_WireId: ...
     def CheckAppendCoEdge(self, theWire: BRepGraph_WireId, theCoEdgeId: BRepGraph_CoEdgeId) -> Any: ...
     @overload
@@ -789,6 +839,8 @@ class BRepGraph_FaceId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_FaceId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_FaceId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_FaceId: ...
 
 class BRepGraph_FaceRefId:
     Index: int
@@ -810,6 +862,8 @@ class BRepGraph_FaceRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_FaceRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_FaceRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_FaceRefId: ...
 
 class BRepGraph_ItemId:
     class Domain(IntEnum):
@@ -820,6 +874,9 @@ class BRepGraph_ItemId:
     None_ = Domain.None_
     Node = Domain.Node
     Reference = Domain.Reference
+    Domain__None = Domain.None_
+    Domain_Node = Domain.Node
+    Domain_Reference = Domain.Reference
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -845,6 +902,9 @@ class BRepGraph_ItemUID:
         Reference = 2
 
     None_ = Domain.None_
+    Domain__None = Domain.None_
+    Domain_Node = Domain.Node
+    Domain_Reference = Domain.Reference
     def __init__(self) -> None: ...
     def Counter(self) -> int: ...
     def HashValue(self) -> int: ...
@@ -884,6 +944,12 @@ class BRepGraph_Layer(Standard_Transient):
     def Revision(self) -> int: ...
     def SubscribedKinds(self) -> int: ...
     def SubscribedRefKinds(self) -> int: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_Layer: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class BRepGraph_LayerHistory_Event:
     OperationName: str
@@ -903,7 +969,6 @@ class BRepGraph_LayerIterator:
     def end(self) -> NCollection_ForwardRangeSentinel: ...
 
 class BRepGraph_LayerLock_ScopedOwnerEdit:
-    @overload
     def __init__(self, theLayer: BRepGraph_LayerLock, theItem: BRepGraph_ItemId, theOwnerId: Standard_GUID) -> None: ...
 
 class BRepGraph_LayerParametric_AddResult:
@@ -911,7 +976,6 @@ class BRepGraph_LayerParametric_AddResult:
     Root: BRepGraph_NodeId
 
 class BRepGraph_LayerRegistry:
-    @overload
     def __init__(self) -> None: ...
     def ClearAll(self) -> None: ...
     @overload
@@ -927,7 +991,6 @@ class BRepGraph_LayerRegistry:
     def DispatchOnRefRemoved(self, theRef: BRepGraph_RefId) -> None: ...
     def DispatchRefModified(self, theRef: BRepGraph_RefId) -> None: ...
     def DispatchRefsModified(self, theModifiedRefs: Any, theModifiedRefKindsMask: int) -> None: ...
-    @overload
     def FindLayer(self, theGUID: Standard_GUID) -> BRepGraph_Layer: ...
     def FindSlot(self, theGUID: Standard_GUID, theSlot: Any) -> bool: ...
     def HasModificationSubscribers(self) -> bool: ...
@@ -1063,6 +1126,17 @@ class BRepGraph_NodeId:
     CoEdge = Kind.CoEdge
     Product = Kind.Product
     Occurrence = Kind.Occurrence
+    Kind_Solid = Kind.Solid
+    Kind_Shell = Kind.Shell
+    Kind_Face = Kind.Face
+    Kind_Wire = Kind.Wire
+    Kind_Edge = Kind.Edge
+    Kind_Vertex = Kind.Vertex
+    Kind_Compound = Kind.Compound
+    Kind_CompSolid = Kind.CompSolid
+    Kind_CoEdge = Kind.CoEdge
+    Kind_Product = Kind.Product
+    Kind_Occurrence = Kind.Occurrence
     NodeKind: Any
     Index: int
     @overload
@@ -1085,6 +1159,8 @@ class BRepGraph_NodeId:
     def IsValidKind(theKind: Any) -> bool: ...
     @staticmethod
     def Start(theKind: Any) -> BRepGraph_NodeId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_NodeId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_NodeId: ...
 
 class BRepGraph_OccurrenceId:
     Index: int
@@ -1106,6 +1182,8 @@ class BRepGraph_OccurrenceId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_OccurrenceId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_OccurrenceId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_OccurrenceId: ...
 
 class BRepGraph_OccurrenceRefId:
     Index: int
@@ -1127,6 +1205,8 @@ class BRepGraph_OccurrenceRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_OccurrenceRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_OccurrenceRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_OccurrenceRefId: ...
 
 class BRepGraph_ParallelPolicy:
     @staticmethod
@@ -1154,6 +1234,9 @@ class BRepGraph_ParentExplorer:
     None_ = LinkKind.None_
     Reference = LinkKind.Reference
     Structural = LinkKind.Structural
+    LinkKind__None = LinkKind.None_
+    LinkKind_Reference = LinkKind.Reference
+    LinkKind_Structural = LinkKind.Structural
 
     class TraversalMode(IntEnum):
         Recursive = 0
@@ -1161,6 +1244,8 @@ class BRepGraph_ParentExplorer:
 
     Recursive = TraversalMode.Recursive
     DirectParents = TraversalMode.DirectParents
+    TraversalMode_Recursive = TraversalMode.Recursive
+    TraversalMode_DirectParents = TraversalMode.DirectParents
     @overload
     def __init__(self, theGraph: brepgraph, theNode: BRepGraph_NodeId, theConfig: BRepGraph_ParentExplorer_Config) -> None: ...
     @overload
@@ -1212,6 +1297,8 @@ class BRepGraph_ProductId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_ProductId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_ProductId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_ProductId: ...
 
 class BRepGraph_RefId:
     class Kind(IntEnum):
@@ -1230,6 +1317,13 @@ class BRepGraph_RefId:
     Solid = Kind.Solid
     Child = Kind.Child
     Occurrence = Kind.Occurrence
+    Kind_Shell = Kind.Shell
+    Kind_Face = Kind.Face
+    Kind_Wire = Kind.Wire
+    Kind_Vertex = Kind.Vertex
+    Kind_Solid = Kind.Solid
+    Kind_Child = Kind.Child
+    Kind_Occurrence = Kind.Occurrence
     RefKind: Any
     Index: int
     @overload
@@ -1250,6 +1344,8 @@ class BRepGraph_RefId:
     def IsValidKind(theKind: Any) -> bool: ...
     @staticmethod
     def Start(theKind: Any) -> BRepGraph_RefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_RefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_RefId: ...
 
 class BRepGraph_RefUID:
     Kind: BRepGraph_RefId.Kind
@@ -1363,6 +1459,16 @@ class BRepGraph_RelatedIterator:
     IncidentEdge = RelationKind.IncidentEdge
     ParentEdge = RelationKind.ParentEdge
     SeamPair = RelationKind.SeamPair
+    RelationKind_BoundaryEdge = RelationKind.BoundaryEdge
+    RelationKind_AdjacentFace = RelationKind.AdjacentFace
+    RelationKind_OuterWire = RelationKind.OuterWire
+    RelationKind_ReferencedByFace = RelationKind.ReferencedByFace
+    RelationKind_IncidentVertex = RelationKind.IncidentVertex
+    RelationKind_WireCoEdge = RelationKind.WireCoEdge
+    RelationKind_OwningFace = RelationKind.OwningFace
+    RelationKind_IncidentEdge = RelationKind.IncidentEdge
+    RelationKind_ParentEdge = RelationKind.ParentEdge
+    RelationKind_SeamPair = RelationKind.SeamPair
 
     class Stage(IntEnum):
         First = 0
@@ -1374,6 +1480,10 @@ class BRepGraph_RelatedIterator:
     Second = Stage.Second
     Third = Stage.Third
     Finished = Stage.Finished
+    Stage_First = Stage.First
+    Stage_Second = Stage.Second
+    Stage_Third = Stage.Third
+    Stage_Finished = Stage.Finished
     def __init__(self, theGraph: brepgraph, theNode: BRepGraph_NodeId) -> None: ...
     def Current(self) -> BRepGraph_NodeId: ...
     def CurrentRelation(self) -> BRepGraph_RelatedIterator.RelationKind: ...
@@ -1399,6 +1509,9 @@ class BRepGraph_ShapesView:
     Success = AddStatus.Success
     SuccessWithWarnings = AddStatus.SuccessWithWarnings
     Failed = AddStatus.Failed
+    AddStatus_Success = AddStatus.Success
+    AddStatus_SuccessWithWarnings = AddStatus.SuccessWithWarnings
+    AddStatus_Failed = AddStatus.Failed
     @overload
     def Add(self, theShape: TopoDS_Shape) -> BRepGraph_ShapesView_Result: ...
     @overload
@@ -1408,13 +1521,13 @@ class BRepGraph_ShapesView:
     @overload
     def Add(self, theShape: TopoDS_Shape, theParent: BRepGraph_NodeId, theOptions: BRepGraph_ShapesView_Options) -> BRepGraph_ShapesView_Result: ...
     @overload
-    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputs: Any, theHistory: BRepTools_History, theOpLabel: str) -> BRepGraph_ShapesView_Result: ...
+    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputs: Any, theHistory: BRepTools_History, theOpLabel: str | TCollection_AsciiString) -> BRepGraph_ShapesView_Result: ...
     @overload
-    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputs: Any, theHistory: BRepTools_History, theOpLabel: str, theOptions: BRepGraph_ShapesView_Options) -> BRepGraph_ShapesView_Result: ...
+    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputs: Any, theHistory: BRepTools_History, theOpLabel: str | TCollection_AsciiString, theOptions: BRepGraph_ShapesView_Options) -> BRepGraph_ShapesView_Result: ...
     @overload
-    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputRoots: Any, theHistory: BRepTools_History, theOpLabel: str) -> BRepGraph_ShapesView_Result: ...
+    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputRoots: Any, theHistory: BRepTools_History, theOpLabel: str | TCollection_AsciiString) -> BRepGraph_ShapesView_Result: ...
     @overload
-    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputRoots: Any, theHistory: BRepTools_History, theOpLabel: str, theOptions: BRepGraph_ShapesView_Options) -> BRepGraph_ShapesView_Result: ...
+    def AddWithHistory(self, theResultShape: TopoDS_Shape, theInputRoots: Any, theHistory: BRepTools_History, theOpLabel: str | TCollection_AsciiString, theOptions: BRepGraph_ShapesView_Options) -> BRepGraph_ShapesView_Result: ...
     @overload
     def ClearCached(self, theNode: BRepGraph_NodeId) -> None: ...
     @overload
@@ -1462,6 +1575,8 @@ class BRepGraph_ShellId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_ShellId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_ShellId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_ShellId: ...
 
 class BRepGraph_ShellRefId:
     Index: int
@@ -1483,6 +1598,8 @@ class BRepGraph_ShellRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_ShellRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_ShellRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_ShellRefId: ...
 
 class BRepGraph_SolidId:
     Index: int
@@ -1504,6 +1621,8 @@ class BRepGraph_SolidId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_SolidId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_SolidId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_SolidId: ...
 
 class BRepGraph_SolidRefId:
     Index: int
@@ -1525,6 +1644,8 @@ class BRepGraph_SolidRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_SolidRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_SolidRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_SolidRefId: ...
 
 class BRepGraph_SupplementEditor:
     def __init__(self, theGraph: Any) -> None: ...
@@ -1984,6 +2105,8 @@ class BRepGraph_Validate:
 
     Warning = Severity.Warning
     Error = Severity.Error
+    Severity_Warning = Severity.Warning
+    Severity_Error = Severity.Error
 
     class Mode(IntEnum):
         Lightweight = 0
@@ -1991,6 +2114,8 @@ class BRepGraph_Validate:
 
     Lightweight = Mode.Lightweight
     Audit = Mode.Audit
+    Mode_Lightweight = Mode.Lightweight
+    Mode_Audit = Mode.Audit
     @overload
     @staticmethod
     def Perform(theGraph: brepgraph) -> BRepGraph_Validate_Result: ...
@@ -2026,6 +2151,9 @@ class BRepGraph_VersionStamp:
     None_ = Domain.None_
     Node = Domain.Node
     Reference = Domain.Reference
+    Domain__None = Domain.None_
+    Domain_Node = Domain.Node
+    Domain_Reference = Domain.Reference
     myNodeUID: BRepGraph_UID
     myRefUID: BRepGraph_RefUID
     myMutationGen: int
@@ -2065,6 +2193,8 @@ class BRepGraph_VertexId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_VertexId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_VertexId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_VertexId: ...
 
 class BRepGraph_VertexRefId:
     Index: int
@@ -2086,6 +2216,8 @@ class BRepGraph_VertexRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_VertexRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_VertexRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_VertexRefId: ...
 
 class BRepGraph_WireId:
     Index: int
@@ -2107,6 +2239,8 @@ class BRepGraph_WireId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_WireId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_WireId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_WireId: ...
 
 class BRepGraph_WireRefId:
     Index: int
@@ -2128,6 +2262,8 @@ class BRepGraph_WireRefId:
     def IsValid(self, theMaxCount: int) -> bool: ...
     @staticmethod
     def Start() -> BRepGraph_WireRefId: ...
+    def __add__(self, theOffset: int) -> BRepGraph_WireRefId: ...
+    def __sub__(self, theOffset: int) -> BRepGraph_WireRefId: ...
 
 class BRepGraph_CacheDerivedState(BRepGraph_Cache):
     def Clear(self) -> None: ...
@@ -2149,6 +2285,12 @@ class BRepGraph_CacheDerivedState(BRepGraph_Cache):
     def SameParameter(self, theCoEdge: BRepGraph_CoEdgeId) -> bool: ...
     def SameRange(self, theCoEdge: BRepGraph_CoEdgeId) -> bool: ...
     def SetWireIsClosed(self, theWire: BRepGraph_WireId, theClosed: bool) -> None: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_CacheDerivedState: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class BRepGraph_LayerHistory(BRepGraph_Layer):
     class Kind(IntEnum):
@@ -2161,11 +2303,15 @@ class BRepGraph_LayerHistory(BRepGraph_Layer):
     Generated = Kind.Generated
     Deleted = Kind.Deleted
     Replaced = Kind.Replaced
+    Kind_Modified = Kind.Modified
+    Kind_Generated = Kind.Generated
+    Kind_Deleted = Kind.Deleted
+    Kind_Replaced = Kind.Replaced
     def __init__(self) -> None: ...
     @overload
-    def Absorb(self, theInputs: Any, theOutputs: Any, theSource: BRepTools_History, theOpLabel: str) -> None: ...
+    def Absorb(self, theInputs: Any, theOutputs: Any, theSource: BRepTools_History, theOpLabel: str | TCollection_AsciiString) -> None: ...
     @overload
-    def Absorb(self, theInputGraph: brepgraph, theOutputGraph: brepgraph, theInputs: Any, theOutputs: Any, theSource: BRepTools_History, theOpLabel: str) -> None: ...
+    def Absorb(self, theInputGraph: brepgraph, theOutputGraph: brepgraph, theInputs: Any, theOutputs: Any, theSource: BRepTools_History, theOpLabel: str | TCollection_AsciiString) -> None: ...
     def Clear(self) -> None: ...
     def CopyTo(self, theCopy: BRepGraph_CopyRemap) -> None: ...
     def DeletedItemUids(self) -> Any: ...
@@ -2214,18 +2360,24 @@ class BRepGraph_LayerHistory(BRepGraph_Layer):
     def NbRecords(self) -> int: ...
     def OnNodeRemoved(self, theNode: BRepGraph_NodeId) -> None: ...
     @overload
-    def Record(self, theOpLabel: str, theOriginal: BRepGraph_NodeId, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
+    def Record(self, theOpLabel: str | TCollection_AsciiString, theOriginal: BRepGraph_NodeId, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
     @overload
     def Record(self, theRecordIdx: int) -> BRepGraph_LayerHistory_Event: ...
-    def RecordBatch(self, theOpLabel: str, theOriginals: Any, theReplacements: Any, theExtraInfo: Optional[str] = TCollection_AsciiString(), theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
-    def RecordDeleted(self, theOpLabel: str, theDeleted: Any) -> None: ...
-    def RecordDeletedItemUid(self, theOpLabel: str, theDeleted: Any) -> None: ...
-    def RecordDeletedUid(self, theOpLabel: str, theDeleted: Any) -> None: ...
-    def RecordItemUid(self, theOpLabel: str, theOriginal: BRepGraph_ItemUID, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
-    def RecordReplaced(self, theOpLabel: str, theOriginal: BRepGraph_NodeId, theReplacement: BRepGraph_NodeId) -> None: ...
-    def RecordReplacedBatch(self, theOpLabel: str, theOriginals: Any, theReplacements: Any, theExtraInfo: Optional[str] = TCollection_AsciiString()) -> None: ...
-    def RecordUid(self, theOpLabel: str, theOriginal: BRepGraph_UID, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
+    def RecordBatch(self, theOpLabel: str | TCollection_AsciiString, theOriginals: Any, theReplacements: Any, theExtraInfo: Optional[str | TCollection_AsciiString] = TCollection_AsciiString(), theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
+    def RecordDeleted(self, theOpLabel: str | TCollection_AsciiString, theDeleted: Any) -> None: ...
+    def RecordDeletedItemUid(self, theOpLabel: str | TCollection_AsciiString, theDeleted: Any) -> None: ...
+    def RecordDeletedUid(self, theOpLabel: str | TCollection_AsciiString, theDeleted: Any) -> None: ...
+    def RecordItemUid(self, theOpLabel: str | TCollection_AsciiString, theOriginal: BRepGraph_ItemUID, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
+    def RecordReplaced(self, theOpLabel: str | TCollection_AsciiString, theOriginal: BRepGraph_NodeId, theReplacement: BRepGraph_NodeId) -> None: ...
+    def RecordReplacedBatch(self, theOpLabel: str | TCollection_AsciiString, theOriginals: Any, theReplacements: Any, theExtraInfo: Optional[str | TCollection_AsciiString] = TCollection_AsciiString()) -> None: ...
+    def RecordUid(self, theOpLabel: str | TCollection_AsciiString, theOriginal: BRepGraph_UID, theReplacements: Any, theKind: Optional[BRepGraph_LayerHistory.Kind] = ...) -> None: ...
     def SetEnabled(self, theVal: bool) -> None: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_LayerHistory: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class BRepGraph_LayerLock(BRepGraph_Layer):
     def __init__(self) -> None: ...
@@ -2270,6 +2422,12 @@ class BRepGraph_LayerLock(BRepGraph_Layer):
     def UnsetOwner(self, theNode: BRepGraph_NodeId) -> None: ...
     @overload
     def UnsetOwner(self, theRef: BRepGraph_RefId) -> None: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_LayerLock: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class BRepGraph_LayerParametric(BRepGraph_Layer):
     class GenerationFlag(IntEnum):
@@ -2280,6 +2438,9 @@ class BRepGraph_LayerParametric(BRepGraph_Layer):
     Topology = GenerationFlag.Topology
     Geometry = GenerationFlag.Geometry
     Mesh = GenerationFlag.Mesh
+    GenerationFlag_Topology = GenerationFlag.Topology
+    GenerationFlag_Geometry = GenerationFlag.Geometry
+    GenerationFlag_Mesh = GenerationFlag.Mesh
 
     class MeshQuality(IntEnum):
         VeryCoarse = 0
@@ -2293,12 +2454,23 @@ class BRepGraph_LayerParametric(BRepGraph_Layer):
     Medium = MeshQuality.Medium
     Fine = MeshQuality.Fine
     VeryFine = MeshQuality.VeryFine
+    MeshQuality_VeryCoarse = MeshQuality.VeryCoarse
+    MeshQuality_Coarse = MeshQuality.Coarse
+    MeshQuality_Medium = MeshQuality.Medium
+    MeshQuality_Fine = MeshQuality.Fine
+    MeshQuality_VeryFine = MeshQuality.VeryFine
     @staticmethod
     def GenerationMask(theFlag: Any) -> int: ...
     @staticmethod
     def HasGenerationFlag(theFlags: int, theFlag: Any) -> bool: ...
     @staticmethod
     def MeshQualityValue(theQuality: Any, theVeryCoarse: int, theCoarse: int, theMedium: int, theFine: int, theVeryFine: int) -> int: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> BRepGraph_LayerParametric: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 #classnotwrapped
 class BRepGraph_LayerDeferred: ...

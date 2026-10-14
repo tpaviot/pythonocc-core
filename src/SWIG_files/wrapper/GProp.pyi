@@ -62,6 +62,11 @@ class GProp_PEquation:
 
     None_ = Type.None_
     Space = Type.Space
+    Type__None = Type.None_
+    Type_Point = Type.Point
+    Type_Line = Type.Line
+    Type_Plane = Type.Plane
+    Type_Space = Type.Space
     def __init__(self, thePnts: TColgp_Array1OfPnt, theTol: float) -> None: ...
     def Barycentre(self) -> gp_Pnt: ...
     def Box(self, theP: gp_Pnt, theV1: gp_Vec, theV2: gp_Vec, theV3: gp_Vec) -> None: ...

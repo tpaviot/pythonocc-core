@@ -26,7 +26,12 @@ class vrmlapi:
     def Write(aShape: TopoDS_Shape, aFileName: str, aVersion: Optional[int] = 2) -> bool: ...
 
 class VrmlAPI_CafReader(RWMesh_CafReader):
-    pass
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> VrmlAPI_CafReader: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
 
 class VrmlAPI_Writer:
     def __init__(self) -> None: ...

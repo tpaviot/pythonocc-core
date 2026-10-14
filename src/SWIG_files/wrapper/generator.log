@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : e33aabf
+git revision : 8d85c95
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-08 04:08:52.778691+02:00
+date : 2026-10-14 05:22:20.769307+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -318,6 +318,9 @@ date : 2026-10-08 04:08:52.778691+02:00
 [WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger, int,TColStd not in module list
 [INFO ]  Class: TColStd_HPackedMapOfInteger
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint8_t, uint8 not in module list
+[WARNI]      [TypeHint] Skipping type char, should contain _
+[WARNI]      [TypeHint] Skipping type char, should contain _
 [INFO ]  ## Processing module TCollection
 [INFO ]  Class: TCollection
 [INFO ]  Class: TCollection_AsciiString
@@ -376,6 +379,12 @@ date : 2026-10-08 04:08:52.778691+02:00
 [WARNI]      [TypeHint] Skip type std::string_view, because of trailing :
 [WARNI]      [TypeHint] Skip type std::string_view, because of trailing :
 [WARNI]      [TypeHint] Skipping type char, should contain _
+[WARNI]      [TypeHint] Skipping type const char, should contain _
+[WARNI]      [TypeHint] Skipping unknown type wchar_t, wchar not in module list
+[WARNI]      [TypeHint] Skip type std::string_view, because of trailing :
+[WARNI]      [TypeHint] Skipping type const char, should contain _
+[WARNI]      [TypeHint] Skipping unknown type wchar_t, wchar not in module list
+[WARNI]      [TypeHint] Skip type std::string_view, because of trailing :
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
@@ -442,6 +451,11 @@ date : 2026-10-08 04:08:52.778691+02:00
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
+[WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
+[WARNI]      [TypeHint] Skipping type const char, should contain _
+[WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
+[WARNI]      [TypeHint] Skipping type const char, should contain _
 [WARNI]      [TypeHint] Skipping unknown type char16_t, char16 not in module list
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
@@ -924,6 +938,8 @@ date : 2026-10-08 04:08:52.778691+02:00
 [WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_MultipleVarFunction
@@ -11105,7 +11121,7 @@ date : 2026-10-08 04:08:52.778691+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.81s
+SWIG interface file generation completed in 12.34s
 #################################################
 
 [INFO ]  Number of classes: 4099

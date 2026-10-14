@@ -24,6 +24,7 @@ from OCC.Core.AIS import AIS_Shape
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
 from OCC.Core.gp import gp_Trsf
 from OCC.Core.Graphic3d import Graphic3d_NameOfMaterial
+from OCC.Core.Quantity import Quantity_Color
 from OCC.Core.TopoDS import TopoDS_Shape
 
 DEFAULT_MATERIAL = Graphic3d_NameOfMaterial.Graphic3d_NOM_DEFAULT
@@ -45,7 +46,7 @@ class Layer:
         self,
         from_display: "Viewer3d",
         shape: TopoDS_Shape | None = None,
-        color: int = 0,
+        color: str | int | Quantity_Color = 0,
         transparency: float = 0.0,
         material: Graphic3d_NameOfMaterial = DEFAULT_MATERIAL,
     ) -> None:
@@ -55,14 +56,15 @@ class Layer:
         :param from_display: The display object (OCC.Display.OCCViewer.Viewer3d)
             from the main application.
         :param shape: A shape to add to the layer upon creation. Defaults to None.
-        :param color: The color of the shapes in the layer. Defaults to 0 (black).
+        :param color: The color of the shapes in the layer. Defaults to 0, which
+            keeps the color of the material.
         :param transparency: The transparency of the shapes, from 0.0 (opaque)
             to 1.0 (fully transparent). Defaults to 0.0.
         :param material: The material of the shapes. Defaults to Graphic3d_NOM_DEFAULT.
         """
         self.element_to_display: dict[int, tuple[TopoDS_Shape, AIS_Shape]] = {}
         self.count: int = 0
-        self.color: int = color
+        self.color = color
         self.display: Viewer3d = from_display
         self.transparency: float = transparency
         self.material: Graphic3d_NameOfMaterial = material

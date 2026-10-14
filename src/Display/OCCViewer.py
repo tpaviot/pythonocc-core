@@ -57,6 +57,7 @@ from OCC.Core.Graphic3d import (
     Graphic3d_GraduatedTrihedron,
     Graphic3d_MaterialAspect,
     Graphic3d_NameOfMaterial,
+    Graphic3d_NameOfTextureEnv,
     Graphic3d_NOM_NEON_GNC,
     Graphic3d_NOT_ENV_CLOUDS,
     Graphic3d_RenderingParams,
@@ -77,6 +78,7 @@ from OCC.Core.Quantity import (
 from OCC.Core.TopAbs import (
     TopAbs_EDGE,
     TopAbs_FACE,
+    TopAbs_ShapeEnum,
     TopAbs_SHELL,
     TopAbs_SOLID,
     TopAbs_VERTEX,
@@ -395,7 +397,9 @@ class Viewer3d(Display3d):
         """
         self.View.SetProj(V3d_XposYnegZpos)
 
-    def EnableTextureEnv(self, name_of_texture: int = Graphic3d_NOT_ENV_CLOUDS) -> None:
+    def EnableTextureEnv(
+        self, name_of_texture: Graphic3d_NameOfTextureEnv = Graphic3d_NOT_ENV_CLOUDS
+    ) -> None:
         """
         Enables environment mapping.
 
@@ -822,7 +826,7 @@ class Viewer3d(Display3d):
         """
         self.View.Pan(dx, dy)
 
-    def SetSelectionMode(self, mode: int | None = None) -> None:
+    def SetSelectionMode(self, mode: TopAbs_ShapeEnum | None = None) -> None:
         """
         Sets the selection mode.
 

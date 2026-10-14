@@ -60,7 +60,7 @@ from OCC.Core.TColStd import TColStd_IndexedDataMapOfStringString
 from OCC.Core.TDF import TDF_Label, TDF_LabelSequence
 from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape
+from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Edge, TopoDS_Shape, topods
 from OCC.Core.UnitsMethods import unitsmethods
 from OCC.Core.XCAFDoc import (
     XCAFDoc_ColorCurv,
@@ -406,7 +406,7 @@ def read_stl_file(
         sewed_shape = sewer.SewedShape()
 
         if make_solid:
-            return BRepBuilderAPI_MakeSolid(sewed_shape).Shape()
+            return BRepBuilderAPI_MakeSolid(topods.Shell(sewed_shape)).Shape()
 
         # Return the sewed shape
         return sewed_shape
