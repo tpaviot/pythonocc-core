@@ -51,6 +51,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	Geom2d
 	Geom2dAdaptor
 	Geom2dEval
+	Geom2dGridEval
 	LProp
 	TColGeom2d
 # TKG3d
@@ -60,6 +61,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	Geom
 	GeomAdaptor
 	GeomEval
+	GeomGridEval
 	GeomLProp
 	TColGeom
 	TopAbs
@@ -167,6 +169,7 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	BiTgte
 	Draft
 # TKPrim
+	BRepPreviewAPI
 	BRepPrim
 	BRepPrimAPI
 	BRepSweep
@@ -201,6 +204,9 @@ LIST(APPEND OCCT_TOOLKIT_MODEL
 	MAT2d
 # TKXMesh
 	XBRepMesh
+# TKHelix
+	HelixBRep
+	HelixGeom
 )
 
 LIST(APPEND OCCT_TOOLKIT_VISUALIZATION

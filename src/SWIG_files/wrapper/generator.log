@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : bc3e32f
+git revision : 7dba7ec
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 05:32:21.980680+02:00
+date : 2026-10-14 06:03:56.943239+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -2047,6 +2047,79 @@ date : 2026-10-14 05:32:21.980680+02:00
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom2d_Curve::ResD3, because of trailing :
+[INFO ]  ## Processing module Geom2dGridEval
+[INFO ]  Class: Geom2dGridEval_BSplineCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_BezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Circle
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Curve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Ellipse
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Hyperbola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Line
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_OffsetCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_OtherCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
+[WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
+[INFO ]  Class: Geom2dGridEval_Parabola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<Geom2dGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec2d, seems to be a template
 [INFO ]  ## Processing module LProp
 [INFO ]  Enum: LProp_CIType
 [INFO ]  Enum: LProp_Status
@@ -2374,6 +2447,172 @@ date : 2026-10-14 05:32:21.980680+02:00
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD1, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD2, because of trailing :
 [WARNI]      [TypeHint] Skip type Geom_Surface::ResD3, because of trailing :
+[INFO ]  ## Processing module GeomGridEval
+[INFO ]  Class: GeomGridEval_BSplineCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_BSplineSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_BezierCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_BezierSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Circle
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Cone
+[INFO ]      Wrap nested class GeomGridEval_Cone::Data
+[INFO ]      Wrap nested class GeomGridEval_Cone::UContext
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Curve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Cylinder
+[INFO ]      Wrap nested class GeomGridEval_Cylinder::Data
+[INFO ]      Wrap nested class GeomGridEval_Cylinder::UContext
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Ellipse
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Hyperbola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Line
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_OffsetCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_OffsetSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_OtherCurve
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Adaptor3d_Curve & wrapped as a copy
+[WARNI]  const Adaptor3d_Curve & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_OtherSurface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Parabola
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array1<GeomGridEval::CurveD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Plane
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Sphere
+[INFO ]      Wrap nested class GeomGridEval_Sphere::Data
+[INFO ]      Wrap nested class GeomGridEval_Sphere::UContext
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Surface
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[WARNI]      [TypeHint] Skip type std::optional<gp_Trsf>, because of trailing :
+[INFO ]  Class: GeomGridEval_SurfaceOfExtrusion
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_SurfaceOfRevolution
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
+[INFO ]  Class: GeomGridEval_Torus
+[INFO ]      Wrap nested class GeomGridEval_Torus::Data
+[INFO ]      Wrap nested class GeomGridEval_Torus::UContext
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Pnt, seems to be a template
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD1, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD2, because of trailing :
+[WARNI]      [TypeHint] Skip type NCollection_Array2<GeomGridEval::SurfD3, because of trailing :
+[WARNI]      [TypeHint] Skipping type NCollection_Array2<gp_Vec, seems to be a template
 [INFO ]  ## Processing module GeomLProp
 [WARNI]      [TypeHint] Skip type gp_Pnt,gp_Vec,gp_Dir,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type gp_Pnt2d,gp_Vec2d,gp_Dir2d,opencascade::handle, because of trailing :
@@ -5692,6 +5931,8 @@ date : 2026-10-14 05:32:21.980680+02:00
 [INFO ]  Class: Draft_Modification
 [INFO ]  Class: Draft_VertexInfo
 [INFO ]  Processing toolkit TKPrim ===
+[INFO ]  ## Processing module BRepPreviewAPI
+[INFO ]  Class: BRepPreviewAPI_MakeBox
 [INFO ]  ## Processing module BRepPrim
 [INFO ]  Enum: BRepPrim_Direction
 [INFO ]  Class: BRepPrim_Builder
@@ -6376,6 +6617,26 @@ date : 2026-10-14 05:32:21.980680+02:00
 [INFO ]  Processing toolkit TKXMesh ===
 [INFO ]  ## Processing module XBRepMesh
 [INFO ]  Class: XBRepMesh_Factory
+[INFO ]  Processing toolkit TKHelix ===
+[INFO ]  ## Processing module HelixBRep
+[INFO ]  Class: HelixBRep_BuilderHelix
+[INFO ]  ## Processing module HelixGeom
+[INFO ]      HelixGeom_BuilderHelixGen is abstract, it does not override ['Perform']
+[INFO ]  Class: HelixGeom_BuilderApproxCurve
+[INFO ]      Class HelixGeom_BuilderApproxCurve is abstract, using %nodefaultctor.
+[INFO ]  Enum passed by reference: GeomAbs_Shape &aCont changed to GeomAbs_Shape &OutValue
+[INFO ]  Enum passed by reference: GeomAbs_Shape & aCont changed to GeomAbs_Shape &OutValue
+[INFO ]  Enum passed by reference: GeomAbs_Shape & aCont changed to GeomAbs_Shape &OutValue
+[WARNI]  const TColGeom_SequenceOfCurve & wrapped as a copy
+[WARNI]  const TColGeom_SequenceOfCurve & wrapped as a copy
+[INFO ]  Class: HelixGeom_HelixCurve
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD1, because of trailing :
+[WARNI]      [TypeHint] Skip type Geom_Curve::ResD2, because of trailing :
+[INFO ]  Class: HelixGeom_Tools
+[INFO ]  Class: HelixGeom_BuilderHelixGen
+[INFO ]      Class HelixGeom_BuilderHelixGen is abstract, using %nodefaultctor.
+[INFO ]  Class: HelixGeom_BuilderHelix
+[INFO ]  Class: HelixGeom_BuilderHelixCoil
 [INFO ]  Processing toolkit TKService ===
 [INFO ]  ## Processing module Aspect
 [INFO ]  Enum: Aspect_ColorSpace
@@ -11121,8 +11382,8 @@ date : 2026-10-14 05:32:21.980680+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 12.19s
+SWIG interface file generation completed in 12.07s
 #################################################
 
-[INFO ]  Number of classes: 4099
-[INFO ]  Number of methods: 45733
+[INFO ]  Number of classes: 4139
+[INFO ]  Number of methods: 46012

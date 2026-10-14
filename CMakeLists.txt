@@ -209,7 +209,7 @@ endif()
 #############################################
 set(OCCT_MODEL_LIBRARIES TKernel TKMath TKBRep TKG2d TKG3d TKGeomBase TKBO
                         TKBool TKFeat TKFillet TKGeomAlgo TKHLR TKMesh TKOffset
-                        TKPrim TKShHealing TKTopAlgo TKXMesh)
+                        TKPrim TKShHealing TKTopAlgo TKXMesh TKHelix)
 set(OCCT_VISUALIZATION_LIBRARIES TKService TKV3d TKOpenGl TKMeshVS)
 set(OCCT_DATAEXCHANGE_LIBRARIES TKDE TKXSBase TKDESTEP TKDEIGES TKDESTL TKDEVRML TKDECascade TKDEOBJ TKDEGLTF TKDEPLY TKCDF TKLCAF TKXCAF TKVCAF TKXmlXCAF TKBinXCAF TKRWMesh TKService TKV3d)
 set(OCCT_OCAF_LIBRARIES TKCDF TKLCAF TKCAF TKBinL TKXmlL TKBin TKXml TKStdL
