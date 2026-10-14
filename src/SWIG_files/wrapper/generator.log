@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : fea276b
+git revision : 61fc46f
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 09:32:17.519687+02:00
+date : 2026-10-14 09:40:05.189478+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -10510,10 +10510,6 @@ date : 2026-10-14 09:32:17.519687+02:00
 [INFO ]      explicitly excluded method DE_Provider::4da26eb3f229c14ac2f96ecb83da5db1
 [INFO ]      explicitly excluded method DE_Provider::bd94cecc3561e20266cdc2b9806cfaec
 [INFO ]      explicitly excluded method DE_Provider::b599888bf77594045d82c51542366f02
-[INFO ]  Class: DE_Provider_ReadStreamNode
-[INFO ]      property Stream of type Standard_IStream & skipped
-[INFO ]  Class: DE_Provider_WriteStreamNode
-[INFO ]      property Stream of type Standard_OStream & skipped
 [INFO ]  Class: DE_ShapeFixParameters
 [INFO ]  Enum: FixMode
 [WARNI]      [TypeHint] Skipping type FixMode, should contain _
@@ -11199,8 +11195,8 @@ date : 2026-10-14 09:32:17.519687+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 11.37s
+SWIG interface file generation completed in 11.56s
 #################################################
 
-[INFO ]  Number of classes: 4171
-[INFO ]  Number of methods: 46237
+[INFO ]  Number of classes: 4169
+[INFO ]  Number of methods: 46235

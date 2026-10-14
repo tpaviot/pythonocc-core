@@ -86,14 +86,6 @@ class DE_Provider(Standard_Transient):
     @staticmethod
     def DownCast(t: None) -> None: ...
 
-class DE_Provider_ReadStreamNode:
-    Path: str
-    def __init__(self, thePath: str | TCollection_AsciiString, theStream: str | bytes) -> None: ...
-
-class DE_Provider_WriteStreamNode:
-    Path: str
-    def __init__(self, thePath: str | TCollection_AsciiString) -> str: ...
-
 class DE_ShapeFixParameters:
     class FixMode(IntEnum):
         FixOrNot = ...
@@ -276,6 +268,12 @@ class DE_PluginHolder: ...
 
 #classnotwrapped
 class DE_MultiPluginHolder: ...
+
+#classnotwrapped
+class DE_Provider_ReadStreamNode: ...
+
+#classnotwrapped
+class DE_Provider_WriteStreamNode: ...
 
 # harray1 classes
 # harray2 classes

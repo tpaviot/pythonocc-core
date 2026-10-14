@@ -912,82 +912,9 @@ Input parameter: theNode configuration node to set.
 /***********************************
 * class DE_Provider_ReadStreamNode *
 ***********************************/
-class DE_Provider_ReadStreamNode {
-	public:
-		%extend {
-			TCollection_AsciiString _get_Path() { return $self->Path; }
-			void _set_Path(TCollection_AsciiString theValue) { $self->Path = theValue; }
-		}
-		%pythoncode {
-			Path = property(_get_Path, _set_Path)
-		}
-		/****** DE_Provider_ReadStreamNode::DE_Provider_ReadStreamNode ******/
-		/****** md5 signature: 69f6b42e4b15edd5b1b6c5cb0bd265f6 ******/
-		%feature("compactdefaultargs") DE_Provider_ReadStreamNode;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theStream: str
-
-Return
--------
-None
-
-Description
------------
-Constructor.
-") DE_Provider_ReadStreamNode;
-		 DE_Provider_ReadStreamNode(TCollection_AsciiString thePath, std::istream & theStream);
-
-};
-
-
-%extend DE_Provider_ReadStreamNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /************************************
 * class DE_Provider_WriteStreamNode *
 ************************************/
-class DE_Provider_WriteStreamNode {
-	public:
-		%extend {
-			TCollection_AsciiString _get_Path() { return $self->Path; }
-			void _set_Path(TCollection_AsciiString theValue) { $self->Path = theValue; }
-		}
-		%pythoncode {
-			Path = property(_get_Path, _set_Path)
-		}
-		/****** DE_Provider_WriteStreamNode::DE_Provider_WriteStreamNode ******/
-		/****** md5 signature: 4ea27cbfc77feeb79e1800bf109ebddb ******/
-		%feature("compactdefaultargs") DE_Provider_WriteStreamNode;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-
-Return
--------
-theStream: Standard_OStream
-
-Description
------------
-Constructor.
-") DE_Provider_WriteStreamNode;
-		 DE_Provider_WriteStreamNode(TCollection_AsciiString thePath, std::ostream &OutValue);
-
-};
-
-
-%extend DE_Provider_WriteStreamNode {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /******************************
 * class DE_ShapeFixParameters *
 ******************************/
@@ -2217,6 +2144,14 @@ class DE_PluginHolder:
 
 @classnotwrapped
 class DE_MultiPluginHolder:
+	pass
+
+@classnotwrapped
+class DE_Provider_ReadStreamNode:
+	pass
+
+@classnotwrapped
+class DE_Provider_WriteStreamNode:
 	pass
 
 }
