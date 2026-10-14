@@ -459,17 +459,42 @@ NCollection_Array2 declares a Value(row, col).
 %enddef
 
 %define CurveArrayEvalExtend(T)
+    // the %extend methods are written before the header section of the macro
+    %insert("runtime") %{
+    #include <GeomGridEval_Curve.hxx>
+    %}
     %extend T{
         void evalNumpy(double* numpyArrayU, int nRowsU, double* numpyArrayResultArgout, int aSizeArgout, int nDimsResult) {
             if (nDimsResult < 3 || aSizeArgout < nRowsU * nDimsResult) {
                 throw Standard_DimensionError("Inconsistent numpy array size");
             }
+            // the BSpline, Bezier and offset curves are evaluated by
+            // GeomGridEval_Curve, faster than a Value call for each parameter, the
+            // analytic curves are not. OCCT 8.0.1: it returns wrong BSpline
+            // points for unsorted parameters
+            NCollection_Array1<gp_Pnt> aPoints;
+            if (nRowsU > 0) {
+                const GeomGridEval_Curve anEvaluator{occ::handle<Geom_Curve>(self)};
+                const GeomAbs_CurveType aType = anEvaluator.GetType();
+                bool isGridEvaluable = aType == GeomAbs_BSplineCurve
+                                       || aType == GeomAbs_BezierCurve
+                                       || aType == GeomAbs_OffsetCurve;
+                for (int rowID = 1; rowID < nRowsU && isGridEvaluable; rowID++)
+                {
+                    isGridEvaluable = numpyArrayU[rowID - 1] <= numpyArrayU[rowID];
+                }
+                if (isGridEvaluable) {
+                    // the parameters are read from the numpy array, not copied
+                    const NCollection_Array1<double> aParams(numpyArrayU[0], 1, nRowsU);
+                    aPoints = anEvaluator.EvaluateGrid(aParams);
+                }
+            }
+            const bool isGridEvaluated = aPoints.Length() == nRowsU;
             int flatID = 0;
 
             for (int rowID = 0; rowID < nRowsU; rowID++)
             {
-                double u = numpyArrayU[rowID];
-                gp_Pnt res = self->Value(u);
+                const gp_Pnt res = isGridEvaluated ? aPoints.Value(rowID + 1) : self->Value(numpyArrayU[rowID]);
                 numpyArrayResultArgout[flatID] = res.X();
                 numpyArrayResultArgout[flatID + 1] = res.Y();
                 numpyArrayResultArgout[flatID + 2] = res.Z();

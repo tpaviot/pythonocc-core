@@ -22,6 +22,7 @@ import warnings
 from collections.abc import Iterable, Iterator
 from typing import Any
 
+import numpy as np
 from OCC.Core.BRep import BRep_Builder, BRep_Tool
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 from OCC.Core.BRepTools import BRepTools_WireExplorer
@@ -30,9 +31,11 @@ from OCC.Core.GCPnts import (
     GCPnts_UniformAbscissa,
     GCPnts_UniformDeflection,
 )
+from OCC.Core.GeomGridEval import GeomGridEval_Curve
 from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.HLRAlgo import HLRAlgo_Projector
 from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
+from OCC.Core.TColStd import TColStd_Array1OfReal
 from OCC.Core.TopAbs import (
     TopAbs_COMPOUND,
     TopAbs_COMPSOLID,
@@ -70,6 +73,10 @@ DISCRETIZATION_ALGORITHMS = {
     "QuasiUniformDeflection": GCPnts_QuasiUniformDeflection,
     "UniformDeflection": GCPnts_UniformDeflection,
 }
+
+# below this number of points, discretize_edge calls Value() for each point,
+# faster than a grid evaluation
+_MIN_GRID_EVALUATION_POINTS = 4
 
 
 def _number_of_topo(iterable: Iterable) -> int:
@@ -850,10 +857,19 @@ def discretize_edge(
     if discretizer.NbPoints() <= 0:
         raise AssertionError("Discretizer nb points not > 0.")
 
-    points = []
-    for i in range(1, discretizer.NbPoints() + 1):
-        p = curve_adaptator.Value(discretizer.Parameter(i))
-        points.append(p.Coord())
+    nb_points = discretizer.NbPoints()
+    parameters = [discretizer.Parameter(i) for i in range(1, nb_points + 1)]
+    points = None
+    # the points are evaluated in a single call, faster than a Value() call
+    # for each parameter beyond a few points
+    if nb_points > _MIN_GRID_EVALUATION_POINTS:
+        grid = GeomGridEval_Curve(curve_adaptator).EvaluateGrid(
+            TColStd_Array1OfReal.from_numpy_array(np.array(parameters))
+        )
+        if grid.Length() == nb_points:  # else a curve type it does not support
+            points = grid.to_numpy_array().tolist()
+    if points is None:
+        points = [curve_adaptator.Value(u).Coord() for u in parameters]
 
     if a_edge.Orientation() == TopAbs_Orientation.TopAbs_REVERSED:
         points.reverse()

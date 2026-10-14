@@ -15,12 +15,15 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
+from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge, BRepBuilderAPI_Transform
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
     BRepPrimAPI_MakeSphere,
     BRepPrimAPI_MakeTorus,
 )
-from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Face
+from OCC.Core.gp import gp_Ax2, gp_Circ, gp_Pnt, gp_Trsf, gp_Vec
+from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Face, topods
 from OCC.Extend.TopologyUtils import (
     TopologyExplorer,
     WireExplorer,
@@ -50,6 +53,23 @@ def test_discretize_edge():
     for edge in topo.edges():
         pnts = discretize_edge(edge)
         assert pnts
+
+
+def test_discretize_edge_points() -> None:
+    # the points of a located and reversed edge, from a few points to many
+    circle = BRepBuilderAPI_MakeEdge(gp_Circ(gp_Ax2(), 5.0), 0.0, 3.0).Edge()
+    trsf = gp_Trsf()
+    trsf.SetTranslation(gp_Vec(10, 20, 30))
+    edge = topods.Edge(BRepBuilderAPI_Transform(circle, trsf).Shape().Reversed())
+    adaptor = BRepAdaptor_Curve(edge)
+    for deflection in (10.0, 1.0, 1e-3):
+        pnts = discretize_edge(edge, deflection)
+        assert len(pnts) > 1
+        for pnt in pnts:
+            assert abs(gp_Pnt(*pnt).Distance(gp_Pnt(10, 20, 30)) - 5.0) < 1e-9
+        # reversed: from the last point of the curve to the first one
+        last = adaptor.Value(adaptor.LastParameter())
+        assert gp_Pnt(*pnts[0]).Distance(last) < 1e-9
 
 
 def test_discretize_wire():

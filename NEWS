@@ -50,6 +50,12 @@ Current
 * wrapper: type stubs regenerated: operators, DownCast, Array2 classes,
   numpy members, template instantiations typed with their typedef
 
+* wrapper: Geom_Curve.eval_numpy_array evaluates the BSpline, Bezier and
+  offset curves on a grid, up to 8 times faster
+
+* Extend: discretize_edge evaluates the points on a grid, about 2 times
+  faster for a fine deflection
+
 * Extend: write_step_file no longer changes the global write.step.schema
   parameter, the schema is passed to the writer with DESTEP_Parameters
 

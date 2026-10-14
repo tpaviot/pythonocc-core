@@ -2,7 +2,9 @@ import numpy as np
 import pytest
 from OCC.Core.Geom import Geom_Line, Geom_Plane
 from OCC.Core.Geom2d import Geom2d_Line
-from OCC.Core.gp import gp_Dir, gp_Dir2d, gp_Pnt, gp_Pnt2d
+from OCC.Core.GeomAPI import GeomAPI_PointsToBSpline
+from OCC.Core.GeomEval import GeomEval_CircularHelixCurve
+from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Dir2d, gp_Pnt, gp_Pnt2d
 from OCC.Core.Poly import Poly_Array1OfTriangle
 from OCC.Core.TColgp import (
     TColgp_Array1OfDir,
@@ -140,6 +142,31 @@ def test_curve_eval(line):
     u = np.arange(5, dtype=float)
     points = line.eval_numpy_array(u)
     assert np.all(np.linalg.norm(points, axis=1) == u)
+
+
+def make_bspline_curve():
+    poles = TColgp_Array1OfPnt(1, 20)
+    for i in range(1, 21):
+        poles.SetValue(i, gp_Pnt(i, np.sin(i / 3) * 5, np.cos(i / 5) * 3))
+    return GeomAPI_PointsToBSpline(poles).Curve()
+
+
+@pytest.mark.parametrize(
+    "curve",
+    (
+        make_bspline_curve(),
+        GeomEval_CircularHelixCurve(gp_Ax2(), 10.0, 5.0),
+        Geom_Line(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(1.0, 0.15, 0.0)),
+    ),
+)
+def test_curve_eval_as_value(curve):
+    # the BSpline points are evaluated on a grid when the parameters are
+    # sorted, the other curves and unsorted parameters by Value
+    rng = np.random.default_rng(0)
+    for u in (np.linspace(0.0, 1.0, 101), rng.uniform(0.0, 1.0, 101)):
+        expected = np.array([curve.Value(param).Coord() for param in u])
+        assert np.allclose(curve.eval_numpy_array(u), expected, rtol=0, atol=1e-12)
+    assert curve.eval_numpy_array(np.array([])).shape == (0, 3)
 
 
 def test_surface_eval():
