@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2008-2015 Jelle Feringa (jelleferinga@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -22,7 +20,7 @@ discretization and hidden line removal."""
 
 import warnings
 from collections.abc import Iterable, Iterator
-from typing import Any, Optional
+from typing import Any
 
 from OCC.Core.BRep import BRep_Builder, BRep_Tool
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
@@ -49,12 +47,6 @@ from OCC.Core.TopAbs import (
 )
 from OCC.Core.TopExp import TopExp_Explorer, topexp
 from OCC.Core.TopoDS import (
-    Compound,
-    CompSolid,
-    Edge,
-    Face,
-    Shell,
-    Solid,
     TopoDS_Compound,
     TopoDS_CompSolid,
     TopoDS_Edge,
@@ -65,8 +57,7 @@ from OCC.Core.TopoDS import (
     TopoDS_Solid,
     TopoDS_Vertex,
     TopoDS_Wire,
-    Vertex,
-    Wire,
+    topods,
 )
 from OCC.Core.TopTools import (
     TopTools_IndexedDataMapOfShapeListOfShape,
@@ -128,7 +119,7 @@ class WireExplorer:
         self.wire_explorer = BRepTools_WireExplorer(self.wire)
         self.done = False
 
-    def _loop_topo(self, edges: Optional[bool] = True) -> Iterator[Any]:
+    def _loop_topo(self, edges: bool | None = True) -> Iterator[Any]:
         """
         Internal loop to traverse the wire's topology.
         :param edges: If True, iterates over edges, otherwise iterates over vertices.
@@ -136,7 +127,7 @@ class WireExplorer:
         """
         if self.done:
             self._reinitialize()
-        topology_type = Edge if edges else Vertex
+        topology_type = topods.Edge if edges else topods.Vertex
         seq = []
 
         while self.wire_explorer.More():
@@ -175,7 +166,7 @@ class TopologyExplorer:
     """
 
     def __init__(
-        self, my_shape: TopoDS_Shape, ignore_orientation: Optional[bool] = True
+        self, my_shape: TopoDS_Shape, ignore_orientation: bool | None = True
     ) -> None:
         """
         Initializes the TopologyExplorer.
@@ -191,19 +182,19 @@ class TopologyExplorer:
         # shape -> ancestors maps, built on demand and reused by the *_from_*
         # queries: building one is linear in the size of the shape
         self._ancestors_maps: dict[tuple[Any, Any], Any] = {}
-        self._ancestors_maps_shape: Optional[TopoDS_Shape] = None
+        self._ancestors_maps_shape: TopoDS_Shape | None = None
 
         # the topology_factory dicts maps topology types and functions that can
         # create this topology
         self.topology_factory = {
-            TopAbs_VERTEX: Vertex,
-            TopAbs_EDGE: Edge,
-            TopAbs_FACE: Face,
-            TopAbs_WIRE: Wire,
-            TopAbs_SHELL: Shell,
-            TopAbs_SOLID: Solid,
-            TopAbs_COMPOUND: Compound,
-            TopAbs_COMPSOLID: CompSolid,
+            TopAbs_VERTEX: topods.Vertex,
+            TopAbs_EDGE: topods.Edge,
+            TopAbs_FACE: topods.Face,
+            TopAbs_WIRE: topods.Wire,
+            TopAbs_SHELL: topods.Shell,
+            TopAbs_SOLID: topods.Solid,
+            TopAbs_COMPOUND: topods.Compound,
+            TopAbs_COMPSOLID: topods.CompSolid,
         }
 
     def _loop_topo(
@@ -744,7 +735,7 @@ class TopologyExplorer:
 
 
 def dump_topology_to_string(
-    shape: TopoDS_Shape, level: Optional[int] = 0, buffer: Optional[str] = ""
+    shape: TopoDS_Shape, level: int = 0, buffer: str = ""
 ) -> None:
     """
     Prints the topological structure of a shape to the console.
@@ -757,7 +748,7 @@ def dump_topology_to_string(
     brt = BRep_Tool()
     s = shape.ShapeType()
     if s == TopAbs_VERTEX:
-        pnt = brt.Pnt(Vertex(shape))
+        pnt = brt.Pnt(topods.Vertex(shape))
         print(".." * level + f"<Vertex {hash(shape)}: {pnt.X()} {pnt.Y()} {pnt.Z()}>\n")
     else:
         print(".." * level, end="")
@@ -937,9 +928,9 @@ def get_type_as_string(shape: TopoDS_Shape) -> str:
 
 def get_sorted_hlr_edges(
     shape: TopoDS_Shape,
-    position: Optional[gp_Pnt] = None,
-    direction: Optional[gp_Dir] = None,
-    export_hidden_edges: Optional[bool] = True,
+    position: gp_Pnt | None = None,
+    direction: gp_Dir | None = None,
+    export_hidden_edges: bool | None = True,
 ) -> tuple[list, list]:
     """
     Performs Hidden Line Removal (HLR) on a shape and returns the visible and

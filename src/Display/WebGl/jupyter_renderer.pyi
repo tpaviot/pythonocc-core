@@ -1,6 +1,6 @@
 import enum
-from collections.abc import Iterable, Sequence
-from typing import Any, Callable
+from collections.abc import Callable, Iterable, Sequence
+from typing import Any
 
 from OCC.Core.gp import gp_Dir, gp_Pnt
 from pythreejs import (

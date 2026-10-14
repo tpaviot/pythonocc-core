@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -17,14 +15,13 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+import pytest
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_Sewing,
 )
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.gp import gp_Dir, gp_Pnt
-
-import pytest
 
 
 def test_standard_out_of_range() -> None:

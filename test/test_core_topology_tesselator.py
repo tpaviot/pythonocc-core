@@ -25,7 +25,7 @@ import time
 
 import numpy as np
 import pytest
-
+from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRep import BRep_Builder, BRep_Tool
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
@@ -41,18 +41,17 @@ from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeTorus,
 )
 from OCC.Core.BRepTools import breptools
-from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.GCPnts import GCPnts_QuasiUniformDeflection
+from OCC.Core.gp import gp_Ax1, gp_Ax2, gp_Dir, gp_Pnt, gp_Trsf, gp_Vec
 from OCC.Core.Tesselator import TopologyTesselator
 from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE, TopAbs_REVERSED, TopAbs_VERTEX
 from OCC.Core.TopExp import topexp
 from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Shape, topods
+from OCC.Core.TopoDS import TopoDS_Compound, topods
 from OCC.Core.TopTools import (
     TopTools_IndexedDataMapOfShapeListOfShape,
     TopTools_IndexedMapOfShape,
 )
-from OCC.Core.gp import gp_Ax1, gp_Ax2, gp_Dir, gp_Pnt, gp_Trsf, gp_Vec
 from OCC.Extend.DataExchange import read_step_file, read_step_file_with_names_colors
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -133,7 +132,9 @@ def test_box_faces_edges_and_vertices_follow_the_explorer():
 def test_curved_faces_lie_on_their_faces():
     shape = BRepAlgoAPI_Cut(
         BRepPrimAPI_MakeBox(10, 10, 10).Shape(),
-        BRepPrimAPI_MakeCylinder(gp_Ax2(gp_Pnt(5, 5, -1), gp_Dir(0, 0, 1)), 2, 12).Shape(),
+        BRepPrimAPI_MakeCylinder(
+            gp_Ax2(gp_Pnt(5, 5, -1), gp_Dir(0, 0, 1)), 2, 12
+        ).Shape(),
     ).Shape()
     tess = tessellate(shape, mesh_quality=0.5)
     check_against_topology(shape, tess, 0.1)
@@ -156,7 +157,9 @@ def faces_out(tess, center):
 
 @pytest.mark.parametrize("reversed_", [False, True])
 @pytest.mark.parametrize("mirrored", [False, True])
-def test_front_faces_face_out_whatever_the_orientation_and_location(reversed_, mirrored):
+def test_front_faces_face_out_whatever_the_orientation_and_location(
+    reversed_, mirrored
+):
     shape = BRepPrimAPI_MakeBox(gp_Pnt(1, 2, 3), 4, 5, 6).Shape()
     center = np.array([3.0, 4.5, 6.0])
     if mirrored:
@@ -195,7 +198,9 @@ def test_free_edges_and_vertices_keep_their_index():
     compound = TopoDS_Compound()
     builder.MakeCompound(compound)
     builder.Add(compound, BRepPrimAPI_MakeBox(1, 1, 1).Shape())
-    builder.Add(compound, BRepBuilderAPI_MakeEdge(gp_Pnt(5, 0, 0), gp_Pnt(5, 3, 4)).Edge())
+    builder.Add(
+        compound, BRepBuilderAPI_MakeEdge(gp_Pnt(5, 0, 0), gp_Pnt(5, 3, 4)).Edge()
+    )
     builder.Add(compound, BRepBuilderAPI_MakeVertex(gp_Pnt(-2, -2, -2)).Vertex())
     tess = tessellate(compound)
     assert (tess.FaceCount(), tess.EdgeCount(), tess.VertexCount()) == (6, 13, 11)
@@ -291,7 +296,9 @@ def reference(shape, deviation, mesh_quality=1.0):
         normal_handle = triangulation.MapNormalArray()
         triangle_handle = triangulation.MapTriangleArray()
         nodes = node_handle.Array1().to_numpy_array()
-        face_normals = normal_handle.Array1().to_numpy_array().reshape(-1, 3).astype(np.float64)
+        face_normals = (
+            normal_handle.Array1().to_numpy_array().reshape(-1, 3).astype(np.float64)
+        )
         triangles = triangle_handle.Array1().to_numpy_array() - 1
         transform = transform_of(location)
         inside_out = False
@@ -346,7 +353,10 @@ def reference(shape, deviation, mesh_quality=1.0):
                 sampler = GCPnts_QuasiUniformDeflection(BRepAdaptor_Curve(edge), linear)
                 if sampler.IsDone():
                     points = np.array(
-                        [sampler.Value(i).Coord() for i in range(1, sampler.NbPoints() + 1)]
+                        [
+                            sampler.Value(i).Coord()
+                            for i in range(1, sampler.NbPoints() + 1)
+                        ]
                     )
         edge_ranges.append((so_far, len(points)))
         if len(points):
@@ -393,11 +403,16 @@ def models():
     builder = BRep_Builder()
     builder.MakeCompound(compound)
     builder.Add(compound, BRepPrimAPI_MakeBox(1, 1, 1).Shape())
-    builder.Add(compound, BRepBuilderAPI_MakeEdge(gp_Pnt(5, 0, 0), gp_Pnt(6, 1, 2)).Edge())
+    builder.Add(
+        compound, BRepBuilderAPI_MakeEdge(gp_Pnt(5, 0, 0), gp_Pnt(6, 1, 2)).Edge()
+    )
     yield "free edge", compound
     mirror = gp_Trsf()
     mirror.SetMirror(gp_Ax2(gp_Pnt(0, 0, 0), gp_Dir(1, 0, 0)))
-    yield "mirrored", BRepPrimAPI_MakeCylinder(2, 3).Shape().Moved(TopLoc_Location(mirror))
+    yield (
+        "mirrored",
+        BRepPrimAPI_MakeCylinder(2, 3).Shape().Moved(TopLoc_Location(mirror)),
+    )
     rotation = gp_Trsf()
     rotation.SetRotation(gp_Ax1(gp_Pnt(1, 2, 3), gp_Dir(1, 1, 0)), 0.7)
     rotation.SetTranslationPart(gp_Vec(10, -3, 2))
@@ -418,13 +433,15 @@ def ulps(a, b):
     """The largest difference of two float32 arrays, in units in the last
     place; -0 and +0 are one apart."""
     return int(
-        np.abs(a.view(np.int32).astype(np.int64) - b.view(np.int32).astype(np.int64)).max(
-            initial=0
-        )
+        np.abs(
+            a.view(np.int32).astype(np.int64) - b.view(np.int32).astype(np.int64)
+        ).max(initial=0)
     )
 
 
-@pytest.mark.parametrize("name,shape", list(models()), ids=lambda v: v if isinstance(v, str) else "")
+@pytest.mark.parametrize(
+    "name,shape", list(models()), ids=lambda v: v if isinstance(v, str) else ""
+)
 def test_the_same_mesh_as_the_python_reference(name, shape):
     """The same ranges and indices, the same positions to one float32 ulp, and
     the same normals to one ulp of 1: the order of the float64 operations may

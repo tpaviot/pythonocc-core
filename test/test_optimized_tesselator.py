@@ -1,11 +1,17 @@
 """Verify optimized Tesselator produces correct results."""
-import sys
-import os
+
 import json
+import os
+import sys
+from pathlib import Path
 from xml.etree import ElementTree as ET
 
 # Import OCC.Core modules FIRST (loads OCCT shared libraries)
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeSphere
+from OCC.Core.BRepPrimAPI import (
+    BRepPrimAPI_MakeBox,
+    BRepPrimAPI_MakeSphere,
+    BRepPrimAPI_MakeTorus,
+)
 from OCC.Extend.DataExchange import read_step_file
 
 # Then override Tesselator from build dir if available
@@ -13,16 +19,19 @@ _build_dir = os.environ.get("TESSELATOR_BUILD_DIR")
 if _build_dir:
     sys.path.insert(0, _build_dir)
     import Tesselator
+
     ShapeTesselator = Tesselator.ShapeTesselator
     print(f"Using Tesselator from: {Tesselator.__file__}")
 else:
     from OCC.Core.Tesselator import ShapeTesselator
+
     print("Using installed Tesselator")
 
-TEST_IO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "test_io")
+TEST_IO = Path(__file__).resolve().parent / "test_io"
 
 passed = 0
 failed = 0
+
 
 def check(name, condition, msg=""):
     global passed, failed
@@ -38,8 +47,16 @@ def check(name, condition, msg=""):
 a_box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
 tess = ShapeTesselator(a_box)
 tess.Compute()
-check("box triangle count", tess.ObjGetTriangleCount() == 12, f"got {tess.ObjGetTriangleCount()}")
-check("box normal count", tess.ObjGetNormalCount() == 24, f"got {tess.ObjGetNormalCount()}")
+check(
+    "box triangle count",
+    tess.ObjGetTriangleCount() == 12,
+    f"got {tess.ObjGetTriangleCount()}",
+)
+check(
+    "box normal count",
+    tess.ObjGetNormalCount() == 24,
+    f"got {tess.ObjGetNormalCount()}",
+)
 
 # Test 2: Sphere deviation
 a_sphere = BRepPrimAPI_MakeSphere(17.12).Shape()
@@ -62,8 +79,11 @@ check("torus normals > 100", tess.ObjGetNormalCount() > 100)
 # Test 4: Bad quality
 tess2 = ShapeTesselator(a_torus)
 tess2.Compute(mesh_quality=40.0)
-check("bad quality triangles", 10 < tess2.ObjGetTriangleCount() < 100,
-      f"got {tess2.ObjGetTriangleCount()}")
+check(
+    "bad quality triangles",
+    10 < tess2.ObjGetTriangleCount() < 100,
+    f"got {tess2.ObjGetTriangleCount()}",
+)
 
 # Test 5: X3D TriangleSet
 a_box2 = BRepPrimAPI_MakeBox(10.0, 10.0, 10.0).Shape()
@@ -89,16 +109,15 @@ except json.JSONDecodeError as e:
 # Test 7: X3D file valid XML
 tess = ShapeTesselator(a_torus)
 tess.Compute()
-tess.ExportShapeToX3D(os.path.join(TEST_IO, "torus.x3d"))
+tess.ExportShapeToX3D(str(TEST_IO / "torus.x3d"))
 try:
-    with open(os.path.join(TEST_IO, "torus.x3d"), "r") as f:
-        ET.fromstring(f.read())
+    ET.fromstring((TEST_IO / "torus.x3d").read_text())
     check("X3D valid XML", True)
 except ET.ParseError as e:
     check("X3D valid XML", False, str(e))
 
 # Test 8: STEP file with edges
-stp = read_step_file(os.path.join(TEST_IO, "as1_pe_203.stp"))
+stp = read_step_file(str(TEST_IO / "as1_pe_203.stp"))
 tess = ShapeTesselator(stp)
 tess.Compute(compute_edges=True)
 check("STEP file tessellated", tess.ObjGetTriangleCount() > 0)

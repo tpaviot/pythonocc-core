@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -25,8 +23,9 @@ import math
 import os
 import sys
 import time
-from collections.abc import Sequence
-from typing import Any, Callable, Optional, Union
+from collections.abc import Callable, Sequence
+from pathlib import Path
+from typing import Any
 
 import OCC
 from OCC.Core import Quantity
@@ -37,10 +36,10 @@ from OCC.Core.AIS import (
     AIS_WireFrame,
 )
 from OCC.Core.Aspect import (
-    Aspect_FillMethod,
     Aspect_FM_NONE,
     Aspect_FM_STRETCH,
     Aspect_GFM_VER,
+    Aspect_GradientFillMethod,
     Aspect_TOTP_RIGHT_LOWER,
 )
 from OCC.Core.BRepBuilderAPI import (
@@ -100,23 +99,17 @@ if sys.platform == "win32":
         casroot_path = os.environ["CASROOT"]
         # raise an error, force the user to correctly set the variable
         err_msg = f"Please set the CASROOT env variable ({casroot_path} is not ok)"
-        if not os.path.isdir(casroot_path):
+        if not Path(casroot_path).is_dir():
             raise AssertionError(err_msg)
     else:
-        occ_package_path = os.path.dirname(OCC.__file__)
-        casroot_path = os.path.join(
-            occ_package_path, "..", "..", "..", "Library", "share", "oce"
-        )
+        occ_package_path = Path(OCC.__file__).parent
+        casroot = occ_package_path / ".." / ".." / ".." / "Library" / "share" / "oce"
         # we check that all required files are at the right place
-        shaders_dict_found = os.path.isdir(os.path.join(casroot_path, "src", "Shaders"))
-        unitlexicon_found = os.path.isfile(
-            os.path.join(casroot_path, "src", "UnitsAPI", "Lexi_Expr.dat")
-        )
-        unitsdefinition_found = os.path.isfile(
-            os.path.join(casroot_path, "src", "UnitsAPI", "Units.dat")
-        )
+        shaders_dict_found = (casroot / "src" / "Shaders").is_dir()
+        unitlexicon_found = (casroot / "src" / "UnitsAPI" / "Lexi_Expr.dat").is_file()
+        unitsdefinition_found = (casroot / "src" / "UnitsAPI" / "Units.dat").is_file()
         if shaders_dict_found and unitlexicon_found and unitsdefinition_found:
-            os.environ["CASROOT"] = casroot_path
+            os.environ["CASROOT"] = str(casroot)
 
 
 log = logging.getLogger(__name__)
@@ -190,7 +183,7 @@ class Viewer3d(Display3d):
         self._select_callbacks: list[Callable] = []
         self._overlay_items: list[Any] = []
 
-        self._window_handle: Optional[Any] = None
+        self._window_handle: Any | None = None
 
     def get_parent(self) -> Any:
         """
@@ -254,8 +247,8 @@ class Viewer3d(Display3d):
 
     def Create(
         self,
-        window_handle: Optional[Any] = None,
-        parent: Optional[Any] = None,
+        window_handle: Any | None = None,
+        parent: Any | None = None,
         create_default_lights: bool = True,
         draw_face_boundaries: bool = True,
         phong_shading: bool = True,
@@ -525,9 +518,9 @@ class Viewer3d(Display3d):
 
     def set_bg_gradient_color(
         self,
-        color1: Union[Sequence[float], Quantity_Color],
-        color2: Union[Sequence[float], Quantity_Color],
-        fill_method: Aspect_FillMethod = Aspect_GFM_VER,
+        color1: Sequence[float] | Quantity_Color,
+        color2: Sequence[float] | Quantity_Color,
+        fill_method: Aspect_GradientFillMethod = Aspect_GFM_VER,
     ) -> None:
         """
         Sets a background vertical gradient color.
@@ -568,7 +561,7 @@ class Viewer3d(Display3d):
             image_filename (str): The name of the image file.
             stretch (bool): Whether to stretch the image to fit the view.
         """
-        if not os.path.isfile(image_filename):
+        if not Path(image_filename).is_file():
             raise FileNotFoundError(f"image file {image_filename} not found.")
         if stretch:
             self.View.SetBackgroundImage(image_filename, Aspect_FM_STRETCH, True)
@@ -577,7 +570,7 @@ class Viewer3d(Display3d):
 
     def DisplayVector(
         self, vec: gp_Vec, pnt: gp_Pnt, update: bool = False
-    ) -> Optional[Graphic3d_Structure]:
+    ) -> Graphic3d_Structure | None:
         """
         Displays a vector as an arrow.
 
@@ -613,7 +606,7 @@ class Viewer3d(Display3d):
 
     def DisplayMessage(
         self,
-        point: Union[gp_Pnt, gp_Pnt2d],
+        point: gp_Pnt | gp_Pnt2d,
         text_to_write: str,
         height: float = 14.0,
         message_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
@@ -653,10 +646,10 @@ class Viewer3d(Display3d):
     def DisplayShape(
         self,
         shapes: Any,
-        material: Optional[Any] = None,
-        texture: Optional[Any] = None,
-        color: Optional[Union[str, int, Quantity_Color]] = None,
-        transparency: Optional[float] = None,
+        material: Any | None = None,
+        texture: Any | None = None,
+        color: str | int | Quantity_Color | None = None,
+        transparency: float | None = None,
         update: bool = False,
     ) -> list[AIS_Shape]:
         """
@@ -764,7 +757,7 @@ class Viewer3d(Display3d):
     def DisplayColoredShape(
         self,
         shapes: Any,
-        color: Union[str, Quantity_Color] = "YELLOW",
+        color: str | Quantity_Color = "YELLOW",
         update: bool = False,
     ) -> list[AIS_Shape]:
         """
@@ -829,7 +822,7 @@ class Viewer3d(Display3d):
         """
         self.View.Pan(dx, dy)
 
-    def SetSelectionMode(self, mode: Optional[int] = None) -> None:
+    def SetSelectionMode(self, mode: int | None = None) -> None:
         """
         Sets the selection mode.
 
@@ -1061,14 +1054,14 @@ class OffscreenRenderer(Viewer3d):
     def DisplayShape(
         self,
         shapes: Any,
-        material: Optional[Any] = None,
-        texture: Optional[Any] = None,
-        color: Optional[Union[str, int, Quantity_Color]] = None,
-        transparency: Optional[float] = None,
+        material: Any | None = None,
+        texture: Any | None = None,
+        color: str | int | Quantity_Color | None = None,
+        transparency: float | None = None,
         update: bool = True,
         dump_image: bool = True,
-        dump_image_path: Optional[str] = None,
-        dump_image_filename: Optional[str] = None,
+        dump_image_path: str | None = None,
+        dump_image_filename: str | None = None,
     ) -> list[AIS_Shape]:
         """
         Displays a shape and dumps the view to an image file.
@@ -1092,17 +1085,19 @@ class OffscreenRenderer(Viewer3d):
             # the environment variable takes precedence over the argument
             path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
             if not path:
-                path = dump_image_path if dump_image_path is not None else os.getcwd()
-            if not os.path.isdir(path):
+                path = (
+                    dump_image_path if dump_image_path is not None else str(Path.cwd())
+                )
+            if not Path(path).is_dir():
                 raise NotADirectoryError(f"{path} is not a valid path")
             if dump_image_filename is None:
                 self.capture_number += 1
                 dump_image_filename = (
                     f"capture-{self.capture_number}-{int(time.time())}.jpeg"
                 )
-            image_full_name = os.path.join(path, dump_image_filename)
+            image_full_name = str(Path(path) / dump_image_filename)
             self.View.Dump(image_full_name)
-            if not os.path.isfile(image_full_name):
+            if not Path(image_full_name).is_file():
                 raise OSError("OffscreenRenderer failed to render image to file")
             print(f"OffscreenRenderer content dumped to {image_full_name}")
         return r

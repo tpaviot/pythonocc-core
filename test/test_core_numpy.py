@@ -30,6 +30,8 @@ from OCC.Core.TColStd import (
 )
 from OCC.Core.TShort import TShort_Array1OfShortReal, TShort_Array2OfShortReal
 
+RNG = np.random.default_rng(0)
+
 
 @pytest.fixture
 def array_types_2d():
@@ -58,12 +60,12 @@ def normalizing_array_types():
 @pytest.mark.parametrize(
     "type_,arr",
     [
-        (TShort_Array1OfShortReal, np.random.rand(500).astype(np.float32)),
+        (TShort_Array1OfShortReal, RNG.random(500).astype(np.float32)),
         (TColStd_Array1OfInteger, np.arange(500).astype(int)),
-        (TColStd_Array1OfReal, np.random.rand(500)),
-        (TShort_Array2OfShortReal, np.random.rand(101, 201).astype(np.float32)),
+        (TColStd_Array1OfReal, RNG.random(500)),
+        (TShort_Array2OfShortReal, RNG.random((101, 201)).astype(np.float32)),
         (TColStd_Array2OfInteger, np.arange(101 * 201).reshape(101, 201).astype(int)),
-        (TColStd_Array2OfReal, np.random.rand(101, 201)),
+        (TColStd_Array2OfReal, RNG.random((101, 201))),
         (Poly_Array1OfTriangle, np.arange(303).reshape(-1, 3).astype(int)),
     ],
 )
@@ -87,7 +89,7 @@ def test_standard_array(type_, arr):
     ),
 )
 def test_array1_of_gp(type_, array_types_2d, normalizing_array_types):
-    points = np.random.rand(10001, 3)
+    points = RNG.random((10001, 3))
 
     p = points[:, :-1] if type_ in array_types_2d else points
 
@@ -115,7 +117,7 @@ def test_array1_of_gp(type_, array_types_2d, normalizing_array_types):
     ),
 )
 def test_array2_of_gp(type_, array_types_2d, normalizing_array_types):
-    points = np.random.rand(201, 101, 3)
+    points = RNG.random((201, 101, 3))
 
     p = points[..., :-1] if type_ in array_types_2d else points
     arr_occ = type_.from_numpy_array(p)
@@ -190,12 +192,12 @@ def test_surface_derivative_eval():
     "type_,good_arr,bad_arr",
     [
         # a numpy array larger than the OCCT array used to write out of bounds
-        (TColStd_Array1OfReal, np.zeros(500), np.random.rand(600)),
-        (TColStd_Array2OfReal, np.zeros((10, 20)), np.random.rand(20, 10)),
-        (TColgp_Array1OfPnt, np.zeros((500, 3)), np.random.rand(600, 3)),
+        (TColStd_Array1OfReal, np.zeros(500), RNG.random(600)),
+        (TColStd_Array2OfReal, np.zeros((10, 20)), RNG.random((20, 10))),
+        (TColgp_Array1OfPnt, np.zeros((500, 3)), RNG.random((600, 3))),
         # 2 coordinates for 3d points: the 3rd one was read out of bounds
-        (TColgp_Array1OfPnt, np.zeros((500, 3)), np.random.rand(500, 2)),
-        (TColgp_Array2OfPnt, np.zeros((10, 20, 3)), np.random.rand(10, 20, 2)),
+        (TColgp_Array1OfPnt, np.zeros((500, 3)), RNG.random((500, 2))),
+        (TColgp_Array2OfPnt, np.zeros((10, 20, 3)), RNG.random((10, 20, 2))),
     ],
 )
 def test_add_numpy_array_with_wrong_shape(type_, good_arr, bad_arr):

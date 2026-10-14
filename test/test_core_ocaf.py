@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2013 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -17,27 +15,25 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from contextlib import contextmanager
-import os
-from typing import Any, Iterator
 import warnings
+from collections.abc import Iterator
+from contextlib import contextmanager
+from pathlib import Path
+from typing import Any
 
 import pytest
-
 from OCC.Core.BinDrivers import bindrivers
-from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
-from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorGen
-from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.Quantity import Quantity_Color, Quantity_TypeOfColor
-from OCC.Core.TDF import TDF_LabelSequence
-from OCC.Core.XSControl import XSControl_WorkSession
+from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
 from OCC.Core.STEPControl import STEPControl_AsIs
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.TCollection import TCollection_ExtendedString
 from OCC.Core.TDataStd import TDataStd_Integer, TDataStd_Name, TDataStd_NamedData
-from OCC.Core.TDF import TDF_Attribute
-from OCC.Core.XCAFDoc import XCAFDoc_ShapeTool
+from OCC.Core.TDF import TDF_Attribute, TDF_LabelSequence
+from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
+from OCC.Core.XCAFDoc import XCAFDoc_ColorGen, XCAFDoc_DocumentTool, XCAFDoc_ShapeTool
+from OCC.Core.XSControl import XSControl_WorkSession
 
 
 @contextmanager
@@ -134,7 +130,7 @@ def test_write_step_file() -> None:
     writer.Transfer(doc, STEPControl_AsIs)
     status = writer.Write("./test_io/test_ocaf_generated.stp")
     assert status
-    assert os.path.isfile("./test_io/test_ocaf_generated.stp")
+    assert Path("./test_io/test_ocaf_generated.stp").is_file()
 
 
 def test_read_step_file() -> None:
@@ -186,8 +182,7 @@ def test_read_step_file_from_string() -> None:
     step_reader.SetMatMode(True)
 
     # load the step file to a string
-    with open("./test_io/test_ocaf.stp", "r", encoding="utf8") as step_file:
-        step_file_as_string = step_file.read()
+    step_file_as_string = Path("./test_io/test_ocaf.stp").read_text(encoding="utf8")
     status = step_reader.ReadStream("pythonocc_stream", step_file_as_string)
     assert status == IFSelect_RetDone
     step_reader.Transfer(doc)
@@ -244,10 +239,10 @@ def test_read_step_material() -> None:
     for i in range(1, number_of_materials + 1):
         (
             ok,
-            material_name,
-            material_description,
-            material_density,
-            material_densname,
-            material_densvaltype,
+            _material_name,
+            _material_description,
+            _material_density,
+            _material_densname,
+            _material_densvaltype,
         ) = mat_tool.GetMaterial(material_labels.Value(i))
         assert ok

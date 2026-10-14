@@ -16,6 +16,9 @@ class HTMLHeader:
     def get_str(self) -> str: ...
 
 class ThreejsRenderer:
+    _3js_shapes: dict[str, Any]
+    _3js_edges: dict[str, Any]
+    spinning_cursor: Generator[str]
     def __init__(self, path: str | None = None) -> None: ...
     def DisplayShape(
         self,

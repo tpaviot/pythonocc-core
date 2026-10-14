@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -18,21 +16,21 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from OCC.Core.BRepPrimAPI import (
-    BRepPrimAPI_MakeTorus,
     BRepPrimAPI_MakeBox,
     BRepPrimAPI_MakeSphere,
+    BRepPrimAPI_MakeTorus,
 )
+from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Face
 from OCC.Extend.TopologyUtils import (
     TopologyExplorer,
     WireExplorer,
     discretize_edge,
     discretize_wire,
     dump_topology_to_string,
-    get_type_as_string,
     get_sorted_hlr_edges,
+    get_type_as_string,
     list_of_shapes_to_compound,
 )
-from OCC.Core.TopoDS import TopoDS_Face, TopoDS_Edge
 
 
 def get_test_box_shape(len_x=10.0, len_y=20.0, len_z=30.0):

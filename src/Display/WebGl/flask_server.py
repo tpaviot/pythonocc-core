@@ -2,7 +2,7 @@
 
 import sys
 import uuid
-from typing import Any, Optional
+from typing import Any
 
 from flask import Flask, render_template
 from OCC import VERSION as OCC_VERSION
@@ -47,7 +47,7 @@ class RenderWraper(ThreejsRenderer):
 
     def __init__(
         self,
-        path: Optional[str] = None,
+        path: str | None = None,
         default_shape_color: str = format_color(166, 166, 166),  # light grey
         default_edge_color: str = format_color(32, 32, 32),  # dark grey
         default_vertex_color: str = format_color(8, 8, 8),
@@ -192,9 +192,9 @@ class RenderConfig:
         self,
         bg_gradient_color1: str = "#ced7de",
         bg_gradient_color2: str = "#808080",
-        vertex_shader: Optional[str] = None,
-        fragment_shader: Optional[str] = None,
-        uniforms: Optional[dict[str, Any]] = None,
+        vertex_shader: str | None = None,
+        fragment_shader: str | None = None,
+        uniforms: dict[str, Any] | None = None,
     ) -> None:
         """
         Initializes the RenderConfig.

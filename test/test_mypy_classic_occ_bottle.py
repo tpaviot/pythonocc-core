@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2020 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -19,42 +17,42 @@
 
 import math
 
-from OCC.Core.gp import (
-    gp,
-    gp_Pnt,
-    gp_Vec,
-    gp_Trsf,
-    gp_Ax2,
-    gp_Ax3,
-    gp_Pnt2d,
-    gp_Dir2d,
-    gp_Ax2d,
-    gp_Pln,
-)
-from OCC.Core.GC import GC_MakeArcOfCircle, GC_MakeSegment
-from OCC.Core.GCE2d import GCE2d_MakeSegment
-from OCC.Core.Geom import Geom_CylindricalSurface
-from OCC.Core.Geom2d import Geom2d_Ellipse, Geom2d_TrimmedCurve
+from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
-    BRepBuilderAPI_MakeWire,
     BRepBuilderAPI_MakeFace,
+    BRepBuilderAPI_MakeWire,
     BRepBuilderAPI_Transform,
 )
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakePrism, BRepPrimAPI_MakeCylinder
 from OCC.Core.BRepFilletAPI import BRepFilletAPI_MakeFillet
-from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse
+from OCC.Core.BRepLib import breplib
 from OCC.Core.BRepOffsetAPI import (
     BRepOffsetAPI_MakeThickSolid,
     BRepOffsetAPI_ThruSections,
 )
-from OCC.Core.BRepLib import breplib
-from OCC.Core.BRep import BRep_Builder
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder, BRepPrimAPI_MakePrism
+from OCC.Core.GC import GC_MakeArcOfCircle, GC_MakeSegment
+from OCC.Core.GCE2d import GCE2d_MakeSegment
+from OCC.Core.Geom import Geom_CylindricalSurface
+from OCC.Core.Geom2d import Geom2d_Ellipse, Geom2d_TrimmedCurve
 from OCC.Core.GeomAbs import GeomAbs_Plane
-from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
-from OCC.Core.TopoDS import topods, TopoDS_Compound, TopoDS_Face
-from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.gp import (
+    gp,
+    gp_Ax2,
+    gp_Ax2d,
+    gp_Ax3,
+    gp_Dir2d,
+    gp_Pln,
+    gp_Pnt,
+    gp_Pnt2d,
+    gp_Trsf,
+    gp_Vec,
+)
 from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE
+from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.TopoDS import TopoDS_Compound, TopoDS_Face, topods
 from OCC.Core.TopTools import TopTools_ListOfShape
 
 
@@ -162,8 +160,7 @@ while aFaceExplorer.More():
         # We want the highest Z face, so compare this to the previous faces
         aPntLoc = aPlane.Location()
         aZ = aPntLoc.Z()
-        if aZ > zMax:
-            zMax = aZ
+        zMax = max(zMax, aZ)
     aFaceExplorer.Next()
 
 facesToRemove = TopTools_ListOfShape()

@@ -31,8 +31,8 @@ This module is part of the OCC.Core package:
 from OCC.Core.Exception import *
 """
 
-import warnings
 import functools
+import warnings
 
 
 class MethodNotWrappedError(BaseException):

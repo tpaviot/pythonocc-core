@@ -1,6 +1,6 @@
 import os
-from pathlib import Path
 import platform
+from pathlib import Path
 
 # Version number
 PYTHONOCC_VERSION_MAJOR = 8
@@ -20,12 +20,12 @@ def initialize_occt_libraries(occt_essentials_path) -> None:
     Raises:
         AssertionError: If the OCCT_ESSENTIALS_ROOT environment variable is not set.
     """
-    if not os.path.exists(occt_essentials_path):
+    if not Path(occt_essentials_path).exists():
         raise AssertionError(
             f"OCCT_ESSENTIALS_ROOT({occt_essentials_path}) is not set correctly."
         )
 
-    for root, dirs, files in os.walk(occt_essentials_path):
+    for root, _dirs, files in os.walk(occt_essentials_path):
         if "debug" in root.lower():
             continue
         for file in files:

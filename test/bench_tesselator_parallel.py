@@ -1,25 +1,24 @@
-import os
-import os.path
-import time
 import subprocess
+import time
+from pathlib import Path
 
-from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Fuse, BRepAlgoAPI_Common, BRepAlgoAPI_Cut
-from OCC.Core.TopTools import TopTools_ListOfShape
+from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
 from OCC.Core.Tesselator import ShapeTesselator
-from OCC.Extend.TopologyUtils import TopologyExplorer
+from OCC.Core.TopTools import TopTools_ListOfShape
 from OCC.Extend.DataExchange import read_step_file
+from OCC.Extend.TopologyUtils import TopologyExplorer
 
 # load (and download if necessary) a big step file
 print("TEST 1 ===")
 step_filename = "KR600_R2830-4.stp"
 url = f"https://raw.githubusercontent.com/tpaviot/pythonocc-demos/master/assets/models/{step_filename}"
 
-step_file = os.path.join("test_io", step_filename)
-if not os.path.isfile(step_file):
+step_file = str(Path("test_io") / step_filename)
+if not Path(step_file).is_file():
     subprocess.run(["wget", "-O", step_file, url], check=True)
 
-if not os.path.isfile(step_file):
-    raise IOError(f"file {step_file} not found")
+if not Path(step_file).is_file():
+    raise OSError(f"file {step_file} not found")
 
 # TEST 1 : one big STEP file into one single compound
 shp1 = read_step_file(step_file)
@@ -42,8 +41,8 @@ t3 = time.perf_counter()
 delta_multi = t3 - t2
 
 print("Test 1 Results:")
-print("  * single thread runtime: %.2fs" % delta_single)
-print("  * multi thread runtime: %.2fs" % delta_multi)
+print(f"  * single thread runtime: {delta_single:.2f}s")
+print(f"  * multi thread runtime: {delta_multi:.2f}s")
 print("  * muti/single=%.2f%%" % (delta_multi / delta_single * 100))
 
 # TEST 2 : other step, with a loop over each subshape
@@ -68,13 +67,13 @@ t7 = time.perf_counter()
 delta_multi = t7 - t6
 
 print("Test 2 Results:")
-print("  * single thread runtime: %.2fs" % delta_single)
-print("  * multi thread runtime: %.2fs" % delta_multi)
+print(f"  * single thread runtime: {delta_single:.2f}s")
+print(f"  * multi thread runtime: {delta_multi:.2f}s")
 print("  * muti/single=%.2f%%" % (delta_multi / delta_single * 100))
 
 # Test3 - Cut
 shp5 = read_step_file(step_file)
-shp6 = read_step_file(os.path.join("test_io", "as1-oc-214.stp"))
+shp6 = read_step_file(str(Path("test_io") / "as1-oc-214.stp"))
 
 # cutter
 
@@ -113,6 +112,6 @@ myCut1.Build()
 t10 = time.perf_counter()
 delta_multi = t10 - t9
 print("Test 2 Results:")
-print("  * single thread runtime: %.2fs" % delta_single)
-print("  * multi thread runtime: %.2fs" % delta_multi)
+print(f"  * single thread runtime: {delta_single:.2f}s")
+print(f"  * multi thread runtime: {delta_multi:.2f}s")
 print("  * muti/single=%.2f%%" % (delta_multi / delta_single * 100))

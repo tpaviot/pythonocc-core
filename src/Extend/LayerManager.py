@@ -18,7 +18,7 @@
 """Layers of displayed shapes: group shapes, show, hide, move or color them
 together."""
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 from OCC.Core.AIS import AIS_Shape
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_Transform
@@ -44,7 +44,7 @@ class Layer:
     def __init__(
         self,
         from_display: "Viewer3d",
-        shape: Optional[TopoDS_Shape] = None,
+        shape: TopoDS_Shape | None = None,
         color: int = 0,
         transparency: float = 0.0,
         material: Graphic3d_NameOfMaterial = DEFAULT_MATERIAL,
@@ -167,7 +167,7 @@ class Layer:
 
     def get_aisshape_from_topodsshape(
         self, topshape: TopoDS_Shape
-    ) -> Optional[tuple[AIS_Shape, int]]:
+    ) -> tuple[AIS_Shape, int] | None:
         """
         Gets the displayed AIS_Shape corresponding to a TopoDS_Shape.
 

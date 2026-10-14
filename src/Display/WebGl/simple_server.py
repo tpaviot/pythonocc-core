@@ -23,6 +23,7 @@ import os
 import socket
 import threading
 import webbrowser
+from pathlib import Path
 from typing import Any
 
 
@@ -84,7 +85,7 @@ def get_interface_ip(family: socket.AddressFamily) -> str:
         except OSError:
             return "::1" if family == socket.AF_INET6 else "127.0.0.1"
 
-        return s.getsockname()[0]  # type: ignore
+        return s.getsockname()[0]
 
 
 def get_server_url(addr: str, port: int) -> str:
@@ -164,8 +165,7 @@ def start_server(
 
         @app.route("/")
         def root() -> str:
-            with open(os.path.join(x3d_path, "index.html"), encoding="utf-8") as fp:
-                return fp.read()
+            return (Path(x3d_path) / "index.html").read_text(encoding="utf-8")
 
         @app.route("/<path:path>")
         def send_x3d_content(path: str) -> Any:

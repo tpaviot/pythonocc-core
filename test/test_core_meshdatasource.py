@@ -16,19 +16,18 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 from math import sqrt
-import os
-
-from OCC.Core.gp import gp_Pnt, gp_Vec, gp_Dir
-from OCC.Core.MeshDS import MeshDS_DataSource
-from OCC.Core.RWStl import rwstl
-from OCC.Core.TColStd import TColStd_Array1OfInteger, TColStd_Array1OfReal
-from OCC.Core.MeshVS import MeshVS_ET_Face, MeshVS_ET_Node
-from OCC.Core.Poly import Poly_Triangulation, Poly_Triangle
+from pathlib import Path
 
 import numpy as np
 import pytest
+from OCC.Core.gp import gp_Dir, gp_Pnt, gp_Vec
+from OCC.Core.MeshDS import MeshDS_DataSource
+from OCC.Core.MeshVS import MeshVS_ET_Face, MeshVS_ET_Node
+from OCC.Core.Poly import Poly_Triangle, Poly_Triangulation
+from OCC.Core.RWStl import rwstl
+from OCC.Core.TColStd import TColStd_Array1OfInteger, TColStd_Array1OfReal
 
-STL_BOTTLE_FILENAME = os.path.join(".", "test_io", "bottle_ascii.stl")
+STL_BOTTLE_FILENAME = str(Path("test_io") / "bottle_ascii.stl")
 
 
 def test_instantiate_from_stl_file():
@@ -235,23 +234,23 @@ def test_mesh_datasource_invalid_input():
     with pytest.raises(IndexError):
         MeshDS_DataSource(coord_data, [[0, 1, -1]])
     # not a triangle nor a quadrangle
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="3 or 4 nodes"):
         MeshDS_DataSource(coord_data, [[0, 1]])
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="3 or 4 nodes"):
         MeshDS_DataSource(coord_data, [[0, 1, 2, 0, 1]])
     # numpy arrays with a wrong number of columns
     vertices = np.array([[0, 0, 0], [1, 0, 0], [1, 1, 0]], dtype=np.float64)
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="faces array must have"):
         MeshDS_DataSource(vertices, np.array([[0, 1]], dtype=np.int32))
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="vertices array must have 3 columns"):
         MeshDS_DataSource(vertices[:, :2].copy(), np.array([[0, 1, 2]], dtype=np.int32))
     with pytest.raises(IndexError):
         MeshDS_DataSource(vertices, np.array([[0, 1, 5]], dtype=np.int32))
     # normals must match the elements
     a_data_source = MeshDS_DataSource(coord_data, [[0, 1, 2]])
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="one normal per element"):
         a_data_source.SetElemNormals([gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)])
-    with pytest.raises(Exception):
+    with pytest.raises(RuntimeError, match="one normal per node"):
         a_data_source.SetNodeNormals([[gp_Vec(0, 0, 1), gp_Vec(0, 0, 1)]])
 
 

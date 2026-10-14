@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2020 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -19,32 +17,30 @@
 
 import math
 
+import pytest
+from OCC.Core.BRep import BRep_Tool
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
     BRepPrimAPI_MakeSphere,
     BRepPrimAPI_MakeTorus,
 )
-from OCC.Core.BRep import BRep_Tool
 from OCC.Core.Geom import Geom_BezierCurve
 from OCC.Core.gp import gp_Pnt, gp_Vec
 from OCC.Core.TColgp import TColgp_Array1OfPnt
-
 from OCC.Extend.ShapeFactory import (
-    midpoint,
-    scale_shape,
-    measure_shape_volume,
-    translate_shp,
-    measure_shape_mass_center_of_gravity,
     edge_to_bezier,
     get_boundingbox,
     make_edge,
     make_extrusion,
     make_face,
     make_wire,
+    measure_shape_mass_center_of_gravity,
+    measure_shape_volume,
+    midpoint,
+    scale_shape,
+    translate_shp,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
-
-import pytest
 
 
 def test_midpoint():

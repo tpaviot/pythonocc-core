@@ -103,7 +103,7 @@ class TopologyExplorer:
     def number_of_shells_from_solid(self, solid: TopoDS_Solid) -> int: ...
 
 def dump_topology_to_string(
-    shape: TopoDS_Shape, level: int | None = 0, buffer: str | None = ""
+    shape: TopoDS_Shape, level: int = 0, buffer: str = ""
 ) -> None: ...
 def discretize_wire(
     a_wire: TopoDS_Wire,

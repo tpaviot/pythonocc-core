@@ -16,6 +16,7 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import warnings
+from typing import ClassVar
 
 
 def deprecated(message):
@@ -35,7 +36,7 @@ def deprecated(message):
 
 
 class Proxy:
-    __slots__ = ["_obj", "__weakref__"]
+    __slots__ = ["__weakref__", "_obj"]
 
     def __init__(self, obj):
         object.__setattr__(self, "_obj", obj)
@@ -64,7 +65,9 @@ class Proxy:
     #
     # factories
     #
-    _special_names = [
+    _class_proxy_cache: ClassVar[dict[type, type]]
+
+    _special_names = (
         "__abs__",
         "__add__",
         "__and__",
@@ -140,7 +143,7 @@ class Proxy:
         "__truediv__",
         "__xor__",
         "next",
-    ]
+    )
 
     @classmethod
     def _create_class_proxy(cls, theclass):

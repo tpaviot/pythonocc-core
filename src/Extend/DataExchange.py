@@ -18,9 +18,9 @@
 """Import and export of shapes to and from the STEP, IGES, STL, BREP,
 glTF, OBJ, PLY, X3D and SVG formats."""
 
-import os
 import warnings
-from typing import Any, Optional, Union
+from pathlib import Path
+from typing import Any
 
 from OCC.Core.Bnd import Bnd_Box2d
 from OCC.Core.BRep import BRep_Builder, BRep_Tool
@@ -97,7 +97,7 @@ def check_svgwrite_installed():
 ##########################
 def read_step_file(
     filename: str, as_compound: bool = True, verbosity: bool = False
-) -> Union[TopoDS_Shape, list[TopoDS_Shape]]:
+) -> TopoDS_Shape | list[TopoDS_Shape]:
     """Read a STEP file and return the contained shape(s).
 
     Args:
@@ -115,7 +115,7 @@ def read_step_file(
         FileNotFoundError: If the specified file does not exist
         AssertionError: If there are errors during STEP file reading or conversion
     """
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise FileNotFoundError(f"STEP file not found: {filename}")
 
     step_reader = STEPControl_Reader()
@@ -186,7 +186,7 @@ def write_step_file(
             f"You passed {application_protocol}."
         )
 
-    if os.path.isfile(filename):
+    if Path(filename).is_file():
         warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
 
     if application_protocol != "AP242DIS":
@@ -220,13 +220,13 @@ def write_step_file(
 
     if status != IFSelect_RetDone:
         raise OSError("Error while writing shape to STEP file.")
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise OSError(f"{filename} not saved to filesystem.")
 
 
 def read_step_file_with_names_colors(
     filename: str,
-) -> dict[TopoDS_Shape, list[Union[str, Quantity_Color]]]:
+) -> dict[TopoDS_Shape, list[str | Quantity_Color]]:
     """
     Reads a STEP file and extracts shapes with their names and colors using OCAF.
 
@@ -238,7 +238,7 @@ def read_step_file_with_names_colors(
              lists containing the shape's name and its Quantity_Color.
     :raises FileNotFoundError: If the specified file does not exist.
     """
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise FileNotFoundError(f"{filename} not found.")
     # the list:
     output_shapes = {}
@@ -356,7 +356,7 @@ def write_stl_file(
     if mode not in ["ascii", "binary"]:
         raise AssertionError("mode should be either ascii or binary")
 
-    if os.path.isfile(filename):
+    if Path(filename).is_file():
         warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
 
     # Mesh the shape
@@ -370,7 +370,7 @@ def write_stl_file(
     # Export to STL
     writer = StlAPI_Writer()
     writer.SetASCIIMode(mode == "ascii")
-    if not writer.Write(shape, filename) or not os.path.isfile(filename):
+    if not writer.Write(shape, filename) or not Path(filename).is_file():
         raise OSError("File not written to disk.")
 
 
@@ -387,7 +387,7 @@ def read_stl_file(
     :raises FileNotFoundError: If the specified file does not exist.
     :raises AssertionError: If the shape in the file is null.
     """
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise FileNotFoundError(f"{filename} not found.")
 
     if not sew_shape and make_solid:
@@ -436,7 +436,7 @@ def read_iges_file(
     :raises FileNotFoundError: If the specified file does not exist.
     :raises IOError: If the file cannot be read.
     """
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise FileNotFoundError(f"{filename} not found.")
 
     IGESControl_Controller.Init()
@@ -486,7 +486,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
     # a few checks
     if a_shape.IsNull():
         raise AssertionError("Shape is null.")
-    if os.path.isfile(filename):
+    if Path(filename).is_file():
         warnings.warn(f"{filename} already exists and will be replaced", stacklevel=2)
     # create and initialize the step exporter
     iges_writer = IGESControl_Writer()
@@ -495,7 +495,7 @@ def write_iges_file(a_shape: TopoDS_Shape, filename: str):
 
     if status != IFSelect_RetDone:
         raise AssertionError("Not done.")
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise OSError("File not written to disk.")
 
 
@@ -538,18 +538,18 @@ def edge_to_svg_polyline(
 
 def export_shape_to_svg(
     shape: TopoDS_Shape,
-    filename: Optional[str] = None,
+    filename: str | None = None,
     width: int = 800,
     height: int = 600,
     margin_left: int = 10,
     margin_top: int = 30,
     export_hidden_edges: bool = True,
-    location: Optional[gp_Pnt] = None,
-    direction: Optional[gp_Dir] = None,
+    location: gp_Pnt | None = None,
+    direction: gp_Dir | None = None,
     color: str = "black",
     line_width: str = "1px",
     unit: str = "mm",
-) -> Union[bool, str]:
+) -> bool | str:
     """
     Exports a shape to an SVG file or string.
 
@@ -634,7 +634,7 @@ def export_shape_to_svg(
     # export to string or file according to the user choice
     if filename is not None:
         dwg.save()
-        if not os.path.isfile(filename):
+        if not Path(filename).is_file():
             raise AssertionError("svg export failed")
         return True
     return dwg.tostring()
@@ -746,7 +746,7 @@ def read_gltf_file(
     :raises FileNotFoundError: If the specified file does not exist.
     :raises IOError: If the file cannot be read.
     """
-    if not os.path.isfile(filename):
+    if not Path(filename).is_file():
         raise FileNotFoundError(f"{filename} not found.")
 
     gltf_reader = RWGltf_CafReader()

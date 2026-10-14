@@ -2,7 +2,6 @@ from typing import Any, Literal, overload
 
 from OCC.Core.Bnd import Bnd_Box2d
 from OCC.Core.gp import gp_Dir, gp_Pnt
-from OCC.Core.Quantity import Quantity_Color
 from OCC.Core.TopoDS import TopoDS_Edge, TopoDS_Shape
 
 HAVE_SVGWRITE: bool
@@ -23,6 +22,7 @@ def read_step_file(
 def write_step_file(
     shape: TopoDS_Shape, filename: str, application_protocol: str = "AP203"
 ) -> None: ...
+
 # the values are [name: str, color: Quantity_Color] lists
 def read_step_file_with_names_colors(
     filename: str,

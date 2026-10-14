@@ -1,5 +1,5 @@
-from collections.abc import Sequence
-from typing import Any, Callable
+from collections.abc import Callable, Sequence
+from typing import Any
 
 from OCC.Core.AIS import AIS_InteractiveContext, AIS_Shape
 from OCC.Core.gp import gp_Pnt, gp_Pnt2d, gp_Vec

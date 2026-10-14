@@ -18,7 +18,6 @@
 """Tests of the Viewer3d API with the offscreen renderer."""
 
 import pytest
-
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Core.Quantity import Quantity_Color, Quantity_NOC_BLACK
 from OCC.Display.OCCViewer import OffscreenRenderer, get_color_from_name

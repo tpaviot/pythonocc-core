@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2018 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -21,99 +19,97 @@ import gc
 import math
 
 import pytest
-
-from OCC.Core.gp import (
-    gp,
-    gp_Pnt,
-    gp_Pnt2d,
-    gp_Ax2,
-    gp_Ax2d,
-    gp_Ax3,
-    gp_Vec,
-    gp_Pln,
-    gp_Elips,
-    gp_Dir2d,
-    gp_Ax22d,
-    gp_Parab2d,
-    gp_Dir,
+from OCC.Core.Bnd import Bnd_B3d
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeEdge2d,
+    BRepBuilderAPI_MakeFace,
+    BRepBuilderAPI_MakeVertex,
+)
+from OCC.Core.BRepLProp import BRepLProp_SLProps
+from OCC.Core.Convert import Convert_TgtThetaOver2
+from OCC.Core.Extrema import Extrema_ExtPC
+from OCC.Core.GC import GC_MakeEllipse, GC_MakePlane, GC_MakeSegment
+from OCC.Core.GccAna import GccAna_Circ2d2TanRad, GccAna_Lin2d2Tan
+from OCC.Core.GccEnt import gccent
+from OCC.Core.gce import gce_MakeCirc2d
+from OCC.Core.GCE2d import GCE2d_MakeEllipse, GCE2d_MakeParabola, GCE2d_MakeSegment
+from OCC.Core.GCPnts import GCPnts_UniformAbscissa
+from OCC.Core.Geom import (
+    Geom_BSplineCurve,
+    Geom_Circle,
+    Geom_Curve,
+    Geom_Ellipse,
+    Geom_OffsetSurface,
+    Geom_RectangularTrimmedSurface,
+    Geom_SphericalSurface,
+    Geom_SurfaceOfRevolution,
 )
 from OCC.Core.Geom2d import (
-    Geom2d_OffsetCurve,
     Geom2d_Circle,
-    Geom2d_TrimmedCurve,
+    Geom2d_OffsetCurve,
     Geom2d_Parabola,
+    Geom2d_TrimmedCurve,
 )
 from OCC.Core.Geom2dAdaptor import Geom2dAdaptor_Curve
 from OCC.Core.Geom2dAPI import Geom2dAPI_Interpolate, Geom2dAPI_PointsToBSpline
-from OCC.Core.GCPnts import GCPnts_UniformAbscissa
-from OCC.Core.Geom import (
-    Geom_Circle,
-    Geom_SphericalSurface,
-    Geom_OffsetSurface,
-    Geom_SurfaceOfRevolution,
-    Geom_RectangularTrimmedSurface,
-    Geom_BSplineCurve,
-    Geom_Ellipse,
-    Geom_Curve,
-)
+from OCC.Core.Geom2dConvert import geom2dconvert
+from OCC.Core.Geom2dEval import Geom2dEval_ArchimedeanSpiralCurve
+from OCC.Core.GeomAdaptor import GeomAdaptor_Curve, GeomAdaptor_Surface
 from OCC.Core.GeomAPI import (
-    GeomAPI_PointsToBSpline,
     GeomAPI_ExtremaSurfaceSurface,
+    GeomAPI_PointsToBSpline,
+    GeomAPI_PointsToBSplineSurface,
     GeomAPI_ProjectPointOnCurve,
     GeomAPI_ProjectPointOnSurf,
-    GeomAPI_PointsToBSplineSurface,
 )
-from OCC.Core.Precision import precision
-from OCC.Core.IntAna import IntAna_IntConicQuad
-from OCC.Core.GC import GC_MakeEllipse, GC_MakeSegment, GC_MakePlane
-from OCC.Core.GCE2d import GCE2d_MakeParabola, GCE2d_MakeEllipse, GCE2d_MakeSegment
-from OCC.Core.Geom2dConvert import geom2dconvert
-from OCC.Core.GccEnt import gccent
-from OCC.Core.gce import gce_MakeCirc2d
-from OCC.Core.GccAna import GccAna_Lin2d2Tan, GccAna_Circ2d2TanRad
-
-from OCC.Core.BRepBuilderAPI import (
-    BRepBuilderAPI_MakeVertex,
-    BRepBuilderAPI_MakeEdge2d,
-    BRepBuilderAPI_MakeEdge,
-    BRepBuilderAPI_MakeFace,
-)
-from OCC.Core.TColgp import (
-    TColgp_Array1OfPnt,
-    TColgp_Array1OfPnt2d,
-    TColgp_HArray1OfPnt2d,
-    TColgp_Array2OfPnt,
-)
-from OCC.Core.GeomFill import (
-    GeomFill_Pipe,
-    GeomFill_BSplineCurves,
-    GeomFill_CoonsStyle,
-    GeomFill_StretchStyle,
-    GeomFill_IsDarboux,
-    GeomFill_IsFrenet,
-    GeomFill_CurvedStyle,
-    GeomFill_IsConstantNormal,
-    GeomFill_IsCorrectedFrenet,
-    GeomFill_IsGuidePlan,
-    GeomFill_IsGuideAC,
-    GeomFill_IsGuideACWithContact,
-    GeomFill_IsGuidePlanWithContact,
-)
-from OCC.Core.Convert import Convert_TgtThetaOver2
-from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
-from OCC.Core.BRepLProp import BRepLProp_SLProps
-from OCC.Core.GeomLProp import GeomLProp_CLProps, GeomLProp_SLProps
-from OCC.Core.Extrema import Extrema_ExtPC
-from OCC.Core.Bnd import Bnd_B3d
-from OCC.Core.math import math_IntegerVector
+from OCC.Core.GeomBndLib import GeomBndLib_Curve, GeomBndLib_Surface
 from OCC.Core.GeomEval import (
     GeomEval_CircularHelixCurve,
     GeomEval_EllipsoidSurface,
     GeomEval_HyperboloidSurface,
 )
-from OCC.Core.Geom2dEval import Geom2dEval_ArchimedeanSpiralCurve
-from OCC.Core.GeomAdaptor import GeomAdaptor_Curve, GeomAdaptor_Surface
-from OCC.Core.GeomBndLib import GeomBndLib_Curve, GeomBndLib_Surface
+from OCC.Core.GeomFill import (
+    GeomFill_BSplineCurves,
+    GeomFill_CoonsStyle,
+    GeomFill_CurvedStyle,
+    GeomFill_IsConstantNormal,
+    GeomFill_IsCorrectedFrenet,
+    GeomFill_IsDarboux,
+    GeomFill_IsFrenet,
+    GeomFill_IsGuideAC,
+    GeomFill_IsGuideACWithContact,
+    GeomFill_IsGuidePlan,
+    GeomFill_IsGuidePlanWithContact,
+    GeomFill_Pipe,
+    GeomFill_StretchStyle,
+)
+from OCC.Core.GeomLProp import GeomLProp_CLProps, GeomLProp_SLProps
+from OCC.Core.gp import (
+    gp,
+    gp_Ax2,
+    gp_Ax2d,
+    gp_Ax3,
+    gp_Ax22d,
+    gp_Dir,
+    gp_Dir2d,
+    gp_Elips,
+    gp_Parab2d,
+    gp_Pln,
+    gp_Pnt,
+    gp_Pnt2d,
+    gp_Vec,
+)
+from OCC.Core.IntAna import IntAna_IntConicQuad
+from OCC.Core.math import math_IntegerVector
+from OCC.Core.Precision import precision
+from OCC.Core.TColgp import (
+    TColgp_Array1OfPnt,
+    TColgp_Array1OfPnt2d,
+    TColgp_Array2OfPnt,
+    TColgp_HArray1OfPnt2d,
+)
 
 #
 # Utility functions

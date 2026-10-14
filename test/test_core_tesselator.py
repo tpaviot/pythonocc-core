@@ -17,11 +17,10 @@
 
 import json
 import math
-import os
+from pathlib import Path
 from xml.etree import ElementTree as ET
 
 import pytest
-
 from OCC.Core.BRep import BRep_Builder
 from OCC.Core.BRepAlgoAPI import BRepAlgoAPI_Cut
 from OCC.Core.BRepBuilderAPI import BRepBuilderAPI_MakeEdge
@@ -29,13 +28,12 @@ from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
     BRepPrimAPI_MakeCone,
     BRepPrimAPI_MakeCylinder,
-    BRepPrimAPI_MakeTorus,
     BRepPrimAPI_MakeSphere,
+    BRepPrimAPI_MakeTorus,
 )
 from OCC.Core.gp import gp_Ax2, gp_Dir, gp_Pnt
 from OCC.Core.Tesselator import ShapeTesselator
 from OCC.Core.TopoDS import TopoDS_Compound
-
 from OCC.Extend.DataExchange import read_step_file
 
 
@@ -104,8 +102,9 @@ def test_export_to_x3d():
     a_sphere = BRepPrimAPI_MakeSphere(10.0).Shape()
     tess = ShapeTesselator(a_sphere)
     tess.Compute()
-    tess.ExportShapeToX3D(os.path.join("test_io", "sphere.x3d"))
-    assert os.path.exists(os.path.join("test_io", "sphere.x3d"))
+    x3d_path = Path("test_io") / "sphere.x3d"
+    tess.ExportShapeToX3D(str(x3d_path))
+    assert x3d_path.exists()
 
 
 def test_export_to_x3d_TriangleSet():
@@ -137,18 +136,17 @@ def test_x3d_file_is_valid_xml():
     another_torus = BRepPrimAPI_MakeTorus(10, 4).Shape()
     torus_tess = ShapeTesselator(another_torus)
     torus_tess.Compute()
-    output_x3d_filename = os.path.join("test_io", "torus.x3d")
-    torus_tess.ExportShapeToX3D(output_x3d_filename)
-    assert os.path.exists(output_x3d_filename)
-    with open(output_x3d_filename, "r") as x3d_file:
-        x3d_content = x3d_file.read()
-        ET.fromstring(x3d_content)  # raise an exception if not valid xml
+    output_x3d_path = Path("test_io") / "torus.x3d"
+    torus_tess.ExportShapeToX3D(str(output_x3d_path))
+    assert output_x3d_path.exists()
+    x3d_content = output_x3d_path.read_text()
+    ET.fromstring(x3d_content)  # raise an exception if not valid xml
 
 
 def test_tessellate_STEP_file():
     """loads a step file, tessellate. The as1_pe_203 contains
     free edges"""
-    stp_file = os.path.join(os.path.join("test_io", "as1_pe_203.stp"))
+    stp_file = str(Path("test_io") / "as1_pe_203.stp")
     stp_file_shape = read_step_file(stp_file)
     stp_file_tesselator = ShapeTesselator(stp_file_shape)
 
@@ -187,16 +185,23 @@ def test_cone_apex_normals():
     nb_apex_corners = 0
     for triangle in range(len(vertices) // 9):
         corners = [
-            (vertices[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3],
-             normals[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3])
+            (
+                vertices[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3],
+                normals[9 * triangle + 3 * c : 9 * triangle + 3 * c + 3],
+            )
             for c in range(3)
         ]
         for c, (vertex, normal) in enumerate(corners):
             if math.dist(vertex, (0, 0, 20)) > 1e-6:
                 continue
             nb_apex_corners += 1
-            side = [sum(n[k] for i, (_, n) in enumerate(corners) if i != c) for k in range(3)]
-            cosine = sum(a * b for a, b in zip(normal, side)) / math.hypot(*side)
+            side = [
+                sum(n[k] for i, (_, n) in enumerate(corners) if i != c)
+                for k in range(3)
+            ]
+            cosine = sum(a * b for a, b in zip(normal, side, strict=True)) / math.hypot(
+                *side
+            )
             assert cosine == pytest.approx(1.0, abs=1e-3)
     assert nb_apex_corners > 2
 

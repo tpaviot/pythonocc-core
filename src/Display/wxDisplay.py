@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2008-2017 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -22,7 +20,8 @@
 
 import logging
 import time
-from typing import Any, Callable, Optional
+from collections.abc import Callable
+from typing import Any
 
 try:
     import wx
@@ -38,7 +37,7 @@ class wxBaseViewer(wx.Panel):
     The base wx.Panel for an OCC viewer.
     """
 
-    def __init__(self, parent: Optional[Any] = None) -> None:
+    def __init__(self, parent: Any | None = None) -> None:
         """
         Initializes the wxBaseViewer.
 
@@ -62,7 +61,7 @@ class wxBaseViewer(wx.Panel):
         self.Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
         self.Bind(wx.EVT_MOUSEWHEEL, self.OnWheelScroll)
 
-        self._display: Optional[OCCViewer.Viewer3d] = None
+        self._display: OCCViewer.Viewer3d | None = None
         self._inited = False
 
     @property
@@ -421,7 +420,7 @@ def TestWxDisplay() -> None:
     """
 
     class AppFrame(wx.Frame):
-        def __init__(self, parent: Optional[Any]) -> None:
+        def __init__(self, parent: Any | None) -> None:
             wx.Frame.__init__(
                 self,
                 parent,

@@ -18,7 +18,7 @@
 """Helpers to build, transform and measure shapes."""
 
 from math import radians
-from typing import Any, Union
+from typing import Any
 
 from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
@@ -107,7 +107,7 @@ def point_list_to_TColgp_Array1OfPnt(li: list[gp_Pnt]) -> TColgp_Array1OfPnt:
 
 #
 # 0D
-def make_vertex(*args: Union[gp_Pnt, float]) -> TopoDS_Vertex:
+def make_vertex(*args: gp_Pnt | float) -> TopoDS_Vertex:
     """
     Creates a TopoDS_Vertex from a point.
 
@@ -152,7 +152,7 @@ def make_edge2d(*args: Any) -> TopoDS_Edge:
     return edge.Edge()
 
 
-def make_wire(*args: Union[list[TopoDS_Edge], TopoDS_Edge]) -> TopoDS_Wire:
+def make_wire(*args: list[TopoDS_Edge] | TopoDS_Edge) -> TopoDS_Wire:
     """
     Creates a TopoDS_Wire from a list of edges or by connecting edges.
 
@@ -188,7 +188,7 @@ def points_to_bspline(pnts: list[gp_Pnt]) -> Geom_BSplineCurve:
 
 def edge_to_bezier(
     topods_edge: TopoDS_Edge,
-) -> tuple[bool, Geom_BezierCurve, int]:
+) -> tuple[bool, Geom_BezierCurve | None, int | None]:
     """
     Converts a TopoDS_Edge to a Bezier curve if possible.
 
@@ -225,7 +225,7 @@ def make_n_sided(
     return n_sided.Face()
 
 
-def make_face(*args: Union[TopoDS_Wire, Geom_Surface]) -> TopoDS_Face:
+def make_face(*args: TopoDS_Wire | Geom_Surface) -> TopoDS_Face:
     """
     Creates a TopoDS_Face from various inputs.
 
@@ -280,7 +280,7 @@ def get_aligned_boundingbox(
 
 def get_oriented_boundingbox(
     shape: TopoDS_Shape, optimal_OBB: bool = True
-) -> tuple[gp_Pnt, list[float], TopoDS_Shape]:
+) -> tuple[gp_XYZ, list[float], TopoDS_Shape]:
     """
     Computes the oriented bounding box of a shape.
 
@@ -288,7 +288,7 @@ def get_oriented_boundingbox(
     :param optimal_OBB: If True, computes the smallest possible oriented
         bounding box. This can be slower. Defaults to True.
     :return: A tuple containing:
-        - The center of the bounding box (gp_Pnt).
+        - The center of the bounding box (gp_XYZ).
         - A list of the half-dimensions [hx, hy, hz] of the bounding box.
         - A TopoDS_Shape representing the bounding box.
     """
@@ -465,7 +465,7 @@ def scale_shape(shape: TopoDS_Shape, fx: float, fy: float, fz: float) -> TopoDS_
 
 
 def make_extrusion(
-    face: TopoDS_Face, length: float, vector: gp_Vec = None
+    face: TopoDS_Face, length: float, vector: gp_Vec | None = None
 ) -> TopoDS_Shape:
     """
     Creates an extrusion from a face along a vector.
@@ -487,9 +487,22 @@ def make_extrusion(
 ##################################
 # Recognize functions
 ##################################
+_SURFACE_KINDS = {
+    GeomAbs_Cone: "Cone",
+    GeomAbs_Sphere: "Sphere",
+    GeomAbs_Torus: "Torus",
+    GeomAbs_BezierSurface: "Bezier",
+    GeomAbs_BSplineSurface: "BSpline",
+    GeomAbs_SurfaceOfRevolution: "Revolution",
+    GeomAbs_SurfaceOfExtrusion: "Extrusion",
+    GeomAbs_OffsetSurface: "Offset",
+    GeomAbs_OtherSurface: "Other",
+}
+
+
 def recognize_face(
     topods_face: TopoDS_Face,
-) -> tuple[str, gp_Pnt, gp_Dir]:
+) -> tuple[str, gp_Pnt | None, gp_Dir | None]:
     """
     Recognizes the type of a TopoDS_Face and returns its properties.
 
@@ -520,34 +533,7 @@ def recognize_face(
         axis = gp_cyl.Axis().Direction()  # the cylinder axis
         # then export location and normal to the console output
         return kind, location, axis
-    if surf_type == GeomAbs_Cone:
-        kind = "Cone"
-        return kind, None, None
-    if surf_type == GeomAbs_Sphere:
-        kind = "Sphere"
-        return kind, None, None
-    if surf_type == GeomAbs_Torus:
-        kind = "Torus"
-        return kind, None, None
-    if surf_type == GeomAbs_BezierSurface:
-        kind = "Bezier"
-        return kind, None, None
-    if surf_type == GeomAbs_BSplineSurface:
-        kind = "BSpline"
-        return kind, None, None
-    if surf_type == GeomAbs_SurfaceOfRevolution:
-        kind = "Revolution"
-        return kind, None, None
-    if surf_type == GeomAbs_SurfaceOfExtrusion:
-        kind = "Extrusion"
-        return kind, None, None
-    if surf_type == GeomAbs_OffsetSurface:
-        kind = "Offset"
-        return kind, None, None
-    if surf_type == GeomAbs_OtherSurface:
-        kind = "Other"
-        return kind, None, None
-    return "Unknown", None, None
+    return _SURFACE_KINDS.get(surf_type, "Unknown"), None, None
 
 
 ##############################################################################

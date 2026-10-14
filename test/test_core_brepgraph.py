@@ -22,7 +22,6 @@ and so on; the node ids are aliases of BRepGraph_NodeId::Typed<Kind>,
 wrapped as BRepGraph_FaceId, BRepGraph_EdgeId..."""
 
 import pytest
-
 from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.BRepGraph import (
     BRepGraph_EdgeId,

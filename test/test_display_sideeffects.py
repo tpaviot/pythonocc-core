@@ -29,7 +29,7 @@ def backend(request):
 
 
 def plot_cylinder(cylinder_shape, backend):
-    display, start_display, add_menu, add_function_to_menu = init_display(backend)
+    display, _start_display, _add_menu, _add_function_to_menu = init_display(backend)
     display.DisplayShape(cylinder_shape, update=True)
     del display
 

@@ -18,7 +18,6 @@
 """The 3D viewer as a tkinter widget."""
 
 import tkinter as tk
-from typing import Optional
 
 from OCC.Display import OCCViewer
 
@@ -57,7 +56,7 @@ class tkViewer3d(tk.Frame):
         self.bind("<Button-4>", self.Zoom)  # Linux
         self.bind("<Button-5>", self.Zoom)  # Linux
 
-        self._display: Optional[OCCViewer.Viewer3d] = None
+        self._display: OCCViewer.Viewer3d | None = None
         self._inited = False
 
         self.drag_pos_y = self.drag_pos_x = 0

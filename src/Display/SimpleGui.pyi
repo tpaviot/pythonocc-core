@@ -1,5 +1,4 @@
-from collections.abc import Sequence
-from typing import Callable
+from collections.abc import Callable, Sequence
 
 from OCC.Display.OCCViewer import Viewer3d
 

@@ -1,0 +1,46 @@
+target-version = "py311"
+extend-exclude = ["sandbox", "build", "cmake-build", "src/SWIG_files"]
+
+[lint]
+select = [
+    "F",    # pyflakes
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "A",    # flake8-builtins
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "PIE",  # flake8-pie
+    "RET",  # flake8-return
+    "RSE",  # flake8-raise
+    "ISC",  # implicit string concatenation
+    "ICN",  # import conventions
+    "PTH",  # prefer pathlib
+    "PGH",  # pygrep hooks
+    "PL",   # pylint
+    "PERF", # perflint
+    "FURB", # refurb
+    "FLY",  # static join to f-string
+    "NPY",  # numpy
+    "LOG",  # logging
+    "G",    # logging format
+    "EXE",  # shebangs
+    "RUF",  # ruff-specific
+]
+ignore = [
+    "E501",    # long lines are left to the formatter
+    "PLR0911", # too many return statements
+    "PLR0912", # too many branches
+    "PLR0913", # too many arguments
+    "PLR0915", # too many statements
+    "PLR0917", # too many positional arguments
+    "PLR2004", # magic values
+    "PLC0415", # lazy imports are deliberate (optional GUI backends)
+    "PLW0603", # backend selection relies on module globals
+]
+
+[lint.per-file-ignores]
+# tests exercise the __eq__/__ne__ wrappers explicitly
+"test/**" = ["PLR0124", "SIM201", "SIM202"]

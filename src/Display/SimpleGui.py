@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 # This file is part of pythonOCC.
 # pythonOCC is free software: you can redistribute it and/or modify
@@ -19,8 +17,8 @@ the supported GUI toolkits, or an offscreen renderer."""
 import logging
 import os
 import sys
-from collections.abc import Sequence
-from typing import Any, Callable, Optional
+from collections.abc import Callable, Sequence
+from typing import Any
 
 from OCC import VERSION
 from OCC.Display.backend import get_qt_modules, load_backend
@@ -223,11 +221,11 @@ def _init_qt(size: tuple[int, int], used_backend: str) -> GuiFunctions:
 
 
 def init_display(
-    backend_str: Optional[str] = None,
+    backend_str: str | None = None,
     size: tuple[int, int] = (1024, 768),
     display_triedron: bool = True,
-    background_gradient_color1: Optional[Sequence[int]] = (206, 215, 222),
-    background_gradient_color2: Optional[Sequence[int]] = (128, 128, 128),
+    background_gradient_color1: Sequence[int] | None = (206, 215, 222),
+    background_gradient_color2: Sequence[int] | None = (128, 128, 128),
 ) -> GuiFunctions:
     """
     Initializes a GUI for the 3D viewer.

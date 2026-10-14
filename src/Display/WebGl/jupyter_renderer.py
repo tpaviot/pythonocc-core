@@ -22,9 +22,9 @@ import enum
 import itertools
 import math
 import uuid
-from collections.abc import Iterable, Sequence
+from collections.abc import Callable, Iterable, Sequence
 from functools import reduce
-from typing import Any, Callable, Optional, Union
+from typing import Any
 
 # pythreejs
 try:
@@ -92,7 +92,7 @@ from OCC.Extend.TopologyUtils import (
 #
 def _add(vec1: Sequence[float], vec2: Sequence[float]) -> list[float]:
     """Adds two vectors."""
-    return [v1 + v2 for v1, v2 in zip(vec1, vec2)]
+    return [v1 + v2 for v1, v2 in zip(vec1, vec2, strict=True)]
 
 
 def _explode(
@@ -114,10 +114,10 @@ def format_color(r: int, g: int, b: int) -> str:
 
 def _distance(v1: Sequence[float], v2: Sequence[float]) -> float:
     """Computes the distance between two vectors."""
-    return float(np.linalg.norm([x - y for x, y in zip(v1, v2)]))
+    return float(np.linalg.norm([x - y for x, y in zip(v1, v2, strict=True)]))
 
 
-def _bool_or_new(val: Union[bool, dict[str, Any]]) -> bool:
+def _bool_or_new(val: bool | dict[str, Any]) -> bool:
     """Returns the value of a boolean or a new value."""
     return val if isinstance(val, bool) else val["new"]
 
@@ -136,14 +136,15 @@ def _opt(b1: tuple[float, ...], b2: tuple[float, ...]) -> tuple[float, ...]:
 
 def _shift(v: Sequence[float], offset: Sequence[float]) -> list[float]:
     """Shifts a vector by an offset."""
-    return [x + o for x, o in zip(v, offset)]
+    return [x + o for x, o in zip(v, offset, strict=True)]
 
 
 # https://stackoverflow.com/questions/4947682/intelligently-calculating-chart-tick-positions
 def _html_values(title: str, labels: Any, values: Any) -> str:
     """Formats a titled list of values to html, e.g. the X, Y, Z of a point."""
     rows = "".join(
-        f"<b>{label}=</b>{value:.3f}<br>" for label, value in zip(labels, values)
+        f"<b>{label}=</b>{value:.3f}<br>"
+        for label, value in zip(labels, values, strict=True)
     )
     return f"<u><b>{title}</b></u>:<br>{rows}"
 
@@ -246,7 +247,7 @@ class Helpers:
         Args:
             position: The position to set.
         """
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def set_visibility(self, change: bool) -> None:
         """
@@ -255,7 +256,7 @@ class Helpers:
         Args:
             change: The visibility to set.
         """
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def set_center(self, change: bool) -> None:
         """
@@ -376,6 +377,7 @@ class Axes(Helpers):
             for vector, color in zip(
                 ([length, 0, 0], [0, length, 0], [0, 0, length]),
                 ("red", "green", "blue"),
+                strict=True,
             )
         )
         if display_labels:
@@ -623,7 +625,7 @@ class JupyterRenderer:
         self._size = size
         self._compute_normals_mode = compute_normals_mode
 
-        self._bb: Optional[BoundingBox] = (
+        self._bb: BoundingBox | None = (
             None  # the bounding box, necessary to compute camera position
         )
 
@@ -632,7 +634,7 @@ class JupyterRenderer:
         self._camera_target: Sequence[float] = (0.0, 0.0, 0.0)
         # the camera initial position
         self._camera_position: Sequence[float] = (0.0, 0.0, 100.0)
-        self._camera: Optional[CombinedCamera] = None
+        self._camera: CombinedCamera | None = None
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
@@ -644,7 +646,7 @@ class JupyterRenderer:
         self._mesh_edges: dict[str, Any] = {}
 
         # we save the renderer so that is can be accessed
-        self._renderer: Optional[Renderer] = None
+        self._renderer: Renderer | None = None
 
         # the group of 3d and 2d objects to render
         self._displayed_pickable_objects = Group()
@@ -653,26 +655,26 @@ class JupyterRenderer:
         self._displayed_non_pickable_objects = Group()
 
         # event manager/selection manager
-        self._picker: Optional[Picker] = None
+        self._picker: Picker | None = None
 
-        self._current_shape_selection: Optional[Any] = None
-        self._current_mesh_selection: Optional[Mesh] = None
+        self._current_shape_selection: Any | None = None
+        self._current_mesh_selection: Mesh | None = None
         # the material properties of the selected mesh, restored on deselection
         self._current_selection_material_state: dict[str, Any] = {}
-        self.clicked_obj: Optional[Any] = None
-        self._savestate: Optional[tuple[Any, Any]] = None
+        self.clicked_obj: Any | None = None
+        self._savestate: tuple[Any, Any] | None = None
 
         # the helpers and the camera controller, created by Display()
-        self.axes: Optional[Axes] = None
-        self.horizontal_grid: Optional[Grid] = None
-        self.vertical_grid: Optional[Grid] = None
-        self._controller: Optional[OrbitControls] = None
+        self.axes: Axes | None = None
+        self.horizontal_grid: Grid | None = None
+        self.vertical_grid: Grid | None = None
+        self._controller: OrbitControls | None = None
 
         self._selection_color = pick_color
 
-        self._select_callbacks: list[Callable[[Any], None]] = (
-            []
-        )  # a list of all functions called after an object is selected
+        self._select_callbacks: list[
+            Callable[[Any], None]
+        ] = []  # a list of all functions called after an object is selected
 
         # UI
         self.layout = Layout(width="auto", height="auto")
@@ -973,8 +975,8 @@ class JupyterRenderer:
         self,
         shp: Any,
         export_hidden_edges: bool = True,
-        location: Optional[gp_Pnt] = None,
-        direction: Optional[gp_Dir] = None,
+        location: gp_Pnt | None = None,
+        direction: gp_Dir | None = None,
         color: str = "black",
         line_width: float = 0.5,
     ) -> None:
@@ -1009,11 +1011,11 @@ class JupyterRenderer:
     def DisplayShape(
         self,
         shp: Any,
-        shape_color: Optional[str] = None,
+        shape_color: str | None = None,
         render_edges: bool = False,
-        edge_color: Optional[str] = None,
+        edge_color: str | None = None,
         edge_deflection: float = 0.05,
-        vertex_color: Optional[str] = None,
+        vertex_color: str | None = None,
         quality: float = 1.0,
         transparency: bool = False,
         opacity: float = 1.0,
@@ -1182,10 +1184,10 @@ class JupyterRenderer:
     def AddShapeToScene(
         self,
         shp: Any,
-        shape_color: Optional[str] = None,  # the default
+        shape_color: str | None = None,  # the default
         render_edges: bool = False,
-        edge_color: Optional[str] = None,
-        vertex_color: Optional[str] = None,
+        edge_color: str | None = None,
+        vertex_color: str | None = None,
         quality: float = 1.0,
         transparency: bool = False,
         opacity: float = 1.0,
@@ -1333,8 +1335,8 @@ class JupyterRenderer:
 
     def Display(
         self,
-        position: Optional[tuple[float, float, float]] = None,
-        rotation: Optional[tuple[float, float, float, str]] = None,
+        position: tuple[float, float, float] | None = None,
+        rotation: tuple[float, float, float, str] | None = None,
     ) -> None:
         """
         Displays the renderer.

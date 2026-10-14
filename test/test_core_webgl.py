@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 ##Copyright 2010-2019 Thomas Paviot (tpaviot@gmail.com)
 # 6
 ##This file is part of pythonOCC.
@@ -19,9 +17,8 @@
 
 import random
 
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus, BRepPrimAPI_MakeBox
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeTorus
 from OCC.Display.WebGl import threejs_renderer, x3dom_renderer
-
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
 torus_shp = BRepPrimAPI_MakeTorus(20.0, 10.0).Shape()

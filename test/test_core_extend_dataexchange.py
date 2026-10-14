@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -17,37 +15,35 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import subprocess
 import sys
+from pathlib import Path
 
 import pytest
-
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
 from OCC.Core.Interface import Interface_Static
 from OCC.Core.TopoDS import TopoDS_Compound
-
 from OCC.Extend.DataExchange import (
+    export_shape_to_svg,
+    read_gltf_file,
+    read_iges_file,
     read_step_file,
     read_step_file_with_names_colors,
     read_stl_file,
-    read_iges_file,
-    read_gltf_file,
+    write_gltf_file,
+    write_iges_file,
+    write_obj_file,
+    write_ply_file,
     write_step_file,
     write_stl_file,
-    write_iges_file,
-    write_ply_file,
-    write_obj_file,
-    write_gltf_file,
-    export_shape_to_svg,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
-SAMPLES_DIRECTORY = os.path.join(".", "test_io")
+SAMPLES_DIRECTORY = Path("test_io")
 
 
 def get_test_fullname(filename):
-    return os.path.join(SAMPLES_DIRECTORY, filename)
+    return str(SAMPLES_DIRECTORY / filename)
 
 
 # the sample files
@@ -66,8 +62,8 @@ A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
 
 
 def check_is_file(filename):
-    assert os.path.isfile(filename)
-    assert os.path.getsize(filename) > 50
+    assert Path(filename).is_file()
+    assert Path(filename).stat().st_size > 50
 
 
 def test_read_step_file():
@@ -79,9 +75,9 @@ def test_read_step_file_multiple_shape_as_root():
     t = read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
     assert isinstance(t, TopoDS_Compound)
 
-    l = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
-    assert isinstance(l, list)
-    assert len(l) == 3
+    shapes = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
+    assert isinstance(shapes, list)
+    assert len(shapes) == 3
 
 
 def test_read_step_file_names_colors():

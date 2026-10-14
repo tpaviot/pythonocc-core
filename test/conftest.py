@@ -1,8 +1,8 @@
-import os
+from pathlib import Path
 
 import pytest
 
-TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+TEST_DIR = Path(__file__).resolve().parent
 
 
 @pytest.fixture(autouse=True)

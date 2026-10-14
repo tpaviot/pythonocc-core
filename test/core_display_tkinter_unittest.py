@@ -15,11 +15,9 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 
-from OCC.Display.backend import load_pyqt6
-from OCC.Display.SimpleGui import init_display
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
+from OCC.Display.SimpleGui import init_display
 
 print("tkinter test running ...")
 tkinter_display, start_display, add_menu, add_function_to_menu = init_display("tk")

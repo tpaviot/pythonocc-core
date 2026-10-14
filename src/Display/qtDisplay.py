@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2019 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -20,8 +18,9 @@
 """The 3D viewer as a Qt widget, for PyQt5, PyQt6, PySide2 and PySide6."""
 
 import logging
-import os
-from typing import Any, Callable, Optional
+from collections.abc import Callable
+from pathlib import Path
+from typing import Any
 
 from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.gp import gp_Trsf
@@ -47,7 +46,7 @@ class qtBaseViewer(QtWidgets.QWidget):
     The base Qt Widget for an OCC viewer.
     """
 
-    def __init__(self, parent: Optional[Any] = None) -> None:
+    def __init__(self, parent: Any | None = None) -> None:
         """
         Initializes the qtBaseViewer.
 
@@ -160,15 +159,12 @@ class qtViewer3d(qtBaseViewer):
         """
         Creates the cursors.
         """
-        module_pth = os.path.abspath(os.path.dirname(__file__))
-        icon_pth = os.path.join(module_pth, "icons")
+        icon_pth = Path(__file__).resolve().parent / "icons"
 
-        _CURSOR_PIX_ROT = QtGui.QPixmap(os.path.join(icon_pth, "cursor-rotate.png"))
-        _CURSOR_PIX_PAN = QtGui.QPixmap(os.path.join(icon_pth, "cursor-pan.png"))
-        _CURSOR_PIX_ZOOM = QtGui.QPixmap(os.path.join(icon_pth, "cursor-magnify.png"))
-        _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(
-            os.path.join(icon_pth, "cursor-magnify-area.png")
-        )
+        _CURSOR_PIX_ROT = QtGui.QPixmap(str(icon_pth / "cursor-rotate.png"))
+        _CURSOR_PIX_PAN = QtGui.QPixmap(str(icon_pth / "cursor-pan.png"))
+        _CURSOR_PIX_ZOOM = QtGui.QPixmap(str(icon_pth / "cursor-magnify.png"))
+        _CURSOR_PIX_ZOOM_AREA = QtGui.QPixmap(str(icon_pth / "cursor-magnify-area.png"))
 
         self._available_cursors = {
             "arrow": QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor),  # default

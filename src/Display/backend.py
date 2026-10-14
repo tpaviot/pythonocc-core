@@ -21,7 +21,7 @@ by the viewer widgets."""
 import logging
 import os
 import sys
-from typing import Any, Optional
+from typing import Any
 
 # backend constants
 WX = "wx"
@@ -43,6 +43,12 @@ HAVE_PYQT5, HAVE_PYSIDE2, HAVE_PYQT6, HAVE_PYSIDE6, HAVE_WX = (
 # is any backend imported?
 HAVE_BACKEND = False
 BACKEND_MODULE = "No backend loaded"
+
+# Qt modules, bound by the load_* functions
+QtCore: Any = None
+QtGui: Any = None
+QtWidgets: Any = None
+QtOpenGL: Any = None
 
 log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
@@ -212,7 +218,7 @@ _BACKEND_LOADERS = (
 )
 
 
-def load_backend(backend_str: Optional[str] = None) -> str:
+def load_backend(backend_str: str | None = None) -> str:
     """Load a GUI backend
 
     The search order for pythonocc compatible gui modules is:
@@ -306,9 +312,7 @@ def get_qt_modules() -> tuple[Any, Any, Any, Any]:
 
     """
     if not HAVE_BACKEND:
-        raise ValueError(
-            "no backend has been imported yet with " "``load_backend``... "
-        )
+        raise ValueError("no backend has been imported yet with ``load_backend``... ")
     if HAVE_PYQT5 or HAVE_PYQT6 or HAVE_PYSIDE2 or HAVE_PYSIDE6:
         return QtCore, QtGui, QtWidgets, QtOpenGL
     if HAVE_WX:

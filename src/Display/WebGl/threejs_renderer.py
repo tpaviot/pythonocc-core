@@ -18,13 +18,13 @@
 """A three.js renderer, the shapes are displayed in a web browser."""
 
 import json
-import os
 import sys
 import tempfile
 import uuid
 from collections.abc import Generator, Sequence
+from pathlib import Path
 from string import Template
-from typing import Any, Optional
+from typing import Any
 
 from OCC import VERSION
 from OCC.Core.Tesselator import ShapeTesselator
@@ -444,7 +444,7 @@ class ThreejsRenderer:
     A renderer that uses three.js to display shapes in a web browser.
     """
 
-    def __init__(self, path: Optional[str] = None) -> None:
+    def __init__(self, path: str | None = None) -> None:
         """
         Initializes the ThreejsRenderer.
 
@@ -457,8 +457,8 @@ class ThreejsRenderer:
             self._tmp_dir = tempfile.TemporaryDirectory(prefix="pythonocc_threejs_")
             path = self._tmp_dir.name
         self._path = path
-        self._html_filename = os.path.join(self._path, "index.html")
-        self._main_js_filename = os.path.join(self._path, "main.js")
+        self._html_filename = str(Path(self._path) / "index.html")
+        self._main_js_filename = str(Path(self._path) / "main.js")
         self._3js_shapes: dict[str, Any] = {}
         self._3js_edges: dict[str, Any] = {}
         self.spinning_cursor = spinning_cursor()
@@ -499,9 +499,8 @@ class ThreejsRenderer:
             pnts = discretize_edge(shape)
             edge_hash = f"edg{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(edge_hash, pnts)
-            edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
-            with open(edge_full_path, "w", encoding="utf-8") as edge_file:
-                edge_file.write(str_to_write)
+            edge_full_path = Path(self._path) / f"{edge_hash}.json"
+            edge_full_path.write_text(str_to_write, encoding="utf-8")
             # store this edge hash
             self._3js_edges[edge_hash] = [line_color, line_width]
             return self._3js_shapes, self._3js_edges
@@ -510,9 +509,8 @@ class ThreejsRenderer:
             pnts = discretize_wire(shape)
             wire_hash = f"wir{uuid.uuid4().hex}"
             str_to_write = export_edgedata_to_json(wire_hash, pnts)
-            wire_full_path = os.path.join(self._path, f"{wire_hash}.json")
-            with open(wire_full_path, "w", encoding="utf-8") as wire_file:
-                wire_file.write(str_to_write)
+            wire_full_path = Path(self._path) / f"{wire_hash}.json"
+            wire_full_path.write_text(str_to_write, encoding="utf-8")
             # store this edge hash
             self._3js_edges[wire_hash] = [line_color, line_width]
             return self._3js_shapes, self._3js_edges
@@ -530,7 +528,7 @@ class ThreejsRenderer:
         )
         sys.stdout.flush()
         # export to 3JS
-        shape_full_path = os.path.join(self._path, f"{shape_hash}.json")
+        shape_full_path = Path(self._path) / f"{shape_hash}.json"
         # add this shape to the shape dict, sotres everything related to it
         self._3js_shapes[shape_hash] = [
             export_edges,
@@ -543,7 +541,7 @@ class ThreejsRenderer:
         ]
         # generate the mesh
         # and also to JSON
-        with open(shape_full_path, "w", encoding="utf-8") as json_file:
+        with shape_full_path.open("w", encoding="utf-8") as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
         # draw edges if necessary
         if export_edges:
@@ -561,9 +559,8 @@ class ThreejsRenderer:
                 edge_hash = f"edg{uuid.uuid4().hex}"
                 str_to_write += export_edgedata_to_json(edge_hash, edge_point_set)
                 # create the file
-                edge_full_path = os.path.join(self._path, f"{edge_hash}.json")
-                with open(edge_full_path, "w", encoding="utf-8") as edge_file:
-                    edge_file.write(str_to_write)
+                edge_full_path = Path(self._path) / f"{edge_hash}.json"
+                edge_full_path.write_text(str_to_write, encoding="utf-8")
                 # store this edge hash
                 self._3js_edges[edge_hash] = [line_color, line_width]
         return self._3js_shapes, self._3js_edges
@@ -629,7 +626,7 @@ class ThreejsRenderer:
                 )
             )
         # write the main.js file
-        with open(self._main_js_filename, "w", encoding="utf-8") as fp:
+        with Path(self._main_js_filename).open("w", encoding="utf-8") as fp:
             main_js = MAIN_JS_TEMPLATE.substitute(
                 {
                     "ShapeList": "".join(shape_string_list),
@@ -641,7 +638,7 @@ class ThreejsRenderer:
             fp.write(main_js)
 
         # write the index.html file
-        with open(self._html_filename, "w", encoding="utf-8") as fp:
+        with Path(self._html_filename).open("w", encoding="utf-8") as fp:
             fp.write("<!DOCTYPE HTML>\n")
             fp.write("<html lang='en'>")
             # header

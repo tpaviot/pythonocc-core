@@ -17,15 +17,15 @@
 
 """An x3dom renderer, the shapes are displayed in a web browser."""
 
-import os
 import shutil
 import sys
 import tempfile
 import uuid
 from collections.abc import Generator, Sequence
+from pathlib import Path
 from string import Template
-from typing import Any, Optional, Union
-from xml.etree import ElementTree
+from typing import Any
+from xml.etree import ElementTree as ET
 
 from OCC import VERSION
 from OCC.Core.Tesselator import ShapeTesselator
@@ -37,7 +37,7 @@ X3DOM_VERSION = "1.8.3"
 
 # the x3d files of the axes and the plane, from the x3dom component-editor
 AXES_PLANE_FILES = ("plane.x3d", "axesSmall.x3d", "axes.x3d")
-X3D_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "x3d")
+X3D_DIR = str(Path(__file__).resolve().parent / "x3d")
 
 
 def spinning_cursor() -> Generator[str, None, None]:
@@ -198,7 +198,7 @@ def indexed_lineset_to_x3d_string(
     str_linesets: list[str],
     header: bool = True,
     footer: bool = True,
-    ils_id: Union[int, str] = 0,
+    ils_id: int | str = 0,
     line_color: tuple[float, float, float] = (0.0, 0.0, 0.0),
 ) -> str:
     """
@@ -344,8 +344,8 @@ class X3DExporter:
     def __init__(
         self,
         shape: Any,
-        vertex_shader: Optional[str],
-        fragment_shader: Optional[str],
+        vertex_shader: str | None,
+        fragment_shader: str | None,
         export_edges: bool,
         color: tuple[float, float, float],
         specular_color: tuple[float, float, float],
@@ -479,8 +479,8 @@ class X3DExporter:
         #
         # use ElementTree to ensure xml file quality
         #
-        xml_et = ElementTree.fromstring(x3dfile_str)
-        return ElementTree.tostring(xml_et, encoding="UTF-8").decode("utf-8")
+        xml_et = ET.fromstring(x3dfile_str)
+        return ET.tostring(xml_et, encoding="UTF-8").decode("utf-8")
 
     def write_to_file(self, filename: str, shape_id: int) -> None:
         """
@@ -490,7 +490,7 @@ class X3DExporter:
             filename (str): The name of the file to write to.
             shape_id (int): The ID of the shape.
         """
-        with open(filename, "w", encoding="utf-8") as f:
+        with Path(filename).open("w", encoding="utf-8") as f:
             f.write(self.to_x3dfile_string(shape_id))
 
 
@@ -501,7 +501,7 @@ class X3DomRenderer:
 
     def __init__(
         self,
-        path: Optional[str] = None,
+        path: str | None = None,
         display_axes_plane: bool = True,
         axes_plane_zoom_factor: float = 1.0,
     ) -> None:
@@ -519,7 +519,7 @@ class X3DomRenderer:
             self._tmp_dir = tempfile.TemporaryDirectory(prefix="pythonocc_x3dom_")
             path = self._tmp_dir.name
         self._path = path
-        self._html_filename = os.path.join(self._path, "index.html")
+        self._html_filename = str(Path(self._path) / "index.html")
         self._x3d_shapes: dict[str, Any] = {}
         self._x3d_edges: dict[str, Any] = {}
         self._axes_plane = (
@@ -535,8 +535,8 @@ class X3DomRenderer:
     def DisplayShape(
         self,
         shape: Any,
-        vertex_shader: Optional[str] = None,
-        fragment_shader: Optional[str] = None,
+        vertex_shader: str | None = None,
+        fragment_shader: str | None = None,
         export_edges: bool = False,
         color: tuple[float, float, float] = (0.65, 0.65, 0.7),
         specular_color: tuple[float, float, float] = (0.2, 0.2, 0.2),
@@ -576,9 +576,8 @@ class X3DomRenderer:
             x3dfile_content = indexed_lineset_to_x3d_string(
                 [line_set], ils_id=edge_hash, line_color=line_color
             )
-            edge_full_path = os.path.join(self._path, f"{edge_hash}.x3d")
-            with open(edge_full_path, "w", encoding="utf-8") as edge_file:
-                edge_file.write(x3dfile_content)
+            edge_full_path = Path(self._path) / f"{edge_hash}.x3d"
+            edge_full_path.write_text(x3dfile_content, encoding="utf-8")
             # store this edge hash
             self._x3d_edges[edge_hash] = [line_color, line_width]
             return self._x3d_shapes, self._x3d_edges
@@ -591,9 +590,8 @@ class X3DomRenderer:
             x3dfile_content = indexed_lineset_to_x3d_string(
                 [line_set], ils_id=wire_hash, line_color=line_color
             )
-            wire_full_path = os.path.join(self._path, f"{wire_hash}.x3d")
-            with open(wire_full_path, "w", encoding="utf-8") as wire_file:
-                wire_file.write(x3dfile_content)
+            wire_full_path = Path(self._path) / f"{wire_hash}.x3d"
+            wire_full_path.write_text(x3dfile_content, encoding="utf-8")
             # store this edge hash
             self._x3d_edges[wire_hash] = [line_color, line_width]
             return self._x3d_shapes, self._x3d_edges
@@ -614,7 +612,7 @@ class X3DomRenderer:
             mesh_quality,
         )
         x3d_exporter.compute()
-        x3d_filename = os.path.join(self._path, f"{shape_hash}.x3d")
+        x3d_filename = str(Path(self._path) / f"{shape_hash}.x3d")
         # the x3d filename is computed from the shape hash
         shape_id = len(self._x3d_shapes)
         x3d_exporter.write_to_file(x3d_filename, shape_id)
@@ -657,8 +655,8 @@ class X3DomRenderer:
         if axes_plane:
             # the axes and the plane are served along with the shapes
             for filename in AXES_PLANE_FILES:
-                shutil.copy(os.path.join(X3D_DIR, filename), self._path)
-        with open(self._html_filename, "w", encoding="utf-8") as html_file:
+                shutil.copy(Path(X3D_DIR) / filename, self._path)
+        with Path(self._html_filename).open("w", encoding="utf-8") as html_file:
             html_file.write("<!DOCTYPE HTML>\n")
             html_file.write('<html lang="en">')
             # header

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 ##Copyright 2010-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -17,15 +15,14 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
 
+from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 from OCC.Display.backend import load_pyside6
 from OCC.Display.SimpleGui import init_display
-from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeBox
 
 # check for pyside6
 if not load_pyside6():
-    raise IOError("pyside6 required to run this test")
+    raise OSError("pyside6 required to run this test")
 
 print("pyside6 test running ...")
 pyside6_display, start_display, add_menu, add_function_to_menu = init_display("pyside6")

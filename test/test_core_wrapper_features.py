@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 ##Copyright 2009-2016 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
@@ -17,155 +15,152 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-from contextlib import contextmanager
 import gc
-import glob
-import json
-import struct
-from math import sqrt
 import importlib
-import os
+import json
 import pickle
-from typing import Any, Iterator, List
+import struct
 import warnings
+from collections.abc import Iterator
+from contextlib import contextmanager
+from math import sqrt
+from pathlib import Path
+from typing import Any
 
 import OCC.Core
+import pytest
 from OCC.Core.AIS import AIS_Line, AIS_Manipulator
-from OCC.Core.Standard import Standard_Transient
+from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
+from OCC.Core.BinObjMgt import BinObjMgt_Persistent
+from OCC.Core.BinTools import bintools
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BOPAlgo import BOPAlgo_ArgumentAnalyzer
-from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
+from OCC.Core.BRep import BRep_Builder, BRep_Tool
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
-from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
-from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib
+from OCC.Core.BRepBuilderAPI import (
+    BRepBuilderAPI_MakeEdge,
+    BRepBuilderAPI_MakeVertex,
+    BRepBuilderAPI_MakeWire,
+    BRepBuilderAPI_Sewing,
+)
+from OCC.Core.BRepCheck import (
+    BRepCheck_EmptyWire,
+    BRepCheck_ListIteratorOfListOfStatus,
+    BRepCheck_ListOfStatus,
+    BRepCheck_Multiple3DCurve,
+)
+from OCC.Core.BRepClass import (
+    BRepClass_Edge,
+    BRepClass_FaceClassifier,
+    BRepClass_FaceExplorer,
+)
+from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
+from OCC.Core.BRepGProp import brepgprop
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
+from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,
     BRepPrimAPI_MakeCylinder,
     BRepPrimAPI_MakeSphere,
 )
-from OCC.Core.BRepBuilderAPI import (
-    BRepBuilderAPI_MakeVertex,
-    BRepBuilderAPI_MakeEdge,
-    BRepBuilderAPI_MakeWire,
-    BRepBuilderAPI_Sewing,
-)
-from OCC.Core.BinObjMgt import BinObjMgt_Persistent
 from OCC.Core.BRepTools import BRepTools_ShapeSet, breptools
-from OCC.Core.BinTools import bintools
+from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
+from OCC.Core.Exception import (
+    ClassNotWrappedError,
+    MethodNotWrappedError,
+    classnotwrapped,
+    methodnotwrapped,
+)
+from OCC.Core.GC import GC_MakeSegment
+from OCC.Core.GCE2d import GCE2d_MakeSegment
+from OCC.Core.Geom import (
+    Geom_BoundedCurve,
+    Geom_BSplineCurve,
+    Geom_CartesianPoint,
+    Geom_Curve,
+    Geom_Line,
+    Geom_Surface,
+)
+from OCC.Core.Geom2d import Geom2d_Curve
+from OCC.Core.GeomAPI import GeomAPI_Interpolate, GeomAPI_PointsToBSpline
+from OCC.Core.GeomLib import geomlib
 from OCC.Core.gp import (
-    gp_Pnt,
-    gp_Vec,
-    gp_Pnt2d,
-    gp_Lin,
-    gp_Dir,
+    gp,
     gp_Ax1,
     gp_Ax2,
+    gp_Dir,
+    gp_Lin,
+    gp_Mat,
+    gp_OX,
+    gp_Pnt,
+    gp_Pnt2d,
     gp_Quaternion,
     gp_QuaternionSLerp,
+    gp_Vec,
     gp_XYZ,
-    gp_Mat,
-    gp,
-    gp_OX,
 )
+from OCC.Core.GProp import GProp_GProps
+from OCC.Core.Graphic3d import Graphic3d_RenderingParams
+from OCC.Core.HLRAlgo import HLRAlgo_EdgeIterator, HLRAlgo_EdgeStatus, HLRAlgo_Projector
+from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
+from OCC.Core.IFSelect import IFSelect_RetDone
+from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
+from OCC.Core.Interface import Interface_HArray1OfHAsciiString, Interface_Static
 from OCC.Core.math import math_Matrix
-from OCC.Core.GC import GC_MakeSegment
+from OCC.Core.Quantity import Quantity_Color, Quantity_NameOfColor
+from OCC.Core.Resource import Resource_DataMapOfAsciiStringAsciiString
+from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve, ShapeAnalysis_FreeBounds
+from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
+from OCC.Core.Standard import Standard_Transient
+from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
 from OCC.Core.STEPControl import (
-    STEPControl_Writer,
     STEPControl_AsIs,
     STEPControl_Reader,
-)
-from OCC.Core.Interface import Interface_Static
-from OCC.Core.GCE2d import GCE2d_MakeSegment
-from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
-from OCC.Core.TopoDS import (
-    TopoDS_Compound,
-    TopoDS_Builder,
-    TopoDS_Edge,
-    TopoDS_Vertex,
-    TopoDS_Shape,
-    topods,
-)
-from OCC.Core.TColStd import (
-    TColStd_Array1OfReal,
-    TColStd_HArray1OfReal,
-    TColStd_Array1OfInteger,
-    TColStd_ListOfInteger,
-    TColStd_ListOfReal,
-    TColStd_SequenceOfInteger,
+    STEPControl_Writer,
 )
 from OCC.Core.TColgp import (
     TColgp_Array1OfPnt,
     TColgp_HArray1OfPnt,
     TColgp_SequenceOfPnt,
 )
-from OCC.Core.TDF import TDF_LabelSequence
-from OCC.Core.TopExp import TopExp_Explorer
-from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE, TopAbs_WIRE, TopAbs_Orientation
-from OCC.Core.GProp import GProp_GProps
-from OCC.Core.BRepGProp import brepgprop
-from OCC.Core.BRepClass import BRepClass_FaceClassifier
-from OCC.Core.ShapeAnalysis import ShapeAnalysis_Curve
-from OCC.Core.BRep import BRep_Builder
-from OCC.Core.ChFiDS import ChFiDS_ChamfSpine
-from OCC.Core.Graphic3d import Graphic3d_RenderingParams
-from OCC.Core.BRepCheck import (
-    BRepCheck_ListIteratorOfListOfStatus,
-    BRepCheck_ListOfStatus,
-    BRepCheck_Multiple3DCurve,
-    BRepCheck_EmptyWire,
-)
-from OCC.Core.Geom import (
-    Geom_Curve,
-    Geom_Line,
-    Geom_BSplineCurve,
-    Geom_BoundedCurve,
-    Geom_CartesianPoint,
-    Geom_Surface,
-)
-from OCC.Core.Geom2d import Geom2d_Curve
-from OCC.Core.TopLoc import TopLoc_Location
-from OCC.Core.UnitsAPI import unitsapi
-from OCC.Core.GeomAPI import GeomAPI_Interpolate, GeomAPI_PointsToBSpline
-from OCC.Core.GeomLib import geomlib
-from OCC.Core.BRep import BRep_Tool
-from OCC.Core.HLRBRep import HLRBRep_Algo, HLRBRep_HLRToShape
-from OCC.Core.HLRAlgo import HLRAlgo_EdgeIterator, HLRAlgo_EdgeStatus, HLRAlgo_Projector
-from OCC.Core.TopTools import (
-    TopTools_HArray1OfShape,
-    TopTools_HArray2OfShape,
-    TopTools_HSequenceOfShape,
-    TopTools_ListOfShape,
-    TopTools_ListIteratorOfListOfShape,
-)
-from OCC.Core.TDF import TDF_LabelNode
-from OCC.Core.Quantity import Quantity_NameOfColor, Quantity_Color
-from OCC.Core.Exception import (
-    methodnotwrapped,
-    classnotwrapped,
-    MethodNotWrappedError,
-    ClassNotWrappedError,
-)
-from OCC.Core.TDocStd import TDocStd_Document
-from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
-from OCC.Core.TDataStd import TDataStd_Name
-from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
-from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
-from OCC.Core.IFSelect import IFSelect_RetDone
-from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
-from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
 from OCC.Core.TCollection import (
     TCollection_AsciiString,
     TCollection_ExtendedString,
     TCollection_HAsciiString,
 )
-from OCC.Core.Resource import Resource_DataMapOfAsciiStringAsciiString
-from OCC.Core.Interface import Interface_HArray1OfHAsciiString
-
+from OCC.Core.TColStd import (
+    TColStd_Array1OfInteger,
+    TColStd_Array1OfReal,
+    TColStd_HArray1OfReal,
+    TColStd_ListOfInteger,
+    TColStd_ListOfReal,
+    TColStd_SequenceOfInteger,
+)
+from OCC.Core.TDataStd import TDataStd_Name
+from OCC.Core.TDF import TDF_LabelNode, TDF_LabelSequence
+from OCC.Core.TDocStd import TDocStd_Document
+from OCC.Core.TopAbs import TopAbs_EDGE, TopAbs_FACE, TopAbs_Orientation, TopAbs_WIRE
+from OCC.Core.TopExp import TopExp_Explorer
+from OCC.Core.TopLoc import TopLoc_Location
+from OCC.Core.TopoDS import (
+    TopoDS_Builder,
+    TopoDS_Compound,
+    TopoDS_Edge,
+    TopoDS_Shape,
+    TopoDS_Vertex,
+    topods,
+)
+from OCC.Core.TopTools import (
+    TopTools_HArray1OfShape,
+    TopTools_HArray2OfShape,
+    TopTools_HSequenceOfShape,
+    TopTools_ListIteratorOfListOfShape,
+    TopTools_ListOfShape,
+)
+from OCC.Core.UnitsAPI import unitsapi
+from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
 from OCC.Extend.TopologyUtils import TopologyExplorer
-
-import pytest
 
 
 @contextmanager
@@ -207,8 +202,7 @@ def test_const_Standard_Integer_byref() -> None:
 
 def test_handle_standard_transient_copy() -> None:
     def evil_function(t: Standard_Transient) -> Standard_Transient:
-        handle = Standard_Transient(t)
-        return handle
+        return Standard_Transient(t)
 
     t = Standard_Transient()
     assert t is not None
@@ -326,7 +320,7 @@ def test_traverse_box_topology() -> None:
     """
     box_shp = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
 
-    def get_faces(shp) -> List[TopoDS_Shape]:
+    def get_faces(shp) -> list[TopoDS_Shape]:
         ex = TopExp_Explorer(shp, TopAbs_FACE)
         seq = []
         while ex.More():
@@ -386,8 +380,8 @@ def test_static_method() -> None:
     # so SetCVal can be accessed with setcval
     r = Interface_Static.SetCVal("write.step.schema", "AP203")
     assert r == 1
-    l = Interface_Static.CVal("write.step.schema")
-    assert l == "AP203"
+    schema = Interface_Static.CVal("write.step.schema")
+    assert schema == "AP203"
 
 
 def test_ft1() -> None:
@@ -472,14 +466,12 @@ def test_pickle_topods_shape_to_from() -> None:
     box_shape = BRepPrimAPI_MakeBox(100, 200, 300).Shape()
     shp_dump = pickle.dumps(box_shape)
     # file to dump to/from
-    filename = os.path.join(".", "test_io", "box_shape_generated.brep")
+    filename = Path("test_io") / "box_shape_generated.brep"
     # write to file
-    with open(filename, "wb") as output:
-        output.write(shp_dump)
-    assert os.path.isfile(filename)
+    filename.write_bytes(shp_dump)
+    assert filename.is_file()
     # load from file
-    with open(filename, "rb") as dump_from_file:
-        pickled_shape = pickle.load(dump_from_file)
+    pickled_shape = pickle.loads(filename.read_bytes())
     assert not pickled_shape.IsNull()
 
 
@@ -610,7 +602,7 @@ def test_inherit_topods_shape() -> None:
     class InheritEdge(TopoDS_Edge):
         def __init__(self, edge: TopoDS_Edge) -> None:
             # following constructor creates an empty TopoDS_Edge
-            super(InheritEdge, self).__init__()
+            super().__init__()
             # we need to copy the base shape using the following three
             # lines
             assert self.IsNull()
@@ -996,14 +988,14 @@ def test_import_all_modules() -> None:
     or syntax errors in the pytho ninterface generated by SWIG
     """
     pythonocc_core_path = OCC.Core.__path__[0]
-    available_core_modules = glob.glob(os.path.join(pythonocc_core_path, "*.py"))
+    available_core_modules = list(Path(pythonocc_core_path).glob("*.py"))
     nb_available_modules = len(available_core_modules)
     # don't know the exact number of modules, it's around 295
     assert nb_available_modules > 290
 
     # try to import the module
     for core_module in available_core_modules:
-        module_name = os.path.basename(core_module).split(".")[0]
+        module_name = core_module.name.split(".")[0]
         importlib.import_module(f"OCC.Core.{module_name}")
 
 
@@ -1011,8 +1003,8 @@ def test_aliases() -> None:
     """some classes are defined in c++ as typedef, i.e. they are only
     aliases, e.g. BRepOffsetAPI_Sewing is an alias for BRepBuilderAPI_Sewing
     """
-    sewing_1 = BRepOffsetAPI_Sewing()
-    sewing_2 = BRepBuilderAPI_Sewing()
+    BRepOffsetAPI_Sewing()
+    BRepBuilderAPI_Sewing()
 
 
 def test_Standard_Type() -> None:
@@ -1052,7 +1044,7 @@ def test_wrap_enum() -> None:
 def test_topabs_orientation_byref():
     # see Issue https://github.com/tpaviot/pythonocc-core/issues/1038
     box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
-    box_face = list(TopologyExplorer(box).faces())[0]
+    box_face = next(iter(TopologyExplorer(box).faces()))
 
     facetopo = BRepClass_FaceExplorer(box_face)
     facetopo.InitWires()  # get ready to explore wires/loops of this face
@@ -1122,12 +1114,16 @@ def test_container_values_outlive_container():
     # reuse the memory of the deleted containers
     _ = [TColgp_Array1OfPnt(1, 12) for _ in range(50)]
     expected = [[i, 10 * i, 100 * i] for i in range(1, 13)]
-    expected = (
-        expected
-        + [expected[0], expected[-1], expected[0]]
-        + expected
-        + [expected[0], expected[0], expected[-1]]
-    )
+    expected = [
+        *expected,
+        expected[0],
+        expected[-1],
+        expected[0],
+        *expected,
+        expected[0],
+        expected[0],
+        expected[-1],
+    ]
     assert [list(p.Coord()) for p in points] == expected
     # the Change* accessors still modify the container in place
     array = TColgp_Array1OfPnt(1, 2)
@@ -1248,17 +1244,15 @@ def test_wrap_extendedstring_as_pyunicodestring():
         raise AssertionError("write failed")
 
     # check that the unicode string was actually exported to file
-    with open("compound_with_unicode_label.step", "r", encoding="utf8") as f:
-        step_file_content = f.read()
-        assert a_unicode_string in step_file_content
+    step_file_content = Path("compound_with_unicode_label.step").read_text(
+        encoding="utf8"
+    )
+    assert a_unicode_string in step_file_content
 
 
 def test_ReadStream():
     """read a step file from a string"""
-    with open(
-        os.path.join(".", "test_io", "io1-ug-214.stp"), "r", encoding="utf8"
-    ) as step_file:
-        step_file_content = step_file.read()
+    step_file_content = (Path("test_io") / "io1-ug-214.stp").read_text(encoding="utf8")
     step_reader = STEPControl_Reader()
     result = step_reader.ReadStream("stream_name", step_file_content)
     assert result == IFSelect_RetDone
@@ -1270,7 +1264,7 @@ def test_step_reader_shape_fix_parameters():
     Resource_DataMapOfAsciiStringAsciiString"""
     step_reader = STEPControl_Reader()
     # parameters are held by the actor, that exists once a file is read
-    result = step_reader.ReadFile(os.path.join(".", "test_io", "as1-oc-214.stp"))
+    result = step_reader.ReadFile(str(Path("test_io") / "as1-oc-214.stp"))
     assert result == IFSelect_RetDone
     parameters = Resource_DataMapOfAsciiStringAsciiString()
     parameters.Bind(
@@ -1286,8 +1280,7 @@ def test_step_reader_shape_fix_parameters():
 
 def test_ReadStream_bytes():
     """read a step file from bytes"""
-    with open(os.path.join(".", "test_io", "io1-ug-214.stp"), "rb") as step_file:
-        step_file_content = step_file.read()
+    step_file_content = (Path("test_io") / "io1-ug-214.stp").read_bytes()
     step_reader = STEPControl_Reader()
     result = step_reader.ReadStream("stream_name", step_file_content)
     assert result == IFSelect_RetDone
@@ -1423,7 +1416,7 @@ def test_const_ref_return():
         return list(adaptor.Surface().BSpline().Bounds())
 
     a_reader = IGESCAFControl_Reader()
-    iges_filename = os.path.join(".", "test_io", "testfile.igs")
+    iges_filename = str(Path("test_io") / "testfile.igs")
     if a_reader.ReadFile(iges_filename) != 1:
         raise ValueError("Can't open IGES file.")
 
@@ -1452,8 +1445,7 @@ def test_const_ref_return_2():
         p1 = gp_Pnt(5, -5, 0)
         p2 = gp_Pnt(5, 5, 0)
         ed1 = BRepBuilderAPI_MakeEdge(p2, p1).Edge()
-        c = BRepAdaptor_Curve(ed1).Curve().Curve()
-        return c
+        return BRepAdaptor_Curve(ed1).Curve().Curve()
 
     assert isinstance(make_curve(), Geom_Curve)
 
@@ -1484,8 +1476,7 @@ def test_iterator():
 
 
 def test_breptools_shape_set_extensions():
-    with open(os.path.join(".", "test_io", "Motor-c.brep"), "r", encoding="utf8") as f:
-        brep_string_content = f.read()
+    brep_string_content = (Path("test_io") / "Motor-c.brep").read_text(encoding="utf8")
     new_shape_set = BRepTools_ShapeSet()
     new_shape_set.ReadFromString(brep_string_content)
 
@@ -1495,13 +1486,13 @@ def test_topods_readfromstring_extension():
     string = breptools.WriteToString(box)
 
     # create a new shape each time
-    for i in range(10):
-        box1 = breptools.ReadFromString(string)
+    for _ in range(10):
+        breptools.ReadFromString(string)
 
     # same, but fill in the shape
     topods_shape = TopoDS_Shape()
     # create a new shape each time
-    for i in range(10):
+    for _ in range(10):
         breptools.ReadFromString(string, topods_shape)
 
 
