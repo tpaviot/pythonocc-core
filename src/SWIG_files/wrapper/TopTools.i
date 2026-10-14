@@ -49,12 +49,16 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_toptools.html"
 #include<Message_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TCollection_module.hxx>
+#include<Bnd_module.hxx>
+#include<TColStd_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -63,6 +67,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_toptools.html"
 %import Message.i
 %import TopAbs.i
 %import TCollection.i
+%import Bnd.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum

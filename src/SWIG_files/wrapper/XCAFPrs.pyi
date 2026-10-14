@@ -15,6 +15,7 @@ from OCC.Core.TCollection import *
 from OCC.Core.TopoDS import *
 from OCC.Core.TPrsStd import *
 from OCC.Core.Image import *
+from OCC.Core.TopTools import *
 
 # the following typedef cannot be wrapped as is
 XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle = NewType("XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle", Any)

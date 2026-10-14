@@ -4,6 +4,8 @@ from typing import Any, overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
+from OCC.Core.TCollection import *
+from OCC.Core.OSD import *
 
 
 class Plugin_MapOfFunctions:

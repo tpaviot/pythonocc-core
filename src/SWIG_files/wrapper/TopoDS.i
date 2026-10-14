@@ -53,6 +53,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_topods.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 using namespace TopoDS;
 %};
 %import Standard.i

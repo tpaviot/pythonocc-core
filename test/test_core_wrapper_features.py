@@ -20,6 +20,8 @@ import importlib
 import json
 import pickle
 import struct
+import subprocess
+import sys
 import warnings
 from collections.abc import Iterator
 from contextlib import contextmanager
@@ -121,6 +123,7 @@ from OCC.Core.STEPControl import (
 )
 from OCC.Core.TColgp import (
     TColgp_Array1OfPnt,
+    TColgp_Array2OfPnt,
     TColgp_HArray1OfPnt,
     TColgp_SequenceOfPnt,
 )
@@ -132,6 +135,7 @@ from OCC.Core.TCollection import (
 from OCC.Core.TColStd import (
     TColStd_Array1OfInteger,
     TColStd_Array1OfReal,
+    TColStd_Array2OfReal,
     TColStd_HArray1OfReal,
     TColStd_ListOfInteger,
     TColStd_ListOfReal,
@@ -751,6 +755,32 @@ def test_array_iterator() -> None:
     # test loop over iterable
     for pnt in list_of_points:
         assert isinstance(pnt, gp_Pnt)
+
+
+def test_array2_iterator() -> None:
+    # all the items, row after row, as the 0-based indices
+    reals = TColStd_Array2OfReal(1, 2, 1, 3)
+    for row in range(1, 3):
+        for col in range(1, 4):
+            reals.SetValue(row, col, 10.0 * row + col)
+    assert list(reals) == [11.0, 12.0, 13.0, 21.0, 22.0, 23.0]
+    assert [reals[i] for i in range(len(reals))] == list(reals)
+    points = TColgp_Array2OfPnt(0, 1, 0, 1)
+    points.SetValue(1, 0, gp_Pnt(1, 2, 3))
+    assert [p.Coord() for p in points][2] == [1.0, 2.0, 3.0]
+
+
+def test_template_items_without_their_module_imported() -> None:
+    # TColgp imports gp: an item of a TColgp array is a gp_Pnt even if
+    # OCC.Core.gp was not imported (a fresh interpreter is needed)
+    code = (
+        "from OCC.Core.TColgp import TColgp_Array1OfPnt\n"
+        "print(type(TColgp_Array1OfPnt(1, 2).Value(1)).__name__)\n"
+    )
+    result = subprocess.run(
+        [sys.executable, "-c", code], capture_output=True, text=True, check=True
+    )
+    assert result.stdout.strip() == "gp_Pnt"
 
 
 def test_repr_for_null_TopoDS_Shape() -> None:

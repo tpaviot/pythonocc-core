@@ -63,6 +63,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
 #include<DE_module.hxx>
+#include<TopTools_module.hxx>
 #include<Interface_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopTools_module.hxx>
@@ -96,6 +97,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -118,6 +121,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 %import TDocStd.i
 %import Message.i
 %import DE.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum

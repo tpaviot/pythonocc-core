@@ -50,6 +50,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 #include<gp_module.hxx>
 #include<MAT_module.hxx>
 #include<Bisector_module.hxx>
+#include<TColGeom2d_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,6 +58,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -66,6 +69,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_mat2d.html"
 %import gp.i
 %import MAT.i
 %import Bisector.i
+%import TColGeom2d.i
 
 %pythoncode {
 from enum import IntEnum

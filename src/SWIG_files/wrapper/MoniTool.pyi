@@ -10,6 +10,7 @@ from OCC.Core.Message import *
 from OCC.Core.TCollection import *
 from OCC.Core.OSD import *
 from OCC.Core.TColStd import *
+from OCC.Core.TopTools import *
 
 
 class MoniTool_SequenceOfElement:

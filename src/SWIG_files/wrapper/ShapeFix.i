@@ -55,6 +55,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 #include<Geom2d_module.hxx>
 #include<TopAbs_module.hxx>
 #include<TopTools_module.hxx>
+#include<Bnd_module.hxx>
 #include<TColGeom_module.hxx>
 #include<BRep_module.hxx>
 #include<TShort_module.hxx>
@@ -73,6 +74,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -87,6 +90,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_shapefix.html"
 %import Geom2d.i
 %import TopAbs.i
 %import TopTools.i
+%import Bnd.i
 
 %pythoncode {
 from enum import IntEnum

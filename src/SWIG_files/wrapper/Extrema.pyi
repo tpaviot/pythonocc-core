@@ -13,6 +13,7 @@ from OCC.Core.TColStd import *
 from OCC.Core.Geom import *
 from OCC.Core.GeomAdaptor import *
 from OCC.Core.math import *
+from OCC.Core.Bnd import *
 
 # the following typedef cannot be wrapped as is
 Extrema_Array2OfPOnCurv = NewType("Extrema_Array2OfPOnCurv", Any)

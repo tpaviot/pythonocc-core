@@ -26,6 +26,7 @@ from OCC.Core.SelectBasics import *
 from OCC.Core.Geom import *
 from OCC.Core.Poly import *
 from OCC.Core.Image import *
+from OCC.Core.TopTools import *
 
 AIS_AnimationTimer = Media_Timer
 AIS_DisplayStatus = PrsMgr_DisplayStatus

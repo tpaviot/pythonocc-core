@@ -17,6 +17,7 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.TopLoc import *
 from OCC.Core.gp import *
 from OCC.Core.Poly import *
+from OCC.Core.TColgp import *
 
 
 class BRepTools_MapOfVertexPnt2d:

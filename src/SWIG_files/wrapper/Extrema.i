@@ -53,6 +53,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 #include<Geom_module.hxx>
 #include<GeomAdaptor_module.hxx>
 #include<math_module.hxx>
+#include<Bnd_module.hxx>
 #include<Precision_module.hxx>
 #include<Message_module.hxx>
 #include<TColgp_module.hxx>
@@ -60,6 +61,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -72,6 +75,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_extrema.html"
 %import Geom.i
 %import GeomAdaptor.i
 %import math.i
+%import Bnd.i
 
 %pythoncode {
 from enum import IntEnum

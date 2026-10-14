@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 #include<TopLoc_module.hxx>
 #include<gp_module.hxx>
 #include<Poly_module.hxx>
+#include<TColgp_module.hxx>
 #include<TShort_module.hxx>
 #include<Poly_module.hxx>
 #include<TColgp_module.hxx>
@@ -64,6 +65,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -80,6 +83,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_breptools.html"
 %import TopLoc.i
 %import gp.i
 %import Poly.i
+%import TColgp.i
 
 %pythoncode {
 from enum import IntEnum

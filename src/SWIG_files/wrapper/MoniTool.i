@@ -50,11 +50,14 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_monitool.html"
 #include<TCollection_module.hxx>
 #include<OSD_module.hxx>
 #include<TColStd_module.hxx>
+#include<TopTools_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -64,6 +67,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_monitool.html"
 %import TCollection.i
 %import OSD.i
 %import TColStd.i
+%import TopTools.i
 
 %pythoncode {
 from enum import IntEnum

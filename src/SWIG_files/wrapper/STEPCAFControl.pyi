@@ -23,6 +23,7 @@ from OCC.Core.Resource import *
 from OCC.Core.TDocStd import *
 from OCC.Core.Message import *
 from OCC.Core.DE import *
+from OCC.Core.TopTools import *
 
 
 class STEPCAFControl_DataMapOfLabelExternFile:

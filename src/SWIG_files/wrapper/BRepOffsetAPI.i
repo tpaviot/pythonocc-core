@@ -58,6 +58,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<GeomFill_module.hxx>
 #include<Law_module.hxx>
 #include<Approx_module.hxx>
+#include<TColStd_module.hxx>
 #include<Bnd_module.hxx>
 #include<AppParCurves_module.hxx>
 #include<MAT_module.hxx>
@@ -106,6 +107,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 #include<OSD_module.hxx>
+#include<Bnd_module.hxx>
+#include<TopTools_module.hxx>
 %};
 %import Standard.i
 %import NCollection.i
@@ -123,6 +126,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_brepoffsetapi.htm
 %import GeomFill.i
 %import Law.i
 %import Approx.i
+%import TColStd.i
 
 %pythoncode {
 from enum import IntEnum

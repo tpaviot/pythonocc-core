@@ -15,6 +15,7 @@ from OCC.Core.ShapeConstruct import *
 from OCC.Core.Geom2d import *
 from OCC.Core.TopAbs import *
 from OCC.Core.TopTools import *
+from OCC.Core.Bnd import *
 
 
 class ShapeFix_SequenceOfWireSegment:

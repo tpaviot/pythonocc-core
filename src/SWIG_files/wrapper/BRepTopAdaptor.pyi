@@ -10,6 +10,7 @@ from OCC.Core.TopAbs import *
 from OCC.Core.Adaptor3d import *
 from OCC.Core.BRepAdaptor import *
 from OCC.Core.Adaptor2d import *
+from OCC.Core.TopTools import *
 
 
 class BRepTopAdaptor_MapOfShapeTool:

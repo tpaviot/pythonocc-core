@@ -25,7 +25,9 @@ The python sequence protocol, with 0-based indices (negative indices count
 from the end). __getitem__, __setitem__ and __len__ are C++ methods: a single
 call, rather than a python method calling Lower, Upper and Value. __getitem__
 returns a copy, like Value (see the const SWIGTYPE & typemap of
-FunctionTransformers.i). Standard_OutOfRange is raised as an IndexError
+FunctionTransformers.i). Standard_OutOfRange is raised as an IndexError.
+__iter__ calls the Value(index) of the class it is defined in: the derived
+NCollection_Array2 declares a Value(row, col).
 */
 %define Array1ExtendIter(T)
 
@@ -58,9 +60,9 @@ FunctionTransformers.i). Standard_OutOfRange is raised as an IndexError
 
         %pythoncode {
         def __iter__(self):
-            value = self.Value
+            value = __class__.Value
             for i in range(self.Lower(), self.Upper() + 1):
-                yield value(i)
+                yield value(self, i)
         }
     };
 
