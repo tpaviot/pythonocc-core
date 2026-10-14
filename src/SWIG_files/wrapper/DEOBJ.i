@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_deobj.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DEOBJ_ConfigurationNode::RWObj_InternalSection DEOBJ_ConfigurationNode_RWObj_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,7 @@ from OCC.Core.Exception import *
 ********************************/
 class DEOBJ_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class RWObj_InternalSection {};
+		DEOBJ_ConfigurationNode_RWObj_InternalSection InternalParameters;
 		/****** DEOBJ_ConfigurationNode::DEOBJ_ConfigurationNode ******/
 		/****** md5 signature: 4540348c3f891d799e0dce9ff07341a9 ******/
 		%feature("compactdefaultargs") DEOBJ_ConfigurationNode;
@@ -278,6 +280,51 @@ Return: result resource string.
 %make_alias(DEOBJ_ConfigurationNode)
 
 %extend DEOBJ_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************************
+* class DEOBJ_ConfigurationNode_RWObj_InternalSection *
+******************************************************/
+class DEOBJ_ConfigurationNode_RWObj_InternalSection {
+	public:
+		double FileLengthUnit;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem SystemCS;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem FileCS;
+		bool ReadSinglePrecision;
+		bool ReadCreateShapes;
+		%extend {
+			TCollection_AsciiString _get_ReadRootPrefix() { return $self->ReadRootPrefix; }
+			void _set_ReadRootPrefix(TCollection_AsciiString theValue) { $self->ReadRootPrefix = theValue; }
+		}
+		%pythoncode {
+			ReadRootPrefix = property(_get_ReadRootPrefix, _set_ReadRootPrefix)
+		}
+		bool ReadFillDoc;
+		bool ReadFillIncomplete;
+		int ReadMemoryLimitMiB;
+		%extend {
+			TCollection_AsciiString _get_WriteComment() { return $self->WriteComment; }
+			void _set_WriteComment(TCollection_AsciiString theValue) { $self->WriteComment = theValue; }
+		}
+		%pythoncode {
+			WriteComment = property(_get_WriteComment, _set_WriteComment)
+		}
+		%extend {
+			TCollection_AsciiString _get_WriteAuthor() { return $self->WriteAuthor; }
+			void _set_WriteAuthor(TCollection_AsciiString theValue) { $self->WriteAuthor = theValue; }
+		}
+		%pythoncode {
+			WriteAuthor = property(_get_WriteAuthor, _set_WriteAuthor)
+		}
+};
+
+
+%extend DEOBJ_ConfigurationNode_RWObj_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

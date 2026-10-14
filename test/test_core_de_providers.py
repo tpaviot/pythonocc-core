@@ -131,3 +131,22 @@ def test_step_parameters_fields(tmp_path: Path, meshed_box) -> None:
         node.InternalParameters.WriteSchema
         == DESTEP_Parameters.WriteMode_StepSchema_AP203
     )
+
+
+def test_provider_internal_parameters(tmp_path: Path, meshed_box) -> None:
+    # the parameters of a provider are the fields of a nested struct
+    node, provider = make_provider("DESTL")
+    assert node.InternalParameters.WriteAscii
+    node.InternalParameters.WriteAscii = False
+    file_name = tmp_path / "box.stl"
+    assert provider.Write(str(file_name), meshed_box)
+    assert not file_name.read_bytes().startswith(b"solid")
+    node, _ = make_provider("DEGLTF")
+    node.InternalParameters.WriteAuthor = "pythonocc"
+    assert node.InternalParameters.WriteAuthor == "pythonocc"
+    # the global and shape fix parameters of a configuration node
+    node, _ = make_provider("DESTEP")
+    node.GlobalParameters.LengthUnit = 1000.0
+    assert node.GlobalParameters.LengthUnit == 1000.0
+    node.ShapeFixParameters.DetalizationLevel = TopAbs_FACE
+    assert node.ShapeFixParameters.DetalizationLevel == TopAbs_FACE

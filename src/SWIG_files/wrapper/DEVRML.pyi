@@ -10,6 +10,7 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.RWMesh import *
 from OCC.Core.TColStd import *
 
 
@@ -29,6 +30,7 @@ class DEVRML_ConfigurationNode(DE_ConfigurationNode):
     WriteMode_RepresentationType_Shaded = WriteMode_RepresentationType.WriteMode_RepresentationType_Shaded
     WriteMode_RepresentationType_Wireframe = WriteMode_RepresentationType.WriteMode_RepresentationType_Wireframe
     WriteMode_RepresentationType_Both = WriteMode_RepresentationType.WriteMode_RepresentationType_Both
+    InternalParameters: DEVRML_ConfigurationNode_Vrml_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -49,6 +51,14 @@ class DEVRML_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEVRML_ConfigurationNode_Vrml_InternalSection:
+    ReadFileUnit: float
+    ReadFileCoordinateSys: RWMesh_CoordinateSystem
+    ReadSystemCoordinateSys: RWMesh_CoordinateSystem
+    ReadFillIncomplete: bool
+    WriterVersion: DEVRML_ConfigurationNode.WriteMode_WriterVersion
+    WriteRepresentationType: DEVRML_ConfigurationNode.WriteMode_RepresentationType
 
 class DEVRML_Provider(DE_Provider):
     @overload

@@ -14,6 +14,7 @@ from OCC.Core.TColStd import *
 
 
 class DEIGES_ConfigurationNode(DE_ShapeFixConfigurationNode):
+    InternalParameters: DEIGES_Parameters
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -103,6 +104,33 @@ class DEIGES_Parameters:
 
     WriteMode_PlaneMode_Plane = WriteMode_PlaneMode.WriteMode_PlaneMode_Plane
     WriteMode_PlaneMode_BSpline = WriteMode_PlaneMode.WriteMode_PlaneMode_BSpline
+    ReadBSplineContinuity: Any
+    ReadPrecisionMode: Any
+    ReadPrecisionVal: float
+    ReadMaxPrecisionMode: Any
+    ReadMaxPrecisionVal: float
+    ReadSameParamMode: bool
+    ReadSurfaceCurveMode: Any
+    EncodeRegAngle: float
+    ReadApproxd1: bool
+    ReadFaultyEntities: bool
+    ReadOnlyVisible: bool
+    ReadColor: bool
+    ReadName: bool
+    ReadLayer: bool
+    WriteBRepMode: Any
+    WriteConvertSurfaceMode: Any
+    WriteHeaderAuthor: str
+    WriteHeaderCompany: str
+    WriteHeaderProduct: str
+    WriteHeaderReciever: str
+    WritePrecisionMode: Any
+    WritePrecisionVal: float
+    WritePlaneMode: Any
+    WriteOffsetMode: bool
+    WriteColor: bool
+    WriteName: bool
+    WriteLayer: bool
     def __init__(self) -> None: ...
     @staticmethod
     def GetDefaultShapeFixParameters() -> DE_ShapeFixParameters: ...

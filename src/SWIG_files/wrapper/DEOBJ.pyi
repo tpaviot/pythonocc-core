@@ -10,10 +10,12 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.RWMesh import *
 from OCC.Core.TColStd import *
 
 
 class DEOBJ_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DEOBJ_ConfigurationNode_RWObj_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -33,6 +35,19 @@ class DEOBJ_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEOBJ_ConfigurationNode_RWObj_InternalSection:
+    FileLengthUnit: float
+    SystemCS: RWMesh_CoordinateSystem
+    FileCS: RWMesh_CoordinateSystem
+    ReadSinglePrecision: bool
+    ReadCreateShapes: bool
+    ReadRootPrefix: str
+    ReadFillDoc: bool
+    ReadFillIncomplete: bool
+    ReadMemoryLimitMiB: int
+    WriteComment: str
+    WriteAuthor: str
 
 class DEOBJ_Provider(DE_Provider):
     @overload

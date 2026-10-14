@@ -10,10 +10,13 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.RWGltf import *
+from OCC.Core.RWMesh import *
 from OCC.Core.TColStd import *
 
 
 class DEGLTF_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DEGLTF_ConfigurationNode_RWGltf_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -33,6 +36,34 @@ class DEGLTF_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEGLTF_ConfigurationNode_RWGltf_InternalSection:
+    FileLengthUnit: float
+    SystemCS: RWMesh_CoordinateSystem
+    FileCS: RWMesh_CoordinateSystem
+    ReadSinglePrecision: bool
+    ReadCreateShapes: bool
+    ReadRootPrefix: str
+    ReadFillDoc: bool
+    ReadFillIncomplete: bool
+    ReadMemoryLimitMiB: int
+    ReadParallel: bool
+    ReadSkipEmptyNodes: bool
+    ReadLoadAllScenes: bool
+    ReadUseMeshNameAsFallback: bool
+    ReadSkipLateDataLoading: bool
+    ReadKeepLateData: bool
+    ReadPrintDebugMessages: bool
+    ReadApplyScale: bool
+    WriteComment: str
+    WriteAuthor: str
+    WriteTrsfFormat: RWGltf_WriterTrsfFormat
+    WriteNodeNameFormat: RWMesh_NameFormat
+    WriteMeshNameFormat: RWMesh_NameFormat
+    WriteForcedUVExport: bool
+    WriteEmbedTexturesInGlb: bool
+    WriteMergeFaces: bool
+    WriteSplitIndices16: bool
 
 class DEGLTF_Provider(DE_Provider):
     @overload

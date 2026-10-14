@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_debrep.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DEBREP_ConfigurationNode::DEBRep_InternalSection DEBREP_ConfigurationNode_DEBRep_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,7 @@ from OCC.Core.Exception import *
 *********************************/
 class DEBREP_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class DEBRep_InternalSection {};
+		DEBREP_ConfigurationNode_DEBRep_InternalSection InternalParameters;
 		/****** DEBREP_ConfigurationNode::DEBREP_ConfigurationNode ******/
 		/****** md5 signature: e9365ac7c5ff080feede98068ff3a24f ******/
 		%feature("compactdefaultargs") DEBREP_ConfigurationNode;
@@ -298,6 +300,27 @@ Return: result resource string.
 %make_alias(DEBREP_ConfigurationNode)
 
 %extend DEBREP_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************************************
+* class DEBREP_ConfigurationNode_DEBRep_InternalSection *
+********************************************************/
+class DEBREP_ConfigurationNode_DEBRep_InternalSection {
+	public:
+		bool WriteBinary;
+		%apply int { BinTools_FormatVersion };
+		BinTools_FormatVersion WriteVersionBin;
+		%apply int { TopTools_FormatVersion };
+		TopTools_FormatVersion WriteVersionAscii;
+		bool WriteTriangles;
+		bool WriteNormals;
+};
+
+
+%extend DEBREP_ConfigurationNode_DEBRep_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

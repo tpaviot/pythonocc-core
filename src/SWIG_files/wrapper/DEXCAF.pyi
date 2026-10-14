@@ -14,6 +14,7 @@ from OCC.Core.TColStd import *
 
 
 class DEXCAF_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DEXCAF_ConfigurationNode_XCAFDoc_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -34,6 +35,9 @@ class DEXCAF_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEXCAF_ConfigurationNode_XCAFDoc_InternalSection:
+    pass
 
 class DEXCAF_Provider(DE_Provider):
     @overload

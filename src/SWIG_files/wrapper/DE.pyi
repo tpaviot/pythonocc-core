@@ -11,6 +11,7 @@ from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
 from OCC.Core.Resource import *
+from OCC.Core.TopAbs import *
 
 
 class DE_ConfigurationContext(Standard_Transient):
@@ -37,6 +38,7 @@ class DE_ConfigurationContext(Standard_Transient):
     def DownCast(t: None) -> None: ...
 
 class DE_ConfigurationNode(Standard_Transient):
+    GlobalParameters: DE_ConfigurationNode_DE_SectionGlobal
     def BuildProvider(self) -> DE_Provider: ...
     def CheckContent(self, theBuffer: NCollection_Buffer) -> bool: ...
     def CheckExtension(self, theExtension: str | TCollection_AsciiString) -> bool: ...
@@ -68,6 +70,10 @@ class DE_ConfigurationNode(Standard_Transient):
     @staticmethod
     def DownCast(t: None) -> None: ...
 
+class DE_ConfigurationNode_DE_SectionGlobal:
+    LengthUnit: float
+    SystemUnit: float
+
 class DE_Provider(Standard_Transient):
     def GetFormat(self) -> str: ...
     def GetNode(self) -> DE_ConfigurationNode: ...
@@ -79,6 +85,14 @@ class DE_Provider(Standard_Transient):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DE_Provider_ReadStreamNode:
+    Path: str
+    def __init__(self, thePath: str | TCollection_AsciiString, theStream: str | bytes) -> None: ...
+
+class DE_Provider_WriteStreamNode:
+    Path: str
+    def __init__(self, thePath: str | TCollection_AsciiString) -> str: ...
 
 class DE_ShapeFixParameters:
     class FixMode(IntEnum):
@@ -92,6 +106,60 @@ class DE_ShapeFixParameters:
     FixMode_FixOrNot = FixMode.FixOrNot
     FixMode_NotFix = FixMode.NotFix
     FixMode_Fix = FixMode.Fix
+    Tolerance3d: float
+    MaxTolerance3d: float
+    MinTolerance3d: float
+    DetalizationLevel: TopAbs_ShapeEnum
+    NonManifold: bool
+    FixFreeShellMode: Any
+    FixFreeFaceMode: Any
+    FixFreeWireMode: Any
+    FixSameParameterMode: Any
+    FixSolidMode: Any
+    FixShellOrientationMode: Any
+    CreateOpenSolidMode: Any
+    FixShellMode: Any
+    FixFaceOrientationMode: Any
+    FixFaceMode: Any
+    FixWireMode: Any
+    FixOrientationMode: Any
+    FixAddNaturalBoundMode: Any
+    FixMissingSeamMode: Any
+    FixSmallAreaWireMode: Any
+    RemoveSmallAreaFaceMode: Any
+    FixIntersectingWiresMode: Any
+    FixLoopWiresMode: Any
+    FixSplitFaceMode: Any
+    AutoCorrectPrecisionMode: Any
+    ModifyTopologyMode: Any
+    ModifyGeometryMode: Any
+    ClosedWireMode: Any
+    PreferencePCurveMode: Any
+    FixReorderMode: Any
+    FixSmallMode: Any
+    FixConnectedMode: Any
+    FixEdgeCurvesMode: Any
+    FixDegeneratedMode: Any
+    FixLackingMode: Any
+    FixSelfIntersectionMode: Any
+    RemoveLoopMode: Any
+    FixReversed2dMode: Any
+    FixRemovePCurveMode: Any
+    FixRemoveCurve3dMode: Any
+    FixAddPCurveMode: Any
+    FixAddCurve3dMode: Any
+    FixSeamMode: Any
+    FixShiftedMode: Any
+    FixEdgeSameParameterMode: Any
+    FixNotchedEdgesMode: Any
+    FixTailMode: Any
+    MaxTailAngle: Any
+    MaxTailWidth: Any
+    FixSelfIntersectingEdgeMode: Any
+    FixIntersectingEdgesMode: Any
+    FixNonAdjacentIntersectingEdgesMode: Any
+    FixVertexPositionMode: Any
+    FixVertexToleranceMode: Any
 
 class DE_ValidationUtils:
     @overload
@@ -116,6 +184,7 @@ class DE_ValidationUtils:
     def WarnLengthUnitNotSupported(theLengthUnit: float, theContext: str | TCollection_AsciiString, theIsVerbose: Optional[bool] = True) -> bool: ...
 
 class DE_Wrapper(Standard_Transient):
+    GlobalParameters: DE_ConfigurationNode_DE_SectionGlobal
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -192,6 +261,7 @@ class DE_Wrapper(Standard_Transient):
     def DownCast(t: None) -> None: ...
 
 class DE_ShapeFixConfigurationNode(DE_ConfigurationNode):
+    ShapeFixParameters: DE_ShapeFixParameters
     def Load(self, theResource: DE_ConfigurationContext) -> bool: ...
     def Save(self) -> str: ...
     @overload

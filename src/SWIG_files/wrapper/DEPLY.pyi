@@ -10,10 +10,12 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.RWMesh import *
 from OCC.Core.TColStd import *
 
 
 class DEPLY_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DEPLY_ConfigurationNode_RWPly_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -34,6 +36,18 @@ class DEPLY_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEPLY_ConfigurationNode_RWPly_InternalSection:
+    FileLengthUnit: float
+    SystemCS: RWMesh_CoordinateSystem
+    FileCS: RWMesh_CoordinateSystem
+    WriteNormals: bool
+    WriteColors: bool
+    WriteTexCoords: bool
+    WritePartId: bool
+    WriteFaceId: bool
+    WriteComment: str
+    WriteAuthor: str
 
 class DEPLY_Provider(DE_Provider):
     @overload

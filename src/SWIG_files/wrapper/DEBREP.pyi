@@ -10,10 +10,13 @@ from OCC.Core.TDocStd import *
 from OCC.Core.XSControl import *
 from OCC.Core.Message import *
 from OCC.Core.TopoDS import *
+from OCC.Core.BinTools import *
 from OCC.Core.TColStd import *
+from OCC.Core.TopTools import *
 
 
 class DEBREP_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DEBREP_ConfigurationNode_DEBRep_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -34,6 +37,13 @@ class DEBREP_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DEBREP_ConfigurationNode_DEBRep_InternalSection:
+    WriteBinary: bool
+    WriteVersionBin: BinTools_FormatVersion
+    WriteVersionAscii: TopTools_FormatVersion
+    WriteTriangles: bool
+    WriteNormals: bool
 
 class DEBREP_Provider(DE_Provider):
     @overload

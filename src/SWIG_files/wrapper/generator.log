@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 9579f6a
+git revision : fea276b
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 09:13:52.881758+02:00
+date : 2026-10-14 09:32:17.519687+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -7671,6 +7671,14 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Enum: WriteMode_ConvertSurface
 [INFO ]  Enum: WriteMode_PrecisionMode
 [INFO ]  Enum: WriteMode_PlaneMode
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_BSplineContinuity, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_Precision, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_MaxPrecision, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_SurfaceCurve, ReadMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_BRep, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_ConvertSurface, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_PrecisionMode, WriteMode not in module list
+[WARNI]      [TypeHint] Skipping unknown type WriteMode_PlaneMode, WriteMode not in module list
 [INFO ]  Class: DEIGES_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module IGESControl
@@ -7841,20 +7849,20 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Processing toolkit TKRWMesh ===
 [INFO ]  ## Processing module DEGLTF
 [INFO ]  Class: DEGLTF_ConfigurationNode
-[INFO ]      Wrap nested class DEGLTF_ConfigurationNode::RWGltf_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEGLTF_ConfigurationNode_RWGltf_InternalSection
 [INFO ]  Class: DEGLTF_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module DEOBJ
 [INFO ]  Class: DEOBJ_ConfigurationNode
-[INFO ]      Wrap nested class DEOBJ_ConfigurationNode::RWObj_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEOBJ_ConfigurationNode_RWObj_InternalSection
 [INFO ]  Class: DEOBJ_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module DEPLY
 [INFO ]  Class: DEPLY_ConfigurationNode
-[INFO ]      Wrap nested class DEPLY_ConfigurationNode::RWPly_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEPLY_ConfigurationNode_RWPly_InternalSection
 [INFO ]  Class: DEPLY_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module RWGltf
@@ -9635,8 +9643,8 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Processing toolkit TKSTL ===
 [INFO ]  ## Processing module DESTL
 [INFO ]  Class: DESTL_ConfigurationNode
-[INFO ]      Wrap nested class DESTL_ConfigurationNode::RWStl_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DESTL_ConfigurationNode_RWStl_InternalSection
 [INFO ]  Class: DESTL_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module RWStl
@@ -9649,10 +9657,10 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Processing toolkit TKVRML ===
 [INFO ]  ## Processing module DEVRML
 [INFO ]  Class: DEVRML_ConfigurationNode
-[INFO ]      Wrap nested class DEVRML_ConfigurationNode::Vrml_InternalSection
 [INFO ]  Enum: WriteMode_WriterVersion
 [INFO ]  Enum: WriteMode_RepresentationType
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEVRML_ConfigurationNode_Vrml_InternalSection
 [INFO ]  Class: DEVRML_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Vrml
@@ -10478,14 +10486,12 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Class: DE_ConfigurationContext
 [INFO ]  Class: DE_ConfigurationNode
 [INFO ]      Class DE_ConfigurationNode is abstract, using %nodefaultctor.
-[INFO ]      Wrap nested class DE_ConfigurationNode::DE_SectionGlobal
 [INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
 [INFO ]      Constructor skipped for abstract class DE_ConfigurationNode
 [WARNI]      [TypeHint] param name missing or '&', generic name used
+[INFO ]  Class: DE_ConfigurationNode_DE_SectionGlobal
 [INFO ]  Class: DE_Provider
 [INFO ]      Class DE_Provider is abstract, using %nodefaultctor.
-[INFO ]      Wrap nested class DE_Provider::WriteStreamNode
-[INFO ]      Wrap nested class DE_Provider::ReadStreamNode
 [INFO ]      Constructor skipped for abstract class DE_Provider
 [INFO ]      Constructor skipped for abstract class DE_Provider
 [INFO ]      explicitly excluded method DE_Provider::a6a47b51a2bc023e0118a02a7794a53d
@@ -10504,8 +10510,61 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]      explicitly excluded method DE_Provider::4da26eb3f229c14ac2f96ecb83da5db1
 [INFO ]      explicitly excluded method DE_Provider::bd94cecc3561e20266cdc2b9806cfaec
 [INFO ]      explicitly excluded method DE_Provider::b599888bf77594045d82c51542366f02
+[INFO ]  Class: DE_Provider_ReadStreamNode
+[INFO ]      property Stream of type Standard_IStream & skipped
+[INFO ]  Class: DE_Provider_WriteStreamNode
+[INFO ]      property Stream of type Standard_OStream & skipped
 [INFO ]  Class: DE_ShapeFixParameters
 [INFO ]  Enum: FixMode
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
+[WARNI]      [TypeHint] Skipping type FixMode, should contain _
 [INFO ]  Class: DE_ValidationUtils
 [WARNI]      [TypeHint] Skip type DE_Provider::ReadStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
@@ -10528,14 +10587,17 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Processing toolkit TKDECascade ===
 [INFO ]  ## Processing module DEBREP
 [INFO ]  Class: DEBREP_ConfigurationNode
-[INFO ]      Wrap nested class DEBREP_ConfigurationNode::DEBRep_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEBREP_ConfigurationNode_DEBRep_InternalSection
 [INFO ]  Class: DEBREP_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module DEXCAF
 [INFO ]  Class: DEXCAF_ConfigurationNode
-[INFO ]      Wrap nested class DEXCAF_ConfigurationNode::XCAFDoc_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEXCAF_ConfigurationNode_XCAFDoc_InternalSection
+[INFO ]      property ReadAppendMode of type PCDM_ReaderFilter::AppendMode skipped
+[INFO ]      property ReadSkipValues of type NCollection_List<TCollection_AsciiString > skipped
+[INFO ]      property ReadValues of type NCollection_List<TCollection_AsciiString > skipped
 [INFO ]  Class: DEXCAF_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKBin ===
@@ -11137,8 +11199,8 @@ date : 2026-10-14 09:13:52.881758+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 12.21s
+SWIG interface file generation completed in 11.37s
 #################################################
 
-[INFO ]  Number of classes: 4161
-[INFO ]  Number of methods: 46235
+[INFO ]  Number of classes: 4171
+[INFO ]  Number of methods: 46237

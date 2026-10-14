@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_destl.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DESTL_ConfigurationNode::RWStl_InternalSection DESTL_ConfigurationNode_RWStl_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,7 @@ from OCC.Core.Exception import *
 ********************************/
 class DESTL_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class RWStl_InternalSection {};
+		DESTL_ConfigurationNode_RWStl_InternalSection InternalParameters;
 		/****** DESTL_ConfigurationNode::DESTL_ConfigurationNode ******/
 		/****** md5 signature: 5c1e7acf76b5d1fd23778359c34f1fb9 ******/
 		%feature("compactdefaultargs") DESTL_ConfigurationNode;
@@ -312,6 +314,23 @@ Return: result resource string.
 %make_alias(DESTL_ConfigurationNode)
 
 %extend DESTL_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************************
+* class DESTL_ConfigurationNode_RWStl_InternalSection *
+******************************************************/
+class DESTL_ConfigurationNode_RWStl_InternalSection {
+	public:
+		double ReadMergeAngle;
+		bool ReadBRep;
+		bool WriteAscii;
+};
+
+
+%extend DESTL_ConfigurationNode_RWStl_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

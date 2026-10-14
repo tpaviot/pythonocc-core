@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_devrml.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DEVRML_ConfigurationNode::Vrml_InternalSection DEVRML_ConfigurationNode_Vrml_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,6 @@ from OCC.Core.Exception import *
 *********************************/
 class DEVRML_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class Vrml_InternalSection {};
 /* public enums */
 enum WriteMode_WriterVersion {
 	WriteMode_WriterVersion_1 = 1,
@@ -141,6 +142,7 @@ WriteMode_RepresentationType_Both = WriteMode_RepresentationType.WriteMode_Repre
 };
 /* end python proxy for enums */
 
+		DEVRML_ConfigurationNode_Vrml_InternalSection InternalParameters;
 		/****** DEVRML_ConfigurationNode::DEVRML_ConfigurationNode ******/
 		/****** md5 signature: 54ed7215134450a5aabbc66d85a004be ******/
 		%feature("compactdefaultargs") DEVRML_ConfigurationNode;
@@ -325,6 +327,28 @@ Return: result resource string.
 %make_alias(DEVRML_ConfigurationNode)
 
 %extend DEVRML_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************************
+* class DEVRML_ConfigurationNode_Vrml_InternalSection *
+******************************************************/
+class DEVRML_ConfigurationNode_Vrml_InternalSection {
+	public:
+		double ReadFileUnit;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem ReadFileCoordinateSys;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem ReadSystemCoordinateSys;
+		bool ReadFillIncomplete;
+		DEVRML_ConfigurationNode::WriteMode_WriterVersion WriterVersion;
+		DEVRML_ConfigurationNode::WriteMode_RepresentationType WriteRepresentationType;
+};
+
+
+%extend DEVRML_ConfigurationNode_Vrml_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

@@ -14,6 +14,7 @@ from OCC.Core.TColStd import *
 
 
 class DESTL_ConfigurationNode(DE_ConfigurationNode):
+    InternalParameters: DESTL_ConfigurationNode_RWStl_InternalSection
     @overload
     def __init__(self) -> None: ...
     @overload
@@ -35,6 +36,11 @@ class DESTL_ConfigurationNode(DE_ConfigurationNode):
     @overload
     @staticmethod
     def DownCast(t: None) -> None: ...
+
+class DESTL_ConfigurationNode_RWStl_InternalSection:
+    ReadMergeAngle: float
+    ReadBRep: bool
+    WriteAscii: bool
 
 class DESTL_Provider(DE_Provider):
     @overload

@@ -67,6 +67,10 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_de.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DE_ConfigurationNode::DE_SectionGlobal DE_ConfigurationNode_DE_SectionGlobal;
+typedef DE_Provider::WriteStreamNode DE_Provider_WriteStreamNode;
+typedef DE_Provider::ReadStreamNode DE_Provider_ReadStreamNode;
 %};
 %import Standard.i
 %import NCollection.i
@@ -448,7 +452,7 @@ Return: specific type value.
 %nodefaultctor DE_ConfigurationNode;
 class DE_ConfigurationNode : public Standard_Transient {
 	public:
-		class DE_SectionGlobal {};
+		DE_ConfigurationNode_DE_SectionGlobal GlobalParameters;
 		/****** DE_ConfigurationNode::BuildProvider ******/
 		/****** md5 signature: 36ab78b32f0a19a9158d4d9237830452 ******/
 		%feature("compactdefaultargs") BuildProvider;
@@ -797,6 +801,22 @@ Return: true, if node can be used.
 	}
 };
 
+/**********************************************
+* class DE_ConfigurationNode_DE_SectionGlobal *
+**********************************************/
+class DE_ConfigurationNode_DE_SectionGlobal {
+	public:
+		double LengthUnit;
+		double SystemUnit;
+};
+
+
+%extend DE_ConfigurationNode_DE_SectionGlobal {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /*****************************
 * class DE_MultiPluginHolder *
 *****************************/
@@ -809,8 +829,6 @@ Return: true, if node can be used.
 %nodefaultctor DE_Provider;
 class DE_Provider : public Standard_Transient {
 	public:
-		class WriteStreamNode {};
-		class ReadStreamNode {};
 		/****** DE_Provider::GetFormat ******/
 		/****** md5 signature: 463cfc83b2259fc53dc9328af3a9b59c ******/
 		%feature("compactdefaultargs") GetFormat;
@@ -891,6 +909,85 @@ Input parameter: theNode configuration node to set.
 	}
 };
 
+/***********************************
+* class DE_Provider_ReadStreamNode *
+***********************************/
+class DE_Provider_ReadStreamNode {
+	public:
+		%extend {
+			TCollection_AsciiString _get_Path() { return $self->Path; }
+			void _set_Path(TCollection_AsciiString theValue) { $self->Path = theValue; }
+		}
+		%pythoncode {
+			Path = property(_get_Path, _set_Path)
+		}
+		/****** DE_Provider_ReadStreamNode::DE_Provider_ReadStreamNode ******/
+		/****** md5 signature: 69f6b42e4b15edd5b1b6c5cb0bd265f6 ******/
+		%feature("compactdefaultargs") DE_Provider_ReadStreamNode;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+theStream: str
+
+Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") DE_Provider_ReadStreamNode;
+		 DE_Provider_ReadStreamNode(TCollection_AsciiString thePath, std::istream & theStream);
+
+};
+
+
+%extend DE_Provider_ReadStreamNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class DE_Provider_WriteStreamNode *
+************************************/
+class DE_Provider_WriteStreamNode {
+	public:
+		%extend {
+			TCollection_AsciiString _get_Path() { return $self->Path; }
+			void _set_Path(TCollection_AsciiString theValue) { $self->Path = theValue; }
+		}
+		%pythoncode {
+			Path = property(_get_Path, _set_Path)
+		}
+		/****** DE_Provider_WriteStreamNode::DE_Provider_WriteStreamNode ******/
+		/****** md5 signature: 4ea27cbfc77feeb79e1800bf109ebddb ******/
+		%feature("compactdefaultargs") DE_Provider_WriteStreamNode;
+		%feature("autodoc", "
+Parameters
+----------
+thePath: str
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Constructor.
+") DE_Provider_WriteStreamNode;
+		 DE_Provider_WriteStreamNode(TCollection_AsciiString thePath, std::ostream &OutValue);
+
+};
+
+
+%extend DE_Provider_WriteStreamNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /******************************
 * class DE_ShapeFixParameters *
 ******************************/
@@ -918,6 +1015,61 @@ Fix = FixMode.Fix
 };
 /* end python proxy for enums */
 
+		double Tolerance3d;
+		double MaxTolerance3d;
+		double MinTolerance3d;
+		%apply int { TopAbs_ShapeEnum };
+		TopAbs_ShapeEnum DetalizationLevel;
+		bool NonManifold;
+		FixMode FixFreeShellMode;
+		FixMode FixFreeFaceMode;
+		FixMode FixFreeWireMode;
+		FixMode FixSameParameterMode;
+		FixMode FixSolidMode;
+		FixMode FixShellOrientationMode;
+		FixMode CreateOpenSolidMode;
+		FixMode FixShellMode;
+		FixMode FixFaceOrientationMode;
+		FixMode FixFaceMode;
+		FixMode FixWireMode;
+		FixMode FixOrientationMode;
+		FixMode FixAddNaturalBoundMode;
+		FixMode FixMissingSeamMode;
+		FixMode FixSmallAreaWireMode;
+		FixMode RemoveSmallAreaFaceMode;
+		FixMode FixIntersectingWiresMode;
+		FixMode FixLoopWiresMode;
+		FixMode FixSplitFaceMode;
+		FixMode AutoCorrectPrecisionMode;
+		FixMode ModifyTopologyMode;
+		FixMode ModifyGeometryMode;
+		FixMode ClosedWireMode;
+		FixMode PreferencePCurveMode;
+		FixMode FixReorderMode;
+		FixMode FixSmallMode;
+		FixMode FixConnectedMode;
+		FixMode FixEdgeCurvesMode;
+		FixMode FixDegeneratedMode;
+		FixMode FixLackingMode;
+		FixMode FixSelfIntersectionMode;
+		FixMode RemoveLoopMode;
+		FixMode FixReversed2dMode;
+		FixMode FixRemovePCurveMode;
+		FixMode FixRemoveCurve3dMode;
+		FixMode FixAddPCurveMode;
+		FixMode FixAddCurve3dMode;
+		FixMode FixSeamMode;
+		FixMode FixShiftedMode;
+		FixMode FixEdgeSameParameterMode;
+		FixMode FixNotchedEdgesMode;
+		FixMode FixTailMode;
+		FixMode MaxTailAngle;
+		FixMode MaxTailWidth;
+		FixMode FixSelfIntersectingEdgeMode;
+		FixMode FixIntersectingEdgesMode;
+		FixMode FixNonAdjacentIntersectingEdgesMode;
+		FixMode FixVertexPositionMode;
+		FixMode FixVertexToleranceMode;
 };
 
 
@@ -1157,6 +1309,7 @@ Return: true always (this is just a warning).
 *******************/
 class DE_Wrapper : public Standard_Transient {
 	public:
+		DE_ConfigurationNode_DE_SectionGlobal GlobalParameters;
 		/****** DE_Wrapper::DE_Wrapper ******/
 		/****** md5 signature: cab56560ee66ff0a167a8682110f3c23 ******/
 		%feature("compactdefaultargs") DE_Wrapper;
@@ -2010,6 +2163,7 @@ Return: true if Write operation has ended correctly.
 %nodefaultctor DE_ShapeFixConfigurationNode;
 class DE_ShapeFixConfigurationNode : public DE_ConfigurationNode {
 	public:
+		DE_ShapeFixParameters ShapeFixParameters;
 		/****** DE_ShapeFixConfigurationNode::Load ******/
 		/****** md5 signature: cb8d9f5c44ca24bfff6cfd104339c2c8 ******/
 		%feature("compactdefaultargs") Load;

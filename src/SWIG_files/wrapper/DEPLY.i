@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_deply.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DEPLY_ConfigurationNode::RWPly_InternalSection DEPLY_ConfigurationNode_RWPly_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,7 @@ from OCC.Core.Exception import *
 ********************************/
 class DEPLY_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class RWPly_InternalSection {};
+		DEPLY_ConfigurationNode_RWPly_InternalSection InternalParameters;
 		/****** DEPLY_ConfigurationNode::DEPLY_ConfigurationNode ******/
 		/****** md5 signature: 396616580f46bd794985506cc69f11aa ******/
 		%feature("compactdefaultargs") DEPLY_ConfigurationNode;
@@ -298,6 +300,44 @@ Return: result resource string.
 %make_alias(DEPLY_ConfigurationNode)
 
 %extend DEPLY_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/******************************************************
+* class DEPLY_ConfigurationNode_RWPly_InternalSection *
+******************************************************/
+class DEPLY_ConfigurationNode_RWPly_InternalSection {
+	public:
+		double FileLengthUnit;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem SystemCS;
+		%apply int { RWMesh_CoordinateSystem };
+		RWMesh_CoordinateSystem FileCS;
+		bool WriteNormals;
+		bool WriteColors;
+		bool WriteTexCoords;
+		bool WritePartId;
+		bool WriteFaceId;
+		%extend {
+			TCollection_AsciiString _get_WriteComment() { return $self->WriteComment; }
+			void _set_WriteComment(TCollection_AsciiString theValue) { $self->WriteComment = theValue; }
+		}
+		%pythoncode {
+			WriteComment = property(_get_WriteComment, _set_WriteComment)
+		}
+		%extend {
+			TCollection_AsciiString _get_WriteAuthor() { return $self->WriteAuthor; }
+			void _set_WriteAuthor(TCollection_AsciiString theValue) { $self->WriteAuthor = theValue; }
+		}
+		%pythoncode {
+			WriteAuthor = property(_get_WriteAuthor, _set_WriteAuthor)
+		}
+};
+
+
+%extend DEPLY_ConfigurationNode_RWPly_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

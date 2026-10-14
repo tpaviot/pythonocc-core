@@ -107,6 +107,7 @@ from OCC.Core.Exception import *
 *********************************/
 class DEIGES_ConfigurationNode : public DE_ShapeFixConfigurationNode {
 	public:
+		DEIGES_Parameters InternalParameters;
 		/****** DEIGES_ConfigurationNode::DEIGES_ConfigurationNode ******/
 		/****** md5 signature: eaf9a3e4765e010bbdcf9cc1cbc34fee ******/
 		%feature("compactdefaultargs") DEIGES_ConfigurationNode;
@@ -421,6 +422,57 @@ WriteMode_PlaneMode_BSpline = WriteMode_PlaneMode.WriteMode_PlaneMode_BSpline
 };
 /* end python proxy for enums */
 
+		ReadMode_BSplineContinuity ReadBSplineContinuity;
+		ReadMode_Precision ReadPrecisionMode;
+		double ReadPrecisionVal;
+		ReadMode_MaxPrecision ReadMaxPrecisionMode;
+		double ReadMaxPrecisionVal;
+		bool ReadSameParamMode;
+		ReadMode_SurfaceCurve ReadSurfaceCurveMode;
+		double EncodeRegAngle;
+		bool ReadApproxd1;
+		bool ReadFaultyEntities;
+		bool ReadOnlyVisible;
+		bool ReadColor;
+		bool ReadName;
+		bool ReadLayer;
+		WriteMode_BRep WriteBRepMode;
+		WriteMode_ConvertSurface WriteConvertSurfaceMode;
+		%extend {
+			TCollection_AsciiString _get_WriteHeaderAuthor() { return $self->WriteHeaderAuthor; }
+			void _set_WriteHeaderAuthor(TCollection_AsciiString theValue) { $self->WriteHeaderAuthor = theValue; }
+		}
+		%pythoncode {
+			WriteHeaderAuthor = property(_get_WriteHeaderAuthor, _set_WriteHeaderAuthor)
+		}
+		%extend {
+			TCollection_AsciiString _get_WriteHeaderCompany() { return $self->WriteHeaderCompany; }
+			void _set_WriteHeaderCompany(TCollection_AsciiString theValue) { $self->WriteHeaderCompany = theValue; }
+		}
+		%pythoncode {
+			WriteHeaderCompany = property(_get_WriteHeaderCompany, _set_WriteHeaderCompany)
+		}
+		%extend {
+			TCollection_AsciiString _get_WriteHeaderProduct() { return $self->WriteHeaderProduct; }
+			void _set_WriteHeaderProduct(TCollection_AsciiString theValue) { $self->WriteHeaderProduct = theValue; }
+		}
+		%pythoncode {
+			WriteHeaderProduct = property(_get_WriteHeaderProduct, _set_WriteHeaderProduct)
+		}
+		%extend {
+			TCollection_AsciiString _get_WriteHeaderReciever() { return $self->WriteHeaderReciever; }
+			void _set_WriteHeaderReciever(TCollection_AsciiString theValue) { $self->WriteHeaderReciever = theValue; }
+		}
+		%pythoncode {
+			WriteHeaderReciever = property(_get_WriteHeaderReciever, _set_WriteHeaderReciever)
+		}
+		WriteMode_PrecisionMode WritePrecisionMode;
+		double WritePrecisionVal;
+		WriteMode_PlaneMode WritePlaneMode;
+		bool WriteOffsetMode;
+		bool WriteColor;
+		bool WriteName;
+		bool WriteLayer;
 		/****** DEIGES_Parameters::DEIGES_Parameters ******/
 		/****** md5 signature: bbe3fc1ad85d9e6ea8d9ee31cc0b2af5 ******/
 		%feature("compactdefaultargs") DEIGES_Parameters;

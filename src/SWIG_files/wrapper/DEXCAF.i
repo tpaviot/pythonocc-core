@@ -68,6 +68,8 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_dexcaf.html"
 #include<OSD_module.hxx>
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
+// nested classes wrapped as top level classes
+typedef DEXCAF_ConfigurationNode::XCAFDoc_InternalSection DEXCAF_ConfigurationNode_XCAFDoc_InternalSection;
 %};
 %import Standard.i
 %import NCollection.i
@@ -107,7 +109,7 @@ from OCC.Core.Exception import *
 *********************************/
 class DEXCAF_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class XCAFDoc_InternalSection {};
+		DEXCAF_ConfigurationNode_XCAFDoc_InternalSection InternalParameters;
 		/****** DEXCAF_ConfigurationNode::DEXCAF_ConfigurationNode ******/
 		/****** md5 signature: 64ab8fe2f0a013e2e1ca5fbfcddae220 ******/
 		%feature("compactdefaultargs") DEXCAF_ConfigurationNode;
@@ -298,6 +300,20 @@ Return: result resource string.
 %make_alias(DEXCAF_ConfigurationNode)
 
 %extend DEXCAF_ConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************************
+* class DEXCAF_ConfigurationNode_XCAFDoc_InternalSection *
+*********************************************************/
+class DEXCAF_ConfigurationNode_XCAFDoc_InternalSection {
+	public:
+};
+
+
+%extend DEXCAF_ConfigurationNode_XCAFDoc_InternalSection {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
