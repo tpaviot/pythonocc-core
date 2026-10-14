@@ -95,6 +95,7 @@ from OCC.Core.Exception import *
 %wrap_handle(DE_ConfigurationNode)
 %wrap_handle(DE_Provider)
 %wrap_handle(DE_Wrapper)
+%wrap_handle(DE_ShapeFixConfigurationNode)
 /* end handles declaration */
 
 /* templates */
@@ -893,6 +894,39 @@ Input parameter: theNode configuration node to set.
 /******************************
 * class DE_ShapeFixParameters *
 ******************************/
+class DE_ShapeFixParameters {
+	public:
+/* public enums */
+enum class FixMode {
+	FixOrNot = - 1,
+	NotFix = 0,
+	Fix = 1,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class FixMode(IntEnum):
+	FixOrNot = - 1
+	NotFix = 0
+	Fix = 1
+FixOrNot = FixMode.FixOrNot
+NotFix = FixMode.NotFix
+Fix = FixMode.Fix
+};
+/* end python proxy for enums */
+
+};
+
+
+%extend DE_ShapeFixParameters {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /***************************
 * class DE_ValidationUtils *
 ***************************/
@@ -1973,6 +2007,54 @@ Return: true if Write operation has ended correctly.
 /*************************************
 * class DE_ShapeFixConfigurationNode *
 *************************************/
+%nodefaultctor DE_ShapeFixConfigurationNode;
+class DE_ShapeFixConfigurationNode : public DE_ConfigurationNode {
+	public:
+		/****** DE_ShapeFixConfigurationNode::Load ******/
+		/****** md5 signature: cb8d9f5c44ca24bfff6cfd104339c2c8 ******/
+		%feature("compactdefaultargs") Load;
+		%feature("autodoc", "
+Parameters
+----------
+theResource: DE_ConfigurationContext
+
+Return
+-------
+bool
+
+Description
+-----------
+Updates values according the resource 
+Input parameter: theResource input resource to use 
+Return: True if Load was successful.
+") Load;
+		bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
+
+		/****** DE_ShapeFixConfigurationNode::Save ******/
+		/****** md5 signature: 972ded6e05f14c55acb6d3bcf0f132a6 ******/
+		%feature("compactdefaultargs") Save;
+		%feature("autodoc", "Return
+-------
+TCollection_AsciiString
+
+Description
+-----------
+Writes configuration to the string 
+Return: result resource string.
+") Save;
+		TCollection_AsciiString Save();
+
+};
+
+
+%make_alias(DE_ShapeFixConfigurationNode)
+
+%extend DE_ShapeFixConfigurationNode {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -1981,14 +2063,6 @@ class DE_PluginHolder:
 
 @classnotwrapped
 class DE_MultiPluginHolder:
-	pass
-
-@classnotwrapped
-class DE_ShapeFixConfigurationNode:
-	pass
-
-@classnotwrapped
-class DE_ShapeFixParameters:
 	pass
 
 }

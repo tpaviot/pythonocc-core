@@ -57,6 +57,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 #include<XSControl_module.hxx>
 #include<IFSelect_module.hxx>
 #include<TColStd_module.hxx>
+#include<DESTEP_module.hxx>
 #include<Resource_module.hxx>
 #include<DE_module.hxx>
 #include<Message_module.hxx>
@@ -95,6 +96,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcontrol.html"
 %import XSControl.i
 %import IFSelect.i
 %import TColStd.i
+%import DESTEP.i
 %import Resource.i
 %import DE.i
 

@@ -3,13 +3,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : c4d2e98
+git revision : 2658143
 
 operating system : Linux 64bit 7.0.0-38-generic
 
 occt version targeted : 8.0.1
 
-date : 2026-10-14 06:13:13.678154+02:00
+date : 2026-10-14 06:31:14.267178+02:00
 ############################
 
 [INFO ]  Processing toolkit TKernel ===
@@ -7659,6 +7659,20 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]  Class: BinXCAFDrivers_DocumentRetrievalDriver
 [INFO ]  Class: BinXCAFDrivers_DocumentStorageDriver
 [INFO ]  Processing toolkit TKIGES ===
+[INFO ]  ## Processing module DEIGES
+[INFO ]  Class: DEIGES_ConfigurationNode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEIGES_Parameters
+[INFO ]  Enum: ReadMode_BSplineContinuity
+[INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: WriteMode_BRep
+[INFO ]  Enum: WriteMode_ConvertSurface
+[INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_PlaneMode
+[INFO ]  Class: DEIGES_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module IGESControl
 [INFO ]  Class: IGESControl_ActorWrite
 [INFO ]  Class: IGESControl_AlgoContainer
@@ -7825,6 +7839,24 @@ date : 2026-10-14 06:13:13.678154+02:00
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_TabulatedCylinder, IGESGeom not in module list
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_TrimmedSurface, IGESGeom not in module list
 [INFO ]  Processing toolkit TKRWMesh ===
+[INFO ]  ## Processing module DEGLTF
+[INFO ]  Class: DEGLTF_ConfigurationNode
+[INFO ]      Wrap nested class DEGLTF_ConfigurationNode::RWGltf_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEGLTF_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module DEOBJ
+[INFO ]  Class: DEOBJ_ConfigurationNode
+[INFO ]      Wrap nested class DEOBJ_ConfigurationNode::RWObj_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEOBJ_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module DEPLY
+[INFO ]  Class: DEPLY_ConfigurationNode
+[INFO ]      Wrap nested class DEPLY_ConfigurationNode::RWPly_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEPLY_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module RWGltf
 [INFO ]  Enum: RWGltf_GltfAccessorCompType
 [INFO ]  Enum: RWGltf_GltfAccessorLayout
@@ -7907,6 +7939,26 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]  Class: RWPly_PlyWriterContext
 [INFO ]      explicitly excluded method RWPly_PlyWriterContext::8602e84f6acfb0cc325e9d67eb1ded24
 [INFO ]  Processing toolkit TKSTEP ===
+[INFO ]  ## Processing module DESTEP
+[INFO ]  Class: DESTEP_ConfigurationNode
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DESTEP_Parameters
+[INFO ]  Enum: ReadMode_BSplineContinuity
+[INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: AngleUnitMode
+[INFO ]  Enum: ReadMode_ProductContext
+[INFO ]  Enum: ReadMode_ShapeRepr
+[INFO ]  Enum: ReadMode_AssemblyLevel
+[INFO ]  Enum: RWMode_Tessellated
+[INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_Assembly
+[INFO ]  Enum: WriteMode_StepSchema
+[INFO ]  Enum: WriteMode_VertexMode
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_ProductContext, ReadMode not in module list
+[INFO ]  Class: DESTEP_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Class: GeomToStep_Root
 [INFO ]  Class: GeomToStep_MakeAxis1Placement
@@ -7989,12 +8041,10 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]  Class: STEPControl_Reader
 [INFO ]      explicitly excluded method STEPControl_Reader::375c18315782813f2bf585453ffed5c3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [INFO ]  ## Processing module STEPEdit
 [INFO ]  Class: STEPEdit
 [INFO ]  Class: STEPEdit_EditContext
@@ -9569,6 +9619,12 @@ date : 2026-10-14 06:13:13.678154+02:00
 [WARNI]      [TypeHint] Skip type NCollection_HArray1<opencascade::handle<StepShape_Face, because of trailing :
 [INFO ]  Class: StepShape_SeamEdge
 [INFO ]  Processing toolkit TKSTL ===
+[INFO ]  ## Processing module DESTL
+[INFO ]  Class: DESTL_ConfigurationNode
+[INFO ]      Wrap nested class DESTL_ConfigurationNode::RWStl_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DESTL_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module RWStl
 [INFO ]  Class: RWStl
 [WARNI]      [TypeHint] Skip type NCollection_Sequence<opencascade::handle<Poly_Triangulation>>, because of trailing :
@@ -9577,6 +9633,14 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]  Class: StlAPI_Reader
 [INFO ]  Class: StlAPI_Writer
 [INFO ]  Processing toolkit TKVRML ===
+[INFO ]  ## Processing module DEVRML
+[INFO ]  Class: DEVRML_ConfigurationNode
+[INFO ]      Wrap nested class DEVRML_ConfigurationNode::Vrml_InternalSection
+[INFO ]  Enum: WriteMode_WriterVersion
+[INFO ]  Enum: WriteMode_RepresentationType
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEVRML_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Vrml
 [INFO ]  Enum: Vrml_AsciiTextJustification
 [INFO ]  Enum: Vrml_ConeParts
@@ -9926,19 +9990,12 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
 [INFO ]  Class: STEPCAFControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [WARNI]      [TypeHint] Skip type XSAlgo_ShapeProcessor::ProcessingFlags, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [WARNI]      [TypeHint] Skipping type const ShapeProcess::OperationsFlags &, should contain _
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
-[WARNI]      [TypeHint] Skipping unknown type DESTEP_Parameters, DESTEP not in module list
 [INFO ]  Processing toolkit TKXSBase ===
 [INFO ]  ## Processing module APIHeaderSection
 [INFO ]  Class: APIHeaderSection_EditHeader
@@ -10433,6 +10490,8 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]      explicitly excluded method DE_Provider::4da26eb3f229c14ac2f96ecb83da5db1
 [INFO ]      explicitly excluded method DE_Provider::bd94cecc3561e20266cdc2b9806cfaec
 [INFO ]      explicitly excluded method DE_Provider::b599888bf77594045d82c51542366f02
+[INFO ]  Class: DE_ShapeFixParameters
+[INFO ]  Enum: FixMode
 [INFO ]  Class: DE_ValidationUtils
 [WARNI]      [TypeHint] Skip type DE_Provider::ReadStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
@@ -10448,6 +10507,23 @@ date : 2026-10-14 06:13:13.678154+02:00
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
 [WARNI]      [TypeHint] Skip type DE_Provider::WriteStreamList, because of trailing :
+[INFO ]  Class: DE_ShapeFixConfigurationNode
+[INFO ]      Class DE_ShapeFixConfigurationNode is abstract, using %nodefaultctor.
+[INFO ]      Constructor skipped for abstract class DE_ShapeFixConfigurationNode
+[INFO ]      Constructor skipped for abstract class DE_ShapeFixConfigurationNode
+[INFO ]  Processing toolkit TKDECascade ===
+[INFO ]  ## Processing module DEBREP
+[INFO ]  Class: DEBREP_ConfigurationNode
+[INFO ]      Wrap nested class DEBREP_ConfigurationNode::DEBRep_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEBREP_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module DEXCAF
+[INFO ]  Class: DEXCAF_ConfigurationNode
+[INFO ]      Wrap nested class DEXCAF_ConfigurationNode::XCAFDoc_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEXCAF_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKBin ===
 [INFO ]  ## Processing module BinDrivers
 [INFO ]  Enum: BinDrivers_Marker
@@ -11047,8 +11123,8 @@ date : 2026-10-14 06:13:13.678154+02:00
 [INFO ]  Class: XmlTObjDrivers_XYZDriver
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 12.14s
+SWIG interface file generation completed in 38.20s
 #################################################
 
-[INFO ]  Number of classes: 4139
-[INFO ]  Number of methods: 46012
+[INFO ]  Number of classes: 4161
+[INFO ]  Number of methods: 46235

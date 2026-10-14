@@ -62,6 +62,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 #include<Resource_module.hxx>
 #include<TDocStd_module.hxx>
 #include<Message_module.hxx>
+#include<DESTEP_module.hxx>
 #include<DE_module.hxx>
 #include<TopTools_module.hxx>
 #include<Interface_module.hxx>
@@ -120,6 +121,7 @@ https://dev.opencascade.org/doc/occt-7.9.0/refman/html/package_stepcafcontrol.ht
 %import Resource.i
 %import TDocStd.i
 %import Message.i
+%import DESTEP.i
 %import DE.i
 %import TopTools.i
 

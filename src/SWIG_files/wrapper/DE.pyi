@@ -80,6 +80,19 @@ class DE_Provider(Standard_Transient):
     @staticmethod
     def DownCast(t: None) -> None: ...
 
+class DE_ShapeFixParameters:
+    class FixMode(IntEnum):
+        FixOrNot = ...
+        NotFix = 0
+        Fix = 1
+
+    FixOrNot = FixMode.FixOrNot
+    NotFix = FixMode.NotFix
+    Fix = FixMode.Fix
+    FixMode_FixOrNot = FixMode.FixOrNot
+    FixMode_NotFix = FixMode.NotFix
+    FixMode_Fix = FixMode.Fix
+
 class DE_ValidationUtils:
     @overload
     @staticmethod
@@ -178,17 +191,21 @@ class DE_Wrapper(Standard_Transient):
     @staticmethod
     def DownCast(t: None) -> None: ...
 
+class DE_ShapeFixConfigurationNode(DE_ConfigurationNode):
+    def Load(self, theResource: DE_ConfigurationContext) -> bool: ...
+    def Save(self) -> str: ...
+    @overload
+    @staticmethod
+    def DownCast(t: Standard_Transient) -> DE_ShapeFixConfigurationNode: ...
+    @overload
+    @staticmethod
+    def DownCast(t: None) -> None: ...
+
 #classnotwrapped
 class DE_PluginHolder: ...
 
 #classnotwrapped
 class DE_MultiPluginHolder: ...
-
-#classnotwrapped
-class DE_ShapeFixConfigurationNode: ...
-
-#classnotwrapped
-class DE_ShapeFixParameters: ...
 
 # harray1 classes
 # harray2 classes
