@@ -21,6 +21,40 @@ Current
   GeomAPI_PointsToBSpline(points).Curve().Poles() read freed memory once
   the temporary owner was collected (#1499)
 
+* wrapper: add the GeomGridEval, Geom2dGridEval, HelixGeom, HelixBRep and
+  BRepPreviewAPI modules, new in OCCT 8: grid evaluation of curves and
+  surfaces, helices, preview boxes degenerating to faces, edges or vertices
+
+* wrapper: add the DE provider modules DEBREP, DEXCAF, DESTEP, DEIGES,
+  DESTL, DEVRML, DEOBJ, DEPLY and DEGLTF, dispatched by DE_Wrapper from the
+  file extension
+
+* wrapper: the parameters of the DE providers can be set from python:
+  DESTEP_Parameters, DEIGES_Parameters, the InternalParameters of the
+  configuration nodes, their GlobalParameters and ShapeFixParameters
+
+* wrapper: the string fields of the wrapped structs are converted to str,
+  e.g. the Description of the BRepGraph issues
+
+* wrapper: the NCollection_Sequence instances are iterable, e.g.
+  for label in TDF_LabelSequence
+
+* wrapper: iterating over an Array2 yields the items row after row, it
+  raised a TypeError
+
+* wrapper: a module imports the modules of its template arguments and of
+  the types returned as a copy: the items of a TColgp array were opaque
+  pointers until OCC.Core.gp was imported, HelixGeom_BuilderHelix.Curves()
+  returned an opaque pointer
+
+* wrapper: type stubs regenerated: operators, DownCast, Array2 classes,
+  numpy members, template instantiations typed with their typedef
+
+* Extend: write_step_file no longer changes the global write.step.schema
+  parameter, the schema is passed to the writer with DESTEP_Parameters
+
+* Display, Extend: annotations fixed, ruff and ty quality pass
+
 Version 8.0.1.1 - October 2026
 ==============================
 
