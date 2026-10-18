@@ -10,7 +10,7 @@ The pythonocc-core wheels published on PyPI are built by
 | macOS    | `macosx_11_0_x86_64`, `macosx_11_0_arm64`  | `macos-15-intel`, `macos-15` |
 | Windows  | `win_amd64`                                | `windows-2022`               |
 
-for CPython 3.11 to 3.14, plus the sdist.
+for CPython 3.11 to 3.15, plus the sdist.
 
 * `pyproject.toml`: the scikit-build-core build, the version is read from
   `CMakeLists.txt`, and the cibuildwheel configuration.

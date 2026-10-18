@@ -77,7 +77,7 @@ result = "{major}.{minor}.{patch}{devel}"
 # .github/workflows/wheels.yml. The native dependencies (SWIG, OCCT and its
 # 3rd parties) are built by the scripts in ci/wheels/deps/.
 [tool.cibuildwheel]
-build = ["cp311-*", "cp312-*", "cp313-*", "cp314-*"]
+build = ["cp311-*", "cp312-*", "cp313-*", "cp314-*", "cp315-*"]
 skip = ["*-musllinux_*"]
 build-verbosity = 1
 test-requires = ["pytest", "svgwrite>=1.4"]
