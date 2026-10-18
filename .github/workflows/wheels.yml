@@ -9,17 +9,13 @@
 
 name: Wheels
 
+# no pull_request trigger: the review/* branches are already built on push,
+# a full build takes hours
 on:
   push:
     branches: ["master", "review/**"]
     # the paths filter does not apply to the tags
     tags: ["*"]
-    paths:
-      - pyproject.toml
-      - CMakeLists.txt
-      - ci/wheels/**
-      - .github/workflows/wheels.yml
-  pull_request:
     paths:
       - pyproject.toml
       - CMakeLists.txt
