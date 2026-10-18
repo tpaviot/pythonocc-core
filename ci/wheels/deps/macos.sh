@@ -104,11 +104,12 @@ cmake -S occt-src -B occt-build -G "Unix Makefiles" \
 cmake --build occt-build -j"${NPROC}"
 cmake --install occt-build
 
-# the 3rd party dylibs, for delocate. RapidJSON is header only, its
-# headers are included by the OCCT glTF headers: put them next to the
-# OCCT headers so that the pythonocc build finds them
+# the 3rd party dylibs, for delocate. vcpkg installs the non thread safe
+# libraw, needed by FreeImage, to lib/manual-link. RapidJSON is header
+# only, its headers are included by the OCCT glTF headers: put them next
+# to the OCCT headers so that the pythonocc build finds them
 VCPKG_INSTALLED="occt-build/vcpkg_installed/${TRIPLET}"
-cp -a "${VCPKG_INSTALLED}"/lib/*.dylib "${DEPS_PREFIX}/lib/"
+cp -a "${VCPKG_INSTALLED}"/lib/*.dylib "${VCPKG_INSTALLED}"/lib/manual-link/*.dylib "${DEPS_PREFIX}/lib/"
 cp -a "${VCPKG_INSTALLED}/include/rapidjson" "${DEPS_PREFIX}/include/opencascade/"
 
 # the wheels only need the libraries, headers and cmake config
