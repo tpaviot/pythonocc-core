@@ -82,8 +82,10 @@ skip = ["*-musllinux_*"]
 build-verbosity = 1
 test-requires = ["pytest", "svgwrite>=1.4"]
 test-sources = ["test"]
-# the tests use paths relative to the test directory
-test-command = "python -c \"import os, sys, pytest; os.chdir('test'); sys.exit(pytest.main(['-q', '-p', 'no:cacheprovider']))\""
+# the tests use paths relative to the test directory. The GUI backends test
+# opens on screen windows: it crashes on the headless macOS runners, and the
+# Windows CPython used by cibuildwheel has no tkinter
+test-command = "python -c \"import os, sys, pytest; os.chdir('test'); sys.exit(pytest.main(['-q', '-p', 'no:cacheprovider', '--ignore=test_display_sideeffects.py']))\""
 
 [tool.cibuildwheel.linux]
 archs = ["auto64"]
