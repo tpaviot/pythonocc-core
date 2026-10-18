@@ -27,8 +27,9 @@ job per Python version restores them and builds and tests a wheel. The
 libraries are vendored in the wheels by auditwheel (Linux), delocate (macOS)
 and delvewheel (Windows).
 
-The workflow runs on the pushes to master and review/* that change the
-packaging, on demand (workflow_dispatch), and on the tags.
+The workflow runs on the pushes to master and pypi/* that change the
+packaging, on demand (workflow_dispatch), and on the tags. The review/*
+branches are only built by the Azure conda pipeline.
 
 ## Releasing
 

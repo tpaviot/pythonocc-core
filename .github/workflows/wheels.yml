@@ -9,11 +9,11 @@
 
 name: Wheels
 
-# no pull_request trigger: the review/* branches are already built on push,
-# a full build takes hours
+# the pypi/* branches build the wheels, the review/* branches are left to
+# the Azure conda pipeline. No pull_request trigger: a full build takes hours
 on:
   push:
-    branches: ["master", "review/**"]
+    branches: ["master", "pypi/**"]
     # the paths filter does not apply to the tags
     tags: ["*"]
     paths:
