@@ -1,0 +1,190 @@
+# pythonocc-core wheels for PyPI: Linux x86_64/aarch64, macOS x86_64/arm64,
+# Windows AMD64, for CPython 3.10 to 3.14, plus the sdist.
+#
+# For each platform, a first job builds the native dependencies (SWIG, OCCT
+# and its 3rd parties) with the scripts of ci/wheels/deps/ and saves them to
+# the GitHub cache, then one job per Python version restores them and runs
+# cibuildwheel (configured in pyproject.toml). Pushing a tag also uploads
+# the wheels and the sdist to PyPI, through trusted publishing.
+
+name: Wheels
+
+on:
+  push:
+    branches: ["master", "review/**"]
+    # the paths filter does not apply to the tags
+    tags: ["*"]
+    paths:
+      - pyproject.toml
+      - CMakeLists.txt
+      - ci/wheels/**
+      - .github/workflows/wheels.yml
+  pull_request:
+    paths:
+      - pyproject.toml
+      - CMakeLists.txt
+      - ci/wheels/**
+      - .github/workflows/wheels.yml
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deps:
+    name: "${{ matrix.platform.name }}: dependencies"
+    runs-on: ${{ matrix.platform.os }}
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: &platforms
+          # deps_path: the Linux tarball directory (mounted at /host in the
+          # manylinux container), the macOS/Windows install prefix. The
+          # prefix must be the same in the deps and wheels jobs.
+          - name: linux-x86_64
+            os: ubuntu-24.04
+            manylinux: quay.io/pypa/manylinux_2_28_x86_64
+            deps_path: /home/runner/pyocc-deps-cache
+            deps_files: ci/wheels/deps/linux.sh
+          - name: linux-aarch64
+            os: ubuntu-24.04-arm
+            manylinux: quay.io/pypa/manylinux_2_28_aarch64
+            deps_path: /home/runner/pyocc-deps-cache
+            deps_files: ci/wheels/deps/linux.sh
+          - name: macos-x86_64
+            os: macos-15-intel
+            arch: x86_64
+            deps_path: /Users/runner/pyocc-deps
+            deps_files: ci/wheels/deps/macos.sh ci/wheels/triplets/x64-osx-pyocc.cmake
+          - name: macos-arm64
+            os: macos-15
+            arch: arm64
+            deps_path: /Users/runner/pyocc-deps
+            deps_files: ci/wheels/deps/macos.sh ci/wheels/triplets/arm64-osx-pyocc.cmake
+          - name: windows-AMD64
+            os: windows-2022
+            arch: AMD64
+            deps_path: C:/pyocc-deps
+            deps_files: ci/wheels/deps/windows.ps1 ci/wheels/triplets/x64-windows-pyocc.cmake
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: key
+        name: Dependencies cache key
+        shell: bash
+        run: |
+          set -eu
+          # bump DEPS_CACHE_VERSION to invalidate the caches
+          DEPS_CACHE_VERSION=1
+          HASH=$(cat ${{ matrix.platform.deps_files }} | sha256sum | cut -c1-16)
+          echo "key=pyocc-deps-${{ matrix.platform.name }}-${DEPS_CACHE_VERSION}-${HASH}" >> "$GITHUB_OUTPUT"
+
+      - id: cache
+        uses: actions/cache@v6
+        with:
+          path: ${{ matrix.platform.deps_path }}
+          key: ${{ steps.key.outputs.key }}
+
+      - name: Build SWIG and OCCT (manylinux container)
+        if: steps.cache.outputs.cache-hit != 'true' && runner.os == 'Linux'
+        run: |
+          set -eux
+          mkdir -p "${{ matrix.platform.deps_path }}"
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/project" \
+            -v "${{ matrix.platform.deps_path }}:/deps-cache" \
+            -e PYOCC_DEPS_CACHE=/deps-cache \
+            ${{ matrix.platform.manylinux }} \
+            bash /project/ci/wheels/deps/linux.sh
+
+      - name: Build SWIG and OCCT
+        if: steps.cache.outputs.cache-hit != 'true' && runner.os == 'macOS'
+        run: bash ci/wheels/deps/macos.sh
+        env:
+          ARCH: ${{ matrix.platform.arch }}
+          PYOCC_DEPS_PREFIX: ${{ matrix.platform.deps_path }}
+
+      - name: Build OCCT
+        if: steps.cache.outputs.cache-hit != 'true' && runner.os == 'Windows'
+        run: ./ci/wheels/deps/windows.ps1
+        shell: pwsh
+        env:
+          PYOCC_DEPS_PREFIX: ${{ matrix.platform.deps_path }}
+
+  wheels:
+    name: "${{ matrix.platform.name }}: ${{ matrix.python }}"
+    needs: deps
+    runs-on: ${{ matrix.platform.os }}
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: *platforms
+        python: [cp310, cp311, cp312, cp313, cp314]
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: key
+        name: Dependencies cache key
+        shell: bash
+        run: |
+          set -eu
+          # must match the deps job
+          DEPS_CACHE_VERSION=1
+          HASH=$(cat ${{ matrix.platform.deps_files }} | sha256sum | cut -c1-16)
+          echo "key=pyocc-deps-${{ matrix.platform.name }}-${DEPS_CACHE_VERSION}-${HASH}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache/restore@v6
+        with:
+          path: ${{ matrix.platform.deps_path }}
+          key: ${{ steps.key.outputs.key }}
+          fail-on-cache-miss: true
+
+      - uses: pypa/cibuildwheel@v4.2.1
+        env:
+          CIBW_BUILD: ${{ matrix.python }}-*
+          CIBW_ARCHS_MACOS: ${{ matrix.platform.arch }}
+          # Linux: the host filesystem is mounted at /host in the container
+          PYOCC_DEPS_CACHE: /host${{ matrix.platform.deps_path }}
+          PYOCC_DEPS_PREFIX: ${{ matrix.platform.deps_path }}
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: wheels-${{ matrix.platform.name }}-${{ matrix.python }}
+          path: wheelhouse/*.whl
+
+  sdist:
+    name: Source distribution
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: pipx run build --sdist
+      - uses: actions/upload-artifact@v7
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  publish:
+    name: Upload to PyPI
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    needs: [wheels, sdist]
+    runs-on: ubuntu-24.04
+    # the trusted publisher configured on PyPI for this repository, this
+    # workflow and this environment
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pythonocc-core
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+      - run: ls -l dist
+      - uses: pypa/gh-action-pypi-publish@v1.14.2
