@@ -1,5 +1,5 @@
 # pythonocc-core wheels for PyPI: Linux x86_64/aarch64, macOS x86_64/arm64,
-# Windows AMD64, for CPython 3.10 to 3.14, plus the sdist.
+# Windows AMD64, for CPython 3.11 to 3.14, plus the sdist.
 #
 # For each platform, a first job builds the native dependencies (SWIG, OCCT
 # and its 3rd parties) with the scripts of ci/wheels/deps/ and saves them to
@@ -121,7 +121,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: *platforms
-        python: [cp310, cp311, cp312, cp313, cp314]
+        python: [cp311, cp312, cp313, cp314]
     steps:
       - uses: actions/checkout@v7
 
