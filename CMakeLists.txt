@@ -67,6 +67,13 @@ if(APPLE)
   set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 endif(APPLE)
 
+if(SKBUILD AND UNIX AND NOT APPLE)
+  # wheel build: keep the OCCT library directory in the RPATH so that the
+  # unrepaired wheel is usable on the build machine. auditwheel replaces it
+  # with the vendored libraries location when repairing the wheel.
+  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+endif()
+
 #####################################################################
 # OpenGL. If available, enable compilation for Visualization module #
 #####################################################################
@@ -99,7 +106,7 @@ set(Python3_FIND_STRATEGY LOCATION)
 set(Python3_FIND_FRAMEWORK NEVER)
 # numpy is required: the Geom, Geom2d, Poly, TColStd, TColgp and TShort modules
 # use its C API. PYTHONOCC_MESHDS_NUMPY only enables the numpy arrays of MeshDS
-find_package(Python3 COMPONENTS Interpreter Development NumPy REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development.Module NumPy REQUIRED)
 include_directories(${Python3_NumPy_INCLUDE_DIRS})
 message(STATUS "Numpy include directory: ${Python3_NumPy_INCLUDE_DIRS}")
 if(PYTHONOCC_MESHDS_NUMPY)
@@ -165,7 +172,11 @@ endif()
 # by default, installed to site-packages/OCC #
 ##############################################
 if(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
-    if(DEFINED ENV{SP_DIR} AND WIN32)
+    if(SKBUILD)
+      # wheel build (pip/scikit-build-core): the install prefix is the
+      # wheel platlib directory, install relative to it
+      set(PYTHONOCC_INSTALL_DIRECTORY OCC CACHE PATH "pythonocc install directory")
+    elseif(DEFINED ENV{SP_DIR} AND WIN32)
       # TODO: following hack is azure specific, a recent update in azure
       # prevent cmake to find correct paths of python3 on windows
       # this should be removed as soon as possible
@@ -177,7 +188,7 @@ if(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
     OUTPUT_VARIABLE python_lib
     OUTPUT_STRIP_TRAILING_WHITESPACE)
       set(PYTHONOCC_INSTALL_DIRECTORY ${python_lib}/OCC CACHE PATH "pythonocc install directory")
-    endif(DEFINED ENV{SP_DIR} AND WIN32)
+    endif()
 endif(NOT DEFINED PYTHONOCC_INSTALL_DIRECTORY)
 
 message(STATUS "pythonocc modules will be installed to: ${PYTHONOCC_INSTALL_DIRECTORY}")
@@ -460,7 +471,8 @@ if(PYTHONOCC_WRAP_VISU)
 endif(PYTHONOCC_WRAP_VISU)
 
 # install Display
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Display DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}
+        PATTERN "__pycache__" EXCLUDE PATTERN ".ruff_cache" EXCLUDE)
 
 # install LICENSE file
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
@@ -477,7 +489,9 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/PkgBase/Exception.py DESTINATION $
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/PkgBase/py.typed DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}/Core)
 
 # install Extend
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Extend DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}
+        PATTERN "__pycache__" EXCLUDE PATTERN ".ruff_cache" EXCLUDE)
 
 # install Wrapper utils
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Wrapper DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY})
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/Wrapper DESTINATION ${PYTHONOCC_INSTALL_DIRECTORY}
+        PATTERN "__pycache__" EXCLUDE PATTERN ".ruff_cache" EXCLUDE)
