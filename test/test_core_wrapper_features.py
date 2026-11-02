@@ -504,7 +504,9 @@ def test_pickle_topods_shape_binary() -> None:
     # the triangulation is kept
     sphere = BRepPrimAPI_MakeSphere(10.0).Shape()
     BRepMesh_IncrementalMesh(sphere, 0.1)
-    face = TopExp_Explorer(pickle.loads(pickle.dumps(sphere)), TopAbs_FACE).Current()
+    face = topods.Face(
+        TopExp_Explorer(pickle.loads(pickle.dumps(sphere)), TopAbs_FACE).Current()
+    )
     assert BRep_Tool.Triangulation(face, TopLoc_Location()) is not None
 
 
@@ -516,8 +518,9 @@ def test_bintools_write_read_bytes() -> None:
     assert isinstance(data, bytes)
     for buffer in (data, bytearray(data), memoryview(data)):
         assert _volume(bintools.ReadFromBytes(buffer)) == pytest.approx(6000.0)
+    not_a_buffer: Any = 42
     with pytest.raises(TypeError):
-        bintools.ReadFromBytes(42)
+        bintools.ReadFromBytes(not_a_buffer)
     with pytest.raises(TypeError):
         bintools.ReadFromBytes(b"not a shape")
 
