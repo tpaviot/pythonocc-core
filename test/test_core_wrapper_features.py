@@ -479,6 +479,49 @@ def test_pickle_topods_shape_to_from() -> None:
     assert not pickled_shape.IsNull()
 
 
+def _volume(shape: TopoDS_Shape) -> float:
+    props = GProp_GProps()
+    brepgprop.VolumeProperties(shape, props)
+    return props.Mass()
+
+
+def test_pickle_topods_shape_binary() -> None:
+    """TopoDS_Shapes are pickled in the binary format of BinTools: the type,
+    the geometry and the triangulation survive, and the pickles written in
+    BRep text by the former versions are still read."""
+    box = BRepPrimAPI_MakeBox(100, 200, 300).Solid()
+    assert isinstance(box.__getstate__(), bytes)
+    unpickled = pickle.loads(pickle.dumps(box))
+    assert type(unpickled) is type(box)
+    assert unpickled.ShapeType() == box.ShapeType()
+    assert _volume(unpickled) == pytest.approx(_volume(box))
+    # a pickle of a former version holds a str in BRep text
+    old = type(box).__new__(type(box))
+    old.__setstate__(breptools.WriteToString(box, True))
+    assert _volume(old) == pytest.approx(_volume(box))
+    # the null shape
+    assert pickle.loads(pickle.dumps(TopoDS_Shape())).IsNull()
+    # the triangulation is kept
+    sphere = BRepPrimAPI_MakeSphere(10.0).Shape()
+    BRepMesh_IncrementalMesh(sphere, 0.1)
+    face = TopExp_Explorer(pickle.loads(pickle.dumps(sphere)), TopAbs_FACE).Current()
+    assert BRep_Tool.Triangulation(face, TopLoc_Location()) is not None
+
+
+def test_bintools_write_read_bytes() -> None:
+    """bintools.WriteToBytes/ReadFromBytes serialize a shape in memory, and
+    ReadFromBytes accepts any bytes-like object."""
+    box = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    data = bintools.WriteToBytes(box)
+    assert isinstance(data, bytes)
+    for buffer in (data, bytearray(data), memoryview(data)):
+        assert _volume(bintools.ReadFromBytes(buffer)) == pytest.approx(6000.0)
+    with pytest.raises(TypeError):
+        bintools.ReadFromBytes(42)
+    with pytest.raises(TypeError):
+        bintools.ReadFromBytes(b"not a shape")
+
+
 def test_sub_class() -> None:
     """Test: subclass"""
     # Checks that OCC objects can be subclassed, and passed as parameters.
