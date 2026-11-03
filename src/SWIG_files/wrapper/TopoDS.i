@@ -1402,13 +1402,19 @@ def __eq__(self, right):
 %extend TopoDS_Shape {
 %pythoncode {
     def __getstate__(self):
-        from .BRepTools import breptools
-        str_shape = breptools.WriteToString(self, True)
-        return str_shape
+        from .BinTools import bintools
+        return bintools.WriteToBytes(self)
     def __setstate__(self, state):
-        from .BRepTools import breptools
-        the_shape = breptools.ReadFromString(state)
-        self.this = the_shape.this
+        if isinstance(state, str):
+            from .BRepTools import breptools
+            the_shape = breptools.ReadFromString(state)
+        else:
+            from .BinTools import bintools
+            the_shape = bintools.ReadFromBytes(state)
+        if the_shape is None:
+            TopoDS_Shape.__init__(self)
+        else:
+            self.this = the_shape.this
     }
 };
 %extend TopoDS_Shape {

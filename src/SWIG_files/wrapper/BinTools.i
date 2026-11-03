@@ -519,6 +519,33 @@ Parameter theRange  the range of progress indicator to fill in.
 ") Write;
 		static bool Write(const TopoDS_Shape & theShape, const char * const theFile, const bool theWithTriangles, const bool theWithNormals, const BinTools_FormatVersion theVersion, const Message_ProgressRange & theRange = Message_ProgressRange());
 
+
+%feature("autodoc", "Serializes TopoDS_Shape to bytes, in the binary format of BinTools (the format of the binary .brep files). Triangulations are written if with_triangles is True, their normals if with_normals is True.") WriteToBytes;
+%extend{
+    static PyObject* WriteToBytes(const TopoDS_Shape & shape, bool with_triangles = true, bool with_normals = false) {
+        std::ostringstream s(std::ios::out | std::ios::binary);
+        BinTools::Write(shape, s, with_triangles, with_normals, BinTools_FormatVersion_CURRENT);
+        const std::string buffer = s.str();
+        return PyBytes_FromStringAndSize(buffer.data(), static_cast<Py_ssize_t>(buffer.size()));
+    }
+};
+%feature("autodoc", "Deserializes TopoDS_Shape from a bytes-like object written by WriteToBytes. Create and return a new TopoDS_Shape each time the method is called.") ReadFromBytes;
+%extend{
+    static TopoDS_Shape ReadFromBytes(PyObject* data) {
+        Py_buffer view;
+        if (PyObject_GetBuffer(data, &view, PyBUF_SIMPLE) != 0) {
+            PyErr_Clear();
+            throw Standard_TypeMismatch("ReadFromBytes expects a bytes-like object");
+        }
+        std::istringstream s(std::string(static_cast<const char*>(view.buf), static_cast<size_t>(view.len)),
+                             std::ios::in | std::ios::binary);
+        PyBuffer_Release(&view);
+        TopoDS_Shape shape;
+        BinTools::Read(shape, s);
+        return shape;
+    }
+};
+
 };
 
 
