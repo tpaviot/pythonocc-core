@@ -23,6 +23,9 @@ def backend(request):
     try:
         if backend_str != "tk":
             assert load_backend(backend_str) == backend_str
+        else:
+            # some Python builds have no tkinter (the Windows NuGet package)
+            pytest.importorskip("tkinter")
         return backend_str
     except (AssertionError, ValueError) as e:
         pytest.skip(str(e))

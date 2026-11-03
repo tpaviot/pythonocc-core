@@ -100,7 +100,10 @@ def test_array1_of_gp(type_, array_types_2d, normalizing_array_types):
     np_arr_out = gp_arr.to_numpy_array()
 
     if type_ in normalizing_array_types:
-        assert np.all(np_arr_out == p / np.linalg.norm(p, axis=-1, keepdims=True))
+        # gp_Dir normalizes in C++, may differ by a few ulps (FMA on aarch64)
+        assert np.allclose(
+            np_arr_out, p / np.linalg.norm(p, axis=-1, keepdims=True), rtol=0, atol=1e-15
+        )
     else:
         assert np.all(np_arr_out == p)
 
@@ -126,7 +129,10 @@ def test_array2_of_gp(type_, array_types_2d, normalizing_array_types):
     np_arr_out = arr_occ.to_numpy_array()
 
     if type_ in normalizing_array_types:
-        assert np.all(np_arr_out == p / np.linalg.norm(p, axis=-1, keepdims=True))
+        # gp_Dir normalizes in C++, may differ by a few ulps (FMA on aarch64)
+        assert np.allclose(
+            np_arr_out, p / np.linalg.norm(p, axis=-1, keepdims=True), rtol=0, atol=1e-15
+        )
     else:
         assert np.all(np_arr_out == p)
 
