@@ -33,6 +33,7 @@ from OCC.Extend.ShapeFactory import (
     make_edge,
     make_extrusion,
     make_face,
+    make_vertex,
     make_wire,
     measure_shape_mass_center_of_gravity,
     measure_shape_volume,
@@ -41,6 +42,15 @@ from OCC.Extend.ShapeFactory import (
     translate_shp,
 )
 from OCC.Extend.TopologyUtils import TopologyExplorer
+
+
+def test_make_vertex():
+    """make_vertex takes a gp_Pnt or the coordinates of the point"""
+    for args in ((gp_Pnt(1, 2, 3),), (1.0, 2.0, 3.0), (1, 2, 3)):
+        pnt = BRep_Tool.Pnt(make_vertex(*args))
+        assert [pnt.X(), pnt.Y(), pnt.Z()] == [1.0, 2.0, 3.0]
+    with pytest.raises(TypeError):
+        make_vertex(1.0, 2.0)
 
 
 def test_midpoint():

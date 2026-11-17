@@ -136,6 +136,7 @@ class WireExplorer:
             self._reinitialize()
         topology_type = topods.Edge if edges else topods.Vertex
         seq = []
+        current_item: TopoDS_Shape
 
         while self.wire_explorer.More():
             # loop edges
@@ -188,7 +189,10 @@ class TopologyExplorer:
         self.ignore_orientation = ignore_orientation
         # shape -> ancestors maps, built on demand and reused by the *_from_*
         # queries: building one is linear in the size of the shape
-        self._ancestors_maps: dict[tuple[Any, Any], Any] = {}
+        self._ancestors_maps: dict[
+            tuple[TopAbs_ShapeEnum, TopAbs_ShapeEnum],
+            TopTools_IndexedDataMapOfShapeListOfShape,
+        ] = {}
         self._ancestors_maps_shape: TopoDS_Shape | None = None
 
         # the topology_factory dicts maps topology types and functions that can
@@ -207,8 +211,8 @@ class TopologyExplorer:
     def _loop_topo(
         self,
         topology_type: TopAbs_ShapeEnum,
-        topological_entity=None,
-        topology_type_to_avoid=None,
+        topological_entity: TopoDS_Shape | None = None,
+        topology_type_to_avoid: TopAbs_ShapeEnum | None = None,
     ) -> Iterator[Any]:
         """
         Generic method to iterate over sub-shapes of a given type.
@@ -273,7 +277,9 @@ class TopologyExplorer:
         return shape_map
 
     def _number_of_topo_type(
-        self, topology_type: TopAbs_ShapeEnum, topological_entity=None
+        self,
+        topology_type: TopAbs_ShapeEnum,
+        topological_entity: TopoDS_Shape | None = None,
     ) -> int:
         """Returns the number of sub-shapes of a given type."""
         if self.ignore_orientation:
@@ -378,7 +384,12 @@ class TopologyExplorer:
         """
         return _number_of_topo(ordered_edges_from_wire(wire))
 
-    def _ancestors(self, topology_type_1, topology_type_2, topological_entity):
+    def _ancestors(
+        self,
+        topology_type_1: TopAbs_ShapeEnum,
+        topology_type_2: TopAbs_ShapeEnum,
+        topological_entity: TopoDS_Shape,
+    ) -> list[Any]:
         """
         Returns the list of the ancestors of a given type of a topological
         entity, without duplicates (IsSame if ignore_orientation, IsEqual
@@ -405,8 +416,11 @@ class TopologyExplorer:
         return list(ancestors_map.FindFromKey(topological_entity))
 
     def _map_shapes_and_ancestors(
-        self, topology_type_1, topology_type_2, topological_entity
-    ):
+        self,
+        topology_type_1: TopAbs_ShapeEnum,
+        topology_type_2: TopAbs_ShapeEnum,
+        topological_entity: TopoDS_Shape,
+    ) -> Iterator[Any]:
         """
         Maps shapes to their ancestors of a different type.
         For example, can be used to find all faces (ancestors, type 2) that an edge
@@ -437,7 +451,10 @@ class TopologyExplorer:
         }
 
     def _number_shapes_ancestors(
-        self, topology_type_1, topology_type_2, topological_entity
+        self,
+        topology_type_1: TopAbs_ShapeEnum,
+        topology_type_2: TopAbs_ShapeEnum,
+        topological_entity: TopoDS_Shape,
     ) -> int:
         """
         Returns the number of ancestors of a given type for a topological entity.

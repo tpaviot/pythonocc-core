@@ -18,7 +18,7 @@
 """Helpers to build, transform and measure shapes."""
 
 from math import radians
-from typing import Any
+from typing import Any, overload
 
 from OCC.Core.Bnd import Bnd_Box, Bnd_OBB
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
@@ -107,14 +107,26 @@ def point_list_to_TColgp_Array1OfPnt(li: list[gp_Pnt]) -> TColgp_Array1OfPnt:
 
 #
 # 0D
+@overload
+def make_vertex(pnt: gp_Pnt, /) -> TopoDS_Vertex: ...
+@overload
+def make_vertex(x: float, y: float, z: float, /) -> TopoDS_Vertex: ...
 def make_vertex(*args: gp_Pnt | float) -> TopoDS_Vertex:
     """
     Creates a TopoDS_Vertex from a point.
 
     :param args: A gp_Pnt or the coordinates (x, y, z) of the point.
     :return: The created TopoDS_Vertex.
+    :raises TypeError: If args is neither a gp_Pnt nor three coordinates.
     """
-    vert = BRepBuilderAPI_MakeVertex(*args)
+    match args:
+        case (gp_Pnt() as pnt,):
+            pass
+        case (float() | int() as x, float() | int() as y, float() | int() as z):
+            pnt = gp_Pnt(x, y, z)
+        case _:
+            raise TypeError("make_vertex expects a gp_Pnt or the coordinates x, y, z")
+    vert = BRepBuilderAPI_MakeVertex(pnt)
     assert_isdone(vert, "failed to produce vertex")
     return vert.Vertex()
 

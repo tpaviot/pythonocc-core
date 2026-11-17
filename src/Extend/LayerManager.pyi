@@ -5,6 +5,8 @@ from OCC.Core.Quantity import Quantity_Color
 from OCC.Core.TopoDS import TopoDS_Shape
 from OCC.Display.OCCViewer import Viewer3d
 
+DEFAULT_MATERIAL: Graphic3d_NameOfMaterial
+
 class Layer:
     color: str | int | Quantity_Color
     display: Viewer3d

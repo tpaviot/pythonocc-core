@@ -76,14 +76,15 @@ from OCC.Extend.TopologyUtils import (
 )
 
 try:
-    import svgwrite
+    import svgwrite  # type: ignore[import-untyped]
+    import svgwrite.shapes  # type: ignore[import-untyped]
 
     HAVE_SVGWRITE = True
 except ImportError:
     HAVE_SVGWRITE = False
 
 
-def check_svgwrite_installed():
+def check_svgwrite_installed() -> None:
     """Raises OSError if the optional svgwrite package is not available."""
     if not HAVE_SVGWRITE:
         raise OSError(
@@ -246,7 +247,7 @@ def read_step_file_with_names_colors(
     if not Path(filename).is_file():
         raise FileNotFoundError(f"{filename} not found.")
     # the list:
-    output_shapes = {}
+    output_shapes: dict[TopoDS_Shape, list[str | Quantity_Color]] = {}
 
     # create an handle to a document
     doc = TDocStd_Document("pythonocc-doc-step-import")
@@ -272,7 +273,7 @@ def read_step_file_with_names_colors(
     locs = []
     color_types = (XCAFDoc_ColorGen, XCAFDoc_ColorSurf, XCAFDoc_ColorCurv)
 
-    def _get_color(shape, label):
+    def _get_color(shape: TopoDS_Shape, label: TDF_Label) -> Quantity_Color:
         """Returns the instance color of the shape, or the color of its label,
         or a default grey color."""
         color = Quantity_Color(0.5, 0.5, 0.5, Quantity_TOC_RGB)  # default color
@@ -283,7 +284,7 @@ def read_step_file_with_names_colors(
                 color_tool.SetInstanceColor(shape, color_type, color)
         return color
 
-    def _get_sub_shapes(lab):
+    def _get_sub_shapes(lab: TDF_Label) -> None:
         if shape_tool.IsAssembly(lab):
             l_c = TDF_LabelSequence()
             shape_tool.GetComponents(lab, l_c)
@@ -479,7 +480,7 @@ def read_iges_file(
     return _shapes
 
 
-def write_iges_file(a_shape: TopoDS_Shape, filename: str):
+def write_iges_file(a_shape: TopoDS_Shape, filename: str) -> None:
     """
     Exports a shape to an IGES file.
 
@@ -520,10 +521,10 @@ def edge_to_svg_polyline(
     """
     check_svgwrite_installed()
 
-    unit_factor = 1  # by default
+    unit_factor = 1.0  # by default
 
     if unit == "mm":
-        unit_factor = 1
+        unit_factor = 1.0
     elif unit == "m":
         unit_factor = 1e3
 
@@ -675,7 +676,7 @@ def _mesh_shape_to_document(
 #################################################
 # ply export (write not avaiable from upstream) #
 #################################################
-def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
+def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str) -> None:
     """
     Exports a shape to a PLY file using OCAF.
 
@@ -699,7 +700,7 @@ def write_ply_file(a_shape: TopoDS_Shape, ply_filename: str):
 #################################################
 # Obj export (write not avaiable from upstream) #
 #################################################
-def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str):
+def write_obj_file(a_shape: TopoDS_Shape, obj_filename: str) -> None:
     """
     Exports a shape to an OBJ file using OCAF.
 
@@ -769,7 +770,9 @@ def read_gltf_file(
     return [gltf_reader.SingleShape()]
 
 
-def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str, binary=True):
+def write_gltf_file(
+    a_shape: TopoDS_Shape, gltf_filename: str, binary: bool = True
+) -> None:
     """
     Exports a shape to a glTF file using OCAF.
 
