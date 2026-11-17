@@ -1243,6 +1243,48 @@ def test_returned_reference_keeps_owner_alive():
     assert TColStd_HArray1OfReal(1, 3, 2.5).Array1().Value(2) == 2.5
 
 
+def test_template_alias_returned_references():
+    """Issue #1504: the OCCT 8 template aliases (BRepLProp_SLProps,
+    GeomLProp_CLProps, Extrema_ExtPC...) return the gp objects by copy, the
+    other references keep the instance alive"""
+    from OCC.Core.BRepLProp import BRepLProp_SLProps
+    from OCC.Core.Extrema import Extrema_ExtPC
+    from OCC.Core.Geom import Geom_Circle
+    from OCC.Core.GeomAdaptor import GeomAdaptor_Curve
+    from OCC.Core.GeomLProp import GeomLProp_CLProps
+
+    faces = list(TopologyExplorer(BRepPrimAPI_MakeBox(1, 2, 3).Shape()).faces())
+
+    def normal(face):
+        props = BRepLProp_SLProps(BRepAdaptor_Surface(face), 0.5, 0.5, 2, 1e-6)
+        return props.Normal(), props.D1U(), props.D1V()
+
+    first = normal(faces[0])
+    expected = [list(v.Coord()) for v in first]
+    gc.collect()
+    # reuse the memory of the deleted props
+    _ = [normal(faces[2]) for _ in range(20)]
+    assert [list(v.Coord()) for v in first] == expected
+    # a copy: not modified when the props are moved to another point
+    circle = Geom_Circle(gp_Ax2(gp_Pnt(0, 0, 0), gp_Dir(0, 0, 1)), 1.0)
+    props = GeomLProp_CLProps(circle, 0.0, 2, 1e-6)
+    d1 = props.D1()
+    props.SetParameter(1.0)
+    assert list(d1.Coord()) == pytest.approx([0.0, 1.0, 0.0])
+    assert d1.thisown
+    assert not hasattr(d1, "_owner")
+
+    def projection(x):
+        return Extrema_ExtPC(gp_Pnt(x, 0, 0), GeomAdaptor_Curve(circle)).Point(1)
+
+    point = projection(2.0)
+    parameter = point.Parameter()
+    gc.collect()
+    _ = [projection(-2.0) for _ in range(20)]
+    assert isinstance(point._owner, Extrema_ExtPC)
+    assert point.Parameter() == parameter
+
+
 def test_osd_thread_pool():
     """Issue #1479: the number of threads of the parallel algorithms can be set
     with the default OSD_ThreadPool"""

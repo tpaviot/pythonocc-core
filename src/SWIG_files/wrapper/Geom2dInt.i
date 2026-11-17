@@ -97,10 +97,20 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GFuncExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GFuncExtPC.hxx";
 %template(Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
 %include "Extrema_GCurveLocator.hxx";
 %template(Geom2dInt_TheCurveLocatorOfTheProjPCurOfGInter) Extrema_GCurveLocator<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GenLocateExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GenLocateExtPC.hxx";
 %template(Geom2dInt_TheLocateExtPCOfTheProjPCurOfGInter) Extrema_GenLocateExtPC<Adaptor2d_Curve2d,Geom2dInt_Geom2dCurveTool,Extrema_POnCurv2d,gp_Pnt2d,Geom2dInt_PCLocFOfTheLocateExtPCOfTheProjPCurOfGInter>;
 /* end templates declaration */

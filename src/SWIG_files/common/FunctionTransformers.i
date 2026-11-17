@@ -266,6 +266,60 @@ return a reference, to modify the container in place.
     }
 }
 
+/*
+Return by copy the gp objects returned by const reference. The generator
+already returns them by value in the classes it wraps (adapt_return_type), but
+not in the class templates whose header SWIG parses directly, i.e. the OCCT 8
+template aliases: BRepLProp_SLProps::Normal(), GeomLProp_CLProps::D1(), ...
+returned a proxy into the instance, invalid once the instance is deleted and
+modified by SetParameters (issue #1504).
+*/
+%define GP_RETURNED_BY_COPY(TYPE)
+%typemap(out) const TYPE & {
+    TYPE* copy = new TYPE(*$1);
+    $result = SWIG_NewPointerObj(SWIG_as_voidptr(copy), $descriptor, SWIG_POINTER_OWN);
+    if (!$result) {
+        delete copy;
+        SWIG_fail;
+    }
+}
+%enddef
+GP_RETURNED_BY_COPY(gp_XYZ)
+GP_RETURNED_BY_COPY(gp_XY)
+GP_RETURNED_BY_COPY(gp_Pnt)
+GP_RETURNED_BY_COPY(gp_Pnt2d)
+GP_RETURNED_BY_COPY(gp_Vec)
+GP_RETURNED_BY_COPY(gp_Vec2d)
+GP_RETURNED_BY_COPY(gp_Dir)
+GP_RETURNED_BY_COPY(gp_Dir2d)
+GP_RETURNED_BY_COPY(gp_Ax1)
+GP_RETURNED_BY_COPY(gp_Ax2)
+GP_RETURNED_BY_COPY(gp_Ax3)
+GP_RETURNED_BY_COPY(gp_Ax2d)
+GP_RETURNED_BY_COPY(gp_Ax22d)
+GP_RETURNED_BY_COPY(gp_Mat)
+GP_RETURNED_BY_COPY(gp_Mat2d)
+GP_RETURNED_BY_COPY(gp_Trsf)
+GP_RETURNED_BY_COPY(gp_Trsf2d)
+GP_RETURNED_BY_COPY(gp_GTrsf)
+GP_RETURNED_BY_COPY(gp_GTrsf2d)
+GP_RETURNED_BY_COPY(gp_Quaternion)
+GP_RETURNED_BY_COPY(gp_Lin)
+GP_RETURNED_BY_COPY(gp_Lin2d)
+GP_RETURNED_BY_COPY(gp_Circ)
+GP_RETURNED_BY_COPY(gp_Circ2d)
+GP_RETURNED_BY_COPY(gp_Elips)
+GP_RETURNED_BY_COPY(gp_Elips2d)
+GP_RETURNED_BY_COPY(gp_Hypr)
+GP_RETURNED_BY_COPY(gp_Hypr2d)
+GP_RETURNED_BY_COPY(gp_Parab)
+GP_RETURNED_BY_COPY(gp_Parab2d)
+GP_RETURNED_BY_COPY(gp_Pln)
+GP_RETURNED_BY_COPY(gp_Cylinder)
+GP_RETURNED_BY_COPY(gp_Cone)
+GP_RETURNED_BY_COPY(gp_Sphere)
+GP_RETURNED_BY_COPY(gp_Torus)
+
 
 /*
 Non-const references to scalars returned by value. By default SWIG wraps a
