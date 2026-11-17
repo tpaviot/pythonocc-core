@@ -126,6 +126,21 @@ Array1ExtendIter(math_ValueAndWeight)
             yield value(i)
     }
 };
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") math_VectorBase::Array1 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") math_VectorBase::Initialized %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") math_VectorBase::Value %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "math_VectorBase.hxx";
 %template(math_IntegerVector) math_VectorBase<int>;
 %template(math_Vector) math_VectorBase<double>;

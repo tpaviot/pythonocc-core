@@ -159,6 +159,26 @@ Array1ExtendIter(HLRBRep_EdgeData)
 %template(HLRBRep_Array1OfFData) NCollection_Array1<HLRBRep_FaceData>;
 Array1ExtendIter(HLRBRep_FaceData)
 
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D1 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D2 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D3 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::Value %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "GeomLProp_CLProps.hxx";
 %template(HLRBRep_CLProps) GeomLProp_CLPropsBase<gp_Pnt2d, gp_Vec2d, gp_Dir2d, const HLRBRep_Curve *, LProp_CurveUtils::ToolAccess<HLRBRep_CLPropsATool>>;
 %template(HLRBRep_ListIteratorOfListOfBPnt2D) NCollection_TListIterator<HLRBRep_BiPnt2D>;
@@ -203,8 +223,48 @@ Array1ExtendIter(HLRBRep_FaceData)
             it.Next()
     }
 };
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GFuncExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GFuncExtPC.hxx";
 %template(HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter) Extrema_GFuncExtPC<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D1U %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D1V %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D2U %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D2V %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::DUV %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::Normal %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::Value %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "GeomLProp_SLProps.hxx";
 %template(HLRBRep_SLProps) GeomLProp_SLPropsBase<HLRBRep_SurfacePtr,LProp_SurfaceUtils::ToolAccess<HLRBRep_SLPropsATool>>;
 %template(HLRBRep_SeqOfShapeBounds) NCollection_Sequence<HLRBRep_ShapeBounds>;
@@ -228,6 +288,11 @@ Array1ExtendIter(HLRBRep_FaceData)
 };
 %include "Extrema_GCurveLocator.hxx";
 %template(HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter) Extrema_GCurveLocator<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GenLocateExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GenLocateExtPC.hxx";
 %template(HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter) Extrema_GenLocateExtPC<HLRBRep_CurvePtr,HLRBRep_CurveTool,Extrema_POnCurv2d,gp_Pnt2d,HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter>;
 /* end templates declaration */

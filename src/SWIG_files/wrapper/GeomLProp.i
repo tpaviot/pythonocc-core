@@ -82,9 +82,64 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D1 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D2 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::D3 %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_CLPropsBase::Value %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "GeomLProp_CLProps.hxx";
 %template(GeomLProp_CLProps) GeomLProp_CLPropsBase<gp_Pnt,gp_Vec,gp_Dir,opencascade::handle<Geom_Curve>>;
 %template(GeomLProp_CLProps2d) GeomLProp_CLPropsBase<gp_Pnt2d,gp_Vec2d,gp_Dir2d,opencascade::handle<Geom2d_Curve>>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D1U %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D1V %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D2U %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::D2V %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::DUV %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::Normal %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") GeomLProp_SLPropsBase::Value %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "GeomLProp_SLProps.hxx";
 %template(GeomLProp_SLProps) GeomLProp_SLPropsBase<opencascade::handle<Geom_Surface>>;
 /* end templates declaration */

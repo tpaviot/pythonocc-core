@@ -12,6 +12,12 @@ This release requires opencascade-8.0.1
 * wrapper: bintools.WriteToBytes and bintools.ReadFromBytes serialize a
   shape in memory in the binary format of BinTools
 
+* wrapper: the OCCT 8 template aliases return the gp objects by copy, as in
+  7.9: BRepLProp_SLProps.Normal(), D1U(), GeomLProp_CLProps.D1()... returned a
+  view into the instance, freed with a temporary props object and modified by
+  SetParameters. The other references keep the instance alive, e.g.
+  Extrema_ExtPC.Point() (issue #1504)
+
 Version 8.0.1.2 - October 2026
 ==============================
 

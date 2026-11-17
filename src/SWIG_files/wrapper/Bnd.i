@@ -89,9 +89,29 @@ Array1ExtendIter(Bnd_Box2d)
 %template(Bnd_Array1OfSphere) NCollection_Array1<Bnd_Sphere>;
 Array1ExtendIter(Bnd_Sphere)
 
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Bnd_B2::Center %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Bnd_B2::HSize %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Bnd_B2.hxx";
 %template(Bnd_B2d) Bnd_B2<double>;
 %template(Bnd_B2f) Bnd_B2<float>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Bnd_B3::Center %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Bnd_B3::HSize %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Bnd_B3.hxx";
 %template(Bnd_B3d) Bnd_B3<double>;
 %template(Bnd_B3f) Bnd_B3<float>;

@@ -212,6 +212,11 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") BRepGraph_Iterator::Current %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "BRepGraph_Iterator.hxx";
 %template(BRepGraph_CoEdgeIterator) BRepGraph_Iterator<BRepGraphInc::CoEdgeDef>;
 %template(BRepGraph_CompSolidIterator) BRepGraph_Iterator<BRepGraphInc::CompSolidDef>;

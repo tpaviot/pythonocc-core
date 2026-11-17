@@ -150,6 +150,11 @@ Array1ExtendIter(Extrema_POnSurf)
 %include "Extrema_GFuncExtCC.hxx";
 %template(Extrema_CCLocFOfLocECC) Extrema_GFuncExtCC<Adaptor3d_Curve,Extrema_CurveTool,Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
 %template(Extrema_CCLocFOfLocECC2d) Extrema_GFuncExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GFuncExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GFuncExtPC.hxx";
 %template(Extrema_PCFOfEPCOfELPCOfLocateExtPC) Extrema_GFuncExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,gp_Vec,NCollection_Sequence<Extrema_POnCurv>>;
 %template(Extrema_PCFOfEPCOfELPCOfLocateExtPC2d) Extrema_GFuncExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,gp_Vec2d,NCollection_Sequence<Extrema_POnCurv2d>>;
@@ -216,6 +221,11 @@ Array1ExtendIter(Extrema_POnSurf)
 };
 %template(Extrema_UBTreeFillerOfSphere) NCollection_UBTreeFiller<int,Bnd_Sphere>;
 %template(Extrema_UBTreeOfSphere) NCollection_UBTree<int,Bnd_Sphere>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GGenExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GGenExtPC.hxx";
 %template(Extrema_EPCOfELPCOfLocateExtPC) Extrema_GGenExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_PCFOfEPCOfELPCOfLocateExtPC>;
 %template(Extrema_EPCOfELPCOfLocateExtPC2d) Extrema_GGenExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_PCFOfEPCOfELPCOfLocateExtPC2d>;
@@ -224,9 +234,19 @@ Array1ExtendIter(Extrema_POnSurf)
 %include "Extrema_GenLocateExtCC.hxx";
 %template(Extrema_LocECC) Extrema_GenLocateExtCC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,Extrema_CCLocFOfLocECC>;
 %template(Extrema_LocECC2d) Extrema_GenLocateExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,Extrema_CCLocFOfLocECC2d>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GenLocateExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GenLocateExtPC.hxx";
 %template(Extrema_LocEPCOfLocateExtPC) Extrema_GenLocateExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_PCLocFOfLocEPCOfLocateExtPC>;
 %template(Extrema_LocEPCOfLocateExtPC2d) Extrema_GenLocateExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_PCLocFOfLocEPCOfLocateExtPC2d>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GGExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GGExtPC.hxx";
 %template(Extrema_ELPCOfLocateExtPC) Extrema_GGExtPC<Adaptor3d_Curve,Extrema_CurveTool,Extrema_ExtPElC,gp_Pnt,gp_Vec,Extrema_POnCurv,NCollection_Sequence<Extrema_POnCurv>,Extrema_EPCOfELPCOfLocateExtPC>;
 %template(Extrema_ELPCOfLocateExtPC2d) Extrema_GGExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_ExtPElC2d,gp_Pnt2d,gp_Vec2d,Extrema_POnCurv2d,NCollection_Sequence<Extrema_POnCurv2d>,Extrema_EPCOfELPCOfLocateExtPC2d>;
@@ -235,6 +255,11 @@ Array1ExtendIter(Extrema_POnSurf)
 %include "Extrema_GGenExtCC.hxx";
 %template(Extrema_ECC) Extrema_GGenExtCC<Adaptor3d_Curve,Extrema_CurveTool,Adaptor3d_Curve,Extrema_CurveTool,Extrema_POnCurv,gp_Pnt,Extrema_ExtPC>;
 %template(Extrema_ECC2d) Extrema_GGenExtCC<Adaptor2d_Curve2d,Extrema_Curve2dTool,Adaptor2d_Curve2d,Extrema_Curve2dTool,Extrema_POnCurv2d,gp_Pnt2d,Extrema_ExtPC2d>;
+/* the returned reference keeps the instance alive (issue #1504) */
+%feature("pythonappend") Extrema_GLocateExtPC::Point %{
+	if hasattr(val, "this") and not val.thisown:
+	    val._owner = self
+%}
 %include "Extrema_GLocateExtPC.hxx";
 %template(Extrema_LocateExtPC) Extrema_GLocateExtPC<Adaptor3d_Curve,Extrema_CurveTool,gp_Pnt,gp_Vec,Extrema_POnCurv,Extrema_ELPCOfLocateExtPC,Extrema_LocEPCOfLocateExtPC>;
 %template(Extrema_LocateExtPC2d) Extrema_GLocateExtPC<Adaptor2d_Curve2d,Extrema_Curve2dTool,gp_Pnt2d,gp_Vec2d,Extrema_POnCurv2d,Extrema_ELPCOfLocateExtPC2d,Extrema_LocEPCOfLocateExtPC2d>;
